@@ -39,4 +39,11 @@ jobs:
           node-version: 24
           registry-url: https://registry.npmjs.org
 
-      - run: npm publish --access public --provenance --ignore-scripts # build and test ran above
+      - name: Skip a version npm already has (a release created after a manual publish)
+        id: check
+        run: |
+          v="$(node -p "require('./package.json').version")"
+          if npm view "@acmelabs/design-system@$v" version >/dev/null 2>&1; then echo "published=true" >> "$GITHUB_OUTPUT"; echo "$v is already on npm"; else echo "published=false" >> "$GITHUB_OUTPUT"; fi
+
+      - if: steps.check.outputs.published == 'false'
+        run: npm publish --access public --provenance --ignore-scripts # build and test ran above
