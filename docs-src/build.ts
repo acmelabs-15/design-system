@@ -5,8 +5,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readApi } from "./api";
+import { docToMarkdown } from "./markdown";
 import { loadDocs } from "./pages/components/index";
-import { colors, intro, materials, typography } from "./pages/foundations";
+import { colors, icons, intro, materials, tokens, typeface, typography } from "./pages/foundations";
 import { type Doc, docPage, type Nav, OUT, shell, writeFragment } from "./site";
 
 const ROOT = path.resolve(import.meta.dir, "..");
@@ -27,17 +28,29 @@ for (const t of documented) if (!byTag.has(t)) throw new Error(`docs name an unk
 const undocumented = api.map((e) => e.tag).filter((t) => !documented.has(t));
 if (undocumented.length) console.warn("elements without a docs page:", undocumented.join(", "));
 
+const grid = components.find((d) => d.id === "grid");
+const geist = components.filter((d) => !d.house && d.id !== "grid");
+const houseDocs = [tokens, ...components.filter((d) => d.house)];
 const nav: Nav = [
   {
     group: "Foundations",
     items: [
-      { title: "Get Started", href: "index" },
+      { title: "Introduction", href: "index" },
       { title: "Colors", href: "colors" },
       { title: "Typography", href: "typography" },
       { title: "Materials", href: "materials" },
+      ...(grid ? [{ title: "Grid", href: "components/grid" }] : []),
     ],
   },
-  { group: "Components", items: components.map((d) => ({ title: d.title, href: `components/${d.id}`, house: d.house })) },
+  {
+    group: "Assets",
+    items: [
+      { title: "Icons", href: "icons" },
+      { title: "Typeface", href: "typeface" },
+    ],
+  },
+  { group: "Components", items: geist.map((d) => ({ title: d.title, href: `components/${d.id}` })) },
+  { group: "House", items: houseDocs.map((d) => ({ title: d.title, href: d.id === "tokens" ? "tokens" : `components/${d.id}`, house: true })) },
 ];
 
 const foundations: [Doc, string][] = [
@@ -45,9 +58,21 @@ const foundations: [Doc, string][] = [
   [colors, "colors"],
   [typography, "typography"],
   [materials, "materials"],
+  [icons, "icons"],
+  [typeface, "typeface"],
+  [tokens, "tokens"],
 ];
-for (const [d, file] of foundations) writeFragment(`${file}.html`, docPage(d, []));
-for (const d of components)
+// Every page has a Markdown twin at the page URL plus .md (Geist does the same).
+const md = (route: string, d: Doc) => {
+  const p = path.join(OUT, `${route}.md`);
+  fs.mkdirSync(path.dirname(p), { recursive: true });
+  fs.writeFileSync(p, `${docToMarkdown(d, byTag).join("\n")}\n`);
+};
+for (const [d, file] of foundations) {
+  writeFragment(`${file}.html`, docPage(d, []));
+  md(file, d);
+}
+for (const d of components) {
   writeFragment(
     `components/${d.id}.html`,
     docPage(
@@ -55,6 +80,8 @@ for (const d of components)
       (d.tags ?? []).map((t) => byTag.get(t)!),
     ),
   );
+  md(`components/${d.id}`, d);
+}
 
 const html = shell(nav);
 fs.writeFileSync(path.join(OUT, "index.html"), html);

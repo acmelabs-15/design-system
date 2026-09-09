@@ -1,62 +1,73 @@
-// Foundations: Get Started, Colors, Typography, Materials. Geist's pages, with the demos built
-// from the acme-* elements and the type classes tokens.css carries globally.
+// Foundations and assets, in the section structure of vercel.com/geist: Introduction, Colors,
+// Typography, Materials (Grid is a component page listed under Foundations), Icons, Typeface.
+// The house Tokens page holds what Geist has no section for. Prose is ours; structure, section
+// names, class lists and values follow Geist's pages read as Markdown on Sep 9 2026.
+import { paths } from "../../src/base";
 import { highlightHtml } from "../format";
 import type { Doc } from "../site";
-import { esc, ic, REPO, section, VERSION } from "../site";
+import { ic, REPO, section, VERSION } from "../site";
 
 const code = (src: string) => `<div class="showcase"><div class="code" style="display:block;border-top:0">${highlightHtml(src)}</div></div>`;
-
-/* ---------- Get Started ---------- */
 const cdn = `https://cdn.jsdelivr.net/npm/@acmelabs/design-system@${VERSION}`;
+const tile = (href: string, title: string, desc: string, prev: string) =>
+  `<a class="link-tile" href="${href}"><span class="prev">${prev}</span><span class="t">${title}</span><span class="d">${desc}</span></a>`;
+const sw = (bg: string) => `<span style="width:40px;height:40px;border-radius:6px;background:${bg}"></span>`;
+
+/* ---------- Introduction ---------- */
 export const intro: Doc = {
   id: "index",
-  title: "ACME Design System",
-  lede: "The house system as web components: Geist foundations and every Geist component at Geist's values, set in Google Sans Flex and Google Sans Code, plus the house parts. Built with Lit, published to npm, usable from a CDN with no build step.",
+  title: "Introduction",
+  lede: "The house design system for building consistent web experiences: the colors, typography, materials, layout and web components behind ACME's pages. Components are published as <code>@acmelabs/design-system</code>.",
   examples: [],
   body: `${section(
-    "Use it from a CDN",
-    `<p>Two tags. The stylesheet is the global layer: scales, semantic tokens, the reset, the type classes and the layout utilities. The script registers every <code>acme-*</code> element; each element carries its own styles in shadow DOM, so nothing else leaks.</p>${code(`<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
+    "Foundations",
+    `<div class="link-grid">${tile("/colors", "Colors", "A high contrast, accessible color system.", sw("var(--ds-blue-700)") + sw("var(--ds-red-700)") + sw("var(--ds-amber-700)") + sw("var(--ds-green-700)"))}${tile("/typography", "Typography", "Typeset with Google Sans Flex and Google Sans Code.", `<span class="text-heading-32">Aa</span><span class="text-copy-16 mono">0123</span>`)}${tile("/materials", "Materials", "Presets for radii, fills, strokes and shadows.", `<span style="width:96px;height:64px;border-radius:12px;background:var(--surface);box-shadow:var(--ds-shadow-menu)"></span>`)}${tile("/components/grid", "Grid", "Guide lines and cells, a core part of the aesthetic.", `<acme-grid columns="3" style="width:200px"><acme-grid-cell></acme-grid-cell><acme-grid-cell solid>2</acme-grid-cell><acme-grid-cell></acme-grid-cell></acme-grid>`)}</div>`,
+  )}${section(
+    "Assets",
+    `<div class="link-grid">${tile("/icons", "Icons", "The icon set the elements draw, and the docs sprite.", `<span class="row" style="gap:16px">${["check", "search", "alert", "copy", "globe"].map((n) => ic(n)).join("")}</span>`)}${tile("/typeface", "Typeface", "Google Sans Flex and Google Sans Code.", `<span class="text-heading-24">Flex</span><span class="text-copy-16 mono">Code</span>`)}</div>`,
+  )}${section(
+    "Components",
+    `<p>Building blocks for any page, available as web components from a CDN with no build step, or from npm. Every element is <code>acme-*</code> and registers on import.</p>${code(`<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
 <link rel="stylesheet" href="${cdn}/tokens.css">
 <script type="module" src="${cdn}/dist/bundle/design-system.min.js"></script>
 
 <acme-button variant="primary">Deploy</acme-button>
-<acme-badge hue="green" subtle>Ready</acme-badge>`)}<p style="margin-top:24px">A host that admits a script from a CDN but no stylesheet from one (the Claude artifact CSP is one) takes the standalone bundle instead: the same elements, and <code>tokens.css</code> installed into the document on import. Inline the fonts link as before.</p>${code(`<script type="module" src="${cdn}/dist/bundle/design-system.standalone.min.js"></script>`)}<p style="margin-top:24px">The page-level recipes the Vercel dashboard composes in light DOM (deployment rows, plan heads, usage summaries) are in <code>${cdn}/dashboard.css</code>.</p>`,
-    "The bundle is self-contained: Lit and the labs packages are inside it.",
+<acme-badge hue="green" subtle>Ready</acme-badge>`)}<p style="margin-top:24px">A host that admits a script from a CDN but no stylesheet from one (the Claude artifact CSP is one) takes the standalone bundle, which installs <code>tokens.css</code> on import:</p>${code(`<script type="module" src="${cdn}/dist/bundle/design-system.standalone.min.js"></script>`)}<p style="margin-top:24px">From npm, one import registers every element; single elements import from <code>dist/components/&lt;name&gt;/&lt;name&gt;.js</code>.</p>${code(`bun add @acmelabs/design-system`)}${code(`import "@acmelabs/design-system";
+import "@acmelabs/design-system/tokens.css";`)}<p style="margin-top:24px">Browse individual components under <code>/components/&lt;component&gt;</code>, for example <a href="/components/button">/components/button</a>. Source: <a href="${REPO}">${REPO.replace("https://", "")}</a>.</p>`,
   )}${section(
-    "Install from npm",
-    `${code(`bun add @acmelabs/design-system`)}<p style="margin-top:24px">Then import the package once; every element registers on import. The unbundled build keeps Lit as a peer, so one copy of Lit serves the whole app.</p>${code(`import "@acmelabs/design-system";
-import "@acmelabs/design-system/tokens.css";`)}<p style="margin-top:24px">Single elements import from <code>dist</code>:</p>${code(`import "@acmelabs/design-system/dist/components/button/button.js";`)}`,
-  )}${section(
-    "Theme",
-    `<p>Light is the default. The tokens follow <code>prefers-color-scheme</code>, and <code>data-theme="light"</code> or <code>data-theme="dark"</code> on the root element wins over it. <code>&lt;acme-theme-switcher&gt;</code> sets the attribute and persists the choice.</p><div class="demo-box" style="margin-top:24px"><acme-theme-switcher></acme-theme-switcher><acme-theme-switcher small></acme-theme-switcher></div>`,
-  )}${section(
-    "Foundations",
-    `<div class="link-grid">
-<a class="link-tile" href="/colors"><span class="prev"><span style="width:40px;height:40px;border-radius:6px;background:var(--ds-blue-700)"></span><span style="width:40px;height:40px;border-radius:6px;background:var(--ds-red-700)"></span><span style="width:40px;height:40px;border-radius:6px;background:var(--ds-amber-700)"></span><span style="width:40px;height:40px;border-radius:6px;background:var(--ds-green-700)"></span></span><span class="t">Colors</span><span class="d">Ten scales with a fixed role for every step, and the semantic tokens page rules use.</span></a>
-<a class="link-tile" href="/typography"><span class="prev"><span class="text-heading-32">Aa</span><span class="text-copy-16 mono">0123</span></span><span class="t">Typography</span><span class="d">Geist's headings, copy, labels and buttons in Google Sans Flex and Google Sans Code.</span></a>
-<a class="link-tile" href="/materials"><span class="prev"><span style="width:96px;height:64px;border-radius:12px;background:var(--surface);box-shadow:var(--ds-shadow-menu)"></span></span><span class="t">Materials</span><span class="d">Surface and floating shadows, radii and the focus ring.</span></a>
-<a class="link-tile" href="/components/avatar"><span class="prev"><acme-button variant="primary">Deploy</acme-button><acme-badge hue="blue" subtle>Preview</acme-badge><acme-toggle checked></acme-toggle></span><span class="t">Components</span><span class="d">Every Geist component, in Geist's order, then the house parts.</span></a>
-</div>`,
-    "The tokens every page rule uses. Geist is the source of record; the type families are the house's.",
-  )}${section(
-    "Source priority",
-    `<p>Where vercel.com/geist has the component, the color, the material or the type style, Geist's value is the value. The Vercel dashboard supplies only what Geist has no page for: the shell, page heads, folds, tables with bars, deployment and project rows, settings forms. Those are the house components, marked <acme-badge hue="purple" subtle size="small">house</acme-badge> in the sidebar.</p><p>Source: <a href="${REPO}">${REPO.replace("https://", "")}</a>.</p>`,
+    "Markdown for agents",
+    `<p>Every docs page is available as Markdown: append <code>.md</code> to any URL, for example <a href="/colors.md">/colors.md</a> or <a href="/components/button.md">/components/button.md</a>. The Markdown carries the same sections, the example markup and each element's API.</p>`,
   )}`,
 };
 
 /* ---------- Colors ---------- */
 const scales = ["gray", "gray-alpha", "blue", "red", "amber", "green", "teal", "purple", "pink"];
 const steps = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-const usage = (title: string, lede: string, rows: [string, string, string][], demo: string) =>
-  section(
-    title,
-    `${rows.map(([n, v, d]) => `<div class="def-row"><span class="d" style="background:var(${v})"></span><b>${n}</b><span>${d}</span></div>`).join("")}<div class="demo-box">${demo}</div>`,
-    lede,
-  );
+const stepUse = [
+  "Default background",
+  "Hover background",
+  "Active background",
+  "Default border",
+  "Hover border",
+  "Active border",
+  "High contrast background",
+  "Hover high contrast background",
+  "Secondary text and icons",
+  "Primary text and icons",
+];
+const def = (rows: [string, string, string][]) =>
+  rows
+    .map(
+      ([n, v, d]) =>
+        `<div class="def-row"><span class="d" style="background:var(${v})"></span><b>${n}</b><span class="mono" style="font-size:12px;margin-right:12px">var(${v})</span><span>${d}</span></div>`,
+    )
+    .join("");
+const box = (bg: string, label: string, extra = "") =>
+  `<span style="width:140px;height:64px;border-radius:6px;background:${bg};${extra}display:grid;place-items:center;font-size:12px;color:var(--text-2)">${label}</span>`;
 export const colors: Doc = {
   id: "colors",
   title: "Colors",
-  lede: "Ten scales with a fixed role for every step. The swatches read the live tokens, so they follow the theme.",
+  lede: "How the color system works. Right click a swatch to copy its raw value.",
   examples: [],
   body: `${section(
     "Scales",
@@ -65,165 +76,136 @@ export const colors: Doc = {
         (sc) =>
           `<div class="swatch-row"><span class="n">${sc.replace("-", " ")}</span>${steps.map((s) => `<span class="sw" style="background:var(--ds-${sc}-${s})" title="--ds-${sc}-${s}"></span>`).join("")}</div>`,
       )
-      .join("")}`,
-    "Steps 100 to 1000 run left to right. Hover a swatch for its token.",
-  )}
-${usage(
-  "Backgrounds",
-  "Two page grounds.",
-  [
-    ["Background 1", "--ds-background-100", "The default background of an element."],
-    ["Background 2", "--ds-background-200", "Used sparingly for subtle differentiation."],
-  ],
-  `<span style="width:140px;height:64px;border-radius:6px;background:var(--ds-background-100);box-shadow:var(--ds-shadow-border);display:grid;place-items:center;font-size:12px;color:var(--text-2)">background-100</span><span style="width:140px;height:64px;border-radius:6px;background:var(--ds-background-200);box-shadow:var(--ds-shadow-border);display:grid;place-items:center;font-size:12px;color:var(--text-2)">background-200</span>`,
-)}
-${usage(
-  "Component backgrounds",
-  "Colors 1 to 3 are component backgrounds: default, hover, active. If a component's default is Background 1, use Color 1 for hover and Color 2 for active. Badges can use Color 2 or 3.",
-  [
-    ["Color 1", "--ds-gray-100", "Default"],
-    ["Color 2", "--ds-gray-200", "Hover"],
-    ["Color 3", "--ds-gray-300", "Active"],
-  ],
-  `<acme-button>Secondary</acme-button><acme-badge subtle>Badge</acme-badge><acme-kbd meta>K</acme-kbd>`,
-)}
-${usage(
-  "Borders",
-  "Colors 4 to 6 are borders: default, hover, active.",
-  [
-    ["Color 4", "--ds-gray-400", "Default"],
-    ["Color 5", "--ds-gray-500", "Hover"],
-    ["Color 6", "--ds-gray-600", "Active"],
-  ],
-  `<span style="width:140px;height:64px;border-radius:6px;border:1px solid var(--ds-gray-400)"></span><span style="width:140px;height:64px;border-radius:6px;border:1px solid var(--ds-gray-500)"></span><span style="width:140px;height:64px;border-radius:6px;border:1px solid var(--ds-gray-600)"></span>`,
-)}
-${usage(
-  "High-contrast backgrounds",
-  "Colors 7 and 8 are high-contrast backgrounds: default and hover.",
-  [
-    ["Color 7", "--ds-gray-700", "Default"],
-    ["Color 8", "--ds-gray-800", "Hover"],
-  ],
-  `<span style="width:140px;height:64px;border-radius:6px;background:var(--ds-gray-700)"></span><span style="width:140px;height:64px;border-radius:6px;background:var(--ds-gray-800)"></span><acme-button variant="primary">Primary</acme-button>`,
-)}
-${usage(
-  "Text and icons",
-  "Colors 9 and 10 are text and icons: secondary and primary.",
-  [
-    ["Color 9", "--ds-gray-900", "Secondary"],
-    ["Color 10", "--ds-gray-1000", "Primary"],
-  ],
-  `<span class="text-copy-16" style="color:var(--ds-gray-900)">Secondary text</span><span class="text-copy-16" style="color:var(--ds-gray-1000)">Primary text</span>${ic("gear")}`,
-)}
-${section("Semantic tokens", `<docs-tokens tokens="--bg --surface --surface-2 --comp --comp-hover --comp-active --border --border-hover --border-active --hair --text --text-2 --accent --accent-ink --accent-weak --success --success-ink --success-weak --warn --warn-ink --warn-weak --caution --caution-bg --caution-weak --contrast --contrast-strong --on-contrast --track --ds-focus-color --highlight --scrim-dark"></docs-tokens>`, "What page rules use. Each maps onto a scale step, so the theme switch carries every rule.")}
-${section("Status and chart series", `<docs-tokens tokens="--st-ready --st-error --st-building --st-queued --st-online --chart-1 --chart-2 --chart-3 --chart-4 --chart-5"></docs-tokens>`, "The deployment status colors and the chart series, as the Vercel dashboard draws them; the same in both themes. Geist has no page for these.")}`,
+      .join(
+        "",
+      )}<p class="text-copy-14" style="margin-top:8px">Each scale except the backgrounds has ten steps, and each step has one job:</p><table class="doc-table" style="margin-top:12px"><thead><tr><th>Step</th><th>Usage</th></tr></thead><tbody>${steps.map((s, i) => `<tr><td class="mono">${s}</td><td>${stepUse[i]}</td></tr>`).join("")}</tbody></table><p class="text-copy-14" style="margin-top:16px">The backgrounds scale has two values: Background 1 (<code>--ds-background-100</code>), the default element background, and Background 2 (<code>--ds-background-200</code>), the secondary background.</p>`,
+    "There are 10 color scales in the system. P3 colors are used on supported browsers and displays.",
+  )}${section(
+    "Backgrounds",
+    `${def([
+      ["Background 1", "--ds-background-100", "Default element background"],
+      ["Background 2", "--ds-background-200", "Secondary background"],
+    ])}<div class="demo-box">${box("var(--ds-background-100)", "background-100", "box-shadow:var(--ds-shadow-border);")}${box("var(--ds-background-200)", "background-200", "box-shadow:var(--ds-shadow-border);")}</div>`,
+    "Two background colors serve pages and components. Background 1 is the usual choice, and always when color sits on top of it. Background 2 is for a subtle difference, used sparingly.",
+  )}${section(
+    "Colors 1–3: Component Backgrounds",
+    `${def([
+      ["Color 1", "--ds-gray-100", "Default background"],
+      ["Color 2", "--ds-gray-200", "Hover background"],
+      ["Color 3", "--ds-gray-300", "Active background"],
+    ])}<div class="demo-box"><acme-button>Secondary</acme-button><acme-badge subtle>Badge</acme-badge><acme-kbd meta>K</acme-kbd></div>`,
+    "Three colors for component backgrounds. When a component's default background is Background 1, Color 1 is its hover and Color 2 its active background. Small elements such as badges can use Color 2 or Color 3.",
+  )}${section(
+    "Colors 4–6: Borders",
+    `${def([
+      ["Color 4", "--ds-gray-400", "Default border"],
+      ["Color 5", "--ds-gray-500", "Hover border"],
+      ["Color 6", "--ds-gray-600", "Active border"],
+    ])}<div class="demo-box">${box("transparent", "400", "border:1px solid var(--ds-gray-400);")}${box("transparent", "500", "border:1px solid var(--ds-gray-500);")}${box("transparent", "600", "border:1px solid var(--ds-gray-600);")}</div>`,
+    "Three colors for component borders.",
+  )}${section(
+    "Colors 7–8: High Contrast Backgrounds",
+    `${def([
+      ["Color 7", "--ds-gray-700", "High contrast background"],
+      ["Color 8", "--ds-gray-800", "Hover high contrast background"],
+    ])}<div class="demo-box">${box("var(--ds-gray-700)", "", "")}${box("var(--ds-gray-800)", "", "")}<acme-button variant="primary">Primary</acme-button></div>`,
+    "Two colors for high contrast component backgrounds.",
+  )}${section(
+    "Colors 9–10: Text and Icons",
+    `${def([
+      ["Color 9", "--ds-gray-900", "Secondary text and icons"],
+      ["Color 10", "--ds-gray-1000", "Primary text and icons"],
+    ])}<div class="demo-box"><span class="text-copy-16" style="color:var(--ds-gray-900)">Secondary text</span><span class="text-copy-16" style="color:var(--ds-gray-1000)">Primary text</span>${ic("gear")}</div>`,
+    "Two colors for accessible text and icons.",
+  )}`,
 };
 
 /* ---------- Typography ---------- */
 const trow = (ex: string, cls: string, use: string) => `<tr><td class="ex">${ex}</td><td class="cls">${cls}</td><td>${use}</td></tr>`;
 const ttable = (rows: string) => `<table class="doc-table type-table"><thead><tr><th>Example</th><th>Class name</th><th>Usage</th></tr></thead><tbody>${rows}</tbody></table>`;
-const headingRow = (c: string, m: string, u: string) => {
+const heading = (c: string, subtle: boolean, use = "") => {
   const big = /(72|64|56|48)$/.test(c);
   const style = big ? ' style="font-size:40px;line-height:48px;letter-spacing:-2.4px"' : "";
-  return trow(`<span class="${c}"${style}>Heading <strong style="font-weight:500;color:var(--text-2)">Subtle</strong></span>`, `.${c} · ${m}`, u);
+  return trow(`<span class="${c}"${style}>Heading${subtle ? ' <strong style="font-weight:500;color:var(--text-2)">Subtle</strong>' : ""}</span>`, `.${c}${subtle ? " (Subtle)" : ""}`, use);
 };
 export const typography: Doc = {
   id: "typography",
   title: "Typography",
-  lede: "Geist's scale with Geist's metrics. Text is Google Sans Flex; numbers, labels and code are Google Sans Code. The families are settled and never follow a Geist update.",
+  lede: "Rules of typesetting throughout the system.",
   examples: [],
   body: `${section(
+    "Usage",
+    `<p>The type styles are classes in <code>tokens.css</code>. Each class presets a combination of font size, line height, letter spacing and weight. The families are Google Sans Flex for text and Google Sans Code for labels, numbers and code; a Geist update never changes them.</p><p style="margin-top:16px">For the Subtle and Strong modifiers, nest a <code>&lt;strong&gt;</code> element inside the class:</p>${code(`<p class="text-copy-16">
+  Copy 16 <strong>with Strong</strong>
+</p>`)}<div class="demo-box"><p class="text-copy-16">Copy 16 <strong>with Strong</strong></p></div>`,
+  )}${section(
     "Headings",
     ttable(
-      (
-        [
-          ["text-heading-72", "72/72 −4.32", "Hero titles on marketing pages"],
-          ["text-heading-64", "64/64 −3.84", "Hero titles"],
-          ["text-heading-56", "56/56 −3.36", "Section titles on marketing pages"],
-          ["text-heading-48", "48/56 −2.88", "Page titles on marketing pages"],
-          ["text-heading-40", "40/48 −2.4", "Docs page titles"],
-          ["text-heading-32", "32/40 −1.28", "App page titles, .h1"],
-          ["text-heading-24", "24/32 −0.96", "Section titles, .h2"],
-          ["text-heading-20", "20/26 −0.4", "Settings card and modal titles, .h3"],
-          ["text-heading-16", "16/24 −0.32", "Card and empty state titles, .h4"],
-          ["text-heading-14", "14/20 −0.28", "Row titles, nav"],
-        ] as [string, string, string][]
-      )
-        .map(([c, m, u]) => headingRow(c, m, u))
-        .join(""),
+      [
+        heading("text-heading-72", false),
+        heading("text-heading-64", false),
+        heading("text-heading-56", false),
+        heading("text-heading-48", false),
+        heading("text-heading-40", false),
+        heading("text-heading-32", true),
+        heading("text-heading-24", true),
+        heading("text-heading-20", true),
+        heading("text-heading-16", true),
+        heading("text-heading-14", false),
+      ].join(""),
     ),
-    "Weight 600 with negative tracking. A nested <code>strong</code> at weight 500 in gray-900 is the Subtle modifier.",
+    "Used to introduce pages or sections.",
   )}${section(
     "Buttons",
     ttable(
-      (
-        [
-          ["text-button-16", "16/20", "Large buttons"],
-          ["text-button-14", "14/20", "Default and small buttons"],
-          ["text-button-12", "12/16", "A tiny button inside an input"],
-        ] as [string, string, string][]
-      )
-        .map(([c, m, u]) => trow(`<span class="${c}">Button</span>`, `.${c} · ${m}`, u))
+      [
+        ["text-button-16", "Largest button."],
+        ["text-button-14", "Default button."],
+        ["text-button-12", "Only used when a tiny button is placed inside an input field."],
+      ]
+        .map(([c, u]) => trow(`<span class="${c}">Button</span>`, `.${c}`, u))
         .join(""),
     ),
-    "Weight 500. The 12px style only inside an input.",
+    "Only to be used within components that render buttons.",
   )}${section(
-    "Labels",
+    "Label",
     ttable(
       (
         [
-          ["text-label-20", "20/32", "Large labels"],
-          ["text-label-18", "18/20", "Sheet titles"],
-          ["text-label-16", "16/20", "Section labels"],
-          ["text-label-14", "14/20", "The most common label; menus"],
-          ["text-label-14-mono", "14/20 mono", "Identifiers beside a label"],
-          ["text-label-13", "13/16", "Secondary line; tabular for numbers"],
-          ["text-label-13-mono", "13/20 mono", "Pairs with label 14"],
-          ["text-label-12", "12/16", "Tertiary; caps in calendars"],
-          ["text-label-12-mono", "12/16 mono", "Tertiary identifiers"],
-        ] as [string, string, string][]
+          ["text-label-20", false, ""],
+          ["text-label-18", false, ""],
+          ["text-label-16", true, "Used in titles to help differentiate from regular."],
+          ["text-label-14", true, "Most common text style of all. Used in many menus."],
+          ["text-label-14-mono", false, "Largest form of mono, to pair with larger (>14) text."],
+          ["text-label-13", false, "Used as a secondary line next to other labels. Tabular is used when conveying numbers for consistent spacing."],
+          ["text-label-13-mono", false, "Used to pair with Label 14, as the smaller mono size looks better in that pairing."],
+          ["text-label-12", false, "Used for tertiary level text in busy views, like Comments, Show More and the capitals in Calendars."],
+          ["text-label-12-mono", false, ""],
+        ] as [string, boolean, string][]
       )
-        .map(([c, m, u]) => trow(`<span class="${c}">Label <strong style="font-weight:500;color:var(--text)">Strong</strong></span>`, `.${c} · ${m}`, u))
+        .map(([c, strong, u]) => trow(`<span class="${c}">Label${strong ? ' <strong style="font-weight:500;color:var(--text)">Strong</strong>' : ""}</span>`, `.${c}${strong ? " (Strong)" : ""}`, u))
         .join(""),
     ),
-    "Weight 400. Strong is weight 500 in gray-1000; the base label reads gray-900 when it has a Strong.",
+    "Designed for single lines, with ample line height for highlighting and for sitting beside icons.",
   )}${section(
     "Copy",
     ttable(
       (
         [
-          ["text-copy-24", "24/36", "Large copy"],
-          ["text-copy-20", "20/36", "Hero copy"],
-          ["text-copy-18", "18/28", "Quotes"],
-          ["text-copy-16", "16/24", "Modals and docs"],
-          ["text-copy-16-mono", "16/24 mono", "Code in docs"],
-          ["text-copy-14", "14/20", "The most common copy; body"],
-          ["text-copy-14-mono", "14/20 mono", "Code beside body"],
-          ["text-copy-13", "13/18", "Secondary copy where space is a premium"],
-          ["text-copy-13-mono", "13/18 mono", "Inline code mentions"],
-        ] as [string, string, string][]
+          ["text-copy-24", true, "For hero areas on marketing pages."],
+          ["text-copy-20", true, "For hero areas on marketing pages."],
+          ["text-copy-18", true, "Mainly for marketing, big quotes."],
+          ["text-copy-16", true, "Used in simpler, larger views like Modals where text can breathe."],
+          ["text-copy-14", true, "Most commonly used text style."],
+          ["text-copy-13", false, "For secondary text and views where space is a premium."],
+          ["text-copy-13-mono", false, "Used for inline code mentions."],
+        ] as [string, boolean, string][]
       )
-        .map(([c, m, u]) => trow(`<span class="${c}">Copy <strong style="font-weight:550">Strong</strong></span>`, `.${c} · ${m}`, u))
+        .map(([c, strong, u]) => trow(`<span class="${c}">Copy${strong ? ' <strong style="font-weight:550">Strong</strong>' : ""}</span>`, `.${c}${strong ? " (Strong)" : ""}`, u))
         .join(""),
     ),
-    "Weight 400. Strong is weight 550.",
-  )}${section(
-    "House additions",
-    ttable(
-      trow(`<span class="eyebrow">Eyebrow label</span>`, ".eyebrow · 11 mono caps .09em", "Cell and card labels") +
-        trow(`<span class="mono" style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.96px">$62,450</span>`, "acme-stat value · 24/32 mono 600", "The one headline figure") +
-        trow(`<span style="font-size:32px;line-height:40px;letter-spacing:-.79px;font-weight:600">2,847</span>`, "acme-strip-item value · 32/40 600", "The analytics strip figure"),
-    ),
-    "Styles Geist has no page for: the mono eyebrow label, the Stat value, and the analytics strip value from the dashboard.",
+    "Designed for multiple lines of text, with a higher line height than Label.",
   )}`,
-  practices: {
-    Content: [
-      "Headings and buttons in Title Case; sentence case everywhere else.",
-      "Numerals for counts: 8 deployments. A non-breaking space between a number and its unit: 10&nbsp;MB.",
-      "Curly quotes and the ellipsis character. Errors say how to fix it. “Save API Key”, not “Continue”.",
-      "Numbers are mono and tabular so money and dates line up.",
-    ],
-  },
 };
 
 /* ---------- Materials ---------- */
@@ -231,12 +213,68 @@ const mat = (name: string, cls: string, sh: string, note: string) => `<div class
 export const materials: Doc = {
   id: "materials",
   title: "Materials",
-  lede: "Shadows and radii that give a surface its place in the layered hierarchy. One material per element; the lowest elevation that still reads.",
+  lede: "Presets for radii, fills, strokes, and shadows.",
   examples: [],
-  body: `${section("Surface", `<div class="mat-ground"><div class="mat-grid">${mat("Base", "", "--ds-shadow-border", "radius 6 · everyday")}${mat("Small", "", "--ds-shadow-border-small", "radius 6 · slightly raised")}${mat("Medium", "r12", "--ds-shadow-border-medium", "radius 12")}${mat("Large", "r12", "--ds-shadow-border-large", "radius 12")}</div></div>`, "On the page.")}
-${section("Floating", `<div class="mat-ground"><div class="mat-grid">${mat("Tooltip", "", "--ds-shadow-tooltip", "radius 6 · the only one with a stem")}${mat("Menu", "r12", "--ds-shadow-menu", "radius 12")}${mat("Modal", "r12", "--ds-shadow-modal", "radius 12")}${mat("Fullscreen", "r16", "--ds-shadow-fullscreen", "radius 16")}</div></div>`, "Above the page.")}
+  body: `${section("Surface", `<div class="mat-ground"><div class="mat-grid">${mat("material-base", "", "--ds-shadow-border", "Everyday use. Radius 6px.")}${mat("material-small", "", "--ds-shadow-border-small", "Slightly raised. Radius 6px.")}${mat("material-medium", "r12", "--ds-shadow-border-medium", "Further raised. Radius 12px.")}${mat("material-large", "r12", "--ds-shadow-border-large", "Further raised. Radius 12px.")}</div></div>`, "On the page.")}${section(
+    "Floating",
+    `<div class="mat-ground"><div class="mat-grid">${mat("material-tooltip", "", "--ds-shadow-tooltip", "Lightest shadow. Corner 6px. The only floating element with a triangular stem.")}${mat("material-menu", "r12", "--ds-shadow-menu", "Lift from page. Radius 12px.")}${mat("material-modal", "r12", "--ds-shadow-modal", "Further lift. Radius 12px.")}${mat("material-fullscreen", "r16", "--ds-shadow-fullscreen", "Biggest lift. Radius 16px.")}</div></div>`,
+    "Above the page.",
+  )}`,
+};
+
+/* ---------- Icons ---------- */
+export const icons: Doc = {
+  id: "icons",
+  title: "Icons",
+  lede: "The icons the elements draw themselves, and the sprite the docs examples use for prefix, suffix and icon slots.",
+  examples: [],
+  body: `${section(
+    "Built-in glyphs",
+    `<div class="row" style="gap:16px">${Object.keys(paths)
+      .map(
+        (n) =>
+          `<span class="vstack" style="gap:6px;align-items:center;width:72px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px"><path d="${paths[n]}"></path></svg><span class="text-label-12-mono" style="color:var(--text-2)">${n}</span></span>`,
+      )
+      .join("")}</div>`,
+    "Elements render these from <code>glyph(name)</code> in <code>base.ts</code>, so a page needs no sprite for a component's own icons: the copy button's check, the menu's lock, the note's alert. 24-box strokes at 16px.",
+  )}${section(
+    "Slot icons",
+    `<p>Example markup passes icons into slots as inline SVG. Any 24-box stroke icon works; the docs use a sprite of symbols with <code>#i-&lt;name&gt;</code> ids, referenced as <code>&lt;svg class="ic"&gt;&lt;use href="#i-check"/&gt;&lt;/svg&gt;</code>. In an artifact, inline the paths you use.</p>${code(`<acme-button>
+  <svg class="ic" slot="prefix" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+  Save
+</acme-button>`)}<div class="demo-box"><acme-button><svg class="ic" slot="prefix" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Save</acme-button><acme-badge hue="blue">${ic("rocket", ' slot="icon"')}Production</acme-badge></div>`,
+  )}`,
+};
+
+/* ---------- Typeface ---------- */
+export const typeface: Doc = {
+  id: "typeface",
+  title: "Typeface",
+  lede: "Google Sans Flex for text and Google Sans Code for labels, numbers and code. The families are settled; a Geist update never changes them.",
+  examples: [],
+  body: `${section(
+    "Load the fonts",
+    `${code(`<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">`)}<p style="margin-top:24px">Text is Google Sans Flex, the variable family, at weights 400 to 700. Labels, numbers and code are Google Sans Code; on a machine with the Nerd Font build installed, the stack picks <code>GoogleSansCode Nerd Font Mono</code> first, which adds the icon glyphs. The fallback stacks are in <code>tokens.css</code>.</p>`,
+    "One stylesheet link from Google Fonts.",
+  )}${section(
+    "Specimen",
+    `<div class="vstack" style="gap:16px"><span class="text-heading-48">Google Sans Flex</span><span class="text-copy-16">The quick brown fox jumps over the lazy dog. 0123456789</span><span class="text-heading-24" style="font-family:var(--mono)">Google Sans Code</span><span class="text-copy-14-mono">const deploy = await vercel.deploy("acme"); // 0123456789</span></div>`,
+  )}`,
+};
+
+/* ---------- Tokens (house) ---------- */
+export const tokens: Doc = {
+  id: "tokens",
+  title: "Tokens",
+  lede: "The semantic layer page rules use on top of Geist's scales, the deployment and chart colors, the radii and the focus ring. A house page; Geist has no section for these.",
+  house: true,
+  examples: [],
+  body: `${section("Semantic tokens", `<docs-tokens tokens="--bg --surface --surface-2 --comp --comp-hover --comp-active --border --border-hover --border-active --hair --text --text-2 --accent --accent-ink --accent-weak --success --success-ink --success-weak --warn --warn-ink --warn-weak --caution --caution-bg --caution-weak --contrast --contrast-strong --on-contrast --track --ds-focus-color --highlight --scrim-dark"></docs-tokens>`, "What page rules use. Each maps onto a scale step, so the theme switch carries every rule.")}
+${section("Status and chart series", `<docs-tokens tokens="--st-ready --st-error --st-building --st-queued --st-online --chart-1 --chart-2 --chart-3 --chart-4 --chart-5"></docs-tokens>`, "The deployment status colors and the chart series, as the Vercel dashboard draws them; the same in both themes.")}
 ${section(
-  "Tokens",
+  "Shadow tokens",
   `<table class="doc-table"><thead><tr><th>Example</th><th>Token</th><th>Usage</th></tr></thead><tbody>${(
     [
       ["--ds-shadow-border", "Cards, panels, pills, the kbd"],
@@ -258,18 +296,17 @@ ${section(
         `<tr><td><span style="display:inline-block;width:96px;height:40px;border-radius:6px;background:var(--surface);box-shadow:var(${t})"></span></td><td class="cls">${t}</td><td>${u}</td></tr>`,
     )
     .join("")}</tbody></table>`,
+  "The material presets as tokens.",
 )}
 ${section("Radii", `<div class="demo-box" style="margin-top:0">${[4, 6, 8, 10, 12, 16].map((r) => `<span style="width:100px;height:56px;border-radius:${r}px;background:var(--comp);border:1px solid var(--border);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--text-2)">${r}</span>`).join("")}<span style="width:100px;height:56px;border-radius:999px;background:var(--comp);border:1px solid var(--border);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--text-2)">full</span></div>`, "4 for kbd and chips, 6 for controls and cards, 8 for large inputs, 10 for chart panels, 12 for menus and modals, 16 for sheets, full for pills.")}
-${section("Focus", `<div class="demo-box" style="margin-top:0"><acme-button style="--ring-demo:1"><span style="display:contents">Tab to me</span></acme-button><acme-input placeholder="Then to me" style="width:200px"></acme-input></div>`, "Two pixels of the ground, then four of the focus blue; on <code>:focus-visible</code> only. Press Tab to see it.")}`,
-  practices: {
-    "When to use": [
-      "One Material per element.",
-      "Pick the type from where the element sits in the layered hierarchy.",
-      "Prefer the lowest elevation that still reads.",
-      "Semantics live on the role-bearing wrapper.",
-      "Test both themes.",
-    ],
-  },
+${section("Focus", `<div class="demo-box" style="margin-top:0"><acme-button>Tab to me</acme-button><acme-input placeholder="Then to me" style="width:200px"></acme-input></div>`, "Two pixels of the ground, then four of the focus blue; on <code>:focus-visible</code> only. Press Tab to see it.")}
+${section(
+  "House type styles",
+  ttable(
+    trow(`<span class="eyebrow">Eyebrow label</span>`, ".eyebrow · 11 mono caps .09em", "Cell and card labels") +
+      trow(`<span class="mono" style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.96px">$62,450</span>`, "acme-stat value · 24/32 mono 600", "The one headline figure") +
+      trow(`<span style="font-size:32px;line-height:40px;letter-spacing:-.79px;font-weight:600">2,847</span>`, "acme-strip-item value · 32/40 600", "The analytics strip figure"),
+  ),
+  "Styles Geist has no page for: the mono eyebrow label, the Stat value, and the analytics strip value from the dashboard.",
+)}`,
 };
-
-export const esc_ = esc;

@@ -129,7 +129,7 @@ export class AcmeDocsApp extends LitElement {
       </acme-appbar>
       <div class="docs">
         <nav class="docs-side" aria-label="Pages">
-          ${this.nav.map((g) => html`<div class="grp">${g.group}</div>${g.items.map((i) => html`<a href="${prefix}/${i.href === "index" ? "" : i.href}" aria-current=${cur(i.href)}>${i.title}${i.house ? html`<span class="house">house</span>` : nothing}</a>`)}`)}
+          ${this.nav.map((g) => html`<div class="grp">${g.group}</div>${g.items.map((i) => html`<a href="${prefix}/${i.href === "index" ? "" : i.href}" aria-current=${cur(i.href)}>${i.title}</a>`)}`)}
         </nav>
         ${this.router.outlet()}
       </div>

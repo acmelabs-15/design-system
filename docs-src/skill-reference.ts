@@ -4,7 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readApi } from "./api";
-import { formatHtml } from "./format";
+import { docToMarkdown } from "./markdown";
 import { loadDocs } from "./pages/components/index";
 import type { Doc } from "./site";
 
@@ -33,33 +33,7 @@ const lines: string[] = [
   ...docs.map((d) => `- [${d.title}](#${d.id})${d.house ? " (house)" : ""}: ${(d.tags ?? []).map((t) => `\`<${t}>\``).join(", ")}`),
   "",
 ];
-for (const d of docs) {
-  lines.push(`## ${d.title}`, "", `<a id="${d.id}"></a>`, "", `${strip(d.lede)}${d.house ? " House component; Geist has no page for it." : ""}`, "");
-  for (const e of d.examples) {
-    lines.push(`### ${e.h}`, "");
-    if (e.p) lines.push(strip(e.p), "");
-    lines.push("```html", formatHtml((e.code ?? e.html) + (e.script ? `\n<script>\n${e.script.trim()}\n</script>` : "")), "```", "");
-  }
-  for (const t of d.tags ?? []) {
-    const el = byTag.get(t);
-    if (!el) continue;
-    lines.push(`### \`<${t}>\``, "");
-    if (el.doc) lines.push(el.doc, "");
-    if (el.props.length) {
-      lines.push("| Attribute | Property | Type | Default | Description |", "|---|---|---|---|---|");
-      for (const p of el.props)
-        lines.push(
-          `| ${p.attribute === false ? "—" : `\`${p.attribute}\``} | \`${p.name}\` | \`${p.type.replace(/\|/g, "\\|")}\` | ${p.default ? `\`${p.default.replace(/\|/g, "\\|")}\`` : "—"} | ${p.doc.replace(/\|/g, "\\|")} |`,
-        );
-      lines.push("");
-    }
-    if (el.slots.length) lines.push(`Slots: ${el.slots.map((s) => `\`${s}\``).join(", ")}`, "");
-    if (el.events.length) lines.push(`Events: ${el.events.map((s) => `\`${s}\``).join(", ")}`, "");
-  }
-  if (d.practices) {
-    for (const [k, v] of Object.entries(d.practices)) lines.push(`**${k}.** ${v.join(" ")}`, "");
-  }
-}
+for (const d of docs) lines.push(...docToMarkdown(d, byTag, { level: 2 }).map((l, i) => (i === 0 ? `${l}\n\n<a id="${d.id}"></a>` : l)));
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, `${lines.join("\n")}\n`);
 console.log(`wrote ${out}: ${docs.length} sections, ${api.length} elements`);
