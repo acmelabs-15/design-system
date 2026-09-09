@@ -1,0 +1,42 @@
+# Publishes @acmelabs/design-system to npm through npm's Trusted Publisher (OpenID Connect):
+# no token, the registry trusts this workflow, this environment and this repository. Runs when a
+# version tag is pushed (`npm version patch && git push --follow-tags`) or by hand.
+name: publish-package
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # the OIDC token npm exchanges for publish rights
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: publish-package
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: bun test
+
+      - name: The tag names the version in package.json
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          v="$(node -p "require('./package.json').version")"
+          [ "refs/tags/v$v" = "$GITHUB_REF" ] || { echo "tag $GITHUB_REF does not match package.json $v"; exit 1; }
+
+      # npm 11.5+ carries the trusted-publishing flow; Node 24 ships it.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      - run: npm publish --access public --provenance --ignore-scripts # build and test ran above

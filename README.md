@@ -73,6 +73,16 @@ scripts/                        split-css, build, dev server
 | `bun run lint` | Biome |
 | `bun run split` | Regenerates `tokens.css` and the style modules from the audited house sheet |
 
+## Release
+
+Publishing runs in GitHub Actions through npm's Trusted Publisher (OpenID Connect), workflow
+`publish-package.yml`, environment `publish-package`; no npm token anywhere.
+
+```sh
+npm version patch        # bumps package.json and tags v0.1.x
+git push --follow-tags   # the tag starts the publish
+```
+
 ## Conventions
 
 - Every element is `acme-*`. Properties reflect from attributes; array and object values take
