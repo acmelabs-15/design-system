@@ -1,0 +1,62 @@
+{
+  "name": "@acmelabs/design-system",
+  "version": "0.1.0",
+  "description": "The house design system as Lit web components: vercel.com/geist foundations and every Geist component at Geist's values, set in Google Sans Flex and Google Sans Code, plus the house parts.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acmelabs-15/design-system.git"
+  },
+  "files": [
+    "dist",
+    "tokens.css",
+    "dashboard.css",
+    "README.md"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./bundle": "./dist/bundle/design-system.js",
+    "./bundle/min": "./dist/bundle/design-system.min.js",
+    "./tokens.css": "./tokens.css",
+    "./dashboard.css": "./dashboard.css",
+    "./dist/*": "./dist/*"
+  },
+  "sideEffects": true,
+  "scripts": {
+    "split": "bun scripts/split-css.ts",
+    "build": "bun scripts/build.ts",
+    "test": "bun test",
+    "lint": "bun x biome check .",
+    "lint:fix": "bun x biome check --write .",
+    "docs": "bun docs-src/build.ts",
+    "dev": "bun scripts/dev.ts",
+    "prepublishOnly": "bun run build && bun test && bun run docs"
+  },
+  "dependencies": {
+    "lit": "^3.3.3",
+    "@lit-labs/motion": "^1.1.0",
+    "@lit-labs/router": "^0.1.4",
+    "@lit-labs/signals": "^0.3.0",
+    "@lit-labs/virtualizer": "^2.1.1",
+    "urlpattern-polyfill": "^10.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.0.0",
+    "@happy-dom/global-registrator": "^20.14.0",
+    "@lit-labs/compiler": "^1.1.2",
+    "@tanstack/highlight": "^0.0.10",
+    "@types/bun": "^1.4.2",
+    "@types/node": "^26.5.0",
+    "happy-dom": "^15.11.0",
+    "ts-lit-plugin": "^2.0.2",
+    "typescript": "~5.9.0"
+  }
+}
