@@ -1,0 +1,65 @@
+<article class="doc" id="split-button"><div class="doc-hero"><h1>Split Button</h1><p>A primary action coupled with a dropdown of close variants.</p><div class="tags"><acme-badge hue="gray" subtle><code>&lt;acme-split-button&gt;</code></acme-badge></div></div><div class="doc-sec" id="sizes-and-types"><h2>Sizes and types<a href="#sizes-and-types" aria-label="Link to Sizes and types">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div class="vstack" style="gap:16px"><div class="row" style="gap:16px"><acme-split-button size="small">Save<acme-menu-item slot="items">Save</acme-menu-item><acme-menu-item slot="items">Save as Draft</acme-menu-item></acme-split-button><acme-split-button>Save<acme-menu-item slot="items">Save</acme-menu-item><acme-menu-item slot="items">Save as Draft</acme-menu-item></acme-split-button><acme-split-button size="large">Save<acme-menu-item slot="items">Save</acme-menu-item><acme-menu-item slot="items">Save as Draft</acme-menu-item></acme-split-button></div><div class="row" style="gap:16px"><acme-split-button variant="secondary" size="small">Save<acme-menu-item slot="items">Save</acme-menu-item></acme-split-button><acme-split-button variant="secondary">Save<acme-menu-item slot="items">Save</acme-menu-item></acme-split-button><acme-split-button variant="secondary" size="large">Save<acme-menu-item slot="items">Save</acme-menu-item></acme-split-button></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div class=&quot;vstack&quot; style=&quot;gap:16px&quot;&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:16px&quot;&gt;
+    &lt;acme-split-button size=&quot;small&quot;&gt;
+      Save
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save&lt;/acme-menu-item&gt;
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save as Draft&lt;/acme-menu-item&gt;
+    &lt;/acme-split-button&gt;
+    &lt;acme-split-button&gt;
+      Save
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save&lt;/acme-menu-item&gt;
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save as Draft&lt;/acme-menu-item&gt;
+    &lt;/acme-split-button&gt;
+    &lt;acme-split-button size=&quot;large&quot;&gt;
+      Save
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save&lt;/acme-menu-item&gt;
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save as Draft&lt;/acme-menu-item&gt;
+    &lt;/acme-split-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:16px&quot;&gt;
+    &lt;acme-split-button variant=&quot;secondary&quot; size=&quot;small&quot;&gt;
+      Save
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save&lt;/acme-menu-item&gt;
+    &lt;/acme-split-button&gt;
+    &lt;acme-split-button variant=&quot;secondary&quot;&gt;
+      Save
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save&lt;/acme-menu-item&gt;
+    &lt;/acme-split-button&gt;
+    &lt;acme-split-button variant=&quot;secondary&quot; size=&quot;large&quot;&gt;
+      Save
+      &lt;acme-menu-item slot=&quot;items&quot;&gt;Save&lt;/acme-menu-item&gt;
+    &lt;/acme-split-button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;vstack&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:16px&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:16px&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-split-button</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;small&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      Save</span>
+<span class="th-line" data-line="5">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="6">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save as Draft&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="7">    &lt;/<span class="th-token th-tag">acme-split-button</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-split-button</span>&gt;</span>
+<span class="th-line" data-line="9">      Save</span>
+<span class="th-line" data-line="10">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="11">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save as Draft&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="12">    &lt;/<span class="th-token th-tag">acme-split-button</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-split-button</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;large&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      Save</span>
+<span class="th-line" data-line="15">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="16">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save as Draft&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="17">    &lt;/<span class="th-token th-tag">acme-split-button</span>&gt;</span>
+<span class="th-line" data-line="18">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="19">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:16px&quot;</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;<span class="th-token th-tag">acme-split-button</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;secondary&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;small&quot;</span>&gt;</span>
+<span class="th-line" data-line="21">      Save</span>
+<span class="th-line" data-line="22">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="23">    &lt;/<span class="th-token th-tag">acme-split-button</span>&gt;</span>
+<span class="th-line" data-line="24">    &lt;<span class="th-token th-tag">acme-split-button</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;secondary&quot;</span>&gt;</span>
+<span class="th-line" data-line="25">      Save</span>
+<span class="th-line" data-line="26">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="27">    &lt;/<span class="th-token th-tag">acme-split-button</span>&gt;</span>
+<span class="th-line" data-line="28">    &lt;<span class="th-token th-tag">acme-split-button</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;secondary&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;large&quot;</span>&gt;</span>
+<span class="th-line" data-line="29">      Save</span>
+<span class="th-line" data-line="30">      &lt;<span class="th-token th-tag">acme-menu-item</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;items&quot;</span>&gt;Save&lt;/<span class="th-token th-tag">acme-menu-item</span>&gt;</span>
+<span class="th-line" data-line="31">    &lt;/<span class="th-token th-tag">acme-split-button</span>&gt;</span>
+<span class="th-line" data-line="32">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="33">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-split-button"><h3><code>&lt;acme-split-button&gt;</code><small>AcmeSplitButton</small></h3><p>Geist Split Button: the primary action joined to a menu of close variants.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">variant</td><td class="mono">variant</td><td class="type">"primary" | "secondary"</td><td class="mono">"primary"</td><td></td></tr><tr><td class="mono">size</td><td class="mono">size</td><td class="type">"small" | "medium" | "large"</td><td class="mono">"medium"</td><td></td></tr><tr><td class="mono">menu-label</td><td class="mono">menuLabel</td><td class="type">string</td><td class="mono">"More options"</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr><tr><td class="mono">items</td></tr></tbody></table><h4>Events</h4><table class="doc-table"><tbody><tr><td class="mono">acme-click</td></tr></tbody></table></div></div></div><div class="doc-sec" id="best-practices"><h2>Best Practices<a href="#best-practices" aria-label="Link to Best Practices">#</a></h2><div class="doc-body"><div class="practices"><h3>When to use</h3><ul><li>One clear default with 1–4 close variants (Deploy, Deploy to Preview). The first menu item mirrors the primary label exactly. Primary and secondary types only.</li></ul></div></div></div></article>

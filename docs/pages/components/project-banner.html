@@ -1,0 +1,63 @@
+<article class="doc" id="project-banner"><div class="doc-hero"><h1>Project Banner</h1><p>A project-wide notification that needs resolution and cannot be dismissed.</p><div class="tags"><acme-badge hue="gray" subtle><code>&lt;acme-project-banner&gt;</code></acme-badge></div></div><div class="doc-sec" id="variants"><h2>Variants<a href="#variants" aria-label="Link to Variants">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div class="vstack" style="margin:-24px"><acme-project-banner><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>Attack Challenge Mode is enabled for this project.<a slot="action" href="#">Disable</a></acme-project-banner><acme-project-banner variant="success"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>Attack Challenge Mode is enabled for this project.<a slot="action" href="#">Disable</a></acme-project-banner><acme-project-banner variant="warning"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-rollback"/></svg>This project was rolled back by <span>@johnphamous</span>.<button slot="action">Undo Rollback</button></acme-project-banner><acme-project-banner variant="error"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-warn-tri"/></svg>Payment failed, update your card to keep deploying.<a slot="action" href="#">Add Credit Card</a></acme-project-banner></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div class=&quot;vstack&quot; style=&quot;margin:-24px&quot;&gt;
+  &lt;acme-project-banner&gt;
+    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use href=&quot;#i-shield&quot;/&gt;
+    &lt;/svg&gt;
+    Attack Challenge Mode is enabled for this project.
+    &lt;a slot=&quot;action&quot; href=&quot;#&quot;&gt;Disable&lt;/a&gt;
+  &lt;/acme-project-banner&gt;
+  &lt;acme-project-banner variant=&quot;success&quot;&gt;
+    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use href=&quot;#i-shield&quot;/&gt;
+    &lt;/svg&gt;
+    Attack Challenge Mode is enabled for this project.
+    &lt;a slot=&quot;action&quot; href=&quot;#&quot;&gt;Disable&lt;/a&gt;
+  &lt;/acme-project-banner&gt;
+  &lt;acme-project-banner variant=&quot;warning&quot;&gt;
+    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use href=&quot;#i-rollback&quot;/&gt;
+    &lt;/svg&gt;
+    This project was rolled back by
+    &lt;span&gt;@johnphamous&lt;/span&gt;
+    .
+    &lt;button slot=&quot;action&quot;&gt;Undo Rollback&lt;/button&gt;
+  &lt;/acme-project-banner&gt;
+  &lt;acme-project-banner variant=&quot;error&quot;&gt;
+    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use href=&quot;#i-warn-tri&quot;/&gt;
+    &lt;/svg&gt;
+    Payment failed, update your card to keep deploying.
+    &lt;a slot=&quot;action&quot; href=&quot;#&quot;&gt;Add Credit Card&lt;/a&gt;
+  &lt;/acme-project-banner&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;vstack&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;margin:-24px&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-project-banner</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="6">    Attack Challenge Mode is enabled for this project.</span>
+<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;action&quot;</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;Disable&lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="8">  &lt;/<span class="th-token th-tag">acme-project-banner</span>&gt;</span>
+<span class="th-line" data-line="9">  &lt;<span class="th-token th-tag">acme-project-banner</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;success&quot;</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="11">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="12">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="13">    Attack Challenge Mode is enabled for this project.</span>
+<span class="th-line" data-line="14">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;action&quot;</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;Disable&lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="15">  &lt;/<span class="th-token th-tag">acme-project-banner</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;<span class="th-token th-tag">acme-project-banner</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;warning&quot;</span>&gt;</span>
+<span class="th-line" data-line="17">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-rollback&quot;</span>/&gt;</span>
+<span class="th-line" data-line="19">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="20">    This project was rolled back by</span>
+<span class="th-line" data-line="21">    &lt;<span class="th-token th-tag">span</span>&gt;@johnphamous&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="22">    .</span>
+<span class="th-line" data-line="23">    &lt;<span class="th-token th-tag">button</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;action&quot;</span>&gt;Undo Rollback&lt;/<span class="th-token th-tag">button</span>&gt;</span>
+<span class="th-line" data-line="24">  &lt;/<span class="th-token th-tag">acme-project-banner</span>&gt;</span>
+<span class="th-line" data-line="25">  &lt;<span class="th-token th-tag">acme-project-banner</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;error&quot;</span>&gt;</span>
+<span class="th-line" data-line="26">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="27">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-warn-tri&quot;</span>/&gt;</span>
+<span class="th-line" data-line="28">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="29">    Payment failed, update your card to keep deploying.</span>
+<span class="th-line" data-line="30">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;action&quot;</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;Add Credit Card&lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="31">  &lt;/<span class="th-token th-tag">acme-project-banner</span>&gt;</span>
+<span class="th-line" data-line="32">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-project-banner"><h3><code>&lt;acme-project-banner&gt;</code><small>AcmeProjectBanner</small></h3><p>Geist Project Banner: a non-dismissible project-wide state with the action that resolves it.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">variant</td><td class="mono">variant</td><td class="type">"" | "success" | "warning" | "error"</td><td class="mono">""</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">icon</td></tr><tr><td class="mono">(default)</td></tr><tr><td class="mono">action</td></tr></tbody></table></div></div></div><div class="doc-sec" id="best-practices"><h2>Best Practices<a href="#best-practices" aria-label="Link to Best Practices">#</a></h2><div class="doc-body"><div class="practices"><h3>When to use</h3><ul><li>Overdue billing, an active rollback, attack mitigation, an expiring trial. One at a time; always with a call to action that resolves the state.</li></ul><h3>Content</h3><ul><li>One sentence in sentence case naming the impact; the CTA is Title Case Verb + Noun (Update Payment Method).</li></ul></div></div></div></article>

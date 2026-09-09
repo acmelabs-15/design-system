@@ -1,3 +1,4 @@
+/// <reference types="bun" />
 // Builds dist/ two ways, following lit.dev/docs/tools/publishing:
 //   dist/*.js (+ .d.ts, .d.ts.map)  unbundled ES2022 modules with Lit templates precompiled by @lit-labs/compiler;
 //                                    the npm entry, for consumers with a bundler

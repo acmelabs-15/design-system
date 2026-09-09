@@ -1,0 +1,45 @@
+<article class="doc" id="task"><div class="doc-hero"><h1>Task</h1><p>A tinted 36px row with an icon, done or not; the getting-started list.</p><div class="tags"><acme-badge hue="purple" subtle><code>&lt;acme-task&gt;</code></acme-badge><acme-badge hue="purple" subtle><code>&lt;acme-tasks&gt;</code></acme-badge></div></div><div class="doc-sec" id="list"><h2>List<a href="#list" aria-label="Link to List">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-tasks style="display:block;max-width:420px"><acme-task done><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-branch"/></svg>Connect a Git repository</acme-task><acme-task><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-globe"/></svg>Add a domain<span slot="end"><acme-badge size="small" subtle>2 min</acme-badge></span></acme-task><acme-task disabled><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>Enable Attack Challenge Mode</acme-task></acme-tasks></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;acme-tasks style=&quot;display:block;max-width:420px&quot;&gt;
+  &lt;acme-task done&gt;
+    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use href=&quot;#i-branch&quot;/&gt;
+    &lt;/svg&gt;
+    Connect a Git repository
+  &lt;/acme-task&gt;
+  &lt;acme-task&gt;
+    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use href=&quot;#i-globe&quot;/&gt;
+    &lt;/svg&gt;
+    Add a domain
+    &lt;span slot=&quot;end&quot;&gt;
+      &lt;acme-badge size=&quot;small&quot; subtle&gt;2 min&lt;/acme-badge&gt;
+    &lt;/span&gt;
+  &lt;/acme-task&gt;
+  &lt;acme-task disabled&gt;
+    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;use href=&quot;#i-shield&quot;/&gt;
+    &lt;/svg&gt;
+    Enable Attack Challenge Mode
+  &lt;/acme-task&gt;
+&lt;/acme-tasks&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-tasks</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:block;max-width:420px&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-task</span> done&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-branch&quot;</span>/&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="6">    Connect a Git repository</span>
+<span class="th-line" data-line="7">  &lt;/<span class="th-token th-tag">acme-task</span>&gt;</span>
+<span class="th-line" data-line="8">  &lt;<span class="th-token th-tag">acme-task</span>&gt;</span>
+<span class="th-line" data-line="9">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="10">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-globe&quot;</span>/&gt;</span>
+<span class="th-line" data-line="11">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="12">    Add a domain</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;end&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;small&quot;</span> subtle&gt;2 min&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">acme-task</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">acme-task</span> disabled&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="21">    Enable Attack Challenge Mode</span>
+<span class="th-line" data-line="22">  &lt;/<span class="th-token th-tag">acme-task</span>&gt;</span>
+<span class="th-line" data-line="23">&lt;/<span class="th-token th-tag">acme-tasks</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-task"><h3><code>&lt;acme-task&gt;</code><small>AcmeTask</small></h3><p>Vercel task row: a tinted 36px row with an icon, done or not.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">href</td><td class="mono">href</td><td class="type">string</td><td class="mono">"#"</td><td></td></tr><tr><td class="mono">done</td><td class="mono">done</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">disabled</td><td class="mono">disabled</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">icon</td></tr><tr><td class="mono">(default)</td></tr><tr><td class="mono">end</td></tr></tbody></table></div><div class="api-el" id="api-acme-tasks"><h3><code>&lt;acme-tasks&gt;</code><small>AcmeTasks</small></h3><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr></tbody></table></div></div></div></article>

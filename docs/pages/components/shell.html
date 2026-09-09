@@ -1,0 +1,85 @@
+<article class="doc" id="shell"><div class="doc-hero"><h1>Shell</h1><p>The dashboard frame: a sidebar, a top bar and the ground.</p><div class="tags"><acme-badge hue="purple" subtle><code>&lt;acme-shell&gt;</code></acme-badge><acme-badge hue="purple" subtle><code>&lt;acme-side-nav&gt;</code></acme-badge><acme-badge hue="purple" subtle><code>&lt;acme-topbar&gt;</code></acme-badge><acme-badge hue="purple" subtle><code>&lt;acme-subnav&gt;</code></acme-badge></div></div><div class="doc-sec" id="framed"><h2>Framed<a href="#framed" aria-label="Link to Framed">#</a></h2><p>framed keeps the shell inside its container; without it the shell is the page.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-shell framed style="display:block;height:360px;margin:-24px"><acme-side-nav slot="side"><a href="#" aria-current="true"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>Overview</a><a href="#"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg>Deployments</a><a href="#"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg>Analytics</a><a href="#"><svg class="ic" aria-hidden="true"><use href="#i-gear"/></svg>Settings</a></acme-side-nav><acme-topbar slot="topbar" center="coding-agent-template"><acme-breadcrumbs slot="start" variant="menu"><a href="#">acme-labs</a><span aria-current="page">coding-agent-template</span></acme-breadcrumbs><acme-avatar slot="end" size="sm">pk</acme-avatar></acme-topbar><acme-subnav><a href="#" aria-current="true">Project</a><a href="#">Deployments</a><a href="#">Logs</a></acme-subnav><acme-page-head heading="Project" style="margin-top:16px"><acme-button slot="actions" variant="primary" size="small">Deploy</acme-button></acme-page-head></acme-shell></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;acme-shell framed style=&quot;display:block;height:360px;margin:-24px&quot;&gt;
+  &lt;acme-side-nav slot=&quot;side&quot;&gt;
+    &lt;a href=&quot;#&quot; aria-current=&quot;true&quot;&gt;
+      &lt;svg class=&quot;ic&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-box&quot;/&gt;
+      &lt;/svg&gt;
+      Overview
+    &lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;
+      &lt;svg class=&quot;ic&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-rocket&quot;/&gt;
+      &lt;/svg&gt;
+      Deployments
+    &lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;
+      &lt;svg class=&quot;ic&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-chart&quot;/&gt;
+      &lt;/svg&gt;
+      Analytics
+    &lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;
+      &lt;svg class=&quot;ic&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-gear&quot;/&gt;
+      &lt;/svg&gt;
+      Settings
+    &lt;/a&gt;
+  &lt;/acme-side-nav&gt;
+  &lt;acme-topbar slot=&quot;topbar&quot; center=&quot;coding-agent-template&quot;&gt;
+    &lt;acme-breadcrumbs slot=&quot;start&quot; variant=&quot;menu&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;acme-labs&lt;/a&gt;
+      &lt;span aria-current=&quot;page&quot;&gt;coding-agent-template&lt;/span&gt;
+    &lt;/acme-breadcrumbs&gt;
+    &lt;acme-avatar slot=&quot;end&quot; size=&quot;sm&quot;&gt;pk&lt;/acme-avatar&gt;
+  &lt;/acme-topbar&gt;
+  &lt;acme-subnav&gt;
+    &lt;a href=&quot;#&quot; aria-current=&quot;true&quot;&gt;Project&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;Deployments&lt;/a&gt;
+    &lt;a href=&quot;#&quot;&gt;Logs&lt;/a&gt;
+  &lt;/acme-subnav&gt;
+  &lt;acme-page-head heading=&quot;Project&quot; style=&quot;margin-top:16px&quot;&gt;
+    &lt;acme-button slot=&quot;actions&quot; variant=&quot;primary&quot; size=&quot;small&quot;&gt;Deploy&lt;/acme-button&gt;
+  &lt;/acme-page-head&gt;
+&lt;/acme-shell&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-shell</span> framed <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:block;height:360px;margin:-24px&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-side-nav</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;side&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span> <span class="th-token th-attr">aria-current</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="5">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-box&quot;</span>/&gt;</span>
+<span class="th-line" data-line="6">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="7">      Overview</span>
+<span class="th-line" data-line="8">    &lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="9">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;</span>
+<span class="th-line" data-line="10">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="11">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-rocket&quot;</span>/&gt;</span>
+<span class="th-line" data-line="12">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="13">      Deployments</span>
+<span class="th-line" data-line="14">    &lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;</span>
+<span class="th-line" data-line="16">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="17">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-chart&quot;</span>/&gt;</span>
+<span class="th-line" data-line="18">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="19">      Analytics</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="21">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;</span>
+<span class="th-line" data-line="22">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="23">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-gear&quot;</span>/&gt;</span>
+<span class="th-line" data-line="24">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="25">      Settings</span>
+<span class="th-line" data-line="26">    &lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="27">  &lt;/<span class="th-token th-tag">acme-side-nav</span>&gt;</span>
+<span class="th-line" data-line="28">  &lt;<span class="th-token th-tag">acme-topbar</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;topbar&quot;</span> <span class="th-token th-attr">center</span>=<span class="th-token th-string">&quot;coding-agent-template&quot;</span>&gt;</span>
+<span class="th-line" data-line="29">    &lt;<span class="th-token th-tag">acme-breadcrumbs</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;start&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;menu&quot;</span>&gt;</span>
+<span class="th-line" data-line="30">      &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;acme-labs&lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="31">      &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">aria-current</span>=<span class="th-token th-string">&quot;page&quot;</span>&gt;coding-agent-template&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="32">    &lt;/<span class="th-token th-tag">acme-breadcrumbs</span>&gt;</span>
+<span class="th-line" data-line="33">    &lt;<span class="th-token th-tag">acme-avatar</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;end&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span>&gt;pk&lt;/<span class="th-token th-tag">acme-avatar</span>&gt;</span>
+<span class="th-line" data-line="34">  &lt;/<span class="th-token th-tag">acme-topbar</span>&gt;</span>
+<span class="th-line" data-line="35">  &lt;<span class="th-token th-tag">acme-subnav</span>&gt;</span>
+<span class="th-line" data-line="36">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span> <span class="th-token th-attr">aria-current</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;Project&lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="37">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;Deployments&lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="38">    &lt;<span class="th-token th-tag">a</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;Logs&lt;/<span class="th-token th-tag">a</span>&gt;</span>
+<span class="th-line" data-line="39">  &lt;/<span class="th-token th-tag">acme-subnav</span>&gt;</span>
+<span class="th-line" data-line="40">  &lt;<span class="th-token th-tag">acme-page-head</span> <span class="th-token th-attr">heading</span>=<span class="th-token th-string">&quot;Project&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;margin-top:16px&quot;</span>&gt;</span>
+<span class="th-line" data-line="41">    &lt;<span class="th-token th-tag">acme-button</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;actions&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;primary&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;small&quot;</span>&gt;Deploy&lt;/<span class="th-token th-tag">acme-button</span>&gt;</span>
+<span class="th-line" data-line="42">  &lt;/<span class="th-token th-tag">acme-page-head</span>&gt;</span>
+<span class="th-line" data-line="43">&lt;/<span class="th-token th-tag">acme-shell</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-shell"><h3><code>&lt;acme-shell&gt;</code><small>AcmeShell</small></h3><p>Vercel shell: sidebar, top bar, ground. Slots: side, topbar, default (content).</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">framed</td><td class="mono">framed</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">side</td></tr><tr><td class="mono">topbar</td></tr><tr><td class="mono">(default)</td></tr></tbody></table></div><div class="api-el" id="api-acme-side-nav"><h3><code>&lt;acme-side-nav&gt;</code><small>AcmeSideNav</small></h3><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr></tbody></table></div><div class="api-el" id="api-acme-topbar"><h3><code>&lt;acme-topbar&gt;</code><small>AcmeTopbar</small></h3><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">center</td><td class="mono">center</td><td class="type">string</td><td class="mono">""</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">start</td></tr><tr><td class="mono">center</td></tr><tr><td class="mono">end</td></tr></tbody></table></div><div class="api-el" id="api-acme-subnav"><h3><code>&lt;acme-subnav&gt;</code><small>AcmeSubnav</small></h3><p>Vercel sub-nav: 32px links under a top bar.</p><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr></tbody></table></div></div></div></article>

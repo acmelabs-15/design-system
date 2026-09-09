@@ -1,0 +1,33 @@
+<article class="doc" id="kv"><div class="doc-hero"><h1>Key Value</h1><p>A key-value row with a hairline: the key with a sub line, an optional when, the value and its conversion.</p><div class="tags"><acme-badge hue="purple" subtle><code>&lt;acme-kv&gt;</code></acme-badge></div></div><div class="doc-sec" id="rows"><h2>Rows<a href="#rows" aria-label="Link to Rows">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div style="max-width:420px"><acme-kv when="Sep 30">Rent<span slot="sub">Monthly</span><span slot="value">$1,200</span></acme-kv><acme-kv when="Oct 3" soon>Insurance<span slot="sub">Quarterly</span><span slot="value">€310</span><span slot="conv">≈ $338</span></acme-kv><acme-kv>Runway<span slot="value">6.6 mo</span></acme-kv></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div style=&quot;max-width:420px&quot;&gt;
+  &lt;acme-kv when=&quot;Sep 30&quot;&gt;
+    Rent
+    &lt;span slot=&quot;sub&quot;&gt;Monthly&lt;/span&gt;
+    &lt;span slot=&quot;value&quot;&gt;$1,200&lt;/span&gt;
+  &lt;/acme-kv&gt;
+  &lt;acme-kv when=&quot;Oct 3&quot; soon&gt;
+    Insurance
+    &lt;span slot=&quot;sub&quot;&gt;Quarterly&lt;/span&gt;
+    &lt;span slot=&quot;value&quot;&gt;€310&lt;/span&gt;
+    &lt;span slot=&quot;conv&quot;&gt;≈ $338&lt;/span&gt;
+  &lt;/acme-kv&gt;
+  &lt;acme-kv&gt;
+    Runway
+    &lt;span slot=&quot;value&quot;&gt;6.6 mo&lt;/span&gt;
+  &lt;/acme-kv&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;max-width:420px&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-kv</span> <span class="th-token th-attr">when</span>=<span class="th-token th-string">&quot;Sep 30&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    Rent</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;sub&quot;</span>&gt;Monthly&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;value&quot;</span>&gt;$1,200&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">acme-kv</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">acme-kv</span> <span class="th-token th-attr">when</span>=<span class="th-token th-string">&quot;Oct 3&quot;</span> soon&gt;</span>
+<span class="th-line" data-line="8">    Insurance</span>
+<span class="th-line" data-line="9">    &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;sub&quot;</span>&gt;Quarterly&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;value&quot;</span>&gt;€310&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="11">    &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;conv&quot;</span>&gt;≈ $338&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;/<span class="th-token th-tag">acme-kv</span>&gt;</span>
+<span class="th-line" data-line="13">  &lt;<span class="th-token th-tag">acme-kv</span>&gt;</span>
+<span class="th-line" data-line="14">    Runway</span>
+<span class="th-line" data-line="15">    &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;value&quot;</span>&gt;6.6 mo&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">acme-kv</span>&gt;</span>
+<span class="th-line" data-line="17">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-kv"><h3><code>&lt;acme-kv&gt;</code><small>AcmeKv</small></h3><p>House key-value row with a hairline.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">when</td><td class="mono">when</td><td class="type">string</td><td class="mono">""</td><td></td></tr><tr><td class="mono">soon</td><td class="mono">soon</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr><tr><td class="mono">sub</td></tr><tr><td class="mono">value</td></tr><tr><td class="mono">conv</td></tr></tbody></table></div></div></div></article>
