@@ -5,9 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { readApi } from "./api";
 import { formatHtml } from "./format";
-import { geistA } from "./pages/geist-a";
-import { geistB } from "./pages/geist-b";
-import { house } from "./pages/house";
+import { loadDocs } from "./pages/components/index";
 import type { Doc } from "./site";
 
 const ROOT = path.resolve(import.meta.dir, "..");
@@ -15,7 +13,7 @@ const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, "package.json"), "utf8"))
 const out = process.argv[2] ?? path.join(process.env.HOME ?? "", ".claude/skills/design-system/references/elements.md");
 const api = readApi();
 const byTag = new Map(api.map((e) => [e.tag, e]));
-const docs: Doc[] = [...geistA, ...geistB, ...house].sort((a, b) => a.title.localeCompare(b.title));
+const docs: Doc[] = (await loadDocs()).sort((a, b) => a.title.localeCompare(b.title));
 
 const strip = (s: string) =>
   s

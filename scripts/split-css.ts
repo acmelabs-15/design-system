@@ -9,7 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dir, "..");
-const SRC = process.argv[2] ?? path.join(process.env.HOME!, ".claude/skills/design-system/assets/geist.css");
+const SRC = process.argv[2] ?? path.join(ROOT, "src/geist.css"); // the audited house sheet, the source of every element style
 const css = fs.readFileSync(SRC, "utf8");
 
 /* ---------- parse into top-level blocks ---------- */

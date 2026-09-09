@@ -5,10 +5,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readApi } from "./api";
+import { loadDocs } from "./pages/components/index";
 import { colors, intro, materials, typography } from "./pages/foundations";
-import { geistA } from "./pages/geist-a";
-import { geistB } from "./pages/geist-b";
-import { house } from "./pages/house";
 import { type Doc, docPage, type Nav, OUT, shell, writeFragment } from "./site";
 
 const ROOT = path.resolve(import.meta.dir, "..");
@@ -22,7 +20,7 @@ fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
 
 const api = readApi();
 const byTag = new Map(api.map((e) => [e.tag, e]));
-const components: Doc[] = [...geistA, ...geistB, ...house].sort((a, b) => a.title.localeCompare(b.title));
+const components: Doc[] = (await loadDocs()).sort((a, b) => a.title.localeCompare(b.title));
 
 const documented = new Set(components.flatMap((d) => d.tags ?? []));
 for (const t of documented) if (!byTag.has(t)) throw new Error(`docs name an unknown element: ${t}`);
