@@ -38,7 +38,7 @@ for (const d of docs) {
   for (const e of d.examples) {
     lines.push(`### ${e.h}`, "");
     if (e.p) lines.push(strip(e.p), "");
-    lines.push("```html", formatHtml(e.code ?? e.html), "```", "");
+    lines.push("```html", formatHtml((e.code ?? e.html) + (e.script ? `\n<script>\n${e.script.trim()}\n</script>` : "")), "```", "");
   }
   for (const t of d.tags ?? []) {
     const el = byTag.get(t);

@@ -43,11 +43,13 @@
     "prepublishOnly": "bun run build && bun test && bun run docs"
   },
   "dependencies": {
-    "lit": "^3.3.3",
     "@lit-labs/motion": "^1.1.0",
     "@lit-labs/router": "^0.1.4",
     "@lit-labs/signals": "^0.3.0",
     "@lit-labs/virtualizer": "^2.1.1",
+    "@tanstack/lit-virtual": "^3.14.0",
+    "@tanstack/markdown": "^0.0.13",
+    "lit": "^3.3.3",
     "urlpattern-polyfill": "^10.0.0"
   },
   "devDependencies": {

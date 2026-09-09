@@ -32,7 +32,7 @@ describe("docs site", () => {
     test(`pages/${page} renders`, async () => {
       const html = fs.readFileSync(path.join(PAGES, page), "utf8");
       expect(html.length).toBeGreaterThan(0);
-      expect(html).not.toContain("<script");
+      expect(html).not.toMatch(/<script[\s>]/); // example scripts travel as data-script and run in the app
       const errors: string[] = [];
       const onError = (e: Event) => errors.push(String((e as ErrorEvent).message ?? e));
       window.addEventListener("error", onError);

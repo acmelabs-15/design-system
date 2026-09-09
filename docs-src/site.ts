@@ -6,7 +6,8 @@ import path from "node:path";
 import type { ElementApi } from "./api";
 import { formatHtml, highlightHtml } from "./format";
 
-export type Example = { h: string; p?: string; html: string; code?: string };
+/** `script` runs after the example mounts, as `(root) => {...}` with the preview element; it is shown under the markup in the code panel. */
+export type Example = { h: string; p?: string; html: string; code?: string; script?: string };
 export type Doc = {
   id: string;
   title: string;
@@ -127,9 +128,10 @@ export const section = (h: string, inner: string, p?: string, id = slug(h)) =>
   `<div class="doc-sec" id="${id}"><h2>${h}<a href="#${id}" aria-label="Link to ${h}">#</a></h2>${p ? `<p>${p}</p>` : ""}<div class="doc-body">${inner}</div></div>`;
 
 export const showcase = (e: Example) => {
-  const code = e.code ?? e.html;
+  const code = (e.code ?? e.html) + (e.script ? `\n<script>\n${e.script.trim()}\n</script>` : "");
   const plain = formatHtml(code);
-  return `<div class="showcase"><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chev")}Show code</button><div class="code"><acme-copy-button label="Copy code" text="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
+  const attr = e.script ? ` data-script="${esc(e.script).replace(/"/g, "&quot;")}"` : "";
+  return `<div class="showcase"${attr}><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chev")}Show code</button><div class="code"><acme-copy-button label="Copy code" text="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
 };
 
 const practices = (p?: Record<string, string[]>) =>

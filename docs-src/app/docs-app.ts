@@ -94,6 +94,15 @@ export class AcmeDocsApp extends LitElement {
         a.dataset.prefixed = "";
       }
     if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: "start" });
+    // An example's script runs once, after its markup is in the document, with the preview root.
+    for (const sc of this.querySelectorAll<HTMLElement>(".showcase[data-script]:not([data-ran])")) {
+      sc.dataset.ran = "";
+      try {
+        new Function("root", sc.dataset.script ?? "")(sc.querySelector(".preview"));
+      } catch (e) {
+        console.error("example script failed", e);
+      }
+    }
   }
 
   private frame() {
