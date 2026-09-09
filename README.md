@@ -20,6 +20,13 @@ No build step. Two tags:
 <acme-badge hue="green" subtle>Ready</acme-badge>
 ```
 
+A host that admits a script from a CDN but no stylesheet from one (the Claude artifact CSP is one)
+takes the standalone bundle, which installs `tokens.css` into the document on import:
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.1/dist/bundle/design-system.standalone.min.js"></script>
+```
+
 `tokens.css` is the global layer: the color scales, the semantic tokens, the reset, the type
 classes and the layout utilities. The bundle is self-contained (Lit and the labs packages are
 inside it) and registers every `acme-*` element. `dashboard.css` carries the page-level recipes

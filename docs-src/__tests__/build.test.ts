@@ -21,6 +21,9 @@ describe("docs site", () => {
     expect(fs.readFileSync(path.join(DOCS, "404.html"), "utf8")).toBe(index);
     expect(index).toContain("<acme-docs-app>");
     expect(index).toContain("window.__docsNav");
+    // no stylesheet link the preload scanner could fetch from the wrong root: the shell writes them after the prefix is known
+    expect(index).not.toMatch(/<link rel="stylesheet" href="\/(tokens|dashboard)\.css"/);
+    expect(index.indexOf("__docsPrefix")).toBeLessThan(index.indexOf("/tokens.css"));
     expect(fs.existsSync(path.join(DOCS, "app.js"))).toBe(true);
     expect(fs.existsSync(path.join(DOCS, ".nojekyll"))).toBe(true);
   });

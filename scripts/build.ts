@@ -85,6 +85,23 @@ for (const [name, minify] of [
   }
 }
 
+// 3b. The standalone bundle: the same, plus tokens.css installed into the document on import.
+// For hosts that allow a script from a CDN but no stylesheet from one (the artifact CSP), one tag.
+{
+  const tokens = fs.readFileSync(path.join(ROOT, "tokens.css"), "utf8");
+  const entry = path.join(DIST, "standalone-entry.js");
+  fs.writeFileSync(
+    entry,
+    `import "./index.js";\nconst css = ${JSON.stringify(tokens)};\nif (!document.querySelector("style[data-acme-tokens]")) { const s = document.createElement("style"); s.dataset.acmeTokens = ""; s.textContent = css; document.head.prepend(s); }\n`,
+  );
+  const r = await Bun.build({ entrypoints: [entry], outdir: path.join(DIST, "bundle"), naming: "design-system.standalone.min.js", target: "browser", format: "esm", minify: true, sourcemap: "none" });
+  fs.unlinkSync(entry);
+  if (!r.success) {
+    for (const l of r.logs) console.error(l);
+    process.exit(1);
+  }
+}
+
 // 4. The dashboard recipe layer: rule families that are page compositions, not elements.
 const styleFile = (r: string) => {
   const shared = path.join(SRC, "shared", `${r}.styles.ts`);

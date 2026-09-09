@@ -184,13 +184,12 @@ export const shell = (nav: Nav) => `<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="/tokens.css" data-prefix>
-<link rel="stylesheet" href="/dashboard.css" data-prefix>
-<style>${pageCss}</style>
 <script>
-// Project sites on GitHub Pages live under /<repo>/; stylesheets and the app resolve against it.
-(() => { const p = location.hostname.endsWith("github.io") ? "/" + location.pathname.split("/")[1] : ""; if (p) for (const l of document.querySelectorAll("link[data-prefix]")) l.href = p + l.getAttribute("href"); window.__docsPrefix = p; })();
+// Project sites on GitHub Pages live under /<repo>/; the stylesheets and the app resolve against it.
+// The links are written here, after the prefix is known, so the preload scanner never fetches them from the root.
+(() => { const p = location.hostname.endsWith("github.io") ? "/" + location.pathname.split("/")[1] : ""; window.__docsPrefix = p; document.write('<link rel="stylesheet" href="' + p + '/tokens.css"><link rel="stylesheet" href="' + p + '/dashboard.css">'); })();
 </script>
+<style>${pageCss}</style>
 <script>window.__docsNav = ${JSON.stringify(nav)};</script>
 </head>
 <body>

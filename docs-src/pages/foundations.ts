@@ -20,7 +20,7 @@ export const intro: Doc = {
 <script type="module" src="${cdn}/dist/bundle/design-system.min.js"></script>
 
 <acme-button variant="primary">Deploy</acme-button>
-<acme-badge hue="green" subtle>Ready</acme-badge>`)}<p style="margin-top:24px">The page-level recipes the Vercel dashboard composes in light DOM (deployment rows, plan heads, usage summaries) are in <code>${cdn}/dashboard.css</code>.</p>`,
+<acme-badge hue="green" subtle>Ready</acme-badge>`)}<p style="margin-top:24px">A host that admits a script from a CDN but no stylesheet from one (the Claude artifact CSP is one) takes the standalone bundle instead: the same elements, and <code>tokens.css</code> installed into the document on import. Inline the fonts link as before.</p>${code(`<script type="module" src="${cdn}/dist/bundle/design-system.standalone.min.js"></script>`)}<p style="margin-top:24px">The page-level recipes the Vercel dashboard composes in light DOM (deployment rows, plan heads, usage summaries) are in <code>${cdn}/dashboard.css</code>.</p>`,
     "The bundle is self-contained: Lit and the labs packages are inside it.",
   )}${section(
     "Install from npm",
