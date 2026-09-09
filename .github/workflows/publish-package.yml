@@ -6,6 +6,8 @@ name: publish-package
 on:
   push:
     tags: ["v*"]
+  release:
+    types: [published] # a release made in the GitHub UI or API publishes too
   workflow_dispatch:
 
 permissions:
