@@ -38,7 +38,8 @@ const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "usd
 const all = Array.from({ length: 5000 }, (_, i) => ({ ...items[i % items.length], charge: money.format(items[i % items.length].charge) }));
 const table = root.querySelector("acme-table"), more = root.querySelector("acme-show-more"), fade = root.querySelector("[data-fade]");
 const apply = () => { table.rows = more.expanded ? all : all.slice(0, 9); fade.hidden = more.expanded; };
-more.addEventListener("acme-toggle", apply);
+// Show More is controlled, as the reference's is: it bubbles a click and the owner sets expanded.
+more.addEventListener("click", () => { more.expanded = !more.expanded; apply(); });
 apply();`,
     },
   ],

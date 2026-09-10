@@ -17,6 +17,23 @@ Docs on GitHub Pages, package on npm (0.1.1 published).
 element matches on styles, states, functionality and API. Every docs page shows the same sections
 as the reference page. The foundations pages match too.
 
+**Functionality counts as much as appearance, and the census cannot see it.** The census reads
+computed styles. It cannot tell you that a button does nothing when clicked. So every element and
+every docs example also needs a behaviour check: the demo the reference page shows must actually
+work here. A worked example of this failure is in section 6 — the virtualized table's Show More
+button did nothing, because the demo listened for an event the element never fires, while every
+style measured clean.
+
+Behaviour parity checklist, per element:
+
+- Each interactive control does what the reference's does: click, keyboard, focus order, escape.
+- Each docs example is exercised, not just rendered. If the reference's demo scrolls, filters,
+  expands, virtualizes or copies, ours does too.
+- Events match the reference's contract. Where the reference control is *controlled* (the owner
+  holds the state and the control only reports a click), ours is controlled the same way.
+- Anything that cannot be checked in the hidden browser pane (motion, placement, pointer drag)
+  is listed as unverified and checked in Peter's own Chrome.
+
 Four things are ours and never change to match the reference:
 
 | Ours | Detail |
@@ -41,8 +58,18 @@ Behaviour is built on these, not on the reference's own dependencies:
 - A vendored copy of cmdk's command-score
 - Our own controllers: `Interaction`, `RovingTabindex`
 
-Where the stack lacks something the reference has, research what the community holds in high
-regard before choosing. The data layer (TanStack Query and DB) is a separate package, later.
+These are not suggestions. Use them for the functionality they cover. Syntax highlighting is
+TanStack highlight, not Shiki; hotkeys are TanStack hotkeys, not hotkeys-js; and so on. Where a
+package ships only a vanilla build, write the Lit wrapper or controller for it here rather than
+reaching for a different library.
+
+Where the stack genuinely lacks something the reference has, and the work is complex, **use a
+package rather than hand-rolling it**. Stop first and do comprehensive web research into what the
+community holds in high regard. Then apply one more filter: a well-liked package that has been
+around a long time may already be superseded by something smaller, faster and more modern. Check
+for that before choosing, and say in the report what you compared.
+
+The data layer (TanStack Query and DB) is a separate package, later.
 
 ### Standing build rules
 
@@ -242,12 +269,22 @@ at a time. Each agent gets the runbook and the rules in section 1, and reports: 
 per theme, API changes, shared-file edits, generator fixes, unverified items, and final test
 totals.
 
-### 5.4 Check overlays against the live reference `[ ]`
+### 5.4 Behaviour sweep over every docs example `[ ]`
+
+Separate from the census, because the census is blind to it. For each of the 105 docs pages, drive
+every interactive example and confirm it does what the reference's does. The table's Show More was
+found this way and is fixed; assume there are more.
+
+A cheap first pass already run: every `acme-*` event a docs demo listens for was cross-checked
+against every event the elements actually dispatch. Only the table mismatched. That check catches
+wrong event names but not a control wired to nothing, so the hands-on pass is still needed.
+
+### 5.5 Check overlays against the live reference `[ ]`
 
 The census reads computed styles; it cannot see placement, motion or keyboard behaviour. This
 needs Peter's own Chrome, which reaches vercel.com. Currently disconnected.
 
-### 5.5 Cleanup `[ ]`
+### 5.6 Cleanup `[ ]`
 
 - [ ] Rename `src/geist.css` and remove the dead hand-written rules the generated modules replaced
 - [ ] Prune `tokens.css` to the tiers the elements read (260 KB today)
@@ -256,6 +293,9 @@ needs Peter's own Chrome, which reaches vercel.com. Currently disconnected.
 - [ ] Menu: the reference's mobile path. Under 601px the list opens inside a drawer, which sets no shadow on it. Absent from the corpus, so sketch it alongside the combobox mobile form.
 - [ ] Modal: a `form` option wrapping body and footer, so destructive-action-modal drops its two context lines
 - [ ] Combobox: the reference's mobile form, a button that opens a drawer under 601px
+- [ ] `@lit-labs/motion` is a dependency but imported nowhere. Either use it where the reference
+  animates (collapse was the intended home) or drop the dependency. Peter asked for it explicitly,
+  so prefer using it.
 - [ ] Sweep the last reference mentions under `src/`
 - [ ] Refresh README, the Get Started page and the design-system skill. **README is currently wrong**: it lists `@lit-labs/signals` and `@lit-labs/virtualizer`, but the chosen stack uses TanStack store and TanStack virtual.
 - [x] The dialog reset lives in `src/shared/dialog.ts`; modal, drawer and sheet import it
@@ -264,7 +304,7 @@ needs Peter's own Chrome, which reaches vercel.com. Currently disconnected.
 - [ ] Select: decide the house-only `options` property, which feedback uses `[?]`
 - [ ] Foundations pages: the reference's exact heading levels, or ours `[?]`
 
-### 5.6 Release `[?]`
+### 5.7 Release `[?]`
 
 Ask Peter once, then: commit, push, docs deploy, npm release.
 
@@ -278,6 +318,7 @@ Ask Peter once, then: commit, push, docs deploy, npm release.
 | `tools/geist/simplify.ts` | `transform` wrongly treated as resetting `transform-style`; book lost `preserve-3d` | same table |
 | `src/components/context-card/context-card.ts` | Focus and click handlers sat on the shadow trigger box, which a light-DOM event never reaches. Real keyboard focus never opened the card; a link click never closed it. The old test passed only because it dispatched events straight onto the shadow box, which no browser does. | Handlers moved to the host |
 | `src/components/context-card/context-card.ts` | Escape closed the card, then restored focus, and that focus reopened it | A `dismissed` flag, cleared when focus truly leaves |
+| `docs-src/pages/components/table.ts` | The virtualized table's Show More did nothing. The demo listened for `acme-toggle`, which `acme-show-more` never fires: like the reference's, it is controlled and only bubbles a click. Every style on the page measured clean, so the census could never have caught it. | The demo now listens for `click` and sets `expanded`, matching the reference's `onClick` contract. Verified in the browser: the row count moves between 9 and 5000 and back. |
 | `src/components/context-card/__tests__/` | Five assertions compared exact class strings; Lit appends newly-true classes on update, so order carries no meaning | Compare the class set |
 
 ---
