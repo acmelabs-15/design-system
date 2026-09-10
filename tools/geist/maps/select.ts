@@ -1,8 +1,18 @@
 // Maps acme-select (src/components/select) to Geist Select: the generator derives select.styles.ts from this.
-// The root is the wrapper around the native select; a prefix cell and a suffix cell (the chevron by default)
-// sit absolutely at its sides. The wrapper's variants the JSX does not name (a prefix present, the placeholder
-// shown as the value) are read off the rendered root. The sketched examples (secondary type, disabled with
-// affixes, placeholder selected, no suffix) come from the class strings in the component's client code.
+//
+// The root is the wrapper around the native select, and it holds two places, one at each side. Both sit
+// INSIDE the field: absolutely positioned, transparent, no line. Measured across the reference's 20
+// selects, all 23 of its decorations read that way, so a select has no add-on places at all — the
+// attached cells an input can carry never appear here.
+//
+// The end place holds the chevron by default; a slotted element replaces it.
+//
+// As in the input map, `defaults`, the `derive` keys and every `pick` read the REFERENCE, so they keep
+// its names. `props` values and `children[].ours` are OUR class names, and those carry the place.
+//
+// The wrapper's variants the JSX does not name (a start place present, the placeholder shown as the
+// value) are read off the rendered root. The sketched examples (secondary type, disabled with places,
+// placeholder selected, no end place) come from the class strings in the component's client code.
 import { type GeistMap, has, type SpecNode } from "../gen";
 
 const field = (n: SpecNode) => n.children.find((c) => c.tag === "select");
@@ -24,14 +34,14 @@ export const geist: GeistMap = {
     error: { true: ".error" },
     disabled: { true: ".disabled" },
     type: { secondary: ".secondary" },
-    prefix: { true: ".with-prefix" },
+    prefix: { true: ".has-start" },
     empty: { true: ".empty" },
   },
   // The wrapper's hover is the group hover the cells key off; the field's own hover and focus are the wrapper's states too
   // (the cells take no pointer events, and any focus of the field reads as the wrapper's focus). Its disabled and invalid states stay native.
   states: { ":hover": "[data-hover]" },
   children: [
-    { ours: ".prefix", pick: has("left-3"), children: [{ ours: "", pick: (c) => c.tag === "svg", leaf: true }] },
+    { ours: ".start", pick: has("left-3"), children: [{ ours: "", pick: (c) => c.tag === "svg", leaf: true }] },
     {
       ours: "select",
       pick: (c) => c.tag === "select",
@@ -39,10 +49,10 @@ export const geist: GeistMap = {
       children: [{ ours: ".ph", pick: has("text-gray-800"), leaf: true }],
     },
     {
-      ours: ".suffix",
+      ours: ".end",
       pick: has("right-3"),
       children: [
-        // The default chevron is the suffix slot's fallback; a slotted suffix icon carries no class of the reference's.
+        // The default chevron is the end slot's fallback; a slotted icon carries no class of the reference's.
         { ours: ".chevron", pick: has("size-(--ds-control-decoration-size)"), leaf: true },
         { ours: "", pick: (c) => c.tag === "svg", leaf: true },
       ],

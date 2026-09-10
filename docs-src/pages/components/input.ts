@@ -1,9 +1,11 @@
 // Docs page: Input — mirrors https://vercel.com/geist/input
 import type { Doc } from "../../site";
 
-// A bare sprite icon (no utility class): the cell sizes it, and it takes the color of its surroundings, as an icon does.
+// A bare sprite icon (no utility class): the place sizes it, and it takes the color of its surroundings, as an icon does.
 const up = (slot: string) =>
   `<svg slot="${slot}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true"><use href="#i-arrow-circle-up"/></svg>`;
+// Text in a place, which reads the same whether the place is attached to the field or inside it.
+const text = (slot: string, s: string) => `<span slot="${slot}">${s}</span>`;
 
 export const doc: Doc = {
   id: "input",
@@ -16,13 +18,14 @@ export const doc: Doc = {
       html: `<div class="row" style="gap:16px;align-items:flex-start;justify-content:space-between"><acme-input placeholder="Small" size="small"></acme-input><acme-input placeholder="Default"></acme-input><acme-input placeholder="Large" size="large"></acme-input></div>`,
     },
     {
-      h: "Prefix and suffix",
+      h: "Add-ons and in-field places",
+      p: "An add-on is attached to the outside of the field: its own ground, and a hairline where the two meet. A <code>start</code> or <code>end</code> sits inside the field's own box. Each place takes text or an element alike.",
       html: `<div class="vstack" style="gap:24px;align-items:flex-start">
-  <acme-input placeholder="Default">${up("prefix")}</acme-input>
-  <acme-input placeholder="Default">${up("suffix")}</acme-input>
-  <acme-input placeholder="Default" prefix="https://" suffix=".com"></acme-input>
-  <acme-input placeholder="Default" prefix-styling="false" suffix-styling="false">${up("prefix")}${up("suffix")}</acme-input>
-  <acme-input placeholder="Default" prefix="vercel/" suffix-container="false" suffix-styling="false">${up("suffix")}</acme-input>
+  <acme-input placeholder="Default">${up("start-addon")}</acme-input>
+  <acme-input placeholder="Default">${up("end-addon")}</acme-input>
+  <acme-input placeholder="Default">${text("start-addon", "https://")}${text("end-addon", ".com")}</acme-input>
+  <acme-input placeholder="Default">${up("start")}${up("end")}</acme-input>
+  <acme-input placeholder="Default">${text("start-addon", "vercel/")}${up("end")}</acme-input>
 </div>`,
     },
     {
@@ -30,10 +33,10 @@ export const doc: Doc = {
       html: `<div class="vstack" style="gap:16px;align-items:flex-start">
   <acme-input disabled placeholder="Disabled with placeholder"></acme-input>
   <acme-input disabled value="Disabled with value"></acme-input>
-  <acme-input disabled placeholder="Disabled with prefix">${up("prefix")}</acme-input>
-  <acme-input disabled placeholder="Disabled with suffix">${up("suffix")}</acme-input>
-  <acme-input disabled placeholder="Disabled with prefix and suffix" prefix="https://" suffix=".com"></acme-input>
-  <acme-input disabled placeholder="Disabled with prefix and suffix" prefix-styling="false" suffix-styling="false">${up("prefix")}${up("suffix")}</acme-input>
+  <acme-input disabled placeholder="Disabled with a start add-on">${up("start-addon")}</acme-input>
+  <acme-input disabled placeholder="Disabled with an end add-on">${up("end-addon")}</acme-input>
+  <acme-input disabled placeholder="Disabled with add-ons">${text("start-addon", "https://")}${text("end-addon", ".com")}</acme-input>
+  <acme-input disabled placeholder="Disabled with in-field places">${up("start")}${up("end")}</acme-input>
 </div>`,
     },
     {
@@ -59,12 +62,12 @@ export const doc: Doc = {
       html: `<div class="vstack" style="align-items:flex-start"><acme-input label="Label" placeholder="Label"></acme-input></div>`,
     },
     {
-      h: "Rounded prefix and suffix",
-      html: `<acme-input placeholder="Label example" prefix="www." rounded suffix=".com"></acme-input>`,
+      h: "Rounded with add-ons",
+      html: `<acme-input placeholder="Label example" rounded>${text("start-addon", "www.")}${text("end-addon", ".com")}</acme-input>`,
     },
     {
-      h: "Rounded prefix and suffix without styling",
-      html: `<acme-input placeholder="Label example" prefix="www." prefix-styling="false" rounded suffix=".com" suffix-styling="false"></acme-input>`,
+      h: "Rounded with in-field places",
+      html: `<acme-input placeholder="Label example" rounded>${text("start", "www.")}${text("end", ".com")}</acme-input>`,
     },
   ],
   practices: {

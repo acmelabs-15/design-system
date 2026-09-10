@@ -10,13 +10,14 @@ export type SelectSize = "small" | "medium" | "large";
 /** An option: its text, or a value with its label. */
 export type SelectOption = string | { value: string; label: string; disabled?: boolean };
 
-/** The default suffix: a chevron the suffix cell sizes to the control decoration size (14px). */
+/** The end place's fallback: a chevron the place sizes to the control decoration size (14px). */
 const chevron = html`<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d=${paths["chev-d"]}></path></svg>`;
 
 /**
  * A native select with a styled face. A relative flex wrapper holds the field (32 / 36 / 40px,
- * radius 6, large 8, a hairline ring) and, at its sides, a prefix cell (the `prefix` slot) and a
- * suffix cell (the `suffix` slot, a chevron by default; `suffix="false"` drops the cell). Options
+ * radius 6, large 8, a hairline ring) and, inside it at each side, a `start` place and an `end`
+ * place. The end place holds a chevron unless something is slotted over it; `end="false"` leaves it
+ * empty. Both places sit in the field's own box, so a select has no add-on places. Options
  * come from `<option>` children (an `<optgroup>` is kept) or the `options` property. The wrapper
  * carries the size, `error`, `disabled`, `variant="secondary"` (no ring, the field shifted left) and
  * cell modifiers, and the interaction states (data-hover; data-focus for any focus of the field).
@@ -57,8 +58,8 @@ export class AcmeSelect extends AcmeElement {
   @property() width = "";
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: Boolean }) required = false;
-  /** `"false"` drops the suffix cell (the chevron). */
-  @property({ converter: boolish }) suffix = true;
+  /** `"false"` leaves the end place empty, dropping the chevron. */
+  @property({ converter: boolish }) end = true;
   /** `"false"` renders the field without the label element around it. */
   @property({ converter: boolish, attribute: "with-label" }) withLabel = true;
   /** Keeps the label text as written (no capitalization). */
@@ -68,7 +69,7 @@ export class AcmeSelect extends AcmeElement {
   @property({ attribute: "aria-describedby" }) ariaDescribedby = "";
   /** Options set from script, in place of `<option>` children. */
   @property({ type: Array }) options: SelectOption[] = [];
-  @state() private slottedPrefix = false;
+  @state() private hasStart = false;
   /** The `<option>` and `<optgroup>` children, cloned into the field. */
   @state() private lightOptions: HTMLElement[] = [];
   @query("select") select!: HTMLSelectElement;
@@ -84,12 +85,12 @@ export class AcmeSelect extends AcmeElement {
       this.internals = this.attachInternals();
     } catch {}
   }
-  /** Reads the light DOM: the prefix and suffix slots, and the option children. */
+  /** Reads the light DOM: the start place, and the option children. */
   private readLight = () => {
-    this.slottedPrefix = !!this.querySelector('[slot="prefix"]');
+    this.hasStart = !!this.querySelector('[slot="start"]');
     this.lightOptions = Array.from(this.children).filter((c): c is HTMLElement => c.tagName === "OPTION" || c.tagName === "OPTGROUP");
   };
-  // A cell exists only while its slot has content, and the option children live in the light DOM, so
+  // A place is rendered only while its slot has content, and the option children live in the light DOM, so
   // the light DOM is watched for content that arrives or changes later.
   connectedCallback() {
     super.connectedCallback();
@@ -143,12 +144,11 @@ export class AcmeSelect extends AcmeElement {
       error: !!this.error,
       disabled: this.disabled,
       secondary: this.variant === "secondary",
-      "with-prefix": this.slottedPrefix,
+      "has-start": this.hasStart,
       empty: !!this.placeholder && this.value === this.placeholder,
     });
-    const prefixSlot = html`<slot name="prefix" @slotchange=${this.readLight}></slot>`;
     const wrap = html`<div class=${cls} part="wrap">
-      ${this.slottedPrefix ? html`<span class="prefix" aria-hidden="true">${prefixSlot}</span>` : nothing}
+      ${this.hasStart ? html`<span class="start" aria-hidden="true"><slot name="start" @slotchange=${this.readLight}></slot></span>` : nothing}
       <select
         id=${this.uid}
         name=${this.name || nothing}
@@ -164,7 +164,7 @@ export class AcmeSelect extends AcmeElement {
         ${this.placeholder ? html`<option class="ph" disabled value=${this.placeholder} label=${this.placeholder}>${this.placeholder}</option>` : nothing}
         ${this.lightOptions.length ? this.lightOptions.map((o) => o.cloneNode(true)) : this.options.map((o) => this.renderOption(o))}
       </select>
-      ${this.suffix ? html`<span class="suffix" aria-hidden="true"><slot name="suffix" @slotchange=${this.readLight}>${chevron}</slot></span>` : nothing}
+      ${this.end ? html`<span class="end" aria-hidden="true"><slot name="end" @slotchange=${this.readLight}>${chevron}</slot></span>` : nothing}
     </div>`;
     const message = this.error
       ? html`<acme-error id=${errId} size=${this.size === "large" ? "large" : "small"} style=${`margin-top:8px${this.width ? `;width:${this.width}` : ""}`}>${this.error}</acme-error>`

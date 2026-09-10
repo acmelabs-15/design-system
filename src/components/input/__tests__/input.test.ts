@@ -29,30 +29,47 @@ describe("acme-input", () => {
     expect(err.textContent).toBe("An error message.");
     expect(err.getAttribute("size")).toBe("small");
   });
-  test("text prefix and suffix render as cells after the field; rounded is a modifier", async () => {
-    const el = await mount(`<acme-input prefix="www." suffix=".com" rounded></acme-input>`);
+  test("each side renders one cell, whichever of its two places is occupied", async () => {
+    const el = await mount(`<acme-input rounded><span slot="start-addon">www.</span><span slot="end-addon">.com</span></acme-input>`);
     const w = wrap(el);
-    expect(classes(w)).toBe("rounded with-prefix with-suffix wrap");
+    expect(classes(w)).toBe("has-end has-start rounded wrap");
     const kids = Array.from(w.children);
     expect(kids.map((k) => k.tagName)).toEqual(["INPUT", "LABEL", "LABEL"]);
-    expect(kids[1].className).toBe("prefix");
-    expect(kids[1].textContent).toContain("www.");
-    expect(kids[2].className).toBe("suffix");
+    expect(kids[1].className).toBe("start");
+    expect(kids[2].className).toBe("end");
     expect(kids[2].getAttribute("aria-hidden")).toBe("true");
+    expect(w.querySelector(".start > slot[name=start-addon]")).not.toBeNull();
+    expect(w.querySelector(".end > slot[name=end-addon]")).not.toBeNull();
   });
-  test("a slotted icon makes a cell; styling false marks the cell plain", async () => {
-    const el = await mount(`<acme-input prefix-styling="false" suffix-styling="false"><svg slot="prefix"></svg><svg slot="suffix"></svg></acme-input>`);
+  test("an in-field place uses the same cell and marks the side inside", async () => {
+    const el = await mount(`<acme-input><svg slot="start"></svg><svg slot="end"></svg></acme-input>`);
     const w = wrap(el);
-    expect(classes(w)).toBe("plain-prefix plain-suffix with-prefix with-suffix wrap");
-    expect(w.querySelector(".prefix > slot[name=prefix]")).not.toBeNull();
-    expect(w.querySelector(".suffix > slot[name=suffix]")).not.toBeNull();
+    // The cell is the same box either way; `start-inside` and `end-inside` carry the ground and the hairline.
+    expect(classes(w)).toBe("end-inside has-end has-start start-inside wrap");
+    expect(w.querySelector(".start > slot[name=start]")).not.toBeNull();
+    expect(w.querySelector(".end > slot[name=end]")).not.toBeNull();
   });
-  test("suffix-container false slots the suffix straight into the wrapper", async () => {
-    const el = await mount(`<acme-input prefix="vercel/" suffix-container="false" suffix-styling="false"><svg slot="suffix"></svg></acme-input>`);
+  test("the sides are independent: an add-on at the start, an in-field place at the end", async () => {
+    const el = await mount(`<acme-input><span slot="start-addon">vercel/</span><svg slot="end"></svg></acme-input>`);
     const w = wrap(el);
-    expect(classes(w)).toBe("plain-suffix with-prefix with-suffix wrap");
-    expect(w.querySelector(".suffix")).toBeNull();
-    expect(w.querySelector(":scope > slot[name=suffix]")).not.toBeNull();
+    expect(classes(w)).toBe("end-inside has-end has-start wrap");
+    expect(w.querySelector(".start > slot[name=start-addon]")).not.toBeNull();
+    expect(w.querySelector(".end > slot[name=end]")).not.toBeNull();
+  });
+  test("an add-on wins its side, so the two places never render together", async () => {
+    const el = await mount(`<acme-input><span slot="end-addon">.com</span><svg slot="end"></svg></acme-input>`);
+    const w = wrap(el);
+    expect(classes(w)).toBe("has-end wrap");
+    expect(Array.from(w.children).map((k) => k.tagName)).toEqual(["INPUT", "LABEL"]);
+    expect(w.querySelector(".end > slot[name=end-addon]")).not.toBeNull();
+    expect(w.querySelector("slot[name=end]")).toBeNull();
+  });
+  test("a side with nothing in it renders no cell at all", async () => {
+    const el = await mount(`<acme-input><svg slot="end"></svg></acme-input>`);
+    const w = wrap(el);
+    expect(classes(w)).toBe("end-inside has-end wrap");
+    expect(Array.from(w.children).map((k) => k.tagName)).toEqual(["INPUT", "LABEL"]);
+    expect(w.querySelector(".start")).toBeNull();
   });
   test("input events carry the value; width and the large icon size land on the wrapper", async () => {
     const el = await mount(`<acme-input size="large" width="221px"></acme-input>`);

@@ -76,24 +76,24 @@ export const inputCss = css`
   .wrap:where(.rounded) > input {
     border-radius: 2147483647px;
   }
-  .wrap:where(.with-prefix) > input {
+  .wrap:where(.has-start) > input {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  .wrap:where(.with-suffix) > input {
+  .wrap:where(.has-end) > input {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
   .wrap > input {
     padding-inline: 0.75rem;
   }
-  .wrap :where(.prefix) > slot::slotted(svg),
-  .wrap :where(.prefix) > slot > svg {
+  .wrap :where(.start) > slot::slotted(svg),
+  .wrap :where(.start) > slot > svg {
     width: var(--ds-control-decoration-size) !important;
     height: var(--ds-control-decoration-size) !important;
   }
-  .wrap :where(.suffix) > slot::slotted(svg),
-  .wrap :where(.suffix) > slot > svg {
+  .wrap :where(.end) > slot::slotted(svg),
+  .wrap :where(.end) > slot > svg {
     width: var(--ds-control-decoration-size) !important;
     height: var(--ds-control-decoration-size) !important;
   }
@@ -132,7 +132,7 @@ export const inputCss = css`
       0 0 0 1px var(--ds-gray-alpha-600),
       0 0 0 4px #ffffff3d !important;
   }
-  .wrap:where(.with-suffix) > :last-child:where(:not(slot)) {
+  .wrap:where(.has-end) > :last-child:where(:not(slot)) {
     position: relative;
     order: 2;
     display: flex;
@@ -143,8 +143,8 @@ export const inputCss = css`
     padding-block: 0;
     color: var(--ds-gray-700);
   }
-  .wrap:where(.with-suffix) > slot:last-child::slotted(*),
-  .wrap:where(.with-suffix) > slot:last-child > * {
+  .wrap:where(.has-end) > slot:last-child::slotted(*),
+  .wrap:where(.has-end) > slot:last-child > * {
     position: relative !important;
     order: 2 !important;
     display: flex !important;
@@ -155,24 +155,24 @@ export const inputCss = css`
     padding-block: 0 !important;
     color: var(--ds-gray-700) !important;
   }
-  .wrap:where(.with-suffix:not(.plain-suffix)) > :last-child:where(:not(slot)) {
+  .wrap:where(.has-end:not(.end-inside)) > :last-child:where(:not(slot)) {
     border-left-style: solid;
     border-left-width: 1px;
     background-color: var(--ds-background-200);
   }
-  .wrap:where(.with-suffix:not(.plain-suffix)) > slot:last-child::slotted(*),
-  .wrap:where(.with-suffix:not(.plain-suffix)) > slot:last-child > * {
+  .wrap:where(.has-end:not(.end-inside)) > slot:last-child::slotted(*),
+  .wrap:where(.has-end:not(.end-inside)) > slot:last-child > * {
     border-left-style: solid !important;
     border-left-width: 1px !important;
     background-color: var(--ds-background-200) !important;
   }
-  .wrap:where(.plain-suffix) > :last-child:where(:not(slot)) {
+  .wrap:where(.end-inside) > :last-child:where(:not(slot)) {
     border-left-style: solid;
     border-left-width: 0;
     background-color: var(--ds-background-100);
   }
-  .wrap:where(.plain-suffix) > slot:last-child::slotted(*),
-  .wrap:where(.plain-suffix) > slot:last-child > * {
+  .wrap:where(.end-inside) > slot:last-child::slotted(*),
+  .wrap:where(.end-inside) > slot:last-child > * {
     border-left-style: solid !important;
     border-left-width: 0 !important;
     background-color: var(--ds-background-100) !important;
@@ -184,7 +184,7 @@ export const inputCss = css`
   .wrap:where(.clearable) > slot:last-child > * {
     padding-right: 0 !important;
   }
-  .wrap:where(.with-prefix) > :nth-child(2):where(:not(slot)) {
+  .wrap:where(.has-start) > :nth-child(2):where(:not(slot)) {
     position: relative;
     order: 0;
     display: flex;
@@ -195,8 +195,8 @@ export const inputCss = css`
     padding-block: 0;
     color: var(--ds-gray-700);
   }
-  .wrap:where(.with-prefix) > slot:nth-child(2)::slotted(*),
-  .wrap:where(.with-prefix) > slot:nth-child(2) > * {
+  .wrap:where(.has-start) > slot:nth-child(2)::slotted(*),
+  .wrap:where(.has-start) > slot:nth-child(2) > * {
     position: relative !important;
     order: 0 !important;
     display: flex !important;
@@ -207,26 +207,26 @@ export const inputCss = css`
     padding-block: 0 !important;
     color: var(--ds-gray-700) !important;
   }
-  .wrap:where(.plain-prefix) > :nth-child(2):where(:not(slot)) {
+  .wrap:where(.start-inside) > :nth-child(2):where(:not(slot)) {
     margin-right: -0.75rem;
     border-right-style: solid;
     border-right-width: 0;
     background-color: var(--ds-background-100);
   }
-  .wrap:where(.plain-prefix) > slot:nth-child(2)::slotted(*),
-  .wrap:where(.plain-prefix) > slot:nth-child(2) > * {
+  .wrap:where(.start-inside) > slot:nth-child(2)::slotted(*),
+  .wrap:where(.start-inside) > slot:nth-child(2) > * {
     margin-right: -0.75rem !important;
     border-right-style: solid !important;
     border-right-width: 0 !important;
     background-color: var(--ds-background-100) !important;
   }
-  .wrap:where(.with-prefix:not(.plain-prefix)) > :nth-child(2):where(:not(slot)) {
+  .wrap:where(.has-start:not(.start-inside)) > :nth-child(2):where(:not(slot)) {
     border-right-style: solid;
     border-right-width: 1px;
     background-color: var(--ds-background-200);
   }
-  .wrap:where(.with-prefix:not(.plain-prefix)) > slot:nth-child(2)::slotted(*),
-  .wrap:where(.with-prefix:not(.plain-prefix)) > slot:nth-child(2) > * {
+  .wrap:where(.has-start:not(.start-inside)) > slot:nth-child(2)::slotted(*),
+  .wrap:where(.has-start:not(.start-inside)) > slot:nth-child(2) > * {
     border-right-style: solid !important;
     border-right-width: 1px !important;
     background-color: var(--ds-background-200) !important;
@@ -234,10 +234,10 @@ export const inputCss = css`
   .wrap :where(input):disabled::placeholder {
     color: var(--accents-3);
   }
-  .wrap:where(.with-prefix) > :first-child:not([disabled]) {
+  .wrap:where(.has-start) > :first-child:not([disabled]) {
     color: var(--themed-fg);
   }
-  .wrap:where(:not(.with-prefix).with-suffix) > :first-child:not([disabled]) {
+  .wrap:where(:not(.has-start).has-end) > :first-child:not([disabled]) {
     color: var(--themed-fg);
   }
   @media (hover: hover) {
@@ -245,21 +245,21 @@ export const inputCss = css`
       box-shadow: 0 0 0 1px var(--ds-gray-alpha-400);
     }
   }
-  .wrap:where(.plain-suffix):has(input:disabled) > :last-child:where(:not(slot)) {
+  .wrap:where(.end-inside):has(input:disabled) > :last-child:where(:not(slot)) {
     cursor: not-allowed;
     background-color: var(--ds-gray-100);
   }
-  .wrap:where(.plain-suffix):has(input:disabled) > slot:last-child::slotted(*),
-  .wrap:where(.plain-suffix):has(input:disabled) > slot:last-child > * {
+  .wrap:where(.end-inside):has(input:disabled) > slot:last-child::slotted(*),
+  .wrap:where(.end-inside):has(input:disabled) > slot:last-child > * {
     cursor: not-allowed !important;
     background-color: var(--ds-gray-100) !important;
   }
-  .wrap:where(.plain-prefix):has(input:disabled) > :nth-child(2):where(:not(slot)) {
+  .wrap:where(.start-inside):has(input:disabled) > :nth-child(2):where(:not(slot)) {
     cursor: not-allowed;
     background-color: var(--ds-gray-100);
   }
-  .wrap:where(.plain-prefix):has(input:disabled) > slot:nth-child(2)::slotted(*),
-  .wrap:where(.plain-prefix):has(input:disabled) > slot:nth-child(2) > * {
+  .wrap:where(.start-inside):has(input:disabled) > slot:nth-child(2)::slotted(*),
+  .wrap:where(.start-inside):has(input:disabled) > slot:nth-child(2) > * {
     cursor: not-allowed !important;
     background-color: var(--ds-gray-100) !important;
   }
@@ -267,7 +267,7 @@ export const inputCss = css`
     .wrap:where(:not(.error))[data-hover]:has(textarea:disabled) {
       box-shadow: 0 0 0 1px var(--ds-gray-alpha-400);
     }
-    .wrap:where(.with-suffix)[data-hover]:not(:has(input:disabled)) > .suffix {
+    .wrap:where(.has-end)[data-hover]:not(:has(input:disabled)) > .end {
       color: var(--ds-gray-1000);
     }
   }

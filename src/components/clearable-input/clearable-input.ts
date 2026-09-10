@@ -7,7 +7,7 @@ import "../kbd/kbd";
 import type { AcmeInput } from "../input/input";
 
 /**
- * A text field that clears itself: an acme-input whose suffix is a clear button with an Esc key
+ * A text field that clears itself: an acme-input whose end place is a clear button with an Esc key
  * once the field has a value, and Escape clears too. `cmdk` shows ⌘ K keys instead, which slide
  * to Esc while the field has a value (`data-animate` on the field). Clearing fires `acme-input`
  * and `acme-clear` and returns focus to the field. Form-associated and labelable.
@@ -91,36 +91,30 @@ export class AcmeClearableInput extends AcmeElement {
   protected get inputType() {
     return "text";
   }
-  /** The prefix content, when the element has one. */
-  protected renderPrefix(): TemplateResult | typeof nothing {
+  /** The start content, when the element has one, already carrying its `slot`. */
+  protected renderStart(): TemplateResult | typeof nothing {
     return nothing;
-  }
-  /** Whether the prefix cell keeps its fill and hairline. */
-  protected get prefixStyled() {
-    return true;
   }
   /** The accessible name given to the field. */
   protected get fieldLabel() {
     return this.ariaLabelText || this.label;
   }
-  /** The keys or the clear button, as the suffix. */
-  protected renderSuffix(): TemplateResult | typeof nothing {
+  /** The keys or the clear button, inside the field at the end. */
+  protected renderEnd(): TemplateResult | typeof nothing {
     const has = !!this.value;
     if (this.cmdk)
-      return html`<div slot="suffix" class="cmdk" aria-label=${has ? "Press Esc to clear" : "Press Cmd + K to open the Command Menu"}>
+      return html`<div slot="end" class="cmdk" aria-label=${has ? "Press Esc to clear" : "Press Cmd + K to open the Command Menu"}>
         <acme-kbd class="k-esc" small aria-hidden="true"><span class="keys"><span data-key="esc">Esc</span><span data-key="cmd">⌘</span></span></acme-kbd
         ><acme-kbd class="k-k" small aria-hidden="true">K</acme-kbd>
       </div>`;
     if (this.showClearButton && has)
-      return html`<button slot="suffix" class="clear" type="button" tabindex=${this.disabled ? "-1" : nothing} @click=${() => this.clear()}><acme-kbd small>Esc</acme-kbd></button>`;
+      return html`<button slot="end" class="clear" type="button" tabindex=${this.disabled ? "-1" : nothing} @click=${() => this.clear()}><acme-kbd small>Esc</acme-kbd></button>`;
     return nothing;
   }
   render() {
     return html`<acme-input
       class="input"
       clearable
-      suffix-styling="false"
-      prefix-styling=${this.prefixStyled ? nothing : "false"}
       type=${this.inputType}
       .value=${this.value}
       placeholder=${this.placeholder || nothing}
@@ -134,7 +128,7 @@ export class AcmeClearableInput extends AcmeElement {
       @acme-change=${this.onChange}
       @keydown=${this.onKeydown}
       part="field"
-      >${this.renderPrefix()}${this.renderSuffix()}</acme-input
+      >${this.renderStart()}${this.renderEnd()}</acme-input
     >`;
   }
 }

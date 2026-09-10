@@ -24,20 +24,20 @@ describe("acme-select", () => {
     expect(wrap(await mount(`<acme-select size="large"></acme-select>`)).className.trim()).toBe("wrap lg");
   });
 
-  test("a prefix renders its cell and marks the wrapper; a suffix takes the chevron's place in the suffix cell", async () => {
-    const el = await mount(`<acme-select placeholder="Default"><svg slot="prefix"></svg><svg slot="suffix" id="s"></svg></acme-select>`);
-    expect(wrap(el).className.trim()).toBe("wrap with-prefix");
-    expect(wrap(el).querySelector(".prefix slot[name=prefix]")).not.toBeNull();
-    const slot = wrap(el).querySelector(".suffix slot[name=suffix]") as HTMLSlotElement;
+  test("a start place renders and marks the wrapper; a slotted end replaces the chevron", async () => {
+    const el = await mount(`<acme-select placeholder="Default"><svg slot="start"></svg><svg slot="end" id="s"></svg></acme-select>`);
+    expect(wrap(el).className.trim()).toBe("wrap has-start");
+    expect(wrap(el).querySelector(".start slot[name=start]")).not.toBeNull();
+    const slot = wrap(el).querySelector(".end slot[name=end]") as HTMLSlotElement;
     expect(slot.assignedElements()[0].id).toBe("s");
   });
 
-  test("without a suffix the chevron is the slot's fallback; suffix=false drops the cell", async () => {
+  test("the chevron is the end slot's fallback; end=false leaves the place empty", async () => {
     const el = await mount(`<acme-select placeholder="Default"></acme-select>`);
-    expect(wrap(el).querySelector(".suffix slot > svg.chevron")).not.toBeNull();
-    expect(wrap(el).querySelector(".prefix")).toBeNull();
-    const none = await mount(`<acme-select placeholder="Default" suffix="false"></acme-select>`);
-    expect(wrap(none).querySelector(".suffix")).toBeNull();
+    expect(wrap(el).querySelector(".end slot > svg.chevron")).not.toBeNull();
+    expect(wrap(el).querySelector(".start")).toBeNull();
+    const none = await mount(`<acme-select placeholder="Default" end="false"></acme-select>`);
+    expect(wrap(none).querySelector(".end")).toBeNull();
   });
 
   test("label, required, error and disabled reach the field and the wrapper", async () => {

@@ -13,14 +13,13 @@ const mount = async (markup: string) => {
 const field = (el: AcmeSearch) => el.shadowRoot!.querySelector("acme-input") as AcmeInput;
 
 describe("acme-search", () => {
-  test("composes a search-typed, plain-prefix clearable input named Search, with the glass as the default prefix", async () => {
+  test("composes a search-typed clearable input named Search, with the glass in the start place", async () => {
     const el = await mount(`<acme-search placeholder="Enter some text..."></acme-search>`);
     const f = field(el);
     expect(f.getAttribute("type")).toBe("search");
-    expect(f.getAttribute("prefix-styling")).toBe("false");
     expect(f.getAttribute("aria-label")).toBe("Search");
     expect(f.shadowRoot!.querySelector("input")!.placeholder).toBe("Enter some text...");
-    const slot = el.shadowRoot!.querySelector("slot[name=prefix][slot=prefix]") as HTMLSlotElement;
+    const slot = el.shadowRoot!.querySelector("slot[name=start][slot=start]") as HTMLSlotElement;
     expect(slot.querySelector("svg")).not.toBeNull();
   });
   test("cmdk shows the keys, loading swaps the glass for a spinner, disabled reaches the field", async () => {
@@ -28,9 +27,9 @@ describe("acme-search", () => {
     const [cmdk, loading, disabled] = Array.from(document.body.querySelectorAll("acme-search")) as AcmeSearch[];
     for (const el of [cmdk, loading, disabled]) await el.updateComplete;
     expect(cmdk.shadowRoot!.querySelectorAll(".cmdk acme-kbd").length).toBe(2);
-    const prefix = loading.shadowRoot!.querySelector("slot[name=prefix][slot=prefix]") as HTMLSlotElement;
-    expect(prefix.querySelector("acme-spinner")).not.toBeNull();
-    expect(prefix.querySelector("svg")).toBeNull();
+    const start = loading.shadowRoot!.querySelector("slot[name=start][slot=start]") as HTMLSlotElement;
+    expect(start.querySelector("acme-spinner")).not.toBeNull();
+    expect(start.querySelector("svg")).toBeNull();
     expect(field(disabled).disabled).toBe(true);
   });
   test("a value shows the Esc key and clear() empties it; clearable false drops both", async () => {
