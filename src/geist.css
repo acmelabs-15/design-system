@@ -197,14 +197,11 @@ a {
 a:hover {
   text-decoration: underline;
 }
-:focus {
-  outline: none;
-}
-:focus-visible {
-  outline: none;
-  box-shadow: var(--ring);
-  border-radius: var(--r-sm);
-}
+/* No page-wide focus rule. The reference has none: a focusable box it does not style itself keeps
+   the browser's own ring, proven by probing a plain button and a plain div on its page. Every ring
+   the reference draws is written into the element that draws it, and ours are too. A page-wide rule
+   here would reach a consumer's own controls through the published tokens.css, and would give a
+   ring to boxes the reference leaves bare. See notes/decisions/focus-ring-ownership.md. */
 [hidden] {
   display: none !important;
 }

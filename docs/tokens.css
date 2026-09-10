@@ -150,10 +150,6 @@ p{margin: 0;}
 a{color: var(--accent-ink);
   text-decoration: none;}
 a:hover{text-decoration: underline;}
-:focus{outline: none;}
-:focus-visible{outline: none;
-  box-shadow: var(--ring);
-  border-radius: var(--r-sm);}
 [hidden]{display: none !important;}
 .sr{position: absolute;
   width: 1px;
