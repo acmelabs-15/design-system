@@ -33,12 +33,7 @@ export const intro: Doc = {
   title: "ACME Design System",
   lede: "The house design system for building consistent web experiences.",
   examples: [],
-  body: `<div class="link-grid">${tile(
-    "/components/brands",
-    "Brand Assets",
-    "How to work with the house brand assets.",
-    `<svg class="ic" width="64" height="64" style="width:64px;height:64px;stroke-width:1.25" aria-hidden="true"><use href="#i-chart"/></svg>`,
-  )}${tile("/icons", "Icons", "An icon set for developer tools.", `<span class="tile-icons">${iconRows.map((r) => `<span>${r.map((n) => ic(n)).join("")}</span>`).join("")}</span>`)}${tile(
+  body: `<div class="link-grid">${tile("/icons", "Icons", "An icon set for developer tools.", `<span class="tile-icons">${iconRows.map((r) => `<span>${r.map((n) => ic(n)).join("")}</span>`).join("")}</span>`)}${tile(
     "/components/avatar",
     "Components",
     "Building blocks for any page.",
@@ -69,7 +64,6 @@ export const intro: Doc = {
     "",
     "## Assets",
     "",
-    "- **Brand Assets** — Logos and brand guidelines. See `/components/brands`.",
     "- **Icons** — An icon set for developer tools. See `/icons`.",
     "- **Typeface** — Google Sans Flex and Google Sans Code. See `/typeface`.",
     "",

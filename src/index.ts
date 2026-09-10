@@ -8,7 +8,6 @@ export * from "./components/banner/banner";
 export * from "./components/bar-row/bar-row";
 export * from "./components/bar-rows/bar-rows";
 export * from "./components/book/book";
-export * from "./components/brands/brands";
 export * from "./components/breadcrumb/breadcrumb";
 export * from "./components/breadcrumbs/breadcrumbs";
 export * from "./components/browser/browser";

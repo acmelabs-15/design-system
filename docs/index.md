@@ -11,7 +11,6 @@ The house design system for building consistent web experiences.
 
 ## Assets
 
-- **Brand Assets** — Logos and brand guidelines. See `/components/brands`.
 - **Icons** — An icon set for developer tools. See `/icons`.
 - **Typeface** — Google Sans Flex and Google Sans Code. See `/typeface`.
 

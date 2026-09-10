@@ -209,6 +209,11 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
+- **The port stops at Vercel's own brand.** Decided 2026-09-10 by Peter: `acme-brands` was removed
+  outright. It drew Vercel's wordmarks, Next.js, Turbo, Turbopack and v0 — their trademarks, not a
+  design-system capability — and this is the house system, not a port of their brand. The element,
+  its 20 trademark assets, its map, spec, census and docs page are deleted. Anything else that
+  ports their identity rather than their design goes the same way when it is found.
 - **An element owns its own positioning context; the reference's docs page is not part of the port.**
   Verified 2026-09-10 on brands. Its copy button is absolute at top/right 16px, and the reference
   resolves that against *their docs page's* wrapper, which is `position: relative`. Ours had no

@@ -68,29 +68,22 @@ An element that needs a copy button `acme-copy-button` cannot express. That is a
 API, not to build a fourth one.
 
 
-## All three are done (2026-09-10)
 
-`snippet`, `code-block` and `brands` all compose `acme-copy-button`. None of them builds a button,
-writes to the clipboard, runs a timer or fires `acme-copy` of its own any more.
+## Where this landed (2026-09-10)
 
-`brands` was the last and the only one that needed a different handoff. The other two bind
-`text-to-copy` in the template, because their text comes from properties. Brands computes its text
-from the **rendered** frame — `markup()` reads `this.frame` — which does not exist during the render
-that would bind the property, so a bound value is empty on first paint. The text is handed over when
-the press starts instead, on `pointerdown` and on `keydown`, and `copy()` reads `textToCopy` at call
-time. Both paths have a test, proven by breaking the handoff.
+`snippet` and `code-block` compose `acme-copy-button`. Neither builds a button, writes to the
+clipboard, runs a timer or fires `acme-copy` of its own any more.
 
-### One thing composing did not cause, and one it could not fix
+**The third element, `brands`, was composed and then deleted.** Peter removed it the same day: it
+ports Vercel's own trademarks — their wordmarks, Next.js, Turbo, Turbopack, v0 — and this is the
+house system, not a port of their brand. The element, its 20 trademark assets, its map, spec, census
+and docs page are gone. `book-texture.avif` stays, because `acme-book` uses it.
 
-**Found while composing, pre-existing:** the copy button escaped its box entirely, landing at -96 top
-and -278 right on our docs page, because `.brands` was `position: static` and the absolute button
-resolved against whatever ancestor happened to be positioned. Measured identically on the commit
-before this one, so composing exposed it rather than caused it. The reference resolves the same
-button against *their docs page's* wrapper, which is `position: relative` — page furniture we cannot
-rely on, so `.brands` is now the positioning context. The button sits 16px from the box's top and
-right, matching the reference's inset.
+Two findings from that work outlived the element and are recorded in `PLAN.md`:
 
-**Left alone:** `acme-brands` cannot expose the `copy()` method the other two have, because `copy` is
-already its public boolean attribute (the one that shows the button, used throughout its docs page).
-One word, two meanings. Renaming a documented attribute is a decision of its own, so it is not made
-here.
+- An element owns its own positioning context. Brands' copy button escaped its box entirely, to -96
+  top and -278 right, because `.brands` was `position: static` and the reference resolves the same
+  button against *their docs page's* `relative` wrapper. Page furniture we cannot rely on.
+- An element whose copy text is computed from rendered DOM cannot bind `text-to-copy` in the
+  template; it hands the text over at press time, because `copy()` reads the property at call time.
+  No element needs that pattern today, but the constraint is real for the next one that does.
