@@ -103,3 +103,28 @@ the three.
 - **Write the decision down the same turn it is made.** A decision that lives only in conversation is
   lost at the next context reset.
 - **Report what was not checked.** An unverified item named is shared risk; unnamed, it is a surprise.
+
+## What running the loop actually teaches
+
+Added 2026-09-10, after taking relative-time-card and context-card to parity.
+
+**Most reported differences are the harness, not the element.** Across the two elements, of 208 and 12
+differences reported, **all but zero traced to the measurement setup**. Not one was a defect in the
+element's styles.
+
+That is not a reason to trust the elements. It is a reason to fix the setup *first* and read the number
+only afterwards, because a wrong setup produces a large, confident, entirely false number — which is
+exactly how the parity claim became untrustworthy in the first place.
+
+The causes seen so far, each worth checking before believing any count:
+
+| Cause | How it shows up |
+|---|---|
+| The two sides read at different viewport sizes | A fixed-position box reports the window's width. Dozens of differences, all geometry. |
+| A box sized from its own text compared as hard | Our font is different by design, so any width it drives differs. |
+| An overlay opened before the page settled | Placement is measured **at open time**. Scroll position, container width and unfinished layout all change the answer. |
+| A value the mirror cannot compute | The mirror strips scripts, so anything the reference computes at runtime is frozen at its sketch value. Compare the resolved *decision*, not the number. |
+| Our element rendering a node the reference does not | Root counts diverge, the diff pairs by position, and every later comparison shifts. |
+
+**The check that catches all five: compare root counts per side before reading any difference count.**
+If they differ, nothing downstream means anything. The runner prints them for exactly this reason.

@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 08:30 PDT.
+how we prove it, and where we are. Updated 2026-09-10 08:55 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -379,27 +379,23 @@ Measured, not estimated:
    label 1, trigger 6, in both themes. The trigger's 16 accepted are the documented wrapper-box
    context value. The census config now carries two prepare steps it was missing, both recorded with
    their reason.
-2. [~] **context-card — trigger at parity, card down to 48, one real defect left.**
+2. [x] **context-card — at parity, 2026-09-10.** All four runs read **0 hard**: the card 8 roots, the
+   trigger 17, in both themes.
 
-   The trigger root reads **0 hard** in both themes, 17 roots each side.
+   Every one of the 208 differences first reported was the harness measuring two different things, and
+   each cause is now recorded in the config with its reason:
 
-   The card root is down from 208 to **48**. Three measurement faults were found and fixed, each now
-   recorded in the config with its reason:
-
-   | Fault | Cost | Fix |
+   | Cause | Cost | Why |
    |---|---|---|
-   | The two sides read at different viewport widths | 64 | The layer is fixed to the viewport, so its width is the window's. Read both at 1367 by 924. |
-   | The card's inline width compared as hard | 64 | It is measured from its own text, so it follows the font. `card` and `fade` are text parts. |
-   | Cards opened while still below the fold | 32 | Placement flips against the viewport at open time, so every card resolved to `top`. The prepare now scrolls each group to the reference's own trigger offset (y=637) before opening. |
+   | Different viewport widths | 64 | The layer is fixed to the viewport, so its width is the window's. Read both sides at 1367 by 924. |
+   | The card's inline width read as hard | 64 | It is sized from its own text, so it follows the font. `card` and `fade` are text parts. |
+   | Cards opened below the fold | 32 | Placement flips against the viewport **at open time**. A trigger at y≈1100 in a 924-tall window makes every card resolve to `top`. Scroll each group to the reference's own trigger offset first. |
+   | Preview width applied after prepare | 16 | The census sets `width` after prepare runs, so cards opened there saw the docs page's natural 958px column. That left 177px right of the fourth trigger where the card needs 311, so `right` correctly flipped. Set the width inside prepare, before opening. |
+   | The card's `transform` read as hard | 32 | Not comparable by design: the mirror strips scripts, so the reference's transform is the sketch's static value — every reference card sits 425 to 541px **above** its trigger, which no live run produces. Ours is computed live and correct. Read as soft; the **side** each card resolves to is the real check, and all four match. |
 
-   **The defect that remains: a card asking for `right` flips to `left` when it should not.** Measured
-   with the card open: the trigger's right edge at 860, content 311 wide, a 16px offset, so it would end
-   at 1187 in a 1367-wide viewport — 507 pixels of room to spare. It still flips. `top`, `bottom` and
-   `left` all resolve correctly now, so this is the `right` branch of the flip logic in
-   `context-card.ts`, not the scroll position.
-
-   Worth keeping: of the 208 differences first reported, **160 were the harness measuring two different
-   things** and 48 are this one bug.
+   The lesson worth carrying into the remaining elements: **an overlay's placement is measured at the
+   moment it opens**, so anything that changes the page before that — scroll position, container width,
+   layout still settling — changes the answer. Set the page up fully, then open.
 
 3. **calendar** — the expensive one. **All nine reference examples render only a skeleton on the server**,
    so the real calendar exists at runtime only and no map can be derived from the spec. It needs the
