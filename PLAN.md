@@ -141,6 +141,11 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   comment explaining what a thing used to be. Rename or delete, and let the new name be the only name.
   This removes a whole class of work from every decision below — a breaking change costs a release note
   and nothing else. Revisit the moment there is a real consumer.
+- **A clean result is only a pass if both sides compared the same number of roots, and that number is
+  not zero.** Roots pair by order, so a mismatch makes every difference downstream meaningless, and a
+  zero-root run reads as clean while measuring nothing. The collector now refuses to save an empty run
+  and the comparison now fails loudly on either case, so this cannot be forgotten. See
+  [notes/decisions/track-census-results.md](notes/decisions/track-census-results.md).
 - **Evidence, never inference.** Every claim about how the reference behaves traces to something
   observed: its own prose, its own example code, its compiled output, or its live behaviour. Finding
   that the reference wraps Radix, cmdk or react-aria tells us *where to look*, never what the answer
@@ -182,6 +187,7 @@ Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build ou
 | [notes/analysis/lit-practice-review.md](notes/analysis/lit-practice-review.md) | Which Lit mechanisms we use and which we are missing, checked against our own code. Includes the accessibility evidence for keeping ARIA on inner elements |
 | [notes/analysis/package-choices.md](notes/analysis/package-choices.md) | Every package choice with its evidence: confirmed, worth adopting, or to avoid. Records that no Zag adapter for Lit exists |
 | [notes/analysis/functional-parity-sources.md](notes/analysis/functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
+| [notes/decisions/track-census-results.md](notes/decisions/track-census-results.md) | **Decided.** Measurement results are version-controlled, and the two guards that stop an empty run being read as a pass |
 | [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
 | [notes/decisions/prop-naming-vs-reference.md](notes/decisions/prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
 

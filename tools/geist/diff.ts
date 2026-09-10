@@ -150,4 +150,15 @@ for (let i = 0; i < n; i++) {
 console.log(lines.join("\n"));
 console.log(`\n${page}: ${n} roots compared, ${hard} hard, ${accepted} accepted, ${soft} soft (font-driven)`);
 for (const [why, count] of [...acceptedWhy].sort((a, b) => b[1] - a[1])) console.log(`  accepted x${count}: ${why}`);
+// Zero roots compared is never a pass: it reads as clean while measuring nothing. The usual cause is a
+// selector in the config that matches nothing on one side. Fail loudly rather than report success.
+if (n === 0) {
+  console.log(`\n${page}: NOT A PASS — 0 roots were compared. Nothing was measured. Fix the selectors in census/${page.replace(/\.dark$/, "")}.config.json.`);
+  process.exit(2);
+}
+// A root-count mismatch makes every later comparison meaningless, because roots pair by order.
+if (g.roots.length !== o.roots.length) {
+  console.log(`\n${page}: NOT A PASS — root counts differ (geist ${g.roots.length}, ours ${o.roots.length}). Roots pair by order, so every difference above is suspect.`);
+  process.exit(2);
+}
 process.exit(hard ? 1 : 0);

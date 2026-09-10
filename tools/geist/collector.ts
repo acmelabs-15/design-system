@@ -39,10 +39,18 @@ Bun.serve({
       return new Response("ok", { headers: cors });
     }
     if (req.method === "POST" && url.pathname === "/census") {
-      const body = (await req.json()) as { side: string; page: string };
+      const body = (await req.json()) as { side: string; page: string; roots?: unknown[] };
       const file = path.join(OUT, `${body.page}.${body.side}.json`);
+      // A run that found nothing is never a result. It reads as a clean pass — zero roots compared,
+      // zero differences — while measuring nothing at all, and saving it destroys the real readings
+      // that were there. A wrong selector in a config is the usual cause. Refuse it, and say so.
+      if (!Array.isArray(body.roots) || body.roots.length === 0) {
+        const had = fs.existsSync(file);
+        console.warn(`REFUSED ${path.basename(file)}: the run found 0 roots${had ? "; the previous result is kept" : ""}`);
+        return new Response(`refused: 0 roots found for ${body.page}.${body.side}. Fix the selector in census/${body.page.replace(/\.dark$/, "")}.config.json; a zero-root run is not a pass.`, { status: 422, headers: cors });
+      }
       fs.writeFileSync(file, JSON.stringify(body, null, 1));
-      console.log("saved", file);
+      console.log("saved", file, `(${body.roots.length} roots)`);
       return new Response("ok", { headers: cors });
     }
     return new Response("not found", { status: 404, headers: cors });
