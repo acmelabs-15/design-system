@@ -178,36 +178,57 @@ event rather than a mystery failure weeks later.
 
 ---
 
-## Browser access: solved
+## Browser access: solved, and which tool for which job
 
-Tested 2026-09-10. Three paths reach a browser, and only one does the whole job.
+Tested 2026-09-10. Both usable paths were driven against the live reference in the same session and
+produced **identical measurements** — the same tooltip text, the same 247 by 29 box, the same
+`aria-describedby` wiring. That agreement is itself a useful cross-check.
 
-| Path | Verdict |
-|---|---|
-| **Chrome DevTools protocol tools** (`chrome-devtools`) | **Use this.** Its own Chrome, and everything works: navigate, read the accessibility tree, run script, hover, press keys, emulate a viewport or colour scheme. |
-| The built-in browser pane | Localhost only. Cannot reach the reference, and fires no timers or animation frames, so anything waiting on one hangs. Fine for the census. |
-| Direct control of Peter's Chrome | Half working. Navigation and tab metadata succeed; **script and content reading fail**, reporting that Chrome is not running when it is. Do not use it for parity work. |
+One difference decides which to use.
+
+| | Built-in browser pane | Chrome DevTools protocol |
+|---|---|---|
+| Reaches the reference site | Yes | Yes |
+| Reads the page and runs script | Yes | Yes |
+| Real hover and key input | Yes | Yes |
+| Accessibility tree | Yes | Yes, with element identifiers for interaction |
+| Timers fire | Yes | Yes |
+| **Animation frames fire** | **No** | **Yes** |
+| Page visibility | `hidden` | `visible` |
+| Runs in | Its own pane | **Peter's real Chrome, with his tabs** |
+
+### The rule
+
+**Use the DevTools protocol for anything involving motion.** Its page is visible, so animation frames
+run and `document.getAnimations()` reports real work — 11 running animations on the reference's tooltip
+page. Every motion check depends on that: exit transitions, the reduced-motion assertion, and any
+placement that settles over a frame.
+
+**The built-in pane is fine for everything static**, and it is the safer default because it does not touch
+Peter's own browser. Reading computed styles, checking what is open at rest, reading the accessibility
+tree, asserting roles and names.
+
+An earlier note in this file said the pane could not reach the reference at all. That is no longer true and
+has been corrected. What remains true is the hidden-page limitation: **anything waiting on an animation
+frame hangs there**, which is why the census scripts must never wait on one.
+
+### Courtesy, since one path is Peter's own browser
+
+The DevTools path attaches to his real Chrome and lists his tabs. So: open what you need, close only what
+you opened, and never close a tab you did not create.
 
 ### What was verified end to end
 
-On the live reference:
+On the live reference: the full accessibility tree with roles and names; **real hover opened a tooltip**,
+which matters because the reference ignores synthetic events; and with it open, `position: absolute`, a
+247 by 29 box, its transform matrix, and that `aria-describedby` is wired **only while open** — behaviour
+our element must match and the census cannot see.
 
-- The full accessibility tree of the tooltip page, roles and names included. This is the semantic
-  oracle the method needs.
-- **Real hover opened a tooltip**, which matters because the reference ignores synthetic events.
-- With it open: `position: absolute`, a 247 by 29 box, its transform matrix, and that
-  `aria-describedby` is wired **only while open**. That last point is behaviour our own element must
-  match and the census cannot see.
-- Press markers from the reference's button library, confirming what our saved corpus showed.
-
-On our own page, with the local docs server running:
-
-- All 31 tooltip elements found, and **none open at rest**, which is what the docs cleanup was for.
-- Shadow roots are reachable, so a comparison can read inside our elements.
+On our own docs server: all 31 tooltip elements found, **none open at rest**, which is what the docs
+cleanup was for, and shadow roots reachable so a comparison can read inside our elements.
 
 ### The rule this settles
 
-Both sides can now be driven in one session, with real input, reading computed styles and the
-accessibility tree from each. So compare **live against live in the same run** rather than against a
-stored baseline: a change on the reference's side then shows up as a reviewable difference instead of a
-mystery failure weeks later.
+Both sides can be driven in one session with real input. So compare **live against live in the same run**
+rather than against a stored baseline: a change on the reference's side then shows up as a reviewable
+difference instead of a mystery failure weeks later.

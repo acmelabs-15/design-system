@@ -414,14 +414,15 @@ build, so a behaviour we never wired stays invisible. The oracle must come from 
 
 ### 5.5 Compare against the live reference `[ ]`
 
-**Unblocked 2026-09-10.** The Chrome DevTools protocol tools do the whole job: their own Chrome,
-navigation, the accessibility tree, script, real hover and key input, viewport and colour-scheme
-emulation. Verified against both the live reference and our local docs server in one session, including
-reaching inside our shadow roots.
+**Unblocked 2026-09-10.** Two paths now work and agree with each other, producing identical
+measurements against the live reference. One difference decides which to use: **animation frames fire only
+under the Chrome DevTools protocol**, because its page is visible; the built-in pane is hidden, so anything
+waiting on a frame hangs there.
 
-Two other paths are not sufficient, recorded so nobody retries them: the built-in browser pane cannot
-reach the reference and fires no timers; direct control of Peter's Chrome navigates but cannot read a
-page.
+So: **DevTools protocol for motion**, built-in pane for everything static. The DevTools path attaches to
+Peter's real Chrome, so close only tabs you opened. Direct control of his Chrome remains unusable for this
+— it navigates but cannot read a page. Full comparison in
+[notes/analysis/behaviour-verification-method.md](notes/analysis/behaviour-verification-method.md).
 
 First real finding from it, already: the reference wires `aria-describedby` on a tooltip trigger **only
 while the tooltip is open**, and our page has none of its 31 tooltips open at rest. The census cannot see
