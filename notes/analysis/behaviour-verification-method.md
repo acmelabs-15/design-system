@@ -336,6 +336,48 @@ three.
 **A finished animation reads its fill value everywhere.** Catch a bubble mid-exit and every sample looks
 wrong. Confirm the animation's state before trusting a sample, and prefer a freshly opened element.
 
+### The three popular workarounds, each tested in the preview pane and each failing
+
+These circulate widely and sound plausible. All three were tested directly in the built-in preview pane
+with the page hidden, rather than reasoned about.
+
+**The silent audio trick — no effect.** Chrome does exempt audible tabs from some throttling, so a muted
+oscillator is a known trick. It does not restore frames, and it does not help timers either.
+
+Frames, with the audio context confirmed `running`: dead before, dead with audio on, dead after closing
+it, dead on reopening. Four probes, one answer.
+
+Timers, measuring a 50ms interval's real period, run in both orders so ordering could not explain it:
+
+| Condition | Median gap |
+|---|---|
+| No audio, measured first | 557ms |
+| Silent audio running | 1000ms |
+| Silent audio, measured first | 812ms |
+| No audio, measured second | 857ms |
+
+Both clamp toward 1000ms and the audio makes no reliable difference. Worth noting one honest trap here:
+the very first probe *appeared* to show frames returning when audio started. Re-testing with the audio
+removed and re-added showed the pane had simply flipped state for an unrelated reason. A single
+before-and-after reading is not evidence.
+
+**Spoofing the visibility property — no effect, and this one is conclusive.** Overriding
+`document.visibilityState` to `"visible"` and `document.hidden` to `false` succeeded: the page now
+reports itself visible. Frames stayed dead.
+
+That is the cleanest confirmation of the source reading. The gate is in the browser's compositor, which
+never consults the JavaScript property, so a page — or an extension injecting into it — cannot lie its way
+back into the frame loop.
+
+**Moving the tab to its own window, or leaving it merely covered.** This is the one with real substance,
+because a *covered* window is `OCCLUDED` rather than `HIDDEN`, and the occlusion switch does upgrade that
+to visible. It does not help a minimized window, and it does not help our pane, whose state we do not
+control.
+
+**Web workers** are the remaining item, and they are genuinely correct for their actual purpose: a worker's
+timers are not render-throttled, so a worker can drive a steady tick. But a worker has no DOM, so it cannot
+read a computed style or an animation. It solves timing, not measurement, and measurement is our problem.
+
 ### Two rejected alternatives, for the record
 
 - Forcing the page active through the debugging protocol's lifecycle command does not restore frames. It
