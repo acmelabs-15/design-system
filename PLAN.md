@@ -113,6 +113,13 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
 - Tests live in `__tests__/` beside the file, named `<file>.test.ts`, using `bun:test`.
 - Decisions that are Peter's go through the question dialog, one at a time. **Commit only when
   Peter asks.**
+- **Write the decision down the moment it is agreed, not later.** Every decision, every scope
+  change and every clarification lands in this file as part of the same turn it was settled in. A
+  decision that lives only in the conversation is lost the next time the context resets, and the
+  next agent then rediscovers it the expensive way. If a decision or an investigation is too large
+  for a plan entry, give it its own file under `docs/decisions/` or `docs/analysis/` and link it
+  from here. This file stays the entry point: reading it, and the files it links, is enough to know
+  the whole project.
 
 ---
 
@@ -183,7 +190,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Specs extracted | 76 |
 | Tests | 583 pass, 0 fail |
 | Build, docs build | pass |
-| Committed | nothing since v0.1.1; about 620 changed files on disk |
+| Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Parity, measured | **not currently provable — see section 4** |
 
 ### Wave 3: overlays
@@ -377,7 +384,16 @@ Where a package ships vanilla only, write the Lit wrapper or controller here.
 - [ ] Select: decide the house-only `options` property, which feedback uses `[?]`
 - [ ] Foundations pages: the reference's exact heading levels, or ours `[?]`
 
-### 5.8 Release `[?]`
+### 5.8 Release
+
+- [x] **0.2.0, 2026-09-10.** The parity port to date: 22 more elements (131 to 153 exports), every
+  element re-templated to the reference's DOM, states and API, all 159 style modules regenerated,
+  the parity tool itself (129 maps, 187 sketches, 76 specs), the chosen package stack as real
+  dependencies, two generator bug fixes with tests, and the virtualized table demo fixed. A minor
+  bump, because element APIs changed and below 1.0 that is where breaking changes go. Published by
+  pushing the v0.2.0 tag; the workflow publishes through npm's Trusted Publisher, no token.
+- [ ] The next release is the one that can claim parity: after the measurement sweep (5.1), the
+  behaviour sweep (5.4) and the last three elements (5.3). Ask Peter once before tagging it.
 
 Ask Peter once, then: commit, push, docs deploy, npm release.
 
