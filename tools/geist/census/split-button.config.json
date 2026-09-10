@@ -1,0 +1,54 @@
+{
+  "note": "Reconstructed 2026-09-10 from the saved results (reconstruct.ts) plus selectors read out of the mirror snapshot and our own page, not guessed. The reference root is div.flex.relative, the wrapper holding both buttons: data-geist-menu-button marks the TRIGGER and there are 15 of those, one per root, so it cannot be the marker. `previews` names 0..3 on the reference: the mirror carries six preview boxes and our docs page has four, and the last two reference previews have no counterpart. Verified by counting: both sides give 6+2+1+6 = 15 roots over those four, matching the saved run. `states` is [\"\"] INSIDE each side, not at the top level: the census defaults to four passes (base, data-hover, data-focus, data-active) and reads a top-level key not at all, so a misplaced one silently measures three states the saved run never did. Base alone matches the saved run \u2014 the reference's hover and focus land on data-hover/data-focus that react-aria sets, which the census cannot drive. `textParts` is main and mainLabel, whose width follows the button's own text. Both labels are acme-button's own `label` part, reached with a >> hop through the button's shadow root. `main` and `trigger` also hop: the reference's <button> is the real control, and on ours acme-button is only the HOST \u2014 reading the host gives cursor:auto, position:static and font-weight:400 for a button that is none of those. The trigger's glyph is NOT reached that way: it sits in the light DOM inside .inner, so its selector is a plain descendant one; the trigger's is the box the reference centres with flex, which is why triggerLabel and mainLabel read differently.",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "geist": {
+    "side": "geist",
+    "page": "split-button",
+    "marker": "div.flex.relative",
+    "textParts": [
+      "main",
+      "mainLabel"
+    ],
+    "children": {
+      "main": "acme-button.main >> [part=button]|button:not([data-geist-menu-button])",
+      "mainLabel": "acme-button.main >> [part=label]|button:not([data-geist-menu-button]) > span",
+      "trigger": "acme-button.trigger >> [part=button]|button[data-geist-menu-button]",
+      "triggerLabel": "acme-button.trigger >> [part=label]|button[data-geist-menu-button] > span",
+      "inner": ".inner|button[data-geist-menu-button] > span > *",
+      "svg": "acme-button.trigger svg|button[data-geist-menu-button] svg"
+    },
+    "previews": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "states": [
+      ""
+    ]
+  },
+  "ours": {
+    "side": "ours",
+    "page": "split-button",
+    "host": "acme-split-button",
+    "ours": ".split",
+    "textParts": [
+      "main",
+      "mainLabel"
+    ],
+    "children": {
+      "main": "acme-button.main >> [part=button]|button:not([data-geist-menu-button])",
+      "mainLabel": "acme-button.main >> [part=label]|button:not([data-geist-menu-button]) > span",
+      "trigger": "acme-button.trigger >> [part=button]|button[data-geist-menu-button]",
+      "triggerLabel": "acme-button.trigger >> [part=label]|button[data-geist-menu-button] > span",
+      "inner": ".inner|button[data-geist-menu-button] > span > *",
+      "svg": "acme-button.trigger svg|button[data-geist-menu-button] svg"
+    },
+    "states": [
+      ""
+    ]
+  }
+}

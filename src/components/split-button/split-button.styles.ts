@@ -27,6 +27,16 @@ export const splitButtonCss = css`
     border-color: var(--ds-gray-400) !important;
     box-shadow: none !important;
   }
+  .split :where(acme-button.trigger)::part(trigger-label) {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-inline: 0.375rem;
+  }
   .split :where(acme-button.trigger) :where(.inner) {
     display: flex;
     width: 100%;

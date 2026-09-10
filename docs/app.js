@@ -5921,6 +5921,16 @@ Please use the static 'html' tag function. See https://lit.dev/docs/templates/ex
     border-color: var(--ds-gray-400) !important;
     box-shadow: none !important;
   }
+  .split :where(acme-button.trigger)::part(trigger-label) {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-inline: 0.375rem;
+  }
   .split :where(acme-button.trigger) :where(.inner) {
     display: flex;
     width: 100%;
@@ -6055,7 +6065,7 @@ Please use the static 'html' tag function. See https://lit.dev/docs/templates/ex
   }
 `;var Nt=function(t,e,r,i){var s=arguments.length,o=s<3?e:i===null?i=Object.getOwnPropertyDescriptor(e,r):i,n;if(typeof Reflect==="object"&&typeof Reflect.decorate==="function")o=Reflect.decorate(t,e,r,i);else for(var a=t.length-1;a>=0;a--)if(n=t[a])o=(s<3?n(o):s>3?n(e,r,o):n(e,r))||o;return s>3&&o&&Object.defineProperty(e,r,o),o},_7=400,$7=8,{AttributePart:xt,BooleanAttributePart:$1,EventPart:_h}=C,C1=(t)=>t,C7={h:C1`<div part="split">
         <acme-button class="main" part="button"><slot></slot></acme-button>
-        <acme-button class="trigger" type="button" aria-haspopup="menu" part="menu-button"><span class="inner"><?></span></acme-button>
+        <acme-button class="trigger" type="button" aria-haspopup="menu" part="menu-button" exportparts="label:trigger-label"><span class="inner"><?></span></acme-button>
       </div>
       <?><!--?-->`,parts:[{type:1,index:0,name:"class",strings:["",""],ctor:xt},{type:1,index:0,name:"style",strings:["",""],ctor:xt},{type:1,index:1,name:"variant",strings:["",""],ctor:xt},{type:1,index:1,name:"size",strings:["",""],ctor:xt},{type:1,index:1,name:"type",strings:["",""],ctor:xt},{type:1,index:1,name:"disabled",strings:["",""],ctor:$1},{type:1,index:1,name:"click",strings:["",""],ctor:_h},{type:1,index:3,name:"variant",strings:["",""],ctor:xt},{type:1,index:3,name:"size",strings:["",""],ctor:xt},{type:1,index:3,name:"disabled",strings:["",""],ctor:$1},{type:1,index:3,name:"aria-label",strings:["",""],ctor:xt},{type:1,index:3,name:"aria-expanded",strings:["",""],ctor:xt},{type:1,index:3,name:"aria-controls",strings:["",""],ctor:xt},{type:1,index:3,name:"data-is-open",strings:["",""],ctor:xt},{type:1,index:3,name:"click",strings:["",""],ctor:_h},{type:1,index:3,name:"keydown",strings:["",""],ctor:_h},{type:2,index:5},{type:2,index:6}]},S7={h:C1`<div class="popover" popover="manual">
               <div part="menu">
@@ -17641,5 +17651,5 @@ ${r}
       <div><acme-button type="submit" variant="primary" ?disabled=${!this.form.api.state.canSubmit}>Create Account</acme-button></div>
     </form>`}}yb=mo([x("docs-form-demo")],yb);window.acme={toasts:Dt,createToastQueue:Od};document.addEventListener("click",(t)=>{let e=t.target.closest(".showbar");if(!e)return;let r=e.closest(".showcase"),i=r.dataset.open==="true";if(r.dataset.open=String(!i),e.setAttribute("aria-expanded",String(!i)),e.lastChild)e.lastChild.textContent=i?"Show code":"Hide code"});
 
-//# debugId=08AADD34958D255664756E2164756E21
+//# debugId=365C982E42687F6564756E2164756E21
 //# sourceMappingURL=app.js.map

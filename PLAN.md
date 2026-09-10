@@ -209,6 +209,15 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
+- **Back up a census result before re-running it; the results are not in version control until
+  committed.** Verified the expensive way 2026-09-10 on split-button: a first re-run measured three
+  states the saved run never did and used selectors that read the wrong boxes, taking the page from
+  60 hard to 1716 and overwriting the evidence. A copy under /tmp made that recoverable. Two config
+  faults caused it, both worth checking before any run: `states` belongs INSIDE each side (a
+  top-level key is ignored, and the census then defaults to four state passes), and a part naming a
+  composed element must hop to the real control — `acme-button.trigger` reads the HOST, giving
+  cursor:auto and position:static for a button that is neither, while `acme-button.trigger >>
+  [part=button]` reads the button.
 - **The port stops at Vercel's own brand.** Decided 2026-09-10 by Peter: `acme-brands` was removed
   outright. It drew Vercel's wordmarks, Next.js, Turbo, Turbopack and v0 — their trademarks, not a
   design-system capability — and this is the house system, not a port of their brand. The element,
@@ -391,7 +400,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 610 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
+| Tests | 599 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |
@@ -664,9 +673,13 @@ differences point at something real.
   reported differences were computed across misaligned roots; and the reference has one root with no
   cell at all, whose icon reads 24x16 against the 14x14 every cell icon reads.
 
-- [ ] Remaining, in cost order: badge (51), split-button (60), book (142),
-  split-button-trigger (240), choicebox (558). code-block stands at 31, all three causes known
-  (see below).
+- [ ] Remaining: book (142), split-button-trigger (240), choicebox (558). code-block stands at 31,
+  all three causes known (see below).
+
+  **Done 2026-09-10.** badge: 0 hard, its 51 differences were the reference's own demos authoring
+  `class="relative"` on the icons they pass in — now an ACCEPTED entry with that evidence.
+  split-button: 60 → **4**, both themes, after rebuilding its census config; the last 4 are one
+  cause, written up in `notes/analysis/element-child-radius.md`, and need a decision from Peter.
 
   **code-block, 2026-09-10.** Its 31 hard differences are three causes only, and none is an element
   defect the census can see:

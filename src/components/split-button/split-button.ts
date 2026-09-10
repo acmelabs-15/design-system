@@ -198,6 +198,7 @@ export class AcmeSplitButton extends AcmeElement {
           }}
           @keydown=${this.onTriggerKey}
           part="menu-button"
+          exportparts="label:trigger-label"
           ><span class="inner">${glyphSized("chev-d")}</span></acme-button
         >
       </div>
