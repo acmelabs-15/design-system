@@ -1,5 +1,5 @@
 import { property, query } from "lit/decorators.js";
-import { AcmeElement } from "../base.js";
+import { AcmeElement } from "../base";
 
 export const reduced = () => typeof matchMedia !== "undefined" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 

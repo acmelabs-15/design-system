@@ -1,12 +1,20 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { checkCss } from "./check.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { checkCss } from "./check.styles";
 
 /** House checklist row: a 20px box, a text with a sub line, and a when. */
 @customElement("acme-check")
 export class AcmeCheck extends AcmeElement {
-  static styles = [sharedCss, checkCss, css`:host{display:block}`];
+  static styles = [
+    sharedCss,
+    checkCss,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
   @property({ type: Boolean, reflect: true }) checked = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property() when = "";

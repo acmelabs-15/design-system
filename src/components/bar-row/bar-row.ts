@@ -1,13 +1,25 @@
 import { css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { trendCss } from "../trend/trend.styles.js";
-import { barRowCss } from "./bar-row.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { trendCss } from "../trend/trend.styles";
+import { barRowCss } from "./bar-row.styles";
 
 /** House bar row: label, value, a bar, and the result under it. */
 @customElement("acme-bar-row")
 export class AcmeBarRow extends AcmeElement {
-  static styles = [sharedCss, barRowCss, trendCss, css`:host{display:block} .fill{background:var(--bar-color,var(--accent))}`];
+  static styles = [
+    sharedCss,
+    barRowCss,
+    trendCss,
+    css`
+      :host {
+        display: block;
+      }
+      .fill {
+        background: var(--bar-color, var(--accent));
+      }
+    `,
+  ];
   @property() label = "";
   @property() value = "";
   @property({ type: Number }) percent = 0;

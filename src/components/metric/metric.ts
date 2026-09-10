@@ -1,11 +1,27 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { metricListCss } from "../metric-list/metric-list.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { metricListCss } from "../metric-list/metric-list.styles";
 
 @customElement("acme-metric")
 export class AcmeMetric extends AcmeElement {
-  static styles = [sharedCss, metricListCss, css`:host{display:contents} .metric-list{display:contents;box-shadow:none;background:none} .threshold{display:flex}`];
+  static styles = [
+    sharedCss,
+    metricListCss,
+    css`
+      :host {
+        display: contents;
+      }
+      .metric-list {
+        display: contents;
+        box-shadow: none;
+        background: none;
+      }
+      .threshold {
+        display: flex;
+      }
+    `,
+  ];
   @property() value = "";
   @property() label = "";
   @property() unit = "";

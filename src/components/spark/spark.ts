@@ -1,12 +1,27 @@
 import { css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { statCss } from "../stat/stat.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { statCss } from "../stat/stat.styles";
 
 /** Sparkline: pass `points` (numbers) and a `tone`. */
 @customElement("acme-spark")
 export class AcmeSpark extends AcmeElement {
-  static styles = [sharedCss, statCss, css`:host{display:block;padding-top:8px} svg{display:block;width:100%;height:40px;overflow:visible}`];
+  static styles = [
+    sharedCss,
+    statCss,
+    css`
+      :host {
+        display: block;
+        padding-top: 8px;
+      }
+      svg {
+        display: block;
+        width: 100%;
+        height: 40px;
+        overflow: visible;
+      }
+    `,
+  ];
   @property({ type: Array }) points: number[] = [];
   @property() tone: "" | "down" | "flat" = "";
   render() {

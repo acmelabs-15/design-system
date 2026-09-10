@@ -1,12 +1,20 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, glyph, sharedCss } from "../../base.js";
-import { foldCss } from "./fold.styles.js";
+import { AcmeElement, glyph, sharedCss } from "../../base";
+import { foldCss } from "./fold.styles";
 
 /** Vercel fold: a section that shows tiles closed and charts open. Slots: closed, open. */
 @customElement("acme-fold")
 export class AcmeFold extends AcmeElement {
-  static styles = [sharedCss, foldCss, css`:host{display:block}`];
+  static styles = [
+    sharedCss,
+    foldCss,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
   @property() heading = "";
   @property({ type: Boolean, reflect: true }) open = false;
   @property({ type: Number }) count = 0;

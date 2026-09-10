@@ -1,11 +1,20 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { tileCss } from "./tile.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { tileCss } from "./tile.styles";
 
 @customElement("acme-tile")
 export class AcmeTile extends AcmeElement {
-  static styles = [sharedCss, tileCss, css`:host{display:block;min-width:0}`];
+  static styles = [
+    sharedCss,
+    tileCss,
+    css`
+      :host {
+        display: block;
+        min-width: 0;
+      }
+    `,
+  ];
   @property() label = "";
   @property() qualifier = "";
   @property({ type: Boolean }) plain = false;

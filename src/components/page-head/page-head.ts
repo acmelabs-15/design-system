@@ -1,13 +1,22 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, glyph, sharedCss } from "../../base.js";
-import { buttonCss } from "../button/button.styles.js";
-import { pageHeadCss } from "./page-head.styles.js";
+import { AcmeElement, glyph, sharedCss } from "../../base";
+import { buttonCss } from "../button/button.styles";
+import { pageHeadCss } from "./page-head.styles";
 
 /** Vercel page head: title, meta line and actions. */
 @customElement("acme-page-head")
 export class AcmePageHead extends AcmeElement {
-  static styles = [sharedCss, pageHeadCss, buttonCss, css`:host{display:block}`];
+  static styles = [
+    sharedCss,
+    pageHeadCss,
+    buttonCss,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
   @property() heading = "";
   @property() back = "";
   @property({ attribute: "back-href" }) backHref = "";

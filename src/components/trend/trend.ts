@@ -1,12 +1,22 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, glyph, sharedCss } from "../../base.js";
-import { trendCss } from "./trend.styles.js";
+import { AcmeElement, glyph, sharedCss } from "../../base";
+import { trendCss } from "./trend.styles";
 
 /** House Trend: a signed change with its direction; pill when it stands alone. */
 @customElement("acme-trend")
 export class AcmeTrend extends AcmeElement {
-  static styles = [sharedCss, trendCss, css`:host{display:inline-flex;align-items:center;gap:6px}`];
+  static styles = [
+    sharedCss,
+    trendCss,
+    css`
+      :host {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+    `,
+  ];
   @property() direction: "" | "up" | "down" = "";
   @property({ type: Boolean }) pill = false;
   @property({ type: Boolean }) large = false;

@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { buttonCss } from "../button/button.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { buttonCss } from "../button/button.styles";
 
 /** A joined group of buttons; add `split` for the Geist split button. */
 @customElement("acme-button-group")

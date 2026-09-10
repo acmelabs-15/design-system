@@ -1,51 +1,142 @@
-import { css, html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { glyph, sharedCss } from "../../base.js";
-import { fieldCss } from "../../shared/field.styles.js";
-import { Overlay } from "../../shared/overlay.js";
-import { buttonCss } from "../button/button.styles.js";
-import { modalCss } from "../modal/modal.styles.js";
-import { noteCss } from "../note/note.styles.js";
+import { html, nothing } from "lit";
+import { customElement, property, state } from "lit/decorators.js";
+import { AcmeElement, sharedCss } from "../../base";
+import "../modal/modal";
+import "../input/input";
+import "../button/button";
+import "../note/note";
+import "../error/error";
+import type { AcmeInput } from "../input/input";
+import type { ModalDismissReason } from "../modal/modal";
+import { destructiveModalCss } from "./destructive-modal.styles";
 
-/** Geist Destructive Action Modal: a typed gate; `phrase` must match before the primary enables. */
+/** Why the modal cancelled: the Cancel button, the Escape key or a press outside the panel. */
+export type DestructiveCancelReason = "cancel" | ModalDismissReason;
+
+/**
+ * Destructive action modal: a 480px modal that confirms a destructive action behind a typed gate.
+ * The panel holds the heading, the description (the default slot) and a stack: the red band naming
+ * what cannot be undone (`irreversible-description`; leave it out for a reversible action), the
+ * prompt "To confirm, type the project name “my-project”" above the verification input, and the
+ * inline error line (`error`). The footer holds Cancel and the red confirm button, which enables
+ * only while the typed text equals `verification-phrase`; Enter in the input confirms the same
+ * way. Leaving the input with a wrong non-empty value marks it invalid ("The project name must
+ * match exactly."). `loading` disables the input and both buttons and spins the confirm. The
+ * input gets focus on open; the typed text resets on close. The caller owns `open`: confirm
+ * dispatches `acme-confirm` and leaves the modal open; Cancel, Escape and a press outside dispatch
+ * `acme-cancel` (cancelable, `detail.reason`) and close it unless the event is prevented.
+ */
 @customElement("acme-destructive-modal")
-export class AcmeDestructiveModal extends Overlay {
-  static styles = [
-    sharedCss,
-    modalCss,
-    buttonCss,
-    fieldCss,
-    noteCss,
-    css`dialog{padding:0;border:0;background:transparent;max-width:none;overflow:visible;color:var(--text)} dialog::backdrop{background:var(--scrim)} .modal{margin:auto} .field{margin:0} :host([static]) dialog{position:static;display:block} :host([static]) .modal{width:100%;max-height:none;box-shadow:var(--ds-shadow-border-medium)}`,
-  ];
-  @property() heading = "Delete Project";
-  @property() phrase = "";
-  @property() noun = "project name";
-  @property() action = "";
-  @property() irreversible = "";
+export class AcmeDestructiveModal extends AcmeElement {
+  static styles = [sharedCss, destructiveModalCss];
+  /** Open state; `show()` and `close()` set it. */
+  @property({ type: Boolean, reflect: true }) open = false;
+  /** Title Case, Verb + Noun, a statement: "Delete Project". */
+  @property() heading = "";
+  /** The confirm button's label; the heading when unset. */
+  @property({ attribute: "confirm-label" }) confirmLabel = "";
+  @property({ attribute: "cancel-label" }) cancelLabel = "Cancel";
+  /** The confirm button's variant. */
+  @property({ attribute: "confirm-variant" }) confirmVariant = "error";
+  /** The text the user must type exactly. */
+  @property({ attribute: "verification-phrase" }) verificationPhrase = "";
+  /** Names the phrase in the prompt: "To confirm, type the project name …". */
+  @property({ attribute: "verification-label" }) verificationLabel = "";
+  /** The red band's text: "Deleting my-project cannot be undone."; unset for a reversible action. */
+  @property({ attribute: "irreversible-description" }) irreversibleDescription = "";
+  /** Disables the input and both buttons and spins the confirm. */
   @property({ type: Boolean }) loading = false;
-  @property() error = "";
-  @property({ type: Boolean, reflect: true }) static = false;
-  private typed = "";
+  /** An inline error under the input (a string, or an Error whose message shows); the modal stays open. */
+  @property() error: string | Error | null = null;
+  /** The panel's width in px. */
+  @property({ type: Number }) width = 480;
+  @state() private typed = "";
+  /** The input has lost focus once: a wrong value reads as invalid from then on. */
+  @state() private touched = false;
+
+  show() {
+    this.open = true;
+  }
+  close() {
+    this.open = false;
+  }
+
+  private get matched() {
+    return this.typed === this.verificationPhrase;
+  }
+
+  updated(ch: Map<string, unknown>) {
+    if (ch.has("open") && !this.open) {
+      this.typed = "";
+      this.touched = false;
+    }
+  }
+
+  private onInput = (e: Event) => {
+    this.typed = (e.target as AcmeInput).value;
+  };
+
+  private onBlur = () => {
+    this.touched = true;
+  };
+
+  /** Enter in the input submits: the confirm, gated the same way as the button. */
+  private onKey = (e: KeyboardEvent) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    this.confirm();
+  };
+
+  private confirm = () => {
+    if (!this.matched || this.loading) return;
+    this.dispatchEvent(new CustomEvent("acme-confirm", { bubbles: true, composed: true }));
+  };
+
+  /** Asks to cancel: the cancelable `acme-cancel` event, then the close. */
+  private cancel(reason: DestructiveCancelReason) {
+    const ok = this.dispatchEvent(new CustomEvent<{ reason: DestructiveCancelReason }>("acme-cancel", { detail: { reason }, bubbles: true, composed: true, cancelable: true }));
+    if (ok) this.close();
+  }
+
+  private onCancelClick = () => this.cancel("cancel");
+
+  /** The modal's own dismissal (Escape, a press outside) is this element's cancel: the modal's event stops here and its close is this element's. */
+  private onDismiss = (e: CustomEvent<{ reason: ModalDismissReason }>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.cancel(e.detail.reason);
+  };
+
   render() {
-    const ok = this.typed === this.phrase && !this.loading;
-    return html`<dialog @cancel=${this.onCancel} @click=${this.backdropClick} aria-labelledby="t" ?open=${this.static}>
-      <form class="modal narrow" method="dialog" @submit=${(e: Event) => {
-        e.preventDefault();
-        if (ok) this.dispatchEvent(new CustomEvent("acme-confirm", { bubbles: true }));
-      }} part="modal">
-        <div class="modal-h"><h3 id="t">${this.heading}</h3><p><slot></slot></p></div>
-        <div class="modal-b">
-          ${this.irreversible ? html`<div class="note error fill" style="margin-bottom:24px">${glyph("alert")}<span>${this.irreversible}</span></div>` : nothing}
-          <div class="field"><label class="plain" style="text-transform:none;color:var(--text)">To confirm, type the ${this.noun} “<b>${this.phrase}</b>”</label><input type="text" autocomplete="off" spellcheck="false" .value=${this.typed} aria-invalid=${this.error ? "true" : nothing} @input=${(
-            e: Event,
-          ) => {
-            this.typed = (e.target as HTMLInputElement).value;
-            this.requestUpdate();
-          }}>${this.error ? html`<span class="msg error">${this.error}</span>` : nothing}</div>
+    const mismatch = this.touched && this.typed !== "" && !this.matched;
+    const inputError = mismatch ? (this.verificationLabel ? `The ${this.verificationLabel} must match exactly.` : "Doesn’t match.") : "";
+    const message = this.error instanceof Error ? this.error.message : this.error;
+    const prompt = `To confirm, type ${this.verificationLabel ? `the ${this.verificationLabel} ` : ""}“${this.verificationPhrase}”`;
+    return html`<acme-modal .open=${this.open} width=${this.width} heading=${this.heading} initial-focus="acme-input" @acme-dismiss=${this.onDismiss} part="modal">
+      <slot slot="subtitle"></slot>
+      <div class=${this.cls("stack", { irreversible: !!this.irreversibleDescription, loading: this.loading, errored: !!message })} part="stack">
+        ${this.irreversibleDescription ? html`<acme-note variant="error" fill part="band">${this.irreversibleDescription}</acme-note>` : nothing}
+        <div class="field" part="field">
+          <label class="prompt" id="prompt-label" for="prompt" part="prompt">To confirm, type ${this.verificationLabel ? html`the ${this.verificationLabel} ` : nothing}“<b class="phrase" translate="no">${this.verificationPhrase}</b>”</label>
+          <acme-input
+            id="prompt"
+            aria-label=${prompt}
+            autocomplete="off"
+            translate="no"
+            .value=${this.typed}
+            ?disabled=${this.loading}
+            .error=${inputError}
+            @acme-input=${this.onInput}
+            @focusout=${this.onBlur}
+            @keydown=${this.onKey}
+            part="input"
+          ></acme-input>
         </div>
-        <div class="modal-f"><button class="btn" type="button" ?disabled=${this.loading} @click=${() => this.close()}>Cancel</button><button class=${this.cls("btn primary", { loading: this.loading })} type="submit" ?disabled=${!ok}>${this.action || this.heading}</button></div>
-      </form></dialog>`;
+        ${message ? html`<acme-error part="error">${message}</acme-error>` : nothing}
+      </div>
+      <acme-button slot="actions" variant="secondary" ?disabled=${this.loading} @click=${this.onCancelClick} part="cancel">${this.cancelLabel}</acme-button>
+      <acme-button slot="actions" variant=${this.confirmVariant} type="submit" ?disabled=${!this.matched || this.loading} ?loading=${this.loading} @click=${this.confirm} part="confirm">${this.confirmLabel || this.heading}</acme-button>
+    </acme-modal>`;
   }
 }
 

@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { tagCss } from "../tag/tag.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { tagCss } from "../tag/tag.styles";
 
 @customElement("acme-tags")
 export class AcmeTags extends AcmeElement {

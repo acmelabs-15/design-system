@@ -1,35 +1,45 @@
 import { css, html } from "lit";
-import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { breadcrumbsCss } from "./breadcrumbs.styles.js";
+import { customElement, property, queryAssignedElements } from "lit/decorators.js";
+import { AcmeElement, sharedCss } from "../../base";
+import type { AcmeBreadcrumb } from "../breadcrumb/breadcrumb";
+import { breadcrumbsCss } from "./breadcrumbs.styles";
 
-/** Geist Breadcrumbs: text type, or `menu` type chips. Children: acme-breadcrumb or plain a/span. */
+/**
+ * Breadcrumbs: where the page sits in the site's hierarchy, as a row of `acme-breadcrumb`
+ * crumbs. `type="text"` (the default) is a labelled navigation list, 14px crumbs 6px apart with
+ * a chevron after each but the last; `type="menu"` is a row of 12px chips 8px apart that scrolls
+ * sideways on a narrow screen. The list hands its type to the crumbs.
+ */
 @customElement("acme-breadcrumbs")
 export class AcmeBreadcrumbs extends AcmeElement {
   static styles = [
     sharedCss,
     breadcrumbsCss,
-    css`:host{display:block} ::slotted(a){color:var(--text-2);text-decoration:none} ::slotted(a:hover){color:var(--text)} ::slotted([aria-current]){color:var(--text)} ::slotted(.disabled){color:var(--ds-gray-700)} :host([variant="menu"]) ::slotted(a),:host([variant="menu"]) ::slotted(span){display:inline-flex;align-items:center;height:22px;padding:2px 6px;border-radius:4px;background:var(--surface-2);border:1px solid var(--ds-gray-alpha-200);font-size:12px;line-height:16px}`,
-  ];
-  @property({ reflect: true }) variant: "" | "menu" = "";
-  @property() separator = "/";
-  firstUpdated() {
-    this.inject();
-  }
-  private inject() {
-    const kids = Array.from(this.children).filter((k) => !k.classList.contains("sep"));
-    kids.forEach((k, i) => {
-      if (i < kids.length - 1 && !k.nextElementSibling?.classList.contains("sep")) {
-        const s = document.createElement("span");
-        s.className = "sep";
-        s.textContent = this.separator;
-        s.setAttribute("aria-hidden", "true");
-        k.after(s);
+    css`
+      :host {
+        display: block;
       }
-    });
+    `,
+  ];
+  /** `text`: a navigation list with chevrons between the crumbs; `menu`: a row of chips. */
+  @property() type: "text" | "menu" = "text";
+  @queryAssignedElements({ selector: "acme-breadcrumb" }) crumbs!: AcmeBreadcrumb[];
+
+  private sync = () => {
+    for (const c of this.crumbs) c.menu = this.type === "menu";
+  };
+
+  firstUpdated() {
+    this.sync();
   }
+
+  updated() {
+    this.sync();
+  }
+
   render() {
-    return html`<nav class=${this.cls("breadcrumbs", { menu: this.variant === "menu" })} aria-label="Breadcrumb" part="nav"><slot @slotchange=${this.inject}></slot></nav>`;
+    const crumbs = html`<slot @slotchange=${this.sync}></slot>`;
+    return this.type === "menu" ? html`<div class="list menu" part="list">${crumbs}</div>` : html`<nav aria-label="Breadcrumb"><ol class="list" part="list">${crumbs}</ol></nav>`;
   }
 }
 

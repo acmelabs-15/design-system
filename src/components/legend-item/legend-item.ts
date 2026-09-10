@@ -1,8 +1,8 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { legendCss } from "../legend/legend.styles.js";
-import { statusDotCss } from "../status-dot/status-dot.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { legendCss } from "../legend/legend.styles";
+import { statusDotCss } from "../status-dot/status-dot.styles";
 
 @customElement("acme-legend-item")
 export class AcmeLegendItem extends AcmeElement {
@@ -10,7 +10,24 @@ export class AcmeLegendItem extends AcmeElement {
     sharedCss,
     legendCss,
     statusDotCss,
-    css`:host{display:inline-flex;align-items:center;gap:6px;min-width:0} .value{margin-left:auto} .dot{width:6px;height:6px;border-radius:50%;flex:none;background:currentColor}`,
+    css`
+      :host {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+      }
+      .value {
+        margin-left: auto;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        flex: none;
+        background: currentColor;
+      }
+    `,
   ];
   @property() hue = "";
   @property({ type: Number }) series = 0;

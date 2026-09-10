@@ -1,14 +1,29 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { buttonCss } from "../button/button.styles.js";
-import { panelHeadCss } from "../panel-head/panel-head.styles.js";
-import { panelCss } from "./panel.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { buttonCss } from "../button/button.styles";
+import { panelHeadCss } from "../panel-head/panel-head.styles";
+import { panelCss } from "./panel.styles";
 
 /** Vercel panel: radius 6, shadow border, a 56px head, a body, a footer. */
 @customElement("acme-panel")
 export class AcmePanel extends AcmeElement {
-  static styles = [sharedCss, panelCss, panelHeadCss, buttonCss, css`:host{display:block;min-width:0} .panel-h .actions ::slotted(a){font-size:13px;font-weight:500}`];
+  static styles = [
+    sharedCss,
+    panelCss,
+    panelHeadCss,
+    buttonCss,
+    css`
+      :host {
+        display: block;
+        min-width: 0;
+      }
+      .panel-h .actions ::slotted(a) {
+        font-size: 13px;
+        font-weight: 500;
+      }
+    `,
+  ];
   @property() heading = "";
   @property() sub = "";
   @property() when = "";

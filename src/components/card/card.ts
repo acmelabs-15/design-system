@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { cardCss } from "./card.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { cardCss } from "./card.styles";
 
 /** House card: the block that must read as its own object. */
 @customElement("acme-card")

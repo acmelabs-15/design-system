@@ -1,14 +1,24 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { badgeCss } from "../badge/badge.styles.js";
-import { buttonCss } from "../button/button.styles.js";
-import { itemCss } from "./item.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { badgeCss } from "../badge/badge.styles";
+import { buttonCss } from "../button/button.styles";
+import { itemCss } from "./item.styles";
 
 /** House item row: avatar, title and meta, amount and badge, actions. */
 @customElement("acme-item")
 export class AcmeItem extends AcmeElement {
-  static styles = [sharedCss, itemCss, badgeCss, buttonCss, css`:host{display:block}`];
+  static styles = [
+    sharedCss,
+    itemCss,
+    badgeCss,
+    buttonCss,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
   @property() href = "";
   @property() amount = "";
   @property({ type: Boolean }) large = false;

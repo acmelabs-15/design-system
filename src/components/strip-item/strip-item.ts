@@ -1,12 +1,26 @@
 import { css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { badgeCss } from "../badge/badge.styles.js";
-import { statStripCss } from "../stat-strip/stat-strip.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { badgeCss } from "../badge/badge.styles";
+import { statStripCss } from "../stat-strip/stat-strip.styles";
 
 @customElement("acme-strip-item")
 export class AcmeStripItem extends AcmeElement {
-  static styles = [sharedCss, statStripCss, badgeCss, css`:host{display:contents} .stat-strip{display:contents;background:none;margin:0}`];
+  static styles = [
+    sharedCss,
+    statStripCss,
+    badgeCss,
+    css`
+      :host {
+        display: contents;
+      }
+      .stat-strip {
+        display: contents;
+        background: none;
+        margin: 0;
+      }
+    `,
+  ];
   @property() value = "";
   @property() label = "";
   @property({ type: Boolean, reflect: true }) selected = false;

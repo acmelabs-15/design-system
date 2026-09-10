@@ -1,12 +1,20 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { panelHeadCss } from "./panel-head.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { panelHeadCss } from "./panel-head.styles";
 
 /** A card or section head with a title, sub line and actions. */
 @customElement("acme-panel-head")
 export class AcmePanelHead extends AcmeElement {
-  static styles = [sharedCss, panelHeadCss, css`:host{display:block}`];
+  static styles = [
+    sharedCss,
+    panelHeadCss,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
   @property() heading = "";
   @property() sub = "";
   render() {

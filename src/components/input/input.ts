@@ -1,61 +1,175 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
-import { AcmeElement, glyph, sharedCss } from "../../base.js";
-import { fieldCss } from "../../shared/field.styles.js";
-import { type Size, sizeCls } from "../../shared/input.js";
+import { customElement, property, query, state } from "lit/decorators.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { Interaction } from "../../shared/interaction";
+import { inputCss } from "./input.styles";
+import { inputLabelCss } from "./input-label.styles";
+import "../error/error";
 
-/** Geist Input: 32 / 36 / 40, radius 6 (large 8), label above, error below, prefix and suffix cells. */
+export type InputSize = "small" | "medium" | "large";
+
+/** A boolean that is true unless the attribute says `"false"`, for props that default to true. */
+const onUnlessFalse = { fromAttribute: (v: string | null) => v !== "false", toAttribute: (v: boolean) => (v ? null : "false") };
+
+/**
+ * A single-line text field. A flex wrapper (32 / 36 / 40px, radius 6, large 8) holds the field
+ * and, when given, a prefix cell before it and a suffix cell after it: text through `prefix` /
+ * `suffix`, an element through the slots of the same names. A cell is filled and hairlined
+ * unless its styling is off; a suffix without its container is slotted straight into the
+ * wrapper. The wrapper carries the size, `error`, `rounded` and cell modifiers and the
+ * interaction states (data-hover, data-focus: focus within the field, data-active). `label`
+ * renders the text above the field; `error` renders the message under it and marks the field
+ * invalid. Form-associated and labelable.
+ */
 @customElement("acme-input")
 export class AcmeInput extends AcmeElement {
-  static styles = [sharedCss, fieldCss, css`:host{display:block} .field{margin:0} .affix .plain{background:var(--surface)}`];
+  static formAssociated = true;
+  static styles = [
+    sharedCss,
+    inputCss,
+    inputLabelCss,
+    css`
+      /* A flex column: the wrapper is its flex item, as it is in the stacks the field usually sits in, and fills the host width. */
+      :host {
+        display: flex;
+        flex-direction: column;
+      }
+      .field {
+        display: block;
+      }
+    `,
+  ];
+  /** The text above the field. */
   @property() label = "";
   @property() placeholder = "";
   @property() value = "";
   @property() type = "text";
   @property() name = "";
-  @property() size: Size = "medium";
+  @property() size: InputSize = "medium";
+  /** The message under the field; the wrapper turns red and the field reads as invalid. */
   @property() error = "";
-  @property() helper = "";
+  /** Text in the prefix cell (the `prefix` slot takes an element instead). */
   @property() prefix = "";
+  /** Text in the suffix cell (the `suffix` slot takes an element instead). */
   @property() suffix = "";
-  @property({ type: Boolean, attribute: "prefix-plain" }) prefixPlain = false;
+  /** `"false"` removes the fill and hairline of the prefix cell. */
+  @property({ converter: onUnlessFalse, attribute: "prefix-styling" }) prefixStyling = true;
+  /** `"false"` removes the fill and hairline of the suffix cell. */
+  @property({ converter: onUnlessFalse, attribute: "suffix-styling" }) suffixStyling = true;
+  /** `"false"` drops the prefix cell and slots the prefix straight into the wrapper. */
+  @property({ converter: onUnlessFalse, attribute: "prefix-container" }) prefixContainer = true;
+  /** `"false"` drops the suffix cell and slots the suffix straight into the wrapper. */
+  @property({ converter: onUnlessFalse, attribute: "suffix-container" }) suffixContainer = true;
+  /** The pill shape. */
   @property({ type: Boolean }) rounded = false;
+  /** Set by a clearable field: the suffix cell loses its right padding. */
+  @property({ type: Boolean }) clearable = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: Boolean }) readonly = false;
   @property({ type: Boolean }) required = false;
-  @property({ type: Boolean }) clearable = false;
-  @property() autocomplete = "";
+  @property() autocomplete = "off";
+  /** A fixed width for the wrapper, as CSS. */
+  @property() width = "";
+  @property({ attribute: "aria-label" }) ariaLabelText = "";
+  @property({ attribute: "aria-labelledby" }) ariaLabelledby = "";
+  @state() private slottedPrefix = false;
+  @state() private slottedSuffix = false;
   @query("input") input!: HTMLInputElement;
-  private uid = `in-${Math.random().toString(36).slice(2, 8)}`;
-  private onInput(e: Event) {
+  @query(".wrap") private wrap!: HTMLElement;
+  private internals?: ElementInternals;
+  private uid = `input-${Math.random().toString(36).slice(2, 8)}`;
+  // Hover reaches a disabled field too (its own ring), so the controller never holds it back.
+  private interaction = new Interaction(this, { disabled: () => false });
+  constructor() {
+    super();
+    try {
+      this.internals = this.attachInternals();
+    } catch {}
+  }
+  private readSlots() {
+    this.slottedPrefix = !!this.querySelector('[slot="prefix"]');
+    this.slottedSuffix = !!this.querySelector('[slot="suffix"]');
+  }
+  // A prefix or suffix slot exists only while it has content (the wrapper's positional rules count the
+  // field as the last child otherwise), so the light DOM is watched for content that arrives later.
+  private slotWatch?: MutationObserver;
+  connectedCallback() {
+    super.connectedCallback();
+    this.readSlots();
+    if (typeof MutationObserver !== "undefined") {
+      this.slotWatch = new MutationObserver(() => this.readSlots());
+      this.slotWatch.observe(this, { childList: true });
+    }
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.slotWatch?.disconnect();
+  }
+  firstUpdated() {
+    this.readSlots();
+  }
+  updated(ch: Map<string, unknown>) {
+    this.interaction.attach(this.wrap);
+    if (ch.has("value")) this.internals?.setFormValue?.(this.value);
+  }
+  formResetCallback() {
+    this.value = this.getAttribute("value") ?? "";
+  }
+  private onInput = (e: Event) => {
     this.value = (e.target as HTMLInputElement).value;
     this.dispatchEvent(new CustomEvent("acme-input", { detail: { value: this.value }, bubbles: true, composed: true }));
-  }
-  private onChange() {
-    this.dispatchEvent(new CustomEvent("acme-change", { detail: { value: this.value }, bubbles: true, composed: true }));
-  }
-  clear() {
-    this.value = "";
-    this.input.value = "";
-    this.onInput({ target: this.input } as any);
-    this.input.focus();
-  }
-  focus() {
-    this.input?.focus();
+  };
+  private onChange = () => this.dispatchEvent(new CustomEvent("acme-change", { detail: { value: this.value }, bubbles: true, composed: true }));
+  focus(options?: FocusOptions) {
+    this.input?.focus(options);
   }
   render() {
-    const errId = `${this.uid}-err`;
-    const input = html`<input id=${this.uid} type=${this.type} .value=${this.value} placeholder=${this.placeholder || nothing} name=${this.name || nothing} ?disabled=${this.disabled} ?readonly=${this.readonly} ?required=${this.required} autocomplete=${this.autocomplete || nothing} aria-invalid=${this.error ? "true" : nothing} aria-describedby=${this.error ? errId : nothing} @input=${this.onInput} @change=${this.onChange} @keydown=${(
-      e: KeyboardEvent,
-    ) => {
-      if (e.key === "Escape" && this.clearable) this.clear();
-    }} part="input">`;
-    const hasAffix = this.prefix || this.suffix || this.clearable;
-    return html`<div class=${this.cls("field", sizeCls(this.size))}>
-      ${this.label ? html`<label for=${this.uid}>${this.label}</label>` : nothing}
-      ${hasAffix ? html`<div class=${this.cls("affix", { rounded: this.rounded })}>${this.prefix ? html`<span class=${this.prefixPlain ? "plain" : ""}>${this.prefix}</span>` : nothing}${input}${this.suffix ? html`<span class=${this.prefixPlain ? "plain" : ""}>${this.suffix}</span>` : nothing}${this.clearable && this.value ? html`<span class="plain"><button class="x" style="border:0;background:transparent;display:inline-grid;place-items:center;color:var(--text-2);padding:0 4px" aria-label="Clear" @click=${this.clear}>${glyph("x")}</button></span>` : nothing}</div>` : input}
-      ${this.error ? html`<span class="msg error" id=${errId}>${this.error}</span>` : this.helper ? html`<span class="msg">${this.helper}</span>` : nothing}
+    const hasPrefix = !!this.prefix || this.slottedPrefix;
+    const hasSuffix = !!this.suffix || this.slottedSuffix;
+    const prefixCell = hasPrefix && this.prefixContainer;
+    const suffixCell = hasSuffix && this.suffixContainer;
+    const iconSize = this.size === "large" ? 24 : 16;
+    const cls = this.cls("wrap", {
+      sm: this.size === "small",
+      lg: this.size === "large",
+      error: !!this.error,
+      rounded: this.rounded,
+      "with-prefix": hasPrefix,
+      "with-suffix": hasSuffix,
+      "plain-prefix": !this.prefixStyling,
+      "plain-suffix": !this.suffixStyling,
+      clearable: this.clearable,
+    });
+    const style = [`--acme-icon-size:${iconSize}px`, ...(this.width ? [`width:${this.width}`] : [])].join(";");
+    const prefixSlot = html`<slot name="prefix" @slotchange=${this.readSlots}></slot>`;
+    const suffixSlot = html`<slot name="suffix" @slotchange=${this.readSlots}></slot>`;
+    const wrap = html`<div class=${cls} style=${style} part="wrap">
+      <input
+        id=${this.uid}
+        type=${this.type}
+        .value=${this.value}
+        placeholder=${this.placeholder || nothing}
+        name=${this.name || nothing}
+        ?disabled=${this.disabled}
+        ?readonly=${this.readonly}
+        ?required=${this.required}
+        autocomplete=${this.autocomplete || nothing}
+        autocapitalize="none"
+        autocorrect="off"
+        spellcheck="false"
+        aria-label=${this.ariaLabelText || nothing}
+        aria-labelledby=${this.ariaLabelledby || nothing}
+        aria-invalid=${this.error ? "true" : "false"}
+        @input=${this.onInput}
+        @change=${this.onChange}
+        part="input"
+      />
+      ${prefixCell ? html`<label class="prefix" aria-hidden="true" for=${this.uid}>${this.prefix}${prefixSlot}</label>` : hasPrefix ? prefixSlot : nothing}
+      ${suffixCell ? html`<label class="suffix" aria-hidden="true" for=${this.uid}>${this.suffix}${suffixSlot}</label>` : hasSuffix ? suffixSlot : nothing}
     </div>`;
+    const field = this.label ? html`<label class="field" for=${this.uid}><div class="text">${this.label}</div>${wrap}</label>` : wrap;
+    // The error line is small for every size but large, as the reference sizes it.
+    return this.error ? html`<div>${field}<acme-error size=${this.size === "large" ? "large" : "small"} style="margin-top:var(--acme-gap-quarter)">${this.error}</acme-error></div>` : field;
   }
 }
 

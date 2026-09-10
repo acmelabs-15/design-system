@@ -1,13 +1,22 @@
 import { css, html } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { badgeCss } from "../badge/badge.styles.js";
-import { linkCardCss } from "./link-card.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { badgeCss } from "../badge/badge.styles";
+import { linkCardCss } from "./link-card.styles";
 
 /** Vercel link card: a title and one-line description, raised on hover. */
 @customElement("acme-link-card")
 export class AcmeLinkCard extends AcmeElement {
-  static styles = [sharedCss, linkCardCss, badgeCss, css`:host{display:block}`];
+  static styles = [
+    sharedCss,
+    linkCardCss,
+    badgeCss,
+    css`
+      :host {
+        display: block;
+      }
+    `,
+  ];
   @property() href = "#";
   @property() heading = "";
   render() {

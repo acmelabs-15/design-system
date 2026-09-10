@@ -1,10 +1,10 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { badgeCss } from "../badge/badge.styles.js";
-import { statusDotCss } from "../status-dot/status-dot.styles.js";
-import { trendCss } from "../trend/trend.styles.js";
-import { statCss } from "./stat.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { badgeCss } from "../badge/badge.styles";
+import { statusDotCss } from "../status-dot/status-dot.styles";
+import { trendCss } from "../trend/trend.styles";
+import { statCss } from "./stat.styles";
 
 /** House Stat: the one component for a headline figure. Slots: label, context, icon, end, default (value), unit, trend, delta, desc, meter, spark, meta, foot. */
 @customElement("acme-stat")
@@ -15,7 +15,22 @@ export class AcmeStat extends AcmeElement {
     trendCss,
     badgeCss,
     statusDotCss,
-    css`:host{display:flex;flex:1;min-width:0} dl{width:100%} .value ::slotted(acme-trend){align-self:center} .meter ::slotted(*){display:block}`,
+    css`
+      :host {
+        display: flex;
+        flex: 1;
+        min-width: 0;
+      }
+      dl {
+        width: 100%;
+      }
+      .value ::slotted(acme-trend) {
+        align-self: center;
+      }
+      .meter ::slotted(*) {
+        display: block;
+      }
+    `,
   ];
   @property() label = "";
   @property() context = "";

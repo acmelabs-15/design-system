@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base.js";
-import { tagCss } from "./tag.styles.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { tagCss } from "./tag.styles";
 
 /** House tag: a small gray mono keyword. Wrap several in acme-tags. */
 @customElement("acme-tag")
