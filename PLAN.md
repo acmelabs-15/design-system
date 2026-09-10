@@ -121,6 +121,16 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   from here. This file stays the entry point: reading it, and the files it links, is enough to know
   the whole project.
 
+### Supporting documents
+
+This plan is the entry point. These carry detail too large to inline:
+
+| File | What it holds |
+|---|---|
+| [tools/geist/README.md](tools/geist/README.md) | The full runbook for the parity pipeline, and every guarantee the generator makes |
+| [docs/analysis/functional-parity-sources.md](docs/analysis/functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
+| [docs/decisions/prop-naming-vs-reference.md](docs/decisions/prop-naming-vs-reference.md) | Open decision for Peter: how literally prop names must match, given the reference contradicts itself |
+
 ---
 
 ## 2. How we prove parity
@@ -306,15 +316,44 @@ at a time. Each agent gets the runbook and the rules in section 1, and reports: 
 per theme, API changes, shared-file edits, generator fixes, unverified items, and final test
 totals.
 
-### 5.4 Behaviour sweep over every docs example `[ ]`
+### 5.4 Functional parity: prove behaviour, not just styles `[ ]`
 
-Separate from the census, because the census is blind to it. For each of the 105 docs pages, drive
-every interactive example and confirm it does what the reference's does. The table's Show More was
-found this way and is fixed; assume there are more.
+Separate from the census, because the census is blind to behaviour. A button with perfect styles
+that does nothing on click measures clean; the virtualized table's Show More was exactly that.
 
-A cheap first pass already run: every `acme-*` event a docs demo listens for was cross-checked
-against every event the elements actually dispatch. Only the table mismatched. That check catches
-wrong event names but not a control wired to nothing, so the hands-on pass is still needed.
+**Driving our own docs examples is not enough on its own.** Our examples only show what we chose to
+build. If we never wired a behaviour, no amount of clicking our own page reveals it is missing. The
+oracle has to come from the reference, not from us.
+
+Research into what is obtainable is written up in
+[docs/analysis/functional-parity-sources.md](docs/analysis/functional-parity-sources.md). The short
+version: there is **no source code to read.** The components ship as the private package
+`@vercel/geistcn`, with no public npm entry, no public repository, no type declarations, and no
+source maps in production. Do not spend time looking again; that file records what was checked.
+
+What we do have, in order of value per unit of effort:
+
+1. **The authored prose in the `.md` pages — do this first.** All 77 reference pages are already
+   saved under `tools/geist/corpus/md/`, and they carry **574 authored behaviour statements across
+   56 pages**. This is the reference team describing intended behaviour in their own words, and we
+   have never used it for verification. Turn it into a per-element checklist: assert each statement
+   against our element, or record why it does not apply. This alone would have caught the table.
+2. **Upstream libraries.** Our own chunks confirm the reference composes Radix (7 chunks), cmdk (5)
+   and react-aria (4). Where an element wraps one of those, the state machine and keyboard behaviour
+   we are matching is already open source and documented — verify against the upstream docs instead
+   of reverse-engineering the wrapper. The port already found this per element (combobox is a Radix
+   popover, command-menu is cmdk, context-menu is a Radix context menu, drawer is Base UI).
+3. **Deminify the saved chunks** for the reference-specific wrappers with no upstream library behind
+   them. 2.7 MB across 40 chunks is already on disk. Use `wakaru` (un-compiles JSX, restores hook
+   names) with `webcrack` (splits a bundle into modules). Avoid `react-scan`, which is a
+   performance visualiser despite the name, and `react-scanner`, which cannot read minified code.
+4. **Drive both sites through one script** for anything only a real browser settles: keyboard order,
+   focus movement, escape handling, pointer drag. Needs Peter's Chrome; the built-in pane cannot
+   reach the reference and fires no timers.
+
+A cheap first pass is already done: every `acme-*` event a docs demo listens for was cross-checked
+against every event the elements dispatch. Only the table mismatched. That catches a wrong event
+name and nothing else, so it does not substitute for the four steps above.
 
 ### 5.5 Check overlays against the live reference `[ ]`
 
@@ -381,6 +420,11 @@ Where a package ships vanilla only, write the Lit wrapper or controller here.
 - [x] The dialog reset lives in `src/shared/dialog.ts`; modal, drawer and sheet import it
 - [x] Menu follow-ups: `width` accepts `auto` plus `min-width`; `offset` replaces the gap constant; context-menu is modal with scroll lock, as the reference's Radix menu is
 - [x] Docs app: a census page titles itself "<Element> (census)"
+- [ ] **Prop naming against the reference** — the reference's Button puts the visual look on `type`
+  and the HTML button type on `typeName`; ours uses `variant` and `type`. The reference is not
+  self-consistent (`variant` appears 174 times across its pages, `type` 37), and its own prose
+  flags its arrangement as a trap. Written up in
+  [docs/decisions/prop-naming-vs-reference.md](docs/decisions/prop-naming-vs-reference.md) `[?]`
 - [ ] Select: decide the house-only `options` property, which feedback uses `[?]`
 - [ ] Foundations pages: the reference's exact heading levels, or ours `[?]`
 
