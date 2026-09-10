@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 08:55 PDT.
+how we prove it, and where we are. Updated 2026-09-10 09:10 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -397,11 +397,43 @@ Measured, not estimated:
    moment it opens**, so anything that changes the page before that — scroll position, container width,
    layout still settling — changes the answer. Set the page up fully, then open.
 
-3. **calendar** — the expensive one. **All nine reference examples render only a skeleton on the server**,
-   so the real calendar exists at runtime only and no map can be derived from the spec. It needs the
-   sketch path: the class strings are in `corpus/js/0ofxlpb8_00s7.js`, which carries the root's full class
-   expression and the compact, stacked and minimized branches. Every state must be drawn by hand before
-   anything can be measured.
+3. [ ] **calendar — the expensive one, and now scoped properly.**
+
+   The element is built (412 lines) and its five tests pass. It has a spec and generated styles. It has
+   **no map, no sketches and no census**, and the reason is structural rather than neglect.
+
+   **The reference renders no calendar at all until its trigger is clicked.** Confirmed on the live site,
+   not only the mirror: all 16 examples show a loading skeleton, and the real calendar appears only after
+   a click. So the usual path — extract the server-rendered DOM into a spec — yields nothing to map.
+
+   **What changed today: the live site can supply that DOM.** With browser access working, clicking a
+   trigger renders the real thing — 35 grid cells, Start and End fields, an Apply button, a timezone
+   selector, and the month grid inside a popover. Its class strings are readable directly, which is a
+   better source than reconstructing them from the compiled chunks.
+
+   The work, in order:
+
+   1. Open each of the **nine** examples on the live site and capture its DOM: Default, Horizontal
+      Layout, Sizes, Presets, Compact, Stacked, Presets with default value, Min and max dates, Pinned
+      timezone.
+
+      **The capture method, proven on Default.** Click the trigger, then read the popover's tree. The
+      Default state has **40 distinct classed nodes**. Two constraints found by trying it:
+
+      - The live site's security policy blocks a request to localhost, so the page cannot POST its
+        capture to the collector. Read the tree back through the browser tool in pieces instead. The
+        collector's `/capture/<name>` route exists and works from the mirror or our own pages, which is
+        where it is useful.
+      - The whole tree is about 36 KB, too large for one round trip. Capture the distinct classed
+        nodes with their depth and tag; that is what a sketch needs, and it fits.
+   2. Write a sketch per state and run `extract.ts synth` to fold them into the spec.
+   3. Write the map, generate, and re-template our element to match.
+   4. Write the census config and run it, both themes.
+
+   Budget it as several times the cost of the other two, because every state must be captured by hand
+   before anything can be measured. The lesson from context-card applies with force here: the calendar
+   is a popover, so its placement is measured at open time, and the setup must be complete before the
+   trigger is clicked.
 
 ### 5.4 Prove behaviour, not just styles `[ ]`
 

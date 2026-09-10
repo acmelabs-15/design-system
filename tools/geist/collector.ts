@@ -24,6 +24,20 @@ Bun.serve({
       if (!fs.existsSync(file)) return new Response(`no config for ${name}`, { status: 404, headers: cors });
       return new Response(Bun.file(file), { headers: { ...cors, "content-type": "application/json" } });
     }
+    // A DOM capture from a live page, saved under capture/<name>.json. The reference renders some
+    // elements only after an interaction — the calendar draws a skeleton until its trigger is clicked,
+    // on the live site as well as the mirror — so their markup cannot be extracted from the served
+    // HTML. Opening the state in a real browser and posting the tree here is the source a sketch is
+    // then written from, and it beats reconstructing class strings out of the compiled chunks.
+    if (req.method === "POST" && url.pathname.startsWith("/capture/")) {
+      const name = url.pathname.slice("/capture/".length).replace(/[^\w.-]/g, "");
+      const dir = path.join(import.meta.dir, "capture");
+      fs.mkdirSync(dir, { recursive: true });
+      const file = path.join(dir, `${name}.json`);
+      fs.writeFileSync(file, JSON.stringify(await req.json(), null, 1));
+      console.log("captured", file);
+      return new Response("ok", { headers: cors });
+    }
     if (req.method === "POST" && url.pathname === "/census") {
       const body = (await req.json()) as { side: string; page: string };
       const file = path.join(OUT, `${body.page}.${body.side}.json`);
