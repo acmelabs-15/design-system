@@ -67,8 +67,39 @@ const norm = (p: string, v: string) => {
   return s;
 };
 
+/**
+ * Differences the runbook accepts, with the reason. Each rule is exact: it names the property and
+ * the pair of values, so a real defect on the same property is never absorbed. Anything not matched
+ * here stays hard. Keeping this in the tool rather than in a reader's head means the classification
+ * is the same on every run, by every agent, and the count is trustworthy without re-sifting by hand.
+ */
+const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string, ours: string) => boolean }[] = [
+  {
+    why: "wrapper-box context: our root is a flex item of the wrapper, theirs a block child; auto resolves like 0 in a column's cross axis",
+    test: (_part, prop, gv, ov) => prop === "min-width" && ((gv === "auto" && ov === "0px") || (gv === "0px" && ov === "auto")),
+  },
+  {
+    why: "blockified display: a flex item blockifies, so inline-flex reads flex and inline-block reads block",
+    test: (_part, prop, gv, ov) =>
+      prop === "display" &&
+      [
+        ["inline-flex", "flex"],
+        ["flex", "inline-flex"],
+        ["inline-block", "block"],
+        ["block", "inline-block"],
+      ].some(([a, b]) => gv === a && ov === b),
+  },
+  {
+    why: "top layer: the containing block is the viewport, so a floating box must be fixed where the reference popper is absolute",
+    test: (_part, prop, gv, ov) => prop === "position" && gv === "absolute" && ov === "fixed",
+  },
+];
+const acceptedFor = (part: string, prop: string, gv: string, ov: string) => ACCEPTED.find((a) => a.test(part, prop, gv, ov));
+
 let hard = 0;
 let soft = 0;
+let accepted = 0;
+const acceptedWhy = new Map<string, number>();
 const lines: string[] = [];
 const n = Math.min(g.roots.length, o.roots.length);
 if (g.roots.length !== o.roots.length) lines.push(`root count differs: geist ${g.roots.length}, ours ${o.roots.length}`);
@@ -101,8 +132,15 @@ for (let i = 0; i < n; i++) {
           soft++;
           diffs.push(`  [${state}] ${part}.${prop}: ${va} | ${vb}   (soft)`);
         } else {
-          hard++;
-          diffs.push(`  [${state}] ${part}.${prop}: geist ${va} | ours ${vb}`);
+          const ok = acceptedFor(part, prop, va, vb);
+          if (ok) {
+            accepted++;
+            acceptedWhy.set(ok.why, (acceptedWhy.get(ok.why) ?? 0) + 1);
+            diffs.push(`  [${state}] ${part}.${prop}: ${va} | ${vb}   (accepted)`);
+          } else {
+            hard++;
+            diffs.push(`  [${state}] ${part}.${prop}: geist ${va} | ours ${vb}`);
+          }
         }
       }
     }
@@ -110,5 +148,6 @@ for (let i = 0; i < n; i++) {
   if (diffs.length) lines.push(head, ...diffs);
 }
 console.log(lines.join("\n"));
-console.log(`\n${page}: ${n} roots compared, ${hard} hard differences, ${soft} soft (font-driven) differences`);
+console.log(`\n${page}: ${n} roots compared, ${hard} hard, ${accepted} accepted, ${soft} soft (font-driven)`);
+for (const [why, count] of [...acceptedWhy].sort((a, b) => b[1] - a[1])) console.log(`  accepted x${count}: ${why}`);
 process.exit(hard ? 1 : 0);
