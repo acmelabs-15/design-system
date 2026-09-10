@@ -1,0 +1,32 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "docs",
+      "url": "http://localhost:4180",
+      "port": 4180,
+      "autoPort": false
+    },
+    {
+      "name": "docs-start",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["scripts/dev.ts", "--no-build"],
+      "port": 4180,
+      "autoPort": false
+    },
+    {
+      "name": "census-collector",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["tools/geist/collector.ts"],
+      "port": 4183,
+      "autoPort": false
+    },
+    {
+      "name": "reference-mirror",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["tools/geist/serve.ts"],
+      "port": 4184,
+      "autoPort": false
+    }
+  ]
+}

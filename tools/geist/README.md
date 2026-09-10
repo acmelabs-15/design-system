@@ -76,3 +76,21 @@ The mirror serves the pages' media files (logos, textures) from `corpus/media/`,
 ## Deferred, decided
 
 - **Scoped custom element registries** (Lit's `@lit-labs/scoped-registry-mixin`): adopted after the port and before 1.0, as one pass over the stable element set. Every composing element lists the pieces it composes; the polyfill loads only where the browser lacks the feature (Firefox). Decided by the owner on 2026-09-09; not part of any element's port.
+
+## The three servers, and the launch config
+
+`.claude/launch.json` names all three, so the browser preview can attach to them:
+
+| Name | Port | What it serves |
+|---|---|---|
+| `docs` | 4180 | Attaches to an already-running docs server, starting nothing |
+| `docs-start` | 4180 | Starts one: `bun scripts/dev.ts --no-build` |
+| `census-collector` | 4183 | Receives measurements; serves `/census.js` |
+| `reference-mirror` | 4184 | The reference site with its scripts stripped |
+
+**Every port is fixed, and `autoPort` is `false` on all of them.** The census configurations, the saved
+result files and this runbook all name these ports by number, so a reassigned port would silently break a
+repeatable run. Free the port rather than moving the server.
+
+The `docs` entry exists because these servers are usually already running. Attaching avoids a second
+process fighting for the port. Use `docs-start` when nothing is listening yet.
