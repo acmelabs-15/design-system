@@ -22,12 +22,12 @@ export class AcmeKbd extends AcmeElement {
     // A key inside a tooltip's bubble takes the bubble's rules for it (the tooltip marks the key).
     tooltipKbdCss,
     css`
+      /* The reference's key is one element: inline-flex in prose, and blockified to flex when a flex
+         row holds it, so the row sizes to the key's own 20px rather than to a line box. A host box of
+         ours would sit between the row and the key and take that place instead, so the host stands
+         aside and the key is the box every container lays out. */
       :host {
-        display: inline;
-      }
-      /* Inside a tooltip's bubble the key is the bubble's flex item: the host takes that place so the key inside reads as one. */
-      :host([data-in-tooltip]) {
-        display: inline-flex;
+        display: contents;
       }
     `,
   ];

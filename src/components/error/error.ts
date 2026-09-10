@@ -1,4 +1,4 @@
-import { html, nothing } from "lit";
+import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { errorCss } from "./error.styles";
@@ -12,7 +12,19 @@ export type ErrorInfo = { message: string; action?: string; link?: string };
  */
 @customElement("acme-error")
 export class AcmeError extends AcmeElement {
-  static styles = [sharedCss, errorCss];
+  static styles = [
+    sharedCss,
+    errorCss,
+    css`
+      /* The reference renders the alert row itself, with no box around it, so its root is the box a
+         container lays out: a flex row that stretches its items makes the alert as tall as its
+         tallest sibling. A host box of ours would take that stretch and leave the row at its own
+         height. The host carries no styling of its own, so it stands aside. */
+      :host {
+        display: contents;
+      }
+    `,
+  ];
   /** The bold prefix before the message; unset shows none (`"false"` is read as none too). */
   @property({ converter: { fromAttribute: (v: string | null) => (v === null || v === "false" ? "" : v), toAttribute: (v: string) => v || "false" } }) label = "";
   @property() size: "small" | "medium" | "large" = "medium";
