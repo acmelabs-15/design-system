@@ -146,6 +146,11 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   zero-root run reads as clean while measuring nothing. The collector now refuses to save an empty run
   and the comparison now fails loudly on either case, so this cannot be forgotten. See
   [notes/decisions/track-census-results.md](notes/decisions/track-census-results.md).
+- **Never answer from memory. Check, every time.** This applies to every claim, not only claims about
+  the reference: what a file contains, what a number was, what was decided, what a tool does, what
+  broke and how widely. Memory of a session is not evidence, and a confident wrong answer costs more
+  than the few seconds a check takes. If a check is genuinely impossible, say the claim is unverified
+  and say why.
 - **Evidence, never inference.** Every claim about how the reference behaves traces to something
   observed: its own prose, its own example code, its compiled output, or its live behaviour. Finding
   that the reference wraps Radix, cmdk or react-aria tells us *where to look*, never what the answer
