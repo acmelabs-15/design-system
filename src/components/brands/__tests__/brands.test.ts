@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import "../../../index";
 import { assetsBase } from "../../../base";
+import type { AcmeCopyButton } from "../../copy-button/copy-button";
 import { type AcmeBrands, BRANDS, brandSize } from "../brands";
 
 const mount = async (markup: string) => {
@@ -23,7 +24,7 @@ describe("acme-brands", () => {
     expect(mark.getAttribute("aria-label")).toBe("Vercel");
     expect(mark.querySelector("path")?.getAttribute("fill")).toBe("currentColor");
     expect(frame(el).querySelector("img")).toBeNull();
-    expect(el.shadowRoot!.querySelector("acme-button.copy")).toBeNull();
+    expect(el.shadowRoot!.querySelector("acme-copy-button.copy")).toBeNull();
   });
 
   test("height sizes a mark by its aspect ratio; balanced by its multipliers", async () => {
@@ -74,13 +75,13 @@ describe("acme-brands", () => {
     const el = await mount(`<acme-brands copy full-width><svg viewBox="0 0 10 10" width="10" height="10"><title>Custom</title></svg></acme-brands>`);
     expect(frame(el).querySelector("slot > svg")).toBeNull();
     expect(el.markup()).toContain("<title>Custom</title>");
-    const button = el.shadowRoot!.querySelector("acme-button.copy")!;
-    expect(button.getAttribute("aria-label")).toBe("Copy code");
+    // The box composes acme-copy-button rather than rebuilding the stack, so the icon layers are
+    // that element's business; what this element owns is the properties it hands over.
+    const button = el.shadowRoot!.querySelector("acme-copy-button.copy")!;
+    expect(button.getAttribute("label")).toBe("Copy code");
     expect(button.getAttribute("variant")).toBe("secondary");
     expect(button.getAttribute("shape")).toBe("square");
-    expect(button.hasAttribute("svg-only")).toBe(true);
-    expect(button.querySelector(".stack > .check")).not.toBeNull();
-    expect(button.querySelector(".stack > .copy")).not.toBeNull();
+    expect(el.shadowRoot!.querySelector("acme-button.copy")).toBeNull();
   });
 
   test("the copy button's markup is the mark's own: the drawing or the image pair", async () => {
@@ -100,14 +101,14 @@ describe("acme-brands", () => {
     expect(b.getAttribute("data-hover")).toBe("true");
     b.dispatchEvent(new PointerEvent("pointerleave", { pointerType: "mouse" }));
     expect(b.hasAttribute("data-hover")).toBe(false);
-    const button = el.shadowRoot!.querySelector("acme-button.copy") as HTMLElement;
+    const button = el.shadowRoot!.querySelector("acme-copy-button.copy") as HTMLElement;
     button.dispatchEvent(new FocusEvent("focusin"));
     expect(button.hasAttribute("data-focus")).toBe(true);
     button.dispatchEvent(new FocusEvent("focusout"));
     expect(button.hasAttribute("data-focus")).toBe(false);
   });
 
-  test("copying fires acme-copy with the markup", async () => {
+  test("copying hands the markup to the composed copy button, which writes it and fires acme-copy", async () => {
     const el = await mount(`<acme-brands brand="ai-sdk" copy></acme-brands>`);
     const written: string[] = [];
     Object.defineProperty(navigator, "clipboard", { value: { writeText: async (t: string) => void written.push(t) }, configurable: true });
@@ -115,12 +116,26 @@ describe("acme-brands", () => {
     el.addEventListener("acme-copy", (e) => {
       detail = (e as CustomEvent).detail.text;
     });
-    (el.shadowRoot!.querySelector("acme-button.copy") as HTMLElement).click();
-    await new Promise((r) => setTimeout(r, 0));
+    const button = el.shadowRoot!.querySelector("acme-copy-button.copy") as AcmeCopyButton;
+    // `markup()` reads the rendered frame, so the text cannot be bound in the template: it is handed
+    // over when the press starts. Empty until then.
+    expect(button.textToCopy).toBe("");
+    button.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }));
+    expect(button.textToCopy).toBe(el.markup());
+    await button.copy();
     expect(written[0]).toContain('viewBox="0 0 146 40"');
     expect(detail).toBe(written[0]);
-    await el.updateComplete;
-    expect(el.shadowRoot!.querySelector(".stack.copied")).not.toBeNull();
-    expect(el.shadowRoot!.querySelector("[role=status]")?.textContent).toBe("Copied!");
+    // The check and the status line belong to the copy button now.
+    await button.updateComplete;
+    expect(button.shadowRoot!.querySelector(".stack.copied")).not.toBeNull();
+    expect(button.shadowRoot!.querySelector("[role=status]")?.textContent).toBe("Copied!");
+  });
+
+  test("the keyboard path hands the markup over too", async () => {
+    const el = await mount(`<acme-brands brand="vercel" copy></acme-brands>`);
+    const button = el.shadowRoot!.querySelector("acme-copy-button.copy") as AcmeCopyButton;
+    expect(button.textToCopy).toBe("");
+    button.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    expect(button.textToCopy).toBe(el.markup());
   });
 });

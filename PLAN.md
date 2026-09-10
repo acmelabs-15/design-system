@@ -209,6 +209,12 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
+- **An element owns its own positioning context; the reference's docs page is not part of the port.**
+  Verified 2026-09-10 on brands. Its copy button is absolute at top/right 16px, and the reference
+  resolves that against *their docs page's* wrapper, which is `position: relative`. Ours had no
+  positioned ancestor of its own, so the button escaped to whatever the consuming page happened to
+  provide — measured at -96 top, -278 right on our docs page. Where the reference leans on its page
+  for a positioning context, our element supplies one, because a consumer's page will not.
 - **A page cannot reach a margin inside a shadow root; expose a property instead.** Verified
   2026-09-10 on the code block. Its `margin-block` is on `.code-block` in the shadow tree, so
   `.preview > * { margin-block: 0 }` on the docs page did nothing. The element now exposes
@@ -380,7 +386,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 609 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
+| Tests | 610 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |

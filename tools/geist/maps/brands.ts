@@ -33,8 +33,20 @@ export const geist: GeistMap = {
   },
   states: { ":hover": "[data-hover]", ":focus": "[data-focus]" },
   children: [
-    // The copy button is an acme-button in ours; the classes the preview adds to it (its place over the frame, its opacity) land on its part.
-    { ours: "acme-button.copy", pick: (c) => "data-geist-button" in c.attrs, extends: "button", part: "button", leaf: true },
+    // The box composes acme-copy-button, which composes acme-button, so the reference's button sits
+    // two elements down on ours. The classes the preview adds (its place over the frame, its
+    // opacity) land on the copy button's own `button` part, which it forwards with exportparts.
+    // The reference's span is the button's label wrapper, which takes the button's inline padding:
+    // ours is the `label` part acme-button exposes and acme-copy-button forwards. It is NOT the
+    // `icon` part — that is one absolutely-positioned layer inside a 16px stack, and padding on it
+    // overflows the stack (see the code-block map, where naming it clipped the glyph).
+    {
+      ours: "acme-copy-button.copy",
+      pick: (c) => "data-geist-button" in c.attrs,
+      extends: "button",
+      part: "button",
+      children: [{ ours: "", part: "label", pick: (c) => c.tag === "span", leaf: true }],
+    },
     {
       ours: ".frame",
       pick: frame,

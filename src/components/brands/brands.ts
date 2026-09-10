@@ -1,11 +1,9 @@
 import { css, html, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
-import { AcmeElement, assetsBase, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, assetsBase, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { toasts } from "../../shared/state";
-import "../button/button";
-import { atomState } from "../../shared/atom-state";
-import { copyButtonCss } from "../copy-button/copy-button.styles";
+import type { AcmeCopyButton } from "../copy-button/copy-button";
+import "../copy-button/copy-button";
 import { brandsCss } from "./brands.styles";
 
 /** The logo files live in the package's `assets/` directory; `assetsBase` in the shared base says where that is served from. */
@@ -113,16 +111,26 @@ export class AcmeBrands extends AcmeElement {
   static styles = [
     sharedCss,
     brandsCss,
-    copyButtonCss,
     css`
       /* The host is a column: the box is its flex item, as the preview is an item of the page's centred cell (min-width auto, full width). */
       :host {
         display: flex;
         flex-direction: column;
       }
-      /* The copy button's host takes no line of its own: the button inside it is positioned over the box. */
-      acme-button.copy {
+      /* The reference has no host between the box and its absolutely-positioned button. Ours has
+         two, and an in-flow inline host takes a line of its own, so the host is a block of zero
+         height: it takes no line, and the box stays the positioning context. */
+      acme-copy-button.copy {
         display: block;
+        height: 0;
+      }
+      /* The button is absolute at top/right 16px, and the reference resolves that against its own
+         docs page wrapper, which is position:relative. Ours cannot rely on a consumer's page for it, so
+         the box is the positioning context. Without it the button escapes to whatever ancestor
+         happens to be positioned — measured on our docs page at -96 top, -278 right, both before
+         and after this element composed acme-copy-button. */
+      .brands {
+        position: relative;
       }
     `,
   ];
@@ -142,16 +150,10 @@ export class AcmeBrands extends AcmeElement {
   @property({ type: Boolean }) copy = false;
   /** Shows the image pair of a brand that also has an inline drawing (`v0`, `eve`, `ai-sdk`). */
   @property({ type: Boolean }) image = false;
-  @atomState() private done = false;
   @query(".brands") private root!: HTMLElement;
   @query(".frame") private frame!: HTMLElement;
-  private timer?: ReturnType<typeof setTimeout>;
+  @query("acme-copy-button") private button?: AcmeCopyButton;
   private interaction = new Interaction(this);
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    clearTimeout(this.timer);
-  }
 
   updated() {
     this.interaction.attach(this.root);
@@ -165,23 +167,14 @@ export class AcmeBrands extends AcmeElement {
     return (slotted.length ? slotted : own).map((el) => el.outerHTML.replace(/<!--[\s\S]*?-->/g, "").replace(/ part="mark"/, "")).join("\n");
   }
 
-  private copyMarkup = async () => {
-    const text = this.markup();
-    clearTimeout(this.timer);
-    try {
-      await navigator.clipboard.writeText(text);
-      this.done = true;
-      this.timer = setTimeout(() => {
-        this.done = false;
-      }, 1000);
-      this.dispatchEvent(new CustomEvent("acme-copy", { detail: { text }, bubbles: true, composed: true }));
-    } catch {
-      toasts.error("Failed to copy to clipboard");
-    }
-  };
-
   /** The copy button shows while it holds the focus: the state lands on its host, where the box's rule reads it. */
   private copyFocus = (e: FocusEvent) => (e.currentTarget as HTMLElement).toggleAttribute("data-focus", e.type === "focusin");
+
+  /** `markup()` reads the rendered frame, which does not exist during the render that would bind
+   *  the property, so the text is handed over at click time rather than bound in the template. */
+  private beforeCopy = () => {
+    if (this.button) this.button.textToCopy = this.markup();
+  };
 
   render() {
     const brand = this.brand ? BRANDS[this.brand] : undefined;
@@ -205,12 +198,18 @@ export class AcmeBrands extends AcmeElement {
     return html`<div class=${this.cls("brands", { light: this.mode === "light", dark: this.mode === "dark", full: this.fullWidth, white: this.white })} part="brands">
       ${
         this.copy
-          ? html`<acme-button class="copy" variant="secondary" shape="square" svg-only aria-label="Copy code" @click=${this.copyMarkup} @focusin=${this.copyFocus} @focusout=${this.copyFocus} part="copy"
-              >${this.done ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}<div class=${this.cls("stack", { copied: this.done })}>
-                <div class="check">${glyphSized("check")}</div>
-                <div class="copy">${glyphSized("copy")}</div>
-              </div></acme-button
-            >`
+          ? html`<acme-copy-button
+              class="copy"
+              variant="secondary"
+              shape="square"
+              label="Copy code"
+              exportparts="button,label"
+              @pointerdown=${this.beforeCopy}
+              @keydown=${this.beforeCopy}
+              @focusin=${this.copyFocus}
+              @focusout=${this.copyFocus}
+              part="copy"
+            ></acme-copy-button>`
           : nothing
       }
       <div class="frame" part="frame">${this.mode === "dark" && image ? html`<div class="force">${imgs}</div>` : imgs}<slot>${mark}</slot></div>

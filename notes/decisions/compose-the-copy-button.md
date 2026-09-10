@@ -66,3 +66,31 @@ composition.
 
 An element that needs a copy button `acme-copy-button` cannot express. That is a reason to widen its
 API, not to build a fourth one.
+
+
+## All three are done (2026-09-10)
+
+`snippet`, `code-block` and `brands` all compose `acme-copy-button`. None of them builds a button,
+writes to the clipboard, runs a timer or fires `acme-copy` of its own any more.
+
+`brands` was the last and the only one that needed a different handoff. The other two bind
+`text-to-copy` in the template, because their text comes from properties. Brands computes its text
+from the **rendered** frame — `markup()` reads `this.frame` — which does not exist during the render
+that would bind the property, so a bound value is empty on first paint. The text is handed over when
+the press starts instead, on `pointerdown` and on `keydown`, and `copy()` reads `textToCopy` at call
+time. Both paths have a test, proven by breaking the handoff.
+
+### One thing composing did not cause, and one it could not fix
+
+**Found while composing, pre-existing:** the copy button escaped its box entirely, landing at -96 top
+and -278 right on our docs page, because `.brands` was `position: static` and the absolute button
+resolved against whatever ancestor happened to be positioned. Measured identically on the commit
+before this one, so composing exposed it rather than caused it. The reference resolves the same
+button against *their docs page's* wrapper, which is `position: relative` — page furniture we cannot
+rely on, so `.brands` is now the positioning context. The button sits 16px from the box's top and
+right, matching the reference's inset.
+
+**Left alone:** `acme-brands` cannot expose the `copy()` method the other two have, because `copy` is
+already its public boolean attribute (the one that shows the button, used throughout its docs page).
+One word, two meanings. Renaming a documented attribute is a decision of its own, so it is not made
+here.

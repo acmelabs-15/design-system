@@ -257,8 +257,6 @@ Fires `acme-copy` with the copied markup.
 
 Slots: `(default)`
 
-Events: `acme-copy`
-
 ## Best Practices
 
 **Next.js spelling**
