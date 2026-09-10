@@ -314,7 +314,39 @@ wrong event names but not a control wired to nothing, so the hands-on pass is st
 The census reads computed styles; it cannot see placement, motion or keyboard behaviour. This
 needs Peter's own Chrome, which reaches vercel.com. Currently disconnected.
 
-### 5.6 Cleanup `[ ]`
+### 5.6 Package audit: use each chosen package everywhere its job appears `[ ]`
+
+Peter's point, and it is the reason this is a step rather than a checkbox: he named the packages he
+wants for each kind of work, but he cannot enumerate every place in the codebase where that work
+happens. Finding those places is our job.
+
+So audit the codebase **per package**, not per element. For each one, search for the work it is
+meant to own, and list every place doing that work by hand. Then convert them, or record why a
+given case should stay as it is.
+
+What the first scan already shows:
+
+| Package | Its job | What a scan finds today |
+|---|---|---|
+| `@tanstack/lit-store` | Shared state | `src/shared/state.ts` holds state in plain module objects, 19 references. Two files import the store. |
+| `@tanstack/lit-hotkeys` | Key handling | **20 elements** add their own `keydown` listeners or `@keydown` bindings. One file imports hotkeys. |
+| `@tanstack/pacer` | Debounce, throttle, queue, batch | **20 elements** use raw `setTimeout`. One file imports pacer. |
+| `@lit-labs/motion` | Animation | No imports. Two clear patterns waiting, listed in cleanup below. |
+| `@tanstack/lit-virtual` | Long lists | Table uses it. Check every other list that can grow: menu, combobox, multi-select, command-menu, file-tree, json-view. |
+| `@tanstack/highlight` | Syntax highlighting | Two files. Check code, code-block and snippet all route through it. |
+| `@tanstack/markdown` | Markdown | One file. Check the docs Markdown twin and any prose rendering. |
+| `@tanstack/charts` | Charts | One file. Check every chart surface. |
+| `@tanstack/lit-form` | Forms | One file. Check fieldset and the form examples. |
+| `@floating-ui/dom` | Placement | Six files. Check every floating thing is placed by it, none by hand. |
+| `@internationalized/date` | Dates | One file. Calendar and relative-time both need it. |
+
+Not every hand-rolled case should convert. A single `setTimeout` for a one-shot delay is not a
+pacer case. A single `keydown` for one key on one control may not be a hotkeys case. Judge each,
+and write the reason down either way, so the next agent does not re-litigate it.
+
+Where a package ships vanilla only, write the Lit wrapper or controller here.
+
+### 5.7 Cleanup `[ ]`
 
 - [ ] Rename `src/geist.css` and remove the dead hand-written rules the generated modules replaced
 - [ ] Prune `tokens.css` to the tiers the elements read (260 KB today)
@@ -345,7 +377,7 @@ needs Peter's own Chrome, which reaches vercel.com. Currently disconnected.
 - [ ] Select: decide the house-only `options` property, which feedback uses `[?]`
 - [ ] Foundations pages: the reference's exact heading levels, or ours `[?]`
 
-### 5.7 Release `[?]`
+### 5.8 Release `[?]`
 
 Ask Peter once, then: commit, push, docs deploy, npm release.
 
