@@ -9,6 +9,22 @@ table's Show More was exactly that, and it shipped. So behaviour needs its own s
 This file records what those sources are, what was checked, and what does not exist. It exists so
 nobody spends a day rediscovering that the source code is unavailable.
 
+## The reference, confirmed
+
+**The target is <https://vercel.com/geist>.** Verified 2026-09-10 against the live site rather than
+assumed:
+
+- The saved pages under `tools/geist/corpus/` carry `https://vercel.com/geist/<page>` in their own
+  markup, so the snapshot's provenance is in the files themselves.
+- The live site lists **77 pages**; our snapshot holds **77**. Compared name by name, not just counted.
+- One difference, and it is nothing: the live site renamed `icons` to `geistcn-icons`, and that page
+  redirects to the introduction. Our saved copy of `icons` was already empty when captured, so no
+  content was lost.
+- Entering the bare `/geist` address lands on `/geist/introduction`, headed "Geist Design System".
+
+So the snapshot is complete and current. Re-run this check if the reference is thought to have moved:
+compare the live page list against `tools/geist/corpus/md/*.md`.
+
 ## What is not available, verified
 
 | Route | Result |

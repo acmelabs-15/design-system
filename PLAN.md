@@ -13,8 +13,9 @@ Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 `acme-` prefix. Repo `~/dev/ACMElabs/design-system`. Pure Bun: no Node runtime, no Python.
 Docs on GitHub Pages, package on npm (0.1.1 published).
 
-**The goal is a one-to-one port of the reference design system at vercel.com/geist**: style,
-behaviour and functionality. Every docs page shows the same sections as the reference page. The
+**The goal is a one-to-one port of the reference design system at <https://vercel.com/geist>**: style,
+behaviour and functionality. Confirmed against the live site on 2026-09-10 — our saved snapshot holds
+all 77 of its pages, name for name, and the pages carry that address in their own markup. Every docs page shows the same sections as the reference page. The
 foundations pages match too.
 
 **Parity is not implementation parity.** Decided by Peter on 2026-09-10, and it governs every
