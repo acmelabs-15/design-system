@@ -271,7 +271,38 @@ difference instead of a mystery failure weeks later.
 Researched and tested 2026-09-10, after Peter asked whether a Chrome setting could keep animations
 observable with the window minimized.
 
-### The answer: no setting exists, and none can
+### First, the state that does work: behind another window
+
+**A preview pane left open but covered by another window keeps its frames.** Measured: the page reports
+`visible`, and **121 animation frames in one second**.
+
+This is the `OCCLUDED` state, which Chromium treats differently from `HIDDEN`. Minimizing, or the pane
+being closed, gives `HIDDEN` and kills frames. Merely being behind something does not.
+
+So the practical instruction is simple: **leave the preview pane open, and it may sit behind your editor.**
+No flag needed for that case.
+
+Watched live at roughly 120 frames a second, with the pane behind the terminal, the tooltip's fade
+resolves exactly:
+
+| Animation time | Opacity |
+|---|---|
+| 0 to 400ms | 0, held through the delay (48 frames, all zero) |
+| 408ms | 0.012 |
+| 425ms | 0.093 |
+| 450ms | 0.311 |
+| 475ms | 0.622 |
+| 500ms | 1 |
+
+**A trap that cost me several wrong readings.** The fade is `0.1s ease-in 0.4s forwards`, so
+`currentTime` counts through the 400ms delay while opacity legitimately stays at 0. A trail that stops
+before 400ms shows nothing but zeros and looks like a broken animation. Always sample past
+`delay + duration`, and read the delay from the timing rather than assuming there is none.
+
+A second trap: hovering a new trigger closes the previous tooltip, so a trail can end up following an
+element that never started. Poll until an animation actually reports `running`, then follow that one.
+
+### When the window is minimized: no setting exists, and none can
 
 Two independent investigations reached the same conclusion from Chromium's own source, and every
 candidate flag was tested rather than assumed.

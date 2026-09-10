@@ -417,7 +417,12 @@ build, so a behaviour we never wired stays invisible. The oracle must come from 
 **Unblocked 2026-09-10.** Two paths work and agree exactly on the live reference: same box, same wiring,
 same animation name.
 
-**Motion works in the preview pane too, but probe for it rather than trusting a flag.**
+**Leave the preview pane open, behind other windows if you like.** Covered is `OCCLUDED`, which keeps
+frames: measured at 121 frames per second with the pane behind the terminal, and a tooltip fade watched
+live through its 400ms delay and 100ms run. Minimized or closed is `HIDDEN`, which kills them, and no
+setting changes that.
+
+**Either way, probe for frames rather than trusting a flag.**
 `document.visibilityState` is not a reliable gate — frames were observed firing while the page reported
 itself `hidden`, and the document-wide animation count read zero while a real animation ran on an element.
 So: run a one-frame probe with a timeout, then read animations from the **element** and sample twice with a
