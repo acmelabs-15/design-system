@@ -52,7 +52,6 @@ function parse(src: string): Block[] {
 // Order matters: the first matching entry wins. Each regex runs against every selector in the list.
 const MAP: [string, RegExp][] = [
   ["button", /^(\.btn\b|\.iconbtn|\.btn-group)/],
-  ["select", /^\.select-wrap/],
   ["split-button", /^\.split-menu/],
   ["split-button-item", /^\.split-item/],
   ["switch", /^(\.switch|\.seg\b)/],

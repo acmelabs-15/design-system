@@ -6341,50 +6341,6 @@ html {
 .snippet .ph {
   color: var(--text-2);
 }
-/* Select (Geist): prefix icon at 12 (select padded to 40), suffix icon or chevron at 12 */
-.select-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.select-wrap select {
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.select-wrap.with-prefix select {
-  padding-left: 40px;
-}
-.select-wrap .affix-l,
-.select-wrap .affix-r {
-  position: absolute;
-  display: inline-flex;
-  pointer-events: none;
-  color: var(--ds-gray-700);
-  transition: color 0.15s ease-in;
-}
-.select-wrap .affix-l {
-  left: 12px;
-  color: var(--text-2);
-}
-.select-wrap .affix-r {
-  right: 12px;
-}
-.select-wrap:hover .affix-l,
-.select-wrap:hover .affix-r {
-  color: var(--text);
-}
-.select-wrap select[disabled] ~ .affix-r,
-.select-wrap:hover select[disabled] ~ .affix-r {
-  color: var(--ds-gray-700);
-}
-.select-wrap ::slotted(*) {
-  width: 16px;
-  height: 16px;
-}
 /* Split button menu (Geist): 264 wide under the group, items padded 8 with a 14/20 500 title and a 14/20 gray-900 description */
 .split-menu {
   position: absolute;
