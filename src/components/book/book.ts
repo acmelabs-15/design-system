@@ -2,6 +2,7 @@ import { css, html, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
+import { animate } from "@lit-labs/motion";
 import { Interaction } from "../../shared/interaction";
 import { bookCss } from "./book.styles";
 
@@ -59,6 +60,13 @@ export class AcmeBook extends AcmeElement {
       :host {
         display: inline-flex;
       }
+      /* The generated sheet carries the reference's own transition on this box. The animate
+         directive drives the same property now, at the same 250ms and easing, so the transition
+         would run a second animation against it. The CSS rule still holds the rest and hover
+         states, which is what the directive animates BETWEEN and what the census reads. */
+      .wrap {
+        transition: none;
+      }
     `,
   ];
   /** The cover title. The attribute is read and removed, so the element shows no tooltip. */
@@ -76,6 +84,16 @@ export class AcmeBook extends AcmeElement {
   /** Whether the `icon` slot holds an element; the default mark shows otherwise. */
   @atomState() private hasIcon = false;
   @query(".book") private root!: HTMLElement;
+  @query(".wrap") private wrap?: HTMLElement;
+  /** The cover's matrix at the moment the pointer turned; the first keyframe of the reversal. */
+  private turnedFrom?: string;
+  /**
+   * The hover, as reactive state. `Interaction` sets `data-hover` on the root for the generated
+   * rules and for the census, but it does that with `setAttribute` and never asks for an update, so
+   * a hovered book renders nothing new. The `animate` directive runs only in Lit's update cycle
+   * (`hostUpdate` measures, `hostUpdated` plays), so it needs a render to fire: this property is it.
+   */
+  @atomState() private hovered = false;
   private interaction = new Interaction(this);
 
   override attributeChangedCallback(name: string, old: string | null, val: string | null) {
@@ -103,6 +121,37 @@ export class AcmeBook extends AcmeElement {
     this.interaction.attach(this.root);
   }
 
+  /**
+   * The cover's 3D hover, as keyframes rather than the directive's own transform. `animate` builds a
+   * transform from measured left/top/width/height, which cannot express `rotateY`, so `onFrames`
+   * replaces the frames outright — the technique the package's own hero demo uses. The two frames
+   * are the CSS rest and hover states, so the motion is the reference's and the directive only times
+   * it.
+   */
+  /** Records where the cover is, stops the turn in progress, then flips the state. */
+  private turn(hovered: boolean) {
+    const now = this.wrap ? getComputedStyle(this.wrap).transform : "none";
+    this.turnedFrom = now === "none" ? undefined : now;
+    // The directive cancels its animation only when it commits styles, never when a new one starts
+    // on the same box, so a pointer that turns mid-flight leaves the old animation running and the
+    // cover keeps travelling the way it was going. Cancelling here is what makes the reversal start
+    // where the box actually is.
+    for (const a of this.wrap?.getAnimations() ?? []) a.cancel();
+    this.hovered = hovered;
+  }
+
+  private coverFrames = () => {
+    const rest = "rotateY(0deg) scale(1) translateX(0px)";
+    const lifted = "rotateY(var(--hover-rotate)) scale(var(--hover-scale)) translateX(var(--hover-translate-x))";
+    // The first frame is where the box WAS when the gesture turned, not where the last one began. A
+    // pointer that leaves mid-turn catches the cover part-way, and a hard-coded start jumps it to
+    // the full hover first — the snap on a quick in-and-out. The matrix is captured in the pointer
+    // handler, before the update, because by the time frames are built the new state already
+    // computes.
+    const from = this.turnedFrom ?? (this.hovered ? rest : lifted);
+    return [{ transform: from }, { transform: this.hovered ? lifted : rest }];
+  };
+
   private iconSlotted = (e: Event) => {
     this.hasIcon = (e.target as HTMLSlotElement).assignedElements({ flatten: true }).length > 0;
   };
@@ -117,7 +166,21 @@ export class AcmeBook extends AcmeElement {
       style=${widthVars(this.width).join(";")}
       part="book"
     >
-      <div class="wrap" style=${wrapStyle || nothing}>
+      <div
+        class="wrap"
+        style=${wrapStyle || nothing}
+        @pointerenter=${() => this.turn(true)}
+        @pointerleave=${() => this.turn(false)}
+        ${animate({
+          properties: [],
+          skipInitial: true,
+          guard: () => this.hovered,
+          // No `fill`: the CSS rule under it already holds the hover state, so a finished animation
+          // that stays applied would only stack a second one on the next hover.
+          keyframeOptions: { duration: 250, easing: "ease-out" },
+          onFrames: this.coverFrames,
+        })}
+      >
         <div class="cover">
           ${stripe ? html`<div class="band" aria-hidden="true">${illustration}<div class="bind"></div></div>` : nothing}
           <div class="body">

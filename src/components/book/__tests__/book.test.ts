@@ -80,6 +80,37 @@ describe("acme-book", () => {
     expect(root(el).querySelector(".content > slot[name=icon] + svg")).toBeNull();
   });
 
+  test("the cover's hover is reactive state as well as an attribute, so the animate directive fires", async () => {
+    const el = await mount(`<acme-book title="A"></acme-book>`);
+    const w = wrap(el);
+    // `Interaction` sets data-hover on the root for the generated rules and the census, but with
+    // setAttribute and no update. The directive runs only in Lit's update cycle, so the cover
+    // carries its own reactive `hovered` and the pointer handlers sit on the wrap.
+    const before = el.shadowRoot!.innerHTML;
+    w.dispatchEvent(new PointerEvent("pointerenter", { bubbles: true, pointerType: "mouse" }));
+    await el.updateComplete;
+    expect((el as unknown as { hovered: boolean }).hovered).toBe(true);
+    w.dispatchEvent(new PointerEvent("pointerleave", { bubbles: true, pointerType: "mouse" }));
+    await el.updateComplete;
+    expect((el as unknown as { hovered: boolean }).hovered).toBe(false);
+    // The markup is unchanged: the hover animates, it does not re-template.
+    expect(el.shadowRoot!.innerHTML).toBe(before);
+  });
+
+  test("a turn mid-flight cancels the animation in progress, so the reversal does not overshoot", async () => {
+    const el = await mount(`<acme-book title="A"></acme-book>`);
+    const w = wrap(el);
+    const cancelled: string[] = [];
+    // happy-dom runs no animations, so the cancel path is proven by what the turn asks for.
+    (w as unknown as { getAnimations: () => Animation[] }).getAnimations = () =>
+      [{ cancel: () => cancelled.push("cancel") }] as unknown as Animation[];
+    w.dispatchEvent(new PointerEvent("pointerenter", { bubbles: true, pointerType: "mouse" }));
+    await el.updateComplete;
+    w.dispatchEvent(new PointerEvent("pointerleave", { bubbles: true, pointerType: "mouse" }));
+    await el.updateComplete;
+    expect(cancelled.length).toBe(2);
+  });
+
   test("hover lands on the perspective root as data-hover, for mouse pointers only", async () => {
     const el = await mount(`<acme-book title="T"></acme-book>`);
     const b = root(el);

@@ -119,7 +119,7 @@ A blank row means the port has not yet reached work that needs it. That is expec
 | `@tanstack/markdown` | 1 |
 | `@tanstack/pacer` | 1 |
 | `@internationalized/date` | 1 |
-| `@lit-labs/motion` | none yet — see the task in 5.6 |
+| `@lit-labs/motion` | the book's cover hover — see `notes/decisions/motion-on-the-book.md`; the rest is the task in 5.6 |
 
 No rival library has crept in: a sweep for shiki, highlight.js, prismjs, marked, markdown-it,
 date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` returns nothing.
@@ -209,6 +209,16 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
+- **An animation the census must measure stays keyed off the state attribute; the directive only
+  times it.** Verified 2026-09-10 on the book. `@lit-labs/motion` runs only in Lit's update cycle,
+  so an attribute-driven hover needs reactive state beside `data-hover`, never instead of it: the
+  CSS rule keeps holding both states, the directive animates between them, and the census reads the
+  same matrix as before. Replacing the CSS with script would break the harness that proves the
+  animation is right. See `notes/decisions/motion-on-the-book.md`.
+- **A gesture that turns mid-flight must cancel the animation in progress.** The directive cancels
+  only when it commits styles, never when a new animation starts on the same box, so the old one
+  keeps advancing against the new one — the snap Peter found on a quick in-and-out. Capture the
+  live matrix in the handler BEFORE the state flips, then cancel.
 - **The places beside content are `start` and `end`, in every element, and no element keeps its own
   `hasStart`/`hasEnd`.** Decided 2026-09-10 by Peter. Nine elements moved off `prefix`/`suffix`,
   `data-prefix`/`data-suffix` are gone (no generated stylesheet ever read them), and the eight that
@@ -411,7 +421,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 604 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
+| Tests | 606 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |
