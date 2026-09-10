@@ -1,9 +1,9 @@
 import { css, html, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
+import { AnimateController, animate } from "@lit-labs/motion";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { createStore, StoreSelector } from "../../shared/state";
-import { animate } from "@lit-labs/motion";
+import { createStore, StoreEffect, StoreSelector } from "../../shared/state";
 import { Interaction } from "../../shared/interaction";
 import { bookCss } from "./book.styles";
 
@@ -36,6 +36,14 @@ export const textureFlipped = (title: string) => {
   for (let i = 0; i < title.length; i++) h = ((h << 5) - h + title.charCodeAt(i)) | 0;
   return (h & 1) === 1;
 };
+
+/** The two states the CSS holds; the directive only times the travel between them. */
+const REST = "rotateY(0deg) scale(1) translateX(0px)";
+const LIFTED = "rotateY(var(--hover-rotate)) scale(var(--hover-scale)) translateX(var(--hover-translate-x))";
+
+/** Which way the cover is going, and the matrix it was caught at when that last changed. */
+type Gesture = { hovered: boolean; from?: string };
+const AT_REST: Gesture = { hovered: false };
 
 const widthAttr = {
   fromAttribute: (v: string | null): BookWidth => (v == null || v.trim() === "" ? 196 : v.trim().startsWith("{") ? (JSON.parse(v) as BookWidth) : Number(v)),
@@ -86,36 +94,70 @@ export class AcmeBook extends AcmeElement {
   @atomState() private hasIcon = false;
   @query(".book") private root!: HTMLElement;
   @query(".wrap") private wrap?: HTMLElement;
+  // ── state ──────────────────────────────────────────────────────────────────
+
   /**
-   * The gesture, as one store rather than two fields: whether the cover is hovered, and the matrix
-   * it carried when the pointer last turned. They change together and are read together, so they
-   * are one piece of state.
+   * The gesture, with its one transition as an action. A repeat of the current direction returns
+   * the same object, which the store's compare drops, so nothing downstream moves: no recapture of
+   * `from`, no dirty frames, no update.
    */
-  private gesture = createStore({ hovered: false, from: undefined as string | undefined });
+  private gesture = createStore(AT_REST, ({ setState }) => ({
+    turn: (hovered: boolean, from?: string) => setState((g) => (g.hovered === hovered ? g : { hovered, from })),
+  }));
+
   /**
-   * The keyframes that gesture implies. Derived, so it recomputes only when the gesture moves, and
-   * the reasoning about WHICH frames lives here rather than inside the directive's callback.
-   *
-   * The first frame is where the box WAS when the gesture turned, not where the last one began: a
-   * pointer that leaves mid-turn catches the cover part-way, and a hard-coded start jumps it to the
-   * full hover first — the snap on a quick in-and-out.
+   * The keyframes the gesture implies. Derived, lazily: recomputed on the next read after the
+   * gesture moved. The first frame is where the box was caught, or the far state on a turn that
+   * found nothing to catch; a hard-coded start would snap a quick in-and-out to the full hover
+   * before settling.
    */
-  private coverFrames = createStore(() => {
-    const rest = "rotateY(0deg) scale(1) translateX(0px)";
-    const lifted = "rotateY(var(--hover-rotate)) scale(var(--hover-scale)) translateX(var(--hover-translate-x))";
+  private frames = createStore((): Keyframe[] => {
     const { hovered, from } = this.gesture.get();
-    return [{ transform: from ?? (hovered ? rest : lifted) }, { transform: hovered ? lifted : rest }];
+    return [{ transform: from ?? (hovered ? REST : LIFTED) }, { transform: hovered ? LIFTED : REST }];
   });
+
   /**
-   * Held, not read: constructing the selector is what re-renders the cover when the gesture moves,
-   * which is what lets the animate directive run.
-   *
-   * It selects `hovered` alone. The captured matrix changes on every turn too, but it is read by the
-   * frames rather than rendered, so subscribing to the whole store would ask for an update the
-   * markup does not need.
+   * The render's view of the gesture: `hovered` alone. `from` changes on every turn too, but it is
+   * read by the frames rather than rendered, so selecting the flag keeps the update to what the
+   * markup needs. Held, not read — `TanStackStoreSelector` exposes no value, only the subscription;
+   * the guard reads the store itself.
    */
-  private gestureSelector = new StoreSelector(this, () => this.gesture, (g) => g.hovered);
+  private hovered = new StoreSelector(this, () => this.gesture, (g) => g.hovered);
+
+  // ── motion ─────────────────────────────────────────────────────────────────
+
+  /**
+   * Holds the fixed options for the one directive. No `fill`: the CSS rule already holds the state
+   * a finished animation lands on, so a filled animation would only stack on the next hover.
+   */
+  private motion = new AnimateController(this, {
+    defaultOptions: { properties: [], skipInitial: true, keyframeOptions: { duration: 250, easing: "ease-out" } },
+  });
+
+  /**
+   * A turn cancels the motion in flight. The directive only cancels its animation when it commits
+   * styles, never when a new one starts on the same box, so without this the old animation keeps
+   * advancing and the cover travels the way it was going. This runs inside `setState`, before Lit's
+   * update, and `from` was measured before the write — the box is caught mid-flight, then released.
+   */
+  private settle = new StoreEffect(this, () => this.gesture, () => this.motion.cancel());
+
   private interaction = new Interaction(this);
+
+  /** The matrix the browser is drawing right now — mid-flight if animating — or nothing before any transform has applied. */
+  private caught(): string | undefined {
+    const t = this.wrap && getComputedStyle(this.wrap).transform;
+    return t && t !== "none" ? t : undefined;
+  }
+
+  /**
+   * `Interaction` sets `data-hover` on the root for the generated rules and for the census, with
+   * `setAttribute` and no update, so a hovered book renders nothing new on its own. The gesture's
+   * move is what makes the selector request the update the directive runs in.
+   */
+  private turn = (hovered: boolean) => this.gesture.actions.turn(hovered, this.caught());
+
+  // ── lifecycle ──────────────────────────────────────────────────────────────
 
   override attributeChangedCallback(name: string, old: string | null, val: string | null) {
     if (name === "title") {
@@ -142,23 +184,6 @@ export class AcmeBook extends AcmeElement {
     this.interaction.attach(this.root);
   }
 
-  /**
-   * The whole gesture in one write: where the cover is, and which way it is now going.
-   *
-   * `Interaction` sets `data-hover` on the root for the generated rules and for the census, but with
-   * `setAttribute` and no update, so a hovered book renders nothing new. The `animate` directive
-   * runs only in Lit's update cycle, so this store's change is what makes it fire.
-   */
-  private turn(hovered: boolean) {
-    const now = this.wrap ? getComputedStyle(this.wrap).transform : "none";
-    // The directive cancels its animation only when it commits styles, never when a new one starts
-    // on the same box, so a pointer that turns mid-flight leaves the old animation running and the
-    // cover keeps travelling the way it was going. Cancelling here is what makes the reversal start
-    // where the box actually is.
-    for (const a of this.wrap?.getAnimations() ?? []) a.cancel();
-    this.gesture.setState(() => ({ hovered, from: now === "none" ? undefined : now }));
-  }
-
   private iconSlotted = (e: Event) => {
     this.hasIcon = (e.target as HTMLSlotElement).assignedElements({ flatten: true }).length > 0;
   };
@@ -179,17 +204,12 @@ export class AcmeBook extends AcmeElement {
         @pointerenter=${() => this.turn(true)}
         @pointerleave=${() => this.turn(false)}
         ${animate({
-          properties: [],
-          skipInitial: true,
+          // The guard is the selector's value, so the directive runs exactly when the gesture
+          // turned. `animate` builds a transform from measured left/top/width/height, which cannot
+          // express rotateY, so onFrames replaces the frames with the derived ones — the technique
+          // the package's own hero demo uses.
           guard: () => this.gesture.get().hovered,
-          // No `fill`: the CSS rule under it already holds the hover state, so a finished animation
-          // that stays applied would only stack a second one on the next hover.
-          keyframeOptions: { duration: 250, easing: "ease-out" },
-          // `animate` builds a transform from measured left/top/width/height, which cannot express
-          // rotateY, so onFrames replaces the frames outright — the technique the package's own hero
-          // demo uses. The frames are the CSS rest and hover states, so the motion is the
-          // reference's and the directive only times it.
-          onFrames: () => this.coverFrames.get(),
+          onFrames: () => this.frames.get(),
         })}
       >
         <div class="cover">

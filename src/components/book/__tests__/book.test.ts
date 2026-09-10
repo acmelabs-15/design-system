@@ -80,38 +80,55 @@ describe("acme-book", () => {
     expect(root(el).querySelector(".content > slot[name=icon] + svg")).toBeNull();
   });
 
-  test("the gesture is one store, and the frames derive from it", async () => {
+  test("the gesture is one store with one action, and the frames derive from it", async () => {
     const el = await mount(`<acme-book title="A"></acme-book>`);
     const w = wrap(el);
-    const probe = el as unknown as { gesture: { get: () => { hovered: boolean; from?: string } }; coverFrames: { get: () => { transform: string }[] } };
+    const probe = el as unknown as {
+      gesture: { get: () => { hovered: boolean; from?: string } };
+      frames: { get: () => { transform: string }[] };
+    };
     // `Interaction` sets data-hover on the root for the generated rules and the census, but with
     // setAttribute and no update. The directive runs only in Lit's update cycle, so the cover keeps
     // the gesture in a store of its own and the pointer handlers sit on the wrap.
     const before = el.shadowRoot!.innerHTML;
     expect(probe.gesture.get().hovered).toBe(false);
-    expect(probe.coverFrames.get()[1].transform).toContain("rotateY(0deg)");
+    expect(probe.frames.get()[1].transform).toContain("rotateY(0deg)");
 
     w.dispatchEvent(new PointerEvent("pointerenter", { bubbles: true, pointerType: "mouse" }));
     await el.updateComplete;
     expect(probe.gesture.get().hovered).toBe(true);
     // The derived frames follow the store: the cover now travels TO the lifted state.
-    expect(probe.coverFrames.get()[1].transform).toContain("var(--hover-rotate)");
+    expect(probe.frames.get()[1].transform).toContain("var(--hover-rotate)");
 
     w.dispatchEvent(new PointerEvent("pointerleave", { bubbles: true, pointerType: "mouse" }));
     await el.updateComplete;
     expect(probe.gesture.get().hovered).toBe(false);
-    expect(probe.coverFrames.get()[1].transform).toContain("rotateY(0deg)");
+    expect(probe.frames.get()[1].transform).toContain("rotateY(0deg)");
     // The markup is unchanged: the hover animates, it does not re-template.
     expect(el.shadowRoot!.innerHTML).toBe(before);
   });
 
-  test("a turn mid-flight cancels the animation in progress, so the reversal does not overshoot", async () => {
+  test("a repeat of the current direction changes nothing", async () => {
+    const el = await mount(`<acme-book title="A"></acme-book>`);
+    const w = wrap(el);
+    const probe = el as unknown as { gesture: { get: () => { hovered: boolean; from?: string } } };
+    const before = probe.gesture.get();
+    // The action returns the same object when the direction has not changed, so the compare drops
+    // it: no recapture of the caught matrix, no dirty frames, no update.
+    w.dispatchEvent(new PointerEvent("pointerleave", { bubbles: true, pointerType: "mouse" }));
+    await el.updateComplete;
+    expect(probe.gesture.get()).toBe(before);
+    w.dispatchEvent(new PointerEvent("pointerenter", { bubbles: true, pointerType: "mouse" }));
+    await el.updateComplete;
+    expect(probe.gesture.get()).not.toBe(before);
+  });
+
+  test("a turn cancels the motion in flight, so the reversal does not overshoot", async () => {
     const el = await mount(`<acme-book title="A"></acme-book>`);
     const w = wrap(el);
     const cancelled: string[] = [];
     // happy-dom runs no animations, so the cancel path is proven by what the turn asks for.
-    (w as unknown as { getAnimations: () => Animation[] }).getAnimations = () =>
-      [{ cancel: () => cancelled.push("cancel") }] as unknown as Animation[];
+    (el as unknown as { motion: { cancel: () => void } }).motion.cancel = () => cancelled.push("cancel");
     w.dispatchEvent(new PointerEvent("pointerenter", { bubbles: true, pointerType: "mouse" }));
     await el.updateComplete;
     w.dispatchEvent(new PointerEvent("pointerleave", { bubbles: true, pointerType: "mouse" }));

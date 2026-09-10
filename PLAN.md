@@ -209,6 +209,10 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
+- **A store change whose consequence is not a render is a `StoreEffect`, not a subscription field.**
+  `src/shared/state.ts` carries it: `StoreSelector` re-renders, `StoreEffect` runs a side effect, and
+  both follow the host's life. collapse-group, toaster and the theme still hand-roll a
+  `Subscription` and a `disconnectedCallback`; they can move onto it.
 - **An animation the census must measure stays keyed off the state attribute; the directive only
   times it.** Verified 2026-09-10 on the book. `@lit-labs/motion` runs only in Lit's update cycle,
   so an attribute-driven hover needs reactive state beside `data-hover`, never instead of it: the
@@ -421,7 +425,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 606 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
+| Tests | 607 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |

@@ -116,3 +116,45 @@ old.
 **Verified after the change:** book and book.dark still 0 hard, re-measured; the quick in-and-out
 still reads `0.175 → 0.156 → 0.138 → 0.120 → 0.104 → 0.088`, monotonically down with no overshoot;
 606 tests pass. The frames test is proven by breaking the derivation and watching it fail.
+
+
+## The final shape, from Peter (2026-09-10)
+
+Peter rewrote the element. Three things his version does that mine did not:
+
+**The transition is an action on the store.** `createStore(value, actions)` is a documented overload
+I had not used. The gesture's one transition lives with the state it changes:
+
+```ts
+private gesture = createStore(AT_REST, ({ setState }) => ({
+  turn: (hovered, from) => setState((g) => (g.hovered === hovered ? g : { hovered, from })),
+}));
+```
+
+That also buys a **no-op guard**: a repeat of the current direction returns the *same object*, which
+the store's compare drops, so nothing downstream moves — no recapture of the caught matrix, no dirty
+frames, no update. Verified in the browser: a repeated `pointerleave` leaves `gesture.get()`
+identical by reference; a real turn does not. Mine recaptured on every repeat.
+
+**An `AnimateController` holds the options, and `cancel()` is its own.** The controller registers the
+directive, so `motion.cancel()` cancels what it started rather than sweeping `wrap.getAnimations()`
+for anything that happens to be running.
+
+**A `StoreEffect` runs the cancel.** New in `src/shared/state.ts`: a reactive controller for a store
+change whose consequence is *not* a render. `StoreSelector` re-renders; this is its counterpart, and
+the subscription follows the host's life, so no element keeps a `Subscription` field and a
+`disconnectedCallback` to tear one down. Three places already hand-roll that — collapse-group,
+toaster, and the theme — and can move onto it later.
+
+The effect runs inside `setState`, before Lit's update, and `from` was measured before the write, so
+the box is caught mid-flight and then released.
+
+### One correction to his version
+
+`TanStackStoreSelector` exposes **no `.value`** — only `hostUpdate` and `hostDisconnected`.
+`TanStackStoreAtom` is the one with a value. So the guard reads `this.gesture.get().hovered`
+directly, and the selector is held for its subscription alone.
+
+**Verified:** book and book.dark 0 hard, re-measured. The quick in-and-out reads
+`0.175 → 0.155 → 0.137 → 0.120 → 0.104 → 0.088`, monotonically down. 607 tests, three of them for
+this element's state, each proven by removing the behaviour it covers.
