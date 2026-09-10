@@ -18,7 +18,9 @@ assertive status line for screen readers. A failed copy raises an error toast. F
 
 The button inside is an `acme-button`, and its `button` part is forwarded with `exportparts`, so an
 element that composes this one reaches the real button with `acme-copy-button::part(button)` rather
-than landing on the host in between.
+than landing on the host in between. The icon stack is exposed the same way — `stack`, `check` and
+`icon` — because a composing element styles the glyph, which lives in this element's tree and no
+selector of theirs can otherwise reach.
 
 | Attribute | Property | Type | Default | Description |
 |---|---|---|---|---|

@@ -8,6 +8,8 @@ import "../split-button/split-button";
 import "../tabs/tabs";
 import { atomState } from "../../shared/atom-state";
 import { sourceOf, tokenLines } from "../code/code";
+import type { AcmeCopyButton } from "../copy-button/copy-button";
+import "../copy-button/copy-button";
 import { copyButtonCss } from "../copy-button/copy-button.styles";
 import { codeBlockCss } from "./code-block.styles";
 import { codeBlockSwitcherCss } from "./code-block-switcher.styles";
@@ -80,8 +82,8 @@ export class AcmeCodeBlock extends AcmeElement {
   /** The one-based line a reader referenced by pressing its number. */
   @property({ type: Number, attribute: "referenced-line" }) referencedLine = 0;
   @property({ attribute: "aria-label" }) label = "";
-  @atomState() private done = false;
   @query(".code-block") private root!: HTMLElement;
+  @query("acme-copy-button") private button?: AcmeCopyButton;
   @query(".switcher") private switcherEl!: HTMLElement | null;
   private timer?: ReturnType<typeof setTimeout>;
   private interaction = new Interaction(this);
@@ -109,20 +111,11 @@ export class AcmeCodeBlock extends AcmeElement {
     this.switcherInteraction.attach(this.switcherEl);
   }
 
-  private copy = async () => {
-    const text = this.source;
-    clearTimeout(this.timer);
-    try {
-      await navigator.clipboard.writeText(text);
-      this.done = true;
-      this.timer = setTimeout(() => {
-        this.done = false;
-      }, 1000);
-      this.dispatchEvent(new CustomEvent("acme-copy", { detail: { text }, bubbles: true, composed: true }));
-    } catch {
-      toasts.error("Failed to copy to clipboard");
-    }
-  };
+  /** Copies the source, as clicking the button does. The button owns the clipboard write, the
+   *  one-second check and the failure toast. */
+  copy(): void {
+    this.button?.copy();
+  }
 
   private reference(n: number) {
     this.referencedLine = this.referencedLine === n ? 0 : n;
@@ -139,21 +132,16 @@ export class AcmeCodeBlock extends AcmeElement {
     const source = this.source;
     const lines = tokenLines(source, this.language);
     const flag = (list: number[], n: number) => (list.length ? String(list.includes(n)) : nothing);
-    const copied = this.done;
-    const copyButton = (floating: boolean) => html`<acme-button
+    const copyButton = (floating: boolean) => html`<acme-copy-button
       class=${floating ? "floating" : ""}
       variant=${floating ? "secondary" : "tertiary"}
       shape="square"
       size="small"
-      svg-only
-      aria-label="Copy to clipboard"
-      @click=${this.copy}
+      label="Copy to clipboard"
+      text-to-copy=${this.source}
       part="copy"
-      >${copied ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}<div class=${this.cls("stack", { copied })}>
-        <div class="check">${glyphSized("check")}</div>
-        <div class="copy"><slot name="icon">${glyphSized("copy")}</slot></div>
-      </div></acme-button
-    >`;
+      ><slot name="icon" slot="icon"></slot
+    ></acme-copy-button>`;
     const switcher = this.opts(this.switcher);
     const tabs = this.opts(this.tabs);
     const current = switcher.find((o) => o.value === this.value) ?? switcher[0];

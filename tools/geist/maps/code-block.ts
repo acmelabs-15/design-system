@@ -39,14 +39,18 @@ export const geist: GeistMap = {
           children: [
             // The language switcher wrapper is its own mapping (code-block-switcher): it is the hover group of its face.
             { ours: ".switcher", pick: (c) => c.children.some((k) => k.tag === "select"), leaf: true },
-            // The copy button is an acme-button in ours; the classes the block adds to it land on its part.
-            { ours: "acme-button", pick: button, extends: "button", part: "button", leaf: true, states: {} },
+            // The block composes acme-copy-button, which composes acme-button, so the reference's
+            // button sits two elements down on ours. The classes the block adds land on the copy
+            // button's own `button` part, which it forwards with exportparts.
+            // The glyph lives in the copy button's own tree, so no selector of ours reaches it: it is
+            // named through the `icon` part that element exposes.
+            { ours: "acme-copy-button", pick: button, extends: "button", part: "button", states: {}, children: [{ ours: "", part: "icon", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
           ],
         },
       ],
     },
     // Without a filename bar the copy button floats over the code and shows on the block's hover.
-    { ours: "acme-button.floating", pick: button, extends: "button", part: "button", leaf: true, states: { ":hover": "[data-hover]" } },
+    { ours: "acme-copy-button.floating", pick: button, extends: "button", part: "button", states: { ":hover": "[data-hover]" }, children: [{ ours: "", part: "icon", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
     {
       ours: ".content",
       pick: section("content"),

@@ -15,7 +15,9 @@ import "../button/button";
  *
  * The button inside is an `acme-button`, and its `button` part is forwarded with `exportparts`, so an
  * element that composes this one reaches the real button with `acme-copy-button::part(button)` rather
- * than landing on the host in between.
+ * than landing on the host in between. The icon stack is exposed the same way — `stack`, `check` and
+ * `icon` — because a composing element styles the glyph, which lives in this element's tree and no
+ * selector of theirs can otherwise reach.
  */
 @customElement("acme-copy-button")
 export class AcmeCopyButton extends AcmeElement {
@@ -121,9 +123,9 @@ export class AcmeCopyButton extends AcmeElement {
       exportparts="button"
     >
       ${copied ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}
-      <div class=${this.cls("stack", { copied })}>
-        <div class="check">${glyphSized("check")}</div>
-        <div class="copy">
+      <div class=${this.cls("stack", { copied })} part="stack">
+        <div class="check" part="check">${glyphSized("check")}</div>
+        <div class="copy" part="icon">
           <slot name="icon" @slotchange=${this.readIconSlot}></slot>${this.ownState.get().hasIcon ? nothing : glyphSized("copy")}
         </div>
       </div>

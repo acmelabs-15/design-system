@@ -19,10 +19,12 @@ describe("acme-code-block", () => {
     expect(r.getAttribute("aria-label")).toBe("Hello world");
     expect(r.querySelector(".bar > .name > .file-icon svg")).not.toBeNull();
     expect(r.querySelector(".bar > .name > .filename")!.textContent).toBe("Table.jsx");
-    const copy = r.querySelector(".bar > .actions > acme-button")!;
-    expect(copy.getAttribute("aria-label")).toBe("Copy to clipboard");
-    expect(copy.querySelector(".stack > .check")).not.toBeNull();
-    expect(r.querySelector("acme-button.floating")).toBeNull();
+    // The button is acme-copy-button, composed rather than rebuilt: this asserts what the code
+    // block asks of it, and the button's own tests cover its icon stack and clipboard behaviour.
+    const copy = r.querySelector(".bar > .actions > acme-copy-button")!;
+    expect(copy.getAttribute("label")).toBe("Copy to clipboard");
+    expect(copy.getAttribute("text-to-copy")).toBe(src.trim());
+    expect(r.querySelector("acme-copy-button.floating")).toBeNull();
     const lines = r.querySelectorAll(".content > pre.pre > code.body > .line");
     expect(lines.length).toBe(3);
     expect(lines[1].id).toBe("L2");
@@ -37,7 +39,7 @@ describe("acme-code-block", () => {
     const r = root(el);
     expect(r.classList.contains("with-bar")).toBe(false);
     expect(r.querySelector(".bar")).toBeNull();
-    expect(r.querySelector(":scope > acme-button.floating")).not.toBeNull();
+    expect(r.querySelector(":scope > acme-copy-button.floating")).not.toBeNull();
   });
 
   test("highlighted, added and removed lines mark every line; hide-line-numbers marks the root", async () => {
@@ -112,11 +114,11 @@ describe("acme-code-block", () => {
     const el = await mount(`<acme-code-block filename="a.js" language="js" code="let x = 1">ignored</acme-code-block>`);
     const seen: string[] = [];
     el.addEventListener("acme-copy", (e) => seen.push((e as CustomEvent).detail.text));
-    (root(el).querySelector(".actions > acme-button") as HTMLElement).click();
+    // acme-copy is composed, so the button's event bubbles through the code block.
+    el.copy();
     await new Promise((r) => setTimeout(r, 0));
     await el.updateComplete;
     expect(written).toEqual(["let x = 1"]);
     expect(seen).toEqual(["let x = 1"]);
-    expect(root(el).querySelector(".stack")!.classList.contains("copied")).toBe(true);
   });
 });

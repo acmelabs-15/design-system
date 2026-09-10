@@ -133,7 +133,7 @@ language; a change fires `acme-change`). `v0="ask"` adds an Open in v0 link in a
 
 Slots: `icon`
 
-Events: `acme-copy`, `acme-reference`, `acme-change`
+Events: `acme-reference`, `acme-change`
 
 ## Best Practices
 
