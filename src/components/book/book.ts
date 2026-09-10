@@ -121,13 +121,6 @@ export class AcmeBook extends AcmeElement {
     this.interaction.attach(this.root);
   }
 
-  /**
-   * The cover's 3D hover, as keyframes rather than the directive's own transform. `animate` builds a
-   * transform from measured left/top/width/height, which cannot express `rotateY`, so `onFrames`
-   * replaces the frames outright — the technique the package's own hero demo uses. The two frames
-   * are the CSS rest and hover states, so the motion is the reference's and the directive only times
-   * it.
-   */
   /** Records where the cover is, stops the turn in progress, then flips the state. */
   private turn(hovered: boolean) {
     const now = this.wrap ? getComputedStyle(this.wrap).transform : "none";
@@ -140,6 +133,13 @@ export class AcmeBook extends AcmeElement {
     this.hovered = hovered;
   }
 
+  /**
+   * The cover's 3D hover, as keyframes rather than the directive's own transform. `animate` builds a
+   * transform from measured left/top/width/height, which cannot express `rotateY`, so `onFrames`
+   * replaces the frames outright — the technique the package's own hero demo uses. The two frames
+   * are the CSS rest and hover states, so the motion is the reference's and the directive only times
+   * it.
+   */
   private coverFrames = () => {
     const rest = "rotateY(0deg) scale(1) translateX(0px)";
     const lifted = "rotateY(var(--hover-rotate)) scale(var(--hover-scale)) translateX(var(--hover-translate-x))";
