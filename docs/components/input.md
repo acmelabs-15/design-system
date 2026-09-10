@@ -12,31 +12,37 @@ Retrieve text input from a user.
 </div>
 ```
 
-## Prefix and suffix
+## Add-ons and in-field places
+
+An add-on is attached to the outside of the field: its own ground, and a hairline where the two meet. A start or end sits inside the field's own box. Each place takes text or an element alike.
 
 ```html
 <div class="vstack" style="gap:24px;align-items:flex-start">
   <acme-input placeholder="Default">
-    <svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+    <svg slot="start-addon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
   </acme-input>
   <acme-input placeholder="Default">
-    <svg slot="suffix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+    <svg slot="end-addon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
   </acme-input>
-  <acme-input placeholder="Default" prefix="https://" suffix=".com"></acme-input>
-  <acme-input placeholder="Default" prefix-styling="false" suffix-styling="false">
-    <svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+  <acme-input placeholder="Default">
+    <span slot="start-addon">https://</span>
+    <span slot="end-addon">.com</span>
+  </acme-input>
+  <acme-input placeholder="Default">
+    <svg slot="start" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
-    <svg slot="suffix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+    <svg slot="end" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
   </acme-input>
-  <acme-input placeholder="Default" prefix="vercel/" suffix-container="false" suffix-styling="false">
-    <svg slot="suffix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+  <acme-input placeholder="Default">
+    <span slot="start-addon">vercel/</span>
+    <svg slot="end" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
   </acme-input>
@@ -49,22 +55,25 @@ Retrieve text input from a user.
 <div class="vstack" style="gap:16px;align-items:flex-start">
   <acme-input disabled placeholder="Disabled with placeholder"></acme-input>
   <acme-input disabled value="Disabled with value"></acme-input>
-  <acme-input disabled placeholder="Disabled with prefix">
-    <svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+  <acme-input disabled placeholder="Disabled with a start add-on">
+    <svg slot="start-addon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
   </acme-input>
-  <acme-input disabled placeholder="Disabled with suffix">
-    <svg slot="suffix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+  <acme-input disabled placeholder="Disabled with an end add-on">
+    <svg slot="end-addon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
   </acme-input>
-  <acme-input disabled placeholder="Disabled with prefix and suffix" prefix="https://" suffix=".com"></acme-input>
-  <acme-input disabled placeholder="Disabled with prefix and suffix" prefix-styling="false" suffix-styling="false">
-    <svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+  <acme-input disabled placeholder="Disabled with add-ons">
+    <span slot="start-addon">https://</span>
+    <span slot="end-addon">.com</span>
+  </acme-input>
+  <acme-input disabled placeholder="Disabled with in-field places">
+    <svg slot="start" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
-    <svg slot="suffix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+    <svg slot="end" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
       <use href="#i-arrow-circle-up"/>
     </svg>
   </acme-input>
@@ -111,28 +120,39 @@ Shows the ⌘ K keycaps to say the field opens a command palette. Once the field
 </div>
 ```
 
-## Rounded prefix and suffix
+## Rounded with add-ons
 
 ```html
-<acme-input placeholder="Label example" prefix="www." rounded suffix=".com"></acme-input>
+<acme-input placeholder="Label example" rounded>
+  <span slot="start-addon">www.</span>
+  <span slot="end-addon">.com</span>
+</acme-input>
 ```
 
-## Rounded prefix and suffix without styling
+## Rounded with in-field places
 
 ```html
-<acme-input placeholder="Label example" prefix="www." prefix-styling="false" rounded suffix=".com" suffix-styling="false"></acme-input>
+<acme-input placeholder="Label example" rounded>
+  <span slot="start">www.</span>
+  <span slot="end">.com</span>
+</acme-input>
 ```
 
 ## `<acme-input>`
 
-A single-line text field. A flex wrapper (32 / 36 / 40px, radius 6, large 8) holds the field
-and, when given, a prefix cell before it and a suffix cell after it: text through `prefix` /
-`suffix`, an element through the slots of the same names. A cell is filled and hairlined
-unless its styling is off; a suffix without its container is slotted straight into the
-wrapper. The wrapper carries the size, `error`, `rounded` and cell modifiers and the
-interaction states (data-hover, data-focus: focus within the field, data-active). `label`
-renders the text above the field; `error` renders the message under it and marks the field
-invalid. Form-associated and labelable.
+A single-line text field. A flex wrapper (32 / 36 / 40px, radius 6, large 8) holds the field and
+up to four places around it, each a slot:
+
+  `start-addon` / `end-addon`  attached to the outside of the field: its own ground, and a
+                               hairline where the two meet.
+  `start` / `end`              inside the field's own box: the field's ground, no line.
+
+A place is where a thing sits, not what it holds, so every slot takes text or an element alike.
+
+The wrapper carries the size, `error`, `rounded`, the occupied places, and the interaction states
+(data-hover, data-focus: focus within the field, data-active). `label` renders the text above the
+field; `error` renders the message under it and marks the field invalid. Form-associated and
+labelable.
 
 | Attribute | Property | Type | Default | Description |
 |---|---|---|---|---|
@@ -143,14 +163,8 @@ invalid. Form-associated and labelable.
 | `name` | `name` | `string` | `""` |  |
 | `size` | `size` | `InputSize` | `"medium"` |  |
 | `error` | `error` | `string` | `""` | The message under the field; the wrapper turns red and the field reads as invalid. |
-| `prefix` | `prefix` | `string` | `""` | Text in the prefix cell (the `prefix` slot takes an element instead). |
-| `suffix` | `suffix` | `string` | `""` | Text in the suffix cell (the `suffix` slot takes an element instead). |
-| `prefix-styling` | `prefixStyling` | `boolean` | `true` | `"false"` removes the fill and hairline of the prefix cell. |
-| `suffix-styling` | `suffixStyling` | `boolean` | `true` | `"false"` removes the fill and hairline of the suffix cell. |
-| `prefix-container` | `prefixContainer` | `boolean` | `true` | `"false"` drops the prefix cell and slots the prefix straight into the wrapper. |
-| `suffix-container` | `suffixContainer` | `boolean` | `true` | `"false"` drops the suffix cell and slots the suffix straight into the wrapper. |
 | `rounded` | `rounded` | `boolean` | `false` | The pill shape. |
-| `clearable` | `clearable` | `boolean` | `false` | Set by a clearable field: the suffix cell loses its right padding. |
+| `clearable` | `clearable` | `boolean` | `false` | Set by a clearable field: the end place loses its right padding. |
 | `disabled` | `disabled` | `boolean` | `false` |  |
 | `readonly` | `readonly` | `boolean` | `false` |  |
 | `required` | `required` | `boolean` | `false` |  |
@@ -159,7 +173,7 @@ invalid. Form-associated and labelable.
 | `aria-label` | `ariaLabelText` | `string` | `""` |  |
 | `aria-labelledby` | `ariaLabelledby` | `string` | `""` |  |
 
-Slots: `prefix`, `suffix`
+Slots: `(default)`
 
 Events: `acme-input`, `acme-change`
 

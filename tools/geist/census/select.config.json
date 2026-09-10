@@ -1,5 +1,35 @@
 {
-  "geist": { "side": "geist", "page": "select", "marker": "data-geist-select", "width": "600px", "children": { "prefix": ".prefix|.left-3", "select": "select|select", "ph": ".ph|.text-gray-800", "suffix": ".suffix|.right-3", "chevron": ".chevron|.size-\\(--ds-control-decoration-size\\)" }, "textParts": ["select", "ph"] },
-  "ours": { "side": "ours", "page": "select", "host": "acme-select", "ours": ".wrap", "width": "600px", "children": { "prefix": ".prefix|.left-3", "select": "select|select", "ph": ".ph|.text-gray-800", "suffix": ".suffix|.right-3", "chevron": ".chevron|.size-\\(--ds-control-decoration-size\\)" }, "textParts": ["select", "ph"] },
-  "themes": ["light", "dark"]
+ "note": "The select's wrapper. Both places sit inside the field, so their selectors read the two absolutely-positioned cells the reference marks by position (`left-3`, `right-3`); ours carry the place as their class. `width` fixes both previews at 600px, because the wrapper fills its container and the two preview columns are different widths. The chevron is the end place's fallback, so it is read separately from the place that holds it.",
+ "themes": ["light", "dark"],
+ "select": {
+  "geist": {
+   "side": "geist",
+   "page": "select",
+   "marker": "data-geist-select",
+   "width": "600px",
+   "textParts": ["select", "ph"],
+   "children": {
+    "start": ".start|.left-3",
+    "select": "select|select",
+    "ph": ".ph|.text-gray-800",
+    "end": ".end|.right-3",
+    "chevron": ".chevron|.size-\\(--ds-control-decoration-size\\)"
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "select",
+   "host": "acme-select",
+   "ours": ".wrap",
+   "width": "600px",
+   "textParts": ["select", "ph"],
+   "children": {
+    "start": ".start|.left-3",
+    "select": "select|select",
+    "ph": ".ph|.text-gray-800",
+    "end": ".end|.right-3",
+    "chevron": ".chevron|.size-\\(--ds-control-decoration-size\\)"
+   }
+  }
+ }
 }

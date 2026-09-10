@@ -128,9 +128,18 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
 
 - Every CSS declaration ships through the generator. Fix a defect **in the generator**, never
   work around it in an element.
-- Wrappers keep a real box. Never `display: contents`.
+- **A host keeps a real box, unless the reference renders no box there.** `display: contents` is the
+  exception, not the default, and it needs the same evidence as any other claim: the reference's own
+  element is the box its container lays out, and a host of ours in between takes that place instead.
+  Two carry it today, both measured — `acme-error`, whose alert takes a flex row's stretch, and
+  `acme-kbd`, whose key sizes a row to 20px where our host made it 25. Reach for it when a container
+  sizes, stretches or orders our element's own box and gets the host's instead; not to avoid writing
+  a style.
 - Link buttons are an `href` on the element. There is no separate link-button element.
-- The shared base carries no focus ring. Rings arrive through the generator.
+- **The shared base carries no focus ring, and neither does the global sheet.** Rings arrive through
+  the generator, in the element that draws them, because that is what the reference does: it has no
+  page-wide focus rule of any kind and leaves the browser's own ring on anything it does not style.
+  See [notes/decisions/focus-ring-ownership.md](notes/decisions/focus-ring-ownership.md).
 - Docs pages show exactly the reference page's sections. A state the reference page does not show
   is an example with `census: true`, which renders only on `/census/<id>`.
 - Tests live in `__tests__/` beside the file, named `<file>.test.ts`, using `bun:test`.
@@ -159,6 +168,15 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   where they disagree the reference wins, because the reference is what we are porting. Where
   evidence is unavailable, record the gap as unverified rather than filling it with something
   plausible.
+- **Regenerate in order: `bun run split && bun run build && bun run docs && bun test`.** `tokens.css`
+  and the style modules come from `src/geist.css` through `split`, and `docs/` comes from `dist/`, so
+  building without splitting first serves the previous CSS and a docs page shows a change that is not
+  there. Editing the house sheet or a map and then testing in the browser without the full sequence
+  is the way to spend an hour debugging a build artefact.
+- **A change to an element's API reaches four places, not one.** The element, its map under
+  `tools/geist/maps/`, its census config under `tools/geist/census/`, and its tests. A map still
+  naming the old classes regenerates the old stylesheet; a config still naming the old parts measures
+  nothing and the collector refuses the run. Sweep for the old names before calling it done.
 - **Write the decision down the moment it is agreed, not later.** Every decision, every scope
   change and every clarification lands in this file as part of the same turn it was settled in. A
   decision that lives only in the conversation is lost the next time the context resets, and the
@@ -193,10 +211,12 @@ Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build ou
 | [notes/analysis/hand-rolled-audit.md](notes/analysis/hand-rolled-audit.md) | Living record of what we hand-roll that a package could own, with an assessment and reason for each |
 | [notes/analysis/lit-practice-review.md](notes/analysis/lit-practice-review.md) | Which Lit mechanisms we use and which we are missing, checked against our own code. Includes the accessibility evidence for keeping ARIA on inner elements |
 | [notes/analysis/package-choices.md](notes/analysis/package-choices.md) | Every package choice with its evidence: confirmed, worth adopting, or to avoid. Records that no Zag adapter for Lit exists |
+| [notes/analysis/slotted-cascade.md](notes/analysis/slotted-cascade.md) | Why a shadow rule loses to the page when it styles slotted content, measured; what ten production systems do about it; and the 64 `!important` rules of ours, 11 of which genuinely need it. **No decision taken** |
 | [notes/analysis/functional-parity-sources.md](notes/analysis/functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
 | [notes/decisions/track-census-results.md](notes/decisions/track-census-results.md) | **Decided.** Measurement results are version-controlled, and the two guards that stop an empty run being read as a pass |
 | [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
 | [notes/decisions/prop-naming-vs-reference.md](notes/decisions/prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
+| [notes/decisions/input-affix-api.md](notes/decisions/input-affix-api.md) | **Decided.** A field's prefix and suffix are two named places, not one concept with booleans: the name carries where the thing sits. Carries the measurement that proved the place is binary, and the group and icon elements deferred |
 | [notes/decisions/focus-ring-ownership.md](notes/decisions/focus-ring-ownership.md) | **Decided.** Every element draws its own focus ring; the shipped sheet carries no page-wide focus rule, because the reference carries none. Includes the 955-box sweep that proved nothing lost a ring |
 
 ---
@@ -479,8 +499,21 @@ differences point at something real.
   every silent one checked against the same box on the reference. Three patterns account for all of
   them and the reference reads the same way in each. **No element lost a ring it had.**
 
-- [ ] Remaining, in cost order: input (4), pagination-next (4), progress (6), clearable-input (6),
-  tab (20), code-block (31), badge (51), split-button (60), book (142), split-button-trigger (240),
+- [x] **input and select — at parity, after replacing their affix API.** Peter judged
+  `suffix-container="false"` an ugly API expanding the surface for a bad reason. It was a faithful
+  transcription of the reference's React props, which is an implementation rather than a behaviour,
+  so it went. Two places per side, each a slot, the name carrying where the thing sits:
+  `start-addon` / `end-addon` attached to the outside of the field, `start` / `end` inside its own
+  box. Six properties become none; the select keeps one, `end="false"`, for a place that is empty.
+  Recorded in [notes/decisions/input-affix-api.md](notes/decisions/input-affix-api.md).
+
+  Two measurement faults surfaced, both older than this work: **the input page never had matching
+  root counts** (22 against 20, two of its examples being search fields we render elsewhere), so its
+  reported differences were computed across misaligned roots; and the reference has one root with no
+  cell at all, whose icon reads 24x16 against the 14x14 every cell icon reads.
+
+- [ ] Remaining, in cost order: pagination-next (4), progress (6), clearable-input (6), tab (20),
+  code-block (31), badge (51), split-button (60), book (142), split-button-trigger (240),
   choicebox (558).
 
   Two lessons already earned:
@@ -703,6 +736,12 @@ Ask Peter once, then: commit, push, docs deploy, npm release.
 | `docs-src/pages/components/table.ts` | The virtualized table's Show More did nothing. The demo listened for `acme-toggle`, which `acme-show-more` never fires: like the reference's, it is controlled and only bubbles a click. Every style on the page measured clean, so the census could never have caught it. | The demo now listens for `click` and sets `expanded`, matching the reference's `onClick` contract. Verified in the browser: the row count moves between 9 and 5000 and back. |
 | `tools/geist/tw.ts` and `simplify.ts` | Both read the reference corpus at **import** time. The corpus is gitignored (it is the reference site's own output), so any import of these modules failed wherever the corpus is absent. It broke the 0.2.0 publish: a new unit test imported `simplify` for one pure function and CI had no corpus. | Both now parse on first use. `loadReference()` is exported and called at the top of `generate()`. Verified by hiding the corpus locally: 583 tests pass with it and without it. |
 | `src/components/context-card/__tests__/` | Five assertions compared exact class strings; Lit appends newly-true classes on update, so order carries no meaning | Compare the class set |
+| `tools/geist/census.js` | The state rewrite ran on the reference side only, on the belief that our generated sheets always key states off attributes. Most do; a rule the reference wrote as a real `:hover` or `:focus-visible` comes through the generator as one, and such a rule of ours was unreachable. The state then read as its resting value and the diff reported a difference the element does not have — the search field's clear button, on both hover colour and focus outline. | Both sides are rewritten. A second rule keeps the descendant clause off a compound that is the pseudo-class alone, or a page-wide rule lands on every descendant of the focused box. Six tests, each proven by reintroducing the bug it guards. |
+| `src/components/error/error.ts` | The reference's alert is the box its container lays out. Ours had a host box between them, so a flex row's `items-stretch` reached the host and left the alert at its own height: 20px where the reference reads 24. | `:host { display: contents }`. Its three accepted leftovers went with it — they were the wrapper box. |
+| `src/components/kbd/kbd.ts` | Same shape. The reference's key is one element, `inline-flex` in prose and blockified to `flex` in a flex row, so the row sizes to the key's 20px. Our host made the search field's key row 25px. | `:host { display: contents }`. Verified in both contexts: the key row reads 58x20 with both keys 20x20, and the standalone page still reads inline-flex at 26x24, 24x24 and 40x24. |
+| `src/geist.css` | A page-wide `:focus-visible` rule put a Geist ring and a 6px radius on every focusable thing, through a published entry point, so it reached consumers' own controls. The reference has no page-wide focus rule of any kind. It also broke the measurement: the census marks a focused root and every descendant, so a rule with no element part landed on each icon inside. | Removed, with the `:focus { outline: none }` beside it. Swept 955 keyboard-reachable boxes across 98 pages afterwards; no element lost a ring it had. See [notes/decisions/focus-ring-ownership.md](notes/decisions/focus-ring-ownership.md). |
+| `src/geist.css` | 44 lines of dead CSS for the select — `.select-wrap`, `.affix-l`, `.affix-r` — a third vocabulary for the input's prefix and suffix, unreferenced by any element, docs page or generated module. | Removed, with the `split-css` routing rule that filed it. |
+| `tools/geist/census/input.config.json` | The input page never had matching root counts: 22 on the reference against our 20, because two of its examples are search fields we render on their own page. Every difference the page reported was computed across misaligned roots. | `previews` names the seven shared examples. |
 
 ---
 
@@ -721,4 +760,20 @@ be. This is in the standing rules because it removes work from every decision he
 - **Scoped custom element registries** (`@lit-labs/scoped-registry-mixin`): one pass after the
   port, before 1.0. Every composing element lists what it composes. The polyfill loads only where
   the browser lacks the feature. Decided by Peter on 2026-09-09.
+
+  Read in full on 2026-09-10 while looking for a fix to the slotted-cascade problem: it touches only
+  `attachShadow({customElements})` and `elementDefinitions`, for letting two versions of a tag name
+  coexist. **No CSS cascade involvement.** It stays deferred for its own reason, which is unaffected.
+
+- **A group element**, for a control attached to a field — a button on the end of an input, the way
+  Chakra's `Group` and Bootstrap's `input-group` compose them as siblings. Worth doing; not now.
+  Peter, 2026-09-10. The reference has no such component among its 77 pages, so this is ours to
+  design rather than port, and no web component library models it either except Nord's alpha
+  `nord-input-group`.
+- **An icon element.** Worth doing; not now. Peter, 2026-09-10.
+- **Narrowing the 64 slotted `!important` rules.** 11 of them genuinely need it; the other 53 never
+  meet a page rule and only cost a consumer their inline style. Whether to narrow them, and whether
+  to adopt Spectrum's `:not([class])` guard, is undecided — the case that raised it dissolved when the
+  input's affix API was replaced. Measurement and options in
+  [notes/analysis/slotted-cascade.md](notes/analysis/slotted-cascade.md).
 - **Data layer** (TanStack Query and DB): a separate package, later.

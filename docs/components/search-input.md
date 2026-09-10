@@ -38,14 +38,14 @@ A ready-made search field with a magnifying glass and a clear button.
 
 ## `<acme-search>`
 
-A search field: a clearable input with a magnifying glass in a plain prefix cell (an element
-in the `prefix` slot replaces it) and the field named "Search". `loading` swaps the glass for
-a spinner; `clearable="false"` drops the clear button and the Escape shortcut.
+A search field: a clearable input with a magnifying glass inside the field at the start (an
+element in the `start` slot replaces it) and the field named "Search". `loading` swaps the glass
+for a spinner; `clearable="false"` drops the clear button and the Escape shortcut.
 
 | Attribute | Property | Type | Default | Description |
 |---|---|---|---|---|
-| `loading` | `loading` | `boolean` | `false` | Replaces the prefix with a spinner. |
+| `loading` | `loading` | `boolean` | `false` | Replaces the glass with a spinner. |
 | `clearable` | `clearable` | `boolean` | `true` | `"false"` drops the clear button and the Escape shortcut. |
 
-Slots: `prefix`
+Slots: `start`
 

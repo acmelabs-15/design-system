@@ -42,7 +42,7 @@ A text input with a clear button; Escape resets the value too.
 
 ## `<acme-clearable-input>`
 
-A text field that clears itself: an acme-input whose suffix is a clear button with an Esc key
+A text field that clears itself: an acme-input whose end place is a clear button with an Esc key
 once the field has a value, and Escape clears too. `cmdk` shows ⌘ K keys instead, which slide
 to Esc while the field has a value (`data-animate` on the field). Clearing fires `acme-input`
 and `acme-clear` and returns focus to the field. Form-associated and labelable.

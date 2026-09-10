@@ -1,0 +1,60 @@
+{
+ "note": "Reconstructed from the saved results in commit 9ee502e, then renamed to the places. Each side renders one cell whichever of its two places is occupied, on both sides: the reference marks it `data-geist-input-prefix` / `data-geist-input-suffix` and ours classes it `.start` / `.end`. Only the ground and the hairline differ between an add-on and an in-field place, and the wrapper carries that. `textParts` covers the three parts whose width follows their own text, which is set in our own font. `previews` names the seven examples both pages share: the reference's previews 3 and 4 are its SearchInput examples, which our docs page renders as acme-search on its own page, so reading them here would pair 22 reference roots against our 20 and misalign every comparison after example 2. The `svg` part is read inside its cell on the reference, because one of its roots (its suffixContainer={false} example) puts an icon straight in the wrapper with no cell at all, at 24x16 against the 14x14 every cell icon reads. Ours renders a cell either way, so that root has no counterpart and the part is skipped there rather than compared against a different shape.",
+ "themes": [
+  "light",
+  "dark"
+ ],
+ "input": {
+  "geist": {
+   "side": "geist",
+   "page": "input",
+   "marker": "data-geist-input-wrapper",
+   "textParts": [
+    "input",
+    "start",
+    "end"
+   ],
+   "children": {
+    "input": "input|input[data-geist-input]",
+    "start": ".start|label[data-geist-input-prefix]",
+    "end": ".end|label[data-geist-input-suffix]",
+    "svg": "svg|[data-geist-input-prefix] svg, [data-geist-input-suffix] svg"
+   },
+   "previews": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    7,
+    8
+   ]
+  },
+  "ours": {
+   "side": "ours",
+   "page": "input",
+   "host": "acme-input",
+   "ours": ".wrap",
+   "textParts": [
+    "input",
+    "start",
+    "end"
+   ],
+   "children": {
+    "input": "input|input[data-geist-input]",
+    "start": ".start|label[data-geist-input-prefix]",
+    "end": ".end|label[data-geist-input-suffix]",
+    "svg": "svg|[data-geist-input-prefix] svg, [data-geist-input-suffix] svg"
+   },
+   "previews": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    7,
+    8
+   ]
+  }
+ }
+}

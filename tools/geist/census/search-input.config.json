@@ -1,24 +1,29 @@
 {
- "note": "Reconstructed from the saved results in commit 9ee502e: the run's own record names its url, its text parts, its state list and every part of every root, and this config restates those. `width` is 376px on both sides, which is what the recorded reference run measured (328px of root inside 48px of preview padding); our preview at the same width gives the same 328px, so the field is read in the same room on each side. Our search composes an input, so the root sits two shadow roots down: `acme-input >> .wrap`. The reference's decorations sit inline inside its wrapper; ours arrive through slots, so the prefix icon is addressed as a bare `svg` and found through the root's slots, while a descendant path of the slot's own label would not reach it. The two sides carry different `textParts` lists, exactly as recorded: the reference sizes only its input from text, while ours also sizes the suffix, the clear button and its key cap, because each of those wraps a label set in our own font. All four states are read: the wrapper carries the reference's hover, focus and active rings.",
- "themes": ["light", "dark"],
+ "note": "Reconstructed from the saved results in commit 9ee502e: the run's own record names its url, its text parts, its state list and every part of every root, and this config restates those. `width` is 376px on both sides, which is what the recorded reference run measured (328px of root inside 48px of preview padding); our preview at the same width gives the same 328px, so the field is read in the same room on each side. Our search composes an input, so the root sits two shadow roots down: `acme-input >> .wrap`. The reference's decorations sit inline inside its wrapper; ours arrive through slots, so the start icon is addressed as a bare `svg` and found through the root's slots, while a descendant path of the slot's own label would not reach it. The two sides carry different `textParts` lists, exactly as recorded: the reference sizes only its input from text, while ours also sizes the suffix, the clear button and its key cap, because each of those wraps a label set in our own font. All four states are read: the wrapper carries the reference's hover, focus and active rings.",
+ "themes": [
+  "light",
+  "dark"
+ ],
  "search-input": {
   "geist": {
    "side": "geist",
    "page": "search-input",
    "marker": "data-geist-input-wrapper",
    "width": "376px",
-   "textParts": ["input"],
+   "textParts": [
+    "input"
+   ],
    "children": {
     "input": "input|input[data-geist-input]",
-    "prefix": ".prefix|label[data-geist-input-prefix]",
     "svg": "svg|label[data-geist-input-prefix] svg",
     "spinner": "acme-spinner >> .spinner|label[data-geist-input-prefix] [data-testid$=spinner]",
-    "suffix": ".suffix|label[data-geist-input-suffix]",
     "cmdk": ".cmdk|label[data-geist-input-suffix] > div",
     "kesc": ".k-esc >> .kbd|label[data-geist-input-suffix] > div kbd[data-geist-kbd]:nth-of-type(1)",
     "kk": ".k-k >> .kbd|label[data-geist-input-suffix] > div kbd[data-geist-kbd]:nth-of-type(2)",
     "clearkbd": ".clear acme-kbd >> .kbd|label[data-geist-input-suffix] button kbd[data-geist-kbd]",
-    "clear": ".clear|label[data-geist-input-suffix] button"
+    "clear": ".clear|label[data-geist-input-suffix] button",
+    "start": ".start|label[data-geist-input-prefix]",
+    "end": ".end|label[data-geist-input-suffix]"
    }
   },
   "ours": {
@@ -27,18 +32,23 @@
    "host": "acme-search",
    "ours": "acme-input >> .wrap",
    "width": "376px",
-   "textParts": ["input", "suffix", "clear", "clearkbd"],
+   "textParts": [
+    "input",
+    "end",
+    "clear",
+    "clearkbd"
+   ],
    "children": {
     "input": "input|input[data-geist-input]",
-    "prefix": ".prefix|label[data-geist-input-prefix]",
     "svg": "svg|label[data-geist-input-prefix] svg",
     "spinner": "acme-spinner >> .spinner|label[data-geist-input-prefix] [data-testid$=spinner]",
-    "suffix": ".suffix|label[data-geist-input-suffix]",
     "cmdk": ".cmdk|label[data-geist-input-suffix] > div",
     "kesc": ".k-esc >> .kbd|label[data-geist-input-suffix] > div kbd[data-geist-kbd]:nth-of-type(1)",
     "kk": ".k-k >> .kbd|label[data-geist-input-suffix] > div kbd[data-geist-kbd]:nth-of-type(2)",
     "clearkbd": ".clear acme-kbd >> .kbd|label[data-geist-input-suffix] button kbd[data-geist-kbd]",
-    "clear": ".clear|label[data-geist-input-suffix] button"
+    "clear": ".clear|label[data-geist-input-suffix] button",
+    "start": ".start|label[data-geist-input-prefix]",
+    "end": ".end|label[data-geist-input-suffix]"
    }
   }
  }

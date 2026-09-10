@@ -30,36 +30,38 @@ Display a dropdown list of items.
 </div>
 ```
 
-## Prefix and suffix
+## Start and end
+
+Both places sit inside the field. A select has no add-on places, as the reference has none.
 
 ```html
 <div class="row" style="flex-wrap:wrap;gap:0;align-items:stretch">
   <div style="display:flex;flex-direction:column;align-items:flex-start;flex:1;min-width:1px;max-width:100%">
     <acme-select aria-label="Small" placeholder="Small" size="small">
-      <svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+      <svg slot="start" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
         <use href="#i-arrow-circle-up"/>
       </svg>
-      <svg slot="suffix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+      <svg slot="end" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
         <use href="#i-arrow-circle-up"/>
       </svg>
     </acme-select>
   </div>
   <div style="display:flex;flex-direction:column;align-items:flex-start;flex:1;min-width:1px;max-width:100%">
     <acme-select aria-label="Default" placeholder="Default">
-      <svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+      <svg slot="start" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
         <use href="#i-arrow-circle-up"/>
       </svg>
-      <svg slot="suffix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+      <svg slot="end" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
         <use href="#i-arrow-circle-up"/>
       </svg>
     </acme-select>
   </div>
   <div style="display:flex;flex-direction:column;align-items:flex-start;flex:1;min-width:1px;max-width:100%">
     <acme-select aria-label="Large" placeholder="Large" size="large">
-      <svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+      <svg slot="start" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
         <use href="#i-arrow-circle-up"/>
       </svg>
-      <svg slot="suffix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
+      <svg slot="end" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true">
         <use href="#i-arrow-circle-up"/>
       </svg>
     </acme-select>
@@ -131,8 +133,9 @@ Display a dropdown list of items.
 ## `<acme-select>`
 
 A native select with a styled face. A relative flex wrapper holds the field (32 / 36 / 40px,
-radius 6, large 8, a hairline ring) and, at its sides, a prefix cell (the `prefix` slot) and a
-suffix cell (the `suffix` slot, a chevron by default; `suffix="false"` drops the cell). Options
+radius 6, large 8, a hairline ring) and, inside it at each side, a `start` place and an `end`
+place. The end place holds a chevron unless something is slotted over it; `end="false"` leaves it
+empty. Both places sit in the field's own box, so a select has no add-on places. Options
 come from `<option>` children (an `<optgroup>` is kept) or the `options` property. The wrapper
 carries the size, `error`, `disabled`, `variant="secondary"` (no ring, the field shifted left) and
 cell modifiers, and the interaction states (data-hover; data-focus for any focus of the field).
@@ -154,7 +157,7 @@ carries the value.
 | `width` | `width` | `string` | `""` | A fixed width for the label element and the message, as CSS. |
 | `disabled` | `disabled` | `boolean` | `false` |  |
 | `required` | `required` | `boolean` | `false` |  |
-| `suffix` | `suffix` | `boolean` | `true` | `"false"` drops the suffix cell (the chevron). |
+| `end` | `end` | `boolean` | `true` | `"false"` leaves the end place empty, dropping the chevron. |
 | `with-label` | `withLabel` | `boolean` | `true` | `"false"` renders the field without the label element around it. |
 | `bypass-casing` | `bypassCasing` | `boolean` | `false` | Keeps the label text as written (no capitalization). |
 | `aria-label` | `ariaLabelText` | `string` | `""` |  |
@@ -162,7 +165,7 @@ carries the value.
 | `aria-describedby` | `ariaDescribedby` | `string` | `""` |  |
 | `options` | `options` | `SelectOption[]` | `[]` | Options set from script, in place of `<option>` children. |
 
-Slots: `prefix`, `suffix`
+Slots: `start`, `end`
 
 Events: `acme-change`
 
