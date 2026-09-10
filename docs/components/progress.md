@@ -31,17 +31,17 @@ A bar that shows how far a task has come, or how much of a limit is used.
 
 ```html
 <div class="vstack" style="gap:24px">
-  <acme-progress type="success" value="100"></acme-progress>
-  <acme-progress type="error" value="10"></acme-progress>
-  <acme-progress type="warning" value="40"></acme-progress>
-  <acme-progress type="secondary" value="70"></acme-progress>
+  <acme-progress variant="success" value="100"></acme-progress>
+  <acme-progress variant="error" value="10"></acme-progress>
+  <acme-progress variant="warning" value="40"></acme-progress>
+  <acme-progress variant="secondary" value="70"></acme-progress>
 </div>
 ```
 
 ## With Stops
 
 ```html
-<acme-progress value="30" type="success" stops='[{"value":10,"tooltip":"10%"},{"value":20,"tooltip":"20%"},{"value":30,"tooltip":"30%"},{"value":40,"tooltip":"40%"},{"value":50,"tooltip":"50%"},{"value":60,"tooltip":"60%"},{"value":70,"tooltip":"70%"},{"value":80,"tooltip":"80%"},{"value":90,"tooltip":"90%"},{"value":95,"tooltip":"95%"}]'></acme-progress>
+<acme-progress value="30" variant="success" stops='[{"value":10,"tooltip":"10%"},{"value":20,"tooltip":"20%"},{"value":30,"tooltip":"30%"},{"value":40,"tooltip":"40%"},{"value":50,"tooltip":"50%"},{"value":60,"tooltip":"60%"},{"value":70,"tooltip":"70%"},{"value":80,"tooltip":"80%"},{"value":90,"tooltip":"90%"},{"value":95,"tooltip":"95%"}]'></acme-progress>
 ```
 
 ## Widths
@@ -71,14 +71,14 @@ A bar that shows how far a task has come, or how much of a limit is used.
 
 Progress: a native progress bar (radius 6, gray-200 track) inside a relative wrapper that
 carries the width and height; the bar's colour is the `--fg` variable the wrapper sets from
-`type` or `colors`. `stops` draw 1px ticks at values, each with a hover tooltip; a bar with
+`variant` or `colors`. `stops` draw 1px ticks at values, each with a hover tooltip; a bar with
 stops has square value corners.
 
 | Attribute | Property | Type | Default | Description |
 |---|---|---|---|---|
 | `value` | `value` | `number` | `0` |  |
 | `max` | `max` | `number` | `100` | The real ceiling; the bar shows `value / max`. |
-| `type` | `type` | `ProgressType` | `""` | Hue by meaning: `success`, `error`, `warning`, `secondary`. |
+| `variant` | `variant` | `ProgressVariant` | `""` | Hue by meaning: `success`, `error`, `warning`, `secondary`. |
 | `height` | `height` | `number` | `10` | Bar height in px. |
 | `width` | `width` | `string` | `""` | Bar width: a number in px or any CSS length (`50%`); unset is the full width. |
 | `stops` | `stops` | `(number \| ProgressStop)[]` | `[]` | Ticks: `[{ value, tooltip? }]` or plain numbers. |

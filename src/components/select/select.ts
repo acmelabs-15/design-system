@@ -18,7 +18,7 @@ const chevron = html`<svg class="chevron" width="16" height="16" viewBox="0 0 24
  * radius 6, large 8, a hairline ring) and, at its sides, a prefix cell (the `prefix` slot) and a
  * suffix cell (the `suffix` slot, a chevron by default; `suffix="false"` drops the cell). Options
  * come from `<option>` children (an `<optgroup>` is kept) or the `options` property. The wrapper
- * carries the size, `error`, `disabled`, `type="secondary"` (no ring, the field shifted left) and
+ * carries the size, `error`, `disabled`, `variant="secondary"` (no ring, the field shifted left) and
  * cell modifiers, and the interaction states (data-hover; data-focus for any focus of the field).
  * `placeholder` is a disabled first option; a value equal to it reads gray. `label` renders the
  * text above the field (capitalized unless `bypass-casing`), `with-label="false"` drops the label
@@ -50,7 +50,7 @@ export class AcmeSelect extends AcmeElement {
   @property() name = "";
   @property() size: SelectSize = "medium";
   /** `secondary`: no ring, gray-900 text, the field shifted 12px left. */
-  @property() type: "default" | "secondary" = "default";
+  @property() variant: "default" | "secondary" = "default";
   /** The message under the field; the field reads as invalid and its ring turns red. */
   @property() error = "";
   /** A fixed width for the label element and the message, as CSS. */
@@ -142,7 +142,7 @@ export class AcmeSelect extends AcmeElement {
       lg: this.size === "large",
       error: !!this.error,
       disabled: this.disabled,
-      secondary: this.type === "secondary",
+      secondary: this.variant === "secondary",
       "with-prefix": this.slottedPrefix,
       empty: !!this.placeholder && this.value === this.placeholder,
     });

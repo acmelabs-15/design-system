@@ -14,7 +14,7 @@ The trigger is an acme-menu-button, a Button, in the trigger slot.
     <acme-menu-item slot="items">Two</acme-menu-item>
     <acme-menu-item slot="items">Three</acme-menu-item>
     <acme-menu-item slot="items" href="https://vercel.com">Test for Link</acme-menu-item>
-    <acme-menu-item slot="items" type="error">Delete</acme-menu-item>
+    <acme-menu-item slot="items" variant="error">Delete</acme-menu-item>
   </acme-menu>
 </div>
 ```
@@ -29,7 +29,7 @@ The trigger is an acme-menu-button, a Button, in the trigger slot.
     <acme-menu-item slot="items">Two</acme-menu-item>
     <acme-menu-item slot="items">Three</acme-menu-item>
     <acme-menu-item slot="items" href="https://vercel.com">Test for Link</acme-menu-item>
-    <acme-menu-item slot="items" type="error">Delete</acme-menu-item>
+    <acme-menu-item slot="items" variant="error">Delete</acme-menu-item>
   </acme-menu>
 </div>
 ```
@@ -43,8 +43,8 @@ The trigger is an acme-menu-button, a Button, in the trigger slot.
     <acme-menu-item slot="items">One</acme-menu-item>
     <acme-menu-item slot="items">Two</acme-menu-item>
     <acme-menu-item slot="items" disabled>Three</acme-menu-item>
-    <acme-menu-item slot="items" type="error">Delete</acme-menu-item>
-    <acme-menu-item slot="items" disabled type="error">Delete Forever</acme-menu-item>
+    <acme-menu-item slot="items" variant="error">Delete</acme-menu-item>
+    <acme-menu-item slot="items" disabled variant="error">Delete Forever</acme-menu-item>
   </acme-menu>
 </div>
 ```
@@ -184,7 +184,7 @@ position sets the side and the alignment; the menu flips when the window bounds 
     <acme-menu-item slot="items">Three</acme-menu-item>
     <acme-menu-item slot="items" locked>Locked</acme-menu-item>
     <acme-menu-divider slot="items"></acme-menu-divider>
-    <acme-menu-item slot="items" type="error">Delete</acme-menu-item>
+    <acme-menu-item slot="items" variant="error">Delete</acme-menu-item>
   </acme-menu>
 </div>
 ```
@@ -245,7 +245,7 @@ Slots: `prefix`, `suffix`, `(default)`
 
 One row of a menu: a 36px `menuitem` (44 and 16px text below 601px) with the label in the
 default slot, an icon in the `prefix` slot before it and one in the `suffix` slot at the end.
-`href` renders an anchor (`external` opens it in a new tab); `type="error"` reads red-900;
+`href` renders an anchor (`external` opens it in a new tab); `variant="error"` reads red-900;
 `disabled` reads gray-700 and takes no pointer; `locked` is a disabled row with a gray-700 lock
 suffix, for an action that needs more permissions. The menu marks the highlighted row
 (`selected`, the `data-selected` state: gray-alpha-100, red-100 on an error row) as the keys
@@ -256,7 +256,7 @@ and the pointer move over the rows. A click, Enter or Space fires `acme-select`.
 | `href` | `href` | `string` | `""` |  |
 | `external` | `external` | `boolean` | `false` | Opens the link in a new tab. |
 | `disabled` | `disabled` | `boolean` | `false` |  |
-| `type` | `type` | `"default" \| "error"` | `"default"` | `error` colors the row red for a destructive action. |
+| `variant` | `variant` | `"default" \| "error"` | `"default"` | `error` colors the row red for a destructive action. |
 | `locked` | `locked` | `boolean` | `false` |  |
 | `selected` | `selected` | `boolean` | `false` | The highlighted row; the menu sets it. |
 | `value` | `value` | `string` | `""` | The text typeahead matches: the label's text unless set. |

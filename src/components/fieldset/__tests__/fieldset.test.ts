@@ -60,11 +60,11 @@ describe("acme-fieldset", () => {
   });
 
   test("type maps to a root modifier; error and warning text sit in their own rows", async () => {
-    const el = await mount(`<acme-fieldset type="error" heading="Payment Failed"><span slot="error">Failed</span><span slot="warning">Careful</span></acme-fieldset>`);
+    const el = await mount(`<acme-fieldset variant="error" heading="Payment Failed"><span slot="error">Failed</span><span slot="warning">Careful</span></acme-fieldset>`);
     expect(sr(el).querySelector(".fieldset")!.className).toContain("error");
     expect(sr(el).querySelector(".content > .row > .error > slot[name=error]")).not.toBeNull();
     expect(sr(el).querySelector(".content > .row > .warning > slot[name=warning]")).not.toBeNull();
-    const w = await mount(`<acme-fieldset type="warning"></acme-fieldset>`);
+    const w = await mount(`<acme-fieldset variant="warning"></acme-fieldset>`);
     expect(sr(w).querySelector(".fieldset")!.className).toContain("warning");
     expect(sr(w).querySelector(".title")).toBeNull();
   });

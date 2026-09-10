@@ -112,7 +112,7 @@ describe("acme-feedback", () => {
   });
 
   test("type=inline renders the pill: copy, four radios, the form hidden in a 48px box; a face grows it into the 336px card, the same face closes it", async () => {
-    const el = await mount(`<acme-feedback type="inline" label="vercel" copy="How did the import go?" dry-run></acme-feedback>`);
+    const el = await mount(`<acme-feedback variant="inline" label="vercel" copy="How did the import go?" dry-run></acme-feedback>`);
     expect(q(el, ".panel.inline")).not.toBeNull();
     expect(q(el, ".head .copy")!.textContent).toBe("How did the import go?");
     expect(sr(el).querySelectorAll(".head .emojis .emoji[role=radio]").length).toBe(4);
@@ -134,13 +134,13 @@ describe("acme-feedback", () => {
   });
 
   test("inline: full-width fills the row, upwards keeps the row 48px and shifts the card; a message adds 28px; the thank-you fills 75%", async () => {
-    const full = await mount(`<acme-feedback type="inline" full-width show-topics show-email open></acme-feedback>`);
+    const full = await mount(`<acme-feedback variant="inline" full-width show-topics show-email open></acme-feedback>`);
     expect(q(full, ".panel")!.classList.contains("full")).toBe(true);
     expect(q(full, ".box")!.getAttribute("style")).toBe("height:341px;width:336px;border-radius:12px");
     q<HTMLFormElement>(full, "form")!.dispatchEvent(new Event("submit", { cancelable: true }));
     await full.updateComplete;
     expect(q(full, ".box")!.getAttribute("style")).toBe("height:369px;width:336px;border-radius:12px");
-    const up = await mount(`<acme-feedback type="inline" upwards show-topics dry-run></acme-feedback>`);
+    const up = await mount(`<acme-feedback variant="inline" upwards show-topics dry-run></acme-feedback>`);
     expect(q(up, ".panel")!.classList.contains("up")).toBe(true);
     expect(q(up, ".box")!.getAttribute("style")).toBe("height:48px;width:274px;border-radius:30px");
     up.open = true;
@@ -153,7 +153,7 @@ describe("acme-feedback", () => {
   });
 
   test("the emotion radios carry the interaction states as attributes", async () => {
-    const el = await mount(`<acme-feedback type="inline"></acme-feedback>`);
+    const el = await mount(`<acme-feedback variant="inline"></acme-feedback>`);
     const face = q(el, ".head .emoji")!;
     face.dispatchEvent(new PointerEvent("pointerenter", { pointerType: "mouse" }));
     expect(face.getAttribute("data-hover")).toBe("true");

@@ -22,7 +22,7 @@ export const doc: Doc = {
     },
     {
       h: "Inline",
-      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel" type="inline"></acme-feedback></div>`,
+      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel" variant="inline"></acme-feedback></div>`,
     },
     {
       h: "Feedback with Select",
@@ -67,27 +67,27 @@ export const doc: Doc = {
     {
       h: "Inline open", census: true,
       p: "A face grows the pill into a 336px card in place; the same face closes it. With a message the card is 28px taller.",
-      html: `<div style="min-height:420px"><acme-feedback label="vercel" type="inline" show-topics show-email></acme-feedback></div>`,
+      html: `<div style="min-height:420px"><acme-feedback label="vercel" variant="inline" show-topics show-email></acme-feedback></div>`,
       script: `${pick}
 el.updateComplete.then(() => el.shadowRoot.querySelector('form').requestSubmit());`,
     },
     {
       h: "Inline sent", census: true,
       p: "The thank-you view fills the card, which keeps its height until it closes.",
-      html: `<div style="min-height:300px"><acme-feedback label="vercel" type="inline" dry-run></acme-feedback></div>`,
+      html: `<div style="min-height:300px"><acme-feedback label="vercel" variant="inline" dry-run></acme-feedback></div>`,
       script: `${pick}
 el.updateComplete.then(() => el.shadowRoot.querySelector('form').requestSubmit());`,
     },
     {
       h: "Inline upwards", census: true,
       p: "The row keeps its 48px and the open card shifts up by 200px (100px with a message), for a pill at the foot of a page.",
-      html: `<div style="padding-top:220px"><acme-feedback label="vercel" type="inline" upwards dry-run></acme-feedback></div>`,
+      html: `<div style="padding-top:220px"><acme-feedback label="vercel" variant="inline" upwards dry-run></acme-feedback></div>`,
       script: pick,
     },
     {
       h: "Inline full width", census: true,
       p: "The pill fills its row.",
-      html: `<div style="width:504px"><acme-feedback label="vercel" type="inline" full-width dry-run></acme-feedback></div>`,
+      html: `<div style="width:504px"><acme-feedback label="vercel" variant="inline" full-width dry-run></acme-feedback></div>`,
     },
   ],
   practices: {

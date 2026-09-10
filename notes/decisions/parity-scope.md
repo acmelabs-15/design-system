@@ -53,6 +53,44 @@ and `type` 37 times, so `variant` is its own dominant name for the concept.
 is what a web-component consumer expects from `type` on an element that renders a `<button>`, and it
 matches the reference's own majority name. No rename.
 
+## The tie-breaker: consistency wins when it conflicts with familiarity
+
+Decided 2026-09-10, on a case the original rule did not anticipate.
+
+Applying the rule to ourselves found six elements naming the visual look `type` while eleven named it
+`variant`: feedback, fieldset, select, progress, tooltip and snippet. That is the same inconsistency we
+objected to in the reference.
+
+The complication: on tooltip, snippet, progress and feedback **the reference itself uses `type` and never
+`variant`**. So our `type` there was not inherited by mistake; it matched the reference exactly. Renaming
+would satisfy the first test and fail the third on the same element.
+
+**Peter's decision: rename all six to `variant`.** Self-consistency wins.
+
+**Done 2026-09-10, and the sweep found a seventh.** `acme-menu-item` also used `type` for a look
+(`error` colours a destructive row red), so it was renamed too. **18 elements now name the visual look
+`variant`, up from 11.**
+
+The sweep also drew a line worth keeping. Not every `type` property is a misnamed `variant`. These stay
+`type`, because they name **a kind of thing** rather than an appearance:
+
+| Element | What its `type` names |
+|---|---|
+| `chart` | line, bar or area — the chart's shape |
+| `choicebox` | radio or checkbox — the selection mode |
+| `file` | the icon: file, lambda, edge function, middleware |
+| `breadcrumbs` | text or menu — the layout |
+| `button`, `copy-button`, `split-button`, `input` | the real HTML `type` attribute |
+
+**The test to apply:** if the values are appearances of one thing, it is `variant`. If they are different
+things, it is `type`. Renaming a kind to `variant` would be consistency for its own sake, which is not
+what the rule asks for.
+
+The reasoning worth keeping: a user of a design system meets the whole API, not one element. An
+inconsistency costs them on every element they touch, while an unfamiliar name costs them once, on first
+contact with that element. So the first test outranks the third even when they point in opposite
+directions, and this is now the written tie-breaker rather than a judgement to re-make each time.
+
 ## Applying it from here
 
 When a naming difference appears, record it and move on rather than reopening this decision. Where a

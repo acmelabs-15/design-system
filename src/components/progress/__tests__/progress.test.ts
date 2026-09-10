@@ -26,7 +26,7 @@ describe("acme-progress", () => {
   });
 
   test("type sets the bar colour; height sizes the wrapper and the bar; width lands on the host, the wrapper fills it", async () => {
-    const el = await mount(`<acme-progress type="success" value="60" height="50" width="200"></acme-progress>`);
+    const el = await mount(`<acme-progress variant="success" value="60" height="50" width="200"></acme-progress>`);
     expect(bar(el).style.getPropertyValue("--fg")).toBe("var(--ds-blue-700)");
     expect(root(el).style.height).toBe("50px");
     expect(bar(el).style.height).toBe("50px");

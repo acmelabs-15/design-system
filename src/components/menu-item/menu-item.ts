@@ -8,7 +8,7 @@ let seq = 0;
 /**
  * One row of a menu: a 36px `menuitem` (44 and 16px text below 601px) with the label in the
  * default slot, an icon in the `prefix` slot before it and one in the `suffix` slot at the end.
- * `href` renders an anchor (`external` opens it in a new tab); `type="error"` reads red-900;
+ * `href` renders an anchor (`external` opens it in a new tab); `variant="error"` reads red-900;
  * `disabled` reads gray-700 and takes no pointer; `locked` is a disabled row with a gray-700 lock
  * suffix, for an action that needs more permissions. The menu marks the highlighted row
  * (`selected`, the `data-selected` state: gray-alpha-100, red-100 on an error row) as the keys
@@ -33,7 +33,7 @@ export class AcmeMenuItem extends AcmeElement {
   @property({ type: Boolean }) external = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
   /** `error` colors the row red for a destructive action. */
-  @property() type: "default" | "error" = "default";
+  @property() variant: "default" | "error" = "default";
   @property({ type: Boolean, reflect: true }) locked = false;
   /** The highlighted row; the menu sets it. */
   @property({ type: Boolean }) selected = false;
@@ -101,7 +101,7 @@ export class AcmeMenuItem extends AcmeElement {
     const inner = html`${this.hasPrefix ? html`<span class="prefix" aria-hidden="true">${prefixSlot}</span>` : prefixSlot}<span id=${this.uid}><slot></slot></span>${
       this.hasSuffix || this.locked ? html`<span class="suffix" aria-hidden="true">${suffixSlot}</span>` : suffixSlot
     }`;
-    const c = this.cls("item", { error: this.type === "error" });
+    const c = this.cls("item", { error: this.variant === "error" });
     if (this.href)
       return html`<li class="link" role="none"><a
           class=${c}

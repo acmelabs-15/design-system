@@ -37,9 +37,9 @@ A copyable snippet of code for the command line.
 
 ```html
 <div class="vstack" style="align-items:stretch">
-  <acme-snippet text="npm init next-app" type="success" width="300px"></acme-snippet>
-  <acme-snippet text="npm init next-app" type="error" width="300px"></acme-snippet>
-  <acme-snippet text="npm init next-app" type="warning" width="300px"></acme-snippet>
+  <acme-snippet text="npm init next-app" variant="success" width="300px"></acme-snippet>
+  <acme-snippet text="npm init next-app" variant="error" width="300px"></acme-snippet>
+  <acme-snippet text="npm init next-app" variant="warning" width="300px"></acme-snippet>
 </div>
 ```
 
@@ -62,7 +62,7 @@ The copied attribute drives the checkmark from outside. A parent surface can cop
 Snippet: one copyable command in 13/20 mono inside a 6px-radius bordered box, with a `$ `
 prompt before each line and a 32px square copy button at the right, whose icon stack swaps to
 a check for one second after a copy (or while `copied` is set). `text` takes a string or a
-JSON array of lines; `copy-text` is copied instead when set. `dark` inverts the box; `type`
+JSON array of lines; `copy-text` is copied instead when set. `dark` inverts the box; `variant`
 tints it success, error or warning, `fill` fills it; `placeholder` shows in an empty snippet at
 half opacity; `compact` is the 36px one-line box; `icon="false"` drops the button and
 `not-focusable` disables it. Fires `acme-copy` after a copy; a failed copy raises an error toast.
@@ -74,7 +74,7 @@ half opacity; `compact` is the 36px one-line box; `icon="false"` drops the butto
 | `prompt` | `prompt` | `boolean` | `true` | `prompt="false"` for URLs, JSON and verbatim output. |
 | `icon` | `icon` | `boolean` | `true` | `icon="false"` drops the copy button. |
 | `dark` | `dark` | `boolean` | `false` |  |
-| `type` | `type` | `"" \| "success" \| "error" \| "warning"` | `""` |  |
+| `variant` | `variant` | `"" \| "success" \| "error" \| "warning"` | `""` |  |
 | `fill` | `fill` | `boolean` | `false` | Fills the box with the type's color. |
 | `placeholder` | `placeholder` | `string` | `""` | Shown in an empty snippet, not copied. |
 | `compact` | `compact` | `boolean` | `false` | The 36px one-line box. |

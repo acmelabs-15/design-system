@@ -25,12 +25,12 @@ dec.addEventListener("click", () => { if (bar.value > 0) bar.value -= 10; });`,
     {
       h: "Themed",
       html: col(
-        `<acme-progress type="success" value="100"></acme-progress><acme-progress type="error" value="10"></acme-progress><acme-progress type="warning" value="40"></acme-progress><acme-progress type="secondary" value="70"></acme-progress>`,
+        `<acme-progress variant="success" value="100"></acme-progress><acme-progress variant="error" value="10"></acme-progress><acme-progress variant="warning" value="40"></acme-progress><acme-progress variant="secondary" value="70"></acme-progress>`,
       ),
     },
     {
       h: "With Stops",
-      html: `<acme-progress value="30" type="success" stops='[{"value":10,"tooltip":"10%"},{"value":20,"tooltip":"20%"},{"value":30,"tooltip":"30%"},{"value":40,"tooltip":"40%"},{"value":50,"tooltip":"50%"},{"value":60,"tooltip":"60%"},{"value":70,"tooltip":"70%"},{"value":80,"tooltip":"80%"},{"value":90,"tooltip":"90%"},{"value":95,"tooltip":"95%"}]'></acme-progress>`,
+      html: `<acme-progress value="30" variant="success" stops='[{"value":10,"tooltip":"10%"},{"value":20,"tooltip":"20%"},{"value":30,"tooltip":"30%"},{"value":40,"tooltip":"40%"},{"value":50,"tooltip":"50%"},{"value":60,"tooltip":"60%"},{"value":70,"tooltip":"70%"},{"value":80,"tooltip":"80%"},{"value":90,"tooltip":"90%"},{"value":95,"tooltip":"95%"}]'></acme-progress>`,
     },
     {
       h: "Widths",

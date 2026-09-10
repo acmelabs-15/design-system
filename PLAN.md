@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 05:10 PDT.
+how we prove it, and where we are. Updated 2026-09-10 05:40 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -458,14 +458,13 @@ is the better call:
   Button puts the visual look on `type` and the HTML type on `typeName`, and flags that as a trap
   in its own prose; it uses `variant` 174 times against `type` 37 across its pages. Our `variant`
   and `type` stand: self-consistent, idiomatic, and the reference's own majority name. No rename.
-- [ ] **One name per concept: rename the visual-look prop to `variant`** `[?]`. The audit under the
-  parity-scope rule found we inherited the reference's inconsistency. **Eleven elements use
-  `variant` for the visual look. Six use `type`:** feedback, fieldset, select, progress, tooltip
-  and snippet. Feedback carries the worst of it — `type` for the look and `buttonType` for the HTML
-  type, which is precisely the split we rejected on button. None of the six already has a `variant`
-  property, so the rename collides with nothing. It is still a breaking change to a published
-  package, so confirm the timing with Peter before doing it, and consider keeping `type` as a
-  deprecated alias for one minor version.
+- [x] **One name per concept: the visual look is `variant`.** Done 2026-09-10. Seven elements renamed
+  from `type`: feedback, fieldset, select, progress, tooltip, snippet and menu-item. **18 elements now
+  name the visual look `variant`, up from 11.** The sweep also drew the line that keeps `type` where it
+  names a kind of thing rather than an appearance — chart's shape, choicebox's selection mode, file's
+  icon, breadcrumbs' layout, and the real HTML attribute on button, copy-button, split-button and input.
+  The test and the reasoning are in [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md).
+  **This breaks the 0.2.0 interface on seven elements**, so it belongs in the next release notes.
 - [ ] Sweep the same way for every other concept that may carry two names (size, shape, state).
 - [ ] Select: decide the house-only `options` property, which feedback uses `[?]`
 - [ ] Foundations pages: the reference's exact heading levels, or ours `[?]`

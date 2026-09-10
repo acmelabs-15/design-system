@@ -77,7 +77,7 @@ describe("acme-select", () => {
   });
 
   test("the secondary type and the options property", async () => {
-    const el = await mount(`<acme-select type="secondary" placeholder="Topic"></acme-select>`);
+    const el = await mount(`<acme-select variant="secondary" placeholder="Topic"></acme-select>`);
     expect(wrap(el).className.trim()).toBe("wrap secondary");
     el.options = ["One", { value: "two", label: "Two", disabled: true }];
     await el.updateComplete;

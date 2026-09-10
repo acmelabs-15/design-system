@@ -16,10 +16,10 @@ const box = (h: number, inner: string, extra = "") => `<div style="min-height:${
 /** Opens every menu in the example, so the page shows the state the reference reaches on a click. */
 const openAll = "for (const m of root.querySelectorAll('acme-menu')) m.open = true;";
 
-const five = `${item("One")}${item("Two")}${item("Three")}${item("Test for Link", 'href="https://vercel.com"')}${item("Delete", 'type="error"')}`;
+const five = `${item("One")}${item("Two")}${item("Three")}${item("Test for Link", 'href="https://vercel.com"')}${item("Delete", 'variant="error"')}`;
 const standard = `<acme-menu width="200">${trigger("Actions")}${five}</acme-menu>`;
 const chevron = `<acme-menu width="200">${trigger("Actions", 'show-chevron variant="secondary"')}${five}</acme-menu>`;
-const disabled = `<acme-menu width="200">${trigger("Actions")}${item("One")}${item("Two")}${item("Three", "disabled")}${item("Delete", 'type="error"')}${item("Delete Forever", 'disabled type="error"')}</acme-menu>`;
+const disabled = `<acme-menu width="200">${trigger("Actions")}${item("One")}${item("Two")}${item("Three", "disabled")}${item("Delete", 'variant="error"')}${item("Delete Forever", 'disabled variant="error"')}</acme-menu>`;
 const locked = (tooltip: boolean) =>
   `<acme-menu width="200">${trigger("Actions")}${item("View Details")}${item("Edit")}${
     tooltip
@@ -30,7 +30,7 @@ const links = `<acme-menu width="200">${trigger("Links")}${item("One", 'href="/d
 const custom = `<acme-menu width="200">${trigger('<acme-avatar size="30" username="evilrabbit"></acme-avatar>', 'variant="unstyled"')}${item("One")}${item("Two")}${item("Three")}</acme-menu>`;
 const prefixSuffix = `<div class="row" style="gap:24px;align-items:stretch;flex-wrap:nowrap"><acme-menu>${dotsTrigger}${item(`${icon("accessibility", "prefix")}Left`)}${item(`${icon("accessibility", "prefix")}Center`)}${item(`${icon("accessibility", "prefix")}Right`)}</acme-menu><acme-menu>${dotsTrigger}${item(`Left${icon("accessibility", "suffix")}`)}${item(`Center${icon("accessibility", "suffix")}`)}${item(`Right${icon("accessibility", "suffix")}`)}</acme-menu></div>`;
 const position = `<acme-menu position="left-start" width="200">${trigger("Left Start")}${item("One")}${item("Two")}</acme-menu>`;
-const section = `<acme-menu width="200">${trigger("Actions")}<acme-menu-section slot="items" title="Section"><acme-menu-item>One</acme-menu-item><acme-menu-item>Two</acme-menu-item></acme-menu-section>${item("Three")}${item("Locked", "locked")}<acme-menu-divider slot="items"></acme-menu-divider>${item("Delete", 'type="error"')}</acme-menu>`;
+const section = `<acme-menu width="200">${trigger("Actions")}<acme-menu-section slot="items" title="Section"><acme-menu-item>One</acme-menu-item><acme-menu-item>Two</acme-menu-item></acme-menu-section>${item("Three")}${item("Locked", "locked")}<acme-menu-divider slot="items"></acme-menu-divider>${item("Delete", 'variant="error"')}</acme-menu>`;
 
 export const doc: Doc = {
   id: "menu",

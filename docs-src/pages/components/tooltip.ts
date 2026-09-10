@@ -21,10 +21,10 @@ const aligned = (position: string, name: string) =>
 const custom = `<span slot="content">The <b>Evil Rabbit</b> Jumped over the <i>Fence</i>.</span>`;
 const typed = (extra = "") =>
   rowOf([
-    tip("Top", `${extra} text="${TEXT}" type="success"`),
-    tip("Bottom", `${extra} position="bottom" text="${TEXT}" type="error"`),
-    tip("Left", `${extra} position="left" text="${TEXT}" type="warning"`),
-    tip("Right", `${extra} position="right" text="${TEXT}" type="violet"`),
+    tip("Top", `${extra} text="${TEXT}" variant="success"`),
+    tip("Bottom", `${extra} position="bottom" text="${TEXT}" variant="error"`),
+    tip("Left", `${extra} position="left" text="${TEXT}" variant="warning"`),
+    tip("Right", `${extra} position="right" text="${TEXT}" variant="violet"`),
   ]);
 /** The open states: `shown` holds the open bits (1 hover or keyboard, 4 touch) and `disable-triggers` keeps the bubble open through scrolls and keys. */
 const OPEN = ' shown="1" disable-triggers';

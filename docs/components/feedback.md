@@ -16,7 +16,7 @@ For desktop only.
 
 ```html
 <div style="min-height:300px">
-  <acme-feedback dry-run label="vercel" type="inline"></acme-feedback>
+  <acme-feedback dry-run label="vercel" variant="inline"></acme-feedback>
 </div>
 ```
 
@@ -68,7 +68,7 @@ Feedback with any key-value metadata attached to the submission.
 
 Feedback: a note plus an emotion. A small secondary "Feedback" button opens a 340px card 8px
 under it (`aria-haspopup="dialog"`): a textarea, a markdown hint, and a footer with four
-emotion radios and a Send button. `type="inline"` renders the "Was this helpful?" pill with the
+emotion radios and a Send button. `variant="inline"` renders the "Was this helpful?" pill with the
 four faces instead; a face grows the pill into the card (336px wide) in place, `upwards` keeps the
 row 48px high and shifts the card up, `full-width` fills the row. `show-topics` adds a topic
 select and `show-email` an email field above the textarea. Send validates (topic, email, note,
@@ -85,7 +85,7 @@ decorate the trigger. Fires `acme-open`, `acme-close` and `acme-submit` (the pay
 | `button-variant` | `buttonVariant` | `FeedbackButtonVariant` | `"secondary"` | The trigger's variant: `secondary` (default), `default` or `tertiary`. |
 | `button-type` | `buttonType` | `"button" \| "submit" \| "reset"` | `"button"` | The trigger's HTML type. |
 | `copy` | `copy` | `string` | `"Was this helpful?"` | The prompt beside the faces of the inline pill. |
-| `type` | `type` | `FeedbackType` | `""` | `inline` renders the pill instead of the trigger. |
+| `variant` | `variant` | `FeedbackVariant` | `""` | `inline` renders the pill instead of the trigger. |
 | `upwards` | `upwards` | `boolean` | `false` | The inline card opens upward: the row keeps its height and the card shifts up. |
 | `full-width` | `fullWidth` | `boolean` | `false` | The inline pill fills its row. |
 | `show-topics` | `showTopics` | `boolean` | `false` | Adds the topic select above the textarea. |

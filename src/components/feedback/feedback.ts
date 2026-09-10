@@ -10,7 +10,7 @@ import "../input/input";
 import "../select/select";
 import "../textarea/textarea";
 
-export type FeedbackType = "" | "inline";
+export type FeedbackVariant = "" | "inline";
 export type FeedbackButtonVariant = "default" | "secondary" | "tertiary";
 /** What a submission carries: the metadata, then the page, the note, the emotion code, the plan, the label, the topic and the client. */
 export type FeedbackPayload = Record<string, unknown> & { url: string; note: string; email: string; emotion: string; plan: string; label: string; topic: string; ua: string };
@@ -75,7 +75,7 @@ type Phase = "entered" | "exiting" | null;
 /**
  * Feedback: a note plus an emotion. A small secondary "Feedback" button opens a 340px card 8px
  * under it (`aria-haspopup="dialog"`): a textarea, a markdown hint, and a footer with four
- * emotion radios and a Send button. `type="inline"` renders the "Was this helpful?" pill with the
+ * emotion radios and a Send button. `variant="inline"` renders the "Was this helpful?" pill with the
  * four faces instead; a face grows the pill into the card (336px wide) in place, `upwards` keeps the
  * row 48px high and shifts the card up, `full-width` fills the row. `show-topics` adds a topic
  * select and `show-email` an email field above the textarea. Send validates (topic, email, note,
@@ -95,7 +95,7 @@ export class AcmeFeedback extends AcmeElement {
         display: inline-flex;
         position: relative;
       }
-      :host([type="inline"]) {
+      :host([variant="inline"]) {
         display: block;
       }
     `,
@@ -111,7 +111,7 @@ export class AcmeFeedback extends AcmeElement {
   /** The prompt beside the faces of the inline pill. */
   @property() copy = "Was this helpful?";
   /** `inline` renders the pill instead of the trigger. */
-  @property({ reflect: true }) type: FeedbackType = "";
+  @property({ reflect: true }) variant: FeedbackVariant = "";
   /** The inline card opens upward: the row keeps its height and the card shifts up. */
   @property({ type: Boolean }) upwards = false;
   /** The inline pill fills its row. */
@@ -210,7 +210,7 @@ export class AcmeFeedback extends AcmeElement {
 
   private onCardKey = (e: KeyboardEvent) => {
     if (e.key === "Enter" && e.metaKey) this.submit();
-    if (this.type === "inline" && e.key === "Escape") this.open = false;
+    if (this.variant === "inline" && e.key === "Escape") this.open = false;
   };
 
   /** Focus returns to the trigger: the control inside the composed button (the host itself takes no focus). */
@@ -307,7 +307,7 @@ export class AcmeFeedback extends AcmeElement {
   };
 
   private pick(code: string) {
-    if (this.type === "inline") {
+    if (this.variant === "inline") {
       const wasOpen = this.open;
       this.open = true;
       if (!wasOpen) this.later(() => this.focusField(), FOCUS_MS);
@@ -375,7 +375,7 @@ export class AcmeFeedback extends AcmeElement {
       // An element that starts open mounts its card without the open event.
       const initial = ch.get("open") === undefined;
       if (this.open) {
-        if (this.type !== "inline") {
+        if (this.variant !== "inline") {
           this.sent = false;
           this.message = "";
           this.pendingClose = false;
@@ -476,7 +476,7 @@ export class AcmeFeedback extends AcmeElement {
   }
 
   render() {
-    const inline = this.type === "inline";
+    const inline = this.variant === "inline";
     const body = (isInline: boolean) => html`${this.formPhase ? this.form(isInline) : nothing}${this.sent ? this.done(isInline) : nothing}`;
     if (inline)
       return html`<div class=${this.cls("panel", { inline: true, full: this.fullWidth, up: this.upwards })} part="panel">

@@ -29,7 +29,7 @@ describe("acme-snippet", () => {
   });
 
   test("prompt=false, dark, type, fill and an empty text with a placeholder map to modifier classes", async () => {
-    const el = await mount(`<acme-snippet prompt="false" dark type="success" fill text="x"></acme-snippet>`);
+    const el = await mount(`<acme-snippet prompt="false" dark variant="success" fill text="x"></acme-snippet>`);
     for (const k of ["no-prompt", "dark", "success", "fill"]) expect(root(el).classList.contains(k)).toBe(true);
     const empty = await mount(`<acme-snippet placeholder="Run acme link to fetch env vars" text=""></acme-snippet>`);
     expect(root(empty).classList.contains("placeholder")).toBe(true);

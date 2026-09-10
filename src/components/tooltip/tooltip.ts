@@ -11,7 +11,7 @@ import { tooltipTriggerCss } from "./tooltip-trigger.styles";
 export type TooltipPosition = "auto" | "top" | "bottom" | "left" | "right";
 /** Where the bubble sits along a top or bottom trigger; `auto` moves it inward near a viewport edge. */
 export type TooltipAlign = "auto" | "left" | "center" | "right";
-export type TooltipType = "" | "success" | "error" | "warning" | "violet";
+export type TooltipVariant = "" | "success" | "error" | "warning" | "violet";
 type Side = "top" | "bottom" | "left" | "right";
 type Align = "left" | "center" | "right";
 
@@ -64,7 +64,7 @@ const arrowOffset = (bubbleWidth: number) => Math.min(20, Math.max(12, bubbleWid
  * default, `auto` picks top or bottom), its arrow centred on the facing edge or, with `box-align`
  * left or right (`auto` near a viewport edge), at the arrow offset from the bubble's start or
  * end. The bubble takes `text`, or the `content` slot (a key in it draws small and flat), and
- * `max-width` (250px), `padding`, `type` (the themed colour variables of success, error, warning
+ * `max-width` (250px), `padding`, `variant` (the themed colour variables of success, error, warning
  * and violet), `tip` (the arrow), `center`, `wrap` and `invert-theme`, each on by default.
  * It fades in after 400ms (`delay="false"`: at once; `lower-delay`, or a touch: 100ms), placed
  * with floating-ui in the top layer, so it escapes clipping ancestors, and flips or shifts only
@@ -118,7 +118,7 @@ export class AcmeTooltip extends AcmeElement {
   @property({ type: Boolean, attribute: "desktop-only" }) desktopOnly = false;
   /** Ignores hover, focus, keys and touch. */
   @property({ type: Boolean, attribute: "disable-triggers" }) disableTriggers = false;
-  /** `fill="false"` drops the filled colour variables of `type`. */
+  /** `fill="false"` drops the filled colour variables of `variant`. */
   @property({ converter: boolish }) fill = true;
   /** Closes the bubble as the trigger takes focus. */
   @property({ type: Boolean, attribute: "hide-on-click" }) hideOnClick = false;
@@ -132,7 +132,7 @@ export class AcmeTooltip extends AcmeElement {
   /** `tip="false"` hides the arrow. */
   @property({ converter: boolish }) tip = true;
   /** `success`, `error`, `warning` or `violet`: the themed colour variables of that tooltip variant. */
-  @property() type: TooltipType = "";
+  @property() variant: TooltipVariant = "";
   /** `wrap="false"` keeps the text on one line. */
   @property({ converter: boolish }) wrap = true;
   /** Measures the host's parent instead of the trigger. */
@@ -421,11 +421,11 @@ export class AcmeTooltip extends AcmeElement {
       faster: this.lowerDelay || touch,
       nocenter: !this.center,
       nowrap: !this.wrap,
-      success: this.type === "success",
-      error: this.type === "error",
-      warning: this.type === "warning",
-      violet: this.type === "violet",
-      nofill: !!this.type && !this.fill,
+      success: this.variant === "success",
+      error: this.variant === "error",
+      warning: this.variant === "warning",
+      violet: this.variant === "violet",
+      nofill: !!this.variant && !this.fill,
       noinvert: !this.invertTheme,
     });
     const g = GLYPH[side];

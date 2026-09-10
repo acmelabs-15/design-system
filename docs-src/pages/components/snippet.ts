@@ -36,7 +36,7 @@ export const doc: Doc = {
     },
     {
       h: "Variants",
-      html: `<div class="vstack" style="align-items:stretch"><acme-snippet text="npm init next-app" type="success" width="300px"></acme-snippet><acme-snippet text="npm init next-app" type="error" width="300px"></acme-snippet><acme-snippet text="npm init next-app" type="warning" width="300px"></acme-snippet></div>`,
+      html: `<div class="vstack" style="align-items:stretch"><acme-snippet text="npm init next-app" variant="success" width="300px"></acme-snippet><acme-snippet text="npm init next-app" variant="error" width="300px"></acme-snippet><acme-snippet text="npm init next-app" variant="warning" width="300px"></acme-snippet></div>`,
     },
     {
       h: "Controlled Copied State",

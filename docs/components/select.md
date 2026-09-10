@@ -134,7 +134,7 @@ A native select with a styled face. A relative flex wrapper holds the field (32 
 radius 6, large 8, a hairline ring) and, at its sides, a prefix cell (the `prefix` slot) and a
 suffix cell (the `suffix` slot, a chevron by default; `suffix="false"` drops the cell). Options
 come from `<option>` children (an `<optgroup>` is kept) or the `options` property. The wrapper
-carries the size, `error`, `disabled`, `type="secondary"` (no ring, the field shifted left) and
+carries the size, `error`, `disabled`, `variant="secondary"` (no ring, the field shifted left) and
 cell modifiers, and the interaction states (data-hover; data-focus for any focus of the field).
 `placeholder` is a disabled first option; a value equal to it reads gray. `label` renders the
 text above the field (capitalized unless `bypass-casing`), `with-label="false"` drops the label
@@ -149,7 +149,7 @@ carries the value.
 | `value` | `value` | `string` | `""` |  |
 | `name` | `name` | `string` | `""` |  |
 | `size` | `size` | `SelectSize` | `"medium"` |  |
-| `type` | `type` | `"default" \| "secondary"` | `"default"` | `secondary`: no ring, gray-900 text, the field shifted 12px left. |
+| `variant` | `variant` | `"default" \| "secondary"` | `"default"` | `secondary`: no ring, gray-900 text, the field shifted 12px left. |
 | `error` | `error` | `string` | `""` | The message under the field; the field reads as invalid and its ring turns red. |
 | `width` | `width` | `string` | `""` | A fixed width for the label element and the message, as CSS. |
 | `disabled` | `disabled` | `boolean` | `false` |  |

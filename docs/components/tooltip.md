@@ -172,22 +172,22 @@ A floating label that appears on hover or focus to provide additional context ab
 ```html
 <div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%">
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%">
-    <acme-tooltip text="The Evil Rabbit Jumped over the Fence" type="success">
+    <acme-tooltip text="The Evil Rabbit Jumped over the Fence" variant="success">
       <span>Top</span>
     </acme-tooltip>
   </div>
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%">
-    <acme-tooltip position="bottom" text="The Evil Rabbit Jumped over the Fence" type="error">
+    <acme-tooltip position="bottom" text="The Evil Rabbit Jumped over the Fence" variant="error">
       <span>Bottom</span>
     </acme-tooltip>
   </div>
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%">
-    <acme-tooltip position="left" text="The Evil Rabbit Jumped over the Fence" type="warning">
+    <acme-tooltip position="left" text="The Evil Rabbit Jumped over the Fence" variant="warning">
       <span>Left</span>
     </acme-tooltip>
   </div>
   <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%">
-    <acme-tooltip position="right" text="The Evil Rabbit Jumped over the Fence" type="violet">
+    <acme-tooltip position="right" text="The Evil Rabbit Jumped over the Fence" variant="violet">
       <span>Right</span>
     </acme-tooltip>
   </div>
@@ -242,7 +242,7 @@ inverted-theme box with an 8px radius, 10px from the trigger on the `position` s
 default, `auto` picks top or bottom), its arrow centred on the facing edge or, with `box-align`
 left or right (`auto` near a viewport edge), at the arrow offset from the bubble's start or
 end. The bubble takes `text`, or the `content` slot (a key in it draws small and flat), and
-`max-width` (250px), `padding`, `type` (the themed colour variables of success, error, warning
+`max-width` (250px), `padding`, `variant` (the themed colour variables of success, error, warning
 and violet), `tip` (the arrow), `center`, `wrap` and `invert-theme`, each on by default.
 It fades in after 400ms (`delay="false"`: at once; `lower-delay`, or a touch: 100ms), placed
 with floating-ui in the top layer, so it escapes clipping ancestors, and flips or shifts only
@@ -264,14 +264,14 @@ for no tab stop), `cursor` its pointer, `use-parent-for-bounding-rect` measures 
 | `delay-time` | `delayTime` | `number` | `0` | Milliseconds before a hover or key opens the bubble. |
 | `desktop-only` | `desktopOnly` | `boolean` | `false` | Never opens on a touch. |
 | `disable-triggers` | `disableTriggers` | `boolean` | `false` | Ignores hover, focus, keys and touch. |
-| `fill` | `fill` | `boolean` | `true` | `fill="false"` drops the filled colour variables of `type`. |
+| `fill` | `fill` | `boolean` | `true` | `fill="false"` drops the filled colour variables of `variant`. |
 | `hide-on-click` | `hideOnClick` | `boolean` | `false` | Closes the bubble as the trigger takes focus. |
 | `max-width` | `maxWidth` | `string` | `"250px"` |  |
 | `padding` | `padding` | `string` | `""` | The bubble's padding, as CSS. |
 | `shown` | `shown` | `number` | `0` | The open bits: 1 hover or keyboard, 2 focus, 4 touch. |
 | `sticky` | `sticky` | `boolean` | `false` | Focus on the trigger opens the bubble. |
 | `tip` | `tip` | `boolean` | `true` | `tip="false"` hides the arrow. |
-| `type` | `type` | `TooltipType` | `""` | `success`, `error`, `warning` or `violet`: the themed colour variables of that tooltip variant. |
+| `variant` | `variant` | `TooltipVariant` | `""` | `success`, `error`, `warning` or `violet`: the themed colour variables of that tooltip variant. |
 | `wrap` | `wrap` | `boolean` | `true` | `wrap="false"` keeps the text on one line. |
 | `use-parent-for-bounding-rect` | `useParentForBoundingRect` | `boolean` | `false` | Measures the host's parent instead of the trigger. |
 | `lower-delay` | `lowerDelay` | `boolean` | `false` | The shorter fade-in delay. |

@@ -186,7 +186,7 @@ describe("acme-menu-item", () => {
     const a = link.shadowRoot!.querySelector("li.link[role=none] > a.item[role=menuitem]") as HTMLAnchorElement;
     expect(a.getAttribute("href")).toBe("/x");
     expect(a.getAttribute("target")).toBe("_blank");
-    const err = await mount<AcmeMenuItem>(`<acme-menu-item type="error">Delete</acme-menu-item>`);
+    const err = await mount<AcmeMenuItem>(`<acme-menu-item variant="error">Delete</acme-menu-item>`);
     expect(err.shadowRoot!.querySelector(".item")!.className).toContain("error");
     const locked = await mount<AcmeMenuItem>(`<acme-menu-item locked>Delete</acme-menu-item>`);
     const row = locked.shadowRoot!.querySelector(".item")!;

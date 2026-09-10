@@ -49,11 +49,11 @@ export const doc: Doc = {
     },
     {
       h: "Error Type",
-      html: `<acme-fieldset type="error" heading="Payment Failed"><span slot="subtitle">Your payment method was declined. Please update your billing information to continue using the service.</span><span slot="status">Payment failed on February 10, 2026</span>${secondary("Contact Support")}${action("Update Payment Method")}</acme-fieldset>`,
+      html: `<acme-fieldset variant="error" heading="Payment Failed"><span slot="subtitle">Your payment method was declined. Please update your billing information to continue using the service.</span><span slot="status">Payment failed on February 10, 2026</span>${secondary("Contact Support")}${action("Update Payment Method")}</acme-fieldset>`,
     },
     {
       h: "Warning Type",
-      html: `<acme-fieldset type="warning" heading="Trial Ending Soon"><span slot="subtitle">Your trial period will end in 3 days. Add a payment method to continue accessing premium features without interruption.</span><span slot="status">Trial expires: February 13, 2026</span>${secondary("Remind Me Later")}${action("Add Payment Method")}</acme-fieldset>`,
+      html: `<acme-fieldset variant="warning" heading="Trial Ending Soon"><span slot="subtitle">Your trial period will end in 3 days. Add a payment method to continue accessing premium features without interruption.</span><span slot="status">Trial expires: February 13, 2026</span>${secondary("Remind Me Later")}${action("Add Payment Method")}</acme-fieldset>`,
     },
   ],
 };

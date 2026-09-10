@@ -13,7 +13,7 @@ const text = { fromAttribute: (v: string | null): string | string[] => (v?.trim(
  * Snippet: one copyable command in 13/20 mono inside a 6px-radius bordered box, with a `$ `
  * prompt before each line and a 32px square copy button at the right, whose icon stack swaps to
  * a check for one second after a copy (or while `copied` is set). `text` takes a string or a
- * JSON array of lines; `copy-text` is copied instead when set. `dark` inverts the box; `type`
+ * JSON array of lines; `copy-text` is copied instead when set. `dark` inverts the box; `variant`
  * tints it success, error or warning, `fill` fills it; `placeholder` shows in an empty snippet at
  * half opacity; `compact` is the 36px one-line box; `icon="false"` drops the button and
  * `not-focusable` disables it. Fires `acme-copy` after a copy; a failed copy raises an error toast.
@@ -38,7 +38,7 @@ export class AcmeSnippet extends AcmeElement {
   /** `icon="false"` drops the copy button. */
   @property({ converter: boolish }) icon = true;
   @property({ type: Boolean }) dark = false;
-  @property() type: "" | "success" | "error" | "warning" = "";
+  @property() variant: "" | "success" | "error" | "warning" = "";
   /** Fills the box with the type's color. */
   @property({ type: Boolean }) fill = false;
   /** Shown in an empty snippet, not copied. */
@@ -91,8 +91,8 @@ export class AcmeSnippet extends AcmeElement {
     const c = this.cls("snippet", {
       "no-prompt": !this.prompt,
       dark: this.dark,
-      [this.type]: !!this.type,
-      fill: this.fill && !!this.type,
+      [this.variant]: !!this.variant,
+      fill: this.fill && !!this.variant,
       placeholder: empty,
     });
     const style = `${this.width ? `width:${this.width};` : ""}height:${this.compact ? "36px" : "auto"}`;

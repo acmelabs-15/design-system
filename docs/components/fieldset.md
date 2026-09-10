@@ -113,7 +113,7 @@ Groups related form controls inside a bordered card with optional footer actions
 ## Error Type
 
 ```html
-<acme-fieldset type="error" heading="Payment Failed">
+<acme-fieldset variant="error" heading="Payment Failed">
   <span slot="subtitle">Your payment method was declined. Please update your billing information to continue using the service.</span>
   <span slot="status">Payment failed on February 10, 2026</span>
   <acme-button slot="actions" variant="secondary">Contact Support</acme-button>
@@ -124,7 +124,7 @@ Groups related form controls inside a bordered card with optional footer actions
 ## Warning Type
 
 ```html
-<acme-fieldset type="warning" heading="Trial Ending Soon">
+<acme-fieldset variant="warning" heading="Trial Ending Soon">
   <span slot="subtitle">Your trial period will end in 3 days. Add a payment method to continue accessing premium features without interruption.</span>
   <span slot="status">Trial expires: February 13, 2026</span>
   <acme-button slot="actions" variant="secondary">Remind Me Later</acme-button>
@@ -136,7 +136,7 @@ Groups related form controls inside a bordered card with optional footer actions
 
 Fieldset: a card that groups related form controls. The content holds the title, the subtitle,
 an error or warning line in its own row, and any slotted content; the footer holds a status line
-and small action buttons, or text of its own. `type` colors the card's border and its footer;
+and small action buttons, or text of its own. `variant` colors the card's border and its footer;
 `disabled` dims the content behind a wall (the title stays above it) and grays a button or an
 icon slotted into it; `highlight` tints the footer. Slots: default (content), `title` (beside
 `heading`), `subtitle`, `error`, `warning`, `status`, `actions` (one acme-button each, small
@@ -146,7 +146,7 @@ wrapper of their own, so the element assigns its slots itself.
 | Attribute | Property | Type | Default | Description |
 |---|---|---|---|---|
 | `heading` | `heading` | `string` | `""` | The title line; the `title` slot adds to it. |
-| `type` | `type` | `FieldsetType` | `""` | `error` or `warning`: a colored border, and a tinted footer. |
+| `variant` | `variant` | `FieldsetVariant` | `""` | `error` or `warning`: a colored border, and a tinted footer. |
 | `disabled` | `disabled` | `boolean` | `false` | Dims the content behind a wall; the footer stays active. |
 | `highlight` | `highlight` | `boolean` | `false` | A tinted footer. |
 

@@ -47,7 +47,7 @@ describe("acme-tooltip", () => {
 
   test("position, box-align, delay, lower-delay, type, fill, center, wrap and invert-theme map to modifiers", async () => {
     const el = await mount(
-      `<acme-tooltip shown="1" position="bottom" box-align="right" delay="false" lower-delay type="success" fill="false" center="false" wrap="false" invert-theme="false" text="x"><span>x</span></acme-tooltip>`,
+      `<acme-tooltip shown="1" position="bottom" box-align="right" delay="false" lower-delay variant="success" fill="false" center="false" wrap="false" invert-theme="false" text="x"><span>x</span></acme-tooltip>`,
     );
     const c = bubble(el)!.className.split(/\s+/);
     for (const m of ["tip", "bottom", "end", "nodelay", "faster", "success", "nofill", "nocenter", "nowrap", "noinvert"]) expect(c).toContain(m);

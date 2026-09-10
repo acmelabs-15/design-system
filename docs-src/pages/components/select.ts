@@ -59,11 +59,11 @@ export const doc: Doc = {
     {
       h: "Secondary", census: true,
       p: "No ring, gray text, the field shifted left: a select that reads as a plain control in a toolbar.",
-      html: `<acme-select aria-label="Secondary" placeholder="Secondary" type="secondary"></acme-select>`,
+      html: `<acme-select aria-label="Secondary" placeholder="Secondary" variant="secondary"></acme-select>`,
     },
     {
       h: "Secondary disabled", census: true,
-      html: `<acme-select aria-label="Secondary disabled" disabled placeholder="Secondary disabled" type="secondary"></acme-select>`,
+      html: `<acme-select aria-label="Secondary disabled" disabled placeholder="Secondary disabled" variant="secondary"></acme-select>`,
     },
     {
       h: "Disabled with prefix", census: true,

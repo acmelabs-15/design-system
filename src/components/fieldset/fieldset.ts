@@ -5,12 +5,12 @@ import type { AcmeButton } from "../button/button";
 import { fieldsetCss } from "./fieldset.styles";
 import "../disabled-wall/disabled-wall";
 
-export type FieldsetType = "" | "error" | "warning";
+export type FieldsetVariant = "" | "error" | "warning";
 
 /**
  * Fieldset: a card that groups related form controls. The content holds the title, the subtitle,
  * an error or warning line in its own row, and any slotted content; the footer holds a status line
- * and small action buttons, or text of its own. `type` colors the card's border and its footer;
+ * and small action buttons, or text of its own. `variant` colors the card's border and its footer;
  * `disabled` dims the content behind a wall (the title stays above it) and grays a button or an
  * icon slotted into it; `highlight` tints the footer. Slots: default (content), `title` (beside
  * `heading`), `subtitle`, `error`, `warning`, `status`, `actions` (one acme-button each, small
@@ -32,7 +32,7 @@ export class AcmeFieldset extends AcmeElement {
   /** The title line; the `title` slot adds to it. */
   @property() heading = "";
   /** `error` or `warning`: a colored border, and a tinted footer. */
-  @property() type: FieldsetType = "";
+  @property() variant: FieldsetVariant = "";
   /** Dims the content behind a wall; the footer stays active. */
   @property({ type: Boolean }) disabled = false;
   /** A tinted footer. */
@@ -88,8 +88,8 @@ export class AcmeFieldset extends AcmeElement {
     const actions = this.slotted.actions ?? [];
     const footer = has("footer") || has("status") || actions.length > 0;
     const c = this.cls("fieldset", {
-      error: this.type === "error",
-      warning: this.type === "warning",
+      error: this.variant === "error",
+      warning: this.variant === "warning",
       disabled: this.disabled,
       highlight: this.highlight,
     });
