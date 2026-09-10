@@ -75,6 +75,16 @@ const norm = (p: string, v: string) => {
  */
 const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string, ours: string) => boolean }[] = [
   {
+    // Verified on the live page and in the mirror snapshot: every svg icon in the reference's badge
+    // demos carries class="relative" in the DEMO MARKUP, and their 6 image icons do not, which is
+    // why 51 of 57 read relative. Their badge's own utilities set display, flex-shrink and an
+    // identity transform on a slotted icon — never position — and ours reproduces all three. The
+    // captured spec has zero icons carrying the class, so their demo markup changed after it was
+    // taken. This is the reference's page styling its own demo content, like the my-4 case.
+    why: "slotted icon position: the reference's badge demos author class=\"relative\" on the icon they pass in; neither badge sets position",
+    test: (part, prop, gv, ov) => part === "icon" && prop === "position" && gv === "relative" && ov === "static",
+  },
+  {
     why: "wrapper-box context: our root is a flex item of the wrapper, theirs a block child; auto resolves like 0 in a column's cross axis",
     test: (_part, prop, gv, ov) => prop === "min-width" && ((gv === "auto" && ov === "0px") || (gv === "0px" && ov === "auto")),
   },
