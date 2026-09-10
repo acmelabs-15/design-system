@@ -9,7 +9,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { formatGenerated } from "../../scripts/format-generated";
-import { atoms, type Decl, parseDecls, serialize, simplify, twProperty } from "./simplify";
+import { atoms, type Decl, loadReference, parseDecls, serialize, simplify, twProperty } from "./simplify";
 import { allRules, keyframesOf, resolve } from "./tw";
 
 /**
@@ -1298,6 +1298,8 @@ function laterOnRoot(own: Iterable<string>, composed: Iterable<string>): string[
 
 /** `parent` is the mapping this one `extends`: its roots' classes are the composed element's and are skipped, except those that reach only beyond its tree (see {@link deepReach}), which this element's own tree needs. */
 export function generate(name: string, map: GeistMap, parent?: GeistMap, extended: Record<string, GeistMap> = {}): { css: string; report: string[] } {
+  // The reference sheets load on demand, so read them before anything here touches twProperty.
+  loadReference();
   const spec = JSON.parse(fs.readFileSync(path.join(specDir, `${map.page}.json`), "utf8")) as Spec;
   const tags = Array.isArray(map.component) ? map.component : [map.component];
   const isRoot = typeof map.root === "string" ? (n: SpecNode) => map.root as string in n.attrs : map.root;

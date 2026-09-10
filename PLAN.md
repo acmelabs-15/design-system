@@ -188,7 +188,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 583 pass, 0 fail |
+| Tests | 583 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Parity, measured | **not currently provable — see section 4** |
@@ -408,6 +408,7 @@ Ask Peter once, then: commit, push, docs deploy, npm release.
 | `src/components/context-card/context-card.ts` | Focus and click handlers sat on the shadow trigger box, which a light-DOM event never reaches. Real keyboard focus never opened the card; a link click never closed it. The old test passed only because it dispatched events straight onto the shadow box, which no browser does. | Handlers moved to the host |
 | `src/components/context-card/context-card.ts` | Escape closed the card, then restored focus, and that focus reopened it | A `dismissed` flag, cleared when focus truly leaves |
 | `docs-src/pages/components/table.ts` | The virtualized table's Show More did nothing. The demo listened for `acme-toggle`, which `acme-show-more` never fires: like the reference's, it is controlled and only bubbles a click. Every style on the page measured clean, so the census could never have caught it. | The demo now listens for `click` and sets `expanded`, matching the reference's `onClick` contract. Verified in the browser: the row count moves between 9 and 5000 and back. |
+| `tools/geist/tw.ts` and `simplify.ts` | Both read the reference corpus at **import** time. The corpus is gitignored (it is the reference site's own output), so any import of these modules failed wherever the corpus is absent. It broke the 0.2.0 publish: a new unit test imported `simplify` for one pure function and CI had no corpus. | Both now parse on first use. `loadReference()` is exported and called at the top of `generate()`. Verified by hiding the corpus locally: 583 tests pass with it and without it. |
 | `src/components/context-card/__tests__/` | Five assertions compared exact class strings; Lit appends newly-true classes on update, so order carries no meaning | Compare the class set |
 
 ---

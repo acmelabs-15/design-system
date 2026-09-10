@@ -9,22 +9,37 @@ import path from "node:path";
 import { rootVars } from "./tw";
 
 const cssDir = path.join(import.meta.dir, "corpus/css");
-const cssText = fs.readdirSync(cssDir).map((f) => fs.readFileSync(path.join(cssDir, f), "utf8")).join("\n");
 
 /** `@property --tw-x { initial-value: ... }` for every registered Tailwind variable. */
 export const twDefaults: Record<string, string> = {};
 /** The registration text of every Tailwind variable, for the ones a module keeps as variables. */
 export const twProperty: Record<string, string> = {};
-for (const m of cssText.matchAll(/@property (--tw-[a-z0-9-]+)\{([^}]*)\}/g)) {
-  twProperty[m[1]] = `@property ${m[1]} { ${m[2].trim().replace(/;\s*/g, "; ").replace(/;\s*$/, "")}; }`;
-  const iv = m[2].match(/initial-value:([^;]*)/);
-  // A registered <length> resolves a bare `0` to `0px`; written out into a calc() operand, the unit has to be there.
-  const lengthSyntax = /syntax:\s*"<length(?:-percentage)?>"/.test(m[2]);
-  twDefaults[m[1]] = iv ? (lengthSyntax && iv[1].trim() === "0" ? "0px" : iv[1].trim()) : "";
-}
 
-const themes = rootVars();
-const theme = themes.light;
+/**
+ * Reads the reference sheets on first use, never at import. The corpus is the reference site's own
+ * output and is not in the repository, so importing this module must not touch the disk: a test
+ * that wants one pure function from here would otherwise fail wherever the corpus is absent.
+ * The exported records are filled in place, so an importer that holds a reference still sees them.
+ */
+let loaded = false;
+let themes: { light: Record<string, string>; dark: Record<string, string> } = { light: {}, dark: {} };
+function load() {
+  if (loaded) return;
+  loaded = true;
+  const cssText = fs.readdirSync(cssDir).map((f) => fs.readFileSync(path.join(cssDir, f), "utf8")).join("\n");
+  for (const m of cssText.matchAll(/@property (--tw-[a-z0-9-]+)\{([^}]*)\}/g)) {
+    twProperty[m[1]] = `@property ${m[1]} { ${m[2].trim().replace(/;\s*/g, "; ").replace(/;\s*$/, "")}; }`;
+    const iv = m[2].match(/initial-value:([^;]*)/);
+    // A registered <length> resolves a bare `0` to `0px`; written out into a calc() operand, the unit has to be there.
+    const lengthSyntax = /syntax:\s*"<length(?:-percentage)?>"/.test(m[2]);
+    twDefaults[m[1]] = iv ? (lengthSyntax && iv[1].trim() === "0" ? "0px" : iv[1].trim()) : "";
+  }
+  themes = rootVars();
+}
+/** The light theme's custom properties, loaded on demand. */
+const themeOf = () => (load(), themes.light);
+/** Fills twDefaults and twProperty. Call before reading them directly; simplify() does it itself. */
+export const loadReference = load;
 /** Theme constants worth inlining: plain values under Tailwind's theme namespaces. */
 const INLINE = /^--(text-|font-weight-|radius-|spacing$|default-|tracking-|leading-|blur-|ease-|animate-|shadow-|inset-shadow-|drop-shadow-|container-|breakpoint-|aspect-|perspective-)/;
 /**
@@ -33,8 +48,8 @@ const INLINE = /^--(text-|font-weight-|radius-|spacing$|default-|tracking-|leadi
  * every inner constant inlined in turn; a runtime token it names (a `--ds-` variable the theme ships) stays a variable in the value.
  */
 const constant = (name: string, seen: Set<string> = new Set()): string | undefined => {
-  const v = theme[name];
-  const dark = themes.dark[name];
+  const v = themeOf()[name];
+  const dark = (load(), themes.dark[name]);
   if (v === undefined || (dark !== undefined && dark !== v) || seen.has(name)) return undefined;
   let ok = true;
   const out = v.replace(/var\((--[\w-]+)\)/g, (m, inner: string) => {

@@ -16,7 +16,8 @@ export function sheetOrder(): string[] {
   if (orders.size !== 1) throw new Error(`reference pages link stylesheets in different orders: ${[...orders].join(" | ")}`);
   return [...orders][0].split(" ");
 }
-const css = sheetOrder().map((f) => fs.readFileSync(path.join(DIR, "corpus/css", f), "utf8")).join("\n");
+/** The sheets, read and joined on first use: importing this module must not touch the corpus. */
+const readCss = () => sheetOrder().map((f) => fs.readFileSync(path.join(DIR, "corpus/css", f), "utf8")).join("\n");
 
 /** Splits a selector list at commas outside parentheses and not escaped. */
 function splitSelectors(list: string): string[] {
@@ -67,31 +68,43 @@ function walk(src: string, at: string) {
     i = j;
   }
 }
-walk(css, "");
-
 // Index rules by the escaped class token they start with (".hover\:bg-x:hover" -> "hover:bg-x").
 const unesc = (s: string) => s.replace(/\\(.)/g, "$1");
 const byClass = new Map<string, Rule[]>();
-// Every class token in a selector indexes the rule, so compound selectors (".a.b", ".a .b") resolve from either class.
-// A bare attribute token (`[data-grid]`, a component's marker) indexes it too, so a rule that names an element by its marker resolves from the marker.
-for (const r of rules) {
-  const seen = new Set<string>();
-  for (const m of r.sel.matchAll(/\.((?:\\.|[^\s.:>~+\[\]()])+)|(\[[\w-]+\])/g)) {
-    const cls = m[1] === undefined ? m[2] : unesc(m[1]);
-    if (seen.has(cls)) continue;
-    seen.add(cls);
-    (byClass.get(cls) ?? byClass.set(cls, []).get(cls)!).push(r);
+
+/**
+ * Parses the sheets once, on the first call that needs them. The corpus is not in the repository
+ * (it is the reference site's own output), so importing this module must not read the disk: a test
+ * that imports a sibling for one pure function would otherwise fail wherever the corpus is absent.
+ */
+let parsed = false;
+function parse() {
+  if (parsed) return;
+  parsed = true;
+  walk(readCss(), "");
+  // Every class token in a selector indexes the rule, so compound selectors (".a.b", ".a .b") resolve from either class.
+  // A bare attribute token (`[data-grid]`, a component's marker) indexes it too, so a rule that names an element by its marker resolves from the marker.
+  for (const r of rules) {
+    const seen = new Set<string>();
+    for (const m of r.sel.matchAll(/\.((?:\\.|[^\s.:>~+\[\]()])+)|(\[[\w-]+\])/g)) {
+      const cls = m[1] === undefined ? m[2] : unesc(m[1]);
+      if (seen.has(cls)) continue;
+      seen.add(cls);
+      (byClass.get(cls) ?? byClass.set(cls, []).get(cls)!).push(r);
+    }
   }
 }
-export const resolve = (cls: string) => byClass.get(cls) ?? [];
-export const allRules = () => rules;
-export const keyframesOf = (name: string) => keyframes.get(name);
+
+export const resolve = (cls: string) => (parse(), byClass.get(cls) ?? []);
+export const allRules = () => (parse(), rules);
+export const keyframesOf = (name: string) => (parse(), keyframes.get(name));
 /**
  * The custom properties Geist declares on the root, light and dark, in source order with later
  * declarations winning, including the @supports (lab / oklch / P3) overrides a modern browser
  * applies. Dark values come from selectors that name only the dark-theme class.
  */
 export function rootVars(): { light: Record<string, string>; dark: Record<string, string> } {
+  parse();
   const light: Record<string, string> = {};
   const dark: Record<string, string> = {};
   const isRoot = (s: string) => /^(:root|html|:host)$/.test(s.trim());
