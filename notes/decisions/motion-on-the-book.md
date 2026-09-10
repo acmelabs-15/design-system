@@ -158,3 +158,45 @@ directly, and the selector is held for its subscription alone.
 **Verified:** book and book.dark 0 hard, re-measured. The quick in-and-out reads
 `0.175 → 0.155 → 0.137 → 0.120 → 0.104 → 0.088`, monotonically down. 607 tests, three of them for
 this element's state, each proven by removing the behaviour it covers.
+
+
+## The hitch on hover-in, and where the pointer bindings belong (2026-09-10)
+
+Peter, testing in Chrome rather than the preview pane: "whenever I open in Chrome, there's a jerk at
+the start."
+
+**Real, and mine.** `Interaction` sets `data-hover` on the root the instant a pointer arrives, and
+the generated rule puts the FULL hover transform on that attribute. With the CSS transition off, the
+cover snapped straight to the far state and the directive then animated something already finished.
+
+Worse, `caught()` read the box *after* the attribute had applied, so the matrix it captured was the
+hover state, not the rest state — the first keyframe and the last were the same.
+
+**Why I did not see it.** My tests dispatched `pointerenter` on `.wrap`, where `Interaction` has no
+listener, so `data-hover` was never set. I was testing a path a real mouse never takes. The preview
+pane looked right for the same reason.
+
+### The fix, from Peter
+
+The pointer bindings move to the **root**, beside `Interaction`'s. Lit registers a template listener
+during the first render; `Interaction.attach` runs in `updated`, after. On the same element the
+earlier registration fires first, so `caught()` reads the box before the attribute flips it.
+
+The `transition: none` stays, and its comment is now accurate: two animations racing for the first
+frame is the hitch, and with the transition off the rules only HOLD the two states — which is what
+the census reads — while the directive travels between them.
+
+Measured on the real path, dispatching on the root so both handlers run:
+
+| Gesture | Frames |
+|---|---|
+| Hover in | `0 → 0.077 → 0.143 → 0.177 → 0.236 → 0.262 → 0.308 → 0.327`, settling on the reference matrix |
+| Leave | `0.324 → 0.286 → 0.216 → 0.185 → 0.125 → 0.100 → 0.055`, back to rest |
+| Quick in-out at 0.176 | reverses with no overshoot, nothing left running |
+
+The three motion tests now dispatch on the root too, and a fourth covers the ordering: it fails when
+`caught()` returns the far state, which is the defect itself. 608 tests; book and book.dark 0 hard,
+re-measured.
+
+**The lesson worth keeping:** a synthetic event on the element you are animating is not the gesture.
+Dispatch where the real pointer lands, or the handler you are not testing is the one that breaks it.

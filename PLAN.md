@@ -219,6 +219,12 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   CSS rule keeps holding both states, the directive animates between them, and the census reads the
   same matrix as before. Replacing the CSS with script would break the harness that proves the
   animation is right. See `notes/decisions/motion-on-the-book.md`.
+- **Dispatch a synthetic pointer event where the REAL pointer lands, not on the box you animate.**
+  Verified the expensive way 2026-09-10: my book tests fired on `.wrap`, where `Interaction` has no
+  listener, so `data-hover` was never set and I never saw the hitch Peter hit in Chrome. A handler
+  that reads the box before a state attribute applies must also be BOUND before it — Lit registers a
+  template listener at first render, `Interaction.attach` runs in `updated`, so on the same element
+  the template's runs first.
 - **A gesture that turns mid-flight must cancel the animation in progress.** The directive cancels
   only when it commits styles, never when a new animation starts on the same box, so the old one
   keeps advancing against the new one — the snap Peter found on a quick in-and-out. Capture the
@@ -425,7 +431,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 607 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
+| Tests | 608 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |

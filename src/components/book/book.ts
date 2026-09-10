@@ -69,10 +69,10 @@ export class AcmeBook extends AcmeElement {
       :host {
         display: inline-flex;
       }
-      /* The generated sheet carries the reference's own transition on this box. The animate
-         directive drives the same property now, at the same 250ms and easing, so the transition
-         would run a second animation against it. The CSS rule still holds the rest and hover
-         states, which is what the directive animates BETWEEN and what the census reads. */
+      /* The generated sheet transitions this box between its rest and hover rules, and the
+         directive animates the same property. Two animations on one property race for the first
+         frame — the hitch on hover-in. With the transition off, the rules only HOLD the two states
+         (which is what the census reads) and the directive alone travels between them. */
       .wrap {
         transition: none;
       }
@@ -144,7 +144,13 @@ export class AcmeBook extends AcmeElement {
 
   private interaction = new Interaction(this);
 
-  /** The matrix the browser is drawing right now — mid-flight if animating — or nothing before any transform has applied. */
+  /**
+   * The matrix the browser is drawing right now — mid-flight if animating — or nothing before any
+   * transform has applied. This must run BEFORE `Interaction` flips `data-hover`: once the rule
+   * applies, the computed transform is already the far state and the cover would snap. The pointer
+   * bindings sit on the root next to `Interaction`'s, and Lit registers them at first render, before
+   * `updated` attaches the controller, so on the same element they run first.
+   */
   private caught(): string | undefined {
     const t = this.wrap && getComputedStyle(this.wrap).transform;
     return t && t !== "none" ? t : undefined;
@@ -153,7 +159,8 @@ export class AcmeBook extends AcmeElement {
   /**
    * `Interaction` sets `data-hover` on the root for the generated rules and for the census, with
    * `setAttribute` and no update, so a hovered book renders nothing new on its own. The gesture's
-   * move is what makes the selector request the update the directive runs in.
+   * move is what makes the selector request the update the directive runs in; the CSS then holds
+   * the state the animation lands on.
    */
   private turn = (hovered: boolean) => this.gesture.actions.turn(hovered, this.caught());
 
@@ -197,12 +204,12 @@ export class AcmeBook extends AcmeElement {
       class=${this.cls("book", { stripe, simple: !stripe, color: !!color, textured: this.textured })}
       style=${widthVars(this.width).join(";")}
       part="book"
+      @pointerenter=${() => this.turn(true)}
+      @pointerleave=${() => this.turn(false)}
     >
       <div
         class="wrap"
         style=${wrapStyle || nothing}
-        @pointerenter=${() => this.turn(true)}
-        @pointerleave=${() => this.turn(false)}
         ${animate({
           // The guard is the selector's value, so the directive runs exactly when the gesture
           // turned. `animate` builds a transform from measured left/top/width/height, which cannot

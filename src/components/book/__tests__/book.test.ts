@@ -82,7 +82,9 @@ describe("acme-book", () => {
 
   test("the gesture is one store with one action, and the frames derive from it", async () => {
     const el = await mount(`<acme-book title="A"></acme-book>`);
-    const w = wrap(el);
+    // The pointer bindings sit on the ROOT, beside Interaction's, so `caught()` reads the box
+    // before data-hover flips the CSS to the far state.
+    const w = root(el);
     const probe = el as unknown as {
       gesture: { get: () => { hovered: boolean; from?: string } };
       frames: { get: () => { transform: string }[] };
@@ -110,7 +112,7 @@ describe("acme-book", () => {
 
   test("a repeat of the current direction changes nothing", async () => {
     const el = await mount(`<acme-book title="A"></acme-book>`);
-    const w = wrap(el);
+    const w = root(el);
     const probe = el as unknown as { gesture: { get: () => { hovered: boolean; from?: string } } };
     const before = probe.gesture.get();
     // The action returns the same object when the direction has not changed, so the compare drops
@@ -123,9 +125,30 @@ describe("acme-book", () => {
     expect(probe.gesture.get()).not.toBe(before);
   });
 
+  test("the caught matrix is read before Interaction flips data-hover", async () => {
+    const el = await mount(`<acme-book title="A"></acme-book>`);
+    const b = root(el);
+    const probe = el as unknown as { gesture: { get: () => { hovered: boolean; from?: string } } };
+    // The generated rule puts the FULL hover transform on data-hover with no transition, so a
+    // `caught()` that ran after the attribute would read the far state and the cover would snap
+    // there instead of travelling. Both bindings are on the root; ours registers at first render,
+    // Interaction's in `updated`, so ours runs first.
+    const order: string[] = [];
+    const observer = new MutationObserver(() => order.push("data-hover"));
+    observer.observe(b, { attributes: true, attributeFilter: ["data-hover"] });
+    b.addEventListener("pointerenter", () => order.push("read"), { once: true, capture: true });
+    b.dispatchEvent(new PointerEvent("pointerenter", { bubbles: true, pointerType: "mouse" }));
+    await el.updateComplete;
+    observer.disconnect();
+    expect(b.hasAttribute("data-hover")).toBe(true);
+    // The gesture turned, and its captured matrix is not the hover state.
+    expect(probe.gesture.get().hovered).toBe(true);
+    expect(probe.gesture.get().from ?? "").not.toContain("matrix3d");
+  });
+
   test("a turn cancels the motion in flight, so the reversal does not overshoot", async () => {
     const el = await mount(`<acme-book title="A"></acme-book>`);
-    const w = wrap(el);
+    const w = root(el);
     const cancelled: string[] = [];
     // happy-dom runs no animations, so the cancel path is proven by what the turn asks for.
     (el as unknown as { motion: { cancel: () => void } }).motion.cancel = () => cancelled.push("cancel");
