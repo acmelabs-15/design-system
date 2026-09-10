@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 09:55 PDT.
+how we prove it, and where we are. Updated 2026-09-10 10:40 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -388,16 +388,19 @@ differences point at something real.
   page spaces its row with `space-x-4` and `space-x-2`, which put a margin on every child; ours uses
   `gap` on the same row. Verified in the browser that the spacing is identical: 16px against 16, 8
   against 8, none where the row stacks. Recorded as soft, with the reason.
-- [~] **collapse and collapse-group — cause found, config being rebuilt.** Their single difference is
-  an expanded panel's height, 85 against 173. **Ours is correct and the reference's page is stale:**
-  its panel measures height 0 with 40px of content hidden by overflow, while carrying
-  `aria-expanded="true"`. Confirmed on the **live** site, not only the mirror, and clicking the
-  heading there does not open it either — the opening is script-driven and does not complete on a
-  freshly loaded page. `aria-expanded` matches on both sides, which is the real check.
+- [x] **collapse and collapse-group — at parity.** 7 roots each side, both themes, 0 hard. Three
+  causes, all in the measurement rather than the element:
 
-  Blocked on one thing: neither page had a saved census config, and the reconstruction I derived from
-  the map picks 6 roots on the reference against 7 on ours. **A root-count mismatch makes every
-  downstream number meaningless**, so the marker needs pinning down before this can be called done.
+  | Cause | Why |
+  |---|---|
+  | A class marker that two examples do not carry | `.border-b.border-t-0` found 6 roots against 8. The root is now `div:has(> h3)`, the block whose own child is the heading, which holds on every example. |
+  | The snapshot carries a section the live reference removed | The mirror has a fifth "Standalone" section; the live page's sections are Default, Expanded, Multiple, Small and Best Practices, which is exactly what our docs page shows. **Our page is right and the snapshot is stale.** The new `previews` option names the four shared examples. |
+  | Different container widths | The mirror's preview column is 200px against our 958, and the root fills its container on both sides, so every width in the chain differed by the container. `width` fixes both at 600px. |
+
+  The expanded panel's height is recorded as soft, with the reason: **ours is correct and the
+  reference's page is stale**, its panel measuring height 0 with content hidden by overflow while
+  carrying `aria-expanded="true"`. Verified on the live site, where clicking the heading does not open
+  it either.
 
 - [ ] Remaining, in cost order: pagination (1), tabs (1), scroller-narrow (1), description (6),
   error (2), search-init (2), snippet (2), input (4), pagination-next (4), progress (6),

@@ -1,5 +1,5 @@
 {
- "note": "The collapse root: a bordered block whose first child is the h3 heading. The root's height is read as soft on an expanded panel. The reference's page marks a collapse expanded while its panel measures height 0 with its content hidden by overflow: the opening is script-driven and does not complete on a freshly loaded page \u2014 verified on the LIVE site as well as the mirror, where clicking the heading does not change it either. Ours renders the panel at its true height, which is the correct open state. `aria-expanded`, the real check, matches on both sides.",
+ "note": "The collapse root: the block whose own child is the h3 heading. Read with `div:has(> h3)` rather than a border class, because two of the reference's examples carry no border and a class marker misses them (6 roots against 8). The mirror carries a FIFTH section, 'Standalone', that the live reference no longer has: the live page's sections are Default, Expanded, Multiple, Small and Best Practices, which is exactly what our docs page shows. So the snapshot is stale for this page, our page is right, and the reference side must read only the first four previews or the root counts diverge 8 against 7. The `previews` list on the reference side names the four shared examples. The root's height is read as soft on an expanded panel: the reference's page marks a collapse expanded while its panel measures height 0 with its content hidden by overflow, because the opening is script-driven and does not complete on a freshly loaded page \u2014 verified on the LIVE site as well as the mirror, where clicking the heading does not change it. Ours renders the panel at its true height, which is the correct open state; `aria-expanded`, the real check, matches on both sides. `width` fixes both previews at 600px: the mirror's preview column is 200px wide against our docs page's 958, and the root fills its container on both sides, so without it every width in the chain differs by the container rather than by the element.",
  "themes": [
   "light",
   "dark"
@@ -8,7 +8,7 @@
   "geist": {
    "side": "geist",
    "page": "collapse",
-   "marker": ".border-b.border-t-0",
+   "marker": "div:has(> h3)",
    "children": {
     "heading": ".heading|h3",
     "trigger": ".trigger|button.geist-reset",
@@ -29,7 +29,14 @@
      "height",
      "__rect"
     ]
-   }
+   },
+   "previews": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "width": "600px"
   },
   "ours": {
    "side": "ours",
@@ -56,7 +63,8 @@
      "height",
      "__rect"
     ]
-   }
+   },
+   "width": "600px"
   }
  }
 }

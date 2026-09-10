@@ -112,9 +112,14 @@ window.__census = async (cfg) => {
     return o;
   };
   // Example previews on Geist: the element before each "Show code" bar. Ours: .showcase .preview.
-  const previews = cfg.side === "geist"
+  const all = cfg.side === "geist"
     ? [...document.querySelectorAll('button[aria-controls^="radix-"][data-state]')].map((b) => b.closest("div.bg-background-200")?.previousElementSibling).filter(Boolean)
     : [...document.querySelectorAll(".showcase .preview")];
+  // `previews`: read only these indices. The corpus is a snapshot, so a page can carry a section the
+  // live reference has since removed — collapse's "Standalone" is one, present on the mirror and gone
+  // from the live site. Reading it makes the root counts diverge, and roots pair by order, so every
+  // comparison after the extra one is wrong. Naming the shared previews keeps the two sides aligned.
+  const previews = Array.isArray(cfg.previews) ? cfg.previews.map((i) => all[i]).filter(Boolean) : all;
   // `width`: one outer width for every preview on both sides, so a value the container decides (a
   // centred box's auto margins, a padding in percent) is read in the same context on each side.
   if (cfg.width) for (const p of previews) p.style.width = cfg.width;
