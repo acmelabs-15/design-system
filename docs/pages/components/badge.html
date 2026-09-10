@@ -1,123 +1,793 @@
-<article class="doc" id="badge"><div class="doc-hero"><h1>Badge</h1><p>A short scannable label beside the thing it describes.</p><div class="tags"><acme-badge hue="gray" subtle><code>&lt;acme-badge&gt;</code></acme-badge><acme-badge hue="gray" subtle><code>&lt;acme-pill&gt;</code></acme-badge></div></div><div class="doc-sec" id="size"><h2>Size<a href="#size" aria-label="Link to Size">#</a></h2><p>small 20, medium 24, large 32; the text is capitalized.</p><div class="doc-body"><div class="showcase"><div class="preview"><div class="row"><acme-badge size="small">Small</acme-badge><acme-badge>Medium</acme-badge><acme-badge size="large">Large</acme-badge></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div class=&quot;row&quot;&gt;
-  &lt;acme-badge size=&quot;small&quot;&gt;Small&lt;/acme-badge&gt;
-  &lt;acme-badge&gt;Medium&lt;/acme-badge&gt;
-  &lt;acme-badge size=&quot;large&quot;&gt;Large&lt;/acme-badge&gt;
-&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span>&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;small&quot;</span>&gt;Small&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="3">  &lt;<span class="th-token th-tag">acme-badge</span>&gt;Medium&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="4">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;large&quot;</span>&gt;Large&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="5">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="variant"><h2>Variant<a href="#variant" aria-label="Link to Variant">#</a></h2><p>Solid fills with the 900 step and white text; amber is amber-700 with black text; inverted is gray-1000.</p><div class="doc-body"><div class="showcase"><div class="preview"><div class="row" style="gap:8px"><acme-badge>Gray</acme-badge><acme-badge hue="blue">Blue</acme-badge><acme-badge hue="purple">Purple</acme-badge><acme-badge hue="amber">Amber</acme-badge><acme-badge hue="red">Red</acme-badge><acme-badge hue="pink">Pink</acme-badge><acme-badge hue="green">Green</acme-badge><acme-badge hue="teal">Teal</acme-badge><acme-badge inverted>Inverted</acme-badge></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div class=&quot;row&quot; style=&quot;gap:8px&quot;&gt;
-  &lt;acme-badge&gt;Gray&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;blue&quot;&gt;Blue&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;purple&quot;&gt;Purple&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;amber&quot;&gt;Amber&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;red&quot;&gt;Red&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;pink&quot;&gt;Pink&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;green&quot;&gt;Green&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;teal&quot;&gt;Teal&lt;/acme-badge&gt;
-  &lt;acme-badge inverted&gt;Inverted&lt;/acme-badge&gt;
+<article class="doc" id="badge"><div class="doc-hero"><h1>Badge</h1><p>A label that marks an element that needs attention, or that sorts it with similar elements.</p><div class="tags"><acme-badge variant="gray" contrast="low"><code>&lt;acme-badge&gt;</code></acme-badge><acme-badge variant="gray" contrast="low"><code>&lt;acme-pill&gt;</code></acme-badge></div></div><div class="doc-sec" id="variants"><h2>Variants<a href="#variants" aria-label="Link to Variants">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div class="vstack" style="gap:8px"><div class="row" style="gap:4px"><acme-badge variant="gray">gray</acme-badge><acme-badge variant="gray" contrast="low">gray-subtle</acme-badge></div><div class="row" style="gap:4px"><acme-badge variant="blue">blue</acme-badge><acme-badge variant="blue" contrast="low">blue-subtle</acme-badge></div><div class="row" style="gap:4px"><acme-badge variant="purple">purple</acme-badge><acme-badge variant="purple" contrast="low">purple-subtle</acme-badge></div><div class="row" style="gap:4px"><acme-badge variant="amber">amber</acme-badge><acme-badge variant="amber" contrast="low">amber-subtle</acme-badge></div><div class="row" style="gap:4px"><acme-badge variant="red">red</acme-badge><acme-badge variant="red" contrast="low">red-subtle</acme-badge></div><div class="row" style="gap:4px"><acme-badge variant="pink">pink</acme-badge><acme-badge variant="pink" contrast="low">pink-subtle</acme-badge></div><div class="row" style="gap:4px"><acme-badge variant="green">green</acme-badge><acme-badge variant="green" contrast="low">green-subtle</acme-badge></div><div class="row" style="gap:4px"><acme-badge variant="teal">teal</acme-badge><acme-badge variant="teal" contrast="low">teal-subtle</acme-badge></div><div class="row" style="gap:4px"><acme-badge variant="inverted">inverted</acme-badge><acme-badge variant="trial">Trial</acme-badge><acme-badge variant="turbo">Turborepo</acme-badge></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div class=&quot;vstack&quot; style=&quot;gap:8px&quot;&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;gray&quot;&gt;gray&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;gray&quot; contrast=&quot;low&quot;&gt;gray-subtle&lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;blue&quot;&gt;blue&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;blue&quot; contrast=&quot;low&quot;&gt;blue-subtle&lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;purple&quot;&gt;purple&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;purple&quot; contrast=&quot;low&quot;&gt;purple-subtle&lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;amber&quot;&gt;amber&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;amber&quot; contrast=&quot;low&quot;&gt;amber-subtle&lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;red&quot;&gt;red&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;red&quot; contrast=&quot;low&quot;&gt;red-subtle&lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;pink&quot;&gt;pink&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;pink&quot; contrast=&quot;low&quot;&gt;pink-subtle&lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;green&quot;&gt;green&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;green&quot; contrast=&quot;low&quot;&gt;green-subtle&lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;teal&quot;&gt;teal&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;teal&quot; contrast=&quot;low&quot;&gt;teal-subtle&lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge variant=&quot;inverted&quot;&gt;inverted&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;trial&quot;&gt;Trial&lt;/acme-badge&gt;
+    &lt;acme-badge variant=&quot;turbo&quot;&gt;Turborepo&lt;/acme-badge&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;vstack&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:8px&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;gray&quot;</span>&gt;gray&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;gray&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;gray-subtle&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="5">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;blue&quot;</span>&gt;blue&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;blue&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;blue-subtle&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="9">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="10">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="11">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;purple&quot;</span>&gt;purple&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="12">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;purple&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;purple-subtle&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="13">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="14">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;amber&quot;</span>&gt;amber&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="16">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;amber&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;amber-subtle&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="18">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;red&quot;</span>&gt;red&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;red&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;red-subtle&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="23">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;pink&quot;</span>&gt;pink&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="24">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;pink&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;pink-subtle&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="25">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="26">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="27">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;green&quot;</span>&gt;green&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="28">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;green&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;green-subtle&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="29">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="30">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="31">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;teal&quot;</span>&gt;teal&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="32">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;teal&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;teal-subtle&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="33">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="34">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="35">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;inverted&quot;</span>&gt;inverted&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="36">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;trial&quot;</span>&gt;Trial&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="37">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;turbo&quot;</span>&gt;Turborepo&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="38">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="39">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="sizes"><h2>Sizes<a href="#sizes" aria-label="Link to Sizes">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div class="row" style="gap:8px"><acme-badge size="sm">Small</acme-badge><acme-badge size="md">Medium</acme-badge><acme-badge size="lg">Large</acme-badge></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div class=&quot;row&quot; style=&quot;gap:8px&quot;&gt;
+  &lt;acme-badge size=&quot;sm&quot;&gt;Small&lt;/acme-badge&gt;
+  &lt;acme-badge size=&quot;md&quot;&gt;Medium&lt;/acme-badge&gt;
+  &lt;acme-badge size=&quot;lg&quot;&gt;Large&lt;/acme-badge&gt;
 &lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:8px&quot;</span>&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-badge</span>&gt;Gray&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="3">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;blue&quot;</span>&gt;Blue&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="4">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;purple&quot;</span>&gt;Purple&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="5">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;amber&quot;</span>&gt;Amber&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="6">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;red&quot;</span>&gt;Red&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;pink&quot;</span>&gt;Pink&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="8">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;green&quot;</span>&gt;Green&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="9">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;teal&quot;</span>&gt;Teal&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="10">  &lt;<span class="th-token th-tag">acme-badge</span> inverted&gt;Inverted&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="11">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="subtle"><h2>Subtle<a href="#subtle" aria-label="Link to Subtle">#</a></h2><p>Low contrast keeps the hue for the text on the hue's 100 background.</p><div class="doc-body"><div class="showcase"><div class="preview"><div class="row" style="gap:8px"><acme-badge subtle>Gray</acme-badge><acme-badge hue="blue" subtle>Blue</acme-badge><acme-badge hue="purple" subtle>Purple</acme-badge><acme-badge hue="amber" subtle>Amber</acme-badge><acme-badge hue="red" subtle>Red</acme-badge><acme-badge hue="pink" subtle>Pink</acme-badge><acme-badge hue="green" subtle>Green</acme-badge><acme-badge hue="teal" subtle>Teal</acme-badge></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div class=&quot;row&quot; style=&quot;gap:8px&quot;&gt;
-  &lt;acme-badge subtle&gt;Gray&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;blue&quot; subtle&gt;Blue&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;purple&quot; subtle&gt;Purple&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;amber&quot; subtle&gt;Amber&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;red&quot; subtle&gt;Red&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;pink&quot; subtle&gt;Pink&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;green&quot; subtle&gt;Green&lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;teal&quot; subtle&gt;Teal&lt;/acme-badge&gt;
-&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:8px&quot;</span>&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-badge</span> subtle&gt;Gray&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="3">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;blue&quot;</span> subtle&gt;Blue&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="4">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;purple&quot;</span> subtle&gt;Purple&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="5">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;amber&quot;</span> subtle&gt;Amber&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="6">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;red&quot;</span> subtle&gt;Red&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;pink&quot;</span> subtle&gt;Pink&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="8">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;green&quot;</span> subtle&gt;Green&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="9">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;teal&quot;</span> subtle&gt;Teal&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="10">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="icon"><h2>Icon<a href="#icon" aria-label="Link to Icon">#</a></h2><p>12, 14 or 16px by size, in the icon slot before the text.</p><div class="doc-body"><div class="showcase"><div class="preview"><div class="row"><acme-badge size="small" hue="green"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-check"/></svg>Ready</acme-badge><acme-badge hue="blue"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-rocket"/></svg>Production</acme-badge><acme-badge size="large" hue="red"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-alert"/></svg>Error</acme-badge></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div class=&quot;row&quot;&gt;
-  &lt;acme-badge size=&quot;small&quot; hue=&quot;green&quot;&gt;
-    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
-      &lt;use href=&quot;#i-check&quot;/&gt;
-    &lt;/svg&gt;
-    Ready
-  &lt;/acme-badge&gt;
-  &lt;acme-badge hue=&quot;blue&quot;&gt;
-    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
-      &lt;use href=&quot;#i-rocket&quot;/&gt;
-    &lt;/svg&gt;
-    Production
-  &lt;/acme-badge&gt;
-  &lt;acme-badge size=&quot;large&quot; hue=&quot;red&quot;&gt;
-    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
-      &lt;use href=&quot;#i-alert&quot;/&gt;
-    &lt;/svg&gt;
-    Error
-  &lt;/acme-badge&gt;
-&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span>&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;small&quot;</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;green&quot;</span>&gt;</span>
-<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
-<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-check&quot;</span>/&gt;</span>
-<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
-<span class="th-line" data-line="6">    Ready</span>
-<span class="th-line" data-line="7">  &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="8">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;blue&quot;</span>&gt;</span>
-<span class="th-line" data-line="9">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
-<span class="th-line" data-line="10">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-rocket&quot;</span>/&gt;</span>
-<span class="th-line" data-line="11">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
-<span class="th-line" data-line="12">    Production</span>
-<span class="th-line" data-line="13">  &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="14">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;large&quot;</span> <span class="th-token th-attr">hue</span>=<span class="th-token th-string">&quot;red&quot;</span>&gt;</span>
-<span class="th-line" data-line="15">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
-<span class="th-line" data-line="16">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-alert&quot;</span>/&gt;</span>
-<span class="th-line" data-line="17">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
-<span class="th-line" data-line="18">    Error</span>
-<span class="th-line" data-line="19">  &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
-<span class="th-line" data-line="20">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="pill"><h2>Pill<a href="#pill" aria-label="Link to Pill">#</a></h2><p>The badge shape as a link: white with an inset ring, in the same three sizes.</p><div class="doc-body"><div class="showcase"><div class="preview"><div class="row"><acme-pill size="small" href="#"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-github"/></svg>Repository</acme-pill><acme-pill href="#"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-branch"/></svg>main</acme-pill><acme-pill size="large" href="#"><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-commit"/></svg>4rxecep</acme-pill></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div class=&quot;row&quot;&gt;
-  &lt;acme-pill size=&quot;small&quot; href=&quot;#&quot;&gt;
-    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
-      &lt;use href=&quot;#i-github&quot;/&gt;
-    &lt;/svg&gt;
-    Repository
-  &lt;/acme-pill&gt;
-  &lt;acme-pill href=&quot;#&quot;&gt;
-    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
-      &lt;use href=&quot;#i-branch&quot;/&gt;
-    &lt;/svg&gt;
-    main
-  &lt;/acme-pill&gt;
-  &lt;acme-pill size=&quot;large&quot; href=&quot;#&quot;&gt;
-    &lt;svg class=&quot;ic&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
-      &lt;use href=&quot;#i-commit&quot;/&gt;
-    &lt;/svg&gt;
-    4rxecep
-  &lt;/acme-pill&gt;
-&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span>&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;small&quot;</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;</span>
-<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
-<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-github&quot;</span>/&gt;</span>
-<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
-<span class="th-line" data-line="6">    Repository</span>
-<span class="th-line" data-line="7">  &lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
-<span class="th-line" data-line="8">  &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;</span>
-<span class="th-line" data-line="9">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
-<span class="th-line" data-line="10">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-branch&quot;</span>/&gt;</span>
-<span class="th-line" data-line="11">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
-<span class="th-line" data-line="12">    main</span>
-<span class="th-line" data-line="13">  &lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
-<span class="th-line" data-line="14">  &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;large&quot;</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#&quot;</span>&gt;</span>
-<span class="th-line" data-line="15">    &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
-<span class="th-line" data-line="16">      &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-commit&quot;</span>/&gt;</span>
-<span class="th-line" data-line="17">    &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
-<span class="th-line" data-line="18">    4rxecep</span>
-<span class="th-line" data-line="19">  &lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
-<span class="th-line" data-line="20">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-badge"><h3><code>&lt;acme-badge&gt;</code><small>AcmeBadge</small></h3><p>Geist Badge: sm 20 · md 24 · lg 32, capitalized, solid (900 step) or subtle, one hue per meaning.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">hue</td><td class="mono">hue</td><td class="type">Hue</td><td class="mono">"gray"</td><td></td></tr><tr><td class="mono">size</td><td class="mono">size</td><td class="type">"small" | "medium" | "large"</td><td class="mono">"medium"</td><td></td></tr><tr><td class="mono">subtle</td><td class="mono">subtle</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">inverted</td><td class="mono">inverted</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">outline</td><td class="mono">outline</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">icon</td></tr><tr><td class="mono">(default)</td></tr></tbody></table></div><div class="api-el" id="api-acme-pill"><h3><code>&lt;acme-pill&gt;</code><small>AcmePill</small></h3><p>Geist Pill: the badge shape as a link, white with an inset ring.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">size</td><td class="mono">size</td><td class="type">"small" | "medium" | "large"</td><td class="mono">"medium"</td><td></td></tr><tr><td class="mono">solid</td><td class="mono">solid</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">count</td><td class="mono">count</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">href</td><td class="mono">href</td><td class="type">string</td><td class="mono">""</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">icon</td></tr><tr><td class="mono">(default)</td></tr></tbody></table></div></div></div><div class="doc-sec" id="best-practices"><h2>Best Practices<a href="#best-practices" aria-label="Link to Best Practices">#</a></h2><div class="doc-body"><div class="practices"><h3>When to use</h3><ul><li>One badge per row; a badge is static and never carries a click handler.</li><li>Green healthy, red error, amber warning, blue informational or production, gray neutral; the color carries the state, so no check or X icons.</li></ul><h3>Content</h3><ul><li>Title Case, one or two words.</li><li>Subtle on dense surfaces; a title attribute on an ambiguous badge.</li></ul></div></div></div></article>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span>&gt;Small&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="3">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span>&gt;Medium&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="4">  &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span>&gt;Large&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="5">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="with-icons"><h2>With icons<a href="#with-icons" aria-label="Link to With icons">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div class="vstack" style="gap:8px"><div class="row" style="gap:4px"><acme-badge size="lg" variant="gray"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>gray</acme-badge><acme-badge size="md" variant="gray"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>gray</acme-badge><acme-badge size="sm" variant="gray"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>gray</acme-badge><acme-badge size="sm" variant="gray" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>gray</acme-badge><acme-badge size="md" variant="gray" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>gray</acme-badge><acme-badge size="lg" variant="gray" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>gray</acme-badge></div><div class="row" style="gap:4px"><acme-badge size="lg" variant="blue"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>blue</acme-badge><acme-badge size="md" variant="blue"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>blue</acme-badge><acme-badge size="sm" variant="blue"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>blue</acme-badge><acme-badge size="sm" variant="blue" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>blue</acme-badge><acme-badge size="md" variant="blue" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>blue</acme-badge><acme-badge size="lg" variant="blue" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>blue</acme-badge></div><div class="row" style="gap:4px"><acme-badge size="lg" variant="purple"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>purple</acme-badge><acme-badge size="md" variant="purple"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>purple</acme-badge><acme-badge size="sm" variant="purple"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>purple</acme-badge><acme-badge size="sm" variant="purple" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>purple</acme-badge><acme-badge size="md" variant="purple" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>purple</acme-badge><acme-badge size="lg" variant="purple" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>purple</acme-badge></div><div class="row" style="gap:4px"><acme-badge size="lg" variant="amber"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>amber</acme-badge><acme-badge size="md" variant="amber"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>amber</acme-badge><acme-badge size="sm" variant="amber"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>amber</acme-badge><acme-badge size="sm" variant="amber" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>amber</acme-badge><acme-badge size="md" variant="amber" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>amber</acme-badge><acme-badge size="lg" variant="amber" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>amber</acme-badge></div><div class="row" style="gap:4px"><acme-badge size="lg" variant="red"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>red</acme-badge><acme-badge size="md" variant="red"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>red</acme-badge><acme-badge size="sm" variant="red"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>red</acme-badge><acme-badge size="sm" variant="red" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>red</acme-badge><acme-badge size="md" variant="red" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>red</acme-badge><acme-badge size="lg" variant="red" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>red</acme-badge></div><div class="row" style="gap:4px"><acme-badge size="lg" variant="pink"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>pink</acme-badge><acme-badge size="md" variant="pink"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>pink</acme-badge><acme-badge size="sm" variant="pink"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>pink</acme-badge><acme-badge size="sm" variant="pink" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>pink</acme-badge><acme-badge size="md" variant="pink" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>pink</acme-badge><acme-badge size="lg" variant="pink" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>pink</acme-badge></div><div class="row" style="gap:4px"><acme-badge size="lg" variant="green"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>green</acme-badge><acme-badge size="md" variant="green"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>green</acme-badge><acme-badge size="sm" variant="green"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>green</acme-badge><acme-badge size="sm" variant="green" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>green</acme-badge><acme-badge size="md" variant="green" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>green</acme-badge><acme-badge size="lg" variant="green" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>green</acme-badge></div><div class="row" style="gap:4px"><acme-badge size="lg" variant="teal"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>teal</acme-badge><acme-badge size="md" variant="teal"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>teal</acme-badge><acme-badge size="sm" variant="teal"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>teal</acme-badge><acme-badge size="sm" variant="teal" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>teal</acme-badge><acme-badge size="md" variant="teal" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>teal</acme-badge><acme-badge size="lg" variant="teal" contrast="low"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>teal</acme-badge></div><div class="row" style="gap:4px"><acme-badge size="lg" variant="inverted"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>inverted</acme-badge><acme-badge size="md" variant="inverted"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>inverted</acme-badge><acme-badge size="sm" variant="inverted"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>inverted</acme-badge></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div class=&quot;vstack&quot; style=&quot;gap:8px&quot;&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;gray&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      gray
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;gray&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      gray
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;gray&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      gray
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;gray&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      gray
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;gray&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      gray
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;gray&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      gray
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;blue&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      blue
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;blue&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      blue
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;blue&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      blue
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;blue&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      blue
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;blue&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      blue
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;blue&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      blue
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;purple&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      purple
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;purple&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      purple
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;purple&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      purple
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;purple&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      purple
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;purple&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      purple
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;purple&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      purple
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;amber&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      amber
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;amber&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      amber
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;amber&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      amber
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;amber&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      amber
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;amber&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      amber
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;amber&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      amber
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;red&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      red
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;red&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      red
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;red&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      red
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;red&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      red
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;red&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      red
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;red&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      red
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;pink&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      pink
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;pink&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      pink
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;pink&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      pink
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;pink&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      pink
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;pink&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      pink
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;pink&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      pink
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;green&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      green
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;green&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      green
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;green&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      green
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;green&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      green
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;green&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      green
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;green&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      green
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;teal&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      teal
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;teal&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      teal
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;teal&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      teal
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;teal&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      teal
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;teal&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      teal
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;teal&quot; contrast=&quot;low&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      teal
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:4px&quot;&gt;
+    &lt;acme-badge size=&quot;lg&quot; variant=&quot;inverted&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      inverted
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;md&quot; variant=&quot;inverted&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      inverted
+    &lt;/acme-badge&gt;
+    &lt;acme-badge size=&quot;sm&quot; variant=&quot;inverted&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-shield&quot;/&gt;
+      &lt;/svg&gt;
+      inverted
+    &lt;/acme-badge&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;vstack&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:8px&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;gray&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="5">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="6">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="7">      gray</span>
+<span class="th-line" data-line="8">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="9">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;gray&quot;</span>&gt;</span>
+<span class="th-line" data-line="10">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="11">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="12">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="13">      gray</span>
+<span class="th-line" data-line="14">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;gray&quot;</span>&gt;</span>
+<span class="th-line" data-line="16">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="17">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="18">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="19">      gray</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="21">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;gray&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="22">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="23">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="24">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="25">      gray</span>
+<span class="th-line" data-line="26">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="27">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;gray&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="28">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="29">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="30">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="31">      gray</span>
+<span class="th-line" data-line="32">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="33">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;gray&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="34">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="35">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="36">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="37">      gray</span>
+<span class="th-line" data-line="38">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="39">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="40">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="41">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;blue&quot;</span>&gt;</span>
+<span class="th-line" data-line="42">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="43">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="44">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="45">      blue</span>
+<span class="th-line" data-line="46">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="47">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;blue&quot;</span>&gt;</span>
+<span class="th-line" data-line="48">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="49">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="50">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="51">      blue</span>
+<span class="th-line" data-line="52">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="53">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;blue&quot;</span>&gt;</span>
+<span class="th-line" data-line="54">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="55">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="56">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="57">      blue</span>
+<span class="th-line" data-line="58">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="59">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;blue&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="60">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="61">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="62">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="63">      blue</span>
+<span class="th-line" data-line="64">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="65">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;blue&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="66">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="67">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="68">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="69">      blue</span>
+<span class="th-line" data-line="70">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="71">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;blue&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="72">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="73">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="74">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="75">      blue</span>
+<span class="th-line" data-line="76">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="77">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="78">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="79">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;purple&quot;</span>&gt;</span>
+<span class="th-line" data-line="80">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="81">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="82">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="83">      purple</span>
+<span class="th-line" data-line="84">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="85">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;purple&quot;</span>&gt;</span>
+<span class="th-line" data-line="86">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="87">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="88">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="89">      purple</span>
+<span class="th-line" data-line="90">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="91">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;purple&quot;</span>&gt;</span>
+<span class="th-line" data-line="92">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="93">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="94">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="95">      purple</span>
+<span class="th-line" data-line="96">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="97">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;purple&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="98">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="99">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="100">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="101">      purple</span>
+<span class="th-line" data-line="102">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="103">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;purple&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="104">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="105">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="106">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="107">      purple</span>
+<span class="th-line" data-line="108">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="109">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;purple&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="110">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="111">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="112">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="113">      purple</span>
+<span class="th-line" data-line="114">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="115">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="116">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="117">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;amber&quot;</span>&gt;</span>
+<span class="th-line" data-line="118">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="119">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="120">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="121">      amber</span>
+<span class="th-line" data-line="122">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="123">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;amber&quot;</span>&gt;</span>
+<span class="th-line" data-line="124">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="125">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="126">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="127">      amber</span>
+<span class="th-line" data-line="128">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="129">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;amber&quot;</span>&gt;</span>
+<span class="th-line" data-line="130">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="131">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="132">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="133">      amber</span>
+<span class="th-line" data-line="134">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="135">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;amber&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="136">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="137">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="138">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="139">      amber</span>
+<span class="th-line" data-line="140">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="141">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;amber&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="142">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="143">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="144">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="145">      amber</span>
+<span class="th-line" data-line="146">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="147">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;amber&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="148">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="149">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="150">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="151">      amber</span>
+<span class="th-line" data-line="152">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="153">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="154">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="155">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;red&quot;</span>&gt;</span>
+<span class="th-line" data-line="156">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="157">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="158">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="159">      red</span>
+<span class="th-line" data-line="160">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="161">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;red&quot;</span>&gt;</span>
+<span class="th-line" data-line="162">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="163">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="164">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="165">      red</span>
+<span class="th-line" data-line="166">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="167">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;red&quot;</span>&gt;</span>
+<span class="th-line" data-line="168">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="169">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="170">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="171">      red</span>
+<span class="th-line" data-line="172">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="173">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;red&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="174">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="175">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="176">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="177">      red</span>
+<span class="th-line" data-line="178">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="179">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;red&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="180">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="181">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="182">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="183">      red</span>
+<span class="th-line" data-line="184">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="185">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;red&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="186">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="187">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="188">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="189">      red</span>
+<span class="th-line" data-line="190">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="191">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="192">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="193">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;pink&quot;</span>&gt;</span>
+<span class="th-line" data-line="194">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="195">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="196">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="197">      pink</span>
+<span class="th-line" data-line="198">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="199">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;pink&quot;</span>&gt;</span>
+<span class="th-line" data-line="200">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="201">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="202">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="203">      pink</span>
+<span class="th-line" data-line="204">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="205">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;pink&quot;</span>&gt;</span>
+<span class="th-line" data-line="206">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="207">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="208">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="209">      pink</span>
+<span class="th-line" data-line="210">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="211">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;pink&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="212">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="213">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="214">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="215">      pink</span>
+<span class="th-line" data-line="216">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="217">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;pink&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="218">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="219">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="220">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="221">      pink</span>
+<span class="th-line" data-line="222">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="223">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;pink&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="224">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="225">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="226">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="227">      pink</span>
+<span class="th-line" data-line="228">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="229">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="230">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="231">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;green&quot;</span>&gt;</span>
+<span class="th-line" data-line="232">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="233">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="234">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="235">      green</span>
+<span class="th-line" data-line="236">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="237">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;green&quot;</span>&gt;</span>
+<span class="th-line" data-line="238">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="239">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="240">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="241">      green</span>
+<span class="th-line" data-line="242">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="243">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;green&quot;</span>&gt;</span>
+<span class="th-line" data-line="244">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="245">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="246">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="247">      green</span>
+<span class="th-line" data-line="248">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="249">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;green&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="250">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="251">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="252">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="253">      green</span>
+<span class="th-line" data-line="254">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="255">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;green&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="256">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="257">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="258">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="259">      green</span>
+<span class="th-line" data-line="260">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="261">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;green&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="262">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="263">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="264">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="265">      green</span>
+<span class="th-line" data-line="266">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="267">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="268">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="269">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;teal&quot;</span>&gt;</span>
+<span class="th-line" data-line="270">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="271">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="272">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="273">      teal</span>
+<span class="th-line" data-line="274">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="275">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;teal&quot;</span>&gt;</span>
+<span class="th-line" data-line="276">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="277">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="278">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="279">      teal</span>
+<span class="th-line" data-line="280">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="281">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;teal&quot;</span>&gt;</span>
+<span class="th-line" data-line="282">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="283">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="284">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="285">      teal</span>
+<span class="th-line" data-line="286">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="287">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;teal&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="288">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="289">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="290">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="291">      teal</span>
+<span class="th-line" data-line="292">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="293">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;teal&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="294">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="295">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="296">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="297">      teal</span>
+<span class="th-line" data-line="298">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="299">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;teal&quot;</span> <span class="th-token th-attr">contrast</span>=<span class="th-token th-string">&quot;low&quot;</span>&gt;</span>
+<span class="th-line" data-line="300">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="301">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="302">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="303">      teal</span>
+<span class="th-line" data-line="304">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="305">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="306">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:4px&quot;</span>&gt;</span>
+<span class="th-line" data-line="307">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;inverted&quot;</span>&gt;</span>
+<span class="th-line" data-line="308">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="309">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="310">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="311">      inverted</span>
+<span class="th-line" data-line="312">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="313">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;inverted&quot;</span>&gt;</span>
+<span class="th-line" data-line="314">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="315">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="316">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="317">      inverted</span>
+<span class="th-line" data-line="318">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="319">    &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span> <span class="th-token th-attr">variant</span>=<span class="th-token th-string">&quot;inverted&quot;</span>&gt;</span>
+<span class="th-line" data-line="320">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="321">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-shield&quot;</span>/&gt;</span>
+<span class="th-line" data-line="322">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="323">      inverted</span>
+<span class="th-line" data-line="324">    &lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="325">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="326">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="pill"><h2>Pill<a href="#pill" aria-label="Link to Pill">#</a></h2><p>A special link. It is less prominent than a button and takes the badge shape.</p><div class="doc-body"><div class="showcase"><div class="preview"><div class="vstack" style="gap:16px"><div class="row" style="gap:8px"><acme-pill href="#badge#pill" size="sm">Label</acme-pill><acme-pill href="#badge#pill" size="md">Label</acme-pill><acme-pill href="#badge#pill" size="lg">Label</acme-pill></div><div class="row" style="gap:8px"><acme-pill href="#badge#pill" size="sm"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-slack"/></svg>Label</acme-pill><acme-pill href="#badge#pill" size="md"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-slack"/></svg>Label</acme-pill><acme-pill href="#badge#pill" size="lg"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-slack"/></svg>Label</acme-pill></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div class=&quot;vstack&quot; style=&quot;gap:16px&quot;&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:8px&quot;&gt;
+    &lt;acme-pill href=&quot;#badge#pill&quot; size=&quot;sm&quot;&gt;Label&lt;/acme-pill&gt;
+    &lt;acme-pill href=&quot;#badge#pill&quot; size=&quot;md&quot;&gt;Label&lt;/acme-pill&gt;
+    &lt;acme-pill href=&quot;#badge#pill&quot; size=&quot;lg&quot;&gt;Label&lt;/acme-pill&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;gap:8px&quot;&gt;
+    &lt;acme-pill href=&quot;#badge#pill&quot; size=&quot;sm&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-slack&quot;/&gt;
+      &lt;/svg&gt;
+      Label
+    &lt;/acme-pill&gt;
+    &lt;acme-pill href=&quot;#badge#pill&quot; size=&quot;md&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-slack&quot;/&gt;
+      &lt;/svg&gt;
+      Label
+    &lt;/acme-pill&gt;
+    &lt;acme-pill href=&quot;#badge#pill&quot; size=&quot;lg&quot;&gt;
+      &lt;svg class=&quot;ic&quot; width=&quot;16&quot; height=&quot;16&quot; slot=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;use href=&quot;#i-slack&quot;/&gt;
+      &lt;/svg&gt;
+      Label
+    &lt;/acme-pill&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;vstack&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:16px&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:8px&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#badge#pill&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span>&gt;Label&lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#badge#pill&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span>&gt;Label&lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#badge#pill&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span>&gt;Label&lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:8px&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#badge#pill&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="10">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-slack&quot;</span>/&gt;</span>
+<span class="th-line" data-line="11">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="12">      Label</span>
+<span class="th-line" data-line="13">    &lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
+<span class="th-line" data-line="14">    &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#badge#pill&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;md&quot;</span>&gt;</span>
+<span class="th-line" data-line="15">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="16">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-slack&quot;</span>/&gt;</span>
+<span class="th-line" data-line="17">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="18">      Label</span>
+<span class="th-line" data-line="19">    &lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;<span class="th-token th-tag">acme-pill</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#badge#pill&quot;</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;lg&quot;</span>&gt;</span>
+<span class="th-line" data-line="21">      &lt;<span class="th-token th-tag">svg</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;ic&quot;</span> <span class="th-token th-attr">width</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;16&quot;</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;icon&quot;</span> <span class="th-token th-attr">aria-hidden</span>=<span class="th-token th-string">&quot;true&quot;</span>&gt;</span>
+<span class="th-line" data-line="22">        &lt;<span class="th-token th-tag">use</span> <span class="th-token th-attr">href</span>=<span class="th-token th-string">&quot;#i-slack&quot;</span>/&gt;</span>
+<span class="th-line" data-line="23">      &lt;/<span class="th-token th-tag">svg</span>&gt;</span>
+<span class="th-line" data-line="24">      Label</span>
+<span class="th-line" data-line="25">    &lt;/<span class="th-token th-tag">acme-pill</span>&gt;</span>
+<span class="th-line" data-line="26">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="27">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-badge"><h3><code>&lt;acme-badge&gt;</code><small>AcmeBadge</small></h3><p>Badge: a short capitalized label in a pill. The root carries the size, variant and contrast
+classes; the text sits in its own span; an icon in the `icon` slot leads the text and is sized
+per size (12 / 14 / 16). Sizes sm 20 · md 24 · lg 32. A hue variant is solid on the hue's
+strong step with the contrast foreground; `contrast="low"` keeps the hue for the text over a
+tinted layer. `inverted` is the foreground on the background; `trial` and `turbo` are gradients.
+A circular glyph icon (`data-glyph="circular"`) pulls in closer; the slot mirrors the marker so
+the root's rule sees it.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">variant</td><td class="mono">variant</td><td class="type">BadgeVariant</td><td class="mono">"gray"</td><td>gray · blue · purple · amber · red · pink · green · teal · inverted · trial · turbo.</td></tr><tr><td class="mono">contrast</td><td class="mono">contrast</td><td class="type">"high" | "low"</td><td class="mono">"high"</td><td>`low` is the subtle tint: the hue for the text over the hue's light layer.</td></tr><tr><td class="mono">size</td><td class="mono">size</td><td class="type">BadgeSize</td><td class="mono">"md"</td><td>sm · md · lg.</td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">icon</td></tr><tr><td class="mono">(default)</td></tr></tbody></table></div><div class="api-el" id="api-acme-pill"><h3><code>&lt;acme-pill&gt;</code><small>AcmePill</small></h3><p>Geist Pill: the badge shape as a link, white with an inset ring, sm 20 · md 24 · lg 32; a logo may lead in the `icon` slot.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">size</td><td class="mono">size</td><td class="type">"sm" | "md" | "lg" | "small" | "medium" | "large"</td><td class="mono">"md"</td><td>sm · md · lg (small · medium · large also work).</td></tr><tr><td class="mono">solid</td><td class="mono">solid</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">count</td><td class="mono">count</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">href</td><td class="mono">href</td><td class="type">string</td><td class="mono">""</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">icon</td></tr><tr><td class="mono">(default)</td></tr></tbody></table></div></div></div><div class="doc-sec" id="best-practices"><h2>Best Practices<a href="#best-practices" aria-label="Link to Best Practices">#</a></h2><div class="doc-body"><div class="practices"><h3>Best Practices</h3><ul><li>A badge is short metadata next to the thing it describes: status, plan tier, environment or role. One badge per row; two side by side means the row needs a second column.</li><li>A colored dot with no text is a Status Dot. A clickable filter chip that changes a query is the pill or a small Button.</li><li>A badge is static. Do not attach a click handler; use a Button or a link when the user can act on the value.</li><li>Badge content is text, or an icon plus text. Never two icons, and never a badge inside a badge.</li><li>Pair a lifecycle badge (Alpha, Beta, Early Access) with a Tooltip that names the limit, such as "Alpha: API may change before GA".</li><li>Title Case, one word when possible and two at most: Active, Pending, Pro, Enterprise Trial. Use the API or log term: Production not Prod, Deployed not Live, Canceled not Cancelled.</li><li>No checkmark for success and no X for errors; the variant carries the signal. Green is healthy, red is error, amber is warning, blue is informational or production, gray is neutral. The subtle contrast tones any of them down on dense surfaces.</li><li>No sentences inside a badge (Currently Active, You are on Pro); the row around it gives the context.</li><li>Set a title on icon-only or ambiguous badges so screen readers announce the meaning. The text must read without the color.</li></ul></div></div></div></article>

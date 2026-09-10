@@ -9,16 +9,19 @@ export const doc: Doc = {
   examples: [
     {
       h: "Default",
-      html: `<acme-label>This is a label</acme-label>`,
+      html: `<acme-label for="test-input" value="This is a label"></acme-label>`,
     },
     {
-      h: "With input",
-      p: "Input carries its own label; use acme-label for a control that has none.",
-      html: `<acme-input label="Email Address" type="email" placeholder="Enter email address..." style="max-width:280px"></acme-input>`,
+      h: "With Input",
+      p: "with-input adds the spacing above the input; for focuses the input on click.",
+      html: `<acme-label for="test-input" value="Email Address" with-input></acme-label>
+<acme-input id="test-input" placeholder="Enter email address..."></acme-input>`,
     },
     {
-      h: "Bypass casing",
-      html: `<acme-label bypass-casing>Email address</acme-label>`,
+      h: "Bypass Casing",
+      p: "bypass-casing keeps the text as written.",
+      html: `<acme-label bypass-casing for="test-input" value="Email address" with-input></acme-label>
+<acme-input id="test-input" placeholder="Enter email address..."></acme-input>`,
     },
   ],
 };

@@ -36,11 +36,13 @@ export function docToMarkdown(d: Doc, api: Map<string, ElementApi>, opts: { leve
   const h = "#".repeat(opts.level ?? 1);
   const lines: string[] = [`${h} ${d.title}`, "", `${strip(d.lede)}${d.house ? " House component; Geist has no page for it." : ""}`, ""];
   for (const e of d.examples) {
+    if (e.census) continue;
     lines.push(`${h}# ${e.h}`, "");
     if (e.p) lines.push(strip(e.p), "");
     lines.push("```html", formatHtml((e.code ?? e.html) + (e.script ? `\n<script>\n${e.script.trim()}\n</script>` : "")), "```", "");
   }
   if (d.body) lines.push(...bodyToMarkdown(d.body));
+  if (d.md?.length) lines.push(...d.md, "");
   for (const t of d.tags ?? []) {
     const el = api.get(t);
     if (!el) continue;

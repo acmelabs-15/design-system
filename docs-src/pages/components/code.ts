@@ -4,17 +4,17 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "code",
   title: "Code",
-  lede: "Inline code and a code block for a snippet with highlighting.",
-  tags: ["acme-code", "acme-code-block"],
+  lede: "A snippet of code with syntax highlighting.",
+  tags: ["acme-code"],
   examples: [
     {
-      h: "Inline",
-      html: `<p class="text-copy-14">Set <acme-code>VERCEL_ENV</acme-code> to <acme-code>production</acme-code> before the build.</p>`,
-    },
-    {
-      h: "Block",
-      html: `<acme-code-block language="ts">const res = await fetch("/api/tasks");
-if (!res.ok) throw new Error("Failed to load tasks.");</acme-code-block>`,
+      h: "Default",
+      html: `<acme-code syntax="javascript">import { Snippet } from '@vercel/geistcn/components';
+import type { JSX } from 'react';
+
+export function Component(): JSX.Element {
+  return &lt;Snippet text="npm init next-app" width="300px" /&gt;;
+}</acme-code>`,
     },
   ],
 };

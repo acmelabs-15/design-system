@@ -4,16 +4,16 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "text-with-copy-button",
   title: "Text With Copy Button",
-  lede: "Text beside a button that copies it.",
+  lede: "Display text alongside a button that copies the text to the clipboard.",
   tags: ["acme-text-copy"],
   examples: [
     {
       h: "Default",
-      html: `<acme-text-copy text="prj_WxDl2RuzJGJACJgC661Uj3BEEe5k"></acme-text-copy>`,
+      html: `<acme-text-copy ellipsis success-message="Copied to clipboard" text-label="Copy" text-to-copy="lipsum"></acme-text-copy>`,
     },
     {
-      h: "Ellipsis",
-      html: `<acme-text-copy ellipsis text="prj_WxDl2RuzJGJACJgC661Uj3BEEe5k" style="display:block;max-width:200px"></acme-text-copy>`,
+      h: "With Small and Tertiary",
+      html: `<acme-text-copy ellipsis success-message="Copied hashed digest to clipboard" text-label="Copy config digest" text-to-copy="edgeConfigData.digest"></acme-text-copy>`,
     },
   ],
 };

@@ -4,17 +4,16 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "keyboard-input",
   title: "Keyboard Input",
-  lede: "Display a keyboard shortcut that triggers an action.",
+  lede: "Display keyboard input that triggers an action.",
   tags: ["acme-kbd"],
   examples: [
     {
       h: "Modifiers",
-      p: "The modifier props render the platform's glyph: ⌘ on a Mac, Ctrl elsewhere.",
-      html: `<div class="row" style="gap:8px"><acme-kbd meta></acme-kbd><acme-kbd shift></acme-kbd><acme-kbd alt></acme-kbd><acme-kbd ctrl></acme-kbd></div>`,
+      html: `<acme-kbd meta></acme-kbd><acme-kbd shift></acme-kbd><acme-kbd alt></acme-kbd><acme-kbd ctrl></acme-kbd>`,
     },
     {
       h: "Combination",
-      html: `<div class="row" style="gap:8px"><acme-kbd meta shift></acme-kbd><acme-kbd meta>K</acme-kbd></div>`,
+      html: `<acme-kbd meta shift></acme-kbd>`,
     },
     {
       h: "Small",
@@ -22,6 +21,12 @@ export const doc: Doc = {
     },
   ],
   practices: {
-    Content: ["One key per element; modifiers swap ⌘ for Ctrl on Windows and Linux; punctuation stays outside the element.", "Small inside dense surfaces: menu rows, command items, table cells."],
+    "Best Practices": [
+      "Use the element for shortcut hints in prose, menu items and button suffixes. Long-form docs that narrate a shortcut write the ⌘ K shortcut as text, so the page copies to plain text unchanged.",
+      "Pass modifiers as the boolean attributes meta, shift, alt and ctrl. The element swaps ⌘ for Ctrl on Windows and Linux; a hard-coded Cmd+K ships the wrong glyph to half the readers.",
+      "The content is one key, digit or named key (K, 7, Enter, Esc). Keep its case, keep modifiers out of it, and never pack a sentence into the element.",
+      "Use small in dense surfaces (menu rows, command-bar items, table cells) where the default size crowds the text next to it.",
+      "Punctuation stays outside the element: Press ⌘ K to open the command menu. Periods, commas and or separators live in the prose, so a screen reader does not read them as keys.",
+    ],
   },
 };

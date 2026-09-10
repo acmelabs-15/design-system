@@ -1,47 +1,68 @@
 // Docs page: Note — mirrors https://vercel.com/geist/note
 import type { Doc } from "../../site";
 
+const upgrade = `<acme-button slot="action" size="small" variant="primary">Upgrade</acme-button>`;
+const link = `Check <a href="#">the documentation</a> to learn more.`;
+const col = (inner: string) => `<div class="vstack" style="gap:24px">${inner}</div>`;
+// The six-note set every hue section shows: plain, with action, with link and action, then the same three filled.
+const set = (v: string) =>
+  col(
+    `<acme-note variant="${v}">This note details some ${v} information.</acme-note>` +
+      `<acme-note variant="${v}">This note details some ${v} information.${upgrade}</acme-note>` +
+      `<acme-note variant="${v}">This note details some success information. ${link}${upgrade}</acme-note>` +
+      `<acme-note variant="${v}" fill>This filled note details some ${v} information.</acme-note>` +
+      `<acme-note variant="${v}" fill>This filled note details some ${v} information.${upgrade}</acme-note>` +
+      `<acme-note variant="${v}" fill>This filled note details some success information. ${link}${upgrade}</acme-note>`,
+  );
+
 export const doc: Doc = {
   id: "note",
   title: "Note",
-  lede: "Display text that requires attention or provides additional information.",
+  lede: "A short inline message that needs attention or adds context beside the thing it describes.",
   tags: ["acme-note"],
   examples: [
-    {
-      h: "Default",
-      html: `<acme-note>A default note.</acme-note>`,
-    },
-    {
-      h: "Size",
-      html: `<div class="vstack"><acme-note size="small">A small note.</acme-note><acme-note>A medium note.</acme-note><acme-note size="large">A large note.</acme-note></div>`,
-    },
+    { h: "Default", html: `<acme-note>A default note.</acme-note>` },
+    { h: "Sizes", html: `<div class="row-md" style="gap:24px;align-items:flex-start"><acme-note size="small">A small note.</acme-note><acme-note>A medium note.</acme-note></div>` },
     {
       h: "Action",
-      html: `<acme-note>This note details something that needs an action.<acme-button slot="action" size="small" variant="primary">Upgrade</acme-button></acme-note>`,
+      html: `<div class="vstack" style="gap:24px;align-items:flex-start"><acme-note>This note details some information.${upgrade}</acme-note><acme-note>This note details a large amount information that could potentially wrap into two or more lines, forcing the height of the Note to be larger.${upgrade}</acme-note></div>`,
     },
-    {
-      h: "Variants",
-      html: `<div class="vstack"><acme-note variant="success">This note details something positive. <a href="#">Learn more</a></acme-note><acme-note variant="error">This note details an error.</acme-note><acme-note variant="warning">This note details a warning.</acme-note><acme-note variant="secondary">This note is secondary.</acme-note><acme-note variant="violet">This note is violet.</acme-note><acme-note variant="cyan">This note is cyan.</acme-note></div>`,
-    },
-    {
-      h: "Fill",
-      html: `<div class="vstack"><acme-note variant="success" fill>Filled success.</acme-note><acme-note variant="error" fill>Filled error.</acme-note><acme-note variant="warning" fill>Filled warning.</acme-note><acme-note variant="secondary" fill>Filled secondary.</acme-note></div>`,
-    },
-    {
-      h: "Label",
-      html: `<acme-note><b slot="label" class="label">Region Change:</b>Changing this region restarts all functions.</acme-note>`,
-    },
+    { h: "Success", html: set("success") },
+    { h: "Error", html: set("error") },
+    { h: "Warning", html: set("warning") },
+    { h: "Secondary", html: set("secondary") },
+    { h: "Violet", html: set("violet") },
+    { h: "Cyan", html: set("cyan") },
     {
       h: "Disabled",
-      html: `<acme-note disabled>This note details a warning that no longer applies.<acme-button slot="action" size="small">Upgrade</acme-button></acme-note>`,
+      html: col(
+        `<acme-note disabled fill variant="warning">This note details a warning.${upgrade}</acme-note><acme-note disabled fill variant="warning">This filled note details some success information. ${link}${upgrade}</acme-note>`,
+      ),
+    },
+    { h: "Label", html: `<acme-note><span slot="label">Region Change:</span>Changing this region restarts all functions.</acme-note>` },
+    {
+      h: "Custom icon",
+      html: col(
+        `<acme-note><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" slot="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>A custom icon replaces the variant’s default.</acme-note><acme-note no-icon>Pass a null icon to render no icon at all.</acme-note>`,
+      ),
     },
   ],
   practices: {
     "When to use": [
-      "Inline contextual feedback beside the field, card or section it describes. Banner for page-level, Toast for transient, Modal for destructive confirmations.",
-      "Error for a problem to fix, warning for a consequence to acknowledge, success for a passed check, secondary for neutral information; there is no info variant.",
+      "A Note gives inline feedback next to the field, card or section it is about: a region-change warning above a region picker, a rate-limit notice beside a usage gauge.",
+      "A page-level or system-wide message with a call to action is a Banner; a transient acknowledgment is a Toast; a destructive confirmation is a Modal.",
+      "Pick the variant by meaning: <code>error</code> for a problem the user must fix, <code>warning</code> for a consequence to acknowledge, <code>success</code> for a passed check, <code>secondary</code> for neutral information.",
     ],
-    Behavior: ["Persistent until the state changes; no dismiss control; one Note per concept; a single inline CTA."],
-    Content: ["A 1–2 word Title Case label names the topic (Region Change); the body is one active sentence naming the impact."],
+    Behavior: [
+      "A Note stays until the state behind it changes. It has no dismiss control; one would compete with the message.",
+      "One Note per concept. Three Notes stacked on a card point at a page structure problem, not a copy problem.",
+      "The optional action slot holds one inline call to action, never a second button.",
+    ],
+    Content: [
+      "The label is a one- or two-word Title Case prefix that names the topic: <code>Region Change</code>, <code>Rate Limit</code>, <code>Plan Limit</code>. Hedges such as <code>Heads Up</code>, <code>FYI</code> and <code>Note</code> go.",
+      "The content is one active-voice sentence that names the impact: <code>Changing this region restarts all functions.</code>",
+      "There is no <code>info</code> variant. Leave <code>variant</code> unset for the default info icon, or use <code>secondary</code> for neutral copy.",
+      "A single-fragment label takes no period; a full sentence in the body does.",
+    ],
   },
 };

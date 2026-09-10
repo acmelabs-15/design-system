@@ -1,0 +1,671 @@
+<article class="doc census" id="census-tooltip"><div class="doc-hero"><h1>Tooltip (census)</h1><p>Every state the parity census reads; the docs page shows only the reference's sections.</p></div><div class="doc-sec" id="default"><h2>Default<a href="#default" aria-label="Link to Default">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip text="The Evil Rabbit Jumped over the Fence"><span>Top</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="left" text="The Evil Rabbit Jumped over the Fence"><span>Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="right" text="The Evil Rabbit Jumped over the Fence"><span>Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Top&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Top&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="no-delay"><h2>No delay<a href="#no-delay" aria-label="Link to No delay">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip delay="false" text="The Evil Rabbit Jumped over the Fence"><span>Top</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip delay="false" position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip delay="false" position="left" text="The Evil Rabbit Jumped over the Fence"><span>Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip delay="false" position="right" text="The Evil Rabbit Jumped over the Fence"><span>Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip delay=&quot;false&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Top&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip delay=&quot;false&quot; position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip delay=&quot;false&quot; position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip delay=&quot;false&quot; position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">delay</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Top&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">delay</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">delay</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">delay</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="box-align"><h2>Box align<a href="#box-align" aria-label="Link to Box align">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip box-align="left" position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom/Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom/Center</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip box-align="right" position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom/Right</span></acme-tooltip></div></div><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip box-align="left" position="left" text="The Evil Rabbit Jumped over the Fence"><span>Left/Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="left" text="The Evil Rabbit Jumped over the Fence"><span>Left/Center</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip box-align="right" position="left" text="The Evil Rabbit Jumped over the Fence"><span>Left/Right</span></acme-tooltip></div></div><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip box-align="left" position="right" text="The Evil Rabbit Jumped over the Fence"><span>Right/Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="right" text="The Evil Rabbit Jumped over the Fence"><span>Right/Center</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip box-align="right" position="right" text="The Evil Rabbit Jumped over the Fence"><span>Right/Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip box-align=&quot;left&quot; position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom/Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom/Center&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip box-align=&quot;right&quot; position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom/Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip box-align=&quot;left&quot; position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Left/Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Left/Center&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip box-align=&quot;right&quot; position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Left/Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip box-align=&quot;left&quot; position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Right/Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Right/Center&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip box-align=&quot;right&quot; position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Right/Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom/Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom/Center&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom/Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">&lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="18">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="21">      &lt;<span class="th-token th-tag">span</span>&gt;Left/Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="22">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="23">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="24">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="25">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="26">      &lt;<span class="th-token th-tag">span</span>&gt;Left/Center&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="27">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="28">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="29">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="30">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="31">      &lt;<span class="th-token th-tag">span</span>&gt;Left/Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="32">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="33">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="34">&lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="35">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="36">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="37">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="38">      &lt;<span class="th-token th-tag">span</span>&gt;Right/Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="39">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="40">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="41">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="42">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="43">      &lt;<span class="th-token th-tag">span</span>&gt;Right/Center&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="44">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="45">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="46">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="47">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="48">      &lt;<span class="th-token th-tag">span</span>&gt;Right/Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="49">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="50">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="51">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="custom-content"><h2>Custom content<a href="#custom-content" aria-label="Link to Custom content">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip><span slot="content">The <b>Evil Rabbit</b> Jumped over the <i>Fence</i>.</span><span>Top</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="bottom"><span slot="content">The <b>Evil Rabbit</b> Jumped over the <i>Fence</i>.</span><span>Bottom</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="left"><span slot="content">The <b>Evil Rabbit</b> Jumped over the <i>Fence</i>.</span><span>Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="right"><span slot="content">The <b>Evil Rabbit</b> Jumped over the <i>Fence</i>.</span><span>Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip&gt;
+      &lt;span slot=&quot;content&quot;&gt;
+        The
+        &lt;b&gt;Evil Rabbit&lt;/b&gt;
+        Jumped over the
+        &lt;i&gt;Fence&lt;/i&gt;
+        .
+      &lt;/span&gt;
+      &lt;span&gt;Top&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;bottom&quot;&gt;
+      &lt;span slot=&quot;content&quot;&gt;
+        The
+        &lt;b&gt;Evil Rabbit&lt;/b&gt;
+        Jumped over the
+        &lt;i&gt;Fence&lt;/i&gt;
+        .
+      &lt;/span&gt;
+      &lt;span&gt;Bottom&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;left&quot;&gt;
+      &lt;span slot=&quot;content&quot;&gt;
+        The
+        &lt;b&gt;Evil Rabbit&lt;/b&gt;
+        Jumped over the
+        &lt;i&gt;Fence&lt;/i&gt;
+        .
+      &lt;/span&gt;
+      &lt;span&gt;Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;right&quot;&gt;
+      &lt;span slot=&quot;content&quot;&gt;
+        The
+        &lt;b&gt;Evil Rabbit&lt;/b&gt;
+        Jumped over the
+        &lt;i&gt;Fence&lt;/i&gt;
+        .
+      &lt;/span&gt;
+      &lt;span&gt;Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;content&quot;</span>&gt;</span>
+<span class="th-line" data-line="5">        The</span>
+<span class="th-line" data-line="6">        &lt;<span class="th-token th-tag">b</span>&gt;Evil Rabbit&lt;/<span class="th-token th-tag">b</span>&gt;</span>
+<span class="th-line" data-line="7">        Jumped over the</span>
+<span class="th-line" data-line="8">        &lt;<span class="th-token th-tag">i</span>&gt;Fence&lt;/<span class="th-token th-tag">i</span>&gt;</span>
+<span class="th-line" data-line="9">        .</span>
+<span class="th-line" data-line="10">      &lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="11">      &lt;<span class="th-token th-tag">span</span>&gt;Top&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="12">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="13">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="14">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span>&gt;</span>
+<span class="th-line" data-line="16">      &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;content&quot;</span>&gt;</span>
+<span class="th-line" data-line="17">        The</span>
+<span class="th-line" data-line="18">        &lt;<span class="th-token th-tag">b</span>&gt;Evil Rabbit&lt;/<span class="th-token th-tag">b</span>&gt;</span>
+<span class="th-line" data-line="19">        Jumped over the</span>
+<span class="th-line" data-line="20">        &lt;<span class="th-token th-tag">i</span>&gt;Fence&lt;/<span class="th-token th-tag">i</span>&gt;</span>
+<span class="th-line" data-line="21">        .</span>
+<span class="th-line" data-line="22">      &lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="23">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="24">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="25">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="26">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="27">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span>&gt;</span>
+<span class="th-line" data-line="28">      &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;content&quot;</span>&gt;</span>
+<span class="th-line" data-line="29">        The</span>
+<span class="th-line" data-line="30">        &lt;<span class="th-token th-tag">b</span>&gt;Evil Rabbit&lt;/<span class="th-token th-tag">b</span>&gt;</span>
+<span class="th-line" data-line="31">        Jumped over the</span>
+<span class="th-line" data-line="32">        &lt;<span class="th-token th-tag">i</span>&gt;Fence&lt;/<span class="th-token th-tag">i</span>&gt;</span>
+<span class="th-line" data-line="33">        .</span>
+<span class="th-line" data-line="34">      &lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="35">      &lt;<span class="th-token th-tag">span</span>&gt;Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="36">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="37">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="38">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="39">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span>&gt;</span>
+<span class="th-line" data-line="40">      &lt;<span class="th-token th-tag">span</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;content&quot;</span>&gt;</span>
+<span class="th-line" data-line="41">        The</span>
+<span class="th-line" data-line="42">        &lt;<span class="th-token th-tag">b</span>&gt;Evil Rabbit&lt;/<span class="th-token th-tag">b</span>&gt;</span>
+<span class="th-line" data-line="43">        Jumped over the</span>
+<span class="th-line" data-line="44">        &lt;<span class="th-token th-tag">i</span>&gt;Fence&lt;/<span class="th-token th-tag">i</span>&gt;</span>
+<span class="th-line" data-line="45">        .</span>
+<span class="th-line" data-line="46">      &lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="47">      &lt;<span class="th-token th-tag">span</span>&gt;Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="48">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="49">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="50">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="custom-type"><h2>Custom type<a href="#custom-type" aria-label="Link to Custom type">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip text="The Evil Rabbit Jumped over the Fence" type="success"><span>Top</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="bottom" text="The Evil Rabbit Jumped over the Fence" type="error"><span>Bottom</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="left" text="The Evil Rabbit Jumped over the Fence" type="warning"><span>Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="right" text="The Evil Rabbit Jumped over the Fence" type="violet"><span>Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;success&quot;&gt;
+      &lt;span&gt;Top&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;error&quot;&gt;
+      &lt;span&gt;Bottom&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;warning&quot;&gt;
+      &lt;span&gt;Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;violet&quot;&gt;
+      &lt;span&gt;Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;success&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Top&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;error&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;warning&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;violet&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="components"><h2>Components<a href="#components" aria-label="Link to Components">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="bottom" text="The Evil Rabbit Jumped over the Fence"><acme-button size="small">Bottom</acme-button></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="left" text="The Evil Rabbit Jumped over the Fence"><acme-badge size="sm">LEFT</acme-badge></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip position="right" text="The Evil Rabbit Jumped over the Fence"><acme-spinner></acme-spinner></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip text="Search"><acme-kbd slot="content">/</acme-kbd><span>Shortcut</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;acme-button size=&quot;small&quot;&gt;Bottom&lt;/acme-button&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;acme-badge size=&quot;sm&quot;&gt;LEFT&lt;/acme-badge&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;acme-spinner&gt;&lt;/acme-spinner&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip text=&quot;Search&quot;&gt;
+      &lt;acme-kbd slot=&quot;content&quot;&gt;/&lt;/acme-kbd&gt;
+      &lt;span&gt;Shortcut&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">acme-button</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;small&quot;</span>&gt;Bottom&lt;/<span class="th-token th-tag">acme-button</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">acme-badge</span> <span class="th-token th-attr">size</span>=<span class="th-token th-string">&quot;sm&quot;</span>&gt;LEFT&lt;/<span class="th-token th-tag">acme-badge</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">acme-spinner</span>&gt;&lt;/<span class="th-token th-tag">acme-spinner</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;Search&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">acme-kbd</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;content&quot;</span>&gt;/&lt;/<span class="th-token th-tag">acme-kbd</span>&gt;</span>
+<span class="th-line" data-line="20">      &lt;<span class="th-token th-tag">span</span>&gt;Shortcut&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="21">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="22">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="23">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="other"><h2>Other<a href="#other" aria-label="Link to Other">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip text="The Evil Rabbit Jumped over the Fence" tip="false">No tip indicator</acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip center="false" text="The Evil Rabbit Jumped over the Fence multiple times.">No center text</acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip text=&quot;The Evil Rabbit Jumped over the Fence&quot; tip=&quot;false&quot;&gt;No tip indicator&lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip center=&quot;false&quot; text=&quot;The Evil Rabbit Jumped over the Fence multiple times.&quot;&gt;No center text&lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">tip</span>=<span class="th-token th-string">&quot;false&quot;</span>&gt;No tip indicator&lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="4">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="5">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">center</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence multiple times.&quot;</span>&gt;No center text&lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="8">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="open"><h2>Open<a href="#open" aria-label="Link to Open">#</a></h2><p>The bubble open on each side, through <code>shown</code>: 13px inverted-theme text 10px from the trigger, the arrow centred on the facing edge.</p><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers text="The Evil Rabbit Jumped over the Fence"><span>Top</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers position="left" text="The Evil Rabbit Jumped over the Fence"><span>Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers position="right" text="The Evil Rabbit Jumped over the Fence"><span>Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Top&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Top&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="open-aligned"><h2>Open aligned<a href="#open-aligned" aria-label="Link to Open aligned">#</a></h2><p>The bubble aligned to the trigger's start or end above and below it: the arrow sits at the arrow offset from the bubble's edge, over the trigger's centre.</p><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers box-align="left" text="The Evil Rabbit Jumped over the Fence"><span>Top/Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers box-align="right" text="The Evil Rabbit Jumped over the Fence"><span>Top/Right</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers box-align="left" position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom/Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers box-align="right" position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom/Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers box-align=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Top/Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers box-align=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Top/Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers box-align=&quot;left&quot; position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom/Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers box-align=&quot;right&quot; position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom/Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Top/Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Top/Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom/Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">box-align</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom/Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="open-no-delay"><h2>Open no delay<a href="#open-no-delay" aria-label="Link to Open no delay">#</a></h2><p>Without the entry delay the fade-in starts at once.</p><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers delay="false" text="The Evil Rabbit Jumped over the Fence"><span>Top</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers delay="false" position="bottom" text="The Evil Rabbit Jumped over the Fence"><span>Bottom</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers delay="false" position="left" text="The Evil Rabbit Jumped over the Fence"><span>Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers delay="false" position="right" text="The Evil Rabbit Jumped over the Fence"><span>Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers delay=&quot;false&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Top&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers delay=&quot;false&quot; position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Bottom&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers delay=&quot;false&quot; position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers delay=&quot;false&quot; position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">delay</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Top&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">delay</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">delay</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">delay</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="open-lower-delay"><h2>Open lower delay<a href="#open-lower-delay" aria-label="Link to Open lower delay">#</a></h2><p>The shorter entry delay (<code>lower-delay</code>), and a bubble a touch opened (<code>shown="4"</code>, both with <code>disable-triggers</code> so a scroll does not close them): the faster fade-in, over a backdrop that catches the next tap.</p><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers lower-delay text="The Evil Rabbit Jumped over the Fence"><span>Lower delay</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="4" disable-triggers text="The Evil Rabbit Jumped over the Fence"><span>Touch</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers lower-delay text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Lower delay&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;4&quot; disable-triggers text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;Touch&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers lower-delay <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Lower delay&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;4&quot;</span> disable-triggers <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Touch&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="open-custom-type"><h2>Open custom type<a href="#open-custom-type" aria-label="Link to Open custom type">#</a></h2><p>A type sets the themed colour variables of that tooltip variant on the bubble.</p><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers text="The Evil Rabbit Jumped over the Fence" type="success"><span>Top</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers position="bottom" text="The Evil Rabbit Jumped over the Fence" type="error"><span>Bottom</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers position="left" text="The Evil Rabbit Jumped over the Fence" type="warning"><span>Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers position="right" text="The Evil Rabbit Jumped over the Fence" type="violet"><span>Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;success&quot;&gt;
+      &lt;span&gt;Top&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;error&quot;&gt;
+      &lt;span&gt;Bottom&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;warning&quot;&gt;
+      &lt;span&gt;Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;violet&quot;&gt;
+      &lt;span&gt;Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;success&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Top&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;error&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;warning&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;violet&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="open-custom-type-unfilled"><h2>Open custom type unfilled<a href="#open-custom-type-unfilled" aria-label="Link to Open custom type unfilled">#</a></h2><p>With <code>fill="false"</code> the plain variant's variables apply instead of the filled tooltip ones.</p><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers fill="false" text="The Evil Rabbit Jumped over the Fence" type="success"><span>Top</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers fill="false" position="bottom" text="The Evil Rabbit Jumped over the Fence" type="error"><span>Bottom</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers fill="false" position="left" text="The Evil Rabbit Jumped over the Fence" type="warning"><span>Left</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers fill="false" position="right" text="The Evil Rabbit Jumped over the Fence" type="violet"><span>Right</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers fill=&quot;false&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;success&quot;&gt;
+      &lt;span&gt;Top&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers fill=&quot;false&quot; position=&quot;bottom&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;error&quot;&gt;
+      &lt;span&gt;Bottom&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers fill=&quot;false&quot; position=&quot;left&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;warning&quot;&gt;
+      &lt;span&gt;Left&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers fill=&quot;false&quot; position=&quot;right&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot; type=&quot;violet&quot;&gt;
+      &lt;span&gt;Right&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">fill</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;success&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;Top&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">fill</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;bottom&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;error&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;Bottom&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">fill</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;left&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;warning&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;Left&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">fill</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">position</span>=<span class="th-token th-string">&quot;right&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">type</span>=<span class="th-token th-string">&quot;violet&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;Right&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="open-shortcut"><h2>Open shortcut<a href="#open-shortcut" aria-label="Link to Open shortcut">#</a></h2><p>A key in the content: the bubble becomes an inline flex row with a 4px gap, and the key draws small and flat on the gray-400 fill.</p><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers text="Search"><acme-kbd slot="content">/</acme-kbd><span>Shortcut</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers text=&quot;Search&quot;&gt;
+      &lt;acme-kbd slot=&quot;content&quot;&gt;/&lt;/acme-kbd&gt;
+      &lt;span&gt;Shortcut&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;Search&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">acme-kbd</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;content&quot;</span>&gt;/&lt;/<span class="th-token th-tag">acme-kbd</span>&gt;</span>
+<span class="th-line" data-line="5">      &lt;<span class="th-token th-tag">span</span>&gt;Shortcut&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="8">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="open-other"><h2>Open other<a href="#open-other" aria-label="Link to Open other">#</a></h2><p>Without the arrow, without centred text, without wrapping, and without the inverted theme.</p><div class="doc-body"><div class="showcase"><div class="preview"><div style="display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%"><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers text="The Evil Rabbit Jumped over the Fence" tip="false"><span>No tip</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers center="false" text="The Evil Rabbit Jumped over the Fence multiple times."><span>No center</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers wrap="false" text="The Evil Rabbit Jumped over the Fence"><span>No wrap</span></acme-tooltip></div><div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%"><acme-tooltip shown="1" disable-triggers invert-theme="false" text="The Evil Rabbit Jumped over the Fence"><span>No invert</span></acme-tooltip></div></div></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;div style=&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers text=&quot;The Evil Rabbit Jumped over the Fence&quot; tip=&quot;false&quot;&gt;
+      &lt;span&gt;No tip&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers center=&quot;false&quot; text=&quot;The Evil Rabbit Jumped over the Fence multiple times.&quot;&gt;
+      &lt;span&gt;No center&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers wrap=&quot;false&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;No wrap&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;&gt;
+    &lt;acme-tooltip shown=&quot;1&quot; disable-triggers invert-theme=&quot;false&quot; text=&quot;The Evil Rabbit Jumped over the Fence&quot;&gt;
+      &lt;span&gt;No invert&lt;/span&gt;
+    &lt;/acme-tooltip&gt;
+  &lt;/div&gt;
+&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;display:flex;flex-wrap:wrap;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span> <span class="th-token th-attr">tip</span>=<span class="th-token th-string">&quot;false&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">span</span>&gt;No tip&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="6">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">center</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence multiple times.&quot;</span>&gt;</span>
+<span class="th-line" data-line="9">      &lt;<span class="th-token th-tag">span</span>&gt;No center&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="11">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="12">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">wrap</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="14">      &lt;<span class="th-token th-tag">span</span>&gt;No wrap&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="15">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="16">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="17">  &lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;min-width:1px;max-width:100%&quot;</span>&gt;</span>
+<span class="th-line" data-line="18">    &lt;<span class="th-token th-tag">acme-tooltip</span> <span class="th-token th-attr">shown</span>=<span class="th-token th-string">&quot;1&quot;</span> disable-triggers <span class="th-token th-attr">invert-theme</span>=<span class="th-token th-string">&quot;false&quot;</span> <span class="th-token th-attr">text</span>=<span class="th-token th-string">&quot;The Evil Rabbit Jumped over the Fence&quot;</span>&gt;</span>
+<span class="th-line" data-line="19">      &lt;<span class="th-token th-tag">span</span>&gt;No invert&lt;/<span class="th-token th-tag">span</span>&gt;</span>
+<span class="th-line" data-line="20">    &lt;/<span class="th-token th-tag">acme-tooltip</span>&gt;</span>
+<span class="th-line" data-line="21">  &lt;/<span class="th-token th-tag">div</span>&gt;</span>
+<span class="th-line" data-line="22">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div></article>

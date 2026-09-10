@@ -1,56 +1,84 @@
 // Docs page: Button — mirrors https://vercel.com/geist/button
 import type { Doc } from "../../site";
 
+const row = (inner: string, gap = 16) => `<div class="row" style="gap:${gap}px;align-items:flex-start">${inner}</div>`;
+const up = `<svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-arrow-up"/></svg>`;
+const variants = ["default", "error", "warning", "secondary", "tertiary"];
+const typeRow = (size: string) => `<div class="row">${variants.map((v) => `<acme-button${size ? ` size="${size}"` : ""} variant="${v}">Upload</acme-button>`).join("")}</div>`;
+
 export const doc: Doc = {
   id: "button",
   title: "Button",
-  lede: "Trigger an action or event, such as submitting a form or displaying a dialog.",
+  lede: "Starts an action or event, such as a form submit or a dialog.",
   tags: ["acme-button", "acme-button-group"],
   examples: [
     {
-      h: "All types and sizes in comparison",
-      html: `<div class="vstack"><div class="row"><acme-button size="small" variant="primary">Upload</acme-button><acme-button size="small" variant="error">Upload</acme-button><acme-button size="small" variant="warning">Upload</acme-button><acme-button size="small">Upload</acme-button><acme-button size="small" variant="tertiary">Upload</acme-button></div><div class="row"><acme-button variant="primary">Upload</acme-button><acme-button variant="error">Upload</acme-button><acme-button variant="warning">Upload</acme-button><acme-button>Upload</acme-button><acme-button variant="tertiary">Upload</acme-button></div><div class="row"><acme-button size="large" variant="primary">Upload</acme-button><acme-button size="large" variant="error">Upload</acme-button><acme-button size="large" variant="warning">Upload</acme-button><acme-button size="large">Upload</acme-button><acme-button size="large" variant="tertiary">Upload</acme-button></div></div>`,
+      h: "Sizes",
+      p: "The default size is medium.",
+      html: row(`<acme-button size="small">Upload</acme-button><acme-button>Upload</acme-button><acme-button size="large">Upload</acme-button>`),
     },
     {
-      h: "Size",
-      p: "small 32, medium 36, large 40 with an 8px radius.",
-      html: `<div class="row"><acme-button size="small" variant="primary">Small</acme-button><acme-button variant="primary">Medium</acme-button><acme-button size="large" variant="primary">Large</acme-button></div>`,
-    },
-    {
-      h: "Disabled and loading",
-      p: "Disabled is gray-100 with gray-700 text; loading keeps the label and spins at the left.",
-      html: `<div class="row"><acme-button variant="primary" disabled>Upload</acme-button><acme-button disabled>Upload</acme-button><acme-button variant="tertiary" disabled>Upload</acme-button><acme-button variant="primary" loading>Saving</acme-button><acme-button loading>Loading</acme-button></div>`,
+      h: "All Types and Sizes in comparison",
+      html: `<div class="vstack" style="gap:24px">${typeRow("small")}${typeRow("")}${typeRow("large")}</div>`,
     },
     {
       h: "Shapes",
-      p: "Square and circle at small 32, medium 36, large 40; icon-only needs an aria-label.",
-      html: `<div class="row"><acme-button shape="square" size="small" aria-label="Copy page"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg></acme-button><acme-button shape="square" aria-label="Copy page"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg></acme-button><acme-button shape="square" size="large" aria-label="Copy page"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg></acme-button><acme-button shape="circle" size="small" aria-label="Notifications"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></acme-button><acme-button shape="circle" aria-label="Notifications"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></acme-button><acme-button shape="circle" size="large" aria-label="Notifications"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg></acme-button></div>`,
+      p: "An icon-only button needs svg-only and an aria-label.",
+      html: row(
+        `<acme-button aria-label="Upload" shape="square" size="tiny" svg-only>${up}</acme-button><acme-button aria-label="Upload" shape="square" size="small" svg-only>${up}</acme-button><acme-button aria-label="Upload" shape="square" svg-only>${up}</acme-button><acme-button aria-label="Upload" shape="square" size="large" svg-only>${up}</acme-button><acme-button aria-label="Upload" shape="circle" size="tiny" svg-only>${up}</acme-button><acme-button aria-label="Upload" shape="circle" size="small" svg-only>${up}</acme-button><acme-button aria-label="Upload" shape="circle" svg-only>${up}</acme-button><acme-button aria-label="Upload" shape="circle" size="large" svg-only>${up}</acme-button>`,
+      ),
     },
     {
       h: "Prefix and suffix",
-      html: `<div class="row"><acme-button><svg class="ic" slot="prefix" aria-hidden="true"><use href="#i-download"/></svg>Export CSV</acme-button><acme-button>Continue<svg class="ic" slot="suffix" aria-hidden="true"><use href="#i-arrow"/></svg></acme-button><acme-button variant="tertiary"><svg class="ic" slot="prefix" aria-hidden="true"><use href="#i-plus"/></svg>Add Filter</acme-button></div>`,
+      html: row(
+        `<acme-button><svg class="ic" width="16" height="16" slot="prefix" aria-hidden="true"><use href="#i-arrow-left"/></svg>Upload</acme-button><acme-button>Upload<svg class="ic" width="16" height="16" slot="suffix" aria-hidden="true"><use href="#i-arrow-right"/></svg></acme-button><acme-button><svg class="ic" width="16" height="16" slot="prefix" aria-hidden="true"><use href="#i-arrow-left"/></svg>Upload<svg class="ic" width="16" height="16" slot="suffix" aria-hidden="true"><use href="#i-arrow-right"/></svg></acme-button>`,
+      ),
     },
     {
-      h: "Rounded with shadow",
-      p: "The marketing pill: white, an inset ring, full radius.",
-      html: `<acme-button rounded shadow>Get Started</acme-button>`,
+      h: "Rounded",
+      p: 'shape="rounded" together with shadow: the marketing pill.',
+      html: row(
+        `<acme-button shadow shape="rounded" size="small" variant="secondary">Upload</acme-button><acme-button shadow shape="rounded" variant="secondary">Upload</acme-button><acme-button shadow shape="rounded" size="large" variant="secondary">Upload</acme-button>`,
+      ),
+    },
+    {
+      h: "Loading",
+      html: row(`<acme-button loading size="small">Upload</acme-button><acme-button loading>Upload</acme-button><acme-button loading size="large">Upload</acme-button>`),
+    },
+    {
+      h: "Disabled",
+      html: row(`<acme-button disabled size="small">Upload</acme-button><acme-button disabled>Upload</acme-button><acme-button disabled size="large">Upload</acme-button>`),
+    },
+    {
+      h: "Disabled variants",
+      html: row(
+        `<acme-button disabled>Default</acme-button><acme-button disabled variant="secondary">Secondary</acme-button><acme-button disabled variant="tertiary">Tertiary</acme-button><acme-button disabled variant="error">Error</acme-button><acme-button disabled variant="warning">Warning</acme-button>`,
+      ),
     },
     {
       h: "Link",
-      p: "An href renders an anchor with the same look.",
-      html: `<acme-button variant="primary" href="#">Visit Deployment<svg class="ic" slot="suffix" aria-hidden="true"><use href="#i-ext"/></svg></acme-button>`,
+      p: "An href renders an anchor with the same props as the button.",
+      html: `<acme-button href="#" style="width:fit-content">Sign Up</acme-button>`,
     },
     {
-      h: "Group",
-      p: "Joined buttons share one border.",
-      html: `<acme-button-group><acme-button>Day</acme-button><acme-button>Week</acme-button><acme-button>Month</acme-button></acme-button-group>`,
+      h: "Custom",
+      p: 'variant="custom" takes its foreground, background and border from normal, hover and active.',
+      html: row(
+        `<acme-button variant="custom" active='{"foreground":"#fff","background":"var(--ds-blue-700)","border":"var(--ds-blue-700)"}' hover='{"foreground":"#fff","background":"#0B7BFE","border":"var(--ds-blue-700)"}' normal='{"foreground":"#fff","background":"var(--ds-blue-700)","border":"var(--ds-blue-700)"}' width="160">Upgrade to Pro</acme-button>`,
+      ),
     },
   ],
   practices: {
-    "When to use": [
-      "Secondary for the supporting action, error for destructive confirmations. Primary, success, ghost and violet are not variants.",
-      "Disable only when the action is impossible, and pair the disabled button with a tooltip that says why.",
+    "Best Practices": [
+      "A button is for an action that changes state (deploy, save, delete); a link (href) is for navigation that changes the URL. When several related actions share a row, use a Menu or a Split Button.",
+      'The default button is primary. Use variant="secondary" for the supporting action and variant="error" for a destructive confirmation. primary, success, ghost and violet are not variants.',
+      'A form submit sets type="submit"; the visual variant lives on variant, not on type.',
+      "Set loading instead of swapping in a spinner: the button stays focusable and announces the busy state.",
+      "Disable a button only when the action is impossible right now (missing input, no permission), and add a Tooltip that says why.",
+      "Title Case the label and name what happens: Deploy Project, Invite Member, Rotate Key. Not a bare verb (Submit) and not a generic confirm (OK, Confirm).",
+      "A destructive button reads Verb + Noun and pairs 1:1 with its toast: Delete Project, then Project deleted. A mode switch ends in Instead: Use a Recovery Code Instead.",
+      "An icon-only button needs both svg-only and an aria-label. The label names the action and the target (Copy deployment URL), not the icon (Copy).",
+      "Do not set an aria-label on a button that has visible text; it replaces the label and the screen reader hears something else.",
     ],
-    Content: ["Title Case, Verb + Noun: Deploy Project, Invite Member.", "A destructive button pairs 1:1 with its toast: Delete Project, then Project deleted. Mode switches end in Instead."],
   },
 };

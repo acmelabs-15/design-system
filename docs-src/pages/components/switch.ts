@@ -1,36 +1,66 @@
 // Docs page: Switch — mirrors https://vercel.com/geist/switch
 import type { Doc } from "../../site";
 
+const start = (inner: string) => `<div class="vstack" style="align-items:flex-start">${inner}</div>`;
+const pair = (name: string, extra = "", ctl = "") =>
+  `<acme-switch name="${name}"${extra}><acme-switch-control default-checked label="Source" value="source"${ctl}></acme-switch-control><acme-switch-control label="Output" value="output"${ctl}></acme-switch-control></acme-switch>`;
+// A bare sprite icon (no utility class): the control sizes it (16px, 20px in a large control).
+const icon = (n: string) =>
+  `<svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const icons = (name: string, extra = "") =>
+  `<acme-switch name="${name}"${extra}><acme-switch-control default-checked label="Grid" value="source">${icon("grid")}</acme-switch-control><acme-switch-control label="List" value="output">${icon("list")}</acme-switch-control></acme-switch>`;
+const three = (a: string, b: string, c: string) => `<div class="row" style="align-items:flex-start;gap:24px">${a}${b}${c}</div>`;
+
 export const doc: Doc = {
   id: "switch",
   title: "Switch",
-  lede: "Choose between a set of two or three views of the same surface.",
+  lede: "Choose between a set of options.",
   tags: ["acme-switch", "acme-switch-control"],
   examples: [
     {
       h: "Default",
-      html: `<acme-switch value="source" aria-label="View"><acme-switch-control value="source">Source</acme-switch-control><acme-switch-control value="output">Output</acme-switch-control></acme-switch>`,
+      p: "Give every control enough width so the group does not jump when the active option changes.",
+      html: start(pair("default")),
     },
     {
       h: "Disabled",
-      html: `<acme-switch value="source" disabled aria-label="View"><acme-switch-control value="source">Source</acme-switch-control><acme-switch-control value="output">Output</acme-switch-control></acme-switch>`,
+      html: start(pair("view-mode", "", " disabled")),
     },
     {
       h: "Sizes",
-      html: `<div class="row" style="gap:16px"><acme-switch size="small" value="source" aria-label="View"><acme-switch-control value="source">Source</acme-switch-control><acme-switch-control value="output">Output</acme-switch-control></acme-switch><acme-switch value="source" aria-label="View"><acme-switch-control value="source">Source</acme-switch-control><acme-switch-control value="output">Output</acme-switch-control></acme-switch><acme-switch size="large" value="source" aria-label="View"><acme-switch-control value="source">Source</acme-switch-control><acme-switch-control value="output">Output</acme-switch-control></acme-switch></div>`,
+      html: three(pair("sizes-small", ' size="small"'), pair("sizes-default"), pair("sizes-large", ' size="large"')),
     },
     {
       h: "Full width",
-      html: `<acme-switch fill value="source" aria-label="View"><acme-switch-control value="source">Source</acme-switch-control><acme-switch-control value="output">Output</acme-switch-control></acme-switch>`,
+      p: "A control directly inside the group takes the group's size; its own size applies only when another element wraps it.",
+      html: pair("full-width", ' style="width:100%"', ' size="large"'),
     },
     {
-      h: "Options as data",
-      p: "The options attribute takes the same list as JSON.",
-      html: `<acme-switch value="grid" aria-label="Layout" options='[{"value":"grid","label":"Grid"},{"value":"list","label":"List"},{"value":"map","label":"Map","disabled":true}]'></acme-switch>`,
+      h: "Tooltip",
+      html: start(
+        `<acme-switch name="view-mode"><acme-tooltip desktop-only text="View Source"><acme-switch-control default-checked label="Source" name="tooltip" size="large" value="source"></acme-switch-control></acme-tooltip><acme-tooltip desktop-only text="View Output"><acme-switch-control label="Output" name="tooltip" size="large" value="output"></acme-switch-control></acme-tooltip></acme-switch>`,
+      ),
+    },
+    {
+      h: "Icon",
+      html: three(icons("icons-small", ' size="small"'), icons("icons-default"), icons("icons-large", ' size="large"')),
+    },
+    {
+      h: "Hide border", census: true,
+      html: start(pair("hide-border", " hide-border")),
     },
   ],
   practices: {
-    "When to use": ["Two or three mutually exclusive views (Source / Output). Toggle for on/off; Tabs or Select past three options."],
-    Content: ["Title Case, one or two parallel words; every control has a label, hidden when an icon carries it, with a tooltip."],
+    "Best Practices": [
+      "A Switch is a segmented selector for two or three mutually exclusive views of the same surface, such as Source and Output.",
+      "A boolean on/off setting is a Toggle. A Switch has radio semantics, so its options exclude each other instead of reading as checkboxes.",
+      "Past three options, or when a label grows past a couple of words, move to Tabs or a Select.",
+      "Pass a <code>name</code> so the radios form one group; without it more than one option can look selected.",
+      "Set <code>default-checked</code> (or the group's <code>value</code>) on exactly one control so the group starts in a defined state.",
+      "Pad each control so the widest label fits without the active pill resizing on selection. Test with the longest label in the set.",
+      "Title Case each label. Keep labels to one or two words and parallel: Source / Output, not Source / Show output.",
+      "Give every control a <code>label</code>, even when an icon carries the meaning; the element reads it to screen readers and hides it visually for icon-only controls.",
+      "Pair an icon-only Switch with a Tooltip on each control so sighted users get the same label assistive tech receives.",
+    ],
   },
 };

@@ -8,7 +8,7 @@ import { readApi } from "./api";
 import { docToMarkdown } from "./markdown";
 import { loadDocs } from "./pages/components/index";
 import { colors, icons, intro, materials, tokens, typeface, typography } from "./pages/foundations";
-import { type Doc, docPage, type Nav, OUT, shell, writeFragment } from "./site";
+import { censusPage, type Doc, docPage, type Nav, OUT, shell, writeFragment } from "./site";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 if (!fs.existsSync(path.join(ROOT, "dist/index.js"))) throw new Error("dist/ is missing: run `bun run build` first");
@@ -17,6 +17,7 @@ fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 fs.copyFileSync(path.join(ROOT, "tokens.css"), path.join(OUT, "tokens.css"));
 fs.copyFileSync(path.join(ROOT, "dashboard.css"), path.join(OUT, "dashboard.css"));
+fs.cpSync(path.join(ROOT, "assets"), path.join(OUT, "assets"), { recursive: true });
 fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
 
 const api = readApi();
@@ -81,6 +82,8 @@ for (const d of components) {
     ),
   );
   md(`components/${d.id}`, d);
+  // The census page carries the census-only examples too; it is not linked from the navigation.
+  if (d.examples.some((e) => e.census)) writeFragment(`census/${d.id}.html`, censusPage(d));
 }
 
 const html = shell(nav);

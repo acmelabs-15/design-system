@@ -47,7 +47,8 @@ describe("docs site", () => {
         expect(undef).toEqual([]);
         const empty = Array.from(new Set(all.filter((e) => !LIGHT.has(e.localName) && e.shadowRoot && e.shadowRoot.childElementCount === 0).map((e) => e.localName)));
         expect(empty).toEqual([]);
-        if (page.startsWith("components/")) expect(html).toContain('class="api-el"');
+        // A component page documents at least one element, unless it is a guide page (Forms) with no tags.
+        if (page.startsWith("components/") && !html.includes("docs-form-demo")) expect(html).toContain('class="api-el"');
         expect(errors).toEqual([]);
       } finally {
         document.body.innerHTML = "";

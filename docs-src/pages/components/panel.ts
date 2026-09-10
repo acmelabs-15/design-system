@@ -18,7 +18,7 @@ export const doc: Doc = {
     },
     {
       h: "Chart panel and a bare head",
-      html: `<acme-panel chart tight><acme-panel-head slot="head" heading="Requests" sub="Last 24 hours"><acme-switch slot="actions" size="small" value="1d" aria-label="Range" options='[{"value":"1d","label":"1d"},{"value":"7d","label":"7d"}]'></acme-switch></acme-panel-head><acme-chart height="120"><svg viewBox="0 0 600 120" preserveAspectRatio="none" style="width:100%;height:100%"><polyline fill="none" stroke="var(--chart-1)" stroke-width="2" points="0,100 150,60 300,80 450,30 600,50"/></svg></acme-chart></acme-panel>`,
+      html: `<acme-panel chart tight><acme-panel-head slot="head" heading="Requests" sub="Last 24 hours"><acme-switch slot="actions" size="small" value="1d" name="range"><acme-switch-control label="1d" value="1d"></acme-switch-control><acme-switch-control label="7d" value="7d"></acme-switch-control></acme-switch></acme-panel-head><acme-chart height="120"><svg viewBox="0 0 600 120" preserveAspectRatio="none" style="width:100%;height:100%"><polyline fill="none" stroke="var(--chart-1)" stroke-width="2" points="0,100 150,60 300,80 450,30 600,50"/></svg></acme-chart></acme-panel>`,
     },
   ],
 };

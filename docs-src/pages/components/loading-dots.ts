@@ -4,22 +4,33 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "loading-dots",
   title: "Loading Dots",
-  lede: "Indicate an action running in the background, inside copy.",
+  lede: "Indicate an action running in the background.",
   tags: ["acme-loading-dots"],
   examples: [
     {
       h: "Default",
-      html: `<div class="row" style="gap:24px"><acme-loading-dots size="small"></acme-loading-dots><acme-loading-dots></acme-loading-dots><acme-loading-dots size="large"></acme-loading-dots></div>`,
+      html: `<div class="vstack" style="gap:24px;align-items:flex-start"><acme-loading-dots size="sm"></acme-loading-dots><acme-loading-dots size="md"></acme-loading-dots><acme-loading-dots size="lg"></acme-loading-dots></div>`,
     },
     {
       h: "With text",
-      html: `<p class="text-copy-14" style="color:var(--text-2)" aria-live="polite"><acme-loading-dots>Loading</acme-loading-dots></p>`,
+      html: `<acme-loading-dots size="md"><p class="text-copy-14" style="color:var(--ds-gray-900)">Loading</p></acme-loading-dots>`,
     },
   ],
   practices: {
     "When to use": [
-      "Short indeterminate waits inside copy: Saving, Building. For buttons, the loading state of Button; for layout, Skeleton; for known progress, Progress; icon-sized waits, Spinner.",
+      "Loading Dots sit in copy for a short indeterminate wait: Saving, Building.",
+      "In a button, set the loading attribute on Button instead of dots in the label.",
+      "A layout placeholder is Skeleton; known progress is Progress; an icon-sized indeterminate wait is Spinner.",
     ],
-    Content: ["Name the work in flight (Deploying, Uploading); never after a completed verb."],
+    Behavior: [
+      "Pass size (a dot diameter in pixels) only when the default does not match the type next to it.",
+      "Keep the label specific to the work in flight (Saving, Deploying, Uploading), so a wait over about a second still says what happens.",
+      "Never put Loading Dots after a completed verb (Saved); the dots mean work goes on.",
+    ],
+    Accessibility: [
+      "Mark the wrapping element aria-live polite, so a screen reader picks up the label without an interruption.",
+      "The dots are decorative; the text carries the meaning, so the element takes no aria-label.",
+      "The dots stop under prefers-reduced-motion. Do not pair them with another animated indicator on the same line.",
+    ],
   },
 };

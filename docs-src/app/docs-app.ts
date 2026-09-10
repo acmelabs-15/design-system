@@ -5,6 +5,7 @@ import { Router } from "@lit-labs/router";
 import { html, LitElement, nothing } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
+import { bindField, setAssetsBase, TanStackFormController } from "../../dist/index";
 
 type NavItem = { title: string; href: string; house?: boolean };
 type Nav = { group: string; items: NavItem[] }[];
@@ -16,7 +17,9 @@ declare global {
 
 /** GitHub Pages serves a project site under /<repo>/; locally the site is at the root. */
 export const prefix = location.hostname.endsWith("github.io") ? `/${location.pathname.split("/")[1]}` : "";
-const ICON_CHART = html`<svg class="ic" slot="logo" aria-hidden="true"><use href="#i-chart"></use></svg>`;
+// The docs serve the package's asset files themselves (the build copies `assets/` next to the pages).
+setAssetsBase(`${prefix}/assets/`);
+const ICON_CHART = html`<svg class="ic" width="16" height="16" slot="logo" aria-hidden="true"><use href="#i-chart"></use></svg>`;
 const cache = new Map<string, string>();
 
 @customElement("acme-docs-app")
@@ -34,6 +37,7 @@ export class AcmeDocsApp extends LitElement {
       { path: `${prefix}/index.html`, enter: () => this.load("index"), render: () => this.frame() },
       { path: `${prefix}/:page`, enter: (p) => this.load(p.page ?? "index"), render: () => this.frame() },
       { path: `${prefix}/components/:id`, enter: (p) => this.load(`components/${p.id}`), render: () => this.frame() },
+      { path: `${prefix}/census/:id`, enter: (p) => this.load(`census/${p.id}`), render: () => this.frame() },
     ],
     { fallback: { enter: () => this.load("__missing"), render: () => this.frame() } },
   );
@@ -80,7 +84,9 @@ export class AcmeDocsApp extends LitElement {
     this.page = file;
     this.body = body;
     this.missing = false;
-    const item = this.flat.find((i) => i.href === file);
+    // A census page is not in the navigation: it takes its element's title.
+    const census = file.startsWith("census/") ? this.flat.find((i) => i.href === `components/${file.slice(7)}`) : undefined;
+    const item = census ? { ...census, title: `${census.title} (census)` } : this.flat.find((i) => i.href === file);
     document.title = file === "index" ? "ACME Design System" : `${item?.title ?? "Not found"} · ACME Design System`;
     if (!location.hash) window.scrollTo(0, 0);
     return true;
@@ -161,9 +167,61 @@ export class DocsTokens extends LitElement {
   }
 }
 
+/** The Colors page: one swatch of a scale. The token is its tooltip; a right click copies the raw value. */
+@customElement("docs-swatch")
+export class DocsSwatch extends LitElement {
+  createRenderRoot() {
+    return this;
+  }
+  private copy = (e: Event) => {
+    e.preventDefault();
+    const token = this.getAttribute("token") ?? "";
+    const value = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+    navigator.clipboard
+      ?.writeText(value)
+      .then(() => window.acme?.toasts.success(`Copied ${value}`))
+      .catch(() => window.acme?.toasts.error(`Could not copy ${token}`));
+  };
+  render() {
+    const token = this.getAttribute("token") ?? "";
+    return html`<acme-tooltip text=${token}><button type="button" class="sw" style=${`background:var(${token})`} aria-label=${token} @contextmenu=${this.copy}></button></acme-tooltip>`;
+  }
+}
+
 declare global {
   interface HTMLElementTagNameMap {
     "acme-docs-app": AcmeDocsApp;
     "docs-tokens": DocsTokens;
+    "docs-swatch": DocsSwatch;
+  }
+}
+
+/** The Forms page demo: TanStack Form bound to the acme inputs with bindField. */
+@customElement("docs-form-demo")
+export class DocsFormDemo extends LitElement {
+  private form = new TanStackFormController(this, {
+    defaultValues: { name: "", email: "", plan: "hobby", updates: true },
+    onSubmit: ({ value }) => {
+      window.acme?.toasts.success(`Account for ${value.name} created`);
+    },
+  });
+  createRenderRoot() {
+    return this;
+  }
+  render() {
+    return html`<form
+      class="vstack"
+      style="max-width:360px;gap:16px"
+      @submit=${(e: Event) => {
+        e.preventDefault();
+        this.form.api.handleSubmit();
+      }}
+    >
+      ${this.form.field({ name: "name", validators: { onChange: ({ value }) => (value.length < 2 ? "Name needs two characters." : undefined) } }, (f) => html`<acme-input label="Name" placeholder="Ada Lovelace" ${bindField(f)}></acme-input>`)}
+      ${this.form.field({ name: "email", validators: { onChange: ({ value }) => (/@/.test(value) ? undefined : "Enter an email address.") } }, (f) => html`<acme-input label="Email" type="email" placeholder="ada@acme.dev" ${bindField(f)}></acme-input>`)}
+      ${this.form.field({ name: "plan" }, (f) => html`<acme-select label="Plan" options='["hobby","pro","enterprise"]' ${bindField(f)}></acme-select>`)}
+      ${this.form.field({ name: "updates" }, (f) => html`<acme-toggle label="Product updates" ${bindField(f)}></acme-toggle>`)}
+      <div><acme-button type="submit" variant="primary" ?disabled=${!this.form.api.state.canSubmit}>Create Account</acme-button></div>
+    </form>`;
   }
 }

@@ -4,29 +4,63 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "skeleton",
   title: "Skeleton",
-  lede: "Display a placeholder while the real content loads.",
+  lede: "Show a placeholder shape while another component loads.",
   tags: ["acme-skeleton"],
   examples: [
     {
       h: "Default with set width",
-      html: `<acme-skeleton width="160px"></acme-skeleton>`,
+      html: `<acme-skeleton width="160"></acme-skeleton>`,
     },
     {
-      h: "Box height",
-      html: `<acme-skeleton width="160px" height="42px"></acme-skeleton>`,
+      h: "Default with box height",
+      html: `<acme-skeleton box-height="42" width="160"></acme-skeleton>`,
     },
     {
-      h: "Shapes",
-      p: "Pill for avatars, rounded for buttons and chips, squared for image tiles.",
-      html: `<div class="row" style="gap:16px"><acme-skeleton shape="pill" width="48px" height="48px"></acme-skeleton><acme-skeleton shape="rounded" width="96px" height="36px"></acme-skeleton><acme-skeleton shape="squared" width="48px" height="48px"></acme-skeleton></div>`,
+      h: "Wrapping children",
+      p: "Without a fixed size the skeleton takes the size of its children.",
+      html: `<div class="vstack" style="gap:16px;align-items:flex-start"><acme-skeleton><acme-button>Hidden by skeleton</acme-button></acme-skeleton><acme-skeleton show="false"><acme-button>Not hidden by skeleton</acme-button></acme-skeleton></div>`,
+    },
+    {
+      h: "Wrapping children with fixed size",
+      p: "The skeleton hides once children are present, and the size stays reserved.",
+      html: `<div class="vstack" style="gap:16px;align-items:flex-start"><acme-skeleton height="100" width="100%"></acme-skeleton><acme-skeleton height="100" width="100%"><acme-button>Not hidden by Skeleton</acme-button></acme-skeleton></div>`,
+    },
+    {
+      h: "Pill",
+      html: `<acme-skeleton pill width="48"></acme-skeleton>`,
+    },
+    {
+      h: "Rounded",
+      html: `<acme-skeleton box-height="48" height="48" rounded width="48"></acme-skeleton>`,
+    },
+    {
+      h: "Squared",
+      html: `<acme-skeleton box-height="48" height="48" squared width="48"></acme-skeleton>`,
     },
     {
       h: "No animation",
-      html: `<acme-skeleton still height="100px"></acme-skeleton>`,
+      html: `<acme-skeleton animated="false" height="100" width="100%"></acme-skeleton>`,
+    },
+    {
+      h: "Button",
+      html: `<div class="vstack" style="gap:16px"><div class="vstack" style="gap:8px"><p class="text-label-14">Without button prop (default):</p><acme-skeleton height="32" width="120"><acme-button>Loading...</acme-button></acme-skeleton></div><div class="vstack" style="gap:8px"><p class="text-label-14">With button prop (extends animation by 1px):</p><acme-skeleton button height="32" width="120"><acme-button>Loading...</acme-button></acme-skeleton></div><div class="vstack" style="gap:8px"><p class="text-label-14">Multiple buttons loading:</p><div class="row"><acme-skeleton button><acme-button>Save</acme-button></acme-skeleton><acme-skeleton button><acme-button variant="secondary">Cancel</acme-button></acme-skeleton></div></div></div>`,
     },
   ],
   practices: {
-    "When to use": ["Async data filling a known layout: rows, card grids, profile blocks. Never as decoration or as an empty state."],
-    Behavior: ["Match the final content's size so nothing shifts; aria-busy on the region; honor reduced motion."],
+    "When to use": [
+      "Show a Skeleton when async data fills a layout you already know: table rows, card grids, profile blocks, sidebars.",
+      "Use Spinner for one in-flight action, Loading Dots for an inline wait with no end in sight, and Progress when the total is known.",
+      "A Skeleton is not decoration and not an empty state. When there is no data to load, render an Empty State.",
+    ],
+    Behavior: [
+      "Set <code>width</code> and <code>height</code> to the final content so nothing shifts when data lands. A 200×20 block that becomes an 80×16 string reads as a glitch.",
+      "Pick <code>pill</code>, <code>rounded</code> or <code>squared</code> to mirror the shape that follows: avatars pill, buttons and chips rounded, image tiles squared.",
+      "When the skeleton wraps children, keep the size stable so the swap does not reflow the content around it.",
+    ],
+    Accessibility: [
+      'Put <code>aria-busy="true"</code> on the loading region and announce completion with <code>aria-live="polite"</code> on the destination, not on the skeleton.',
+      'Turn the shimmer off with <code>animated="false"</code> on low-power surfaces; the sweep also stops under <code>prefers-reduced-motion</code>.',
+      "Skeletons are decorative. Keep focusable controls out of them while loading.",
+    ],
   },
 };

@@ -1,79 +1,275 @@
-<article class="doc" id="grid"><div class="doc-hero"><h1>Grid</h1><p>Display elements in a grid with visible guide lines.</p><div class="tags"><acme-badge hue="gray" subtle><code>&lt;acme-grid&gt;</code></acme-badge><acme-badge hue="gray" subtle><code>&lt;acme-grid-cell&gt;</code></acme-badge><acme-badge hue="gray" subtle><code>&lt;acme-grid-cross&gt;</code></acme-badge></div></div><div class="doc-sec" id="basic-grid"><h2>Basic grid<a href="#basic-grid" aria-label="Link to Basic grid">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid columns="3"><acme-grid-cell>1</acme-grid-cell><acme-grid-cell>2</acme-grid-cell><acme-grid-cell>3</acme-grid-cell><acme-grid-cell>4</acme-grid-cell><acme-grid-cell>5</acme-grid-cell><acme-grid-cell>6</acme-grid-cell></acme-grid></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;acme-grid columns=&quot;3&quot;&gt;
-  &lt;acme-grid-cell&gt;1&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;2&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;3&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;4&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;5&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;6&lt;/acme-grid-cell&gt;
-&lt;/acme-grid&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;3&quot;</span>&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;1&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="3">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="4">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="5">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="6">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;5&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="7">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;6&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="8">&lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="solid-cells"><h2>Solid cells<a href="#solid-cells" aria-label="Link to Solid cells">#</a></h2><p>A solid cell occludes the guides it overlaps.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid columns="3"><acme-grid-cell solid span="2">1 + 2</acme-grid-cell><acme-grid-cell>3</acme-grid-cell><acme-grid-cell>4</acme-grid-cell><acme-grid-cell solid span="2">5 + 6</acme-grid-cell></acme-grid></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;acme-grid columns=&quot;3&quot;&gt;
-  &lt;acme-grid-cell solid span=&quot;2&quot;&gt;1 + 2&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;3&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;4&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell solid span=&quot;2&quot;&gt;5 + 6&lt;/acme-grid-cell&gt;
-&lt;/acme-grid&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;3&quot;</span>&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid-cell</span> solid <span class="th-token th-attr">span</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;1 + 2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="3">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="4">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="5">  &lt;<span class="th-token th-tag">acme-grid-cell</span> solid <span class="th-token th-attr">span</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;5 + 6&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="6">&lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="hidden-guides"><h2>Hidden guides<a href="#hidden-guides" aria-label="Link to Hidden guides">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><div class="vstack" style="gap:24px"><acme-grid columns="6" hide-guides="row"><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell></acme-grid><acme-grid columns="6" hide-guides="column"><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell></acme-grid></div></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;div class=&quot;vstack&quot; style=&quot;gap:24px&quot;&gt;
-  &lt;acme-grid columns=&quot;6&quot; hide-guides=&quot;row&quot;&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
+<article class="doc" id="grid"><div class="doc-hero"><h1>Grid</h1><p>Display elements in a grid layout.</p><div class="tags"><acme-badge variant="gray" contrast="low"><code>&lt;acme-grid-system&gt;</code></acme-badge><acme-badge variant="gray" contrast="low"><code>&lt;acme-grid&gt;</code></acme-badge><acme-badge variant="gray" contrast="low"><code>&lt;acme-grid-cell&gt;</code></acme-badge><acme-badge variant="gray" contrast="low"><code>&lt;acme-grid-cross&gt;</code></acme-badge><acme-badge variant="gray" contrast="low"><code>&lt;acme-grid-page&gt;</code></acme-badge></div></div><div class="doc-sec" id="grid"><h2>Grid<a href="#grid" aria-label="Link to Grid">#</a></h2><p>A non-responsive grid with no cells.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system debug guide-width="1" use-container>
+  <acme-grid columns="5" height="preserve-aspect-ratio" rows="2"></acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system debug guide-width=&quot;1&quot; use-container&gt;
+  &lt;acme-grid columns=&quot;5&quot; height=&quot;preserve-aspect-ratio&quot; rows=&quot;2&quot;&gt;&lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> debug <span class="th-token th-attr">guide-width</span>=<span class="th-token th-string">&quot;1&quot;</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;5&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;preserve-aspect-ratio&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="3">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="basic-grid"><h2>Basic grid<a href="#basic-grid" aria-label="Link to Basic grid">#</a></h2><p>A non-responsive single grid with auto flowing cells configuration.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system guide-width="1" use-container>
+  <acme-grid columns="3" rows="2">
+    <acme-grid-cell>1</acme-grid-cell>
+    <acme-grid-cell>2</acme-grid-cell>
+    <acme-grid-cell>3</acme-grid-cell>
+    <acme-grid-cell>4</acme-grid-cell>
+    <acme-grid-cell>5</acme-grid-cell>
+    <acme-grid-cell>6</acme-grid-cell>
+  </acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system guide-width=&quot;1&quot; use-container&gt;
+  &lt;acme-grid columns=&quot;3&quot; rows=&quot;2&quot;&gt;
+    &lt;acme-grid-cell&gt;1&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;2&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;3&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;4&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;5&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;6&lt;/acme-grid-cell&gt;
   &lt;/acme-grid&gt;
-  &lt;acme-grid columns=&quot;6&quot; hide-guides=&quot;column&quot;&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-    &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-  &lt;/acme-grid&gt;
-&lt;/div&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">div</span> <span class="th-token th-attr">class</span>=<span class="th-token th-string">&quot;vstack&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;gap:24px&quot;</span>&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;6&quot;</span> <span class="th-token th-attr">hide-guides</span>=<span class="th-token th-string">&quot;row&quot;</span>&gt;</span>
-<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> <span class="th-token th-attr">guide-width</span>=<span class="th-token th-string">&quot;1&quot;</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;3&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;1&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;5&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;6&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
 <span class="th-line" data-line="9">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
-<span class="th-line" data-line="10">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;6&quot;</span> <span class="th-token th-attr">hide-guides</span>=<span class="th-token th-string">&quot;column&quot;</span>&gt;</span>
-<span class="th-line" data-line="11">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="12">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="13">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="14">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="15">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="16">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="17">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
-<span class="th-line" data-line="18">&lt;/<span class="th-token th-tag">div</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="dashed-grid-with-cross-and-page"><h2>Dashed grid with cross and page<a href="#dashed-grid-with-cross-and-page" aria-label="Link to Dashed grid with cross and page">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid columns="1" dashed page><acme-grid-cross slot="cross" style="left:0;top:0"></acme-grid-cross><acme-grid-cross slot="cross" style="right:-11px;top:0;transform:translate(0,-50%)"></acme-grid-cross><acme-grid-cell>Content here</acme-grid-cell></acme-grid></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;acme-grid columns=&quot;1&quot; dashed page&gt;
-  &lt;acme-grid-cross slot=&quot;cross&quot; style=&quot;left:0;top:0&quot;&gt;&lt;/acme-grid-cross&gt;
-  &lt;acme-grid-cross slot=&quot;cross&quot; style=&quot;right:-11px;top:0;transform:translate(0,-50%)&quot;&gt;&lt;/acme-grid-cross&gt;
-  &lt;acme-grid-cell&gt;Content here&lt;/acme-grid-cell&gt;
-&lt;/acme-grid&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;1&quot;</span> dashed page&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;cross&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;left:0;top:0&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
-<span class="th-line" data-line="3">  &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">slot</span>=<span class="th-token th-string">&quot;cross&quot;</span> <span class="th-token th-attr">style</span>=<span class="th-token th-string">&quot;right:-11px;top:0;transform:translate(0,-50%)&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
-<span class="th-line" data-line="4">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;Content here&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="5">&lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="debug"><h2>Debug<a href="#debug" aria-label="Link to Debug">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid columns="5" debug><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell><acme-grid-cell></acme-grid-cell></acme-grid></div><button class="showbar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text="&lt;acme-grid columns=&quot;5&quot; debug&gt;
-  &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-  &lt;acme-grid-cell&gt;&lt;/acme-grid-cell&gt;
-&lt;/acme-grid&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;5&quot;</span> debug&gt;</span>
-<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="3">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="4">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="5">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="6">  &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
-<span class="th-line" data-line="7">&lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-grid"><h3><code>&lt;acme-grid&gt;</code><small>AcmeGrid</small></h3><p>Geist Grid: guide-line cells. Children: acme-grid-cell.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">columns</td><td class="mono">columns</td><td class="type">number</td><td class="mono">3</td><td></td></tr><tr><td class="mono">dashed</td><td class="mono">dashed</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">debug</td><td class="mono">debug</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">hide-guides</td><td class="mono">hideGuides</td><td class="type">"" | "row" | "column"</td><td class="mono">""</td><td></td></tr><tr><td class="mono">page</td><td class="mono">page</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr><tr><td class="mono">cross</td></tr></tbody></table></div><div class="api-el" id="api-acme-grid-cell"><h3><code>&lt;acme-grid-cell&gt;</code><small>AcmeGridCell</small></h3><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">solid</td><td class="mono">solid</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">span</td><td class="mono">span</td><td class="type">string</td><td class="mono">""</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr></tbody></table></div><div class="api-el" id="api-acme-grid-cross"><h3><code>&lt;acme-grid-cross&gt;</code><small>AcmeGridCross</small></h3></div></div></div><div class="doc-sec" id="best-practices"><h2>Best Practices<a href="#best-practices" aria-label="Link to Best Practices">#</a></h2><div class="doc-body"><div class="practices"><h3>When to use</h3><ul><li>Marketing pages, docs landings and feature breakdowns where the rule lines are part of the design; plain CSS grid for app content.</li></ul><h3>Behavior</h3><ul><li>Set columns and rows at every breakpoint; solid cells for opaque tiles; hide guides only when it helps; never nest more than one level; guides are aria-hidden.</li></ul></div></div></div></article>
+<span class="th-line" data-line="10">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="solid-cells"><h2>Solid cells<a href="#solid-cells" aria-label="Link to Solid cells">#</a></h2><p>Using the solid attribute on cells will occlude the guides that the cell overlaps.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system guide-width="1" use-container>
+  <acme-grid columns="3" rows="2">
+    <acme-grid-cell column="1/3" row="1" solid>1 + 2</acme-grid-cell>
+    <acme-grid-cell>3</acme-grid-cell>
+    <acme-grid-cell>4</acme-grid-cell>
+    <acme-grid-cell column="2/4" row="2" solid>5 + 6</acme-grid-cell>
+  </acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system guide-width=&quot;1&quot; use-container&gt;
+  &lt;acme-grid columns=&quot;3&quot; rows=&quot;2&quot;&gt;
+    &lt;acme-grid-cell column=&quot;1/3&quot; row=&quot;1&quot; solid&gt;1 + 2&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;3&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;4&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;2/4&quot; row=&quot;2&quot; solid&gt;5 + 6&lt;/acme-grid-cell&gt;
+  &lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> <span class="th-token th-attr">guide-width</span>=<span class="th-token th-string">&quot;1&quot;</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;3&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1/3&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1&quot;</span> solid&gt;1 + 2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;2/4&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;2&quot;</span> solid&gt;5 + 6&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="8">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="responsive-grid"><h2>Responsive grid<a href="#responsive-grid" aria-label="Link to Responsive grid">#</a></h2><p>Grid with responsive rows and columns at all 3 breakpoints.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system use-container>
+  <acme-grid columns='{"sm":1,"md":2,"lg":3}' rows='{"sm":6,"md":3,"lg":2}'>
+    <acme-grid-cell>1</acme-grid-cell>
+    <acme-grid-cell>2</acme-grid-cell>
+    <acme-grid-cell>3</acme-grid-cell>
+    <acme-grid-cell>4</acme-grid-cell>
+    <acme-grid-cell>5</acme-grid-cell>
+    <acme-grid-cell>6</acme-grid-cell>
+  </acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system use-container&gt;
+  &lt;acme-grid columns='{&quot;sm&quot;:1,&quot;md&quot;:2,&quot;lg&quot;:3}' rows='{&quot;sm&quot;:6,&quot;md&quot;:3,&quot;lg&quot;:2}'&gt;
+    &lt;acme-grid-cell&gt;1&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;2&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;3&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;4&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;5&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;6&lt;/acme-grid-cell&gt;
+  &lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&#39;{&quot;sm&quot;:1,&quot;md&quot;:2,&quot;lg&quot;:3}&#39;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&#39;{&quot;sm&quot;:6,&quot;md&quot;:3,&quot;lg&quot;:2}&#39;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;1&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;5&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;6&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="9">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="10">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="responsive-grid-with-responsive-guide-clipping-cells"><h2>Responsive Grid with responsive guide clipping cells<a href="#responsive-grid-with-responsive-guide-clipping-cells" aria-label="Link to Responsive Grid with responsive guide clipping cells">#</a></h2><p>Grid with responsive rows and columns at all 3 breakpoints as well as guide clipping on specific cells.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system use-container>
+  <acme-grid columns='{"sm":1,"md":2,"lg":3}' rows='{"sm":6,"md":3,"lg":2}'>
+    <acme-grid-cell column='{"sm":"1","md":"1/3"}' row='{"sm":"1/3","md":1}' solid>1 + 2</acme-grid-cell>
+    <acme-grid-cell>3</acme-grid-cell>
+    <acme-grid-cell>4</acme-grid-cell>
+    <acme-grid-cell column='{"sm":1,"md":"1/3","lg":"2/4"}' row='{"sm":"5/7","md":3,"lg":2}' solid>5 + 6</acme-grid-cell>
+  </acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system use-container&gt;
+  &lt;acme-grid columns='{&quot;sm&quot;:1,&quot;md&quot;:2,&quot;lg&quot;:3}' rows='{&quot;sm&quot;:6,&quot;md&quot;:3,&quot;lg&quot;:2}'&gt;
+    &lt;acme-grid-cell column='{&quot;sm&quot;:&quot;1&quot;,&quot;md&quot;:&quot;1/3&quot;}' row='{&quot;sm&quot;:&quot;1/3&quot;,&quot;md&quot;:1}' solid&gt;1 + 2&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;3&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;4&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column='{&quot;sm&quot;:1,&quot;md&quot;:&quot;1/3&quot;,&quot;lg&quot;:&quot;2/4&quot;}' row='{&quot;sm&quot;:&quot;5/7&quot;,&quot;md&quot;:3,&quot;lg&quot;:2}' solid&gt;5 + 6&lt;/acme-grid-cell&gt;
+  &lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&#39;{&quot;sm&quot;:1,&quot;md&quot;:2,&quot;lg&quot;:3}&#39;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&#39;{&quot;sm&quot;:6,&quot;md&quot;:3,&quot;lg&quot;:2}&#39;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&#39;{&quot;sm&quot;:&quot;1&quot;,&quot;md&quot;:&quot;1/3&quot;}&#39;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&#39;{&quot;sm&quot;:&quot;1/3&quot;,&quot;md&quot;:1}&#39;</span> solid&gt;1 + 2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&#39;{&quot;sm&quot;:1,&quot;md&quot;:&quot;1/3&quot;,&quot;lg&quot;:&quot;2/4&quot;}&#39;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&#39;{&quot;sm&quot;:&quot;5/7&quot;,&quot;md&quot;:3,&quot;lg&quot;:2}&#39;</span> solid&gt;5 + 6&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="7">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="8">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="grid-with-hidden-row-guides"><h2>Grid with hidden row guides<a href="#grid-with-hidden-row-guides" aria-label="Link to Grid with hidden row guides">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system use-container>
+  <acme-grid columns="12" height="preserve-aspect-ratio" hide-guides="row" rows="3"></acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system use-container&gt;
+  &lt;acme-grid columns=&quot;12&quot; height=&quot;preserve-aspect-ratio&quot; hide-guides=&quot;row&quot; rows=&quot;3&quot;&gt;&lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;12&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;preserve-aspect-ratio&quot;</span> <span class="th-token th-attr">hide-guides</span>=<span class="th-token th-string">&quot;row&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;3&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="3">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="grid-with-hidden-column-guides"><h2>Grid with hidden column guides<a href="#grid-with-hidden-column-guides" aria-label="Link to Grid with hidden column guides">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system use-container>
+  <acme-grid columns="12" height="preserve-aspect-ratio" hide-guides="column" rows="3"></acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system use-container&gt;
+  &lt;acme-grid columns=&quot;12&quot; height=&quot;preserve-aspect-ratio&quot; hide-guides=&quot;column&quot; rows=&quot;3&quot;&gt;&lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;12&quot;</span> <span class="th-token th-attr">height</span>=<span class="th-token th-string">&quot;preserve-aspect-ratio&quot;</span> <span class="th-token th-attr">hide-guides</span>=<span class="th-token th-string">&quot;column&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;3&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="3">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="grid-with-overlaying-cells"><h2>Grid with overlaying cells<a href="#grid-with-overlaying-cells" aria-label="Link to Grid with overlaying cells">#</a></h2><p>Grid with cells that overlay another in various states.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system use-container>
+  <acme-grid columns="12" rows="3">
+    <acme-grid-cell column="1/3" row="1/3" solid>1</acme-grid-cell>
+    <acme-grid-cell column="2/4" row="2/4">2</acme-grid-cell>
+    <acme-grid-cell column="3/10" row="2/4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at felis</acme-grid-cell>
+    <acme-grid-cell column="7/12" row="1/-1" solid>3</acme-grid-cell>
+    <acme-grid-cell column="11/13" row="1/3" solid>4</acme-grid-cell>
+  </acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system use-container&gt;
+  &lt;acme-grid columns=&quot;12&quot; rows=&quot;3&quot;&gt;
+    &lt;acme-grid-cell column=&quot;1/3&quot; row=&quot;1/3&quot; solid&gt;1&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;2/4&quot; row=&quot;2/4&quot;&gt;2&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;3/10&quot; row=&quot;2/4&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at felis&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;7/12&quot; row=&quot;1/-1&quot; solid&gt;3&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;11/13&quot; row=&quot;1/3&quot; solid&gt;4&lt;/acme-grid-cell&gt;
+  &lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;12&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;3&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1/3&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1/3&quot;</span> solid&gt;1&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;2/4&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;2/4&quot;</span>&gt;2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;3/10&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;2/4&quot;</span>&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at felis&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;7/12&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1/-1&quot;</span> solid&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;11/13&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1/3&quot;</span> solid&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="8">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="9">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="specific-grid-with-guide-clipping"><h2>Specific Grid with Guide Clipping<a href="#specific-grid-with-guide-clipping" aria-label="Link to Specific Grid with Guide Clipping">#</a></h2><p>Grid with guide clipping enabled on specific cells.</p><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system guide-width="1" use-container>
+  <acme-grid columns="3" rows="4">
+    <acme-grid-cell column="1/2" row="1/3" solid>1</acme-grid-cell>
+    <acme-grid-cell column="3/4" row="1/2" solid>2</acme-grid-cell>
+    <acme-grid-cell column="2/3" row="2/4">3</acme-grid-cell>
+    <acme-grid-cell column="1/2" row="4/5" solid>4</acme-grid-cell>
+    <acme-grid-cell column="3/4" row="3/5" solid>5</acme-grid-cell>
+  </acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system guide-width=&quot;1&quot; use-container&gt;
+  &lt;acme-grid columns=&quot;3&quot; rows=&quot;4&quot;&gt;
+    &lt;acme-grid-cell column=&quot;1/2&quot; row=&quot;1/3&quot; solid&gt;1&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;3/4&quot; row=&quot;1/2&quot; solid&gt;2&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;2/3&quot; row=&quot;2/4&quot;&gt;3&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;1/2&quot; row=&quot;4/5&quot; solid&gt;4&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell column=&quot;3/4&quot; row=&quot;3/5&quot; solid&gt;5&lt;/acme-grid-cell&gt;
+  &lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> <span class="th-token th-attr">guide-width</span>=<span class="th-token th-string">&quot;1&quot;</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;3&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;4&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1/2&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1/3&quot;</span> solid&gt;1&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;3/4&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1/2&quot;</span> solid&gt;2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;2/3&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;2/4&quot;</span>&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1/2&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;4/5&quot;</span> solid&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">acme-grid-cell</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;3/4&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;3/5&quot;</span> solid&gt;5&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="8">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="9">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="grid-with-cross"><h2>Grid with cross<a href="#grid-with-cross" aria-label="Link to Grid with cross">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system guide-width="1" use-container>
+  <acme-grid columns="3" rows="2">
+    <acme-grid-cross column="1" row="1"></acme-grid-cross>
+    <acme-grid-cross column="4" row="1"></acme-grid-cross>
+    <acme-grid-cross column="4" row="3"></acme-grid-cross>
+    <acme-grid-cross column="1" row="3"></acme-grid-cross>
+    <acme-grid-cell>1</acme-grid-cell>
+    <acme-grid-cell>2</acme-grid-cell>
+    <acme-grid-cell>3</acme-grid-cell>
+    <acme-grid-cell>4</acme-grid-cell>
+    <acme-grid-cell>5</acme-grid-cell>
+    <acme-grid-cell>6</acme-grid-cell>
+  </acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system guide-width=&quot;1&quot; use-container&gt;
+  &lt;acme-grid columns=&quot;3&quot; rows=&quot;2&quot;&gt;
+    &lt;acme-grid-cross column=&quot;1&quot; row=&quot;1&quot;&gt;&lt;/acme-grid-cross&gt;
+    &lt;acme-grid-cross column=&quot;4&quot; row=&quot;1&quot;&gt;&lt;/acme-grid-cross&gt;
+    &lt;acme-grid-cross column=&quot;4&quot; row=&quot;3&quot;&gt;&lt;/acme-grid-cross&gt;
+    &lt;acme-grid-cross column=&quot;1&quot; row=&quot;3&quot;&gt;&lt;/acme-grid-cross&gt;
+    &lt;acme-grid-cell&gt;1&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;2&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;3&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;4&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;5&lt;/acme-grid-cell&gt;
+    &lt;acme-grid-cell&gt;6&lt;/acme-grid-cell&gt;
+  &lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> <span class="th-token th-attr">guide-width</span>=<span class="th-token th-string">&quot;1&quot;</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;3&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;4&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;4&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;3&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;3&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;1&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="8">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;2&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="9">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;3&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="10">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;4&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="11">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;5&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="12">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;6&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="13">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="14">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="dashed-grid-with-cross"><h2>Dashed grid with cross<a href="#dashed-grid-with-cross" aria-label="Link to Dashed grid with cross">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-system dashed-guides guide-width="1" use-container>
+  <acme-grid columns="1" rows="1">
+    <acme-grid-cross column="1" row="1"></acme-grid-cross>
+    <acme-grid-cross column="2" row="2"></acme-grid-cross>
+    <acme-grid-cross column="2" row="1"></acme-grid-cross>
+    <acme-grid-cross column="1" row="2"></acme-grid-cross>
+    <acme-grid-cell>Content here</acme-grid-cell>
+  </acme-grid>
+</acme-grid-system></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-system dashed-guides guide-width=&quot;1&quot; use-container&gt;
+  &lt;acme-grid columns=&quot;1&quot; rows=&quot;1&quot;&gt;
+    &lt;acme-grid-cross column=&quot;1&quot; row=&quot;1&quot;&gt;&lt;/acme-grid-cross&gt;
+    &lt;acme-grid-cross column=&quot;2&quot; row=&quot;2&quot;&gt;&lt;/acme-grid-cross&gt;
+    &lt;acme-grid-cross column=&quot;2&quot; row=&quot;1&quot;&gt;&lt;/acme-grid-cross&gt;
+    &lt;acme-grid-cross column=&quot;1&quot; row=&quot;2&quot;&gt;&lt;/acme-grid-cross&gt;
+    &lt;acme-grid-cell&gt;Content here&lt;/acme-grid-cell&gt;
+  &lt;/acme-grid&gt;
+&lt;/acme-grid-system&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-system</span> dashed-guides <span class="th-token th-attr">guide-width</span>=<span class="th-token th-string">&quot;1&quot;</span> use-container&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;1&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="4">    &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;2&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="5">    &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;2&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="6">    &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="7">    &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;Content here&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="8">  &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="9">&lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="dashed-grid-with-grid-page"><h2>Dashed grid with grid page<a href="#dashed-grid-with-grid-page" aria-label="Link to Dashed grid with grid page">#</a></h2><div class="doc-body"><div class="showcase"><div class="preview"><acme-grid-page>
+  <acme-grid-system dashed-guides guide-width="1">
+    <acme-grid columns="1" rows="1">
+      <acme-grid-cross column="1" row="1"></acme-grid-cross>
+      <acme-grid-cross column="2" row="2"></acme-grid-cross>
+      <acme-grid-cross column="2" row="1"></acme-grid-cross>
+      <acme-grid-cross column="1" row="2"></acme-grid-cross>
+      <acme-grid-cell>Content here</acme-grid-cell>
+    </acme-grid>
+  </acme-grid-system>
+</acme-grid-page></div><button class="showbar" aria-expanded="false"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-chev"/></svg>Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="&lt;acme-grid-page&gt;
+  &lt;acme-grid-system dashed-guides guide-width=&quot;1&quot;&gt;
+    &lt;acme-grid columns=&quot;1&quot; rows=&quot;1&quot;&gt;
+      &lt;acme-grid-cross column=&quot;1&quot; row=&quot;1&quot;&gt;&lt;/acme-grid-cross&gt;
+      &lt;acme-grid-cross column=&quot;2&quot; row=&quot;2&quot;&gt;&lt;/acme-grid-cross&gt;
+      &lt;acme-grid-cross column=&quot;2&quot; row=&quot;1&quot;&gt;&lt;/acme-grid-cross&gt;
+      &lt;acme-grid-cross column=&quot;1&quot; row=&quot;2&quot;&gt;&lt;/acme-grid-cross&gt;
+      &lt;acme-grid-cell&gt;Content here&lt;/acme-grid-cell&gt;
+    &lt;/acme-grid&gt;
+  &lt;/acme-grid-system&gt;
+&lt;/acme-grid-page&gt;"></acme-copy-button><pre class="th-code th-code--html th-code--line-numbers" data-language="html"><code><span class="th-line" data-line="1">&lt;<span class="th-token th-tag">acme-grid-page</span>&gt;</span>
+<span class="th-line" data-line="2">  &lt;<span class="th-token th-tag">acme-grid-system</span> dashed-guides <span class="th-token th-attr">guide-width</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;</span>
+<span class="th-line" data-line="3">    &lt;<span class="th-token th-tag">acme-grid</span> <span class="th-token th-attr">columns</span>=<span class="th-token th-string">&quot;1&quot;</span> <span class="th-token th-attr">rows</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;</span>
+<span class="th-line" data-line="4">      &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="5">      &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;2&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="6">      &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;2&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;1&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="7">      &lt;<span class="th-token th-tag">acme-grid-cross</span> <span class="th-token th-attr">column</span>=<span class="th-token th-string">&quot;1&quot;</span> <span class="th-token th-attr">row</span>=<span class="th-token th-string">&quot;2&quot;</span>&gt;&lt;/<span class="th-token th-tag">acme-grid-cross</span>&gt;</span>
+<span class="th-line" data-line="8">      &lt;<span class="th-token th-tag">acme-grid-cell</span>&gt;Content here&lt;/<span class="th-token th-tag">acme-grid-cell</span>&gt;</span>
+<span class="th-line" data-line="9">    &lt;/<span class="th-token th-tag">acme-grid</span>&gt;</span>
+<span class="th-line" data-line="10">  &lt;/<span class="th-token th-tag">acme-grid-system</span>&gt;</span>
+<span class="th-line" data-line="11">&lt;/<span class="th-token th-tag">acme-grid-page</span>&gt;</span></code></pre></div></div></div></div><div class="doc-sec" id="api"><h2>API<a href="#api" aria-label="Link to API">#</a></h2><p>Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.</p><div class="doc-body"><div class="api-el" id="api-acme-grid-system"><h3><code>&lt;acme-grid-system&gt;</code><small>AcmeGridSystem</small></h3><p>The frame every `acme-grid` sits in: a box up to 1080px wide (368px at least) that draws the
+outer guide border and gives its grids the guide width, the guide and cross colors and the
+width they lay out from (the viewport, or with `use-container` the system's own container).
+The first two children lay out in the box; the rest sit in a lazy-content box below them.
+`debug` tints the guides amber and names the breakpoint in a corner overlay; `dashed-guides`
+draws every guide dashed.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">guide-width</td><td class="mono">guideWidth</td><td class="type">number | string</td><td class="mono">—</td><td>The guide line width: a number of px or a length.</td></tr><tr><td class="mono">guide-color</td><td class="mono">guideColor</td><td class="type">string</td><td class="mono">—</td><td></td></tr><tr><td class="mono">cross-color</td><td class="mono">crossColor</td><td class="type">string</td><td class="mono">—</td><td></td></tr><tr><td class="mono">max-width</td><td class="mono">maxWidth</td><td class="type">number | string</td><td class="mono">—</td><td>The widest the system lays out (1080px): a number of px or a length.</td></tr><tr><td class="mono">min-width</td><td class="mono">minWidth</td><td class="type">number | string</td><td class="mono">—</td><td>The narrowest the system lays out (368px): a number of px or a length.</td></tr><tr><td class="mono">debug</td><td class="mono">debug</td><td class="type">boolean</td><td class="mono">false</td><td>Amber guides, tinted cells, and the breakpoint's name in the corner.</td></tr><tr><td class="mono">dashed-guides</td><td class="mono">dashedGuides</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">use-container</td><td class="mono">useContainer</td><td class="type">boolean</td><td class="mono">false</td><td>The grids lay out from the system's own width, not the viewport's.</td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr><tr><td class="mono">lazy</td></tr></tbody></table></div><div class="api-el" id="api-acme-grid"><h3><code>&lt;acme-grid&gt;</code><small>AcmeGrid</small></h3><p>A grid of `columns` by `rows` tracks inside an `acme-grid-system`: the section takes the system's
+width and draws a guide behind every track; the cells (`acme-grid-cell`) and crosses
+(`acme-grid-cross`) are its slotted children. Both counts take one number or a value per breakpoint
+(`{"sm":1,"md":2,"lg":3}`); the guides are then drawn once per breakpoint and shown by media query.
+A solid cell clips the guides it covers. The system's debug and dashed modes reach the section as
+`data-debug` and `data-dashed`.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">columns</td><td class="mono">columns</td><td class="type">Responsive&lt;number&gt;</td><td class="mono">1</td><td></td></tr><tr><td class="mono">rows</td><td class="mono">rows</td><td class="type">Responsive&lt;number&gt;</td><td class="mono">1</td><td></td></tr><tr><td class="mono">height</td><td class="mono">height</td><td class="type">Responsive&lt;string | number&gt;</td><td class="mono">"fit-content"</td><td>`fit-content` (the default), `preserve-aspect-ratio` (square cells: the height follows the width and the counts), a number of px, or a `var()`.</td></tr><tr><td class="mono">hide-guides</td><td class="mono">hideGuides</td><td class="type">boolean | "row" | "column"</td><td class="mono">false</td><td>Hides every guide (a bare attribute), the row guides or the column guides.</td></tr><tr><td class="mono">dashed-guides</td><td class="mono">dashedGuides</td><td class="type">boolean</td><td class="mono">false</td><td>Draws the guides dashed.</td></tr><tr><td class="mono">no-system-border</td><td class="mono">noSystemBorder</td><td class="type">boolean</td><td class="mono">false</td><td>Drops the section's bottom border.</td></tr><tr><td class="mono">use-container</td><td class="mono">useContainer</td><td class="type">boolean</td><td class="mono">false</td><td>Reads the breakpoint from the system's container instead of the viewport.</td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr></tbody></table></div><div class="api-el" id="api-acme-grid-cell"><h3><code>&lt;acme-grid-cell&gt;</code><small>AcmeGridCell</small></h3><p>A cell of `acme-grid`: a padded box on the tracks its `row` and `column` name, a line number,
+a `start/end` span or `auto` (flowing into the next free tracks), plain or per breakpoint as
+JSON. A `solid` cell needs both, and clips the guides it covers. The cell draws over the guides;
+`behind-grid` puts it under them; `no-padding` and `overflow` open the box; `hide` names the
+breakpoints at which the cell is not displayed.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">row</td><td class="mono">row</td><td class="type">Responsive&lt;GridPosition&gt;</td><td class="mono">"auto"</td><td></td></tr><tr><td class="mono">column</td><td class="mono">column</td><td class="type">Responsive&lt;GridPosition&gt;</td><td class="mono">"auto"</td><td></td></tr><tr><td class="mono">solid</td><td class="mono">solid</td><td class="type">boolean</td><td class="mono">false</td><td>Clips the guides the cell covers. Needs an explicit `row` and `column`.</td></tr><tr><td class="mono">no-padding</td><td class="mono">noPadding</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">overflow</td><td class="mono">overflow</td><td class="type">boolean</td><td class="mono">false</td><td>Lets content overflow the cell.</td></tr><tr><td class="mono">behind-grid</td><td class="mono">behindGrid</td><td class="type">boolean</td><td class="mono">false</td><td>Draws the cell under the guides.</td></tr><tr><td class="mono">hide</td><td class="mono">hide</td><td class="type">Breakpoint[] | Breakpoint</td><td class="mono">[]</td><td>The breakpoints at which the cell is hidden.</td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">(default)</td></tr></tbody></table></div><div class="api-el" id="api-acme-grid-cross"><h3><code>&lt;acme-grid-cross&gt;</code><small>AcmeGridCross</small></h3><p>A cross on a guide intersection of `acme-grid`: `row` and `column` are grid line numbers (1 is
+the first line, the count plus one the last), plain or per breakpoint as JSON. 21px wide on large
+screens, 15px on medium, 11px on small; two lines in the cross color, as wide as the guides.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">row</td><td class="mono">row</td><td class="type">Responsive&lt;number&gt;</td><td class="mono">1</td><td></td></tr><tr><td class="mono">column</td><td class="mono">column</td><td class="type">Responsive&lt;number&gt;</td><td class="mono">1</td><td></td></tr></tbody></table></div><div class="api-el" id="api-acme-grid-page"><h3><code>&lt;acme-grid-page&gt;</code><small>AcmeGridPage</small></h3><p>The page a grid system sits on: a background-200 column with 16px of vertical padding on
+small screens, 32px on medium and 90px on large. A `banner` slot goes above the content and
+takes the place of the top padding on large screens; `remove-padding-y` drops the padding,
+`remove-bottom-margin` pulls the page up by the width of a guide.</p><h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td class="mono">remove-padding-y</td><td class="mono">removePaddingY</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr><tr><td class="mono">remove-bottom-margin</td><td class="mono">removeBottomMargin</td><td class="type">boolean</td><td class="mono">false</td><td></td></tr></tbody></table><h4>Slots</h4><table class="doc-table"><tbody><tr><td class="mono">banner</td></tr><tr><td class="mono">(default)</td></tr></tbody></table></div></div></div><div class="doc-sec" id="best-practices"><h2>Best Practices<a href="#best-practices" aria-label="Link to Best Practices">#</a></h2><div class="doc-body"><div class="practices"><h3>When to use</h3><ul><li>Grid is for two-dimensional cell-and-guide layouts on marketing pages, docs landings and feature breakdowns, where the rule lines and cell borders are part of the design.</li><li>Plain n-column content (cards, lists) is a CSS grid; Grid is too much when no guide is visible.</li><li>Nest Grids one level at most. Deeper, the guides overlap into noise and the cell math breaks.</li></ul><h3>Behavior</h3><ul><li>Set columns and rows at all three breakpoints so cells reflow the same way on mobile, tablet and desktop.</li><li>A solid cell hides the guides behind it when content needs an opaque background; without it the guides run through the cell.</li><li>Hide row or column guides only where their absence helps (single-axis layouts, hero rows). Hiding both usually means a plain CSS grid is the right tool.</li></ul><h3>Accessibility</h3><ul><li>Guides are decorative and aria-hidden; the semantics live in the cell content.</li><li>When a cell becomes tappable, give it its own focus ring and keep the tab order in reading order.</li><li>Check guide contrast on both themes; the default tokens pass, custom borders can drop under 3:1.</li></ul></div></div></div></article>

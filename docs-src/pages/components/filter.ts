@@ -10,7 +10,7 @@ export const doc: Doc = {
   examples: [
     {
       h: "Filter row",
-      html: `<acme-filters><acme-filter add><svg class="ic" slot="icon" aria-hidden="true"><use href="#i-filter"/></svg>Add Filter</acme-filter><acme-filter key="Status" value="Error" removable></acme-filter><acme-filter key="Author" value="loriensleafs" suggest></acme-filter></acme-filters>`,
+      html: `<acme-filters><acme-filter add><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-filter"/></svg>Add Filter</acme-filter><acme-filter key="Status" value="Error" removable></acme-filter><acme-filter key="Author" value="loriensleafs" suggest></acme-filter></acme-filters>`,
     },
   ],
 };

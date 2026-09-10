@@ -7,7 +7,8 @@ import type { ElementApi } from "./api";
 import { formatHtml, highlightHtml } from "./format";
 
 /** `script` runs after the example mounts, as `(root) => {...}` with the preview element; it is shown under the markup in the code panel. */
-export type Example = { h: string; p?: string; html: string; code?: string; script?: string };
+/** `census`: the example exists for the parity census only (a state the reference page does not show); it renders on the element's census page, never on its docs page or its Markdown twin. */
+export type Example = { h: string; p?: string; html: string; code?: string; script?: string; census?: boolean };
 export type Doc = {
   id: string;
   title: string;
@@ -19,6 +20,8 @@ export type Doc = {
   practices?: Record<string, string[]>;
   /** Raw sections rendered after the examples (foundations pages). */
   body?: string;
+  /** Markdown lines appended to the page's .md twin only: sections the reference's Markdown carries that its page does not render. */
+  md?: string[];
 };
 export type Nav = { group: string; items: { title: string; href: string; house?: boolean }[] }[];
 
@@ -30,7 +33,7 @@ export const VERSION = pkg.version;
 export const REPO = pkg.repository.url.replace(/^git\+/, "").replace(/\.git$/, "");
 
 export const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-export const ic = (n: string, extra = "") => `<svg class="ic"${extra} aria-hidden="true"><use href="#i-${n}"/></svg>`;
+export const ic = (n: string, extra = "") => `<svg class="ic" width="16" height="16"${extra} aria-hidden="true"><use href="#i-${n}"/></svg>`;
 
 /* ---------- page rules (tokens only) ---------- */
 export const pageCss = `
@@ -60,7 +63,7 @@ export const pageCss = `
 .doc-sec > p + .doc-body{margin-top:24px}
 .showcase{border:1px solid var(--ds-gray-alpha-400);background:var(--ds-background-100);border-radius:var(--r);overflow:hidden}
 .showcase + .showcase{margin-top:24px}
-.showcase .preview{padding:24px;overflow-x:auto}
+.showcase .preview{padding:24px;overflow-x:auto;font-size:16px;line-height:1.5}
 .showcase .showbar{height:48px;display:flex;align-items:center;gap:8px;padding:0 16px;background:var(--ds-background-200);border:0;border-top:1px solid var(--ds-gray-alpha-400);width:100%;text-align:left;font:inherit;font-size:14px;line-height:20px;color:var(--text-2);cursor:pointer}
 .showcase .showbar:hover{color:var(--text)}
 .showcase .showbar .ic{transition:transform var(--dur) var(--ease)}
@@ -96,26 +99,55 @@ export const pageCss = `
 .link-tile .t{font-size:16px;line-height:24px;font-weight:600}
 .link-tile .d{font-size:14px;line-height:20px;color:var(--text-2)}
 .swatch-row{display:flex;align-items:center;gap:8px;margin-bottom:24px}
-.swatch-row .n{width:100px;flex:none;font-size:14px;line-height:20px;font-weight:500;text-transform:capitalize}
-.swatch-row .sw{width:68px;height:40px;border-radius:4px;box-shadow:var(--ds-shadow-border-inset);flex:1 1 0;min-width:0}
-.swatch-steps{display:flex;gap:8px;margin-bottom:8px;padding-left:108px;font-family:var(--mono);font-size:11px;color:var(--text-2)}
-.swatch-steps span{flex:1 1 0;text-align:center}
+.swatch-row .n{width:100px;flex:none;font-size:14px;line-height:20px;font-weight:500}
+.swatch-row docs-swatch{flex:1 1 0;min-width:0;max-width:68px;display:flex}
+.swatch-row acme-tooltip{display:grid;grid-template-columns:minmax(0,1fr);width:100%}
+.swatch-row .sw{display:block;width:100%;height:40px;border:0;padding:0;border-radius:4px;box-shadow:var(--ds-shadow-border-inset);cursor:copy}
+.swatch-row .sw:focus-visible{outline:none;box-shadow:var(--ds-focus-ring)}
 .def-row{display:flex;align-items:center;gap:12px;height:40px;border-bottom:1px solid var(--border);font-size:14px;line-height:20px}
 .def-row .d{width:16px;height:16px;border-radius:50%;flex:none;box-shadow:var(--ds-shadow-border-inset)}
 .def-row b{font-weight:500;min-width:140px}
 .def-row span{color:var(--text-2)}
 .demo-box{margin-top:16px;padding:24px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.mat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px}
-.mat-grid .box{height:120px;border-radius:6px;background:var(--surface);display:flex;flex-direction:column;justify-content:flex-end;padding:12px;font-size:14px;line-height:20px}
-.mat-grid .box small{font-family:var(--mono);font-size:12px;color:var(--text-2)}
-.mat-grid .box.r12{border-radius:12px} .mat-grid .box.r16{border-radius:16px}
-.mat-ground{padding:32px;background:var(--surface-2);border-radius:var(--r)}
-.type-table td.ex{color:var(--text);width:50%}
+.mat-ex{max-width:240px;height:100px;display:flex;align-items:flex-end;padding:12px;font-family:var(--mono);font-size:12px;color:var(--text-2)}
+.type-table td.ex{color:var(--text);width:50%;white-space:nowrap}
+.type-table td.ex>span{display:block}
+.table-scroll{overflow-x:auto}
+.tile-icons{display:flex;flex-direction:column;gap:28px;width:100%;color:var(--text-2)}
+.tile-icons span{display:flex;justify-content:space-between}
+.tile-comps{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;pointer-events:none}
+.tile-dots{display:flex;justify-content:space-between;width:100%}
+.tile-dots span{width:32px;height:32px;border-radius:50%;background:var(--ds-background-200);border:1px solid var(--ds-gray-alpha-400);display:grid;place-items:center}
+.tile-dots span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--c);animation:docs-pulse 2s ease-in-out infinite}
+@keyframes docs-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.6}}
+.tile-type{display:grid;grid-template-columns:1fr 1fr;width:100%;height:80px;border:1px solid var(--border);color:var(--ds-gray-700)}
+.tile-type span{display:grid;place-items:center;text-align:center}
+.tile-type span:first-child{border-right:1px dashed var(--ds-gray-400)}
+.ex-split{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ds-gray-400);background:var(--ds-background-100)}
+.ex-split>div{display:grid;place-items:center;padding:48px 24px}
+.ex-split>div+div{border-left:1px solid var(--ds-gray-400)}
+.ex-cell{display:flex;gap:8px;padding:16px;border:1px solid var(--ds-gray-400);background:var(--ds-background-100)}
+.ex-cell span{width:24px;height:24px;display:grid;place-items:center;font-family:var(--mono);font-size:12px;background:var(--ds-gray-alpha-100)}
+.ex-cell span:first-child{border-radius:50%}
+.ex-logs{border:1px solid var(--ds-gray-400);background:var(--ds-background-100)}
+.ex-logs ul{list-style:none;margin:0;padding:8px;display:flex;flex-direction:column;align-items:center}
+.ex-logs li{display:flex;align-items:center;gap:12px;height:40px;width:100%;max-width:420px;padding:0 12px;border-radius:4px;color:var(--ds-gray-900);cursor:pointer}
+.ex-logs li:hover{background:var(--ds-gray-100)}
+.ex-logs li:active{background:var(--ds-gray-200)}
+.ex-logs li.warn,.ex-logs li.warn:hover{background:var(--ds-amber-100);color:var(--ds-amber-900)}
+.ex-logs li .vr{width:1px;height:20px;background:var(--ds-gray-400)}
+.ex-logs li.warn .vr{background:var(--ds-amber-400)}
+.ex-logs .foot{display:flex;justify-content:center;gap:8px;padding:24px;border-top:1px solid var(--ds-gray-400)}
+.ex-box{border:1px solid var(--ds-gray-400);background:var(--ds-background-100);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:48px 24px}
+.ex-box.col{flex-direction:column;padding:0}
+.ex-box .icons{display:flex;justify-content:center;gap:28px;width:100%;padding:24px;border-top:1px solid var(--ds-gray-400)}
 .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .vstack{display:flex;flex-direction:column;gap:12px}
+.row-md{display:flex;flex-direction:column;gap:12px}
+@media (min-width:601px){.row-md{flex-direction:row}}
 .pager{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:24px;border-top:1px solid var(--border)}
 .foot{margin-top:48px;color:var(--text-2);font-size:12px;font-family:var(--mono);line-height:1.7}
-@media (max-width:900px){.docs{grid-template-columns:minmax(0,1fr)}.docs-side{display:none}.docs-main{padding:0 16px 64px}.doc-hero h1{font-size:24px;line-height:32px;letter-spacing:-.96px}.doc-hero p{font-size:16px;line-height:24px}.link-grid{grid-template-columns:1fr}.swatch-row .n{width:64px}.swatch-steps{padding-left:72px}}
+@media (max-width:900px){.docs{grid-template-columns:minmax(0,1fr)}.docs-side{display:none}.docs-main{padding:0 16px 64px}.doc-hero h1{font-size:24px;line-height:32px;letter-spacing:-.96px}.doc-hero p{font-size:16px;line-height:24px}.link-grid{grid-template-columns:1fr}.swatch-row .n{width:64px}}
 `;
 
 /* ---------- renderers ---------- */
@@ -131,7 +163,7 @@ export const showcase = (e: Example) => {
   const code = (e.code ?? e.html) + (e.script ? `\n<script>\n${e.script.trim()}\n</script>` : "");
   const plain = formatHtml(code);
   const attr = e.script ? ` data-script="${esc(e.script).replace(/"/g, "&quot;")}"` : "";
-  return `<div class="showcase"${attr}><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chev")}Show code</button><div class="code"><acme-copy-button label="Copy code" text="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
+  return `<div class="showcase"${attr}><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chev")}Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
 };
 
 const practices = (p?: Record<string, string[]>) =>
@@ -171,8 +203,17 @@ const apiTables = (els: ElementApi[]) =>
 
 export const docPage = (d: Doc, api: ElementApi[]) =>
   `<article class="doc" id="${d.id}"><div class="doc-hero"><h1>${d.title}</h1><p>${d.lede}</p>${
-    d.tags?.length ? `<div class="tags">${d.tags.map((t) => `<acme-badge hue="${d.house ? "purple" : "gray"}" subtle><code>&lt;${t}&gt;</code></acme-badge>`).join("")}</div>` : ""
-  }</div>${d.examples.map((e) => section(e.h, showcase(e), e.p)).join("")}${d.body ?? ""}${apiTables(api)}${practices(d.practices)}</article>`;
+    d.tags?.length ? `<div class="tags">${d.tags.map((t) => `<acme-badge variant="${d.house ? "purple" : "gray"}" contrast="low"><code>&lt;${t}&gt;</code></acme-badge>`).join("")}</div>` : ""
+  }</div>${
+    d.examples
+      .filter((e) => !e.census)
+      .map((e) => section(e.h, showcase(e), e.p))
+      .join("")
+  }${d.body ?? ""}${apiTables(api)}${practices(d.practices)}</article>`;
+
+/** The census page of an element: every example, the docs page's and the census-only ones, in the order the mirror renders them (page examples first, then sketches). */
+export const censusPage = (d: Doc) =>
+  `<article class="doc census" id="census-${d.id}"><div class="doc-hero"><h1>${d.title} (census)</h1><p>Every state the parity census reads; the docs page shows only the reference's sections.</p></div>${d.examples.map((e) => section(e.h, showcase(e), e.p)).join("")}</article>`;
 
 /* ---------- the shell and the fragments ---------- */
 // index.html is the app shell; 404.html is the same file, so a deep link on GitHub Pages
