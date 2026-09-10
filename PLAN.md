@@ -412,24 +412,28 @@ build, so a behaviour we never wired stays invisible. The oracle must come from 
 - [ ] Add the four cheap emulation checks: forced colors (a `box-shadow` focus ring vanishes there),
   reduced motion, touch, print.
 
-### 5.5 Check overlays against the live reference `[ ]` — blocked on browser access
+### 5.5 Compare against the live reference `[ ]`
 
-Placement, motion and keyboard behaviour cannot be measured by the census.
+**Unblocked 2026-09-10.** The Chrome DevTools protocol tools do the whole job: their own Chrome,
+navigation, the accessibility tree, script, real hover and key input, viewport and colour-scheme
+emulation. Verified against both the live reference and our local docs server in one session, including
+reaching inside our shadow roots.
 
-**Tested 2026-09-10: browser access is half working, and the missing half is the one we need.** Peter's
-Chrome accepts navigation and reports tab addresses, but **script execution and page reading both fail**.
-The error says Chrome is not running, which is wrong — it is, with a real window — but it was launched as
-a background helper and its debugging port answers 404 to the protocol's own endpoints. The extension path
-reports no connected browser.
+Two other paths are not sufficient, recorded so nobody retries them: the built-in browser pane cannot
+reach the reference and fires no timers; direct control of Peter's Chrome navigates but cannot read a
+page.
 
-So we can put a page in front of Chrome and cannot read what it rendered. Every reference comparison needs
-the reading half: computed role and name, the accessibility tree, trusted keyboard input, overlay
-placement. Details in
-[notes/analysis/behaviour-verification-method.md](notes/analysis/behaviour-verification-method.md).
+First real finding from it, already: the reference wires `aria-describedby` on a tooltip trigger **only
+while the tooltip is open**, and our page has none of its 31 tooltips open at rest. The census cannot see
+either fact.
 
-Everything that runs against localhost alone is unaffected, so this blocks only reference comparison.
-When access is fixed: use trusted driver input only, because synthetic events do not drive the reference
-at all.
+- [ ] Overlay placement and motion, per element, against the live reference
+- [ ] Computed role and accessible name, both sides, in one run
+- [ ] Keyboard behaviour with real key input: focus order, escape, arrow keys
+- [ ] The four emulation checks: forced colors, reduced motion, touch, print
+
+Use real driver input only. Synthetic events do not drive the reference at all. Compare live against
+live in the same run, so a change on their side is a reviewable difference rather than a mystery.
 
 ### 5.6 Package and practice audits `[ ]`
 

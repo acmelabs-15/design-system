@@ -178,29 +178,36 @@ event rather than a mystery failure weeks later.
 
 ---
 
-## Browser access: what works today, and what is missing
+## Browser access: solved
 
-Tested 2026-09-10 against Peter's own Chrome.
+Tested 2026-09-10. Three paths reach a browser, and only one does the whole job.
 
-Two separate paths reach a browser, and neither is currently sufficient for the parity work:
+| Path | Verdict |
+|---|---|
+| **Chrome DevTools protocol tools** (`chrome-devtools`) | **Use this.** Its own Chrome, and everything works: navigate, read the accessibility tree, run script, hover, press keys, emulate a viewport or colour scheme. |
+| The built-in browser pane | Localhost only. Cannot reach the reference, and fires no timers or animation frames, so anything waiting on one hangs. Fine for the census. |
+| Direct control of Peter's Chrome | Half working. Navigation and tab metadata succeed; **script and content reading fail**, reporting that Chrome is not running when it is. Do not use it for parity work. |
 
-| Path | Status | What it can do |
-|---|---|---|
-| The built-in browser pane | Works | Reaches localhost. **Cannot reach the reference site**, and fires no timers or animation frames, so anything waiting on one hangs. |
-| Peter's Chrome, direct control | **Half working** | Lists tabs, opens a URL, reports the current tab's address and title. **Cannot execute script or read page content.** |
-| Peter's Chrome, via the extension | Not connected | Reports no connected browser. |
+### What was verified end to end
 
-The failing calls return "Google Chrome is not running", which is misleading. Chrome *is* running: 19
-processes, a real window, and a listener on the debugging port. Two facts explain it:
+On the live reference:
 
-- Chrome was launched with `--no-startup-window`, as a background helper rather than a browser session.
-- The debugging port answers **404** to the protocol's own endpoints, so whatever holds the port is not
-  serving the debugging protocol.
+- The full accessibility tree of the tooltip page, roles and names included. This is the semantic
+  oracle the method needs.
+- **Real hover opened a tooltip**, which matters because the reference ignores synthetic events.
+- With it open: `position: absolute`, a 247 by 29 box, its transform matrix, and that
+  `aria-describedby` is wired **only while open**. That last point is behaviour our own element must
+  match and the census cannot see.
+- Press markers from the reference's button library, confirming what our saved corpus showed.
 
-So the capability gap is real and specific: **we can put a page in front of Chrome but cannot read what it
-rendered.** Every instrument in this document that compares the reference against us — computed role and
-name, the accessibility tree, trusted keyboard input, overlay placement — needs the reading half.
+On our own page, with the local docs server running:
 
-**What would close it:** the Chrome extension connecting, or Chrome started normally with the debugging
-protocol actually served. Until then the reference-comparison work in section 5.5 stays blocked, and
-everything that runs against localhost alone continues unaffected.
+- All 31 tooltip elements found, and **none open at rest**, which is what the docs cleanup was for.
+- Shadow roots are reachable, so a comparison can read inside our elements.
+
+### The rule this settles
+
+Both sides can now be driven in one session, with real input, reading computed styles and the
+accessibility tree from each. So compare **live against live in the same run** rather than against a
+stored baseline: a change on the reference's side then shows up as a reviewable difference instead of a
+mystery failure weeks later.
