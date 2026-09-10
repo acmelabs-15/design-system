@@ -148,8 +148,8 @@ Each is one flag on a harness we already need:
 
 ## Two scope questions, not research gaps
 
-- **Right-to-left:** the reference appears to have none. Matching it means we have none either. That is
-  Peter's call, not a finding.
+- **Right-to-left: decided, none**, on the evidence that the reference has none. See
+  [../decisions/parity-scope.md](../decisions/parity-scope.md).
 - **Server rendering and hydration:** the reference is React with server components. A Lit port cannot
   follow that architecture, so there is nothing to match. Whether our elements should be
   server-renderable at all is a separate product decision.

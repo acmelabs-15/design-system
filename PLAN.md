@@ -135,6 +135,11 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
 - Tests live in `__tests__/` beside the file, named `<file>.test.ts`, using `bun:test`.
 - Decisions that are Peter's go through the question dialog, one at a time. **Commit only when
   Peter asks.**
+- **No backwards compatibility. Nobody uses this package yet.** So a better design replaces the old one
+  outright: no deprecated alias, no fallback branch, no option that keeps the previous behaviour, and no
+  comment explaining what a thing used to be. Rename or delete, and let the new name be the only name.
+  This removes a whole class of work from every decision below — a breaking change costs a release note
+  and nothing else. Revisit the moment there is a real consumer.
 - **Evidence, never inference.** Every claim about how the reference behaves traces to something
   observed: its own prose, its own example code, its compiled output, or its live behaviour. Finding
   that the reference wraps Radix, cmdk or react-aria tells us *where to look*, never what the answer
@@ -464,7 +469,7 @@ is the better call:
   names a kind of thing rather than an appearance — chart's shape, choicebox's selection mode, file's
   icon, breadcrumbs' layout, and the real HTML attribute on button, copy-button, split-button and input.
   The test and the reasoning are in [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md).
-  **This breaks the 0.2.0 interface on seven elements**, so it belongs in the next release notes.
+  It changes the 0.2.0 interface on seven elements, which costs a release note and nothing more.
 - [ ] Sweep the same way for every other concept that may carry two names (size, shape, state).
 - [ ] Select: decide the house-only `options` property, which feedback uses `[?]`
 - [ ] Foundations pages: the reference's exact heading levels, or ours `[?]`
@@ -500,7 +505,17 @@ Ask Peter once, then: commit, push, docs deploy, npm release.
 
 ---
 
-## 7. Deferred, decided
+## 7. Decided, and deferred
+
+**No right-to-left support.** Decided 2026-09-10 on evidence: the reference has none. Zero `dir`
+attributes, zero direction selectors, and it mixes 87 physical properties with 75 logical ones, which
+would break in a right-to-left context. Our modules inherited that mix faithfully. Supporting it would
+mean *deviating* from the reference on several hundred declarations, each becoming a census difference to
+accept. Reasoning in [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md).
+
+**No backwards compatibility, ever, until there is a real consumer.** Nobody uses the package yet, so a
+better design replaces the old one outright. No alias, no fallback, no comment about what a thing used to
+be. This is in the standing rules because it removes work from every decision here.
 
 - **Scoped custom element registries** (`@lit-labs/scoped-registry-mixin`): one pass after the
   port, before 1.0. Every composing element lists what it composes. The polyfill loads only where

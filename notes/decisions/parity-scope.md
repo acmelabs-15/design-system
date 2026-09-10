@@ -91,6 +91,36 @@ inconsistency costs them on every element they touch, while an unfamiliar name c
 contact with that element. So the first test outranks the third even when they point in opposite
 directions, and this is now the written tie-breaker rather than a judgement to re-make each time.
 
+## Decided: no right-to-left support, because the reference has none
+
+Decided 2026-09-10, on evidence rather than preference. Peter's position was that it is not a priority
+unless it comes free with the reference's own implementation. It does not.
+
+What the reference actually does, measured across its saved stylesheets and pages:
+
+| Signal | Count |
+|---|---|
+| `dir="rtl"` anywhere | 0 files |
+| A `[dir=…]` or `:dir()` selector | 0 files |
+| A right-to-left variant prefix in its utilities | 0 files |
+| Physical properties (`margin-left`, `padding-left`) | 87 declarations |
+| Logical properties (`margin-inline`, `padding-inline`, `inset-inline`) | 75 declarations |
+
+The reference mixes physical and logical properties freely and has no direction handling at all, so it
+would break in a right-to-left context. Our generated modules inherited the same mix, faithfully: 101
+physical declarations against 74 logical, plus 263 uses of `left` and `right`.
+
+**So supporting right-to-left is not "pulling in" anything from the reference. It would be deviating from
+it** on several hundred declarations, and every one of those deviations is a place the census would then
+report a difference we would have to accept as a leftover. That trades our strongest quality signal for a
+capability the reference does not have.
+
+**Decision: no right-to-left support.** Matching the reference means matching this too.
+
+If a real consumer ever needs it, the work is a deliberate project of its own: convert physical to logical
+throughout, add direction handling, and accept a documented set of census leftovers. Not a checkbox on
+this port.
+
 ## Applying it from here
 
 When a naming difference appears, record it and move on rather than reopening this decision. Where a
