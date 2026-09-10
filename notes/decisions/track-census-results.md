@@ -57,3 +57,26 @@ Both were tested before being recorded here.
 
 **A clean result is only a pass if the two sides compared the same number of roots, and that number is
 not zero.** The tools now enforce it, so it cannot be forgotten under time pressure.
+
+## It worked, within the hour
+
+The tracking decision paid off almost immediately, and in a way worth recording because I nearly threw
+the benefit away.
+
+I had overwritten the scroller measurements before understanding the page, and reported to Peter that
+the evidence was gone and the page was blocked. **Peter pointed out that tracking the results should
+mean they were recoverable.** He was right:
+
+- The original **config** was in the pipeline commit, `5c1dcbe`, from before this session.
+- The original **results** were in the tracking commit, `9ee502e`, captured the moment the ignore rule
+  was lifted.
+
+Both restored in one command, and the page went from "blocked, needs care" to parity in minutes.
+
+The recovered config also answered the question I could not: its marker reads inside sketch sections
+only, which is why the mirror's 14 previews yield 9 roots. My reconstruction had read all 14, which is
+what made the page look mismatched.
+
+**The rule: check the history before declaring evidence lost.** A claim that something is unrecoverable
+is a claim like any other, and it needs checking rather than asserting — the same rule as never
+answering from memory.

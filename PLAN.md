@@ -413,13 +413,26 @@ differences point at something real.
 - [x] **pagination — at parity.** Its 1 difference was the gap between the links. The row is
   `space-between`, so that gap absorbs whatever the link text leaves, and the text is set in our own
   font. Read as soft, with `width` fixing both previews at 600px.
-- [!] **scroller-narrow — blocked, needs care.** The mirror shows **14 previews** where our census page
-  shows **9**, and the reference's markdown lists five sections against our nine examples (five public,
-  four census-only). I have not established what the mirror's extra previews are.
+- [x] **scroller-narrow — at parity.** Recovered from git rather than rebuilt, on Peter's prompt: the
+  original config was in the pipeline commit and the original results in the tracking commit, so
+  nothing was lost after all.
 
-  **I overwrote the original measurements before understanding this**, so I cannot see what the working
-  run did. Results are tracked from now on, so it cannot recur, but for this page the evidence is gone.
-  Rebuilding it means working out what the 14 previews are and which pair with ours.
+  Two things the recovered config explained at once:
+
+  - **The marker reads inside sketch sections only** — `[data-sketch] [data-geist-scroller]`. That is
+    why the mirror's 14 previews yield 9 roots, matching ours. My guessed marker read all 14, which is
+    what made the page look mismatched.
+  - **The one difference was already diagnosed by the previous session and never recorded.** The grid
+    tracks are `1fr 1fr`, so each resolves to half the stage width: 276px on the reference's 552px
+    sketch stage against 259px on ours. A stage-width difference like every other soft width. Now
+    recorded as soft, so it stops reporting.
+
+  Both sides run at a 600px viewport, as the config specifies, to exercise the mobile-grid rule.
+
+  **The lesson is about method, not scroller.** I had written this page off as unrecoverable. Peter
+  pointed out that tracking the results should mean it was recoverable, and it was. **Check the history
+  before declaring evidence lost.**
+
 - [ ] Remaining, in cost order: pagination (1), tabs (1), scroller-narrow (1), description (6),
   error (2), search-init (2), snippet (2), input (4), pagination-next (4), progress (6),
   clearable-input (6), tab (20), code-block (31), badge (51), split-button (60), book (142),
