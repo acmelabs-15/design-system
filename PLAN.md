@@ -283,6 +283,10 @@ This trips people up, so it is written out.
   case: the reference's code-block page carries `[aria-label="Hello world"] { margin: 0 !important }`,
   unlayered and keyed on the literal demo string, which zeroes a margin the component really has.
 
+  It also cuts the other way: a page rule that styles their demo *towards* what we happen to do hides
+  a real difference and reads as a clean pass. **Section 5.1b is the audit for both directions**, and
+  it covers the pages at zero hard differences as well as the ones that report.
+
 - **When a rule seems not to exist, suspect the search before the page.** A walk over
   `document.styleSheets` must recurse into every grouping rule — `@layer`, `@media`, `@supports`,
   `@container` — or it silently walks past their contents. The reference ships Tailwind v4, whose
@@ -426,6 +430,53 @@ the mechanical half and prints the five judgement fields it refuses to guess), t
 `bun tools/geist/diff.ts <page>` and `<page>.dark` until hard is zero.
 
 67 of 125 roots still have no saved config. Save one for every root touched.
+
+### 5.1b Audit every measured root for page-furniture contamination `[ ]`
+
+**Raised 2026-09-10, by Peter, after the code-block case. Not yet started.**
+
+The census reads the reference's **rendered** page. A rule its docs page applies to its own demos is
+therefore indistinguishable from a rule the component carries, and nothing in the harness separates
+them. Every number we have is exposed to this.
+
+The case that surfaced it: the reference's code-block page carries
+
+```css
+[aria-label="Hello world"] { margin: 0 !important }
+```
+
+unlayered, `!important`, and keyed on the literal demo string, so `"Hello worlds"` does not trigger
+it. It zeroes a `margin-block: 1rem` the component really has. Our element was correct and the census
+reported ten hard differences against it. I misread that as the class being inert and put it in the
+map's `ignore` list, which would have deleted a real declaration from our stylesheet permanently.
+
+**It cuts both ways, and the second direction is worse.** A page rule can
+
+- **invent** a difference, by styling their demo away from what the component does — what happened
+  here, and at least it reports something; or
+- **hide** one, by styling their demo *towards* whatever we happen to do. That reads as a clean pass.
+  **So the 103 pages at zero hard differences are not exempt from this audit.** They are the larger
+  and quieter risk.
+
+What the audit has to do, per measured root:
+
+- [ ] For every property the census reads, find the rule that actually wins on the reference, in the
+      browser, with a walk that recurses into `@layer`, `@media`, `@supports` and `@container` —
+      the reference ships Tailwind v4, whose `utilities` layer alone holds 2,482 rules, and a walk
+      that misses them reports "no rule matches" for a rule that plainly applies.
+- [ ] Classify each winning rule as the component's or the page's. A selector keyed on a demo's own
+      content (`[aria-label="Hello world"]`), or an unlayered rule beating the utilities layer, is
+      the page's.
+- [ ] Where the page's rule wins, record the component's own value as the target and the page rule as
+      the reason, so the difference stops reporting without deleting anything.
+
+**Best done as a tool, not by hand.** The reading is mechanical: for each root and property, the
+winning rule and its selector. A `provenance.js` beside `census.js` could emit that alongside the
+readings, and the diff could then say "the reference's page wins this one" rather than "hard". That
+also makes the result durable — a re-run re-derives it instead of trusting a note.
+
+Until this runs, treat any single hard difference with no plausible source in the component as
+suspect, and find the winning rule before changing anything.
 
 ### 5.2 Fix what survives `[~]`
 
