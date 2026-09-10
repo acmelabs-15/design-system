@@ -50,9 +50,21 @@ export class AcmeCodeBlock extends AcmeElement {
       :host {
         display: block;
       }
-      /* The floating copy button's host takes no line of its own: the button inside it is positioned over the code. */
-      acme-button.floating {
+      /* The reference has no host between the frame and its floating button: the button itself is the
+         absolutely-positioned box. Ours has two, acme-copy-button and the acme-button inside it, and
+         an in-flow inline box takes a line of the frame's 24px line-height, which pushed the code
+         down and left the button floating in the gap above it. A block host of zero height takes no
+         line, and the frame stays the positioning context its absolute button resolves against. */
+      acme-copy-button.floating {
         display: block;
+        height: 0;
+      }
+      /* The strip carries the reference's scrolling tab-strip rule, which is right for their
+         underlined tabs. Our acme-switch is a bordered segmented control, and its ring is a
+         box-shadow, which paints outside the border box and so is clipped by that scrolling.
+         One pixel of padding on each side gives the ring its room. */
+      .strip {
+        padding: 1px;
       }
     `,
   ];
@@ -161,7 +173,6 @@ export class AcmeCodeBlock extends AcmeElement {
                     ? html`<acme-select
                         class="switcher"
                         size="small"
-                        variant="secondary"
                         .options=${switcher}
                         .value=${this.value}
                         aria-label="Language"

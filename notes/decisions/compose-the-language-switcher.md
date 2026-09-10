@@ -56,3 +56,18 @@ before dispatching its own. Verified in the browser: one event per change, from 
 - `tools/geist/maps/code-block-switcher.ts`
 - the `.switcher` wrapper, the `.face` div, the native `<select>`, the `current` lookup, the
   `switcherEl` query and the `switcherInteraction` controller
+
+## Three rendering defects the first version shipped, all found by Peter in the browser
+
+Composing put our elements inside a frame styled for the reference's own controls. Each defect is
+the same shape: a rule written for their box applied to ours, which is a different box.
+
+| Defect | Cause | Fix |
+|---|---|---|
+| The floating copy button sat in a 24px gap above the code | Composing added two host boxes between the frame and the button. The reference has none: its button *is* the absolutely-positioned box. An in-flow inline host takes a line of the frame's 24px `line-height`, which pushed the content down and left the button floating in the gap. The rule meant to prevent this named `acme-button.floating`, but since composing the class sits on `acme-copy-button`, so it matched nothing. | A block host of zero height. It takes no line, and the frame stays the positioning context the absolute button resolves against. |
+| The select's chevron was not flush, the field shifted 12px left | I set `variant="secondary"` when composing. That variant is documented on the element as "no ring, the field shifted 12px left" — a borderless select for inline use, applying `translate: -0.75rem 0`. The switcher is a bordered control in a toolbar. | The default variant. Verified against the select docs page: the native field now aligns with its wrap at offset 0, chevron 12px from the right edge. |
+| The switch's ring was clipped on the left, top and bottom | The map pointed our `acme-switch` at the reference's `data-geist-tabs` node, so the generator wrote their scrolling tab-strip rules onto it, including `overflow-x: auto`. A `box-shadow` ring paints outside the border box, so a scrolling ancestor clips it. | The switch is no longer mapped to their tabs node — we chose a different element deliberately, and `acme-switch` carries its own generated styles. The strip takes 1px of padding to give the ring its room. The generator now reports their tab list as an unmapped child, which is accurate and recorded in the map. |
+
+`display: contents` was tried first for the floating host and is wrong: it removes the host box but
+promotes the inner `acme-button` into the frame's flow, where its `inline-block` display takes the
+same 24px line. Measured, not assumed.

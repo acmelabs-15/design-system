@@ -198,6 +198,26 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   16px layer instead of the button's label wrapper, widening it past a frame with `overflow: hidden`.
   Both boxes hold the glyph, and only one takes the padding. Read the reference's subtree in the
   spec and match by role before naming a part.
+- **Composing adds host boxes the reference does not have, so check the flow, not just the paint.**
+  Verified 2026-09-10 on code-block's floating copy button, which sat in a 24px gap above the code.
+  The reference's button *is* the absolutely-positioned box; ours has `acme-copy-button` and
+  `acme-button` between it and the frame, and an in-flow inline host takes a line of the parent's
+  `line-height` even when everything inside it is positioned. `display: contents` does not fix this
+  — it removes the host but promotes the inner element into the same flow. A block host of zero
+  height does. Check what the composed host contributes to layout before assuming the inner
+  element's `position: absolute` settles it.
+- **A rule written for the reference's control clips ours when the two are different boxes.**
+  Verified 2026-09-10: the map pointed our `acme-switch` at the reference's tab-list node, so the
+  generator wrote their scrolling strip rules onto it. Their underlined tabs scroll correctly; our
+  segmented control has a `box-shadow` ring, which paints outside the border box and is therefore
+  clipped by a scrolling ancestor. **Where we deliberately choose a different element from the
+  reference's, do not map ours onto theirs.** Our element carries its own generated styles, and the
+  unmapped-child report that follows is accurate rather than a defect to silence.
+- **Check a composed element's variant against its own documentation, not by its name.** Verified
+  2026-09-10: I set the switcher's select to `variant="secondary"` because the toolbar reads as
+  secondary. That variant is documented on `acme-select` as "no ring, the field shifted 12px left" —
+  a borderless inline select that applies `translate: -0.75rem 0`. It put the chevron off-centre in
+  a bordered control. The element's own doc comment says what a variant does; read it.
 - **Composing changes the event contract, so check for a double fire.** Verified 2026-09-10 on
   code-block's switcher. The hand-built control used the native `change` event, which does not
   collide; `acme-select` and `acme-switch` both fire `acme-change`, which bubbles and is composed.

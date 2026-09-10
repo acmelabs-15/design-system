@@ -30,16 +30,6 @@ export const codeBlockCss = css`
     font-weight: 400;
     color: var(--ds-gray-900);
   }
-  .code-block :where(.strip) :where(acme-switch) {
-    margin-bottom: 0.75rem;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    flex-wrap: nowrap;
-    align-items: center;
-    overflow-x: auto;
-    padding-bottom: 1px;
-    box-shadow: none !important;
-  }
   .code-block :where(.strip) {
     display: flex;
     align-items: center;
@@ -159,9 +149,6 @@ export const codeBlockCss = css`
     border-inline-width: 1px;
     border-color: var(--ds-gray-400);
   }
-  .code-block :where(.strip) :where(acme-switch)::-webkit-scrollbar {
-    display: none;
-  }
   .code-block :where(.bar) :where(.name) > strong {
     font-weight: 500;
     color: var(--ds-gray-1000);
@@ -194,9 +181,6 @@ export const codeBlockCss = css`
   }
   .code-block :where(acme-copy-button.floating)::part(button):disabled {
     background-color: var(--ds-gray-100);
-  }
-  .code-block :where(.strip) :where(acme-switch):has(:focus-visible) {
-    overflow: visible;
   }
   .code-block :where(acme-copy-button.floating)[aria-disabled="true"]::part(button) {
     background-color: var(--ds-gray-100);
