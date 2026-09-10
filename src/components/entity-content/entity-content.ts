@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { createStore, StoreSelector } from "../../shared/state";
 import { entityContentCss } from "./entity-content.styles";
 
 /**
@@ -29,8 +30,16 @@ export class AcmeEntityContent extends AcmeElement {
   @property() width = "";
   /** Takes the free width of the row. */
   @property({ type: Boolean, reflect: true }) fill = false;
-  @state() private hasTitle = false;
-  @state() private hasDescription = false;
+  /** Which of the two text slots hold anything, one store per instance. */
+  private slots = createStore({ title: false, description: false });
+  /** The element lays out differently once it has any text at all, from either source: a plain-text
+   *  property or a slotted node. Derived, so it recomputes only when one of those four changes. */
+  private hasText = createStore(() => {
+    const s = this.slots.get();
+    return !!this.title || !!this.description || s.title || s.description;
+  });
+  private slotSelector = new StoreSelector(this, () => this.slots);
+  private textSelector = new StoreSelector(this, () => this.hasText);
 
   connectedCallback() {
     super.connectedCallback();
@@ -49,21 +58,22 @@ export class AcmeEntityContent extends AcmeElement {
   }
 
   private scan() {
-    this.hasTitle ||= !!this.querySelector(':scope > [slot="title"]');
-    this.hasDescription ||= !!this.querySelector(':scope > [slot="description"]');
+    this.slots.setState((s) => ({
+      title: s.title || !!this.querySelector(':scope > [slot="title"]'),
+      description: s.description || !!this.querySelector(':scope > [slot="description"]'),
+    }));
   }
 
   private slotted = (name: "title" | "description") => (e: Event) => {
     const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "title") this.hasTitle = has;
-    else this.hasDescription = has;
+    this.slots.setState((s) => ({ ...s, [name]: has }));
   };
 
   render() {
     // A plain-text title or description is its own line; a slotted node stands in its place.
     const title = this.title ? html`<p class="title">${this.title}</p>` : html`<slot name="title" @slotchange=${this.slotted("title")}></slot>`;
     const description = this.description ? html`<p class="description">${this.description}</p>` : html`<slot name="description" @slotchange=${this.slotted("description")}></slot>`;
-    const hasText = !!this.title || !!this.description || this.hasTitle || this.hasDescription;
+    const hasText = this.hasText.get();
     return html`<div class=${this.cls("content", { fill: this.fill })} style=${this.width ? `--width:${this.width}` : nothing} part="content">${
       hasText ? html`<div class="text">${title}${description}</div>` : html`${title}${description}`
     }<slot name="avatar"></slot></div>`;

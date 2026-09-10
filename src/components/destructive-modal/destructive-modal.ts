@@ -1,6 +1,7 @@
 import { html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { createStore, StoreSelector } from "../../shared/state";
 import "../modal/modal";
 import "../input/input";
 import "../button/button";
@@ -50,9 +51,19 @@ export class AcmeDestructiveModal extends AcmeElement {
   @property() error: string | Error | null = null;
   /** The panel's width in px. */
   @property({ type: Number }) width = 480;
-  @state() private typed = "";
   /** The input has lost focus once: a wrong value reads as invalid from then on. */
-  @state() private touched = false;
+  /** What the person has typed, and whether they have left the field, one store per instance. */
+  private gate = createStore({ typed: "", touched: false });
+  /** The phrase is matched, and the field shows an error: both read the typed text, and the error
+   *  also needs the field to have been left. Derived, so each recomputes only on what it reads. */
+  private matchedStore = createStore(() => this.gate.get().typed === this.verificationPhrase);
+  private mismatchStore = createStore(() => {
+    const g = this.gate.get();
+    return g.touched && g.typed !== "" && g.typed !== this.verificationPhrase;
+  });
+  private gateSelector = new StoreSelector(this, () => this.gate);
+  private matchedSelector = new StoreSelector(this, () => this.matchedStore);
+  private mismatchSelector = new StoreSelector(this, () => this.mismatchStore);
 
   show() {
     this.open = true;
@@ -62,22 +73,21 @@ export class AcmeDestructiveModal extends AcmeElement {
   }
 
   private get matched() {
-    return this.typed === this.verificationPhrase;
+    return this.matchedStore.get();
   }
 
   updated(ch: Map<string, unknown>) {
     if (ch.has("open") && !this.open) {
-      this.typed = "";
-      this.touched = false;
+      this.gate.setState(() => ({ typed: "", touched: false }));
     }
   }
 
   private onInput = (e: Event) => {
-    this.typed = (e.target as AcmeInput).value;
+    this.gate.setState((g) => ({ ...g, typed: (e.target as AcmeInput).value }));
   };
 
   private onBlur = () => {
-    this.touched = true;
+    this.gate.setState((g) => ({ ...g, touched: true }));
   };
 
   /** Enter in the input submits: the confirm, gated the same way as the button. */
@@ -108,7 +118,7 @@ export class AcmeDestructiveModal extends AcmeElement {
   };
 
   render() {
-    const mismatch = this.touched && this.typed !== "" && !this.matched;
+    const mismatch = this.mismatchStore.get();
     const inputError = mismatch ? (this.verificationLabel ? `The ${this.verificationLabel} must match exactly.` : "Doesn’t match.") : "";
     const message = this.error instanceof Error ? this.error.message : this.error;
     const prompt = `To confirm, type ${this.verificationLabel ? `the ${this.verificationLabel} ` : ""}“${this.verificationPhrase}”`;
@@ -123,7 +133,7 @@ export class AcmeDestructiveModal extends AcmeElement {
             aria-label=${prompt}
             autocomplete="off"
             translate="no"
-            .value=${this.typed}
+            .value=${this.gate.get().typed}
             ?disabled=${this.loading}
             .error=${inputError}
             @acme-input=${this.onInput}
