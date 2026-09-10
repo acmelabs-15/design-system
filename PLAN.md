@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 03:20 PDT.
+how we prove it, and where we are. Updated 2026-09-10 03:40 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -386,7 +386,9 @@ Where a package ships vanilla only, write the Lit wrapper or controller here.
 
 ### 5.8 Release
 
-- [x] **0.2.0, 2026-09-10.** The parity port to date: 22 more elements (131 to 153 exports), every
+- [x] **0.2.0, 2026-09-10, live on npm.** The first tag failed CI, because tw.ts and simplify.ts
+  read the gitignored corpus at import time. That defect is fixed, the tag was moved to the fixed
+  commit (0.2.0 had never published, so the number was still free), and the second run published. The parity port to date: 22 more elements (131 to 153 exports), every
   element re-templated to the reference's DOM, states and API, all 159 style modules regenerated,
   the parity tool itself (129 maps, 187 sketches, 76 specs), the chosen package stack as real
   dependencies, two generator bug fixes with tests, and the virtualized table demo fixed. A minor
