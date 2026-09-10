@@ -172,7 +172,7 @@ export class AcmeButton extends AcmeElement {
         ? html`<span class="prefix">${prefixSlot}</span>`
         : prefixSlot;
     const suffix = this.hasSuffix ? html`<span class="suffix">${suffixSlot}</span>` : suffixSlot;
-    const inner = html`${prefix}<span class="label"><slot @slotchange=${this.slottedContent}></slot></span
+    const inner = html`${prefix}<span class="label" part="label"><slot @slotchange=${this.slottedContent}></slot></span
       >${suffix}`;
     const shared = {
       "data-prefix": String(this.hasPrefix || this.loading),

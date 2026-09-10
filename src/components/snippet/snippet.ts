@@ -1,5 +1,5 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCopyButton } from "../copy-button/copy-button";

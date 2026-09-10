@@ -16,11 +16,16 @@ glyph, that swap for one second after a successful copy (or while `copied` is se
 assertive status line for screen readers. A failed copy raises an error toast. Fires
 `acme-copy` on success and `acme-copy-error` on failure; a slotted `icon` replaces the copy glyph.
 
-The button inside is an `acme-button`, and its `button` part is forwarded with `exportparts`, so an
-element that composes this one reaches the real button with `acme-copy-button::part(button)` rather
-than landing on the host in between. The icon stack is exposed the same way — `stack`, `check` and
-`icon` — because a composing element styles the glyph, which lives in this element's tree and no
-selector of theirs can otherwise reach.
+The button inside is an `acme-button`, and its `button` and `label` parts are forwarded with
+`exportparts`, so an element that composes this one reaches the real button with
+`acme-copy-button::part(button)` and its label wrapper with `::part(label)`, rather than landing on
+the host in between. The icon stack is exposed the same way — `stack`, `check` and `icon` — because
+a composing element styles the glyph, which lives in this element's tree and no selector of theirs
+can otherwise reach.
+
+`label` and `icon` are different boxes and a composing element must not confuse them: `label` wraps
+the whole stack and takes the button's own inline padding; `icon` is one absolutely-positioned layer
+inside a 16px stack, so padding on it overflows the stack instead of widening the button.
 
 | Attribute | Property | Type | Default | Description |
 |---|---|---|---|---|

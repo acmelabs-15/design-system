@@ -104,7 +104,7 @@ export const codeBlockCss = css`
     overflow-wrap: normal;
     word-break: normal;
   }
-  .code-block :where(.bar) :where(.actions) :where(acme-copy-button)::part(icon) {
+  .code-block :where(.bar) :where(.actions) :where(acme-copy-button)::part(label) {
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
@@ -114,7 +114,7 @@ export const codeBlockCss = css`
     overflow: hidden;
     padding-inline: 0.375rem;
   }
-  .code-block :where(acme-copy-button.floating)::part(icon) {
+  .code-block :where(acme-copy-button.floating)::part(label) {
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;

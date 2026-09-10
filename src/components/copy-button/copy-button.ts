@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { createStore, StoreSelector, toasts } from "../../shared/state";
 import type { ButtonColors, ButtonSize, ButtonVariant } from "../button/button";
 import { copyButtonCss } from "./copy-button.styles";
@@ -13,11 +14,16 @@ import "../button/button";
  * assertive status line for screen readers. A failed copy raises an error toast. Fires
  * `acme-copy` on success and `acme-copy-error` on failure; a slotted `icon` replaces the copy glyph.
  *
- * The button inside is an `acme-button`, and its `button` part is forwarded with `exportparts`, so an
- * element that composes this one reaches the real button with `acme-copy-button::part(button)` rather
- * than landing on the host in between. The icon stack is exposed the same way — `stack`, `check` and
- * `icon` — because a composing element styles the glyph, which lives in this element's tree and no
- * selector of theirs can otherwise reach.
+ * The button inside is an `acme-button`, and its `button` and `label` parts are forwarded with
+ * `exportparts`, so an element that composes this one reaches the real button with
+ * `acme-copy-button::part(button)` and its label wrapper with `::part(label)`, rather than landing on
+ * the host in between. The icon stack is exposed the same way — `stack`, `check` and `icon` — because
+ * a composing element styles the glyph, which lives in this element's tree and no selector of theirs
+ * can otherwise reach.
+ *
+ * `label` and `icon` are different boxes and a composing element must not confuse them: `label` wraps
+ * the whole stack and takes the button's own inline padding; `icon` is one absolutely-positioned layer
+ * inside a 16px stack, so padding on it overflows the stack instead of widening the button.
  */
 @customElement("acme-copy-button")
 export class AcmeCopyButton extends AcmeElement {
@@ -51,34 +57,27 @@ export class AcmeCopyButton extends AcmeElement {
   @property({ type: Object }) normal?: ButtonColors;
   @property({ type: Object }) hover?: ButtonColors;
   @property({ type: Object }) active?: ButtonColors;
+  /** The check shown for a second after a copy. */
+  @atomState() private done = false;
   /**
-   * This element's own state, on TanStack Store, one store per instance — the shape TanStack Form
-   * uses, which creates a store per form and per field.
-   *
-   * `done` is the check shown for a second after a copy. `hasIcon` says whether anything is slotted
-   * for the icon: a composing element forwards a slot of its own into this one, and a forwarded slot
-   * counts as assigned content even when empty, so the native fallback would never show. `flatten`
-   * resolves the forwarded slot to what it actually holds, and the glyph is rendered beside the slot
-   * rather than inside it.
+   * Whether anything is slotted for the icon. A composing element forwards a slot of its own into
+   * this one, and a forwarded slot counts as assigned content even when empty, so the native
+   * fallback would never show. `flatten` resolves the forwarded slot to what it actually holds, and
+   * the glyph is rendered beside the slot rather than inside it.
    */
-  private ownState = createStore({ done: false, hasIcon: false });
+  @atomState() private hasIcon = false;
   /** `copied` is either controlled from outside or set by our own copy, so it is derived from both.
    *  A derived store recomputes only when what it reads changes, which is what a store gives that a
    *  plain field does not. */
-  private showsCheck = createStore(() => this.copied || this.ownState.get().done);
-  /** Two selectors, not one: the derived store only re-renders for what IT reads, and `hasIcon` is
-   *  read by the template alone. Dropping this one leaves a late-slotted icon showing the fallback
-   *  glyph beside it — the tests cannot see that, because slotchange does not fire under happy-dom. */
-  private selector = new StoreSelector(this, () => this.ownState);
+  private showsCheck = createStore(() => this.copied || this.done);
+  /** Held, not read: constructing a StoreSelector registers it as a reactive controller, which is
+   *  what subscribes this element to the derived store. The linter reads it as unused; deleting it
+   *  stops the check swap from re-rendering. */
   private checkSelector = new StoreSelector(this, () => this.showsCheck);
   private timer?: ReturnType<typeof setTimeout>;
 
-  private set(patch: Partial<{ done: boolean; hasIcon: boolean }>) {
-    this.ownState.setState((s) => ({ ...s, ...patch }));
-  }
-
   private readIconSlot = (e: Event) => {
-    this.set({ hasIcon: (e.target as HTMLSlotElement).assignedElements({ flatten: true }).length > 0 });
+    this.hasIcon = (e.target as HTMLSlotElement).assignedElements({ flatten: true }).length > 0;
   };
 
   disconnectedCallback() {
@@ -93,9 +92,9 @@ export class AcmeCopyButton extends AcmeElement {
     clearTimeout(this.timer);
     try {
       await navigator.clipboard.writeText(text);
-      this.set({ done: true });
+      this.done = true;
       this.timer = setTimeout(() => {
-        this.set({ done: false });
+        this.done = false;
       }, 1000);
       this.dispatchEvent(new CustomEvent("acme-copy", { detail: { text }, bubbles: true, composed: true }));
     } catch {
@@ -120,13 +119,13 @@ export class AcmeCopyButton extends AcmeElement {
       .hover=${this.hover}
       .active=${this.active}
       @click=${this.copy}
-      exportparts="button"
+      exportparts="button,label"
     >
       ${copied ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}
       <div class=${this.cls("stack", { copied })} part="stack">
         <div class="check" part="check">${glyphSized("check")}</div>
         <div class="copy" part="icon">
-          <slot name="icon" @slotchange=${this.readIconSlot}></slot>${this.ownState.get().hasIcon ? nothing : glyphSized("copy")}
+          <slot name="icon" @slotchange=${this.readIconSlot}></slot>${this.hasIcon ? nothing : glyphSized("copy")}
         </div>
       </div>
     </acme-button>`;

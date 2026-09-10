@@ -42,15 +42,17 @@ export const geist: GeistMap = {
             // The block composes acme-copy-button, which composes acme-button, so the reference's
             // button sits two elements down on ours. The classes the block adds land on the copy
             // button's own `button` part, which it forwards with exportparts.
-            // The glyph lives in the copy button's own tree, so no selector of ours reaches it: it is
-            // named through the `icon` part that element exposes.
-            { ours: "acme-copy-button", pick: button, extends: "button", part: "button", states: {}, children: [{ ours: "", part: "icon", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
+            // The reference's span is the button's label wrapper, which takes the button's inline
+            // padding. Ours is the `label` part acme-button exposes and acme-copy-button forwards.
+            // It is NOT the `icon` part: that is one absolutely-positioned layer inside a 16px stack,
+            // and padding on it overflows the stack past the block's clipped edge.
+            { ours: "acme-copy-button", pick: button, extends: "button", part: "button", states: {}, children: [{ ours: "", part: "label", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
           ],
         },
       ],
     },
     // Without a filename bar the copy button floats over the code and shows on the block's hover.
-    { ours: "acme-copy-button.floating", pick: button, extends: "button", part: "button", states: { ":hover": "[data-hover]" }, children: [{ ours: "", part: "icon", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
+    { ours: "acme-copy-button.floating", pick: button, extends: "button", part: "button", states: { ":hover": "[data-hover]" }, children: [{ ours: "", part: "label", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
     {
       ours: ".content",
       pick: section("content"),

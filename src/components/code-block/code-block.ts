@@ -2,11 +2,9 @@ import { css, html, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { toasts } from "../../shared/state";
 import "../button/button";
 import "../split-button/split-button";
 import "../tabs/tabs";
-import { atomState } from "../../shared/atom-state";
 import { sourceOf, tokenLines } from "../code/code";
 import type { AcmeCopyButton } from "../copy-button/copy-button";
 import "../copy-button/copy-button";
@@ -85,7 +83,6 @@ export class AcmeCodeBlock extends AcmeElement {
   @query(".code-block") private root!: HTMLElement;
   @query("acme-copy-button") private button?: AcmeCopyButton;
   @query(".switcher") private switcherEl!: HTMLElement | null;
-  private timer?: ReturnType<typeof setTimeout>;
   private interaction = new Interaction(this);
   private switcherInteraction = new Interaction(this);
 
@@ -99,11 +96,6 @@ export class AcmeCodeBlock extends AcmeElement {
 
   private get value() {
     return this.switcherValue || (!Array.isArray(this.switcher) && this.switcher.value) || (!Array.isArray(this.tabs) && this.tabs.value) || "";
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    clearTimeout(this.timer);
   }
 
   updated() {
