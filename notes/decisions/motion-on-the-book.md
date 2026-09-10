@@ -271,5 +271,26 @@ correlate with `pointerenter` (five within 1ms) far more than with wheel (two).
 
 `will-change: transform` is kept because it is the correct hint for a `preserve-3d` box whose
 transform animates, and the motion package's own demos use it. But it is **an unproven fix for the
-hitch**, and saying otherwise would be wrong. Confirming it needs a trace from Peter's own Chrome,
-with the change in place.
+hitch**, and saying otherwise would be wrong.
+
+### Measured in Peter's own Chrome (2026-09-10)
+
+Peter started Chrome with `--remote-debugging-port=9222`, so the same A/B ran against his browser
+over CDP with real `Input.dispatchMouseEvent` moves — 16 hovers each way, over four books.
+
+| | trace events | `Commit` total | `UpdateLayer` count | main tasks >50ms |
+|---|---|---|---|---|
+| Without `will-change` | 109,421 | **123.2 ms** | **13,880** | 0 |
+| With `will-change` | 36,925 | **64.9 ms** | **5,285** | 0 |
+
+So the hint does real work: **half the commit time and a third of the layer updates**, on the same
+machine. That is worth keeping on its own merit.
+
+It still does **not** reproduce the hitch. Neither run has a single main-thread task over 50ms,
+where Peter's original trace had ten of 350–540ms. The profile is the difference: he launched with
+`--user-data-dir=/tmp/chrome-profile-stable`, a clean profile with **zero extension targets**, while
+the session that showed the hitch carried six extensions.
+
+**The open question is now narrow:** whether those 350ms commits are the extensions or the element.
+Answering it needs a trace from the everyday profile, with the extensions loaded and this build in
+place.
