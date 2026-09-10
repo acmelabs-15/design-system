@@ -70,5 +70,8 @@
     "ts-lit-plugin": "^2.0.2",
     "typescript": "~5.9.0",
     "typescript-lit-html-plugin": "^0.9.1"
+  },
+  "patchedDependencies": {
+    "@tanstack/lit-store@0.13.2": "patches/@tanstack%2Flit-store@0.13.2.patch"
   }
 }

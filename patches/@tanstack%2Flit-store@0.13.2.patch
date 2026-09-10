@@ -1,0 +1,18 @@
+diff --git a/dist/tan-stack-store-selector.js b/dist/tan-stack-store-selector.js
+index fdcc00118cdbf9144182f14cf55bbc9e982908fc..8509cc7ace5b5d71d3448026809c92aceb0d0de8 100644
+--- a/dist/tan-stack-store-selector.js
++++ b/dist/tan-stack-store-selector.js
+@@ -21,6 +21,13 @@ var TanStackStoreSelector = class {
+ 		this.#compare = options?.compare ?? defaultCompare;
+ 		host.addController(this);
+ 	}
++	/** Re-subscribes after the host is moved in the DOM. Without this the controller tears its
++	 *  subscription down on disconnect and never restores it: hostUpdate returns early while the store
++	 *  is unchanged, and the element silently stops following the store for good. Lit's own docs put
++	 *  subscription in hostConnected for exactly this reason. Patched locally; reported upstream. */
++	hostConnected() {
++		this.#host.requestUpdate();
++	}
+ 	hostUpdate() {
+ 		const store = this.#getStore();
+ 		if (store === this.#subscribedStore) return;
