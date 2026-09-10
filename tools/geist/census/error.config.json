@@ -1,0 +1,35 @@
+{
+ "note": "Reconstructed from the saved results in commit 9ee502e: the run's own record names its url, its state list and every part of every root, and this config restates those. `states` is `base` alone, because the alert has no interactive state of its own; its one link is a behaviour check. The size row is measured with the previews stretched, matching the reference's own demo row (`flex ... items-stretch`), so a small alert reads the tallest sibling's height on both sides. That stretch reaches our root only because the host stands aside with `display: contents`; a host box of ours would absorb it.",
+ "themes": ["light", "dark"],
+ "error": {
+  "geist": {
+   "side": "geist",
+   "page": "error",
+   "marker": "data-geist-error",
+   "states": [""],
+   "children": {
+    "icon": ".icon|div[aria-hidden]",
+    "svg": ".icon svg|div[aria-hidden] svg",
+    "text": ".text|div.break-words",
+    "label": ".label|div.break-words b",
+    "action": ".action|div.break-words span",
+    "link": ".link|div.break-words a"
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "error",
+   "host": "acme-error",
+   "ours": ".error",
+   "states": [""],
+   "children": {
+    "icon": ".icon|div[aria-hidden]",
+    "svg": ".icon svg|div[aria-hidden] svg",
+    "text": ".text|div.break-words",
+    "label": ".label|div.break-words b",
+    "action": ".action|div.break-words span",
+    "link": ".link|div.break-words a"
+   }
+  }
+ }
+}

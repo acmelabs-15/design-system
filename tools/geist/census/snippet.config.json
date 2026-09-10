@@ -1,0 +1,40 @@
+{
+ "note": "Reconstructed from the saved results in commit 9ee502e, not from a guess: the run's own record names its url, its text parts, its state list and every part of every root, and this config restates those exactly. `previews` names 0..6 because the mirror snapshot carries two extra example boxes at the end (the site's own navigation and a placeholder block) that our docs page has no counterpart for; roots pair by order, so reading them would misalign every comparison after example 6. `textParts` is `pre` alone, because a line's width follows its command text, set in our own mono font. `states` is `base` alone: the reference's copy button carries hover and focus styling on data-hover/data-focus attributes that react-aria sets, and the census cannot drive the icon swap, so the interactive states belong to the behaviour checks. The button's two icons are a stack of two absolutely-positioned boxes; the reference names neither, so both are addressed by position: the first is the check, hidden at opacity 0 and scale 0.5 (so its rect reads 8x8 against a computed 16px), the second is the copy icon.",
+ "themes": ["light", "dark"],
+ "snippet": {
+  "geist": {
+   "side": "geist",
+   "page": "snippet",
+   "marker": "data-geist-snippet",
+   "previews": [0, 1, 2, 3, 4, 5, 6],
+   "states": [""],
+   "textParts": ["pre"],
+   "children": {
+    "pre": "pre|pre",
+    "action": ".action|div:has(> button[data-geist-button])",
+    "button": "acme-button >> .btn|button[data-geist-button]",
+    "label": "acme-button >> .label|span.truncate",
+    "stack": ".stack|span.truncate div.relative",
+    "check": ".check|span.truncate div.relative > div:nth-child(1)",
+    "copy": ".copy|span.truncate div.relative > div:nth-child(2)"
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "snippet",
+   "host": "acme-snippet",
+   "ours": ".snippet",
+   "states": [""],
+   "textParts": ["pre"],
+   "children": {
+    "pre": "pre|pre",
+    "action": ".action|div:has(> button[data-geist-button])",
+    "button": "acme-button >> .btn|button[data-geist-button]",
+    "label": "acme-button >> .label|span.truncate",
+    "stack": ".stack|span.truncate div.relative",
+    "check": ".check|span.truncate div.relative > div:nth-child(1)",
+    "copy": ".copy|span.truncate div.relative > div:nth-child(2)"
+   }
+  }
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "note": "Reconstructed from the saved results in commit 9ee502e: the run's own record names its url, its text parts, its state list and every part of every root, and this config restates those. The root is the `dl`, which the reference marks with no attribute of its own, so it is named by tag. `textParts` is root, title and info, because each is as wide as its own text (the title's is `whitespace-nowrap`, and the info slot is an inline box beside it) and the text is set in our own font. `states` is `base` alone: the info icon is a tooltip trigger, and its hover behaviour is a behaviour check rather than a style one.",
+ "themes": ["light", "dark"],
+ "description": {
+  "geist": {
+   "side": "geist",
+   "page": "description",
+   "marker": "dl[data-version]",
+   "states": [""],
+   "textParts": ["root", "title", "info"],
+   "children": {
+    "title": ".title|dt[data-geist-description-title]",
+    "info": ".info|dt[data-geist-description-title] > span.inline-block",
+    "trigger": "acme-tooltip|dt[data-geist-description-title] span[data-testid$=tooltip-trigger]",
+    "svg": "acme-tooltip >> ::slotted(svg)|dt[data-geist-description-title] svg",
+    "content": ".content|dd[data-geist-description-content]"
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "description",
+   "host": "acme-description",
+   "ours": ".description",
+   "states": [""],
+   "textParts": ["root", "title", "info"],
+   "children": {
+    "title": ".title|dt[data-geist-description-title]",
+    "info": ".info|dt[data-geist-description-title] > span.inline-block",
+    "trigger": "acme-tooltip|dt[data-geist-description-title] span[data-testid$=tooltip-trigger]",
+    "svg": ".info svg|dt[data-geist-description-title] svg",
+    "content": ".content|dd[data-geist-description-content]"
+   }
+  }
+ }
+}
