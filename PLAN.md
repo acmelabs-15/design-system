@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 07:55 PDT.
+how we prove it, and where we are. Updated 2026-09-10 08:30 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -379,23 +379,28 @@ Measured, not estimated:
    label 1, trigger 6, in both themes. The trigger's 16 accepted are the documented wrapper-box
    context value. The census config now carries two prepare steps it was missing, both recorded with
    their reason.
-2. [~] **context-card — census config written, one real defect found.** The trigger root is at **0
-   hard** in both themes (17 roots each side). The card root is down from 208 to **80**, and what
-   remains is a genuine defect rather than noise:
+2. [~] **context-card — trigger at parity, card down to 48, one real defect left.**
 
-   **A card pinned open through `shown` never resolves its side.** The reference's four cards open on
-   four different sides (top, bottom, left, right) and ours resolve every one to `top`, the default.
-   Verified with room on every side: trigger at y=450 in a 924-tall viewport, content only 48 tall, so
-   nothing should flip. Localized to `updated()` in `context-card.ts`: the placement block that sets
-   `shownSide` runs only when the **layer node changes**, and a pinned card mounts its layer once, so
-   `measure()` never runs again. Clearing `pending` by hand does not help, which rules out the
-   `!this.pending` guard. `active` reads `false` on every pinned card and the card's y is a stale 868
-   for all four.
+   The trigger root reads **0 hard** in both themes, 17 roots each side.
 
-   This matters beyond the census: it is the code path a consumer uses to open a card programmatically.
-   Fix it in the element, then re-run. Two smaller items behind it: the card's `transform` is placement,
-   already an accepted context difference, and the arrow's rotation follows the side, so it should
-   resolve once the side does.
+   The card root is down from 208 to **48**. Three measurement faults were found and fixed, each now
+   recorded in the config with its reason:
+
+   | Fault | Cost | Fix |
+   |---|---|---|
+   | The two sides read at different viewport widths | 64 | The layer is fixed to the viewport, so its width is the window's. Read both at 1367 by 924. |
+   | The card's inline width compared as hard | 64 | It is measured from its own text, so it follows the font. `card` and `fade` are text parts. |
+   | Cards opened while still below the fold | 32 | Placement flips against the viewport at open time, so every card resolved to `top`. The prepare now scrolls each group to the reference's own trigger offset (y=637) before opening. |
+
+   **The defect that remains: a card asking for `right` flips to `left` when it should not.** Measured
+   with the card open: the trigger's right edge at 860, content 311 wide, a 16px offset, so it would end
+   at 1187 in a 1367-wide viewport — 507 pixels of room to spare. It still flips. `top`, `bottom` and
+   `left` all resolve correctly now, so this is the `right` branch of the flip logic in
+   `context-card.ts`, not the scroll position.
+
+   Worth keeping: of the 208 differences first reported, **160 were the harness measuring two different
+   things** and 48 are this one bug.
+
 3. **calendar** — the expensive one. **All nine reference examples render only a skeleton on the server**,
    so the real calendar exists at runtime only and no map can be derived from the spec. It needs the
    sketch path: the class strings are in `corpus/js/0ofxlpb8_00s7.js`, which carries the root's full class
