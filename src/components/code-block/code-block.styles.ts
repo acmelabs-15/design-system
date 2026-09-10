@@ -17,10 +17,6 @@ export const codeBlockCss = css`
     overflow: hidden;
     border-radius: 0.5rem;
   }
-  .code-block :where(.bar) :where(.actions) :where(.switcher) {
-    position: relative;
-    height: 2rem;
-  }
   .code-block :where(.bar) :where(.name) {
     margin: 0;
     margin-right: auto;
@@ -33,6 +29,16 @@ export const codeBlockCss = css`
     line-height: 16px;
     font-weight: 400;
     color: var(--ds-gray-900);
+  }
+  .code-block :where(.strip) :where(acme-switch) {
+    margin-bottom: 0.75rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+    padding-bottom: 1px;
+    box-shadow: none !important;
   }
   .code-block :where(.strip) {
     display: flex;
@@ -129,6 +135,9 @@ export const codeBlockCss = css`
     height: 1.75rem;
     color: var(--ds-gray-900) !important;
   }
+  .code-block :where(.bar) :where(.actions) :where(acme-select.switcher) {
+    height: 2rem;
+  }
   .code-block:where(:not(.with-bar)) :where(.content) {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
@@ -149,6 +158,9 @@ export const codeBlockCss = css`
     border-inline-style: solid;
     border-inline-width: 1px;
     border-color: var(--ds-gray-400);
+  }
+  .code-block :where(.strip) :where(acme-switch)::-webkit-scrollbar {
+    display: none;
   }
   .code-block :where(.bar) :where(.name) > strong {
     font-weight: 500;
@@ -182,6 +194,9 @@ export const codeBlockCss = css`
   }
   .code-block :where(acme-copy-button.floating)::part(button):disabled {
     background-color: var(--ds-gray-100);
+  }
+  .code-block :where(.strip) :where(acme-switch):has(:focus-visible) {
+    overflow: visible;
   }
   .code-block :where(acme-copy-button.floating)[aria-disabled="true"]::part(button) {
     background-color: var(--ds-gray-100);

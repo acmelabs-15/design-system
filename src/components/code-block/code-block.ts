@@ -4,13 +4,14 @@ import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import "../button/button";
 import "../split-button/split-button";
-import "../tabs/tabs";
+import "../select/select";
+import "../switch/switch";
+import "../switch-control/switch-control";
 import { sourceOf, tokenLines } from "../code/code";
 import type { AcmeCopyButton } from "../copy-button/copy-button";
 import "../copy-button/copy-button";
 import { copyButtonCss } from "../copy-button/copy-button.styles";
 import { codeBlockCss } from "./code-block.styles";
-import { codeBlockSwitcherCss } from "./code-block-switcher.styles";
 
 export type CodeBlockOption = { label: string; value: string };
 /** A language switch: its options, or `{ options, value }` as the reference writes it. */
@@ -35,7 +36,7 @@ const v0Prompt = (code: string) =>
  * grid of lines, each with a line-number button that marks the line as referenced (amber);
  * `highlighted-lines-numbers` marks lines blue, `added-lines-numbers` green with a `+`,
  * `removed-lines-numbers` red with a `-`; `hide-line-numbers` hides the numbers. `switcher`
- * renders a language select, `tabs` a tab strip above the bar (`switcher-value` is the current
+ * renders an acme-select, `tabs` an acme-switch above the bar (`switcher-value` is the current
  * language; a change fires `acme-change`). `v0="ask"` adds an Open in v0 link in a foot,
  * `v0="build"` a split button. Copies fire `acme-copy`.
  */
@@ -44,7 +45,6 @@ export class AcmeCodeBlock extends AcmeElement {
   static styles = [
     sharedCss,
     codeBlockCss,
-    codeBlockSwitcherCss,
     copyButtonCss,
     css`
       :host {
@@ -82,9 +82,7 @@ export class AcmeCodeBlock extends AcmeElement {
   @property({ attribute: "aria-label" }) label = "";
   @query(".code-block") private root!: HTMLElement;
   @query("acme-copy-button") private button?: AcmeCopyButton;
-  @query(".switcher") private switcherEl!: HTMLElement | null;
   private interaction = new Interaction(this);
-  private switcherInteraction = new Interaction(this);
 
   get source() {
     return this.code ? this.code.replace(/^\n/, "").replace(/\s+$/, "") : sourceOf(this);
@@ -100,7 +98,6 @@ export class AcmeCodeBlock extends AcmeElement {
 
   updated() {
     this.interaction.attach(this.root);
-    this.switcherInteraction.attach(this.switcherEl);
   }
 
   /** Copies the source, as clicking the button does. The button owns the clipboard write, the
@@ -113,6 +110,13 @@ export class AcmeCodeBlock extends AcmeElement {
     this.referencedLine = this.referencedLine === n ? 0 : n;
     if (typeof history !== "undefined") history.replaceState(null, "", this.referencedLine ? `#L${n}` : location.pathname + location.search);
     this.dispatchEvent(new CustomEvent("acme-reference", { detail: { line: this.referencedLine }, bubbles: true, composed: true }));
+  }
+
+  /** The composed acme-select and acme-switch fire `acme-change` of their own, which would reach a
+   *  listener on this element beside ours. Theirs stops here; ours carries the block's own value. */
+  private switched(e: CustomEvent) {
+    e.stopPropagation();
+    this.switchTo(e.detail.value);
   }
 
   private switchTo(v: string) {
@@ -136,14 +140,13 @@ export class AcmeCodeBlock extends AcmeElement {
     ></acme-copy-button>`;
     const switcher = this.opts(this.switcher);
     const tabs = this.opts(this.tabs);
-    const current = switcher.find((o) => o.value === this.value) ?? switcher[0];
     const prompt = `${V0}${encodeURIComponent(v0Prompt(source))}`;
     return html`<div class=${this.cls("code-block", { "with-bar": !!this.filename, "hide-numbers": this.hideLineNumbers, ask: this.v0 === "ask", build: this.v0 === "build" })} aria-label=${this.label || nothing} part="frame">
       ${
         tabs.length
           ? html`<div class="strip" style="scrollbar-width:none;-ms-overflow-style:none">
-              <acme-tabs variant="secondary" value=${this.value} aria-label="Language" @acme-change=${(e: CustomEvent) => this.switchTo(e.detail.value)}
-                >${tabs.map((o) => html`<acme-tab value=${o.value}>${o.label}</acme-tab>`)}</acme-tabs
+              <acme-switch size="small" value=${this.value} aria-label="Language" @acme-change=${this.switched}
+                >${tabs.map((o) => html`<acme-switch-control value=${o.value} label=${o.label}></acme-switch-control>`)}</acme-switch
               >
             </div>`
           : nothing
@@ -155,12 +158,15 @@ export class AcmeCodeBlock extends AcmeElement {
               <div class="actions">
                 ${
                   switcher.length
-                    ? html`<div class="switcher">
-                        <div class="face" aria-hidden="true"><span>${current?.label ?? ""}</span>${glyphSized("chev-d")}</div>
-                        <select aria-label="Language" .value=${this.value} @change=${(e: Event) => this.switchTo((e.target as HTMLSelectElement).value)}>
-                          ${switcher.map((o) => html`<option value=${o.value} ?selected=${o.value === this.value}>${o.label}</option>`)}
-                        </select>
-                      </div>`
+                    ? html`<acme-select
+                        class="switcher"
+                        size="small"
+                        variant="secondary"
+                        .options=${switcher}
+                        .value=${this.value}
+                        aria-label="Language"
+                        @acme-change=${this.switched}
+                      ></acme-select>`
                     : nothing
                 }
                 ${copyButton(false)}

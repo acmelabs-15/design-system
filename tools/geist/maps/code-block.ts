@@ -20,7 +20,7 @@ export const geist: GeistMap = {
   states: { ":hover": "[data-hover]", ":focus-within": "[data-focus-within]" },
   children: [
     // The language tabs strip above the bar: the tab list is an acme-tabs in ours, styled by its own map.
-    { ours: ".strip", pick: has("overflow-x-auto"), children: [{ ours: "acme-tabs", pick: (c) => "data-geist-tabs" in c.attrs, extends: "tabs", leaf: true }] },
+    { ours: ".strip", pick: has("overflow-x-auto"), children: [{ ours: "acme-switch", pick: (c) => "data-geist-tabs" in c.attrs, extends: "switch", leaf: true }] },
     {
       ours: ".bar",
       pick: section("tabs"),
@@ -37,8 +37,9 @@ export const geist: GeistMap = {
           ours: ".actions",
           pick: has("gap-1"),
           children: [
-            // The language switcher wrapper is its own mapping (code-block-switcher): it is the hover group of its face.
-            { ours: ".switcher", pick: (c) => c.children.some((k) => k.tag === "select"), leaf: true },
+            // The switcher is an acme-select, styled by its own map: the reference builds a face div
+            // over a transparent native select, we compose the element that already does this.
+            { ours: "acme-select.switcher", pick: (c) => c.children.some((k) => k.tag === "select"), extends: "select", leaf: true },
             // The block composes acme-copy-button, which composes acme-button, so the reference's
             // button sits two elements down on ours. The classes the block adds land on the copy
             // button's own `button` part, which it forwards with exportparts.

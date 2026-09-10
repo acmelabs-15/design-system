@@ -111,7 +111,7 @@ filename the copy button floats over the code and shows on the block's hover. Th
 grid of lines, each with a line-number button that marks the line as referenced (amber);
 `highlighted-lines-numbers` marks lines blue, `added-lines-numbers` green with a `+`,
 `removed-lines-numbers` red with a `-`; `hide-line-numbers` hides the numbers. `switcher`
-renders a language select, `tabs` a tab strip above the bar (`switcher-value` is the current
+renders an acme-select, `tabs` an acme-switch above the bar (`switcher-value` is the current
 language; a change fires `acme-change`). `v0="ask"` adds an Open in v0 link in a foot,
 `v0="build"` a split button. Copies fire `acme-copy`.
 

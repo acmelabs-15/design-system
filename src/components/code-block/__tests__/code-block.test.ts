@@ -69,32 +69,32 @@ describe("acme-code-block", () => {
     expect(seen).toEqual([2, 0]);
   });
 
-  test("switcher renders the face and the select in the actions; a change fires acme-change", async () => {
+  test("switcher composes an acme-select in the actions; its acme-change fires ours", async () => {
     const el = await mount(
       `<acme-code-block filename="a.js" language="js" switcher='[{"label":"JavaScript","value":"js"},{"label":"Lua","value":"lua"}]' switcher-value="js">${src}</acme-code-block>`,
     );
-    const sw = root(el).querySelector(".actions > .switcher")!;
-    expect(sw.querySelector(".face > span")!.textContent).toBe("JavaScript");
-    const select = sw.querySelector("select") as HTMLSelectElement;
-    expect(select.querySelectorAll("option").length).toBe(2);
+    const sw = root(el).querySelector(".actions > acme-select.switcher") as HTMLElement & { options: unknown[]; value: string };
+    expect(sw.options.length).toBe(2);
+    expect(sw.value).toBe("js");
     const seen: string[] = [];
     el.addEventListener("acme-change", (e) => seen.push((e as CustomEvent).detail.value));
-    select.value = "lua";
-    select.dispatchEvent(new Event("change"));
+    // The composed select reports the new language the way it reports it to anyone.
+    sw.dispatchEvent(new CustomEvent("acme-change", { detail: { value: "lua" }, bubbles: true, composed: true }));
     await el.updateComplete;
     expect(seen).toEqual(["lua"]);
-    expect(sw.querySelector(".face > span")!.textContent).toBe("Lua");
+    expect(sw.value).toBe("lua");
   });
 
-  test("tabs render a strip with an acme-tabs above the bar; the reference form with options and value is read too", async () => {
+  test("tabs render a strip with an acme-switch above the bar; the reference form with options and value is read too", async () => {
     const el = await mount(
       `<acme-code-block filename="a.js" language="js" tabs='{"options":[{"label":"JavaScript","value":"js"},{"label":"Lua","value":"lua"}],"value":"lua"}'>${src}</acme-code-block>`,
     );
     const strip = root(el).querySelector(":scope > .strip")!;
-    const tabs = strip.querySelector("acme-tabs")!;
-    expect(tabs.getAttribute("variant")).toBe("secondary");
-    expect(tabs.getAttribute("value")).toBe("lua");
-    expect(tabs.querySelectorAll("acme-tab").length).toBe(2);
+    const group = strip.querySelector("acme-switch")!;
+    expect(group.getAttribute("value")).toBe("lua");
+    const controls = group.querySelectorAll("acme-switch-control");
+    expect(controls.length).toBe(2);
+    expect(controls[0].getAttribute("label")).toBe("JavaScript");
     expect(root(el).querySelector(".switcher")).toBeNull();
   });
 

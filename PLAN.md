@@ -183,6 +183,26 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   `tools/geist/maps/`, its census config under `tools/geist/census/`, and its tests. A map still
   naming the old classes regenerates the old stylesheet; a config still naming the old parts measures
   nothing and the collector refuses the run. Sweep for the old names before calling it done.
+- **A held `StoreSelector` is never dead code, whatever the linter says.** Constructing one
+  registers it as a reactive controller, and that registration is the whole subscription; nothing
+  reads the field afterwards. Both `tsc --noUnusedLocals` and Biome's
+  `noUnusedPrivateClassMembers` report it as unused and offer to delete it. Deleting one stops the
+  element re-rendering for that store. This has cost a regression once already — a late-slotted icon
+  showing the wrong glyph — and the unit tests cannot catch it, because `slotchange` does not fire
+  under happy-dom. Verify in the browser, not in the test run.
+- **When you compose an element, map the reference's node to the box that plays its part, not to the
+  box with a matching name.** Verified 2026-09-10 on code-block, which rendered its copy button
+  clipped in half at the frame's edge. The reference is `button > span (the label wrapper) > div
+  (a 16px stack) > two layers`; ours is `button > slot > stack > .check/.copy`. The map named our
+  `.copy` layer for their span, so the span's `padding-inline` landed on an absolutely-positioned
+  16px layer instead of the button's label wrapper, widening it past a frame with `overflow: hidden`.
+  Both boxes hold the glyph, and only one takes the padding. Read the reference's subtree in the
+  spec and match by role before naming a part.
+- **Composing changes the event contract, so check for a double fire.** Verified 2026-09-10 on
+  code-block's switcher. The hand-built control used the native `change` event, which does not
+  collide; `acme-select` and `acme-switch` both fire `acme-change`, which bubbles and is composed.
+  A listener on the composing element then sees every change twice — once from the composed element
+  and once from the re-dispatch. Stop the composed element's event before dispatching your own.
 - **Write the decision down the moment it is agreed, not later.** Every decision, every scope
   change and every clarification lands in this file as part of the same turn it was settled in. A
   decision that lives only in the conversation is lost the next time the context resets, and the
@@ -317,7 +337,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 583 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
+| Tests | 608 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |
@@ -590,9 +610,22 @@ differences point at something real.
   reported differences were computed across misaligned roots; and the reference has one root with no
   cell at all, whose icon reads 24x16 against the 14x14 every cell icon reads.
 
-- [ ] Remaining, in cost order: pagination-next (4), progress (6), clearable-input (6), tab (20),
-  code-block (31), badge (51), split-button (60), book (142), split-button-trigger (240),
-  choicebox (558).
+- [ ] Remaining, in cost order: badge (51), split-button (60), book (142),
+  split-button-trigger (240), choicebox (558). code-block stands at 31, all three causes known
+  (see below).
+
+  **code-block, 2026-09-10.** Its 31 hard differences are three causes only, and none is an element
+  defect the census can see:
+
+  | Cause | Count | Standing |
+  |---|---|---|
+  | `root.margin-top/bottom` 0 vs 16px | 20 | The reference's own page zeroes its demo's `my-4`. Page furniture, section 5.1b. |
+  | `copy.color` gray-1000 vs gray-900 | 9 | The inner-tree-`!important` cascade. Needs its own decision. |
+  | `v0` width and missing root | 2 | Not yet investigated. |
+
+  Its census results are stale and it has **no saved config**, so the diff never measured the
+  clipped copy button fixed in 53d1744, and it does not yet measure the composed select and switch.
+  Rebuilding that config comes before the count means anything.
 
   Two lessons already earned:
 
