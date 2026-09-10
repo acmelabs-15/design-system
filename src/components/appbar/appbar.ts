@@ -1,4 +1,3 @@
-import { SignalWatcher } from "@lit-labs/signals";
 import { css, html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
@@ -7,7 +6,7 @@ import { appbarCss } from "./appbar.styles";
 
 /** House app bar: sticky, brand left, section links middle, tools right, with the Geist theme switcher. */
 @customElement("acme-appbar")
-export class AcmeAppbar extends SignalWatcher(AcmeElement) {
+export class AcmeAppbar extends AcmeElement {
   static styles = [
     sharedCss,
     appbarCss,

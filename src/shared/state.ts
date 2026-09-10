@@ -1,6 +1,7 @@
-// Shared application state on TanStack Store: the theme and the toast queue. Elements read a
-// store with `TanStackStoreSelector` (re-exported as `StoreSelector`) and re-render only when
-// their selection changes; `@lit-labs/signals` stays for reactive state inside one element.
+// Shared application state on TanStack Store, which is signal-based underneath: the theme and the
+// toast queue. Elements read a store with `TanStackStoreSelector` (re-exported as `StoreSelector`)
+// and re-render only when their selection changes. State inside a single element stays on Lit's own
+// reactive properties; anything shared between elements belongs in a store here.
 import { createStore, TanStackStoreSelector } from "@tanstack/lit-store";
 import type { TemplateResult } from "lit";
 

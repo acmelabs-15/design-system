@@ -21,8 +21,8 @@ Building blocks for any page, available as web components from a CDN with no bui
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.1.1/tokens.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.1.1/dist/bundle/design-system.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/tokens.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/bundle/design-system.min.js"></script>
 
 <acme-button>Deploy</acme-button>
 <acme-badge variant="green" contrast="low">Ready</acme-badge>
@@ -31,7 +31,7 @@ Building blocks for any page, available as web components from a CDN with no bui
 A host that admits a script from a CDN but no stylesheet from one takes the standalone bundle, which installs `tokens.css` on import:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.1.1/dist/bundle/design-system.standalone.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2.0/dist/bundle/design-system.standalone.min.js"></script>
 ```
 
 From npm, one import registers every element; single elements import from `dist/components/<name>/<name>.js`.

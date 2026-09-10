@@ -91,7 +91,13 @@ git push --follow-tags   # the tag starts the publish
 - Values come from vercel.com/geist. Where Geist has the component, Geist's value is the value.
 - The type families never change: Google Sans Flex for text, Google Sans Code for numbers,
   labels and code.
-- Labs packages in use: `@lit-labs/signals` (shared theme and toast state), `@lit-labs/motion`
-  (collapse), `@lit-labs/virtualizer` (tables past a few hundred rows), `@lit-labs/router` (the
-  docs app), `@lit-labs/compiler` (build-time template compilation). `@lit-labs/testing` is not
-  used: the package does not support SSR.
+- State is TanStack Store, which is signal-based underneath: state shared between elements (the
+  theme, the toast queue) lives in a store in `src/shared/state.ts`; state inside a single element
+  stays on Lit's own reactive properties. Virtualization is TanStack virtual, syntax highlighting
+  TanStack highlight, markdown TanStack markdown, forms TanStack form, charts TanStack charts,
+  hotkeys TanStack hotkeys, and rate limiting TanStack pacer.
+- Overlay placement is `@floating-ui/dom`, scroll lock `@zag-js/remove-scroll`, and dates
+  `@internationalized/date`. Overlays use the native `<dialog>` element and the Popover API.
+- Labs packages in use: `@lit-labs/router` (the docs app) and `@lit-labs/compiler` (build-time
+  template compilation). `@lit-labs/motion` is installed and awaits the animation pass.
+  `@lit-labs/testing` is not used: the package does not support SSR.

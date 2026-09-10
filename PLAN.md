@@ -18,7 +18,7 @@ behaviour and functionality. Every docs page shows the same sections as the refe
 foundations pages match too.
 
 **Parity is not implementation parity.** Decided by Peter on 2026-09-10, and it governs every
-element: see [docs/decisions/parity-scope.md](docs/decisions/parity-scope.md). The reference is
+element: see [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md). The reference is
 React; ours is Lit web components. Copying React's internal shape into a web component does not make
 the port more faithful, it makes it worse on the platform it runs on. So every implementation
 decision answers one question: *what is the best decision for a Lit web component that has to reach
@@ -147,7 +147,7 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   change and every clarification lands in this file as part of the same turn it was settled in. A
   decision that lives only in the conversation is lost the next time the context resets, and the
   next agent then rediscovers it the expensive way. If a decision or an investigation is too large
-  for a plan entry, give it its own file under `docs/decisions/` or `docs/analysis/` and link it
+  for a plan entry, give it its own file under `notes/decisions/` or `notes/analysis/` and link it
   from here. This file stays the entry point: reading it, and the files it links, is enough to know
   the whole project.
 
@@ -155,12 +155,15 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
 
 This plan is the entry point. These carry detail too large to inline:
 
+Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build output and
+`bun run docs` overwrites it.
+
 | File | What it holds |
 |---|---|
 | [tools/geist/README.md](tools/geist/README.md) | The full runbook for the parity pipeline, and every guarantee the generator makes |
-| [docs/analysis/functional-parity-sources.md](docs/analysis/functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
-| [docs/decisions/parity-scope.md](docs/decisions/parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
-| [docs/decisions/prop-naming-vs-reference.md](docs/decisions/prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
+| [notes/analysis/functional-parity-sources.md](notes/analysis/functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
+| [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
+| [notes/decisions/prop-naming-vs-reference.md](notes/decisions/prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
 
 ---
 
@@ -357,7 +360,7 @@ build. If we never wired a behaviour, no amount of clicking our own page reveals
 oracle has to come from the reference, not from us.
 
 Research into what is obtainable is written up in
-[docs/analysis/functional-parity-sources.md](docs/analysis/functional-parity-sources.md). The short
+[notes/analysis/functional-parity-sources.md](notes/analysis/functional-parity-sources.md). The short
 version: there is **no source code to read.** The components ship as the private package
 `@vercel/geistcn`, with no public npm entry, no public repository, no type declarations, and no
 source maps in production. Do not spend time looking again; that file records what was checked.
