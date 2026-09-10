@@ -39,7 +39,7 @@ describe("a store selector across a move", () => {
     document.getElementById("from")!.appendChild(el);
     await el.updateComplete;
 
-    store.setState(1);
+    store.setState(() => 1);
     await el.updateComplete;
     expect(el.textContent!.trim()).toBe("1");
 
@@ -47,7 +47,7 @@ describe("a store selector across a move", () => {
     document.getElementById("to")!.appendChild(el);
     await el.updateComplete;
 
-    store.setState(2);
+    store.setState(() => 2);
     await new Promise((r) => setTimeout(r, 0));
     await el.updateComplete;
     expect(el.textContent!.trim()).toBe("2");
@@ -63,7 +63,7 @@ describe("a store selector across a move", () => {
     const before = el.renders;
 
     for (const n of [10, 11, 12]) {
-      store.setState(n);
+      store.setState(() => n);
       await new Promise((r) => setTimeout(r, 0));
       await el.updateComplete;
     }
