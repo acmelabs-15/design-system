@@ -175,6 +175,8 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
 | `bun tools/geist/diff.ts <page>` | Hard, soft, or accepted, by exact rule | Whether a new difference should become accepted |
 | `bun tools/geist/contract.ts` | Extracts 442 reference behaviour statements and 40 wired callbacks, sorted by who can decide them | Whether our element satisfies any of them |
 | `bun tools/geist/config.ts <name>` | The mechanical half of a census config | The five fields that carry the measurement's meaning: prepare, viewport, width, text parts, hops |
+| `bun tools/geist/reconstruct.ts [name]` | What a saved result says the working run was given: url, text parts, states, root count, part list. With no name, every measured page that no config names | The selectors, which a result does not store — take those from `config.ts` and the page |
+| `window.__rings(side)` (`tools/geist/rings.js`) | What every keyboard-reachable box shows at rest and under focus, so the two sides can be compared | Whether a silent box is a defect — the same box on the reference decides that |
 
 ### Supporting documents
 
@@ -195,6 +197,7 @@ Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build ou
 | [notes/decisions/track-census-results.md](notes/decisions/track-census-results.md) | **Decided.** Measurement results are version-controlled, and the two guards that stop an empty run being read as a pass |
 | [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
 | [notes/decisions/prop-naming-vs-reference.md](notes/decisions/prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
+| [notes/decisions/focus-ring-ownership.md](notes/decisions/focus-ring-ownership.md) | **Decided.** Every element draws its own focus ring; the shipped sheet carries no page-wide focus rule, because the reference carries none. Includes the 955-box sweep that proved nothing lost a ring |
 
 ---
 
@@ -433,13 +436,60 @@ differences point at something real.
   pointed out that tracking the results should mean it was recoverable, and it was. **Check the history
   before declaring evidence lost.**
 
-- [ ] Remaining, in cost order: pagination (1), tabs (1), scroller-narrow (1), description (6),
-  error (2), search-init (2), snippet (2), input (4), pagination-next (4), progress (6),
-  clearable-input (6), tab (20), code-block (31), badge (51), split-button (60), book (142),
-  split-button-trigger (240), choicebox (558).
+- [x] **snippet, error, description and search-input — all at parity.** None had a saved config, and
+  the four I had written from guesses measured the wrong things. `tools/geist/reconstruct.ts` reads a
+  saved result back for what the working run was given — its url, its text parts, its state list, its
+  root count and every part of every root — so a config is rebuilt from the run's own record rather
+  than from a guess. What each page needed:
 
-  A lesson already earned: **a page with no saved config is more expensive than its difference count
-  suggests**, because the config has to be rebuilt and verified before the count means anything.
+  | Page | What it was |
+  |---|---|
+  | snippet | The mirror carries two extra example boxes our page has no counterpart for. `previews` names the seven shared ones. Its 2 recorded differences were a stale `text-align` reading; the browser shows both sides `start`. |
+  | error | **A real element fix.** The reference's alert is the box its container lays out; ours had a host box between them, which took the row's stretch and left the alert at its own height. `:host { display: contents }` puts our root back in that place. Both sides now read 24px in the size row, and the three accepted leftovers went with it. |
+  | description | Its 6 recorded differences were already fixed by earlier work; the results predated the fix. |
+  | search-input | **Two real fixes and a harness fix.** See below. |
+
+- [x] **The kbd host had a box the reference does not have.** The reference's key is one element:
+  `inline-flex` in prose, blockified to `flex` when a flex row holds it, so the row sizes to the key's
+  own 20px. Our `acme-kbd` host sat between the row and the key and took that place, making the row
+  25px. `:host { display: contents }`. Verified in both contexts: the search field's key row now reads
+  58x20 with both keys 20x20, matching the reference exactly, and the standalone page still reads
+  `inline-flex` at 26x24, 24x24 and 40x24, also matching.
+
+- [x] **The census rewrote pseudo-classes on the reference side only.** Its comment said ours keys
+  every state off attributes already. That is true of most of our generated sheets and not of all of
+  them: a rule the reference wrote as a real `:hover` or `:focus-visible` comes through the generator
+  as one. Such a rule of ours was unreachable, so the state read as its resting value and the diff
+  reported a difference the element does not have — the search field's clear button, on both its
+  hover colour and its focus outline. Both sides are rewritten now.
+
+  The rewrite also needed a second rule. It expands `:hover` into "the pseudo-class, or its attribute
+  on the element **or an ancestor**", and that descendant clause is what carries a state down to the
+  parts inside a focused element. A compound that is the pseudo-class alone must not take it, or a
+  page-wide rule lands on every descendant. `tools/geist/__tests__/census.test.ts` pins both rules,
+  and the test was proven by reintroducing the bug.
+
+- [x] **The page-wide focus ring is gone from the shipped sheet.** Decided by Peter; see
+  `notes/decisions/focus-ring-ownership.md`. The reference has no page-wide focus rule of any kind and
+  leaves the browser's own ring on anything it does not style itself, proven by probing a plain button
+  and a plain div on its page. Ours put a Geist ring and a 6px radius on every focusable thing,
+  through a published entry point, so it reached consumers' own controls too.
+
+  Swept afterwards with `tools/geist/rings.js`: 955 keyboard-reachable boxes across 98 of our pages,
+  every silent one checked against the same box on the reference. Three patterns account for all of
+  them and the reference reads the same way in each. **No element lost a ring it had.**
+
+- [ ] Remaining, in cost order: input (4), pagination-next (4), progress (6), clearable-input (6),
+  tab (20), code-block (31), badge (51), split-button (60), book (142), split-button-trigger (240),
+  choicebox (558).
+
+  Two lessons already earned:
+
+  - **A page with no saved config is more expensive than its difference count suggests**, because the
+    config has to be rebuilt and verified before the count means anything.
+  - **A saved result is the record of the config that produced it.** `reconstruct.ts` reads it back.
+    The two sides can legitimately differ — search-input's reference run set `textParts: ["input"]`
+    while ours set four — so read the side you are rebuilding, not the other one.
 
 In the generator, never in an element. A new accepted leftover goes in the `ACCEPTED` table in
 `diff.ts` with its reason, so the classification stays the same on every run.
