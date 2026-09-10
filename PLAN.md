@@ -58,10 +58,18 @@ Behaviour is built on these, not on the reference's own dependencies:
 - A vendored copy of cmdk's command-score
 - Our own controllers: `Interaction`, `RovingTabindex`
 
-These are not suggestions. Use them for the functionality they cover. Syntax highlighting is
-TanStack highlight, not Shiki; hotkeys are TanStack hotkeys, not hotkeys-js; and so on. Where a
-package ships only a vanilla build, write the Lit wrapper or controller for it here rather than
-reaching for a different library.
+These are not suggestions. **When a piece of functionality falls to one of these packages, that
+package is the one to use** — for every item on the list, not only the obvious ones. Syntax
+highlighting is TanStack highlight, never Shiki. Hotkeys are TanStack hotkeys, never hotkeys-js.
+Virtualization is TanStack virtual. Charts are TanStack charts. Rate limiting and debouncing are
+TanStack pacer. Placement is floating-ui. Animation is @lit-labs/motion.
+
+Where a package ships only a vanilla build, write the Lit wrapper or controller for it here rather
+than reaching for a different library.
+
+**A package on the list with no imports yet is not a defect.** It means the port has not reached
+functionality that needs it. Leave it in the dependencies and use it when that work arrives. Do
+not remove it, and do not substitute something else when the moment comes.
 
 Where the stack genuinely lacks something the reference has, and the work is complex, **use a
 package rather than hand-rolling it**. Stop first and do comprehensive web research into what the
@@ -70,6 +78,28 @@ around a long time may already be superseded by something smaller, faster and mo
 for that before choosing, and say in the report what you compared.
 
 The data layer (TanStack Query and DB) is a separate package, later.
+
+### Which chosen packages are in use today
+
+A blank row means the port has not yet reached work that needs it. That is expected, not a gap.
+
+| Package | Files importing it in `src/` |
+|---|---|
+| `@floating-ui/dom` | 6 |
+| `@zag-js/remove-scroll` | 5 |
+| `@tanstack/highlight` | 2 |
+| `@tanstack/lit-store` | 2 |
+| `@tanstack/charts` | 1 |
+| `@tanstack/lit-form` | 1 |
+| `@tanstack/lit-hotkeys` | 1 |
+| `@tanstack/lit-virtual` | 1 |
+| `@tanstack/markdown` | 1 |
+| `@tanstack/pacer` | 1 |
+| `@internationalized/date` | 1 |
+| `@lit-labs/motion` | none yet — see the task in 5.6 |
+
+No rival library has crept in: a sweep for shiki, highlight.js, prismjs, marked, markdown-it,
+date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` returns nothing.
 
 ### Standing build rules
 
@@ -293,9 +323,20 @@ needs Peter's own Chrome, which reaches vercel.com. Currently disconnected.
 - [ ] Menu: the reference's mobile path. Under 601px the list opens inside a drawer, which sets no shadow on it. Absent from the corpus, so sketch it alongside the combobox mobile form.
 - [ ] Modal: a `form` option wrapping body and footer, so destructive-action-modal drops its two context lines
 - [ ] Combobox: the reference's mobile form, a button that opens a drawer under 601px
-- [ ] `@lit-labs/motion` is a dependency but imported nowhere. Either use it where the reference
-  animates (collapse was the intended home) or drop the dependency. Peter asked for it explicitly,
-  so prefer using it.
+- [ ] **Move the animated elements onto `@lit-labs/motion`.** Two patterns cover nearly all of it:
+
+  1. *A box whose size changes.* Collapse is the clearest case: it measures the body with
+     `getBoundingClientRect` and drives an inline pixel height, which is precisely what the
+     `animate` directive does properly. Anything else that grows or shrinks belongs here too.
+  2. *Something entering or leaving.* Modal, drawer, sheet, toast, tooltip, context-card,
+     command-menu and feedback all fade, scale or slide in and back out, today through
+     hand-written transitions plus `getAnimations()` bookkeeping to hold the exit open. The
+     directive's enter and exit handling is built for exactly this.
+
+  Also review calendar, middle-truncate and text-copy, which animate in script.
+
+  The bar is parity with the reference's motion; the package is how we get there, not a licence to
+  change how anything looks or times.
 - [ ] Sweep the last reference mentions under `src/`
 - [ ] Refresh README, the Get Started page and the design-system skill. **README is currently wrong**: it lists `@lit-labs/signals` and `@lit-labs/virtualizer`, but the chosen stack uses TanStack store and TanStack virtual.
 - [x] The dialog reset lives in `src/shared/dialog.ts`; modal, drawer and sheet import it
