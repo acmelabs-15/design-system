@@ -40,6 +40,12 @@
 .showcase{border:1px solid var(--ds-gray-alpha-400);background:var(--ds-background-100);border-radius:var(--r);overflow:hidden}
 .showcase + .showcase{margin-top:24px}
 .showcase .preview{padding:24px;overflow-x:auto;font-size:16px;line-height:1.5}
+/* The demo container owns the spacing around a demo, so an element's own outer margin does not
+   stack with our padding. The reference's docs do the same: their demo wrapper zeroes the margin on
+   every demo root it holds, which is why their code block shows no gap while its own my-4 is real.
+   Measured on the live page: removing the marker restores 16px, so the element keeps its margin and
+   only the harness cancels it. */
+.showcase .preview{--acme-code-block-margin-block:0}
 .showcase .showbar{height:48px;display:flex;align-items:center;gap:8px;padding:0 16px;background:var(--ds-background-200);border:0;border-top:1px solid var(--ds-gray-alpha-400);width:100%;text-align:left;font:inherit;font-size:14px;line-height:20px;color:var(--text-2);cursor:pointer}
 .showcase .showbar:hover{color:var(--text)}
 .showcase .showbar .ic{transition:transform var(--dur) var(--ease)}

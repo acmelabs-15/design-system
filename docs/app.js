@@ -7225,6 +7225,13 @@ Please use the static 'html' tag function. See https://lit.dev/docs/templates/ex
       :host {
         display: block;
       }
+      /* The reference's block carries my-4, so the generated sheet sets margin-block: 1rem and that
+         is the element's correct default. Their docs page then cancels it on every demo it holds,
+         which a page of ours cannot do through a shadow boundary. This property is the way across:
+         our docs preview sets it to 0, and any other page keeps the reference's spacing. */
+      .code-block {
+        margin-block: var(--acme-code-block-margin-block, 1rem);
+      }
       /* The reference has no host between the frame and its floating button: the button itself is the
          absolutely-positioned box. Ours has two, acme-copy-button and the acme-button inside it, and
          an in-flow inline box takes a line of the frame's 24px line-height, which pushed the code
@@ -17916,5 +17923,5 @@ ${r}
       <div><acme-button type="submit" variant="primary" ?disabled=${!this.form.api.state.canSubmit}>Create Account</acme-button></div>
     </form>`}}Cb=bo([x("docs-form-demo")],Cb);window.acme={toasts:ct,createToastQueue:Ad};document.addEventListener("click",(t)=>{let e=t.target.closest(".showbar");if(!e)return;let r=e.closest(".showcase"),i=r.dataset.open==="true";if(r.dataset.open=String(!i),e.setAttribute("aria-expanded",String(!i)),e.lastChild)e.lastChild.textContent=i?"Show code":"Hide code"});
 
-//# debugId=650CB789449A5DC964756E2164756E21
+//# debugId=91EFC444D1B4705A64756E2164756E21
 //# sourceMappingURL=app.js.map

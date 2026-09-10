@@ -133,7 +133,10 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   future run. So it needs the same evidence as any other claim: the rule that wins, read in the
   browser, with its selector. Reaching for it because a class *appears* inert is how a real
   declaration gets silently deleted — `my-4` on the code block was put there on that reasoning and
-  reverted, because the class works and the reference's own docs page was zeroing it.
+  reverted, because the class works and the reference's own docs page was zeroing it. **Confirmed on
+  the live site 2026-09-10** by bisection: removing the demo's `aria-label` restores the 16px,
+  changing its value restores it, and a plain div carrying that exact value is zeroed too. Their
+  component keeps its margin; their docs harness cancels it on all 10 demos.
 - **A host keeps a real box, unless the reference renders no box there.** `display: contents` is the
   exception, not the default, and it needs the same evidence as any other claim: the reference's own
   element is the box its container lays out, and a host of ours in between takes that place instead.
@@ -206,6 +209,15 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
+- **A page cannot reach a margin inside a shadow root; expose a property instead.** Verified
+  2026-09-10 on the code block. Its `margin-block` is on `.code-block` in the shadow tree, so
+  `.preview > * { margin-block: 0 }` on the docs page did nothing. The element now exposes
+  `--acme-code-block-margin-block`, defaulting to the reference's value, and the docs preview sets
+  it to `0`. See `notes/decisions/demo-margin-ownership.md`.
+- **A difference between two docs pages is not automatically an element defect.** The reference's
+  docs harness styles its own demos, so copying the element faithfully and copying the harness
+  faithfully are two separate jobs. Check which layer the difference lives in before changing the
+  element.
 - **A generated rule sizes OUR host from THEIR control, so unmap a control we chose differently.**
   Verified 2026-09-10 twice on code-block. Their tab strip's rules clipped our switch's ring, and
   their select wrapper's `h-8` left our host a 32px box around a 24px field. Both were mapped to the
@@ -650,7 +662,7 @@ differences point at something real.
 
   | Cause | Count | Standing |
   |---|---|---|
-  | `root.margin-top/bottom` 0 vs 16px | 20 | The reference's own page zeroes its demo's `my-4`. Page furniture, section 5.1b. |
+  | `root.margin-top/bottom` 0 vs 16px | 20 | Page furniture, now fixed. See below. |
   | `copy.color` gray-1000 vs gray-900 | 9 | The inner-tree-`!important` cascade. Needs its own decision. |
   | `v0` width and missing root | 2 | Not yet investigated. |
 

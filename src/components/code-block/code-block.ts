@@ -50,6 +50,13 @@ export class AcmeCodeBlock extends AcmeElement {
       :host {
         display: block;
       }
+      /* The reference's block carries my-4, so the generated sheet sets margin-block: 1rem and that
+         is the element's correct default. Their docs page then cancels it on every demo it holds,
+         which a page of ours cannot do through a shadow boundary. This property is the way across:
+         our docs preview sets it to 0, and any other page keeps the reference's spacing. */
+      .code-block {
+        margin-block: var(--acme-code-block-margin-block, 1rem);
+      }
       /* The reference has no host between the frame and its floating button: the button itself is the
          absolutely-positioned box. Ours has two, acme-copy-button and the acme-button inside it, and
          an in-flow inline box takes a line of the frame's 24px line-height, which pushed the code
