@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 07:20 PDT.
+how we prove it, and where we are. Updated 2026-09-10 07:55 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -379,8 +379,23 @@ Measured, not estimated:
    label 1, trigger 6, in both themes. The trigger's 16 accepted are the documented wrapper-box
    context value. The census config now carries two prepare steps it was missing, both recorded with
    their reason.
-2. **context-card** — the generator reports **clean**. Map, spec and sketches are all present. Needs a
-   census run and its config.
+2. [~] **context-card — census config written, one real defect found.** The trigger root is at **0
+   hard** in both themes (17 roots each side). The card root is down from 208 to **80**, and what
+   remains is a genuine defect rather than noise:
+
+   **A card pinned open through `shown` never resolves its side.** The reference's four cards open on
+   four different sides (top, bottom, left, right) and ours resolve every one to `top`, the default.
+   Verified with room on every side: trigger at y=450 in a 924-tall viewport, content only 48 tall, so
+   nothing should flip. Localized to `updated()` in `context-card.ts`: the placement block that sets
+   `shownSide` runs only when the **layer node changes**, and a pinned card mounts its layer once, so
+   `measure()` never runs again. Clearing `pending` by hand does not help, which rules out the
+   `!this.pending` guard. `active` reads `false` on every pinned card and the card's y is a stale 868
+   for all four.
+
+   This matters beyond the census: it is the code path a consumer uses to open a card programmatically.
+   Fix it in the element, then re-run. Two smaller items behind it: the card's `transform` is placement,
+   already an accepted context difference, and the arrow's rotation follows the side, so it should
+   resolve once the side does.
 3. **calendar** — the expensive one. **All nine reference examples render only a skeleton on the server**,
    so the real calendar exists at runtime only and no map can be derived from the spec. It needs the
    sketch path: the class strings are in `corpus/js/0ofxlpb8_00s7.js`, which carries the root's full class
