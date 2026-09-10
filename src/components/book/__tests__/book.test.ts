@@ -80,19 +80,27 @@ describe("acme-book", () => {
     expect(root(el).querySelector(".content > slot[name=icon] + svg")).toBeNull();
   });
 
-  test("the cover's hover is reactive state as well as an attribute, so the animate directive fires", async () => {
+  test("the gesture is one store, and the frames derive from it", async () => {
     const el = await mount(`<acme-book title="A"></acme-book>`);
     const w = wrap(el);
+    const probe = el as unknown as { gesture: { get: () => { hovered: boolean; from?: string } }; coverFrames: { get: () => { transform: string }[] } };
     // `Interaction` sets data-hover on the root for the generated rules and the census, but with
-    // setAttribute and no update. The directive runs only in Lit's update cycle, so the cover
-    // carries its own reactive `hovered` and the pointer handlers sit on the wrap.
+    // setAttribute and no update. The directive runs only in Lit's update cycle, so the cover keeps
+    // the gesture in a store of its own and the pointer handlers sit on the wrap.
     const before = el.shadowRoot!.innerHTML;
+    expect(probe.gesture.get().hovered).toBe(false);
+    expect(probe.coverFrames.get()[1].transform).toContain("rotateY(0deg)");
+
     w.dispatchEvent(new PointerEvent("pointerenter", { bubbles: true, pointerType: "mouse" }));
     await el.updateComplete;
-    expect((el as unknown as { hovered: boolean }).hovered).toBe(true);
+    expect(probe.gesture.get().hovered).toBe(true);
+    // The derived frames follow the store: the cover now travels TO the lifted state.
+    expect(probe.coverFrames.get()[1].transform).toContain("var(--hover-rotate)");
+
     w.dispatchEvent(new PointerEvent("pointerleave", { bubbles: true, pointerType: "mouse" }));
     await el.updateComplete;
-    expect((el as unknown as { hovered: boolean }).hovered).toBe(false);
+    expect(probe.gesture.get().hovered).toBe(false);
+    expect(probe.coverFrames.get()[1].transform).toContain("rotateY(0deg)");
     // The markup is unchanged: the hover animates, it does not re-template.
     expect(el.shadowRoot!.innerHTML).toBe(before);
   });

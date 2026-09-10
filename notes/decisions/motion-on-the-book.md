@@ -75,3 +75,44 @@ needs its state to be reactive already.
 
 The package carries a Lit Labs warning: breaking changes or discontinued support. One element
 depends on it today.
+
+
+## The gesture is one store, and the frames derive from it (2026-09-10)
+
+Peter, on reading the first version: the store "excels where it keeps track of a state, and then the
+way that state changes is by using a derived function, which is what a lot of these values are."
+
+He is right, and my first answer was too narrow. I said the book had no derived values because
+`coverFrames` was a plain function rather than a derived store — which is true of the code as
+written and misses that it *should* have been one. `hovered` and the captured matrix are not two
+fields: they are one gesture, written together in one handler and read together to decide the
+frames.
+
+So it is now the shape `acme-destructive-modal` already uses — a store of related fields plus a
+derived store computed from it:
+
+```ts
+private gesture = createStore({ hovered: false, from: undefined as string | undefined });
+private coverFrames = createStore(() => {
+  const { hovered, from } = this.gesture.get();
+  return [{ transform: from ?? (hovered ? rest : lifted) }, { transform: hovered ? lifted : rest }];
+});
+private gestureSelector = new StoreSelector(this, () => this.gesture, (g) => g.hovered);
+```
+
+Two things this buys beyond tidiness:
+
+- **The reasoning moved.** Which frames to use is now a value the element derives, not a decision
+  taken inside the directive's callback. `onFrames` reads it and nothing else.
+- **The selector takes a slice.** `TanStackStoreSelector`'s third argument is a selector function
+  (the shape Peter's Lit example shows), so the element re-renders on `hovered` alone. The captured
+  matrix changes on every turn too, but it is read by the frames rather than rendered, and
+  subscribing to the whole store would ask for an update the markup does not need.
+
+The write stays a single `setState`, which keeps the capture-then-flip ordering that fixed the snap:
+the matrix and the direction land together, so there is no window where one is new and the other
+old.
+
+**Verified after the change:** book and book.dark still 0 hard, re-measured; the quick in-and-out
+still reads `0.175 → 0.156 → 0.138 → 0.120 → 0.104 → 0.088`, monotonically down with no overshoot;
+606 tests pass. The frames test is proven by breaking the derivation and watching it fail.
