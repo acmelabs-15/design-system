@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, paths, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { menuItemCss } from "./menu-item.styles";
 
 let seq = 0;
@@ -39,8 +40,8 @@ export class AcmeMenuItem extends AcmeElement {
   @property({ type: Boolean }) selected = false;
   /** The text typeahead matches: the label's text unless set. */
   @property() value = "";
-  @state() private hasPrefix = false;
-  @state() private hasSuffix = false;
+  @atomState() private hasPrefix = false;
+  @atomState() private hasSuffix = false;
   @query(".item") private root?: HTMLElement;
   private uid = `menu-item-${(++seq).toString(36)}`;
 

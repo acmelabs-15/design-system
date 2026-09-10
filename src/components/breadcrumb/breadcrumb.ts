@@ -1,9 +1,10 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { breadcrumbCss } from "./breadcrumb.styles";
 import "../tooltip/tooltip";
+import { atomState } from "../../shared/atom-state";
 
 /**
  * One crumb of an `acme-breadcrumbs`. In a text list it is a 14px gray-900 list item with a
@@ -38,7 +39,7 @@ export class AcmeBreadcrumb extends AcmeElement {
   /** The chip form; set by the list for `type="menu"`. */
   @property({ type: Boolean, reflect: true }) menu = false;
   /** A menu chip whose text is cut off: measured once, when the chip first renders, as the reference does. */
-  @state() private truncated = false;
+  @atomState() private truncated = false;
   private measured = false;
   @query(".item") private item?: HTMLElement;
   @query(".chip") private chip?: HTMLElement;

@@ -1,9 +1,10 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCheckbox } from "../checkbox/checkbox";
 import "../checkbox/checkbox";
+import { atomState } from "../../shared/atom-state";
 import { multiSelectRowCss } from "./multi-select-row.styles";
 
 export type MultiSelectAction = "toggle" | "selectOnly" | "selectAll";
@@ -61,7 +62,7 @@ export class AcmeMultiSelectRow extends AcmeElement {
   @property({ type: Boolean, reflect: true }) hovered = false;
   /** The checkbox column is the active one on the hovered row (the pointer over the checkbox, or Left pressed); the multi select sets it. */
   @property({ type: Boolean, reflect: true, attribute: "checkbox-hovered" }) checkboxHovered = false;
-  @state() private hasLeading = false;
+  @atomState() private hasLeading = false;
   @query(".action") private button?: HTMLButtonElement;
   @query("acme-checkbox") private checkbox?: AcmeCheckbox;
   /** The button's id: the checkbox is labelled by it. */

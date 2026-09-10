@@ -1,6 +1,7 @@
 import { html } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { emptyStateCss } from "./empty-state.styles";
 
 /**
@@ -23,9 +24,9 @@ export class AcmeEmptyState extends AcmeElement {
   @property({ converter: boolish }) border = true;
   /** The background-200 form with the 14px title, for a state inside a tinted panel. */
   @property({ type: Boolean }) secondary = false;
-  @state() private hasIcon = false;
-  @state() private hasTitle = false;
-  @state() private hasDescription = false;
+  @atomState() private hasIcon = false;
+  @atomState() private hasTitle = false;
+  @atomState() private hasDescription = false;
 
   connectedCallback() {
     super.connectedCallback();

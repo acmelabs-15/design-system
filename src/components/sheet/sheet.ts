@@ -1,7 +1,8 @@
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { dialogResetCss } from "../../shared/dialog";
 import { Interaction } from "../../shared/interaction";
 import { deepActive, tabbables } from "../modal/modal";
@@ -52,9 +53,9 @@ export class AcmeSheet extends AcmeElement {
   @property({ type: Boolean, reflect: true }) inset = false;
   @property() heading = "";
   /** The dialog is open (the exit keeps it open until the sheet leaves). */
-  @state() private mounted = false;
-  @state() private hasContent = false;
-  @state() private hasFooter = false;
+  @atomState() private mounted = false;
+  @atomState() private hasContent = false;
+  @atomState() private hasFooter = false;
   @query("dialog") private dialog!: HTMLDialogElement;
   private interaction = new Interaction(this, { anyFocus: true, ownFocus: true });
   private opener: HTMLElement | null = null;

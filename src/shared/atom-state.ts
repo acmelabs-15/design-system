@@ -31,8 +31,9 @@
 //
 // Equality is the atom's own, which is identity: an object mutated in place does not re-render.
 // Pass `shallow` from the store package for a field holding an object the element rebuilds.
-import type { ReactiveControllerHost, ReactiveElement } from "lit";
+
 import { type Atom, createAtom, TanStackStoreAtom } from "@tanstack/lit-store";
+import type { ReactiveControllerHost, ReactiveElement } from "lit";
 
 type Host = ReactiveControllerHost & object;
 /** The atoms of one host, keyed by field name, so several fields on one element stay independent. */
@@ -70,7 +71,13 @@ export function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T
         return atomFor<T>(this, name, undefined as T, shared, options).value;
       },
       set(this: Host, value: T) {
-        atomFor<T>(this, name, value as T, shared, options).set(() => value as T);
+        const atom = atomFor<T>(this, name, value as T, shared, options);
+        const old = atom.value;
+        atom.set(() => value as T);
+        // Tell Lit the property changed, so `changedProperties.has(name)` still answers in
+        // `updated` and `willUpdate`. The atom already requested the update; this only records
+        // the change, and an element that asks which of its fields moved keeps working.
+        (this as unknown as ReactiveElement).requestUpdate(name, old);
       },
     });
   };

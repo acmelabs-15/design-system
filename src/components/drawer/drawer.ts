@@ -1,8 +1,9 @@
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { dialogResetCss } from "../../shared/dialog";
 import { deepActive, tabbables } from "../modal/modal";
 import { drawerCss } from "./drawer.styles";
@@ -53,13 +54,7 @@ const heightAttr = {
  */
 @customElement("acme-drawer")
 export class AcmeDrawer extends AcmeElement {
-  static styles = [
-    sharedCss,
-    dialogResetCss,
-    drawerOverlayCss,
-    drawerBackdropCss,
-    drawerCss,
-  ];
+  static styles = [sharedCss, dialogResetCss, drawerOverlayCss, drawerBackdropCss, drawerCss];
   /** Open state; `show()` and `close()` set it. */
   @property({ type: Boolean, reflect: true }) open = false;
   /** The title above the content; the dialog is labelled by it. */
@@ -73,15 +68,15 @@ export class AcmeDrawer extends AcmeElement {
   /** Any change scrolls the popup back to its top. */
   @property({ attribute: "reset-scroll" }) resetScroll = "";
   /** The popup is on screen at its resting place (false during the entrance and the exit). */
-  @state() private rendered = false;
+  @atomState() private rendered = false;
   /** The dialog is open (the exit keeps it open until the drawer leaves). */
-  @state() private mounted = false;
+  @atomState() private mounted = false;
   /** The entrance has ended: a request to close is taken up. */
-  @state() private entered = false;
+  @atomState() private entered = false;
   /** The pointer is swiping the popup. */
-  @state() private swiping = false;
+  @atomState() private swiping = false;
   /** The keyboard's inset under the popup, in px. */
-  @state() private keyboard = 0;
+  @atomState() private keyboard = 0;
   @query("dialog") private dialog!: HTMLDialogElement;
   @query(".drawer") private panel!: HTMLElement;
   private opener: HTMLElement | null = null;

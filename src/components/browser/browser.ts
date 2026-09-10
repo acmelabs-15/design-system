@@ -1,10 +1,11 @@
 import { css, html } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, paths, sharedCss } from "../../base";
 import { toasts } from "../../shared/state";
 import { browserCss } from "./browser.styles";
 import { browserCopyCss } from "./browser-copy.styles";
 import "../button/button";
+import { atomState } from "../../shared/atom-state";
 
 /** The address as the bar shows it: no scheme, no `www.`, no trailing slash. */
 export const formatAddress = (address: string) =>
@@ -48,7 +49,7 @@ export class AcmeBrowser extends AcmeElement {
   ];
   /** The URL the address bar shows and the copy button copies. */
   @property() address = "";
-  @state() private copied = false;
+  @atomState() private copied = false;
   private timer?: ReturnType<typeof setTimeout>;
 
   disconnectedCallback() {

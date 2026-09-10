@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { glyphSized } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { AcmeButton, type ButtonColors } from "../button/button";
 import { menuButtonCss } from "./menu-button.styles";
 
@@ -40,10 +41,10 @@ export class AcmeMenuButton extends AcmeButton {
   @property({ type: Boolean, attribute: "show-chevron" }) showChevron = false;
   /** Whether the menu is open: the menu keeps it in step. */
   @property({ type: Boolean, reflect: true }) open = false;
-  @state() private prefixed = false;
-  @state() private suffixed = false;
+  @atomState() private prefixed = false;
+  @atomState() private suffixed = false;
   /** The content is elements only (an icon, an avatar), no text: the trigger is then icon-only. */
-  @state() private elementOnly = false;
+  @atomState() private elementOnly = false;
 
   connectedCallback() {
     super.connectedCallback();

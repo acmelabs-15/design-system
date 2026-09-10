@@ -1,11 +1,12 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { choiceboxItemCss } from "./choicebox-item.styles";
 import "../checkbox/checkbox";
 import "../radio/radio";
 import "../tooltip/tooltip";
+import { atomState } from "../../shared/atom-state";
 
 /**
  * One tile of an acme-choicebox: a bordered list item whose whole face is the label of its
@@ -53,7 +54,7 @@ export class AcmeChoiceboxItem extends AcmeElement {
   @property({ attribute: false }) controlPosition: "start" | "end" = "end";
   /** Set by the group: off the Tab sequence (roving tabindex); arrow keys reach it. */
   @property({ attribute: false }) skipTab = false;
-  @state() private hasContent = false;
+  @atomState() private hasContent = false;
   @query(".tile") private tile!: HTMLElement;
   @query("acme-radio, acme-checkbox") private control!: HTMLElement & { focus(): void };
   private interaction = new Interaction(this, { disabled: () => this.off });

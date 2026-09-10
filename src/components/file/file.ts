@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { fileCss } from "./file.styles";
 
@@ -49,7 +50,7 @@ export class AcmeFile extends AcmeElement {
   /** `show-icon="false"` hides the icon. */
   @property({ attribute: "show-icon", converter: boolish }) showIcon = true;
   /** Folder levels above this row: one indent guide each. */
-  @state() private depth = 0;
+  @atomState() private depth = 0;
   @query(".link") private link!: HTMLElement;
   private interaction = new Interaction(this);
 

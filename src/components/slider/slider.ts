@@ -1,10 +1,11 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, queryAll, state } from "lit/decorators.js";
+import { customElement, property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { labelCss } from "../label/label.styles";
 import { sliderCss } from "./slider.styles";
 import "../input/input";
+import { atomState } from "../../shared/atom-state";
 
 /** `value` as an attribute: a bare number (`value="40"`) or a JSON list (`value="[50, 75]"`). */
 const values = {
@@ -125,10 +126,10 @@ export class AcmeSlider extends AcmeElement {
   /** The spoken value of a thumb: `(formatted, value, index)`. A range says "50 start range" / "75 end range" by default. */
   @property({ attribute: false }) getAriaValueText?: (formatted: string, value: number, index: number) => string;
   /** The thumb whose input has focus. */
-  @state() private active = -1;
+  @atomState() private active = -1;
   /** The thumb used last, kept above the other. */
-  @state() private lastUsed = -1;
-  @state() private dragging = false;
+  @atomState() private lastUsed = -1;
+  @atomState() private dragging = false;
   @query(".control") private control!: HTMLElement;
   @queryAll(".thumb") private thumbs!: NodeListOf<HTMLElement>;
   private internals?: ElementInternals;

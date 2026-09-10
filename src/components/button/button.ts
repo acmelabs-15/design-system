@@ -1,9 +1,10 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { buttonCss } from "./button.styles";
 import "../spinner/spinner";
+import { atomState } from "../../shared/atom-state";
 
 /** `default` is the primary look (gray-1000); `custom` takes its colors from `normal`, `hover` and `active`; `unstyled` is only the reset and the label, for a control that draws its own look. */
 export type ButtonVariant = "default" | "primary" | "secondary" | "tertiary" | "error" | "warning" | "custom" | "unstyled";
@@ -86,10 +87,10 @@ export class AcmeButton extends AcmeElement {
   @property({ attribute: "aria-haspopup" }) haspopup = "";
   @property({ attribute: "aria-expanded" }) expanded = "";
   @property({ attribute: "aria-controls" }) controls = "";
-  @state() private hasPrefix = false;
-  @state() private hasSuffix = false;
+  @atomState() private hasPrefix = false;
+  @atomState() private hasSuffix = false;
   /** The default slot holds elements only (an icon), no text. */
-  @state() private elementChild = false;
+  @atomState() private elementChild = false;
   @query(".btn") private root!: HTMLElement;
   private interaction = new Interaction(this, {
     disabled: () => this.disabled || this.loading,

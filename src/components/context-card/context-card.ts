@@ -1,7 +1,8 @@
 import { css, html, nothing, svg } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { contextCardCss } from "./context-card.styles";
 import { contextCardTriggerCss } from "./context-card-trigger.styles";
 
@@ -34,7 +35,8 @@ const ARROW_INSET = 7;
 /** Focusable content in the trigger: the element focus returns to. */
 const FOCUSABLE = "a[href],button,input,select,textarea,[tabindex],acme-button";
 /** The arrow glyph: a 14 by 7 stem with a 1px stroke, drawn pointing down and rotated per side. */
-const GLYPH = "M15 -0.5V0.5H12.9834L12.8184 0.508789C12.4377 0.550822 12.0853 0.738056 11.8359 1.03418L8.53027 4.95996C7.73114 5.90893 6.26886 5.90892 5.46973 4.95996L2.16406 1.03418C1.87905 0.695733 1.45907 0.5 1.0166 0.5H-1V-0.5H15Z";
+const GLYPH =
+  "M15 -0.5V0.5H12.9834L12.8184 0.508789C12.4377 0.550822 12.0853 0.738056 11.8359 1.03418L8.53027 4.95996C7.73114 5.90893 6.26886 5.90892 5.46973 4.95996L2.16406 1.03418C1.87905 0.695733 1.45907 0.5 1.0166 0.5H-1V-0.5H15Z";
 
 const dist = (a: Box, b: Box | null) => (b ? Math.hypot(a.x - b.x, a.y - b.y) : 0);
 
@@ -134,23 +136,23 @@ export class AcmeContextCard extends AcmeElement {
   /** Ignores hover, focus, keys and touch. */
   @property({ type: Boolean, attribute: "disable-triggers" }) disableTriggers = false;
   /** The open bits at hand: the pinned ones from `shown`. */
-  @state() private bits = 0;
+  @atomState() private bits = 0;
   /** The pointer, or focus, is on the trigger or the card. */
-  @state() private hovered = false;
+  @atomState() private hovered = false;
   /** The pointer left recently: the content stays mounted for its fade. */
-  @state() private recentlyLeft = false;
+  @atomState() private recentlyLeft = false;
   /** The card is up on the stage. */
-  @state() private active = false;
+  @atomState() private active = false;
   /** The content is visible: this card is the one hovered last. */
-  @state() private visible = false;
+  @atomState() private visible = false;
   /** The shell yielded the stage to another card: its layer goes at once. */
-  @state() private yielded = false;
+  @atomState() private yielded = false;
   /** The side the card is drawn on: the resolved side, or the one with more room. */
-  @state() private shownSide: ContextCardSide = "right";
+  @atomState() private shownSide: ContextCardSide = "right";
   /** Escape dismissed the card: focus stays where it is, so focus alone does not reopen it. */
   private dismissed = false;
   /** The move transition is skipped: opened from rest, moved too far, or scrolling. */
-  @state() private skip = true;
+  @atomState() private skip = true;
   @query(".trigger") private trigger?: HTMLElement;
   @query(".layer") private layer?: HTMLElement;
   @query(".fade") private fade?: HTMLElement;

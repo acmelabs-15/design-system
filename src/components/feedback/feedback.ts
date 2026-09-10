@@ -1,6 +1,6 @@
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { css, html, nothing, svg } from "lit";
-import { customElement, property, query, queryAll, state } from "lit/decorators.js";
+import { customElement, property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { reduced } from "../../shared/overlay";
@@ -9,6 +9,7 @@ import "../button/button";
 import "../input/input";
 import "../select/select";
 import "../textarea/textarea";
+import { atomState } from "../../shared/atom-state";
 
 export type FeedbackVariant = "" | "inline";
 export type FeedbackButtonVariant = "default" | "secondary" | "tertiary";
@@ -134,19 +135,19 @@ export class AcmeFeedback extends AcmeElement {
   @property() endpoint = "/api/feedback";
   /** The card is open (the trigger's card, or the inline pill grown into the card). */
   @property({ type: Boolean, reflect: true }) open = false;
-  @state() private emotion = "";
-  @state() private note = "";
-  @state() private emailValue = "";
-  @state() private topic = "";
-  @state() private message = "";
-  @state() private sending = false;
-  @state() private sent = false;
-  @state() private hasPrefix = false;
-  @state() private hasSuffix = false;
+  @atomState() private emotion = "";
+  @atomState() private note = "";
+  @atomState() private emailValue = "";
+  @atomState() private topic = "";
+  @atomState() private message = "";
+  @atomState() private sending = false;
+  @atomState() private sent = false;
+  @atomState() private hasPrefix = false;
+  @atomState() private hasSuffix = false;
   /** The card of the trigger variant: mounted and open, fading out, or gone. */
-  @state() private card: "open" | "closed" | null = null;
-  @state() private formPhase: Phase = "entered";
-  @state() private errorPhase: Phase = null;
+  @atomState() private card: "open" | "closed" | null = null;
+  @atomState() private formPhase: Phase = "entered";
+  @atomState() private errorPhase: Phase = null;
   /** The last message, kept while the error block leaves. */
   private lastMessage = "";
   private hovered = false;

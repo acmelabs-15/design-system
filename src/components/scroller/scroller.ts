@@ -1,11 +1,12 @@
 import { Debouncer } from "@tanstack/pacer";
 import { css, html, nothing, type PropertyValues } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { scrollerCss } from "./scroller.styles";
 import { scrollerButtonsCss } from "./scroller-buttons.styles";
 import "../button/button";
+import { atomState } from "../../shared/atom-state";
 
 /** A number is a length in px; anything else is a CSS length. */
 const len = (v: string) => (/^\d+(\.\d+)?$/.test(v) ? `${v}px` : v);
@@ -61,7 +62,7 @@ export class AcmeScroller extends AcmeElement {
   /** Lays the children out in two equal columns on viewports between 470 and 670px. */
   @property({ type: Boolean, attribute: "mobile-grid" }) mobileGrid = false;
   /** The edges the content lies past. */
-  @state() private edges: Edges = NONE;
+  @atomState() private edges: Edges = NONE;
   /** The index of the first child at or past the scroll position: the child the buttons step from. */
   private index = 0;
   private locked = false;

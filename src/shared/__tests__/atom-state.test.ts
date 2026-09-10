@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import { html, LitElement } from "lit";
 import { createAtom, shallow } from "@tanstack/lit-store";
+import { html, LitElement } from "lit";
 import { atomState } from "../atom-state";
 
 const who = createAtom("Ada");
@@ -170,5 +170,22 @@ describe("atomState with a compare", () => {
     el.point = { x: 9, y: 2 };
     await el.updateComplete;
     expect(el.renders).toBeGreaterThan(renders);
+  });
+});
+
+describe("atomState and changedProperties", () => {
+  test("a write is recorded, so an element can ask which of its fields moved", async () => {
+    // Eleven elements read `changedProperties.has(name)` in `updated` to do work only when one
+    // particular field moved. An atom-backed field is invisible to Lit unless the write records it,
+    // and without this those checks silently read false — six tests failed on exactly that.
+    document.body.innerHTML = "";
+    const el = await mount();
+    const seen: string[] = [];
+    (el as unknown as { updated(ch: Map<string, unknown>): void }).updated = (ch) => {
+      for (const k of ch.keys()) seen.push(String(k));
+    };
+    el.count = 5;
+    await el.updateComplete;
+    expect(seen).toContain("count");
   });
 });

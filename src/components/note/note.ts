@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { noteCss } from "./note.styles";
 
 export type NoteVariant = "" | "success" | "error" | "warning" | "secondary" | "violet" | "cyan";
@@ -34,9 +35,9 @@ export class AcmeNote extends AcmeElement {
   @property({ type: Boolean }) disabled = false;
   /** No icon at all. */
   @property({ type: Boolean, attribute: "no-icon" }) noIcon = false;
-  @state() private hasAction = false;
-  @state() private hasLabel = false;
-  @state() private hasIcon = false;
+  @atomState() private hasAction = false;
+  @atomState() private hasLabel = false;
+  @atomState() private hasIcon = false;
 
   connectedCallback() {
     super.connectedCallback();

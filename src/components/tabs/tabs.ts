@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, queryAssignedElements, state } from "lit/decorators.js";
+import { customElement, property, query, queryAssignedElements } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { RovingTabindex } from "../../shared/roving-tabindex";
 import type { AcmeTab } from "../tab/tab";
 import type { AcmeTabPanel } from "../tab-panel/tab-panel";
@@ -31,7 +32,7 @@ export class AcmeTabs extends AcmeElement {
   /** Disables every tab. */
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ attribute: "aria-label" }) label = "";
-  @state() private showFocusRing = true;
+  @atomState() private showFocusRing = true;
   @query(".tabs") private row?: HTMLElement;
   @queryAssignedElements({ selector: "acme-tab" }) tabs!: AcmeTab[];
   @queryAssignedElements({ selector: "acme-tab-panel", slot: "panels" }) panels!: AcmeTabPanel[];

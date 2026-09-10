@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { skeletonCss } from "./skeleton.styles";
 
 const px = (v: string | number) => (typeof v === "number" ? `${v}px` : /^\d+(\.\d+)?$/.test(v) ? `${v}px` : v);
@@ -42,7 +43,7 @@ export class AcmeSkeleton extends AcmeElement {
   @property({ type: Boolean }) button = false;
   /** `animated="false"` stops the sweep. */
   @property({ converter: boolish }) animated = true;
-  @state() private hasChildren = false;
+  @atomState() private hasChildren = false;
 
   connectedCallback() {
     super.connectedCallback();

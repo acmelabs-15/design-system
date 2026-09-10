@@ -1,7 +1,8 @@
 import { autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { RovingTabindex } from "../../shared/roving-tabindex";
 import type { AcmeMenuItem } from "../menu-item/menu-item";
 import { menuCss } from "./menu.styles";
@@ -80,9 +81,9 @@ export class AcmeMenu extends AcmeElement {
   /** In hover mode, the delay in ms before the menu closes after the pointer leaves. */
   @property({ type: Number, attribute: "hover-close-delay" }) hoverCloseDelay = 150;
   /** The list's presence: shown, fading out, or gone. */
-  @state() private phase: "entered" | "exiting" | null = null;
+  @atomState() private phase: "entered" | "exiting" | null = null;
   /** The highlighted row's index among `items`; -1 for none. */
-  @state() private selected = -1;
+  @atomState() private selected = -1;
   @query(".floating") private floating?: HTMLElement;
   @query(".menu") private list?: HTMLElement;
   private menuId = `menu-${(++seq).toString(36)}`;

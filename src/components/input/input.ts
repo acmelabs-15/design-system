@@ -1,10 +1,11 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { inputCss } from "./input.styles";
 import { inputLabelCss } from "./input-label.styles";
 import "../error/error";
+import { atomState } from "../../shared/atom-state";
 
 export type InputSize = "small" | "medium" | "large";
 
@@ -67,7 +68,7 @@ export class AcmeInput extends AcmeElement {
   @property({ attribute: "aria-label" }) ariaLabelText = "";
   @property({ attribute: "aria-labelledby" }) ariaLabelledby = "";
   /** The occupied places, read from the light DOM. */
-  @state() private filled = { "start-addon": false, start: false, "end-addon": false, end: false };
+  @atomState() private filled = { "start-addon": false, start: false, "end-addon": false, end: false };
   @query("input") input!: HTMLInputElement;
   @query(".wrap") private wrap!: HTMLElement;
   private internals?: ElementInternals;

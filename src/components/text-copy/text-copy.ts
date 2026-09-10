@@ -1,11 +1,12 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { html as staticHtml, unsafeStatic } from "lit/static-html.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { toasts } from "../../shared/state";
 import { textCopyCss } from "./text-copy.styles";
 import "../tooltip/tooltip";
+import { atomState } from "../../shared/atom-state";
 
 type Layer = "copy" | "check";
 const EXIT_MS = 400;
@@ -44,10 +45,10 @@ export class AcmeTextCopy extends AcmeElement {
   @property({ type: Boolean, attribute: "show-tooltip" }) showTooltip = false;
   /** The label's tag. */
   @property() as = "p";
-  @state() private copied = false;
-  @state() private exiting?: Layer;
-  @state() private phase: "entering" | "entered" = "entered";
-  @state() private enterAnimated = false;
+  @atomState() private copied = false;
+  @atomState() private exiting?: Layer;
+  @atomState() private phase: "entering" | "entered" = "entered";
+  @atomState() private enterAnimated = false;
   @query(".text-copy") private root!: HTMLElement;
   private interaction = new Interaction(this);
   private timer?: ReturnType<typeof setTimeout>;

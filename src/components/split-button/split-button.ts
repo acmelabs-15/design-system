@@ -1,12 +1,13 @@
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { css, html, nothing } from "lit";
-import { customElement, property, query, queryAssignedElements, state } from "lit/decorators.js";
+import { customElement, property, query, queryAssignedElements } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeSplitButtonItem } from "../split-button-item/split-button-item";
 import { splitButtonCss } from "./split-button.styles";
 import { splitButtonMenuCss } from "./split-button-menu.styles";
 import "../button/button";
+import { atomState } from "../../shared/atom-state";
 
 /** The menu keeps its box for this long after it starts to fade out. */
 const EXIT_MS = 400;
@@ -64,7 +65,7 @@ export class AcmeSplitButton extends AcmeElement {
   @property({ type: Number, attribute: "menu-width" }) menuWidth = 150;
   @property({ type: Boolean, reflect: true }) open = false;
   /** The menu's presence: mounted and shown, fading out, or gone. */
-  @state() private phase: "entered" | "exiting" | null = null;
+  @atomState() private phase: "entered" | "exiting" | null = null;
   @query("acme-button.main") private main!: HTMLElement;
   @query("acme-button.trigger") private trigger!: HTMLElement;
   @query(".popover") private floating?: HTMLElement;

@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { checkboxCss } from "./checkbox.styles";
 
@@ -35,7 +36,7 @@ export class AcmeCheckbox extends AcmeElement {
   @query(".checkbox") private root!: HTMLElement;
   @query("input") private input!: HTMLInputElement;
   /** Text beside the box: only then the control keeps a zero-width space and the text span renders. */
-  @state() private hasText = false;
+  @atomState() private hasText = false;
   /** A composer that handles the keyboard itself (a multi-select row) takes the box out of the tab order. */
   @property({ attribute: false }) skipTab = false;
   private internals?: ElementInternals;

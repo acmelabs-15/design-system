@@ -1,9 +1,10 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeButton } from "../button/button";
 import { fieldsetCss } from "./fieldset.styles";
 import "../disabled-wall/disabled-wall";
+import { atomState } from "../../shared/atom-state";
 
 export type FieldsetVariant = "" | "error" | "warning";
 
@@ -38,7 +39,7 @@ export class AcmeFieldset extends AcmeElement {
   /** A tinted footer. */
   @property({ type: Boolean }) highlight = false;
   /** The light-DOM children by slot name (`""` for the default slot). */
-  @state() private slotted: Record<string, (Element | Text)[]> = {};
+  @atomState() private slotted: Record<string, (Element | Text)[]> = {};
   private observer = new MutationObserver(() => this.collect());
 
   connectedCallback() {

@@ -1,11 +1,12 @@
 import { autoUpdate, computePosition, flip, hide, offset, shift } from "@floating-ui/dom";
 import { css, html, LitElement, nothing, svg } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { matchSorter } from "../../shared/match-sorter";
 import type { AcmeComboboxOption } from "../combobox-option/combobox-option";
 import "../spinner/spinner";
+import { atomState } from "../../shared/atom-state";
 import { comboboxCss } from "./combobox.styles";
 import { comboboxListCss } from "./combobox-list.styles";
 
@@ -164,16 +165,16 @@ export class AcmeCombobox extends AcmeElement {
   @property({ attribute: false }) filter: ComboboxFilter = defaultFilter;
   @property({ type: Boolean, reflect: true }) open = false;
   /** The field's text. */
-  @state() private inputValue = "";
+  @atomState() private inputValue = "";
   /** The highlighted row's index among the shown rows; -1 while the footer's control has focus. */
-  @state() private selectedIndex = 0;
+  @atomState() private selectedIndex = 0;
   /** Every row shows, whatever the text (a list just opened). */
-  @state() private showAllResults = true;
+  @atomState() private showAllResults = true;
   /** No text typed since the list opened. */
-  @state() private pristine = true;
+  @atomState() private pristine = true;
   /** The field's focus came from the keys: the focus ring shows. */
-  @state() private keyboard = false;
-  @state() private hasFooter = false;
+  @atomState() private keyboard = false;
+  @atomState() private hasFooter = false;
   @query(".combobox") private shell?: HTMLElement;
   @query(".input") private input?: HTMLInputElement;
   @query(".clear") private clearButton?: HTMLButtonElement;

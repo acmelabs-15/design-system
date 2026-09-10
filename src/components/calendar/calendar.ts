@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyph, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { fieldCss } from "../../shared/field.styles";
 import { buttonCss } from "../button/button.styles";
 import { kbdCss } from "../kbd/kbd.styles";
@@ -110,13 +111,13 @@ export class AcmeCalendar extends AcmeElement {
   /** Renders the popover inline and always open (for docs and tests). */
   @property({ type: Boolean, reflect: true }) static = false;
   @property() placeholder = "Select Date";
-  @state() private view = startOfDay(new Date());
-  @state() private focusDate = iso(new Date());
-  @state() private announce = "";
-  @state() private presetKey = "";
-  @state() private tz = typeof Intl !== "undefined" ? Intl.DateTimeFormat().resolvedOptions().timeZone : "UTC";
-  @state() private startTime = "12:00 AM";
-  @state() private endTime = "11:59 PM";
+  @atomState() private view = startOfDay(new Date());
+  @atomState() private focusDate = iso(new Date());
+  @atomState() private announce = "";
+  @atomState() private presetKey = "";
+  @atomState() private tz = typeof Intl !== "undefined" ? Intl.DateTimeFormat().resolvedOptions().timeZone : "UTC";
+  @atomState() private startTime = "12:00 AM";
+  @atomState() private endTime = "11:59 PM";
   @query(".cal-trigger") private trigger!: HTMLButtonElement;
   @query(".calendar") private pop!: HTMLElement & { showPopover?: () => void; hidePopover?: () => void };
   private appliedPreset = false;

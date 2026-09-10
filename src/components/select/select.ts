@@ -1,10 +1,11 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { selectCss } from "./select.styles";
 import { selectLabelCss } from "./select-label.styles";
 import "../error/error";
+import { atomState } from "../../shared/atom-state";
 
 export type SelectSize = "small" | "medium" | "large";
 /** An option: its text, or a value with its label. */
@@ -69,9 +70,9 @@ export class AcmeSelect extends AcmeElement {
   @property({ attribute: "aria-describedby" }) ariaDescribedby = "";
   /** Options set from script, in place of `<option>` children. */
   @property({ type: Array }) options: SelectOption[] = [];
-  @state() private hasStart = false;
+  @atomState() private hasStart = false;
   /** The `<option>` and `<optgroup>` children, cloned into the field. */
-  @state() private lightOptions: HTMLElement[] = [];
+  @atomState() private lightOptions: HTMLElement[] = [];
   @query("select") select!: HTMLSelectElement;
   @query(".wrap") private wrap!: HTMLElement;
   private internals?: ElementInternals;

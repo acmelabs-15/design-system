@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCollapseGroup } from "../collapse-group/collapse-group";
 import { collapseCss } from "./collapse.styles";
@@ -35,7 +36,7 @@ export class AcmeCollapse extends AcmeElement {
   @property({ type: Boolean, reflect: true }) open = false;
   /** The group this panel belongs to, set by the group; the group then owns `open`. */
   @property({ attribute: false }) group: AcmeCollapseGroup | null = null;
-  @state() private height = 0;
+  @atomState() private height = 0;
   @query(".trigger") private trigger!: HTMLElement;
   @query(".body") private body!: HTMLElement;
   private uid = Math.random().toString(36).slice(2, 8);

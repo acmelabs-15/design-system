@@ -1,6 +1,7 @@
 import { css, html } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { gridPageCss } from "./grid-page.styles";
 
 /**
@@ -22,7 +23,7 @@ export class AcmeGridPage extends AcmeElement {
   ];
   @property({ type: Boolean, attribute: "remove-padding-y" }) removePaddingY = false;
   @property({ type: Boolean, attribute: "remove-bottom-margin" }) removeBottomMargin = false;
-  @state() private hasBanner = false;
+  @atomState() private hasBanner = false;
 
   connectedCallback() {
     super.connectedCallback();

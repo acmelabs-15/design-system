@@ -1,9 +1,10 @@
 import { html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { bannerCss } from "./banner.styles";
 import { bannerMobileCss } from "./banner-mobile.styles";
 import "../button/button";
+import { atomState } from "../../shared/atom-state";
 
 /** The viewport width from which the wide row shows and the mobile button hides, as the styles have it. */
 const WIDE = "(min-width: 961px)";
@@ -28,9 +29,9 @@ export class AcmeBanner extends AcmeElement {
   /** The action button's link. */
   @property() href = "";
   /** Whether the viewport is at or past the wide breakpoint: decides where the slots render. */
-  @state() private wide = true;
-  @state() private hasPrefix = false;
-  @state() private hasMobile = false;
+  @atomState() private wide = true;
+  @atomState() private hasPrefix = false;
+  @atomState() private hasMobile = false;
   private media?: MediaQueryList;
   private onMedia = (e: MediaQueryListEvent) => {
     this.wide = e.matches;

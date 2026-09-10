@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { reduced } from "../../shared/overlay";
 import { videoCss } from "./video.styles";
@@ -78,16 +79,16 @@ export class AcmeVideo extends AcmeElement {
   /** `loop="false"` plays once. */
   @property({ converter: boolish }) loop = true;
   /** The source is set: at once, or once the frame nears the viewport with `lazy`. */
-  @state() private ready = false;
+  @atomState() private ready = false;
   /** The video can play: the control bar renders. */
-  @state() private loaded = false;
-  @state() private playing = false;
+  @atomState() private loaded = false;
+  @atomState() private playing = false;
   /** The control bar is opaque and lifted: the pointer moved over the player in the last three seconds. */
-  @state() private visible = false;
-  @state() private current = 0;
-  @state() private duration = 0;
+  @atomState() private visible = false;
+  @atomState() private current = 0;
+  @atomState() private duration = 0;
   /** The scrubber's position, in percent. */
-  @state() private position = 0;
+  @atomState() private position = 0;
   private dragging = false;
   private loops = 0;
   private timer?: ReturnType<typeof setTimeout>;

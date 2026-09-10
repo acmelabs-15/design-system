@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { switchControlCss } from "./switch-control.styles";
 
@@ -38,10 +39,10 @@ export class AcmeSwitchControl extends AcmeElement {
   @property() size: "" | "small" | "medium" | "large" = "";
   /** Background of the box when checked (default gray-100). */
   @property({ attribute: "checked-color" }) checkedColor = "";
-  @state() groupSize: "small" | "medium" | "large" = "medium";
-  @state() groupName = "";
-  @state() groupCheckedColor = "";
-  @state() private hasIcon = false;
+  @atomState() groupSize: "small" | "medium" | "large" = "medium";
+  @atomState() groupName = "";
+  @atomState() groupCheckedColor = "";
+  @atomState() private hasIcon = false;
   @query(".switch-control") private root!: HTMLElement;
   @query("input") private input!: HTMLInputElement;
   private interaction = new Interaction(this, { disabled: () => this.disabled });

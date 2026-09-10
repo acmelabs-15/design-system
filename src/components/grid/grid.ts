@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import type { AcmeGridCell } from "../grid-cell/grid-cell";
 import type { AcmeGridSystem } from "../grid-system/grid-system";
 import { gridCss } from "./grid.styles";
@@ -142,9 +143,9 @@ export class AcmeGrid extends AcmeElement {
   @property({ type: Boolean, attribute: "no-system-border" }) noSystemBorder = false;
   /** Reads the breakpoint from the system's container instead of the viewport. */
   @property({ type: Boolean, attribute: "use-container" }) useContainer = false;
-  @state() private systemDebug = false;
-  @state() private systemDashed = false;
-  @state() private cells: AcmeGridCell[] = [];
+  @atomState() private systemDebug = false;
+  @atomState() private systemDashed = false;
+  @atomState() private cells: AcmeGridCell[] = [];
   private systemWatch?: MutationObserver;
 
   connectedCallback() {

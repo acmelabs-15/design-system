@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { toggleCss } from "./toggle.styles";
 
@@ -50,8 +51,8 @@ export class AcmeToggle extends AcmeElement {
   @property() value = "on";
   /** Accessible name when the toggle has no text of its own. */
   @property({ attribute: "aria-label" }) label = "";
-  @state() private hasText = false;
-  @state() private hasIcon = false;
+  @atomState() private hasText = false;
+  @atomState() private hasIcon = false;
   @query(".toggle") private root!: HTMLElement;
   @query("input") private input!: HTMLInputElement;
   private internals?: ElementInternals;

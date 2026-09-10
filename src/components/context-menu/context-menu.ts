@@ -1,12 +1,13 @@
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { toasts } from "../../shared/state";
 import type { AcmeMenu, MenuCloseKind } from "../menu/menu";
 import { contextMenuCss } from "./context-menu.styles";
 import "../menu/menu";
 import "../menu-item/menu-item";
+import { atomState } from "../../shared/atom-state";
 
 /** A press this long on a touch or pen pointer opens the menu. */
 const LONG_PRESS_MS = 700;
@@ -72,7 +73,7 @@ export class AcmeContextMenu extends AcmeElement {
   /** Nothing opens the menu. */
   @property({ type: Boolean, reflect: true }) disabled = false;
   /** The link under the last press, whose rows lead the list. */
-  @state() private linkHref = "";
+  @atomState() private linkHref = "";
   @query("acme-menu") private menu?: AcmeMenu;
   /** The point the list opens at, in window coordinates. */
   private x = 0;

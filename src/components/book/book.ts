@@ -1,6 +1,7 @@
 import { css, html, nothing, svg } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { bookCss } from "./book.styles";
 
@@ -73,7 +74,7 @@ export class AcmeBook extends AcmeElement {
   /** A paper grain over the cover; the pages take a ribbed edge. */
   @property({ type: Boolean }) textured = false;
   /** Whether the `icon` slot holds an element; the default mark shows otherwise. */
-  @state() private hasIcon = false;
+  @atomState() private hasIcon = false;
   @query(".book") private root!: HTMLElement;
   private interaction = new Interaction(this);
 

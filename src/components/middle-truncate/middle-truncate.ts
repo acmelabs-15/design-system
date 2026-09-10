@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { middleTruncateCss } from "./middle-truncate.styles";
 
 /** Graphemes, so a cut never splits a surrogate pair or a combining sequence. */
@@ -123,7 +124,7 @@ export class AcmeMiddleTruncate extends AcmeElement {
     `,
   ];
   @property() value = "";
-  @state() private shown: Cut = whole([]);
+  @atomState() private shown: Cut = whole([]);
   @query(".truncate") private root!: HTMLElement;
   @query(".measure") private probe!: HTMLElement;
   @query(".text") private textEl!: HTMLElement;

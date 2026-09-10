@@ -1,6 +1,7 @@
 import { html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { commandMenuItemCss } from "../command-menu/command-menu-item.styles";
 
@@ -33,8 +34,8 @@ export class AcmeCommandItem extends AcmeElement {
   @property() page = "";
   /** The highlighted row; the menu sets it. */
   @property({ type: Boolean, reflect: true }) selected = false;
-  @state() private hasPrefix = false;
-  @state() private hasSuffix = false;
+  @atomState() private hasPrefix = false;
+  @atomState() private hasSuffix = false;
   @query(".item") private row?: HTMLElement;
   @query(".keys") private keys?: HTMLElement;
   private rowState = new Interaction(this, { anyFocus: true, disabled: () => this.disabled });

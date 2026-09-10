@@ -1,6 +1,7 @@
 import { css, html, nothing, svg } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { comboboxOptionCss } from "./combobox-option.styles";
 
 export type ComboboxOptionSize = "small" | "medium" | "large";
@@ -54,10 +55,10 @@ export class AcmeComboboxOption extends AcmeElement {
   @property({ type: Boolean, reflect: true }) chosen = false;
   /** The combobox's size; the combobox sets it. */
   @property() size: ComboboxOptionSize = "medium";
-  @state() private hasPrefix = false;
-  @state() private hasSuffix = false;
+  @atomState() private hasPrefix = false;
+  @atomState() private hasSuffix = false;
   /** The default slot holds elements: the content renders as given, without the label span. */
-  @state() private rich = false;
+  @atomState() private rich = false;
   /** The row's id: the field's `aria-activedescendant` while the row is active. */
   readonly rowId = `combobox-option-${(++seq).toString(36)}`;
   private watch?: MutationObserver;

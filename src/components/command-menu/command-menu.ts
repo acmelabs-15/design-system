@@ -1,12 +1,13 @@
 import { HotkeyController, type RegisterableHotkey } from "@tanstack/lit-hotkeys";
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { commandScore } from "../../shared/command-score";
 import { Interaction } from "../../shared/interaction";
 import "../breadcrumb/breadcrumb";
 import "../breadcrumbs/breadcrumbs";
+import { atomState } from "../../shared/atom-state";
 import type { AcmeCommandDivider } from "../command-divider/command-divider";
 import type { AcmeCommandGroup } from "../command-group/command-group";
 import type { AcmeCommandItem, CommandItemSelectDetail } from "../command-item/command-item";
@@ -106,11 +107,11 @@ export class AcmeCommandMenu extends AcmeElement {
   /** Loads more rows as the list nears its end; a truthy result scrolls the list to its end. */
   @property({ attribute: false }) infiniteScrollingCb?: () => boolean | Promise<boolean>;
   /** The query. */
-  @state() private search = "";
+  @atomState() private search = "";
   /** The dialog is open (the exit keeps it open until the menu has left). */
-  @state() private mounted = false;
+  @atomState() private mounted = false;
   /** Rows matching the query (or every row on the page). */
-  @state() private count = 0;
+  @atomState() private count = 0;
   @query("dialog") private dialog!: HTMLDialogElement;
   @query(".input") private input?: HTMLInputElement;
   @query(".list") private list?: HTMLElement;

@@ -1,9 +1,10 @@
 import { css, html, nothing, svg } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, assetsBase, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { toasts } from "../../shared/state";
 import "../button/button";
+import { atomState } from "../../shared/atom-state";
 import { copyButtonCss } from "../copy-button/copy-button.styles";
 import { brandsCss } from "./brands.styles";
 
@@ -141,7 +142,7 @@ export class AcmeBrands extends AcmeElement {
   @property({ type: Boolean }) copy = false;
   /** Shows the image pair of a brand that also has an inline drawing (`v0`, `eve`, `ai-sdk`). */
   @property({ type: Boolean }) image = false;
-  @state() private done = false;
+  @atomState() private done = false;
   @query(".brands") private root!: HTMLElement;
   @query(".frame") private frame!: HTMLElement;
   private timer?: ReturnType<typeof setTimeout>;

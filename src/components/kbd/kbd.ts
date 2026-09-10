@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { kbdCss } from "./kbd.styles";
 import { tooltipKbdCss } from "./tooltip-kbd.styles";
 
@@ -36,7 +37,7 @@ export class AcmeKbd extends AcmeElement {
   @property({ type: Boolean }) shift = false;
   @property({ type: Boolean }) alt = false;
   @property({ type: Boolean }) ctrl = false;
-  @state() private hasKey = false;
+  @atomState() private hasKey = false;
 
   connectedCallback() {
     super.connectedCallback();

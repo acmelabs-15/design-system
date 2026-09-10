@@ -1,10 +1,11 @@
 import { autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeMultiSelectRow, MultiSelectAction, MultiSelectOwner } from "../multi-select-row/multi-select-row";
 import "../multi-select-row/multi-select-row";
+import { atomState } from "../../shared/atom-state";
 import { multiSelectCss } from "./multi-select.styles";
 import { multiSelectContentCss } from "./multi-select-content.styles";
 
@@ -76,12 +77,12 @@ export class AcmeMultiSelect extends AcmeElement implements MultiSelectOwner {
   /** Space kept from the window's edges when the list moves, in px. */
   @property({ type: Number, attribute: "collision-padding" }) collisionPadding = 0;
   /** The list's presence: shown, fading out, or gone. */
-  @state() private phase: "entered" | "exiting" | null = null;
+  @atomState() private phase: "entered" | "exiting" | null = null;
   /** The row under the pointer or the keys. */
-  @state() private hoveredRow: AcmeMultiSelectRow | null = null;
+  @atomState() private hoveredRow: AcmeMultiSelectRow | null = null;
   /** The checkbox column is the active one (the pointer over a checkbox, or Left pressed). */
-  @state() private hoveringCheckbox = false;
-  @state() private placed: { side: string; align: string } = { side: "bottom", align: "end" };
+  @atomState() private hoveringCheckbox = false;
+  @atomState() private placed: { side: string; align: string } = { side: "bottom", align: "end" };
   @query(".trigger") private trigger?: HTMLButtonElement;
   @query(".floating") private floating?: HTMLElement;
   @query(".content") private content?: HTMLElement;

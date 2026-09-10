@@ -1,6 +1,7 @@
 import { css, html } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { entityCss } from "./entity.styles";
 
@@ -28,11 +29,11 @@ export class AcmeEntity extends AcmeElement {
   ];
   /** `li` (default) · `button` for a clickable row · `div`. */
   @property({ reflect: true, useDefault: true }) as: EntityTag = "li";
-  @state() private hasLeft = false;
-  @state() private hasContent = false;
-  @state() private hasRight = false;
+  @atomState() private hasLeft = false;
+  @atomState() private hasContent = false;
+  @atomState() private hasRight = false;
   /** The row sits in an acme-entity-list: every row but the last carries the list's divider. */
-  @state() private listed = false;
+  @atomState() private listed = false;
   @query(".entity") private root!: HTMLElement;
   /** Hover, focus and press land on the row as attributes; only the button row shows them. */
   private interaction = new Interaction(this, { disabled: () => this.as !== "button" });

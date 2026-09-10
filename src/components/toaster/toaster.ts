@@ -1,10 +1,11 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { type ToastQueue, toasts } from "../../shared/state";
 import { toasterCss } from "./toaster.styles";
 import "../toast/toast";
+import { atomState } from "../../shared/atom-state";
 
 export type { ToastItem, ToastOptions, ToastQueue, ToastText, ToastType, ToastVisual } from "../../shared/state";
 export { createToastQueue, toasts } from "../../shared/state";
@@ -43,9 +44,9 @@ export class AcmeToaster extends AcmeElement {
   @property({ attribute: false }) queue: ToastQueue = toasts;
   /** Centers the area: calc(50% - 210px) from the right. */
   @property({ type: Boolean, reflect: true }) center = false;
-  @state() private hovering = false;
+  @atomState() private hovering = false;
   /** The height the on-screen keyboard takes from the window. */
-  @state() private offsetBottom = 0;
+  @atomState() private offsetBottom = 0;
   @query(".area") private area?: HTMLElement;
   private shownArea?: HTMLElement;
   /** The queue this viewport is attached to and listens to; `queue` may change before the next update. */

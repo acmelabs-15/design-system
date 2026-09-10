@@ -1,6 +1,7 @@
 import { css, html, nothing, svg } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { avatarCss } from "./avatar.styles";
 import { avatarWrapCss } from "./avatar-wrap.styles";
 
@@ -63,8 +64,8 @@ export class AcmeAvatar extends AcmeElement {
   @property() git: AvatarService = "";
   /** Marks the dot's white disc with a 1px border. */
   @property({ type: Boolean, attribute: "icon-background" }) iconBackground = false;
-  @state() private resolved = false;
-  @state() private hasIcon = false;
+  @atomState() private resolved = false;
+  @atomState() private hasIcon = false;
 
   connectedCallback() {
     super.connectedCallback();

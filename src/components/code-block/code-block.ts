@@ -1,11 +1,12 @@
 import { css, html, nothing, svg } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { toasts } from "../../shared/state";
 import "../button/button";
 import "../split-button/split-button";
 import "../tabs/tabs";
+import { atomState } from "../../shared/atom-state";
 import { sourceOf, tokenLines } from "../code/code";
 import { copyButtonCss } from "../copy-button/copy-button.styles";
 import { codeBlockCss } from "./code-block.styles";
@@ -79,7 +80,7 @@ export class AcmeCodeBlock extends AcmeElement {
   /** The one-based line a reader referenced by pressing its number. */
   @property({ type: Number, attribute: "referenced-line" }) referencedLine = 0;
   @property({ attribute: "aria-label" }) label = "";
-  @state() private done = false;
+  @atomState() private done = false;
   @query(".code-block") private root!: HTMLElement;
   @query(".switcher") private switcherEl!: HTMLElement | null;
   private timer?: ReturnType<typeof setTimeout>;

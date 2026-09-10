@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { radioCss } from "./radio.styles";
 
@@ -36,7 +37,7 @@ export class AcmeRadio extends AcmeElement {
   @property({ attribute: false }) groupDisabled = false;
   /** Set by the group: off the Tab sequence (roving tabindex); arrow keys reach it. */
   @property({ attribute: false }) skipTab = false;
-  @state() private hasText = false;
+  @atomState() private hasText = false;
   @query("input") input!: HTMLInputElement;
   @query(".radio") private root!: HTMLElement;
   private internals?: ElementInternals;

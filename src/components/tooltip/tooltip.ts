@@ -1,8 +1,9 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { css, html, nothing, svg } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { tooltipCss } from "./tooltip.styles";
 import { tooltipBackdropCss } from "./tooltip-backdrop.styles";
 import { tooltipTriggerCss } from "./tooltip-trigger.styles";
@@ -148,13 +149,13 @@ export class AcmeTooltip extends AcmeElement {
   /** The trigger's pointer, as CSS. */
   @property() cursor = "";
   /** The open bits at hand. */
-  @state() private bits = 0;
+  @atomState() private bits = 0;
   /** The side the bubble opens on, resolved from `position`. */
-  @state() private side: Side = "top";
+  @atomState() private side: Side = "top";
   /** The side the bubble is drawn on: the resolved side, or its opposite when that had no room. */
-  @state() private shownSide: Side = "top";
+  @atomState() private shownSide: Side = "top";
   /** The bubble's place along a top or bottom trigger, resolved from `box-align`. */
-  @state() private align: Align = "center";
+  @atomState() private align: Align = "center";
   @query(".trigger") private trigger?: HTMLElement;
   @query(".layer") private layer?: HTMLElement;
   @query(".tip") private bubble?: HTMLElement;
@@ -447,10 +448,10 @@ export class AcmeTooltip extends AcmeElement {
           ? html`<div class="layer" popover="manual">
               ${touch ? html`<div class="backdrop"></div>` : nothing}
               <div class=${cls} id=${this.uid} role="tooltip" part="tooltip" ?data-kbd=${hasKbd} style=${styleMap({ left: "0px", top: "0px", maxWidth: this.maxWidth || null, padding: this.padding || null })}>${
-                  this.tip
-                    ? html`<div class="arrow" part="arrow" aria-hidden="true"><svg height=${g.h} viewBox=${`0 0 ${g.w} ${g.h}`} width=${g.w} xmlns="http://www.w3.org/2000/svg">${svg`<path d=${g.d}></path>`}</svg></div>`
-                    : nothing
-                }${text}<slot name="content" @slotchange=${this.markContent}></slot></div>
+                this.tip
+                  ? html`<div class="arrow" part="arrow" aria-hidden="true"><svg height=${g.h} viewBox=${`0 0 ${g.w} ${g.h}`} width=${g.w} xmlns="http://www.w3.org/2000/svg">${svg`<path d=${g.d}></path>`}</svg></div>`
+                  : nothing
+              }${text}<slot name="content" @slotchange=${this.markContent}></slot></div>
             </div>`
           : nothing
       }`;

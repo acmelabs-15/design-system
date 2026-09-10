@@ -1,8 +1,9 @@
 import { DateFormatter, getLocalTimeZone } from "@internationalized/date";
 import { html } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import "../context-card/context-card";
+import { atomState } from "../../shared/atom-state";
 import { relativeTimeCardCss } from "./relative-time-card.styles";
 import { relativeTimeLabelCss } from "./relative-time-label.styles";
 import { relativeTimeTriggerCss } from "./relative-time-trigger.styles";
@@ -88,7 +89,7 @@ export class AcmeRelativeTime extends AcmeElement {
   /** Ignores the pointer, so the card opens through `shown` alone. */
   @property({ type: Boolean, attribute: "disable-triggers" }) disableTriggers = false;
   /** The moment the ages are counted from, refreshed by the ticks. */
-  @state() private now = Date.now();
+  @atomState() private now = Date.now();
   private labelTimer?: ReturnType<typeof setInterval>;
   private ageTimer?: ReturnType<typeof setInterval>;
 

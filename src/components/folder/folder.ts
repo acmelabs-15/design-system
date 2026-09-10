@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { folderCss } from "./folder.styles";
 
@@ -38,7 +39,7 @@ export class AcmeFolder extends AcmeElement {
   /** Whether the folder shows its rows; reflects. */
   @property({ type: Boolean, reflect: true }) open = false;
   /** Folder levels above this row: one indent guide each. */
-  @state() private depth = 0;
+  @atomState() private depth = 0;
   @query(".toggle") private toggle!: HTMLElement;
   private interaction = new Interaction(this);
 

@@ -1,9 +1,10 @@
 import { css, html } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { tabCss } from "./tab.styles";
 import "../tooltip/tooltip";
+import { atomState } from "../../shared/atom-state";
 
 /**
  * One tab of an `acme-tabs`: a 14px gray-900 button with a transparent 2px bottom border that
@@ -38,7 +39,7 @@ export class AcmeTab extends AcmeElement {
   @property({ attribute: false }) secondary = false;
   /** Set by the row: whether keyboard focus shows the ring (hidden after an arrow-key move). */
   @property({ attribute: false }) showFocusRing = true;
-  @state() private hasIcon = false;
+  @atomState() private hasIcon = false;
   @query(".tab") private button?: HTMLButtonElement;
   private uid = `tab-${Math.random().toString(36).slice(2, 8)}`;
   private interaction = new Interaction(this, { disabled: () => this.off });

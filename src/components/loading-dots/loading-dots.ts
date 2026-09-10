@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { loadingDotsCss } from "./loading-dots.styles";
 
 /**
@@ -22,7 +23,7 @@ export class AcmeLoadingDots extends AcmeElement {
   ];
   /** `sm`, `md`, `lg`, or a dot diameter in pixels. */
   @property() size: "sm" | "md" | "lg" | string = "md";
-  @state() private hasText = false;
+  @atomState() private hasText = false;
 
   connectedCallback() {
     super.connectedCallback();

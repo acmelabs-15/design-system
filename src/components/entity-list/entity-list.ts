@@ -1,6 +1,7 @@
 import { css, html } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { entityListCss } from "./entity-list.styles";
 import { entityListWrapCss } from "./entity-list-wrap.styles";
 
@@ -22,7 +23,7 @@ export class AcmeEntityList extends AcmeElement {
       }
     `,
   ];
-  @state() private hasHeader = false;
+  @atomState() private hasHeader = false;
 
   connectedCallback() {
     super.connectedCallback();

@@ -1,8 +1,9 @@
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { html, nothing } from "lit";
-import { customElement, property, query, state } from "lit/decorators.js";
+import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { dialogResetCss } from "../../shared/dialog";
 import { modalCss } from "./modal.styles";
 import { modalActionCss } from "./modal-action.styles";
@@ -71,14 +72,7 @@ const SHEET_EXIT_MS = 400;
  */
 @customElement("acme-modal")
 export class AcmeModal extends AcmeElement {
-  static styles = [
-    sharedCss,
-    dialogResetCss,
-    modalOverlayCss,
-    modalBackdropCss,
-    modalCss,
-    modalActionCss,
-  ];
+  static styles = [sharedCss, dialogResetCss, modalOverlayCss, modalBackdropCss, modalCss, modalActionCss];
   /** Open state; `show()` and `close()` set it. */
   @property({ type: Boolean, reflect: true }) open = false;
   /** The panel's width in px. */
@@ -109,15 +103,15 @@ export class AcmeModal extends AcmeElement {
   /** Centres the title. */
   @property({ type: Boolean }) center = false;
   /** The panel is on screen at its full opacity (false during the entrance and the exit). */
-  @state() private rendered = false;
+  @atomState() private rendered = false;
   /** The dialog is open (the exit keeps it open until the modal leaves). */
-  @state() private mounted = false;
-  @state() private sheet = false;
-  @state() private hasSubtitle = false;
-  @state() private hasHeadingSlot = false;
-  @state() private hasContent = false;
-  @state() private topHidden = false;
-  @state() private bottomHidden = false;
+  @atomState() private mounted = false;
+  @atomState() private sheet = false;
+  @atomState() private hasSubtitle = false;
+  @atomState() private hasHeadingSlot = false;
+  @atomState() private hasContent = false;
+  @atomState() private topHidden = false;
+  @atomState() private bottomHidden = false;
   @query("dialog") private dialog!: HTMLDialogElement;
   @query(".modal") private panel!: HTMLElement;
   @query(".body") private body!: HTMLElement;
