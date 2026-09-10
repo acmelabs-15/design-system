@@ -1,0 +1,64 @@
+{
+ "note": "The pagination nav: a full-width row with the previous link, a centred slot and the next link. `width` fixes both previews at 600px, because the row is full width and the two preview columns differ. The next link's left margin is read as soft: the row is `space-between`, so the gap between the links absorbs whatever their text leaves, and the text is set in our own font.",
+ "themes": [
+  "light",
+  "dark"
+ ],
+ "pagination": {
+  "geist": {
+   "side": "geist",
+   "page": "pagination",
+   "marker": "nav[aria-label='pagination']",
+   "width": "600px",
+   "children": {
+    "prev": ".prev|.pl-7",
+    "center": ".center|.left-1\\/2",
+    "next": ".next|.pr-7"
+   },
+   "textParts": [
+    "root",
+    "prev",
+    "center",
+    "next"
+   ],
+   "textProps": {
+    "next": [
+     "margin-left",
+     "__rect"
+    ],
+    "prev": [
+     "margin-right",
+     "__rect"
+    ]
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "pagination",
+   "host": "acme-pagination",
+   "ours": ".pagination",
+   "width": "600px",
+   "children": {
+    "prev": ".prev|.pl-7",
+    "center": ".center|.left-1\\/2",
+    "next": ".next|.pr-7"
+   },
+   "textParts": [
+    "root",
+    "prev",
+    "center",
+    "next"
+   ],
+   "textProps": {
+    "next": [
+     "margin-left",
+     "__rect"
+    ],
+    "prev": [
+     "margin-right",
+     "__rect"
+    ]
+   }
+  }
+ }
+}

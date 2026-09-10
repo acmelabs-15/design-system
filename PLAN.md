@@ -402,6 +402,24 @@ differences point at something real.
   carrying `aria-expanded="true"`. Verified on the live site, where clicking the heading does not open
   it either.
 
+- [x] **tabs — at parity.** Its 1 difference was a state the census cannot reach on either side. The
+  reference stops the tab row clipping through `has-[:focus-visible]:overflow-visible`; the census
+  rewrites `:hover` and `:focus-visible` into attributes but **not** `:has(:focus-visible)`, so the
+  reference's row can never be driven into that state and always reads `overflow: auto`. Ours
+  implements the same behaviour through `data-focus-within`, set by a focusin listener when the focused
+  tab matches `:focus-visible`, with the generated rule `.tabs[data-focus-within] { overflow: visible }`.
+  **Both are correct; only the measurement cannot reach it.** Verified by reading both, and the state is
+  dropped from the census. It belongs in the behaviour checks (5.4), not here.
+- [x] **pagination — at parity.** Its 1 difference was the gap between the links. The row is
+  `space-between`, so that gap absorbs whatever the link text leaves, and the text is set in our own
+  font. Read as soft, with `width` fixing both previews at 600px.
+- [!] **scroller-narrow — blocked, needs care.** The mirror shows **14 previews** where our census page
+  shows **9**, and the reference's markdown lists five sections against our nine examples (five public,
+  four census-only). I have not established what the mirror's extra previews are.
+
+  **I overwrote the original measurements before understanding this**, so I cannot see what the working
+  run did. Results are tracked from now on, so it cannot recur, but for this page the evidence is gone.
+  Rebuilding it means working out what the 14 previews are and which pair with ours.
 - [ ] Remaining, in cost order: pagination (1), tabs (1), scroller-narrow (1), description (6),
   error (2), search-init (2), snippet (2), input (4), pagination-next (4), progress (6),
   clearable-input (6), tab (20), code-block (31), badge (51), split-button (60), book (142),
