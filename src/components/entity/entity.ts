@@ -27,7 +27,7 @@ export class AcmeEntity extends AcmeElement {
     `,
   ];
   /** `li` (default) · `button` for a clickable row · `div`. */
-  @property({ reflect: true }) as: EntityTag = "li";
+  @property({ reflect: true, useDefault: true }) as: EntityTag = "li";
   @state() private hasLeft = false;
   @state() private hasContent = false;
   @state() private hasRight = false;

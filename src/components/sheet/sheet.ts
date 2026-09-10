@@ -43,7 +43,7 @@ export class AcmeSheet extends AcmeElement {
   /** Open state; `show()` and `close()` set it. */
   @property({ type: Boolean, reflect: true }) open = false;
   /** The edge the panel slides in from. */
-  @property({ reflect: true }) side: SheetSide = "right";
+  @property({ reflect: true, useDefault: true }) side: SheetSide = "right";
   /** The overlay covers the page behind the panel and the page stops scrolling. */
   @property({ type: Boolean, reflect: true }) modal = false;
   /** No overlay behind the panel. */
