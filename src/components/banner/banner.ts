@@ -1,6 +1,7 @@
 import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { Places } from "../../shared/places";
 import { bannerCss } from "./banner.styles";
 import { bannerMobileCss } from "./banner-mobile.styles";
 import "../button/button";
@@ -30,7 +31,7 @@ export class AcmeBanner extends AcmeElement {
   @property() href = "";
   /** Whether the viewport is at or past the wide breakpoint: decides where the slots render. */
   @atomState() private wide = true;
-  @atomState() private hasStart = false;
+  private places = new Places(this, { places: ["start"] });
   @atomState() private hasMobile = false;
   private media?: MediaQueryList;
   private onMedia = (e: MediaQueryListEvent) => {
@@ -39,7 +40,6 @@ export class AcmeBanner extends AcmeElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.hasStart = !!this.querySelector('[slot="start"]');
     this.hasMobile = !!this.querySelector('[slot="mobile"]');
     if (typeof matchMedia !== "undefined") {
       this.media = matchMedia(WIDE);
@@ -56,23 +56,21 @@ export class AcmeBanner extends AcmeElement {
 
   firstUpdated() {
     // A parser that connects the element before its children (happy-dom does) misses them at connect.
-    this.hasStart ||= !!this.querySelector('[slot="start"]');
     this.hasMobile ||= !!this.querySelector('[slot="mobile"]');
   }
 
-  private slotted = (name: "start" | "mobile") => (e: Event) => {
-    const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "start") this.hasStart = has;
-    else this.hasMobile = has;
+  /** `mobile` is a slot of this element's own, not one of the two places, so it keeps its own flag. */
+  private mobileSlotted = (e: Event) => {
+    this.hasMobile = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
   };
 
   render() {
     // One slot renders in one place: the message and the start place sit in the row when the viewport is
     // wide, in the mobile button when it is not. The mobile copy, when slotted, is that button's label.
     const message = html`<slot></slot>`;
-    const mobileCopy = html`<slot name="mobile" @slotchange=${this.slotted("mobile")}></slot>`;
-    const start = (inButton: boolean) => html`<slot name="start" slot=${inButton ? "start" : nothing} @slotchange=${this.slotted("start")}></slot>`;
-    const startInButton = !this.wide && this.hasStart;
+    const mobileCopy = html`<slot name="mobile" @slotchange=${this.mobileSlotted}></slot>`;
+    const start = (inButton: boolean) => html`<slot name="start" slot=${inButton ? "start" : nothing} @slotchange=${this.places.read}></slot>`;
+    const startInButton = !this.wide && this.places.has("start");
     const messageInButton = !this.wide && !this.hasMobile;
     return html`<acme-button class="mobile" part="mobile" block href=${this.href} variant="secondary" size="small" shape="rounded" shadow>
         ${startInButton ? start(true) : nothing}${mobileCopy}${messageInButton ? message : nothing}${arrow}

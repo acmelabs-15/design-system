@@ -1,6 +1,7 @@
 import { css, html, nothing, svg } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { Places } from "../../shared/places";
 import { atomState } from "../../shared/atom-state";
 import { comboboxOptionCss } from "./combobox-option.styles";
 
@@ -55,8 +56,7 @@ export class AcmeComboboxOption extends AcmeElement {
   @property({ type: Boolean, reflect: true }) chosen = false;
   /** The combobox's size; the combobox sets it. */
   @property() size: ComboboxOptionSize = "medium";
-  @atomState() private hasStart = false;
-  @atomState() private hasEnd = false;
+  private places = new Places(this, { places: ["start", "end"], scoped: true });
   /** The default slot holds elements: the content renders as given, without the label span. */
   @atomState() private rich = false;
   /** The row's id: the field's `aria-activedescendant` while the row is active. */
@@ -83,8 +83,6 @@ export class AcmeComboboxOption extends AcmeElement {
   }
 
   private readContent = () => {
-    this.hasStart = !!this.querySelector(':scope > [slot="start"]');
-    this.hasEnd = !!this.querySelector(':scope > [slot="end"]');
     this.rich = Array.from(this.children).some((c) => !c.hasAttribute("slot"));
   };
 
@@ -144,10 +142,10 @@ export class AcmeComboboxOption extends AcmeElement {
       @mousedown=${(e: Event) => e.preventDefault()}
       @mouseup=${this.onMouseUp}
       part="option"
-    >${this.hasStart ? html`<span class="start">${startSlot}</span>` : startSlot}${
+    >${this.places.has("start") ? html`<span class="start">${startSlot}</span>` : startSlot}${
       this.rich ? content : html`<span class="label" title=${this.text}>${content}</span>`
-    }${this.hasEnd ? html`<span class="end">${endSlot}</span>` : endSlot}${
-      !this.hasEnd && this.chosen ? html`<svg class="check" viewBox="0 0 16 16" width="16" height="16" fill="none" style="margin-left:auto" aria-hidden="true">${CHECK}</svg>` : nothing
+    }${this.places.has("end") ? html`<span class="end">${endSlot}</span>` : endSlot}${
+      !this.places.has("end") && this.chosen ? html`<svg class="check" viewBox="0 0 16 16" width="16" height="16" fill="none" style="margin-left:auto" aria-hidden="true">${CHECK}</svg>` : nothing
     }</li>`;
   }
 }

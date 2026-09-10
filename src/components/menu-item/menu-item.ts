@@ -1,7 +1,7 @@
 import { css, html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, paths, sharedCss } from "../../base";
-import { atomState } from "../../shared/atom-state";
+import { Places } from "../../shared/places";
 import { menuItemCss } from "./menu-item.styles";
 
 let seq = 0;
@@ -40,8 +40,7 @@ export class AcmeMenuItem extends AcmeElement {
   @property({ type: Boolean }) selected = false;
   /** The text typeahead matches: the label's text unless set. */
   @property() value = "";
-  @atomState() private hasStart = false;
-  @atomState() private hasEnd = false;
+  private places = new Places(this, { places: ["start", "end"] });
   @query(".item") private root?: HTMLElement;
   private uid = `menu-item-${(++seq).toString(36)}`;
 
@@ -56,15 +55,7 @@ export class AcmeMenuItem extends AcmeElement {
   }
 
   private readSlots() {
-    this.hasStart ||= !!this.querySelector('[slot="start"]');
-    this.hasEnd ||= !!this.querySelector('[slot="end"]');
   }
-
-  private slotted = (name: "start" | "end") => (e: Event) => {
-    const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "start") this.hasStart = has;
-    else this.hasEnd = has;
-  };
 
   /** Whether the row takes no selection. */
   get inert() {
@@ -97,10 +88,10 @@ export class AcmeMenuItem extends AcmeElement {
 
   render() {
     const inert = this.inert;
-    const startSlot = html`<slot name="start" @slotchange=${this.slotted("start")}></slot>`;
-    const endSlot = html`<slot name="end" @slotchange=${this.slotted("end")}>${this.locked ? html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--ds-gray-700)"><path d=${paths.lock}></path></svg>` : nothing}</slot>`;
-    const inner = html`${this.hasStart ? html`<span class="start" aria-hidden="true">${startSlot}</span>` : startSlot}<span id=${this.uid}><slot></slot></span>${
-      this.hasEnd || this.locked ? html`<span class="end" aria-hidden="true">${endSlot}</span>` : endSlot
+    const startSlot = html`<slot name="start" @slotchange=${this.places.read}></slot>`;
+    const endSlot = html`<slot name="end" @slotchange=${this.places.read}>${this.locked ? html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--ds-gray-700)"><path d=${paths.lock}></path></svg>` : nothing}</slot>`;
+    const inner = html`${this.places.has("start") ? html`<span class="start" aria-hidden="true">${startSlot}</span>` : startSlot}<span id=${this.uid}><slot></slot></span>${
+      this.places.has("end") || this.locked ? html`<span class="end" aria-hidden="true">${endSlot}</span>` : endSlot
     }`;
     const c = this.cls("item", { error: this.variant === "error" });
     if (this.href)

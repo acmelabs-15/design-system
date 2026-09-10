@@ -1,6 +1,7 @@
 import { css, html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
+import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
 import { selectCss } from "./select.styles";
 import { selectLabelCss } from "./select-label.styles";
@@ -85,7 +86,7 @@ export class AcmeSelect extends AcmeElement {
   @property({ attribute: "aria-describedby" }) ariaDescribedby = "";
   /** Options set from script, in place of `<option>` children. */
   @property({ type: Array }) options: SelectOption[] = [];
-  @atomState() private hasStart = false;
+  private places = new Places(this, { places: ["start"] });
   /** The `<option>` and `<optgroup>` children, cloned into the field. */
   @atomState() private lightOptions: HTMLElement[] = [];
   @query("select") select!: HTMLSelectElement;
@@ -103,7 +104,6 @@ export class AcmeSelect extends AcmeElement {
   }
   /** Reads the light DOM: the start place, and the option children. */
   private readLight = () => {
-    this.hasStart = !!this.querySelector('[slot="start"]');
     this.lightOptions = Array.from(this.children).filter((c): c is HTMLElement => c.tagName === "OPTION" || c.tagName === "OPTGROUP");
   };
   // A place is rendered only while its slot has content, and the option children live in the light DOM, so
@@ -161,11 +161,11 @@ export class AcmeSelect extends AcmeElement {
       error: !!this.error,
       disabled: this.disabled,
       secondary: this.variant === "secondary",
-      "has-start": this.hasStart,
+      "has-start": this.places.has("start"),
       empty: !!this.placeholder && this.value === this.placeholder,
     });
     const wrap = html`<div class=${cls} part="wrap">
-      ${this.hasStart ? html`<span class="start" aria-hidden="true"><slot name="start" @slotchange=${this.readLight}></slot></span>` : nothing}
+      ${this.places.has("start") ? html`<span class="start" aria-hidden="true"><slot name="start" @slotchange=${this.places.read}></slot></span>` : nothing}
       <select
         id=${this.uid}
         name=${this.name || nothing}

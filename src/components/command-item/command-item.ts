@@ -1,7 +1,7 @@
 import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
-import { atomState } from "../../shared/atom-state";
+import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
 import { commandMenuItemCss } from "../command-menu/command-menu-item.styles";
 
@@ -34,8 +34,7 @@ export class AcmeCommandItem extends AcmeElement {
   @property() page = "";
   /** The highlighted row; the menu sets it. */
   @property({ type: Boolean, reflect: true }) selected = false;
-  @atomState() private hasStart = false;
-  @atomState() private hasEnd = false;
+  private places = new Places(this, { places: ["start", "end"], scoped: true });
   @query(".item") private row?: HTMLElement;
   @query(".keys") private keys?: HTMLElement;
   private rowState = new Interaction(this, { anyFocus: true, disabled: () => this.disabled });
@@ -72,8 +71,6 @@ export class AcmeCommandItem extends AcmeElement {
   }
 
   private readSlots = () => {
-    this.hasStart = !!this.querySelector(':scope > [slot="start"]');
-    this.hasEnd = !!this.querySelector(':scope > [slot="end"]');
   };
 
   /** Selects the row: `acme-select` (cancelable) with the value, the label and whether the menu closes. */
@@ -106,9 +103,9 @@ export class AcmeCommandItem extends AcmeElement {
       @click=${() => this.select()}
       part="item"
     >
-      ${this.hasStart ? html`<div class="start" part="start"><slot name="start"></slot></div>` : html`<slot name="start"></slot>`}<slot></slot>${
+      ${this.places.has("start") ? html`<div class="start" part="start"><slot name="start"></slot></div>` : html`<slot name="start"></slot>`}<slot></slot>${
         keys.length ? html`<div class="keys" part="keys">${keys.map((k) => html`<kbd class="key">${glyphOf(k)}</kbd>`)}</div>` : nothing
-      }${this.hasEnd ? html`<div class="end" part="end"><slot name="end"></slot></div>` : html`<slot name="end"></slot>`}
+      }${this.places.has("end") ? html`<div class="end" part="end"><slot name="end"></slot></div>` : html`<slot name="end"></slot>`}
     </div>`;
   }
 }

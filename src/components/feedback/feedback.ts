@@ -2,6 +2,7 @@ import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/d
 import { css, html, nothing, svg } from "lit";
 import { customElement, property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
+import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
 import { reduced } from "../../shared/overlay";
 import { feedbackCss } from "./feedback.styles";
@@ -142,8 +143,7 @@ export class AcmeFeedback extends AcmeElement {
   @atomState() private message = "";
   @atomState() private sending = false;
   @atomState() private sent = false;
-  @atomState() private hasStart = false;
-  @atomState() private hasEnd = false;
+  private places = new Places(this, { places: ["start", "end"] });
   /** The card of the trigger variant: mounted and open, fading out, or gone. */
   @atomState() private card: "open" | "closed" | null = null;
   @atomState() private formPhase: Phase = "entered";
@@ -166,8 +166,6 @@ export class AcmeFeedback extends AcmeElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.hasStart = !!this.querySelector('[slot="start"]');
-    this.hasEnd = !!this.querySelector('[slot="end"]');
     document.addEventListener("pointerdown", this.onOutside);
     document.addEventListener("keydown", this.onDocumentKey);
     document.addEventListener(SHOW_EVENT, this.onShow);
@@ -185,8 +183,6 @@ export class AcmeFeedback extends AcmeElement {
   }
 
   firstUpdated() {
-    this.hasStart ||= !!this.querySelector('[slot="start"]');
-    this.hasEnd ||= !!this.querySelector('[slot="end"]');
   }
 
   private later(fn: () => void, ms: number) {
@@ -500,7 +496,7 @@ export class AcmeFeedback extends AcmeElement {
           this.open = !this.open;
         }}
         part="trigger"
-        >${this.hasStart ? html`<slot name="start" slot="start"></slot>` : nothing}${this.buttonText}${this.hasEnd ? html`<slot name="end" slot="end"></slot>` : nothing}</acme-button
+        >${this.places.has("start") ? html`<slot name="start" slot="start"></slot>` : nothing}${this.buttonText}${this.places.has("end") ? html`<slot name="end" slot="end"></slot>` : nothing}</acme-button
       >${
         this.card
           ? html`<div class=${this.cls("panel", { sent: this.sent })} style="position:fixed;left:0;top:0;min-width:max-content;z-index:101" part="panel">

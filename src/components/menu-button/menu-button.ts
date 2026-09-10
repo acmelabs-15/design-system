@@ -64,8 +64,6 @@ export class AcmeMenuButton extends AcmeButton {
   }
 
   private readContent() {
-    this.hasStart ||= !!this.querySelector('[slot="start"]');
-    this.hasEnd ||= !!this.querySelector('[slot="end"]');
     const content = [...this.childNodes].filter((n) => (n.nodeType === 1 && !(n as Element).hasAttribute("slot")) || (n.nodeType === 3 && (n.textContent ?? "").trim()));
     this.elementOnly = content.length > 0 && content.every((n) => n.nodeType === 1);
   }
@@ -73,12 +71,6 @@ export class AcmeMenuButton extends AcmeButton {
   private content = (e: Event) => {
     const nodes = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).filter((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
     this.elementOnly = nodes.length > 0 && nodes.every((n) => n.nodeType === 1);
-  };
-
-  private side = (name: "start" | "end") => (e: Event) => {
-    const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "start") this.hasStart = has;
-    else this.hasEnd = has;
   };
 
   render() {
@@ -113,14 +105,14 @@ export class AcmeMenuButton extends AcmeButton {
       "--acme-icon-size:16px",
     ].join(";");
     const spinnerSize = this.size === "large" ? "lg" : this.size === "medium" ? "md" : "sm";
-    const startSlot = html`<slot name="start" @slotchange=${this.side("start")}></slot>`;
-    const endSlot = html`<slot name="end" @slotchange=${this.side("end")}></slot>`;
+    const startSlot = html`<slot name="start" @slotchange=${this.places.read}></slot>`;
+    const endSlot = html`<slot name="end" @slotchange=${this.places.read}></slot>`;
     const start = this.loading
       ? html`<span class="start" aria-hidden="true"><acme-spinner size=${spinnerSize}></acme-spinner>${startSlot}</span>`
-      : this.hasStart
+      : this.places.has("start")
         ? html`<span class="start">${startSlot}</span>`
         : startSlot;
-    const end = this.hasEnd ? html`<span class="end">${endSlot}</span>` : endSlot;
+    const end = this.places.has("end") ? html`<span class="end">${endSlot}</span>` : endSlot;
     const chevron = this.showChevron ? html`<span class="chev" data-open=${String(this.open)}>${glyphSized("chev-d")}</span>` : nothing;
     const label = html`<span class="label"><span class="inner"><slot @slotchange=${this.content}></slot>${chevron}</span></span>`;
     return html`<button

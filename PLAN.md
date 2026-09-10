@@ -209,9 +209,11 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
-- **The places beside content are `start` and `end`, in every element.** Decided 2026-09-10 by
-  Peter. Nine elements moved off `prefix`/`suffix`, and `data-prefix`/`data-suffix` are gone —
-  no generated stylesheet ever read them. See `notes/decisions/start-and-end-places.md`.
+- **The places beside content are `start` and `end`, in every element, and no element keeps its own
+  `hasStart`/`hasEnd`.** Decided 2026-09-10 by Peter. Nine elements moved off `prefix`/`suffix`,
+  `data-prefix`/`data-suffix` are gone (no generated stylesheet ever read them), and the eight that
+  hand-rolled the same two booleans now share `src/shared/places.ts`, a reactive controller. Ask it
+  with `this.places.has("start")`. See `notes/decisions/start-and-end-places.md`.
   `middle-truncate` keeps `prefix`/`suffix` for the two halves of a truncated string, which is the
   correct word for text rather than for a place.
 - **An example heading in a map's `skip` list is the REFERENCE's heading, not ours.** Verified
@@ -409,7 +411,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 599 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
+| Tests | 604 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |

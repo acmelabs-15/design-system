@@ -2,6 +2,7 @@ import { css, html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
+import { Places } from "../../shared/places";
 import { buttonCss } from "./button.styles";
 import "../spinner/spinner";
 import { atomState } from "../../shared/atom-state";
@@ -88,10 +89,9 @@ export class AcmeButton extends AcmeElement {
   @property({ attribute: "aria-haspopup" }) haspopup = "";
   @property({ attribute: "aria-expanded" }) expanded = "";
   @property({ attribute: "aria-controls" }) controls = "";
-  /** The occupied places, read from the light DOM. Protected: acme-menu-button extends this class
-   *  and reads the same two, rather than keeping a second pair of its own. */
-  @atomState() protected hasStart = false;
-  @atomState() protected hasEnd = false;
+  /** The occupied places. Protected: acme-menu-button extends this class and asks the same
+   *  controller, rather than keeping booleans of its own. */
+  protected places = new Places(this, { places: ["start", "end"] });
   /** The default slot holds elements only (an icon), no text. */
   @atomState() private elementChild = false;
   @query(".btn") private root!: HTMLElement;
@@ -99,17 +99,7 @@ export class AcmeButton extends AcmeElement {
     disabled: () => this.disabled || this.loading,
   });
 
-  connectedCallback() {
-    super.connectedCallback();
-    // Slotted places are known before the first render (slotchange keeps them current).
-    this.hasStart = !!this.querySelector('[slot="start"]');
-    this.hasEnd = !!this.querySelector('[slot="end"]');
-  }
-
   firstUpdated() {
-    // A parser that connects the element before its children (happy-dom does) misses them at connect.
-    this.hasStart ||= !!this.querySelector('[slot="start"]');
-    this.hasEnd ||= !!this.querySelector('[slot="end"]');
     const content = [...this.childNodes].filter((n) => (n.nodeType === 1 && !(n as Element).hasAttribute("slot")) || (n.nodeType === 3 && (n.textContent ?? "").trim()));
     this.elementChild = content.length > 0 && content.every((n) => n.nodeType === 1);
   }
@@ -122,12 +112,6 @@ export class AcmeButton extends AcmeElement {
   private slottedContent = (e: Event) => {
     const nodes = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).filter((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
     this.elementChild = nodes.length > 0 && nodes.every((n) => n.nodeType === 1);
-  };
-
-  private slotted = (name: "start" | "end") => (e: Event) => {
-    const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "start") this.hasStart = has;
-    else this.hasEnd = has;
   };
 
   render() {
@@ -161,20 +145,20 @@ export class AcmeButton extends AcmeElement {
     const spinnerSize = this.size === "large" ? "lg" : this.size === "medium" ? "md" : "sm";
     const startSlot = html`<slot
       name="start"
-      @slotchange=${this.slotted("start")}
+      @slotchange=${this.places.read}
     ></slot>`;
     const endSlot = html`<slot
       name="end"
-      @slotchange=${this.slotted("end")}
+      @slotchange=${this.places.read}
     ></slot>`;
     const start = this.loading
       ? html`<span class="start" aria-hidden="true"
           ><acme-spinner size=${spinnerSize}></acme-spinner>${startSlot}</span
         >`
-      : this.hasStart
+      : this.places.has("start")
         ? html`<span class="start">${startSlot}</span>`
         : startSlot;
-    const end = this.hasEnd ? html`<span class="end">${endSlot}</span>` : endSlot;
+    const end = this.places.has("end") ? html`<span class="end">${endSlot}</span>` : endSlot;
     const inner = html`${start}<span class="label" part="label"><slot @slotchange=${this.slottedContent}></slot></span
       >${end}`;
     const shared = {

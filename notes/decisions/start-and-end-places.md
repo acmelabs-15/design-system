@@ -63,3 +63,42 @@ so removing them changes nothing a rule can see. Checked before removing, not af
 
 `middle-truncate` uses `prefix`/`suffix` for the two halves of a truncated string. That is the
 correct word for text, not a place beside content, so it is untouched.
+
+
+## No element keeps `hasStart`/`hasEnd` (2026-09-10)
+
+Peter, on reading the rename: "no component should have these props."
+
+They were never public — every one was `private` or `protected` internal state, with no attribute
+and no reflection — but they were the wrong shape regardless. Eight elements each hand-rolled the
+same two booleans, the same three reads (at connect, in `firstUpdated`, on `slotchange`) and, in
+`acme-input` alone, a `MutationObserver` so late content still lands.
+
+**`src/shared/places.ts` is now the one implementation.** A reactive controller, the idiomatic Lit
+way to share behaviour that owns a lifecycle:
+
+```ts
+private places = new Places(this, { places: ["start", "end"] });
+// ...
+${this.places.has("start") ? html`<span class="start">${startSlot}</span>` : startSlot}
+```
+
+It reads the light DOM three ways, because none alone is enough: at connect, again on the first
+update (a parser that connects an element before its children — happy-dom does — sees nothing at
+connect), and on both `slotchange` and a `MutationObserver`. It reads
+`querySelector('[slot="…"]')` rather than a slot's `assignedNodes`, so it works before the shadow
+tree exists and in a test environment where `slotchange` never fires. A read that changes nothing
+requests no update.
+
+Two options carry the differences between the elements: `places` names the subset an element renders
+(banner and select have a start only), and `scoped` limits the read to direct children, for
+`command-item` and `combobox-option`, whose content may itself hold slotted places.
+
+`acme-menu-button` extends `AcmeButton` and inherits the controller, which is why the base's field
+is `protected` — it keeps no places of its own.
+
+**Verified:** 604 tests including 5 for the controller, one proven by removing its no-op guard and
+watching it fail. Every affected census page holds at 0 hard. In the browser, where the tests are
+blind: a button renders its start span, content appended later makes it appear through the observer,
+and removing that content makes it go; an open menu item renders a 16×16 icon and a plain one
+renders no span at all.
