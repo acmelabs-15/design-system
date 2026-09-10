@@ -45,7 +45,7 @@ Feedback with any key-value metadata attached to the submission.
 ```html
 <div style="min-height:300px">
   <acme-feedback dry-run label="vercel">
-    <svg class="ic" width="16" height="16" slot="prefix" aria-hidden="true">
+    <svg class="ic" width="16" height="16" slot="start" aria-hidden="true">
       <use href="#i-flag"/>
     </svg>
   </acme-feedback>
@@ -57,7 +57,7 @@ Feedback with any key-value metadata attached to the submission.
 ```html
 <div style="min-height:300px">
   <acme-feedback dry-run label="vercel">
-    <svg class="ic" width="16" height="16" slot="suffix" aria-hidden="true">
+    <svg class="ic" width="16" height="16" slot="end" aria-hidden="true">
       <use href="#i-flag"/>
     </svg>
   </acme-feedback>
@@ -75,7 +75,7 @@ select and `show-email` an email field above the textarea. Send validates (topic
 emotion) and shows the message under the textarea; a dry run skips both the checks and the
 request. Success swaps the form for a check and two lines, then the card closes after 4s (later
 while the pointer rests on it) and the fields reset. Escape closes, ⌘Enter sends, a click
-outside closes, focus returns to the trigger. The default slot is unused; `prefix` and `suffix`
+outside closes, focus returns to the trigger. The default slot is unused; `start` and `end`
 decorate the trigger. Fires `acme-open`, `acme-close` and `acme-submit` (the payload).
 
 | Attribute | Property | Type | Default | Description |
@@ -98,7 +98,7 @@ decorate the trigger. Fires `acme-open`, `acme-close` and `acme-submit` (the pay
 | `endpoint` | `endpoint` | `string` | `"/api/feedback"` | Where a submission is posted, as JSON. |
 | `open` | `open` | `boolean` | `false` | The card is open (the trigger's card, or the inline pill grown into the card). |
 
-Slots: `prefix`, `suffix`
+Slots: `start`, `end`
 
 Events: `acme-open`, `acme-close`
 

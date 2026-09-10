@@ -12,8 +12,8 @@ export type CommandItemSelectDetail = { value: string; label: string; item: Acme
 
 /**
  * One row of a command menu: the label as content (a Title Case verb phrase), an optional icon in
- * the `prefix` slot (a 20px box), an optional `keybind` (keys separated by spaces, `Meta K`; kbd
- * chips at the end of the row) and optional content in the `suffix` slot at the end. `value` is
+ * the `start` slot (a 20px box), an optional `keybind` (keys separated by spaces, `Meta K`; kbd
+ * chips at the end of the row) and optional content in the `end` slot at the end. `value` is
  * what the query is scored against and what a selection reports (the label, lowercased, when
  * unset); `disabled` keeps the row out of the keys and the pointer; `page` keeps the row to one
  * page of the menu. The menu highlights the row under the keys or the pointer (`selected`); a
@@ -34,15 +34,15 @@ export class AcmeCommandItem extends AcmeElement {
   @property() page = "";
   /** The highlighted row; the menu sets it. */
   @property({ type: Boolean, reflect: true }) selected = false;
-  @atomState() private hasPrefix = false;
-  @atomState() private hasSuffix = false;
+  @atomState() private hasStart = false;
+  @atomState() private hasEnd = false;
   @query(".item") private row?: HTMLElement;
   @query(".keys") private keys?: HTMLElement;
   private rowState = new Interaction(this, { anyFocus: true, disabled: () => this.disabled });
   private keysState = new Interaction(this, { disabled: () => false });
   private watch?: MutationObserver;
 
-  /** The visible text (the slotted prefix and suffix left out). */
+  /** The visible text (the slotted places left out). */
   get label() {
     return Array.from(this.childNodes)
       .filter((n) => !(n instanceof Element && n.hasAttribute("slot")))
@@ -72,8 +72,8 @@ export class AcmeCommandItem extends AcmeElement {
   }
 
   private readSlots = () => {
-    this.hasPrefix = !!this.querySelector(':scope > [slot="prefix"]');
-    this.hasSuffix = !!this.querySelector(':scope > [slot="suffix"]');
+    this.hasStart = !!this.querySelector(':scope > [slot="start"]');
+    this.hasEnd = !!this.querySelector(':scope > [slot="end"]');
   };
 
   /** Selects the row: `acme-select` (cancelable) with the value, the label and whether the menu closes. */
@@ -106,9 +106,9 @@ export class AcmeCommandItem extends AcmeElement {
       @click=${() => this.select()}
       part="item"
     >
-      ${this.hasPrefix ? html`<div class="prefix" part="prefix"><slot name="prefix"></slot></div>` : html`<slot name="prefix"></slot>`}<slot></slot>${
+      ${this.hasStart ? html`<div class="start" part="start"><slot name="start"></slot></div>` : html`<slot name="start"></slot>`}<slot></slot>${
         keys.length ? html`<div class="keys" part="keys">${keys.map((k) => html`<kbd class="key">${glyphOf(k)}</kbd>`)}</div>` : nothing
-      }${this.hasSuffix ? html`<div class="suffix" part="suffix"><slot name="suffix"></slot></div>` : html`<slot name="suffix"></slot>`}
+      }${this.hasEnd ? html`<div class="end" part="end"><slot name="end"></slot></div>` : html`<slot name="end"></slot>`}
     </div>`;
   }
 }

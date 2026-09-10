@@ -6,7 +6,7 @@ export const commandMenuItemCss = css`
     display: none;
     gap: 0.25rem;
   }
-  .item :where(.suffix) {
+  .item :where(.end) {
     margin-left: auto;
     display: flex;
     align-items: stretch;
@@ -25,7 +25,7 @@ export const commandMenuItemCss = css`
     font-size: 0.875rem;
     line-height: calc(1.25 / 0.875);
   }
-  .item :where(.prefix) {
+  .item :where(.start) {
     display: flex;
     width: 1.25rem;
     height: 1.25rem;

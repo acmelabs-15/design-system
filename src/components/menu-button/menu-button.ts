@@ -41,8 +41,6 @@ export class AcmeMenuButton extends AcmeButton {
   @property({ type: Boolean, attribute: "show-chevron" }) showChevron = false;
   /** Whether the menu is open: the menu keeps it in step. */
   @property({ type: Boolean, reflect: true }) open = false;
-  @atomState() private prefixed = false;
-  @atomState() private suffixed = false;
   /** The content is elements only (an icon, an avatar), no text: the trigger is then icon-only. */
   @atomState() private elementOnly = false;
 
@@ -66,8 +64,8 @@ export class AcmeMenuButton extends AcmeButton {
   }
 
   private readContent() {
-    this.prefixed ||= !!this.querySelector('[slot="prefix"]');
-    this.suffixed ||= !!this.querySelector('[slot="suffix"]');
+    this.hasStart ||= !!this.querySelector('[slot="start"]');
+    this.hasEnd ||= !!this.querySelector('[slot="end"]');
     const content = [...this.childNodes].filter((n) => (n.nodeType === 1 && !(n as Element).hasAttribute("slot")) || (n.nodeType === 3 && (n.textContent ?? "").trim()));
     this.elementOnly = content.length > 0 && content.every((n) => n.nodeType === 1);
   }
@@ -77,10 +75,10 @@ export class AcmeMenuButton extends AcmeButton {
     this.elementOnly = nodes.length > 0 && nodes.every((n) => n.nodeType === 1);
   };
 
-  private side = (name: "prefix" | "suffix") => (e: Event) => {
+  private side = (name: "start" | "end") => (e: Event) => {
     const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "prefix") this.prefixed = has;
-    else this.suffixed = has;
+    if (name === "start") this.hasStart = has;
+    else this.hasEnd = has;
   };
 
   render() {
@@ -115,14 +113,14 @@ export class AcmeMenuButton extends AcmeButton {
       "--acme-icon-size:16px",
     ].join(";");
     const spinnerSize = this.size === "large" ? "lg" : this.size === "medium" ? "md" : "sm";
-    const prefixSlot = html`<slot name="prefix" @slotchange=${this.side("prefix")}></slot>`;
-    const suffixSlot = html`<slot name="suffix" @slotchange=${this.side("suffix")}></slot>`;
-    const prefix = this.loading
-      ? html`<span class="prefix" aria-hidden="true"><acme-spinner size=${spinnerSize}></acme-spinner>${prefixSlot}</span>`
-      : this.prefixed
-        ? html`<span class="prefix">${prefixSlot}</span>`
-        : prefixSlot;
-    const suffix = this.suffixed ? html`<span class="suffix">${suffixSlot}</span>` : suffixSlot;
+    const startSlot = html`<slot name="start" @slotchange=${this.side("start")}></slot>`;
+    const endSlot = html`<slot name="end" @slotchange=${this.side("end")}></slot>`;
+    const start = this.loading
+      ? html`<span class="start" aria-hidden="true"><acme-spinner size=${spinnerSize}></acme-spinner>${startSlot}</span>`
+      : this.hasStart
+        ? html`<span class="start">${startSlot}</span>`
+        : startSlot;
+    const end = this.hasEnd ? html`<span class="end">${endSlot}</span>` : endSlot;
     const chevron = this.showChevron ? html`<span class="chev" data-open=${String(this.open)}>${glyphSized("chev-d")}</span>` : nothing;
     const label = html`<span class="label"><span class="inner"><slot @slotchange=${this.content}></slot>${chevron}</span></span>`;
     return html`<button
@@ -137,12 +135,10 @@ export class AcmeMenuButton extends AcmeButton {
       aria-expanded=${this.expanded || nothing}
       aria-controls=${this.controls || nothing}
       data-is-open=${String(this.open)}
-      data-prefix=${String(this.prefixed || this.loading)}
-      data-suffix=${String(this.suffixed)}
       data-custom-button=${this.variant === "custom" ? "" : nothing}
       part="button"
     >
-      ${prefix}${label}${suffix}
+      ${start}${label}${end}
     </button>`;
   }
 }

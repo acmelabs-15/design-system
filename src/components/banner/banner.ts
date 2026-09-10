@@ -10,15 +10,15 @@ import { atomState } from "../../shared/atom-state";
 const WIDE = "(min-width: 961px)";
 
 /** The arrow after the button's label: a 16-box filled chevron. */
-const arrow = html`<svg slot="suffix" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" style="color:currentColor"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="m6.75 3.94.53.53 2.82 2.82a1 1 0 0 1 0 1.42l-2.82 2.82-.53.53L5.69 11l.53-.53L8.69 8 6.22 5.53 5.69 5z"></path></svg>`;
+const arrow = html`<svg slot="end" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" style="color:currentColor"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="m6.75 3.94.53.53 2.82 2.82a1 1 0 0 1 0 1.42l-2.82 2.82-.53.53L5.69 11l.53-.53L8.69 8 6.22 5.53 5.69 5z"></path></svg>`;
 
 /**
  * Banner: a prominent message across the full width of its container, with one call to action.
- * From the wide breakpoint (961px) it is a centred row: an optional prefix, the message (16/24
+ * From the wide breakpoint (961px) it is a centred row: an optional start place, the message (16/24
  * gray-900; a `<b>` inside is 600 gray-1000) and a small secondary rounded link button with an
  * arrow, labelled by `button`. Below it the row hides and one such button holds the whole message
- * (or the `mobile` slot's copy) as its label, centred at its fit width; the prefix moves into it.
- * Slots: default (the message), `prefix` (an icon before the message), `mobile` (shorter copy for
+ * (or the `mobile` slot's copy) as its label, centred at its fit width; the start place moves into it.
+ * Slots: default (the message), `start` (an icon before the message), `mobile` (shorter copy for
  * the mobile button). Parts: `banner` (the wide row), `mobile` (the mobile button).
  */
 @customElement("acme-banner")
@@ -30,7 +30,7 @@ export class AcmeBanner extends AcmeElement {
   @property() href = "";
   /** Whether the viewport is at or past the wide breakpoint: decides where the slots render. */
   @atomState() private wide = true;
-  @atomState() private hasPrefix = false;
+  @atomState() private hasStart = false;
   @atomState() private hasMobile = false;
   private media?: MediaQueryList;
   private onMedia = (e: MediaQueryListEvent) => {
@@ -39,7 +39,7 @@ export class AcmeBanner extends AcmeElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.hasPrefix = !!this.querySelector('[slot="prefix"]');
+    this.hasStart = !!this.querySelector('[slot="start"]');
     this.hasMobile = !!this.querySelector('[slot="mobile"]');
     if (typeof matchMedia !== "undefined") {
       this.media = matchMedia(WIDE);
@@ -56,29 +56,29 @@ export class AcmeBanner extends AcmeElement {
 
   firstUpdated() {
     // A parser that connects the element before its children (happy-dom does) misses them at connect.
-    this.hasPrefix ||= !!this.querySelector('[slot="prefix"]');
+    this.hasStart ||= !!this.querySelector('[slot="start"]');
     this.hasMobile ||= !!this.querySelector('[slot="mobile"]');
   }
 
-  private slotted = (name: "prefix" | "mobile") => (e: Event) => {
+  private slotted = (name: "start" | "mobile") => (e: Event) => {
     const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "prefix") this.hasPrefix = has;
+    if (name === "start") this.hasStart = has;
     else this.hasMobile = has;
   };
 
   render() {
-    // One slot renders in one place: the message and the prefix sit in the row when the viewport is
+    // One slot renders in one place: the message and the start place sit in the row when the viewport is
     // wide, in the mobile button when it is not. The mobile copy, when slotted, is that button's label.
     const message = html`<slot></slot>`;
     const mobileCopy = html`<slot name="mobile" @slotchange=${this.slotted("mobile")}></slot>`;
-    const prefix = (inButton: boolean) => html`<slot name="prefix" slot=${inButton ? "prefix" : nothing} @slotchange=${this.slotted("prefix")}></slot>`;
-    const prefixInButton = !this.wide && this.hasPrefix;
+    const start = (inButton: boolean) => html`<slot name="start" slot=${inButton ? "start" : nothing} @slotchange=${this.slotted("start")}></slot>`;
+    const startInButton = !this.wide && this.hasStart;
     const messageInButton = !this.wide && !this.hasMobile;
     return html`<acme-button class="mobile" part="mobile" block href=${this.href} variant="secondary" size="small" shape="rounded" shadow>
-        ${prefixInButton ? prefix(true) : nothing}${mobileCopy}${messageInButton ? message : nothing}${arrow}
+        ${startInButton ? start(true) : nothing}${mobileCopy}${messageInButton ? message : nothing}${arrow}
       </acme-button>
       <div class="banner" part="banner">
-        ${prefixInButton ? nothing : prefix(false)}
+        ${startInButton ? nothing : start(false)}
         <p class="text">${messageInButton ? nothing : message}</p>
         <acme-button class="action" href=${this.href} variant="secondary" size="small" shape="rounded" shadow>${this.button}${arrow}</acme-button>
       </div>`;

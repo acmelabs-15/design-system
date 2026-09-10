@@ -31,7 +31,7 @@ export const doc: Doc = {
     {
       h: "Prefix and suffix",
       html: row(
-        `<acme-button><svg class="ic" width="16" height="16" slot="prefix" aria-hidden="true"><use href="#i-arrow-left"/></svg>Upload</acme-button><acme-button>Upload<svg class="ic" width="16" height="16" slot="suffix" aria-hidden="true"><use href="#i-arrow-right"/></svg></acme-button><acme-button><svg class="ic" width="16" height="16" slot="prefix" aria-hidden="true"><use href="#i-arrow-left"/></svg>Upload<svg class="ic" width="16" height="16" slot="suffix" aria-hidden="true"><use href="#i-arrow-right"/></svg></acme-button>`,
+        `<acme-button><svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#i-arrow-left"/></svg>Upload</acme-button><acme-button>Upload<svg class="ic" width="16" height="16" slot="end" aria-hidden="true"><use href="#i-arrow-right"/></svg></acme-button><acme-button><svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#i-arrow-left"/></svg>Upload<svg class="ic" width="16" height="16" slot="end" aria-hidden="true"><use href="#i-arrow-right"/></svg></acme-button>`,
       ),
     },
     {

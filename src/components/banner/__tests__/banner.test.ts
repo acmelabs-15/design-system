@@ -30,34 +30,34 @@ describe("acme-banner", () => {
     expect(action.shape).toBe("rounded");
     expect(action.shadow).toBe(true);
     expect(action.textContent?.trim()).toBe("Read more");
-    expect(action.querySelector("svg[slot=suffix]")).not.toBeNull();
+    expect(action.querySelector("svg[slot=end]")).not.toBeNull();
     const mobile = btn(el, "mobile");
     expect(mobile.getAttribute("part")).toBe("mobile");
     expect(mobile.block).toBe(true);
     expect(mobile.href).toBe("#more");
-    expect(mobile.querySelector("svg[slot=suffix]")).not.toBeNull();
+    expect(mobile.querySelector("svg[slot=end]")).not.toBeNull();
   });
 
   test("wide: the message and the prefix sit in the row; the mobile copy slot stays in the mobile button", async () => {
-    const el = await mount(`<acme-banner button="Go"><svg slot="prefix"></svg>Message<span slot="mobile">Short</span></acme-banner>`);
+    const el = await mount(`<acme-banner button="Go"><svg slot="start"></svg>Message<span slot="mobile">Short</span></acme-banner>`);
     expect((el as unknown as { wide: boolean }).wide).toBe(true);
     const row = sr(el).querySelector(".banner") as HTMLElement;
-    expect(row.querySelector(":scope > slot[name=prefix]")).not.toBeNull();
+    expect(row.querySelector(":scope > slot[name=start]")).not.toBeNull();
     expect(row.querySelector("p.text > slot:not([name])")).not.toBeNull();
     const mobile = btn(el, "mobile");
     expect(mobile.querySelector("slot[name=mobile]")).not.toBeNull();
     expect(mobile.querySelector("slot:not([name])")).toBeNull();
-    expect(mobile.querySelector("slot[name=prefix]")).toBeNull();
+    expect(mobile.querySelector("slot[name=start]")).toBeNull();
   });
 
   test("narrow: the message and the prefix move into the mobile button; slotted mobile copy replaces the message there", async () => {
-    const el = await mount(`<acme-banner button="Go"><svg slot="prefix"></svg>Message</acme-banner>`);
+    const el = await mount(`<acme-banner button="Go"><svg slot="start"></svg>Message</acme-banner>`);
     await narrow(el);
     const mobile = btn(el, "mobile");
-    expect(mobile.querySelector("slot[name=prefix][slot=prefix]")).not.toBeNull();
+    expect(mobile.querySelector("slot[name=start][slot=start]")).not.toBeNull();
     expect(mobile.querySelector("slot:not([name])")).not.toBeNull();
     const row = sr(el).querySelector(".banner") as HTMLElement;
-    expect(row.querySelector("slot[name=prefix]")).toBeNull();
+    expect(row.querySelector("slot[name=start]")).toBeNull();
     expect(row.querySelector("p.text > slot")).toBeNull();
     const copy = await mount(`<acme-banner button="Go">Message<span slot="mobile">Short</span></acme-banner>`);
     await narrow(copy);
@@ -69,6 +69,6 @@ describe("acme-banner", () => {
   test("no prefix: the mobile button gets no prefix slot, so the composed button renders no prefix", async () => {
     const el = await mount(`<acme-banner button="Go">Message</acme-banner>`);
     await narrow(el);
-    expect(btn(el, "mobile").querySelector("slot[name=prefix]")).toBeNull();
+    expect(btn(el, "mobile").querySelector("slot[name=start]")).toBeNull();
   });
 });

@@ -10,7 +10,7 @@ const withDisabled = labels.map((l, i) => `<acme-menu-item slot="items"${i === 1
 const logo = (slot: string) =>
   `<svg viewBox="0 0 16 16" width="16" height="16" slot="${slot}" fill="currentColor" aria-hidden="true"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/></svg>`;
 const menu = (rows: string, inner?: string) => `<acme-context-menu>${target(inner)}${rows}</acme-context-menu>`;
-const prefixSuffix = `<div class="row" style="gap:24px;align-items:stretch">${menu(items(' href="/"', (l) => `${logo("prefix")}${l}`))}${menu(items(' href="/"', (l) => `${l}${logo("suffix")}`))}</div>`;
+const startEnd = `<div class="row" style="gap:24px;align-items:stretch">${menu(items(' href="/"', (l) => `${logo("start")}${l}`))}${menu(items(' href="/"', (l) => `${l}${logo("end")}`))}</div>`;
 /** The stage of an open example: room for the list beside the point. */
 const box = (inner: string) => `<div style="min-height:250px;position:relative">${inner}</div>`;
 const log = "root.querySelector('acme-context-menu').addEventListener('acme-select', () => console.log('value'));";
@@ -24,11 +24,11 @@ export const doc: Doc = {
     { h: "Default", html: menu(items()), script: log },
     { h: "Disabled items", html: menu(withDisabled), script: log },
     { h: "Link items", html: menu(items(' href="/"')) },
-    { h: "Prefix and suffix", html: prefixSuffix },
+    { h: "Prefix and suffix", html: startEnd },
     { h: "Open", census: true, p: "The menu open at the pointer: the list 160 wide to the right of the point, the second row highlighted.", html: box(menu(items())) },
     { h: "Open disabled items", census: true, p: "Two disabled rows read gray-700 under a default cursor and take no pointer.", html: box(menu(withDisabled)) },
     { h: "Open link items", census: true, p: "Every row is an anchor.", html: box(menu(items(' href="/"'))) },
-    { h: "Open prefix and suffix", census: true, p: "A 16px icon before the label, or after it behind an auto margin and 12px of padding.", html: box(prefixSuffix) },
+    { h: "Open prefix and suffix", census: true, p: "A 16px icon before the label, or after it behind an auto margin and 12px of padding.", html: box(startEnd) },
     {
       h: "Open on a link",
       census: true,

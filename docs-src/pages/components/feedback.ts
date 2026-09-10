@@ -36,11 +36,11 @@ export const doc: Doc = {
     },
     {
       h: "Feedback with prefix",
-      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel"><svg class="ic" width="16" height="16" slot="prefix" aria-hidden="true"><use href="#i-flag"/></svg></acme-feedback></div>`,
+      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel"><svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#i-flag"/></svg></acme-feedback></div>`,
     },
     {
       h: "Feedback with suffix",
-      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel"><svg class="ic" width="16" height="16" slot="suffix" aria-hidden="true"><use href="#i-flag"/></svg></acme-feedback></div>`,
+      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel"><svg class="ic" width="16" height="16" slot="end" aria-hidden="true"><use href="#i-flag"/></svg></acme-feedback></div>`,
     },
     {
       h: "Open", census: true,

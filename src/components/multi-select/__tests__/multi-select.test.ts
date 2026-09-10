@@ -41,12 +41,12 @@ describe("acme-multi-select", () => {
     const t = trigger(el);
     expect(t.tagName).toBe("BUTTON");
     expect(t.getAttribute("type")).toBe("button");
-    expect(t.getAttribute("data-suffix")).toBe("true");
+    expect(t.querySelector(".end")).not.toBeNull();
     expect(t.getAttribute("aria-haspopup")).toBe("dialog");
     expect(t.getAttribute("aria-expanded")).toBe("false");
     expect(t.getAttribute("data-state")).toBe("closed");
     expect(t.querySelector(".label .text slot[name=trigger]")).not.toBeNull();
-    expect(t.querySelector(".suffix .chev svg")).not.toBeNull();
+    expect(t.querySelector(".end .chev svg")).not.toBeNull();
     expect(content(el)).toBeNull();
     expect(el.value).toEqual(["a", "b"]);
   });

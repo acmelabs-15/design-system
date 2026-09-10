@@ -25,7 +25,7 @@ A dialog over the page for content that needs a decision or more detail before t
   <div slot="actions">
     <acme-button variant="secondary">Cancel</acme-button>
     <acme-button variant="secondary">
-      <svg class="ic" width="16" height="16" slot="prefix">
+      <svg class="ic" width="16" height="16" slot="start">
         <use href="#i-back"/>
       </svg>
       Previous

@@ -82,11 +82,11 @@ export const doc: Doc = {
     },
     {
       h: "With prefix icons",
-      html: `<acme-combobox aria-label="Search" placeholder="Search..." style="width:fit-content">${withLogo("prefix")}</acme-combobox>`,
+      html: `<acme-combobox aria-label="Search" placeholder="Search..." style="width:fit-content">${withLogo("start")}</acme-combobox>`,
     },
     {
       h: "With suffix icons",
-      html: `<acme-combobox aria-label="Search" placeholder="Search..." style="width:fit-content">${withLogo("suffix")}</acme-combobox>`,
+      html: `<acme-combobox aria-label="Search" placeholder="Search..." style="width:fit-content">${withLogo("end")}</acme-combobox>`,
     },
     {
       h: "With label",
@@ -171,10 +171,10 @@ export const doc: Doc = {
     {
       h: "Open with prefix and suffix icons",
       census: true,
-      p: "Rows with a prefix icon (the last one truncated), and rows with a suffix icon on a chosen value (the last one truncated).",
+      p: "Rows with a start icon (the last one truncated), and rows with an end icon on a chosen value (the last one truncated).",
       html: box(
         420,
-        `<div class="vstack" style="gap:16px"><acme-combobox aria-label="Search" placeholder="Search...">${withLogo("prefix", true)}</acme-combobox><acme-combobox aria-label="Search" placeholder="Search..." value="b">${withLogo("suffix", true)}</acme-combobox></div>`,
+        `<div class="vstack" style="gap:16px"><acme-combobox aria-label="Search" placeholder="Search...">${withLogo("start", true)}</acme-combobox><acme-combobox aria-label="Search" placeholder="Search..." value="b">${withLogo("end", true)}</acme-combobox></div>`,
       ),
       script: openAll,
     },
@@ -205,8 +205,8 @@ export const doc: Doc = {
     {
       h: "Field variants",
       census: true,
-      p: 'The field without its glass (`no-input-prefix`), without the menu button (`show-menu-button="false"`), and with the chosen row\'s suffix beside the field (`display-selected-suffix`).',
-      html: `<div class="vstack" style="gap:16px"><acme-combobox aria-label="Search" placeholder="Search..." no-input-prefix>${three}</acme-combobox><acme-combobox aria-label="Search" placeholder="Search..." show-menu-button="false">${three}</acme-combobox><acme-combobox aria-label="Search" placeholder="Search..." display-selected-suffix value="b">${withLogo("suffix")}</acme-combobox></div>`,
+      p: 'The field without its glass (`no-input-start`), without the menu button (`show-menu-button="false"`), and with the chosen row\'s end content beside the field (`display-selected-end`).',
+      html: `<div class="vstack" style="gap:16px"><acme-combobox aria-label="Search" placeholder="Search..." no-input-start>${three}</acme-combobox><acme-combobox aria-label="Search" placeholder="Search..." show-menu-button="false">${three}</acme-combobox><acme-combobox aria-label="Search" placeholder="Search..." display-selected-end value="b">${withLogo("end")}</acme-combobox></div>`,
     },
     {
       h: "Keyboard focus",

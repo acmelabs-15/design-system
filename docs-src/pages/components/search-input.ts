@@ -25,7 +25,7 @@ export const doc: Doc = {
     },
     {
       h: "Custom Prefix",
-      html: `<acme-search aria-label="Search" placeholder="Enter some text..."><svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true"><use href="#i-sparkles"/></svg></acme-search>`,
+      html: `<acme-search aria-label="Search" placeholder="Enter some text..."><svg slot="start" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true"><use href="#i-sparkles"/></svg></acme-search>`,
     },
   ],
 };

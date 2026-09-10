@@ -28,7 +28,7 @@ const locked = (tooltip: boolean) =>
   }</acme-menu>`;
 const links = `<acme-menu width="200">${trigger("Links")}${item("One", 'href="/design/menu#custom-trigger"')}${item("Two", 'href="#"')}${item("Three", 'href="#"')}</acme-menu>`;
 const custom = `<acme-menu width="200">${trigger('<acme-avatar size="30" username="evilrabbit"></acme-avatar>', 'variant="unstyled"')}${item("One")}${item("Two")}${item("Three")}</acme-menu>`;
-const prefixSuffix = `<div class="row" style="gap:24px;align-items:stretch;flex-wrap:nowrap"><acme-menu>${dotsTrigger}${item(`${icon("accessibility", "prefix")}Left`)}${item(`${icon("accessibility", "prefix")}Center`)}${item(`${icon("accessibility", "prefix")}Right`)}</acme-menu><acme-menu>${dotsTrigger}${item(`Left${icon("accessibility", "suffix")}`)}${item(`Center${icon("accessibility", "suffix")}`)}${item(`Right${icon("accessibility", "suffix")}`)}</acme-menu></div>`;
+const startEnd = `<div class="row" style="gap:24px;align-items:stretch;flex-wrap:nowrap"><acme-menu>${dotsTrigger}${item(`${icon("accessibility", "start")}Left`)}${item(`${icon("accessibility", "start")}Center`)}${item(`${icon("accessibility", "start")}Right`)}</acme-menu><acme-menu>${dotsTrigger}${item(`Left${icon("accessibility", "end")}`)}${item(`Center${icon("accessibility", "end")}`)}${item(`Right${icon("accessibility", "end")}`)}</acme-menu></div>`;
 const position = `<acme-menu position="left-start" width="200">${trigger("Left Start")}${item("One")}${item("Two")}</acme-menu>`;
 const section = `<acme-menu width="200">${trigger("Actions")}<acme-menu-section slot="items" title="Section"><acme-menu-item>One</acme-menu-item><acme-menu-item>Two</acme-menu-item></acme-menu-section>${item("Three")}${item("Locked", "locked")}<acme-menu-divider slot="items"></acme-menu-divider>${item("Delete", 'variant="error"')}</acme-menu>`;
 
@@ -44,7 +44,7 @@ export const doc: Doc = {
     { h: "Locked items", p: "locked marks an action that needs more permissions: the item renders disabled with a lock suffix.", html: box(60, locked(true)) },
     { h: "Link items", html: box(60, links) },
     { h: "Custom trigger", p: 'variant="unstyled" wraps the trigger content in a bare button.', html: box(60, custom) },
-    { h: "Prefix and suffix", p: "The prefix and suffix slots of an item take an icon.", html: box(60, prefixSuffix) },
+    { h: "Start and end", p: "The start and end slots of an item take an icon.", html: box(60, startEnd) },
     { h: "Menu position", p: "position sets the side and the alignment; the menu flips when the window bounds would clip it.", html: box(60, position, ";display:flex;justify-content:flex-end") },
     { h: "With section", html: box(60, section) },
     { h: "Open", census: true, p: "The default menu open: the trigger pressed, the list 200 wide under it, a link item and an error item.", html: box(250, standard), script: openAll },
@@ -53,7 +53,7 @@ export const doc: Doc = {
     { h: "Open locked items", census: true, p: "The locked item is a disabled item with a gray-700 lock suffix.", html: box(180, locked(false)), script: openAll },
     { h: "Open link items", census: true, p: "Every row is an anchor inside a presentational list item.", html: box(180, links), script: openAll },
     { h: "Open custom trigger", census: true, p: "The unstyled avatar trigger open.", html: box(180, custom), script: openAll },
-    { h: "Open prefix and suffix", census: true, p: "An icon trigger reads gray-400 while open; the list is the default 150 wide.", html: box(180, prefixSuffix), script: openAll },
+    { h: "Open start and end", census: true, p: "An icon trigger reads gray-400 while open; the list is the default 150 wide.", html: box(180, startEnd), script: openAll },
     {
       h: "Open menu position", census: true,
       p: "The left-start menu open: the list to the left of the trigger, their top edges level.",

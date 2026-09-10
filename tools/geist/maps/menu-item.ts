@@ -15,8 +15,8 @@ export const geist: GeistMap = {
   // A list item is never a form control: the `:disabled` rules match nothing on either side.
   states: { ":disabled": null },
   children: [
-    { ours: ".prefix", pick: has("mr-[var(--geist-gap-quarter)]") },
-    { ours: ".suffix", pick: has("ml-auto") },
+    { ours: ".start", pick: has("mr-[var(--geist-gap-quarter)]") },
+    { ours: ".end", pick: has("ml-auto") },
   ],
   slotted: ["svg"],
 };

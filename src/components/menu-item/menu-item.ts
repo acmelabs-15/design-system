@@ -8,10 +8,10 @@ let seq = 0;
 
 /**
  * One row of a menu: a 36px `menuitem` (44 and 16px text below 601px) with the label in the
- * default slot, an icon in the `prefix` slot before it and one in the `suffix` slot at the end.
+ * default slot, an icon in the `start` slot before it and one in the `end` slot at the end.
  * `href` renders an anchor (`external` opens it in a new tab); `variant="error"` reads red-900;
  * `disabled` reads gray-700 and takes no pointer; `locked` is a disabled row with a gray-700 lock
- * suffix, for an action that needs more permissions. The menu marks the highlighted row
+ * end place, for an action that needs more permissions. The menu marks the highlighted row
  * (`selected`, the `data-selected` state: gray-alpha-100, red-100 on an error row) as the keys
  * and the pointer move over the rows. A click, Enter or Space fires `acme-select`.
  */
@@ -40,8 +40,8 @@ export class AcmeMenuItem extends AcmeElement {
   @property({ type: Boolean }) selected = false;
   /** The text typeahead matches: the label's text unless set. */
   @property() value = "";
-  @atomState() private hasPrefix = false;
-  @atomState() private hasSuffix = false;
+  @atomState() private hasStart = false;
+  @atomState() private hasEnd = false;
   @query(".item") private root?: HTMLElement;
   private uid = `menu-item-${(++seq).toString(36)}`;
 
@@ -56,14 +56,14 @@ export class AcmeMenuItem extends AcmeElement {
   }
 
   private readSlots() {
-    this.hasPrefix ||= !!this.querySelector('[slot="prefix"]');
-    this.hasSuffix ||= !!this.querySelector('[slot="suffix"]');
+    this.hasStart ||= !!this.querySelector('[slot="start"]');
+    this.hasEnd ||= !!this.querySelector('[slot="end"]');
   }
 
-  private slotted = (name: "prefix" | "suffix") => (e: Event) => {
+  private slotted = (name: "start" | "end") => (e: Event) => {
     const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "prefix") this.hasPrefix = has;
-    else this.hasSuffix = has;
+    if (name === "start") this.hasStart = has;
+    else this.hasEnd = has;
   };
 
   /** Whether the row takes no selection. */
@@ -97,10 +97,10 @@ export class AcmeMenuItem extends AcmeElement {
 
   render() {
     const inert = this.inert;
-    const prefixSlot = html`<slot name="prefix" @slotchange=${this.slotted("prefix")}></slot>`;
-    const suffixSlot = html`<slot name="suffix" @slotchange=${this.slotted("suffix")}>${this.locked ? html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--ds-gray-700)"><path d=${paths.lock}></path></svg>` : nothing}</slot>`;
-    const inner = html`${this.hasPrefix ? html`<span class="prefix" aria-hidden="true">${prefixSlot}</span>` : prefixSlot}<span id=${this.uid}><slot></slot></span>${
-      this.hasSuffix || this.locked ? html`<span class="suffix" aria-hidden="true">${suffixSlot}</span>` : suffixSlot
+    const startSlot = html`<slot name="start" @slotchange=${this.slotted("start")}></slot>`;
+    const endSlot = html`<slot name="end" @slotchange=${this.slotted("end")}>${this.locked ? html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--ds-gray-700)"><path d=${paths.lock}></path></svg>` : nothing}</slot>`;
+    const inner = html`${this.hasStart ? html`<span class="start" aria-hidden="true">${startSlot}</span>` : startSlot}<span id=${this.uid}><slot></slot></span>${
+      this.hasEnd || this.locked ? html`<span class="end" aria-hidden="true">${endSlot}</span>` : endSlot
     }`;
     const c = this.cls("item", { error: this.variant === "error" });
     if (this.href)

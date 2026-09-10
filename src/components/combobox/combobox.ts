@@ -55,12 +55,12 @@ const defaultFilter: ComboboxFilter = (rows, query) => matchSorter(rows, query, 
 
 /**
  * A field that filters a list of rows (`acme-combobox-option` children) by what the user types
- * and takes the chosen row's value. The shell (`role="combobox"`) holds the field: a prefix box
- * with the glass (a spinner while `loading`, an icon in the `prefix-icon` slot, or the chosen
- * row's prefix), the searchbox input, the clear button once the field holds text (`clearable`,
+ * and takes the chosen row's value. The shell (`role="combobox"`) holds the field: a start box
+ * with the glass (a spinner while `loading`, an icon in the `start-icon` slot, or the chosen
+ * row's start content), the searchbox input, the clear button once the field holds text (`clearable`,
  * on unless `"false"`), and the menu button with its chevron (`show-menu-button="false"` drops
- * it); `no-input-prefix` drops the prefix box, `display-selected-suffix` shows the chosen row's
- * suffix beside the field. `size` small / medium / large; `errored` reads red; `width` fixes the
+ * it); `no-input-start` drops the start box, `display-selected-end` shows the chosen row's
+ * end content beside the field. `size` small / medium / large; `errored` reads red; `width` fixes the
  * field's width in px. The list floats 8px under the field in the top layer at the field's width
  * (`list-width` sets it, `list-max-width` lets it grow to that), five and a half rows tall at most
  * (`max-visible-options`), placed at `side` and `align` (`align-offset`, `collision-padding`,
@@ -119,12 +119,12 @@ export class AcmeCombobox extends AcmeElement {
   @property() size: ComboboxSize = "medium";
   /** The field's width in px. */
   @property({ type: Number }) width = 0;
-  /** No prefix box: the text starts at the field's edge. */
-  @property({ type: Boolean, attribute: "no-input-prefix" }) noInputPrefix = false;
+  /** No start box: the text starts at the field's edge. */
+  @property({ type: Boolean, attribute: "no-input-start" }) noInputStart = false;
   /** The menu button with the chevron; `"false"` drops it. */
   @property({ converter: boolish, attribute: "show-menu-button" }) showMenuButton = true;
-  /** The chosen row's suffix shown beside the field. */
-  @property({ type: Boolean, attribute: "display-selected-suffix" }) displaySelectedSuffix = false;
+  /** The chosen row's end content shown beside the field. */
+  @property({ type: Boolean, attribute: "display-selected-end" }) displaySelectedEnd = false;
   /** The highlight stays on a row while the footer's control has focus. */
   @property({ type: Boolean, attribute: "no-negative-index" }) noNegativeIndex = false;
   /** The text stays unselected when the field opens. */
@@ -178,7 +178,7 @@ export class AcmeCombobox extends AcmeElement {
   @query(".combobox") private shell?: HTMLElement;
   @query(".input") private input?: HTMLInputElement;
   @query(".clear") private clearButton?: HTMLButtonElement;
-  @query(".suffix") private suffixBox?: HTMLElement;
+  @query(".end") private endBox?: HTMLElement;
   @query(".floating") private floating?: HTMLElement;
   @query(".list") private listBox?: HTMLElement;
   private listId = `combobox-list-${(++seq).toString(36)}`;
@@ -622,9 +622,9 @@ export class AcmeCombobox extends AcmeElement {
       this.resize.observe(this.input);
     }
     this.inputWidth = this.input?.getBoundingClientRect().width ?? this.inputWidth;
-    // The chosen row's suffix beside the field pushes the text away from it.
-    const suffix = this.suffixBox;
-    if (this.input) this.input.style.paddingRight = suffix ? `calc(var(--acme-gap) + 16px + ${suffix.clientWidth}px)` : "";
+    // The chosen row's end content beside the field pushes the text away from it.
+    const end = this.endBox;
+    if (this.input) this.input.style.paddingRight = end ? `calc(var(--acme-gap) + 16px + ${end.clientWidth}px)` : "";
     const rows = this.rows;
     const shown = new Set(rows);
     for (const o of this.options) {
@@ -661,20 +661,20 @@ export class AcmeCombobox extends AcmeElement {
       lg: this.size === "large",
       errored: this.errored,
       loading: this.loading,
-      "no-prefix": this.noInputPrefix,
+      "no-start": this.noInputStart,
       "no-menu": !this.showMenuButton,
-      "with-suffix": this.displaySelectedSuffix && !!chosen?.suffixNode,
+      "with-end": this.displaySelectedEnd && !!chosen?.endNode,
       open: this.open,
       keyboard: this.keyboard,
     });
     const icon = (path: unknown) => html`<svg class="icon" viewBox="0 0 16 16" width="16" height="16" fill="none" style="color:currentColor" aria-hidden="true">${path}</svg>`;
-    const prefix = this.noInputPrefix
+    const start = this.noInputStart
       ? nothing
-      : html`<div class="prefix" aria-hidden="true">${
-          this.loading ? html`<acme-spinner size="md"></acme-spinner>` : html`<slot name="prefix-icon" @slotchange=${this.readChildren}>${chosen?.prefixNode?.cloneNode(true) ?? icon(GLASS)}</slot>`
+      : html`<div class="start" aria-hidden="true">${
+          this.loading ? html`<acme-spinner size="md"></acme-spinner>` : html`<slot name="start-icon" @slotchange=${this.readChildren}>${chosen?.startNode?.cloneNode(true) ?? icon(GLASS)}</slot>`
         }</div>`;
-    const suffixNode = this.displaySelectedSuffix ? chosen?.suffixNode?.cloneNode(true) : undefined;
-    const suffix = suffixNode ? html`<div class="suffix">${suffixNode}</div>` : nothing;
+    const endNode = this.displaySelectedEnd ? chosen?.endNode?.cloneNode(true) : undefined;
+    const end = endNode ? html`<div class="end">${endNode}</div>` : nothing;
     const clear = this.clearable
       ? html`<button class="clear" type="button" aria-label="Clear selected value" data-open=${String(this.open)} ?disabled=${this.disabled} style=${this.inputValue ? nothing : "display:none"} tabindex="0" @click=${this.onClear}>${icon(CROSS)}</button>`
       : nothing;
@@ -707,7 +707,7 @@ export class AcmeCombobox extends AcmeElement {
       part="combobox"
     >
       <div class="field">
-        ${prefix}<input
+        ${start}<input
           class="input"
           id=${this.inputId}
           type="text"
@@ -729,7 +729,7 @@ export class AcmeCombobox extends AcmeElement {
           @mousedown=${this.openWithSelection}
           @keydown=${this.onInputKey}
           part="input"
-        />${suffix}${clear}${toggle}
+        />${end}${clear}${toggle}
       </div>
       ${list}${status}
     </div>`;

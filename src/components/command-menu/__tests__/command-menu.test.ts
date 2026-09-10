@@ -5,7 +5,7 @@ import type { AcmeCommandItem } from "../../command-item/command-item";
 import type { AcmeCommandMenu } from "../command-menu";
 
 // A loose row and a divider before the groups: the menu keeps groups after loose rows, so this order holds after the mount.
-const groups = `<acme-command-item>Item 1</acme-command-item><acme-command-divider></acme-command-divider><acme-command-group heading="Suggestions"><acme-command-item>Figma Import</acme-command-item></acme-command-group><acme-command-group heading="Commands"><acme-command-item>Import Extension</acme-command-item><acme-command-item value="manage">Manage Extensions<span slot="suffix">⌘</span></acme-command-item></acme-command-group>`;
+const groups = `<acme-command-item>Item 1</acme-command-item><acme-command-divider></acme-command-divider><acme-command-group heading="Suggestions"><acme-command-item>Figma Import</acme-command-item></acme-command-group><acme-command-group heading="Commands"><acme-command-item>Import Extension</acme-command-item><acme-command-item value="manage">Manage Extensions<span slot="end">⌘</span></acme-command-item></acme-command-group>`;
 const byLabel = (el: AcmeCommandMenu) => Object.fromEntries(items(el).map((r) => [r.label, r.hidden]));
 const mount = async (markup: string) => {
   document.body.innerHTML = markup;
@@ -243,7 +243,7 @@ describe("acme-command-menu", () => {
 
   test("rows: the row renders its parts, a keybind as kbd chips, a disabled row takes no highlight or selection; groups and dividers render their boxes", async () => {
     const el = await mount(
-      `<acme-command-menu><acme-command-group heading="Actions"><acme-command-item keybind="Meta D"><svg slot="prefix"></svg>Deploy<span slot="suffix">S</span></acme-command-item><acme-command-item disabled>Archive</acme-command-item></acme-command-group><acme-command-divider></acme-command-divider></acme-command-menu>`,
+      `<acme-command-menu><acme-command-group heading="Actions"><acme-command-item keybind="Meta D"><svg slot="start"></svg>Deploy<span slot="end">S</span></acme-command-item><acme-command-item disabled>Archive</acme-command-item></acme-command-group><acme-command-divider></acme-command-divider></acme-command-menu>`,
     );
     await open(el);
     const [row, off] = items(el);
@@ -253,9 +253,9 @@ describe("acme-command-menu", () => {
     expect(box.getAttribute("data-value")).toBe("deploy");
     expect(box.getAttribute("aria-selected")).toBe("true");
     expect(box.getAttribute("data-selected")).toBe("true");
-    expect(box.querySelector(".prefix > slot[name=prefix]")).not.toBeNull();
+    expect(box.querySelector(".start > slot[name=start]")).not.toBeNull();
     expect(Array.from(box.querySelectorAll(".keys > kbd.key")).map((k) => k.textContent)).toEqual(["⌘", "D"]);
-    expect(box.querySelector(".suffix > slot[name=suffix]")).not.toBeNull();
+    expect(box.querySelector(".end > slot[name=end]")).not.toBeNull();
     expect(off.shadowRoot!.querySelector(".item")?.getAttribute("aria-disabled")).toBe("true");
     key(el, "ArrowDown");
     await flush(el);

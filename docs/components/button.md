@@ -96,23 +96,23 @@ An icon-only button needs svg-only and an aria-label.
 ```html
 <div class="row" style="gap:16px;align-items:flex-start">
   <acme-button>
-    <svg class="ic" width="16" height="16" slot="prefix" aria-hidden="true">
+    <svg class="ic" width="16" height="16" slot="start" aria-hidden="true">
       <use href="#i-arrow-left"/>
     </svg>
     Upload
   </acme-button>
   <acme-button>
     Upload
-    <svg class="ic" width="16" height="16" slot="suffix" aria-hidden="true">
+    <svg class="ic" width="16" height="16" slot="end" aria-hidden="true">
       <use href="#i-arrow-right"/>
     </svg>
   </acme-button>
   <acme-button>
-    <svg class="ic" width="16" height="16" slot="prefix" aria-hidden="true">
+    <svg class="ic" width="16" height="16" slot="start" aria-hidden="true">
       <use href="#i-arrow-left"/>
     </svg>
     Upload
-    <svg class="ic" width="16" height="16" slot="suffix" aria-hidden="true">
+    <svg class="ic" width="16" height="16" slot="end" aria-hidden="true">
       <use href="#i-arrow-right"/>
     </svg>
   </acme-button>
@@ -183,9 +183,10 @@ variant="custom" takes its foreground, background and border from normal, hover 
 
 ## `<acme-button>`
 
-Button. The root carries the interaction states (data-hover, data-focus, data-active),
-data-prefix and data-suffix, and the icon size variable; the label sits in its own span; a
-prefix span appears with a prefix or the loading spinner (a loading button is disabled);
+Button. The root carries the interaction states (data-hover, data-focus, data-active) and the
+icon size variable; the label sits in its own span; a `start` span appears with start content or
+the loading spinner (a loading button is disabled). The places are `start` and `end`, the names
+every field in the system uses;
 `href` renders an anchor with role="link". Sizes tiny 24 / small 32 / medium 36 / large 40; variants default (primary),
 secondary, tertiary, error, warning, custom; shapes square, circle, rounded; svg-only for icon
 buttons, which need an aria-label.
@@ -197,7 +198,7 @@ buttons, which need an aria-label.
 | `shape` | `shape` | `"square" \| "circle" \| "rounded" \| ""` | `""` | square or circle for icon-only buttons; rounded is the marketing pill. |
 | `svg-only` | `svgOnly` | `boolean` | `false` | Icon-only: no label padding, width equals height. Needs an `aria-label`. |
 | `disabled` | `disabled` | `boolean` | `false` |  |
-| `loading` | `loading` | `boolean` | `false` | Shows the spinner in the prefix and disables the button. |
+| `loading` | `loading` | `boolean` | `false` | Shows the spinner in the start place and disables the button. |
 | `rounded` | `rounded` | `boolean` | `false` | Alias of `shape="rounded"`. |
 | `shadow` | `shadow` | `boolean` | `false` | The inset ring instead of a border, for the rounded marketing pill. |
 | `block` | `block` | `boolean` | `false` | Full width (house). |
@@ -214,7 +215,7 @@ buttons, which need an aria-label.
 | `aria-expanded` | `expanded` | `string` | `""` |  |
 | `aria-controls` | `controls` | `string` | `""` |  |
 
-Slots: `prefix`, `suffix`, `(default)`
+Slots: `start`, `end`, `(default)`
 
 ## `<acme-button-group>`
 

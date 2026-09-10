@@ -13,7 +13,7 @@ const q = <T extends Element = HTMLElement>(el: AcmeFeedback, sel: string) => sr
 
 describe("acme-feedback", () => {
   test("the trigger is a small secondary button that owns a dialog; prefix and suffix decorate it", async () => {
-    const el = await mount(`<acme-feedback label="vercel" dry-run><svg slot="prefix"></svg></acme-feedback>`);
+    const el = await mount(`<acme-feedback label="vercel" dry-run><svg slot="start"></svg></acme-feedback>`);
     const t = q(el, "acme-button.trigger")!;
     expect(t.getAttribute("size")).toBe("small");
     expect(t.getAttribute("variant")).toBe("secondary");
@@ -21,11 +21,11 @@ describe("acme-feedback", () => {
     expect(t.getAttribute("aria-expanded")).toBe("false");
     expect(t.getAttribute("data-state")).toBe("closed");
     expect(t.textContent).toContain("Feedback");
-    expect(t.querySelector("slot[name=prefix][slot=prefix]")).not.toBeNull();
-    expect(t.querySelector("slot[name=suffix]")).toBeNull();
+    expect(t.querySelector("slot[name=start][slot=start]")).not.toBeNull();
+    expect(t.querySelector("slot[name=end]")).toBeNull();
     expect(q(el, ".panel")).toBeNull();
-    const suffixed = await mount(`<acme-feedback button-text="Report"><svg slot="suffix"></svg></acme-feedback>`);
-    expect(q(suffixed, "acme-button.trigger")!.querySelector("slot[name=suffix][slot=suffix]")).not.toBeNull();
+    const suffixed = await mount(`<acme-feedback button-text="Report"><svg slot="end"></svg></acme-feedback>`);
+    expect(q(suffixed, "acme-button.trigger")!.querySelector("slot[name=end][slot=end]")).not.toBeNull();
     expect(q(suffixed, "acme-button.trigger")!.textContent).toContain("Report");
   });
 

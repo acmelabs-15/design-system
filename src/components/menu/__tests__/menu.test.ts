@@ -191,7 +191,7 @@ describe("acme-menu-item", () => {
     const locked = await mount<AcmeMenuItem>(`<acme-menu-item locked>Delete</acme-menu-item>`);
     const row = locked.shadowRoot!.querySelector(".item")!;
     expect(row.getAttribute("aria-disabled")).toBe("true");
-    expect(locked.shadowRoot!.querySelector(".suffix svg")).not.toBeNull();
+    expect(locked.shadowRoot!.querySelector(".end svg")).not.toBeNull();
     expect(locked.inert).toBe(true);
     let fired = 0;
     locked.addEventListener("acme-select", () => fired++);
@@ -199,10 +199,10 @@ describe("acme-menu-item", () => {
     expect(fired).toBe(0);
     const off = await mount<AcmeMenuItem>(`<acme-menu-item href="/x" disabled>One</acme-menu-item>`);
     expect(off.shadowRoot!.querySelector("a")!.getAttribute("aria-disabled")).toBe("true");
-    const on = await mount<AcmeMenuItem>(`<acme-menu-item selected><svg slot="prefix"></svg>One</acme-menu-item>`);
+    const on = await mount<AcmeMenuItem>(`<acme-menu-item selected><svg slot="start"></svg>One</acme-menu-item>`);
     expect(on.shadowRoot!.querySelector(".item")!.hasAttribute("data-selected")).toBe(true);
-    expect(on.shadowRoot!.querySelector(".prefix slot[name=prefix]")).not.toBeNull();
-    expect(on.shadowRoot!.querySelector(".suffix")).toBeNull();
+    expect(on.shadowRoot!.querySelector(".start slot[name=start]")).not.toBeNull();
+    expect(on.shadowRoot!.querySelector(".end")).toBeNull();
   });
 });
 

@@ -24,9 +24,10 @@ const customVars = (suffix: string, c?: ButtonColors) =>
     : [];
 
 /**
- * Button. The root carries the interaction states (data-hover, data-focus, data-active),
- * data-prefix and data-suffix, and the icon size variable; the label sits in its own span; a
- * prefix span appears with a prefix or the loading spinner (a loading button is disabled);
+ * Button. The root carries the interaction states (data-hover, data-focus, data-active) and the
+ * icon size variable; the label sits in its own span; a `start` span appears with start content or
+ * the loading spinner (a loading button is disabled). The places are `start` and `end`, the names
+ * every field in the system uses;
  * `href` renders an anchor with role="link". Sizes tiny 24 / small 32 / medium 36 / large 40; variants default (primary),
  * secondary, tertiary, error, warning, custom; shapes square, circle, rounded; svg-only for icon
  * buttons, which need an aria-label.
@@ -59,7 +60,7 @@ export class AcmeButton extends AcmeElement {
   /** Icon-only: no label padding, width equals height. Needs an `aria-label`. */
   @property({ type: Boolean, attribute: "svg-only" }) svgOnly = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
-  /** Shows the spinner in the prefix and disables the button. */
+  /** Shows the spinner in the start place and disables the button. */
   @property({ type: Boolean }) loading = false;
   /** Alias of `shape="rounded"`. */
   @property({ type: Boolean }) rounded = false;
@@ -87,8 +88,10 @@ export class AcmeButton extends AcmeElement {
   @property({ attribute: "aria-haspopup" }) haspopup = "";
   @property({ attribute: "aria-expanded" }) expanded = "";
   @property({ attribute: "aria-controls" }) controls = "";
-  @atomState() private hasPrefix = false;
-  @atomState() private hasSuffix = false;
+  /** The occupied places, read from the light DOM. Protected: acme-menu-button extends this class
+   *  and reads the same two, rather than keeping a second pair of its own. */
+  @atomState() protected hasStart = false;
+  @atomState() protected hasEnd = false;
   /** The default slot holds elements only (an icon), no text. */
   @atomState() private elementChild = false;
   @query(".btn") private root!: HTMLElement;
@@ -98,15 +101,15 @@ export class AcmeButton extends AcmeElement {
 
   connectedCallback() {
     super.connectedCallback();
-    // Slotted prefix and suffix are known before the first render (slotchange keeps them current).
-    this.hasPrefix = !!this.querySelector('[slot="prefix"]');
-    this.hasSuffix = !!this.querySelector('[slot="suffix"]');
+    // Slotted places are known before the first render (slotchange keeps them current).
+    this.hasStart = !!this.querySelector('[slot="start"]');
+    this.hasEnd = !!this.querySelector('[slot="end"]');
   }
 
   firstUpdated() {
     // A parser that connects the element before its children (happy-dom does) misses them at connect.
-    this.hasPrefix ||= !!this.querySelector('[slot="prefix"]');
-    this.hasSuffix ||= !!this.querySelector('[slot="suffix"]');
+    this.hasStart ||= !!this.querySelector('[slot="start"]');
+    this.hasEnd ||= !!this.querySelector('[slot="end"]');
     const content = [...this.childNodes].filter((n) => (n.nodeType === 1 && !(n as Element).hasAttribute("slot")) || (n.nodeType === 3 && (n.textContent ?? "").trim()));
     this.elementChild = content.length > 0 && content.every((n) => n.nodeType === 1);
   }
@@ -121,10 +124,10 @@ export class AcmeButton extends AcmeElement {
     this.elementChild = nodes.length > 0 && nodes.every((n) => n.nodeType === 1);
   };
 
-  private slotted = (name: "prefix" | "suffix") => (e: Event) => {
+  private slotted = (name: "start" | "end") => (e: Event) => {
     const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "prefix") this.hasPrefix = has;
-    else this.hasSuffix = has;
+    if (name === "start") this.hasStart = has;
+    else this.hasEnd = has;
   };
 
   render() {
@@ -156,27 +159,25 @@ export class AcmeButton extends AcmeElement {
       "--acme-icon-size:16px",
     ].join(";");
     const spinnerSize = this.size === "large" ? "lg" : this.size === "medium" ? "md" : "sm";
-    const prefixSlot = html`<slot
-      name="prefix"
-      @slotchange=${this.slotted("prefix")}
+    const startSlot = html`<slot
+      name="start"
+      @slotchange=${this.slotted("start")}
     ></slot>`;
-    const suffixSlot = html`<slot
-      name="suffix"
-      @slotchange=${this.slotted("suffix")}
+    const endSlot = html`<slot
+      name="end"
+      @slotchange=${this.slotted("end")}
     ></slot>`;
-    const prefix = this.loading
-      ? html`<span class="prefix" aria-hidden="true"
-          ><acme-spinner size=${spinnerSize}></acme-spinner>${prefixSlot}</span
+    const start = this.loading
+      ? html`<span class="start" aria-hidden="true"
+          ><acme-spinner size=${spinnerSize}></acme-spinner>${startSlot}</span
         >`
-      : this.hasPrefix
-        ? html`<span class="prefix">${prefixSlot}</span>`
-        : prefixSlot;
-    const suffix = this.hasSuffix ? html`<span class="suffix">${suffixSlot}</span>` : suffixSlot;
-    const inner = html`${prefix}<span class="label" part="label"><slot @slotchange=${this.slottedContent}></slot></span
-      >${suffix}`;
+      : this.hasStart
+        ? html`<span class="start">${startSlot}</span>`
+        : startSlot;
+    const end = this.hasEnd ? html`<span class="end">${endSlot}</span>` : endSlot;
+    const inner = html`${start}<span class="label" part="label"><slot @slotchange=${this.slottedContent}></slot></span
+      >${end}`;
     const shared = {
-      "data-prefix": String(this.hasPrefix || this.loading),
-      "data-suffix": String(this.hasSuffix),
       "data-custom-button": this.variant === "custom" ? "" : nothing,
       "aria-label": this.label || nothing,
     };
@@ -189,8 +190,6 @@ export class AcmeButton extends AcmeElement {
         rel=${this.rel || nothing}
         role="link"
         tabindex="0"
-        data-prefix=${shared["data-prefix"]}
-        data-suffix=${shared["data-suffix"]}
         data-custom-button=${shared["data-custom-button"]}
         aria-label=${shared["aria-label"]}
         aria-disabled=${this.disabled ? "true" : nothing}
@@ -207,8 +206,6 @@ export class AcmeButton extends AcmeElement {
       tabindex="0"
       ?disabled=${this.disabled || this.loading}
       aria-busy=${this.loading ? "true" : nothing}
-      data-prefix=${shared["data-prefix"]}
-      data-suffix=${shared["data-suffix"]}
       data-custom-button=${shared["data-custom-button"]}
       aria-label=${shared["aria-label"]}
       aria-haspopup=${this.haspopup || nothing}

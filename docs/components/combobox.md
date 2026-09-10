@@ -86,19 +86,19 @@ Set `clearable` to show a clear button once a value is selected.
 ```html
 <acme-combobox aria-label="Search" placeholder="Search..." style="width:fit-content">
   <acme-combobox-option value="a">
-    <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="none" style="color:currentColor" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="none" style="color:currentColor" aria-hidden="true">
       <path fill="currentColor" d="M8 1 16 15H0L8 1Z"/>
     </svg>
     One
   </acme-combobox-option>
   <acme-combobox-option value="b">
-    <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="none" style="color:currentColor" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="none" style="color:currentColor" aria-hidden="true">
       <path fill="currentColor" d="M8 1 16 15H0L8 1Z"/>
     </svg>
     Two
   </acme-combobox-option>
   <acme-combobox-option value="c">
-    <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="none" style="color:currentColor" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="none" style="color:currentColor" aria-hidden="true">
       <path fill="currentColor" d="M8 1 16 15H0L8 1Z"/>
     </svg>
     Three
@@ -111,19 +111,19 @@ Set `clearable` to show a clear button once a value is selected.
 ```html
 <acme-combobox aria-label="Search" placeholder="Search..." style="width:fit-content">
   <acme-combobox-option value="a">
-    <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="none" style="color:currentColor" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="none" style="color:currentColor" aria-hidden="true">
       <path fill="currentColor" d="M8 1 16 15H0L8 1Z"/>
     </svg>
     One
   </acme-combobox-option>
   <acme-combobox-option value="b">
-    <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="none" style="color:currentColor" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="none" style="color:currentColor" aria-hidden="true">
       <path fill="currentColor" d="M8 1 16 15H0L8 1Z"/>
     </svg>
     Two
   </acme-combobox-option>
   <acme-combobox-option value="c">
-    <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="none" style="color:currentColor" aria-hidden="true">
+    <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="none" style="color:currentColor" aria-hidden="true">
       <path fill="currentColor" d="M8 1 16 15H0L8 1Z"/>
     </svg>
     Three
@@ -311,12 +311,12 @@ An option opts out of the fixed row height with `ignore-default-height` and rend
 ## `<acme-combobox>`
 
 A field that filters a list of rows (`acme-combobox-option` children) by what the user types
-and takes the chosen row's value. The shell (`role="combobox"`) holds the field: a prefix box
-with the glass (a spinner while `loading`, an icon in the `prefix-icon` slot, or the chosen
-row's prefix), the searchbox input, the clear button once the field holds text (`clearable`,
+and takes the chosen row's value. The shell (`role="combobox"`) holds the field: a start box
+with the glass (a spinner while `loading`, an icon in the `start-icon` slot, or the chosen
+row's start content), the searchbox input, the clear button once the field holds text (`clearable`,
 on unless `"false"`), and the menu button with its chevron (`show-menu-button="false"` drops
-it); `no-input-prefix` drops the prefix box, `display-selected-suffix` shows the chosen row's
-suffix beside the field. `size` small / medium / large; `errored` reads red; `width` fixes the
+it); `no-input-start` drops the start box, `display-selected-end` shows the chosen row's
+end content beside the field. `size` small / medium / large; `errored` reads red; `width` fixes the
 field's width in px. The list floats 8px under the field in the top layer at the field's width
 (`list-width` sets it, `list-max-width` lets it grow to that), five and a half rows tall at most
 (`max-visible-options`), placed at `side` and `align` (`align-offset`, `collision-padding`,
@@ -342,9 +342,9 @@ typed text. Fires `acme-input` (typed text), `acme-change` (`detail.value`, null
 | `clearable` | `clearable` | `boolean` | `true` | The clear button once the field holds text; `"false"` drops it. |
 | `size` | `size` | `ComboboxSize` | `"medium"` |  |
 | `width` | `width` | `number` | `0` | The field's width in px. |
-| `no-input-prefix` | `noInputPrefix` | `boolean` | `false` | No prefix box: the text starts at the field's edge. |
+| `no-input-start` | `noInputStart` | `boolean` | `false` | No start box: the text starts at the field's edge. |
 | `show-menu-button` | `showMenuButton` | `boolean` | `true` | The menu button with the chevron; `"false"` drops it. |
-| `display-selected-suffix` | `displaySelectedSuffix` | `boolean` | `false` | The chosen row's suffix shown beside the field. |
+| `display-selected-end` | `displaySelectedEnd` | `boolean` | `false` | The chosen row's end content shown beside the field. |
 | `no-negative-index` | `noNegativeIndex` | `boolean` | `false` | The highlight stays on a row while the footer's control has focus. |
 | `no-text-selection` | `noTextSelection` | `boolean` | `false` | The text stays unselected when the field opens. |
 | `allow-tab` | `allowTab` | `boolean` | `false` | Tab takes the highlighted row like Enter. |
@@ -368,22 +368,22 @@ typed text. Fires `acme-input` (typed text), `acme-change` (`detail.value`, null
 | — | `filter` | `ComboboxFilter` | `defaultFilter` | Narrows the rows to the ones the typed text matches, best first. |
 | `open` | `open` | `boolean` | `false` |  |
 
-Slots: `prefix-icon`, `(default)`, `footer`
+Slots: `start-icon`, `(default)`, `footer`
 
 Events: `acme-change`, `acme-input`, `acme-clear`
 
 ## `<acme-combobox-option>`
 
 One row of a combobox list: a 36px `option` (its content's own height with
-`ignore-default-height`) with the label in the default slot, an icon in the `prefix` slot
-before it and one in the `suffix` slot after it. A plain-text label truncates on one line;
+`ignore-default-height`) with the label in the default slot, an icon in the `start` slot
+before it and one in the `end` slot after it. A plain-text label truncates on one line;
 other content renders as given. `value` is what the field takes; `label` is the text the filter
 reads and the field shows once chosen (the row's text, or its value when the content is not
 plain text), and `display-value` shows the value instead. `menu` marks a row that opens further
 choices: it is never filtered out and lists after the matches; `display-last` lists a row last;
-`truncate-prefix` and `truncate-suffix` truncate those slots. `disabled` fades the row and takes
+`truncate-start` and `truncate-end` truncate those slots. `disabled` fades the row and takes
 no pointer. The combobox sets `active` (the row under the keys or the pointer), `chosen` (the
-row whose value the field holds, with a check mark at its end when it has no suffix) and
+row whose value the field holds, with a check mark at its end when it has no end content) and
 `size`. A pointer release on the row fires `acme-select` (cancelable: a handler that prevents
 it takes the selection over).
 
@@ -395,14 +395,14 @@ it takes the selection over).
 | `menu` | `menu` | `boolean` | `false` | A row that opens further choices: never filtered out, listed after the matches. |
 | `disabled` | `disabled` | `boolean` | `false` |  |
 | `ignore-default-height` | `ignoreDefaultHeight` | `boolean` | `false` | The row takes its content's height instead of the fixed row height. |
-| `truncate-prefix` | `truncatePrefix` | `boolean` | `false` |  |
-| `truncate-suffix` | `truncateSuffix` | `boolean` | `false` |  |
+| `truncate-start` | `truncateStart` | `boolean` | `false` |  |
+| `truncate-end` | `truncateEnd` | `boolean` | `false` |  |
 | `display-last` | `displayLast` | `boolean` | `false` | Listed last, whatever the filter's order. |
 | `active` | `active` | `boolean` | `false` | The row under the keys or the pointer; the combobox sets it. |
 | `chosen` | `chosen` | `boolean` | `false` | The row whose value the field holds while the list is open; the combobox sets it. |
 | `size` | `size` | `ComboboxOptionSize` | `"medium"` | The combobox's size; the combobox sets it. |
 
-Slots: `prefix`, `suffix`, `(default)`
+Slots: `start`, `end`, `(default)`
 
 Events: `acme-select`
 

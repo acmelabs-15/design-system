@@ -96,9 +96,9 @@ variant="unstyled" wraps the trigger content in a bare button.
 </div>
 ```
 
-## Prefix and suffix
+## Start and end
 
-The prefix and suffix slots of an item take an icon.
+The start and end slots of an item take an icon.
 
 ```html
 <div style="min-height:60px;position:relative">
@@ -110,19 +110,19 @@ The prefix and suffix slots of an item take an icon.
         </svg>
       </acme-menu-button>
       <acme-menu-item slot="items">
-        <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="currentColor" aria-hidden="true">
           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13ZM8 3a1.25 1.25 0 1 0 0 2.5A1.25 1.25 0 0 0 8 3ZM4.5 6.25a.75.75 0 0 0 0 1.5H6.5V9l-1.2 3a.75.75 0 1 0 1.4.55L8 9.5l1.3 3.05a.75.75 0 1 0 1.4-.55L9.5 9V7.75h2a.75.75 0 0 0 0-1.5h-7Z"/>
         </svg>
         Left
       </acme-menu-item>
       <acme-menu-item slot="items">
-        <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="currentColor" aria-hidden="true">
           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13ZM8 3a1.25 1.25 0 1 0 0 2.5A1.25 1.25 0 0 0 8 3ZM4.5 6.25a.75.75 0 0 0 0 1.5H6.5V9l-1.2 3a.75.75 0 1 0 1.4.55L8 9.5l1.3 3.05a.75.75 0 1 0 1.4-.55L9.5 9V7.75h2a.75.75 0 0 0 0-1.5h-7Z"/>
         </svg>
         Center
       </acme-menu-item>
       <acme-menu-item slot="items">
-        <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="currentColor" aria-hidden="true">
           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13ZM8 3a1.25 1.25 0 1 0 0 2.5A1.25 1.25 0 0 0 8 3ZM4.5 6.25a.75.75 0 0 0 0 1.5H6.5V9l-1.2 3a.75.75 0 1 0 1.4.55L8 9.5l1.3 3.05a.75.75 0 1 0 1.4-.55L9.5 9V7.75h2a.75.75 0 0 0 0-1.5h-7Z"/>
         </svg>
         Right
@@ -136,19 +136,19 @@ The prefix and suffix slots of an item take an icon.
       </acme-menu-button>
       <acme-menu-item slot="items">
         Left
-        <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="currentColor" aria-hidden="true">
           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13ZM8 3a1.25 1.25 0 1 0 0 2.5A1.25 1.25 0 0 0 8 3ZM4.5 6.25a.75.75 0 0 0 0 1.5H6.5V9l-1.2 3a.75.75 0 1 0 1.4.55L8 9.5l1.3 3.05a.75.75 0 1 0 1.4-.55L9.5 9V7.75h2a.75.75 0 0 0 0-1.5h-7Z"/>
         </svg>
       </acme-menu-item>
       <acme-menu-item slot="items">
         Center
-        <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="currentColor" aria-hidden="true">
           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13ZM8 3a1.25 1.25 0 1 0 0 2.5A1.25 1.25 0 0 0 8 3ZM4.5 6.25a.75.75 0 0 0 0 1.5H6.5V9l-1.2 3a.75.75 0 1 0 1.4.55L8 9.5l1.3 3.05a.75.75 0 1 0 1.4-.55L9.5 9V7.75h2a.75.75 0 0 0 0-1.5h-7Z"/>
         </svg>
       </acme-menu-item>
       <acme-menu-item slot="items">
         Right
-        <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="currentColor" aria-hidden="true">
           <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13ZM8 3a1.25 1.25 0 1 0 0 2.5A1.25 1.25 0 0 0 8 3ZM4.5 6.25a.75.75 0 0 0 0 1.5H6.5V9l-1.2 3a.75.75 0 1 0 1.4.55L8 9.5l1.3 3.05a.75.75 0 1 0 1.4-.55L9.5 9V7.75h2a.75.75 0 0 0 0-1.5h-7Z"/>
         </svg>
       </acme-menu-item>
@@ -239,15 +239,15 @@ avatar), its label flush.
 | `show-chevron` | `showChevron` | `boolean` | `false` | A chevron at the end of the label that turns while the menu is open. |
 | `open` | `open` | `boolean` | `false` | Whether the menu is open: the menu keeps it in step. |
 
-Slots: `prefix`, `suffix`, `(default)`
+Slots: `start`, `end`, `(default)`
 
 ## `<acme-menu-item>`
 
 One row of a menu: a 36px `menuitem` (44 and 16px text below 601px) with the label in the
-default slot, an icon in the `prefix` slot before it and one in the `suffix` slot at the end.
+default slot, an icon in the `start` slot before it and one in the `end` slot at the end.
 `href` renders an anchor (`external` opens it in a new tab); `variant="error"` reads red-900;
 `disabled` reads gray-700 and takes no pointer; `locked` is a disabled row with a gray-700 lock
-suffix, for an action that needs more permissions. The menu marks the highlighted row
+end place, for an action that needs more permissions. The menu marks the highlighted row
 (`selected`, the `data-selected` state: gray-alpha-100, red-100 on an error row) as the keys
 and the pointer move over the rows. A click, Enter or Space fires `acme-select`.
 
@@ -261,7 +261,7 @@ and the pointer move over the rows. A click, Enter or Space fires `acme-select`.
 | `selected` | `selected` | `boolean` | `false` | The highlighted row; the menu sets it. |
 | `value` | `value` | `string` | `""` | The text typeahead matches: the label's text unless set. |
 
-Slots: `prefix`, `suffix`, `(default)`
+Slots: `start`, `end`, `(default)`
 
 Events: `acme-select`
 

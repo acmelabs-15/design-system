@@ -18,7 +18,7 @@ const GAP = 8;
 const EXIT_MS = 200;
 let seq = 0;
 
-/** The 16-box chevron in the trigger's suffix, drawn 14 wide in the current colour. */
+/** The 16-box chevron in the trigger's end place, drawn 14 wide in the current colour. */
 const CHEVRON = "m14.06 5.5-.53.53-4.82 4.82a1 1 0 0 1-1.42 0L2.47 6.03l-.53-.53L3 4.44l.53.53L8 9.44l4.47-4.47.53-.53z";
 
 /**
@@ -354,8 +354,6 @@ export class AcmeMultiSelect extends AcmeElement implements MultiSelectOwner {
         aria-expanded=${String(this.open)}
         aria-controls=${this.contentId}
         data-state=${this.open ? "open" : "closed"}
-        data-prefix="false"
-        data-suffix="true"
         style="--acme-icon-size:16px"
         ?disabled=${this.disabled}
         @click=${this.onTriggerClick}
@@ -363,7 +361,7 @@ export class AcmeMultiSelect extends AcmeElement implements MultiSelectOwner {
         part="trigger"
       >
         <span class="label"><span class="text"><slot name="trigger"></slot></span></span>
-        <span class="suffix"
+        <span class="end"
           ><div class="chev"><svg viewBox="0 0 16 16" height="14" width="14" style="color:currentColor"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d=${CHEVRON}></path></svg></div></span
         >
       </button>

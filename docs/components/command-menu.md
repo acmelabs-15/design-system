@@ -45,31 +45,31 @@ Launch a set of actions as a full-screen overlay.
 <acme-command-menu placeholder="What do you need?">
   <acme-command-group heading="Group 1">
     <acme-command-item>
-      <p class="text-copy-14" slot="suffix" style="color:var(--ds-gray-700)">USA</p>
+      <p class="text-copy-14" slot="end" style="color:var(--ds-gray-700)">USA</p>
       United States of America
     </acme-command-item>
     <acme-command-item>
-      <p class="text-copy-14" slot="suffix" style="color:var(--ds-gray-700)">ESP</p>
+      <p class="text-copy-14" slot="end" style="color:var(--ds-gray-700)">ESP</p>
       Spain
     </acme-command-item>
     <acme-command-item>
-      <p class="text-copy-14" slot="suffix" style="color:var(--ds-gray-700)">FRA</p>
+      <p class="text-copy-14" slot="end" style="color:var(--ds-gray-700)">FRA</p>
       France
     </acme-command-item>
   </acme-command-group>
   <acme-command-group heading="Group 2">
     <acme-command-item>
-      <p class="text-copy-14" slot="suffix" style="color:var(--ds-gray-700)">AUT</p>
+      <p class="text-copy-14" slot="end" style="color:var(--ds-gray-700)">AUT</p>
       Austria
     </acme-command-item>
     <acme-command-item>
       Switzerland
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" style="color:var(--ds-gray-700)" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="end" style="color:var(--ds-gray-700)" aria-hidden="true">
         <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-4.4-2.5-1.1-1.1L7 7.9 5.5 6.4 4.4 7.5 7 10.1l4.6-4.6Z"/>
       </svg>
     </acme-command-item>
     <acme-command-item>
-      <p class="text-copy-14" slot="suffix" style="color:var(--ds-gray-700)">GER</p>
+      <p class="text-copy-14" slot="end" style="color:var(--ds-gray-700)">GER</p>
       Germany
     </acme-command-item>
   </acme-command-group>
@@ -138,8 +138,8 @@ Slots: `(default)`
 ## `<acme-command-item>`
 
 One row of a command menu: the label as content (a Title Case verb phrase), an optional icon in
-the `prefix` slot (a 20px box), an optional `keybind` (keys separated by spaces, `Meta K`; kbd
-chips at the end of the row) and optional content in the `suffix` slot at the end. `value` is
+the `start` slot (a 20px box), an optional `keybind` (keys separated by spaces, `Meta K`; kbd
+chips at the end of the row) and optional content in the `end` slot at the end. `value` is
 what the query is scored against and what a selection reports (the label, lowercased, when
 unset); `disabled` keeps the row out of the keys and the pointer; `page` keeps the row to one
 page of the menu. The menu highlights the row under the keys or the pointer (`selected`); a
@@ -155,7 +155,7 @@ unless `close-on-callback="false"`.
 | `page` | `page` | `string` | `""` | The page of the menu the row belongs to; unset, the root page. |
 | `selected` | `selected` | `boolean` | `false` | The highlighted row; the menu sets it. |
 
-Slots: `prefix`, `(default)`, `suffix`
+Slots: `start`, `(default)`, `end`
 
 ## `<acme-command-divider>`
 

@@ -45,7 +45,7 @@ export const multiSelectCss = css`
     min-width: 0;
     align-items: center;
   }
-  .trigger :where(.suffix) {
+  .trigger :where(.end) {
     margin-right: 0.125rem;
     margin-left: 0.25rem;
     display: flex;
@@ -60,7 +60,7 @@ export const multiSelectCss = css`
     overflow: hidden;
     padding-inline: 0.375rem;
   }
-  .trigger :where(.suffix) :where(.chev) {
+  .trigger :where(.end) :where(.chev) {
     color: var(--ds-gray-700);
     transition-property: color, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -96,7 +96,7 @@ export const multiSelectCss = css`
     box-shadow: var(--ds-focus-ring);
     transition-property: none;
   }
-  .trigger :where(.suffix) svg {
+  .trigger :where(.end) svg {
     width: var(--ds-control-decoration-size);
     height: var(--ds-control-decoration-size);
   }

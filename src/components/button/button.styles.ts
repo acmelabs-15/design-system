@@ -25,14 +25,14 @@ export const buttonCss = css`
     animation-duration: 0.15s;
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .btn :where(.prefix) :where(.dots) {
+  .btn :where(.start) :where(.dots) {
     position: relative;
     display: inline-block;
     aspect-ratio: 1;
     transform: translateZ(0);
     color: var(--ds-gray-700);
   }
-  .btn :where(.suffix) {
+  .btn :where(.end) {
     margin-right: 0.125rem;
     margin-left: 0.25rem;
     display: flex;
@@ -40,7 +40,7 @@ export const buttonCss = css`
     align-items: center;
     justify-content: center;
   }
-  .btn :where(.prefix) {
+  .btn :where(.start) {
     margin-right: 3px;
     display: flex;
     min-width: 1.25rem;
@@ -63,15 +63,15 @@ export const buttonCss = css`
     align-items: center;
     justify-content: center;
   }
-  .btn:where(.sm) :where(.prefix) :where(.dots) {
+  .btn:where(.sm) :where(.start) :where(.dots) {
     width: 0.75rem;
     height: 0.75rem;
   }
-  .btn:where(:not(.tiny, .sm, .lg)) :where(.prefix) :where(.dots) {
+  .btn:where(:not(.tiny, .sm, .lg)) :where(.start) :where(.dots) {
     width: 1rem;
     height: 1rem;
   }
-  .btn:where(.lg) :where(.prefix) :where(.dots) {
+  .btn:where(.lg) :where(.start) :where(.dots) {
     width: 1.25rem;
     height: 1.25rem;
   }
@@ -189,13 +189,13 @@ export const buttonCss = css`
   .btn:where(:not(.secondary, .tertiary, .error, .warning):disabled):disabled {
     background-color: var(--ds-gray-100);
   }
-  .btn :where(.prefix) slot::slotted(svg),
-  .btn :where(.prefix) slot > svg {
+  .btn :where(.start) slot::slotted(svg),
+  .btn :where(.start) slot > svg {
     width: var(--ds-control-decoration-size) !important;
     height: var(--ds-control-decoration-size) !important;
   }
-  .btn :where(.suffix) slot::slotted(svg),
-  .btn :where(.suffix) slot > svg {
+  .btn :where(.end) slot::slotted(svg),
+  .btn :where(.end) slot > svg {
     width: var(--ds-control-decoration-size) !important;
     height: var(--ds-control-decoration-size) !important;
   }

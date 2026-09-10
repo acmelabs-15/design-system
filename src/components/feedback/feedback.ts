@@ -83,7 +83,7 @@ type Phase = "entered" | "exiting" | null;
  * emotion) and shows the message under the textarea; a dry run skips both the checks and the
  * request. Success swaps the form for a check and two lines, then the card closes after 4s (later
  * while the pointer rests on it) and the fields reset. Escape closes, ⌘Enter sends, a click
- * outside closes, focus returns to the trigger. The default slot is unused; `prefix` and `suffix`
+ * outside closes, focus returns to the trigger. The default slot is unused; `start` and `end`
  * decorate the trigger. Fires `acme-open`, `acme-close` and `acme-submit` (the payload).
  */
 @customElement("acme-feedback")
@@ -142,8 +142,8 @@ export class AcmeFeedback extends AcmeElement {
   @atomState() private message = "";
   @atomState() private sending = false;
   @atomState() private sent = false;
-  @atomState() private hasPrefix = false;
-  @atomState() private hasSuffix = false;
+  @atomState() private hasStart = false;
+  @atomState() private hasEnd = false;
   /** The card of the trigger variant: mounted and open, fading out, or gone. */
   @atomState() private card: "open" | "closed" | null = null;
   @atomState() private formPhase: Phase = "entered";
@@ -166,8 +166,8 @@ export class AcmeFeedback extends AcmeElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.hasPrefix = !!this.querySelector('[slot="prefix"]');
-    this.hasSuffix = !!this.querySelector('[slot="suffix"]');
+    this.hasStart = !!this.querySelector('[slot="start"]');
+    this.hasEnd = !!this.querySelector('[slot="end"]');
     document.addEventListener("pointerdown", this.onOutside);
     document.addEventListener("keydown", this.onDocumentKey);
     document.addEventListener(SHOW_EVENT, this.onShow);
@@ -185,8 +185,8 @@ export class AcmeFeedback extends AcmeElement {
   }
 
   firstUpdated() {
-    this.hasPrefix ||= !!this.querySelector('[slot="prefix"]');
-    this.hasSuffix ||= !!this.querySelector('[slot="suffix"]');
+    this.hasStart ||= !!this.querySelector('[slot="start"]');
+    this.hasEnd ||= !!this.querySelector('[slot="end"]');
   }
 
   private later(fn: () => void, ms: number) {
@@ -500,7 +500,7 @@ export class AcmeFeedback extends AcmeElement {
           this.open = !this.open;
         }}
         part="trigger"
-        >${this.hasPrefix ? html`<slot name="prefix" slot="prefix"></slot>` : nothing}${this.buttonText}${this.hasSuffix ? html`<slot name="suffix" slot="suffix"></slot>` : nothing}</acme-button
+        >${this.hasStart ? html`<slot name="start" slot="start"></slot>` : nothing}${this.buttonText}${this.hasEnd ? html`<slot name="end" slot="end"></slot>` : nothing}</acme-button
       >${
         this.card
           ? html`<div class=${this.cls("panel", { sent: this.sent })} style="position:fixed;left:0;top:0;min-width:max-content;z-index:101" part="panel">

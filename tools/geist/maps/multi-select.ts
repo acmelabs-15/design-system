@@ -27,7 +27,7 @@ export const geist: GeistMap = {
   classes: { "[data-multi-select-trigger-suffix]": "chev" },
   children: [
     { ours: ".label", pick: has("truncate"), children: [{ ours: ".text", pick: 0 }] },
-    { ours: ".suffix", pick: has("ml-1"), children: [{ ours: ".chev", pick: 0, children: [{ ours: "svg", pick: 0 }] }] },
+    { ours: ".end", pick: has("ml-1"), children: [{ ours: ".chev", pick: 0, children: [{ ours: "svg", pick: 0 }] }] },
   ],
   ignore: ["group/trigger"],
 };

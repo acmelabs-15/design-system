@@ -209,6 +209,15 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
+- **The places beside content are `start` and `end`, in every element.** Decided 2026-09-10 by
+  Peter. Nine elements moved off `prefix`/`suffix`, and `data-prefix`/`data-suffix` are gone —
+  no generated stylesheet ever read them. See `notes/decisions/start-and-end-places.md`.
+  `middle-truncate` keeps `prefix`/`suffix` for the two halves of a truncated string, which is the
+  correct word for text rather than for a place.
+- **An example heading in a map's `skip` list is the REFERENCE's heading, not ours.** Verified
+  2026-09-10: `menu`, `context-menu`, `select-label` and `input-label` all name "Prefix and suffix"
+  there, and the generator matches it against the reference spec. Renaming our docs heading is
+  safe; renaming the map's entry silently stops skipping an example.
 - **Back up a census result before re-running it; the results are not in version control until
   committed.** Verified the expensive way 2026-09-10 on split-button: a first re-run measured three
   states the saved run never did and used selectors that read the wrong boxes, taking the page from

@@ -139,7 +139,7 @@ export class AcmeToast extends AcmeElement {
   }
 
   private button(cls: string, label: string | undefined, onClick: () => void, content: unknown) {
-    return html`<button class=${cls} type="button" tabindex="0" data-prefix="false" data-suffix="false" aria-label=${label ?? nothing} style="--acme-icon-size:16px" @click=${onClick}>${content}</button>`;
+    return html`<button class=${cls} type="button" tabindex="0" aria-label=${label ?? nothing} style="--acme-icon-size:16px" @click=${onClick}>${content}</button>`;
   }
 
   render() {
@@ -193,7 +193,7 @@ export class AcmeToast extends AcmeElement {
             html`<span class="label">${t.cancelAction || "Dismiss"}</span>`,
           )}${
             t.actionHref
-              ? html`<a class="btn sm link action" href=${t.actionHref} role="link" tabindex="0" data-prefix="false" data-suffix="false" style="--acme-icon-size:16px" @click=${act}><span class="label">${t.action}</span></a>`
+              ? html`<a class="btn sm link action" href=${t.actionHref} role="link" tabindex="0" style="--acme-icon-size:16px" @click=${act}><span class="label">${t.action}</span></a>`
               : this.button("btn sm action", undefined, act, html`<span class="label">${t.action}</span>`)
           }
         </div>`

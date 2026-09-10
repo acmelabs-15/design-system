@@ -47,25 +47,25 @@ A menu of contextual actions, revealed on right click or long press.
   <acme-context-menu>
     <div class="text-copy-14" style="width:300px;padding:45px 0;border:1px dashed var(--ds-gray-alpha-600);border-radius:4px;text-align:center">Right click here</div>
     <acme-menu-item slot="items" href="/">
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="currentColor" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="currentColor" aria-hidden="true">
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/>
       </svg>
       Item one
     </acme-menu-item>
     <acme-menu-item slot="items" href="/">
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="currentColor" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="currentColor" aria-hidden="true">
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/>
       </svg>
       Item Two
     </acme-menu-item>
     <acme-menu-item slot="items" href="/">
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="currentColor" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="currentColor" aria-hidden="true">
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/>
       </svg>
       Item Three
     </acme-menu-item>
     <acme-menu-item slot="items" href="/">
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" fill="currentColor" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="start" fill="currentColor" aria-hidden="true">
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/>
       </svg>
       Item Four
@@ -75,25 +75,25 @@ A menu of contextual actions, revealed on right click or long press.
     <div class="text-copy-14" style="width:300px;padding:45px 0;border:1px dashed var(--ds-gray-alpha-600);border-radius:4px;text-align:center">Right click here</div>
     <acme-menu-item slot="items" href="/">
       Item one
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="currentColor" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="currentColor" aria-hidden="true">
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/>
       </svg>
     </acme-menu-item>
     <acme-menu-item slot="items" href="/">
       Item Two
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="currentColor" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="currentColor" aria-hidden="true">
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/>
       </svg>
     </acme-menu-item>
     <acme-menu-item slot="items" href="/">
       Item Three
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="currentColor" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="currentColor" aria-hidden="true">
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/>
       </svg>
     </acme-menu-item>
     <acme-menu-item slot="items" href="/">
       Item Four
-      <svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" fill="currentColor" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="16" height="16" slot="end" fill="currentColor" aria-hidden="true">
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 4 4 7H4l4-7Z"/>
       </svg>
     </acme-menu-item>

@@ -5,13 +5,13 @@ export const comboboxOptionCss = css`
     pointer-events: none;
     opacity: 0.6;
   }
-  .option :where(.prefix) {
+  .option :where(.start) {
     margin-right: 0.75rem;
     margin-left: -1px;
     display: flex;
     align-items: center;
   }
-  .option :where(.suffix) {
+  .option :where(.end) {
     margin-left: auto;
     display: flex;
     align-items: center;
@@ -33,19 +33,13 @@ export const comboboxOptionCss = css`
   .option:where(:not(.auto)) {
     height: var(--ds-popover-row-height);
   }
-  .option:where(.truncate-prefix) :where(.prefix) {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    text-align: left;
-  }
   .option :where(.label) {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     text-align: left;
   }
-  .option:where(.truncate-suffix) :where(.suffix) {
+  .option:where(:not(.active):not(.chosen)) :where(.end) {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

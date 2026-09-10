@@ -46,7 +46,7 @@ describe("acme-combobox", () => {
     expect(i.getAttribute("aria-label")).toBe("Search");
     expect(i.getAttribute("aria-autocomplete")).toBe("list");
     expect(i.getAttribute("aria-controls")).toBe(s.getAttribute("aria-controls"));
-    expect(el.shadowRoot!.querySelector(".prefix .icon")).not.toBeNull();
+    expect(el.shadowRoot!.querySelector(".start .icon")).not.toBeNull();
     expect((el.shadowRoot!.querySelector(".clear") as HTMLElement).getAttribute("style")).toContain("display:none");
     expect(el.shadowRoot!.querySelector(".toggle")!.getAttribute("aria-label")).toBe("Open menu");
     expect(el.shadowRoot!.querySelector(".floating")).toBeNull();
@@ -200,21 +200,21 @@ describe("acme-combobox", () => {
     expect(custom.open).toBe(true);
   });
 
-  test("size, errored, loading, width, no-input-prefix, show-menu-button and display-selected-suffix map to the classes and the parts", async () => {
-    const el = await mount(`<acme-combobox aria-label="Search" errored loading size="small" width="256" no-input-prefix show-menu-button="false">${three}</acme-combobox>`);
+  test("size, errored, loading, width, no-input-start, show-menu-button and display-selected-end map to the classes and the parts", async () => {
+    const el = await mount(`<acme-combobox aria-label="Search" errored loading size="small" width="256" no-input-start show-menu-button="false">${three}</acme-combobox>`);
     const s = shell(el);
-    for (const c of ["sm", "errored", "loading", "no-prefix", "no-menu"]) expect(s.className).toContain(c);
+    for (const c of ["sm", "errored", "loading", "no-start", "no-menu"]) expect(s.className).toContain(c);
     expect(s.getAttribute("style")).toContain("width:256px");
     expect(input(el).getAttribute("aria-invalid")).toBe("true");
-    expect(el.shadowRoot!.querySelector(".prefix")).toBeNull();
+    expect(el.shadowRoot!.querySelector(".start")).toBeNull();
     expect(el.shadowRoot!.querySelector(".toggle")).toBeNull();
     const loading = await mount(`<acme-combobox aria-label="Search" loading>${three}</acme-combobox>`);
-    expect(loading.shadowRoot!.querySelector(".prefix acme-spinner")).not.toBeNull();
+    expect(loading.shadowRoot!.querySelector(".start acme-spinner")).not.toBeNull();
     const suffix = await mount(
-      `<acme-combobox aria-label="Search" display-selected-suffix value="b"><acme-combobox-option value="b"><svg slot="suffix" width="16" height="16"></svg>Two</acme-combobox-option></acme-combobox>`,
+      `<acme-combobox aria-label="Search" display-selected-end value="b"><acme-combobox-option value="b"><svg slot="end" width="16" height="16"></svg>Two</acme-combobox-option></acme-combobox>`,
     );
-    expect(shell(suffix).className).toContain("with-suffix");
-    expect(suffix.shadowRoot!.querySelector(".suffix svg")).not.toBeNull();
+    expect(shell(suffix).className).toContain("with-end");
+    expect(suffix.shadowRoot!.querySelector(".end svg")).not.toBeNull();
     expect(input(suffix).style.paddingRight).toContain("var(--acme-gap)");
     expect(rows(suffix)[0].size).toBe("medium");
     expect(rows(el)[0].size).toBe("small");
@@ -258,15 +258,15 @@ describe("acme-combobox", () => {
 
 describe("acme-combobox-option", () => {
   test("a plain row wraps its text in the label span; rich content renders as given with the value as its text", async () => {
-    document.body.innerHTML = `<acme-combobox-option value="k" ignore-default-height truncate-prefix><span slot="prefix">i</span>Key</acme-combobox-option>`;
+    document.body.innerHTML = `<acme-combobox-option value="k" ignore-default-height truncate-start><span slot="start">i</span>Key</acme-combobox-option>`;
     const el = document.body.firstElementChild as AcmeComboboxOption;
     await el.updateComplete;
     await el.updateComplete;
     const o = el.shadowRoot!.querySelector(".option") as HTMLElement;
     expect(o.getAttribute("role")).toBe("option");
     expect(o.className).toContain("auto");
-    expect(o.className).toContain("truncate-prefix");
-    expect(o.querySelector(".prefix slot[name=prefix]")).not.toBeNull();
+    expect(o.className).toContain("truncate-start");
+    expect(o.querySelector(".start slot[name=start]")).not.toBeNull();
     expect(o.querySelector(".label")!.getAttribute("title")).toBe("Key");
     expect(el.text).toBe("Key");
     document.body.innerHTML = `<acme-combobox-option value="DATABASE_URL::Production"><div><p>DATABASE_URL</p><p>Production</p></div></acme-combobox-option>`;

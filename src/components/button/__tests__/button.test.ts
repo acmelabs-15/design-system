@@ -11,16 +11,18 @@ const mount = async (html: string) => {
 const root = (el: AcmeButton) => el.shadowRoot!.querySelector(".btn") as HTMLElement;
 
 describe("acme-button", () => {
-  test("renders a root with data-prefix/data-suffix and a label span", async () => {
+  test("renders a root with a label span and no place spans", async () => {
     const el = await mount(`<acme-button size="small">Upload</acme-button>`);
     const b = root(el);
     expect(b.tagName).toBe("BUTTON");
     expect(b.className.trim()).toBe("btn sm");
-    expect(b.getAttribute("data-prefix")).toBe("false");
-    expect(b.getAttribute("data-suffix")).toBe("false");
+    // data-prefix and data-suffix are gone: no stylesheet read them, and the places are `start`
+    // and `end` now, the names every field in the system uses.
+    expect(b.hasAttribute("data-prefix")).toBe(false);
+    expect(b.hasAttribute("data-suffix")).toBe(false);
     expect(b.getAttribute("style")).toContain("--acme-icon-size:16px");
     expect(b.querySelector(".label slot:not([name])")).not.toBeNull();
-    expect(b.querySelector(".prefix")).toBeNull();
+    expect(b.querySelector(".start")).toBeNull();
   });
 
   test("variant default is the primary look (no modifier); tiny, svg-only and shapes map to classes", async () => {
@@ -30,23 +32,21 @@ describe("acme-button", () => {
     expect(b.getAttribute("aria-label")).toBe("Upload");
   });
 
-  test("a prefix in the slot renders the prefix span and data-prefix", async () => {
-    const el = await mount(`<acme-button><svg slot="prefix"></svg>Export</acme-button>`);
+  test("content in the start slot renders the start span", async () => {
+    const el = await mount(`<acme-button><svg slot="start"></svg>Export</acme-button>`);
     await new Promise((r) => setTimeout(r, 0));
     await el.updateComplete;
     const b = root(el);
-    expect(b.getAttribute("data-prefix")).toBe("true");
-    expect(b.querySelector(".prefix slot[name=prefix]")).not.toBeNull();
+    expect(b.querySelector(".start slot[name=start]")).not.toBeNull();
   });
 
-  test("loading shows the spinner in the prefix, disables the button and announces busy", async () => {
+  test("loading shows the spinner in the start place, disables the button and announces busy", async () => {
     const el = await mount(`<acme-button loading>Saving</acme-button>`);
     const b = root(el) as HTMLButtonElement;
     expect(b.getAttribute("aria-busy")).toBe("true");
     expect(b.disabled).toBe(true);
     expect(b.className).toContain("loading");
-    expect(b.querySelector(".prefix[aria-hidden] acme-spinner")).not.toBeNull();
-    expect(b.getAttribute("data-prefix")).toBe("true");
+    expect(b.querySelector(".start[aria-hidden] acme-spinner")).not.toBeNull();
   });
 
   test("href renders an anchor with role=link", async () => {

@@ -11,7 +11,7 @@ for (const b of modal.querySelectorAll('acme-button[slot="actions"], [slot="acti
 const show = `root.querySelector("acme-modal").show();`;
 const actions = (primary: string) => `<acme-button slot="actions" variant="secondary">Cancel</acme-button><acme-button slot="actions">${primary}</acme-button>`;
 const subtitle = `<p slot="subtitle">Enter a unique name for your token to differentiate it from other tokens and then select the scope.</p>`;
-const stickyActions = `<div slot="actions"><acme-button variant="secondary">Cancel</acme-button><acme-button variant="secondary"><svg class="ic" width="16" height="16" slot="prefix"><use href="#i-back"/></svg>Previous</acme-button></div><acme-button slot="actions">Submit</acme-button>`;
+const stickyActions = `<div slot="actions"><acme-button variant="secondary">Cancel</acme-button><acme-button variant="secondary"><svg class="ic" width="16" height="16" slot="start"><use href="#i-back"/></svg>Previous</acme-button></div><acme-button slot="actions">Submit</acme-button>`;
 const stickyBody = `${copy.repeat(50)}`;
 const stickyCode = `${copy}\n<!-- … 49 more paragraphs … -->\n${stickyActions}`;
 const sheetNote = "Under 600px the modal opens as a bottom sheet: resize the window below that width to see this state as the sheet.";

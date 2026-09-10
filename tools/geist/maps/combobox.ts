@@ -4,7 +4,7 @@
 // input, the chosen option's suffix beside the field (`displaySelectedSuffix`), the clear button and
 // the menu button with its chevron. The variants the JSX does not name are read off the rendered
 // root: the prefix box left out (`noInputPrefix`), the menu button left out (`showMenuButton`),
-// the suffix shown, the list open (the chevron turns), and the keyboard focus ring the client adds
+// the end content shown, the list open (the chevron turns), and the keyboard focus ring the client adds
 // to the input while its focus is visible. The open states and the field variants are sketches
 // (tools/geist/sketch/combobox.*.json); the page's own examples render the closed field. The
 // floating list (maps/combobox-list.ts) and the rows (maps/combobox-option.ts) are mapped on their own.
@@ -26,12 +26,12 @@ export const geist: GeistMap = {
   root: (n) => n.attrs.role === "combobox",
   ours: ".combobox",
   skip: CLOSED,
-  defaults: { size: "medium", errored: "false", loading: "false", prefix: "true", menu: "true", suffix: "false", open: "false", keyboard: "false" },
+  defaults: { size: "medium", errored: "false", loading: "false", start: "true", menu: "true", end: "false", open: "false", keyboard: "false" },
   values: { errored: { "*": "true" }, loading: { "*": "true" } },
   derive: {
-    prefix: flag((n) => !!field(n)?.children.some((c) => c.attrs["aria-hidden"] === "true")),
+    start: flag((n) => !!field(n)?.children.some((c) => c.attrs["aria-hidden"] === "true")),
     menu: flag((n) => !!field(n)?.children.some(isMenu)),
-    suffix: flag((n) => !!field(n)?.children.some(has("right-10"))),
+    end: flag((n) => !!field(n)?.children.some(has("right-10"))),
     open: flag((n) => n.attrs["aria-expanded"] === "true"),
     keyboard: flag((n) => !!input(n) && has("!shadow-[var(--ds-focus-ring)]")(input(n)!)),
   },
@@ -39,9 +39,9 @@ export const geist: GeistMap = {
     size: { small: ".sm", large: ".lg" },
     errored: { true: ".errored" },
     loading: { true: ".loading" },
-    prefix: { false: ".no-prefix" },
+    start: { false: ".no-start" },
     menu: { false: ".no-menu" },
-    suffix: { true: ".with-suffix" },
+    end: { true: ".with-end" },
     open: { true: ".open" },
     keyboard: { true: ".keyboard" },
   },
@@ -53,7 +53,7 @@ export const geist: GeistMap = {
       pick: (c) => c.tag === "div" && has("group/combobox")(c),
       children: [
         {
-          ours: ".prefix",
+          ours: ".start",
           pick: (c) => c.attrs["aria-hidden"] === "true",
           children: [
             { ours: "acme-spinner", pick: (c) => c.attrs["data-glyph"] === "circular", extends: "spinner", part: "spinner", leaf: true },
@@ -63,7 +63,7 @@ export const geist: GeistMap = {
         // The field keeps its native disabled state; any focus of it is its focus state, and its hover is the shell's.
         { ours: ".input", pick: (c) => c.tag === "input", states: { ":focus": "[data-focus]", ":hover": "^[data-hover]" } },
         // The chosen option's suffix, a box beside the field: its pointer states are the shell's.
-        { ours: ".suffix", pick: has("right-10"), states: { ":hover": "^[data-hover]", ":focus": "^[data-focus]" }, children: [{ ours: "", pick: (c) => c.tag === "svg", leaf: true }] },
+        { ours: ".end", pick: has("right-10"), states: { ":hover": "^[data-hover]", ":focus": "^[data-focus]" }, children: [{ ours: "", pick: (c) => c.tag === "svg", leaf: true }] },
         { ours: ".clear", pick: isClear, states: { ":hover": "[data-hover]", ":focus-visible": "[data-focus]" }, children: [{ ours: ".icon", pick: (c) => c.tag === "svg" }] },
         { ours: ".toggle", pick: isMenu, states: { ":hover": "[data-hover]" }, children: [{ ours: ".icon", pick: (c) => c.tag === "svg" }] },
       ],

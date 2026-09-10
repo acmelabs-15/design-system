@@ -37,7 +37,7 @@ export const intro: Doc = {
     "/components/avatar",
     "Components",
     "Building blocks for any page.",
-    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("users", ' slot="prefix"')}Collaborate</acme-button><acme-button aria-label="Shield" shape="square" svg-only>${ic("shield")}</acme-button><acme-theme-switcher small></acme-theme-switcher><acme-input label="Label" placeholder="Label" aria-label="Not a real input"></acme-input></span>`,
+    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("users", ' slot="start"')}Collaborate</acme-button><acme-button aria-label="Shield" shape="square" svg-only>${ic("shield")}</acme-button><acme-theme-switcher small></acme-theme-switcher><acme-input label="Label" placeholder="Label" aria-label="Not a real input"></acme-input></span>`,
   )}${tile(
     "/colors",
     "Colors",
@@ -315,9 +315,9 @@ export const icons: Doc = {
   )}${section(
     "Slot icons",
     `<p>Example markup passes icons into slots as inline SVG. Any 24-box stroke icon works; the docs use a sprite of symbols with <code>#i-&lt;name&gt;</code> ids, referenced as <code>&lt;svg class="ic"&gt;&lt;use href="#i-check"/&gt;&lt;/svg&gt;</code>. In an artifact, inline the paths you use.</p>${code(`<acme-button>
-  <svg class="ic" width="16" height="16" slot="prefix" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+  <svg class="ic" width="16" height="16" slot="start" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
   Save
-</acme-button>`)}<div class="demo-box"><acme-button><svg class="ic" width="16" height="16" slot="prefix" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Save</acme-button><acme-badge variant="blue">${ic("rocket", ' slot="icon"')}Production</acme-badge></div>`,
+</acme-button>`)}<div class="demo-box"><acme-button><svg class="ic" width="16" height="16" slot="start" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Save</acme-button><acme-badge variant="blue">${ic("rocket", ' slot="icon"')}Production</acme-badge></div>`,
   )}`,
 };
 

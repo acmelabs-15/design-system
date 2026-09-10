@@ -19,9 +19,9 @@ export const geist: GeistMap = {
   // The highlight is the menu's attribute on the row; a focus of the row itself is the Interaction controller's.
   states: { "[data-selected=true]": "[data-selected=true]", ":focus": "[data-focus]" },
   children: [
-    { ours: ".prefix", pick: has("size-5"), children: [{ ours: "", pick: () => true, all: true, leaf: true }] },
+    { ours: ".start", pick: has("size-5"), children: [{ ours: "", pick: () => true, all: true, leaf: true }] },
     { ours: ".keys", pick: has("hidden"), states: { ":hover": "[data-hover]" }, children: [{ ours: ".key", pick: (c) => c.tag === "kbd", all: true }] },
-    { ours: ".suffix", pick: has("items-stretch"), children: [{ ours: "", pick: () => true, all: true, leaf: true }] },
+    { ours: ".end", pick: has("items-stretch"), children: [{ ours: "", pick: () => true, all: true, leaf: true }] },
   ],
   slotted: ["svg", "p"],
 };

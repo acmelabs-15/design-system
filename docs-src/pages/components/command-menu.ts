@@ -6,9 +6,9 @@ const open = `root.querySelector("acme-button").addEventListener("click", () => 
 const button = `<acme-button>Open Command Menu</acme-button>`;
 const item = (label: string, extra = "") => `<acme-command-item${extra}>${label}</acme-command-item>`;
 const group = (heading: string, items: string) => `<acme-command-group heading="${heading}">${items}</acme-command-group>`;
-const country = (name: string, code: string) => item(name, ` suffix`).replace(" suffix>", `><p class="text-copy-14" slot="suffix" style="color:var(--ds-gray-700)">${code}</p>`);
-const check = `<svg viewBox="0 0 16 16" width="16" height="16" slot="suffix" style="color:var(--ds-gray-700)" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-4.4-2.5-1.1-1.1L7 7.9 5.5 6.4 4.4 7.5 7 10.1l4.6-4.6Z"/></svg>`;
-const icon = `<svg viewBox="0 0 16 16" width="16" height="16" slot="prefix" aria-hidden="true"><path fill="currentColor" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z"/></svg>`;
+const country = (name: string, code: string) => item(name, ` suffix`).replace(" suffix>", `><p class="text-copy-14" slot="end" style="color:var(--ds-gray-700)">${code}</p>`);
+const check = `<svg viewBox="0 0 16 16" width="16" height="16" slot="end" style="color:var(--ds-gray-700)" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-4.4-2.5-1.1-1.1L7 7.9 5.5 6.4 4.4 7.5 7 10.1l4.6-4.6Z"/></svg>`;
+const icon = `<svg viewBox="0 0 16 16" width="16" height="16" slot="start" aria-hidden="true"><path fill="currentColor" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z"/></svg>`;
 
 const groups = `${group("Suggestions", item("Figma Import"))}${group("Commands", `${item("Import Extension")}${item("Manage Extensions")}`)}${group("Collaboration", item("Flags Explorer"))}`;
 const divided = `${item("Item 1")}${item("Item 2")}<acme-command-divider></acme-command-divider>${item("Item 3")}${group("Group 1", `${item("Grouped Item 1")}${item("Grouped Item 2")}`)}`;

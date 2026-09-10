@@ -20,9 +20,9 @@ export const geist: GeistMap = {
     $tag: { ButtonLink: ".link", CustomButton: ".custom" },
   },
   children: [
-    { ours: ".prefix", pick: has("mr-[3px]"), children: [{ ours: ".dots", pick: has("aspect-square"), leaf: true }] },
+    { ours: ".start", pick: has("mr-[3px]"), children: [{ ours: ".dots", pick: has("aspect-square"), leaf: true }] },
     { ours: ".label", pick: has("truncate") },
-    { ours: ".suffix", pick: has("ml-1") },
+    { ours: ".end", pick: has("ml-1") },
   ],
   ignore: ["group/trigger"],
   slotted: ["svg"],
