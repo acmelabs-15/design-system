@@ -1,0 +1,39 @@
+{
+ "note": "A clearable field: an acme-input whose end place holds the clear button or the Cmd-K keys. The root is the composed input's wrapper, two shadow roots down. `width` fixes both previews at 376px, the width the reference's own run measured, so the field is read in the same room on each side. Its parts follow the search-input config, which measures the same family: the two key caps are read at the `kbd` rather than at our `acme-kbd` host, because the reference marks the kbd and our host stands aside. `textParts` names the parts whose width follows their own label, set in our own font.",
+ "themes": ["light", "dark"],
+ "clearable-input": {
+  "geist": {
+   "side": "geist",
+   "page": "clearable-input",
+   "marker": "data-geist-input-wrapper",
+   "width": "376px",
+   "textParts": ["input", "end", "clear", "clearkbd"],
+   "children": {
+    "input": "input|input[data-geist-input]",
+    "end": ".end|label[data-geist-input-suffix]",
+    "cmdk": ".cmdk|label[data-geist-input-suffix] > div",
+    "kesc": ".k-esc >> .kbd|label[data-geist-input-suffix] > div kbd[data-geist-kbd]:nth-of-type(1)",
+    "kk": ".k-k >> .kbd|label[data-geist-input-suffix] > div kbd[data-geist-kbd]:nth-of-type(2)",
+    "clear": ".clear|label[data-geist-input-suffix] button",
+    "clearkbd": ".clear acme-kbd >> .kbd|label[data-geist-input-suffix] button kbd[data-geist-kbd]"
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "clearable-input",
+   "host": "acme-clearable-input",
+   "ours": "acme-input >> .wrap",
+   "width": "376px",
+   "textParts": ["input", "end", "clear", "clearkbd"],
+   "children": {
+    "input": "input|input[data-geist-input]",
+    "end": ".end|label[data-geist-input-suffix]",
+    "cmdk": ".cmdk|label[data-geist-input-suffix] > div",
+    "kesc": ".k-esc >> .kbd|label[data-geist-input-suffix] > div kbd[data-geist-kbd]:nth-of-type(1)",
+    "kk": ".k-k >> .kbd|label[data-geist-input-suffix] > div kbd[data-geist-kbd]:nth-of-type(2)",
+    "clear": ".clear|label[data-geist-input-suffix] button",
+    "clearkbd": ".clear acme-kbd >> .kbd|label[data-geist-input-suffix] button kbd[data-geist-kbd]"
+   }
+  }
+ }
+}

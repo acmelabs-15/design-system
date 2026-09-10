@@ -1,0 +1,46 @@
+{
+ "note": "One tab, read as a root in its own right. Two of its reported differences are the harness comparing different element types rather than a defect:\n\nThe reference's third icon example is an `<img>`, not an `<svg>` \u2014 an inline replaced element, so its box carries the font's descender and reads 21.29px against the 16px an svg reads, taking its tab to 51.29px against 50. Ours uses one sprite svg throughout, which is the right implementation for us, and the two icons the reference does draw as svg match ours exactly. The icon slot and the root height are read as soft for that reason.\n\n`svg.flex-shrink` reads 0 on ours and 1 on the reference because our icon slot is a flex container and theirs is a block; no rule declares it on either side, and both give the same 16px box. Read as soft on the svg.",
+ "themes": [
+  "light",
+  "dark"
+ ],
+ "tab": {
+  "geist": {
+   "side": "geist",
+   "page": "tab",
+   "marker": "[role=tab]",
+   "textParts": [
+    "root",
+    "icon"
+   ],
+   "textProps": {
+    "svg": [
+     "flex-shrink"
+    ]
+   },
+   "children": {
+    "icon": ".icon|:scope > div",
+    "svg": "svg|:scope > div svg"
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "tab",
+   "host": "acme-tab",
+   "ours": ".tab",
+   "textParts": [
+    "root",
+    "icon"
+   ],
+   "textProps": {
+    "svg": [
+     "flex-shrink"
+    ]
+   },
+   "children": {
+    "icon": ".icon|:scope > div",
+    "svg": "svg|:scope > div svg"
+   }
+  }
+ }
+}

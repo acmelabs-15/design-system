@@ -5,24 +5,25 @@
  "url": "http://localhost:4180/components/clearable-input",
  "textParts": [
   "input",
-  "suffix",
+  "end",
   "clear",
   "clearkbd"
  ],
+ "textProps": {},
  "roots": [
   {
    "example": 0,
    "index": 0,
    "tag": "div",
    "attrs": {
-    "class": " wrap plain-suffix clearable "
+    "class": " wrap clearable "
    },
    "states": {
     "base": {
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -39,7 +40,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -59,14 +60,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -83,7 +84,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -103,7 +104,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -112,7 +113,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -129,7 +130,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -149,14 +150,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -173,7 +174,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -193,7 +194,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -202,7 +203,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -219,7 +220,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -239,14 +240,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -263,7 +264,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -283,7 +284,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -292,7 +293,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -309,7 +310,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -329,14 +330,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -353,7 +354,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -373,7 +374,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -385,14 +386,14 @@
    "index": 0,
    "tag": "div",
    "attrs": {
-    "class": " wrap plain-suffix clearable "
+    "class": " wrap clearable "
    },
    "states": {
     "base": {
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -409,7 +410,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -429,14 +430,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -453,7 +454,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -473,7 +474,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -482,7 +483,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -499,7 +500,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -519,14 +520,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -543,7 +544,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -563,7 +564,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -572,7 +573,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -589,7 +590,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -609,14 +610,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -633,7 +634,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -653,7 +654,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -662,7 +663,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -679,7 +680,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -699,14 +700,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -723,7 +724,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -743,7 +744,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -755,14 +756,14 @@
    "index": 0,
    "tag": "div",
    "attrs": {
-    "class": " wrap with-suffix plain-suffix clearable "
+    "class": " wrap has-end end-inside clearable "
    },
    "states": {
     "base": {
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -779,7 +780,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -799,14 +800,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "332px",
+      "width": "258px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -823,7 +824,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -843,14 +844,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       332,
+       258,
        36
       ]
      },
-     "suffix": {
+     "end": {
       "display": "flex",
       "height": "36px",
-      "width": "12px",
+      "width": "70px",
       "min-width": "auto",
       "max-width": "none",
       "padding-left": "12px",
@@ -867,7 +868,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -887,15 +888,15 @@
       "flex-shrink": "0",
       "position": "relative",
       "__rect": [
-       12,
+       70,
        36
       ]
      },
      "cmdk": {
-      "display": "none",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
+      "display": "flex",
+      "height": "20px",
+      "width": "58px",
+      "min-width": "auto",
       "max-width": "none",
       "padding-left": "0px",
       "padding-right": "10px",
@@ -911,7 +912,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "500",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -931,14 +932,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       0,
-       0
+       58,
+       20
       ]
      },
      "kesc": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
-      "width": "auto",
+      "width": "20px",
       "min-width": "20px",
       "max-width": "none",
       "padding-left": "4px",
@@ -975,146 +976,14 @@
       "flex-shrink": "1",
       "position": "relative",
       "__rect": [
-       0,
-       0
-      ]
-     },
-     "keys": {
-      "display": "inline",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "normal",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "none",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "static",
-      "__rect": [
-       0,
-       0
-      ]
-     },
-     "esc": {
-      "display": "flex",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "center",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "32px",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "absolute",
-      "__rect": [
-       0,
-       0
-      ]
-     },
-     "cmd": {
-      "display": "flex",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "center",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "none",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "absolute",
-      "__rect": [
-       0,
-       0
+       20,
+       20
       ]
      },
      "kk": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
-      "width": "auto",
+      "width": "20px",
       "min-width": "20px",
       "max-width": "none",
       "padding-left": "4px",
@@ -1151,8 +1020,8 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       0,
-       0
+       20,
+       20
       ]
      }
     },
@@ -1160,7 +1029,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -1177,7 +1046,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1197,14 +1066,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "332px",
+      "width": "258px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -1221,7 +1090,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1241,14 +1110,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       332,
+       258,
        36
       ]
      },
-     "suffix": {
+     "end": {
       "display": "flex",
       "height": "36px",
-      "width": "12px",
+      "width": "70px",
       "min-width": "auto",
       "max-width": "none",
       "padding-left": "12px",
@@ -1265,7 +1134,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1285,15 +1154,15 @@
       "flex-shrink": "0",
       "position": "relative",
       "__rect": [
-       12,
+       70,
        36
       ]
      },
      "cmdk": {
-      "display": "none",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
+      "display": "flex",
+      "height": "20px",
+      "width": "58px",
+      "min-width": "auto",
       "max-width": "none",
       "padding-left": "0px",
       "padding-right": "10px",
@@ -1309,7 +1178,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "500",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1329,14 +1198,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       0,
-       0
+       58,
+       20
       ]
      },
      "kesc": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
-      "width": "auto",
+      "width": "20px",
       "min-width": "20px",
       "max-width": "none",
       "padding-left": "4px",
@@ -1373,146 +1242,14 @@
       "flex-shrink": "1",
       "position": "relative",
       "__rect": [
-       0,
-       0
-      ]
-     },
-     "keys": {
-      "display": "inline",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "normal",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "none",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "static",
-      "__rect": [
-       0,
-       0
-      ]
-     },
-     "esc": {
-      "display": "flex",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "center",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "32px",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "absolute",
-      "__rect": [
-       0,
-       0
-      ]
-     },
-     "cmd": {
-      "display": "flex",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "center",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "none",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "absolute",
-      "__rect": [
-       0,
-       0
+       20,
+       20
       ]
      },
      "kk": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
-      "width": "auto",
+      "width": "20px",
       "min-width": "20px",
       "max-width": "none",
       "padding-left": "4px",
@@ -1549,8 +1286,8 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       0,
-       0
+       20,
+       20
       ]
      }
     },
@@ -1558,7 +1295,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -1575,7 +1312,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1595,14 +1332,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "332px",
+      "width": "258px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -1619,7 +1356,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1639,14 +1376,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       332,
+       258,
        36
       ]
      },
-     "suffix": {
+     "end": {
       "display": "flex",
       "height": "36px",
-      "width": "12px",
+      "width": "70px",
       "min-width": "auto",
       "max-width": "none",
       "padding-left": "12px",
@@ -1663,7 +1400,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1683,15 +1420,15 @@
       "flex-shrink": "0",
       "position": "relative",
       "__rect": [
-       12,
+       70,
        36
       ]
      },
      "cmdk": {
-      "display": "none",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
+      "display": "flex",
+      "height": "20px",
+      "width": "58px",
+      "min-width": "auto",
       "max-width": "none",
       "padding-left": "0px",
       "padding-right": "10px",
@@ -1707,7 +1444,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "500",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1727,14 +1464,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       0,
-       0
+       58,
+       20
       ]
      },
      "kesc": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
-      "width": "auto",
+      "width": "20px",
       "min-width": "20px",
       "max-width": "none",
       "padding-left": "4px",
@@ -1771,146 +1508,14 @@
       "flex-shrink": "1",
       "position": "relative",
       "__rect": [
-       0,
-       0
-      ]
-     },
-     "keys": {
-      "display": "inline",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "normal",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "none",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "static",
-      "__rect": [
-       0,
-       0
-      ]
-     },
-     "esc": {
-      "display": "flex",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "center",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "32px",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "absolute",
-      "__rect": [
-       0,
-       0
-      ]
-     },
-     "cmd": {
-      "display": "flex",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "center",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "none",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "absolute",
-      "__rect": [
-       0,
-       0
+       20,
+       20
       ]
      },
      "kk": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
-      "width": "auto",
+      "width": "20px",
       "min-width": "20px",
       "max-width": "none",
       "padding-left": "4px",
@@ -1947,8 +1552,8 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       0,
-       0
+       20,
+       20
       ]
      }
     },
@@ -1956,7 +1561,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -1973,7 +1578,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -1993,14 +1598,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "332px",
+      "width": "258px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -2017,7 +1622,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2037,14 +1642,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       332,
+       258,
        36
       ]
      },
-     "suffix": {
+     "end": {
       "display": "flex",
       "height": "36px",
-      "width": "12px",
+      "width": "70px",
       "min-width": "auto",
       "max-width": "none",
       "padding-left": "12px",
@@ -2061,7 +1666,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2081,15 +1686,15 @@
       "flex-shrink": "0",
       "position": "relative",
       "__rect": [
-       12,
+       70,
        36
       ]
      },
      "cmdk": {
-      "display": "none",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
+      "display": "flex",
+      "height": "20px",
+      "width": "58px",
+      "min-width": "auto",
       "max-width": "none",
       "padding-left": "0px",
       "padding-right": "10px",
@@ -2105,7 +1710,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "500",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2125,14 +1730,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       0,
-       0
+       58,
+       20
       ]
      },
      "kesc": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
-      "width": "auto",
+      "width": "20px",
       "min-width": "20px",
       "max-width": "none",
       "padding-left": "4px",
@@ -2169,146 +1774,14 @@
       "flex-shrink": "1",
       "position": "relative",
       "__rect": [
-       0,
-       0
-      ]
-     },
-     "keys": {
-      "display": "inline",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "normal",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "none",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "static",
-      "__rect": [
-       0,
-       0
-      ]
-     },
-     "esc": {
-      "display": "flex",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "center",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "32px",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "absolute",
-      "__rect": [
-       0,
-       0
-      ]
-     },
-     "cmd": {
-      "display": "flex",
-      "height": "auto",
-      "width": "auto",
-      "min-width": "0px",
-      "max-width": "none",
-      "padding-left": "0px",
-      "padding-right": "0px",
-      "padding-top": "0px",
-      "padding-bottom": "0px",
-      "margin-left": "0px",
-      "margin-right": "0px",
-      "border-radius": "0px",
-      "border-top-width": "0px",
-      "box-shadow": "none",
-      "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(161, 161, 161)",
-      "opacity": "1",
-      "font-family": "\"Google Sans Flex\", Inter, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
-      "font-size": "12px",
-      "line-height": "20.4px",
-      "font-weight": "500",
-      "letter-spacing": "normal",
-      "text-transform": "none",
-      "cursor": "default",
-      "gap": "normal",
-      "align-items": "center",
-      "justify-content": "normal",
-      "transition-duration": "0s",
-      "transition-property": "none",
-      "translate": "none",
-      "transform": "none",
-      "outline-style": "none",
-      "user-select": "auto",
-      "overflow": "visible",
-      "text-overflow": "clip",
-      "white-space": "normal",
-      "flex-shrink": "1",
-      "position": "absolute",
-      "__rect": [
-       0,
-       0
+       20,
+       20
       ]
      },
      "kk": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
-      "width": "auto",
+      "width": "20px",
       "min-width": "20px",
       "max-width": "none",
       "padding-left": "4px",
@@ -2345,8 +1818,8 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       0,
-       0
+       20,
+       20
       ]
      }
     }
@@ -2357,14 +1830,14 @@
    "index": 0,
    "tag": "div",
    "attrs": {
-    "class": " wrap with-suffix plain-suffix clearable "
+    "class": " wrap has-end end-inside clearable "
    },
    "states": {
     "base": {
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -2381,7 +1854,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2401,14 +1874,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "282.75px",
+      "width": "266.75px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -2425,7 +1898,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2445,11 +1918,11 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       283,
+       267,
        36
       ]
      },
-     "suffix": {
+     "end": {
       "display": "flex",
       "height": "36px",
       "width": "61.25px",
@@ -2469,7 +1942,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2538,7 +2011,7 @@
       ]
      },
      "clearkbd": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
       "width": "27.25px",
       "min-width": "20px",
@@ -2586,7 +2059,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -2603,7 +2076,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2623,14 +2096,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "282.75px",
+      "width": "266.75px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -2647,7 +2120,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2667,11 +2140,11 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       283,
+       267,
        36
       ]
      },
-     "suffix": {
+     "end": {
       "display": "flex",
       "height": "36px",
       "width": "61.25px",
@@ -2691,7 +2164,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2731,7 +2204,7 @@
       "border-top-width": "0px",
       "box-shadow": "none",
       "background-color": "rgba(0, 0, 0, 0)",
-      "color": "rgb(143, 143, 143)",
+      "color": "rgb(255, 255, 255)",
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "16px",
@@ -2760,7 +2233,7 @@
       ]
      },
      "clearkbd": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
       "width": "27.25px",
       "min-width": "20px",
@@ -2808,7 +2281,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -2825,7 +2298,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2845,14 +2318,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "282.75px",
+      "width": "266.75px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -2869,7 +2342,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2889,11 +2362,11 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       283,
+       267,
        36
       ]
      },
-     "suffix": {
+     "end": {
       "display": "flex",
       "height": "36px",
       "width": "61.25px",
@@ -2913,7 +2386,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -2969,7 +2442,7 @@
       "transition-property": "none",
       "translate": "none",
       "transform": "none",
-      "outline-style": "none",
+      "outline-style": "solid",
       "user-select": "auto",
       "overflow": "visible",
       "text-overflow": "clip",
@@ -2982,7 +2455,7 @@
       ]
      },
      "clearkbd": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
       "width": "27.25px",
       "min-width": "20px",
@@ -3030,7 +2503,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -3047,7 +2520,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3067,14 +2540,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "282.75px",
+      "width": "266.75px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -3091,7 +2564,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3111,11 +2584,11 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       283,
+       267,
        36
       ]
      },
-     "suffix": {
+     "end": {
       "display": "flex",
       "height": "36px",
       "width": "61.25px",
@@ -3135,7 +2608,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3204,7 +2677,7 @@
       ]
      },
      "clearkbd": {
-      "display": "inline-flex",
+      "display": "flex",
       "height": "20px",
       "width": "27.25px",
       "min-width": "20px",
@@ -3255,14 +2728,14 @@
    "index": 0,
    "tag": "div",
    "attrs": {
-    "class": " wrap plain-suffix clearable "
+    "class": " wrap clearable "
    },
    "states": {
     "base": {
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -3279,7 +2752,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3299,14 +2772,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -3323,7 +2796,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3343,7 +2816,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -3352,7 +2825,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -3369,7 +2842,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3389,14 +2862,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -3413,7 +2886,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3433,7 +2906,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -3442,7 +2915,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -3459,7 +2932,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3479,14 +2952,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -3503,7 +2976,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3523,7 +2996,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
@@ -3532,7 +3005,7 @@
      "root": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "100%",
       "padding-left": "0px",
@@ -3549,7 +3022,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3569,14 +3042,14 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      },
      "input": {
       "display": "flex",
       "height": "36px",
-      "width": "344px",
+      "width": "328px",
       "min-width": "0px",
       "max-width": "none",
       "padding-left": "12px",
@@ -3593,7 +3066,7 @@
       "opacity": "1",
       "font-family": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
       "font-size": "14px",
-      "line-height": "20.0004px",
+      "line-height": "20px",
       "font-weight": "400",
       "letter-spacing": "normal",
       "text-transform": "none",
@@ -3613,7 +3086,7 @@
       "flex-shrink": "1",
       "position": "static",
       "__rect": [
-       344,
+       328,
        36
       ]
      }
