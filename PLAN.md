@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 05:40 PDT.
+how we prove it, and where we are. Updated 2026-09-10 07:20 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -375,9 +375,10 @@ In the generator, never in an element. A new accepted leftover goes in the `ACCE
 
 Measured, not estimated:
 
-1. **relative-time-card** — the generator reports **clean** and a census config is already saved. The
-   element lives in `src/components/relative-time/`, registers as `acme-relative-time`, composes
-   context-card, and its seven tests pass. Only the census run is missing.
+1. [x] **relative-time-card — at parity, 2026-09-10.** All six runs read **0 hard**: card 4 roots,
+   label 1, trigger 6, in both themes. The trigger's 16 accepted are the documented wrapper-box
+   context value. The census config now carries two prepare steps it was missing, both recorded with
+   their reason.
 2. **context-card** — the generator reports **clean**. Map, spec and sketches are all present. Needs a
    census run and its config.
 3. **calendar** — the expensive one. **All nine reference examples render only a skeleton on the server**,
