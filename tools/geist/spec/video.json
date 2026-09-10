@@ -1,0 +1,2930 @@
+{
+ "page": "video",
+ "title": "Video",
+ "lede": "Embed a video with built-in playback controls and lazy loading support.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Video } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Video\n      height={582}\n      lazy={false}\n      src=\"https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4\"\n      width={600}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "figure",
+       "attrs": {
+        "data-version": "v1",
+        "role": "region",
+        "aria-label": "Video player",
+        "style": "--video-margin:40px;--video-width:min(600px, 950px)"
+       },
+       "styles": [
+        {
+         "cls": "block",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:block"
+        },
+        {
+         "cls": "text-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "text-align:center"
+        },
+        {
+         "cls": "my-[var(--video-margin)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-block:var(--video-margin)"
+        },
+        {
+         "cls": "mx-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-inline:0"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          },
+          {
+           "cls": "my-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-block:0"
+          },
+          {
+           "cls": "mx-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:auto"
+          },
+          {
+           "cls": "w-[var(--video-width)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:var(--video-width)"
+          },
+          {
+           "cls": "max-w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:100%"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "padding-bottom:97%"
+           },
+           "styles": [
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            },
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "video",
+             "attrs": {
+              "src": "https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4"
+             },
+             "styles": [
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              },
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "left-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:0"
+              },
+              {
+               "cls": "top-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "top:0"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:w-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:h-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:max-h-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "max-height:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:z-[99999999]",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "z-index:99999999"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "No Loop",
+   "description": "",
+   "code": "import { Video } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Video\n      height={582}\n      lazy={false}\n      loop={false}\n      src=\"https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4\"\n      width={600}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "figure",
+       "attrs": {
+        "data-version": "v1",
+        "role": "region",
+        "aria-label": "Video player",
+        "style": "--video-margin:40px;--video-width:min(600px, 950px)"
+       },
+       "styles": [
+        {
+         "cls": "block",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:block"
+        },
+        {
+         "cls": "text-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "text-align:center"
+        },
+        {
+         "cls": "my-[var(--video-margin)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-block:var(--video-margin)"
+        },
+        {
+         "cls": "mx-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-inline:0"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          },
+          {
+           "cls": "my-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-block:0"
+          },
+          {
+           "cls": "mx-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:auto"
+          },
+          {
+           "cls": "w-[var(--video-width)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:var(--video-width)"
+          },
+          {
+           "cls": "max-w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:100%"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "padding-bottom:97%"
+           },
+           "styles": [
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            },
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "video",
+             "attrs": {
+              "src": "https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4"
+             },
+             "styles": [
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              },
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "left-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:0"
+              },
+              {
+               "cls": "top-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "top:0"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:w-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:h-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:max-h-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "max-height:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:z-[99999999]",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "z-index:99999999"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "No Controls",
+   "description": "",
+   "code": "import { Video } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Video\n      controls={false}\n      height={582}\n      lazy={false}\n      src=\"https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4\"\n      width={600}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "figure",
+       "attrs": {
+        "data-version": "v1",
+        "role": "region",
+        "aria-label": "Video player",
+        "style": "--video-margin:40px;--video-width:min(600px, 950px)"
+       },
+       "styles": [
+        {
+         "cls": "block",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:block"
+        },
+        {
+         "cls": "text-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "text-align:center"
+        },
+        {
+         "cls": "my-[var(--video-margin)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-block:var(--video-margin)"
+        },
+        {
+         "cls": "mx-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-inline:0"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          },
+          {
+           "cls": "my-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-block:0"
+          },
+          {
+           "cls": "mx-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:auto"
+          },
+          {
+           "cls": "w-[var(--video-width)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:var(--video-width)"
+          },
+          {
+           "cls": "max-w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:100%"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "padding-bottom:97%"
+           },
+           "styles": [
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            },
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "video",
+             "attrs": {
+              "src": "https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4"
+             },
+             "styles": [
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              },
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "left-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:0"
+              },
+              {
+               "cls": "top-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "top:0"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:w-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:h-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:max-h-full",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "max-height:100%"
+              },
+              {
+               "cls": "[::-webkit-full-screen]:z-[99999999]",
+               "state": ":is()",
+               "at": "@layer utilities",
+               "decl": "z-index:99999999"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Controls",
+   "description": "The control bar once the video can play (a client-only state): a 48px bar at rest, transparent until the pointer moves over the player. The play button, the elapsed time, the scrubber (a drag area over the progress bar, with the handle that the reference's peer rule never shows) and the duration. The class strings come from the component's client code; the server HTML renders the frame and the video only.",
+   "code": "import { Video } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Video\n      height={582}\n      lazy={false}\n      src=\"https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4\"\n      width={600}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "figure",
+     "attrs": {
+      "data-version": "v1",
+      "role": "region",
+      "aria-label": "Video player",
+      "style": "--video-margin:40px;--video-width:min(600px, 950px)"
+     },
+     "styles": [
+      {
+       "cls": "block",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:block"
+      },
+      {
+       "cls": "text-center",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "text-align:center"
+      },
+      {
+       "cls": "my-[var(--video-margin)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-block:var(--video-margin)"
+      },
+      {
+       "cls": "mx-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-inline:0"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        },
+        {
+         "cls": "my-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-block:0"
+        },
+        {
+         "cls": "mx-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-inline:auto"
+        },
+        {
+         "cls": "w-[var(--video-width)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:var(--video-width)"
+        },
+        {
+         "cls": "max-w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:100%"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "padding-bottom:97%"
+         },
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "justify-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:center"
+          },
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "video",
+           "attrs": {
+            "width": "600",
+            "height": "582",
+            "preload": "auto",
+            "playsinline": "",
+            "muted": ""
+           },
+           "styles": [
+            {
+             "cls": "h-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:100%"
+            },
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "left-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:0"
+            },
+            {
+             "cls": "top-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:0"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "cursor-pointer",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "cursor:pointer"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:w-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:h-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "height:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:max-h-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "max-height:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:z-[99999999]",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "z-index:99999999"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "bottom-[5%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "bottom:5%"
+            },
+            {
+             "cls": "bg-[var(--geist-background)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--geist-background)"
+            },
+            {
+             "cls": "h-12",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:3rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "py-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-block:0"
+            },
+            {
+             "cls": "px-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.5rem"
+            },
+            {
+             "cls": "opacity-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "opacity:0"
+            },
+            {
+             "cls": "rounded-md",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.375rem"
+            },
+            {
+             "cls": "w-[85%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:85%"
+            },
+            {
+             "cls": "shadow-[var(--ds-shadow-tooltip)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:var(--ds-shadow-tooltip);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "transition-all",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "max-[992px]:opacity-100",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "opacity:1"
+            },
+            {
+             "cls": "max-[992px]:translate-x-0",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "--tw-translate-x:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            },
+            {
+             "cls": "max-[992px]:translate-y-0",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "--tw-translate-y:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            },
+            {
+             "cls": "max-[992px]:scale-x-100",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "--tw-scale-x:100%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+            },
+            {
+             "cls": "max-[992px]:scale-y-0",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "--tw-scale-y:0%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "button",
+             "attrs": {
+              "type": "button"
+             },
+             "styles": [
+              {
+               "cls": "bg-transparent",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#0000"
+              },
+              {
+               "cls": "border-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-style:var(--tw-border-style);border-width:0"
+              },
+              {
+               "cls": "size-10",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:2.5rem;height:2.5rem"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "justify-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:center"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "outline-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-outline-style:none;outline-style:none"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "flex-[0_0_40px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:0 0 40px"
+              },
+              {
+               "cls": "p-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding:0"
+              },
+              {
+               "cls": "focus-visible:rounded-sm",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "border-radius:.25rem"
+              },
+              {
+               "cls": "focus-visible:shadow-[var(--ds-focus-ring)]",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:var(--ds-gray-1000)"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "pl-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-left:0"
+              },
+              {
+               "cls": "text-[13px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-size:13px"
+              },
+              {
+               "cls": "leading-10",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:calc(.25rem * 10);line-height:2.5rem"
+              },
+              {
+               "cls": "py-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-block:0"
+              },
+              {
+               "cls": "px-3",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-inline:.75rem"
+              },
+              {
+               "cls": "flex-[0_0_auto]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:none"
+              },
+              {
+               "cls": "tabular-nums",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)"
+              },
+              {
+               "cls": "w-[60px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:60px"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "00:00"
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "flex-[1_0_auto]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:1 0 auto"
+              },
+              {
+               "cls": "-mt-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-top:-1px"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "div",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "h-[18px]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:18px"
+                },
+                {
+                 "cls": "bg-transparent",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:#0000"
+                },
+                {
+                 "cls": "cursor-pointer",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "cursor:pointer"
+                },
+                {
+                 "cls": "max-[992px]:h-[18px]",
+                 "state": "",
+                 "at": "@layer utilities @media not all and (min-width:992px)",
+                 "decl": "height:18px"
+                },
+                {
+                 "cls": "[-webkit-tap-highlight-color:rgba(0,0,0,0)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "-webkit-tap-highlight-color:#0000"
+                }
+               ],
+               "unresolved": [],
+               "children": []
+              },
+              {
+               "tag": "progress",
+               "attrs": {
+                "max": "100",
+                "value": "0"
+               },
+               "styles": [
+                {
+                 "cls": "peer",
+                 "state": "):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--radio-color:var(--ds-gray-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-background-100)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--radio-color:var(--ds-gray-700)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:rounded-\\[4px\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:4px"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:rounded-\\[6px\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:6px"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-background-100)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:bg-\\[var\\(--switch-checked-color\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--switch-checked-color)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:text-\\[var\\(--ds-gray-1000\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:shadow-\\[0_0_0_1px_var\\(--ds-gray-400\\)\\,0px_1px_2px_0px_var\\(--ds-gray-alpha-100\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-400)), 0px 1px 2px 0px var(--tw-shadow-color,var(--ds-gray-alpha-100));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[--radio-color\\:var\\(--ds-blue-900\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-blue-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[--radio-color\\:var\\(--ds-gray-1000\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-hover\\:opacity-100:is(:where(.peer):hover~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "opacity:1"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-hover\\:not-peer-disabled\\:not-peer-checked\\:border-\\[var\\(--ds-gray-700\\)\\]:is(:where(.peer):hover~*):not(:is(:where(.peer):disabled~*)):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "border-color:var(--ds-gray-700)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-hover\\:not-peer-disabled\\:not-peer-checked\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.peer):hover~*):not(:is(:where(.peer):disabled~*)):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-background-100)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-hover\\:not-peer-disabled\\:not-peer-checked\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.peer):hover~*):not(:is(:where(.peer):disabled~*)):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:text-\\[var\\(--ds-gray-1000\\)\\]:is(:where(.peer):focus-visible~*)",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.peer):focus-visible~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:ring:is(:where(.peer):focus-visible~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:ring-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.peer):focus-visible~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-ring-color:var(--ds-focus-ring)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:not-peer-checked\\:not-peer-disabled\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.peer):focus-visible~*):not(:is(:where(.peer):checked~*)):not(:is(:where(.peer):disabled~*))",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-active\\:\\[--radio-color\\:var\\(--ds-blue-900\\)\\]:is(:where(.peer):active~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-blue-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-active\\:\\[--radio-color\\:var\\(--ds-gray-600\\)\\]:is(:where(.peer):active~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-gray-600)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:text-gray-800:is(:where(.peer):disabled~*)",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--ds-gray-800)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:not-peer-checked\\:border-\\[var\\(--ds-gray-500\\)\\]:is(:where(.peer):disabled~*):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities",
+                 "decl": "border-color:var(--ds-gray-500)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:not-peer-checked\\:bg-\\[var\\(--ds-gray-100\\)\\]:is(:where(.peer):disabled~*):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-100)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:peer-disabled\\:\\!\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.peer):checked~*):is(:where(.peer):disabled~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-gray-900)!important"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-has-hover\\:-translate-x-1:is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-translate-x:calc(.25rem * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-has-hover\\:translate-y-px:is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-translate-y:1px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-has-hover\\:scale-100:is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-\\[data-focus-visible-added\\]\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.peer):is(data-focus-visible-added)~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:after\\:scale-100:is(:where(.peer):checked~*):after",
+                 "at": "@layer utilities",
+                 "decl": "content:var(--tw-content);--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&_svg\\]\\:\\!text-\\[var\\(--accents-8\\)\\]:is(:where(.peer):checked~*) svg",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--accents-8)!important"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:\\[\\&_svg\\]\\:\\!text-\\[var\\(--accents-8\\)\\]:is(:where(.peer):focus-visible~*) svg",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--accents-8)!important"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:\\[\\&\\.indeterminate_svg_line\\]\\:stroke-\\[var\\(--ds-gray-500\\)\\]:is(:where(.peer):disabled~*).indeterminate svg line",
+                 "at": "@layer utilities",
+                 "decl": "stroke:var(--ds-gray-500)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:border-\\[var\\(--ds-blue-900\\)\\]:is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "border-color:var(--ds-blue-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:border-\\[var\\(--ds-gray-1000\\)\\]:is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "border-color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:bg-\\[var\\(--ds-blue-900\\)\\]:is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-blue-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:bg-\\[var\\(--ds-gray-1000\\)\\]:is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:peer-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:border-\\[var\\(--ds-gray-600\\)\\]:is(:where(.peer):disabled~*):is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "border-color:var(--ds-gray-600)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:peer-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:bg-\\[var\\(--ds-gray-600\\)\\]:is(:where(.peer):disabled~*):is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-600)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)_svg_path\\]\\:visible:is(:where(.peer):checked~*):not(.indeterminate) svg path",
+                 "at": "@layer utilities",
+                 "decl": "visibility:visible"
+                },
+                {
+                 "cls": "bg-gray-1000",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "h-1",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:.25rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "absolute",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "position:absolute"
+                },
+                {
+                 "cls": "top-[calc(50%-1px)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "top:calc(50% - 1px)"
+                },
+                {
+                 "cls": "left-0",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "left:0"
+                },
+                {
+                 "cls": "pointer-events-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "pointer-events:none"
+                },
+                {
+                 "cls": "rounded-[5px]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:5px"
+                },
+                {
+                 "cls": "overflow-hidden",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "overflow:hidden"
+                },
+                {
+                 "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+                 "state": "::-webkit-progress-bar",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "[&::-webkit-progress-value]:bg-[var(--geist-foreground)]",
+                 "state": "::-webkit-progress-value",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--geist-foreground)"
+                }
+               ],
+               "unresolved": [],
+               "children": []
+              },
+              {
+               "tag": "div",
+               "attrs": {
+                "style": "left:0%"
+               },
+               "styles": [
+                {
+                 "cls": "absolute",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "position:absolute"
+                },
+                {
+                 "cls": "size-2.5",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:.625rem;height:.625rem"
+                },
+                {
+                 "cls": "rounded-[50%]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:50%"
+                },
+                {
+                 "cls": "bg-[var(--geist-foreground)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--geist-foreground)"
+                },
+                {
+                 "cls": "translate-x-1",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-translate-x:calc(.25rem * 1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "translate-y-px",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-translate-y:1px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "scale-0",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-scale-x:0%;--tw-scale-y:0%;--tw-scale-z:0%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+                },
+                {
+                 "cls": "transition-[width,height,border-radius,transform,background-color]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "transition-property:width,height,border-radius,transform,background-color;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                },
+                {
+                 "cls": "duration-100",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-duration:.1s;transition-duration:.1s"
+                },
+                {
+                 "cls": "duration-100",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "animation-duration:.1s"
+                },
+                {
+                 "cls": "ease-in-out",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                },
+                {
+                 "cls": "ease-in-out",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                },
+                {
+                 "cls": "top-[calc(50%-5px)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "top:calc(50% - 5px)"
+                },
+                {
+                 "cls": "pointer-events-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "pointer-events:none"
+                },
+                {
+                 "cls": "peer-has-hover:-translate-x-1",
+                 "state": ":is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-translate-x:calc(.25rem * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "peer-has-hover:translate-y-px",
+                 "state": ":is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-translate-y:1px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "peer-has-hover:scale-100",
+                 "state": ":is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+                }
+               ],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[13px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-size:13px"
+              },
+              {
+               "cls": "leading-10",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:calc(.25rem * 10);line-height:2.5rem"
+              },
+              {
+               "cls": "py-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-block:0"
+              },
+              {
+               "cls": "px-3",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-inline:.75rem"
+              },
+              {
+               "cls": "flex-[0_0_auto]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:none"
+              },
+              {
+               "cls": "tabular-nums",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)"
+              },
+              {
+               "cls": "w-[60px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:60px"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "00:00"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Controls visible",
+   "description": "The control bar while the pointer moves over the player (a client-only state): opaque, lifted 6px, 200ms ease. The video is playing, so the button shows the pause glyph.",
+   "code": "import { Video } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Video\n      height={582}\n      lazy={false}\n      src=\"https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4\"\n      width={600}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "figure",
+     "attrs": {
+      "data-version": "v1",
+      "role": "region",
+      "aria-label": "Video player",
+      "style": "--video-margin:40px;--video-width:min(600px, 950px)"
+     },
+     "styles": [
+      {
+       "cls": "block",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:block"
+      },
+      {
+       "cls": "text-center",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "text-align:center"
+      },
+      {
+       "cls": "my-[var(--video-margin)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-block:var(--video-margin)"
+      },
+      {
+       "cls": "mx-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-inline:0"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        },
+        {
+         "cls": "my-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-block:0"
+        },
+        {
+         "cls": "mx-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-inline:auto"
+        },
+        {
+         "cls": "w-[var(--video-width)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:var(--video-width)"
+        },
+        {
+         "cls": "max-w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:100%"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "padding-bottom:97%"
+         },
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "justify-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:center"
+          },
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "video",
+           "attrs": {
+            "width": "600",
+            "height": "582",
+            "preload": "auto",
+            "playsinline": "",
+            "muted": ""
+           },
+           "styles": [
+            {
+             "cls": "h-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:100%"
+            },
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "left-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:0"
+            },
+            {
+             "cls": "top-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:0"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "cursor-pointer",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "cursor:pointer"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:w-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:h-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "height:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:max-h-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "max-height:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:z-[99999999]",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "z-index:99999999"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "bottom-[5%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "bottom:5%"
+            },
+            {
+             "cls": "bg-[var(--geist-background)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--geist-background)"
+            },
+            {
+             "cls": "h-12",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:3rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "py-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-block:0"
+            },
+            {
+             "cls": "px-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.5rem"
+            },
+            {
+             "cls": "opacity-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "opacity:0"
+            },
+            {
+             "cls": "rounded-md",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.375rem"
+            },
+            {
+             "cls": "w-[85%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:85%"
+            },
+            {
+             "cls": "shadow-[var(--ds-shadow-tooltip)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:var(--ds-shadow-tooltip);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "transition-all",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "max-[992px]:opacity-100",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "opacity:1"
+            },
+            {
+             "cls": "max-[992px]:translate-x-0",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "--tw-translate-x:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            },
+            {
+             "cls": "max-[992px]:translate-y-0",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "--tw-translate-y:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            },
+            {
+             "cls": "max-[992px]:scale-x-100",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "--tw-scale-x:100%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+            },
+            {
+             "cls": "max-[992px]:scale-y-0",
+             "state": "",
+             "at": "@layer utilities @media not all and (min-width:992px)",
+             "decl": "--tw-scale-y:0%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "opacity-100",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "opacity:1"
+            },
+            {
+             "cls": "translate-x-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-x:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            },
+            {
+             "cls": "-translate-y-[6px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-y:calc(6px * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-[easing-function:cubic-bezier(0.25,0.57,0.45,0.94)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:cubic-bezier(.25,.57,.45,.94);transition-timing-function:cubic-bezier(.25,.57,.45,.94)"
+            },
+            {
+             "cls": "ease-[easing-function:cubic-bezier(0.25,0.57,0.45,0.94)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.25,.57,.45,.94)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "button",
+             "attrs": {
+              "type": "button"
+             },
+             "styles": [
+              {
+               "cls": "bg-transparent",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#0000"
+              },
+              {
+               "cls": "border-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-style:var(--tw-border-style);border-width:0"
+              },
+              {
+               "cls": "size-10",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:2.5rem;height:2.5rem"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "justify-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:center"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "outline-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-outline-style:none;outline-style:none"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "flex-[0_0_40px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:0 0 40px"
+              },
+              {
+               "cls": "p-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding:0"
+              },
+              {
+               "cls": "focus-visible:rounded-sm",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "border-radius:.25rem"
+              },
+              {
+               "cls": "focus-visible:shadow-[var(--ds-focus-ring)]",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:var(--ds-gray-1000)"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "pl-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-left:0"
+              },
+              {
+               "cls": "text-[13px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-size:13px"
+              },
+              {
+               "cls": "leading-10",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:calc(.25rem * 10);line-height:2.5rem"
+              },
+              {
+               "cls": "py-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-block:0"
+              },
+              {
+               "cls": "px-3",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-inline:.75rem"
+              },
+              {
+               "cls": "flex-[0_0_auto]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:none"
+              },
+              {
+               "cls": "tabular-nums",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)"
+              },
+              {
+               "cls": "w-[60px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:60px"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "00:00"
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "flex-[1_0_auto]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:1 0 auto"
+              },
+              {
+               "cls": "-mt-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-top:-1px"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "div",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "h-[18px]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:18px"
+                },
+                {
+                 "cls": "bg-transparent",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:#0000"
+                },
+                {
+                 "cls": "cursor-pointer",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "cursor:pointer"
+                },
+                {
+                 "cls": "max-[992px]:h-[18px]",
+                 "state": "",
+                 "at": "@layer utilities @media not all and (min-width:992px)",
+                 "decl": "height:18px"
+                },
+                {
+                 "cls": "[-webkit-tap-highlight-color:rgba(0,0,0,0)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "-webkit-tap-highlight-color:#0000"
+                }
+               ],
+               "unresolved": [],
+               "children": []
+              },
+              {
+               "tag": "progress",
+               "attrs": {
+                "max": "100",
+                "value": "0"
+               },
+               "styles": [
+                {
+                 "cls": "peer",
+                 "state": "):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--radio-color:var(--ds-gray-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-background-100)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--radio-color:var(--ds-gray-700)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:rounded-\\[4px\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:4px"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:rounded-\\[6px\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:6px"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-background-100)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:bg-\\[var\\(--switch-checked-color\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--switch-checked-color)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:text-\\[var\\(--ds-gray-1000\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:shadow-\\[0_0_0_1px_var\\(--ds-gray-400\\)\\,0px_1px_2px_0px_var\\(--ds-gray-alpha-100\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-400)), 0px 1px 2px 0px var(--tw-shadow-color,var(--ds-gray-alpha-100));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[--radio-color\\:var\\(--ds-blue-900\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-blue-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[--radio-color\\:var\\(--ds-gray-1000\\)\\]:is(:where(.peer):checked~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-hover\\:opacity-100:is(:where(.peer):hover~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "opacity:1"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-hover\\:not-peer-disabled\\:not-peer-checked\\:border-\\[var\\(--ds-gray-700\\)\\]:is(:where(.peer):hover~*):not(:is(:where(.peer):disabled~*)):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "border-color:var(--ds-gray-700)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-hover\\:not-peer-disabled\\:not-peer-checked\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.peer):hover~*):not(:is(:where(.peer):disabled~*)):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-background-100)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-hover\\:not-peer-disabled\\:not-peer-checked\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.peer):hover~*):not(:is(:where(.peer):disabled~*)):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:text-\\[var\\(--ds-gray-1000\\)\\]:is(:where(.peer):focus-visible~*)",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.peer):focus-visible~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:ring:is(:where(.peer):focus-visible~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:ring-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.peer):focus-visible~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-ring-color:var(--ds-focus-ring)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:not-peer-checked\\:not-peer-disabled\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.peer):focus-visible~*):not(:is(:where(.peer):checked~*)):not(:is(:where(.peer):disabled~*))",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-active\\:\\[--radio-color\\:var\\(--ds-blue-900\\)\\]:is(:where(.peer):active~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-blue-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-active\\:\\[--radio-color\\:var\\(--ds-gray-600\\)\\]:is(:where(.peer):active~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-gray-600)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:text-gray-800:is(:where(.peer):disabled~*)",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--ds-gray-800)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:not-peer-checked\\:border-\\[var\\(--ds-gray-500\\)\\]:is(:where(.peer):disabled~*):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities",
+                 "decl": "border-color:var(--ds-gray-500)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:not-peer-checked\\:bg-\\[var\\(--ds-gray-100\\)\\]:is(:where(.peer):disabled~*):not(:is(:where(.peer):checked~*))",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-100)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:peer-disabled\\:\\!\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.peer):checked~*):is(:where(.peer):disabled~*)",
+                 "at": "@layer utilities",
+                 "decl": "--radio-color:var(--ds-gray-900)!important"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-has-hover\\:-translate-x-1:is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-translate-x:calc(.25rem * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-has-hover\\:translate-y-px:is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-translate-y:1px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-has-hover\\:scale-100:is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-\\[data-focus-visible-added\\]\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.peer):is(data-focus-visible-added)~*)",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:after\\:scale-100:is(:where(.peer):checked~*):after",
+                 "at": "@layer utilities",
+                 "decl": "content:var(--tw-content);--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&_svg\\]\\:\\!text-\\[var\\(--accents-8\\)\\]:is(:where(.peer):checked~*) svg",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--accents-8)!important"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-focus-visible\\:\\[\\&_svg\\]\\:\\!text-\\[var\\(--accents-8\\)\\]:is(:where(.peer):focus-visible~*) svg",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--accents-8)!important"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:\\[\\&\\.indeterminate_svg_line\\]\\:stroke-\\[var\\(--ds-gray-500\\)\\]:is(:where(.peer):disabled~*).indeterminate svg line",
+                 "at": "@layer utilities",
+                 "decl": "stroke:var(--ds-gray-500)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:border-\\[var\\(--ds-blue-900\\)\\]:is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "border-color:var(--ds-blue-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:border-\\[var\\(--ds-gray-1000\\)\\]:is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "border-color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:bg-\\[var\\(--ds-blue-900\\)\\]:is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-blue-900)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:bg-\\[var\\(--ds-gray-1000\\)\\]:is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:peer-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:border-\\[var\\(--ds-gray-600\\)\\]:is(:where(.peer):disabled~*):is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "border-color:var(--ds-gray-600)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-disabled\\:peer-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)\\]\\:bg-\\[var\\(--ds-gray-600\\)\\]:is(:where(.peer):disabled~*):is(:where(.peer):checked~*):not(.indeterminate)",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-600)"
+                },
+                {
+                 "cls": "peer",
+                 "state": "-checked\\:\\[\\&\\:not\\(\\.indeterminate\\)_svg_path\\]\\:visible:is(:where(.peer):checked~*):not(.indeterminate) svg path",
+                 "at": "@layer utilities",
+                 "decl": "visibility:visible"
+                },
+                {
+                 "cls": "bg-gray-1000",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "h-1",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:.25rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "absolute",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "position:absolute"
+                },
+                {
+                 "cls": "top-[calc(50%-1px)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "top:calc(50% - 1px)"
+                },
+                {
+                 "cls": "left-0",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "left:0"
+                },
+                {
+                 "cls": "pointer-events-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "pointer-events:none"
+                },
+                {
+                 "cls": "rounded-[5px]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:5px"
+                },
+                {
+                 "cls": "overflow-hidden",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "overflow:hidden"
+                },
+                {
+                 "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+                 "state": "::-webkit-progress-bar",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "[&::-webkit-progress-value]:bg-[var(--geist-foreground)]",
+                 "state": "::-webkit-progress-value",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--geist-foreground)"
+                }
+               ],
+               "unresolved": [],
+               "children": []
+              },
+              {
+               "tag": "div",
+               "attrs": {
+                "style": "left:0%"
+               },
+               "styles": [
+                {
+                 "cls": "absolute",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "position:absolute"
+                },
+                {
+                 "cls": "size-2.5",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:.625rem;height:.625rem"
+                },
+                {
+                 "cls": "rounded-[50%]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:50%"
+                },
+                {
+                 "cls": "bg-[var(--geist-foreground)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:var(--geist-foreground)"
+                },
+                {
+                 "cls": "translate-x-1",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-translate-x:calc(.25rem * 1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "translate-y-px",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-translate-y:1px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "scale-0",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-scale-x:0%;--tw-scale-y:0%;--tw-scale-z:0%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+                },
+                {
+                 "cls": "transition-[width,height,border-radius,transform,background-color]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "transition-property:width,height,border-radius,transform,background-color;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                },
+                {
+                 "cls": "duration-100",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-duration:.1s;transition-duration:.1s"
+                },
+                {
+                 "cls": "duration-100",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "animation-duration:.1s"
+                },
+                {
+                 "cls": "ease-in-out",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                },
+                {
+                 "cls": "ease-in-out",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                },
+                {
+                 "cls": "top-[calc(50%-5px)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "top:calc(50% - 5px)"
+                },
+                {
+                 "cls": "pointer-events-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "pointer-events:none"
+                },
+                {
+                 "cls": "peer-has-hover:-translate-x-1",
+                 "state": ":is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-translate-x:calc(.25rem * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "peer-has-hover:translate-y-px",
+                 "state": ":is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-translate-y:1px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+                },
+                {
+                 "cls": "peer-has-hover:scale-100",
+                 "state": ":is(:where(.peer):has(:hover)~*)",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "--tw-scale-x:100%;--tw-scale-y:100%;--tw-scale-z:100%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+                }
+               ],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[13px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-size:13px"
+              },
+              {
+               "cls": "leading-10",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:calc(.25rem * 10);line-height:2.5rem"
+              },
+              {
+               "cls": "py-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-block:0"
+              },
+              {
+               "cls": "px-3",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-inline:.75rem"
+              },
+              {
+               "cls": "flex-[0_0_auto]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:none"
+              },
+              {
+               "cls": "tabular-nums",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-numeric-spacing:tabular-nums;font-variant-numeric:var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,)"
+              },
+              {
+               "cls": "w-[60px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:60px"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "00:00"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Rounded",
+   "description": "The `borderRadius` prop rounds the video box by the radius token.",
+   "code": "import { Video } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Video\n      height={582}\n      lazy={false}\n      borderRadius\n      src=\"https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4\"\n      width={600}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "figure",
+     "attrs": {
+      "data-version": "v1",
+      "role": "region",
+      "aria-label": "Video player",
+      "style": "--video-margin:40px;--video-width:min(600px, 950px)"
+     },
+     "styles": [
+      {
+       "cls": "block",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:block"
+      },
+      {
+       "cls": "text-center",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "text-align:center"
+      },
+      {
+       "cls": "my-[var(--video-margin)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-block:var(--video-margin)"
+      },
+      {
+       "cls": "mx-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-inline:0"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        },
+        {
+         "cls": "my-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-block:0"
+        },
+        {
+         "cls": "mx-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-inline:auto"
+        },
+        {
+         "cls": "w-[var(--video-width)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:var(--video-width)"
+        },
+        {
+         "cls": "max-w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:100%"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "padding-bottom:97%"
+         },
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "justify-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:center"
+          },
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "video",
+           "attrs": {
+            "width": "600",
+            "height": "582",
+            "preload": "auto",
+            "playsinline": "",
+            "muted": ""
+           },
+           "styles": [
+            {
+             "cls": "h-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:100%"
+            },
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "left-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:0"
+            },
+            {
+             "cls": "top-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:0"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "cursor-pointer",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "cursor:pointer"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:w-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:h-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "height:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:max-h-full",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "max-height:100%"
+            },
+            {
+             "cls": "[::-webkit-full-screen]:z-[99999999]",
+             "state": ":is()",
+             "at": "@layer utilities",
+             "decl": "z-index:99999999"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

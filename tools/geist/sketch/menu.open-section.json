@@ -1,0 +1,245 @@
+{
+ "heading": "Open with section",
+ "description": "The sectioned menu open: a titled group, a locked item, a divider and an error item.",
+ "code": "import {\n  Menu,\n  MenuButton,\n  MenuContainer,\n  MenuDivider,\n  MenuItem,\n  MenuItemLocked,\n  MenuSection,\n} from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <MenuContainer>\n      <MenuButton>Actions</MenuButton>\n      <Menu width={200}>\n        <MenuSection title=\"Section\">\n          <MenuItem onClick={() => undefined}>One</MenuItem>\n          <MenuItem onClick={() => undefined}>Two</MenuItem>\n        </MenuSection>\n        <MenuItem onClick={() => undefined}>Three</MenuItem>\n        <MenuItemLocked onClick={() => undefined}>Locked</MenuItemLocked>\n        <MenuDivider />\n        <MenuItem onClick={() => undefined} type=\"error\">\n          Delete\n        </MenuItem>\n      </Menu>\n    </MenuContainer>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "relative",
+   "attrs": {
+    "style": "min-height:300px"
+   },
+   "children": [
+    {
+     "tag": "button",
+     "attrs": {
+      "type": "submit",
+      "tabindex": "0",
+      "data-react-aria-pressable": "true",
+      "aria-haspopup": "true",
+      "aria-expanded": "true",
+      "aria-controls": "menu-_R_eoslubquiuq6ivb_",
+      "data-geist-menu-button": "",
+      "data-is-open": "true",
+      "id": "menu-button-_R_eoslubquiuq6ivbH1_",
+      "style": "--geist-icon-size:16px",
+      "data-geist-button": "",
+      "data-prefix": "false",
+      "data-suffix": "false",
+      "data-version": "v1"
+     },
+     "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium !px-(--geist-gap-half) max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:10px] [--height:var(--ds-size-medium)] text-[14px] !pl-[var(--x-padding)] !pr-[var(--x-padding)] rounded-md h-[var(--height)] data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))] dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))] data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow]",
+     "children": [
+      {
+       "tag": "span",
+       "attrs": {},
+       "class": "truncate px-1.5 flex items-center justify-center",
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "class": "flex items-center justify-between gap-1 flex-nowrap w-full",
+         "text": "Actions"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "z-[var(--ds-z-menu)] transition-opacity duration-150 ease-in-out data-[phase=exiting]:opacity-0",
+     "attrs": {
+      "data-phase": "entered",
+      "style": "position:absolute;left:0px;top:46px"
+     },
+     "children": [
+      {
+       "tag": "ul",
+       "class": "data-[state='closed']:animate-fade-popover-out m-0 text-sm material-menu overflow-x-hidden overflow-y-auto overscroll-contain p-(--ds-popover-padding) outline-none [-webkit-overflow-scrolling:_touch] max-md:rounded-b-none max-md:w-[unset]!",
+       "attrs": {
+        "aria-labelledby": "menu-button-_R_eoslubquiuq6ivbH1_",
+        "id": "menu-2d",
+        "data-geist-menu": "",
+        "data-version": "v1",
+        "role": "menu",
+        "style": "width:200px",
+        "tabindex": "-1"
+       },
+       "children": [
+        {
+         "tag": "li",
+         "attrs": {
+          "data-geist-menu-section": "",
+          "role": "presentation"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "class": "block text-gray-800 text-label-14 p-2",
+           "attrs": {
+            "aria-hidden": "true",
+            "id": "menu-section-26"
+           },
+           "text": "Section"
+          },
+          {
+           "tag": "ul",
+           "class": "m-0 p-0 list-none",
+           "attrs": {
+            "aria-labelledby": "menu-section-26",
+            "role": "group"
+           },
+           "children": [
+            {
+             "tag": "li",
+             "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+             "attrs": {
+              "data-geist-menu-item": "",
+              "data-descendant": "_23",
+              "role": "menuitem",
+              "style": "--geist-icon-size:18px",
+              "tabindex": "-1",
+              "aria-labelledby": "menu-item-22"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "id": "menu-item-22"
+               },
+               "text": "One"
+              }
+             ]
+            },
+            {
+             "tag": "li",
+             "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+             "attrs": {
+              "data-geist-menu-item": "",
+              "data-descendant": "_25",
+              "role": "menuitem",
+              "style": "--geist-icon-size:18px",
+              "tabindex": "-1",
+              "aria-labelledby": "menu-item-24"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "id": "menu-item-24"
+               },
+               "text": "Two"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_28",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-27"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-27"
+           },
+           "text": "Three"
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_2a",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-29",
+          "aria-disabled": "true"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-29"
+           },
+           "text": "Locked"
+          },
+          {
+           "tag": "span",
+           "class": "flex ml-auto pl-[var(--geist-gap-half)]",
+           "attrs": {
+            "aria-hidden": "true"
+           },
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "viewBox": "0 0 16 16",
+              "height": "16",
+              "width": "16",
+              "data-slot": "geist-icon",
+              "style": "color:var(--ds-gray-700)"
+             },
+             "children": [
+              {
+               "tag": "path",
+               "attrs": {
+                "d": "M8 1v14M1 8h14"
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "class": "h-px bg-[var(--ds-gray-alpha-400)] my-1.5 -mx-1.5",
+         "attrs": {
+          "data-geist-menu-divider": "",
+          "role": "separator"
+         }
+        },
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base !text-red-900 aria-disabled:!text-gray-700 disabled:!text-gray-700 data-selected:bg-red-100 data-highlighted:bg-red-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_2c",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-2b"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-2b"
+           },
+           "text": "Delete"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+  "heading": "Free scrolled",
+  "description": "The free scroller scrolled into the middle of its grid: all four fades show.",
+  "code": "import { Scroller } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Scroller height={220} overflow=\"both\" width=\"100%\">\n      <div className=\"grid grid-flow-col grid-rows-2 gap-4\">\n        {...Array.from({ length: 6 }, (_, i) => (\n          <div className=\"bg-gray-1000 h-96 w-96\" key={i} />\n        ))}\n      </div>\n    </Scroller>\n  );\n}\n",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "aGa9CG_overlayContainer aGa9CG_isHorizontal",
+      "attrs": {
+        "data-geist-scroller": "",
+        "data-version": "v1",
+        "style": "width:100%;height:220px"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "class": "aGa9CG_overlay aGa9CG_top aGa9CG_right aGa9CG_bottom aGa9CG_left",
+          "attrs": {
+            "data-geist-scroller-overlay": ""
+          }
+        },
+        {
+          "tag": "div",
+          "class": "aGa9CG_scroller",
+          "attrs": {
+            "data-geist-scroller-container": "",
+            "data-geist-scroller-overflowing": "",
+            "data-overflow": "both"
+          },
+          "children": [
+            {
+              "tag": "div",
+              "children": [
+                {
+                  "tag": "div",
+                  "class": "grid grid-flow-col grid-rows-2 gap-4",
+                  "children": [
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-96 w-96"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-96 w-96"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-96 w-96"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-96 w-96"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-96 w-96"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-96 w-96"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

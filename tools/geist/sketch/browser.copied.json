@@ -1,0 +1,23 @@
+{
+  "heading": "Copied",
+  "description": "The address bar's copy button one second after a copy: the two icon layers swap (the check scales in, the copy glyph scales out). The class strings come from the component's client code; the server HTML renders the rest state only.",
+  "code": "export function Component(): JSX.Element {\n  return <Browser address=\"https://www.vercel.com\" />;\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "relative",
+      "children": [
+        {
+          "tag": "div",
+          "class": "absolute inset-0 flex items-center justify-center transition-all duration-150 ease-out scale-100 opacity-100",
+          "children": [{ "tag": "svg", "attrs": { "viewBox": "0 0 16 16", "height": "12", "width": "12", "data-slot": "geist-icon", "style": "color:currentColor" } }]
+        },
+        {
+          "tag": "div",
+          "class": "flex items-center justify-center transition-all duration-150 ease-out scale-0 opacity-0",
+          "children": [{ "tag": "svg", "attrs": { "viewBox": "0 0 16 16", "height": "12", "width": "12", "data-slot": "geist-icon", "style": "color:currentColor" } }]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "note": "Run each page's two sides for both themes (theme: light, then dark). The mirror's static examples are the server render, before the component's first measurement; the sketches (data-sketch sections) carry the measured states, so the geist marker reads roots inside them only. Ours measures on mount, so its base examples read as the at-rest sketches and its scripted examples as the scrolled ones, in the same order. A second run of the scroller page with the same configuration at a 600px viewport (page: scroller-narrow, both tabs resized) exercises the mobile-grid media rule: its only hard line is the grid tracks (1fr 1fr resolved against the stage width, 276px on the 552px sketch stage and 259px in ours), a stage-width difference like the soft widths.",
+  "props": [
+    "display",
+    "height",
+    "width",
+    "min-width",
+    "max-width",
+    "padding-left",
+    "padding-right",
+    "padding-top",
+    "padding-bottom",
+    "margin-left",
+    "margin-right",
+    "margin-top",
+    "margin-bottom",
+    "border-radius",
+    "border-top-width",
+    "box-shadow",
+    "background-color",
+    "color",
+    "opacity",
+    "font-family",
+    "font-size",
+    "line-height",
+    "font-weight",
+    "letter-spacing",
+    "text-transform",
+    "cursor",
+    "gap",
+    "align-items",
+    "justify-content",
+    "transition-duration",
+    "transition-property",
+    "translate",
+    "transform",
+    "outline-style",
+    "user-select",
+    "overflow",
+    "overflow-x",
+    "overflow-y",
+    "text-overflow",
+    "white-space",
+    "flex-shrink",
+    "flex-direction",
+    "position",
+    "z-index",
+    "pointer-events",
+    "touch-action",
+    "will-change",
+    "background-image",
+    "background-position",
+    "background-size",
+    "background-repeat",
+    "scrollbar-width",
+    "grid-template-columns",
+    "grid-auto-flow",
+    "top",
+    "left",
+    "content"
+  ],
+  "scroller": {
+    "geist": {
+      "side": "geist",
+      "page": "scroller",
+      "marker": "[data-sketch] [data-geist-scroller]",
+      "states": [
+        ""
+      ],
+      "children": {
+        "overlay": ".overlay|[data-geist-scroller-overlay]",
+        "before": ".overlay::before|[data-geist-scroller-overlay]::before",
+        "after": ".overlay::after|[data-geist-scroller-overlay]::after",
+        "container": ".container|[data-geist-scroller-container]",
+        "content": ".content|[data-geist-scroller-container] > div"
+      },
+      "textParts": [
+        "overlay",
+        "before",
+        "after",
+        "container",
+        "content"
+      ]
+    },
+    "ours": {
+      "side": "ours",
+      "page": "scroller",
+      "host": "acme-scroller",
+      "ours": ".scroller",
+      "states": [
+        ""
+      ],
+      "children": {
+        "overlay": ".overlay|[data-geist-scroller-overlay]",
+        "before": ".overlay::before|[data-geist-scroller-overlay]::before",
+        "after": ".overlay::after|[data-geist-scroller-overlay]::after",
+        "container": ".container|[data-geist-scroller-container]",
+        "content": ".content|[data-geist-scroller-container] > div"
+      },
+      "textParts": [
+        "overlay",
+        "before",
+        "after",
+        "container",
+        "content"
+      ]
+    }
+  },
+  "scroller-buttons": {
+    "geist": {
+      "side": "geist",
+      "page": "scroller-buttons",
+      "marker": "[data-sketch] .aGa9CG_buttons",
+      "children": {
+        "prev": "acme-button:first-child >> .btn|[data-geist-button]:first-child",
+        "next": "acme-button:last-child >> .btn|[data-geist-button]:last-child",
+        "label": "acme-button:first-child >> .label|[data-geist-button]:first-child > span",
+        "icon": "acme-button:first-child svg|[data-geist-button]:first-child svg"
+      }
+    },
+    "ours": {
+      "side": "ours",
+      "page": "scroller-buttons",
+      "host": "acme-scroller",
+      "ours": ".buttons",
+      "children": {
+        "prev": "acme-button:first-child >> .btn|[data-geist-button]:first-child",
+        "next": "acme-button:last-child >> .btn|[data-geist-button]:last-child",
+        "label": "acme-button:first-child >> .label|[data-geist-button]:first-child > span",
+        "icon": "acme-button:first-child svg|[data-geist-button]:first-child svg"
+      }
+    }
+  },
+  "scroller-narrow": {
+    "viewport": 600,
+    "geist": {
+      "side": "geist",
+      "page": "scroller-narrow",
+      "marker": "[data-sketch] [data-geist-scroller]",
+      "states": [
+        ""
+      ],
+      "children": {
+        "overlay": ".overlay|[data-geist-scroller-overlay]",
+        "before": ".overlay::before|[data-geist-scroller-overlay]::before",
+        "after": ".overlay::after|[data-geist-scroller-overlay]::after",
+        "container": ".container|[data-geist-scroller-container]",
+        "content": ".content|[data-geist-scroller-container] > div"
+      },
+      "textParts": [
+        "overlay",
+        "before",
+        "after",
+        "container",
+        "content"
+      ]
+    },
+    "ours": {
+      "side": "ours",
+      "page": "scroller-narrow",
+      "host": "acme-scroller",
+      "ours": ".scroller",
+      "states": [
+        ""
+      ],
+      "children": {
+        "overlay": ".overlay|[data-geist-scroller-overlay]",
+        "before": ".overlay::before|[data-geist-scroller-overlay]::before",
+        "after": ".overlay::after|[data-geist-scroller-overlay]::after",
+        "container": ".container|[data-geist-scroller-container]",
+        "content": ".content|[data-geist-scroller-container] > div"
+      },
+      "textParts": [
+        "overlay",
+        "before",
+        "after",
+        "container",
+        "content"
+      ]
+    }
+  }
+}

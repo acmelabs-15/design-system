@@ -1,0 +1,64 @@
+{
+ "heading": "No border",
+ "description": "border={false} (client code): the border stays in the box but turns transparent; the page has no such example.",
+ "code": "import { EmptyState, EmptyStateIcon } from \"@vercel/geistcn/components\";\nimport type { JSX } from \"react\";\nimport { IconChartBarPeak } from \"@vercel/geistcn-assets/icons\";\n\nexport function Component(): JSX.Element {\n  return (\n    <EmptyState\n      border={false}\n      description=\"A message conveying the state of the product.\"\n      icon={<EmptyStateIcon icon={<IconChartBarPeak size={32} />} />}\n      title=\"Title\"\n    />\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "[&>a]:text-sm rounded-lg py-12 gap-6 flex w-full flex-col items-center border px-[70px] border-transparent bg-[var(--ds-background-100)]",
+   "children": [
+    {
+     "tag": "div",
+     "children": [
+      {
+       "tag": "div",
+       "class": "rounded-lg flex shrink-0 items-center justify-center border border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] p-[10px] text-[var(--ds-gray-900)]!",
+       "attrs": {
+        "aria-hidden": "true"
+       },
+       "children": [
+        {
+         "tag": "svg",
+         "attrs": {
+          "viewBox": "0 0 16 16",
+          "height": "32",
+          "width": "32",
+          "data-slot": "geist-icon",
+          "style": "color:currentColor"
+         },
+         "children": [
+          {
+           "tag": "path",
+           "attrs": {
+            "fill": "currentColor",
+            "fill-rule": "evenodd",
+            "d": "M14 1v14h-1.5V1zM8.75 6v9h-1.5V6zM3.5 10.75V10H2v5h1.5v-4.25",
+            "clip-rule": "evenodd"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "gap-2 flex flex-col",
+     "children": [
+      {
+       "tag": "div",
+       "class": "text-gray-1000 font-medium mx-auto max-w-[340px] text-center text-balance text-heading-16",
+       "text": "Title"
+      },
+      {
+       "tag": "div",
+       "class": "text-copy-14 text-gray-900 mx-auto max-w-[340px] text-center text-balance",
+       "text": "A message conveying the state of the product."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

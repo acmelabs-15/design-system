@@ -1,0 +1,49 @@
+{
+  "heading": "Grid page with banner",
+  "description": "A GridPage with a banner: the page keeps no top padding for the banner's height at the lg breakpoint (the `lg:first:pt-0` utility replaces the banner-height one). The docs render no banner; the class strings come from the component's client code.",
+  "code": "export function Component(): JSX.Element {\n  return (\n    <GridPage banner={<div>Banner</div>}>\n      <GridSystem guideWidth={1}>\n        <Grid columns={1} rows={1}>\n          <GridCell>Content here</GridCell>\n        </Grid>\n      </GridSystem>\n    </GridPage>\n  );\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "div",
+          "class": "BwJUkq_stack stack geist-soft-reset AMTIxG_page lg:first:pt-0 BwJUkq_padding",
+          "attrs": { "data-version": "v1", "style": "--stack-flex:initial;--stack-direction:column;--stack-align:stretch;--stack-justify:flex-start;--sm-stack-padding:16px 0px;--md-stack-padding:32px 0px;--lg-stack-padding:90px 0px;--xl-stack-padding:90px 0px;--stack-gap:0px" },
+          "children": [
+            { "tag": "div", "text": "Banner" },
+            {
+              "tag": "div",
+              "class": "AMTIxG_gridSystemContentWrapper",
+              "children": [
+                {
+                  "tag": "div",
+                  "class": "AMTIxG_gridSystem",
+                  "attrs": { "style": "--guide-width:1px" },
+                  "children": [
+                    {
+                      "tag": "section",
+                      "class": "AMTIxG_grid",
+                      "attrs": { "data-grid": "", "style": "--grid-rows:1;--grid-columns:1;--sm-height:fit-content" },
+                      "children": [
+                        { "tag": "div", "class": "AMTIxG_block", "attrs": { "data-grid-cell": "", "style": "--sm-grid-row:auto;--sm-grid-column:auto;--sm-cell-rows:auto;--sm-cell-columns:auto" }, "text": "Content here" },
+                        {
+                          "tag": "div",
+                          "class": "AMTIxG_guides",
+                          "attrs": { "aria-hidden": "true", "data-grid-guides": "true" },
+                          "children": [{ "tag": "div", "class": "AMTIxG_guide", "attrs": { "aria-hidden": "true", "style": "--x:1;--y:1;border-right:none;border-bottom:none" } }]
+                        }
+                      ]
+                    },
+                    { "tag": "div", "class": "AMTIxG_gridSystemLazyContent" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

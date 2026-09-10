@@ -1,0 +1,523 @@
+{
+ "heading": "Inline kinds",
+ "description": "Top-level single pairs of every value kind on one line, with search marks on the key and the value.",
+ "code": "const highlightPattern = makeJsonViewHighlightPattern(['api', '42', 'true', 'null']);\n\nexport function Component(): JSX.Element {\n  return (\n    <>\n      <JsonView data={{ api: 'api' }} highlightPattern={highlightPattern} />\n      <JsonView data={{ n: 42 }} highlightPattern={highlightPattern} />\n      <JsonView data={{ b: true }} highlightPattern={highlightPattern} />\n      <JsonView data={{ z: null }} highlightPattern={highlightPattern} />\n    </>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "w-full p-6",
+   "children": [
+    {
+     "tag": "span",
+     "class": "inline font-mono leading-5 text-copy-13",
+     "children": [
+      {
+       "tag": "span",
+       "class": "m-0 inline bg-transparent p-0 leading-5 whitespace-pre-wrap [overflow-wrap:anywhere]",
+       "attrs": {
+        "aria-label": "JSON",
+        "role": "tree"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "class": "group/json-child m-0 py-0 pr-0 pl-2 outline-none inline",
+         "attrs": {
+          "aria-expanded": "true",
+          "aria-label": "JSON object",
+          "aria-level": "1",
+          "aria-posinset": "1",
+          "aria-setsize": "1",
+          "data-json-tree-label": "JSON object",
+          "role": "treeitem",
+          "tabindex": "0"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-json-inline-expanded": "true"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+             "attrs": {
+              "data-json-node-toggle": "true"
+             },
+             "text": "{",
+             "children": [
+              {
+               "tag": "span",
+               "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+               "attrs": {
+                "aria-hidden": "true"
+               },
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "viewBox": "0 0 16 16",
+                  "height": "16",
+                  "width": "16",
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "children": [
+                  {
+                   "tag": "path"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "m-0 inline p-0",
+             "attrs": {
+              "role": "group"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "group/json-child m-0 inline p-0 outline-none",
+               "attrs": {
+                "aria-label": "api: \"\"",
+                "aria-level": "2",
+                "aria-posinset": "1",
+                "aria-setsize": "1",
+                "data-json-tree-label": "api: \"\"",
+                "role": "treeitem",
+                "tabindex": "-1"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline rounded align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "api: ",
+                   "children": [
+                    {
+                     "tag": "mark",
+                     "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                     "text": "api"
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "span",
+                   "class": "text-green-900 [[data-theme='dark']_&]:text-blue-700",
+                   "text": "\"\"",
+                   "children": [
+                    {
+                     "tag": "mark",
+                     "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                     "text": "api"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "text": "}"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "inline font-mono leading-5 text-copy-13",
+     "children": [
+      {
+       "tag": "span",
+       "class": "m-0 inline bg-transparent p-0 leading-5 whitespace-pre-wrap [overflow-wrap:anywhere]",
+       "attrs": {
+        "aria-label": "JSON",
+        "role": "tree"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "class": "group/json-child m-0 py-0 pr-0 pl-2 outline-none inline",
+         "attrs": {
+          "aria-expanded": "true",
+          "aria-label": "JSON object",
+          "aria-level": "1",
+          "aria-posinset": "1",
+          "aria-setsize": "1",
+          "data-json-tree-label": "JSON object",
+          "role": "treeitem",
+          "tabindex": "0"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-json-inline-expanded": "true"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+             "attrs": {
+              "data-json-node-toggle": "true"
+             },
+             "text": "{",
+             "children": [
+              {
+               "tag": "span",
+               "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+               "attrs": {
+                "aria-hidden": "true"
+               },
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "viewBox": "0 0 16 16",
+                  "height": "16",
+                  "width": "16",
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "children": [
+                  {
+                   "tag": "path"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "m-0 inline p-0",
+             "attrs": {
+              "role": "group"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "group/json-child m-0 inline p-0 outline-none",
+               "attrs": {
+                "aria-label": "n: ",
+                "aria-level": "2",
+                "aria-posinset": "1",
+                "aria-setsize": "1",
+                "data-json-tree-label": "n: ",
+                "role": "treeitem",
+                "tabindex": "-1"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline rounded align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "n: ",
+                   "children": []
+                  },
+                  {
+                   "tag": "span",
+                   "class": "text-blue-900 [[data-theme='dark']_&]:text-blue-700",
+                   "text": "",
+                   "children": [
+                    {
+                     "tag": "mark",
+                     "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                     "text": "42"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "text": "}"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "inline font-mono leading-5 text-copy-13",
+     "children": [
+      {
+       "tag": "span",
+       "class": "m-0 inline bg-transparent p-0 leading-5 whitespace-pre-wrap [overflow-wrap:anywhere]",
+       "attrs": {
+        "aria-label": "JSON",
+        "role": "tree"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "class": "group/json-child m-0 py-0 pr-0 pl-2 outline-none inline",
+         "attrs": {
+          "aria-expanded": "true",
+          "aria-label": "JSON object",
+          "aria-level": "1",
+          "aria-posinset": "1",
+          "aria-setsize": "1",
+          "data-json-tree-label": "JSON object",
+          "role": "treeitem",
+          "tabindex": "0"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-json-inline-expanded": "true"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+             "attrs": {
+              "data-json-node-toggle": "true"
+             },
+             "text": "{",
+             "children": [
+              {
+               "tag": "span",
+               "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+               "attrs": {
+                "aria-hidden": "true"
+               },
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "viewBox": "0 0 16 16",
+                  "height": "16",
+                  "width": "16",
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "children": [
+                  {
+                   "tag": "path"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "m-0 inline p-0",
+             "attrs": {
+              "role": "group"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "group/json-child m-0 inline p-0 outline-none",
+               "attrs": {
+                "aria-label": "b: ",
+                "aria-level": "2",
+                "aria-posinset": "1",
+                "aria-setsize": "1",
+                "data-json-tree-label": "b: ",
+                "role": "treeitem",
+                "tabindex": "-1"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline rounded align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "b: ",
+                   "children": []
+                  },
+                  {
+                   "tag": "span",
+                   "class": "text-amber-900 [[data-theme='dark']_&]:text-amber-700",
+                   "text": "",
+                   "children": [
+                    {
+                     "tag": "mark",
+                     "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                     "text": "true"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "text": "}"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "inline font-mono leading-5 text-copy-13",
+     "children": [
+      {
+       "tag": "span",
+       "class": "m-0 inline bg-transparent p-0 leading-5 whitespace-pre-wrap [overflow-wrap:anywhere]",
+       "attrs": {
+        "aria-label": "JSON",
+        "role": "tree"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "class": "group/json-child m-0 py-0 pr-0 pl-2 outline-none inline",
+         "attrs": {
+          "aria-expanded": "true",
+          "aria-label": "JSON object",
+          "aria-level": "1",
+          "aria-posinset": "1",
+          "aria-setsize": "1",
+          "data-json-tree-label": "JSON object",
+          "role": "treeitem",
+          "tabindex": "0"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-json-inline-expanded": "true"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+             "attrs": {
+              "data-json-node-toggle": "true"
+             },
+             "text": "{",
+             "children": [
+              {
+               "tag": "span",
+               "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+               "attrs": {
+                "aria-hidden": "true"
+               },
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "viewBox": "0 0 16 16",
+                  "height": "16",
+                  "width": "16",
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "children": [
+                  {
+                   "tag": "path"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "m-0 inline p-0",
+             "attrs": {
+              "role": "group"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "group/json-child m-0 inline p-0 outline-none",
+               "attrs": {
+                "aria-label": "z: ",
+                "aria-level": "2",
+                "aria-posinset": "1",
+                "aria-setsize": "1",
+                "data-json-tree-label": "z: ",
+                "role": "treeitem",
+                "tabindex": "-1"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline rounded align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "z: ",
+                   "children": []
+                  },
+                  {
+                   "tag": "span",
+                   "class": "text-gray-900 [[data-theme='dark']_&]:text-gray-700",
+                   "text": "",
+                   "children": [
+                    {
+                     "tag": "mark",
+                     "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                     "text": "null"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "text": "}"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

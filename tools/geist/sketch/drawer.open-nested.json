@@ -1,0 +1,52 @@
+{
+ "heading": "Open nested",
+ "description": "`nested`: opened from inside a modal, the backdrop and the viewport sit one step above the modal's layer.",
+ "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}} nested>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n      </div>\n    </Drawer>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "inset-0 bg-black/40 fixed z-[calc(var(--ds-z-modal)+1)] transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
+   "attrs": {
+    "role": "presentation",
+    "data-open": ""
+   }
+  },
+  {
+   "tag": "div",
+   "class": "inset-0 pointer-events-none fixed flex items-end z-[calc(var(--ds-z-modal)+1)]",
+   "attrs": {
+    "data-open": ""
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "tailwind pointer-events-auto w-full outline-none transition-transform duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)] data-[ending-style]:[transform:translateY(100%)] data-[starting-style]:[transform:translateY(100%)] [transform:translateY(var(--drawer-swipe-movement-y,0px))] border-gray-alpha-400 max-h-[90dvh] overscroll-none rounded-t-[10px] border-t bg-[var(--ds-background-100)] [&>[data-geist-menu]]:shadow-none overflow-y-auto geist-dialog",
+     "attrs": {
+      "role": "dialog",
+      "aria-modal": "true",
+      "data-open": "",
+      "tabindex": "-1"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "flex flex-col items-stretch justify-start gap-2 flex-initial p-12",
+       "children": [
+        {
+         "tag": "p",
+         "class": "text-[18px] leading-[24px] font-semibold text-center",
+         "text": "A drawer title"
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14 text-center",
+         "text": "Drawer body"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

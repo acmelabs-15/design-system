@@ -1,0 +1,22 @@
+{
+  "note": "Four runs, both themes, geist on the mirror (http://localhost:4184/geist/drawer) and ours on the census page (http://localhost:4180/census/drawer: the page's two sections closed, then the seven census-only sections, each opened by the ours `prepare`; the public page shows the two sections only). Resize the pane to 1100x900 before loading either page. The mirror renders the seven sketches after the page's two closed showcases, so both sides read seven roots; the diff pairs them by order. The census-only drawers carry ids, so `prepare` opens `acme-drawer[id]` alone; a closed drawer mounts no popup and reads as no root on either run. The geist `prepare` scrolls the sixth sketch's popup 160px; the ours `prepare` scrolls the same drawer and swipes the last one 80px down with synthetic pointer events (a top-layer dialog gets no real pointer input in the hidden pane). Inject census.js on the ours page first (fetch http://localhost:4183/census.js, run its text). Last run: 0 hard on all four pages.",
+  "drawer": {
+    "viewport": [1100, 900],
+    "geist": { "side": "geist", "page": "drawer", "marker": ".geist-dialog", "textParts": ["content"], "children": { "content": "div|div" }, "prepare": "document.querySelectorAll(\"[data-sketch] .geist-dialog\")[5].scrollTop = 160;" },
+    "ours": {
+      "side": "ours",
+      "page": "drawer",
+      "host": "acme-drawer",
+      "ours": ".drawer",
+      "textParts": ["content"],
+      "children": { "content": "div|div" },
+      "prepare": "return (async () => {\n  for (const d of document.querySelectorAll(\"acme-drawer[id]\")) { d.show(); await d.updateComplete; await d.updateComplete; }\n  const panel = (id) => document.querySelector(\"acme-drawer#\" + id).shadowRoot.querySelector(\".drawer\");\n  panel(\"open-scrolled\").scrollTop = 160;\n  const p = panel(\"open-dragging\");\n  const ev = (type, y) => new PointerEvent(type, { clientY: y, pointerId: 1, pointerType: \"mouse\", button: 0, bubbles: true, composed: true });\n  p.dispatchEvent(ev(\"pointerdown\", 100));\n  p.dispatchEvent(ev(\"pointermove\", 180));\n  await document.querySelector(\"acme-drawer#open-dragging\").updateComplete;\n})();"
+    }
+  },
+  "drawer-overlay": {
+    "viewport": [1100, 900],
+    "geist": { "side": "geist", "page": "drawer-overlay", "marker": ".fixed.items-end", "states": [""], "children": { "backdrop": "::backdrop|^.bg-black\\/40" } },
+    "ours": { "side": "ours", "page": "drawer-overlay", "host": "acme-drawer", "ours": "dialog[open]", "states": [""], "children": { "backdrop": "::backdrop|^.bg-black\\/40" } }
+  },
+  "themes": ["light", "dark"]
+}

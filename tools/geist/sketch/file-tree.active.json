@@ -1,0 +1,170 @@
+{
+  "heading": "Active File",
+  "description": "A File marked `active` has no rendered example; its class string comes from the component's client code: the link's text is semibold and its icon reads gray-1000. The folder around it is open, the second file is a plain one.",
+  "code": "export function Component(): JSX.Element {\n  return (\n    <Tree>\n      <Folder name=\"app\" defaultOpen>\n        <File name=\"main.tsx\" type=\"lambda\" href=\"/\" active />\n        <File name=\"dashboard.tsx\" type=\"middleware\" />\n      </Folder>\n    </Tree>\n  );\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "div",
+          "class": "flex flex-col gap-[1px] text-[13px] [&_[data-tree-indent]]:[--indent-color:var(--ds-gray-400)] [&_[data-tree-indent]]:inline-block [&_[data-tree-indent]]:w-[23px] [&_[data-tree-indent]]:h-7 [&_[data-tree-indent]]:bg-[linear-gradient(to_right,transparent_11.5px,var(--indent-color)_11.5px,var(--indent-color)_12.5px,transparent_12.5px)] [&_[data-tree-indent]]:bg-no-repeat [&_[data-tree-indent]]:align-top [&_[data-tree-indent]]:-translate-x-1 [&_[data-tree-indent]]:shrink-0",
+          "children": [
+            {
+              "tag": "li",
+              "class": "list-none leading-7 text-[var(--accents-8)] whitespace-nowrap select-none [&_a]:text-[var(--accents-8)] [&_a]:whitespace-nowrap [&_a]:select-none [&_a]:leading-none [&_a]:block [&_a]:pr-[1em] [&_a]:no-underline [&_ul]:list-none [&_ul]:m-0 [&_ul]:p-0 flex flex-col",
+              "attrs": {
+                "title": "app"
+              },
+              "children": [
+                {
+                  "tag": "button",
+                  "class": "grow-1 -ml-2 flex bg-transparent border-none h-7 w-full items-center rounded-sm px-2 py-1 hover:bg-[var(--ds-gray-200)]",
+                  "attrs": {
+                    "style": "width:calc(100% + 8px)",
+                    "type": "button"
+                  },
+                  "children": [
+                    {
+                      "tag": "span",
+                      "class": "inline-block mr-2 text-center text-[var(--ds-gray-900)] [&_svg]:align-middle",
+                      "children": [
+                        {
+                          "tag": "svg",
+                          "attrs": {
+                            "viewBox": "0 0 16 16",
+                            "height": "16",
+                            "width": "16",
+                            "data-slot": "geist-icon",
+                            "style": "color:currentColor"
+                          },
+                          "children": [
+                            {
+                              "tag": "path"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "tag": "span",
+                      "class": "block overflow-hidden text-ellipsis font-mono [&_a]:align-text-bottom [&_a]:transition-opacity [&_a]:duration-100 [&_a]:ease-in-out",
+                      "text": "app"
+                    }
+                  ]
+                },
+                {
+                  "tag": "ul",
+                  "children": [
+                    {
+                      "tag": "li",
+                      "class": "list-none leading-7 text-[var(--accents-8)] whitespace-nowrap select-none grow-1 flex items-center",
+                      "attrs": {
+                        "title": "main.tsx"
+                      },
+                      "children": [
+                        {
+                          "tag": "span",
+                          "attrs": {
+                            "data-tree-indent": ""
+                          }
+                        },
+                        {
+                          "tag": "a",
+                          "class": "-ml-2 h-7 w-full !flex items-center overflow-hidden rounded-sm px-2 hover:bg-[var(--ds-gray-200)] leading-none pr-[1em] no-underline text-[var(--accents-8)] whitespace-nowrap select-none font-semibold",
+                          "attrs": {
+                            "href": "/",
+                            "style": "width:calc(100% + 8px)"
+                          },
+                          "children": [
+                            {
+                              "tag": "span",
+                              "class": "inline-block mr-2 text-center text-[var(--ds-gray-900)] [&_svg]:align-middle ml-0.5 text-[var(--ds-gray-1000)]",
+                              "children": [
+                                {
+                                  "tag": "svg",
+                                  "attrs": {
+                                    "viewBox": "0 0 16 16",
+                                    "height": "14",
+                                    "width": "14",
+                                    "data-slot": "geist-icon",
+                                    "style": "color:currentColor"
+                                  },
+                                  "children": [
+                                    {
+                                      "tag": "path"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "span",
+                              "class": "block overflow-hidden text-ellipsis font-mono [&_a]:align-text-bottom [&_a]:transition-opacity [&_a]:duration-100 [&_a]:ease-in-out",
+                              "text": "main.tsx"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "tag": "li",
+                      "class": "list-none leading-7 text-[var(--accents-8)] whitespace-nowrap select-none grow-1 flex items-center",
+                      "attrs": {
+                        "title": "dashboard.tsx"
+                      },
+                      "children": [
+                        {
+                          "tag": "span",
+                          "attrs": {
+                            "data-tree-indent": ""
+                          }
+                        },
+                        {
+                          "tag": "a",
+                          "class": "-ml-2 h-7 w-full !flex items-center overflow-hidden rounded-sm px-2 hover:bg-[var(--ds-gray-200)] leading-none pr-[1em] no-underline text-[var(--accents-8)] whitespace-nowrap select-none",
+                          "attrs": {
+                            "style": "width:calc(100% + 8px)"
+                          },
+                          "children": [
+                            {
+                              "tag": "span",
+                              "class": "inline-block mr-2 text-center text-[var(--ds-gray-900)] [&_svg]:align-middle ml-0.5",
+                              "children": [
+                                {
+                                  "tag": "svg",
+                                  "attrs": {
+                                    "viewBox": "0 0 16 16",
+                                    "height": "14",
+                                    "width": "14",
+                                    "data-slot": "geist-icon",
+                                    "style": "color:currentColor"
+                                  },
+                                  "children": [
+                                    {
+                                      "tag": "path"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "span",
+                              "class": "block overflow-hidden text-ellipsis font-mono [&_a]:align-text-bottom [&_a]:transition-opacity [&_a]:duration-100 [&_a]:ease-in-out",
+                              "text": "dashboard.tsx"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,869 @@
+{
+ "page": "separator",
+ "title": "Separator",
+ "lede": "A visual divider that separates content into distinct sections, with support for horizontal and vertical orientations.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Horizontal",
+   "description": "",
+   "code": "import { Separator } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"space-y-4\">\n      <div>\n        <h3 className=\"text-label-16\">Section 1</h3>\n        <p className=\"text-copy-14 text-gray-900\">\n          This is the first section of content.\n        </p>\n      </div>\n      <Separator />\n      <div>\n        <h3 className=\"text-label-16\">Section 2</h3>\n        <p className=\"text-copy-14 text-gray-900\">\n          This is the second section of content.\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "space-y-4",
+         "state": ">:not(:last-child))",
+         "at": "@layer utilities",
+         "decl": "--tw-space-y-reverse:0;margin-block-start:calc(calc(.25rem * 4) * var(--tw-space-y-reverse));margin-block-end:calc(calc(.25rem * 4) * calc(1 - var(--tw-space-y-reverse)))"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-label-16",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-16",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Section 1"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-gray-900",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "This is the first section of content."
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "data-orientation": "horizontal",
+          "role": "separator",
+          "aria-orientation": "horizontal",
+          "data-slot": "separator",
+          "data-testid": "geistcn/separator"
+         },
+         "styles": [
+          {
+           "cls": "bg-gray-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "shrink-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-shrink:0"
+          },
+          {
+           "cls": "h-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "height:1px"
+          },
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-label-16",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-16",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Section 2"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-gray-900",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "This is the second section of content."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Vertical",
+   "description": "",
+   "code": "import { Separator } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex h-8 items-center space-x-4\">\n      <p className=\"text-copy-14 text-gray-1000\">Home</p>\n      <Separator orientation=\"vertical\" />\n      <p className=\"text-copy-14 text-gray-1000\">About</p>\n      <Separator orientation=\"vertical\" />\n      <p className=\"text-copy-14 text-gray-1000\">Services</p>\n      <Separator orientation=\"vertical\" />\n      <p className=\"text-copy-14 text-gray-1000\">Contact</p>\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "h-8",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "height:2rem"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "space-x-4",
+         "state": ">:not(:last-child))",
+         "at": "@layer utilities",
+         "decl": "--tw-space-x-reverse:0;margin-inline-start:calc(calc(.25rem * 4) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(.25rem * 4) * calc(1 - var(--tw-space-x-reverse)))"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "p",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-copy-14",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "text-copy-14",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+          },
+          {
+           "cls": "text-gray-1000",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Home"
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "data-orientation": "vertical",
+          "role": "separator",
+          "aria-orientation": "vertical",
+          "data-slot": "separator",
+          "data-testid": "geistcn/separator"
+         },
+         "styles": [
+          {
+           "cls": "bg-gray-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "shrink-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-shrink:0"
+          },
+          {
+           "cls": "w-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:1px"
+          },
+          {
+           "cls": "h-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "height:100%"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "p",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-copy-14",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "text-copy-14",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+          },
+          {
+           "cls": "text-gray-1000",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "About"
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "data-orientation": "vertical",
+          "role": "separator",
+          "aria-orientation": "vertical",
+          "data-slot": "separator",
+          "data-testid": "geistcn/separator"
+         },
+         "styles": [
+          {
+           "cls": "bg-gray-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "shrink-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-shrink:0"
+          },
+          {
+           "cls": "w-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:1px"
+          },
+          {
+           "cls": "h-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "height:100%"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "p",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-copy-14",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "text-copy-14",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+          },
+          {
+           "cls": "text-gray-1000",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Services"
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "data-orientation": "vertical",
+          "role": "separator",
+          "aria-orientation": "vertical",
+          "data-slot": "separator",
+          "data-testid": "geistcn/separator"
+         },
+         "styles": [
+          {
+           "cls": "bg-gray-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "shrink-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-shrink:0"
+          },
+          {
+           "cls": "w-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:1px"
+          },
+          {
+           "cls": "h-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "height:100%"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "p",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-copy-14",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "text-copy-14",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+          },
+          {
+           "cls": "text-gray-1000",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Contact"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Orientation Variants",
+   "description": "",
+   "code": "import { Separator } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"space-y-8\">\n      <div>\n        <h4 className=\"mb-2 text-label-14\">Horizontal Separators</h4>\n        <div className=\"space-y-2\">\n          <p className=\"text-copy-14\">Content above separator</p>\n          <Separator orientation=\"horizontal\" />\n          <p className=\"text-copy-14\">Content below separator</p>\n        </div>\n      </div>\n\n      <div>\n        <h4 className=\"mb-2 text-label-14\">Vertical Separators</h4>\n        <div className=\"flex h-6 items-center space-x-2\">\n          <span className=\"text-copy-14\">Left</span>\n          <Separator orientation=\"vertical\" />\n          <span className=\"text-copy-14\">Center</span>\n          <Separator orientation=\"vertical\" />\n          <span className=\"text-copy-14\">Right</span>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "space-y-8",
+         "state": ">:not(:last-child))",
+         "at": "@layer utilities",
+         "decl": "--tw-space-y-reverse:0;margin-block-start:calc(calc(.25rem * 8) * var(--tw-space-y-reverse));margin-block-end:calc(calc(.25rem * 8) * calc(1 - var(--tw-space-y-reverse)))"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h4",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "mb-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-bottom:.5rem"
+            },
+            {
+             "cls": "text-label-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Horizontal Separators"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "space-y-2",
+             "state": ">:not(:last-child))",
+             "at": "@layer utilities",
+             "decl": "--tw-space-y-reverse:0;margin-block-start:calc(calc(.25rem * 2) * var(--tw-space-y-reverse));margin-block-end:calc(calc(.25rem * 2) * calc(1 - var(--tw-space-y-reverse)))"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "p",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-copy-14",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+              },
+              {
+               "cls": "text-copy-14",
+               "state": ">strong",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Content above separator"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "data-orientation": "horizontal",
+              "role": "separator",
+              "aria-orientation": "horizontal",
+              "data-slot": "separator",
+              "data-testid": "geistcn/separator"
+             },
+             "styles": [
+              {
+               "cls": "bg-gray-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-200)"
+              },
+              {
+               "cls": "shrink-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex-shrink:0"
+              },
+              {
+               "cls": "h-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:1px"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "p",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-copy-14",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+              },
+              {
+               "cls": "text-copy-14",
+               "state": ">strong",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Content below separator"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h4",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "mb-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-bottom:.5rem"
+            },
+            {
+             "cls": "text-label-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Vertical Separators"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "h-6",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:1.5rem"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "space-x-2",
+             "state": ">:not(:last-child))",
+             "at": "@layer utilities",
+             "decl": "--tw-space-x-reverse:0;margin-inline-start:calc(calc(.25rem * 2) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(.25rem * 2) * calc(1 - var(--tw-space-x-reverse)))"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-copy-14",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+              },
+              {
+               "cls": "text-copy-14",
+               "state": ">strong",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Left"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "data-orientation": "vertical",
+              "role": "separator",
+              "aria-orientation": "vertical",
+              "data-slot": "separator",
+              "data-testid": "geistcn/separator"
+             },
+             "styles": [
+              {
+               "cls": "bg-gray-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-200)"
+              },
+              {
+               "cls": "shrink-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex-shrink:0"
+              },
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-copy-14",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+              },
+              {
+               "cls": "text-copy-14",
+               "state": ">strong",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Center"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "data-orientation": "vertical",
+              "role": "separator",
+              "aria-orientation": "vertical",
+              "data-slot": "separator",
+              "data-testid": "geistcn/separator"
+             },
+             "styles": [
+              {
+               "cls": "bg-gray-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-200)"
+              },
+              {
+               "cls": "shrink-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex-shrink:0"
+              },
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-copy-14",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+              },
+              {
+               "cls": "text-copy-14",
+               "state": ">strong",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Right"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "heading": "Open centered",
+ "description": "A centred title.",
+ "code": "import {\n  Modal,\n  ModalBody,\n  ModalHeader,\n  ModalTitle,\n  ModalSubtitle,\n  ModalInset,\n  ModalActions,\n  ModalAction,\n} from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Modal active onClickOutside={() => {}}>\n      <ModalBody>\n        <ModalHeader>\n          <ModalTitle center>Create Token</ModalTitle>\n          <ModalSubtitle>Enter a unique name for your token to differentiate it from other tokens and then select the scope.</ModalSubtitle>\n        </ModalHeader>\n        <p className=\"text-copy-14\">Some content contained within the modal.</p>\n      </ModalBody>\n      <ModalActions>\n        <ModalAction variant=\"secondary\">Cancel</ModalAction>\n        <ModalAction>Submit</ModalAction>\n      </ModalActions>\n    </Modal>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "geist-overlay-backdrop active"
+  },
+  {
+   "tag": "div",
+   "class": "geist-overlay",
+   "children": [
+    {
+     "tag": "div",
+     "class": "outline-none",
+     "attrs": {
+      "tabindex": "-1"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "bg-[var(--ds-background-100)] [--modal-padding:24px] rounded-xl shadow-[var(--ds-shadow-modal-elevated)] text-[var(--ds-gray-1000)] flex flex-col max-[540px]:max-w-[calc(100vw-20px)] max-w-full transition-[opacity,transform] duration-[time:var(--ds-motion-overlay-duration)] ease-[easing-function:var(--ds-motion-overlay-timing)] sm:overflow-hidden overflow-y-auto max-h-[min(800px,80vh)] [&>form]:rounded-xl [&>form]:overflow-x-hidden [&>form]:overflow-y-auto",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-geist-modal": "",
+        "style": "width:540px;opacity:1;transform:scale(1)"
+       },
+       "children": [
+        {
+         "tag": "div",
+         "class": "text-copy-14 text-gray-900 p-0 overflow-x-hidden relative rounded-t-[var(--modal-radius)] sm:overflow-y-auto [.sticky_&]:sm:!pt-0 [--modal-padding:20px] p-[var(--modal-padding)] pt-5 dark-theme:bg-[var(--ds-background-200)]",
+         "attrs": {
+          "data-geist-modal-body": "",
+          "style": "--modal-padding:20px"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "children": [
+            {
+             "tag": "header",
+             "class": "text-[var(--ds-gray-1000)] mb-5 last:mb-0 z-10 [.sticky_&]:sticky [.sticky_&]:top-0 [.sticky_&]:-ml-[calc(var(--modal-padding))] [.sticky_&]:-mr-[calc(var(--modal-padding))] [.sticky_&]:max-sm:text-base [.sticky_&]:py-4 [.sticky_&]:px-6 [.sticky_&]:sm:py-5 [.sticky_&]:sm:px-[var(--modal-padding)] [.sticky_&]:flex [.sticky_&]:justify-start [.sticky_&]:items-center [.sticky_&]:gap-2.5 [.sticky_&]:before:left-0 [.sticky_&]:before:top-full [.sticky_&]:before:absolute [.sticky_&]:before:opacity-0 [.sticky_&]:before:w-full [.sticky_&]:before:h-3 [.sticky_&]:before:bg-black/[0.075] [.sticky_&]:before:blur-[3px] [.sticky_&]:before:-translate-y-3/4 [.sticky_&]:before:-z-10 [.sticky_&]:before:transition-opacity [.sticky_&]:before:duration-200 [.sticky_&]:dark-theme:before:bg-white/10 [.sticky_&]:after:absolute [.sticky_&]:after:inset-0 [.sticky_&]:after:bg-[var(--ds-background-200)] [.sticky_&]:after:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] [.sticky_&]:after:-z-[1] [.sticky_&]:dark-theme:after:bg-[var(--ds-background-100)] group-[&]/sticky-top:[.sticky_&]:before:opacity-100",
+             "attrs": {
+              "data-geist-modal-header": ""
+             },
+             "children": [
+              {
+               "tag": "h3",
+               "class": "text-heading-20 text-gray-1000 text-center [.sticky_&]:block [.sticky_&]:pb-0 [.sticky_&]:text-base [.sticky_&]:leading-6 [.sticky_&]:sm:!text-xl",
+               "attrs": {
+                "data-geist-modal-title": ""
+               },
+               "text": "Create Token"
+              },
+              {
+               "tag": "div",
+               "class": "mt-2 mb-1 text-copy-14 text-gray-900",
+               "attrs": {
+                "data-geist-modal-subtitle": ""
+               },
+               "text": "Enter a unique name for your token to differentiate it from other tokens and then select the scope."
+              }
+             ]
+            },
+            {
+             "tag": "p",
+             "class": "text-copy-14",
+             "text": "Some content contained within the modal."
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-0 h-[1px] w-full pointer-events-none",
+           "attrs": {
+            "aria-hidden": "true"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "h-[1px] w-full pointer-events-none",
+           "attrs": {
+            "aria-hidden": "true"
+           }
+          }
+         ]
+        },
+        {
+         "tag": "footer",
+         "class": "sticky bottom-0 p-3 flex shrink-0 justify-between [&>div]:flex [&>div]:gap-4 before:left-0 before:bottom-full before:absolute before:w-full before:h-3 before:bg-black/[0.075] before:blur-[3px] before:translate-y-[275%] before:-z-10 before:transition-transform before:duration-200 dark-theme:before:bg-white/10 after:absolute after:inset-0 after:bg-[var(--ds-background-200)] after:shadow-[0_-1px_0_0_var(--ds-gray-alpha-400)] after:-z-10 after:rounded-none after:sm:rounded-b-xl peer-[&]/sticky-bottom:before:translate-y-[75%]",
+         "attrs": {
+          "data-geist-modal-actions": ""
+         },
+         "children": [
+          {
+           "tag": "button",
+           "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium !px-(--geist-gap-half) max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:6px] [--height:32px] !pl-[var(--x-padding)] !pr-[var(--x-padding)] rounded-md text-(length:--geist-form-small-font) [--spinner-size:16px] h-[var(--height)] [--themed-bg:_var(--ds-background-100)] shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--themed-fg:_var(--ds-gray-1000)] [--themed-border:_var(--ds-gray-400)] data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)] data-hover:bg-[var(--ds-gray-100)] dark-theme:data-hover:bg-[var(--ds-gray-200)] data-hover:text-[var(--themed-fg)] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow]",
+           "attrs": {
+            "type": "button",
+            "tabindex": "0",
+            "data-react-aria-pressable": "true",
+            "data-geist-button": "",
+            "data-prefix": "false",
+            "data-suffix": "false",
+            "data-version": "v1",
+            "style": "--geist-icon-size:16px",
+            "data-geist-modal-action": ""
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "truncate inline-block px-1.5",
+             "text": "Cancel"
+            }
+           ]
+          },
+          {
+           "tag": "button",
+           "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium !px-(--geist-gap-half) max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:6px] [--height:32px] !pl-[var(--x-padding)] !pr-[var(--x-padding)] rounded-md text-(length:--geist-form-small-font) [--spinner-size:16px] h-[var(--height)] data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))] dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))] data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow]",
+           "attrs": {
+            "type": "button",
+            "tabindex": "0",
+            "data-react-aria-pressable": "true",
+            "data-geist-button": "",
+            "data-prefix": "false",
+            "data-suffix": "false",
+            "data-version": "v1",
+            "style": "--geist-icon-size:16px",
+            "data-geist-modal-action": ""
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "truncate inline-block px-1.5",
+             "text": "Submit"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

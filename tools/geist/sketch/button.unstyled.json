@@ -1,0 +1,35 @@
+{
+ "heading": "Unstyled",
+ "description": "Only the reset and the label: for a control that draws its own look.",
+ "code": "<Button type=\"unstyled\">Retry</Button>",
+ "dom": [
+  {
+   "tag": "button",
+   "class": "",
+   "attrs": {
+    "type": "button",
+    "tabindex": "0",
+    "data-geist-button": "",
+    "data-prefix": "false",
+    "data-suffix": "false",
+    "style": "--geist-icon-size:16px"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "truncate inline-block px-1.5",
+     "attrs": {},
+     "children": [
+      {
+       "tag": "span",
+       "class": "font-medium text-red-900 text-[16px] leading-[24px]",
+       "attrs": {},
+       "text": "Retry",
+       "children": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

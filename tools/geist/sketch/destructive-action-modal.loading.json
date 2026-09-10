@@ -1,0 +1,362 @@
+{
+ "heading": "Open loading",
+ "description": "Loading: the input and both buttons disabled, the confirm showing its spinner.",
+ "code": "import { DestructiveActionModal } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <DestructiveActionModal\n      confirmLabel=\"Delete Project\"\n      description=\"…\"\n      irreversibleDescription=\"Deleting my-project cannot be undone.\"\n      loading\n      open\n      title=\"Delete Project\"\n      verificationLabel=\"project name\"\n      verificationPhrase=\"my-project\"\n      onCancel={() => {}}\n      onConfirm={() => {}}\n    />\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "geist-overlay-backdrop active"
+  },
+  {
+   "tag": "div",
+   "class": "geist-overlay",
+   "children": [
+    {
+     "tag": "div",
+     "class": "outline-none",
+     "attrs": {
+      "tabindex": "-1"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "bg-[var(--ds-background-100)] [--modal-padding:24px] rounded-xl shadow-[var(--ds-shadow-modal-elevated)] text-[var(--ds-gray-1000)] flex flex-col max-[540px]:max-w-[calc(100vw-20px)] max-w-full transition-[opacity,transform] duration-[time:var(--ds-motion-overlay-duration)] ease-[easing-function:var(--ds-motion-overlay-timing)] sm:overflow-hidden overflow-y-auto max-h-[min(800px,80vh)] [&>form]:rounded-xl [&>form]:overflow-x-hidden [&>form]:overflow-y-auto",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-geist-modal": "",
+        "style": "width:480px;opacity:1;transform:scale(1)"
+       },
+       "children": [
+        {
+         "tag": "form",
+         "children": [
+          {
+           "tag": "div",
+           "class": "text-copy-14 text-gray-900 p-0 overflow-x-hidden relative rounded-t-[var(--modal-radius)] sm:overflow-y-auto [.sticky_&]:sm:!pt-0 [--modal-padding:20px] p-[var(--modal-padding)] pt-5 dark-theme:bg-[var(--ds-background-200)]",
+           "attrs": {
+            "data-geist-modal-body": "",
+            "style": "--modal-padding:20px"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "children": [
+              {
+               "tag": "header",
+               "class": "text-[var(--ds-gray-1000)] mb-5 last:mb-0 z-10 [.sticky_&]:sticky [.sticky_&]:top-0 [.sticky_&]:-ml-[calc(var(--modal-padding))] [.sticky_&]:-mr-[calc(var(--modal-padding))] [.sticky_&]:max-sm:text-base [.sticky_&]:py-4 [.sticky_&]:px-6 [.sticky_&]:sm:py-5 [.sticky_&]:sm:px-[var(--modal-padding)] [.sticky_&]:flex [.sticky_&]:justify-start [.sticky_&]:items-center [.sticky_&]:gap-2.5 [.sticky_&]:before:left-0 [.sticky_&]:before:top-full [.sticky_&]:before:absolute [.sticky_&]:before:opacity-0 [.sticky_&]:before:w-full [.sticky_&]:before:h-3 [.sticky_&]:before:bg-black/[0.075] [.sticky_&]:before:blur-[3px] [.sticky_&]:before:-translate-y-3/4 [.sticky_&]:before:-z-10 [.sticky_&]:before:transition-opacity [.sticky_&]:before:duration-200 [.sticky_&]:dark-theme:before:bg-white/10 [.sticky_&]:after:absolute [.sticky_&]:after:inset-0 [.sticky_&]:after:bg-[var(--ds-background-200)] [.sticky_&]:after:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] [.sticky_&]:after:-z-[1] [.sticky_&]:dark-theme:after:bg-[var(--ds-background-100)] group-[&]/sticky-top:[.sticky_&]:before:opacity-100",
+               "attrs": {
+                "data-geist-modal-header": ""
+               },
+               "children": [
+                {
+                 "tag": "h3",
+                 "class": "text-heading-20 text-gray-1000 text-left [.sticky_&]:block [.sticky_&]:pb-0 [.sticky_&]:text-base [.sticky_&]:leading-6 [.sticky_&]:sm:!text-xl",
+                 "attrs": {
+                  "data-geist-modal-title": ""
+                 },
+                 "text": "Delete Project"
+                },
+                {
+                 "tag": "div",
+                 "class": "mt-2 mb-1 text-copy-14 text-gray-900",
+                 "attrs": {
+                  "data-geist-modal-subtitle": ""
+                 },
+                 "text": "my-project and all its deployments will be permanently deleted."
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "class": "space-y-6",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "gap-3 rounded-md relative box-border flex w-full flex-wrap items-center border break-words [&_a:not([data-geist-button])]:font-medium [&_a:not([data-geist-button])]:underline-offset-2 [&_a:not([data-geist-button]):hover]:underline [&_a:not([data-geist-button]):focus-visible]:rounded-[2px] [&_a:not([data-geist-button]):focus-visible]:shadow-(--ds-focus-ring) [&_a:not([data-geist-button]):focus-visible]:outline-none text-red-900 selection:bg-red-800 dark-theme:selection:text-red-1000 [&_a:not([data-geist-button])]:text-red-1000 [&_code]:border-red-400! [&_code]:bg-red-300! [&_code]:text-red-1000! px-3 py-1.5 min-h-(--ds-size-medium) text-copy-14 border-red-100 bg-red-200",
+                 "attrs": {
+                  "data-slot": "note",
+                  "role": "note"
+                 },
+                 "children": [
+                  {
+                   "tag": "div",
+                   "class": "min-w-0 gap-3 flex flex-1 items-start",
+                   "attrs": {
+                    "data-slot": "note-body"
+                   },
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "flex shrink-0 [&>svg]:h-[1lh]",
+                     "attrs": {
+                      "data-slot": "note-icon"
+                     },
+                     "children": [
+                      {
+                       "tag": "svg",
+                       "attrs": {
+                        "viewBox": "0 0 16 16",
+                        "height": "14",
+                        "width": "14",
+                        "data-slot": "geist-icon",
+                        "style": "color:currentColor"
+                       },
+                       "children": [
+                        {
+                         "tag": "path",
+                         "attrs": {
+                          "fill": "currentColor",
+                          "d": "M10.9 0a1 1 0 0 1 .7.3l4.1 4.1.07.07a1 1 0 0 1 .23.63v5.8a1 1 0 0 1-.3.7l-4.1 4.1a1 1 0 0 1-.7.3H5a1 1 0 0 1-.53-.23l-.08-.06-4.1-4.1A1 1 0 0 1 0 10.9V5.1a1 1 0 0 1 .3-.7L4.4.3A1 1 0 0 1 5 0h5.9M1.5 5.3v5.4l3.8 3.8h5.4l3.8-3.8V5.3l-3.8-3.8H5.3zM8 10a1 1 0 1 1 0 2 1 1 0 0 1 0-2m.75-1.25h-1.5v-5h1.5z"
+                         }
+                        }
+                       ]
+                      }
+                     ]
+                    },
+                    {
+                     "tag": "div",
+                     "class": "min-w-0 flex-1 flex flex-col gap-2",
+                     "children": [
+                      {
+                       "tag": "div",
+                       "class": "min-w-0 flex-1",
+                       "attrs": {
+                        "data-slot": "note-content"
+                       },
+                       "text": "Deleting my-project cannot be undone."
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "div",
+                 "class": "flex flex-col items-stretch gap-2",
+                 "children": [
+                  {
+                   "tag": "label",
+                   "class": "text-sm leading-5 text-[var(--ds-gray-1000)]",
+                   "attrs": {
+                    "for": "dam-prompt",
+                    "id": "dam-label"
+                   },
+                   "text": "To confirm, type the project name “”",
+                   "children": [
+                    {
+                     "tag": "b",
+                     "class": "font-semibold [overflow-wrap:anywhere]",
+                     "attrs": {
+                      "translate": "no"
+                     },
+                     "text": "my-project"
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "div",
+                   "class": "flex max-w-full transition-all duration-150 overflow-hidden font-normal rounded-md [&>input]:h-(--ds-size-medium) text-sm [&>input]:px-3 shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] has-[:focus]:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(0,0,0,0.16)] dark-theme:has-[:focus]:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(255,255,255,0.24)] hover:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)] hover:[&:has(input:disabled)]:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] hover:[&:has(textarea:disabled)]:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+                   "attrs": {
+                    "data-geist-input-wrapper": "",
+                    "data-version": "v1",
+                    "style": "--geist-icon-size:16px"
+                   },
+                   "children": [
+                    {
+                     "tag": "input",
+                     "class": "inline-flex appearance-none webkit-search-reset min-w-0 w-full border-none bg-background-100 text-[var(--geist-foreground)] order-1 outline-none focus:outline-none disabled:bg-[var(--ds-gray-100)] disabled:placeholder:text-[var(--accents-3)] disabled:[-webkit-text-fill-color:var(--accents-3)] disabled:opacity-100 disabled:text-[var(--ds-gray-700)] disabled:cursor-not-allowed [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
+                     "attrs": {
+                      "aria-labelledby": "dam-label",
+                      "aria-invalid": "false",
+                      "autocapitalize": "none",
+                      "autocomplete": "off",
+                      "autocorrect": "off",
+                      "data-geist-input": "",
+                      "disabled": "",
+                      "id": "dam-prompt",
+                      "spellcheck": "false",
+                      "translate": "no",
+                      "type": "text"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "class": "absolute top-0 h-[1px] w-full pointer-events-none",
+             "attrs": {
+              "aria-hidden": "true"
+             }
+            },
+            {
+             "tag": "div",
+             "class": "h-[1px] w-full pointer-events-none",
+             "attrs": {
+              "aria-hidden": "true"
+             }
+            }
+           ]
+          },
+          {
+           "tag": "footer",
+           "class": "sticky bottom-0 p-3 flex shrink-0 justify-between [&>div]:flex [&>div]:gap-4 before:left-0 before:bottom-full before:absolute before:w-full before:h-3 before:bg-black/[0.075] before:blur-[3px] before:translate-y-[275%] before:-z-10 before:transition-transform before:duration-200 dark-theme:before:bg-white/10 after:absolute after:inset-0 after:bg-[var(--ds-background-200)] after:shadow-[0_-1px_0_0_var(--ds-gray-alpha-400)] after:-z-10 after:rounded-none after:sm:rounded-b-xl peer-[&]/sticky-bottom:before:translate-y-[75%]",
+           "attrs": {
+            "data-geist-modal-actions": ""
+           },
+           "children": [
+            {
+             "tag": "button",
+             "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium !px-(--geist-gap-half) max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:6px] [--height:32px] !pl-[var(--x-padding)] !pr-[var(--x-padding)] rounded-md text-(length:--geist-form-small-font) [--spinner-size:16px] h-[var(--height)] [--themed-bg:_var(--ds-background-100)] shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--themed-fg:_var(--ds-gray-1000)] [--themed-border:_var(--ds-gray-400)] data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)] data-hover:bg-[var(--ds-gray-100)] dark-theme:data-hover:bg-[var(--ds-gray-200)] data-hover:text-[var(--themed-fg)] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow]",
+             "attrs": {
+              "type": "button",
+              "tabindex": "0",
+              "data-react-aria-pressable": "true",
+              "data-geist-button": "",
+              "data-prefix": "false",
+              "data-suffix": "false",
+              "data-version": "v1",
+              "style": "--geist-icon-size:16px",
+              "data-geist-modal-action": "",
+              "disabled": ""
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "truncate inline-block px-1.5",
+               "text": "Cancel"
+              }
+             ]
+            },
+            {
+             "tag": "button",
+             "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium !px-(--geist-gap-half) max-w-full items-center justify-center transition-[border-color, background,color,transform,box-shadow] duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:6px] [--height:32px] !pl-[var(--x-padding)] !pr-[var(--x-padding)] geist-new-themed geist-new-error geist-new-error-fill rounded-md text-(length:--geist-form-small-font) [--spinner-size:16px] h-[var(--height)] data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))] dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))] data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))] data-hover:disabled:bg-[var(--ds-gray-100)]",
+             "attrs": {
+              "type": "submit",
+              "tabindex": "0",
+              "data-react-aria-pressable": "true",
+              "data-geist-button": "",
+              "data-prefix": "true",
+              "data-suffix": "false",
+              "data-version": "v1",
+              "style": "--geist-icon-size:16px",
+              "data-geist-modal-action": "",
+              "disabled": ""
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "mr-[3px] min-w-5 shrink-0 flex items-center justify-center [&_svg[data-slot=geist-icon]]:size-(--ds-control-decoration-size)",
+               "attrs": {
+                "aria-hidden": "true"
+               },
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "text-gray-700 relative inline-block aspect-square transform-gpu size-3",
+                 "attrs": {
+                  "role": "status",
+                  "aria-label": "Loading",
+                  "data-testid": "geistcn/spinner",
+                  "data-glyph": "circular"
+                 },
+                 "children": [
+                  {
+                   "tag": "div",
+                   "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-[3px]",
+                   "attrs": {
+                    "aria-hidden": "true",
+                    "style": "--animation-delay:-875ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(0deg) translate(146%)"
+                   }
+                  },
+                  {
+                   "tag": "div",
+                   "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-[3px]",
+                   "attrs": {
+                    "aria-hidden": "true",
+                    "style": "--animation-delay:-750ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(45deg) translate(146%)"
+                   }
+                  },
+                  {
+                   "tag": "div",
+                   "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-[3px]",
+                   "attrs": {
+                    "aria-hidden": "true",
+                    "style": "--animation-delay:-625ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(90deg) translate(146%)"
+                   }
+                  },
+                  {
+                   "tag": "div",
+                   "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-[3px]",
+                   "attrs": {
+                    "aria-hidden": "true",
+                    "style": "--animation-delay:-500ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(135deg) translate(146%)"
+                   }
+                  },
+                  {
+                   "tag": "div",
+                   "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-[3px]",
+                   "attrs": {
+                    "aria-hidden": "true",
+                    "style": "--animation-delay:-375ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(180deg) translate(146%)"
+                   }
+                  },
+                  {
+                   "tag": "div",
+                   "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-[3px]",
+                   "attrs": {
+                    "aria-hidden": "true",
+                    "style": "--animation-delay:-250ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(225deg) translate(146%)"
+                   }
+                  },
+                  {
+                   "tag": "div",
+                   "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-[3px]",
+                   "attrs": {
+                    "aria-hidden": "true",
+                    "style": "--animation-delay:-125ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(270deg) translate(146%)"
+                   }
+                  },
+                  {
+                   "tag": "div",
+                   "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-[3px]",
+                   "attrs": {
+                    "aria-hidden": "true",
+                    "style": "--animation-delay:0ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(315deg) translate(146%)"
+                   }
+                  },
+                  {
+                   "tag": "span",
+                   "class": "sr-only",
+                   "text": "Loading..."
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "span",
+               "class": "truncate inline-block px-1.5",
+               "text": "Delete Project"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,119 @@
+{
+  "note": "Four roots, each its own census page, both sides for both themes (theme: light, then dark), on the mirror (http://localhost:4184/geist/context-menu) and the census page (http://localhost:4180/census/context-menu), the pane 1100px wide (below 601px the composed menu's own mobile rule reads on the list). The trigger is the reference's inline span around the content (our host, `ours: \":host\"`), read on every example: the page's four closed ones and the five sketched open ones. The list (the composed menu's `menu` part), the item roots (acme-menu-item rows, the two link rows of ours included, read through the flat tree with `each`) and the separator (the row after the link rows, on the last sketch) exist on the open examples only; ours opens them in `prepare` with a contextmenu event 120,60 into the content (over the link where the content holds one) and highlights the second row of the first open example, as the sketch does, before the census freezes transitions. The item's highlight is the data-selected state, which the reference item styles like its own data-highlighted. Inject census.js on the census page first (a script element with src http://localhost:4183/census.js); the mirror carries it.",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "runs": {
+    "context-menu-trigger": {
+      "geist": {
+        "side": "geist",
+        "page": "context-menu-trigger",
+        "marker": "span[data-state]",
+        "children": {
+          "content": ".text-copy-14|.text-copy-14"
+        },
+        "states": [
+          ""
+        ]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "context-menu-trigger",
+        "host": "acme-context-menu",
+        "ours": ":host",
+        "children": {
+          "content": ".text-copy-14|.text-copy-14"
+        },
+        "states": [
+          ""
+        ],
+        "prepare": "const p=[...document.querySelectorAll('.showcase .preview')].slice(4).flatMap(x=>[...x.querySelectorAll('acme-context-menu')]);\nfor(const el of p){const t=el.querySelector('a[href]')??el.querySelector('.text-copy-14');const r=t.getBoundingClientRect();t.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,composed:true,cancelable:true,clientX:r.left+120,clientY:r.top+60}));}\nreturn Promise.all(p.map(async(el,i)=>{await el.updateComplete;const m=el.shadowRoot.querySelector('acme-menu');await m.updateComplete;await m.updateComplete;if(i===0){const row=el.querySelectorAll('acme-menu-item')[1];row.selected=true;await row.updateComplete;}}));"
+      }
+    },
+    "context-menu-list": {
+      "geist": {
+        "side": "geist",
+        "page": "context-menu-list",
+        "marker": "data-radix-menu-content",
+        "states": [
+          ""
+        ]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "context-menu-list",
+        "host": "acme-context-menu[open]",
+        "ours": "acme-menu >> .menu",
+        "states": [
+          ""
+        ],
+        "prepare": "const p=[...document.querySelectorAll('.showcase .preview')].slice(4).flatMap(x=>[...x.querySelectorAll('acme-context-menu')]);\nfor(const el of p){const t=el.querySelector('a[href]')??el.querySelector('.text-copy-14');const r=t.getBoundingClientRect();t.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,composed:true,cancelable:true,clientX:r.left+120,clientY:r.top+60}));}\nreturn Promise.all(p.map(async(el,i)=>{await el.updateComplete;const m=el.shadowRoot.querySelector('acme-menu');await m.updateComplete;await m.updateComplete;if(i===0){const row=el.querySelectorAll('acme-menu-item')[1];row.selected=true;await row.updateComplete;}}));"
+      }
+    },
+    "context-menu-item": {
+      "geist": {
+        "side": "geist",
+        "page": "context-menu-item",
+        "marker": "[role=menuitem]",
+        "children": {
+          "prefix": ".prefix|.mr-2",
+          "suffix": ".suffix|.ml-auto",
+          "svg": "svg|svg"
+        },
+        "states": [
+          "",
+          "data-selected"
+        ],
+        "textProps": {
+          "suffix": [
+            "margin-left"
+          ]
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "context-menu-item",
+        "host": "acme-context-menu[open]",
+        "each": true,
+        "ours": "acme-menu-item >> .item",
+        "children": {
+          "prefix": ".prefix|.mr-2",
+          "suffix": ".suffix|.ml-auto",
+          "svg": "svg|svg"
+        },
+        "states": [
+          "",
+          "data-selected"
+        ],
+        "textProps": {
+          "suffix": [
+            "margin-left"
+          ]
+        },
+        "prepare": "const p=[...document.querySelectorAll('.showcase .preview')].slice(4).flatMap(x=>[...x.querySelectorAll('acme-context-menu')]);\nfor(const el of p){const t=el.querySelector('a[href]')??el.querySelector('.text-copy-14');const r=t.getBoundingClientRect();t.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,composed:true,cancelable:true,clientX:r.left+120,clientY:r.top+60}));}\nreturn Promise.all(p.map(async(el,i)=>{await el.updateComplete;const m=el.shadowRoot.querySelector('acme-menu');await m.updateComplete;await m.updateComplete;if(i===0){const row=el.querySelectorAll('acme-menu-item')[1];row.selected=true;await row.updateComplete;}}));"
+      }
+    },
+    "context-menu-separator": {
+      "geist": {
+        "side": "geist",
+        "page": "context-menu-separator",
+        "marker": "[role=separator]",
+        "states": [
+          ""
+        ]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "context-menu-separator",
+        "host": "acme-context-menu[open]",
+        "each": true,
+        "ours": "acme-menu >> .separator",
+        "states": [
+          ""
+        ],
+        "prepare": "const p=[...document.querySelectorAll('.showcase .preview')].slice(4).flatMap(x=>[...x.querySelectorAll('acme-context-menu')]);\nfor(const el of p){const t=el.querySelector('a[href]')??el.querySelector('.text-copy-14');const r=t.getBoundingClientRect();t.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,composed:true,cancelable:true,clientX:r.left+120,clientY:r.top+60}));}\nreturn Promise.all(p.map(async(el,i)=>{await el.updateComplete;const m=el.shadowRoot.querySelector('acme-menu');await m.updateComplete;await m.updateComplete;if(i===0){const row=el.querySelectorAll('acme-menu-item')[1];row.selected=true;await row.updateComplete;}}));"
+      }
+    }
+  }
+}

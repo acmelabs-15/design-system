@@ -1,0 +1,557 @@
+{
+ "heading": "Examples (narrow)",
+ "description": "The same rows at a width that cuts every value: the visible text is prefix, one ellipsis glyph and suffix; the full value sits in a visually hidden span and the root carries it as its title.",
+ "code": "'use client';\nimport { Label } from '@vercel/geistcn/components';\nimport { Toggle } from '@vercel/geistcn/components';\nimport { MiddleTruncate, Slider } from '@vercel/geistcn/components';\nimport {\n  useEffect,\n  useRef,\n  useState,\n  type CSSProperties,\n  type JSX,\n} from 'react';\n\ninterface ExampleItem {\n  className: string;\n  label: string;\n  style?: CSSProperties;\n  value: string;\n}\n\nconst EXAMPLES: ExampleItem[] = [\n  {\n    className: 'text-label-14',\n    label: 'Branch',\n    value: 'feature/redesign-dashboard-navigation-with-sidebar-improvements',\n  },\n  {\n    className: 'text-copy-14',\n    label: 'Preview URL',\n    value:\n      'platform-web-git-feature-redesign-dashboard-navigation-phamous.vercel.app',\n  },\n  {\n    className: 'text-label-14',\n    label: 'Deployment ID',\n    value: 'dpl_8gmXTT1yJRP8UbGfXD7A3sp4RKhW',\n  },\n  {\n    className: 'text-label-14 font-mono',\n    label: 'Env var key',\n    value: 'STRIPE_WEBHOOK_SIGNING_SECRET',\n  },\n  {\n    className: 'text-label-14 font-mono',\n    label: 'Monospace no ligatures',\n    style: {\n      fontFeatureSettings: '\"liga\" 0, \"calt\" 0',\n      fontVariantLigatures: 'none',\n    },\n    value: 'STRIPE_WEBHOOK_SIGNING_SECRET',\n  },\n  {\n    className: 'text-copy-14',\n    label: 'Commit SHA',\n    value: '2b0874e797d7c2a4092d0033ee0c2f0f9aef2869',\n  },\n  {\n    className: 'text-copy-14',\n    label: 'File path',\n    value:\n      'apps/vercel-site/app/(dashboard)/[teamSlug]/[project]/settings/page.tsx',\n  },\n  {\n    className: 'text-copy-14',\n    label: 'Custom domain',\n    value: 'api.internal.platform-observability.example.com',\n  },\n  {\n    className: 'text-label-14',\n    label: 'Model name',\n    value: 'google/gemini-3.1-flash-image-preview',\n  },\n  {\n    className: 'text-label-14',\n    label: 'Tight width',\n    value: 'feature/redesign-dashboard-navigation-with-sidebar-improvements',\n  },\n  {\n    className: 'text-label-14',\n    label: 'Fits as-is',\n    value: 'sidebar.tsx',\n  },\n];\n\nconst MAX_WIDTH = 600;\n\nexport function Component(): JSX.Element {\n  const [width, setWidth] = useState(MAX_WIDTH);\n  const [isAnimating, setIsAnimating] = useState(false);\n  const rafRef = useRef<number>(0);\n\n  useEffect(() => {\n    if (!isAnimating) return;\n\n    const duration = 4000;\n    let start: number | null = null;\n\n    function step(timestamp: number): void {\n      if (start === null) start = timestamp;\n      const elapsed = timestamp - start;\n      const progress = (elapsed % duration) / duration;\n      // Ping-pong: 0→1→0→1…\n      const t = progress < 0.5 ? progress * 2 : 2 - progress * 2;\n      setWidth(Math.round(t * MAX_WIDTH));\n      rafRef.current = requestAnimationFrame(step);\n    }\n\n    rafRef.current = requestAnimationFrame(step);\n    return () => cancelAnimationFrame(rafRef.current);\n  }, [isAnimating]);\n\n  return (\n    <div className=\"flex flex-col gap-6\">\n      <div className=\"flex flex-col gap-3\">\n        {EXAMPLES.map((example) => (\n          <div\n            className=\"flex items-center gap-4 rounded-md border border-gray-alpha-400 px-4 py-3\"\n            key={example.label}\n          >\n            <div className=\"basis-32 shrink-0 text-label-13 text-gray-700\">\n              {example.label}\n            </div>\n            <div style={{ maxWidth: width }}>\n              <div className=\"min-w-0 basis-0 grow\">\n                <MiddleTruncate\n                  className={example.className}\n                  style={example.style}\n                  value={example.value}\n                />\n              </div>\n            </div>\n          </div>\n        ))}\n      </div>\n\n      <aside>\n        <form className=\"flex gap-1 items-center\">\n          <Label value=\"Width\">\n            <div className=\"flex items-center gap-2\">\n              <Slider\n                max={MAX_WIDTH}\n                min={0}\n                value={[width]}\n                onValueChange={(value) => setWidth((value as number[])[0] ?? 0)}\n                disabled={isAnimating}\n              />\n\n              <p className=\"font-mono text-copy-13 text-gray-900\">{width}px</p>\n            </div>\n          </Label>\n        </form>\n\n        <Toggle\n          checked={isAnimating}\n          onChange={(): void => setIsAnimating(!isAnimating)}\n        >\n          Animate\n        </Toggle>\n      </aside>\n    </div>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-label-14",
+   "attrs": {
+    "title": "feature/redesign-dashboard-navigation-with-sidebar-improvements"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "feature/redesign-dashboard-navigation-with-sidebar-improvements"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "feature/redesign-dashboard-navigation-with-sidebar-improvements"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "feat"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "nts"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-copy-14",
+   "attrs": {
+    "title": "platform-web-git-feature-redesign-dashboard-navigation-phamous.vercel.app"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "platform-web-git-feature-redesign-dashboard-navigation-phamous.vercel.app"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "platform-web-git-feature-redesign-dashboard-navigation-phamous.vercel.app"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "plat"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "app"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-label-14",
+   "attrs": {
+    "title": "dpl_8gmXTT1yJRP8UbGfXD7A3sp4RKhW"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "dpl_8gmXTT1yJRP8UbGfXD7A3sp4RKhW"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "dpl_8gmXTT1yJRP8UbGfXD7A3sp4RKhW"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "dpl_"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "KhW"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-label-14 font-mono",
+   "attrs": {
+    "title": "STRIPE_WEBHOOK_SIGNING_SECRET"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "STRIPE_WEBHOOK_SIGNING_SECRET"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "STRIPE_WEBHOOK_SIGNING_SECRET"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "STRI"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "RET"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-label-14 font-mono",
+   "attrs": {
+    "title": "STRIPE_WEBHOOK_SIGNING_SECRET"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "STRIPE_WEBHOOK_SIGNING_SECRET"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "STRIPE_WEBHOOK_SIGNING_SECRET"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "STRI"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "RET"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-copy-14",
+   "attrs": {
+    "title": "2b0874e797d7c2a4092d0033ee0c2f0f9aef2869"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "2b0874e797d7c2a4092d0033ee0c2f0f9aef2869"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "2b0874e797d7c2a4092d0033ee0c2f0f9aef2869"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "2b08"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "869"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-copy-14",
+   "attrs": {
+    "title": "apps/vercel-site/app/(dashboard)/[teamSlug]/[project]/settings/page.tsx"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "apps/vercel-site/app/(dashboard)/[teamSlug]/[project]/settings/page.tsx"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "apps/vercel-site/app/(dashboard)/[teamSlug]/[project]/settings/page.tsx"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "apps"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "tsx"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-copy-14",
+   "attrs": {
+    "title": "api.internal.platform-observability.example.com"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "api.internal.platform-observability.example.com"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "api.internal.platform-observability.example.com"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "api."
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "com"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-label-14",
+   "attrs": {
+    "title": "google/gemini-3.1-flash-image-preview"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "google/gemini-3.1-flash-image-preview"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "google/gemini-3.1-flash-image-preview"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "goog"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "iew"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-label-14",
+   "attrs": {
+    "title": "feature/redesign-dashboard-navigation-with-sidebar-improvements"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "feature/redesign-dashboard-navigation-with-sidebar-improvements"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "feature/redesign-dashboard-navigation-with-sidebar-improvements"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "feat"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "nts"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "span",
+   "class": "relative inline-grid min-w-0 max-w-full overflow-hidden whitespace-nowrap text-label-14",
+   "attrs": {
+    "title": "sidebar.tsx"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "sr-only select-none",
+     "text": "sidebar.tsx"
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none col-start-1 row-start-1 invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "text": "sidebar.tsx"
+    },
+    {
+     "tag": "span",
+     "class": "col-start-1 row-start-1 min-w-0 overflow-hidden",
+     "attrs": {
+      "aria-hidden": "true"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "text": "side"
+      },
+      {
+       "tag": "span",
+       "text": "…"
+      },
+      {
+       "tag": "span",
+       "text": "tsx"
+      }
+     ]
+    },
+    {
+     "tag": "span",
+     "class": "pointer-events-none absolute left-0 top-0 inline-block invisible select-none whitespace-nowrap",
+     "attrs": {
+      "aria-hidden": "true"
+     }
+    }
+   ]
+  }
+ ]
+}

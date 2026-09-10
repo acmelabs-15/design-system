@@ -1,0 +1,67 @@
+{
+  "notes": "Two runs per side and theme (theme: light, then dark): `item` reads every tile (the roots of maps/choicebox-item.ts) and its parts, `group` reads every group container (maps/choicebox.ts) with its label and list. The mirror loads census.js itself; on the docs page load http://localhost:4183/census.js with a script tag and await its onload. Both previews are set to the docs preview width (666px). `props` is the default list plus the colors, outline, flex and list properties the tile's rules set, and the control's composition variables.",
+  "props": [
+    "display", "height", "width", "min-width", "max-width", "padding-left", "padding-right", "padding-top", "padding-bottom",
+    "margin-left", "margin-right", "border-radius", "border-top-width", "box-shadow", "background-color", "color", "opacity",
+    "font-family", "font-size", "line-height", "font-weight", "letter-spacing", "text-transform", "cursor", "gap", "align-items",
+    "justify-content", "transition-duration", "transition-property", "translate", "transform", "outline-style", "user-select",
+    "overflow", "text-overflow", "white-space", "flex-shrink", "position",
+    "border-color", "border-bottom-width", "border-bottom-color", "outline-width", "outline-color", "outline-offset", "flex-grow", "flex-basis", "flex-direction", "align-self", "list-style-type", "visibility", "scale", "--radio-color", "--checkbox-color"
+  ],
+  "item": {
+    "geist": {
+      "side": "geist",
+      "page": "choicebox",
+      "marker": "ul.list-none > li",
+      "width": "666px",
+      "children": {
+        "body": ".body|label",
+        "option": ".option|[data-slot=choicebox-group-item-option]",
+        "text": ".text|[data-slot=choicebox-group-item-title-description]",
+        "title": ".title|[id^=choicebox-title]",
+        "description": ".description|[id^=choicebox-description]",
+        "radio": "acme-radio >> .control|[data-slot=choicebox-group-item-option] > span:not([data-slot])",
+        "radioInput": "acme-radio >> input|[data-slot=choicebox-group-item-option] > span:not([data-slot]) > input",
+        "dot": "acme-radio >> .dot|[data-slot=choicebox-group-item-option] > span:not([data-slot]) > span[aria-hidden]",
+        "dotAfter": "acme-radio >> .dot::after|[data-slot=choicebox-group-item-option] > span:not([data-slot]) > span[aria-hidden]::after",
+        "checkbox": "acme-checkbox >> .checkbox|label[for^=checkbox]",
+        "checkboxControl": "acme-checkbox >> .control|label[for^=checkbox] > span",
+        "box": "acme-checkbox >> .box|label[for^=checkbox] span[aria-hidden]",
+        "content": ".content|.choicebox-content"
+      },
+      "textParts": ["title", "description", "text", "body", "option"]
+    },
+    "ours": {
+      "side": "ours",
+      "page": "choicebox",
+      "host": "acme-choicebox-item",
+      "ours": ".tile",
+      "width": "666px",
+      "children": "(the same map as geist)",
+      "textParts": ["title", "description", "text", "body", "option"]
+    }
+  },
+  "group": {
+    "geist": {
+      "side": "geist",
+      "page": "choicebox-group",
+      "marker": "[aria-multiselectable]",
+      "width": "666px",
+      "children": {
+        "label": ".label|label[for^=choicebox]",
+        "labelText": ".label .text|label[for^=choicebox] > div",
+        "list": ".list|ul"
+      },
+      "textParts": ["labelText", "list"]
+    },
+    "ours": {
+      "side": "ours",
+      "page": "choicebox-group",
+      "host": "acme-choicebox",
+      "ours": ".group",
+      "width": "666px",
+      "children": "(the same map as geist)",
+      "textParts": ["labelText", "list"]
+    }
+  }
+}

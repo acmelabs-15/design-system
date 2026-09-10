@@ -1,0 +1,2162 @@
+{
+ "page": "empty-state",
+ "title": "Empty State",
+ "lede": "Fill spaces when no content has been added yet, or is temporarily empty due to the nature of the feature and should be designed to prevent confusion.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Empty state Design framework",
+   "description": "When designed thoughtfully, empty states become an essential part of a smooth user experience, providing enough context to keep users working in a productive way. There are several approaches to explore that will match the needs a developer in different situations: * **Blank Slate** - Basic empty state for first run experience * **Informational** - Alternative for first use empty state, including in-line CTAs and supplemental documentation links * **Educational** - Launch a contextual onboarding flow to gain deeper understanding about that area of the app * **Guide** - Starter content that allows users to interact with data and learn the system by tinkering or setting up their environment",
+   "code": "import { EmptyState, EmptyStateIcon } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\nimport { IconChartBarPeak } from '@vercel/geistcn-assets/icons';\n\nexport function Component(): JSX.Element {\n  return (\n    <EmptyState\n      description=\"A message conveying the state of the product.\"\n      icon={<EmptyStateIcon icon={<IconChartBarPeak size={32} />} />}\n      title=\"Title\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "[&>a]:text-sm",
+         "state": ">a",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "rounded-lg",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.5rem"
+        },
+        {
+         "cls": "py-12",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:3rem"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "border",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-style:var(--tw-border-style);border-width:1px"
+        },
+        {
+         "cls": "px-[70px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:70px"
+        },
+        {
+         "cls": "border-[var(--ds-gray-200)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-hidden": "true"
+           },
+           "styles": [
+            {
+             "cls": "rounded-lg",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.5rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "shrink-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "flex-shrink:0"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            },
+            {
+             "cls": "border",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:1px"
+            },
+            {
+             "cls": "border-[var(--ds-gray-alpha-400)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-color:var(--ds-gray-alpha-400)"
+            },
+            {
+             "cls": "bg-[var(--ds-background-100)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-background-100)"
+            },
+            {
+             "cls": "p-[10px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding:10px"
+            },
+            {
+             "cls": "text-[var(--ds-gray-900)]!",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)!important"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:currentColor"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "path",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-gray-1000",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "font-medium",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+            },
+            {
+             "cls": "mx-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:auto"
+            },
+            {
+             "cls": "max-w-[340px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "max-width:340px"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            },
+            {
+             "cls": "text-balance",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-wrap:balance"
+            },
+            {
+             "cls": "text-heading-16",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-semibold);font-size:16px;line-height:24px;font-weight:var(--font-weight-semibold);--tw-tracking:-.32px;letter-spacing:-.32px"
+            },
+            {
+             "cls": "text-heading-16",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-900)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Title"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-gray-900",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:auto"
+            },
+            {
+             "cls": "max-w-[340px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "max-width:340px"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            },
+            {
+             "cls": "text-balance",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-wrap:balance"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A message conveying the state of the product."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Blank slate",
+   "description": "The most basic empty state should convey the state of the view.",
+   "code": "import { EmptyState, EmptyStateIcon } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\nimport { IconChartBarPeak } from '@vercel/geistcn-assets/icons';\n\nexport function Component(): JSX.Element {\n  return (\n    <EmptyState\n      description=\"A message conveying the state of the product.\"\n      icon={<EmptyStateIcon icon={<IconChartBarPeak size={32} />} />}\n      title=\"Title\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "[&>a]:text-sm",
+         "state": ">a",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "rounded-lg",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.5rem"
+        },
+        {
+         "cls": "py-12",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:3rem"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "border",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-style:var(--tw-border-style);border-width:1px"
+        },
+        {
+         "cls": "px-[70px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:70px"
+        },
+        {
+         "cls": "border-[var(--ds-gray-200)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-hidden": "true"
+           },
+           "styles": [
+            {
+             "cls": "rounded-lg",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.5rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "shrink-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "flex-shrink:0"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            },
+            {
+             "cls": "border",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:1px"
+            },
+            {
+             "cls": "border-[var(--ds-gray-alpha-400)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-color:var(--ds-gray-alpha-400)"
+            },
+            {
+             "cls": "bg-[var(--ds-background-100)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-background-100)"
+            },
+            {
+             "cls": "p-[10px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding:10px"
+            },
+            {
+             "cls": "text-[var(--ds-gray-900)]!",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)!important"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:currentColor"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "path",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-gray-1000",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "font-medium",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+            },
+            {
+             "cls": "mx-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:auto"
+            },
+            {
+             "cls": "max-w-[340px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "max-width:340px"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            },
+            {
+             "cls": "text-balance",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-wrap:balance"
+            },
+            {
+             "cls": "text-heading-16",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-semibold);font-size:16px;line-height:24px;font-weight:var(--font-weight-semibold);--tw-tracking:-.32px;letter-spacing:-.32px"
+            },
+            {
+             "cls": "text-heading-16",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-900)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Title"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-gray-900",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:auto"
+            },
+            {
+             "cls": "max-w-[340px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "max-width:340px"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            },
+            {
+             "cls": "text-balance",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-wrap:balance"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A message conveying the state of the product."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Informational",
+   "description": "Help users by clearly explaining the benefit and utility of a product or feature, with a call to action and link to more information to help users progress. Default to showing rather than telling the value of a feature. Certain entry points to a product may call for a unique empty state and a call to upgrade. Informational empty states will include a call to action.",
+   "code": "import { Button, EmptyState, EmptyStateIcon } from '@vercel/geistcn/components';\n\nimport { Link } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\nimport { IconChartBarPeak } from '@vercel/geistcn-assets/icons';\n\nexport function Component(): JSX.Element {\n  return (\n    <EmptyState\n      description=\"This should detail the actions you can take on this screen, as well as why it’s valuable.\"\n      icon={<EmptyStateIcon icon={<IconChartBarPeak size={32} />} />}\n      title=\"Title\"\n    >\n      <Button variant=\"secondary\">Primary Action</Button>\n      <Link\n        data-zone=\"dashboard\"\n        external\n        href=\"/\"\n        isDifferentZone\n        type=\"secondary\"\n      >\n        Learn more\n      </Link>\n    </EmptyState>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "[&>a]:text-sm",
+         "state": ">a",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "rounded-lg",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.5rem"
+        },
+        {
+         "cls": "py-12",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:3rem"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "border",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-style:var(--tw-border-style);border-width:1px"
+        },
+        {
+         "cls": "px-[70px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:70px"
+        },
+        {
+         "cls": "border-[var(--ds-gray-200)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-hidden": "true"
+           },
+           "styles": [
+            {
+             "cls": "rounded-lg",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.5rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "shrink-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "flex-shrink:0"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            },
+            {
+             "cls": "border",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:1px"
+            },
+            {
+             "cls": "border-[var(--ds-gray-alpha-400)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-color:var(--ds-gray-alpha-400)"
+            },
+            {
+             "cls": "bg-[var(--ds-background-100)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-background-100)"
+            },
+            {
+             "cls": "p-[10px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding:10px"
+            },
+            {
+             "cls": "text-[var(--ds-gray-900)]!",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)!important"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:currentColor"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "path",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-gray-1000",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "font-medium",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+            },
+            {
+             "cls": "mx-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:auto"
+            },
+            {
+             "cls": "max-w-[340px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "max-width:340px"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            },
+            {
+             "cls": "text-balance",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-wrap:balance"
+            },
+            {
+             "cls": "text-heading-16",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-semibold);font-size:16px;line-height:24px;font-weight:var(--font-weight-semibold);--tw-tracking:-.32px;letter-spacing:-.32px"
+            },
+            {
+             "cls": "text-heading-16",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-900)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Title"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-gray-900",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:auto"
+            },
+            {
+             "cls": "max-w-[340px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "max-width:340px"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            },
+            {
+             "cls": "text-balance",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-wrap:balance"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "This should detail the actions you can take on this screen, as well as why it’s valuable."
+          }
+         ]
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "type": "submit",
+          "tabindex": "0",
+          "data-react-aria-pressable": "true",
+          "data-geist-button": "",
+          "data-prefix": "false",
+          "data-suffix": "false",
+          "data-version": "v1",
+          "style": "--geist-icon-size:16px"
+         },
+         "styles": [
+          {
+           "cls": "outline-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-outline-style:none;outline-style:none"
+          },
+          {
+           "cls": "m-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin:0"
+          },
+          {
+           "cls": "p-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:0"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "align-baseline",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "vertical-align:baseline"
+          },
+          {
+           "cls": "no-underline",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-decoration-line:none"
+          },
+          {
+           "cls": "group/trigger",
+           "state": ")[data-hover=true] *)",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          },
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "select-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "transform",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"
+          },
+          {
+           "cls": "translate-z-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-z:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "text-[var(--themed-fg,_var(--ds-background-100))]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--themed-fg,var(--ds-background-100))"
+          },
+          {
+           "cls": "bg-[var(--themed-bg,_var(--ds-gray-1000))]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--themed-bg,var(--ds-gray-1000))"
+          },
+          {
+           "cls": "font-medium",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+          },
+          {
+           "cls": "!px-(--geist-gap-half)",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:var(--geist-gap-half)!important"
+          },
+          {
+           "cls": "max-w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:100%"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "justify-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:center"
+          },
+          {
+           "cls": "duration-[time:150ms]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-duration:.15s;transition-duration:.15s"
+          },
+          {
+           "cls": "duration-[time:150ms]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation-duration:.15s"
+          },
+          {
+           "cls": "ease-in-out",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+          },
+          {
+           "cls": "ease-in-out",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+          },
+          {
+           "cls": "data-[focus]:shadow-[var(--ds-focus-ring)]",
+           "state": "[data-focus]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "[&_svg]:shrink-0",
+           "state": "svg",
+           "at": "@layer utilities",
+           "decl": "flex-shrink:0"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "aria-disabled:cursor-not-allowed",
+           "state": "[aria-disabled=true]",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "disabled:text-[var(--ds-gray-700)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-700)"
+          },
+          {
+           "cls": "disabled:bg-[var(--ds-gray-100)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-100)"
+          },
+          {
+           "cls": "aria-disabled:text-[var(--ds-gray-700)]",
+           "state": "[aria-disabled=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-700)"
+          },
+          {
+           "cls": "aria-disabled:bg-[var(--ds-gray-100)]",
+           "state": "[aria-disabled=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-100)"
+          },
+          {
+           "cls": "disabled:![--themed-border:_var(--ds-gray-400)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "--themed-border:var(--ds-gray-400)!important"
+          },
+          {
+           "cls": "aria-disabled:![--themed-border:_var(--ds-gray-400)]",
+           "state": "[aria-disabled=true]",
+           "at": "@layer utilities",
+           "decl": "--themed-border:var(--ds-gray-400)!important"
+          },
+          {
+           "cls": "disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+           "state": "[aria-disabled=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "[--x-padding:10px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--x-padding:10px"
+          },
+          {
+           "cls": "[--height:var(--ds-size-medium)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--height:var(--ds-size-medium)"
+          },
+          {
+           "cls": "text-[14px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:14px"
+          },
+          {
+           "cls": "!pl-[var(--x-padding)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-left:var(--x-padding)!important"
+          },
+          {
+           "cls": "!pr-[var(--x-padding)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-right:var(--x-padding)!important"
+          },
+          {
+           "cls": "rounded-md",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "[--themed-bg:_var(--ds-background-100)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--themed-bg:var(--ds-background-100)"
+          },
+          {
+           "cls": "shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "[--themed-hover-bg:_var(--ds-gray-alpha-200)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--themed-hover-bg:var(--ds-gray-alpha-200)"
+          },
+          {
+           "cls": "[--themed-fg:_var(--ds-gray-1000)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--themed-fg:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "[--themed-border:_var(--ds-gray-400)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--themed-border:var(--ds-gray-400)"
+          },
+          {
+           "cls": "data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)]",
+           "state": "[data-focus]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent)), 0 0 0 2px var(--tw-shadow-color,var(--ds-background-100)), 0 0 0 4px var(--tw-shadow-color,var(--ds-focus-color));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "data-[focus]:transition-none",
+           "state": "[data-focus]",
+           "at": "@layer utilities",
+           "decl": "transition-property:none"
+          },
+          {
+           "cls": "h-[var(--height)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "height:var(--height)"
+          },
+          {
+           "cls": "data-hover:bg-[var(--ds-gray-100)]",
+           "state": "[data-hover]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-100)"
+          },
+          {
+           "cls": "dark-theme:data-hover:bg-[var(--ds-gray-200)]",
+           "state": ":where(.dark-theme,.dark-theme *)[data-hover]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "data-hover:text-[var(--themed-fg)]",
+           "state": "[data-hover]",
+           "at": "@layer utilities",
+           "decl": "color:var(--themed-fg)"
+          },
+          {
+           "cls": "data-hover:disabled:bg-[var(--ds-gray-100)]",
+           "state": "[data-hover]:disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-100)"
+          }
+         ],
+         "unresolved": [
+          "transition-[border-color, background,color,transform,box-shadow]"
+         ],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "truncate",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+            },
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "px-1.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.375rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Primary Action"
+          }
+         ]
+        },
+        {
+         "tag": "a",
+         "attrs": {
+          "href": "/",
+          "rel": "noopener",
+          "target": "_blank",
+          "data-zone": "dashboard"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "focus-visible:outline-2",
+           "state": ":focus-visible",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:2px"
+          },
+          {
+           "cls": "outline-[var(--ds-focus-color)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-color:var(--ds-focus-color)"
+          },
+          {
+           "cls": "outline-offset-4",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-offset:4px"
+          },
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "gap-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "transition-colors",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+          },
+          {
+           "cls": "duration-100",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-duration:.1s;transition-duration:.1s"
+          },
+          {
+           "cls": "duration-100",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation-duration:.1s"
+          },
+          {
+           "cls": "[:not([aria-disabled])]:hover:text-gray-1000",
+           "state": ":not([aria-disabled]):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "data-slot": "geist-icon",
+            "style": "color:currentColor"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ],
+         "text": "Learn more"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Secondary",
+   "description": "The secondary prop (client code): the background is background-200 and the title takes the heading-14 type; the page has no such example. The sketch starts at the component root: the mirror wraps every sketch in the page example wrapper itself.",
+   "code": "import { EmptyState, EmptyStateIcon } from \"@vercel/geistcn/components\";\nimport type { JSX } from \"react\";\nimport { IconChartBarPeak } from \"@vercel/geistcn-assets/icons\";\n\nexport function Component(): JSX.Element {\n  return (\n    <EmptyState\n      secondary\n      description=\"A message conveying the state of the product.\"\n      icon={<EmptyStateIcon icon={<IconChartBarPeak size={32} />} />}\n      title=\"Title\"\n    />\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "[&>a]:text-sm",
+       "state": ">a",
+       "at": "@layer utilities",
+       "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+      },
+      {
+       "cls": "rounded-lg",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-radius:.5rem"
+      },
+      {
+       "cls": "py-12",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding-block:3rem"
+      },
+      {
+       "cls": "gap-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "gap:1.5rem"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "flex-col",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "flex-direction:column"
+      },
+      {
+       "cls": "items-center",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:center"
+      },
+      {
+       "cls": "border",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-style:var(--tw-border-style);border-width:1px"
+      },
+      {
+       "cls": "px-[70px]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding-inline:70px"
+      },
+      {
+       "cls": "border-[var(--ds-gray-200)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-color:var(--ds-gray-200)"
+      },
+      {
+       "cls": "bg-[var(--ds-background-200)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-background-200)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-hidden": "true"
+         },
+         "styles": [
+          {
+           "cls": "rounded-lg",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:.5rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "shrink-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-shrink:0"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "justify-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:center"
+          },
+          {
+           "cls": "border",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:1px"
+          },
+          {
+           "cls": "border-[var(--ds-gray-alpha-400)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-alpha-400)"
+          },
+          {
+           "cls": "bg-[var(--ds-background-100)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-background-100)"
+          },
+          {
+           "cls": "p-[10px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:10px"
+          },
+          {
+           "cls": "text-[var(--ds-gray-900)]!",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)!important"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "viewBox": "0 0 16 16",
+            "height": "32",
+            "width": "32",
+            "data-slot": "geist-icon",
+            "style": "color:currentColor"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {
+              "fill": "currentColor",
+              "fill-rule": "evenodd",
+              "d": "M14 1v14h-1.5V1zM8.75 6v9h-1.5V6zM3.5 10.75V10H2v5h1.5v-4.25",
+              "clip-rule": "evenodd"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "gap-2",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:.5rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-gray-1000",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "font-medium",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+          },
+          {
+           "cls": "mx-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:auto"
+          },
+          {
+           "cls": "max-w-[340px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:340px"
+          },
+          {
+           "cls": "text-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:center"
+          },
+          {
+           "cls": "text-balance",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-wrap:balance"
+          },
+          {
+           "cls": "text-heading-14",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-semibold);font-size:14px;line-height:20px;font-weight:var(--font-weight-semibold);--tw-tracking:-.28px;letter-spacing:-.28px"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Title"
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-copy-14",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "text-copy-14",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mx-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:auto"
+          },
+          {
+           "cls": "max-w-[340px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:340px"
+          },
+          {
+           "cls": "text-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:center"
+          },
+          {
+           "cls": "text-balance",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-wrap:balance"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "A message conveying the state of the product."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "No border",
+   "description": "border={false} (client code): the border stays in the box but turns transparent; the page has no such example.",
+   "code": "import { EmptyState, EmptyStateIcon } from \"@vercel/geistcn/components\";\nimport type { JSX } from \"react\";\nimport { IconChartBarPeak } from \"@vercel/geistcn-assets/icons\";\n\nexport function Component(): JSX.Element {\n  return (\n    <EmptyState\n      border={false}\n      description=\"A message conveying the state of the product.\"\n      icon={<EmptyStateIcon icon={<IconChartBarPeak size={32} />} />}\n      title=\"Title\"\n    />\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "[&>a]:text-sm",
+       "state": ">a",
+       "at": "@layer utilities",
+       "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+      },
+      {
+       "cls": "rounded-lg",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-radius:.5rem"
+      },
+      {
+       "cls": "py-12",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding-block:3rem"
+      },
+      {
+       "cls": "gap-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "gap:1.5rem"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "flex-col",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "flex-direction:column"
+      },
+      {
+       "cls": "items-center",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:center"
+      },
+      {
+       "cls": "border",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-style:var(--tw-border-style);border-width:1px"
+      },
+      {
+       "cls": "px-[70px]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding-inline:70px"
+      },
+      {
+       "cls": "border-transparent",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-color:#0000"
+      },
+      {
+       "cls": "bg-[var(--ds-background-100)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-background-100)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-hidden": "true"
+         },
+         "styles": [
+          {
+           "cls": "rounded-lg",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:.5rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "shrink-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-shrink:0"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "justify-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:center"
+          },
+          {
+           "cls": "border",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:1px"
+          },
+          {
+           "cls": "border-[var(--ds-gray-alpha-400)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-alpha-400)"
+          },
+          {
+           "cls": "bg-[var(--ds-background-100)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-background-100)"
+          },
+          {
+           "cls": "p-[10px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:10px"
+          },
+          {
+           "cls": "text-[var(--ds-gray-900)]!",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)!important"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "viewBox": "0 0 16 16",
+            "height": "32",
+            "width": "32",
+            "data-slot": "geist-icon",
+            "style": "color:currentColor"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {
+              "fill": "currentColor",
+              "fill-rule": "evenodd",
+              "d": "M14 1v14h-1.5V1zM8.75 6v9h-1.5V6zM3.5 10.75V10H2v5h1.5v-4.25",
+              "clip-rule": "evenodd"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "gap-2",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:.5rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-gray-1000",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "font-medium",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+          },
+          {
+           "cls": "mx-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:auto"
+          },
+          {
+           "cls": "max-w-[340px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:340px"
+          },
+          {
+           "cls": "text-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:center"
+          },
+          {
+           "cls": "text-balance",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-wrap:balance"
+          },
+          {
+           "cls": "text-heading-16",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-semibold);font-size:16px;line-height:24px;font-weight:var(--font-weight-semibold);--tw-tracking:-.32px;letter-spacing:-.32px"
+          },
+          {
+           "cls": "text-heading-16",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-900)"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Title"
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-copy-14",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "text-copy-14",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mx-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:auto"
+          },
+          {
+           "cls": "max-w-[340px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:340px"
+          },
+          {
+           "cls": "text-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:center"
+          },
+          {
+           "cls": "text-balance",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-wrap:balance"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "A message conveying the state of the product."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

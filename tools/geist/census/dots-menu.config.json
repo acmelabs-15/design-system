@@ -1,0 +1,68 @@
+{
+  "note": "Three roots, each its own census page, both sides for both themes (theme: light, then dark), on the mirror (http://localhost:4184/geist/dots-menu) and the census page (http://localhost:4180/census/dots-menu). The trigger (the composed menu button, read on its button part through the host) is read on every example: the page's four closed ones and the two sketched open ones. The list and the item roots exist on the open examples only; ours opens them in `prepare` (the dots menus of the census-only previews, the last two) before the census freezes transitions. The item's highlight is the data-selected state. Inject census.js on the census page first (a script element with src http://localhost:4183/census.js); the mirror carries it.",
+  "themes": ["light", "dark"],
+  "runs": {
+    "dots-menu-trigger": {
+      "geist": {
+        "side": "geist",
+        "page": "dots-menu-trigger",
+        "marker": "data-geist-menu-button",
+        "children": {
+          "label": ".label|.truncate",
+          "inner": ".inner|.flex-nowrap",
+          "wrap": ".wrap|[data-geist-dots-menu]",
+          "icon": ".icon|[data-geist-dots-menu] > span",
+          "svg": ".icon svg|[data-geist-dots-menu] svg"
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "dots-menu-trigger",
+        "host": "acme-dots-menu",
+        "ours": "acme-menu-button >> .btn",
+        "children": {
+          "label": ".label|.truncate",
+          "inner": ".inner|.flex-nowrap",
+          "wrap": ".wrap|[data-geist-dots-menu]",
+          "icon": ".icon|[data-geist-dots-menu] > span",
+          "svg": ".icon svg|[data-geist-dots-menu] svg"
+        },
+        "prepare": "const p=[...document.querySelectorAll('.showcase .preview')].slice(4).flatMap(x=>[...x.querySelectorAll('acme-dots-menu')]);for(const el of p)el.open=true;return Promise.all(p.map(async el=>{await el.updateComplete;const m=el.shadowRoot.querySelector('acme-menu');await m.updateComplete;await m.updateComplete;}));"
+      }
+    },
+    "dots-menu-list": {
+      "geist": {
+        "side": "geist",
+        "page": "dots-menu-list",
+        "marker": "data-phase",
+        "children": { "menu": ".menu|[data-geist-menu]" },
+        "states": [""]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "dots-menu-list",
+        "host": "acme-dots-menu[open]",
+        "ours": "acme-menu >> .floating",
+        "children": { "menu": ".menu|[data-geist-menu]" },
+        "states": [""],
+        "prepare": "const p=[...document.querySelectorAll('.showcase .preview')].slice(4).flatMap(x=>[...x.querySelectorAll('acme-dots-menu')]);for(const el of p)el.open=true;return Promise.all(p.map(async el=>{await el.updateComplete;const m=el.shadowRoot.querySelector('acme-menu');await m.updateComplete;await m.updateComplete;}));"
+      }
+    },
+    "dots-menu-item": {
+      "geist": {
+        "side": "geist",
+        "page": "dots-menu-item",
+        "marker": "[data-geist-menu-item][role=menuitem]",
+        "states": ["", "data-selected"]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "dots-menu-item",
+        "host": "acme-dots-menu[open] acme-menu-item",
+        "ours": ".item",
+        "states": ["", "data-selected"],
+        "prepare": "const p=[...document.querySelectorAll('.showcase .preview')].slice(4).flatMap(x=>[...x.querySelectorAll('acme-dots-menu')]);for(const el of p)el.open=true;return Promise.all(p.map(async el=>{await el.updateComplete;const m=el.shadowRoot.querySelector('acme-menu');await m.updateComplete;await m.updateComplete;}));"
+      }
+    }
+  }
+}

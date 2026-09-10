@@ -1,0 +1,50 @@
+{
+ "heading": "Without close",
+ "description": "hideX drops the dismiss control and the message spans the row.",
+ "code": "<Toasts>\n  <Toast text=\"The Evil Rabbit jumped over the fence.\" visible hideX />\n</Toasts>",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "toast-area pointer-events-auto group/toastArea fixed bottom-[calc(var(--geist-gap)+var(--offset-bottom))] right-[var(--geist-gap)] z-[var(--ds-z-toast)] transition-all duration-400 ease-in-out",
+   "attrs": {
+    "data-testid": "toasts/list",
+    "style": "--offset-bottom:0px"
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "toast-container group/toastContainer w-[420px] absolute bottom-0 right-0 shadow-[var(--ds-shadow-menu)] rounded-[12px] bg-[var(--geist-background)] text-[var(--ds-gray-1000)] leading-[21px] p-4 z-[var(--ds-z-toast)] max-w-[min(420px,calc(100vw-2*var(--geist-gap)))] group-hover/toastArea:!max-h-[var(--max-height)] group-hover/toastArea:![transform:_translate3d(0,_var(--y),_var(--z))_scale(1)] group-hover/toastArea:after:content-[''] group-hover/toastArea:after:absolute group-hover/toastArea:after:left-0 group-hover/toastArea:after:right-0 group-hover/toastArea:after:top-[calc(100%+1px)] group-hover/toastArea:after:w-full group-hover/toastArea:after:h-5 group-hover/toastArea:after:bg-transparent transition-all duration-[time:350ms] ease-[easing-function:cubic-bezier(0.25,0.75,0.6,0.98)] nth-last-[n+4]:!opacity-0 nth-last-[n+4]:!pointer-events-none max-sm:nth-last-[n+3]:!opacity-0 max-sm:nth-last-[n+3]:!pointer-events-none opacity-100 transform-none",
+     "attrs": {
+      "aria-atomic": "true",
+      "aria-labelledby": "",
+      "data-geist-toast": "",
+      "data-version": "v1",
+      "role": "status",
+      "style": "max-height:52px;--y:0px;--z:-0px;--max-height:52px"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "max-w-full items-center justify-between text-[0.875rem] flex transition-all duration-[time:400ms] ease-in-out flex-col gap-3",
+       "children": [
+        {
+         "tag": "div",
+         "class": "-mt-px w-full opacity-100 h-full transition-opacity duration-[time:400ms] ease-in-out flex gap-4 justify-between items-center text-pretty [word-break:break-word] group-not-last/toastContainer:!opacity-0 group-hover/toastArea:!opacity-100 text-inherit [&_a]:[background-image:linear-gradient(var(--ds-gray-1000),var(--ds-gray-1000))] [&_a]:[background-size:100%_1px] [&_a]:[background-position:_left_bottom] [&_a]:[background-repeat:_no-repeat] [&_a]:font-medium [&_span]:w-full",
+         "attrs": {
+          "id": "toast-message"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "text": "The Evil Rabbit jumped over the fence."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

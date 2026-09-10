@@ -1,0 +1,1143 @@
+{
+ "page": "error",
+ "title": "Error",
+ "lede": "Good error design is clear, useful, and friendly. Designing concise and accurate error messages unblocks users and builds trust by meeting people where they are.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-error",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Error } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Error>This email address is already in use.</Error>;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-atomic": "true",
+        "data-geist-error": "",
+        "data-version": "v1",
+        "role": "alert"
+       },
+       "styles": [
+        {
+         "cls": "text-[var(--ds-red-900)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-red-900)"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "items-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:flex-start"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "leading-5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:calc(.25rem * 5);line-height:1.25rem"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-hidden": "true"
+         },
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "mr-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-right:.5rem"
+          },
+          {
+           "cls": "mt-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-top:.125rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "data-slot": "geist-icon",
+            "style": "color:var(--ds-red-900)"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "break-words",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "overflow-wrap:break-word"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "This email address is already in use."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Custom label",
+   "description": "",
+   "code": "import { Error } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Error label=\"Email Error\">This email address is already in use.</Error>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-atomic": "true",
+        "data-geist-error": "",
+        "data-version": "v1",
+        "role": "alert"
+       },
+       "styles": [
+        {
+         "cls": "text-[var(--ds-red-900)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-red-900)"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "items-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:flex-start"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "leading-5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:calc(.25rem * 5);line-height:1.25rem"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-hidden": "true"
+         },
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "mr-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-right:.5rem"
+          },
+          {
+           "cls": "mt-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-top:.125rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "data-slot": "geist-icon",
+            "style": "color:var(--ds-red-900)"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "break-words",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "overflow-wrap:break-word"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "b",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "font-medium",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+            },
+            {
+             "cls": "mr-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-right:.5rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Email Error :"
+          }
+         ],
+         "text": "This email address is already in use."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "No label",
+   "description": "",
+   "code": "import { Error } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Error label={false}>This email address is already in use. </Error>;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-atomic": "true",
+        "data-geist-error": "",
+        "data-version": "v1",
+        "role": "alert"
+       },
+       "styles": [
+        {
+         "cls": "text-[var(--ds-red-900)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-red-900)"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "items-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:flex-start"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "leading-5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:calc(.25rem * 5);line-height:1.25rem"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-hidden": "true"
+         },
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "mr-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-right:.5rem"
+          },
+          {
+           "cls": "mt-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-top:.125rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "data-slot": "geist-icon",
+            "style": "color:var(--ds-red-900)"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "break-words",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "overflow-wrap:break-word"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "This email address is already in use."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Sizes",
+   "description": "",
+   "code": "import { Error as GeistError } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col md:flex-row items-stretch justify-start gap-6 flex-initial\">\n      <GeistError size=\"small\">This email is in use.</GeistError>\n      <GeistError>This email is in use.</GeistError>\n      <GeistError size=\"large\">This email is in use.</GeistError>\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "md:flex-row",
+         "state": "",
+         "at": "@layer utilities @media (min-width:601px)",
+         "decl": "flex-direction:row"
+        },
+        {
+         "cls": "items-stretch",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:stretch"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex-initial",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex:0 auto"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-atomic": "true",
+          "data-geist-error": "",
+          "data-version": "v1",
+          "role": "alert"
+         },
+         "styles": [
+          {
+           "cls": "text-[var(--ds-red-900)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-red-900)"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:flex-start"
+          },
+          {
+           "cls": "text-[13px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:13px"
+          },
+          {
+           "cls": "leading-5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 5);line-height:1.25rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-hidden": "true"
+           },
+           "styles": [
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "mr-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-right:.5rem"
+            },
+            {
+             "cls": "mt-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-top:.125rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:var(--ds-red-900)"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "path",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "break-words",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-wrap:break-word"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "This email is in use."
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-atomic": "true",
+          "data-geist-error": "",
+          "data-version": "v1",
+          "role": "alert"
+         },
+         "styles": [
+          {
+           "cls": "text-[var(--ds-red-900)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-red-900)"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:flex-start"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "leading-5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 5);line-height:1.25rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-hidden": "true"
+           },
+           "styles": [
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "mr-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-right:.5rem"
+            },
+            {
+             "cls": "mt-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-top:.125rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:var(--ds-red-900)"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "path",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "break-words",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-wrap:break-word"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "This email is in use."
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-atomic": "true",
+          "data-geist-error": "",
+          "data-version": "v1",
+          "role": "alert"
+         },
+         "styles": [
+          {
+           "cls": "text-[var(--ds-red-900)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-red-900)"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:flex-start"
+          },
+          {
+           "cls": "text-base",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+          },
+          {
+           "cls": "leading-6",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 6);line-height:1.5rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-hidden": "true"
+           },
+           "styles": [
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "mr-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-right:.5rem"
+            },
+            {
+             "cls": "mt-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-top:.25rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:var(--ds-red-900)"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "path",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "break-words",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-wrap:break-word"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "This email is in use."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "With an error property",
+   "description": "",
+   "code": "import { Error } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Error\n      error={{\n        message: 'The request failed.',\n        action: 'Contact Us',\n        link: 'https://vercel.com/contact',\n      }}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-atomic": "true",
+        "data-geist-error": "",
+        "data-version": "v1",
+        "role": "alert"
+       },
+       "styles": [
+        {
+         "cls": "text-[var(--ds-red-900)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-red-900)"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "items-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:flex-start"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "leading-5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:calc(.25rem * 5);line-height:1.25rem"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-hidden": "true"
+         },
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "mr-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-right:.5rem"
+          },
+          {
+           "cls": "mt-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-top:.125rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "data-slot": "geist-icon",
+            "style": "color:var(--ds-red-900)"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "break-words",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "overflow-wrap:break-word"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "a",
+             "attrs": {
+              "href": "https://vercel.com/contact",
+              "rel": "noopener",
+              "target": "_blank"
+             },
+             "styles": [
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "focus-visible:outline-2",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "outline-style:var(--tw-outline-style);outline-width:2px"
+              },
+              {
+               "cls": "outline-[var(--ds-focus-color)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "outline-color:var(--ds-focus-color)"
+              },
+              {
+               "cls": "outline-offset-4",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "outline-offset:4px"
+              },
+              {
+               "cls": "inline-flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "gap-0.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "gap:.125rem"
+              },
+              {
+               "cls": "text-inherit",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:inherit"
+              },
+              {
+               "cls": "transition-opacity",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "duration-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.1s;transition-duration:.1s"
+              },
+              {
+               "cls": "duration-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.1s"
+              },
+              {
+               "cls": "underline",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-decoration-line:underline"
+              },
+              {
+               "cls": "font-medium",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+              },
+              {
+               "cls": "[:not([aria-disabled])]:hover:opacity-60",
+               "state": ":not([aria-disabled]):hover",
+               "at": "@layer utilities @media (hover:hover)",
+               "decl": "opacity:.6"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ],
+             "text": "Contact Us"
+            }
+           ]
+          }
+         ],
+         "text": "The request failed."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

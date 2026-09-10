@@ -1,0 +1,1152 @@
+{
+ "heading": "Nested",
+ "description": "Client-only shapes at the second level (direct children of the root group, where the map walks the rows), expanded to depth 3 (the default): an expanded nested object and array with their block closing brackets, an empty object (no toggle), single pairs that fit one line (an inline group) and one that does not (a block line wrapper), and search marks on keys, a number, a boolean and null.",
+ "code": "const data = {\n  trace: { spanId: 'span_7Qk9b4', service: 'api' },\n  apiTags: ['api', 'edge'],\n  apiMeta: {},\n  note: { id: 42 },\n  ok: { flag: true },\n  none: { value: null },\n  name: { api: 'api' },\n  url: { href: 'https://browser-api.vercel.sh/screenshot?url=https%3A%2F%2Fexample.vercel.app&width=1440' },\n  count: 42,\n  active: true,\n  error: null,\n};\nconst highlightPattern = makeJsonViewHighlightPattern(['api', '42', 'true', 'null']);\n\nexport function Component(): JSX.Element {\n  return <JsonView data={data} highlightPattern={highlightPattern} />;\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "w-full p-6",
+   "children": [
+    {
+     "tag": "span",
+     "class": "inline font-mono leading-5 text-copy-13",
+     "children": [
+      {
+       "tag": "span",
+       "class": "m-0 inline bg-transparent p-0 leading-5 whitespace-pre-wrap [overflow-wrap:anywhere]",
+       "attrs": {
+        "aria-label": "JSON",
+        "role": "tree"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "class": "group/json-child m-0 py-0 pr-0 pl-2 outline-none inline",
+         "attrs": {
+          "aria-expanded": "true",
+          "aria-label": "JSON object",
+          "aria-level": "1",
+          "aria-posinset": "1",
+          "aria-setsize": "1",
+          "data-json-tree-label": "JSON object",
+          "role": "treeitem",
+          "tabindex": "0"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "children": [
+            {
+             "tag": "span",
+             "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+             "attrs": {
+              "data-json-node-toggle": "true"
+             },
+             "text": "{",
+             "children": [
+              {
+               "tag": "span",
+               "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+               "attrs": {
+                "aria-hidden": "true"
+               },
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "viewBox": "0 0 16 16",
+                  "height": "16",
+                  "width": "16",
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "children": [
+                  {
+                   "tag": "path"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "span",
+           "class": "m-0 block p-0",
+           "attrs": {
+            "role": "group"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-expanded": "true",
+              "aria-label": "trace: object",
+              "aria-level": "2",
+              "aria-posinset": "1",
+              "aria-setsize": "11",
+              "data-json-tree-label": "trace: object",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+                 "attrs": {
+                  "data-json-node-toggle": "true"
+                 },
+                 "text": "{",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+                   "attrs": {
+                    "aria-hidden": "true"
+                   },
+                   "children": [
+                    {
+                     "tag": "svg",
+                     "attrs": {
+                      "viewBox": "0 0 16 16",
+                      "height": "16",
+                      "width": "16",
+                      "data-slot": "geist-icon",
+                      "style": "color:currentColor"
+                     },
+                     "children": [
+                      {
+                       "tag": "path"
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "trace: ",
+                   "children": []
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "span",
+               "class": "m-0 block p-0",
+               "attrs": {
+                "role": "group"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+                 "attrs": {
+                  "aria-label": "spanId: span_7Qk9b4",
+                  "aria-level": "3",
+                  "aria-posinset": "1",
+                  "aria-setsize": "2",
+                  "data-json-tree-label": "spanId: span_7Qk9b4",
+                  "role": "treeitem",
+                  "tabindex": "-1"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                   "text": ",",
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                     "text": "spanId: ",
+                     "children": []
+                    },
+                    {
+                     "tag": "span",
+                     "class": "text-green-900 [[data-theme='dark']_&]:text-blue-700",
+                     "text": "\"span_7Qk9b4\"",
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+                 "attrs": {
+                  "aria-label": "service: api",
+                  "aria-level": "3",
+                  "aria-posinset": "2",
+                  "aria-setsize": "2",
+                  "data-json-tree-label": "service: api",
+                  "role": "treeitem",
+                  "tabindex": "-1"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                   "text": "",
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                     "text": "service: ",
+                     "children": []
+                    },
+                    {
+                     "tag": "span",
+                     "class": "text-green-900 [[data-theme='dark']_&]:text-blue-700",
+                     "text": "\"\"",
+                     "children": [
+                      {
+                       "tag": "mark",
+                       "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                       "text": "api"
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "span",
+               "class": "block",
+               "text": "},"
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-expanded": "true",
+              "aria-label": "apiTags: array",
+              "aria-level": "2",
+              "aria-posinset": "2",
+              "aria-setsize": "11",
+              "data-json-tree-label": "apiTags: array",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+                 "attrs": {
+                  "data-json-node-toggle": "true"
+                 },
+                 "text": "[",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+                   "attrs": {
+                    "aria-hidden": "true"
+                   },
+                   "children": [
+                    {
+                     "tag": "svg",
+                     "attrs": {
+                      "viewBox": "0 0 16 16",
+                      "height": "16",
+                      "width": "16",
+                      "data-slot": "geist-icon",
+                      "style": "color:currentColor"
+                     },
+                     "children": [
+                      {
+                       "tag": "path"
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "Tags: ",
+                   "children": [
+                    {
+                     "tag": "mark",
+                     "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                     "text": "api"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "span",
+               "class": "m-0 block p-0",
+               "attrs": {
+                "role": "group"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+                 "attrs": {
+                  "aria-label": "0: api",
+                  "aria-level": "3",
+                  "aria-posinset": "1",
+                  "aria-setsize": "2",
+                  "data-json-tree-label": "0: api",
+                  "role": "treeitem",
+                  "tabindex": "-1"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                   "text": ",",
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                     "text": "0: ",
+                     "children": []
+                    },
+                    {
+                     "tag": "span",
+                     "class": "text-green-900 [[data-theme='dark']_&]:text-blue-700",
+                     "text": "\"\"",
+                     "children": [
+                      {
+                       "tag": "mark",
+                       "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                       "text": "api"
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+                 "attrs": {
+                  "aria-label": "1: edge",
+                  "aria-level": "3",
+                  "aria-posinset": "2",
+                  "aria-setsize": "2",
+                  "data-json-tree-label": "1: edge",
+                  "role": "treeitem",
+                  "tabindex": "-1"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                   "text": "",
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                     "text": "1: ",
+                     "children": []
+                    },
+                    {
+                     "tag": "span",
+                     "class": "text-green-900 [[data-theme='dark']_&]:text-blue-700",
+                     "text": "\"edge\"",
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "span",
+               "class": "block",
+               "text": "],"
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-label": "apiMeta: object",
+              "aria-level": "2",
+              "aria-posinset": "3",
+              "aria-setsize": "11",
+              "data-json-tree-label": "apiMeta: object",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                 "text": "{",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "Meta: ",
+                   "children": [
+                    {
+                     "tag": "mark",
+                     "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                     "text": "api"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "span",
+               "class": "m-0 block p-0",
+               "attrs": {
+                "role": "group"
+               }
+              },
+              {
+               "tag": "span",
+               "class": "block",
+               "text": "},"
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-expanded": "true",
+              "aria-label": "note: object",
+              "aria-level": "2",
+              "aria-posinset": "4",
+              "aria-setsize": "11",
+              "data-json-tree-label": "note: object",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "data-json-inline-expanded": "true"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+                 "attrs": {
+                  "data-json-node-toggle": "true"
+                 },
+                 "text": "{",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+                   "attrs": {
+                    "aria-hidden": "true"
+                   },
+                   "children": [
+                    {
+                     "tag": "svg",
+                     "attrs": {
+                      "viewBox": "0 0 16 16",
+                      "height": "16",
+                      "width": "16",
+                      "data-slot": "geist-icon",
+                      "style": "color:currentColor"
+                     },
+                     "children": [
+                      {
+                       "tag": "path"
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "note: ",
+                   "children": []
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "class": "m-0 inline p-0",
+                 "attrs": {
+                  "role": "group"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "group/json-child m-0 inline p-0 outline-none",
+                   "attrs": {
+                    "aria-label": "id: ",
+                    "aria-level": "3",
+                    "aria-posinset": "1",
+                    "aria-setsize": "1",
+                    "data-json-tree-label": "id: ",
+                    "role": "treeitem",
+                    "tabindex": "-1"
+                   },
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "box-border inline rounded align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                     "children": [
+                      {
+                       "tag": "span",
+                       "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                       "text": "id: ",
+                       "children": []
+                      },
+                      {
+                       "tag": "span",
+                       "class": "text-blue-900 [[data-theme='dark']_&]:text-blue-700",
+                       "text": "",
+                       "children": [
+                        {
+                         "tag": "mark",
+                         "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                         "text": "42"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "text": "},"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-expanded": "true",
+              "aria-label": "ok: object",
+              "aria-level": "2",
+              "aria-posinset": "5",
+              "aria-setsize": "11",
+              "data-json-tree-label": "ok: object",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "data-json-inline-expanded": "true"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+                 "attrs": {
+                  "data-json-node-toggle": "true"
+                 },
+                 "text": "{",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+                   "attrs": {
+                    "aria-hidden": "true"
+                   },
+                   "children": [
+                    {
+                     "tag": "svg",
+                     "attrs": {
+                      "viewBox": "0 0 16 16",
+                      "height": "16",
+                      "width": "16",
+                      "data-slot": "geist-icon",
+                      "style": "color:currentColor"
+                     },
+                     "children": [
+                      {
+                       "tag": "path"
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "ok: ",
+                   "children": []
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "class": "m-0 inline p-0",
+                 "attrs": {
+                  "role": "group"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "group/json-child m-0 inline p-0 outline-none",
+                   "attrs": {
+                    "aria-label": "flag: ",
+                    "aria-level": "3",
+                    "aria-posinset": "1",
+                    "aria-setsize": "1",
+                    "data-json-tree-label": "flag: ",
+                    "role": "treeitem",
+                    "tabindex": "-1"
+                   },
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "box-border inline rounded align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                     "children": [
+                      {
+                       "tag": "span",
+                       "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                       "text": "flag: ",
+                       "children": []
+                      },
+                      {
+                       "tag": "span",
+                       "class": "text-amber-900 [[data-theme='dark']_&]:text-amber-700",
+                       "text": "",
+                       "children": [
+                        {
+                         "tag": "mark",
+                         "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                         "text": "true"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "text": "},"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-expanded": "true",
+              "aria-label": "none: object",
+              "aria-level": "2",
+              "aria-posinset": "6",
+              "aria-setsize": "11",
+              "data-json-tree-label": "none: object",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "data-json-inline-expanded": "true"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+                 "attrs": {
+                  "data-json-node-toggle": "true"
+                 },
+                 "text": "{",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+                   "attrs": {
+                    "aria-hidden": "true"
+                   },
+                   "children": [
+                    {
+                     "tag": "svg",
+                     "attrs": {
+                      "viewBox": "0 0 16 16",
+                      "height": "16",
+                      "width": "16",
+                      "data-slot": "geist-icon",
+                      "style": "color:currentColor"
+                     },
+                     "children": [
+                      {
+                       "tag": "path"
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "none: ",
+                   "children": []
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "class": "m-0 inline p-0",
+                 "attrs": {
+                  "role": "group"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "group/json-child m-0 inline p-0 outline-none",
+                   "attrs": {
+                    "aria-label": "value: ",
+                    "aria-level": "3",
+                    "aria-posinset": "1",
+                    "aria-setsize": "1",
+                    "data-json-tree-label": "value: ",
+                    "role": "treeitem",
+                    "tabindex": "-1"
+                   },
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "box-border inline rounded align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                     "children": [
+                      {
+                       "tag": "span",
+                       "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                       "text": "value: ",
+                       "children": []
+                      },
+                      {
+                       "tag": "span",
+                       "class": "text-gray-900 [[data-theme='dark']_&]:text-gray-700",
+                       "text": "",
+                       "children": [
+                        {
+                         "tag": "mark",
+                         "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                         "text": "null"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "text": "},"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-expanded": "true",
+              "aria-label": "name: object",
+              "aria-level": "2",
+              "aria-posinset": "7",
+              "aria-setsize": "11",
+              "data-json-tree-label": "name: object",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "data-json-inline-expanded": "true"
+               },
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+                 "attrs": {
+                  "data-json-node-toggle": "true"
+                 },
+                 "text": "{",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+                   "attrs": {
+                    "aria-hidden": "true"
+                   },
+                   "children": [
+                    {
+                     "tag": "svg",
+                     "attrs": {
+                      "viewBox": "0 0 16 16",
+                      "height": "16",
+                      "width": "16",
+                      "data-slot": "geist-icon",
+                      "style": "color:currentColor"
+                     },
+                     "children": [
+                      {
+                       "tag": "path"
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "name: ",
+                   "children": []
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "class": "m-0 inline p-0",
+                 "attrs": {
+                  "role": "group"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "group/json-child m-0 inline p-0 outline-none",
+                   "attrs": {
+                    "aria-label": "api: \"\"",
+                    "aria-level": "3",
+                    "aria-posinset": "1",
+                    "aria-setsize": "1",
+                    "data-json-tree-label": "api: \"\"",
+                    "role": "treeitem",
+                    "tabindex": "-1"
+                   },
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "box-border inline rounded align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                     "children": [
+                      {
+                       "tag": "span",
+                       "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                       "text": "api: ",
+                       "children": [
+                        {
+                         "tag": "mark",
+                         "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                         "text": "api"
+                        }
+                       ]
+                      },
+                      {
+                       "tag": "span",
+                       "class": "text-green-900 [[data-theme='dark']_&]:text-blue-700",
+                       "text": "\"\"",
+                       "children": [
+                        {
+                         "tag": "mark",
+                         "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                         "text": "api"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "text": "},"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-expanded": "true",
+              "aria-label": "url: object",
+              "aria-level": "2",
+              "aria-posinset": "8",
+              "aria-setsize": "11",
+              "data-json-tree-label": "url: object",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "block",
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)] group/json-toggle cursor-pointer touch-manipulation hover:bg-gray-alpha-100 group-focus-visible/json-child:bg-gray-alpha-100",
+                 "attrs": {
+                  "data-json-node-toggle": "true"
+                 },
+                 "text": "{",
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "mr-0.5 -ml-[18px] inline-flex size-4 flex-[0_0_16px] translate-y-0.5 items-center justify-center align-top text-gray-500 group-hover/json-toggle:text-gray-1000 group-focus-visible/json-child:text-gray-1000 [&_svg]:size-4 [[data-theme='dark']_&]:text-gray-700 group-hover/json-toggle:[[data-theme='dark']_&]:text-gray-500 group-focus-visible/json-child:[[data-theme='dark']_&]:text-gray-500",
+                   "attrs": {
+                    "aria-hidden": "true"
+                   },
+                   "children": [
+                    {
+                     "tag": "svg",
+                     "attrs": {
+                      "viewBox": "0 0 16 16",
+                      "height": "16",
+                      "width": "16",
+                      "data-slot": "geist-icon",
+                      "style": "color:currentColor"
+                     },
+                     "children": [
+                      {
+                       "tag": "path"
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "span",
+                   "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                   "text": "url: ",
+                   "children": []
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "class": "m-0 block p-0",
+                 "attrs": {
+                  "role": "group"
+                 },
+                 "children": [
+                  {
+                   "tag": "span",
+                   "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+                   "attrs": {
+                    "aria-label": "href: https://browser-api.vercel.sh/screenshot?url=https%3A%2F%2Fexample.vercel.app&width=1440",
+                    "aria-level": "3",
+                    "aria-posinset": "1",
+                    "aria-setsize": "1",
+                    "data-json-tree-label": "href: https://browser-api.vercel.sh/screenshot?url=https%3A%2F%2Fexample.vercel.app&width=1440",
+                    "role": "treeitem",
+                    "tabindex": "-1"
+                   },
+                   "children": [
+                    {
+                     "tag": "span",
+                     "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+                     "text": "",
+                     "children": [
+                      {
+                       "tag": "span",
+                       "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                       "text": "href: ",
+                       "children": []
+                      },
+                      {
+                       "tag": "span",
+                       "class": "text-green-900 [[data-theme='dark']_&]:text-blue-700",
+                       "text": "\"https://browser-api.vercel.sh/screenshot?url=https%3A%2F%2Fexample.vercel.app&width=1440\"",
+                       "children": []
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "class": "block",
+                 "text": "},"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-label": "count: 42",
+              "aria-level": "2",
+              "aria-posinset": "9",
+              "aria-setsize": "11",
+              "data-json-tree-label": "count: 42",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+               "text": ",",
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                 "text": "count: ",
+                 "children": []
+                },
+                {
+                 "tag": "span",
+                 "class": "text-blue-900 [[data-theme='dark']_&]:text-blue-700",
+                 "text": "",
+                 "children": [
+                  {
+                   "tag": "mark",
+                   "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                   "text": "42"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-label": "active: true",
+              "aria-level": "2",
+              "aria-posinset": "10",
+              "aria-setsize": "11",
+              "data-json-tree-label": "active: true",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+               "text": ",",
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                 "text": "active: ",
+                 "children": []
+                },
+                {
+                 "tag": "span",
+                 "class": "text-amber-900 [[data-theme='dark']_&]:text-amber-700",
+                 "text": "",
+                 "children": [
+                  {
+                   "tag": "mark",
+                   "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                   "text": "true"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "group/json-child m-0 block py-0 pr-0 pl-2 outline-none",
+             "attrs": {
+              "aria-label": "error: null",
+              "aria-level": "2",
+              "aria-posinset": "11",
+              "aria-setsize": "11",
+              "data-json-tree-label": "error: null",
+              "role": "treeitem",
+              "tabindex": "-1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "box-border inline-block min-h-5 -ml-3 rounded pl-[18px] align-top group-focus-visible/json-child:outline group-focus-visible/json-child:outline-2 group-focus-visible/json-child:outline-offset-1 group-focus-visible/json-child:outline-[var(--ds-blue-700)]",
+               "text": "",
+               "children": [
+                {
+                 "tag": "span",
+                 "class": "font-normal text-pink-900 [[data-theme='dark']_&]:text-pink-700",
+                 "text": "error: ",
+                 "children": []
+                },
+                {
+                 "tag": "span",
+                 "class": "text-gray-900 [[data-theme='dark']_&]:text-gray-700",
+                 "text": "",
+                 "children": [
+                  {
+                   "tag": "mark",
+                   "class": "bg-[var(--geist-highlight-yellow)] text-black",
+                   "text": "null"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "span",
+           "text": "}"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

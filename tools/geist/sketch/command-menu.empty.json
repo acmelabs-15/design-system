@@ -1,0 +1,243 @@
+{
+ "heading": "Empty",
+ "description": "No item matches the query: the list holds the centred empty message with the query in gray-1000.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <CommandMenu open setOpen={() => {}}>\n      <CommandMenuInput placeholder=\"What do you need?\" />\n      <CommandMenuList>\n        <CommandMenuGroup heading=\"Suggestions\">\n\n        </CommandMenuGroup>\n        <CommandMenuGroup heading=\"Commands\">\n\n        </CommandMenuGroup>\n        <CommandMenuGroup heading=\"Collaboration\">\n\n        </CommandMenuGroup>\n      </CommandMenuList>\n    </CommandMenu>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "fixed inset-0 bg-background-100 opacity-80 z-100 data-[state=open]:animate-cmdkFadeIn data-[state=closed]:animate-cmdkFadeOut",
+   "attrs": {
+    "cmdk-overlay": "",
+    "geist-overlay": "",
+    "data-state": "open",
+    "style": "pointer-events:auto",
+    "data-aria-hidden": "true",
+    "aria-hidden": "true"
+   }
+  },
+  {
+   "tag": "div",
+   "class": "fixed top-[15%] left-1/2 -translate-x-1/2 w-[640px] rounded-xl bg-[var(--ds-background-100)] shadow-[var(--ds-shadow-modal)] overflow-hidden origin-center outline-hidden z-100 data-[state=open]:animate-cmdkScaleIn transition-transform duration-100 ease-in-out z-100 data-[state=closed]:animate-cmdkScaleOut",
+   "attrs": {
+    "role": "dialog",
+    "id": "dialog-54",
+    "aria-describedby": "desc-53",
+    "aria-labelledby": "title-52",
+    "data-state": "open",
+    "tabindex": "-1",
+    "style": "pointer-events:auto",
+    "cmdk-dialog": "",
+    "geist-dialog": ""
+   },
+   "children": [
+    {
+     "tag": "h2",
+     "class": "sr-only",
+     "attrs": {
+      "id": "title-52"
+     },
+     "text": "Command Menu"
+    },
+    {
+     "tag": "p",
+     "class": "sr-only",
+     "attrs": {
+      "id": "desc-53"
+     },
+     "text": "Use the command menu to navigate through Vercel."
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "cmdk-root": "",
+      "data-testid": "cmdk-root"
+     },
+     "children": [
+      {
+       "tag": "label",
+       "attrs": {
+        "cmdk-label": "",
+        "for": "input-49",
+        "id": "label-50",
+        "style": "position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"
+       },
+       "text": ""
+      },
+      {
+       "tag": "div",
+       "class": "border-b relative border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] p-[var(--padding)] [--padding:12px] max-sm:sticky max-sm:top-0",
+       "children": [
+        {
+         "tag": "div",
+         "class": "flex items-center justify-between gap-[var(--padding)] px-1 py-0",
+         "children": [
+          {
+           "tag": "input",
+           "class": "outline-hidden h-7 flex-1 border-none bg-transparent p-0 text-base text-[var(--ds-gray-1000)] placeholder:text-[var(--ds-gray-700)] sm:text-lg",
+           "attrs": {
+            "cmdk-input": "",
+            "role": "combobox",
+            "aria-autocomplete": "list",
+            "aria-controls": "list-51",
+            "aria-expanded": "true",
+            "aria-labelledby": "label-50",
+            "autocomplete": "off",
+            "autocorrect": "off",
+            "id": "input-49",
+            "spellcheck": "false",
+            "type": "text",
+            "placeholder": "What do you need?",
+            "value": "zzz"
+           }
+          },
+          {
+           "tag": "button",
+           "class": "outline-hidden ml-auto h-5 cursor-pointer items-center rounded-sm border-none bg-[var(--ds-background-100)] px-1 py-0 text-xs shadow-[var(--ds-shadow-border)] transition-[background] duration-200 focus-visible:shadow-[var(--ds-focus-ring)] hidden [@media(hover:hover)_and_(pointer:fine)]:flex hover:[@media(hover:hover)_and_(pointer:fine)]:bg-[var(--ds-gray-100)]",
+           "attrs": {
+            "type": "button"
+           },
+           "text": "Esc"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "flex max-h-none overflow-y-auto bg-[var(--ds-background-100)] p-2 transition-[height] duration-100 sm:block sm:max-h-[436px] [&_[cmdk-list-sizer]]:w-full",
+       "attrs": {
+        "cmdk-list": "",
+        "role": "listbox",
+        "aria-label": "Suggestions",
+        "aria-labelledby": "input-49",
+        "id": "list-51"
+       },
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "cmdk-list-sizer": ""
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "px-0 py-[30px]",
+           "attrs": {
+            "cmdk-empty": "",
+            "role": "presentation"
+           },
+           "children": [
+            {
+             "tag": "p",
+             "class": "text-copy-14 text-gray-900 text-center",
+             "text": "No results found for .",
+             "children": [
+              {
+               "tag": "span",
+               "class": "text-gray-1000",
+               "text": "\"zzz\""
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-44",
+            "hidden": ""
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-43"
+             },
+             "text": "Suggestions"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-43"
+             },
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-46",
+            "hidden": ""
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-45"
+             },
+             "text": "Commands"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-45"
+             },
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-48",
+            "hidden": ""
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-47"
+             },
+             "text": "Collaboration"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-47"
+             },
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

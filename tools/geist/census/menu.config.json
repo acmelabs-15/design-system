@@ -1,0 +1,152 @@
+{
+  "note": "Five roots, each its own census page, both sides for both themes (theme: light, then dark), on the mirror (http://localhost:4184/geist/menu) and the docs page (http://localhost:4180/components/menu). The page's own nine examples are closed on both sides; the ten sketched examples that follow them (Open \u2026 and Chevron on the default variant) render the open state on the mirror and are opened by the docs page's example scripts, so the list, item, section and divider roots are read there only (ours: hosts under acme-menu[open]). The trigger is read on every example; its content row (`inner`) follows the text, and an item's suffix sits behind an auto margin the text width decides, so those read as soft. The item's highlight is the data-selected state.",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "runs": {
+    "menu-trigger": {
+      "geist": {
+        "side": "geist",
+        "page": "menu-trigger",
+        "marker": "data-geist-menu-button",
+        "children": {
+          "label": ".label|.truncate",
+          "inner": ".inner|.flex-nowrap",
+          "chev": ".chev|.absolute",
+          "svg": ".chev svg|.absolute svg"
+        },
+        "textParts": [
+          "inner"
+        ]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "menu-trigger",
+        "host": "acme-menu-button",
+        "ours": ".btn",
+        "children": {
+          "label": ".label|.truncate",
+          "inner": ".inner|.flex-nowrap",
+          "chev": ".chev|.absolute",
+          "svg": ".chev svg|.absolute svg"
+        },
+        "textParts": [
+          "inner"
+        ]
+      }
+    },
+    "menu-list": {
+      "geist": {
+        "side": "geist",
+        "page": "menu-list",
+        "marker": "data-phase",
+        "children": {
+          "menu": ".menu|[data-geist-menu]"
+        },
+        "states": [
+          ""
+        ]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "menu-list",
+        "host": "acme-menu[open]",
+        "ours": ".floating",
+        "children": {
+          "menu": ".menu|[data-geist-menu]"
+        },
+        "states": [
+          ""
+        ]
+      }
+    },
+    "menu-item": {
+      "geist": {
+        "side": "geist",
+        "page": "menu-item",
+        "marker": "[data-geist-menu-item][role=menuitem]",
+        "children": {
+          "prefix": ".prefix|.mr-\\[var\\(--geist-gap-quarter\\)\\]",
+          "suffix": ".suffix|.ml-auto",
+          "svg": "svg|svg"
+        },
+        "states": [
+          "",
+          "data-selected"
+        ],
+        "textProps": {
+          "suffix": [
+            "margin-left"
+          ]
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "menu-item",
+        "host": "acme-menu[open] acme-menu-item",
+        "ours": ".item",
+        "children": {
+          "prefix": ".prefix|.mr-\\[var\\(--geist-gap-quarter\\)\\]",
+          "suffix": ".suffix|.ml-auto",
+          "svg": "svg|svg"
+        },
+        "states": [
+          "",
+          "data-selected"
+        ],
+        "textProps": {
+          "suffix": [
+            "margin-left"
+          ]
+        }
+      }
+    },
+    "menu-section": {
+      "geist": {
+        "side": "geist",
+        "page": "menu-section",
+        "marker": "data-geist-menu-section",
+        "children": {
+          "heading": ".heading|.text-label-14",
+          "group": ".group|ul"
+        },
+        "states": [
+          ""
+        ]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "menu-section",
+        "host": "acme-menu[open] acme-menu-section",
+        "ours": ".section",
+        "children": {
+          "heading": ".heading|.text-label-14",
+          "group": ".group|ul"
+        },
+        "states": [
+          ""
+        ]
+      }
+    },
+    "menu-divider": {
+      "geist": {
+        "side": "geist",
+        "page": "menu-divider",
+        "marker": "data-geist-menu-divider",
+        "states": [
+          ""
+        ]
+      },
+      "ours": {
+        "side": "ours",
+        "page": "menu-divider",
+        "host": "acme-menu[open] acme-menu-divider",
+        "ours": ".divider",
+        "states": [
+          ""
+        ]
+      }
+    }
+  }
+}

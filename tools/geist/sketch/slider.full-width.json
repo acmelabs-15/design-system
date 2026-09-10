@@ -1,0 +1,61 @@
+{
+  "heading": "Full width",
+  "description": "The fullWidth prop: the group drops its 216px minimum and fills the row (`w-full min-w-0` in place of `min-w-54`). The class strings come from the component's client code; the page renders no such example.",
+  "code": "import { Slider } from '@vercel/geistcn/components';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [value, setValue] = useState([50]);\n  return (\n    <form>\n      <Slider\n        fullWidth\n        onValueChange={(value) => setValue(value as number[])}\n        value={value}\n      />\n    </form>\n  );\n}",
+  "dom": [
+    {
+      "tag": "form",
+      "children": [
+        {
+          "tag": "div",
+          "class": "flex flex-col",
+          "children": [
+            {
+              "tag": "div",
+              "class": "flex gap-3 items-center",
+              "children": [
+                {
+                  "tag": "div",
+                  "class": "data-disabled:cursor-not-allowed w-full min-w-0",
+                  "attrs": { "data-orientation": "horizontal", "id": "base-ui-sketch-full", "role": "group", "data-slot": "slider" },
+                  "children": [
+                    {
+                      "tag": "div",
+                      "class": "relative flex items-center touch-none select-none",
+                      "attrs": { "data-orientation": "horizontal", "data-slot": "slider-control" },
+                      "children": [
+                        {
+                          "tag": "div",
+                          "class": "block bg-gray-200 h-2 rounded-full grow select-none",
+                          "attrs": { "data-orientation": "horizontal", "style": "position:relative", "data-slot": "slider-track" },
+                          "children": [
+                            {
+                              "tag": "div",
+                              "class": "absolute bg-blue-700 h-full rounded-full data-disabled:bg-gray-500 select-none",
+                              "attrs": { "data-orientation": "horizontal", "style": "position:relative;height:inherit;inset-inline-start:0;width:50%", "data-slot": "slider-indicator" }
+                            },
+                            {
+                              "tag": "div",
+                              "class": "relative shrink-0 block bg-white w-1.5 h-3.5 rounded-[1px] ring-1 ring-gray-alpha-500 dark-theme:ring-black after:absolute after:-inset-2 transition-[scale] duration-100 data-dragging:has-[:focus]:scale-120 has-[:focus-visible]:scale-120 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-(--ds-focus-color)",
+                              "attrs": { "data-orientation": "horizontal", "data-index": "0", "id": "base-ui-sketch-full-thumb", "style": "position:absolute;inset-inline-start:50%;top:50%;translate:-50% -50%", "data-slot": "slider-thumb" },
+                              "children": [
+                                {
+                                  "tag": "input",
+                                  "attrs": { "aria-orientation": "horizontal", "aria-valuenow": "50", "id": "base-ui-sketch-full-input", "max": "100", "min": "0", "step": "1", "style": "clip-path:inset(50%);overflow:hidden;white-space:nowrap;border:0;padding:0;width:100%;height:100%;margin:-1px;position:fixed;top:0;left:0", "type": "range", "value": "50" }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

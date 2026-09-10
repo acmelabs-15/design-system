@@ -1,0 +1,38 @@
+{
+  "note": "Two roots per toast page, each its own census page, both sides for both themes, on the mirror (http://localhost:4184/geist/toast) and the docs census page (http://localhost:4180/census/toast). The page's own ten showcases render a button only (no root on either side); the sixteen sketched examples that follow them (tools/geist/sketch/toast.*.json) render the client-only states on the mirror, and on ours a viewport per example on a queue of its own (the example script sets it), filled by the `prepare` script of the toast run: it pushes the same messages, expands the stack of the Stack expanded example with a mouseenter on the area, and puts the Entering and Leaving toasts into their phases; it waits on the elements' updates only (no timers). toast: the toast box (marker data-geist-toast; ours acme-toast >> .toast under acme-toaster, every toast with `each`), with its column, visual, message row, the assistive-tech type span, the text, the controls (undo, close), the action row (cancel, action) and the ::after bridge; the cancel button's width follows its label, so it reads as soft. toast-area: the viewport (div.toast-area; ours .area). Run the toast run of both themes before the area runs, or reload the mirror between: the area run's own state passes set and clear data-hover on the area, and the Stack expanded sketch carries that attribute as its state (census.js keeps a pre-existing state attribute, but the mirror must be fully loaded before the first run so its sheets are rewritten). Run the reference side only after the page has loaded: a run right after navigation finds the sheets empty. toast-mobile: the toast run again with both panes at the mobile preset (375 by 812): the reference's `max-sm` breakpoint (400px and under) hides the third toast of a stack and the box shrinks to the viewport less two gaps (327px); the one-sentence text wraps in our font there and not in the reference's, so the text's height and the boxes that follow it read as soft, and (hover: hover) is false in the emulation on both sides.",
+  "themes": ["light", "dark"],
+  "viewport": {
+    "toast": "the pane's own size (1024 by 768)",
+    "toast-mobile": [375, 812]
+  },
+  "prepare": "return (async () => {\n  const ONE = \"The Evil Rabbit jumped over the fence.\";\n  const cover = () => document.createElement(\"div\");\n  const three = () => [{ text: \"Domain added\" }, { text: \"Project archived\" }, { text: ONE }];\n  const lists = [\n    [{ text: ONE }], [{ text: ONE, type: \"success\" }], [{ text: ONE, type: \"warning\" }], [{ text: ONE, type: \"error\" }],\n    [{ text: ONE, action: \"Undo\", cancelAction: \"Cancel\" }], [{ text: ONE, type: \"error\", action: \"Undo\" }], [{ text: ONE, type: \"warning\", action: \"Undo\" }],\n    [{ text: ONE, onUndoAction: () => 0 }], [{ text: ONE, hideX: true }], [{ text: ONE, visual: cover() }], [{ text: ONE, visual: cover(), fullBleed: true }],\n    [{ text: ONE }], three(), three(), [{ text: ONE }], [{ text: ONE }]\n  ];\n  const ts = [...document.querySelectorAll(\".showcase .preview acme-toaster\")];\n  if (ts.length !== lists.length) throw new Error(\"toasters: \" + ts.length);\n  const settle = async () => { for (let k = 0; k < 4; k++) for (const t of ts) { await t.updateComplete; for (const x of t.shadowRoot.querySelectorAll(\"acme-toast\")) await x.updateComplete; } };\n  ts.forEach((t, i) => { t.queue.clear(); for (const m of lists[i]) t.queue.message({ ...m, preserve: true }); });\n  await settle();\n  ts[13].shadowRoot.querySelector(\".area\").dispatchEvent(new Event(\"mouseenter\"));\n  ts[14].shadowRoot.querySelector(\"acme-toast\").visible = false;\n  ts[15].shadowRoot.querySelector(\"acme-toast\").hiding = true;\n  await settle();\n})();",
+  "children": {
+    "body": ".body|.flex-col",
+    "visual": ".visual|.-m-4",
+    "message": ".message|#toast-message",
+    "sr": ".sr|.sr-only",
+    "text": ".text|#toast-message > span:not(.sr-only)",
+    "controls": ".controls|.flex-nowrap",
+    "undo": ".undo|[aria-label='Undo']",
+    "close": ".close|[aria-label='Dismiss toast']",
+    "actions": ".actions|.justify-end",
+    "cancel": ".cancel|.justify-end > :first-child",
+    "action": ".action|.justify-end > :last-child",
+    "after": "::after|::after"
+  },
+  "runs": {
+    "toast": {
+      "geist": { "side": "geist", "page": "toast", "marker": "data-geist-toast", "children": "(children)", "textParts": ["cancel"] },
+      "ours": { "side": "ours", "page": "toast", "host": "acme-toaster", "ours": "acme-toast >> .toast", "each": true, "children": "(children)", "textParts": ["cancel"], "prepare": "(prepare)" }
+    },
+    "toast-area": {
+      "geist": { "side": "geist", "page": "toast-area", "marker": "div.toast-area" },
+      "ours": { "side": "ours", "page": "toast-area", "host": "acme-toaster", "ours": ".area" }
+    },
+    "toast-mobile": {
+      "themes": ["light"],
+      "geist": { "side": "geist", "page": "toast-mobile", "marker": "data-geist-toast", "children": "(children)", "textParts": ["cancel", "root", "body", "message", "text"], "textProps": { "root": ["transform"] } },
+      "ours": { "side": "ours", "page": "toast-mobile", "host": "acme-toaster", "ours": "acme-toast >> .toast", "each": true, "children": "(children)", "textParts": ["cancel", "root", "body", "message", "text"], "textProps": { "root": ["transform"] }, "prepare": "(prepare)" }
+    }
+  }
+}

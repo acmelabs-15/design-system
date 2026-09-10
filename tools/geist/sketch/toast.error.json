@@ -1,0 +1,104 @@
+{
+ "heading": "Error toast",
+ "description": "The error toast: a red-800 fill with the contrast foreground, the type read to assistive tech before the message.",
+ "code": "<Toasts>\n  <Toast text=\"The Evil Rabbit jumped over the fence.\" visible type=\"error\" />\n</Toasts>",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "toast-area pointer-events-auto group/toastArea fixed bottom-[calc(var(--geist-gap)+var(--offset-bottom))] right-[var(--geist-gap)] z-[var(--ds-z-toast)] transition-all duration-400 ease-in-out",
+   "attrs": {
+    "data-testid": "toasts/list",
+    "style": "--offset-bottom:0px"
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "toast-container group/toastContainer w-[420px] absolute bottom-0 right-0 shadow-[var(--ds-shadow-menu)] rounded-[12px] leading-[21px] p-4 z-[var(--ds-z-toast)] max-w-[min(420px,calc(100vw-2*var(--geist-gap)))] group-hover/toastArea:!max-h-[var(--max-height)] group-hover/toastArea:![transform:_translate3d(0,_var(--y),_var(--z))_scale(1)] group-hover/toastArea:after:content-[''] group-hover/toastArea:after:absolute group-hover/toastArea:after:left-0 group-hover/toastArea:after:right-0 group-hover/toastArea:after:top-[calc(100%+1px)] group-hover/toastArea:after:w-full group-hover/toastArea:after:h-5 group-hover/toastArea:after:bg-transparent transition-all duration-[time:350ms] ease-[easing-function:cubic-bezier(0.25,0.75,0.6,0.98)] nth-last-[n+4]:!opacity-0 nth-last-[n+4]:!pointer-events-none max-sm:nth-last-[n+3]:!opacity-0 max-sm:nth-last-[n+3]:!pointer-events-none opacity-100 transform-none bg-[var(--ds-red-800)] text-[var(--ds-contrast-fg)] border-0",
+     "attrs": {
+      "aria-atomic": "true",
+      "aria-labelledby": "",
+      "data-geist-toast": "",
+      "data-version": "v1",
+      "role": "status",
+      "style": "max-height:63px;--y:0px;--z:-0px;--max-height:63px"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "max-w-full items-center justify-between text-[0.875rem] flex transition-all duration-[time:400ms] ease-in-out flex-col gap-3",
+       "children": [
+        {
+         "tag": "div",
+         "class": "-mt-px w-full opacity-100 h-full transition-opacity duration-[time:400ms] ease-in-out flex gap-4 justify-between items-center text-pretty [word-break:break-word] group-not-last/toastContainer:!opacity-0 group-hover/toastArea:!opacity-100 text-inherit [&_a]:[background-image:linear-gradient(var(--ds-gray-1000),var(--ds-gray-1000))] [&_a]:[background-size:100%_1px] [&_a]:[background-position:_left_bottom] [&_a]:[background-repeat:_no-repeat] [&_a]:font-medium",
+         "attrs": {
+          "id": "toast-message"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "class": "sr-only",
+           "text": "error: "
+          },
+          {
+           "tag": "span",
+           "text": "The Evil Rabbit jumped over the fence."
+          },
+          {
+           "tag": "div",
+           "class": "flex flex-row flex-nowrap gap-1 items-center justify-between [--themed-bg:var(--ds-red-700)] [&_button]:!text-[var(--ds-contrast-fg)]",
+           "children": [
+            {
+             "tag": "button",
+             "class": "outline-none m-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] font-medium max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] [--x-padding:6px] [--height:32px] text-(length:--geist-form-small-font) [--spinner-size:16px] data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))] dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))] data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow] bg-transparent !text-[var(--themed-bg,_var(--ds-gray-1000))] [--themed-border:_transparent] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--lighten-color:_rgba(255,_255,_255,_0.8)] data-hover:![--themed-border:_var(--ds-gray-alpha-200)] !px-0 rounded-md p-0 w-[var(--geist-form-small-height)] h-[32px]",
+             "attrs": {
+              "type": "button",
+              "tabindex": "0",
+              "data-geist-button": "",
+              "data-prefix": "false",
+              "data-suffix": "false",
+              "data-version": "v1",
+              "style": "--geist-icon-size:16px",
+              "aria-label": "Dismiss toast"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "truncate px-1.5 inline-flex items-center justify-center shrink-0",
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "data-slot": "geist-icon",
+                  "height": "16",
+                  "width": "16",
+                  "viewBox": "0 0 16 16",
+                  "style": "color:currentColor"
+                 },
+                 "children": [
+                  {
+                   "tag": "path",
+                   "attrs": {
+                    "fill": "currentColor",
+                    "fill-rule": "evenodd",
+                    "clip-rule": "evenodd",
+                    "d": "m12.47 13.53.53.53L14.06 13l-.53-.53L9.06 8l4.47-4.47.53-.53L13 1.94l-.53.53L8 6.94 3.53 2.47 3 1.94 1.94 3l.53.53L6.94 8l-4.47 4.47-.53.53L3 14.06l.53-.53L8 9.06z"
+                   }
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

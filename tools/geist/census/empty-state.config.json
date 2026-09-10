@@ -1,0 +1,23 @@
+{
+  "children": {
+    "icon": ".icon|:scope > div:not([class])",
+    "tile": "acme-icon-tile >> .tile|[aria-hidden=true]",
+    "text": ".text|:scope > .flex-col",
+    "title": ".title|.font-medium",
+    "description": ".description|.text-copy-14",
+    "button": "acme-button >> .btn|[data-geist-button]",
+    "label": "acme-button >> .label|[data-geist-button] .truncate",
+    "link": "a|a"
+  },
+  "textParts": ["title", "description", "button"],
+  "states": [""],
+  "geist": { "side": "geist", "page": "empty-state", "marker": "div.px-\\[70px\\]", "width": "666px", "theme": "light | dark" },
+  "ours": { "side": "ours", "page": "empty-state", "host": "acme-empty-state", "ours": ".empty-state", "width": "666px", "theme": "light | dark" },
+  "notes": [
+    "Both sides take `children`, `textParts`, `states` and `width` above. Both panes at an 1100px viewport. The mirror renders the two sketches (Secondary, No border) after the page's three showcases: five previews a side.",
+    "The root carries no marker attribute: the marker is a selector on its padding class. The icon wrapper is the reference's bare div around the icon prop.",
+    "Ours: load http://localhost:4183/census.js with a script tag and await its onload, then await customElements.whenDefined for acme-empty-state, acme-icon-tile and acme-button and every element's updateComplete before the call.",
+    "`states: [\"\"]`: the empty state's own rules carry no state variant (no hover, focus or active class on the root or any mapped child), so only the base state is read. With every state on, the only extra lines are the slotted link's own hover color and focus outline (2 a theme): the reference's Link component, which has no element of ours; the docs example slots a plain anchor.",
+    "`button` is a text part: the composed acme-button's width follows its label in our font (its label is a text part already)."
+  ]
+}

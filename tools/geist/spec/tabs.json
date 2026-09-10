@@ -1,0 +1,4858 @@
+{
+ "page": "tabs",
+ "title": "Tabs",
+ "lede": "Display tab content.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-tab",
+  "data-geist-tabs",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Tabs } from '@vercel/geistcn/components';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [selected, setSelected] = useState('apple');\n\n  return (\n    <Tabs\n      selected={selected}\n      setSelected={(t) => setSelected(t)}\n      tabs={[\n        { title: 'Apple', value: 'apple' },\n        { title: 'Orange', value: 'orange' },\n        { title: 'Mango', value: 'mango' },\n      ]}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-orientation": "horizontal",
+        "data-geist-tabs": "",
+        "data-variant": "primary",
+        "data-version": "v1",
+        "role": "tablist"
+       },
+       "styles": [
+        {
+         "cls": "group",
+         "state": "-focus-within\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.group):focus-within *)",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:cursor-pointer:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:bg-gray-200:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:\\!text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)!important"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-gray-1000:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:opacity-100:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus\\:opacity-100:is(:where(.group):focus *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus-visible\\:opacity-100:is(:where(.group):focus-visible *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=\\'true\\'\\]\\:-translate-x-6:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(.25rem * -6);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:w-7:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "width:1.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:-translate-x-\\[calc\\(var\\(--padding\\)\\*-1\\)\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(calc(var(--padding) * -1) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[26px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:26px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[33px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:33px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:h-8:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "height:2rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:rounded-md:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:border-b-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:px-3:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-1:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:.25rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)>strong",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:\\[--radio-color\\:var\\(--ds-gray-700\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:cursor-not-allowed:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:text-gray-900:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-b-2:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-gray-1000:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:text-gray-1000:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "scrollbar-width:none;-webkit-overflow-scrolling:touch"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "::-webkit-scrollbar",
+         "at": "@layer utilities",
+         "decl": "display:none"
+        },
+        {
+         "cls": "mb-3",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-bottom:.75rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-nowrap",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-wrap:nowrap"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "pb-px",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-bottom:1px"
+        },
+        {
+         "cls": "overflow-x-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-x:auto"
+        },
+        {
+         "cls": "has-[:focus-visible]:overflow-visible",
+         "state": ":has(:focus-visible)",
+         "at": "@layer utilities",
+         "decl": "overflow:visible"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "shadow-[0_-1px_0_var(--accents-2)_inset]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 -1px 0 var(--tw-shadow-color,var(--accents-2)) inset;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_n8slubquiuq6ivb_",
+          "aria-selected": "true",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_n8slubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "0",
+          "type": "button",
+          "value": "apple"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Apple"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_178slubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_178slubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "orange"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Orange"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_1n8slubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_1n8slubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "mango"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Mango"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Disabled",
+   "description": "",
+   "code": "import { Tabs } from '@vercel/geistcn/components';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [selected, setSelected] = useState('apple');\n\n  return (\n    <Tabs\n      disabled\n      selected={selected}\n      setSelected={(t) => setSelected(t)}\n      tabs={[\n        { title: 'Apple', value: 'apple' },\n        { title: 'Orange', value: 'orange' },\n        { title: 'Mango', value: 'mango' },\n      ]}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-orientation": "horizontal",
+        "data-geist-tabs": "",
+        "data-variant": "primary",
+        "data-version": "v1",
+        "role": "tablist"
+       },
+       "styles": [
+        {
+         "cls": "group",
+         "state": "-focus-within\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.group):focus-within *)",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:cursor-pointer:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:bg-gray-200:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:\\!text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)!important"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-gray-1000:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:opacity-100:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus\\:opacity-100:is(:where(.group):focus *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus-visible\\:opacity-100:is(:where(.group):focus-visible *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=\\'true\\'\\]\\:-translate-x-6:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(.25rem * -6);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:w-7:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "width:1.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:-translate-x-\\[calc\\(var\\(--padding\\)\\*-1\\)\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(calc(var(--padding) * -1) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[26px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:26px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[33px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:33px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:h-8:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "height:2rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:rounded-md:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:border-b-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:px-3:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-1:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:.25rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)>strong",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:\\[--radio-color\\:var\\(--ds-gray-700\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:cursor-not-allowed:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:text-gray-900:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-b-2:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-gray-1000:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:text-gray-1000:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "scrollbar-width:none;-webkit-overflow-scrolling:touch"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "::-webkit-scrollbar",
+         "at": "@layer utilities",
+         "decl": "display:none"
+        },
+        {
+         "cls": "mb-3",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-bottom:.75rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-nowrap",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-wrap:nowrap"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "pb-px",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-bottom:1px"
+        },
+        {
+         "cls": "overflow-x-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-x:auto"
+        },
+        {
+         "cls": "has-[:focus-visible]:overflow-visible",
+         "state": ":has(:focus-visible)",
+         "at": "@layer utilities",
+         "decl": "overflow:visible"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "shadow-[0_-1px_0_var(--accents-2)_inset]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 -1px 0 var(--tw-shadow-color,var(--accents-2)) inset;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_n9slubquiuq6ivb_",
+          "aria-selected": "true",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "disabled": "",
+          "id": "_R_n9slubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "0",
+          "type": "button",
+          "value": "apple"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Apple"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_179slubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "disabled": "",
+          "id": "_R_179slubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "orange"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Orange"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_1n9slubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "disabled": "",
+          "id": "_R_1n9slubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "mango"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Mango"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Disable specific tabs",
+   "description": "",
+   "code": "import { Tabs } from '@vercel/geistcn/components';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [selected, setSelected] = useState('apple');\n\n  return (\n    <Tabs\n      selected={selected}\n      setSelected={(t) => setSelected(t)}\n      tabs={[\n        { title: 'Apple', value: 'apple' },\n        { title: 'Orange', value: 'orange' },\n        {\n          title: 'Mango',\n          value: 'mango',\n          disabled: true,\n          tooltip: 'Mangos are not allowed',\n        },\n      ]}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-orientation": "horizontal",
+        "data-geist-tabs": "",
+        "data-variant": "primary",
+        "data-version": "v1",
+        "role": "tablist"
+       },
+       "styles": [
+        {
+         "cls": "group",
+         "state": "-focus-within\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.group):focus-within *)",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:cursor-pointer:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:bg-gray-200:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:\\!text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)!important"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-gray-1000:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:opacity-100:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus\\:opacity-100:is(:where(.group):focus *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus-visible\\:opacity-100:is(:where(.group):focus-visible *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=\\'true\\'\\]\\:-translate-x-6:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(.25rem * -6);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:w-7:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "width:1.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:-translate-x-\\[calc\\(var\\(--padding\\)\\*-1\\)\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(calc(var(--padding) * -1) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[26px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:26px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[33px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:33px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:h-8:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "height:2rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:rounded-md:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:border-b-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:px-3:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-1:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:.25rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)>strong",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:\\[--radio-color\\:var\\(--ds-gray-700\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:cursor-not-allowed:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:text-gray-900:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-b-2:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-gray-1000:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:text-gray-1000:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "scrollbar-width:none;-webkit-overflow-scrolling:touch"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "::-webkit-scrollbar",
+         "at": "@layer utilities",
+         "decl": "display:none"
+        },
+        {
+         "cls": "mb-3",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-bottom:.75rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-nowrap",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-wrap:nowrap"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "pb-px",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-bottom:1px"
+        },
+        {
+         "cls": "overflow-x-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-x:auto"
+        },
+        {
+         "cls": "has-[:focus-visible]:overflow-visible",
+         "state": ":has(:focus-visible)",
+         "at": "@layer utilities",
+         "decl": "overflow:visible"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "shadow-[0_-1px_0_var(--accents-2)_inset]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 -1px 0 var(--tw-shadow-color,var(--accents-2)) inset;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_naslubquiuq6ivb_",
+          "aria-selected": "true",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_naslubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "0",
+          "type": "button",
+          "value": "apple"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Apple"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_17aslubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_17aslubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "orange"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Orange"
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "data-testid": "legacy/tooltip-trigger",
+          "data-version": "v1",
+          "tabindex": "0"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "h-fit",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "height:fit-content"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "button",
+           "attrs": {
+            "aria-controls": "_R_1naslubquiuq6ivb_",
+            "aria-selected": "false",
+            "data-geist-tab": "",
+            "data-show-focus-ring": "true",
+            "disabled": "",
+            "id": "_R_1naslubquiuq6ivb_",
+            "role": "tab",
+            "tabindex": "-1",
+            "type": "button",
+            "value": "mango"
+           },
+           "styles": [
+            {
+             "cls": "cursor-pointer",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "cursor:pointer"
+            },
+            {
+             "cls": "outline-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "bg-transparent",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#0000"
+            },
+            {
+             "cls": "-mb-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-bottom:-1px"
+            },
+            {
+             "cls": "py-3.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-block:.875rem"
+            },
+            {
+             "cls": "px-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.125rem"
+            },
+            {
+             "cls": "text-gray-900",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "border-b-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+            },
+            {
+             "cls": "border-transparent",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-color:#0000"
+            },
+            {
+             "cls": "text-sm",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+            },
+            {
+             "cls": "aria-selected:text-gray-1000",
+             "state": "[aria-selected=true]",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+             "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+             "at": "@layer utilities",
+             "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+            },
+            {
+             "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+             "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+             "at": "@layer utilities",
+             "decl": "border-color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+             "state": ":focus-visible[data-show-focus-ring=true]",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "not-disabled:hover:text-gray-1000",
+             "state": ":not(:disabled):hover",
+             "at": "@layer utilities @media (hover:hover)",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "disabled:cursor-not-allowed",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "cursor:not-allowed"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:border-b-0",
+             "state": ":is(:where(.group)[data-variant=secondary] *)",
+             "at": "@layer utilities",
+             "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:h-8",
+             "state": ":is(:where(.group)[data-variant=secondary] *)",
+             "at": "@layer utilities",
+             "decl": "height:2rem"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:px-3",
+             "state": ":is(:where(.group)[data-variant=secondary] *)",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.75rem"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:py-0",
+             "state": ":is(:where(.group)[data-variant=secondary] *)",
+             "at": "@layer utilities",
+             "decl": "padding-block:0"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:rounded-md",
+             "state": ":is(:where(.group)[data-variant=secondary] *)",
+             "at": "@layer utilities",
+             "decl": "border-radius:.375rem"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:text-label-13",
+             "state": ":is(:where(.group)[data-variant=secondary] *)",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:text-label-13",
+             "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+             "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+             "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+             "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+             "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+             "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+             "at": "@layer utilities",
+             "decl": "cursor:not-allowed"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Mango"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "With icons",
+   "description": "",
+   "code": "import { Tabs } from '@vercel/geistcn/components';\nimport {\n  LogoIconBitbucket,\n  LogoIconGithubSvg,\n  LogoIconGitlabSvg,\n} from '@vercel/geistcn-assets/logos';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [git, setGit] = useState('github');\n\n  return (\n    <Tabs\n      selected={git}\n      setSelected={(t) => setGit(t)}\n      tabs={[\n        { title: 'GitHub', value: 'github', icon: <LogoIconGithubSvg /> },\n        { title: 'GitLab', value: 'gitlab', icon: <LogoIconGitlabSvg /> },\n        {\n          title: 'Bitbucket',\n          value: 'bitbucket',\n          icon: <LogoIconBitbucket colored />,\n        },\n      ]}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-orientation": "horizontal",
+        "data-geist-tabs": "",
+        "data-variant": "primary",
+        "data-version": "v1",
+        "role": "tablist"
+       },
+       "styles": [
+        {
+         "cls": "group",
+         "state": "-focus-within\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.group):focus-within *)",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:cursor-pointer:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:bg-gray-200:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:\\!text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)!important"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-gray-1000:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:opacity-100:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus\\:opacity-100:is(:where(.group):focus *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus-visible\\:opacity-100:is(:where(.group):focus-visible *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=\\'true\\'\\]\\:-translate-x-6:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(.25rem * -6);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:w-7:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "width:1.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:-translate-x-\\[calc\\(var\\(--padding\\)\\*-1\\)\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(calc(var(--padding) * -1) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[26px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:26px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[33px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:33px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:h-8:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "height:2rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:rounded-md:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:border-b-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:px-3:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-1:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:.25rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)>strong",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:\\[--radio-color\\:var\\(--ds-gray-700\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:cursor-not-allowed:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:text-gray-900:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-b-2:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-gray-1000:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:text-gray-1000:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "scrollbar-width:none;-webkit-overflow-scrolling:touch"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "::-webkit-scrollbar",
+         "at": "@layer utilities",
+         "decl": "display:none"
+        },
+        {
+         "cls": "mb-3",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-bottom:.75rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-nowrap",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-wrap:nowrap"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "pb-px",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-bottom:1px"
+        },
+        {
+         "cls": "overflow-x-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-x:auto"
+        },
+        {
+         "cls": "has-[:focus-visible]:overflow-visible",
+         "state": ":has(:focus-visible)",
+         "at": "@layer utilities",
+         "decl": "overflow:visible"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "shadow-[0_-1px_0_var(--accents-2)_inset]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 -1px 0 var(--tw-shadow-color,var(--accents-2)) inset;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_nbslubquiuq6ivb_",
+          "aria-selected": "true",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_nbslubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "0",
+          "type": "button",
+          "value": "github"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "mr-1.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-right:.375rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "data-glyph": "circular",
+              "style": "color:currentColor"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "g",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ],
+         "text": "GitHub"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_17bslubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_17bslubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "gitlab"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "mr-1.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-right:.375rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:currentColor"
+             },
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "g",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ],
+         "text": "GitLab"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_1nbslubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_1nbslubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "bitbucket"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "mr-1.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-right:.375rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "img",
+             "attrs": {
+              "alt": "",
+              "data-slot": "geist-logo-icon",
+              "aria-hidden": "true",
+              "data-nimg": "1",
+              "style": "color:transparent",
+              "src": "/vc-ap-b3331f/_next/static/immutable/media/logo-bitbucket-color-light.069-tsg9tl-pj.svg"
+             },
+             "styles": [
+              {
+               "cls": "geist-hide-on-dark",
+               "state": "",
+               "at": "",
+               "decl": "display:initial!important"
+              },
+              {
+               "cls": "geist-hide-on-dark",
+               "state": "",
+               "at": "",
+               "decl": "display:none!important"
+              },
+              {
+               "cls": "geist-hide-on-dark",
+               "state": "",
+               "at": "",
+               "decl": "display:initial!important"
+              },
+              {
+               "cls": "geist-hide-on-dark",
+               "state": "",
+               "at": "",
+               "decl": "display:none!important"
+              },
+              {
+               "cls": "geist-hide-on-dark",
+               "state": "",
+               "at": "",
+               "decl": "display:initial!important"
+              },
+              {
+               "cls": "geist-hide-on-dark",
+               "state": "",
+               "at": "",
+               "decl": "display:none!important"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "img",
+             "attrs": {
+              "alt": "",
+              "data-slot": "geist-logo-icon",
+              "aria-hidden": "true",
+              "data-nimg": "1",
+              "style": "color:transparent",
+              "src": "/vc-ap-b3331f/_next/static/immutable/media/logo-bitbucket-color-dark.069-tsg9tl-pj.svg"
+             },
+             "styles": [
+              {
+               "cls": "geist-hide-on-light",
+               "state": "",
+               "at": "",
+               "decl": "display:none!important"
+              },
+              {
+               "cls": "geist-hide-on-light",
+               "state": "",
+               "at": "",
+               "decl": "display:initial!important"
+              },
+              {
+               "cls": "geist-hide-on-light",
+               "state": "",
+               "at": "",
+               "decl": "display:none!important"
+              },
+              {
+               "cls": "geist-hide-on-light",
+               "state": "",
+               "at": "",
+               "decl": "display:initial!important"
+              },
+              {
+               "cls": "geist-hide-on-light",
+               "state": "",
+               "at": "",
+               "decl": "display:none!important"
+              },
+              {
+               "cls": "geist-hide-on-light",
+               "state": "",
+               "at": "",
+               "decl": "display:initial!important"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ],
+         "text": "Bitbucket"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Secondary",
+   "description": "",
+   "code": "import { Tabs } from '@vercel/geistcn/components';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [git, setGit] = useState('github');\n\n  return (\n    <Tabs\n      selected={git}\n      setSelected={(t) => setGit(t)}\n      tabs={[\n        { title: 'GitHub', value: 'github' },\n        { title: 'GitLab', value: 'gitlab' },\n        { title: 'Bitbucket', value: 'bitbucket', disabled: true },\n      ]}\n      variant=\"secondary\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-orientation": "horizontal",
+        "data-geist-tabs": "",
+        "data-variant": "secondary",
+        "data-version": "v1",
+        "role": "tablist"
+       },
+       "styles": [
+        {
+         "cls": "group",
+         "state": "-focus-within\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.group):focus-within *)",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:cursor-pointer:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:bg-gray-200:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:\\!text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)!important"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:text-gray-1000:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:opacity-100:is(:where(.group):hover *)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus\\:opacity-100:is(:where(.group):focus *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-focus-visible\\:opacity-100:is(:where(.group):focus-visible *)",
+         "at": "@layer utilities",
+         "decl": "opacity:1"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=\\'true\\'\\]\\:-translate-x-6:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(.25rem * -6);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:w-7:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "width:1.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:-translate-x-\\[calc\\(var\\(--padding\\)\\*-1\\)\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(calc(var(--padding) * -1) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[26px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:26px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[33px\\]:is(:where(.group)[data-animate=true] *)",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:33px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:h-8:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "height:2rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:rounded-md:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:border-b-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:px-3:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.75rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-0:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:py-1:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "padding-block:.25rem"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)>strong",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "group",
+         "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:\\[--radio-color\\:var\\(--ds-gray-700\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--radio-color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:cursor-not-allowed:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:text-gray-900:is(:where(.group)[data-variant=secondary] *):disabled",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-900)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-b-2:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-gray-1000:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-200)"
+        },
+        {
+         "cls": "group",
+         "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:text-gray-1000:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "scrollbar-width:none;-webkit-overflow-scrolling:touch"
+        },
+        {
+         "cls": "no-scrollbar",
+         "state": "::-webkit-scrollbar",
+         "at": "@layer utilities",
+         "decl": "display:none"
+        },
+        {
+         "cls": "mb-3",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-bottom:.75rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-nowrap",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-wrap:nowrap"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "pb-px",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-bottom:1px"
+        },
+        {
+         "cls": "overflow-x-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-x:auto"
+        },
+        {
+         "cls": "has-[:focus-visible]:overflow-visible",
+         "state": ":has(:focus-visible)",
+         "at": "@layer utilities",
+         "decl": "overflow:visible"
+        },
+        {
+         "cls": "!shadow-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000!important;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)!important"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_ncslubquiuq6ivb_",
+          "aria-selected": "true",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_ncslubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "0",
+          "type": "button",
+          "value": "github"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "GitHub"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_17cslubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "id": "_R_17cslubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "gitlab"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "GitLab"
+        },
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "_R_1ncslubquiuq6ivb_",
+          "aria-selected": "false",
+          "data-geist-tab": "",
+          "data-show-focus-ring": "true",
+          "disabled": "",
+          "id": "_R_1ncslubquiuq6ivb_",
+          "role": "tab",
+          "tabindex": "-1",
+          "type": "button",
+          "value": "bitbucket"
+         },
+         "styles": [
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "outline-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "bg-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#0000"
+          },
+          {
+           "cls": "-mb-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:-1px"
+          },
+          {
+           "cls": "py-3.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-block:.875rem"
+          },
+          {
+           "cls": "px-0.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.125rem"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "border-b-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "border-transparent",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:#0000"
+          },
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "aria-selected:text-gray-1000",
+           "state": "[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-b-2",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group-data-[variant=primary]:aria-selected:border-gray-1000",
+           "state": ":is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus-visible:data-[show-focus-ring=true]:shadow-[var(--ds-focus-ring)]",
+           "state": ":focus-visible[data-show-focus-ring=true]",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "not-disabled:hover:text-gray-1000",
+           "state": ":not(:disabled):hover",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:border-b-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:h-8",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:px-3",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:py-0",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:rounded-md",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:text-label-13",
+           "state": ":is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:aria-selected:text-gray-1000",
+           "state": ":is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:bg-gray-200",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:text-gray-900",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group-data-[variant=secondary]:disabled:cursor-not-allowed",
+           "state": ":is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Bitbucket"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

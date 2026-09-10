@@ -1,0 +1,256 @@
+{
+ "heading": "Nested page",
+ "description": "A second page open: the breadcrumbs of the page stack above the searchbox (menu-type chips), the page's placeholder, and the page's items.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <CommandMenu open setOpen={() => {}}>\n      <CommandMenuInput placeholder=\"What do you need?\" />\n      <CommandMenuList>\n        <CommandMenuGroup heading=\"Projects\">\n          <CommandMenuItem>acme-site</CommandMenuItem>\n          <CommandMenuItem>acme-api</CommandMenuItem>\n          <CommandMenuItem>acme-docs</CommandMenuItem>\n        </CommandMenuGroup>\n      </CommandMenuList>\n    </CommandMenu>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "fixed inset-0 bg-background-100 opacity-80 z-100 data-[state=open]:animate-cmdkFadeIn data-[state=closed]:animate-cmdkFadeOut",
+   "attrs": {
+    "cmdk-overlay": "",
+    "geist-overlay": "",
+    "data-state": "open",
+    "style": "pointer-events:auto",
+    "data-aria-hidden": "true",
+    "aria-hidden": "true"
+   }
+  },
+  {
+   "tag": "div",
+   "class": "fixed top-[15%] left-1/2 -translate-x-1/2 w-[640px] rounded-xl bg-[var(--ds-background-100)] shadow-[var(--ds-shadow-modal)] overflow-hidden origin-center outline-hidden z-100 data-[state=open]:animate-cmdkScaleIn transition-transform duration-100 ease-in-out z-100 data-[state=closed]:animate-cmdkScaleOut",
+   "attrs": {
+    "role": "dialog",
+    "id": "dialog-62",
+    "aria-describedby": "desc-61",
+    "aria-labelledby": "title-60",
+    "data-state": "open",
+    "tabindex": "-1",
+    "style": "pointer-events:auto",
+    "cmdk-dialog": "",
+    "geist-dialog": ""
+   },
+   "children": [
+    {
+     "tag": "h2",
+     "class": "sr-only",
+     "attrs": {
+      "id": "title-60"
+     },
+     "text": "Command Menu"
+    },
+    {
+     "tag": "p",
+     "class": "sr-only",
+     "attrs": {
+      "id": "desc-61"
+     },
+     "text": "Use the command menu to navigate through Vercel."
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "cmdk-root": "",
+      "data-testid": "cmdk-root"
+     },
+     "children": [
+      {
+       "tag": "label",
+       "attrs": {
+        "cmdk-label": "",
+        "for": "input-57",
+        "id": "label-58",
+        "style": "position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"
+       },
+       "text": ""
+      },
+      {
+       "tag": "div",
+       "class": "border-b relative border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] p-[var(--padding)] [--padding:12px] max-sm:sticky max-sm:top-0",
+       "children": [
+        {
+         "tag": "div",
+         "class": "relative mb-2.5 ml-0 mr-0 mt-0 max-sm:[&>div]:mx-[calc(var(--padding)_*_-1)] max-sm:[&>div_span:first-of-type]:ml-[var(--padding)] max-sm:before:absolute max-sm:before:-left-3 max-sm:before:bottom-0 max-sm:before:top-0 max-sm:before:w-[var(--padding)] max-sm:before:bg-gradient-to-r max-sm:before:from-[var(--ds-background-100)] max-sm:before:from-10% max-sm:before:to-transparent max-sm:before:to-100% max-sm:after:absolute max-sm:after:-right-3 max-sm:after:bottom-0 max-sm:after:top-0 max-sm:after:w-[var(--padding)] max-sm:after:bg-gradient-to-l max-sm:after:from-[var(--ds-background-100)] max-sm:after:from-10% max-sm:after:to-transparent max-sm:after:to-100%",
+         "children": [
+          {
+           "tag": "div",
+           "class": "flex gap-2 max-sm:overflow-x-auto",
+           "children": [
+            {
+             "tag": "span",
+             "class": "h-fit inline-flex items-center sm-max:last-of-type:mr-4 sm:inline-block sm:truncate sm:break-normal sm:max-w-full sm:min-w-0",
+             "attrs": {
+              "data-testid": "legacy/tooltip-trigger",
+              "data-version": "v1",
+              "tabindex": "0"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "children": [
+                {
+                 "tag": "button",
+                 "class": "py-0.5 px-1.5 rounded-sm border transition-[color,border-color,background] duration-200 cursor-pointer bg-[var(--ds-background-200)] border-[var(--ds-gray-alpha-400)] text-[var(--ds-gray-900)] font-[var(--font-sans)] text-xs truncate inline-block whitespace-nowrap break-normal max-w-full min-w-0 hover:bg-[var(--ds-gray-200)] hover:border-[var(--ds-gray-alpha-500)] hover:text-[var(--ds-gray-1000)] focus-visible:outline-none focus-visible:shadow-[var(--ds-focus-ring)]",
+                 "attrs": {
+                  "type": "button"
+                 },
+                 "text": "Home"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "class": "h-fit inline-flex items-center sm-max:last-of-type:mr-4 sm:inline-block sm:truncate sm:break-normal sm:max-w-full sm:min-w-0",
+             "attrs": {
+              "data-testid": "legacy/tooltip-trigger",
+              "data-version": "v1",
+              "tabindex": "0"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "children": [
+                {
+                 "tag": "button",
+                 "class": "py-0.5 px-1.5 rounded-sm border transition-[color,border-color,background] duration-200 cursor-pointer bg-[var(--ds-background-200)] border-[var(--ds-gray-alpha-400)] text-[var(--ds-gray-900)] font-[var(--font-sans)] text-xs truncate inline-block whitespace-nowrap break-normal max-w-full min-w-0 hover:bg-[var(--ds-gray-200)] hover:border-[var(--ds-gray-alpha-500)] hover:text-[var(--ds-gray-1000)] focus-visible:outline-none focus-visible:shadow-[var(--ds-focus-ring)]",
+                 "attrs": {
+                  "type": "button"
+                 },
+                 "text": "Projects"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "class": "flex items-center justify-between gap-[var(--padding)] px-1 py-0",
+         "children": [
+          {
+           "tag": "input",
+           "class": "outline-hidden h-7 flex-1 border-none bg-transparent p-0 text-base text-[var(--ds-gray-1000)] placeholder:text-[var(--ds-gray-700)] sm:text-lg",
+           "attrs": {
+            "cmdk-input": "",
+            "role": "combobox",
+            "aria-autocomplete": "list",
+            "aria-controls": "list-59",
+            "aria-expanded": "true",
+            "aria-labelledby": "label-58",
+            "autocomplete": "off",
+            "autocorrect": "off",
+            "id": "input-57",
+            "spellcheck": "false",
+            "type": "text",
+            "placeholder": "Search projects…",
+            "value": ""
+           }
+          },
+          {
+           "tag": "button",
+           "class": "outline-hidden ml-auto h-5 cursor-pointer items-center rounded-sm border-none bg-[var(--ds-background-100)] px-1 py-0 text-xs shadow-[var(--ds-shadow-border)] transition-[background] duration-200 focus-visible:shadow-[var(--ds-focus-ring)] hidden [@media(hover:hover)_and_(pointer:fine)]:flex hover:[@media(hover:hover)_and_(pointer:fine)]:bg-[var(--ds-gray-100)]",
+           "attrs": {
+            "type": "button"
+           },
+           "text": "Esc"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "flex max-h-none overflow-y-auto bg-[var(--ds-background-100)] p-2 transition-[height] duration-100 sm:block sm:max-h-[436px] [&_[cmdk-list-sizer]]:w-full",
+       "attrs": {
+        "cmdk-list": "",
+        "role": "listbox",
+        "aria-label": "Suggestions",
+        "aria-labelledby": "input-57",
+        "id": "list-59"
+       },
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "cmdk-list-sizer": ""
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-56"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-55"
+             },
+             "text": "Projects"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-55"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "acme-site",
+                "aria-selected": "true",
+                "data-selected": "true"
+               },
+               "text": "acme-site",
+               "children": []
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "acme-api"
+               },
+               "text": "acme-api",
+               "children": []
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "acme-docs"
+               },
+               "text": "acme-docs",
+               "children": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

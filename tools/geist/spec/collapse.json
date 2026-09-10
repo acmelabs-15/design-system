@@ -1,0 +1,3334 @@
+{
+ "page": "collapse",
+ "title": "Collapse",
+ "lede": "A set of headings, vertically stacked, that each reveal an related section of content. Commonly referred to as an accordion.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Collapse, CollapseGroup } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <CollapseGroup>\n      <Collapse title=\"Question A\">\n        <p className=\"text-copy-16 mb-4\">\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\n          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad\n          minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n          aliquip ex ea commodo consequat.\n        </p>\n      </Collapse>\n      <Collapse title=\"Question B\">\n        <p className=\"text-copy-16 mb-4\">\n          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur.\n        </p>\n      </Collapse>\n    </CollapseGroup>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "border-[var(--accents-2)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--accents-2)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "data-version": "v1"
+         },
+         "styles": [
+          {
+           "cls": "text-left",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:left"
+          },
+          {
+           "cls": "border-b",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:1px"
+          },
+          {
+           "cls": "border-[var(--accents-2)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--accents-2)"
+          },
+          {
+           "cls": "border-t-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-top-style:var(--tw-border-style);border-top-width:0"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "button",
+             "attrs": {
+              "aria-controls": "collapse-section-_R_n8slubquiuq6ivb_",
+              "aria-expanded": "false",
+              "id": "collapse-button-_R_n8slubquiuq6ivbH1_",
+              "type": "button"
+             },
+             "styles": [
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-between",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:space-between"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "text-[var(--ds-gray-1000)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "focus:rounded",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "border-radius:.25rem"
+              },
+              {
+               "cls": "focus:outline-none",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "--tw-outline-style:none;outline-style:none"
+              },
+              {
+               "cls": "focus-visible:ring-[var(--ds-blue-700)]",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-color:var(--ds-blue-700)"
+              },
+              {
+               "cls": "focus-visible:ring-2",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "py-6",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-block:1.5rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "justify-between",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:space-between"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "flex",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:flex"
+                  },
+                  {
+                   "cls": "items-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "align-items:center"
+                  },
+                  {
+                   "cls": "text-gray-1000",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-1000)"
+                  },
+                  {
+                   "cls": "transition-transform",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.2s;transition-duration:.2s"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.2s"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "text": "Question A"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-labelledby": "collapse-button-_R_n8slubquiuq6ivbH1_",
+            "id": "collapse-section-_R_n8slubquiuq6ivb_",
+            "role": "region",
+            "style": "height:0"
+           },
+           "styles": [
+            {
+             "cls": "text-base",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+            },
+            {
+             "cls": "leading-[26px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:26px;line-height:26px"
+            },
+            {
+             "cls": "[&>div]:max-h-[60vh]",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "max-height:60vh"
+            },
+            {
+             "cls": "[&>div]:overflow-y-auto",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "overflow-y:auto"
+            },
+            {
+             "cls": "overflow-y-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-y:hidden"
+            },
+            {
+             "cls": "transition-all",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "p",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-copy-16",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+                },
+                {
+                 "cls": "text-copy-16",
+                 "state": ">strong",
+                 "at": "@layer utilities",
+                 "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+                },
+                {
+                 "cls": "mb-4",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-bottom:1rem"
+                }
+               ],
+               "unresolved": [],
+               "children": [],
+               "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "data-version": "v1"
+         },
+         "styles": [
+          {
+           "cls": "text-left",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:left"
+          },
+          {
+           "cls": "border-b",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:1px"
+          },
+          {
+           "cls": "border-[var(--accents-2)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--accents-2)"
+          },
+          {
+           "cls": "border-t-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-top-style:var(--tw-border-style);border-top-width:0"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "button",
+             "attrs": {
+              "aria-controls": "collapse-section-_R_178slubquiuq6ivb_",
+              "aria-expanded": "false",
+              "id": "collapse-button-_R_178slubquiuq6ivbH1_",
+              "type": "button"
+             },
+             "styles": [
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-between",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:space-between"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "text-[var(--ds-gray-1000)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "focus:rounded",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "border-radius:.25rem"
+              },
+              {
+               "cls": "focus:outline-none",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "--tw-outline-style:none;outline-style:none"
+              },
+              {
+               "cls": "focus-visible:ring-[var(--ds-blue-700)]",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-color:var(--ds-blue-700)"
+              },
+              {
+               "cls": "focus-visible:ring-2",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "py-6",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-block:1.5rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "justify-between",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:space-between"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "flex",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:flex"
+                  },
+                  {
+                   "cls": "items-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "align-items:center"
+                  },
+                  {
+                   "cls": "text-gray-1000",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-1000)"
+                  },
+                  {
+                   "cls": "transition-transform",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.2s;transition-duration:.2s"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.2s"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "text": "Question B"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-labelledby": "collapse-button-_R_178slubquiuq6ivbH1_",
+            "id": "collapse-section-_R_178slubquiuq6ivb_",
+            "role": "region",
+            "style": "height:0"
+           },
+           "styles": [
+            {
+             "cls": "text-base",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+            },
+            {
+             "cls": "leading-[26px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:26px;line-height:26px"
+            },
+            {
+             "cls": "[&>div]:max-h-[60vh]",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "max-height:60vh"
+            },
+            {
+             "cls": "[&>div]:overflow-y-auto",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "overflow-y:auto"
+            },
+            {
+             "cls": "overflow-y-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-y:hidden"
+            },
+            {
+             "cls": "transition-all",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "p",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-copy-16",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+                },
+                {
+                 "cls": "text-copy-16",
+                 "state": ">strong",
+                 "at": "@layer utilities",
+                 "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+                },
+                {
+                 "cls": "mb-4",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-bottom:1rem"
+                }
+               ],
+               "unresolved": [],
+               "children": [],
+               "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Expanded",
+   "description": "",
+   "code": "import { Collapse, CollapseGroup } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <CollapseGroup>\n      <Collapse title=\"Question A\">\n        <p className=\"text-copy-16 mb-4\">\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\n          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad\n          minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n          aliquip ex ea commodo consequat.\n        </p>\n      </Collapse>\n      <Collapse defaultExpanded title=\"Question B\">\n        <p className=\"text-copy-16 mb-4\">\n          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur.\n        </p>\n      </Collapse>\n    </CollapseGroup>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "border-[var(--accents-2)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--accents-2)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "data-version": "v1"
+         },
+         "styles": [
+          {
+           "cls": "text-left",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:left"
+          },
+          {
+           "cls": "border-b",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:1px"
+          },
+          {
+           "cls": "border-[var(--accents-2)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--accents-2)"
+          },
+          {
+           "cls": "border-t-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-top-style:var(--tw-border-style);border-top-width:0"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "button",
+             "attrs": {
+              "aria-controls": "collapse-section-_R_n9slubquiuq6ivb_",
+              "aria-expanded": "false",
+              "id": "collapse-button-_R_n9slubquiuq6ivbH1_",
+              "type": "button"
+             },
+             "styles": [
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-between",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:space-between"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "text-[var(--ds-gray-1000)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "focus:rounded",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "border-radius:.25rem"
+              },
+              {
+               "cls": "focus:outline-none",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "--tw-outline-style:none;outline-style:none"
+              },
+              {
+               "cls": "focus-visible:ring-[var(--ds-blue-700)]",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-color:var(--ds-blue-700)"
+              },
+              {
+               "cls": "focus-visible:ring-2",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "py-6",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-block:1.5rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "justify-between",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:space-between"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "flex",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:flex"
+                  },
+                  {
+                   "cls": "items-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "align-items:center"
+                  },
+                  {
+                   "cls": "text-gray-1000",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-1000)"
+                  },
+                  {
+                   "cls": "transition-transform",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.2s;transition-duration:.2s"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.2s"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "text": "Question A"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-labelledby": "collapse-button-_R_n9slubquiuq6ivbH1_",
+            "id": "collapse-section-_R_n9slubquiuq6ivb_",
+            "role": "region",
+            "style": "height:0"
+           },
+           "styles": [
+            {
+             "cls": "text-base",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+            },
+            {
+             "cls": "leading-[26px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:26px;line-height:26px"
+            },
+            {
+             "cls": "[&>div]:max-h-[60vh]",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "max-height:60vh"
+            },
+            {
+             "cls": "[&>div]:overflow-y-auto",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "overflow-y:auto"
+            },
+            {
+             "cls": "overflow-y-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-y:hidden"
+            },
+            {
+             "cls": "transition-all",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "p",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-copy-16",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+                },
+                {
+                 "cls": "text-copy-16",
+                 "state": ">strong",
+                 "at": "@layer utilities",
+                 "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+                },
+                {
+                 "cls": "mb-4",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-bottom:1rem"
+                }
+               ],
+               "unresolved": [],
+               "children": [],
+               "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "data-version": "v1"
+         },
+         "styles": [
+          {
+           "cls": "text-left",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:left"
+          },
+          {
+           "cls": "border-b",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:1px"
+          },
+          {
+           "cls": "border-[var(--accents-2)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--accents-2)"
+          },
+          {
+           "cls": "border-t-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-top-style:var(--tw-border-style);border-top-width:0"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "button",
+             "attrs": {
+              "aria-controls": "collapse-section-_R_179slubquiuq6ivb_",
+              "aria-disabled": "true",
+              "aria-expanded": "true",
+              "id": "collapse-button-_R_179slubquiuq6ivbH1_",
+              "type": "button"
+             },
+             "styles": [
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-between",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:space-between"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "text-[var(--ds-gray-1000)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "focus:rounded",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "border-radius:.25rem"
+              },
+              {
+               "cls": "focus:outline-none",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "--tw-outline-style:none;outline-style:none"
+              },
+              {
+               "cls": "focus-visible:ring-[var(--ds-blue-700)]",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-color:var(--ds-blue-700)"
+              },
+              {
+               "cls": "focus-visible:ring-2",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "py-6",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-block:1.5rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "justify-between",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:space-between"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "flex",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:flex"
+                  },
+                  {
+                   "cls": "items-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "align-items:center"
+                  },
+                  {
+                   "cls": "text-gray-1000",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-1000)"
+                  },
+                  {
+                   "cls": "transition-transform",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.2s;transition-duration:.2s"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.2s"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  },
+                  {
+                   "cls": "rotate-90",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "rotate:90deg"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "text": "Question B"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-labelledby": "collapse-button-_R_179slubquiuq6ivbH1_",
+            "id": "collapse-section-_R_179slubquiuq6ivb_",
+            "role": "region",
+            "style": "height:0"
+           },
+           "styles": [
+            {
+             "cls": "text-base",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+            },
+            {
+             "cls": "leading-[26px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:26px;line-height:26px"
+            },
+            {
+             "cls": "[&>div]:max-h-[60vh]",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "max-height:60vh"
+            },
+            {
+             "cls": "[&>div]:overflow-y-auto",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "overflow-y:auto"
+            },
+            {
+             "cls": "overflow-y-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-y:hidden"
+            },
+            {
+             "cls": "transition-all",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "p",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-copy-16",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+                },
+                {
+                 "cls": "text-copy-16",
+                 "state": ">strong",
+                 "at": "@layer utilities",
+                 "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+                },
+                {
+                 "cls": "mb-4",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-bottom:1rem"
+                }
+               ],
+               "unresolved": [],
+               "children": [],
+               "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Multiple",
+   "description": "",
+   "code": "import { Collapse, CollapseGroup } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <CollapseGroup multiple>\n      <Collapse title=\"Question A\">\n        <p className=\"text-copy-16 mb-4\">\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do\n          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad\n          minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n          aliquip ex ea commodo consequat.\n        </p>\n      </Collapse>\n      <Collapse title=\"Question B\">\n        <p className=\"text-copy-16 mb-4\">\n          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur.\n        </p>\n      </Collapse>\n    </CollapseGroup>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "border-[var(--accents-2)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--accents-2)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "data-version": "v1"
+         },
+         "styles": [
+          {
+           "cls": "text-left",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:left"
+          },
+          {
+           "cls": "border-b",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:1px"
+          },
+          {
+           "cls": "border-[var(--accents-2)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--accents-2)"
+          },
+          {
+           "cls": "border-t-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-top-style:var(--tw-border-style);border-top-width:0"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "button",
+             "attrs": {
+              "aria-controls": "collapse-section-_R_naslubquiuq6ivb_",
+              "aria-expanded": "false",
+              "id": "collapse-button-_R_naslubquiuq6ivbH1_",
+              "type": "button"
+             },
+             "styles": [
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-between",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:space-between"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "text-[var(--ds-gray-1000)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "focus:rounded",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "border-radius:.25rem"
+              },
+              {
+               "cls": "focus:outline-none",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "--tw-outline-style:none;outline-style:none"
+              },
+              {
+               "cls": "focus-visible:ring-[var(--ds-blue-700)]",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-color:var(--ds-blue-700)"
+              },
+              {
+               "cls": "focus-visible:ring-2",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "py-6",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-block:1.5rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "justify-between",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:space-between"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "flex",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:flex"
+                  },
+                  {
+                   "cls": "items-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "align-items:center"
+                  },
+                  {
+                   "cls": "text-gray-1000",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-1000)"
+                  },
+                  {
+                   "cls": "transition-transform",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.2s;transition-duration:.2s"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.2s"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "text": "Question A"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-labelledby": "collapse-button-_R_naslubquiuq6ivbH1_",
+            "id": "collapse-section-_R_naslubquiuq6ivb_",
+            "role": "region",
+            "style": "height:0"
+           },
+           "styles": [
+            {
+             "cls": "text-base",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+            },
+            {
+             "cls": "leading-[26px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:26px;line-height:26px"
+            },
+            {
+             "cls": "[&>div]:max-h-[60vh]",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "max-height:60vh"
+            },
+            {
+             "cls": "[&>div]:overflow-y-auto",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "overflow-y:auto"
+            },
+            {
+             "cls": "overflow-y-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-y:hidden"
+            },
+            {
+             "cls": "transition-all",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "p",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-copy-16",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+                },
+                {
+                 "cls": "text-copy-16",
+                 "state": ">strong",
+                 "at": "@layer utilities",
+                 "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+                },
+                {
+                 "cls": "mb-4",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-bottom:1rem"
+                }
+               ],
+               "unresolved": [],
+               "children": [],
+               "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "data-version": "v1"
+         },
+         "styles": [
+          {
+           "cls": "text-left",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:left"
+          },
+          {
+           "cls": "border-b",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:1px"
+          },
+          {
+           "cls": "border-[var(--accents-2)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--accents-2)"
+          },
+          {
+           "cls": "border-t-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-top-style:var(--tw-border-style);border-top-width:0"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "button",
+             "attrs": {
+              "aria-controls": "collapse-section-_R_17aslubquiuq6ivb_",
+              "aria-expanded": "false",
+              "id": "collapse-button-_R_17aslubquiuq6ivbH1_",
+              "type": "button"
+             },
+             "styles": [
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "color:inherit;text-decoration:none"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+              },
+              {
+               "cls": "geist-reset",
+               "state": "",
+               "at": "",
+               "decl": "padding:unset;margin:unset;list-style-type:unset"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-between",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:space-between"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "cursor-pointer",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "cursor:pointer"
+              },
+              {
+               "cls": "text-[var(--ds-gray-1000)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "focus:rounded",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "border-radius:.25rem"
+              },
+              {
+               "cls": "focus:outline-none",
+               "state": ":focus",
+               "at": "@layer utilities",
+               "decl": "--tw-outline-style:none;outline-style:none"
+              },
+              {
+               "cls": "focus-visible:ring-[var(--ds-blue-700)]",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-color:var(--ds-blue-700)"
+              },
+              {
+               "cls": "focus-visible:ring-2",
+               "state": ":focus-visible",
+               "at": "@layer utilities",
+               "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "py-6",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-block:1.5rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "justify-between",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:space-between"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "flex",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:flex"
+                  },
+                  {
+                   "cls": "items-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "align-items:center"
+                  },
+                  {
+                   "cls": "text-gray-1000",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-1000)"
+                  },
+                  {
+                   "cls": "transition-transform",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.2s;transition-duration:.2s"
+                  },
+                  {
+                   "cls": "duration-200",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.2s"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "ease-in-out",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "text": "Question B"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "aria-labelledby": "collapse-button-_R_17aslubquiuq6ivbH1_",
+            "id": "collapse-section-_R_17aslubquiuq6ivb_",
+            "role": "region",
+            "style": "height:0"
+           },
+           "styles": [
+            {
+             "cls": "text-base",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+            },
+            {
+             "cls": "leading-[26px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:26px;line-height:26px"
+            },
+            {
+             "cls": "[&>div]:max-h-[60vh]",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "max-height:60vh"
+            },
+            {
+             "cls": "[&>div]:overflow-y-auto",
+             "state": ">div",
+             "at": "@layer utilities",
+             "decl": "overflow-y:auto"
+            },
+            {
+             "cls": "overflow-y-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow-y:hidden"
+            },
+            {
+             "cls": "transition-all",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "p",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-copy-16",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+                },
+                {
+                 "cls": "text-copy-16",
+                 "state": ">strong",
+                 "at": "@layer utilities",
+                 "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+                },
+                {
+                 "cls": "mb-4",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-bottom:1rem"
+                }
+               ],
+               "unresolved": [],
+               "children": [],
+               "text": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Small",
+   "description": "",
+   "code": "import { Collapse } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Collapse size=\"small\" title=\"Question A\">\n      <p className=\"text-copy-16 mb-4\">\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim\n        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea\n        commodo consequat.\n      </p>\n    </Collapse>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "text-left",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "text-align:left"
+        },
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "border-b",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:1px"
+        },
+        {
+         "cls": "border-[var(--accents-2)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--accents-2)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "h3",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-[16px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:16px"
+          },
+          {
+           "cls": "font-medium",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "button",
+           "attrs": {
+            "aria-controls": "collapse-section-_R_7bslubquiuq6ivb_",
+            "aria-expanded": "false",
+            "id": "collapse-button-_R_7bslubquiuq6ivbH1_",
+            "type": "button"
+           },
+           "styles": [
+            {
+             "cls": "geist-reset",
+             "state": "",
+             "at": "",
+             "decl": "color:inherit;text-decoration:none"
+            },
+            {
+             "cls": "geist-reset",
+             "state": "",
+             "at": "",
+             "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+            },
+            {
+             "cls": "geist-reset",
+             "state": "",
+             "at": "",
+             "decl": "padding:unset;margin:unset;list-style-type:unset"
+            },
+            {
+             "cls": "geist-reset",
+             "state": "",
+             "at": "",
+             "decl": "color:inherit;text-decoration:none"
+            },
+            {
+             "cls": "geist-reset",
+             "state": "",
+             "at": "",
+             "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+            },
+            {
+             "cls": "geist-reset",
+             "state": "",
+             "at": "",
+             "decl": "padding:unset;margin:unset;list-style-type:unset"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-between",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:space-between"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "cursor-pointer",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "cursor:pointer"
+            },
+            {
+             "cls": "text-[var(--ds-gray-1000)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "focus:rounded",
+             "state": ":focus",
+             "at": "@layer utilities",
+             "decl": "border-radius:.25rem"
+            },
+            {
+             "cls": "focus:outline-none",
+             "state": ":focus",
+             "at": "@layer utilities",
+             "decl": "--tw-outline-style:none;outline-style:none"
+            },
+            {
+             "cls": "focus-visible:ring-[var(--ds-blue-700)]",
+             "state": ":focus-visible",
+             "at": "@layer utilities",
+             "decl": "--tw-ring-color:var(--ds-blue-700)"
+            },
+            {
+             "cls": "focus-visible:ring-2",
+             "state": ":focus-visible",
+             "at": "@layer utilities",
+             "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "justify-between",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:space-between"
+              },
+              {
+               "cls": "py-3",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-block:.75rem"
+              },
+              {
+               "cls": "px-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-inline:0"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "text-gray-1000",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "transition-transform",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                },
+                {
+                 "cls": "duration-200",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-duration:.2s;transition-duration:.2s"
+                },
+                {
+                 "cls": "duration-200",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "animation-duration:.2s"
+                },
+                {
+                 "cls": "ease-in-out",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                },
+                {
+                 "cls": "ease-in-out",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "styles": [],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "path",
+                   "attrs": {},
+                   "styles": [],
+                   "unresolved": [],
+                   "children": []
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "text": "Question A"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "aria-labelledby": "collapse-button-_R_7bslubquiuq6ivbH1_",
+          "id": "collapse-section-_R_7bslubquiuq6ivb_",
+          "role": "region",
+          "style": "height:0"
+         },
+         "styles": [
+          {
+           "cls": "text-base",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+          },
+          {
+           "cls": "leading-[26px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:26px;line-height:26px"
+          },
+          {
+           "cls": "[&>div]:max-h-[60vh]",
+           "state": ">div",
+           "at": "@layer utilities",
+           "decl": "max-height:60vh"
+          },
+          {
+           "cls": "[&>div]:overflow-y-auto",
+           "state": ">div",
+           "at": "@layer utilities",
+           "decl": "overflow-y:auto"
+          },
+          {
+           "cls": "overflow-y-hidden",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "overflow-y:hidden"
+          },
+          {
+           "cls": "transition-all",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+          },
+          {
+           "cls": "duration-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-duration:.2s;transition-duration:.2s"
+          },
+          {
+           "cls": "duration-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation-duration:.2s"
+          },
+          {
+           "cls": "ease-in-out",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+          },
+          {
+           "cls": "ease-in-out",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "p",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-copy-16",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+              },
+              {
+               "cls": "text-copy-16",
+               "state": ">strong",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+              },
+              {
+               "cls": "mb-4",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-bottom:1rem"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Standalone",
+   "description": "A medium Collapse outside a group has no rendered example (the page shows medium ones in groups and a small one alone); its class string comes from the component's client code: the block keeps both borders, the heading is 24px semibold, the title row has the 24px vertical padding.",
+   "code": "export function Component(): JSX.Element {\n  return (\n    <Collapse title=\"Question A\">\n      <p className=\"text-copy-16 mb-4\">Lorem ipsum dolor sit amet.</p>\n    </Collapse>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {
+      "data-version": "v1"
+     },
+     "styles": [
+      {
+       "cls": "text-left",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "text-align:left"
+      },
+      {
+       "cls": "border-t",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+      },
+      {
+       "cls": "border-b",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:1px"
+      },
+      {
+       "cls": "border-[var(--accents-2)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-color:var(--accents-2)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "h3",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "text-[24px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:24px"
+        },
+        {
+         "cls": "font-semibold",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "button",
+         "attrs": {
+          "aria-controls": "collapse-section-*",
+          "aria-expanded": "false",
+          "id": "collapse-button-*",
+          "type": "button"
+         },
+         "styles": [
+          {
+           "cls": "geist-reset",
+           "state": "",
+           "at": "",
+           "decl": "color:inherit;text-decoration:none"
+          },
+          {
+           "cls": "geist-reset",
+           "state": "",
+           "at": "",
+           "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+          },
+          {
+           "cls": "geist-reset",
+           "state": "",
+           "at": "",
+           "decl": "padding:unset;margin:unset;list-style-type:unset"
+          },
+          {
+           "cls": "geist-reset",
+           "state": "",
+           "at": "",
+           "decl": "color:inherit;text-decoration:none"
+          },
+          {
+           "cls": "geist-reset",
+           "state": "",
+           "at": "",
+           "decl": "border:unset;background:unset;padding:unset;margin:unset;font:unset;text-align:unset;appearance:unset"
+          },
+          {
+           "cls": "geist-reset",
+           "state": "",
+           "at": "",
+           "decl": "padding:unset;margin:unset;list-style-type:unset"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "justify-between",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:space-between"
+          },
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "cursor-pointer",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "text-[var(--ds-gray-1000)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "focus:rounded",
+           "state": ":focus",
+           "at": "@layer utilities",
+           "decl": "border-radius:.25rem"
+          },
+          {
+           "cls": "focus:outline-none",
+           "state": ":focus",
+           "at": "@layer utilities",
+           "decl": "--tw-outline-style:none;outline-style:none"
+          },
+          {
+           "cls": "focus-visible:ring-[var(--ds-blue-700)]",
+           "state": ":focus-visible",
+           "at": "@layer utilities",
+           "decl": "--tw-ring-color:var(--ds-blue-700)"
+          },
+          {
+           "cls": "focus-visible:ring-2",
+           "state": ":focus-visible",
+           "at": "@layer utilities",
+           "decl": "--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "py-6",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-block:1.5rem"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "justify-between",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:space-between"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "text-gray-1000",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "transition-transform",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "duration-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.2s;transition-duration:.2s"
+              },
+              {
+               "cls": "duration-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.2s"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "text": "Question A"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "attrs": {
+        "aria-labelledby": "collapse-button-*",
+        "id": "collapse-section-*",
+        "role": "region",
+        "style": "height:0"
+       },
+       "styles": [
+        {
+         "cls": "text-base",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+        },
+        {
+         "cls": "leading-[26px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:26px;line-height:26px"
+        },
+        {
+         "cls": "[&>div]:max-h-[60vh]",
+         "state": ">div",
+         "at": "@layer utilities",
+         "decl": "max-height:60vh"
+        },
+        {
+         "cls": "[&>div]:overflow-y-auto",
+         "state": ">div",
+         "at": "@layer utilities",
+         "decl": "overflow-y:auto"
+        },
+        {
+         "cls": "overflow-y-hidden",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-y:hidden"
+        },
+        {
+         "cls": "transition-all",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-200",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.2s;transition-duration:.2s"
+        },
+        {
+         "cls": "duration-200",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.2s"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-16",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-16",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "mb-4",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-bottom:1rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Lorem ipsum dolor sit amet."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

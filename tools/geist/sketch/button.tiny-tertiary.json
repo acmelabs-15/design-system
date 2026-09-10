@@ -1,0 +1,28 @@
+{
+ "heading": "Tiny tertiary icon",
+ "description": "A tiny, tertiary, square icon-only button, as the browser frame's address bar renders it. The frame's own svg-size class is left out and the button's tiny svg size ([&_svg]:size-4), which that class replaced in the merge, is restored: tiny keeps its 4px radius, the variant adds no rounded-md.",
+ "code": "<Button size=\"tiny\" variant=\"tertiary\" shape=\"square\" svgOnly aria-label=\"Copy\"><IconCopy /></Button>",
+ "dom": [
+  {
+   "tag": "button",
+   "class": "outline-none m-0 p-0 border-0 text-base align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] font-medium max-w-full items-center justify-center transition-[border-color, background,color,transform,box-shadow] duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] !px-0 geist-new-themed geist-new-tertiary geist-new-tertiary-fill bg-transparent !text-[var(--themed-bg,_var(--ds-gray-1000))] [--themed-border:_transparent] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--lighten-color:_rgba(255,_255,_255,_0.8)] data-hover:![--themed-border:_var(--ds-gray-alpha-200)] h-[24px] w-[24px] rounded-[4px] [&_svg]:size-4 data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))] dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))] data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))] data-hover:disabled:bg-[var(--ds-gray-100)]",
+   "attrs": {
+    "type": "button",
+    "tabindex": "0",
+    "data-geist-button": "",
+    "data-prefix": "false",
+    "data-suffix": "false",
+    "aria-label": "Copy",
+    "style": "--geist-icon-size:16px"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "class": "truncate px-1.5 inline-flex items-center justify-center shrink-0",
+     "attrs": {},
+     "children": []
+    }
+   ]
+  }
+ ]
+}

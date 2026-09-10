@@ -1,0 +1,45 @@
+{
+  "heading": "Clickable Entity",
+  "description": "A clickable row outside a list: the page renders button rows inside an EntityList only. From the component's client code: the button row's own classes, no divider.",
+  "code": "export function Component(): JSX.Element {\n  return (\n    <Entity as=\"button\" onClick={() => {}}>\n      <EntityContent description=\"Last used just now\" title=\"GitHub Desktop on MacBook Pro\" />\n    </Entity>\n  );\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "button",
+          "class": "p-4 flex flex-col items-stretch justify-start flex-initial bg-inherit w-full text-left cursor-pointer transition-colors duration-100 ease-in-out hover:bg-[var(--accents-1)]",
+          "children": [
+            {
+              "tag": "section",
+              "class": "flex items-center gap-4",
+              "children": [
+                {
+                  "tag": "div",
+                  "class": "left flex flex-1 items-center gap-4 min-w-0",
+                  "children": [
+                    {
+                      "tag": "div",
+                      "class": "flex flex-initial items-center gap-2 [--width:initial] w-[var(--width, initial)] min-w-0",
+                      "children": [
+                        {
+                          "tag": "div",
+                          "class": "flex flex-col items-stretch flex-1 min-w-0",
+                          "children": [
+                            { "tag": "p", "class": "text-copy-14 truncate font-semibold", "text": "GitHub Desktop on MacBook Pro" },
+                            { "tag": "p", "class": "text-copy-14 truncate text-gray-900", "text": "Last used just now" }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

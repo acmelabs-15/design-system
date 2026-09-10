@@ -1,0 +1,194 @@
+{
+  "heading": "Custom content disabled",
+  "description": "From the component client code: a selected disabled item still shows its content, but the divider under the option row (border-b) is drawn for enabled items only.",
+  "code": "export function Component(): JSX.Element {\n  const [value, setValue] = useState(trial);\n  return (\n    <ChoiceboxGroup disabled label=\"select a plan\" onChange={setValue} type=\"radio\" value={value}>\n      <ChoiceboxGroupItem description=\"Free for two weeks\" title=\"Pro Trial\" value=\"trial\">\n        <div className=\"flex justify-center p-2\"><Badge variant=\"trial\">Trial</Badge></div>\n      </ChoiceboxGroupItem>\n      <ChoiceboxGroupItem description=\"Get started now\" title=\"Pro\" value=\"pro\">\n        <div className=\"flex justify-center p-2\"><Badge variant=\"blue\">Pro</Badge></div>\n      </ChoiceboxGroupItem>\n    </ChoiceboxGroup>\n  );\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "div",
+          "attrs": {
+            "role": "radiogroup",
+            "aria-multiselectable": "false",
+            "aria-required": "false",
+            "aria-label": "select a plan"
+          },
+          "children": [
+            {
+              "tag": "ul",
+              "class": "flex flex-initial items-stretch justify-stretch gap-3 list-none m-0 p-0 flex-row",
+              "children": [
+                {
+                  "tag": "li",
+                  "class": "flex-1 flex flex-col items-stretch justify-start list-none group/choicebox transition-colors duration-150 ease-in border border-[var(--ds-gray-400)] overflow-hidden rounded-md hover:has-enabled:border-[var(--ds-gray-500)] hover:has-enabled:bg-[var(--ds-gray-100)] hover:has-checked:not-has-disabled:!border-[var(--ds-blue-600)] has-checked:not-has-disabled:border-[var(--ds-blue-600)] group-focus-within/choicebox:outline-2 group-focus-within/choicebox:outline-offset-2 group-focus-within/choicebox:outline-indigo-600 cursor-not-allowed",
+                  "children": [
+                    {
+                      "tag": "label",
+                      "class": "flex flex-1 flex-col items-stretch justify-start cursor-not-allowed",
+                      "children": [
+                        {
+                          "tag": "div",
+                          "class": "flex flex-row items-center p-3 justify-between gap-6 has-checked:not-has-disabled:bg-[var(--ds-blue-100)] hover:has-checked:not-has-disabled:!bg-[var(--ds-blue-200)]",
+                          "attrs": {
+                            "data-slot": "choicebox-group-item-option"
+                          },
+                          "children": [
+                            {
+                              "tag": "span",
+                              "class": "flex flex-col justify-start items-stretch gap-1 self-start flex-initial",
+                              "attrs": {
+                                "data-slot": "choicebox-group-item-title-description"
+                              },
+                              "children": [
+                                {
+                                  "tag": "span",
+                                  "class": "text-sm leading-5 font-medium group-has-disabled/choicebox:text-[var(--ds-gray-800)] group-has-checked/choicebox:not-group-has-disabled/choicebox:text-[var(--ds-blue-900)]",
+                                  "attrs": {
+                                    "id": "choicebox-title-sk13"
+                                  },
+                                  "text": "Pro Trial"
+                                },
+                                {
+                                  "tag": "span",
+                                  "class": "text-sm leading-5 text-[var(--ds-gray-900)] [&:empty]:hidden group-has-disabled/choicebox:text-[var(--ds-gray-800)] group-has-checked/choicebox:not-group-has-disabled/choicebox:text-[var(--ds-blue-900)]",
+                                  "attrs": {
+                                    "id": "choicebox-description-sk14"
+                                  },
+                                  "text": "Free for two weeks"
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "span",
+                              "class": "-m-0.5 flex items-center p-0.5 cursor-not-allowed text-[var(--ds-gray-500)] [--radio-color:var(--ds-gray-500)]",
+                              "children": [
+                                {
+                                  "tag": "input",
+                                  "class": "sr-only peer",
+                                  "attrs": {
+                                    "aria-labelledby": "choicebox-title-sk choicebox-description-sk",
+                                    "disabled": "",
+                                    "type": "radio",
+                                    "name": "choicebox-name-skd",
+                                    "value": "trial",
+                                    "checked": ""
+                                  }
+                                },
+                                {
+                                  "tag": "span",
+                                  "class": "relative size-4 rounded-full border border-[var(--radio-color)] bg-[var(--ds-background-100)] transition-[border-color,background] duration-200 ease-in after:absolute after:left-1/2 after:top-1/2 after:block after:size-2 after:-translate-x-1/2 after:-translate-y-1/2 after:scale-0 after:rounded-full after:bg-[var(--radio-color)] after:transition-transform after:duration-150 after:ease-in after:content-[\"\"] peer-focus-visible:shadow-[var(--ds-focus-ring)] peer-[data-focus-visible-added]:shadow-[var(--ds-focus-ring)] peer-checked:after:scale-100 peer-checked:[--radio-color:var(--ds-blue-900)] [--radio-color:var(--ds-gray-500)] peer-active:[--radio-color:var(--ds-blue-900)] group-hover:peer-not-checked:peer-not-active:peer-not-disabled:[--radio-color:var(--ds-gray-700)] group-hover:peer-not-checked:peer-not-active:peer-not-disabled:bg-[var(--ds-background-100)] peer-checked:peer-disabled:![--radio-color:var(--ds-gray-900)] peer-disabled:not-peer-checked:bg-[var(--ds-gray-100)]",
+                                  "attrs": {
+                                    "aria-hidden": "true"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "tag": "span",
+                          "class": "choicebox-content [&_input[type='checkbox']:checked+*]:[--checkbox-color:var(--ds-blue-900)]",
+                          "children": [
+                            {
+                              "tag": "div",
+                              "class": "flex justify-center p-2",
+                              "children": [
+                                {
+                                  "tag": "div",
+                                  "class": "tracking-normal inline-flex shrink-0 items-center justify-center rounded-full whitespace-nowrap py-0.5 font-medium capitalize tabular-nums bg-black h-6 px-3 gap-1.25 text-[12px]/[24px] text-white",
+                                  "children": [
+                                    {
+                                      "tag": "span",
+                                      "class": "min-w-0 relative inline-flex items-center [gap:inherit]",
+                                      "text": "Trial"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tag": "li",
+                  "class": "flex-1 flex flex-col items-stretch justify-start list-none group/choicebox transition-colors duration-150 ease-in border border-[var(--ds-gray-400)] overflow-hidden rounded-md hover:has-enabled:border-[var(--ds-gray-500)] hover:has-enabled:bg-[var(--ds-gray-100)] hover:has-checked:not-has-disabled:!border-[var(--ds-blue-600)] has-checked:not-has-disabled:border-[var(--ds-blue-600)] group-focus-within/choicebox:outline-2 group-focus-within/choicebox:outline-offset-2 group-focus-within/choicebox:outline-indigo-600 cursor-not-allowed",
+                  "children": [
+                    {
+                      "tag": "label",
+                      "class": "flex flex-1 flex-col items-stretch justify-start cursor-not-allowed",
+                      "children": [
+                        {
+                          "tag": "div",
+                          "class": "flex flex-row items-center p-3 h-full justify-between gap-6 has-checked:not-has-disabled:bg-[var(--ds-blue-100)] hover:has-checked:not-has-disabled:!bg-[var(--ds-blue-200)]",
+                          "attrs": {
+                            "data-slot": "choicebox-group-item-option"
+                          },
+                          "children": [
+                            {
+                              "tag": "span",
+                              "class": "flex flex-col justify-start items-stretch gap-1 self-start flex-initial",
+                              "attrs": {
+                                "data-slot": "choicebox-group-item-title-description"
+                              },
+                              "children": [
+                                {
+                                  "tag": "span",
+                                  "class": "text-sm leading-5 font-medium group-has-disabled/choicebox:text-[var(--ds-gray-800)] group-has-checked/choicebox:not-group-has-disabled/choicebox:text-[var(--ds-blue-900)]",
+                                  "attrs": {
+                                    "id": "choicebox-title-sk15"
+                                  },
+                                  "text": "Pro"
+                                },
+                                {
+                                  "tag": "span",
+                                  "class": "text-sm leading-5 text-[var(--ds-gray-900)] [&:empty]:hidden group-has-disabled/choicebox:text-[var(--ds-gray-800)] group-has-checked/choicebox:not-group-has-disabled/choicebox:text-[var(--ds-blue-900)]",
+                                  "attrs": {
+                                    "id": "choicebox-description-sk16"
+                                  },
+                                  "text": "Get started now"
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "span",
+                              "class": "-m-0.5 flex items-center p-0.5 cursor-not-allowed text-[var(--ds-gray-500)] [--radio-color:var(--ds-gray-500)]",
+                              "children": [
+                                {
+                                  "tag": "input",
+                                  "class": "sr-only peer",
+                                  "attrs": {
+                                    "aria-labelledby": "choicebox-title-sk choicebox-description-sk",
+                                    "disabled": "",
+                                    "type": "radio",
+                                    "name": "choicebox-name-skd",
+                                    "value": "trial"
+                                  }
+                                },
+                                {
+                                  "tag": "span",
+                                  "class": "relative size-4 rounded-full border border-[var(--radio-color)] bg-[var(--ds-background-100)] transition-[border-color,background] duration-200 ease-in after:absolute after:left-1/2 after:top-1/2 after:block after:size-2 after:-translate-x-1/2 after:-translate-y-1/2 after:scale-0 after:rounded-full after:bg-[var(--radio-color)] after:transition-transform after:duration-150 after:ease-in after:content-[\"\"] peer-focus-visible:shadow-[var(--ds-focus-ring)] peer-[data-focus-visible-added]:shadow-[var(--ds-focus-ring)] peer-checked:after:scale-100 peer-checked:[--radio-color:var(--ds-blue-900)] [--radio-color:var(--ds-gray-500)] peer-active:[--radio-color:var(--ds-blue-900)] group-hover:peer-not-checked:peer-not-active:peer-not-disabled:[--radio-color:var(--ds-gray-700)] group-hover:peer-not-checked:peer-not-active:peer-not-disabled:bg-[var(--ds-background-100)] peer-checked:peer-disabled:![--radio-color:var(--ds-gray-900)] peer-disabled:not-peer-checked:bg-[var(--ds-gray-100)]",
+                                  "attrs": {
+                                    "aria-hidden": "true"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+ "heading": "Open link items",
+ "description": "Every row is an anchor.",
+ "code": "import {\n  ContextMenu,\n  ContextMenuContent,\n  ContextMenuItem,\n  ContextMenuTrigger,\n} from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <ContextMenu>\n      <ContextMenuTrigger>\n        <div className=\"text-copy-14\">Right click here</div>\n      </ContextMenuTrigger>\n      <ContextMenuContent>\n        <ContextMenuItem href=\"/\" value=\"hello\">Item one</ContextMenuItem>\n        <ContextMenuItem href=\"/\" value=\"hello\">Item Two</ContextMenuItem>\n        <ContextMenuItem href=\"/\" value=\"hello\">Item Three</ContextMenuItem>\n        <ContextMenuItem href=\"/\" value=\"hello\">Item Four</ContextMenuItem>\n      </ContextMenuContent>\n    </ContextMenu>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "relative",
+   "attrs": {
+    "style": "min-height:250px"
+   },
+   "children": [
+    {
+     "tag": "span",
+     "attrs": {
+      "data-state": "open",
+      "style": "-webkit-touch-callout:none"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "text-copy-14",
+       "attrs": {
+        "style": "width:300px;padding:45px 0;border:1px var(--ds-gray-alpha-600) dashed;border-radius:4px;text-align:center"
+       },
+       "text": "Right click here"
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-radix-popper-content-wrapper": "",
+      "dir": "ltr",
+      "style": "position:fixed;left:0px;top:0px;transform:translate(120px, 60px);min-width:max-content;z-index:auto;--radix-popper-transform-origin:0px 0px;will-change:transform"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "list-none m-0 material-menu text-sm outline-hidden overflow-x-hidden overflow-y-auto p-(--ds-popover-padding) overscroll-contain data-[state='closed']:animate-fade-popover-out max-sm:w-full! max-sm:rounded-b-0",
+       "attrs": {
+        "role": "menu",
+        "aria-orientation": "vertical",
+        "data-state": "open",
+        "data-radix-menu-content": "",
+        "dir": "ltr",
+        "data-side": "right",
+        "data-align": "start",
+        "data-orientation": "vertical",
+        "tabindex": "-1",
+        "style": "width:160px;outline:none;--radix-context-menu-content-transform-origin:0px 0px;--radix-context-menu-content-available-width:600px;--radix-context-menu-content-available-height:600px;--radix-context-menu-trigger-width:0px;--radix-context-menu-trigger-height:0px;pointer-events:auto"
+       },
+       "children": [
+        {
+         "tag": "a",
+         "class": "outline-hidden cursor-pointer flex items-center p-(--ds-popover-row-padding) h-(--ds-popover-row-height) no-underline rounded-(--ds-popover-row-radius) text-[var(--ds-gray-1000)] w-full max-sm:h-(--ds-size-large) max-sm:text-base data-[selected]:bg-[var(--ds-gray-alpha-100)] data-[highlighted]:bg-[var(--ds-gray-alpha-100)] aria-[disabled=true]:cursor-default aria-[disabled=true]:text-[var(--ds-gray-700)] aria-[disabled=true]:pointer-events-none data-[disabled]:cursor-default data-[disabled=\"true\"]:text-[var(--ds-gray-700)] data-[disabled=\"true\"]:pointer-events-none",
+         "attrs": {
+          "role": "menuitem",
+          "tabindex": "-1",
+          "data-orientation": "vertical",
+          "data-radix-collection-item": "",
+          "href": "/"
+         },
+         "text": "Item one"
+        },
+        {
+         "tag": "a",
+         "class": "outline-hidden cursor-pointer flex items-center p-(--ds-popover-row-padding) h-(--ds-popover-row-height) no-underline rounded-(--ds-popover-row-radius) text-[var(--ds-gray-1000)] w-full max-sm:h-(--ds-size-large) max-sm:text-base data-[selected]:bg-[var(--ds-gray-alpha-100)] data-[highlighted]:bg-[var(--ds-gray-alpha-100)] aria-[disabled=true]:cursor-default aria-[disabled=true]:text-[var(--ds-gray-700)] aria-[disabled=true]:pointer-events-none data-[disabled]:cursor-default data-[disabled=\"true\"]:text-[var(--ds-gray-700)] data-[disabled=\"true\"]:pointer-events-none",
+         "attrs": {
+          "role": "menuitem",
+          "tabindex": "-1",
+          "data-orientation": "vertical",
+          "data-radix-collection-item": "",
+          "href": "/"
+         },
+         "text": "Item Two"
+        },
+        {
+         "tag": "a",
+         "class": "outline-hidden cursor-pointer flex items-center p-(--ds-popover-row-padding) h-(--ds-popover-row-height) no-underline rounded-(--ds-popover-row-radius) text-[var(--ds-gray-1000)] w-full max-sm:h-(--ds-size-large) max-sm:text-base data-[selected]:bg-[var(--ds-gray-alpha-100)] data-[highlighted]:bg-[var(--ds-gray-alpha-100)] aria-[disabled=true]:cursor-default aria-[disabled=true]:text-[var(--ds-gray-700)] aria-[disabled=true]:pointer-events-none data-[disabled]:cursor-default data-[disabled=\"true\"]:text-[var(--ds-gray-700)] data-[disabled=\"true\"]:pointer-events-none",
+         "attrs": {
+          "role": "menuitem",
+          "tabindex": "-1",
+          "data-orientation": "vertical",
+          "data-radix-collection-item": "",
+          "href": "/"
+         },
+         "text": "Item Three"
+        },
+        {
+         "tag": "a",
+         "class": "outline-hidden cursor-pointer flex items-center p-(--ds-popover-row-padding) h-(--ds-popover-row-height) no-underline rounded-(--ds-popover-row-radius) text-[var(--ds-gray-1000)] w-full max-sm:h-(--ds-size-large) max-sm:text-base data-[selected]:bg-[var(--ds-gray-alpha-100)] data-[highlighted]:bg-[var(--ds-gray-alpha-100)] aria-[disabled=true]:cursor-default aria-[disabled=true]:text-[var(--ds-gray-700)] aria-[disabled=true]:pointer-events-none data-[disabled]:cursor-default data-[disabled=\"true\"]:text-[var(--ds-gray-700)] data-[disabled=\"true\"]:pointer-events-none",
+         "attrs": {
+          "role": "menuitem",
+          "tabindex": "-1",
+          "data-orientation": "vertical",
+          "data-radix-collection-item": "",
+          "href": "/"
+         },
+         "text": "Item Four"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

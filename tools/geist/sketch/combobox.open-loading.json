@@ -1,0 +1,323 @@
+{
+ "heading": "Open loading",
+ "description": "While results load the spinner takes the search icon's place.",
+ "code": "import {\n  Combobox,\n  ComboboxInput,\n  ComboboxList,\n  ComboboxOption,\n} from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Combobox aria-label=\"Search\" placeholder=\"Search...\" loading>\n      <ComboboxInput />\n      <ComboboxList>\n        <ComboboxOption value=\"a\">One</ComboboxOption>\n        <ComboboxOption value=\"b\">Two</ComboboxOption>\n        <ComboboxOption value=\"c\">Three</ComboboxOption>\n      </ComboboxList>\n    </Combobox>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "relative outline-hidden rounded-md transition-shadow duration-200 focus:shadow-[var(--ds-focus-ring)]",
+   "attrs": {
+    "tabindex": "-1",
+    "aria-controls": "combobox-list-s5",
+    "aria-expanded": "true",
+    "aria-haspopup": "listbox",
+    "aria-owns": "combobox-list-s5",
+    "role": "combobox"
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "group/combobox text-sm w-full inline-block relative z-0",
+     "children": [
+      {
+       "tag": "div",
+       "class": "inline-flex items-center justify-center text-[var(--ds-gray-700)] pointer-events-none absolute left-[13px] top-1/2 z-10 transform -translate-y-1/2",
+       "attrs": {
+        "aria-hidden": "true"
+       },
+       "children": [
+        {
+         "tag": "div",
+         "class": "text-gray-700 relative inline-block aspect-square transform-gpu size-4",
+         "attrs": {
+          "role": "status",
+          "aria-label": "Loading",
+          "data-glyph": "circular"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-900ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(0deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-800ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(36deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-700ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(72deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-600ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(108deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-500ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(144deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-400ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(180deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-300ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(216deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-200ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(252deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:-100ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(288deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "div",
+           "class": "absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 rounded-full bg-current text-current will-change-transform h-[1.5px] w-1",
+           "attrs": {
+            "aria-hidden": "true",
+            "style": "--animation-delay:0ms;--animation-duration:1000ms;animation:spinner-opacity var(--animation-duration, 1.2s) linear infinite;animation-delay:var(--animation-delay, 0);transform:rotate(324deg) translate(146%)"
+           }
+          },
+          {
+           "tag": "span",
+           "class": "sr-only",
+           "text": "Loading..."
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "input",
+       "class": "w-full h-(--ds-size-medium) bg-[var(--ds-background-100)] rounded-md border-0 shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] bg-clip-padding font-[var(--font-sans)] text-[var(--ds-gray-1000)] min-h-(--ds-size-medium) sm:min-h-0 appearance-none m-0 cursor-text outline-hidden py-0 pl-10 pr-9 placeholder:text-[var(--ds-gray-700)] transition-all duration-200 ease-in-out text-left truncate disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] disabled:cursor-not-allowed disabled:hover:!shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] focus:outline-hidden sm:focus:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(0,0,0,0.16)] sm:dark-theme:focus:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(255,255,255,0.24)] group-hover/combobox:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)]",
+       "attrs": {
+        "aria-autocomplete": "list",
+        "aria-controls": "combobox-list-s5",
+        "aria-label": "Search",
+        "autocomplete": "off",
+        "id": "combobox-input-s5",
+        "placeholder": "Search...",
+        "role": "searchbox",
+        "type": "text",
+        "value": "",
+        "aria-activedescendant": "s5-o0"
+       }
+      },
+      {
+       "tag": "button",
+       "class": "outline-hidden m-0 p-0 border-0 box-border text-base align-baseline no-underline [tap-highlight-color:transparent] select-none bg-none cursor-pointer inline-flex items-center justify-center !w-10 !h-full group-hover/combobox:text-[var(--geist-foreground)] disabled:cursor-not-allowed [&>span]:inline-flex [&>span]:items-center [&>span]:justify-center !mr-0 absolute -right-px top-1/2 text-[var(--ds-gray-700)] transform -translate-y-1/2 border-l-0 rounded-r-[5px] h-(--ds-size-medium) py-0 px-3 order-2 transition-all duration-150 ease-out w-auto focus-visible:ring-2 focus-visible:ring-[var(--ds-focus-color)] focus-visible:ring-offset-0",
+       "attrs": {
+        "aria-label": "Clear selected value",
+        "data-open": "true",
+        "style": "display:none",
+        "tabindex": "0",
+        "type": "button"
+       },
+       "children": [
+        {
+         "tag": "svg",
+         "class": "size-(--ds-control-decoration-size)",
+         "attrs": {
+          "data-slot": "geist-icon",
+          "style": "color:currentColor",
+          "height": "16",
+          "width": "16",
+          "viewBox": "0 0 16 16",
+          "fill": "none"
+         },
+         "children": [
+          {
+           "tag": "path",
+           "attrs": {
+            "fill": "currentColor",
+            "d": "M1.5 6.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+           }
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "button",
+       "class": "outline-hidden m-0 p-0 border-0 box-border text-base align-baseline no-underline [tap-highlight-color:transparent] select-none bg-none cursor-pointer inline-flex !w-10 !h-[30px] group-hover/combobox:text-gray-1000 disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] [&>span]:inline-flex items-center justify-center !mr-0 absolute -right-px top-1/2 text-[var(--ds-gray-700)] transform -translate-y-1/2 transition-colors duration-150 ease-in",
+       "attrs": {
+        "aria-label": "Close menu",
+        "data-open": "true",
+        "tabindex": "-1",
+        "type": "button"
+       },
+       "children": [
+        {
+         "tag": "svg",
+         "class": "rotate-180 transition-none size-(--ds-control-decoration-size)",
+         "attrs": {
+          "data-slot": "geist-icon",
+          "style": "color:currentColor",
+          "height": "16",
+          "width": "16",
+          "viewBox": "0 0 16 16",
+          "fill": "none"
+         },
+         "children": [
+          {
+           "tag": "path",
+           "attrs": {
+            "fill": "currentColor",
+            "d": "M1.5 6.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-radix-popper-content-wrapper": "",
+      "dir": "ltr",
+      "style": "position:fixed;left:0px;top:0px;transform:translate(24px, 84px);min-width:max-content;z-index:2001;--radix-popper-transform-origin:50% 0px"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "m-0 p-(--ds-popover-padding) outline-hidden bg-[var(--ds-background-100)] shadow-[var(--ds-shadow-border-large)] rounded-xl z-[var(--ds-z-menu)] data-[state='closed']:animate-fade-popover-out [data-pristine='false']:transition-[height] [data-pristine='false']:duration-100 [data-pristine='false']:ease-in-out [&>ul]:m-0 [&>ul]:p-0 [&>ul]:list-none",
+       "attrs": {
+        "data-side": "bottom",
+        "data-align": "center",
+        "data-state": "open",
+        "data-pristine": "true",
+        "role": "dialog",
+        "id": "radix-s5",
+        "tabindex": "-1",
+        "style": "--radix-popover-content-transform-origin:var(--radix-popper-transform-origin);outline:0;overflow-y:hidden;width:552px;height:120px;max-height:210px"
+       },
+       "children": [
+        {
+         "tag": "ul",
+         "attrs": {
+          "data-geist-combobox-list": "",
+          "id": "combobox-list-s5",
+          "role": "listbox"
+         },
+         "children": [
+          {
+           "tag": "li",
+           "class": "flex items-center text-sm p-(--ds-popover-row-padding) text-[var(--ds-gray-1000)] scroll-my-2 rounded-(--ds-popover-row-radius) cursor-pointer outline-hidden h-(--ds-popover-row-height) bg-[var(--ds-gray-alpha-100)]",
+           "attrs": {
+            "aria-selected": "true",
+            "data-highlighted": "false",
+            "data-order": "0",
+            "id": "s5-o0",
+            "role": "option"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "text-left truncate",
+             "attrs": {
+              "title": "One"
+             },
+             "text": "One"
+            }
+           ]
+          },
+          {
+           "tag": "li",
+           "class": "flex items-center text-sm p-(--ds-popover-row-padding) text-[var(--ds-gray-1000)] scroll-my-2 rounded-(--ds-popover-row-radius) cursor-pointer outline-hidden h-(--ds-popover-row-height)",
+           "attrs": {
+            "aria-selected": "false",
+            "data-highlighted": "false",
+            "data-order": "1",
+            "id": "s5-o1",
+            "role": "option"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "text-left truncate",
+             "attrs": {
+              "title": "Two"
+             },
+             "text": "Two"
+            }
+           ]
+          },
+          {
+           "tag": "li",
+           "class": "flex items-center text-sm p-(--ds-popover-row-padding) text-[var(--ds-gray-1000)] scroll-my-2 rounded-(--ds-popover-row-radius) cursor-pointer outline-hidden h-(--ds-popover-row-height)",
+           "attrs": {
+            "aria-selected": "false",
+            "data-highlighted": "false",
+            "data-order": "2",
+            "id": "s5-o2",
+            "role": "option"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "class": "text-left truncate",
+             "attrs": {
+              "title": "Three"
+             },
+             "text": "Three"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "sr-only",
+     "attrs": {
+      "aria-live": "polite",
+      "role": "status"
+     },
+     "text": "3 results available"
+    }
+   ]
+  }
+ ]
+}

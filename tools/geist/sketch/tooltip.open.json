@@ -1,0 +1,283 @@
+{
+ "heading": "Open",
+ "description": "The open bubble on each side of its trigger (a client-only state): 13px inverted-theme text in an 8px-radius box 10px away, the arrow centred on the facing edge.",
+ "code": "import { Kbd, Tooltip } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex relative min-w-px max-w-full flex-row flex-wrap flex-1\">\n      <div className=\"flex relative min-w-px max-w-full flex-col justify-center items-center flex-1\">\n        <Tooltip shown={1} text=\"The Evil Rabbit Jumped over the Fence\">\n          <span>Top</span>\n        </Tooltip>\n      </div>\n\n      <div className=\"flex relative min-w-px max-w-full flex-col justify-center items-center flex-1\">\n        <Tooltip shown={1} position=\"bottom\" text=\"The Evil Rabbit Jumped over the Fence\">\n          <span>Bottom</span>\n        </Tooltip>\n      </div>\n\n      <div className=\"flex relative min-w-px max-w-full flex-col justify-center items-center flex-1\">\n        <Tooltip shown={1} position=\"left\" text=\"The Evil Rabbit Jumped over the Fence\">\n          <span>Left</span>\n        </Tooltip>\n      </div>\n\n      <div className=\"flex relative min-w-px max-w-full flex-col justify-center items-center flex-1\">\n        <Tooltip shown={1} position=\"right\" text=\"The Evil Rabbit Jumped over the Fence\">\n          <span>Right</span>\n        </Tooltip>\n      </div>\n    </div>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "flex relative min-w-px max-w-full flex-row flex-wrap flex-1",
+   "children": [
+    {
+     "tag": "div",
+     "class": "flex relative min-w-px max-w-full flex-col justify-center items-center flex-1",
+     "children": [
+      {
+       "tag": "span",
+       "class": "inline-flex h-fit items-center",
+       "attrs": {
+        "aria-describedby": "tooltip-1",
+        "data-testid": "legacy/tooltip-trigger",
+        "data-version": "v1",
+        "tabindex": "0"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "text": "Top"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "children": [
+        {
+         "tag": "div",
+         "class": "font-normal rounded-lg px-2 py-1.5 pointer-events-none absolute z-[var(--ds-z-tooltip)] h-fit w-fit bg-[var(--ds-background-100)] text-[13px] leading-[1.3] text-balance text-[var(--ds-gray-1000)] opacity-0 [--tooltip-arrow-offset:clamp(12px,20%,20px)] has-[kbd]:gap-1 has-[kbd]:pr-1.5 [&>kbd]:bg-gray-400! [&>kbd]:rounded-sm [&>kbd]:min-w-5! [&>kbd]:h-5! [&>kbd]:min-h-0! [&>kbd]:text-xs has-[kbd]:inline-flex has-[kbd]:items-center [&>kbd]:shadow-none! after:left-0 after:absolute after:top-full after:z-[-1] after:h-[10px] after:w-full after:content-[''] top-full animate-fadeInTooltip break-words whitespace-pre-line text-center invert-theme",
+         "attrs": {
+          "id": "tooltip-1",
+          "role": "tooltip",
+          "style": "max-width:250px;transform:translate(calc(-50% + 15px), calc(-100% - 10px));top:12px;left:261px"
+         },
+         "text": "The Evil Rabbit Jumped over the Fence",
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute z-[-1] flex h-fit [--arrow-bg:var(--themed-bg)] top-full left-1/2 -translate-x-1/2 -translate-y-[0.6px]",
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "height": "6",
+              "viewBox": "0 0 14 6",
+              "width": "14",
+              "xmlns": "http://www.w3.org/2000/svg"
+             },
+             "children": [
+              {
+               "tag": "path",
+               "class": "fill-[var(--ds-background-100)]",
+               "attrs": {
+                "d": "M13.8284 0H0.17157C0.702003 0 1.21071 0.210714 1.58578 0.585787L5.58578 4.58579C6.36683 5.36684 7.63316 5.36683 8.41421 4.58579L12.4142 0.585786C12.7893 0.210714 13.298 0 13.8284 0Z"
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tag": "div",
+   "class": "flex relative min-w-px max-w-full flex-row flex-wrap flex-1",
+   "children": [
+    {
+     "tag": "div",
+     "class": "flex relative min-w-px max-w-full flex-col justify-center items-center flex-1",
+     "children": [
+      {
+       "tag": "span",
+       "class": "inline-flex h-fit items-center",
+       "attrs": {
+        "aria-describedby": "tooltip-2",
+        "data-testid": "legacy/tooltip-trigger",
+        "data-version": "v1",
+        "tabindex": "0"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "text": "Bottom"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "children": [
+        {
+         "tag": "div",
+         "class": "font-normal rounded-lg px-2 py-1.5 pointer-events-none absolute z-[var(--ds-z-tooltip)] h-fit w-fit bg-[var(--ds-background-100)] text-[13px] leading-[1.3] text-balance text-[var(--ds-gray-1000)] opacity-0 [--tooltip-arrow-offset:clamp(12px,20%,20px)] has-[kbd]:gap-1 has-[kbd]:pr-1.5 [&>kbd]:bg-gray-400! [&>kbd]:rounded-sm [&>kbd]:min-w-5! [&>kbd]:h-5! [&>kbd]:min-h-0! [&>kbd]:text-xs has-[kbd]:inline-flex has-[kbd]:items-center [&>kbd]:shadow-none! before:left-0 before:absolute before:bottom-full before:z-[-1] before:h-[10px] before:w-full before:content-[''] bottom-full animate-fadeInTooltip break-words whitespace-pre-line text-center invert-theme",
+         "attrs": {
+          "id": "tooltip-2",
+          "role": "tooltip",
+          "style": "max-width:250px;transform:translate(calc(-50% + 15px), calc(24px + 10px));top:12px;left:261px"
+         },
+         "text": "The Evil Rabbit Jumped over the Fence",
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute z-[-1] flex h-fit [--arrow-bg:var(--themed-bg)] bottom-full left-1/2 -translate-x-1/2",
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "height": "6",
+              "viewBox": "0 0 14 6",
+              "width": "14",
+              "xmlns": "http://www.w3.org/2000/svg"
+             },
+             "children": [
+              {
+               "tag": "path",
+               "class": "fill-[var(--ds-background-100)]",
+               "attrs": {
+                "d": "M0.17157 6L13.8284 6C13.298 6 12.7893 5.78929 12.4142 5.41422L8.41421 1.41422C7.63316 0.633168 6.36683 0.633168 5.58578 1.41422L1.58578 5.41422C1.21071 5.78929 0.702003 6 0.17157 6Z"
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tag": "div",
+   "class": "flex relative min-w-px max-w-full flex-row flex-wrap flex-1",
+   "children": [
+    {
+     "tag": "div",
+     "class": "flex relative min-w-px max-w-full flex-col justify-center items-center flex-1",
+     "children": [
+      {
+       "tag": "span",
+       "class": "inline-flex h-fit items-center",
+       "attrs": {
+        "aria-describedby": "tooltip-3",
+        "data-testid": "legacy/tooltip-trigger",
+        "data-version": "v1",
+        "tabindex": "0"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "text": "Left"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "children": [
+        {
+         "tag": "div",
+         "class": "font-normal rounded-lg px-2 py-1.5 pointer-events-none absolute z-[var(--ds-z-tooltip)] h-fit w-fit bg-[var(--ds-background-100)] text-[13px] leading-[1.3] text-balance text-[var(--ds-gray-1000)] opacity-0 [--tooltip-arrow-offset:clamp(12px,20%,20px)] has-[kbd]:gap-1 has-[kbd]:pr-1.5 [&>kbd]:bg-gray-400! [&>kbd]:rounded-sm [&>kbd]:min-w-5! [&>kbd]:h-5! [&>kbd]:min-h-0! [&>kbd]:text-xs has-[kbd]:inline-flex has-[kbd]:items-center [&>kbd]:shadow-none! after:top-0 after:absolute after:left-full after:z-[-1] after:h-full after:w-[10px] after:content-[''] left-full animate-fadeInTooltip break-words whitespace-pre-line text-center invert-theme",
+         "attrs": {
+          "id": "tooltip-3",
+          "role": "tooltip",
+          "style": "max-width:250px;transform:translate(calc(-100% - 10px), calc(-50% + 12px));top:12px;left:261px"
+         },
+         "text": "The Evil Rabbit Jumped over the Fence",
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute z-[-1] flex h-fit [--arrow-bg:var(--themed-bg)] right-0 top-1/2 translate-x-full -translate-y-1/2",
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "height": "14",
+              "viewBox": "0 0 6 14",
+              "width": "6",
+              "xmlns": "http://www.w3.org/2000/svg"
+             },
+             "children": [
+              {
+               "tag": "path",
+               "class": "fill-[var(--ds-background-100)]",
+               "attrs": {
+                "d": "M8.33551e-07 13.8284L0 0.17157C2.31859e-08 0.702003 0.210714 1.21071 0.585787 1.58578L4.58579 5.58578C5.36684 6.36683 5.36683 7.63316 4.58579 8.41421L0.585787 12.4142C0.210715 12.7893 8.10365e-07 13.298 8.33551e-07 13.8284Z"
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tag": "div",
+   "class": "flex relative min-w-px max-w-full flex-row flex-wrap flex-1",
+   "children": [
+    {
+     "tag": "div",
+     "class": "flex relative min-w-px max-w-full flex-col justify-center items-center flex-1",
+     "children": [
+      {
+       "tag": "span",
+       "class": "inline-flex h-fit items-center",
+       "attrs": {
+        "aria-describedby": "tooltip-4",
+        "data-testid": "legacy/tooltip-trigger",
+        "data-version": "v1",
+        "tabindex": "0"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "text": "Right"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "children": [
+        {
+         "tag": "div",
+         "class": "font-normal rounded-lg px-2 py-1.5 pointer-events-none absolute z-[var(--ds-z-tooltip)] h-fit w-fit bg-[var(--ds-background-100)] text-[13px] leading-[1.3] text-balance text-[var(--ds-gray-1000)] opacity-0 [--tooltip-arrow-offset:clamp(12px,20%,20px)] has-[kbd]:gap-1 has-[kbd]:pr-1.5 [&>kbd]:bg-gray-400! [&>kbd]:rounded-sm [&>kbd]:min-w-5! [&>kbd]:h-5! [&>kbd]:min-h-0! [&>kbd]:text-xs has-[kbd]:inline-flex has-[kbd]:items-center [&>kbd]:shadow-none! before:top-0 before:absolute before:right-full before:z-[-1] before:h-full before:w-[10px] before:content-[''] right-full animate-fadeInTooltip break-words whitespace-pre-line text-center invert-theme",
+         "attrs": {
+          "id": "tooltip-4",
+          "role": "tooltip",
+          "style": "max-width:250px;transform:translate(calc(30px + 10px), calc(-50% + 12px));top:12px;left:261px"
+         },
+         "text": "The Evil Rabbit Jumped over the Fence",
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute z-[-1] flex h-fit [--arrow-bg:var(--themed-bg)] left-0 top-1/2 -translate-x-full -translate-y-1/2",
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "height": "14",
+              "viewBox": "0 0 6 14",
+              "width": "6",
+              "xmlns": "http://www.w3.org/2000/svg"
+             },
+             "children": [
+              {
+               "tag": "path",
+               "class": "fill-[var(--ds-background-100)]",
+               "attrs": {
+                "d": "M6 13.8284L6 0.171575C6 0.702008 5.78929 1.21072 5.41422 1.58579L1.41422 5.58579C0.633167 6.36684 0.633168 7.63317 1.41422 8.41422L5.41422 12.4142C5.78929 12.7893 6 13.298 6 13.8284Z"
+               }
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+  "note": "Three roots, each its own census page, both sides for both themes, on the mirror (http://localhost:4184/geist/multi-select) and the census page of the docs (http://localhost:4180/census/multi-select), the pane at 1100 by 900 and every preview fixed at the mirror's 600px stage. The trigger (the secondary button drawn in the element's own tree) is read on every example: the page's three closed ones and the six sketched open ones. The list and the row roots exist on the open examples only; ours opens them in `prepare` (by the ids the census page gives them) and sets the sketched pointer states (a hovered row, a hovered checkbox) through the list's own methods before the census freezes transitions. Soft by declaration: the list's min-width follows the trigger's width, which the trigger's text decides (`textProps`); the row's button, body, name, tail and hint follow the text (`textParts`). Inject census.js on the census page first (a script element with src http://localhost:4183/census.js); the mirror carries it.",
+  "themes": ["light", "dark"],
+  "viewport": [1100, 900],
+  "runs": {
+    "multi-select": {
+      "geist": {
+        "side": "geist",
+        "page": "multi-select",
+        "marker": "data-geist-button",
+        "width": "600px",
+        "children": {
+          "label": ".label|.truncate",
+          "text": ".text|.truncate > span",
+          "suffix": ".suffix|.ml-1",
+          "chev": ".chev|[data-multi-select-trigger-suffix]",
+          "svg": ".chev svg|[data-multi-select-trigger-suffix] svg"
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "multi-select",
+        "host": "acme-multi-select",
+        "ours": ".trigger",
+        "width": "600px",
+        "children": {
+          "label": ".label|.truncate",
+          "text": ".text|.truncate > span",
+          "suffix": ".suffix|.ml-1",
+          "chev": ".chev|[data-multi-select-trigger-suffix]",
+          "svg": ".chev svg|[data-multi-select-trigger-suffix] svg"
+        },
+        "prepare": "const open = async (id, fn) => { const ms = document.getElementById(id); if (!ms) return; ms.open = true; await ms.updateComplete; await ms.updateComplete; if (fn) fn(ms); await ms.updateComplete; for (const r of ms.rows) await r.updateComplete; }; return Promise.all([open('census-open'), open('census-hovered-row', (ms) => ms.hoverRow(ms.rows[1])), open('census-hovered-checkbox', (ms) => { ms.hoverRow(ms.rows[2]); ms.hoverCheckbox(true); }), open('census-disabled-row'), open('census-checkbox-end'), open('census-leading')]).then(async () => { for (let i = 0; i < 60; i++) await Promise.resolve(); });"
+      }
+    },
+    "multi-select-content": {
+      "geist": {
+        "side": "geist",
+        "page": "multi-select-content",
+        "marker": "[role=dialog]",
+        "width": "600px",
+        "states": [""],
+        "textProps": { "root": ["min-width"] }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "multi-select-content",
+        "host": "acme-multi-select[open]",
+        "ours": ".content",
+        "width": "600px",
+        "states": [""],
+        "textProps": { "root": ["min-width"] },
+        "prepare": "const open = async (id, fn) => { const ms = document.getElementById(id); if (!ms) return; ms.open = true; await ms.updateComplete; await ms.updateComplete; if (fn) fn(ms); await ms.updateComplete; for (const r of ms.rows) await r.updateComplete; }; return Promise.all([open('census-open'), open('census-hovered-row', (ms) => ms.hoverRow(ms.rows[1])), open('census-hovered-checkbox', (ms) => { ms.hoverRow(ms.rows[2]); ms.hoverCheckbox(true); }), open('census-disabled-row'), open('census-checkbox-end'), open('census-leading')]).then(async () => { for (let i = 0; i < 60; i++) await Promise.resolve(); });"
+      }
+    },
+    "multi-select-row": {
+      "geist": {
+        "side": "geist",
+        "page": "multi-select-row",
+        "marker": "[data-multi-select-row]",
+        "width": "600px",
+        "textParts": ["action", "body", "name", "tail", "hint"],
+        "children": {
+          "box": ".box|.peer",
+          "checkbox": "acme-checkbox >> .checkbox|label[for]",
+          "square": "acme-checkbox >> .box|label[for] [aria-hidden]",
+          "action": ".action|button",
+          "body": ".body|button > div:first-child",
+          "leading": ".leading|.shrink-0",
+          "name": ".name|span[data-multi-select-row-name]",
+          "tail": ".tail|button > div:last-child",
+          "hint": ".hint|[data-multi-select-row-label]"
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "multi-select-row",
+        "host": "acme-multi-select[open] acme-multi-select-row",
+        "ours": ".row",
+        "width": "600px",
+        "textParts": ["action", "body", "name", "tail", "hint"],
+        "children": {
+          "box": ".box|.peer",
+          "checkbox": "acme-checkbox >> .checkbox|label[for]",
+          "square": "acme-checkbox >> .box|label[for] [aria-hidden]",
+          "action": ".action|button",
+          "body": ".body|button > div:first-child",
+          "leading": ".leading|.shrink-0",
+          "name": ".name|span[data-multi-select-row-name]",
+          "tail": ".tail|button > div:last-child",
+          "hint": ".hint|[data-multi-select-row-label]"
+        },
+        "prepare": "const open = async (id, fn) => { const ms = document.getElementById(id); if (!ms) return; ms.open = true; await ms.updateComplete; await ms.updateComplete; if (fn) fn(ms); await ms.updateComplete; for (const r of ms.rows) await r.updateComplete; }; return Promise.all([open('census-open'), open('census-hovered-row', (ms) => ms.hoverRow(ms.rows[1])), open('census-hovered-checkbox', (ms) => { ms.hoverRow(ms.rows[2]); ms.hoverCheckbox(true); }), open('census-disabled-row'), open('census-checkbox-end'), open('census-leading')]).then(async () => { for (let i = 0; i < 60; i++) await Promise.resolve(); });"
+      }
+    }
+  }
+}

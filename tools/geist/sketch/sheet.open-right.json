@@ -1,0 +1,55 @@
+{
+ "heading": "Open right",
+ "description": "The With Side example open from the right (a client-only state): the overlay and the plain panel pinned to that edge, padded 24, with a header alone.",
+ "code": "import {\n  Button,\n  Sheet,\n  SheetClose,\n  SheetContent,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n} from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Sheet modal open>\n      <SheetTrigger asChild>\n        <Button>Open right</Button>\n      </SheetTrigger>\n      <SheetContent side=\"right\">\n        <SheetHeader>\n          <SheetTitle>Sheet from right</SheetTitle>\n          <p className=\"text-copy-14 text-gray-900\">\n            This sheet slides in from the right.\n          </p>\n        </SheetHeader>\n      </SheetContent>\n    </Sheet>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "inset-0 fixed z-[var(--ds-z-drawer)] bg-[var(--ds-overlay-backdrop-color)] opacity-[var(--ds-overlay-backdrop-opacity)] duration-[time:var(--ds-motion-overlay-duration)] data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
+   "attrs": {
+    "data-slot": "sheet-overlay",
+    "data-state": "open",
+    "aria-hidden": "true",
+    "data-aria-hidden": "true",
+    "style": "pointer-events: auto;"
+   }
+  },
+  {
+   "tag": "div",
+   "class": "gap-4 bg-background-100 p-6 ease-in-out fixed z-[var(--ds-z-drawer)] shadow-[var(--ds-shadow-modal-elevated)] transition focus:outline-none data-[state=closed]:animate-out data-[state=closed]:duration-200 data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:duration-200 data-[state=open]:fade-in-0 inset-y-0 right-0 sm:max-w-sm h-full w-3/4 data-[state=open]:slide-in-from-right-5 data-[state=closed]:slide-out-to-right-10",
+   "attrs": {
+    "role": "dialog",
+    "data-slot": "sheet-content",
+    "data-state": "open",
+    "aria-labelledby": "sheet-title",
+    "tabindex": "-1",
+    "style": "pointer-events: auto;"
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "sm:text-left flex flex-col text-center",
+     "attrs": {
+      "data-slot": "sheet-header"
+     },
+     "children": [
+      {
+       "tag": "h2",
+       "class": "text-lg font-semibold text-gray-1000",
+       "attrs": {
+        "data-slot": "sheet-title",
+        "id": "sheet-title"
+       },
+       "text": "Sheet from right"
+      },
+      {
+       "tag": "p",
+       "class": "text-copy-14 text-gray-900",
+       "text": "This sheet slides in from the right."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

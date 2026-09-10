@@ -1,0 +1,1012 @@
+{
+ "page": "status-dot",
+ "title": "Status Dot",
+ "lede": "Display an indicator of deployment status.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { StatusDot } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col items-stretch justify-start gap-6 flex-initial\">\n      <StatusDot state=\"QUEUED\" />\n      <StatusDot state=\"BUILDING\" />\n      <StatusDot state=\"ERROR\" />\n      <StatusDot state=\"READY\" />\n      <StatusDot state=\"CANCELED\" />\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-stretch",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:stretch"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex-initial",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex:0 auto"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Queued",
+          "title": "This deployment is queued.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--accents-2)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--accents-2)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Building",
+          "title": "This deployment is building.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--geist-warning)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--geist-warning)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Error",
+          "title": "This deployment had an error.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--geist-error)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--geist-error)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Ready",
+          "title": "This deployment is ready.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--geist-cyan)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--geist-cyan)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Canceled",
+          "title": "This deployment was canceled.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--accents-2)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--accents-2)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Label",
+   "description": "",
+   "code": "import { StatusDot } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col items-stretch justify-start gap-6 flex-initial\">\n      <StatusDot label state=\"QUEUED\" />\n      <StatusDot label state=\"BUILDING\" />\n      <StatusDot label state=\"ERROR\" />\n      <StatusDot label state=\"READY\" />\n      <StatusDot label state=\"CANCELED\" />\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-stretch",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:stretch"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex-initial",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex:0 auto"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Queued",
+          "title": "This deployment is queued.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--accents-2)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--accents-2)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-label-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:.5rem"
+            },
+            {
+             "cls": "leading-[16px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:16px;line-height:16px"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Queued"
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Building",
+          "title": "This deployment is building.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--geist-warning)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--geist-warning)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-label-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:.5rem"
+            },
+            {
+             "cls": "leading-[16px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:16px;line-height:16px"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Building"
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Error",
+          "title": "This deployment had an error.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--geist-error)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--geist-error)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-label-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:.5rem"
+            },
+            {
+             "cls": "leading-[16px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:16px;line-height:16px"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Error"
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Ready",
+          "title": "This deployment is ready.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--geist-cyan)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--geist-cyan)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-label-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:.5rem"
+            },
+            {
+             "cls": "leading-[16px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:16px;line-height:16px"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Ready"
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Canceled",
+          "title": "This deployment was canceled.",
+          "data-testid": "geistcn/status-dot"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "size-2.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.625rem;height:.625rem"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[var(--accents-2)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--accents-2)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-label-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-label-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:.5rem"
+            },
+            {
+             "cls": "leading-[16px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:16px;line-height:16px"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Canceled"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Deleted",
+   "description": "The DELETED state has no rendered example; its class string comes from the component's client code (label, message and colour per state).",
+   "code": "export function Component(): JSX.Element {\n  return <StatusDot label state=\"DELETED\" />;\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "span",
+       "attrs": {
+        "aria-label": "Deleted",
+        "title": "This deployment was deleted.",
+        "data-testid": "geistcn/status-dot"
+       },
+       "styles": [
+        {
+         "cls": "inline-flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:inline-flex"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "inline-block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-block"
+          },
+          {
+           "cls": "size-2.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:.625rem;height:.625rem"
+          },
+          {
+           "cls": "rounded-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:2147483647px"
+          },
+          {
+           "cls": "bg-[var(--accents-2)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--accents-2)"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-label-14",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "text-label-14",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "ml-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-left:.5rem"
+          },
+          {
+           "cls": "leading-[16px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:16px;line-height:16px"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Deleted"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

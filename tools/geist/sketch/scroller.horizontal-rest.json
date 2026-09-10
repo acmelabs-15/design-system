@@ -1,0 +1,66 @@
+{
+  "heading": "Horizontal at rest",
+  "description": "The horizontal scroller after its first measurement: the row overflows to the right, so the right fade shows.",
+  "code": "import { Scroller } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Scroller height=\"100%\" overflow=\"x\" width=\"100%\">\n      <div\n        className=\"flex flex-row items-stretch justify-start gap-4 flex-initial\"\n        style={{ minWidth: '120%' }}\n      >\n        <div className=\"bg-gray-1000 h-64 w-64\" />\n        <div className=\"bg-gray-1000 h-64 w-64\" />\n        <div className=\"bg-gray-1000 h-64 w-64\" />\n        <div className=\"bg-gray-1000 h-64 w-64\" />\n      </div>\n    </Scroller>\n  );\n}\n",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "aGa9CG_overlayContainer aGa9CG_isHorizontal",
+      "attrs": {
+        "data-geist-scroller": "",
+        "data-version": "v1",
+        "style": "width:100%;height:100%"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "class": "aGa9CG_overlay aGa9CG_right",
+          "attrs": {
+            "data-geist-scroller-overlay": ""
+          }
+        },
+        {
+          "tag": "div",
+          "class": "aGa9CG_scroller",
+          "attrs": {
+            "data-geist-scroller-container": "",
+            "data-geist-scroller-overflowing": "",
+            "data-overflow": "x"
+          },
+          "children": [
+            {
+              "tag": "div",
+              "children": [
+                {
+                  "tag": "div",
+                  "class": "flex flex-row items-stretch justify-start gap-4 flex-initial",
+                  "attrs": {
+                    "style": "min-width:120%"
+                  },
+                  "children": [
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-64"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-64"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-64"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-64"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

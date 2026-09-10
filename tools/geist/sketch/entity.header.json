@@ -1,0 +1,100 @@
+{
+  "heading": "Entity with List and Header",
+  "description": "An EntityList with a header: the page renders none. From the component's client code: a column (12px gap) of the header node over the list, which rounds its bottom corners only.",
+  "code": "export function Component(): JSX.Element {\n  return (\n    <EntityList header={<p className=\"text-heading-14\">Devices</p>}>\n      <Entity as=\"li\" right={<span className=\"text-copy-14 text-gray-900\">Last used just now</span>}>\n        <EntityContent description=\"macOS 15\" title=\"GitHub Desktop on MacBook Pro\" />\n      </Entity>\n      <Entity as=\"li\" right={<span className=\"text-copy-14 text-gray-900\">Last used 10min ago</span>}>\n        <EntityContent description=\"Windows 11\" title=\"VS Code\" />\n      </Entity>\n    </EntityList>\n  );\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "div",
+          "class": "flex flex-col items-stretch justify-start flex-initial gap-3",
+          "children": [
+            { "tag": "p", "class": "text-heading-14", "text": "Devices" },
+            {
+              "tag": "ul",
+              "class": "bg-[var(--geist-background)] shadow-[var(--ds-shadow-border),0_4px_6px_rgba(0,0,0,0.04)] first:rounded-t-[5px] last:rounded-b-[5px] overflow-hidden list-none m-0 p-0 [&>li:not(:last-child)]:border-b [&>li:not(:last-child)]:border-[color:var(--accents-2)] [&>button:not(:last-child)]:border-b! [&>button:not(:last-child)]:border-[color:var(--accents-2)]",
+              "children": [
+                {
+                  "tag": "li",
+                  "class": "p-4 flex flex-col items-stretch justify-start flex-initial",
+                  "children": [
+                    {
+                      "tag": "section",
+                      "class": "flex items-center gap-4",
+                      "children": [
+                        {
+                          "tag": "div",
+                          "class": "left flex flex-1 items-center gap-4 min-w-0",
+                          "children": [
+                            {
+                              "tag": "div",
+                              "class": "flex flex-initial items-center gap-2 [--width:initial] w-[var(--width, initial)] min-w-0",
+                              "children": [
+                                {
+                                  "tag": "div",
+                                  "class": "flex flex-col items-stretch flex-1 min-w-0",
+                                  "children": [
+                                    { "tag": "p", "class": "text-copy-14 truncate font-semibold", "text": "GitHub Desktop on MacBook Pro" },
+                                    { "tag": "p", "class": "text-copy-14 truncate text-gray-900", "text": "macOS 15" }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "tag": "div",
+                          "class": "right flex items-center gap-4 ml-auto",
+                          "children": [{ "tag": "span", "class": "text-copy-14 text-gray-900", "text": "Last used just now" }]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tag": "li",
+                  "class": "p-4 flex flex-col items-stretch justify-start flex-initial",
+                  "children": [
+                    {
+                      "tag": "section",
+                      "class": "flex items-center gap-4",
+                      "children": [
+                        {
+                          "tag": "div",
+                          "class": "left flex flex-1 items-center gap-4 min-w-0",
+                          "children": [
+                            {
+                              "tag": "div",
+                              "class": "flex flex-initial items-center gap-2 [--width:initial] w-[var(--width, initial)] min-w-0",
+                              "children": [
+                                {
+                                  "tag": "div",
+                                  "class": "flex flex-col items-stretch flex-1 min-w-0",
+                                  "children": [
+                                    { "tag": "p", "class": "text-copy-14 truncate font-semibold", "text": "VS Code" },
+                                    { "tag": "p", "class": "text-copy-14 truncate text-gray-900", "text": "Windows 11" }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "tag": "div",
+                          "class": "right flex items-center gap-4 ml-auto",
+                          "children": [{ "tag": "span", "class": "text-copy-14 text-gray-900", "text": "Last used 10min ago" }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

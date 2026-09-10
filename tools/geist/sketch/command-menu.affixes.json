@@ -1,0 +1,308 @@
+{
+ "heading": "Prefix, keybind and disabled",
+ "description": "Items with a 20px prefix box, a keybind (kbd chips, hidden until the row is hovered with a fine pointer), and a disabled item.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <CommandMenu open setOpen={() => {}}>\n      <CommandMenuInput placeholder=\"What do you need?\" />\n      <CommandMenuList>\n        <CommandMenuGroup heading=\"Actions\">\n          <CommandMenuItem>Deploy Project</CommandMenuItem>\n          <CommandMenuItem>Invite Team Member</CommandMenuItem>\n          <CommandMenuItem disabled>Archive Project</CommandMenuItem>\n        </CommandMenuGroup>\n      </CommandMenuList>\n    </CommandMenu>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "fixed inset-0 bg-background-100 opacity-80 z-100 data-[state=open]:animate-cmdkFadeIn data-[state=closed]:animate-cmdkFadeOut",
+   "attrs": {
+    "cmdk-overlay": "",
+    "geist-overlay": "",
+    "data-state": "open",
+    "style": "pointer-events:auto",
+    "data-aria-hidden": "true",
+    "aria-hidden": "true"
+   }
+  },
+  {
+   "tag": "div",
+   "class": "fixed top-[15%] left-1/2 -translate-x-1/2 w-[640px] rounded-xl bg-[var(--ds-background-100)] shadow-[var(--ds-shadow-modal)] overflow-hidden origin-center outline-hidden z-100 data-[state=open]:animate-cmdkScaleIn transition-transform duration-100 ease-in-out z-100 data-[state=closed]:animate-cmdkScaleOut",
+   "attrs": {
+    "role": "dialog",
+    "id": "dialog-70",
+    "aria-describedby": "desc-69",
+    "aria-labelledby": "title-68",
+    "data-state": "open",
+    "tabindex": "-1",
+    "style": "pointer-events:auto",
+    "cmdk-dialog": "",
+    "geist-dialog": "",
+    "aria-label": "Actions"
+   },
+   "children": [
+    {
+     "tag": "h2",
+     "class": "sr-only",
+     "attrs": {
+      "id": "title-68"
+     },
+     "text": "Command Menu"
+    },
+    {
+     "tag": "p",
+     "class": "sr-only",
+     "attrs": {
+      "id": "desc-69"
+     },
+     "text": "Use the command menu to navigate through Vercel."
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "cmdk-root": "",
+      "data-testid": "cmdk-root"
+     },
+     "children": [
+      {
+       "tag": "label",
+       "attrs": {
+        "cmdk-label": "",
+        "for": "input-65",
+        "id": "label-66",
+        "style": "position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"
+       },
+       "text": "Actions"
+      },
+      {
+       "tag": "div",
+       "class": "border-b relative border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] p-[var(--padding)] [--padding:12px] max-sm:sticky max-sm:top-0",
+       "children": [
+        {
+         "tag": "div",
+         "class": "flex items-center justify-between gap-[var(--padding)] px-1 py-0",
+         "children": [
+          {
+           "tag": "input",
+           "class": "outline-hidden h-7 flex-1 border-none bg-transparent p-0 text-base text-[var(--ds-gray-1000)] placeholder:text-[var(--ds-gray-700)] sm:text-lg",
+           "attrs": {
+            "cmdk-input": "",
+            "role": "combobox",
+            "aria-autocomplete": "list",
+            "aria-controls": "list-67",
+            "aria-expanded": "true",
+            "aria-labelledby": "label-66",
+            "autocomplete": "off",
+            "autocorrect": "off",
+            "id": "input-65",
+            "spellcheck": "false",
+            "type": "text",
+            "placeholder": "What do you need?",
+            "value": ""
+           }
+          },
+          {
+           "tag": "button",
+           "class": "outline-hidden ml-auto h-5 cursor-pointer items-center rounded-sm border-none bg-[var(--ds-background-100)] px-1 py-0 text-xs shadow-[var(--ds-shadow-border)] transition-[background] duration-200 focus-visible:shadow-[var(--ds-focus-ring)] hidden [@media(hover:hover)_and_(pointer:fine)]:flex hover:[@media(hover:hover)_and_(pointer:fine)]:bg-[var(--ds-gray-100)]",
+           "attrs": {
+            "type": "button"
+           },
+           "text": "Esc"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "flex max-h-none overflow-y-auto bg-[var(--ds-background-100)] p-2 transition-[height] duration-100 sm:block sm:max-h-[436px] [&_[cmdk-list-sizer]]:w-full",
+       "attrs": {
+        "cmdk-list": "",
+        "role": "listbox",
+        "aria-label": "Suggestions",
+        "aria-labelledby": "input-65",
+        "id": "list-67"
+       },
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "cmdk-list-sizer": ""
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-64"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-63"
+             },
+             "text": "Actions"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-63"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "deploy project",
+                "aria-selected": "true",
+                "data-selected": "true"
+               },
+               "text": "Deploy Project",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "flex size-5 shrink-0 items-center justify-center text-[var(--ds-gray-900)]",
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "viewBox": "0 0 16 16",
+                    "height": "16",
+                    "width": "16",
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {
+                      "d": "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z",
+                      "fill": "currentColor"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "div",
+                 "class": "ml-auto gap-1 hidden hover:[@media(hover:hover)_and_(pointer:fine)]:flex",
+                 "children": [
+                  {
+                   "tag": "kbd",
+                   "class": "h-5 min-w-5 rounded-sm bg-[var(--ds-background-100)] px-1 py-0 text-center text-xs font-[var(--font-sans-fallback)] capitalize leading-[21px] shadow-[var(--ds-shadow-border)]",
+                   "text": "⌘"
+                  },
+                  {
+                   "tag": "kbd",
+                   "class": "h-5 min-w-5 rounded-sm bg-[var(--ds-background-100)] px-1 py-0 text-center text-xs font-[var(--font-sans-fallback)] capitalize leading-[21px] shadow-[var(--ds-shadow-border)]",
+                   "text": "D"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "invite team member"
+               },
+               "text": "Invite Team Member",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "flex size-5 shrink-0 items-center justify-center text-[var(--ds-gray-900)]",
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "viewBox": "0 0 16 16",
+                    "height": "16",
+                    "width": "16",
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {
+                      "d": "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z",
+                      "fill": "currentColor"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "div",
+                 "class": "ml-auto gap-1 hidden hover:[@media(hover:hover)_and_(pointer:fine)]:flex",
+                 "children": [
+                  {
+                   "tag": "kbd",
+                   "class": "h-5 min-w-5 rounded-sm bg-[var(--ds-background-100)] px-1 py-0 text-center text-xs font-[var(--font-sans-fallback)] capitalize leading-[21px] shadow-[var(--ds-shadow-border)]",
+                   "text": "⌘"
+                  },
+                  {
+                   "tag": "kbd",
+                   "class": "h-5 min-w-5 rounded-sm bg-[var(--ds-background-100)] px-1 py-0 text-center text-xs font-[var(--font-sans-fallback)] capitalize leading-[21px] shadow-[var(--ds-shadow-border)]",
+                   "text": "I"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "archive project",
+                "aria-disabled": "true"
+               },
+               "text": "Archive Project",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "flex size-5 shrink-0 items-center justify-center text-[var(--ds-gray-900)]",
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "viewBox": "0 0 16 16",
+                    "height": "16",
+                    "width": "16",
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {
+                      "d": "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z",
+                      "fill": "currentColor"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

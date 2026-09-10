@@ -1,0 +1,817 @@
+{
+ "page": "label",
+ "title": "Label",
+ "lede": "Accessible text label for form controls.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-input",
+  "data-geist-input-wrapper",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Label } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Label id=\"test-input\" value=\"This is a label\" />;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "label",
+       "attrs": {
+        "data-version": "v1",
+        "for": "test-input"
+       },
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "text-[13px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:13px"
+          },
+          {
+           "cls": "max-w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:100%"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mb-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:.5rem"
+          },
+          {
+           "cls": "cursor-text",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:text"
+          },
+          {
+           "cls": "capitalize",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-transform:capitalize"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "This is a label"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "With Input",
+   "description": "",
+   "code": "import { Input, Label } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <>\n      <Label id=\"test-input\" value=\"Email Address\" withInput />\n      <Input\n        aria-labelledby=\"test-input\"\n        id=\"test-input\"\n        placeholder=\"Enter email address...\"\n      />\n    </>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "label",
+       "attrs": {
+        "data-version": "v1",
+        "for": "test-input"
+       },
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "text-[13px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:13px"
+          },
+          {
+           "cls": "max-w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:100%"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mb-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:.5rem"
+          },
+          {
+           "cls": "cursor-text",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:text"
+          },
+          {
+           "cls": "capitalize",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-transform:capitalize"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Email Address"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "attrs": {
+        "data-geist-input-wrapper": "",
+        "data-version": "v1",
+        "style": "--geist-icon-size:16px"
+       },
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "max-w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:100%"
+        },
+        {
+         "cls": "transition-all",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-150",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.15s;transition-duration:.15s"
+        },
+        {
+         "cls": "duration-150",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.15s"
+        },
+        {
+         "cls": "shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-hidden",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow:hidden"
+        },
+        {
+         "cls": "font-normal",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-normal);font-weight:var(--font-weight-normal)"
+        },
+        {
+         "cls": "rounded-md",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "[&>input]:h-(--ds-size-medium)",
+         "state": ">input",
+         "at": "@layer utilities",
+         "decl": "height:var(--ds-size-medium)"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "[&>input]:px-3",
+         "state": ">input",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.75rem"
+        },
+        {
+         "cls": "has-[:focus]:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(0,0,0,0.16)]",
+         "state": ":has(:focus)",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-600)), 0px 0px 0px 4px var(--tw-shadow-color,#00000029)!important;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)!important"
+        },
+        {
+         "cls": "dark-theme:has-[:focus]:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(255,255,255,0.24)]",
+         "state": ":where(.dark-theme",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-600)), 0px 0px 0px 4px var(--tw-shadow-color,#ffffff3d)!important;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)!important"
+        },
+        {
+         "cls": "hover:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)]",
+         "state": ":hover",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-500));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "hover:[&:has(input:disabled)]:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": ":hover:has(input:disabled)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "hover:[&:has(textarea:disabled)]:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": ":hover:has(textarea:disabled)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "input",
+         "attrs": {
+          "aria-labelledby": "test-input",
+          "id": "test-input-_R_jlslubquiuq6ivb_",
+          "placeholder": "Enter email address...",
+          "aria-invalid": "false",
+          "autocomplete": "off",
+          "data-geist-input": "",
+          "type": "text"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "appearance-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          },
+          {
+           "cls": "webkit-search-reset",
+           "state": "::-webkit-search-decoration",
+           "at": "@layer utilities",
+           "decl": "-webkit-appearance:none"
+          },
+          {
+           "cls": "webkit-search-reset",
+           "state": "::-webkit-search-cancel-button",
+           "at": "@layer utilities",
+           "decl": "-webkit-appearance:none"
+          },
+          {
+           "cls": "webkit-search-reset",
+           "state": "::-webkit-search-results-button",
+           "at": "@layer utilities",
+           "decl": "-webkit-appearance:none"
+          },
+          {
+           "cls": "webkit-search-reset",
+           "state": "::-webkit-search-results-decoration",
+           "at": "@layer utilities",
+           "decl": "-webkit-appearance:none"
+          },
+          {
+           "cls": "min-w-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "min-width:0"
+          },
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "border-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-border-style:none;border-style:none"
+          },
+          {
+           "cls": "bg-background-100",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-background-100)"
+          },
+          {
+           "cls": "text-[var(--geist-foreground)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--geist-foreground)"
+          },
+          {
+           "cls": "order-1",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "order:1"
+          },
+          {
+           "cls": "outline-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-outline-style:none;outline-style:none"
+          },
+          {
+           "cls": "focus:outline-none",
+           "state": ":focus",
+           "at": "@layer utilities",
+           "decl": "--tw-outline-style:none;outline-style:none"
+          },
+          {
+           "cls": "disabled:bg-[var(--ds-gray-100)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-100)"
+          },
+          {
+           "cls": "disabled:placeholder:text-[var(--accents-3)]",
+           "state": ":disabled::placeholder",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-3)"
+          },
+          {
+           "cls": "disabled:[-webkit-text-fill-color:var(--accents-3)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "-webkit-text-fill-color:var(--accents-3)"
+          },
+          {
+           "cls": "disabled:opacity-100",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "opacity:1"
+          },
+          {
+           "cls": "disabled:text-[var(--ds-gray-700)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-700)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "[appearance:textfield]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "appearance:textfield"
+          },
+          {
+           "cls": "[&::-webkit-inner-spin-button]:appearance-none",
+           "state": "::-webkit-inner-spin-button",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          },
+          {
+           "cls": "[&::-webkit-outer-spin-button]:appearance-none",
+           "state": "::-webkit-outer-spin-button",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Bypass Casing",
+   "description": "",
+   "code": "import { Input, Label } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <>\n      <Label bypassCasing id=\"test-input\" value=\"Email address\" withInput />\n      <Input\n        aria-labelledby=\"test-input\"\n        id=\"test-input\"\n        placeholder=\"Enter email address...\"\n      />\n    </>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "label",
+       "attrs": {
+        "data-version": "v1",
+        "for": "test-input"
+       },
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "text-[13px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:13px"
+          },
+          {
+           "cls": "max-w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "max-width:100%"
+          },
+          {
+           "cls": "text-gray-900",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mb-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:.5rem"
+          },
+          {
+           "cls": "cursor-text",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "cursor:text"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Email address"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "attrs": {
+        "data-geist-input-wrapper": "",
+        "data-version": "v1",
+        "style": "--geist-icon-size:16px"
+       },
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "max-w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:100%"
+        },
+        {
+         "cls": "transition-all",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-150",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.15s;transition-duration:.15s"
+        },
+        {
+         "cls": "duration-150",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.15s"
+        },
+        {
+         "cls": "shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-hidden",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow:hidden"
+        },
+        {
+         "cls": "font-normal",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-normal);font-weight:var(--font-weight-normal)"
+        },
+        {
+         "cls": "rounded-md",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "[&>input]:h-(--ds-size-medium)",
+         "state": ">input",
+         "at": "@layer utilities",
+         "decl": "height:var(--ds-size-medium)"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "[&>input]:px-3",
+         "state": ">input",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.75rem"
+        },
+        {
+         "cls": "has-[:focus]:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(0,0,0,0.16)]",
+         "state": ":has(:focus)",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-600)), 0px 0px 0px 4px var(--tw-shadow-color,#00000029)!important;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)!important"
+        },
+        {
+         "cls": "dark-theme:has-[:focus]:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(255,255,255,0.24)]",
+         "state": ":where(.dark-theme",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-600)), 0px 0px 0px 4px var(--tw-shadow-color,#ffffff3d)!important;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)!important"
+        },
+        {
+         "cls": "hover:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)]",
+         "state": ":hover",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-500));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "hover:[&:has(input:disabled)]:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": ":hover:has(input:disabled)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "hover:[&:has(textarea:disabled)]:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": ":hover:has(textarea:disabled)",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "input",
+         "attrs": {
+          "aria-labelledby": "test-input",
+          "id": "test-input-_R_jmslubquiuq6ivb_",
+          "placeholder": "Enter email address...",
+          "aria-invalid": "false",
+          "autocomplete": "off",
+          "data-geist-input": "",
+          "type": "text"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "appearance-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          },
+          {
+           "cls": "webkit-search-reset",
+           "state": "::-webkit-search-decoration",
+           "at": "@layer utilities",
+           "decl": "-webkit-appearance:none"
+          },
+          {
+           "cls": "webkit-search-reset",
+           "state": "::-webkit-search-cancel-button",
+           "at": "@layer utilities",
+           "decl": "-webkit-appearance:none"
+          },
+          {
+           "cls": "webkit-search-reset",
+           "state": "::-webkit-search-results-button",
+           "at": "@layer utilities",
+           "decl": "-webkit-appearance:none"
+          },
+          {
+           "cls": "webkit-search-reset",
+           "state": "::-webkit-search-results-decoration",
+           "at": "@layer utilities",
+           "decl": "-webkit-appearance:none"
+          },
+          {
+           "cls": "min-w-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "min-width:0"
+          },
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "border-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-border-style:none;border-style:none"
+          },
+          {
+           "cls": "bg-background-100",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-background-100)"
+          },
+          {
+           "cls": "text-[var(--geist-foreground)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--geist-foreground)"
+          },
+          {
+           "cls": "order-1",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "order:1"
+          },
+          {
+           "cls": "outline-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-outline-style:none;outline-style:none"
+          },
+          {
+           "cls": "focus:outline-none",
+           "state": ":focus",
+           "at": "@layer utilities",
+           "decl": "--tw-outline-style:none;outline-style:none"
+          },
+          {
+           "cls": "disabled:bg-[var(--ds-gray-100)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-100)"
+          },
+          {
+           "cls": "disabled:placeholder:text-[var(--accents-3)]",
+           "state": ":disabled::placeholder",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-3)"
+          },
+          {
+           "cls": "disabled:[-webkit-text-fill-color:var(--accents-3)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "-webkit-text-fill-color:var(--accents-3)"
+          },
+          {
+           "cls": "disabled:opacity-100",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "opacity:1"
+          },
+          {
+           "cls": "disabled:text-[var(--ds-gray-700)]",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-700)"
+          },
+          {
+           "cls": "disabled:cursor-not-allowed",
+           "state": ":disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "[appearance:textfield]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "appearance:textfield"
+          },
+          {
+           "cls": "[&::-webkit-inner-spin-button]:appearance-none",
+           "state": "::-webkit-inner-spin-button",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          },
+          {
+           "cls": "[&::-webkit-outer-spin-button]:appearance-none",
+           "state": "::-webkit-outer-spin-button",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

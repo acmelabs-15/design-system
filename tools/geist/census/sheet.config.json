@@ -1,0 +1,58 @@
+{
+  "note": "Two pages, both themes, geist on the mirror (http://localhost:4184/geist/sheet) and ours on the census page (http://localhost:4180/census/sheet: the page's two sections closed, then the six census-only sections, which `prepare` opens before the transitions are frozen; the public page shows the two sections only). Resize the pane before loading the page: every run measures at an 1100x900 viewport (the inset panel takes its 512px width from the lg breakpoint, 961px). The Closing sketch teaches the generator the exit rules and is left out of the census by its data-state, so the mirror's example indices run one ahead of ours after the last open sketch; the diff pairs roots by order. The mirror page carries census.js itself; on ours, paste the collector's /census.js into the page first. Last run: 0 hard on all four pages.",
+  "sheet": {
+    "viewport": [1100, 900],
+    "geist": {
+      "side": "geist",
+      "page": "sheet",
+      "marker": "[data-slot=\"sheet-content\"][data-state=\"open\"]",
+      "textParts": ["title", "subtitle", "header", "body", "footer", "lastAction"],
+      "children": {
+        "header": ".header|[data-slot=\"sheet-header\"]",
+        "title": ".title|[data-slot=\"sheet-title\"]",
+        "subtitle": "p[slot=\"header\"]|[data-slot=\"sheet-header\"] > p",
+        "body": ".body|[data-slot=\"sheet-body\"]",
+        "footer": ".footer|[data-slot=\"sheet-footer\"]",
+        "action": "acme-button >> .btn|[data-geist-button]",
+        "lastAction": "acme-button:last-of-type >> .btn|[data-geist-button]:last-of-type"
+      }
+    },
+    "ours": {
+      "side": "ours",
+      "page": "sheet",
+      "host": "acme-sheet[id^=\"census-\"]",
+      "ours": "dialog[data-state=\"open\"]",
+      "prepare": "return Promise.all(Array.from(document.querySelectorAll('acme-sheet[id^=\"census-\"]')).map((s) => (s.show(), s.updateComplete)))",
+      "textParts": ["title", "subtitle", "header", "body", "footer", "lastAction"],
+      "children": {
+        "header": ".header|[data-slot=\"sheet-header\"]",
+        "title": ".title|[data-slot=\"sheet-title\"]",
+        "subtitle": "p[slot=\"header\"]|[data-slot=\"sheet-header\"] > p",
+        "body": ".body|[data-slot=\"sheet-body\"]",
+        "footer": ".footer|[data-slot=\"sheet-footer\"]",
+        "action": "acme-button >> .btn|[data-geist-button]",
+        "lastAction": "acme-button:last-of-type >> .btn|[data-geist-button]:last-of-type"
+      }
+    }
+  },
+  "sheet-overlay": {
+    "viewport": [1100, 900],
+    "geist": {
+      "side": "geist",
+      "page": "sheet-overlay",
+      "marker": "[data-slot=\"sheet-content\"][data-state=\"open\"]",
+      "states": [""],
+      "children": { "backdrop": "::backdrop|^[data-slot=\"sheet-overlay\"]" }
+    },
+    "ours": {
+      "side": "ours",
+      "page": "sheet-overlay",
+      "host": "acme-sheet[id^=\"census-\"]",
+      "ours": "dialog[data-state=\"open\"]",
+      "prepare": "return Promise.all(Array.from(document.querySelectorAll('acme-sheet[id^=\"census-\"]')).map((s) => (s.show(), s.updateComplete)))",
+      "states": [""],
+      "children": { "backdrop": "::backdrop|^[data-slot=\"sheet-overlay\"]" }
+    }
+  },
+  "themes": ["light", "dark"]
+}

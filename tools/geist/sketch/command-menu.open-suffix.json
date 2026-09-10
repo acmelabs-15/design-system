@@ -1,0 +1,345 @@
+{
+ "heading": "Open with suffix",
+ "description": "The With suffix example open: every item carries a suffix at its end, a 14px gray-700 paragraph or a gray-700 icon.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <CommandMenu open setOpen={() => {}}>\n      <CommandMenuInput placeholder=\"What do you need?\" />\n      <CommandMenuList>\n        <CommandMenuGroup heading=\"Group 1\">\n          <CommandMenuItem>United States of America</CommandMenuItem>\n          <CommandMenuItem>Spain</CommandMenuItem>\n          <CommandMenuItem>France</CommandMenuItem>\n        </CommandMenuGroup>\n        <CommandMenuGroup heading=\"Group 2\">\n          <CommandMenuItem>Austria</CommandMenuItem>\n          <CommandMenuItem>Switzerland</CommandMenuItem>\n          <CommandMenuItem>Germany</CommandMenuItem>\n        </CommandMenuGroup>\n      </CommandMenuList>\n    </CommandMenu>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "fixed inset-0 bg-background-100 opacity-80 z-100 data-[state=open]:animate-cmdkFadeIn data-[state=closed]:animate-cmdkFadeOut",
+   "attrs": {
+    "cmdk-overlay": "",
+    "geist-overlay": "",
+    "data-state": "open",
+    "style": "pointer-events:auto",
+    "data-aria-hidden": "true",
+    "aria-hidden": "true"
+   }
+  },
+  {
+   "tag": "div",
+   "class": "fixed top-[15%] left-1/2 -translate-x-1/2 w-[640px] rounded-xl bg-[var(--ds-background-100)] shadow-[var(--ds-shadow-modal)] overflow-hidden origin-center outline-hidden z-100 data-[state=open]:animate-cmdkScaleIn transition-transform duration-100 ease-in-out z-100 data-[state=closed]:animate-cmdkScaleOut",
+   "attrs": {
+    "role": "dialog",
+    "id": "dialog-30",
+    "aria-describedby": "desc-29",
+    "aria-labelledby": "title-28",
+    "data-state": "open",
+    "tabindex": "-1",
+    "style": "pointer-events:auto",
+    "cmdk-dialog": "",
+    "geist-dialog": ""
+   },
+   "children": [
+    {
+     "tag": "h2",
+     "class": "sr-only",
+     "attrs": {
+      "id": "title-28"
+     },
+     "text": "Command Menu"
+    },
+    {
+     "tag": "p",
+     "class": "sr-only",
+     "attrs": {
+      "id": "desc-29"
+     },
+     "text": "Use the command menu to navigate through Vercel."
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "cmdk-root": "",
+      "data-testid": "cmdk-root"
+     },
+     "children": [
+      {
+       "tag": "label",
+       "attrs": {
+        "cmdk-label": "",
+        "for": "input-25",
+        "id": "label-26",
+        "style": "position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"
+       },
+       "text": ""
+      },
+      {
+       "tag": "div",
+       "class": "border-b relative border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] p-[var(--padding)] [--padding:12px] max-sm:sticky max-sm:top-0",
+       "children": [
+        {
+         "tag": "div",
+         "class": "flex items-center justify-between gap-[var(--padding)] px-1 py-0",
+         "children": [
+          {
+           "tag": "input",
+           "class": "outline-hidden h-7 flex-1 border-none bg-transparent p-0 text-base text-[var(--ds-gray-1000)] placeholder:text-[var(--ds-gray-700)] sm:text-lg",
+           "attrs": {
+            "cmdk-input": "",
+            "role": "combobox",
+            "aria-autocomplete": "list",
+            "aria-controls": "list-27",
+            "aria-expanded": "true",
+            "aria-labelledby": "label-26",
+            "autocomplete": "off",
+            "autocorrect": "off",
+            "id": "input-25",
+            "spellcheck": "false",
+            "type": "text",
+            "placeholder": "What do you need?",
+            "value": ""
+           }
+          },
+          {
+           "tag": "button",
+           "class": "outline-hidden ml-auto h-5 cursor-pointer items-center rounded-sm border-none bg-[var(--ds-background-100)] px-1 py-0 text-xs shadow-[var(--ds-shadow-border)] transition-[background] duration-200 focus-visible:shadow-[var(--ds-focus-ring)] hidden [@media(hover:hover)_and_(pointer:fine)]:flex hover:[@media(hover:hover)_and_(pointer:fine)]:bg-[var(--ds-gray-100)]",
+           "attrs": {
+            "type": "button"
+           },
+           "text": "Esc"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "flex max-h-none overflow-y-auto bg-[var(--ds-background-100)] p-2 transition-[height] duration-100 sm:block sm:max-h-[436px] [&_[cmdk-list-sizer]]:w-full",
+       "attrs": {
+        "cmdk-list": "",
+        "role": "listbox",
+        "aria-label": "Suggestions",
+        "aria-labelledby": "input-25",
+        "id": "list-27"
+       },
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "cmdk-list-sizer": ""
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-22"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-21"
+             },
+             "text": "Group 1"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-21"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "united states of america",
+                "aria-selected": "true",
+                "data-selected": "true"
+               },
+               "text": "United States of America",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "ml-auto flex items-stretch gap-1",
+                 "children": [
+                  {
+                   "tag": "p",
+                   "class": "text-copy-14 text-gray-700",
+                   "text": "USA"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "spain"
+               },
+               "text": "Spain",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "ml-auto flex items-stretch gap-1",
+                 "children": [
+                  {
+                   "tag": "p",
+                   "class": "text-copy-14 text-gray-700",
+                   "text": "ESP"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "france"
+               },
+               "text": "France",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "ml-auto flex items-stretch gap-1",
+                 "children": [
+                  {
+                   "tag": "p",
+                   "class": "text-copy-14 text-gray-700",
+                   "text": "FRA"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-24"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-23"
+             },
+             "text": "Group 2"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-23"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "austria"
+               },
+               "text": "Austria",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "ml-auto flex items-stretch gap-1",
+                 "children": [
+                  {
+                   "tag": "p",
+                   "class": "text-copy-14 text-gray-700",
+                   "text": "AUT"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "switzerland"
+               },
+               "text": "Switzerland",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "ml-auto flex items-stretch gap-1",
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "viewBox": "0 0 16 16",
+                    "height": "16",
+                    "width": "16",
+                    "data-slot": "geist-icon",
+                    "style": "color:var(--ds-gray-700)"
+                   },
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {
+                      "d": "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Z",
+                      "fill": "currentColor"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "germany"
+               },
+               "text": "Germany",
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "ml-auto flex items-stretch gap-1",
+                 "children": [
+                  {
+                   "tag": "p",
+                   "class": "text-copy-14 text-gray-700",
+                   "text": "GER"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

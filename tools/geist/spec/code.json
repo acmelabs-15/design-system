@@ -1,0 +1,454 @@
+{
+ "page": "code",
+ "title": "Code",
+ "lede": "Display a snippet of code with syntax highlighting.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Code } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nconst codeExampleTsx = `import { Snippet } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Snippet text=\"npm init next-app\" width=\"300px\" />;\n}`;\n\nexport function Component(): JSX.Element {\n  return <Code syntax=\"javascript\">{codeExampleTsx}</Code>;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "pre",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "border",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-style:var(--tw-border-style);border-width:1px"
+        },
+        {
+         "cls": "border-[var(--accents-2)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--accents-2)"
+        },
+        {
+         "cls": "rounded-[5px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:5px"
+        },
+        {
+         "cls": "p-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding:1.5rem"
+        },
+        {
+         "cls": "my-8",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-block:2rem"
+        },
+        {
+         "cls": "mx-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-inline:0"
+        },
+        {
+         "cls": "whitespace-pre",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "white-space:pre"
+        },
+        {
+         "cls": "touch-pan-y",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-pan-y:pan-y;touch-action:var(--tw-pan-x,) var(--tw-pan-y,) var(--tw-pinch-zoom,)"
+        }
+       ],
+       "unresolved": [
+        "color-[var(--geist-foreground)]",
+        "javascript"
+       ],
+       "children": [
+        {
+         "tag": "code",
+         "attrs": {
+          "style": "font-feature-settings:\"liga\" off"
+         },
+         "styles": [
+          {
+           "cls": "font-mono",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-mono)"
+          },
+          {
+           "cls": "text-[13px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:13px"
+          },
+          {
+           "cls": "leading-[20px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:20px;line-height:20px"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": "",
+           "at": "",
+           "decl": "color:var(--ds-gray-1000);text-align:left;white-space:pre;word-spacing:normal;word-break:normal;font-size:13px;line-height:20px;font-family:var(--font-mono);tab-size:4;-webkit-hyphens:none;hyphens:none"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": "._2RP9MG_lineNumber",
+           "at": "",
+           "decl": "min-width:calc(40px + var(--padding));color:var(--ds-gray-600);font-size:13px;font-family:var(--font-mono);-webkit-user-select:none;user-select:none;text-align:right;padding-right:var(--padding);z-index:1;flex-shrink:0"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": "._2RP9MG_row",
+           "at": "",
+           "decl": "align-items:center;width:100%;display:flex;position:relative"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": "._2RP9MG_row[data-highlighted=true] ._2RP9MG_lineNumber",
+           "at": "",
+           "decl": "color:var(--ds-blue-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": "._2RP9MG_row[data-highlighted=true]:before",
+           "at": "",
+           "decl": "content:\"\";background:var(--ds-blue-200);position:absolute;inset:0"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": "._2RP9MG_row[data-highlighted=true]:after",
+           "at": "",
+           "decl": "content:\"\";background:var(--ds-blue-900);width:2px;position:absolute;top:0;bottom:0;left:0"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token",
+           "at": "",
+           "decl": "position:relative"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.comment",
+           "at": "",
+           "decl": "color:var(--accents-5)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.prolog",
+           "at": "",
+           "decl": "color:var(--accents-5)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.doctype",
+           "at": "",
+           "decl": "color:var(--accents-5)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.cdata)",
+           "at": "",
+           "decl": "color:var(--accents-5)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.namespace",
+           "at": "",
+           "decl": "opacity:.7"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.string",
+           "at": "",
+           "decl": "color:var(--ds-green-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.attr-value)",
+           "at": "",
+           "decl": "color:var(--ds-green-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.punctuation",
+           "at": "",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.operator)",
+           "at": "",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.url",
+           "at": "",
+           "decl": "color:var(--ds-green-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.symbol",
+           "at": "",
+           "decl": "color:var(--ds-green-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.boolean",
+           "at": "",
+           "decl": "color:var(--ds-green-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.variable",
+           "at": "",
+           "decl": "color:var(--ds-green-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.constant)",
+           "at": "",
+           "decl": "color:var(--ds-green-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.atrule",
+           "at": "",
+           "decl": "font-weight:600"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-autohotkey .token.selector",
+           "at": "",
+           "decl": "font-weight:600"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-json .token.boolean",
+           "at": "",
+           "decl": "font-weight:600"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": "code[class*=language-css]",
+           "at": "",
+           "decl": "font-weight:600"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-json .token.boolean",
+           "at": "",
+           "decl": "color:var(--geist-success)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.keyword",
+           "at": "",
+           "decl": "color:var(--ds-pink-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.function",
+           "at": "",
+           "decl": "color:var(--ds-blue-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.tag",
+           "at": "",
+           "decl": "color:var(--ds-blue-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.class-name",
+           "at": "",
+           "decl": "color:var(--ds-blue-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.number",
+           "at": "",
+           "decl": "color:var(--ds-blue-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.tag .token.punctuation",
+           "at": "",
+           "decl": "color:var(--ds-blue-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-autohotkey .token.tag",
+           "at": "",
+           "decl": "color:#9a050f"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.selector",
+           "at": "",
+           "decl": "color:var(--ds-pink-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-autohotkey .token.keyword",
+           "at": "",
+           "decl": "color:var(--ds-pink-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.important",
+           "at": "",
+           "decl": "font-weight:700"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.bold)",
+           "at": "",
+           "decl": "font-weight:700"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.italic",
+           "at": "",
+           "decl": "font-style:italic"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.deleted",
+           "at": "",
+           "decl": "color:var(--ds-red-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.inserted",
+           "at": "",
+           "decl": "color:var(--ds-blue-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-json .token.property",
+           "at": "",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-markdown .token.title)",
+           "at": "",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-markdown .token.code",
+           "at": "",
+           "decl": "color:var(--ds-blue-900);font-weight:400"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-markdown .token.list",
+           "at": "",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-markdown .token.hr)",
+           "at": "",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".language-markdown .token.url",
+           "at": "",
+           "decl": "color:var(--ds-pink-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.selector",
+           "at": "",
+           "decl": "color:var(--ds-green-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.property",
+           "at": "",
+           "decl": "color:var(--ds-red-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.entity)",
+           "at": "",
+           "decl": "color:var(--ds-red-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.attr-name",
+           "at": "",
+           "decl": "color:var(--ds-amber-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.regex)",
+           "at": "",
+           "decl": "color:var(--ds-amber-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token.directive.tag .tag",
+           "at": "",
+           "decl": "background:var(--ds-red-900);color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": ".token-line",
+           "at": "",
+           "decl": "padding-right:16px"
+          },
+          {
+           "cls": "_2RP9MG_code",
+           "state": "._2RP9MG_lineNumber",
+           "at": "@media (max-width:600px)",
+           "decl": "min-width:calc(38px + var(--padding))"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "import { Snippet } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Snippet text=\"npm init next-app\" width=\"300px\" />;\n}"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

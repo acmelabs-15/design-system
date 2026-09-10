@@ -1,0 +1,18 @@
+{
+  "children": {
+    "inner": ".inner|div[class~=\"px-6\"]",
+    "message": ".message|div[class~=\"px-6\"] > div:first-child",
+    "icon": ".icon|div[aria-hidden=\"true\"]",
+    "label": ".label|p",
+    "cta": ".cta|div[class~=\"ml-6\"]",
+    "action": ".action|div[class~=\"ml-6\"] > *"
+  },
+  "textParts": ["inner", "message", "cta"],
+  "geist": { "side": "geist", "page": "project-banner", "marker": "aside[class~=\"z-30\"]", "width": "666px", "theme": "light | dark" },
+  "ours": { "side": "ours", "page": "project-banner", "host": "acme-project-banner", "ours": ".project-banner", "width": "666px", "theme": "light | dark" },
+  "notes": [
+    "Both sides take `children`, `textParts` and `width` above. The root carries no marker attribute: the marker is a selector (a bare word would read as an attribute name).",
+    "Ours: before the call, await customElements.whenDefined('acme-project-banner') and each element's updateComplete.",
+    "Known difference: the Default example's root reads `min-width: 0px` in the reference (a block child there) and `auto` in ours (an item of the host's column, the reference's usual context, where the other three examples read `auto` on both sides)."
+  ]
+}

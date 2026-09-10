@@ -1,0 +1,1069 @@
+{
+ "page": "text-with-copy-button",
+ "title": "Text With Copy Button",
+ "lede": "Display text alongside a button that copies the text to the clipboard.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { TextWithCopyButton } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <TextWithCopyButton\n      ellipsis\n      successMessage=\"Copied to clipboard\"\n      textLabel=\"Copy\"\n      textToCopy=\"lipsum\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "button",
+       "attrs": {
+        "type": "button"
+       },
+       "styles": [
+        {
+         "cls": "cursor-pointer",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "transition-colors",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-100",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.1s;transition-duration:.1s"
+        },
+        {
+         "cls": "duration-100",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.1s"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "p-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding:0"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "outline-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+        },
+        {
+         "cls": "border-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-border-style:none;border-style:none"
+        },
+        {
+         "cls": "bg-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-image:none"
+        },
+        {
+         "cls": "text-[var(--accents-7)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--accents-7)"
+        },
+        {
+         "cls": "hover:text-[var(--geist-foreground)]",
+         "state": ":hover",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)"
+        },
+        {
+         "cls": "hover:[&_svg]:!text-[var(--geist-foreground)]",
+         "state": ":hover svg",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)!important"
+        },
+        {
+         "cls": "[&_svg]:!text-[var(--accents-5)]",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "color:var(--accents-5)!important"
+        },
+        {
+         "cls": "[&_svg]:transition-colors",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "[&_svg]:duration-100",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.1s;transition-duration:.1s"
+        },
+        {
+         "cls": "[&_svg]:duration-100",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.1s"
+        },
+        {
+         "cls": "[&_svg]:ease-in-out",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "[&_svg]:ease-in-out",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "[&_svg]:min-w-4",
+           "state": "svg",
+           "at": "@layer utilities",
+           "decl": "min-width:1rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "gap-1.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.375rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "geist-ellipsis",
+             "state": "",
+             "at": "",
+             "decl": "text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;min-width:0;max-width:100%;display:inline-block;overflow:hidden"
+            },
+            {
+             "cls": "geist-ellipsis",
+             "state": "",
+             "at": "",
+             "decl": "text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;min-width:0;max-width:100%;display:inline-block;overflow:hidden"
+            },
+            {
+             "cls": "text-inherit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:inherit"
+            },
+            {
+             "cls": "whitespace-nowrap",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "white-space:nowrap"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Copy"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "size-4",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:1rem;height:1rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "data-phase": "entered"
+             },
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "inset-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "inset:0"
+              },
+              {
+               "cls": "transition-[opacity,scale]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity,scale;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "duration-150",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.15s;transition-duration:.15s"
+              },
+              {
+               "cls": "duration-150",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.15s"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              },
+              {
+               "cls": "data-[phase=exiting]:scale-50",
+               "state": "[data-phase=exiting]",
+               "at": "@layer utilities",
+               "decl": "--tw-scale-x:50%;--tw-scale-y:50%;--tw-scale-z:50%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+              },
+              {
+               "cls": "data-[phase=exiting]:opacity-0",
+               "state": "[data-phase=exiting]",
+               "at": "@layer utilities",
+               "decl": "opacity:0"
+              }
+             ],
+             "unresolved": [
+              "data-[enter=animate]:starting:scale-50",
+              "data-[enter=animate]:starting:opacity-0"
+             ],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "With Small and Tertiary",
+   "description": "",
+   "code": "import { TextWithCopyButton } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <TextWithCopyButton\n      ellipsis\n      successMessage=\"Copied hashed digest to clipboard\"\n      textLabel=\"Copy config digest\"\n      textToCopy=\"edgeConfigData.digest\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "button",
+       "attrs": {
+        "type": "button"
+       },
+       "styles": [
+        {
+         "cls": "cursor-pointer",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "transition-colors",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-100",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.1s;transition-duration:.1s"
+        },
+        {
+         "cls": "duration-100",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.1s"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "p-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding:0"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "outline-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+        },
+        {
+         "cls": "border-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-border-style:none;border-style:none"
+        },
+        {
+         "cls": "bg-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-image:none"
+        },
+        {
+         "cls": "text-[var(--accents-7)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--accents-7)"
+        },
+        {
+         "cls": "hover:text-[var(--geist-foreground)]",
+         "state": ":hover",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)"
+        },
+        {
+         "cls": "hover:[&_svg]:!text-[var(--geist-foreground)]",
+         "state": ":hover svg",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)!important"
+        },
+        {
+         "cls": "[&_svg]:!text-[var(--accents-5)]",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "color:var(--accents-5)!important"
+        },
+        {
+         "cls": "[&_svg]:transition-colors",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "[&_svg]:duration-100",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.1s;transition-duration:.1s"
+        },
+        {
+         "cls": "[&_svg]:duration-100",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.1s"
+        },
+        {
+         "cls": "[&_svg]:ease-in-out",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "[&_svg]:ease-in-out",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "[&_svg]:min-w-4",
+           "state": "svg",
+           "at": "@layer utilities",
+           "decl": "min-width:1rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "gap-1.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.375rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "geist-ellipsis",
+             "state": "",
+             "at": "",
+             "decl": "text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;min-width:0;max-width:100%;display:inline-block;overflow:hidden"
+            },
+            {
+             "cls": "geist-ellipsis",
+             "state": "",
+             "at": "",
+             "decl": "text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;min-width:0;max-width:100%;display:inline-block;overflow:hidden"
+            },
+            {
+             "cls": "text-inherit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:inherit"
+            },
+            {
+             "cls": "whitespace-nowrap",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "white-space:nowrap"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Copy config digest"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "size-4",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:1rem;height:1rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "data-phase": "entered"
+             },
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "inset-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "inset:0"
+              },
+              {
+               "cls": "transition-[opacity,scale]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity,scale;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "duration-150",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.15s;transition-duration:.15s"
+              },
+              {
+               "cls": "duration-150",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.15s"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              },
+              {
+               "cls": "data-[phase=exiting]:scale-50",
+               "state": "[data-phase=exiting]",
+               "at": "@layer utilities",
+               "decl": "--tw-scale-x:50%;--tw-scale-y:50%;--tw-scale-z:50%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+              },
+              {
+               "cls": "data-[phase=exiting]:opacity-0",
+               "state": "[data-phase=exiting]",
+               "at": "@layer utilities",
+               "decl": "opacity:0"
+              }
+             ],
+             "unresolved": [
+              "data-[enter=animate]:starting:scale-50",
+              "data-[enter=animate]:starting:opacity-0"
+             ],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Without ellipsis",
+   "description": "The label wraps instead of truncating.",
+   "code": "<TextWithCopyButton textLabel=\"Copy\" textToCopy=\"lipsum\" />",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "button",
+       "attrs": {
+        "type": "button"
+       },
+       "styles": [
+        {
+         "cls": "cursor-pointer",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "transition-colors",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-100",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.1s;transition-duration:.1s"
+        },
+        {
+         "cls": "duration-100",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.1s"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "p-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding:0"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "outline-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "outline-style:var(--tw-outline-style);outline-width:0"
+        },
+        {
+         "cls": "border-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-border-style:none;border-style:none"
+        },
+        {
+         "cls": "bg-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-image:none"
+        },
+        {
+         "cls": "text-[var(--accents-7)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--accents-7)"
+        },
+        {
+         "cls": "hover:text-[var(--geist-foreground)]",
+         "state": ":hover",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)"
+        },
+        {
+         "cls": "hover:[&_svg]:!text-[var(--geist-foreground)]",
+         "state": ":hover svg",
+         "at": "@layer utilities @media (hover:hover)",
+         "decl": "color:var(--geist-foreground)!important"
+        },
+        {
+         "cls": "[&_svg]:!text-[var(--accents-5)]",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "color:var(--accents-5)!important"
+        },
+        {
+         "cls": "[&_svg]:transition-colors",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "[&_svg]:duration-100",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.1s;transition-duration:.1s"
+        },
+        {
+         "cls": "[&_svg]:duration-100",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.1s"
+        },
+        {
+         "cls": "[&_svg]:ease-in-out",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "[&_svg]:ease-in-out",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "[&_svg]:min-w-4",
+           "state": "svg",
+           "at": "@layer utilities",
+           "decl": "min-width:1rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          },
+          {
+           "cls": "gap-1.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.375rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-inherit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:inherit"
+            },
+            {
+             "cls": "whitespace-nowrap",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "white-space:nowrap"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Copy"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "size-4",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:1rem;height:1rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "data-phase": "entered"
+             },
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "inset-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "inset:0"
+              },
+              {
+               "cls": "transition-[opacity,scale]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity,scale;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "duration-150",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.15s;transition-duration:.15s"
+              },
+              {
+               "cls": "duration-150",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.15s"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              },
+              {
+               "cls": "data-[phase=exiting]:scale-50",
+               "state": "[data-phase=exiting]",
+               "at": "@layer utilities",
+               "decl": "--tw-scale-x:50%;--tw-scale-y:50%;--tw-scale-z:50%;scale:var(--tw-scale-x) var(--tw-scale-y)"
+              },
+              {
+               "cls": "data-[phase=exiting]:opacity-0",
+               "state": "[data-phase=exiting]",
+               "at": "@layer utilities",
+               "decl": "opacity:0"
+              }
+             ],
+             "unresolved": [
+              "data-[enter=animate]:starting:scale-50",
+              "data-[enter=animate]:starting:opacity-0"
+             ],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

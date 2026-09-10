@@ -1,0 +1,36 @@
+{
+ "heading": "Without address",
+ "description": "No address: the screen renders without the bottom gradient and without the navigation bar (back key, address pill, more key). The class strings come from the component's client code; the server HTML renders the addressed state only.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <div className=\"w-full max-w-xs mx-auto\">\n      <Phone />\n    </div>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "w-full max-w-xs mx-auto",
+   "children": [
+    {
+     "tag": "div",
+     "attrs": { "style": "container-type:inline-size" },
+     "children": [
+      {
+       "tag": "div",
+       "class": "relative w-full outline-[2px] rounded-[52px] p-[2.5%] [&]:rounded-[15cqw] bg-[#000] outline-[#333]",
+       "children": [
+        {
+         "tag": "div",
+         "class": "rounded-[44px] overflow-hidden aspect-[9/19.5] relative [&]:rounded-[calc(15cqw-6px)]",
+         "children": [{ "tag": "div", "class": "absolute inset-0 bg-[#878787]" }]
+        },
+        { "tag": "div", "class": "absolute top-[2.5%] left-1/2 transform -translate-x-1/2 w-[30%] h-[4%] bg-[#000] rounded-full" },
+        { "tag": "div", "class": "bg-[#fff] w-[34%] h-[0.6%] rounded-full absolute bottom-[3%] left-1/2 -translate-x-1/2" },
+        { "tag": "div", "class": "absolute top-[15%] -left-1 w-0.5 h-[3.5%] rounded-tl-full rounded-bl-full bg-[#333]" },
+        { "tag": "div", "class": "absolute top-[23.4%] -left-1 w-0.5 h-[7.1%] rounded-tl-full rounded-bl-full bg-[#333]" },
+        { "tag": "div", "class": "absolute top-[32.4%] -left-1 w-0.5 h-[7.1%] rounded-tl-full rounded-bl-full bg-[#333]" },
+        { "tag": "div", "class": "absolute top-[28.2%] -right-1 w-0.5 h-[11%] rounded-tr-full rounded-br-full bg-[#333]" }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

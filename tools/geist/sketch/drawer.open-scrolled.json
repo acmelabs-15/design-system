@@ -1,0 +1,252 @@
+{
+ "heading": "Open scrolled",
+ "description": "Content taller than the popup's cap: the popup is capped and scrolls; the census scrolls it 160px.",
+ "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}}>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n        {/* … 40 more paragraphs … */}\n      </div>\n    </Drawer>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "inset-0 bg-black/40 fixed z-[var(--ds-z-drawer)] transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
+   "attrs": {
+    "role": "presentation",
+    "data-open": ""
+   }
+  },
+  {
+   "tag": "div",
+   "class": "inset-0 pointer-events-none fixed flex items-end z-[var(--ds-z-drawer)]",
+   "attrs": {
+    "data-open": ""
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "tailwind pointer-events-auto w-full outline-none transition-transform duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)] data-[ending-style]:[transform:translateY(100%)] data-[starting-style]:[transform:translateY(100%)] [transform:translateY(var(--drawer-swipe-movement-y,0px))] border-gray-alpha-400 max-h-[90dvh] overscroll-none rounded-t-[10px] border-t bg-[var(--ds-background-100)] [&>[data-geist-menu]]:shadow-none overflow-y-auto geist-dialog",
+     "attrs": {
+      "role": "dialog",
+      "aria-modal": "true",
+      "data-open": "",
+      "tabindex": "-1"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "flex flex-col items-stretch justify-start gap-2 flex-initial p-12",
+       "children": [
+        {
+         "tag": "p",
+         "class": "text-[18px] leading-[24px] font-semibold text-center",
+         "text": "A drawer title"
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14 text-center",
+         "text": "Drawer body"
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 1 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 2 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 3 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 4 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 5 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 6 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 7 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 8 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 9 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 10 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 11 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 12 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 13 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 14 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 15 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 16 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 17 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 18 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 19 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 20 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 21 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 22 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 23 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 24 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 25 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 26 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 27 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 28 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 29 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 30 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 31 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 32 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 33 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 34 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 35 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 36 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 37 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 38 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 39 of the drawer body."
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14",
+         "text": "Paragraph 40 of the drawer body."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

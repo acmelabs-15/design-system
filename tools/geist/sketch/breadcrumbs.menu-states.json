@@ -1,0 +1,22 @@
+{
+  "heading": "Menu states",
+  "description": "The menu type's active and disabled chips have no rendered example (the page shows them on the text type only); their class strings come from the component's client code: the active chip is white with a gray-600 border and gray-1000 text, the disabled chip is a disabled button with a gray-alpha-200 fill and gray-700 text.",
+  "code": "export function Component(): JSX.Element {\n  return (\n    <Breadcrumb type=\"menu\">\n      <BreadcrumbItem>Home</BreadcrumbItem>\n      <BreadcrumbItem active>Dashboard</BreadcrumbItem>\n      <BreadcrumbItem disabled>Overview</BreadcrumbItem>\n    </Breadcrumb>\n  );\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "div",
+          "class": "flex gap-2 max-sm:overflow-x-auto",
+          "children": [
+            { "tag": "span", "class": "h-fit inline-flex items-center sm-max:last-of-type:mr-4 sm:inline-block sm:truncate sm:break-normal sm:max-w-full sm:min-w-0", "attrs": { "data-testid": "legacy/tooltip-trigger", "data-version": "v1", "tabindex": "0" }, "children": [{ "tag": "div", "children": [ { "tag": "button", "class": "py-0.5 px-1.5 rounded-sm border transition-[color,border-color,background] duration-200 cursor-pointer bg-[var(--ds-background-200)] border-[var(--ds-gray-alpha-400)] text-[var(--ds-gray-900)] font-[var(--font-sans)] text-xs truncate inline-block whitespace-nowrap break-normal max-w-full min-w-0 hover:bg-[var(--ds-gray-200)] hover:border-[var(--ds-gray-alpha-500)] hover:text-[var(--ds-gray-1000)] focus-visible:outline-none focus-visible:shadow-[var(--ds-focus-ring)]", "text": "Home" } ] }] },
+            { "tag": "span", "class": "h-fit inline-flex items-center sm-max:last-of-type:mr-4 sm:inline-block sm:truncate sm:break-normal sm:max-w-full sm:min-w-0", "attrs": { "data-testid": "legacy/tooltip-trigger", "data-version": "v1", "tabindex": "0" }, "children": [{ "tag": "div", "children": [ { "tag": "button", "class": "py-0.5 px-1.5 rounded-sm border transition-[color,border-color,background] duration-200 cursor-pointer font-[var(--font-sans)] text-xs truncate inline-block whitespace-nowrap break-normal max-w-full min-w-0 hover:bg-[var(--ds-gray-200)] hover:border-[var(--ds-gray-alpha-500)] hover:text-[var(--ds-gray-1000)] focus-visible:outline-none focus-visible:shadow-[var(--ds-focus-ring)] border-[var(--ds-gray-600)] bg-[var(--ds-background-100)] text-[var(--ds-gray-1000)]", "text": "Dashboard" } ] }] },
+            { "tag": "span", "class": "h-fit inline-flex items-center sm-max:last-of-type:mr-4 sm:inline-block sm:truncate sm:break-normal sm:max-w-full sm:min-w-0", "attrs": { "data-testid": "legacy/tooltip-trigger", "data-version": "v1", "tabindex": "0" }, "children": [{ "tag": "div", "children": [ { "tag": "button", "class": "py-0.5 px-1.5 rounded-sm border transition-[color,border-color,background] duration-200 cursor-pointer font-[var(--font-sans)] text-xs truncate inline-block whitespace-nowrap break-normal max-w-full min-w-0 hover:bg-[var(--ds-gray-200)] hover:border-[var(--ds-gray-alpha-500)] hover:text-[var(--ds-gray-1000)] focus-visible:outline-none focus-visible:shadow-[var(--ds-focus-ring)] text-[var(--ds-gray-700)] bg-[var(--ds-gray-alpha-200)] border-[var(--ds-gray-alpha-400)] disabled:cursor-not-allowed", "attrs": { "disabled": "" }, "text": "Overview" } ] }] }
+          ]
+        }
+      ]
+    }
+  ]
+}

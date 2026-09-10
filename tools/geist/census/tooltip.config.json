@@ -1,0 +1,111 @@
+{
+  "note": "Four roots per tooltip page. tooltip-trigger: the wrapper span around the content (the reference roots on every example; ours .trigger, its box mirrored on the host). tooltip: the open bubble, a client-only state the sketches (tools/geist/sketch/tooltip.*.json) render on the mirror and the docs page opens with shown=\"1\" disable-triggers (the reference examples stay closed on both sides). tooltip-backdrop: the fixed layer under a touch-opened bubble. tooltip-kbd: the key inside the bubble, read on the acme-kbd host's inner kbd. Run each side with theme light and dark; width fixes every preview at the mirror's 600px stage. The ours pane is emulated at 1100 by 6000 so every bubble is placed with its trigger in view (a bubble placed while its trigger is off-screen flips). transform on the bubble is read as soft: the reference positions its bubble through an inline translate whose -50% and -100% terms follow the bubble's own text-sized box, ours through floating-ui's translation; the box itself is the same. The bubble's height is read as soft (textParts root, and its before/after bridges, whose width and height are the bubble's): the text wraps to a different line count per font. The backdrop fills the viewport, so its ours run is made at the mirror pane's own 1024 by 768.",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "viewport": {
+    "ours": [
+      1100,
+      6000
+    ],
+    "ours-backdrop": [
+      1024,
+      768
+    ]
+  },
+  "tooltip-trigger": {
+    "geist": {
+      "side": "geist",
+      "page": "tooltip-trigger",
+      "marker": "[data-testid=\"legacy/tooltip-trigger\"]",
+      "width": "600px"
+    },
+    "ours": {
+      "side": "ours",
+      "page": "tooltip-trigger",
+      "host": "acme-tooltip",
+      "ours": ".trigger",
+      "width": "600px"
+    }
+  },
+  "tooltip": {
+    "geist": {
+      "side": "geist",
+      "page": "tooltip",
+      "marker": "[role=\"tooltip\"]",
+      "width": "600px",
+      "textProps": {
+        "root": [
+          "transform"
+        ]
+      },
+      "children": {
+        "arrow": ".arrow|.z-\\[-1\\]",
+        "glyph": ".arrow svg|.z-\\[-1\\] svg",
+        "path": ".arrow path|.z-\\[-1\\] path",
+        "before": "::before|::before",
+        "after": "::after|::after"
+      },
+      "textParts": [
+        "root",
+        "before",
+        "after"
+      ]
+    },
+    "ours": {
+      "side": "ours",
+      "page": "tooltip",
+      "host": "acme-tooltip",
+      "ours": ".tip",
+      "width": "600px",
+      "textProps": {
+        "root": [
+          "transform"
+        ]
+      },
+      "children": {
+        "arrow": ".arrow|.z-\\[-1\\]",
+        "glyph": ".arrow svg|.z-\\[-1\\] svg",
+        "path": ".arrow path|.z-\\[-1\\] path",
+        "before": "::before|::before",
+        "after": "::after|::after"
+      },
+      "textParts": [
+        "root",
+        "before",
+        "after"
+      ]
+    }
+  },
+  "tooltip-backdrop": {
+    "geist": {
+      "side": "geist",
+      "page": "tooltip-backdrop",
+      "marker": "div.fixed.inset-0",
+      "width": "600px"
+    },
+    "ours": {
+      "side": "ours",
+      "page": "tooltip-backdrop",
+      "host": "acme-tooltip",
+      "ours": ".backdrop",
+      "width": "600px"
+    }
+  },
+  "tooltip-kbd": {
+    "geist": {
+      "side": "geist",
+      "page": "tooltip-kbd",
+      "marker": "[role=\"tooltip\"] > kbd",
+      "width": "600px"
+    },
+    "ours": {
+      "side": "ours",
+      "page": "tooltip-kbd",
+      "host": "acme-tooltip[shown] > acme-kbd",
+      "ours": ".kbd",
+      "width": "600px"
+    }
+  }
+}

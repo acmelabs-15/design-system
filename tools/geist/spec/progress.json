@@ -1,0 +1,5348 @@
+{
+ "page": "progress",
+ "title": "Progress",
+ "lede": "Display progress relative to a limit or related to a task.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Progress } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Progress value={30} />;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "style": "width:100%;height:10px"
+       },
+       "styles": [
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "progress",
+         "attrs": {
+          "data-version": "v1",
+          "max": "100",
+          "value": "30",
+          "style": "width:100%;--fg:var(--ds-gray-1000);height:10px"
+         },
+         "styles": [
+          {
+           "cls": "appearance-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "rounded-[var(--geist-radius)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "overflow-hidden",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "overflow:hidden"
+          },
+          {
+           "cls": "bg-gray-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+           "state": "::-webkit-progress-bar",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+           "state": "::-webkit-progress-bar",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--fg)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--fg)"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Custom max",
+   "description": "",
+   "code": "import { Progress } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Progress max={40} value={30} />;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "style": "width:100%;height:10px"
+       },
+       "styles": [
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "progress",
+         "attrs": {
+          "data-version": "v1",
+          "max": "40",
+          "value": "30",
+          "style": "width:100%;--fg:var(--ds-gray-1000);height:10px"
+         },
+         "styles": [
+          {
+           "cls": "appearance-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "rounded-[var(--geist-radius)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "overflow-hidden",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "overflow:hidden"
+          },
+          {
+           "cls": "bg-gray-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+           "state": "::-webkit-progress-bar",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+           "state": "::-webkit-progress-bar",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--fg)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--fg)"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Dynamic colors",
+   "description": "",
+   "code": "import { Button, Progress } from '@vercel/geistcn/components';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [value, setValue] = useState(0);\n\n  return (\n    <div className=\"flex flex-col items-start justify-start gap-6 flex-initial\">\n      <Progress\n        colors={{\n          0: 'var(--geist-foreground)',\n          25: 'var(--geist-error)',\n          50: 'var(--geist-warning)',\n          75: 'var(--geist-highlight-pink)',\n          100: 'var(--geist-success)',\n        }}\n        value={value}\n      />\n      <div className=\"flex flex-row items-stretch justify-start gap-4 flex-initial\">\n        <Button\n          onClick={() => {\n            if (value < 100) setValue(value + 10);\n          }}\n          size=\"small\"\n        >\n          Increase\n        </Button>\n\n        <Button\n          onClick={() => {\n            if (value > 0) setValue(value - 10);\n          }}\n          size=\"small\"\n          variant=\"secondary\"\n        >\n          Decrease\n        </Button>\n      </div>\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:flex-start"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex-initial",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex:0 auto"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "0",
+            "style": "width:100%;--fg:var(--geist-foreground);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-row",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:row"
+          },
+          {
+           "cls": "items-stretch",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:stretch"
+          },
+          {
+           "cls": "justify-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:flex-start"
+          },
+          {
+           "cls": "gap-4",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:1rem"
+          },
+          {
+           "cls": "flex-initial",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex:0 auto"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "button",
+           "attrs": {
+            "type": "submit",
+            "tabindex": "0",
+            "data-react-aria-pressable": "true",
+            "data-geist-button": "",
+            "data-prefix": "false",
+            "data-suffix": "false",
+            "data-version": "v1",
+            "style": "--geist-icon-size:16px"
+           },
+           "styles": [
+            {
+             "cls": "outline-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-outline-style:none;outline-style:none"
+            },
+            {
+             "cls": "m-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin:0"
+            },
+            {
+             "cls": "p-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding:0"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "align-baseline",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "vertical-align:baseline"
+            },
+            {
+             "cls": "no-underline",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-decoration-line:none"
+            },
+            {
+             "cls": "group/trigger",
+             "state": ")[data-hover=true] *)",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "cursor-pointer",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "cursor:pointer"
+            },
+            {
+             "cls": "select-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "-webkit-user-select:none;user-select:none"
+            },
+            {
+             "cls": "transform",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"
+            },
+            {
+             "cls": "translate-z-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-z:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "text-[var(--themed-fg,_var(--ds-background-100))]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--themed-fg,var(--ds-background-100))"
+            },
+            {
+             "cls": "bg-[var(--themed-bg,_var(--ds-gray-1000))]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--themed-bg,var(--ds-gray-1000))"
+            },
+            {
+             "cls": "font-medium",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+            },
+            {
+             "cls": "!px-(--geist-gap-half)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:var(--geist-gap-half)!important"
+            },
+            {
+             "cls": "max-w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "max-width:100%"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            },
+            {
+             "cls": "duration-[time:150ms]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.15s;transition-duration:.15s"
+            },
+            {
+             "cls": "duration-[time:150ms]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.15s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            },
+            {
+             "cls": "data-[focus]:transition-none",
+             "state": "[data-focus]",
+             "at": "@layer utilities",
+             "decl": "transition-property:none"
+            },
+            {
+             "cls": "data-[focus]:shadow-[var(--ds-focus-ring)]",
+             "state": "[data-focus]",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "[&_svg]:shrink-0",
+             "state": "svg",
+             "at": "@layer utilities",
+             "decl": "flex-shrink:0"
+            },
+            {
+             "cls": "disabled:cursor-not-allowed",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "cursor:not-allowed"
+            },
+            {
+             "cls": "aria-disabled:cursor-not-allowed",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "cursor:not-allowed"
+            },
+            {
+             "cls": "disabled:text-[var(--ds-gray-700)]",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-700)"
+            },
+            {
+             "cls": "disabled:bg-[var(--ds-gray-100)]",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-100)"
+            },
+            {
+             "cls": "aria-disabled:text-[var(--ds-gray-700)]",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-700)"
+            },
+            {
+             "cls": "aria-disabled:bg-[var(--ds-gray-100)]",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-100)"
+            },
+            {
+             "cls": "disabled:![--themed-border:_var(--ds-gray-400)]",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "--themed-border:var(--ds-gray-400)!important"
+            },
+            {
+             "cls": "aria-disabled:![--themed-border:_var(--ds-gray-400)]",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "--themed-border:var(--ds-gray-400)!important"
+            },
+            {
+             "cls": "disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "[--x-padding:6px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--x-padding:6px"
+            },
+            {
+             "cls": "[--height:32px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--height:32px"
+            },
+            {
+             "cls": "!pl-[var(--x-padding)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-left:var(--x-padding)!important"
+            },
+            {
+             "cls": "!pr-[var(--x-padding)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-right:var(--x-padding)!important"
+            },
+            {
+             "cls": "rounded-md",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.375rem"
+            },
+            {
+             "cls": "text-(length:--geist-form-small-font)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--geist-form-small-font)"
+            },
+            {
+             "cls": "[--spinner-size:16px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--spinner-size:16px"
+            },
+            {
+             "cls": "h-[var(--height)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:var(--height)"
+            },
+            {
+             "cls": "data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))]",
+             "state": "[data-hover]",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--themed-hover-bg,#383838)"
+            },
+            {
+             "cls": "dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))]",
+             "state": ":where(.dark-theme,.dark-theme *)[data-hover]",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--themed-hover-bg,#ccc)"
+            },
+            {
+             "cls": "data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))]",
+             "state": "[data-hover]",
+             "at": "@layer utilities",
+             "decl": "--themed-border:var(--themed-hover-bg,var(--ds-gray-200))"
+            },
+            {
+             "cls": "data-hover:disabled:bg-[var(--ds-gray-100)]",
+             "state": "[data-hover]:disabled",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-100)"
+            }
+           ],
+           "unresolved": [
+            "transition-[border-color, background,color,transform,box-shadow]"
+           ],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "truncate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+              },
+              {
+               "cls": "inline-block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-block"
+              },
+              {
+               "cls": "px-1.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-inline:.375rem"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Increase"
+            }
+           ]
+          },
+          {
+           "tag": "button",
+           "attrs": {
+            "type": "submit",
+            "tabindex": "0",
+            "data-react-aria-pressable": "true",
+            "data-geist-button": "",
+            "data-prefix": "false",
+            "data-suffix": "false",
+            "data-version": "v1",
+            "style": "--geist-icon-size:16px"
+           },
+           "styles": [
+            {
+             "cls": "outline-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-outline-style:none;outline-style:none"
+            },
+            {
+             "cls": "m-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin:0"
+            },
+            {
+             "cls": "p-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding:0"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "align-baseline",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "vertical-align:baseline"
+            },
+            {
+             "cls": "no-underline",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-decoration-line:none"
+            },
+            {
+             "cls": "group/trigger",
+             "state": ")[data-hover=true] *)",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "cursor-pointer",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "cursor:pointer"
+            },
+            {
+             "cls": "select-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "-webkit-user-select:none;user-select:none"
+            },
+            {
+             "cls": "transform",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"
+            },
+            {
+             "cls": "translate-z-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-z:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "text-[var(--themed-fg,_var(--ds-background-100))]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--themed-fg,var(--ds-background-100))"
+            },
+            {
+             "cls": "bg-[var(--themed-bg,_var(--ds-gray-1000))]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--themed-bg,var(--ds-gray-1000))"
+            },
+            {
+             "cls": "font-medium",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+            },
+            {
+             "cls": "!px-(--geist-gap-half)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:var(--geist-gap-half)!important"
+            },
+            {
+             "cls": "max-w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "max-width:100%"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            },
+            {
+             "cls": "duration-[time:150ms]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.15s;transition-duration:.15s"
+            },
+            {
+             "cls": "duration-[time:150ms]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.15s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            },
+            {
+             "cls": "data-[focus]:shadow-[var(--ds-focus-ring)]",
+             "state": "[data-focus]",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "[&_svg]:shrink-0",
+             "state": "svg",
+             "at": "@layer utilities",
+             "decl": "flex-shrink:0"
+            },
+            {
+             "cls": "disabled:cursor-not-allowed",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "cursor:not-allowed"
+            },
+            {
+             "cls": "aria-disabled:cursor-not-allowed",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "cursor:not-allowed"
+            },
+            {
+             "cls": "disabled:text-[var(--ds-gray-700)]",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-700)"
+            },
+            {
+             "cls": "disabled:bg-[var(--ds-gray-100)]",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-100)"
+            },
+            {
+             "cls": "aria-disabled:text-[var(--ds-gray-700)]",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-700)"
+            },
+            {
+             "cls": "aria-disabled:bg-[var(--ds-gray-100)]",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-100)"
+            },
+            {
+             "cls": "disabled:![--themed-border:_var(--ds-gray-400)]",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "--themed-border:var(--ds-gray-400)!important"
+            },
+            {
+             "cls": "aria-disabled:![--themed-border:_var(--ds-gray-400)]",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "--themed-border:var(--ds-gray-400)!important"
+            },
+            {
+             "cls": "disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+             "state": ":disabled",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+             "state": "[aria-disabled=true]",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "[--x-padding:6px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--x-padding:6px"
+            },
+            {
+             "cls": "[--height:32px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--height:32px"
+            },
+            {
+             "cls": "!pl-[var(--x-padding)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-left:var(--x-padding)!important"
+            },
+            {
+             "cls": "!pr-[var(--x-padding)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-right:var(--x-padding)!important"
+            },
+            {
+             "cls": "rounded-md",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.375rem"
+            },
+            {
+             "cls": "[--themed-bg:_var(--ds-background-100)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--themed-bg:var(--ds-background-100)"
+            },
+            {
+             "cls": "shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "[--themed-hover-bg:_var(--ds-gray-alpha-200)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--themed-hover-bg:var(--ds-gray-alpha-200)"
+            },
+            {
+             "cls": "[--themed-fg:_var(--ds-gray-1000)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--themed-fg:var(--ds-gray-1000)"
+            },
+            {
+             "cls": "[--themed-border:_var(--ds-gray-400)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--themed-border:var(--ds-gray-400)"
+            },
+            {
+             "cls": "data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)]",
+             "state": "[data-focus]",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent)), 0 0 0 2px var(--tw-shadow-color,var(--ds-background-100)), 0 0 0 4px var(--tw-shadow-color,var(--ds-focus-color));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            },
+            {
+             "cls": "data-[focus]:transition-none",
+             "state": "[data-focus]",
+             "at": "@layer utilities",
+             "decl": "transition-property:none"
+            },
+            {
+             "cls": "text-(length:--geist-form-small-font)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:var(--geist-form-small-font)"
+            },
+            {
+             "cls": "[--spinner-size:16px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--spinner-size:16px"
+            },
+            {
+             "cls": "h-[var(--height)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:var(--height)"
+            },
+            {
+             "cls": "data-hover:bg-[var(--ds-gray-100)]",
+             "state": "[data-hover]",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-100)"
+            },
+            {
+             "cls": "dark-theme:data-hover:bg-[var(--ds-gray-200)]",
+             "state": ":where(.dark-theme,.dark-theme *)[data-hover]",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "data-hover:text-[var(--themed-fg)]",
+             "state": "[data-hover]",
+             "at": "@layer utilities",
+             "decl": "color:var(--themed-fg)"
+            },
+            {
+             "cls": "data-hover:disabled:bg-[var(--ds-gray-100)]",
+             "state": "[data-hover]:disabled",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-100)"
+            }
+           ],
+           "unresolved": [
+            "transition-[border-color, background,color,transform,box-shadow]"
+           ],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "truncate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+              },
+              {
+               "cls": "inline-block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-block"
+              },
+              {
+               "cls": "px-1.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-inline:.375rem"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Decrease"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Themed",
+   "description": "",
+   "code": "import { Progress } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col items-stretch justify-start gap-6 flex-initial\">\n      <Progress type=\"success\" value={100} />\n      <Progress type=\"error\" value={10} />\n      <Progress type=\"warning\" value={40} />\n      <Progress type=\"secondary\" value={70} />\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-stretch",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:stretch"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex-initial",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex:0 auto"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "100",
+            "style": "width:100%;--fg:var(--ds-blue-700);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "10",
+            "style": "width:100%;--fg:var(--ds-red-700);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "40",
+            "style": "width:100%;--fg:var(--ds-amber-700);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "70",
+            "style": "width:100%;--fg:var(--ds-gray-700);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "With Stops",
+   "description": "",
+   "code": "import { Progress } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Progress\n      value={30}\n      type=\"success\"\n      stops={[\n        { value: 10, tooltip: '10%' },\n        { value: 20, tooltip: '20%' },\n        { value: 30, tooltip: '30%' },\n        { value: 40, tooltip: '40%' },\n        { value: 50, tooltip: '50%' },\n        { value: 60, tooltip: '60%' },\n        { value: 70, tooltip: '70%' },\n        { value: 80, tooltip: '80%' },\n        { value: 90, tooltip: '90%' },\n        { value: 95, tooltip: '95%' },\n      ]}\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "style": "width:100%;height:10px"
+       },
+       "styles": [
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "progress",
+         "attrs": {
+          "data-version": "v1",
+          "max": "100",
+          "value": "30",
+          "style": "width:100%;--fg:var(--ds-blue-700);height:10px"
+         },
+         "styles": [
+          {
+           "cls": "appearance-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "appearance:none"
+          },
+          {
+           "cls": "border-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-style:var(--tw-border-style);border-width:0"
+          },
+          {
+           "cls": "block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "rounded-[var(--geist-radius)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "overflow-hidden",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "overflow:hidden"
+          },
+          {
+           "cls": "bg-gray-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+           "state": "::-webkit-progress-bar",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+           "state": "::-webkit-progress-bar",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--fg)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--fg)"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "border-radius:var(--geist-radius)"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+          },
+          {
+           "cls": "[&::-webkit-progress-value]:!rounded-none",
+           "state": "::-webkit-progress-value",
+           "at": "@layer utilities",
+           "decl": "border-radius:0!important"
+          },
+          {
+           "cls": "[&::-moz-progress-bar]:!rounded-none",
+           "state": "::-moz-progress-bar",
+           "at": "@layer utilities",
+           "decl": "border-radius:0!important"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(10% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(20% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(30% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(40% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(50% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(60% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(70% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(80% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(90% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "left:calc(95% - 7px)"
+         },
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "top-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:0"
+          },
+          {
+           "cls": "bottom-0",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "bottom:0"
+          },
+          {
+           "cls": "pointer-events-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "pointer-events:auto"
+          },
+          {
+           "cls": "z-10",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:10"
+          },
+          {
+           "cls": "grid",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:grid"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-testid": "legacy/tooltip-trigger",
+            "data-version": "v1",
+            "style": "grid-area:1 / 1",
+            "tabindex": "0"
+           },
+           "styles": [
+            {
+             "cls": "inline-flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-flex"
+            },
+            {
+             "cls": "h-fit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:fit-content"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "style": "width:14px;height:10px;--x-offset:2px"
+             },
+             "styles": [
+              {
+               "cls": "z-20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "z-index:20"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "isolate",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "isolation:isolate"
+              },
+              {
+               "cls": "after:content-['']",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "--tw-content:\"\";content:var(--tw-content)"
+              },
+              {
+               "cls": "after:absolute",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);position:absolute"
+              },
+              {
+               "cls": "after:-inset-y-2",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-block:-.5rem"
+              },
+              {
+               "cls": "after:-inset-x-[--x-offset]",
+               "state": ":after",
+               "at": "@layer utilities",
+               "decl": "content:var(--tw-content);inset-inline:calc(--x-offset * -1)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {
+            "style": "grid-area:1 / 1"
+           },
+           "styles": [
+            {
+             "cls": "pointer-events-auto",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "pointer-events:auto"
+            },
+            {
+             "cls": "z-10",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "z-index:10"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-gray-alpha-600",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-gray-alpha-600)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "w-px",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:1px"
+              },
+              {
+               "cls": "bg-background-100",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:var(--ds-background-100)"
+              },
+              {
+               "cls": "h-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:100%"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Widths",
+   "description": "",
+   "code": "import { Progress } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col items-stretch justify-start gap-6 flex-initial\">\n      <Progress value={60} width={100} />\n      <Progress value={60} width={200} />\n      <Progress value={60} width={300} />\n      <Progress value={60} width=\"50%\" />\n      <Progress value={60} width=\"100%\" />\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-stretch",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:stretch"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex-initial",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex:0 auto"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100px;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:200px;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:300px;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:50%;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Heights",
+   "description": "",
+   "code": "import { Progress } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col items-stretch justify-start gap-6 flex-initial max-w-prose\">\n      <Progress value={60} height={4} />\n      <Progress value={60} height={10} />\n      <Progress value={60} height={50} />\n      <Progress value={60} height={200} />\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-stretch",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:stretch"
+        },
+        {
+         "cls": "justify-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:flex-start"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex-initial",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex:0 auto"
+        },
+        {
+         "cls": "max-w-prose",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:65ch"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:4px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:4px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:10px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:10px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:50px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:50px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "width:100%;height:200px"
+         },
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "progress",
+           "attrs": {
+            "data-version": "v1",
+            "max": "100",
+            "value": "60",
+            "style": "width:100%;--fg:var(--ds-gray-1000);height:200px"
+           },
+           "styles": [
+            {
+             "cls": "appearance-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "appearance:none"
+            },
+            {
+             "cls": "border-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-style:var(--tw-border-style);border-width:0"
+            },
+            {
+             "cls": "block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:block"
+            },
+            {
+             "cls": "rounded-[var(--geist-radius)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "bg-gray-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:bg-gray-200",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "[&::-webkit-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:bg-[var(--fg)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:rounded-[var(--geist-radius)]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-webkit-progress-value]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-webkit-progress-value",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:bg-[var(--fg)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--fg)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:rounded-[var(--geist-radius)]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "border-radius:var(--geist-radius)"
+            },
+            {
+             "cls": "[&::-moz-progress-bar]:transition-[width_0.1s_ease-in,background-color_0.1s_ease-in]",
+             "state": "::-moz-progress-bar",
+             "at": "@layer utilities",
+             "decl": "transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,785 @@
+{
+ "page": "keyboard-input",
+ "title": "Keyboard Input",
+ "lede": "Display keyboard input that triggers an action.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Modifiers",
+   "description": "",
+   "code": "import { Kbd } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <>\n      <Kbd meta />\n      <Kbd shift />\n      <Kbd alt />\n      <Kbd ctrl />\n    </>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "kbd",
+       "attrs": {
+        "data-geist-kbd": "",
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "font-sans!",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans)!important"
+        },
+        {
+         "cls": "text-[var(--ds-gray-1000)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "!leading-[1.7em]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:1.7em!important;line-height:1.7em!important"
+        },
+        {
+         "cls": "inline-flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:inline-flex"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:center"
+        },
+        {
+         "cls": "rounded-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.25rem"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "px-1.5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.375rem"
+        },
+        {
+         "cls": "py-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "min-w-[var(--geist-gap)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-width:var(--geist-gap)"
+        },
+        {
+         "cls": "min-h-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-height:1.5rem"
+        },
+        {
+         "cls": "ml-1",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-left:.25rem"
+        }
+       ],
+       "unresolved": [
+        "[&>span]:font-inherit"
+       ],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {
+          "style": "min-width:1em;display:inline-block"
+         },
+         "styles": [],
+         "unresolved": [],
+         "children": []
+        }
+       ]
+      },
+      {
+       "tag": "kbd",
+       "attrs": {
+        "data-geist-kbd": "",
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "font-sans!",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans)!important"
+        },
+        {
+         "cls": "text-[var(--ds-gray-1000)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "!leading-[1.7em]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:1.7em!important;line-height:1.7em!important"
+        },
+        {
+         "cls": "inline-flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:inline-flex"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:center"
+        },
+        {
+         "cls": "rounded-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.25rem"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "px-1.5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.375rem"
+        },
+        {
+         "cls": "py-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "min-w-[var(--geist-gap)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-width:var(--geist-gap)"
+        },
+        {
+         "cls": "min-h-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-height:1.5rem"
+        },
+        {
+         "cls": "ml-1",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-left:.25rem"
+        }
+       ],
+       "unresolved": [
+        "[&>span]:font-inherit"
+       ],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [],
+         "text": "⇧"
+        }
+       ]
+      },
+      {
+       "tag": "kbd",
+       "attrs": {
+        "data-geist-kbd": "",
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "font-sans!",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans)!important"
+        },
+        {
+         "cls": "text-[var(--ds-gray-1000)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "!leading-[1.7em]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:1.7em!important;line-height:1.7em!important"
+        },
+        {
+         "cls": "inline-flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:inline-flex"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:center"
+        },
+        {
+         "cls": "rounded-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.25rem"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "px-1.5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.375rem"
+        },
+        {
+         "cls": "py-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "min-w-[var(--geist-gap)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-width:var(--geist-gap)"
+        },
+        {
+         "cls": "min-h-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-height:1.5rem"
+        },
+        {
+         "cls": "ml-1",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-left:.25rem"
+        }
+       ],
+       "unresolved": [
+        "[&>span]:font-inherit"
+       ],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [],
+         "text": "⌥"
+        }
+       ]
+      },
+      {
+       "tag": "kbd",
+       "attrs": {
+        "data-geist-kbd": "",
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "font-sans!",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans)!important"
+        },
+        {
+         "cls": "text-[var(--ds-gray-1000)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "!leading-[1.7em]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:1.7em!important;line-height:1.7em!important"
+        },
+        {
+         "cls": "inline-flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:inline-flex"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:center"
+        },
+        {
+         "cls": "rounded-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.25rem"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "px-1.5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.375rem"
+        },
+        {
+         "cls": "py-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "min-w-[var(--geist-gap)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-width:var(--geist-gap)"
+        },
+        {
+         "cls": "min-h-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-height:1.5rem"
+        },
+        {
+         "cls": "ml-1",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-left:.25rem"
+        }
+       ],
+       "unresolved": [
+        "[&>span]:font-inherit"
+       ],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [],
+         "text": "⌃"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Combination",
+   "description": "",
+   "code": "import { Kbd } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Kbd meta shift />;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "kbd",
+       "attrs": {
+        "data-geist-kbd": "",
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "font-sans!",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans)!important"
+        },
+        {
+         "cls": "text-[var(--ds-gray-1000)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "!leading-[1.7em]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:1.7em!important;line-height:1.7em!important"
+        },
+        {
+         "cls": "inline-flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:inline-flex"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:center"
+        },
+        {
+         "cls": "rounded-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.25rem"
+        },
+        {
+         "cls": "text-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+        },
+        {
+         "cls": "px-1.5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.375rem"
+        },
+        {
+         "cls": "py-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "min-w-[var(--geist-gap)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-width:var(--geist-gap)"
+        },
+        {
+         "cls": "min-h-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-height:1.5rem"
+        },
+        {
+         "cls": "ml-1",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-left:.25rem"
+        }
+       ],
+       "unresolved": [
+        "[&>span]:font-inherit"
+       ],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {
+          "style": "min-width:1em;display:inline-block"
+         },
+         "styles": [],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [],
+         "text": "⇧"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Small",
+   "description": "",
+   "code": "import { Kbd } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Kbd small>/</Kbd>;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "kbd",
+       "attrs": {
+        "data-geist-kbd": "",
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "font-sans!",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-family:var(--font-geist-sans)!important"
+        },
+        {
+         "cls": "text-[var(--ds-gray-1000)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "shadow-[0_0_0_1px_var(--ds-gray-alpha-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--ds-gray-alpha-400));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "!leading-[1.7em]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-leading:1.7em!important;line-height:1.7em!important"
+        },
+        {
+         "cls": "inline-flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:inline-flex"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:center"
+        },
+        {
+         "cls": "rounded-sm",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.25rem"
+        },
+        {
+         "cls": "text-xs",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))"
+        },
+        {
+         "cls": "py-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-block:0"
+        },
+        {
+         "cls": "h-5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "height:1.25rem"
+        },
+        {
+         "cls": "px-1",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:.25rem"
+        },
+        {
+         "cls": "min-w-5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-width:1.25rem"
+        },
+        {
+         "cls": "min-h-5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "min-height:1.25rem"
+        },
+        {
+         "cls": "ml-0.5",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-left:.125rem"
+        }
+       ],
+       "unresolved": [
+        "[&>span]:font-inherit"
+       ],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [],
+         "unresolved": [],
+         "children": [],
+         "text": "/"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

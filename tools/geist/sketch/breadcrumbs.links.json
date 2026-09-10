@@ -1,0 +1,43 @@
+{
+  "heading": "Links",
+  "description": "Crumbs that navigate have no rendered example; the class strings come from the component's client code. A text crumb holds a plain anchor (inheriting the color, no underline, a 2px radius, the focus ring as its shadow); a menu crumb rendered as an anchor (the as prop) carries the chip's classes itself.",
+  "code": "export function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Breadcrumb type=\"text\">\n        <BreadcrumbItem><a href=\"#\">Home</a></BreadcrumbItem>\n        <BreadcrumbItem active><a href=\"#\">Dashboard</a></BreadcrumbItem>\n        <BreadcrumbItem>Overview</BreadcrumbItem>\n      </Breadcrumb>\n      <Breadcrumb type=\"menu\">\n        <BreadcrumbItem as=\"a\" href=\"#\">Home</BreadcrumbItem>\n        <BreadcrumbItem as=\"a\" href=\"#\" active>Dashboard</BreadcrumbItem>\n        <BreadcrumbItem>Overview</BreadcrumbItem>\n      </Breadcrumb>\n    </div>\n  );\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "div",
+          "class": "flex flex-col gap-4",
+          "children": [
+            {
+              "tag": "nav",
+              "attrs": { "aria-label": "Breadcrumb" },
+              "children": [
+                {
+                  "tag": "ol",
+                  "class": "flex list-none gap-1.5 p-0",
+                  "children": [
+                    { "tag": "li", "class": "text-[var(--ds-gray-900)] text-sm flex items-center gap-1.5 cursor-pointer transition-colors duration-200 [&_a]:text-inherit [&_a]:no-underline [&_a]:rounded-xs [&_a]:focus-visible:outline-none [&_a]:shadow-[var(--ds-focus-ring)] last-of-type:[&_svg]:hidden [&_svg]:!text-[var(--ds-gray-900)] hover:text-[var(--ds-gray-1000)]", "children": [{ "tag": "a", "attrs": { "href": "#" }, "text": "Home" }, { "tag": "svg", "attrs": { "viewBox": "0 0 16 16", "width": "16", "height": "16", "data-slot": "geist-icon", "style": "color:var(--ds-gray-900)", "aria-hidden": "true" }, "children": [{ "tag": "path" }] }] },
+                    { "tag": "li", "class": "text-[var(--ds-gray-1000)] text-sm flex items-center gap-1.5 cursor-pointer transition-colors duration-200 [&_a]:text-inherit [&_a]:no-underline [&_a]:rounded-xs [&_a]:focus-visible:outline-none [&_a]:shadow-[var(--ds-focus-ring)] last-of-type:[&_svg]:hidden [&_svg]:!text-[var(--ds-gray-900)] hover:text-[var(--ds-gray-1000)]", "attrs": { "aria-current": "true" }, "children": [{ "tag": "a", "attrs": { "href": "#" }, "text": "Dashboard" }, { "tag": "svg", "attrs": { "viewBox": "0 0 16 16", "width": "16", "height": "16", "data-slot": "geist-icon", "style": "color:var(--ds-gray-900)", "aria-hidden": "true" }, "children": [{ "tag": "path" }] }] },
+                    { "tag": "li", "class": "text-[var(--ds-gray-900)] text-sm flex items-center gap-1.5 cursor-pointer transition-colors duration-200 [&_a]:text-inherit [&_a]:no-underline [&_a]:rounded-xs [&_a]:focus-visible:outline-none [&_a]:shadow-[var(--ds-focus-ring)] last-of-type:[&_svg]:hidden [&_svg]:!text-[var(--ds-gray-900)] hover:text-[var(--ds-gray-1000)]", "text": "Overview", "children": [{ "tag": "svg", "attrs": { "viewBox": "0 0 16 16", "width": "16", "height": "16", "data-slot": "geist-icon", "style": "color:var(--ds-gray-900)", "aria-hidden": "true" }, "children": [{ "tag": "path" }] }] }
+                  ]
+                }
+              ]
+            },
+            {
+              "tag": "div",
+              "class": "flex gap-2 max-sm:overflow-x-auto",
+              "children": [
+                { "tag": "span", "class": "h-fit inline-flex items-center sm-max:last-of-type:mr-4 sm:inline-block sm:truncate sm:break-normal sm:max-w-full sm:min-w-0", "attrs": { "data-testid": "legacy/tooltip-trigger", "data-version": "v1", "tabindex": "0" }, "children": [{ "tag": "div", "children": [ { "tag": "a", "class": "py-0.5 px-1.5 rounded-sm border transition-[color,border-color,background] duration-200 cursor-pointer bg-[var(--ds-background-200)] border-[var(--ds-gray-alpha-400)] text-[var(--ds-gray-900)] font-[var(--font-sans)] text-xs truncate inline-block whitespace-nowrap break-normal max-w-full min-w-0 hover:bg-[var(--ds-gray-200)] hover:border-[var(--ds-gray-alpha-500)] hover:text-[var(--ds-gray-1000)] focus-visible:outline-none focus-visible:shadow-[var(--ds-focus-ring)]", "attrs": { "href": "#" }, "text": "Home" } ] }] },
+                { "tag": "span", "class": "h-fit inline-flex items-center sm-max:last-of-type:mr-4 sm:inline-block sm:truncate sm:break-normal sm:max-w-full sm:min-w-0", "attrs": { "data-testid": "legacy/tooltip-trigger", "data-version": "v1", "tabindex": "0" }, "children": [{ "tag": "div", "children": [ { "tag": "a", "class": "py-0.5 px-1.5 rounded-sm border transition-[color,border-color,background] duration-200 cursor-pointer font-[var(--font-sans)] text-xs truncate inline-block whitespace-nowrap break-normal max-w-full min-w-0 hover:bg-[var(--ds-gray-200)] hover:border-[var(--ds-gray-alpha-500)] hover:text-[var(--ds-gray-1000)] focus-visible:outline-none focus-visible:shadow-[var(--ds-focus-ring)] border-[var(--ds-gray-600)] bg-[var(--ds-background-100)] text-[var(--ds-gray-1000)]", "attrs": { "href": "#" }, "text": "Dashboard" } ] }] },
+                { "tag": "span", "class": "h-fit inline-flex items-center sm-max:last-of-type:mr-4 sm:inline-block sm:truncate sm:break-normal sm:max-w-full sm:min-w-0", "attrs": { "data-testid": "legacy/tooltip-trigger", "data-version": "v1", "tabindex": "0" }, "children": [{ "tag": "div", "children": [ { "tag": "button", "class": "py-0.5 px-1.5 rounded-sm border transition-[color,border-color,background] duration-200 cursor-pointer bg-[var(--ds-background-200)] border-[var(--ds-gray-alpha-400)] text-[var(--ds-gray-900)] font-[var(--font-sans)] text-xs truncate inline-block whitespace-nowrap break-normal max-w-full min-w-0 hover:bg-[var(--ds-gray-200)] hover:border-[var(--ds-gray-alpha-500)] hover:text-[var(--ds-gray-1000)] focus-visible:outline-none focus-visible:shadow-[var(--ds-focus-ring)]", "text": "Overview" } ] }] }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

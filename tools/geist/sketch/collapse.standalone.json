@@ -1,0 +1,81 @@
+{
+ "heading": "Standalone",
+ "description": "A medium Collapse outside a group has no rendered example (the page shows medium ones in groups and a small one alone); its class string comes from the component's client code: the block keeps both borders, the heading is 24px semibold, the title row has the 24px vertical padding.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <Collapse title=\"Question A\">\n      <p className=\"text-copy-16 mb-4\">Lorem ipsum dolor sit amet.</p>\n    </Collapse>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "text-left border-t border-b border-[var(--accents-2)]",
+   "attrs": {
+    "data-version": "v1"
+   },
+   "children": [
+    {
+     "tag": "h3",
+     "class": "text-[24px] font-semibold",
+     "children": [
+      {
+       "tag": "button",
+       "class": "geist-reset flex items-center justify-between w-full cursor-pointer text-[var(--ds-gray-1000)] focus:rounded focus:outline-none focus-visible:ring-[var(--ds-blue-700)] focus-visible:ring-2",
+       "attrs": {
+        "aria-controls": "collapse-section-*",
+        "aria-expanded": "false",
+        "id": "collapse-button-*",
+        "type": "button"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "class": "flex items-center py-6 w-full justify-between",
+         "text": "Question A",
+         "children": [
+          {
+           "tag": "span",
+           "class": "flex items-center text-gray-1000 transition-transform duration-200 ease-in-out",
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:currentColor"
+             },
+             "children": [
+              {
+               "tag": "path"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "text-base leading-[26px] [&>div]:max-h-[60vh] [&>div]:overflow-y-auto overflow-y-hidden transition-all duration-200 ease-in-out",
+     "attrs": {
+      "aria-labelledby": "collapse-button-*",
+      "id": "collapse-section-*",
+      "role": "region",
+      "style": "height:0"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "children": [
+        {
+         "tag": "p",
+         "class": "text-copy-16 mb-4",
+         "text": "Lorem ipsum dolor sit amet."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

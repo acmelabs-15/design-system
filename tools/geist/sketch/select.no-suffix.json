@@ -1,0 +1,48 @@
+{
+ "heading": "No suffix",
+ "description": "suffix={null} drops the chevron cell; the field keeps its right padding.",
+ "code": "export function Component(): JSX.Element {\n  return <Select aria-label=\"No suffix\" placeholder=\"No suffix\" suffix={null} />;\n}",
+ "dom": [
+  {
+   "tag": "label",
+   "attrs": {
+    "for": "select-sk5",
+    "data-version": "v1"
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "group relative flex items-center text-[var(--themed-fg)]",
+     "attrs": {
+      "data-geist-select": "",
+      "data-version": "v1"
+     },
+     "children": [
+      {
+       "tag": "select",
+       "class": "peer w-full cursor-pointer truncate appearance-none border-none rounded-[var(--geist-radius)] bg-[var(--ds-background-100)] text-[var(--ds-gray-1000)] px-3 pr-9 text-(length:--geist-form-font) h-[var(--geist-form-height)] leading-[var(--geist-form-line-height)] shadow-[0_0_0_1px_var(--themed-border,_var(--ds-gray-alpha-400))] transition-[box-shadow,color] duration-200 hover:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)] focus:outline-hidden focus:shadow-[var(--ds-focus-border)] !focus-visible:shadow-[var(--ds-focus-ring)] disabled:opacity-100 disabled:cursor-not-allowed disabled:bg-[var(--ds-gray-100)] disabled:text-[var(--ds-gray-700)] disabled:[-webkit-text-fill-color:var(--accents-3)] disabled:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] max-sm:text-base aria-[invalid=true]:outline-none aria-[invalid=true]:shadow-[0_0_0_1px_var(--themed-border),0px_0px_0px_4px_hsla(var(--ds-red-900-value),_0.16)] [&_option]:text-gray-1000",
+       "attrs": {
+        "aria-invalid": "false",
+        "id": "select-sk5",
+        "aria-label": "No suffix"
+       },
+       "children": [
+        {
+         "tag": "option",
+         "class": "text-gray-800",
+         "attrs": {
+          "disabled": "",
+          "label": "No suffix",
+          "value": "No suffix",
+          "selected": ""
+         },
+         "text": "No suffix"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

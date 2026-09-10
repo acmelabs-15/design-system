@@ -1,0 +1,60 @@
+{
+ "heading": "Light",
+ "description": "The light variant: the frame takes gray-100 with a gray-alpha-400 outline and the side keys gray-alpha-400. The class strings come from the component's client code (the server HTML renders the dark variant only); the merge drops the plain `outline` token the way the rendered dark frame shows.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <div className=\"w-full max-w-xs mx-auto\">\n      <Phone address=\"https://vercel.com\" variant=\"light\" />\n    </div>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "w-full max-w-xs mx-auto",
+   "children": [
+    {
+     "tag": "div",
+     "attrs": { "style": "container-type:inline-size" },
+     "children": [
+      {
+       "tag": "div",
+       "class": "relative w-full outline-[2px] rounded-[52px] p-[2.5%] [&]:rounded-[15cqw] bg-gray-100 outline-gray-alpha-400",
+       "children": [
+        {
+         "tag": "div",
+         "class": "rounded-[44px] overflow-hidden aspect-[9/19.5] relative [&]:rounded-[calc(15cqw-6px)]",
+         "children": [
+          { "tag": "div", "class": "absolute inset-0 bg-[#878787]" },
+          { "tag": "div", "class": "absolute bottom-0 left-0 w-full h-[18%] bg-gradient-to-b from-transparent via-[#000]/20 to-[#000]/70" }
+         ]
+        },
+        { "tag": "div", "class": "absolute top-[2.5%] left-1/2 transform -translate-x-1/2 w-[30%] h-[4%] bg-[#000] rounded-full" },
+        { "tag": "div", "class": "bg-[#fff] w-[34%] h-[0.6%] rounded-full absolute bottom-[3%] left-1/2 -translate-x-1/2" },
+        {
+         "tag": "div",
+         "class": "absolute bottom-[6%] left-0 w-full flex items-center justify-between px-[6%] gap-2",
+         "children": [
+          {
+           "tag": "div",
+           "class": "text-[#fff]/80 bg-[rgba(15,15,15,0.32)] backdrop-blur-sm rounded-full flex items-center justify-center shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)] w-[12cqw] h-[12cqw]",
+           "children": [{ "tag": "svg", "class": "-ml-0.5 w-[5cqw] h-[5cqw]", "attrs": { "viewBox": "0 0 16 16", "height": "16", "width": "16", "data-slot": "geist-icon", "style": "color:currentColor" }, "children": [{ "tag": "path" }] }]
+          },
+          {
+           "tag": "div",
+           "class": "text-[#fff]/80 bg-[rgba(15,15,15,0.32)] backdrop-blur-sm rounded-full flex items-center justify-center shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)] h-[12cqw] w-auto flex-1 text-label-13 min-w-0",
+           "children": [{ "tag": "span", "class": "text-[#fff] w-full block truncate px-4 text-center text-[4.5cqw]", "text": "vercel.com" }]
+          },
+          {
+           "tag": "div",
+           "class": "text-[#fff]/80 bg-[rgba(15,15,15,0.32)] backdrop-blur-sm rounded-full flex items-center justify-center shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)] w-[12cqw] h-[12cqw]",
+           "children": [{ "tag": "svg", "class": "w-[5cqw] h-[5cqw]", "attrs": { "viewBox": "0 0 16 16", "height": "16", "width": "16", "data-slot": "geist-icon", "style": "color:currentColor" }, "children": [{ "tag": "path" }] }]
+          }
+         ]
+        },
+        { "tag": "div", "class": "absolute top-[15%] -left-1 w-0.5 h-[3.5%] rounded-tl-full rounded-bl-full bg-gray-alpha-400" },
+        { "tag": "div", "class": "absolute top-[23.4%] -left-1 w-0.5 h-[7.1%] rounded-tl-full rounded-bl-full bg-gray-alpha-400" },
+        { "tag": "div", "class": "absolute top-[32.4%] -left-1 w-0.5 h-[7.1%] rounded-tl-full rounded-bl-full bg-gray-alpha-400" },
+        { "tag": "div", "class": "absolute top-[28.2%] -right-1 w-0.5 h-[11%] rounded-tr-full rounded-br-full bg-gray-alpha-400" }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

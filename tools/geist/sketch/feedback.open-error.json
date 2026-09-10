@@ -1,0 +1,308 @@
+{
+  "heading": "Open with error",
+  "description": "The open panel with a validation message unfolding under the textarea.",
+  "code": "import { Feedback } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Feedback label=\"vercel\" dryRun />;\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "attrs": {
+        "data-radix-popper-content-wrapper": "",
+        "style": "position:fixed;left:0;top:0;min-width:max-content;z-index:101"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "class": "bg-[var(--ds-background-100)] w-[340px] rounded-xl animate-feedbackFadeIn shadow-[var(--ds-shadow-menu)] overflow-hidden z-101 data-[align='end']:origin-top-right data-[align='start']:origin-top-left data-[state='closed']:animate-feedbackFadeOut",
+          "attrs": {
+            "data-side": "bottom",
+            "data-align": "center",
+            "data-state": "open",
+            "role": "dialog",
+            "id": "radix-*",
+            "tabindex": "-1",
+            "style": "--radix-popover-content-transform-origin:var(--radix-popper-transform-origin)"
+          },
+          "children": [
+            {
+              "tag": "div",
+              "class": "transition-[opacity,translate] duration-200 data-[phase=exiting]:-translate-y-1 data-[phase=exiting]:opacity-0",
+              "attrs": {
+                "data-phase": "entered"
+              },
+              "children": [
+                {
+                  "tag": "form",
+                  "class": "h-full",
+                  "children": [
+                    {
+                      "tag": "div",
+                      "class": "p-2 flex flex-col gap-2",
+                      "children": [
+                        {
+                          "tag": "label",
+                          "attrs": {
+                            "data-version": "v1"
+                          },
+                          "children": [
+                            {
+                              "tag": "div",
+                              "class": "flex max-w-full transition-all duration-150 shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] overflow-hidden font-normal rounded-md [&>input]:h-(--ds-size-medium) text-sm [&>input]:px-3 has-[:focus]:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(0,0,0,0.16)] dark-theme:has-[:focus]:!shadow-[0_0_0_1px_var(--ds-gray-alpha-600),0px_0px_0px_4px_rgba(255,255,255,0.24)] hover:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)] hover:[&:has(input:disabled)]:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] hover:[&:has(textarea:disabled)]:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] w-full",
+                              "attrs": {
+                                "data-geist-textarea-wrapper": ""
+                              },
+                              "children": [
+                                {
+                                  "tag": "textarea",
+                                  "class": "py-2.5 px-3 resize-none w-full [&[rows]]:h-[unset] inline-flex appearance-none webkit-search-reset min-w-0 border-none bg-[var(--ds-background-100)] text-[var(--geist-foreground)] order-1 outline-none focus:outline-none disabled:bg-[var(--ds-gray-100)] disabled:placeholder:text-[var(--accents-3)] disabled:[-webkit-text-fill-color:var(--accents-3)] disabled:opacity-100 disabled:text-[var(--ds-gray-700)] disabled:cursor-not-allowed h-[100px]",
+                                  "attrs": {
+                                    "autocomplete": "off",
+                                    "placeholder": "Your feedback...",
+                                    "id": "feedback-textarea"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "tag": "div",
+                          "class": "grid grid-rows-[1fr] overflow-hidden transition-[grid-template-rows,opacity] duration-200 data-[enter=animate]:starting:grid-rows-[0fr] data-[enter=animate]:starting:opacity-0 data-[phase=exiting]:grid-rows-[0fr] data-[phase=exiting]:opacity-0",
+                          "attrs": {
+                            "data-phase": "entered",
+                            "data-enter": "animate"
+                          },
+                          "children": [
+                            {
+                              "tag": "div",
+                              "class": "min-h-0",
+                              "children": [
+                                {
+                                  "tag": "p",
+                                  "class": "text-copy-14 text-red-900",
+                                  "attrs": {
+                                    "style": "padding-top:4px;display:block"
+                                  },
+                                  "text": "Please select an emoji"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "tag": "div",
+                          "class": "text-label-12 text-gray-900 flex justify-end items-center gap-1 p-0",
+                          "text": "supported.",
+                          "children": [
+                            {
+                              "tag": "svg",
+                              "attrs": {
+                                "fill": "none",
+                                "height": "14",
+                                "viewBox": "0 0 22 14",
+                                "width": "22"
+                              },
+                              "children": [
+                                {
+                                  "tag": "path",
+                                  "attrs": {
+                                    "clip-rule": "evenodd",
+                                    "fill-rule": "evenodd",
+                                    "fill": "var(--ds-gray-700)",
+                                    "d": "M19.5 1.25H2.5C1.80964 1.25 1.25 1.80964 1.25 2.5V11.5C1.25 12.1904 1.80964 12.75 2.5 12.75H19.5C20.1904 12.75 20.75 12.1904 20.75 11.5V2.5C20.75 1.80964 20.1904 1.25 19.5 1.25ZM2.5 0C1.11929 0 0 1.11929 0 2.5V11.5C0 12.8807 1.11929 14 2.5 14H19.5C20.8807 14 22 12.8807 22 11.5V2.5C22 1.11929 20.8807 0 19.5 0H2.5ZM3 3.5H4H4.25H4.6899L4.98715 3.82428L7 6.02011L9.01285 3.82428L9.3101 3.5H9.75H10H11V4.5V10.5H9V6.79807L7.73715 8.17572L7 8.97989L6.26285 8.17572L5 6.79807V10.5H3V4.5V3.5ZM15 7V3.5H17V7H19.5L17 9.5L16 10.5L15 9.5L12.5 7H15Z"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "tag": "div",
+                      "class": "flex justify-between bg-[var(--accents-1)] border-t border-[var(--accents-2)] p-3",
+                      "children": [
+                        {
+                          "tag": "span",
+                          "class": "flex items-center text-[var(--ds-gray-900)] gap-[1px]",
+                          "children": [
+                            {
+                              "tag": "button",
+                              "class": "bg-transparent border-none radius rounded-[50%] size-8 p-0 flex items-center justify-center cursor-pointer text-[var(--ds-gray-900)] [&_svg_path]:transition-all transition-[background,border-color] duration-200 hover:bg-[var(--ds-blue-300)] hover:border-[var(--ds-blue-300)] hover:[&_svg_path]:fill-[var(--ds-blue-900)] aria-[checked='true']:bg-[var(--ds-blue-300)] aria-[checked='true']:border-[var(--ds-blue-300)] aria-[checked='true']:[&_svg_path]:fill-[var(--ds-blue-900)] focus-visible:outline-hidden focus-visible:shadow-[var(--ds-focus-ring)]",
+                              "attrs": {
+                                "aria-checked": "false",
+                                "aria-label": "Select Hate it emoji",
+                                "role": "radio",
+                                "type": "button"
+                              },
+                              "children": [
+                                {
+                                  "tag": "svg",
+                                  "attrs": {
+                                    "data-slot": "geist-icon",
+                                    "style": "color:currentColor",
+                                    "viewBox": "0 0 16 16",
+                                    "height": "16",
+                                    "width": "16"
+                                  },
+                                  "children": [
+                                    {
+                                      "tag": "path",
+                                      "attrs": {
+                                        "fill": "var(--ds-blue-700)",
+                                        "fill-rule": "evenodd",
+                                        "clip-rule": "evenodd",
+                                        "d": "M4 9v7h1.5V9zm8 0v7h-1.5V9z"
+                                      }
+                                    },
+                                    {
+                                      "tag": "path",
+                                      "attrs": {
+                                        "fill": "currentColor",
+                                        "fill-rule": "evenodd",
+                                        "clip-rule": "evenodd",
+                                        "d": "M1.5 8A6.5 6.5 0 1 1 13 12.15v2.1A7.99 7.99 0 0 0 8 0a8 8 0 0 0-5 14.25v-2.1A6.5 6.5 0 0 1 1.5 8M8 14.5q.78 0 1.5-.17v1.53a8 8 0 0 1-3 0v-1.53q.72.17 1.5.17M3.79 8.37a2.04 2.04 0 0 1 2.92 0L7.8 7.32a3.54 3.54 0 0 0-5.08 0zm6.96-.62c-.57 0-1.1.23-1.46.62L8.2 7.32a3.54 3.54 0 0 1 5.08 0L12.2 8.37a2 2 0 0 0-1.46-.62M6.25 12h3.5a1.75 1.75 0 1 0-3.5 0"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "button",
+                              "class": "bg-transparent border-none radius rounded-[50%] size-8 p-0 flex items-center justify-center cursor-pointer text-[var(--ds-gray-900)] [&_svg_path]:transition-all transition-[background,border-color] duration-200 hover:bg-[var(--ds-blue-300)] hover:border-[var(--ds-blue-300)] hover:[&_svg_path]:fill-[var(--ds-blue-900)] aria-[checked='true']:bg-[var(--ds-blue-300)] aria-[checked='true']:border-[var(--ds-blue-300)] aria-[checked='true']:[&_svg_path]:fill-[var(--ds-blue-900)] focus-visible:outline-hidden focus-visible:shadow-[var(--ds-focus-ring)]",
+                              "attrs": {
+                                "aria-checked": "false",
+                                "aria-label": "Select Not great emoji",
+                                "role": "radio",
+                                "type": "button"
+                              },
+                              "children": [
+                                {
+                                  "tag": "svg",
+                                  "attrs": {
+                                    "data-slot": "geist-icon",
+                                    "style": "color:currentColor",
+                                    "viewBox": "0 0 16 16",
+                                    "height": "16",
+                                    "width": "16"
+                                  },
+                                  "children": [
+                                    {
+                                      "tag": "path",
+                                      "attrs": {
+                                        "fill": "currentColor",
+                                        "d": "M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0m0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13m0 7.88c1.47 0 2.76.75 3.52 1.88l.35.52-1.04.7-.34-.52a3 3 0 0 0-4.97 0l-.35.51-1.04-.7.35-.51A4.2 4.2 0 0 1 8 9.38M5.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5m4.5 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "button",
+                              "class": "bg-transparent border-none radius rounded-[50%] size-8 p-0 flex items-center justify-center cursor-pointer text-[var(--ds-gray-900)] [&_svg_path]:transition-all transition-[background,border-color] duration-200 hover:bg-[var(--ds-blue-300)] hover:border-[var(--ds-blue-300)] hover:[&_svg_path]:fill-[var(--ds-blue-900)] aria-[checked='true']:bg-[var(--ds-blue-300)] aria-[checked='true']:border-[var(--ds-blue-300)] aria-[checked='true']:[&_svg_path]:fill-[var(--ds-blue-900)] focus-visible:outline-hidden focus-visible:shadow-[var(--ds-focus-ring)]",
+                              "attrs": {
+                                "aria-checked": "false",
+                                "aria-label": "Select It's okay emoji",
+                                "role": "radio",
+                                "type": "button"
+                              },
+                              "children": [
+                                {
+                                  "tag": "svg",
+                                  "attrs": {
+                                    "data-slot": "geist-icon",
+                                    "style": "color:currentColor",
+                                    "viewBox": "0 0 16 16",
+                                    "height": "16",
+                                    "width": "16"
+                                  },
+                                  "children": [
+                                    {
+                                      "tag": "path",
+                                      "attrs": {
+                                        "fill": "currentColor",
+                                        "d": "M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0m0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13m3.87 8.83-.35.52a4.24 4.24 0 0 1-7.04 0l-.35-.51 1.04-.7.35.52a3 3 0 0 0 4.97 0l.34-.53zM5.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5m4.5 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "button",
+                              "class": "bg-transparent border-none radius rounded-[50%] size-8 p-0 flex items-center justify-center cursor-pointer text-[var(--ds-gray-900)] [&_svg_path]:transition-all transition-[background,border-color] duration-200 hover:bg-[var(--ds-blue-300)] hover:border-[var(--ds-blue-300)] hover:[&_svg_path]:fill-[var(--ds-blue-900)] aria-[checked='true']:bg-[var(--ds-blue-300)] aria-[checked='true']:border-[var(--ds-blue-300)] aria-[checked='true']:[&_svg_path]:fill-[var(--ds-blue-900)] focus-visible:outline-hidden focus-visible:shadow-[var(--ds-focus-ring)]",
+                              "attrs": {
+                                "aria-checked": "false",
+                                "aria-label": "Select Love it! emoji",
+                                "role": "radio",
+                                "type": "button"
+                              },
+                              "children": [
+                                {
+                                  "tag": "svg",
+                                  "attrs": {
+                                    "data-slot": "geist-icon",
+                                    "style": "color:currentColor",
+                                    "viewBox": "0 0 16 16",
+                                    "height": "16",
+                                    "width": "16"
+                                  },
+                                  "children": [
+                                    {
+                                      "tag": "path",
+                                      "attrs": {
+                                        "fill": "currentColor",
+                                        "fill-rule": "evenodd",
+                                        "clip-rule": "evenodd",
+                                        "d": "M14.5 8a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-11.5.97h-.62v.63c0 1.87 1.93 3.26 4.12 3.26s4.13-1.38 4.13-3.26v-.63H4.5M8 11.61c-1.4 0-2.36-.66-2.72-1.38h5.44c-.36.72-1.31 1.38-2.72 1.38"
+                                      }
+                                    },
+                                    {
+                                      "tag": "path",
+                                      "attrs": {
+                                        "fill": "var(--ds-amber-800)",
+                                        "fill-rule": "evenodd",
+                                        "clip-rule": "evenodd",
+                                        "d": "M6.15 4.92 5.37 3.5 4.6 4.92l-1.6.3 1.12 1.17L3.9 8l1.47-.7 1.46.7-.2-1.6 1.11-1.18zm5.25 0-.78-1.42-.77 1.42-1.6.3 1.12 1.17L9.16 8l1.47-.7 1.46.7-.2-1.6L13 5.21z"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "tag": "button",
+                          "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium !px-(--geist-gap-half) max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:6px] [--height:32px] !pl-[var(--x-padding)] !pr-[var(--x-padding)] rounded-md text-(length:--geist-form-small-font) [--spinner-size:16px] h-[var(--height)] data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))] dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))] data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow]",
+                          "attrs": {
+                            "type": "submit",
+                            "tabindex": "0",
+                            "data-react-aria-pressable": "true",
+                            "data-geist-button": "",
+                            "data-prefix": "false",
+                            "data-suffix": "false",
+                            "data-version": "v1",
+                            "style": "--geist-icon-size:16px"
+                          },
+                          "children": [
+                            {
+                              "tag": "span",
+                              "class": "truncate inline-block px-1.5",
+                              "text": "Send"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

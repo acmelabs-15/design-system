@@ -1,0 +1,55 @@
+{
+  "note": "Two censuses: the list (page breadcrumbs, acme-breadcrumbs) and the crumb (page breadcrumb, acme-breadcrumb), both read on the mirror page /geist/breadcrumbs and the docs page /components/breadcrumbs at an 1100px viewport, in both themes (theme: light | dark).",
+  "list": {
+    "geist": {
+      "side": "geist",
+      "page": "breadcrumbs",
+      "marker": "nav[aria-label=\"Breadcrumb\"] > ol, .max-sm\\:overflow-x-auto",
+      "theme": "light"
+    },
+    "ours": {
+      "side": "ours",
+      "page": "breadcrumbs",
+      "host": "acme-breadcrumbs",
+      "ours": ".list",
+      "theme": "light"
+    }
+  },
+  "crumb": {
+    "geist": {
+      "side": "geist",
+      "page": "breadcrumb",
+      "marker": "nav li, [data-testid=\"legacy/tooltip-trigger\"]",
+      "theme": "light",
+      "children": {
+        "chip": ".chip|:scope > div > button, :scope > div > a",
+        "link": ".link|:scope > a",
+        "chev": "svg|svg"
+      },
+      "textParts": [
+        "chip",
+        "link"
+      ]
+    },
+    "ours": {
+      "side": "ours",
+      "page": "breadcrumb",
+      "host": "acme-breadcrumb",
+      "ours": ".item",
+      "theme": "light",
+      "children": {
+        "chip": ".chip|:scope > div > button, :scope > div > a",
+        "link": ".link|:scope > a",
+        "chev": "svg|svg"
+      },
+      "textParts": [
+        "chip",
+        "link"
+      ]
+    }
+  },
+  "themes": [
+    "light",
+    "dark"
+  ]
+}

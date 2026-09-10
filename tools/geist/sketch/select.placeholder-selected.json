@@ -1,0 +1,76 @@
+{
+ "heading": "Placeholder selected",
+ "description": "A controlled field whose value is the placeholder: the field text reads gray-700.",
+ "code": "export function Component(): JSX.Element {\n  return <Select aria-label=\"Fruit\" placeholder=\"Select a fruit\" value=\"Select a fruit\" />;\n}",
+ "dom": [
+  {
+   "tag": "label",
+   "attrs": {
+    "for": "select-sk4",
+    "data-version": "v1"
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "group relative flex items-center text-[var(--themed-fg)]",
+     "attrs": {
+      "data-geist-select": "",
+      "data-version": "v1"
+     },
+     "children": [
+      {
+       "tag": "select",
+       "class": "peer w-full cursor-pointer truncate appearance-none border-none rounded-[var(--geist-radius)] bg-[var(--ds-background-100)] px-3 pr-9 text-(length:--geist-form-font) h-[var(--geist-form-height)] leading-[var(--geist-form-line-height)] shadow-[0_0_0_1px_var(--themed-border,_var(--ds-gray-alpha-400))] transition-[box-shadow,color] duration-200 hover:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)] focus:outline-hidden focus:shadow-[var(--ds-focus-border)] !focus-visible:shadow-[var(--ds-focus-ring)] disabled:opacity-100 disabled:cursor-not-allowed disabled:bg-[var(--ds-gray-100)] disabled:text-[var(--ds-gray-700)] disabled:[-webkit-text-fill-color:var(--accents-3)] disabled:shadow-[0_0_0_1px_var(--ds-gray-alpha-400)] max-sm:text-base aria-[invalid=true]:outline-none aria-[invalid=true]:shadow-[0_0_0_1px_var(--themed-border),0px_0px_0px_4px_hsla(var(--ds-red-900-value),_0.16)] text-[var(--ds-gray-700)] placeholder:text-[var(--ds-gray-700)] [&_option]:text-gray-1000",
+       "attrs": {
+        "aria-invalid": "false",
+        "id": "select-sk4",
+        "aria-label": "Select a fruit"
+       },
+       "children": [
+        {
+         "tag": "option",
+         "class": "text-gray-800",
+         "attrs": {
+          "disabled": "",
+          "label": "Select a fruit",
+          "value": "Select a fruit",
+          "selected": ""
+         },
+         "text": "Select a fruit"
+        }
+       ]
+      },
+      {
+       "tag": "span",
+       "class": "absolute inline-flex pointer-events-none text-[var(--ds-gray-700)] transition-colors duration-150 ease-in right-3 peer-/secondary:right-[15px] group-hover:text-[var(--geist-foreground)]",
+       "children": [
+        {
+         "tag": "svg",
+         "class": "size-(--ds-control-decoration-size)",
+         "attrs": {
+          "viewBox": "0 0 16 16",
+          "height": "16",
+          "width": "16",
+          "data-slot": "geist-icon",
+          "style": "color:currentColor"
+         },
+         "children": [
+          {
+           "tag": "path",
+           "attrs": {
+            "fill": "currentColor",
+            "fill-rule": "evenodd",
+            "d": "m14.06 5.5-.53.53-4.82 4.82a1 1 0 0 1-1.42 0L2.47 6.03l-.53-.53L3 4.44l.53.53L8 9.44l4.47-4.47.53-.53z",
+            "clip-rule": "evenodd"
+           }
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

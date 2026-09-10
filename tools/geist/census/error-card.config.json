@@ -1,0 +1,34 @@
+{
+  "notes": "Run each side in both themes (theme: light, then dark). The mirror loads census.js itself; on the docs page load http://localhost:4183/census.js with a script tag and await its onload. Both panes at an 1100px viewport. The reference root carries no marker: it is the list-none column with the red border. The Retry example is the sketch tools/geist/sketch/error-card.retry.json (extract.ts synth), rendered by the mirror after the page's own showcase. width fixes one preview width on both sides, so the card and its full-width children read alike; the title and the Retry label follow the text.",
+  "geist": {
+    "side": "geist",
+    "page": "error-card",
+    "marker": "div.list-none",
+    "width": "666px",
+    "children": {
+      "head": ".head|.gap-2",
+      "icon": ".head > svg|.gap-2 > svg",
+      "title": ".title|h3",
+      "retry": ".retry|button",
+      "retryLabel": ".retry-label|button > span",
+      "retryText": ".retry-text|button > span > span"
+    },
+    "textParts": ["title", "retryLabel", "retryText"]
+  },
+  "ours": {
+    "side": "ours",
+    "page": "error-card",
+    "host": "acme-error-card",
+    "ours": ".card",
+    "width": "666px",
+    "children": {
+      "head": ".head|.gap-2",
+      "icon": ".head > svg|.gap-2 > svg",
+      "title": ".title|h3",
+      "retry": ".retry|button",
+      "retryLabel": ".retry-label|button > span",
+      "retryText": ".retry-text|button > span > span"
+    },
+    "textParts": ["title", "retryLabel", "retryText"]
+  }
+}

@@ -1,0 +1,419 @@
+{
+ "heading": "Open",
+ "description": "The list open under the trigger's end (a client-only state): the trigger reads open with its chevron turned, the material panel 8px below at least the trigger's width, a row per item with its checkbox and its action hint hidden until a hover.",
+ "code": "import { MultiSelectRoot, MultiSelectTrigger, MultiSelectContent, MultiSelectRow } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <MultiSelectRoot open>\n      <MultiSelectTrigger>2 items selected</MultiSelectTrigger>\n      <MultiSelectContent align=\"end\">\n        <MultiSelectRow name=\"Design System\" checked selectedCount={2} totalCount={3} />\n        <MultiSelectRow name=\"Components\" checked selectedCount={2} totalCount={3} />\n        <MultiSelectRow name=\"Design Tokens\" selectedCount={2} totalCount={3} />\n      </MultiSelectContent>\n    </MultiSelectRoot>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "space-y-4",
+   "children": [
+    {
+     "tag": "button",
+     "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] !px-(--geist-gap-half) max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:10px] [--height:var(--ds-size-medium)] text-[14px] !pl-[var(--x-padding)] rounded-md [--themed-bg:_var(--ds-background-100)] shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--themed-fg:_var(--ds-gray-1000)] [--themed-border:_var(--ds-gray-400)] data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)] data-[focus]:transition-none h-[var(--height)] !justify-between font-normal max-sm:w-full data-hover:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)] [&>span:last-child]:-mr-px [&[data-hover=true]_[data-multi-select-trigger-suffix]]:text-gray-1000 [&[data-state=open]_[data-multi-select-trigger-suffix]]:rotate-180 [&[data-state=open]_[data-multi-select-trigger-suffix]]:transition-none pr-[13px]! transition-[border-color, background,color,transform,box-shadow]",
+     "attrs": {
+      "type": "button",
+      "tabindex": "0",
+      "data-react-aria-pressable": "true",
+      "aria-haspopup": "dialog",
+      "aria-expanded": "true",
+      "aria-controls": "radix-s1",
+      "data-state": "open",
+      "data-geist-button": "",
+      "data-prefix": "false",
+      "data-suffix": "true",
+      "data-version": "v1",
+      "style": "--geist-icon-size:16px"
+     },
+     "children": [
+      {
+       "tag": "span",
+       "class": "truncate inline-block px-1.5",
+       "children": [
+        {
+         "tag": "span",
+         "class": "-mx-0.5 flex min-w-0 items-center",
+         "text": "2 items selected"
+        }
+       ]
+      },
+      {
+       "tag": "span",
+       "class": "ml-1 shrink-0 mr-0.5 flex items-center justify-center [&_svg[data-slot=geist-icon]]:size-(--ds-control-decoration-size)",
+       "children": [
+        {
+         "tag": "div",
+         "class": "text-gray-700 transition-[color,transform] duration-150",
+         "attrs": {
+          "data-multi-select-trigger-suffix": "true"
+         },
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "data-slot": "geist-icon",
+            "style": "color:currentColor"
+           },
+           "children": [
+            {
+             "tag": "path"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-radix-popper-content-wrapper": "",
+      "dir": "ltr",
+      "style": "position:fixed;left:0px;top:0px;transform:translate(24px, 88px);min-width:max-content;z-index:auto;--radix-popper-transform-origin:100% 0px;--radix-popper-available-width:1052px;--radix-popper-available-height:780px;--radix-popper-anchor-width:150px;--radix-popper-anchor-height:40px"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "outline-none p-2 material-menu overflow-y-scroll min-w-(--radix-popover-trigger-width) max-h-[min(calc(var(--radix-popover-content-available-height)-16px),384px)] data-[state=closed]:duration-200 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+       "attrs": {
+        "data-side": "bottom",
+        "data-align": "end",
+        "data-state": "open",
+        "role": "dialog",
+        "id": "radix-s1",
+        "tabindex": "-1",
+        "style": "--radix-popover-content-transform-origin:var(--radix-popper-transform-origin);--radix-popover-content-available-width:var(--radix-popper-available-width);--radix-popover-content-available-height:var(--radix-popper-available-height);--radix-popover-trigger-width:var(--radix-popper-anchor-width);--radix-popover-trigger-height:var(--radix-popper-anchor-height)"
+       },
+       "children": [
+        {
+         "tag": "div",
+         "class": "group relative flex items-center",
+         "attrs": {
+          "data-multi-select-row": "true"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "peer flex size-7 items-center justify-center",
+           "children": [
+            {
+             "tag": "label",
+             "class": "text-[13px] inline-flex items-start cursor-pointer flex size-7 items-center! justify-center rounded p-1 hover:bg-gray-100 active:bg-gray-200",
+             "attrs": {
+              "data-version": "v1",
+              "for": "checkbox-s1"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "flex relative items-center p-0.5 -m-0.5",
+               "children": [
+                {
+                 "tag": "input",
+                 "class": "sr-only peer",
+                 "attrs": {
+                  "aria-labelledby": "Design System",
+                  "id": "checkbox-s1",
+                  "name": "Design System",
+                  "tabindex": "-1",
+                  "type": "checkbox",
+                  "checked": ""
+                 }
+                },
+                {
+                 "tag": "span",
+                 "class": "[--checkbox-color:var(--ds-gray-700)] inline-flex items-center justify-center size-4 relative bg-[var(--ds-background-100)] border border-[var(--ds-gray-700)] rounded-sm transition-all duration-200 rotate-[0.000001deg] peer-checked:[&:not(.indeterminate)]:bg-[var(--ds-gray-1000)] peer-checked:[&:not(.indeterminate)]:border-[var(--ds-gray-1000)] peer-disabled:peer-checked:[&:not(.indeterminate)]:bg-[var(--ds-gray-600)] peer-disabled:peer-checked:[&:not(.indeterminate)]:border-[var(--ds-gray-600)] peer-disabled:not-peer-checked:bg-[var(--ds-gray-100)] peer-disabled:not-peer-checked:border-[var(--ds-gray-500)] peer-disabled:[&.indeterminate_svg_line]:stroke-[var(--ds-gray-500)] peer-hover:not-peer-disabled:not-peer-checked:bg-[var(--ds-gray-200)] peer-focus-visible:shadow-[var(--ds-focus-ring)] peer-focus-visible:not-peer-checked:not-peer-disabled:bg-[var(--ds-gray-200)] group [&:not(.indeterminate)_svg_path]:invisible peer-checked:[&:not(.indeterminate)_svg_path]:visible [&:not(.indeterminate)_svg_line]:invisible [&.indeterminate_svg_line]:visible [&.indeterminate_svg_path]:invisible [&.inverted_svg_path]:visible !important",
+                 "attrs": {
+                  "aria-hidden": "true"
+                 },
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "children": [
+                    {
+                     "tag": "path",
+                     "class": "stroke-[var(--geist-background)]"
+                    },
+                    {
+                     "tag": "line",
+                     "class": "stroke-[var(--checkbox-color)]"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "button",
+           "class": "border-none select-none rounded p-1 bg-transparent hover:bg-gray-100 active:bg-gray-200 focus-visible:bg-gray-100 group/label flex-1 w-full flex justify-between items-center cursor-pointer outline-none",
+           "attrs": {
+            "id": "Design System",
+            "data-multi-select-row-button": "true",
+            "data-multi-select-row-name": "Design System",
+            "type": "button",
+            "tabindex": "-1",
+            "aria-label": "Design System. Check All"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "class": "flex items-center min-w-0 gap-2",
+             "children": [
+              {
+               "tag": "span",
+               "class": "min-w-0 text-label-14 font-normal text-gray-1000",
+               "attrs": {
+                "data-multi-select-row-name": "true"
+               },
+               "text": "Design System"
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "class": "flex items-center",
+             "children": [
+              {
+               "tag": "span",
+               "class": "font-normal opacity-0 min-w-[64px] text-right text-gray-900 ml-auto px-1 py-0.5 rounded-sm text-xs peer-hover:opacity-100 group-hover/label:opacity-100 group-focus-visible/label:opacity-100",
+               "attrs": {
+                "aria-hidden": "true",
+                "data-multi-select-row-label": "true"
+               },
+               "text": "Check All"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "class": "group relative flex items-center",
+         "attrs": {
+          "data-multi-select-row": "true"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "peer flex size-7 items-center justify-center",
+           "children": [
+            {
+             "tag": "label",
+             "class": "text-[13px] inline-flex items-start cursor-pointer flex size-7 items-center! justify-center rounded p-1 hover:bg-gray-100 active:bg-gray-200",
+             "attrs": {
+              "data-version": "v1",
+              "for": "checkbox-s2"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "flex relative items-center p-0.5 -m-0.5",
+               "children": [
+                {
+                 "tag": "input",
+                 "class": "sr-only peer",
+                 "attrs": {
+                  "aria-labelledby": "Components",
+                  "id": "checkbox-s2",
+                  "name": "Components",
+                  "tabindex": "-1",
+                  "type": "checkbox",
+                  "checked": ""
+                 }
+                },
+                {
+                 "tag": "span",
+                 "class": "[--checkbox-color:var(--ds-gray-700)] inline-flex items-center justify-center size-4 relative bg-[var(--ds-background-100)] border border-[var(--ds-gray-700)] rounded-sm transition-all duration-200 rotate-[0.000001deg] peer-checked:[&:not(.indeterminate)]:bg-[var(--ds-gray-1000)] peer-checked:[&:not(.indeterminate)]:border-[var(--ds-gray-1000)] peer-disabled:peer-checked:[&:not(.indeterminate)]:bg-[var(--ds-gray-600)] peer-disabled:peer-checked:[&:not(.indeterminate)]:border-[var(--ds-gray-600)] peer-disabled:not-peer-checked:bg-[var(--ds-gray-100)] peer-disabled:not-peer-checked:border-[var(--ds-gray-500)] peer-disabled:[&.indeterminate_svg_line]:stroke-[var(--ds-gray-500)] peer-hover:not-peer-disabled:not-peer-checked:bg-[var(--ds-gray-200)] peer-focus-visible:shadow-[var(--ds-focus-ring)] peer-focus-visible:not-peer-checked:not-peer-disabled:bg-[var(--ds-gray-200)] group [&:not(.indeterminate)_svg_path]:invisible peer-checked:[&:not(.indeterminate)_svg_path]:visible [&:not(.indeterminate)_svg_line]:invisible [&.indeterminate_svg_line]:visible [&.indeterminate_svg_path]:invisible [&.inverted_svg_path]:visible !important",
+                 "attrs": {
+                  "aria-hidden": "true"
+                 },
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "children": [
+                    {
+                     "tag": "path",
+                     "class": "stroke-[var(--geist-background)]"
+                    },
+                    {
+                     "tag": "line",
+                     "class": "stroke-[var(--checkbox-color)]"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "button",
+           "class": "border-none select-none rounded p-1 bg-transparent hover:bg-gray-100 active:bg-gray-200 focus-visible:bg-gray-100 group/label flex-1 w-full flex justify-between items-center cursor-pointer outline-none",
+           "attrs": {
+            "id": "Components",
+            "data-multi-select-row-button": "true",
+            "data-multi-select-row-name": "Components",
+            "type": "button",
+            "tabindex": "-1",
+            "aria-label": "Components. Check All"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "class": "flex items-center min-w-0 gap-2",
+             "children": [
+              {
+               "tag": "span",
+               "class": "min-w-0 text-label-14 font-normal text-gray-1000",
+               "attrs": {
+                "data-multi-select-row-name": "true"
+               },
+               "text": "Components"
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "class": "flex items-center",
+             "children": [
+              {
+               "tag": "span",
+               "class": "font-normal opacity-0 min-w-[64px] text-right text-gray-900 ml-auto px-1 py-0.5 rounded-sm text-xs peer-hover:opacity-100 group-hover/label:opacity-100 group-focus-visible/label:opacity-100",
+               "attrs": {
+                "aria-hidden": "true",
+                "data-multi-select-row-label": "true"
+               },
+               "text": "Check All"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "class": "group relative flex items-center",
+         "attrs": {
+          "data-multi-select-row": "true"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "peer flex size-7 items-center justify-center",
+           "children": [
+            {
+             "tag": "label",
+             "class": "text-[13px] inline-flex items-start cursor-pointer flex size-7 items-center! justify-center rounded p-1 hover:bg-gray-100 active:bg-gray-200",
+             "attrs": {
+              "data-version": "v1",
+              "for": "checkbox-s3"
+             },
+             "children": [
+              {
+               "tag": "span",
+               "class": "flex relative items-center p-0.5 -m-0.5",
+               "children": [
+                {
+                 "tag": "input",
+                 "class": "sr-only peer",
+                 "attrs": {
+                  "aria-labelledby": "Design Tokens",
+                  "id": "checkbox-s3",
+                  "name": "Design Tokens",
+                  "tabindex": "-1",
+                  "type": "checkbox"
+                 }
+                },
+                {
+                 "tag": "span",
+                 "class": "[--checkbox-color:var(--ds-gray-700)] inline-flex items-center justify-center size-4 relative bg-[var(--ds-background-100)] border border-[var(--ds-gray-700)] rounded-sm transition-all duration-200 rotate-[0.000001deg] peer-checked:[&:not(.indeterminate)]:bg-[var(--ds-gray-1000)] peer-checked:[&:not(.indeterminate)]:border-[var(--ds-gray-1000)] peer-disabled:peer-checked:[&:not(.indeterminate)]:bg-[var(--ds-gray-600)] peer-disabled:peer-checked:[&:not(.indeterminate)]:border-[var(--ds-gray-600)] peer-disabled:not-peer-checked:bg-[var(--ds-gray-100)] peer-disabled:not-peer-checked:border-[var(--ds-gray-500)] peer-disabled:[&.indeterminate_svg_line]:stroke-[var(--ds-gray-500)] peer-hover:not-peer-disabled:not-peer-checked:bg-[var(--ds-gray-200)] peer-focus-visible:shadow-[var(--ds-focus-ring)] peer-focus-visible:not-peer-checked:not-peer-disabled:bg-[var(--ds-gray-200)] group [&:not(.indeterminate)_svg_path]:invisible peer-checked:[&:not(.indeterminate)_svg_path]:visible [&:not(.indeterminate)_svg_line]:invisible [&.indeterminate_svg_line]:visible [&.indeterminate_svg_path]:invisible [&.inverted_svg_path]:visible !important",
+                 "attrs": {
+                  "aria-hidden": "true"
+                 },
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "children": [
+                    {
+                     "tag": "path",
+                     "class": "stroke-[var(--geist-background)]"
+                    },
+                    {
+                     "tag": "line",
+                     "class": "stroke-[var(--checkbox-color)]"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "button",
+           "class": "border-none select-none rounded p-1 bg-transparent hover:bg-gray-100 active:bg-gray-200 focus-visible:bg-gray-100 group/label flex-1 w-full flex justify-between items-center cursor-pointer outline-none",
+           "attrs": {
+            "id": "Design Tokens",
+            "data-multi-select-row-button": "true",
+            "data-multi-select-row-name": "Design Tokens",
+            "type": "button",
+            "tabindex": "-1",
+            "aria-label": "Design Tokens. Only"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "class": "flex items-center min-w-0 gap-2",
+             "children": [
+              {
+               "tag": "span",
+               "class": "min-w-0 text-label-14 font-normal text-gray-1000",
+               "attrs": {
+                "data-multi-select-row-name": "true"
+               },
+               "text": "Design Tokens"
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "class": "flex items-center",
+             "children": [
+              {
+               "tag": "span",
+               "class": "font-normal opacity-0 min-w-[64px] text-right text-gray-900 ml-auto px-1 py-0.5 rounded-sm text-xs peer-hover:opacity-100 group-hover/label:opacity-100 group-focus-visible/label:opacity-100",
+               "attrs": {
+                "aria-hidden": "true",
+                "data-multi-select-row-label": "true"
+               },
+               "text": "Only"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

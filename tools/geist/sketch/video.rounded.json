@@ -1,0 +1,45 @@
+{
+  "heading": "Rounded",
+  "description": "The `borderRadius` prop rounds the video box by the radius token.",
+  "code": "import { Video } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Video\n      height={582}\n      lazy={false}\n      borderRadius\n      src=\"https://k2mkucxia43oc7fa.public.blob.vercel-storage.com/front/geist-font-page/videos/dark/geist.mp4\"\n      width={600}\n    />\n  );\n}\n",
+  "dom": [
+    {
+      "tag": "figure",
+      "class": "block text-center my-[var(--video-margin)] mx-0",
+      "attrs": {
+        "data-version": "v1",
+        "role": "region",
+        "aria-label": "Video player",
+        "style": "--video-margin:40px;--video-width:min(600px, 950px)"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "class": "relative my-0 mx-auto w-[var(--video-width)] max-w-full",
+          "children": [
+            {
+              "tag": "div",
+              "class": "flex justify-center relative",
+              "attrs": {
+                "style": "padding-bottom:97%"
+              },
+              "children": [
+                {
+                  "tag": "video",
+                  "class": "h-full absolute left-0 top-0 w-full cursor-pointer [::-webkit-full-screen]:w-full [::-webkit-full-screen]:h-full [::-webkit-full-screen]:max-h-full [::-webkit-full-screen]:z-[99999999] rounded-[var(--geist-radius)]",
+                  "attrs": {
+                    "width": "600",
+                    "height": "582",
+                    "preload": "auto",
+                    "playsinline": "",
+                    "muted": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

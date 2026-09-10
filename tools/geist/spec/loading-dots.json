@@ -1,0 +1,828 @@
+{
+ "page": "loading-dots",
+ "title": "Loading Dots",
+ "lede": "Indicate an action running in the background.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { LoadingDots } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col items-start justify-between gap-6 flex-initial\">\n      <LoadingDots size=\"sm\" />\n      <LoadingDots size=\"md\" />\n      <LoadingDots size=\"lg\" />\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:flex-start"
+        },
+        {
+         "cls": "justify-between",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:space-between"
+        },
+        {
+         "cls": "gap-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1.5rem"
+        },
+        {
+         "cls": "flex-initial",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex:0 auto"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Loading",
+          "data-testid": "geistcn/loading-dots"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem;height:.125rem"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem;height:.125rem"
+            },
+            {
+             "cls": "animation-delay-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-delay:.2s"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem;height:.125rem"
+            },
+            {
+             "cls": "animation-delay-400",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-delay:.4s"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Loading",
+          "data-testid": "geistcn/loading-dots"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-[3px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:3px;height:3px"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-[3px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:3px;height:3px"
+            },
+            {
+             "cls": "animation-delay-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-delay:.2s"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-[3px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:3px;height:3px"
+            },
+            {
+             "cls": "animation-delay-400",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-delay:.4s"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {
+          "aria-label": "Loading",
+          "data-testid": "geistcn/loading-dots"
+         },
+         "styles": [
+          {
+           "cls": "inline-flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.25rem;height:.25rem"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.25rem;height:.25rem"
+            },
+            {
+             "cls": "animation-delay-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-delay:.2s"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "bg-(--ds-gray-900)",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-900)"
+            },
+            {
+             "cls": "mx-px",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-inline:1px"
+            },
+            {
+             "cls": "animate-blink",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation:var(--animate-blink)"
+            },
+            {
+             "cls": "size-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.25rem;height:.25rem"
+            },
+            {
+             "cls": "animation-delay-400",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-delay:.4s"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "With text",
+   "description": "",
+   "code": "import { LoadingDots } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <LoadingDots size=\"md\">\n      <p className=\"text-copy-14 text-gray-900\">Loading</p>\n    </LoadingDots>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "span",
+       "attrs": {
+        "aria-label": "Loading",
+        "data-testid": "geistcn/loading-dots"
+       },
+       "styles": [
+        {
+         "cls": "inline-flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:inline-flex"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "mr-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-right:.5rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-gray-900",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Loading"
+          }
+         ]
+        },
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "inline-block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-block"
+          },
+          {
+           "cls": "rounded-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:2147483647px"
+          },
+          {
+           "cls": "bg-(--ds-gray-900)",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mx-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:1px"
+          },
+          {
+           "cls": "animate-blink",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation:var(--animate-blink)"
+          },
+          {
+           "cls": "size-[3px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:3px;height:3px"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "inline-block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-block"
+          },
+          {
+           "cls": "rounded-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:2147483647px"
+          },
+          {
+           "cls": "bg-(--ds-gray-900)",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mx-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:1px"
+          },
+          {
+           "cls": "animate-blink",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation:var(--animate-blink)"
+          },
+          {
+           "cls": "size-[3px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:3px;height:3px"
+          },
+          {
+           "cls": "animation-delay-200",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation-delay:.2s"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "inline-block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-block"
+          },
+          {
+           "cls": "rounded-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:2147483647px"
+          },
+          {
+           "cls": "bg-(--ds-gray-900)",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mx-px",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-inline:1px"
+          },
+          {
+           "cls": "animate-blink",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation:var(--animate-blink)"
+          },
+          {
+           "cls": "size-[3px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:3px;height:3px"
+          },
+          {
+           "cls": "animation-delay-400",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "animation-delay:.4s"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

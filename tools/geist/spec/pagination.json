@@ -1,0 +1,1098 @@
+{
+ "page": "pagination",
+ "title": "Pagination",
+ "lede": "Navigate to the previous or next page.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Pagination } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nconst prev = {\n  title: 'Home',\n  href: '#',\n};\n\nconst next = {\n  title: 'Introduction',\n  href: '#',\n};\n\nexport function Component(): JSX.Element {\n  return <Pagination next={next} previous={prev} />;\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "nav",
+       "attrs": {
+        "aria-label": "pagination"
+       },
+       "styles": [
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "justify-between",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:space-between"
+        },
+        {
+         "cls": "flex-wrap",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-wrap:wrap"
+        },
+        {
+         "cls": "items-start",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:flex-start"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "[&_a]:no-underline",
+         "state": "a",
+         "at": "@layer utilities",
+         "decl": "text-decoration-line:none"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "a",
+         "attrs": {
+          "aria-label": "Go to previous page: Home",
+          "href": "#"
+         },
+         "styles": [
+          {
+           "cls": "group",
+           "state": "-focus-within\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.group):focus-within *)",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:cursor-pointer:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:bg-gray-200:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:\\!text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--geist-foreground)!important"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--geist-foreground)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:text-gray-1000:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:opacity-100:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "opacity:1"
+          },
+          {
+           "cls": "group",
+           "state": "-focus\\:opacity-100:is(:where(.group):focus *)",
+           "at": "@layer utilities",
+           "decl": "opacity:1"
+          },
+          {
+           "cls": "group",
+           "state": "-focus-visible\\:opacity-100:is(:where(.group):focus-visible *)",
+           "at": "@layer utilities",
+           "decl": "opacity:1"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=\\'true\\'\\]\\:-translate-x-6:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:calc(.25rem * -6);translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=true\\]\\:w-7:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "width:1.75rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=true\\]\\:-translate-x-\\[calc\\(var\\(--padding\\)\\*-1\\)\\]:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:calc(calc(var(--padding) * -1) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[26px\\]:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:26px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[33px\\]:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:33px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:h-8:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:rounded-md:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:border-b-0:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:px-3:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:py-0:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:py-1:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:.25rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:peer-not-checked\\:peer-not-active\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:peer-not-checked\\:peer-not-active\\:\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "--radio-color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "background-color:var(--ds-background-100)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:\\[--radio-color\\:var\\(--ds-gray-700\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "--radio-color:var(--ds-gray-700)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:cursor-not-allowed:is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:text-gray-900:is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-b-2:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-gray-1000:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:text-gray-1000:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "p-1",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:.25rem"
+          },
+          {
+           "cls": "rounded-md",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "pr-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-right:.5rem"
+          },
+          {
+           "cls": "pl-7",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-left:1.75rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-13",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:18px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:18px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-13",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "!text-[var(--ds-gray-900)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)!important"
+            },
+            {
+             "cls": "mb-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-bottom:.125rem"
+            },
+            {
+             "cls": "transition-colors",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            },
+            {
+             "cls": "group-hover:!text-[var(--geist-foreground)]",
+             "state": ":is(:where(.group):hover *)",
+             "at": "@layer utilities @media (hover:hover)",
+             "decl": "color:var(--geist-foreground)!important"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Previous"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "[&>span]:max-w-[20em]",
+             "state": ">span",
+             "at": "@layer utilities",
+             "decl": "max-width:20em"
+            },
+            {
+             "cls": "[&>span]:inline-block",
+             "state": ">span",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "[&>span]:truncate",
+             "state": ">span",
+             "at": "@layer utilities",
+             "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+            },
+            {
+             "cls": "[&>span]:break-words",
+             "state": ">span",
+             "at": "@layer utilities",
+             "decl": "overflow-wrap:break-word"
+            },
+            {
+             "cls": "focus-visible:outline-none",
+             "state": ":focus-visible",
+             "at": "@layer utilities",
+             "decl": "--tw-outline-style:none;outline-style:none"
+            },
+            {
+             "cls": "focus-visible:shadow-[var(--ds-focus-ring)]",
+             "state": ":focus-visible",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[16px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-size:16px"
+              },
+              {
+               "cls": "leading-[24px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:24px;line-height:24px"
+              },
+              {
+               "cls": "font-medium",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Home"
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "mt-0.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-top:.125rem"
+              },
+              {
+               "cls": "text-[var(--ds-gray-900)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-900)"
+              },
+              {
+               "cls": "transition-colors",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "duration-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.2s;transition-duration:.2s"
+              },
+              {
+               "cls": "duration-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.2s"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              },
+              {
+               "cls": "-left-[26px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:-26px"
+              },
+              {
+               "cls": "group-hover:text-[var(--geist-foreground)]",
+               "state": ":is(:where(.group):hover *)",
+               "at": "@layer utilities @media (hover:hover)",
+               "decl": "color:var(--geist-foreground)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "absolute",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:absolute"
+          },
+          {
+           "cls": "left-1/2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "left:50%"
+          },
+          {
+           "cls": "top-1/2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "top:50%"
+          },
+          {
+           "cls": "-translate-x-1/2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "-translate-y-1/2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-y:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "z-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "z-index:2"
+          },
+          {
+           "cls": "max-xl:hidden",
+           "state": "",
+           "at": "@layer utilities @media not all and (min-width:1200px)",
+           "decl": "display:none"
+          }
+         ],
+         "unresolved": [],
+         "children": []
+        },
+        {
+         "tag": "a",
+         "attrs": {
+          "aria-label": "Go to next page: Introduction",
+          "href": "#"
+         },
+         "styles": [
+          {
+           "cls": "group",
+           "state": "-focus-within\\:shadow-\\[var\\(--ds-focus-ring\\)\\]:is(:where(.group):focus-within *)",
+           "at": "@layer utilities",
+           "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:cursor-pointer:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:bg-gray-200:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:\\!text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--geist-foreground)!important"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:text-\\[var\\(--geist-foreground\\)\\]:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--geist-foreground)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:text-gray-1000:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:opacity-100:is(:where(.group):hover *)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "opacity:1"
+          },
+          {
+           "cls": "group",
+           "state": "-focus\\:opacity-100:is(:where(.group):focus *)",
+           "at": "@layer utilities",
+           "decl": "opacity:1"
+          },
+          {
+           "cls": "group",
+           "state": "-focus-visible\\:opacity-100:is(:where(.group):focus-visible *)",
+           "at": "@layer utilities",
+           "decl": "opacity:1"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=\\'true\\'\\]\\:-translate-x-6:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:calc(.25rem * -6);translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=true\\]\\:w-7:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "width:1.75rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=true\\]\\:-translate-x-\\[calc\\(var\\(--padding\\)\\*-1\\)\\]:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:calc(calc(var(--padding) * -1) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[26px\\]:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:26px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[animate\\=true\\]\\:translate-x-\\[33px\\]:is(:where(.group)[data-animate=true] *)",
+           "at": "@layer utilities",
+           "decl": "--tw-translate-x:33px;translate:var(--tw-translate-x) var(--tw-translate-y)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:h-8:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "height:2rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:rounded-md:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:border-b-0:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:0"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:px-3:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.75rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:py-0:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:0"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:py-1:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "padding-block:.25rem"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:text-label-13:is(:where(.group)[data-variant=secondary] *)>strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:peer-not-checked\\:peer-not-active\\:bg-\\[var\\(--ds-gray-200\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:peer-not-checked\\:peer-not-active\\:\\[--radio-color\\:var\\(--ds-gray-900\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "--radio-color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:bg-\\[var\\(--ds-background-100\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "background-color:var(--ds-background-100)"
+          },
+          {
+           "cls": "group",
+           "state": "-hover\\:peer-not-checked\\:peer-not-active\\:peer-not-disabled\\:\\[--radio-color\\:var\\(--ds-gray-700\\)\\]:is(:where(.group):hover *):is(:where(.peer):not(:checked)~*):is(:where(.peer):not(:active)~*):is(:where(.peer):not(:disabled)~*)",
+           "at": "@layer utilities @media (hover:hover)",
+           "decl": "--radio-color:var(--ds-gray-700)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:cursor-not-allowed:is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "cursor:not-allowed"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:disabled\\:text-gray-900:is(:where(.group)[data-variant=secondary] *):disabled",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-b-2:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-bottom-style:var(--tw-border-style);border-bottom-width:2px"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=primary\\]\\:aria-selected\\:border-gray-1000:is(:where(.group)[data-variant=primary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "border-color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:bg-gray-200:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-200)"
+          },
+          {
+           "cls": "group",
+           "state": "-data-\\[variant\\=secondary\\]\\:aria-selected\\:text-gray-1000:is(:where(.group)[data-variant=secondary] *)[aria-selected=true]",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "p-1",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:.25rem"
+          },
+          {
+           "cls": "rounded-md",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:.375rem"
+          },
+          {
+           "cls": "pl-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-left:.5rem"
+          },
+          {
+           "cls": "pr-7",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-right:1.75rem"
+          },
+          {
+           "cls": "ml-auto",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-left:auto"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-13",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:18px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:18px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-13",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "!text-[var(--ds-gray-900)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-gray-900)!important"
+            },
+            {
+             "cls": "mb-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-bottom:.125rem"
+            },
+            {
+             "cls": "transition-colors",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-duration:.2s;transition-duration:.2s"
+            },
+            {
+             "cls": "duration-200",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-duration:.2s"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+            },
+            {
+             "cls": "ease-in-out",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+            },
+            {
+             "cls": "group-hover:!text-[var(--geist-foreground)]",
+             "state": ":is(:where(.group):hover *)",
+             "at": "@layer utilities @media (hover:hover)",
+             "decl": "color:var(--geist-foreground)!important"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Next"
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "[&>span]:max-w-[20em]",
+             "state": ">span",
+             "at": "@layer utilities",
+             "decl": "max-width:20em"
+            },
+            {
+             "cls": "[&>span]:inline-block",
+             "state": ">span",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "[&>span]:truncate",
+             "state": ">span",
+             "at": "@layer utilities",
+             "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+            },
+            {
+             "cls": "[&>span]:break-words",
+             "state": ">span",
+             "at": "@layer utilities",
+             "decl": "overflow-wrap:break-word"
+            },
+            {
+             "cls": "focus-visible:outline-none",
+             "state": ":focus-visible",
+             "at": "@layer utilities",
+             "decl": "--tw-outline-style:none;outline-style:none"
+            },
+            {
+             "cls": "focus-visible:shadow-[var(--ds-focus-ring)]",
+             "state": ":focus-visible",
+             "at": "@layer utilities",
+             "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[16px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-size:16px"
+              },
+              {
+               "cls": "leading-[24px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:24px;line-height:24px"
+              },
+              {
+               "cls": "font-medium",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "Introduction"
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "mt-0.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-top:.125rem"
+              },
+              {
+               "cls": "text-[var(--ds-gray-900)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-900)"
+              },
+              {
+               "cls": "transition-colors",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "duration-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.2s;transition-duration:.2s"
+              },
+              {
+               "cls": "duration-200",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.2s"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "ease-in-out",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              },
+              {
+               "cls": "-right-[26px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "right:-26px"
+              },
+              {
+               "cls": "group-hover:text-[var(--geist-foreground)]",
+               "state": ":is(:where(.group):hover *)",
+               "at": "@layer utilities @media (hover:hover)",
+               "decl": "color:var(--geist-foreground)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

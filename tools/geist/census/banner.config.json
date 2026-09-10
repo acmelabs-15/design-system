@@ -1,0 +1,119 @@
+{
+  "note": "Two roots per banner: the wide row (page banner) and the mobile button (page banner-mobile). Run each side with theme light and dark; width fixes the preview so the mobile button's auto margins read alike. Primary runs at a 1024px viewport (the row shows, the mobile button hides); the -narrow pages repeat both at a 900px viewport (the mobile button shows, the row hides).",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "viewport": 1024,
+  "banner": {
+    "geist": {
+      "side": "geist",
+      "page": "banner",
+      "marker": "div.max-w-\\[1080px\\]",
+      "width": "800px",
+      "children": {
+        "text": ".text|p",
+        "action": "acme-button.action >> .btn|a[data-geist-button]",
+        "label": "acme-button.action >> .label|a[data-geist-button] .truncate",
+        "suffix": "acme-button.action >> .suffix|a[data-geist-button] .ml-1",
+        "icon": "acme-button.action svg|a[data-geist-button] svg"
+      }
+    },
+    "ours": {
+      "side": "ours",
+      "page": "banner",
+      "host": "acme-banner",
+      "ours": ".banner",
+      "width": "800px",
+      "children": {
+        "text": ".text|p",
+        "action": "acme-button.action >> .btn|a[data-geist-button]",
+        "label": "acme-button.action >> .label|a[data-geist-button] .truncate",
+        "suffix": "acme-button.action >> .suffix|a[data-geist-button] .ml-1",
+        "icon": "acme-button.action svg|a[data-geist-button] svg"
+      }
+    }
+  },
+  "banner-mobile": {
+    "geist": {
+      "side": "geist",
+      "page": "banner-mobile",
+      "marker": "a[data-geist-button].lg\\:\\!hidden",
+      "width": "800px",
+      "children": {
+        "label": ".label|.truncate",
+        "suffix": ".suffix|.ml-1",
+        "icon": "svg|svg"
+      }
+    },
+    "ours": {
+      "side": "ours",
+      "page": "banner-mobile",
+      "host": "acme-banner",
+      "ours": "acme-button.mobile >> .btn",
+      "width": "800px",
+      "children": {
+        "label": ".label|.truncate",
+        "suffix": ".suffix|.ml-1",
+        "icon": "svg|svg"
+      }
+    }
+  },
+  "narrow": {
+    "viewport": 900,
+    "banner-narrow": {
+      "geist": {
+        "side": "geist",
+        "page": "banner-narrow",
+        "marker": "div.max-w-\\[1080px\\]",
+        "width": "800px",
+        "children": {
+          "text": ".text|p",
+          "action": "acme-button.action >> .btn|a[data-geist-button]",
+          "label": "acme-button.action >> .label|a[data-geist-button] .truncate",
+          "suffix": "acme-button.action >> .suffix|a[data-geist-button] .ml-1",
+          "icon": "acme-button.action svg|a[data-geist-button] svg"
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "banner-narrow",
+        "host": "acme-banner",
+        "ours": ".banner",
+        "width": "800px",
+        "children": {
+          "text": ".text|p",
+          "action": "acme-button.action >> .btn|a[data-geist-button]",
+          "label": "acme-button.action >> .label|a[data-geist-button] .truncate",
+          "suffix": "acme-button.action >> .suffix|a[data-geist-button] .ml-1",
+          "icon": "acme-button.action svg|a[data-geist-button] svg"
+        }
+      }
+    },
+    "banner-mobile-narrow": {
+      "geist": {
+        "side": "geist",
+        "page": "banner-mobile-narrow",
+        "marker": "a[data-geist-button].lg\\:\\!hidden",
+        "width": "800px",
+        "children": {
+          "label": ".label|.truncate",
+          "suffix": ".suffix|.ml-1",
+          "icon": "svg|svg"
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "banner-mobile-narrow",
+        "host": "acme-banner",
+        "ours": "acme-button.mobile >> .btn",
+        "width": "800px",
+        "children": {
+          "label": ".label|.truncate",
+          "suffix": ".suffix|.ml-1",
+          "icon": "svg|svg"
+        }
+      }
+    }
+  }
+}

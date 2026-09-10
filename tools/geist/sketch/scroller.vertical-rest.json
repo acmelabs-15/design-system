@@ -1,0 +1,58 @@
+{
+  "heading": "Vertical at rest",
+  "description": "The vertical scroller after its first measurement (a client-only state): the content overflows below, so the bottom fade shows and the container reads as overflowing.",
+  "code": "import { Scroller } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Scroller height={220} overflow=\"y\" width=\"100%\">\n      <div\n        className=\"flex flex-col items-stretch justify-start gap-4 flex-initial\"\n        style={{ width: 400 }}\n      >\n        <div className=\"bg-gray-1000 h-64 w-64\" />\n        <div className=\"bg-gray-1000 h-64 w-64\" />\n      </div>\n    </Scroller>\n  );\n}\n",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "aGa9CG_overlayContainer",
+      "attrs": {
+        "data-geist-scroller": "",
+        "data-version": "v1",
+        "style": "width:100%;height:220px"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "class": "aGa9CG_overlay aGa9CG_bottom",
+          "attrs": {
+            "data-geist-scroller-overlay": ""
+          }
+        },
+        {
+          "tag": "div",
+          "class": "aGa9CG_scroller",
+          "attrs": {
+            "data-geist-scroller-container": "",
+            "data-geist-scroller-overflowing": "",
+            "data-overflow": "y"
+          },
+          "children": [
+            {
+              "tag": "div",
+              "children": [
+                {
+                  "tag": "div",
+                  "class": "flex flex-col items-stretch justify-start gap-4 flex-initial",
+                  "attrs": {
+                    "style": "width:400px"
+                  },
+                  "children": [
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-64"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-64"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

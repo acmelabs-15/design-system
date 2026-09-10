@@ -1,0 +1,86 @@
+{
+  "heading": "Dashed grid",
+  "description": "A Grid with its own dashedGuides prop: every guide carries the dashed class. The docs render no such grid; the class string comes from the component client code.",
+  "code": "export function Component(): JSX.Element {\n  return (\n    <GridSystem guideWidth={1} unstable_useContainer>\n      <Grid columns={2} rows={1} dashedGuides>\n        <GridCell>1</GridCell>\n        <GridCell>2</GridCell>\n      </Grid>\n    </GridSystem>\n  );\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "div",
+          "class": "AMTIxG_unstable_gridSystemWrapper",
+          "children": [
+            {
+              "tag": "div",
+              "class": "AMTIxG_gridSystem",
+              "attrs": {
+                "style": "--guide-width:1px"
+              },
+              "children": [
+                {
+                  "tag": "section",
+                  "class": "AMTIxG_grid",
+                  "attrs": {
+                    "data-grid": "",
+                    "style": "--grid-rows:1;--grid-columns:2;--sm-height:fit-content"
+                  },
+                  "children": [
+                    {
+                      "tag": "div",
+                      "class": "AMTIxG_block",
+                      "attrs": {
+                        "data-grid-cell": "",
+                        "style": "--sm-grid-row:auto;--sm-grid-column:auto;--sm-cell-rows:auto;--sm-cell-columns:auto"
+                      },
+                      "text": "1"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "AMTIxG_block",
+                      "attrs": {
+                        "data-grid-cell": "",
+                        "style": "--sm-grid-row:auto;--sm-grid-column:auto;--sm-cell-rows:auto;--sm-cell-columns:auto"
+                      },
+                      "text": "2"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "AMTIxG_guides",
+                      "attrs": {
+                        "aria-hidden": "true",
+                        "data-grid-guides": "true"
+                      },
+                      "children": [
+                        {
+                          "tag": "div",
+                          "class": "AMTIxG_guide AMTIxG_dashedGuide",
+                          "attrs": {
+                            "aria-hidden": "true",
+                            "style": "--x:1;--y:1;border-bottom:none"
+                          }
+                        },
+                        {
+                          "tag": "div",
+                          "class": "AMTIxG_guide AMTIxG_dashedGuide",
+                          "attrs": {
+                            "aria-hidden": "true",
+                            "style": "--x:2;--y:1;border-right:none;border-bottom:none"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tag": "div",
+                  "class": "AMTIxG_gridSystemLazyContent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

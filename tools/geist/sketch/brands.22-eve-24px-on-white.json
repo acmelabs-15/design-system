@@ -1,0 +1,140 @@
+{
+ "heading": "eve 24px on white",
+ "description": "The page's eve cell on a white ground, as the server renders it.",
+ "code": "<Preview iconToCopy={<LogoeveSvg />} fullWidth><LogoeveSvg className=\"text-black\" height={24} /></Preview>",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "group relative flex justify-center bg-white py-14 md:py-28",
+   "children": [
+    {
+     "tag": "div",
+     "class": "light-theme brand-force-light group m-0 h-auto grid items-center border-none",
+     "children": [
+      {
+       "tag": "button",
+       "class": "outline-none m-0 border-0 align-baseline no-underline group/trigger cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium max-w-full items-center justify-center transition-[border-color, background,color,transform,box-shadow] duration-[time:150ms] ease-in-out data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:10px] [--height:var(--ds-size-medium)] text-[14px] !px-0 rounded-md [--themed-bg:_var(--ds-background-100)] shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--themed-fg:_var(--ds-gray-1000)] [--themed-border:_var(--ds-gray-400)] data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)] data-[focus]:transition-none p-0 w-[var(--geist-form-height)] h-[var(--geist-form-height)] data-hover:bg-[var(--ds-gray-100)] dark-theme:data-hover:bg-[var(--ds-gray-200)] data-hover:text-[var(--themed-fg)] data-hover:disabled:bg-[var(--ds-gray-100)] absolute right-4 top-4 opacity-0 focus:opacity-100 group-hover:opacity-100",
+       "attrs": {
+        "type": "button",
+        "tabindex": "0",
+        "data-react-aria-pressable": "true",
+        "aria-label": "Copy code",
+        "data-testid": "copy/button",
+        "data-geist-button": "",
+        "data-prefix": "false",
+        "data-suffix": "false",
+        "data-version": "v1",
+        "style": "--geist-icon-size:16px"
+       },
+       "children": [
+        {
+         "tag": "span",
+         "class": "truncate px-1.5 inline-flex items-center justify-center shrink-0",
+         "children": [
+          {
+           "tag": "div",
+           "class": "relative size-4",
+           "children": [
+            {
+             "tag": "div",
+             "class": "absolute transition-all duration-200 ease-in-out opacity-0 scale-50",
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {
+                  "fill": "currentColor",
+                  "fill-rule": "evenodd",
+                  "d": "m15.56 4-.53.53-8.8 8.8c-.68.68-1.78.68-2.47 0l.53-.54-.53.53-2.79-2.79L.44 10 1.5 8.94l.53.53 2.8 2.8c.1.09.25.09.35 0l8.79-8.8.53-.53z",
+                  "clip-rule": "evenodd"
+                 }
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "class": "absolute transition-all duration-200 ease-in-out opacity-100 scale-100",
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {
+                  "fill": "currentColor",
+                  "fill-rule": "evenodd",
+                  "d": "M8.25 2c.14 0 .25.11.25.25V3H10v-.75C10 1.28 9.22.5 8.25.5h-5.5C1.78.5 1 1.28 1 2.25v7.5c0 .97.78 1.75 1.75 1.75H4.5V10H2.75a.25.25 0 0 1-.25-.25v-7.5c0-.14.11-.25.25-.25zm5 4c.14 0 .25.11.25.25v7.5q-.02.23-.25.25h-5.5a.25.25 0 0 1-.25-.25v-7.5c0-.14.11-.25.25-.25zm0 9.5c.97 0 1.75-.78 1.75-1.75v-7.5c0-.97-.78-1.75-1.75-1.75h-5.5C6.78 4.5 6 5.28 6 6.25v7.5c0 .97.78 1.75 1.75 1.75z",
+                  "clip-rule": "evenodd"
+                 }
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "flex justify-center items-center",
+       "children": [
+        {
+         "tag": "svg",
+         "class": "text-black",
+         "attrs": {
+          "viewBox": "0 0 169 53",
+          "height": "24",
+          "width": "77",
+          "data-slot": "geist-logo-svg"
+         },
+         "children": [
+          {
+           "tag": "g",
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {
+              "fill": "currentColor",
+              "d": "M169 8.47h-51.39L81.73 53H70.36L113 0H169zM169 44.51v8.47h-45.87V44.5zM45.87 52.98H0V44.5h45.87zM38.66 30.55H0v-8.47h38.66z"
+             }
+            },
+            {
+             "tag": "path",
+             "attrs": {
+              "fill": "currentColor",
+              "d": "M169 30.55h-38.66v-8.47H169zM75.52 8.47H0V0h75.52z"
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,146 @@
+{
+  "heading": "Horizontal with buttons at rest",
+  "description": "The horizontal scroller with buttons after its first measurement: the right fade shows; the buttons sit below the viewport, at the start.",
+  "code": "import { Scroller } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Scroller\n        childrenContainerClassName=\"gap-4\"\n        height=\"100%\"\n        overflow=\"x\"\n        width=\"100%\"\n        withButtons\n      >\n        {...Array.from({ length: 4 }, (_, i) => (\n          // biome-ignore lint/suspicious/noArrayIndexKey: Ignored using `--suppress`\n          <div className=\"bg-gray-1000 h-64 w-96 shrink-0\" key={i} />\n        ))}\n      </Scroller>\n    </div>\n  );\n}\n",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "flex flex-col gap-4",
+      "children": [
+        {
+          "tag": "div",
+          "class": "aGa9CG_overlayContainer aGa9CG_isHorizontal",
+          "attrs": {
+            "data-geist-scroller": "",
+            "data-version": "v1",
+            "style": "width:100%;height:100%"
+          },
+          "children": [
+            {
+              "tag": "div",
+              "class": "aGa9CG_overlay aGa9CG_right",
+              "attrs": {
+                "data-geist-scroller-overlay": ""
+              }
+            },
+            {
+              "tag": "div",
+              "class": "aGa9CG_scroller",
+              "attrs": {
+                "data-geist-scroller-container": "",
+                "data-geist-scroller-overflowing": "",
+                "data-overflow": "x"
+              },
+              "children": [
+                {
+                  "tag": "div",
+                  "class": "gap-4",
+                  "children": [
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-96 shrink-0"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-96 shrink-0"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-96 shrink-0"
+                    },
+                    {
+                      "tag": "div",
+                      "class": "bg-gray-1000 h-64 w-96 shrink-0"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "div",
+          "class": "aGa9CG_buttons",
+          "children": [
+            {
+              "tag": "button",
+              "class": "outline-none m-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:6px] [--height:32px] !px-0 !rounded-full [--themed-bg:_var(--ds-background-100)] shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--themed-fg:_var(--ds-gray-1000)] [--themed-border:_var(--ds-gray-400)] data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)] data-[focus]:transition-none p-0 w-[var(--geist-form-small-height)] h-[32px] text-(length:--geist-form-small-font) [--spinner-size:16px] data-hover:bg-[var(--ds-gray-100)] dark-theme:data-hover:bg-[var(--ds-gray-200)] data-hover:text-[var(--themed-fg)] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow]",
+              "attrs": {
+                "type": "submit",
+                "tabindex": "0",
+                "data-react-aria-pressable": "true",
+                "aria-label": "scroll left",
+                "data-geist-button": "",
+                "data-prefix": "false",
+                "data-suffix": "false",
+                "data-version": "v1",
+                "style": "--geist-icon-size:16px"
+              },
+              "children": [
+                {
+                  "tag": "span",
+                  "class": "truncate px-1.5 inline-flex items-center justify-center shrink-0",
+                  "children": [
+                    {
+                      "tag": "svg",
+                      "attrs": {
+                        "viewBox": "0 0 16 16",
+                        "height": "16",
+                        "width": "16",
+                        "data-slot": "geist-icon",
+                        "style": "color:currentColor"
+                      },
+                      "children": [
+                        {
+                          "tag": "path"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tag": "button",
+              "class": "outline-none m-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:6px] [--height:32px] !px-0 !rounded-full [--themed-bg:_var(--ds-background-100)] shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--themed-fg:_var(--ds-gray-1000)] [--themed-border:_var(--ds-gray-400)] data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)] data-[focus]:transition-none p-0 w-[var(--geist-form-small-height)] h-[32px] text-(length:--geist-form-small-font) [--spinner-size:16px] data-hover:bg-[var(--ds-gray-100)] dark-theme:data-hover:bg-[var(--ds-gray-200)] data-hover:text-[var(--themed-fg)] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow]",
+              "attrs": {
+                "type": "submit",
+                "tabindex": "0",
+                "data-react-aria-pressable": "true",
+                "aria-label": "scroll right",
+                "data-geist-button": "",
+                "data-prefix": "false",
+                "data-suffix": "false",
+                "data-version": "v1",
+                "style": "--geist-icon-size:16px"
+              },
+              "children": [
+                {
+                  "tag": "span",
+                  "class": "truncate px-1.5 inline-flex items-center justify-center shrink-0",
+                  "children": [
+                    {
+                      "tag": "svg",
+                      "attrs": {
+                        "viewBox": "0 0 16 16",
+                        "height": "16",
+                        "width": "16",
+                        "data-slot": "geist-icon",
+                        "style": "color:currentColor"
+                      },
+                      "children": [
+                        {
+                          "tag": "path"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

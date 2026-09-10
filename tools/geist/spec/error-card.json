@@ -1,0 +1,473 @@
+{
+ "page": "error-card",
+ "title": "Error Card",
+ "lede": "A card used to communicate an error state with a title and message.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { ErrorCard } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <ErrorCard\n      message=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\"\n      title=\"No credits left\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "bg-background-100",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "rounded-lg",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.5rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "list-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "list-style-type:none"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "shadow-[var(--ds-shadow-border)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--ds-shadow-border);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "empty:hidden",
+         "state": ":empty",
+         "at": "@layer utilities",
+         "decl": "display:none"
+        },
+        {
+         "cls": "p-4",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding:1rem"
+        },
+        {
+         "cls": "border",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-style:var(--tw-border-style);border-width:1px"
+        },
+        {
+         "cls": "border-[var(--ds-red-400)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-red-400)"
+        },
+        {
+         "cls": "!bg-[var(--ds-red-200)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-red-200)!important"
+        },
+        {
+         "cls": "text-[var(--ds-red-900)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-red-900)"
+        },
+        {
+         "cls": "shadow-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "data-slot": "geist-icon",
+            "style": "color:currentColor"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {},
+             "styles": [],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "h3",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-16",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-16",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            },
+            {
+             "cls": "text-inherit",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:inherit"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "No credits left"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Retry",
+   "description": "The page renders no retry example; the state comes from the component's client code: with a `retry` callback the card appends a Button of type `unstyled` (no class of its own: the base reset alone, the label span with its 6px side padding) whose child is a medium 16/24 red-900 span reading Retry, `retryLabel` as its aria-label.",
+   "code": "export function Component(): JSX.Element {\n  return (\n    <ErrorCard\n      retry={() => {}}\n      retryLabel=\"Retry loading deployments\"\n      title=\"Couldn't load deployments\"\n    />\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "bg-background-100",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-background-100)"
+      },
+      {
+       "cls": "rounded-lg",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-radius:.5rem"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "list-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "list-style-type:none"
+      },
+      {
+       "cls": "flex-col",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "flex-direction:column"
+      },
+      {
+       "cls": "shadow-[var(--ds-shadow-border)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-shadow:var(--ds-shadow-border);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+      },
+      {
+       "cls": "empty:hidden",
+       "state": ":empty",
+       "at": "@layer utilities",
+       "decl": "display:none"
+      },
+      {
+       "cls": "p-4",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1rem"
+      },
+      {
+       "cls": "border",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-style:var(--tw-border-style);border-width:1px"
+      },
+      {
+       "cls": "border-[var(--ds-red-400)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "border-color:var(--ds-red-400)"
+      },
+      {
+       "cls": "!bg-[var(--ds-red-200)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-red-200)!important"
+      },
+      {
+       "cls": "text-[var(--ds-red-900)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "color:var(--ds-red-900)"
+      },
+      {
+       "cls": "shadow-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "gap-2",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:.5rem"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "svg",
+         "attrs": {
+          "viewBox": "0 0 16 16",
+          "height": "16",
+          "width": "16",
+          "data-slot": "geist-icon",
+          "style": "color:currentColor"
+         },
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "path",
+           "attrs": {
+            "fill": "currentColor",
+            "d": "M10.9 0a1 1 0 0 1 .7.3l4.1 4.1.07.07a1 1 0 0 1 .23.63v5.8a1 1 0 0 1-.3.7l-4.1 4.1a1 1 0 0 1-.7.3H5a1 1 0 0 1-.53-.23l-.08-.06-4.1-4.1A1 1 0 0 1 0 10.9V5.1a1 1 0 0 1 .3-.7L4.4.3A1 1 0 0 1 5 0h5.9M1.5 5.3v5.4l3.8 3.8h5.4l3.8-3.8V5.3l-3.8-3.8H5.3zM8 10a1 1 0 1 1 0 2 1 1 0 0 1 0-2m.75-1.25h-1.5v-5h1.5z"
+           },
+           "styles": [],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        },
+        {
+         "tag": "h3",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "text-copy-16",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-family:var(--font-geist-sans);--tw-leading:24px;--tw-font-weight:var(--font-weight-normal);font-size:16px;line-height:24px;font-weight:var(--font-weight-normal)"
+          },
+          {
+           "cls": "text-copy-16",
+           "state": ">strong",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+          },
+          {
+           "cls": "text-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-align:center"
+          },
+          {
+           "cls": "text-inherit",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:inherit"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Couldn't load deployments"
+        }
+       ]
+      },
+      {
+       "tag": "button",
+       "attrs": {
+        "type": "submit",
+        "tabindex": "0",
+        "data-geist-button": "",
+        "data-prefix": "false",
+        "data-suffix": "false",
+        "data-version": "v1",
+        "aria-label": "Retry loading deployments",
+        "style": "--geist-icon-size:16px"
+       },
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "truncate",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+          },
+          {
+           "cls": "inline-block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-block"
+          },
+          {
+           "cls": "px-1.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.375rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "font-medium",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+            },
+            {
+             "cls": "text-red-900",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--ds-red-900)"
+            },
+            {
+             "cls": "text-[16px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:16px"
+            },
+            {
+             "cls": "leading-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:24px;line-height:24px"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Retry"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+  "children": {
+    "box": ".box|div[class~=\"mx-auto\"]",
+    "frame": ".frame|div[class~=\"justify-center\"]",
+    "video": "video|video",
+    "controls": ".controls|div[class~=\"h-12\"]",
+    "play": ".play|div[class~=\"h-12\"] > button",
+    "icon": ".play svg|div[class~=\"h-12\"] > button svg",
+    "current": ".current|div[class~=\"pl-0\"]",
+    "track": ".track|div[class~=\"-mt-px\"]",
+    "scrub": ".scrub|div[class~=\"h-[18px]\"]",
+    "bar": "progress|progress",
+    "handle": ".handle|div[class~=\"size-2.5\"]",
+    "total": ".total|div[class~=\"h-12\"] > div:last-child"
+  },
+  "textParts": ["box", "frame", "video", "controls", "track", "scrub", "bar"],
+  "geist": { "side": "geist", "page": "video", "marker": "figure[aria-label=\"Video player\"]", "width": "666px", "theme": "light | dark" },
+  "ours": { "side": "ours", "page": "video", "host": "acme-video", "ours": ".video", "width": "666px", "theme": "light | dark" },
+  "notes": [
+    "Both sides take `children`, `textParts` and `width` above.",
+    "Mirror: a serve.ts instance with the whole-heading sketch match (PORT=4187 until the shared mirror restarts): the Controls, Controls visible and Rounded sketches must render (6 previews).",
+    "Ours: before the call, await each acme-video's updateComplete and pause its inner video, so both sides read the same at-rest state (the mirror runs no script)."
+  ]
+}

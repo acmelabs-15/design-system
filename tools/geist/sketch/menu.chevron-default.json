@@ -1,0 +1,70 @@
+{
+ "heading": "Chevron on the default variant",
+ "description": "The chevron on the default variant: the trigger keeps its own hover fill, and the chevron stays gray.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <MenuContainer>\n      <MenuButton showChevron>Actions</MenuButton>\n      <Menu width={200}>\n        <MenuItem onClick={() => undefined}>One</MenuItem>\n        <MenuItem onClick={() => undefined}>Two</MenuItem>\n      </Menu>\n    </MenuContainer>\n  );\n}",
+ "dom": [
+  {
+   "tag": "button",
+   "attrs": {
+    "type": "submit",
+    "tabindex": "0",
+    "data-react-aria-pressable": "true",
+    "aria-haspopup": "true",
+    "aria-expanded": "false",
+    "aria-controls": "menu-_R_qgslubquiuq6ivb_",
+    "data-geist-menu-button": "",
+    "data-is-open": "false",
+    "id": "menu-button-_R_qgslubquiuq6ivbH1_",
+    "style": "--geist-icon-size:16px",
+    "data-geist-button": "",
+    "data-prefix": "false",
+    "data-suffix": "false",
+    "data-version": "v1"
+   },
+   "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium !px-(--geist-gap-half) max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:transition-none data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:10px] [--height:var(--ds-size-medium)] text-[14px] !pl-[var(--x-padding)] !pr-[var(--x-padding)] rounded-md h-[var(--height)] data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))] dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))] data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))] data-hover:disabled:bg-[var(--ds-gray-100)] transition-[border-color, background,color,transform,box-shadow] pr-10!",
+   "children": [
+    {
+     "tag": "span",
+     "attrs": {},
+     "class": "truncate inline-block px-1.5 flex-grow",
+     "children": [
+      {
+       "tag": "span",
+       "attrs": {},
+       "class": "flex items-center justify-between gap-1 flex-nowrap w-full",
+       "text": "Actions",
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {
+          "data-open": "false"
+         },
+         "class": "outline-hidden border-0 box-border text-base no-underline [tap-highlight-color:transparent] select-none bg-none cursor-pointer absolute -right-px top-1/2 inline-flex h-[30px] w-10 -translate-y-1/2 items-center justify-center text-[var(--accents-3)] transition-colors duration-150",
+         "children": [
+          {
+           "tag": "svg",
+           "attrs": {
+            "data-slot": "geist-icon",
+            "style": "color:currentColor",
+            "viewBox": "0 0 16 16",
+            "height": "16",
+            "width": "16"
+           },
+           "class": "rotate-0 transition-transform duration-150 size-(--ds-control-decoration-size)",
+           "children": [
+            {
+             "tag": "path",
+             "attrs": {}
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

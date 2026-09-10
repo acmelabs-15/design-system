@@ -1,0 +1,4640 @@
+{
+ "page": "file-tree",
+ "title": "File Tree",
+ "lede": "Display a hierarchical directory structure with expandable folders and files, useful for illustrating project layouts.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Tree, Folder, File } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Tree>\n      <Folder name=\".vercel\" defaultOpen>\n        <Folder name=\"output\" defaultOpen>\n          <Folder name=\"functions\" defaultOpen>\n            <Folder name=\"edge.func\" defaultOpen>\n              <File name=\".vc-config.json\" href=\"/\" />\n              <File name=\"index.js\" />\n            </Folder>\n          </Folder>\n        </Folder>\n      </Folder>\n      <Folder name=\"app\">\n        <File name=\"main.tsx\" type=\"edge-function\" />\n        <File name=\"dashboard.tsx\" type=\"lambda\" />\n        <File name=\"dashboard.tsx\" type=\"middleware\" />\n      </Folder>\n    </Tree>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "gap-[1px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1px"
+        },
+        {
+         "cls": "text-[13px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:13px"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:[--indent-color:var(--ds-gray-400)]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "--indent-color:var(--ds-gray-400)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:inline-block",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "display:inline-block"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:w-[23px]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "width:23px"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:h-7",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "height:1.75rem"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:bg-[linear-gradient(to_right,transparent_11.5px,var(--indent-color)_11.5px,var(--indent-color)_12.5px,transparent_12.5px)]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "background-image:linear-gradient(to right,transparent 11.5px,var(--indent-color) 11.5px,var(--indent-color) 12.5px,transparent 12.5px)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:bg-no-repeat",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "background-repeat:no-repeat"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:align-top",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "vertical-align:top"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:-translate-x-1",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(.25rem * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:shrink-0",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "flex-shrink:0"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "li",
+         "attrs": {
+          "title": ".vercel"
+         },
+         "styles": [
+          {
+           "cls": "list-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "leading-7",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+          },
+          {
+           "cls": "text-[var(--accents-8)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "whitespace-nowrap",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "select-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "[&_a]:text-[var(--accents-8)]",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "[&_a]:whitespace-nowrap",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "[&_a]:select-none",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "[&_a]:leading-none",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:1;line-height:1"
+          },
+          {
+           "cls": "[&_a]:block",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "[&_a]:pr-[1em]",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "padding-right:1em"
+          },
+          {
+           "cls": "[&_a]:no-underline",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "text-decoration-line:none"
+          },
+          {
+           "cls": "[&_ul]:list-none",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "[&_ul]:m-0",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "margin:0"
+          },
+          {
+           "cls": "[&_ul]:p-0",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "padding:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "button",
+           "attrs": {
+            "style": "width:calc(100% + 8px)",
+            "type": "button"
+           },
+           "styles": [
+            {
+             "cls": "grow-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "flex-grow:1"
+            },
+            {
+             "cls": "-ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:-.5rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "bg-transparent",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#0000"
+            },
+            {
+             "cls": "border-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-border-style:none;border-style:none"
+            },
+            {
+             "cls": "h-7",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:1.75rem"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "rounded-sm",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.25rem"
+            },
+            {
+             "cls": "px-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.5rem"
+            },
+            {
+             "cls": "py-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-block:.25rem"
+            },
+            {
+             "cls": "hover:bg-[var(--ds-gray-200)]",
+             "state": ":hover",
+             "at": "@layer utilities @media (hover:hover)",
+             "decl": "background-color:var(--ds-gray-200)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "inline-block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-block"
+              },
+              {
+               "cls": "mr-2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-right:.5rem"
+              },
+              {
+               "cls": "text-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-align:center"
+              },
+              {
+               "cls": "text-[var(--ds-gray-900)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-900)"
+              },
+              {
+               "cls": "[&_svg]:align-middle",
+               "state": "svg",
+               "at": "@layer utilities",
+               "decl": "vertical-align:middle"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:block"
+              },
+              {
+               "cls": "overflow-hidden",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "overflow:hidden"
+              },
+              {
+               "cls": "text-ellipsis",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-overflow:ellipsis"
+              },
+              {
+               "cls": "font-mono",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-mono)"
+              },
+              {
+               "cls": "[&_a]:align-text-bottom",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "vertical-align:text-bottom"
+              },
+              {
+               "cls": "[&_a]:transition-opacity",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.1s;transition-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": ".vercel"
+            }
+           ]
+          },
+          {
+           "tag": "ul",
+           "attrs": {},
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "li",
+             "attrs": {
+              "title": "output"
+             },
+             "styles": [
+              {
+               "cls": "list-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "list-style-type:none"
+              },
+              {
+               "cls": "leading-7",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+              },
+              {
+               "cls": "text-[var(--accents-8)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--accents-8)"
+              },
+              {
+               "cls": "whitespace-nowrap",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "white-space:nowrap"
+              },
+              {
+               "cls": "select-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "-webkit-user-select:none;user-select:none"
+              },
+              {
+               "cls": "[&_a]:text-[var(--accents-8)]",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "color:var(--accents-8)"
+              },
+              {
+               "cls": "[&_a]:whitespace-nowrap",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "white-space:nowrap"
+              },
+              {
+               "cls": "[&_a]:select-none",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "-webkit-user-select:none;user-select:none"
+              },
+              {
+               "cls": "[&_a]:leading-none",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:1;line-height:1"
+              },
+              {
+               "cls": "[&_a]:block",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "display:block"
+              },
+              {
+               "cls": "[&_a]:pr-[1em]",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "padding-right:1em"
+              },
+              {
+               "cls": "[&_a]:no-underline",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "text-decoration-line:none"
+              },
+              {
+               "cls": "[&_ul]:list-none",
+               "state": "ul",
+               "at": "@layer utilities",
+               "decl": "list-style-type:none"
+              },
+              {
+               "cls": "[&_ul]:m-0",
+               "state": "ul",
+               "at": "@layer utilities",
+               "decl": "margin:0"
+              },
+              {
+               "cls": "[&_ul]:p-0",
+               "state": "ul",
+               "at": "@layer utilities",
+               "decl": "padding:0"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "flex-col",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex-direction:column"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "button",
+               "attrs": {
+                "style": "width:calc(100% + 8px)",
+                "type": "button"
+               },
+               "styles": [
+                {
+                 "cls": "grow-1",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "flex-grow:1"
+                },
+                {
+                 "cls": "-ml-2",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-left:-.5rem"
+                },
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "bg-transparent",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:#0000"
+                },
+                {
+                 "cls": "border-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-border-style:none;border-style:none"
+                },
+                {
+                 "cls": "h-7",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:1.75rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "rounded-sm",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:.25rem"
+                },
+                {
+                 "cls": "px-2",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-inline:.5rem"
+                },
+                {
+                 "cls": "py-1",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-block:.25rem"
+                },
+                {
+                 "cls": "hover:bg-[var(--ds-gray-200)]",
+                 "state": ":hover",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-gray-200)"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {
+                  "data-tree-indent": ""
+                 },
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                },
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "inline-block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:inline-block"
+                  },
+                  {
+                   "cls": "mr-2",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "margin-right:.5rem"
+                  },
+                  {
+                   "cls": "text-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-align:center"
+                  },
+                  {
+                   "cls": "text-[var(--ds-gray-900)]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-900)"
+                  },
+                  {
+                   "cls": "[&_svg]:align-middle",
+                   "state": "svg",
+                   "at": "@layer utilities",
+                   "decl": "vertical-align:middle"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:block"
+                  },
+                  {
+                   "cls": "overflow-hidden",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "overflow:hidden"
+                  },
+                  {
+                   "cls": "text-ellipsis",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-overflow:ellipsis"
+                  },
+                  {
+                   "cls": "font-mono",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "font-family:var(--font-mono)"
+                  },
+                  {
+                   "cls": "[&_a]:align-text-bottom",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "vertical-align:text-bottom"
+                  },
+                  {
+                   "cls": "[&_a]:transition-opacity",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "[&_a]:duration-100",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.1s;transition-duration:.1s"
+                  },
+                  {
+                   "cls": "[&_a]:duration-100",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.1s"
+                  },
+                  {
+                   "cls": "[&_a]:ease-in-out",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "[&_a]:ease-in-out",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [],
+                 "text": "output"
+                }
+               ]
+              },
+              {
+               "tag": "ul",
+               "attrs": {},
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "li",
+                 "attrs": {
+                  "title": "functions"
+                 },
+                 "styles": [
+                  {
+                   "cls": "list-none",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "list-style-type:none"
+                  },
+                  {
+                   "cls": "leading-7",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+                  },
+                  {
+                   "cls": "text-[var(--accents-8)]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--accents-8)"
+                  },
+                  {
+                   "cls": "whitespace-nowrap",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "white-space:nowrap"
+                  },
+                  {
+                   "cls": "select-none",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "-webkit-user-select:none;user-select:none"
+                  },
+                  {
+                   "cls": "[&_a]:text-[var(--accents-8)]",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--accents-8)"
+                  },
+                  {
+                   "cls": "[&_a]:whitespace-nowrap",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "white-space:nowrap"
+                  },
+                  {
+                   "cls": "[&_a]:select-none",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "-webkit-user-select:none;user-select:none"
+                  },
+                  {
+                   "cls": "[&_a]:leading-none",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-leading:1;line-height:1"
+                  },
+                  {
+                   "cls": "[&_a]:block",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "display:block"
+                  },
+                  {
+                   "cls": "[&_a]:pr-[1em]",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "padding-right:1em"
+                  },
+                  {
+                   "cls": "[&_a]:no-underline",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "text-decoration-line:none"
+                  },
+                  {
+                   "cls": "[&_ul]:list-none",
+                   "state": "ul",
+                   "at": "@layer utilities",
+                   "decl": "list-style-type:none"
+                  },
+                  {
+                   "cls": "[&_ul]:m-0",
+                   "state": "ul",
+                   "at": "@layer utilities",
+                   "decl": "margin:0"
+                  },
+                  {
+                   "cls": "[&_ul]:p-0",
+                   "state": "ul",
+                   "at": "@layer utilities",
+                   "decl": "padding:0"
+                  },
+                  {
+                   "cls": "flex",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:flex"
+                  },
+                  {
+                   "cls": "flex-col",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "flex-direction:column"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "button",
+                   "attrs": {
+                    "style": "width:calc(100% + 8px)",
+                    "type": "button"
+                   },
+                   "styles": [
+                    {
+                     "cls": "grow-1",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "flex-grow:1"
+                    },
+                    {
+                     "cls": "-ml-2",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "margin-left:-.5rem"
+                    },
+                    {
+                     "cls": "flex",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "display:flex"
+                    },
+                    {
+                     "cls": "bg-transparent",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "background-color:#0000"
+                    },
+                    {
+                     "cls": "border-none",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "--tw-border-style:none;border-style:none"
+                    },
+                    {
+                     "cls": "h-7",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "height:1.75rem"
+                    },
+                    {
+                     "cls": "w-full",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "width:100%"
+                    },
+                    {
+                     "cls": "items-center",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "align-items:center"
+                    },
+                    {
+                     "cls": "rounded-sm",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "border-radius:.25rem"
+                    },
+                    {
+                     "cls": "px-2",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "padding-inline:.5rem"
+                    },
+                    {
+                     "cls": "py-1",
+                     "state": "",
+                     "at": "@layer utilities",
+                     "decl": "padding-block:.25rem"
+                    },
+                    {
+                     "cls": "hover:bg-[var(--ds-gray-200)]",
+                     "state": ":hover",
+                     "at": "@layer utilities @media (hover:hover)",
+                     "decl": "background-color:var(--ds-gray-200)"
+                    }
+                   ],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "span",
+                     "attrs": {
+                      "data-tree-indent": ""
+                     },
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    },
+                    {
+                     "tag": "span",
+                     "attrs": {
+                      "data-tree-indent": ""
+                     },
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    },
+                    {
+                     "tag": "span",
+                     "attrs": {},
+                     "styles": [
+                      {
+                       "cls": "inline-block",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "display:inline-block"
+                      },
+                      {
+                       "cls": "mr-2",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "margin-right:.5rem"
+                      },
+                      {
+                       "cls": "text-center",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "text-align:center"
+                      },
+                      {
+                       "cls": "text-[var(--ds-gray-900)]",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "color:var(--ds-gray-900)"
+                      },
+                      {
+                       "cls": "[&_svg]:align-middle",
+                       "state": "svg",
+                       "at": "@layer utilities",
+                       "decl": "vertical-align:middle"
+                      }
+                     ],
+                     "unresolved": [],
+                     "children": [
+                      {
+                       "tag": "svg",
+                       "attrs": {
+                        "data-slot": "geist-icon",
+                        "style": "color:currentColor"
+                       },
+                       "styles": [],
+                       "unresolved": [],
+                       "children": [
+                        {
+                         "tag": "path",
+                         "attrs": {},
+                         "styles": [],
+                         "unresolved": [],
+                         "children": []
+                        }
+                       ]
+                      }
+                     ]
+                    },
+                    {
+                     "tag": "span",
+                     "attrs": {},
+                     "styles": [
+                      {
+                       "cls": "block",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "display:block"
+                      },
+                      {
+                       "cls": "overflow-hidden",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "overflow:hidden"
+                      },
+                      {
+                       "cls": "text-ellipsis",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "text-overflow:ellipsis"
+                      },
+                      {
+                       "cls": "font-mono",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "font-family:var(--font-mono)"
+                      },
+                      {
+                       "cls": "[&_a]:align-text-bottom",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "vertical-align:text-bottom"
+                      },
+                      {
+                       "cls": "[&_a]:transition-opacity",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                      },
+                      {
+                       "cls": "[&_a]:duration-100",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "--tw-duration:.1s;transition-duration:.1s"
+                      },
+                      {
+                       "cls": "[&_a]:duration-100",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "animation-duration:.1s"
+                      },
+                      {
+                       "cls": "[&_a]:ease-in-out",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                      },
+                      {
+                       "cls": "[&_a]:ease-in-out",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                      }
+                     ],
+                     "unresolved": [],
+                     "children": [],
+                     "text": "functions"
+                    }
+                   ]
+                  },
+                  {
+                   "tag": "ul",
+                   "attrs": {},
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "li",
+                     "attrs": {
+                      "title": "edge.func"
+                     },
+                     "styles": [
+                      {
+                       "cls": "list-none",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "list-style-type:none"
+                      },
+                      {
+                       "cls": "leading-7",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+                      },
+                      {
+                       "cls": "text-[var(--accents-8)]",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "color:var(--accents-8)"
+                      },
+                      {
+                       "cls": "whitespace-nowrap",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "white-space:nowrap"
+                      },
+                      {
+                       "cls": "select-none",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "-webkit-user-select:none;user-select:none"
+                      },
+                      {
+                       "cls": "[&_a]:text-[var(--accents-8)]",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "color:var(--accents-8)"
+                      },
+                      {
+                       "cls": "[&_a]:whitespace-nowrap",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "white-space:nowrap"
+                      },
+                      {
+                       "cls": "[&_a]:select-none",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "-webkit-user-select:none;user-select:none"
+                      },
+                      {
+                       "cls": "[&_a]:leading-none",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "--tw-leading:1;line-height:1"
+                      },
+                      {
+                       "cls": "[&_a]:block",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "display:block"
+                      },
+                      {
+                       "cls": "[&_a]:pr-[1em]",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "padding-right:1em"
+                      },
+                      {
+                       "cls": "[&_a]:no-underline",
+                       "state": "a",
+                       "at": "@layer utilities",
+                       "decl": "text-decoration-line:none"
+                      },
+                      {
+                       "cls": "[&_ul]:list-none",
+                       "state": "ul",
+                       "at": "@layer utilities",
+                       "decl": "list-style-type:none"
+                      },
+                      {
+                       "cls": "[&_ul]:m-0",
+                       "state": "ul",
+                       "at": "@layer utilities",
+                       "decl": "margin:0"
+                      },
+                      {
+                       "cls": "[&_ul]:p-0",
+                       "state": "ul",
+                       "at": "@layer utilities",
+                       "decl": "padding:0"
+                      },
+                      {
+                       "cls": "flex",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "display:flex"
+                      },
+                      {
+                       "cls": "flex-col",
+                       "state": "",
+                       "at": "@layer utilities",
+                       "decl": "flex-direction:column"
+                      }
+                     ],
+                     "unresolved": [],
+                     "children": [
+                      {
+                       "tag": "button",
+                       "attrs": {
+                        "style": "width:calc(100% + 8px)",
+                        "type": "button"
+                       },
+                       "styles": [
+                        {
+                         "cls": "grow-1",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "flex-grow:1"
+                        },
+                        {
+                         "cls": "-ml-2",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "margin-left:-.5rem"
+                        },
+                        {
+                         "cls": "flex",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "display:flex"
+                        },
+                        {
+                         "cls": "bg-transparent",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "background-color:#0000"
+                        },
+                        {
+                         "cls": "border-none",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "--tw-border-style:none;border-style:none"
+                        },
+                        {
+                         "cls": "h-7",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "height:1.75rem"
+                        },
+                        {
+                         "cls": "w-full",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "width:100%"
+                        },
+                        {
+                         "cls": "items-center",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "align-items:center"
+                        },
+                        {
+                         "cls": "rounded-sm",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "border-radius:.25rem"
+                        },
+                        {
+                         "cls": "px-2",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "padding-inline:.5rem"
+                        },
+                        {
+                         "cls": "py-1",
+                         "state": "",
+                         "at": "@layer utilities",
+                         "decl": "padding-block:.25rem"
+                        },
+                        {
+                         "cls": "hover:bg-[var(--ds-gray-200)]",
+                         "state": ":hover",
+                         "at": "@layer utilities @media (hover:hover)",
+                         "decl": "background-color:var(--ds-gray-200)"
+                        }
+                       ],
+                       "unresolved": [],
+                       "children": [
+                        {
+                         "tag": "span",
+                         "attrs": {
+                          "data-tree-indent": ""
+                         },
+                         "styles": [],
+                         "unresolved": [],
+                         "children": []
+                        },
+                        {
+                         "tag": "span",
+                         "attrs": {
+                          "data-tree-indent": ""
+                         },
+                         "styles": [],
+                         "unresolved": [],
+                         "children": []
+                        },
+                        {
+                         "tag": "span",
+                         "attrs": {
+                          "data-tree-indent": ""
+                         },
+                         "styles": [],
+                         "unresolved": [],
+                         "children": []
+                        },
+                        {
+                         "tag": "span",
+                         "attrs": {},
+                         "styles": [
+                          {
+                           "cls": "inline-block",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "display:inline-block"
+                          },
+                          {
+                           "cls": "mr-2",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "margin-right:.5rem"
+                          },
+                          {
+                           "cls": "text-center",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "text-align:center"
+                          },
+                          {
+                           "cls": "text-[var(--ds-gray-900)]",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "color:var(--ds-gray-900)"
+                          },
+                          {
+                           "cls": "[&_svg]:align-middle",
+                           "state": "svg",
+                           "at": "@layer utilities",
+                           "decl": "vertical-align:middle"
+                          }
+                         ],
+                         "unresolved": [],
+                         "children": [
+                          {
+                           "tag": "svg",
+                           "attrs": {
+                            "data-slot": "geist-icon",
+                            "style": "color:currentColor"
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": [
+                            {
+                             "tag": "path",
+                             "attrs": {},
+                             "styles": [],
+                             "unresolved": [],
+                             "children": []
+                            }
+                           ]
+                          }
+                         ]
+                        },
+                        {
+                         "tag": "span",
+                         "attrs": {},
+                         "styles": [
+                          {
+                           "cls": "block",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "display:block"
+                          },
+                          {
+                           "cls": "overflow-hidden",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "overflow:hidden"
+                          },
+                          {
+                           "cls": "text-ellipsis",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "text-overflow:ellipsis"
+                          },
+                          {
+                           "cls": "font-mono",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "font-family:var(--font-mono)"
+                          },
+                          {
+                           "cls": "[&_a]:align-text-bottom",
+                           "state": "a",
+                           "at": "@layer utilities",
+                           "decl": "vertical-align:text-bottom"
+                          },
+                          {
+                           "cls": "[&_a]:transition-opacity",
+                           "state": "a",
+                           "at": "@layer utilities",
+                           "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                          },
+                          {
+                           "cls": "[&_a]:duration-100",
+                           "state": "a",
+                           "at": "@layer utilities",
+                           "decl": "--tw-duration:.1s;transition-duration:.1s"
+                          },
+                          {
+                           "cls": "[&_a]:duration-100",
+                           "state": "a",
+                           "at": "@layer utilities",
+                           "decl": "animation-duration:.1s"
+                          },
+                          {
+                           "cls": "[&_a]:ease-in-out",
+                           "state": "a",
+                           "at": "@layer utilities",
+                           "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                          },
+                          {
+                           "cls": "[&_a]:ease-in-out",
+                           "state": "a",
+                           "at": "@layer utilities",
+                           "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                          }
+                         ],
+                         "unresolved": [],
+                         "children": [],
+                         "text": "edge.func"
+                        }
+                       ]
+                      },
+                      {
+                       "tag": "ul",
+                       "attrs": {},
+                       "styles": [],
+                       "unresolved": [],
+                       "children": [
+                        {
+                         "tag": "li",
+                         "attrs": {
+                          "title": ".vc-config.json"
+                         },
+                         "styles": [
+                          {
+                           "cls": "list-none",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "list-style-type:none"
+                          },
+                          {
+                           "cls": "leading-7",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+                          },
+                          {
+                           "cls": "text-[var(--accents-8)]",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "color:var(--accents-8)"
+                          },
+                          {
+                           "cls": "whitespace-nowrap",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "white-space:nowrap"
+                          },
+                          {
+                           "cls": "select-none",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "-webkit-user-select:none;user-select:none"
+                          },
+                          {
+                           "cls": "grow-1",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "flex-grow:1"
+                          },
+                          {
+                           "cls": "flex",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "display:flex"
+                          },
+                          {
+                           "cls": "items-center",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "align-items:center"
+                          }
+                         ],
+                         "unresolved": [],
+                         "children": [
+                          {
+                           "tag": "span",
+                           "attrs": {
+                            "data-tree-indent": ""
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": []
+                          },
+                          {
+                           "tag": "span",
+                           "attrs": {
+                            "data-tree-indent": ""
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": []
+                          },
+                          {
+                           "tag": "span",
+                           "attrs": {
+                            "data-tree-indent": ""
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": []
+                          },
+                          {
+                           "tag": "span",
+                           "attrs": {
+                            "data-tree-indent": ""
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": []
+                          },
+                          {
+                           "tag": "a",
+                           "attrs": {
+                            "href": "/",
+                            "style": "width:calc(100% + 8px)"
+                           },
+                           "styles": [
+                            {
+                             "cls": "-ml-2",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "margin-left:-.5rem"
+                            },
+                            {
+                             "cls": "h-7",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "height:1.75rem"
+                            },
+                            {
+                             "cls": "w-full",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "width:100%"
+                            },
+                            {
+                             "cls": "!flex",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "display:flex!important"
+                            },
+                            {
+                             "cls": "items-center",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "align-items:center"
+                            },
+                            {
+                             "cls": "overflow-hidden",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "overflow:hidden"
+                            },
+                            {
+                             "cls": "rounded-sm",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "border-radius:.25rem"
+                            },
+                            {
+                             "cls": "px-2",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "padding-inline:.5rem"
+                            },
+                            {
+                             "cls": "hover:bg-[var(--ds-gray-200)]",
+                             "state": ":hover",
+                             "at": "@layer utilities @media (hover:hover)",
+                             "decl": "background-color:var(--ds-gray-200)"
+                            },
+                            {
+                             "cls": "leading-none",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "--tw-leading:1;line-height:1"
+                            },
+                            {
+                             "cls": "pr-[1em]",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "padding-right:1em"
+                            },
+                            {
+                             "cls": "no-underline",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "text-decoration-line:none"
+                            },
+                            {
+                             "cls": "text-[var(--accents-8)]",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "color:var(--accents-8)"
+                            },
+                            {
+                             "cls": "whitespace-nowrap",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "white-space:nowrap"
+                            },
+                            {
+                             "cls": "select-none",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "-webkit-user-select:none;user-select:none"
+                            }
+                           ],
+                           "unresolved": [],
+                           "children": [
+                            {
+                             "tag": "span",
+                             "attrs": {},
+                             "styles": [
+                              {
+                               "cls": "inline-block",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "display:inline-block"
+                              },
+                              {
+                               "cls": "mr-2",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "margin-right:.5rem"
+                              },
+                              {
+                               "cls": "text-center",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "text-align:center"
+                              },
+                              {
+                               "cls": "text-[var(--ds-gray-900)]",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "color:var(--ds-gray-900)"
+                              },
+                              {
+                               "cls": "[&_svg]:align-middle",
+                               "state": "svg",
+                               "at": "@layer utilities",
+                               "decl": "vertical-align:middle"
+                              },
+                              {
+                               "cls": "ml-0.5",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "margin-left:.125rem"
+                              }
+                             ],
+                             "unresolved": [],
+                             "children": [
+                              {
+                               "tag": "svg",
+                               "attrs": {
+                                "data-slot": "geist-icon",
+                                "style": "color:currentColor"
+                               },
+                               "styles": [],
+                               "unresolved": [],
+                               "children": [
+                                {
+                                 "tag": "path",
+                                 "attrs": {},
+                                 "styles": [],
+                                 "unresolved": [],
+                                 "children": []
+                                }
+                               ]
+                              }
+                             ]
+                            },
+                            {
+                             "tag": "span",
+                             "attrs": {},
+                             "styles": [
+                              {
+                               "cls": "block",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "display:block"
+                              },
+                              {
+                               "cls": "overflow-hidden",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "overflow:hidden"
+                              },
+                              {
+                               "cls": "text-ellipsis",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "text-overflow:ellipsis"
+                              },
+                              {
+                               "cls": "font-mono",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "font-family:var(--font-mono)"
+                              },
+                              {
+                               "cls": "[&_a]:align-text-bottom",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "vertical-align:text-bottom"
+                              },
+                              {
+                               "cls": "[&_a]:transition-opacity",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                              },
+                              {
+                               "cls": "[&_a]:duration-100",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "--tw-duration:.1s;transition-duration:.1s"
+                              },
+                              {
+                               "cls": "[&_a]:duration-100",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "animation-duration:.1s"
+                              },
+                              {
+                               "cls": "[&_a]:ease-in-out",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                              },
+                              {
+                               "cls": "[&_a]:ease-in-out",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                              }
+                             ],
+                             "unresolved": [],
+                             "children": [],
+                             "text": ".vc-config.json"
+                            }
+                           ]
+                          }
+                         ]
+                        },
+                        {
+                         "tag": "li",
+                         "attrs": {
+                          "title": "index.js"
+                         },
+                         "styles": [
+                          {
+                           "cls": "list-none",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "list-style-type:none"
+                          },
+                          {
+                           "cls": "leading-7",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+                          },
+                          {
+                           "cls": "text-[var(--accents-8)]",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "color:var(--accents-8)"
+                          },
+                          {
+                           "cls": "whitespace-nowrap",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "white-space:nowrap"
+                          },
+                          {
+                           "cls": "select-none",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "-webkit-user-select:none;user-select:none"
+                          },
+                          {
+                           "cls": "grow-1",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "flex-grow:1"
+                          },
+                          {
+                           "cls": "flex",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "display:flex"
+                          },
+                          {
+                           "cls": "items-center",
+                           "state": "",
+                           "at": "@layer utilities",
+                           "decl": "align-items:center"
+                          }
+                         ],
+                         "unresolved": [],
+                         "children": [
+                          {
+                           "tag": "span",
+                           "attrs": {
+                            "data-tree-indent": ""
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": []
+                          },
+                          {
+                           "tag": "span",
+                           "attrs": {
+                            "data-tree-indent": ""
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": []
+                          },
+                          {
+                           "tag": "span",
+                           "attrs": {
+                            "data-tree-indent": ""
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": []
+                          },
+                          {
+                           "tag": "span",
+                           "attrs": {
+                            "data-tree-indent": ""
+                           },
+                           "styles": [],
+                           "unresolved": [],
+                           "children": []
+                          },
+                          {
+                           "tag": "a",
+                           "attrs": {
+                            "style": "width:calc(100% + 8px)"
+                           },
+                           "styles": [
+                            {
+                             "cls": "-ml-2",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "margin-left:-.5rem"
+                            },
+                            {
+                             "cls": "h-7",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "height:1.75rem"
+                            },
+                            {
+                             "cls": "w-full",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "width:100%"
+                            },
+                            {
+                             "cls": "!flex",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "display:flex!important"
+                            },
+                            {
+                             "cls": "items-center",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "align-items:center"
+                            },
+                            {
+                             "cls": "overflow-hidden",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "overflow:hidden"
+                            },
+                            {
+                             "cls": "rounded-sm",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "border-radius:.25rem"
+                            },
+                            {
+                             "cls": "px-2",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "padding-inline:.5rem"
+                            },
+                            {
+                             "cls": "hover:bg-[var(--ds-gray-200)]",
+                             "state": ":hover",
+                             "at": "@layer utilities @media (hover:hover)",
+                             "decl": "background-color:var(--ds-gray-200)"
+                            },
+                            {
+                             "cls": "leading-none",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "--tw-leading:1;line-height:1"
+                            },
+                            {
+                             "cls": "pr-[1em]",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "padding-right:1em"
+                            },
+                            {
+                             "cls": "no-underline",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "text-decoration-line:none"
+                            },
+                            {
+                             "cls": "text-[var(--accents-8)]",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "color:var(--accents-8)"
+                            },
+                            {
+                             "cls": "whitespace-nowrap",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "white-space:nowrap"
+                            },
+                            {
+                             "cls": "select-none",
+                             "state": "",
+                             "at": "@layer utilities",
+                             "decl": "-webkit-user-select:none;user-select:none"
+                            }
+                           ],
+                           "unresolved": [],
+                           "children": [
+                            {
+                             "tag": "span",
+                             "attrs": {},
+                             "styles": [
+                              {
+                               "cls": "inline-block",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "display:inline-block"
+                              },
+                              {
+                               "cls": "mr-2",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "margin-right:.5rem"
+                              },
+                              {
+                               "cls": "text-center",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "text-align:center"
+                              },
+                              {
+                               "cls": "text-[var(--ds-gray-900)]",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "color:var(--ds-gray-900)"
+                              },
+                              {
+                               "cls": "[&_svg]:align-middle",
+                               "state": "svg",
+                               "at": "@layer utilities",
+                               "decl": "vertical-align:middle"
+                              },
+                              {
+                               "cls": "ml-0.5",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "margin-left:.125rem"
+                              }
+                             ],
+                             "unresolved": [],
+                             "children": [
+                              {
+                               "tag": "svg",
+                               "attrs": {
+                                "data-slot": "geist-icon",
+                                "style": "color:currentColor"
+                               },
+                               "styles": [],
+                               "unresolved": [],
+                               "children": [
+                                {
+                                 "tag": "path",
+                                 "attrs": {},
+                                 "styles": [],
+                                 "unresolved": [],
+                                 "children": []
+                                }
+                               ]
+                              }
+                             ]
+                            },
+                            {
+                             "tag": "span",
+                             "attrs": {},
+                             "styles": [
+                              {
+                               "cls": "block",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "display:block"
+                              },
+                              {
+                               "cls": "overflow-hidden",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "overflow:hidden"
+                              },
+                              {
+                               "cls": "text-ellipsis",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "text-overflow:ellipsis"
+                              },
+                              {
+                               "cls": "font-mono",
+                               "state": "",
+                               "at": "@layer utilities",
+                               "decl": "font-family:var(--font-mono)"
+                              },
+                              {
+                               "cls": "[&_a]:align-text-bottom",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "vertical-align:text-bottom"
+                              },
+                              {
+                               "cls": "[&_a]:transition-opacity",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                              },
+                              {
+                               "cls": "[&_a]:duration-100",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "--tw-duration:.1s;transition-duration:.1s"
+                              },
+                              {
+                               "cls": "[&_a]:duration-100",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "animation-duration:.1s"
+                              },
+                              {
+                               "cls": "[&_a]:ease-in-out",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                              },
+                              {
+                               "cls": "[&_a]:ease-in-out",
+                               "state": "a",
+                               "at": "@layer utilities",
+                               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                              }
+                             ],
+                             "unresolved": [],
+                             "children": [],
+                             "text": "index.js"
+                            }
+                           ]
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "attrs": {
+          "title": "app"
+         },
+         "styles": [
+          {
+           "cls": "list-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "leading-7",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+          },
+          {
+           "cls": "text-[var(--accents-8)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "whitespace-nowrap",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "select-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "[&_a]:text-[var(--accents-8)]",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "[&_a]:whitespace-nowrap",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "[&_a]:select-none",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "[&_a]:leading-none",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:1;line-height:1"
+          },
+          {
+           "cls": "[&_a]:block",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "[&_a]:pr-[1em]",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "padding-right:1em"
+          },
+          {
+           "cls": "[&_a]:no-underline",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "text-decoration-line:none"
+          },
+          {
+           "cls": "[&_button]:cursor-pointer",
+           "state": "button",
+           "at": "@layer utilities",
+           "decl": "cursor:pointer"
+          },
+          {
+           "cls": "[&_ul]:list-none",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "[&_ul]:m-0",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "margin:0"
+          },
+          {
+           "cls": "[&_ul]:p-0",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "padding:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "button",
+           "attrs": {
+            "style": "width:calc(100% + 8px)",
+            "type": "button"
+           },
+           "styles": [
+            {
+             "cls": "grow-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "flex-grow:1"
+            },
+            {
+             "cls": "-ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:-.5rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "bg-transparent",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#0000"
+            },
+            {
+             "cls": "border-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-border-style:none;border-style:none"
+            },
+            {
+             "cls": "h-7",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:1.75rem"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "rounded-sm",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.25rem"
+            },
+            {
+             "cls": "px-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.5rem"
+            },
+            {
+             "cls": "py-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-block:.25rem"
+            },
+            {
+             "cls": "hover:bg-[var(--ds-gray-200)]",
+             "state": ":hover",
+             "at": "@layer utilities @media (hover:hover)",
+             "decl": "background-color:var(--ds-gray-200)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "inline-block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-block"
+              },
+              {
+               "cls": "mr-2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-right:.5rem"
+              },
+              {
+               "cls": "text-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-align:center"
+              },
+              {
+               "cls": "text-[var(--ds-gray-900)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-900)"
+              },
+              {
+               "cls": "[&_svg]:align-middle",
+               "state": "svg",
+               "at": "@layer utilities",
+               "decl": "vertical-align:middle"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:block"
+              },
+              {
+               "cls": "overflow-hidden",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "overflow:hidden"
+              },
+              {
+               "cls": "text-ellipsis",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-overflow:ellipsis"
+              },
+              {
+               "cls": "font-mono",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-mono)"
+              },
+              {
+               "cls": "[&_a]:align-text-bottom",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "vertical-align:text-bottom"
+              },
+              {
+               "cls": "[&_a]:transition-opacity",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.1s;transition-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "app"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Active File",
+   "description": "A File marked `active` has no rendered example; its class string comes from the component's client code: the link's text is semibold and its icon reads gray-1000. The folder around it is open, the second file is a plain one.",
+   "code": "export function Component(): JSX.Element {\n  return (\n    <Tree>\n      <Folder name=\"app\" defaultOpen>\n        <File name=\"main.tsx\" type=\"lambda\" href=\"/\" active />\n        <File name=\"dashboard.tsx\" type=\"middleware\" />\n      </Folder>\n    </Tree>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "gap-[1px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1px"
+        },
+        {
+         "cls": "text-[13px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:13px"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:[--indent-color:var(--ds-gray-400)]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "--indent-color:var(--ds-gray-400)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:inline-block",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "display:inline-block"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:w-[23px]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "width:23px"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:h-7",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "height:1.75rem"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:bg-[linear-gradient(to_right,transparent_11.5px,var(--indent-color)_11.5px,var(--indent-color)_12.5px,transparent_12.5px)]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "background-image:linear-gradient(to right,transparent 11.5px,var(--indent-color) 11.5px,var(--indent-color) 12.5px,transparent 12.5px)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:bg-no-repeat",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "background-repeat:no-repeat"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:align-top",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "vertical-align:top"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:-translate-x-1",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(.25rem * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:shrink-0",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "flex-shrink:0"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "li",
+         "attrs": {
+          "title": "app"
+         },
+         "styles": [
+          {
+           "cls": "list-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "leading-7",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+          },
+          {
+           "cls": "text-[var(--accents-8)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "whitespace-nowrap",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "select-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "[&_a]:text-[var(--accents-8)]",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "[&_a]:whitespace-nowrap",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "[&_a]:select-none",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "[&_a]:leading-none",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:1;line-height:1"
+          },
+          {
+           "cls": "[&_a]:block",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "[&_a]:pr-[1em]",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "padding-right:1em"
+          },
+          {
+           "cls": "[&_a]:no-underline",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "text-decoration-line:none"
+          },
+          {
+           "cls": "[&_ul]:list-none",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "[&_ul]:m-0",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "margin:0"
+          },
+          {
+           "cls": "[&_ul]:p-0",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "padding:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "button",
+           "attrs": {
+            "style": "width:calc(100% + 8px)",
+            "type": "button"
+           },
+           "styles": [
+            {
+             "cls": "grow-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "flex-grow:1"
+            },
+            {
+             "cls": "-ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:-.5rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "bg-transparent",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#0000"
+            },
+            {
+             "cls": "border-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-border-style:none;border-style:none"
+            },
+            {
+             "cls": "h-7",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:1.75rem"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "rounded-sm",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.25rem"
+            },
+            {
+             "cls": "px-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.5rem"
+            },
+            {
+             "cls": "py-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-block:.25rem"
+            },
+            {
+             "cls": "hover:bg-[var(--ds-gray-200)]",
+             "state": ":hover",
+             "at": "@layer utilities @media (hover:hover)",
+             "decl": "background-color:var(--ds-gray-200)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "inline-block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-block"
+              },
+              {
+               "cls": "mr-2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-right:.5rem"
+              },
+              {
+               "cls": "text-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-align:center"
+              },
+              {
+               "cls": "text-[var(--ds-gray-900)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-900)"
+              },
+              {
+               "cls": "[&_svg]:align-middle",
+               "state": "svg",
+               "at": "@layer utilities",
+               "decl": "vertical-align:middle"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:block"
+              },
+              {
+               "cls": "overflow-hidden",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "overflow:hidden"
+              },
+              {
+               "cls": "text-ellipsis",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-overflow:ellipsis"
+              },
+              {
+               "cls": "font-mono",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-mono)"
+              },
+              {
+               "cls": "[&_a]:align-text-bottom",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "vertical-align:text-bottom"
+              },
+              {
+               "cls": "[&_a]:transition-opacity",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.1s;transition-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "app"
+            }
+           ]
+          },
+          {
+           "tag": "ul",
+           "attrs": {},
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "li",
+             "attrs": {
+              "title": "main.tsx"
+             },
+             "styles": [
+              {
+               "cls": "list-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "list-style-type:none"
+              },
+              {
+               "cls": "leading-7",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+              },
+              {
+               "cls": "text-[var(--accents-8)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--accents-8)"
+              },
+              {
+               "cls": "whitespace-nowrap",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "white-space:nowrap"
+              },
+              {
+               "cls": "select-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "-webkit-user-select:none;user-select:none"
+              },
+              {
+               "cls": "grow-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex-grow:1"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "data-tree-indent": ""
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              },
+              {
+               "tag": "a",
+               "attrs": {
+                "href": "/",
+                "style": "width:calc(100% + 8px)"
+               },
+               "styles": [
+                {
+                 "cls": "-ml-2",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-left:-.5rem"
+                },
+                {
+                 "cls": "h-7",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:1.75rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "!flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex!important"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "overflow-hidden",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "overflow:hidden"
+                },
+                {
+                 "cls": "rounded-sm",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:.25rem"
+                },
+                {
+                 "cls": "px-2",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-inline:.5rem"
+                },
+                {
+                 "cls": "hover:bg-[var(--ds-gray-200)]",
+                 "state": ":hover",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "leading-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-leading:1;line-height:1"
+                },
+                {
+                 "cls": "pr-[1em]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-right:1em"
+                },
+                {
+                 "cls": "no-underline",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "text-decoration-line:none"
+                },
+                {
+                 "cls": "text-[var(--accents-8)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--accents-8)"
+                },
+                {
+                 "cls": "whitespace-nowrap",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "white-space:nowrap"
+                },
+                {
+                 "cls": "select-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "-webkit-user-select:none;user-select:none"
+                },
+                {
+                 "cls": "font-semibold",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "inline-block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:inline-block"
+                  },
+                  {
+                   "cls": "mr-2",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "margin-right:.5rem"
+                  },
+                  {
+                   "cls": "text-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-align:center"
+                  },
+                  {
+                   "cls": "text-[var(--ds-gray-900)]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-900)"
+                  },
+                  {
+                   "cls": "[&_svg]:align-middle",
+                   "state": "svg",
+                   "at": "@layer utilities",
+                   "decl": "vertical-align:middle"
+                  },
+                  {
+                   "cls": "ml-0.5",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "margin-left:.125rem"
+                  },
+                  {
+                   "cls": "text-[var(--ds-gray-1000)]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-1000)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "viewBox": "0 0 16 16",
+                    "height": "14",
+                    "width": "14",
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:block"
+                  },
+                  {
+                   "cls": "overflow-hidden",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "overflow:hidden"
+                  },
+                  {
+                   "cls": "text-ellipsis",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-overflow:ellipsis"
+                  },
+                  {
+                   "cls": "font-mono",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "font-family:var(--font-mono)"
+                  },
+                  {
+                   "cls": "[&_a]:align-text-bottom",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "vertical-align:text-bottom"
+                  },
+                  {
+                   "cls": "[&_a]:transition-opacity",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "[&_a]:duration-100",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.1s;transition-duration:.1s"
+                  },
+                  {
+                   "cls": "[&_a]:duration-100",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.1s"
+                  },
+                  {
+                   "cls": "[&_a]:ease-in-out",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "[&_a]:ease-in-out",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [],
+                 "text": "main.tsx"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "li",
+             "attrs": {
+              "title": "dashboard.tsx"
+             },
+             "styles": [
+              {
+               "cls": "list-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "list-style-type:none"
+              },
+              {
+               "cls": "leading-7",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+              },
+              {
+               "cls": "text-[var(--accents-8)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--accents-8)"
+              },
+              {
+               "cls": "whitespace-nowrap",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "white-space:nowrap"
+              },
+              {
+               "cls": "select-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "-webkit-user-select:none;user-select:none"
+              },
+              {
+               "cls": "grow-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex-grow:1"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "data-tree-indent": ""
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              },
+              {
+               "tag": "a",
+               "attrs": {
+                "style": "width:calc(100% + 8px)"
+               },
+               "styles": [
+                {
+                 "cls": "-ml-2",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-left:-.5rem"
+                },
+                {
+                 "cls": "h-7",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:1.75rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "!flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex!important"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "overflow-hidden",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "overflow:hidden"
+                },
+                {
+                 "cls": "rounded-sm",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:.25rem"
+                },
+                {
+                 "cls": "px-2",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-inline:.5rem"
+                },
+                {
+                 "cls": "hover:bg-[var(--ds-gray-200)]",
+                 "state": ":hover",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "leading-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-leading:1;line-height:1"
+                },
+                {
+                 "cls": "pr-[1em]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-right:1em"
+                },
+                {
+                 "cls": "no-underline",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "text-decoration-line:none"
+                },
+                {
+                 "cls": "text-[var(--accents-8)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--accents-8)"
+                },
+                {
+                 "cls": "whitespace-nowrap",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "white-space:nowrap"
+                },
+                {
+                 "cls": "select-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "-webkit-user-select:none;user-select:none"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "inline-block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:inline-block"
+                  },
+                  {
+                   "cls": "mr-2",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "margin-right:.5rem"
+                  },
+                  {
+                   "cls": "text-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-align:center"
+                  },
+                  {
+                   "cls": "text-[var(--ds-gray-900)]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-900)"
+                  },
+                  {
+                   "cls": "[&_svg]:align-middle",
+                   "state": "svg",
+                   "at": "@layer utilities",
+                   "decl": "vertical-align:middle"
+                  },
+                  {
+                   "cls": "ml-0.5",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "margin-left:.125rem"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "viewBox": "0 0 16 16",
+                    "height": "14",
+                    "width": "14",
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:block"
+                  },
+                  {
+                   "cls": "overflow-hidden",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "overflow:hidden"
+                  },
+                  {
+                   "cls": "text-ellipsis",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-overflow:ellipsis"
+                  },
+                  {
+                   "cls": "font-mono",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "font-family:var(--font-mono)"
+                  },
+                  {
+                   "cls": "[&_a]:align-text-bottom",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "vertical-align:text-bottom"
+                  },
+                  {
+                   "cls": "[&_a]:transition-opacity",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "[&_a]:duration-100",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.1s;transition-duration:.1s"
+                  },
+                  {
+                   "cls": "[&_a]:duration-100",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.1s"
+                  },
+                  {
+                   "cls": "[&_a]:ease-in-out",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "[&_a]:ease-in-out",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [],
+                 "text": "dashboard.tsx"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Card",
+   "description": "A Tree with `card` has no rendered example; its class string comes from the component's client code: the page background, the smallest shadow, radius 8, padding 24 and 16px text. It holds an open folder with one file and a top-level file (no indent).",
+   "code": "export function Component(): JSX.Element {\n  return (\n    <Tree card>\n      <Folder name=\"src\" defaultOpen>\n        <File name=\"index.ts\" />\n      </Folder>\n      <File name=\"package.json\" />\n    </Tree>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "flex-col",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "flex-direction:column"
+        },
+        {
+         "cls": "gap-[1px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "gap:1px"
+        },
+        {
+         "cls": "text-[13px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:13px"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:[--indent-color:var(--ds-gray-400)]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "--indent-color:var(--ds-gray-400)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:inline-block",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "display:inline-block"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:w-[23px]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "width:23px"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:h-7",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "height:1.75rem"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:bg-[linear-gradient(to_right,transparent_11.5px,var(--indent-color)_11.5px,var(--indent-color)_12.5px,transparent_12.5px)]",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "background-image:linear-gradient(to right,transparent 11.5px,var(--indent-color) 11.5px,var(--indent-color) 12.5px,transparent 12.5px)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:bg-no-repeat",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "background-repeat:no-repeat"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:align-top",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "vertical-align:top"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:-translate-x-1",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-x:calc(.25rem * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+        },
+        {
+         "cls": "[&_[data-tree-indent]]:shrink-0",
+         "state": "[data-tree-indent]",
+         "at": "@layer utilities",
+         "decl": "flex-shrink:0"
+        },
+        {
+         "cls": "bg-[var(--geist-background)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--geist-background)"
+        },
+        {
+         "cls": "shadow-[var(--shadow-smallest)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--shadow-smallest);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "rounded-lg",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.5rem"
+        },
+        {
+         "cls": "p-6",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding:1.5rem"
+        },
+        {
+         "cls": "text-base",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "li",
+         "attrs": {
+          "title": "src"
+         },
+         "styles": [
+          {
+           "cls": "list-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "leading-7",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+          },
+          {
+           "cls": "text-[var(--accents-8)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "whitespace-nowrap",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "select-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "[&_a]:text-[var(--accents-8)]",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "[&_a]:whitespace-nowrap",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "[&_a]:select-none",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "[&_a]:leading-none",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:1;line-height:1"
+          },
+          {
+           "cls": "[&_a]:block",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "display:block"
+          },
+          {
+           "cls": "[&_a]:pr-[1em]",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "padding-right:1em"
+          },
+          {
+           "cls": "[&_a]:no-underline",
+           "state": "a",
+           "at": "@layer utilities",
+           "decl": "text-decoration-line:none"
+          },
+          {
+           "cls": "[&_ul]:list-none",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "[&_ul]:m-0",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "margin:0"
+          },
+          {
+           "cls": "[&_ul]:p-0",
+           "state": "ul",
+           "at": "@layer utilities",
+           "decl": "padding:0"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "button",
+           "attrs": {
+            "style": "width:calc(100% + 8px)",
+            "type": "button"
+           },
+           "styles": [
+            {
+             "cls": "grow-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "flex-grow:1"
+            },
+            {
+             "cls": "-ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:-.5rem"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "bg-transparent",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#0000"
+            },
+            {
+             "cls": "border-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-border-style:none;border-style:none"
+            },
+            {
+             "cls": "h-7",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:1.75rem"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "rounded-sm",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.25rem"
+            },
+            {
+             "cls": "px-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.5rem"
+            },
+            {
+             "cls": "py-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-block:.25rem"
+            },
+            {
+             "cls": "hover:bg-[var(--ds-gray-200)]",
+             "state": ":hover",
+             "at": "@layer utilities @media (hover:hover)",
+             "decl": "background-color:var(--ds-gray-200)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "inline-block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-block"
+              },
+              {
+               "cls": "mr-2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-right:.5rem"
+              },
+              {
+               "cls": "text-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-align:center"
+              },
+              {
+               "cls": "text-[var(--ds-gray-900)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-900)"
+              },
+              {
+               "cls": "[&_svg]:align-middle",
+               "state": "svg",
+               "at": "@layer utilities",
+               "decl": "vertical-align:middle"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:block"
+              },
+              {
+               "cls": "overflow-hidden",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "overflow:hidden"
+              },
+              {
+               "cls": "text-ellipsis",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-overflow:ellipsis"
+              },
+              {
+               "cls": "font-mono",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-mono)"
+              },
+              {
+               "cls": "[&_a]:align-text-bottom",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "vertical-align:text-bottom"
+              },
+              {
+               "cls": "[&_a]:transition-opacity",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.1s;transition-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "src"
+            }
+           ]
+          },
+          {
+           "tag": "ul",
+           "attrs": {},
+           "styles": [],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "li",
+             "attrs": {
+              "title": "index.ts"
+             },
+             "styles": [
+              {
+               "cls": "list-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "list-style-type:none"
+              },
+              {
+               "cls": "leading-7",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+              },
+              {
+               "cls": "text-[var(--accents-8)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--accents-8)"
+              },
+              {
+               "cls": "whitespace-nowrap",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "white-space:nowrap"
+              },
+              {
+               "cls": "select-none",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "-webkit-user-select:none;user-select:none"
+              },
+              {
+               "cls": "grow-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex-grow:1"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {
+                "data-tree-indent": ""
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": []
+              },
+              {
+               "tag": "a",
+               "attrs": {
+                "style": "width:calc(100% + 8px)"
+               },
+               "styles": [
+                {
+                 "cls": "-ml-2",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-left:-.5rem"
+                },
+                {
+                 "cls": "h-7",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:1.75rem"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "!flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex!important"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "overflow-hidden",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "overflow:hidden"
+                },
+                {
+                 "cls": "rounded-sm",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:.25rem"
+                },
+                {
+                 "cls": "px-2",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-inline:.5rem"
+                },
+                {
+                 "cls": "hover:bg-[var(--ds-gray-200)]",
+                 "state": ":hover",
+                 "at": "@layer utilities @media (hover:hover)",
+                 "decl": "background-color:var(--ds-gray-200)"
+                },
+                {
+                 "cls": "leading-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-leading:1;line-height:1"
+                },
+                {
+                 "cls": "pr-[1em]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-right:1em"
+                },
+                {
+                 "cls": "no-underline",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "text-decoration-line:none"
+                },
+                {
+                 "cls": "text-[var(--accents-8)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:var(--accents-8)"
+                },
+                {
+                 "cls": "whitespace-nowrap",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "white-space:nowrap"
+                },
+                {
+                 "cls": "select-none",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "-webkit-user-select:none;user-select:none"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "inline-block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:inline-block"
+                  },
+                  {
+                   "cls": "mr-2",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "margin-right:.5rem"
+                  },
+                  {
+                   "cls": "text-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-align:center"
+                  },
+                  {
+                   "cls": "text-[var(--ds-gray-900)]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:var(--ds-gray-900)"
+                  },
+                  {
+                   "cls": "[&_svg]:align-middle",
+                   "state": "svg",
+                   "at": "@layer utilities",
+                   "decl": "vertical-align:middle"
+                  },
+                  {
+                   "cls": "ml-0.5",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "margin-left:.125rem"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "svg",
+                   "attrs": {
+                    "viewBox": "0 0 16 16",
+                    "height": "14",
+                    "width": "14",
+                    "data-slot": "geist-icon",
+                    "style": "color:currentColor"
+                   },
+                   "styles": [],
+                   "unresolved": [],
+                   "children": [
+                    {
+                     "tag": "path",
+                     "attrs": {},
+                     "styles": [],
+                     "unresolved": [],
+                     "children": []
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:block"
+                  },
+                  {
+                   "cls": "overflow-hidden",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "overflow:hidden"
+                  },
+                  {
+                   "cls": "text-ellipsis",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-overflow:ellipsis"
+                  },
+                  {
+                   "cls": "font-mono",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "font-family:var(--font-mono)"
+                  },
+                  {
+                   "cls": "[&_a]:align-text-bottom",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "vertical-align:text-bottom"
+                  },
+                  {
+                   "cls": "[&_a]:transition-opacity",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+                  },
+                  {
+                   "cls": "[&_a]:duration-100",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-duration:.1s;transition-duration:.1s"
+                  },
+                  {
+                   "cls": "[&_a]:duration-100",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "animation-duration:.1s"
+                  },
+                  {
+                   "cls": "[&_a]:ease-in-out",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+                  },
+                  {
+                   "cls": "[&_a]:ease-in-out",
+                   "state": "a",
+                   "at": "@layer utilities",
+                   "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [],
+                 "text": "index.ts"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "attrs": {
+          "title": "package.json"
+         },
+         "styles": [
+          {
+           "cls": "list-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "list-style-type:none"
+          },
+          {
+           "cls": "leading-7",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 7);line-height:1.75rem"
+          },
+          {
+           "cls": "text-[var(--accents-8)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--accents-8)"
+          },
+          {
+           "cls": "whitespace-nowrap",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "select-none",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "-webkit-user-select:none;user-select:none"
+          },
+          {
+           "cls": "grow-1",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-grow:1"
+          },
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "items-center",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:center"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "a",
+           "attrs": {
+            "style": "width:calc(100% + 8px)"
+           },
+           "styles": [
+            {
+             "cls": "-ml-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:-.5rem"
+            },
+            {
+             "cls": "h-7",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:1.75rem"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "!flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex!important"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "rounded-sm",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:.25rem"
+            },
+            {
+             "cls": "px-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:.5rem"
+            },
+            {
+             "cls": "hover:bg-[var(--ds-gray-200)]",
+             "state": ":hover",
+             "at": "@layer utilities @media (hover:hover)",
+             "decl": "background-color:var(--ds-gray-200)"
+            },
+            {
+             "cls": "leading-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:1;line-height:1"
+            },
+            {
+             "cls": "pr-[1em]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-right:1em"
+            },
+            {
+             "cls": "no-underline",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-decoration-line:none"
+            },
+            {
+             "cls": "text-[var(--accents-8)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "color:var(--accents-8)"
+            },
+            {
+             "cls": "whitespace-nowrap",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "white-space:nowrap"
+            },
+            {
+             "cls": "select-none",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "-webkit-user-select:none;user-select:none"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "inline-block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-block"
+              },
+              {
+               "cls": "mr-2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-right:.5rem"
+              },
+              {
+               "cls": "text-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-align:center"
+              },
+              {
+               "cls": "text-[var(--ds-gray-900)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:var(--ds-gray-900)"
+              },
+              {
+               "cls": "[&_svg]:align-middle",
+               "state": "svg",
+               "at": "@layer utilities",
+               "decl": "vertical-align:middle"
+              },
+              {
+               "cls": "ml-0.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "margin-left:.125rem"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "14",
+                "width": "14",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "span",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "block",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:block"
+              },
+              {
+               "cls": "overflow-hidden",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "overflow:hidden"
+              },
+              {
+               "cls": "text-ellipsis",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "text-overflow:ellipsis"
+              },
+              {
+               "cls": "font-mono",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-mono)"
+              },
+              {
+               "cls": "[&_a]:align-text-bottom",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "vertical-align:text-bottom"
+              },
+              {
+               "cls": "[&_a]:transition-opacity",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-duration:.1s;transition-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:duration-100",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-duration:.1s"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+              },
+              {
+               "cls": "[&_a]:ease-in-out",
+               "state": "a",
+               "at": "@layer utilities",
+               "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+              }
+             ],
+             "unresolved": [],
+             "children": [],
+             "text": "package.json"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

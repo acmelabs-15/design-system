@@ -1,0 +1,267 @@
+{
+ "heading": "Open",
+ "description": "The open command menu (a client-only state): the faded overlay, the 640px dialog at 15% from the top with its input block (the searchbox and the Esc chip) and the list of three groups; the first item is highlighted.",
+ "code": "export function Component(): JSX.Element {\n  return (\n    <CommandMenu open setOpen={() => {}}>\n      <CommandMenuInput placeholder=\"What do you need?\" />\n      <CommandMenuList>\n        <CommandMenuGroup heading=\"Suggestions\">\n          <CommandMenuItem>Figma Import</CommandMenuItem>\n        </CommandMenuGroup>\n        <CommandMenuGroup heading=\"Commands\">\n          <CommandMenuItem>Import Extension</CommandMenuItem>\n          <CommandMenuItem>Manage Extensions</CommandMenuItem>\n        </CommandMenuGroup>\n        <CommandMenuGroup heading=\"Collaboration\">\n          <CommandMenuItem>Flags Explorer</CommandMenuItem>\n        </CommandMenuGroup>\n      </CommandMenuList>\n    </CommandMenu>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "fixed inset-0 bg-background-100 opacity-80 z-100 data-[state=open]:animate-cmdkFadeIn data-[state=closed]:animate-cmdkFadeOut",
+   "attrs": {
+    "cmdk-overlay": "",
+    "geist-overlay": "",
+    "data-state": "open",
+    "style": "pointer-events:auto",
+    "data-aria-hidden": "true",
+    "aria-hidden": "true"
+   }
+  },
+  {
+   "tag": "div",
+   "class": "fixed top-[15%] left-1/2 -translate-x-1/2 w-[640px] rounded-xl bg-[var(--ds-background-100)] shadow-[var(--ds-shadow-modal)] overflow-hidden origin-center outline-hidden z-100 data-[state=open]:animate-cmdkScaleIn transition-transform duration-100 ease-in-out z-100 data-[state=closed]:animate-cmdkScaleOut",
+   "attrs": {
+    "role": "dialog",
+    "id": "dialog-12",
+    "aria-describedby": "desc-11",
+    "aria-labelledby": "title-10",
+    "data-state": "open",
+    "tabindex": "-1",
+    "style": "pointer-events:auto",
+    "cmdk-dialog": "",
+    "geist-dialog": ""
+   },
+   "children": [
+    {
+     "tag": "h2",
+     "class": "sr-only",
+     "attrs": {
+      "id": "title-10"
+     },
+     "text": "Command Menu"
+    },
+    {
+     "tag": "p",
+     "class": "sr-only",
+     "attrs": {
+      "id": "desc-11"
+     },
+     "text": "Use the command menu to navigate through Vercel."
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "cmdk-root": "",
+      "data-testid": "cmdk-root"
+     },
+     "children": [
+      {
+       "tag": "label",
+       "attrs": {
+        "cmdk-label": "",
+        "for": "input-7",
+        "id": "label-8",
+        "style": "position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"
+       },
+       "text": ""
+      },
+      {
+       "tag": "div",
+       "class": "border-b relative border-[var(--ds-gray-alpha-400)] bg-[var(--ds-background-100)] p-[var(--padding)] [--padding:12px] max-sm:sticky max-sm:top-0",
+       "children": [
+        {
+         "tag": "div",
+         "class": "flex items-center justify-between gap-[var(--padding)] px-1 py-0",
+         "children": [
+          {
+           "tag": "input",
+           "class": "outline-hidden h-7 flex-1 border-none bg-transparent p-0 text-base text-[var(--ds-gray-1000)] placeholder:text-[var(--ds-gray-700)] sm:text-lg",
+           "attrs": {
+            "cmdk-input": "",
+            "role": "combobox",
+            "aria-autocomplete": "list",
+            "aria-controls": "list-9",
+            "aria-expanded": "true",
+            "aria-labelledby": "label-8",
+            "autocomplete": "off",
+            "autocorrect": "off",
+            "id": "input-7",
+            "spellcheck": "false",
+            "type": "text",
+            "placeholder": "What do you need?",
+            "value": ""
+           }
+          },
+          {
+           "tag": "button",
+           "class": "outline-hidden ml-auto h-5 cursor-pointer items-center rounded-sm border-none bg-[var(--ds-background-100)] px-1 py-0 text-xs shadow-[var(--ds-shadow-border)] transition-[background] duration-200 focus-visible:shadow-[var(--ds-focus-ring)] hidden [@media(hover:hover)_and_(pointer:fine)]:flex hover:[@media(hover:hover)_and_(pointer:fine)]:bg-[var(--ds-gray-100)]",
+           "attrs": {
+            "type": "button"
+           },
+           "text": "Esc"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "flex max-h-none overflow-y-auto bg-[var(--ds-background-100)] p-2 transition-[height] duration-100 sm:block sm:max-h-[436px] [&_[cmdk-list-sizer]]:w-full",
+       "attrs": {
+        "cmdk-list": "",
+        "role": "listbox",
+        "aria-label": "Suggestions",
+        "aria-labelledby": "input-7",
+        "id": "list-9"
+       },
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "cmdk-list-sizer": ""
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-2"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-1"
+             },
+             "text": "Suggestions"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-1"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "figma import",
+                "aria-selected": "true",
+                "data-selected": "true"
+               },
+               "text": "Figma Import",
+               "children": []
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-4"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-3"
+             },
+             "text": "Commands"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-3"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "import extension"
+               },
+               "text": "Import Extension",
+               "children": []
+              },
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "manage extensions"
+               },
+               "text": "Manage Extensions",
+               "children": []
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "class": "[&_[cmdk-group-heading]]:flex [&_[cmdk-group-heading]]:h-(--ds-size-medium) [&_[cmdk-group-heading]]:items-center [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-0 [&_[cmdk-group-heading]]:text-[13px] [&_[cmdk-group-heading]]:text-[var(--ds-gray-900)]",
+           "attrs": {
+            "cmdk-group": "",
+            "role": "presentation",
+            "data-group-id": "group-6"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-heading": "",
+              "aria-hidden": "true",
+              "id": "heading-5"
+             },
+             "text": "Collaboration"
+            },
+            {
+             "tag": "div",
+             "attrs": {
+              "cmdk-group-items": "",
+              "role": "group",
+              "aria-labelledby": "heading-5"
+             },
+             "children": [
+              {
+               "tag": "div",
+               "class": "flex min-h-(--ds-size-large) cursor-pointer scroll-my-2 items-center gap-3 rounded-md px-2 py-0 text-sm sm:min-h-(--ds-size-medium) [@media(hover:hover)_and_(pointer:fine)]:data-[selected=true]:bg-[var(--ds-gray-alpha-100)] focus:bg-[var(--ds-gray-alpha-100)]",
+               "attrs": {
+                "cmdk-item": "",
+                "role": "option",
+                "data-value": "flags explorer"
+               },
+               "text": "Flags Explorer",
+               "children": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

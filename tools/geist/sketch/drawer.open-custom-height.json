@@ -1,0 +1,53 @@
+{
+ "heading": "Open custom height",
+ "description": "A fixed height (`height={200}`): the popup is 200px tall.",
+ "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}} height={200}>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n      </div>\n    </Drawer>\n  );\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "inset-0 bg-black/40 fixed z-[var(--ds-z-drawer)] transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0",
+   "attrs": {
+    "role": "presentation",
+    "data-open": ""
+   }
+  },
+  {
+   "tag": "div",
+   "class": "inset-0 pointer-events-none fixed flex items-end z-[var(--ds-z-drawer)]",
+   "attrs": {
+    "data-open": ""
+   },
+   "children": [
+    {
+     "tag": "div",
+     "class": "tailwind pointer-events-auto w-full outline-none transition-transform duration-[400ms] ease-[cubic-bezier(0.32,0.72,0,1)] data-[ending-style]:[transform:translateY(100%)] data-[starting-style]:[transform:translateY(100%)] [transform:translateY(var(--drawer-swipe-movement-y,0px))] border-gray-alpha-400 max-h-[90dvh] overscroll-none rounded-t-[10px] border-t bg-[var(--ds-background-100)] [&>[data-geist-menu]]:shadow-none overflow-y-auto geist-dialog",
+     "attrs": {
+      "role": "dialog",
+      "aria-modal": "true",
+      "data-open": "",
+      "tabindex": "-1",
+      "style": "height:200px"
+     },
+     "children": [
+      {
+       "tag": "div",
+       "class": "flex flex-col items-stretch justify-start gap-2 flex-initial p-12",
+       "children": [
+        {
+         "tag": "p",
+         "class": "text-[18px] leading-[24px] font-semibold text-center",
+         "text": "A drawer title"
+        },
+        {
+         "tag": "p",
+         "class": "text-copy-14 text-center",
+         "text": "Drawer body"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

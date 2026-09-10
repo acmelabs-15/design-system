@@ -1,0 +1,103 @@
+{
+  "note": "Three roots, each its own census page, both sides for both themes, on the mirror (http://localhost:4184/geist/combobox) and the census page of the docs (http://localhost:4180/census/combobox), the pane at 1100 by 900 and every preview fixed at the mirror's 600px stage. The page's own fourteen examples render the closed field on both sides (the modal and the sheet render none on the reference, so ours leaves theirs out of the host selector); the thirteen sketches that follow render the open states and the field variants, opened by the census page's example scripts. The mirror is the server render: its Controlled and Clearable fields have not yet taken their value (the effect that fills the field runs on the client), so the `prepare` step clears those two on ours before the read, and the valued state is read on the sketches instead. Soft by declaration: the input's intrinsic width under a fit-content host follows the font (`input`, `field`); the empty message's normal line height follows the font (`empty`, and the listbox that holds it); the check mark and the suffix sit behind an auto margin the label's width decides. The one difference left is the host context: a field in a flex column reads `min-width: auto` on the reference (a flex item) and `0px` on ours (a block child of the host).",
+  "themes": ["light", "dark"],
+  "viewport": [1100, 900],
+  "runs": {
+    "combobox": {
+      "geist": {
+        "side": "geist",
+        "page": "combobox",
+        "marker": "[role=combobox]",
+        "width": "600px",
+        "textParts": ["input", "field"],
+        "children": {
+          "field": ".field|.group\\/combobox",
+          "prefix": ".prefix|.group\\/combobox > [aria-hidden=\"true\"]",
+          "glass": ".prefix .icon|.group\\/combobox > [aria-hidden=\"true\"] > svg",
+          "spinner": "acme-spinner >> .spinner|[data-glyph=circular]",
+          "input": ".input|input",
+          "suffix": ".suffix|.right-10",
+          "clear": ".clear|button[aria-label=\"Clear selected value\"]",
+          "cross": ".clear .icon|button[aria-label=\"Clear selected value\"] svg",
+          "toggle": ".toggle|button[aria-label$=\"menu\"]",
+          "chevron": ".toggle .icon|button[aria-label$=\"menu\"] svg",
+          "status": ".status|:scope > [role=status]"
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "combobox",
+        "host": "acme-combobox:not(acme-modal *):not(acme-sheet *)",
+        "ours": ".combobox",
+        "width": "600px",
+        "textParts": ["input", "field"],
+        "prepare": "return Promise.all([...document.querySelectorAll('#controlled acme-combobox, #clearable acme-combobox')].map((c) => { c.value = ''; return c.updateComplete; }));",
+        "children": {
+          "field": ".field|.group\\/combobox",
+          "prefix": ".prefix|.group\\/combobox > [aria-hidden=\"true\"]",
+          "glass": ".prefix .icon|.group\\/combobox > [aria-hidden=\"true\"] > svg",
+          "spinner": "acme-spinner >> .spinner|[data-glyph=circular]",
+          "input": ".input|input",
+          "suffix": ".suffix|.right-10",
+          "clear": ".clear|button[aria-label=\"Clear selected value\"]",
+          "cross": ".clear .icon|button[aria-label=\"Clear selected value\"] svg",
+          "toggle": ".toggle|button[aria-label$=\"menu\"]",
+          "chevron": ".toggle .icon|button[aria-label$=\"menu\"] svg",
+          "status": ".status|:scope > [role=status]"
+        }
+      }
+    },
+    "combobox-list": {
+      "geist": {
+        "side": "geist",
+        "page": "combobox-list",
+        "marker": "[role=dialog][data-pristine]",
+        "width": "600px",
+        "states": [""],
+        "textParts": ["empty", "options"],
+        "children": { "options": ".options|ul", "empty": ".empty|ul > p", "footer": ".footer|footer" }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "combobox-list",
+        "host": "acme-combobox[open]",
+        "ours": ".list",
+        "width": "600px",
+        "states": [""],
+        "textParts": ["empty", "options"],
+        "children": { "options": ".options|ul", "empty": ".empty|ul > p", "footer": ".footer|footer" }
+      }
+    },
+    "combobox-option": {
+      "geist": {
+        "side": "geist",
+        "page": "combobox-option",
+        "marker": "[role=dialog] li[role=option]",
+        "width": "600px",
+        "states": [""],
+        "textProps": { "check": ["margin-left"], "suffix": ["margin-left"] },
+        "children": {
+          "prefix": ".prefix|[data-geist-combobox-option-prefix]",
+          "label": ".label|span[title]",
+          "suffix": ".suffix|[data-geist-combobox-option-suffix]",
+          "check": ".check|:scope > svg"
+        }
+      },
+      "ours": {
+        "side": "ours",
+        "page": "combobox-option",
+        "host": "acme-combobox[open] acme-combobox-option:not([hidden])",
+        "ours": ".option",
+        "width": "600px",
+        "states": [""],
+        "textProps": { "check": ["margin-left"], "suffix": ["margin-left"] },
+        "children": {
+          "prefix": ".prefix|[data-geist-combobox-option-prefix]",
+          "label": ".label|span[title]",
+          "suffix": ".suffix|[data-geist-combobox-option-suffix]",
+          "check": ".check|:scope > svg"
+        }
+      }
+    }
+  }
+}

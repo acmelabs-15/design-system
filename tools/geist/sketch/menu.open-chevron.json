@@ -1,0 +1,220 @@
+{
+ "heading": "Open with chevron",
+ "description": "The secondary chevron trigger open: the chevron turned, the list under it.",
+ "code": "import {\n  Menu,\n  MenuButton,\n  MenuContainer,\n  MenuItem,\n} from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <>\n      <MenuContainer>\n        <MenuButton showChevron variant=\"secondary\">\n          Actions\n        </MenuButton>\n        <Menu width={200}>\n          <MenuItem onClick={() => undefined}>One</MenuItem>\n          <MenuItem onClick={() => undefined}>Two</MenuItem>\n          <MenuItem onClick={() => undefined}>Three</MenuItem>\n          <MenuItem href=\"https://vercel.com\">Test for Link</MenuItem>\n          <MenuItem onClick={() => undefined} type=\"error\">\n            Delete\n          </MenuItem>\n        </Menu>\n      </MenuContainer>\n    </>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "relative",
+   "attrs": {
+    "style": "min-height:250px"
+   },
+   "children": [
+    {
+     "tag": "button",
+     "attrs": {
+      "type": "submit",
+      "tabindex": "0",
+      "data-react-aria-pressable": "true",
+      "aria-haspopup": "true",
+      "aria-expanded": "true",
+      "aria-controls": "menu-_R_ehslubquiuq6ivb_",
+      "data-geist-menu-button": "",
+      "data-is-open": "true",
+      "id": "menu-button-_R_ehslubquiuq6ivbH1_",
+      "style": "--geist-icon-size:16px",
+      "data-geist-button": "",
+      "data-prefix": "false",
+      "data-suffix": "false",
+      "data-version": "v1"
+     },
+     "class": "outline-none m-0 p-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex text-[var(--themed-fg,_var(--ds-background-100))] bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium !px-(--geist-gap-half) max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:10px] [--height:var(--ds-size-medium)] text-[14px] !pl-[var(--x-padding)] rounded-md [--themed-bg:_var(--ds-background-100)] shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--themed-fg:_var(--ds-gray-1000)] [--themed-border:_var(--ds-gray-400)] data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)] data-[focus]:transition-none h-[var(--height)] data-hover:bg-[var(--ds-gray-100)] dark-theme:data-hover:bg-[var(--ds-gray-200)] data-hover:text-[var(--themed-fg)] data-hover:disabled:bg-[var(--ds-gray-100)] data-hover:!bg-background-100 data-hover:shadow-[0_0_0_1px_var(--ds-gray-alpha-500)] pr-10! transition-[border-color, background,color,transform,box-shadow]",
+     "children": [
+      {
+       "tag": "span",
+       "attrs": {},
+       "class": "truncate inline-block px-1.5 flex-grow",
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "class": "flex items-center justify-between gap-1 flex-nowrap w-full",
+         "text": "Actions",
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "data-open": "true"
+           },
+           "class": "outline-hidden border-0 box-border text-base no-underline [tap-highlight-color:transparent] select-none bg-none cursor-pointer absolute -right-px top-1/2 inline-flex h-[30px] w-10 -translate-y-1/2 items-center justify-center text-[var(--accents-3)] transition-colors duration-150 group-data-[hover=true]/trigger:text-gray-1000",
+           "children": [
+            {
+             "tag": "svg",
+             "attrs": {
+              "data-slot": "geist-icon",
+              "style": "color:currentColor",
+              "viewBox": "0 0 16 16",
+              "height": "16",
+              "width": "16"
+             },
+             "class": "rotate-180 transition-none size-(--ds-control-decoration-size)",
+             "children": [
+              {
+               "tag": "path",
+               "attrs": {}
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "z-[var(--ds-z-menu)] transition-opacity duration-150 ease-in-out data-[phase=exiting]:opacity-0",
+     "attrs": {
+      "data-phase": "entered",
+      "style": "position:absolute;left:0px;top:46px"
+     },
+     "children": [
+      {
+       "tag": "ul",
+       "class": "data-[state='closed']:animate-fade-popover-out m-0 text-sm material-menu overflow-x-hidden overflow-y-auto overscroll-contain p-(--ds-popover-padding) outline-none [-webkit-overflow-scrolling:_touch] max-md:rounded-b-none max-md:w-[unset]!",
+       "attrs": {
+        "aria-labelledby": "menu-button-_R_ehslubquiuq6ivbH1_",
+        "id": "menu-m",
+        "data-geist-menu": "",
+        "data-version": "v1",
+        "role": "menu",
+        "style": "width:200px",
+        "tabindex": "-1"
+       },
+       "children": [
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_d",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-c"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-c"
+           },
+           "text": "One"
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_f",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-e"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-e"
+           },
+           "text": "Two"
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_h",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-g"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-g"
+           },
+           "text": "Three"
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-geist-menu-link": "",
+          "role": "none"
+         },
+         "children": [
+          {
+           "tag": "a",
+           "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+           "attrs": {
+            "data-geist-menu-item": "",
+            "data-descendant": "_j",
+            "role": "menuitem",
+            "style": "--geist-icon-size:18px",
+            "tabindex": "-1",
+            "aria-labelledby": "menu-item-i",
+            "href": "https://vercel.com"
+           },
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "id": "menu-item-i"
+             },
+             "text": "Test for Link"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base !text-red-900 aria-disabled:!text-gray-700 disabled:!text-gray-700 data-selected:bg-red-100 data-highlighted:bg-red-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_l",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-k"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-k"
+           },
+           "text": "Delete"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

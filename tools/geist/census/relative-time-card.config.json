@@ -1,0 +1,135 @@
+{
+  "note": "Three roots per relative-time-card page. relative-time-card: the card's content, a client-only state the sketch (tools/geist/sketch/relative-time-card.open.json) renders on the mirror and the census page opens through the prepare script (shown=1, disable-triggers on every card of the Open example; the docs page pins nothing). relative-time-label: the short age the element draws with nothing slotted (the Plain sketch), read on the slot's fallback span. relative-time-trigger: the composed context card's trigger wrapper around the slotted button or the label, read through the acme-context-card hop. Run each side with theme light and dark; width fixes every preview at the mirror's 600px stage. Text-bearing parts and the column they size are read as soft (textParts); the zone chips keep their height hard and their width soft (textProps), as it follows the abbreviation.",
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "relative-time-card": {
+    "geist": {
+      "side": "geist",
+      "page": "relative-time-card",
+      "marker": ".min-w-\\[300px\\]",
+      "width": "600px",
+      "children": {
+        "ago": ".ago|.flex.flex-col.gap-3",
+        "age": ".ago .age|.tabular-nums.text-\\[13px\\]",
+        "rows": ".rows|.flex.flex-col.gap-2",
+        "row": ".rows .row|.justify-between",
+        "place": ".rows .row .place|.justify-between .gap-1\\.5",
+        "chip": ".rows .row .chip|.justify-between .bg-gray-200",
+        "abbr": ".rows .row .abbr|.justify-between .bg-gray-200 > span",
+        "date": ".rows .row .date|.justify-between .gap-1\\.5 > .text-\\[13px\\]",
+        "clock": ".rows .row > .clock|.justify-between > .tabular-nums",
+        "row2": ".rows .row:nth-child(2)|.justify-between:nth-child(2)",
+        "chip2": ".rows .row:nth-child(2) .chip|.justify-between:nth-child(2) .bg-gray-200",
+        "abbr2": ".rows .row:nth-child(2) .abbr|.justify-between:nth-child(2) .bg-gray-200 > span",
+        "date2": ".rows .row:nth-child(2) .date|.justify-between:nth-child(2) .gap-1\\.5 > .text-\\[13px\\]",
+        "clock2": ".rows .row:nth-child(2) > .clock|.justify-between:nth-child(2) > .tabular-nums"
+      },
+      "textParts": [
+        "root",
+        "ago",
+        "age",
+        "rows",
+        "row",
+        "place",
+        "abbr",
+        "date",
+        "clock",
+        "row2",
+        "abbr2",
+        "date2",
+        "clock2"
+      ],
+      "textProps": {
+        "chip": [
+          "width",
+          "__rect"
+        ],
+        "chip2": [
+          "width",
+          "__rect"
+        ]
+      }
+    },
+    "ours": {
+      "side": "ours",
+      "page": "relative-time-card",
+      "host": "acme-relative-time",
+      "ours": ".content",
+      "width": "600px",
+      "children": {
+        "ago": ".ago|.flex.flex-col.gap-3",
+        "age": ".ago .age|.tabular-nums.text-\\[13px\\]",
+        "rows": ".rows|.flex.flex-col.gap-2",
+        "row": ".rows .row|.justify-between",
+        "place": ".rows .row .place|.justify-between .gap-1\\.5",
+        "chip": ".rows .row .chip|.justify-between .bg-gray-200",
+        "abbr": ".rows .row .abbr|.justify-between .bg-gray-200 > span",
+        "date": ".rows .row .date|.justify-between .gap-1\\.5 > .text-\\[13px\\]",
+        "clock": ".rows .row > .clock|.justify-between > .tabular-nums",
+        "row2": ".rows .row:nth-child(2)|.justify-between:nth-child(2)",
+        "chip2": ".rows .row:nth-child(2) .chip|.justify-between:nth-child(2) .bg-gray-200",
+        "abbr2": ".rows .row:nth-child(2) .abbr|.justify-between:nth-child(2) .bg-gray-200 > span",
+        "date2": ".rows .row:nth-child(2) .date|.justify-between:nth-child(2) .gap-1\\.5 > .text-\\[13px\\]",
+        "clock2": ".rows .row:nth-child(2) > .clock|.justify-between:nth-child(2) > .tabular-nums"
+      },
+      "textParts": [
+        "root",
+        "ago",
+        "age",
+        "rows",
+        "row",
+        "place",
+        "abbr",
+        "date",
+        "clock",
+        "row2",
+        "abbr2",
+        "date2",
+        "clock2"
+      ],
+      "textProps": {
+        "chip": [
+          "width",
+          "__rect"
+        ],
+        "chip2": [
+          "width",
+          "__rect"
+        ]
+      },
+      "prepare": "// The \"Open\" example (the second preview): every card pinned open through shown, the pointer ignored.\nconst open = document.querySelectorAll(\".showcase .preview\")[1];\nconst els = [...open.querySelectorAll(\"acme-relative-time\")];\nfor (const el of els) { el.disableTriggers = true; el.shown = 1; }\nreturn Promise.all(els.map(async (el) => { await el.updateComplete; await el.shadowRoot.querySelector(\"acme-context-card\")?.updateComplete; }));"
+    }
+  },
+  "relative-time-label": {
+    "geist": {
+      "side": "geist",
+      "page": "relative-time-label",
+      "marker": ".text-label-14",
+      "width": "600px"
+    },
+    "ours": {
+      "side": "ours",
+      "page": "relative-time-label",
+      "host": "acme-relative-time",
+      "ours": ".time",
+      "width": "600px"
+    }
+  },
+  "relative-time-trigger": {
+    "geist": {
+      "side": "geist",
+      "page": "relative-time-trigger",
+      "marker": ".flex-\\[0_1_auto\\].cursor-pointer",
+      "width": "600px"
+    },
+    "ours": {
+      "side": "ours",
+      "page": "relative-time-trigger",
+      "host": "acme-relative-time",
+      "ours": "acme-context-card >> .trigger",
+      "width": "600px"
+    }
+  }
+}

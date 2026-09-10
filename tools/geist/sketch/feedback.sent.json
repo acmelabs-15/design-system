@@ -1,0 +1,70 @@
+{
+  "heading": "Sent",
+  "description": "The panel after a submission: a fixed 195px card with the check and the two lines fading in.",
+  "code": "import { Feedback } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return <Feedback label=\"vercel\" dryRun />;\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "attrs": {
+        "data-radix-popper-content-wrapper": "",
+        "style": "position:fixed;left:0;top:0;min-width:max-content;z-index:101"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "class": "bg-[var(--ds-background-100)] w-[340px] rounded-xl animate-feedbackFadeIn shadow-[var(--ds-shadow-menu)] overflow-hidden z-101 data-[align='end']:origin-top-right data-[align='start']:origin-top-left data-[state='closed']:animate-feedbackFadeOut h-[195px]",
+          "attrs": {
+            "data-side": "bottom",
+            "data-align": "center",
+            "data-state": "open",
+            "role": "dialog",
+            "id": "radix-*",
+            "tabindex": "-1",
+            "style": "--radix-popover-content-transform-origin:var(--radix-popper-transform-origin)"
+          },
+          "children": [
+            {
+              "tag": "div",
+              "class": "flex flex-col justify-center items-center gap-2 h-full",
+              "children": [
+                {
+                  "tag": "svg",
+                  "class": "checkmark opacity-0 translate-y-1 animate-feedbackAppear",
+                  "attrs": {
+                    "data-slot": "geist-icon",
+                    "data-glyph": "circular",
+                    "style": "color:var(--ds-green-900)",
+                    "viewBox": "0 0 16 16",
+                    "height": "32",
+                    "width": "32"
+                  },
+                  "children": [
+                    {
+                      "tag": "path",
+                      "attrs": {
+                        "fill": "currentColor",
+                        "fill-rule": "evenodd",
+                        "clip-rule": "evenodd",
+                        "d": "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.47-1.47.53-.53L11 4.94l-.53.53L6.5 9.44l-.97-.97L5 7.94 3.94 9l.53.53 1.5 1.5c.3.3.77.3 1.06 0z"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "tag": "p",
+                  "class": "text-copy-14 opacity-0 translate-y-1 animate-feedbackAppear animation-delay-200",
+                  "text": "Your feedback has been received!"
+                },
+                {
+                  "tag": "p",
+                  "class": "text-copy-14 opacity-0 translate-y-1 animate-feedbackAppear animation-delay-400",
+                  "text": "Thank you for your help."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

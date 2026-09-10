@@ -1,0 +1,58 @@
+{
+  "heading": "Mobile grid",
+  "description": "The mobileGrid prop (a client-only class on the children container the page has no example of): the children lay out in two equal columns; after the first measurement the bottom fade shows.",
+  "code": "import { Scroller } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Scroller height={220} mobileGrid width=\"100%\">\n      {...Array.from({ length: 4 }, (_, i) => (\n        <div className=\"bg-gray-1000 h-64 w-64\" key={i} />\n      ))}\n    </Scroller>\n  );\n}\n",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "aGa9CG_overlayContainer aGa9CG_isHorizontal",
+      "attrs": {
+        "data-geist-scroller": "",
+        "data-version": "v1",
+        "style": "width:100%;height:220px"
+      },
+      "children": [
+        {
+          "tag": "div",
+          "class": "aGa9CG_overlay aGa9CG_bottom",
+          "attrs": {
+            "data-geist-scroller-overlay": ""
+          }
+        },
+        {
+          "tag": "div",
+          "class": "aGa9CG_scroller",
+          "attrs": {
+            "data-geist-scroller-container": "",
+            "data-geist-scroller-overflowing": "",
+            "data-overflow": "both"
+          },
+          "children": [
+            {
+              "tag": "div",
+              "class": "aGa9CG_mobileGrid",
+              "children": [
+                {
+                  "tag": "div",
+                  "class": "bg-gray-1000 h-64 w-64"
+                },
+                {
+                  "tag": "div",
+                  "class": "bg-gray-1000 h-64 w-64"
+                },
+                {
+                  "tag": "div",
+                  "class": "bg-gray-1000 h-64 w-64"
+                },
+                {
+                  "tag": "div",
+                  "class": "bg-gray-1000 h-64 w-64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

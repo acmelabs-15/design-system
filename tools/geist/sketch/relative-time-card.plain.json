@@ -1,0 +1,18 @@
+{
+ "heading": "Plain",
+ "description": "The card with no trigger of its own: the short age (days, hours or minutes ago, or Just now) as a 14px label in gray-900, inside the context card's trigger wrapper.",
+ "code": "import { RelativeTimeCard } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\n// No children: the component draws the short age itself.\nexport function Component(): JSX.Element {\n  const date = new Date('2026-09-09T08:15:30Z').getTime();\n  return <RelativeTimeCard date={date} />;\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "inline-flex cursor-pointer flex-[0_1_auto] overflow-hidden",
+   "children": [
+    {
+     "tag": "span",
+     "class": "text-label-14 text-gray-900",
+     "text": "2 hours ago"
+    }
+   ]
+  }
+ ]
+}

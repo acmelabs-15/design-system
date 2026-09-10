@@ -1,0 +1,168 @@
+{
+ "heading": "Open custom trigger",
+ "description": "The unstyled avatar trigger open.",
+ "code": "import {\n  Avatar,\n  Menu,\n  MenuButton,\n  MenuContainer,\n  MenuItem,\n} from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <MenuContainer>\n      <MenuButton type=\"unstyled\">\n        <Avatar size={30} username=\"evilrabbit\" />\n      </MenuButton>\n      <Menu width={200}>\n        <MenuItem>One</MenuItem>\n        <MenuItem>Two</MenuItem>\n        <MenuItem>Three</MenuItem>\n      </Menu>\n    </MenuContainer>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "relative",
+   "attrs": {
+    "style": "min-height:180px"
+   },
+   "children": [
+    {
+     "tag": "button",
+     "attrs": {
+      "type": "submit",
+      "tabindex": "0",
+      "data-react-aria-pressable": "true",
+      "aria-haspopup": "true",
+      "aria-expanded": "true",
+      "aria-controls": "menu-_R_qlslubquiuq6ivb_",
+      "aria-label": "Menu",
+      "data-geist-menu-button": "",
+      "data-is-open": "true",
+      "id": "menu-button-_R_qlslubquiuq6ivbH1_",
+      "style": "--geist-icon-size:16px",
+      "data-geist-button": "",
+      "data-prefix": "false",
+      "data-suffix": "false",
+      "data-version": "v1"
+     },
+     "class": "[&>span]:px-0!",
+     "children": [
+      {
+       "tag": "span",
+       "attrs": {},
+       "class": "truncate px-1.5 shrink-0 flex items-center justify-center",
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "class": "flex items-center justify-between gap-1 flex-nowrap w-full",
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "aria-label": "Avatar for evilrabbit",
+            "data-geist-avatar": "",
+            "data-mask": "true",
+            "data-resolved": "false",
+            "data-version": "v1",
+            "role": "img",
+            "style": "--size:30px"
+           },
+           "class": "w-[var(--size)] h-[var(--size)] shrink-0 rounded-full inline-block overflow-hidden leading-0 align-top relative transition-[background] duration-200 ease-in-out after:content-[\"\"] after:w-full after:h-full after:absolute after:inset-0 after:rounded-full after:border after:border-[var(--ds-gray-alpha-400)] data-[mask=false]:rounded-md data-[mask=false]:after:hidden data-[mask=false]:before:hidden data-[resolved=false]:before:content-[\"\"] data-[resolved=false]:before:w-full data-[resolved=false]:before:h-full data-[resolved=false]:before:absolute data-[resolved=false]:before:inset-0 data-[resolved=false]:before:rounded-full data-[resolved=false]:before:bg-gradient-to-r data-[resolved=false]:before:from-[var(--accents-1)] data-[resolved=false]:before:via-[var(--accents-2)] data-[resolved=false]:before:to-[var(--accents-1)] data-[resolved=false]:before:bg-[length:400%_100%] data-[resolved=false]:before:animate-loading [mask-image:radial-gradient(circle,white,black)] [-webkit-mask-image:radial-gradient(circle,white,black)]",
+           "children": [
+            {
+             "tag": "img",
+             "attrs": {
+              "data-version": "v1",
+              "alt": "Avatar for evilrabbit",
+              "title": "Avatar for evilrabbit",
+              "data-nimg": "1",
+              "style": "color:transparent",
+              "src": "/api/www/avatar?s=60&u=evilrabbit&dpl=dpl_HrkVw9WUiemAdQcf32Nq2Vib3ahN"
+             },
+             "class": "h-auto max-w-full w-full h-full relative"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "z-[var(--ds-z-menu)] transition-opacity duration-150 ease-in-out data-[phase=exiting]:opacity-0",
+     "attrs": {
+      "data-phase": "entered",
+      "style": "position:absolute;left:0px;top:40px"
+     },
+     "children": [
+      {
+       "tag": "ul",
+       "class": "data-[state='closed']:animate-fade-popover-out m-0 text-sm material-menu overflow-x-hidden overflow-y-auto overscroll-contain p-(--ds-popover-padding) outline-none [-webkit-overflow-scrolling:_touch] max-md:rounded-b-none max-md:w-[unset]!",
+       "attrs": {
+        "aria-labelledby": "menu-button-_R_qlslubquiuq6ivbH1_",
+        "id": "menu-1i",
+        "data-geist-menu": "",
+        "data-version": "v1",
+        "role": "menu",
+        "style": "width:200px",
+        "tabindex": "-1"
+       },
+       "children": [
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_1d",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-1c"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-1c"
+           },
+           "text": "One"
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_1f",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-1e"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-1e"
+           },
+           "text": "Two"
+          }
+         ]
+        },
+        {
+         "tag": "li",
+         "class": "flex h-(--ds-popover-row-height) w-full cursor-pointer items-center rounded-(--ds-popover-row-radius) p-(--ds-popover-row-padding) outline-none text-gray-1000 aria-disabled:text-gray-700 aria-disabled:pointer-events-none aria-disabled:cursor-default disabled:text-gray-700 disabled:pointer-events-none disabled:cursor-default max-md:h-(--ds-size-large) max-md:text-base data-selected:bg-gray-alpha-100 data-highlighted:bg-gray-alpha-100",
+         "attrs": {
+          "data-geist-menu-item": "",
+          "data-descendant": "_1h",
+          "role": "menuitem",
+          "style": "--geist-icon-size:18px",
+          "tabindex": "-1",
+          "aria-labelledby": "menu-item-1g"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {
+            "id": "menu-item-1g"
+           },
+           "text": "Three"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

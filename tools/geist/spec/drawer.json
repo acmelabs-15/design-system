@@ -1,0 +1,5413 @@
+{
+ "page": "drawer",
+ "title": "Drawer",
+ "lede": "Display content in a separate view from the existing context.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "Only use a Drawer on small viewports. Shown here at any viewport for demonstration.",
+   "code": "import { Button, Drawer } from '@vercel/geistcn/components';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [open, setOpen] = useState(false);\n\n  return (\n    <>\n      <Button onClick={(): void => setOpen(true)}>Open</Button>\n      <Drawer onDismiss={(): void => setOpen(false)} show={open}>\n        <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n          <p className=\"text-[18px] leading-[24px] font-semibold text-center\">\n            A drawer title\n          </p>\n          <p className=\"text-copy-14 text-center\">Drawer body</p>\n        </div>\n      </Drawer>\n    </>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "button",
+       "attrs": {
+        "type": "submit",
+        "tabindex": "0",
+        "data-react-aria-pressable": "true",
+        "data-geist-button": "",
+        "data-prefix": "false",
+        "data-suffix": "false",
+        "data-version": "v1",
+        "style": "--geist-icon-size:16px"
+       },
+       "styles": [
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "m-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin:0"
+        },
+        {
+         "cls": "p-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding:0"
+        },
+        {
+         "cls": "border-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-style:var(--tw-border-style);border-width:0"
+        },
+        {
+         "cls": "align-baseline",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "vertical-align:baseline"
+        },
+        {
+         "cls": "no-underline",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "text-decoration-line:none"
+        },
+        {
+         "cls": "group/trigger",
+         "state": ")[data-hover=true] *)",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        },
+        {
+         "cls": "cursor-pointer",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "select-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "-webkit-user-select:none;user-select:none"
+        },
+        {
+         "cls": "transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"
+        },
+        {
+         "cls": "translate-z-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-z:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "text-[var(--themed-fg,_var(--ds-background-100))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--themed-fg,var(--ds-background-100))"
+        },
+        {
+         "cls": "bg-[var(--themed-bg,_var(--ds-gray-1000))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--themed-bg,var(--ds-gray-1000))"
+        },
+        {
+         "cls": "font-medium",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+        },
+        {
+         "cls": "!px-(--geist-gap-half)",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:var(--geist-gap-half)!important"
+        },
+        {
+         "cls": "max-w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:100%"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:center"
+        },
+        {
+         "cls": "duration-[time:150ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.15s;transition-duration:.15s"
+        },
+        {
+         "cls": "duration-[time:150ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.15s"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "data-[focus]:transition-none",
+         "state": "[data-focus]",
+         "at": "@layer utilities",
+         "decl": "transition-property:none"
+        },
+        {
+         "cls": "data-[focus]:shadow-[var(--ds-focus-ring)]",
+         "state": "[data-focus]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "[&_svg]:shrink-0",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "flex-shrink:0"
+        },
+        {
+         "cls": "disabled:cursor-not-allowed",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "aria-disabled:cursor-not-allowed",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "disabled:text-[var(--ds-gray-700)]",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "disabled:bg-[var(--ds-gray-100)]",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-100)"
+        },
+        {
+         "cls": "aria-disabled:text-[var(--ds-gray-700)]",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "aria-disabled:bg-[var(--ds-gray-100)]",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-100)"
+        },
+        {
+         "cls": "disabled:![--themed-border:_var(--ds-gray-400)]",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "--themed-border:var(--ds-gray-400)!important"
+        },
+        {
+         "cls": "aria-disabled:![--themed-border:_var(--ds-gray-400)]",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "--themed-border:var(--ds-gray-400)!important"
+        },
+        {
+         "cls": "disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "[--x-padding:10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--x-padding:10px"
+        },
+        {
+         "cls": "[--height:var(--ds-size-medium)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--height:var(--ds-size-medium)"
+        },
+        {
+         "cls": "text-[14px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:14px"
+        },
+        {
+         "cls": "!pl-[var(--x-padding)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-left:var(--x-padding)!important"
+        },
+        {
+         "cls": "!pr-[var(--x-padding)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-right:var(--x-padding)!important"
+        },
+        {
+         "cls": "rounded-md",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "h-[var(--height)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "height:var(--height)"
+        },
+        {
+         "cls": "data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))]",
+         "state": "[data-hover]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--themed-hover-bg,#383838)"
+        },
+        {
+         "cls": "dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))]",
+         "state": ":where(.dark-theme,.dark-theme *)[data-hover]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--themed-hover-bg,#ccc)"
+        },
+        {
+         "cls": "data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))]",
+         "state": "[data-hover]",
+         "at": "@layer utilities",
+         "decl": "--themed-border:var(--themed-hover-bg,var(--ds-gray-200))"
+        },
+        {
+         "cls": "data-hover:disabled:bg-[var(--ds-gray-100)]",
+         "state": "[data-hover]:disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-100)"
+        }
+       ],
+       "unresolved": [
+        "transition-[border-color, background,color,transform,box-shadow]"
+       ],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "truncate",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+          },
+          {
+           "cls": "inline-block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-block"
+          },
+          {
+           "cls": "px-1.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.375rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Open"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Custom height",
+   "description": "",
+   "code": "import { Button, Drawer } from '@vercel/geistcn/components';\nimport { useState, type JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  const [open, setOpen] = useState(false);\n\n  return (\n    <>\n      <Button onClick={(): void => setOpen(true)}>Open</Button>\n      <Drawer height={200} onDismiss={(): void => setOpen(false)} show={open}>\n        <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n          <p className=\"text-[18px] leading-[24px] font-semibold text-center\">\n            A drawer title\n          </p>\n          <p className=\"text-copy-14 text-center\">Drawer body</p>\n        </div>\n      </Drawer>\n    </>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "button",
+       "attrs": {
+        "type": "submit",
+        "tabindex": "0",
+        "data-react-aria-pressable": "true",
+        "data-geist-button": "",
+        "data-prefix": "false",
+        "data-suffix": "false",
+        "data-version": "v1",
+        "style": "--geist-icon-size:16px"
+       },
+       "styles": [
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "m-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin:0"
+        },
+        {
+         "cls": "p-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding:0"
+        },
+        {
+         "cls": "border-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-style:var(--tw-border-style);border-width:0"
+        },
+        {
+         "cls": "align-baseline",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "vertical-align:baseline"
+        },
+        {
+         "cls": "no-underline",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "text-decoration-line:none"
+        },
+        {
+         "cls": "group/trigger",
+         "state": ")[data-hover=true] *)",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-1000)"
+        },
+        {
+         "cls": "relative",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "position:relative"
+        },
+        {
+         "cls": "cursor-pointer",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "cursor:pointer"
+        },
+        {
+         "cls": "select-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "-webkit-user-select:none;user-select:none"
+        },
+        {
+         "cls": "transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"
+        },
+        {
+         "cls": "translate-z-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-translate-z:calc(.25rem * 0);translate:var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)"
+        },
+        {
+         "cls": "flex",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "display:flex"
+        },
+        {
+         "cls": "text-[var(--themed-fg,_var(--ds-background-100))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "color:var(--themed-fg,var(--ds-background-100))"
+        },
+        {
+         "cls": "bg-[var(--themed-bg,_var(--ds-gray-1000))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--themed-bg,var(--ds-gray-1000))"
+        },
+        {
+         "cls": "font-medium",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+        },
+        {
+         "cls": "!px-(--geist-gap-half)",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-inline:var(--geist-gap-half)!important"
+        },
+        {
+         "cls": "max-w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:100%"
+        },
+        {
+         "cls": "items-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "align-items:center"
+        },
+        {
+         "cls": "justify-center",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "justify-content:center"
+        },
+        {
+         "cls": "duration-[time:150ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.15s;transition-duration:.15s"
+        },
+        {
+         "cls": "duration-[time:150ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.15s"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)"
+        },
+        {
+         "cls": "ease-in-out",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "data-[focus]:transition-none",
+         "state": "[data-focus]",
+         "at": "@layer utilities",
+         "decl": "transition-property:none"
+        },
+        {
+         "cls": "data-[focus]:shadow-[var(--ds-focus-ring)]",
+         "state": "[data-focus]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:var(--ds-focus-ring);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "[&_svg]:shrink-0",
+         "state": "svg",
+         "at": "@layer utilities",
+         "decl": "flex-shrink:0"
+        },
+        {
+         "cls": "disabled:cursor-not-allowed",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "aria-disabled:cursor-not-allowed",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "cursor:not-allowed"
+        },
+        {
+         "cls": "disabled:text-[var(--ds-gray-700)]",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "disabled:bg-[var(--ds-gray-100)]",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-100)"
+        },
+        {
+         "cls": "aria-disabled:text-[var(--ds-gray-700)]",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "color:var(--ds-gray-700)"
+        },
+        {
+         "cls": "aria-disabled:bg-[var(--ds-gray-100)]",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-100)"
+        },
+        {
+         "cls": "disabled:![--themed-border:_var(--ds-gray-400)]",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "--themed-border:var(--ds-gray-400)!important"
+        },
+        {
+         "cls": "aria-disabled:![--themed-border:_var(--ds-gray-400)]",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "--themed-border:var(--ds-gray-400)!important"
+        },
+        {
+         "cls": "disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+         "state": ":disabled",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)]",
+         "state": "[aria-disabled=true]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 0 1px var(--tw-shadow-color,var(--themed-border,transparent));box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "[--x-padding:10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--x-padding:10px"
+        },
+        {
+         "cls": "[--height:var(--ds-size-medium)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--height:var(--ds-size-medium)"
+        },
+        {
+         "cls": "text-[14px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "font-size:14px"
+        },
+        {
+         "cls": "!pl-[var(--x-padding)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-left:var(--x-padding)!important"
+        },
+        {
+         "cls": "!pr-[var(--x-padding)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "padding-right:var(--x-padding)!important"
+        },
+        {
+         "cls": "rounded-md",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-radius:.375rem"
+        },
+        {
+         "cls": "h-[var(--height)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "height:var(--height)"
+        },
+        {
+         "cls": "data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_22%))]",
+         "state": "[data-hover]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--themed-hover-bg,#383838)"
+        },
+        {
+         "cls": "dark-theme:data-hover:bg-[var(--themed-hover-bg,_hsl(0,_0%,_80%))]",
+         "state": ":where(.dark-theme,.dark-theme *)[data-hover]",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--themed-hover-bg,#ccc)"
+        },
+        {
+         "cls": "data-hover:[--themed-border:var(--themed-hover-bg,_var(--ds-gray-200))]",
+         "state": "[data-hover]",
+         "at": "@layer utilities",
+         "decl": "--themed-border:var(--themed-hover-bg,var(--ds-gray-200))"
+        },
+        {
+         "cls": "data-hover:disabled:bg-[var(--ds-gray-100)]",
+         "state": "[data-hover]:disabled",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-gray-100)"
+        }
+       ],
+       "unresolved": [
+        "transition-[border-color, background,color,transform,box-shadow]"
+       ],
+       "children": [
+        {
+         "tag": "span",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "truncate",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+          },
+          {
+           "cls": "inline-block",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:inline-block"
+          },
+          {
+           "cls": "px-1.5",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding-inline:.375rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Open"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Open",
+   "description": "The drawer open: the black 40% backdrop, the popup pinned to the bottom edge, full width, rounded at the top, its content scrolling inside it.",
+   "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}}>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n      </div>\n    </Drawer>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {
+      "role": "presentation",
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-black)"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities @supports (color:color-mix(in lab, red, red))",
+       "decl": "background-color:color-mix(in oklab, var(--ds-black) 40%, transparent)"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      },
+      {
+       "cls": "transition-opacity",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-duration:.3s;transition-duration:.3s"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-duration:.3s"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "data-[ending-style]:opacity-0",
+       "state": "[data-ending-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      },
+      {
+       "cls": "data-[starting-style]:opacity-0",
+       "state": "[data-starting-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      }
+     ],
+     "unresolved": [],
+     "children": []
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "pointer-events-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "pointer-events:none"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "items-end",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:flex-end"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-open": "",
+        "tabindex": "-1"
+       },
+       "styles": [
+        {
+         "cls": "pointer-events-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "pointer-events:auto"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "transition-transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.4s;transition-duration:.4s"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.4s"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "data-[ending-style]:[transform:translateY(100%)]",
+         "state": "[data-ending-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "data-[starting-style]:[transform:translateY(100%)]",
+         "state": "[data-starting-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "[transform:translateY(var(--drawer-swipe-movement-y,0px))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(var(--drawer-swipe-movement-y,0px))"
+        },
+        {
+         "cls": "border-gray-alpha-400",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-alpha-400)"
+        },
+        {
+         "cls": "max-h-[90dvh]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-height:90dvh"
+        },
+        {
+         "cls": "overscroll-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overscroll-behavior:none"
+        },
+        {
+         "cls": "rounded-t-[10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-left-radius:10px;border-top-right-radius:10px"
+        },
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "[&>[data-geist-menu]]:shadow-none",
+         "state": ">[data-geist-menu]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-y-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-y:auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        }
+       ],
+       "unresolved": [
+        "tailwind"
+       ],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          },
+          {
+           "cls": "items-stretch",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:stretch"
+          },
+          {
+           "cls": "justify-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:flex-start"
+          },
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex-initial",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex:0 auto"
+          },
+          {
+           "cls": "p-12",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:3rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[18px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:18px"
+            },
+            {
+             "cls": "leading-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:24px;line-height:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A drawer title"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Drawer body"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Open custom height",
+   "description": "A fixed height (`height={200}`): the popup is 200px tall.",
+   "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}} height={200}>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n      </div>\n    </Drawer>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {
+      "role": "presentation",
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-black)"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities @supports (color:color-mix(in lab, red, red))",
+       "decl": "background-color:color-mix(in oklab, var(--ds-black) 40%, transparent)"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      },
+      {
+       "cls": "transition-opacity",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-duration:.3s;transition-duration:.3s"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-duration:.3s"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "data-[ending-style]:opacity-0",
+       "state": "[data-ending-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      },
+      {
+       "cls": "data-[starting-style]:opacity-0",
+       "state": "[data-starting-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      }
+     ],
+     "unresolved": [],
+     "children": []
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "pointer-events-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "pointer-events:none"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "items-end",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:flex-end"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-open": "",
+        "tabindex": "-1",
+        "style": "height:200px"
+       },
+       "styles": [
+        {
+         "cls": "pointer-events-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "pointer-events:auto"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "transition-transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.4s;transition-duration:.4s"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.4s"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "data-[ending-style]:[transform:translateY(100%)]",
+         "state": "[data-ending-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "data-[starting-style]:[transform:translateY(100%)]",
+         "state": "[data-starting-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "[transform:translateY(var(--drawer-swipe-movement-y,0px))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(var(--drawer-swipe-movement-y,0px))"
+        },
+        {
+         "cls": "border-gray-alpha-400",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-alpha-400)"
+        },
+        {
+         "cls": "max-h-[90dvh]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-height:90dvh"
+        },
+        {
+         "cls": "overscroll-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overscroll-behavior:none"
+        },
+        {
+         "cls": "rounded-t-[10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-left-radius:10px;border-top-right-radius:10px"
+        },
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "[&>[data-geist-menu]]:shadow-none",
+         "state": ">[data-geist-menu]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-y-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-y:auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        }
+       ],
+       "unresolved": [
+        "tailwind"
+       ],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          },
+          {
+           "cls": "items-stretch",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:stretch"
+          },
+          {
+           "cls": "justify-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:flex-start"
+          },
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex-initial",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex:0 auto"
+          },
+          {
+           "cls": "p-12",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:3rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[18px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:18px"
+            },
+            {
+             "cls": "leading-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:24px;line-height:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A drawer title"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Drawer body"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Open max height",
+   "description": "`height=\"max\"`: the popup fills the viewport.",
+   "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}} height=\"max\">\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n      </div>\n    </Drawer>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {
+      "role": "presentation",
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-black)"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities @supports (color:color-mix(in lab, red, red))",
+       "decl": "background-color:color-mix(in oklab, var(--ds-black) 40%, transparent)"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      },
+      {
+       "cls": "transition-opacity",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-duration:.3s;transition-duration:.3s"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-duration:.3s"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "data-[ending-style]:opacity-0",
+       "state": "[data-ending-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      },
+      {
+       "cls": "data-[starting-style]:opacity-0",
+       "state": "[data-starting-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      }
+     ],
+     "unresolved": [],
+     "children": []
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "pointer-events-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "pointer-events:none"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "items-end",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:flex-end"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-open": "",
+        "tabindex": "-1",
+        "style": "height:100dvh;max-height:100dvh"
+       },
+       "styles": [
+        {
+         "cls": "pointer-events-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "pointer-events:auto"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "transition-transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.4s;transition-duration:.4s"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.4s"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "data-[ending-style]:[transform:translateY(100%)]",
+         "state": "[data-ending-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "data-[starting-style]:[transform:translateY(100%)]",
+         "state": "[data-starting-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "[transform:translateY(var(--drawer-swipe-movement-y,0px))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(var(--drawer-swipe-movement-y,0px))"
+        },
+        {
+         "cls": "border-gray-alpha-400",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-alpha-400)"
+        },
+        {
+         "cls": "max-h-[90dvh]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-height:90dvh"
+        },
+        {
+         "cls": "overscroll-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overscroll-behavior:none"
+        },
+        {
+         "cls": "rounded-t-[10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-left-radius:10px;border-top-right-radius:10px"
+        },
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "[&>[data-geist-menu]]:shadow-none",
+         "state": ">[data-geist-menu]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-y-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-y:auto"
+        },
+        {
+         "cls": "h-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "height:100%"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        }
+       ],
+       "unresolved": [
+        "tailwind"
+       ],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          },
+          {
+           "cls": "items-stretch",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:stretch"
+          },
+          {
+           "cls": "justify-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:flex-start"
+          },
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex-initial",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex:0 auto"
+          },
+          {
+           "cls": "p-12",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:3rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[18px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:18px"
+            },
+            {
+             "cls": "leading-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:24px;line-height:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A drawer title"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Drawer body"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Open no vertical scroll",
+   "description": "`verticalScroll={false}`: the popup clips its content instead of scrolling it.",
+   "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}} verticalScroll={false}>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n      </div>\n    </Drawer>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {
+      "role": "presentation",
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-black)"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities @supports (color:color-mix(in lab, red, red))",
+       "decl": "background-color:color-mix(in oklab, var(--ds-black) 40%, transparent)"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      },
+      {
+       "cls": "transition-opacity",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-duration:.3s;transition-duration:.3s"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-duration:.3s"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "data-[ending-style]:opacity-0",
+       "state": "[data-ending-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      },
+      {
+       "cls": "data-[starting-style]:opacity-0",
+       "state": "[data-starting-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      }
+     ],
+     "unresolved": [],
+     "children": []
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "pointer-events-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "pointer-events:none"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "items-end",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:flex-end"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-open": "",
+        "tabindex": "-1"
+       },
+       "styles": [
+        {
+         "cls": "pointer-events-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "pointer-events:auto"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "transition-transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.4s;transition-duration:.4s"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.4s"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "data-[ending-style]:[transform:translateY(100%)]",
+         "state": "[data-ending-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "data-[starting-style]:[transform:translateY(100%)]",
+         "state": "[data-starting-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "[transform:translateY(var(--drawer-swipe-movement-y,0px))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(var(--drawer-swipe-movement-y,0px))"
+        },
+        {
+         "cls": "border-gray-alpha-400",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-alpha-400)"
+        },
+        {
+         "cls": "max-h-[90dvh]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-height:90dvh"
+        },
+        {
+         "cls": "overscroll-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overscroll-behavior:none"
+        },
+        {
+         "cls": "rounded-t-[10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-left-radius:10px;border-top-right-radius:10px"
+        },
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "[&>[data-geist-menu]]:shadow-none",
+         "state": ">[data-geist-menu]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-y-hidden",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-y:hidden"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        }
+       ],
+       "unresolved": [
+        "tailwind"
+       ],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          },
+          {
+           "cls": "items-stretch",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:stretch"
+          },
+          {
+           "cls": "justify-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:flex-start"
+          },
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex-initial",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex:0 auto"
+          },
+          {
+           "cls": "p-12",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:3rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[18px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:18px"
+            },
+            {
+             "cls": "leading-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:24px;line-height:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A drawer title"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Drawer body"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Open nested",
+   "description": "`nested`: opened from inside a modal, the backdrop and the viewport sit one step above the modal's layer.",
+   "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}} nested>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n      </div>\n    </Drawer>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {
+      "role": "presentation",
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-black)"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities @supports (color:color-mix(in lab, red, red))",
+       "decl": "background-color:color-mix(in oklab, var(--ds-black) 40%, transparent)"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "z-[calc(var(--ds-z-modal)+1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:calc(var(--ds-z-modal) + 1)"
+      },
+      {
+       "cls": "transition-opacity",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-duration:.3s;transition-duration:.3s"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-duration:.3s"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "data-[ending-style]:opacity-0",
+       "state": "[data-ending-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      },
+      {
+       "cls": "data-[starting-style]:opacity-0",
+       "state": "[data-starting-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      }
+     ],
+     "unresolved": [],
+     "children": []
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "pointer-events-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "pointer-events:none"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "items-end",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:flex-end"
+      },
+      {
+       "cls": "z-[calc(var(--ds-z-modal)+1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:calc(var(--ds-z-modal) + 1)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-open": "",
+        "tabindex": "-1"
+       },
+       "styles": [
+        {
+         "cls": "pointer-events-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "pointer-events:auto"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "transition-transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.4s;transition-duration:.4s"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.4s"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "data-[ending-style]:[transform:translateY(100%)]",
+         "state": "[data-ending-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "data-[starting-style]:[transform:translateY(100%)]",
+         "state": "[data-starting-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "[transform:translateY(var(--drawer-swipe-movement-y,0px))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(var(--drawer-swipe-movement-y,0px))"
+        },
+        {
+         "cls": "border-gray-alpha-400",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-alpha-400)"
+        },
+        {
+         "cls": "max-h-[90dvh]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-height:90dvh"
+        },
+        {
+         "cls": "overscroll-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overscroll-behavior:none"
+        },
+        {
+         "cls": "rounded-t-[10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-left-radius:10px;border-top-right-radius:10px"
+        },
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "[&>[data-geist-menu]]:shadow-none",
+         "state": ">[data-geist-menu]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-y-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-y:auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        }
+       ],
+       "unresolved": [
+        "tailwind"
+       ],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          },
+          {
+           "cls": "items-stretch",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:stretch"
+          },
+          {
+           "cls": "justify-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:flex-start"
+          },
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex-initial",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex:0 auto"
+          },
+          {
+           "cls": "p-12",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:3rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[18px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:18px"
+            },
+            {
+             "cls": "leading-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:24px;line-height:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A drawer title"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Drawer body"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Open scrolled",
+   "description": "Content taller than the popup's cap: the popup is capped and scrolls; the census scrolls it 160px.",
+   "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}}>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n        {/* … 40 more paragraphs … */}\n      </div>\n    </Drawer>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {
+      "role": "presentation",
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-black)"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities @supports (color:color-mix(in lab, red, red))",
+       "decl": "background-color:color-mix(in oklab, var(--ds-black) 40%, transparent)"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      },
+      {
+       "cls": "transition-opacity",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-duration:.3s;transition-duration:.3s"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-duration:.3s"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "data-[ending-style]:opacity-0",
+       "state": "[data-ending-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      },
+      {
+       "cls": "data-[starting-style]:opacity-0",
+       "state": "[data-starting-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      }
+     ],
+     "unresolved": [],
+     "children": []
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "pointer-events-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "pointer-events:none"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "items-end",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:flex-end"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-open": "",
+        "tabindex": "-1"
+       },
+       "styles": [
+        {
+         "cls": "pointer-events-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "pointer-events:auto"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "transition-transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.4s;transition-duration:.4s"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.4s"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "data-[ending-style]:[transform:translateY(100%)]",
+         "state": "[data-ending-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "data-[starting-style]:[transform:translateY(100%)]",
+         "state": "[data-starting-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "[transform:translateY(var(--drawer-swipe-movement-y,0px))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(var(--drawer-swipe-movement-y,0px))"
+        },
+        {
+         "cls": "border-gray-alpha-400",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-alpha-400)"
+        },
+        {
+         "cls": "max-h-[90dvh]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-height:90dvh"
+        },
+        {
+         "cls": "overscroll-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overscroll-behavior:none"
+        },
+        {
+         "cls": "rounded-t-[10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-left-radius:10px;border-top-right-radius:10px"
+        },
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "[&>[data-geist-menu]]:shadow-none",
+         "state": ">[data-geist-menu]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-y-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-y:auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        }
+       ],
+       "unresolved": [
+        "tailwind"
+       ],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          },
+          {
+           "cls": "items-stretch",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:stretch"
+          },
+          {
+           "cls": "justify-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:flex-start"
+          },
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex-initial",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex:0 auto"
+          },
+          {
+           "cls": "p-12",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:3rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[18px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:18px"
+            },
+            {
+             "cls": "leading-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:24px;line-height:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A drawer title"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Drawer body"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 1 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 2 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 3 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 4 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 5 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 6 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 7 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 8 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 9 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 10 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 11 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 12 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 13 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 14 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 15 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 16 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 17 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 18 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 19 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 20 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 21 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 22 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 23 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 24 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 25 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 26 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 27 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 28 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 29 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 30 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 31 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 32 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 33 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 34 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 35 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 36 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 37 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 38 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 39 of the drawer body."
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Paragraph 40 of the drawer body."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Open dragging",
+   "description": "Mid-drag: the popup follows the pointer 80px down (the inline transform and the swipe movement variable, the transition off); the backdrop and the popup carry the swiping state.",
+   "code": "import { Drawer } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Drawer show onDismiss={() => {}}>\n      <div className=\"flex flex-col items-stretch justify-start gap-2 flex-initial p-12\">\n        <p className=\"text-[18px] leading-[24px] font-semibold text-center\">A drawer title</p>\n        <p className=\"text-copy-14 text-center\">Drawer body</p>\n      </div>\n    </Drawer>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {
+      "role": "presentation",
+      "data-open": "",
+      "data-swiping": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "background-color:var(--ds-black)"
+      },
+      {
+       "cls": "bg-black/40",
+       "state": "",
+       "at": "@layer utilities @supports (color:color-mix(in lab, red, red))",
+       "decl": "background-color:color-mix(in oklab, var(--ds-black) 40%, transparent)"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      },
+      {
+       "cls": "transition-opacity",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-duration:.3s;transition-duration:.3s"
+      },
+      {
+       "cls": "duration-300",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-duration:.3s"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+      },
+      {
+       "cls": "data-[ending-style]:opacity-0",
+       "state": "[data-ending-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      },
+      {
+       "cls": "data-[starting-style]:opacity-0",
+       "state": "[data-starting-style]",
+       "at": "@layer utilities",
+       "decl": "opacity:0"
+      }
+     ],
+     "unresolved": [],
+     "children": []
+    },
+    {
+     "tag": "div",
+     "attrs": {
+      "data-open": ""
+     },
+     "styles": [
+      {
+       "cls": "inset-0",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "inset:0"
+      },
+      {
+       "cls": "pointer-events-none",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "pointer-events:none"
+      },
+      {
+       "cls": "fixed",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "position:fixed"
+      },
+      {
+       "cls": "flex",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "display:flex"
+      },
+      {
+       "cls": "items-end",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "align-items:flex-end"
+      },
+      {
+       "cls": "z-[var(--ds-z-drawer)]",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "z-index:var(--ds-z-drawer)"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "role": "dialog",
+        "aria-modal": "true",
+        "data-open": "",
+        "tabindex": "-1",
+        "style": "transition:none;transform:translate3d(0px,80px,0) scale(1);--drawer-swipe-movement-x:0px;--drawer-swipe-movement-y:80px",
+        "data-swiping": "",
+        "data-swipe-direction": "down"
+       },
+       "styles": [
+        {
+         "cls": "pointer-events-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "pointer-events:auto"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "outline-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-outline-style:none;outline-style:none"
+        },
+        {
+         "cls": "transition-transform",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-duration:.4s;transition-duration:.4s"
+        },
+        {
+         "cls": "duration-[400ms]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-duration:.4s"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "--tw-ease:cubic-bezier(.32,.72,0,1);transition-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "ease-[cubic-bezier(0.32,0.72,0,1)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "animation-timing-function:cubic-bezier(.32,.72,0,1)"
+        },
+        {
+         "cls": "data-[ending-style]:[transform:translateY(100%)]",
+         "state": "[data-ending-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "data-[starting-style]:[transform:translateY(100%)]",
+         "state": "[data-starting-style]",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(100%)"
+        },
+        {
+         "cls": "[transform:translateY(var(--drawer-swipe-movement-y,0px))]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "transform:translateY(var(--drawer-swipe-movement-y,0px))"
+        },
+        {
+         "cls": "border-gray-alpha-400",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-color:var(--ds-gray-alpha-400)"
+        },
+        {
+         "cls": "max-h-[90dvh]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-height:90dvh"
+        },
+        {
+         "cls": "overscroll-none",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overscroll-behavior:none"
+        },
+        {
+         "cls": "rounded-t-[10px]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-left-radius:10px;border-top-right-radius:10px"
+        },
+        {
+         "cls": "border-t",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "border-top-style:var(--tw-border-style);border-top-width:1px"
+        },
+        {
+         "cls": "bg-[var(--ds-background-100)]",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "background-color:var(--ds-background-100)"
+        },
+        {
+         "cls": "[&>[data-geist-menu]]:shadow-none",
+         "state": ">[data-geist-menu]",
+         "at": "@layer utilities",
+         "decl": "--tw-shadow:0 0 #0000;box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+        },
+        {
+         "cls": "overflow-y-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "overflow-y:auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:75dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "::backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "+.backdrop",
+         "at": "",
+         "decl": "touch-action:none;-webkit-overflow-scrolling:none;overscroll-behavior:none;background:#000000b3;position:fixed;inset:0;overflow:hidden;margin:0!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "",
+         "decl": "animation:show .4s var(--dialog-open-cubic-bezier) normal, content-fade-in .3s ease normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]::backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]+.backdrop",
+         "at": "",
+         "decl": "animation:fade-in .4s var(--dialog-open-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide",
+         "at": "",
+         "decl": "animation:hide .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide::backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".hide+.backdrop",
+         "at": "",
+         "decl": "animation:fade-out .4s var(--dialog-close-cubic-bezier) normal"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal",
+         "at": "",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;width:420px;margin:revert;border-radius:var(--geist-marketing-radius);overflow:hidden auto"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": ".modal[open]",
+         "at": "",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "@media (min-width:601px)",
+         "decl": "--translate-y-start:-40px;--translate-y-end:0px;bottom:revert;top:revert;border-radius:var(--geist-marketing-radius);width:420px;overflow:hidden auto;margin:revert!important"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "[open]",
+         "at": "@media (min-width:601px)",
+         "decl": "animation-duration:.35s,.35s;animation-timing-function:cubic-bezier(.4,0,.2,1),cubic-bezier(.4,0,.2,1)"
+        },
+        {
+         "cls": "geist-dialog",
+         "state": "",
+         "at": "",
+         "decl": "-ms-scroll-chaining:none;overscroll-behavior:none;width:100%;max-width:100%;min-height:5dvh;max-height:80dvh;box-shadow:var(--ds-shadow-menu);background:var(--ds-background-100);color:var(--ds-gray-1000);border-top-left-radius:var(--geist-marketing-radius);border-top-right-radius:var(--geist-marketing-radius);border:none;padding:0;transition:transform .5s cubic-bezier(.32,.72,0,1);position:fixed;top:auto;bottom:0;margin:0!important"
+        }
+       ],
+       "unresolved": [
+        "tailwind"
+       ],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "flex",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "display:flex"
+          },
+          {
+           "cls": "flex-col",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex-direction:column"
+          },
+          {
+           "cls": "items-stretch",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "align-items:stretch"
+          },
+          {
+           "cls": "justify-start",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "justify-content:flex-start"
+          },
+          {
+           "cls": "gap-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "gap:.5rem"
+          },
+          {
+           "cls": "flex-initial",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "flex:0 auto"
+          },
+          {
+           "cls": "p-12",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:3rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-[18px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-size:18px"
+            },
+            {
+             "cls": "leading-[24px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-leading:24px;line-height:24px"
+            },
+            {
+             "cls": "font-semibold",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "A drawer title"
+          },
+          {
+           "tag": "p",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "text-copy-14",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "font-family:var(--font-geist-sans);--tw-leading:20px;--tw-font-weight:var(--font-weight-normal);font-size:14px;line-height:20px;font-weight:var(--font-weight-normal)"
+            },
+            {
+             "cls": "text-copy-14",
+             "state": ">strong",
+             "at": "@layer utilities",
+             "decl": "--tw-font-weight:550;color:var(--ds-gray-1000);font-weight:550"
+            },
+            {
+             "cls": "text-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "text-align:center"
+            }
+           ],
+           "unresolved": [],
+           "children": [],
+           "text": "Drawer body"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

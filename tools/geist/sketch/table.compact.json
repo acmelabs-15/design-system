@@ -1,0 +1,70 @@
+{
+  "heading": "Compact table",
+  "code": "export function Component(): JSX.Element {\n  return (\n    <TableRoot>\n      <Table>\n        <TableHeader>\n          <TableRow>\n            <TableHead>Col 1</TableHead>\n            <TableHead>Col 2</TableHead>\n            <TableHead>Col 3</TableHead>\n          </TableRow>\n        </TableHeader>\n        <TableBody density=\"compact\" removeSpacing>\n          <TableRow>\n            <TableCell>Value 1.1</TableCell>\n            <TableCell>Value 1.2</TableCell>\n            <TableCell>Value 1.3</TableCell>\n          </TableRow>\n          <TableRow>\n            <TableCell>Value 2.1</TableCell>\n            <TableCell>Value 2.2</TableCell>\n            <TableCell>Value 2.3</TableCell>\n          </TableRow>\n        </TableBody>\n      </Table>\n    </TableRoot>\n  );\n}\n",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "div",
+          "class": "relative w-full overflow-x-auto",
+          "attrs": { "data-slot": "table-root" },
+          "children": [
+            {
+              "tag": "table",
+              "class": "text-sm text-gray-900 w-full caption-bottom",
+              "attrs": { "data-slot": "table" },
+              "children": [
+                {
+                  "tag": "thead",
+                  "class": "[&_tr]:border-gray-400 [&_tr]:border-b",
+                  "attrs": { "data-slot": "table-header" },
+                  "children": [
+                    {
+                      "tag": "tr",
+                      "class": "transition-colors",
+                      "attrs": { "data-slot": "table-row" },
+                      "children": [
+                        { "tag": "th", "class": "h-(--ds-size-medium) border-gray-400 px-2 font-medium text-gray-900 [&:has([role=checkbox])]:pr-0 text-left align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-head" }, "text": "Col 1" },
+                        { "tag": "th", "class": "h-(--ds-size-medium) border-gray-400 px-2 font-medium text-gray-900 [&:has([role=checkbox])]:pr-0 text-left align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-head" }, "text": "Col 2" },
+                        { "tag": "th", "class": "h-(--ds-size-medium) border-gray-400 px-2 font-medium text-gray-900 [&:has([role=checkbox])]:pr-0 text-left align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-head" }, "text": "Col 3" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tag": "tbody",
+                  "class": "[&_td:first-child]:rounded-l-md [&_td:last-child]:rounded-r-md [&_td]:py-[5px] [&_[data-cell-link=true]]:py-[5px]",
+                  "attrs": { "data-slot": "table-body" },
+                  "children": [
+                    {
+                      "tag": "tr",
+                      "class": "transition-colors",
+                      "attrs": { "data-slot": "table-row" },
+                      "children": [
+                        { "tag": "td", "class": "px-2 py-2.5 [&:has([data-cell-link=true])]:p-0 [&:has([role=checkbox])]:pr-0 align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-cell" }, "text": "Value 1.1" },
+                        { "tag": "td", "class": "px-2 py-2.5 [&:has([data-cell-link=true])]:p-0 [&:has([role=checkbox])]:pr-0 align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-cell" }, "text": "Value 1.2" },
+                        { "tag": "td", "class": "px-2 py-2.5 [&:has([data-cell-link=true])]:p-0 [&:has([role=checkbox])]:pr-0 align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-cell" }, "text": "Value 1.3" }
+                      ]
+                    },
+                    {
+                      "tag": "tr",
+                      "class": "transition-colors",
+                      "attrs": { "data-slot": "table-row" },
+                      "children": [
+                        { "tag": "td", "class": "px-2 py-2.5 [&:has([data-cell-link=true])]:p-0 [&:has([role=checkbox])]:pr-0 align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-cell" }, "text": "Value 2.1" },
+                        { "tag": "td", "class": "px-2 py-2.5 [&:has([data-cell-link=true])]:p-0 [&:has([role=checkbox])]:pr-0 align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-cell" }, "text": "Value 2.2" },
+                        { "tag": "td", "class": "px-2 py-2.5 [&:has([data-cell-link=true])]:p-0 [&:has([role=checkbox])]:pr-0 align-middle whitespace-nowrap last:text-right [&>[role=checkbox]]:translate-y-[2px]", "attrs": { "data-slot": "table-cell" }, "text": "Value 2.3" }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

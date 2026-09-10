@@ -1,0 +1,101 @@
+{
+ "heading": "Placeholder",
+ "description": "An empty text with a placeholder: the client code adds opacity-50 to the root and shows the placeholder in the pre; the page has no such example.",
+ "code": "export function Component(): JSX.Element {\n  return <Snippet placeholder=\"Run vercel link to fetch env vars\" text=\"\" width=\"300px\" />;\n}",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "w-full p-6",
+   "children": [
+    {
+     "tag": "div",
+     "class": "relative w-fit text-[var(--themed-fg)] max-w-full rounded-[6px] border border-[var(--themed-border,_var(--ds-gray-alpha-400))] [--themed-fg:_var(--ds-gray-1000)] bg-[var(--themed-bg,_var(--ds-background-100))] py-2.5 pr-12 pl-3 [&_pre]:selection:bg-[var(--geist-selection)] [&_pre]:no-scrollbar [&_pre]:text-left [&_pre]:m-0 [&_pre]:font-mono [&_pre]:text-[13px] [&_pre]:leading-[20px] [&_pre]:before:content-['$_'] [&_pre]:before:select-none opacity-50",
+     "attrs": {
+      "data-geist-snippet": "",
+      "data-version": "v1",
+      "style": "width:300px;height:auto"
+     },
+     "children": [
+      {
+       "tag": "pre",
+       "class": "geist-overflow-scroll-y",
+       "text": "Run vercel link to fetch env vars"
+      },
+      {
+       "tag": "div",
+       "class": "hover:opacity-80 outline-none cursor-pointer absolute size-8 right-1 flex top-1/2 -translate-y-1/2 items-center text-inherit rounded-[var(--geist-radius)_var(--geist-radius)] transition-opacity duration-150 ease-in-out",
+       "children": [
+        {
+         "tag": "button",
+         "class": "outline-none m-0 border-0 align-baseline no-underline group/trigger relative cursor-pointer select-none transform translate-z-0 flex bg-[var(--themed-bg,_var(--ds-gray-1000))] font-medium max-w-full items-center justify-center duration-[time:150ms] ease-in-out data-[focus]:shadow-[var(--ds-focus-ring)] [&_svg]:shrink-0 disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:text-[var(--ds-gray-700)] disabled:bg-[var(--ds-gray-100)] aria-disabled:text-[var(--ds-gray-700)] aria-disabled:bg-[var(--ds-gray-100)] disabled:![--themed-border:_var(--ds-gray-400)] aria-disabled:![--themed-border:_var(--ds-gray-400)] disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] aria-disabled:shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--x-padding:6px] [--height:32px] !px-0 rounded-md [--themed-bg:_var(--ds-background-100)] shadow-[0_0_0_1px_var(--themed-border,_transparent)] [--themed-hover-bg:_var(--ds-gray-alpha-200)] [--themed-fg:_var(--ds-gray-1000)] [--themed-border:_var(--ds-gray-400)] data-[focus]:shadow-[0_0_0_1px_var(--themed-border,_transparent),0_0_0_2px_var(--ds-background-100),0_0_0_4px_var(--ds-focus-color)] data-[focus]:transition-none p-0 w-[var(--geist-form-small-height)] h-[32px] text-(length:--geist-form-small-font) [--spinner-size:16px] data-hover:bg-[var(--ds-gray-100)] dark-theme:data-hover:bg-[var(--ds-gray-200)] data-hover:text-[var(--themed-fg)] data-hover:disabled:bg-[var(--ds-gray-100)] text-inherit shadow-none! bg-transparent! hover:shadow-[0_0_0_1px_var(--themed-border)]! transition-[border-color, background,color,transform,box-shadow]",
+         "attrs": {
+          "type": "button",
+          "tabindex": "0",
+          "data-react-aria-pressable": "true",
+          "aria-label": "Copy to clipboard",
+          "data-testid": "copy/button",
+          "data-geist-button": "",
+          "data-prefix": "false",
+          "data-suffix": "false",
+          "data-version": "v1",
+          "style": "--geist-icon-size:16px"
+         },
+         "children": [
+          {
+           "tag": "span",
+           "class": "truncate px-1.5 inline-flex items-center justify-center shrink-0",
+           "children": [
+            {
+             "tag": "div",
+             "class": "relative size-4",
+             "children": [
+              {
+               "tag": "div",
+               "class": "absolute transition-all duration-200 ease-in-out opacity-0 scale-50",
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "children": [
+                  {
+                   "tag": "path"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "class": "absolute transition-all duration-200 ease-in-out opacity-100 scale-100",
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "children": [
+                  {
+                   "tag": "path"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,3477 @@
+{
+ "page": "phone",
+ "title": "Phone",
+ "lede": "The Phone component lets you showcase website screenshots or other content within a realistic phone-style frame.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Composition",
+   "description": "",
+   "code": "import { Phone } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"w-full max-w-xs mx-auto\">\n      <Phone address=\"https://vercel.com\" />\n    </div>\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {},
+       "styles": [
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "max-w-xs",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "max-width:var(--container-xs)"
+        },
+        {
+         "cls": "mx-auto",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin-inline:auto"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {
+          "style": "container-type:inline-size"
+         },
+         "styles": [],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "outline-[2px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "outline-style:var(--tw-outline-style);outline-width:2px"
+            },
+            {
+             "cls": "rounded-[52px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:52px"
+            },
+            {
+             "cls": "p-[2.5%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding:2.5%"
+            },
+            {
+             "cls": "[&]:rounded-[15cqw]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:15cqw"
+            },
+            {
+             "cls": "bg-[#000]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#000"
+            },
+            {
+             "cls": "outline-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "outline-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "rounded-[44px]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:44px"
+              },
+              {
+               "cls": "overflow-hidden",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "overflow:hidden"
+              },
+              {
+               "cls": "aspect-[9/19.5]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "aspect-ratio:9/19.5"
+              },
+              {
+               "cls": "relative",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:relative"
+              },
+              {
+               "cls": "[&]:rounded-[calc(15cqw-6px)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:calc(15cqw - 6px)"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "div",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "absolute",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "position:absolute"
+                },
+                {
+                 "cls": "inset-0",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "inset:0"
+                },
+                {
+                 "cls": "bg-[#878787]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:#878787"
+                }
+               ],
+               "unresolved": [],
+               "children": []
+              },
+              {
+               "tag": "div",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "absolute",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "position:absolute"
+                },
+                {
+                 "cls": "bottom-0",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "bottom:0"
+                },
+                {
+                 "cls": "left-0",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "left:0"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "h-[18%]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:18%"
+                },
+                {
+                 "cls": "bg-gradient-to-b",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-gradient-position:to bottom in oklab;background-image:linear-gradient(var(--tw-gradient-stops))"
+                },
+                {
+                 "cls": "from-transparent",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-gradient-from:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))"
+                },
+                {
+                 "cls": "via-[#000]/20",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-gradient-via:#0003;--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)"
+                },
+                {
+                 "cls": "via-[#000]/20",
+                 "state": "",
+                 "at": "@layer utilities @supports (color:lab(0% 0 0))",
+                 "decl": "--tw-gradient-via:lab(0% 0 0/.2)"
+                },
+                {
+                 "cls": "to-[#000]/70",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-gradient-to:#000000b3;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))"
+                },
+                {
+                 "cls": "to-[#000]/70",
+                 "state": "",
+                 "at": "@layer utilities @supports (color:lab(0% 0 0))",
+                 "decl": "--tw-gradient-to:lab(0% 0 0/.7)"
+                }
+               ],
+               "unresolved": [],
+               "children": []
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "top-[2.5%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "top:2.5%"
+              },
+              {
+               "cls": "left-1/2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:50%"
+              },
+              {
+               "cls": "transform",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"
+              },
+              {
+               "cls": "-translate-x-1/2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+              },
+              {
+               "cls": "w-[30%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:30%"
+              },
+              {
+               "cls": "h-[4%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:4%"
+              },
+              {
+               "cls": "bg-[#000]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#000"
+              },
+              {
+               "cls": "rounded-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:2147483647px"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "bg-[#fff]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#fff"
+              },
+              {
+               "cls": "w-[34%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:34%"
+              },
+              {
+               "cls": "h-[0.6%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:.6%"
+              },
+              {
+               "cls": "rounded-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:2147483647px"
+              },
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "bottom-[3%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "bottom:3%"
+              },
+              {
+               "cls": "left-1/2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:50%"
+              },
+              {
+               "cls": "-translate-x-1/2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "bottom-[6%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "bottom:6%"
+              },
+              {
+               "cls": "left-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:0"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-between",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:space-between"
+              },
+              {
+               "cls": "px-[6%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "padding-inline:6%"
+              },
+              {
+               "cls": "gap-2",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "gap:.5rem"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "div",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-[#fff]/80",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+                },
+                {
+                 "cls": "bg-[rgba(15,15,15,0.32)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:#0f0f0f52"
+                },
+                {
+                 "cls": "backdrop-blur-sm",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+                },
+                {
+                 "cls": "rounded-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:2147483647px"
+                },
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "justify-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:center"
+                },
+                {
+                 "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "w-[12cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:12cqw"
+                },
+                {
+                 "cls": "h-[12cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:12cqw"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "styles": [
+                  {
+                   "cls": "-ml-0.5",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "margin-left:-.125rem"
+                  },
+                  {
+                   "cls": "w-[5cqw]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "width:5cqw"
+                  },
+                  {
+                   "cls": "h-[5cqw]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "height:5cqw"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "path",
+                   "attrs": {},
+                   "styles": [],
+                   "unresolved": [],
+                   "children": []
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-[#fff]/80",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+                },
+                {
+                 "cls": "bg-[rgba(15,15,15,0.32)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:#0f0f0f52"
+                },
+                {
+                 "cls": "backdrop-blur-sm",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+                },
+                {
+                 "cls": "rounded-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:2147483647px"
+                },
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "justify-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:center"
+                },
+                {
+                 "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "h-[12cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:12cqw"
+                },
+                {
+                 "cls": "w-auto",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:auto"
+                },
+                {
+                 "cls": "flex-1",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "flex:1"
+                },
+                {
+                 "cls": "text-label-13",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+                },
+                {
+                 "cls": "text-label-13",
+                 "state": ">strong",
+                 "at": "@layer utilities",
+                 "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+                },
+                {
+                 "cls": "min-w-0",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "min-width:0"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "span",
+                 "attrs": {},
+                 "styles": [
+                  {
+                   "cls": "text-[#fff]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "color:#fff"
+                  },
+                  {
+                   "cls": "w-full",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "width:100%"
+                  },
+                  {
+                   "cls": "block",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "display:block"
+                  },
+                  {
+                   "cls": "truncate",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+                  },
+                  {
+                   "cls": "px-4",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "padding-inline:1rem"
+                  },
+                  {
+                   "cls": "text-center",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "text-align:center"
+                  },
+                  {
+                   "cls": "text-[4.5cqw]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "font-size:4.5cqw"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [],
+                 "text": "vercel.com"
+                }
+               ]
+              },
+              {
+               "tag": "div",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-[#fff]/80",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+                },
+                {
+                 "cls": "bg-[rgba(15,15,15,0.32)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "background-color:#0f0f0f52"
+                },
+                {
+                 "cls": "backdrop-blur-sm",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+                },
+                {
+                 "cls": "rounded-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "border-radius:2147483647px"
+                },
+                {
+                 "cls": "flex",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:flex"
+                },
+                {
+                 "cls": "items-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "align-items:center"
+                },
+                {
+                 "cls": "justify-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "justify-content:center"
+                },
+                {
+                 "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+                },
+                {
+                 "cls": "w-[12cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:12cqw"
+                },
+                {
+                 "cls": "h-[12cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:12cqw"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "svg",
+                 "attrs": {
+                  "data-slot": "geist-icon",
+                  "style": "color:currentColor"
+                 },
+                 "styles": [
+                  {
+                   "cls": "w-[5cqw]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "width:5cqw"
+                  },
+                  {
+                   "cls": "h-[5cqw]",
+                   "state": "",
+                   "at": "@layer utilities",
+                   "decl": "height:5cqw"
+                  }
+                 ],
+                 "unresolved": [],
+                 "children": [
+                  {
+                   "tag": "path",
+                   "attrs": {},
+                   "styles": [],
+                   "unresolved": [],
+                   "children": []
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "top-[15%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "top:15%"
+              },
+              {
+               "cls": "-left-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:-.25rem"
+              },
+              {
+               "cls": "w-0.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:.125rem"
+              },
+              {
+               "cls": "h-[3.5%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:3.5%"
+              },
+              {
+               "cls": "rounded-tl-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-top-left-radius:2147483647px"
+              },
+              {
+               "cls": "rounded-bl-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-bottom-left-radius:2147483647px"
+              },
+              {
+               "cls": "bg-[#333]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#333"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "top-[23.4%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "top:23.4%"
+              },
+              {
+               "cls": "-left-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:-.25rem"
+              },
+              {
+               "cls": "w-0.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:.125rem"
+              },
+              {
+               "cls": "h-[7.1%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:7.1%"
+              },
+              {
+               "cls": "rounded-tl-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-top-left-radius:2147483647px"
+              },
+              {
+               "cls": "rounded-bl-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-bottom-left-radius:2147483647px"
+              },
+              {
+               "cls": "bg-[#333]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#333"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "top-[32.4%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "top:32.4%"
+              },
+              {
+               "cls": "-left-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:-.25rem"
+              },
+              {
+               "cls": "w-0.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:.125rem"
+              },
+              {
+               "cls": "h-[7.1%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:7.1%"
+              },
+              {
+               "cls": "rounded-tl-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-top-left-radius:2147483647px"
+              },
+              {
+               "cls": "rounded-bl-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-bottom-left-radius:2147483647px"
+              },
+              {
+               "cls": "bg-[#333]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#333"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "top-[28.2%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "top:28.2%"
+              },
+              {
+               "cls": "-right-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "right:-.25rem"
+              },
+              {
+               "cls": "w-0.5",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:.125rem"
+              },
+              {
+               "cls": "h-[11%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:11%"
+              },
+              {
+               "cls": "rounded-tr-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-top-right-radius:2147483647px"
+              },
+              {
+               "cls": "rounded-br-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-bottom-right-radius:2147483647px"
+              },
+              {
+               "cls": "bg-[#333]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#333"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Light",
+   "description": "The light variant: the frame takes gray-100 with a gray-alpha-400 outline and the side keys gray-alpha-400. The class strings come from the component's client code (the server HTML renders the dark variant only); the merge drops the plain `outline` token the way the rendered dark frame shows.",
+   "code": "export function Component(): JSX.Element {\n  return (\n    <div className=\"w-full max-w-xs mx-auto\">\n      <Phone address=\"https://vercel.com\" variant=\"light\" />\n    </div>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "max-w-xs",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "max-width:var(--container-xs)"
+      },
+      {
+       "cls": "mx-auto",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-inline:auto"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "style": "container-type:inline-size"
+       },
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          },
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "outline-[2px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:2px"
+          },
+          {
+           "cls": "rounded-[52px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:52px"
+          },
+          {
+           "cls": "p-[2.5%]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:2.5%"
+          },
+          {
+           "cls": "[&]:rounded-[15cqw]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:15cqw"
+          },
+          {
+           "cls": "bg-gray-100",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:var(--ds-gray-100)"
+          },
+          {
+           "cls": "outline-gray-alpha-400",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-color:var(--ds-gray-alpha-400)"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "rounded-[44px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:44px"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "aspect-[9/19.5]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "aspect-ratio:9/19.5"
+            },
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "[&]:rounded-[calc(15cqw-6px)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:calc(15cqw - 6px)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "inset-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "inset:0"
+              },
+              {
+               "cls": "bg-[#878787]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#878787"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "bottom-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "bottom:0"
+              },
+              {
+               "cls": "left-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:0"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "h-[18%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:18%"
+              },
+              {
+               "cls": "bg-gradient-to-b",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-gradient-position:to bottom in oklab;background-image:linear-gradient(var(--tw-gradient-stops))"
+              },
+              {
+               "cls": "from-transparent",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-gradient-from:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))"
+              },
+              {
+               "cls": "via-[#000]/20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-gradient-via:#0003;--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)"
+              },
+              {
+               "cls": "via-[#000]/20",
+               "state": "",
+               "at": "@layer utilities @supports (color:lab(0% 0 0))",
+               "decl": "--tw-gradient-via:lab(0% 0 0/.2)"
+              },
+              {
+               "cls": "to-[#000]/70",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-gradient-to:#000000b3;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))"
+              },
+              {
+               "cls": "to-[#000]/70",
+               "state": "",
+               "at": "@layer utilities @supports (color:lab(0% 0 0))",
+               "decl": "--tw-gradient-to:lab(0% 0 0/.7)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[2.5%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:2.5%"
+            },
+            {
+             "cls": "left-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:50%"
+            },
+            {
+             "cls": "transform",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"
+            },
+            {
+             "cls": "-translate-x-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            },
+            {
+             "cls": "w-[30%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:30%"
+            },
+            {
+             "cls": "h-[4%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:4%"
+            },
+            {
+             "cls": "bg-[#000]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#000"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "bg-[#fff]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#fff"
+            },
+            {
+             "cls": "w-[34%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:34%"
+            },
+            {
+             "cls": "h-[0.6%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:.6%"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "bottom-[3%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "bottom:3%"
+            },
+            {
+             "cls": "left-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:50%"
+            },
+            {
+             "cls": "-translate-x-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "bottom-[6%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "bottom:6%"
+            },
+            {
+             "cls": "left-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:0"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-between",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:space-between"
+            },
+            {
+             "cls": "px-[6%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:6%"
+            },
+            {
+             "cls": "gap-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "gap:.5rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[#fff]/80",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+              },
+              {
+               "cls": "bg-[rgba(15,15,15,0.32)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#0f0f0f52"
+              },
+              {
+               "cls": "backdrop-blur-sm",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+              },
+              {
+               "cls": "rounded-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:2147483647px"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:center"
+              },
+              {
+               "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              },
+              {
+               "cls": "w-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:12cqw"
+              },
+              {
+               "cls": "h-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:12cqw"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [
+                {
+                 "cls": "-ml-0.5",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-left:-.125rem"
+                },
+                {
+                 "cls": "w-[5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:5cqw"
+                },
+                {
+                 "cls": "h-[5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:5cqw"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[#fff]/80",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+              },
+              {
+               "cls": "bg-[rgba(15,15,15,0.32)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#0f0f0f52"
+              },
+              {
+               "cls": "backdrop-blur-sm",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+              },
+              {
+               "cls": "rounded-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:2147483647px"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:center"
+              },
+              {
+               "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              },
+              {
+               "cls": "h-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:12cqw"
+              },
+              {
+               "cls": "w-auto",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:auto"
+              },
+              {
+               "cls": "flex-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:1"
+              },
+              {
+               "cls": "text-label-13",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+              },
+              {
+               "cls": "text-label-13",
+               "state": ">strong",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "min-w-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "min-width:0"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-[#fff]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:#fff"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "block",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:block"
+                },
+                {
+                 "cls": "truncate",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+                },
+                {
+                 "cls": "px-4",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-inline:1rem"
+                },
+                {
+                 "cls": "text-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "text-align:center"
+                },
+                {
+                 "cls": "text-[4.5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-size:4.5cqw"
+                }
+               ],
+               "unresolved": [],
+               "children": [],
+               "text": "vercel.com"
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[#fff]/80",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+              },
+              {
+               "cls": "bg-[rgba(15,15,15,0.32)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#0f0f0f52"
+              },
+              {
+               "cls": "backdrop-blur-sm",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+              },
+              {
+               "cls": "rounded-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:2147483647px"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:center"
+              },
+              {
+               "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              },
+              {
+               "cls": "w-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:12cqw"
+              },
+              {
+               "cls": "h-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:12cqw"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [
+                {
+                 "cls": "w-[5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:5cqw"
+                },
+                {
+                 "cls": "h-[5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:5cqw"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[15%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:15%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[3.5%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:3.5%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-gray-alpha-400",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-alpha-400)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[23.4%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:23.4%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[7.1%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:7.1%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-gray-alpha-400",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-alpha-400)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[32.4%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:32.4%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[7.1%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:7.1%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-gray-alpha-400",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-alpha-400)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[28.2%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:28.2%"
+            },
+            {
+             "cls": "-right-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "right:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[11%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:11%"
+            },
+            {
+             "cls": "rounded-tr-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-right-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-br-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-right-radius:2147483647px"
+            },
+            {
+             "cls": "bg-gray-alpha-400",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:var(--ds-gray-alpha-400)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Without address",
+   "description": "No address: the screen renders without the bottom gradient and without the navigation bar (back key, address pill, more key). The class strings come from the component's client code; the server HTML renders the addressed state only.",
+   "code": "export function Component(): JSX.Element {\n  return (\n    <div className=\"w-full max-w-xs mx-auto\">\n      <Phone />\n    </div>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "max-w-xs",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "max-width:var(--container-xs)"
+      },
+      {
+       "cls": "mx-auto",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-inline:auto"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "style": "container-type:inline-size"
+       },
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          },
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "outline-[2px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:2px"
+          },
+          {
+           "cls": "rounded-[52px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:52px"
+          },
+          {
+           "cls": "p-[2.5%]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:2.5%"
+          },
+          {
+           "cls": "[&]:rounded-[15cqw]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:15cqw"
+          },
+          {
+           "cls": "bg-[#000]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#000"
+          },
+          {
+           "cls": "outline-[#333]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-color:#333"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "rounded-[44px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:44px"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "aspect-[9/19.5]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "aspect-ratio:9/19.5"
+            },
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "[&]:rounded-[calc(15cqw-6px)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:calc(15cqw - 6px)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "inset-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "inset:0"
+              },
+              {
+               "cls": "bg-[#878787]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#878787"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[2.5%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:2.5%"
+            },
+            {
+             "cls": "left-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:50%"
+            },
+            {
+             "cls": "transform",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"
+            },
+            {
+             "cls": "-translate-x-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            },
+            {
+             "cls": "w-[30%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:30%"
+            },
+            {
+             "cls": "h-[4%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:4%"
+            },
+            {
+             "cls": "bg-[#000]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#000"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "bg-[#fff]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#fff"
+            },
+            {
+             "cls": "w-[34%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:34%"
+            },
+            {
+             "cls": "h-[0.6%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:.6%"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "bottom-[3%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "bottom:3%"
+            },
+            {
+             "cls": "left-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:50%"
+            },
+            {
+             "cls": "-translate-x-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[15%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:15%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[3.5%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:3.5%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[23.4%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:23.4%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[7.1%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:7.1%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[32.4%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:32.4%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[7.1%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:7.1%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[28.2%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:28.2%"
+            },
+            {
+             "cls": "-right-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "right:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[11%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:11%"
+            },
+            {
+             "cls": "rounded-tr-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-right-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-br-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-right-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Without notch",
+   "description": "notch={false}: the frame renders without the island at the top of the screen. The class strings come from the component's client code; the server HTML renders the notched state only.",
+   "code": "export function Component(): JSX.Element {\n  return (\n    <div className=\"w-full max-w-xs mx-auto\">\n      <Phone address=\"https://vercel.com\" notch={false} />\n    </div>\n  );\n}",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "max-w-xs",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "max-width:var(--container-xs)"
+      },
+      {
+       "cls": "mx-auto",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "margin-inline:auto"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "div",
+       "attrs": {
+        "style": "container-type:inline-size"
+       },
+       "styles": [],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "div",
+         "attrs": {},
+         "styles": [
+          {
+           "cls": "relative",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "position:relative"
+          },
+          {
+           "cls": "w-full",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "width:100%"
+          },
+          {
+           "cls": "outline-[2px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-style:var(--tw-outline-style);outline-width:2px"
+          },
+          {
+           "cls": "rounded-[52px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:52px"
+          },
+          {
+           "cls": "p-[2.5%]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "padding:2.5%"
+          },
+          {
+           "cls": "[&]:rounded-[15cqw]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "border-radius:15cqw"
+          },
+          {
+           "cls": "bg-[#000]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "background-color:#000"
+          },
+          {
+           "cls": "outline-[#333]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "outline-color:#333"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "rounded-[44px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:44px"
+            },
+            {
+             "cls": "overflow-hidden",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "overflow:hidden"
+            },
+            {
+             "cls": "aspect-[9/19.5]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "aspect-ratio:9/19.5"
+            },
+            {
+             "cls": "relative",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:relative"
+            },
+            {
+             "cls": "[&]:rounded-[calc(15cqw-6px)]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:calc(15cqw - 6px)"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "inset-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "inset:0"
+              },
+              {
+               "cls": "bg-[#878787]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#878787"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "absolute",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "position:absolute"
+              },
+              {
+               "cls": "bottom-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "bottom:0"
+              },
+              {
+               "cls": "left-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "left:0"
+              },
+              {
+               "cls": "w-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:100%"
+              },
+              {
+               "cls": "h-[18%]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:18%"
+              },
+              {
+               "cls": "bg-gradient-to-b",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-gradient-position:to bottom in oklab;background-image:linear-gradient(var(--tw-gradient-stops))"
+              },
+              {
+               "cls": "from-transparent",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-gradient-from:transparent;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))"
+              },
+              {
+               "cls": "via-[#000]/20",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-gradient-via:#0003;--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)"
+              },
+              {
+               "cls": "via-[#000]/20",
+               "state": "",
+               "at": "@layer utilities @supports (color:lab(0% 0 0))",
+               "decl": "--tw-gradient-via:lab(0% 0 0/.2)"
+              },
+              {
+               "cls": "to-[#000]/70",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-gradient-to:#000000b3;--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))"
+              },
+              {
+               "cls": "to-[#000]/70",
+               "state": "",
+               "at": "@layer utilities @supports (color:lab(0% 0 0))",
+               "decl": "--tw-gradient-to:lab(0% 0 0/.7)"
+              }
+             ],
+             "unresolved": [],
+             "children": []
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "bg-[#fff]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#fff"
+            },
+            {
+             "cls": "w-[34%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:34%"
+            },
+            {
+             "cls": "h-[0.6%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:.6%"
+            },
+            {
+             "cls": "rounded-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-radius:2147483647px"
+            },
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "bottom-[3%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "bottom:3%"
+            },
+            {
+             "cls": "left-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:50%"
+            },
+            {
+             "cls": "-translate-x-1/2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "--tw-translate-x:calc(calc(1 / 2 * 100%) * -1);translate:var(--tw-translate-x) var(--tw-translate-y)"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "bottom-[6%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "bottom:6%"
+            },
+            {
+             "cls": "left-0",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:0"
+            },
+            {
+             "cls": "w-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:100%"
+            },
+            {
+             "cls": "flex",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:flex"
+            },
+            {
+             "cls": "items-center",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "align-items:center"
+            },
+            {
+             "cls": "justify-between",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "justify-content:space-between"
+            },
+            {
+             "cls": "px-[6%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "padding-inline:6%"
+            },
+            {
+             "cls": "gap-2",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "gap:.5rem"
+            }
+           ],
+           "unresolved": [],
+           "children": [
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[#fff]/80",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+              },
+              {
+               "cls": "bg-[rgba(15,15,15,0.32)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#0f0f0f52"
+              },
+              {
+               "cls": "backdrop-blur-sm",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+              },
+              {
+               "cls": "rounded-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:2147483647px"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:center"
+              },
+              {
+               "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              },
+              {
+               "cls": "w-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:12cqw"
+              },
+              {
+               "cls": "h-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:12cqw"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [
+                {
+                 "cls": "-ml-0.5",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "margin-left:-.125rem"
+                },
+                {
+                 "cls": "w-[5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:5cqw"
+                },
+                {
+                 "cls": "h-[5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:5cqw"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[#fff]/80",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+              },
+              {
+               "cls": "bg-[rgba(15,15,15,0.32)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#0f0f0f52"
+              },
+              {
+               "cls": "backdrop-blur-sm",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+              },
+              {
+               "cls": "rounded-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:2147483647px"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:center"
+              },
+              {
+               "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              },
+              {
+               "cls": "h-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:12cqw"
+              },
+              {
+               "cls": "w-auto",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:auto"
+              },
+              {
+               "cls": "flex-1",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "flex:1"
+              },
+              {
+               "cls": "text-label-13",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "font-family:var(--font-geist-sans);--tw-leading:16px;--tw-font-weight:var(--font-weight-normal);font-size:13px;line-height:16px;font-weight:var(--font-weight-normal)"
+              },
+              {
+               "cls": "text-label-13",
+               "state": ">strong",
+               "at": "@layer utilities",
+               "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium);color:var(--ds-gray-1000)"
+              },
+              {
+               "cls": "min-w-0",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "min-width:0"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "span",
+               "attrs": {},
+               "styles": [
+                {
+                 "cls": "text-[#fff]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "color:#fff"
+                },
+                {
+                 "cls": "w-full",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:100%"
+                },
+                {
+                 "cls": "block",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "display:block"
+                },
+                {
+                 "cls": "truncate",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+                },
+                {
+                 "cls": "px-4",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "padding-inline:1rem"
+                },
+                {
+                 "cls": "text-center",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "text-align:center"
+                },
+                {
+                 "cls": "text-[4.5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "font-size:4.5cqw"
+                }
+               ],
+               "unresolved": [],
+               "children": [],
+               "text": "vercel.com"
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "attrs": {},
+             "styles": [
+              {
+               "cls": "text-[#fff]/80",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "color:#fffc;color:lab(100% -.0000298023 .0000119209/.8)"
+              },
+              {
+               "cls": "bg-[rgba(15,15,15,0.32)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "background-color:#0f0f0f52"
+              },
+              {
+               "cls": "backdrop-blur-sm",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-backdrop-blur:blur(var(--blur-sm));-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)"
+              },
+              {
+               "cls": "rounded-full",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "border-radius:2147483647px"
+              },
+              {
+               "cls": "flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:flex"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              },
+              {
+               "cls": "justify-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "justify-content:center"
+              },
+              {
+               "cls": "shadow-[0px_0px_1.5px_rgba(0,0,0,0.1),0px_0.65px_5px_rgba(0,0,0,0.12),inset_0.65px_0.65px_1px_-0.65px_rgba(255,255,255,0.8),inset_-0.65px_-0.65px_2px_-0.65px_rgba(255,255,255,0.4)]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "--tw-shadow:0px 0px 1.5px var(--tw-shadow-color,#0000001a), 0px .65px 5px var(--tw-shadow-color,#0000001f), inset .65px .65px 1px -.65px var(--tw-shadow-color,#fffc), inset -.65px -.65px 2px -.65px var(--tw-shadow-color,#fff6);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)"
+              },
+              {
+               "cls": "w-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "width:12cqw"
+              },
+              {
+               "cls": "h-[12cqw]",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:12cqw"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "viewBox": "0 0 16 16",
+                "height": "16",
+                "width": "16",
+                "data-slot": "geist-icon",
+                "style": "color:currentColor"
+               },
+               "styles": [
+                {
+                 "cls": "w-[5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "width:5cqw"
+                },
+                {
+                 "cls": "h-[5cqw]",
+                 "state": "",
+                 "at": "@layer utilities",
+                 "decl": "height:5cqw"
+                }
+               ],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[15%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:15%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[3.5%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:3.5%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[23.4%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:23.4%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[7.1%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:7.1%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[32.4%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:32.4%"
+            },
+            {
+             "cls": "-left-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "left:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[7.1%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:7.1%"
+            },
+            {
+             "cls": "rounded-tl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-left-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-bl-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-left-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          },
+          {
+           "tag": "div",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "absolute",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "position:absolute"
+            },
+            {
+             "cls": "top-[28.2%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "top:28.2%"
+            },
+            {
+             "cls": "-right-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "right:-.25rem"
+            },
+            {
+             "cls": "w-0.5",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "width:.125rem"
+            },
+            {
+             "cls": "h-[11%]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "height:11%"
+            },
+            {
+             "cls": "rounded-tr-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-top-right-radius:2147483647px"
+            },
+            {
+             "cls": "rounded-br-full",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "border-bottom-right-radius:2147483647px"
+            },
+            {
+             "cls": "bg-[#333]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "background-color:#333"
+            }
+           ],
+           "unresolved": [],
+           "children": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

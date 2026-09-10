@@ -1,0 +1,50 @@
+{
+  "notes": "Run each side in both themes (theme: light, then dark). The mirror loads census.js itself; on the docs page load http://localhost:4183/census.js with a script tag and await its onload. Both panes at an 1100px viewport. The reference root carries no marker: it is the column around the label and the row.",
+  "geist": {
+    "side": "geist",
+    "page": "slider",
+    "marker": ".flex.flex-col",
+    "children": {
+      "label": ".label|label",
+      "text": ".label .text|label > div",
+      "row": ".row|.gap-3",
+      "startInput": ".start-input >> .wrap|[data-geist-input-wrapper]:has([data-slot=slider-start-input])",
+      "startField": ".start-input >> input|[data-slot=slider-start-input]",
+      "group": ".group|[data-slot=slider]",
+      "control": ".control|[data-slot=slider-control]",
+      "track": ".track|[data-slot=slider-track]",
+      "fill": ".fill|[data-slot=slider-indicator]",
+      "thumb": ".thumb|[data-slot=slider-thumb]",
+      "thumbAfter": ".thumb::after|[data-slot=slider-thumb]::after",
+      "thumbInput": ".thumb input|[data-slot=slider-thumb] input",
+      "thumb2": ".thumb[data-index='1']|[data-slot=slider-thumb][data-index='1']",
+      "endInput": ".end-input >> .wrap|[data-geist-input-wrapper]:has([data-slot=slider-end-input])",
+      "endField": ".end-input >> input|[data-slot=slider-end-input]"
+    },
+    "textParts": ["row", "text"]
+  },
+  "ours": {
+    "side": "ours",
+    "page": "slider",
+    "host": "acme-slider",
+    "ours": ".slider",
+    "children": {
+      "label": ".label|label",
+      "text": ".label .text|label > div",
+      "row": ".row|.gap-3",
+      "startInput": ".start-input >> .wrap|[data-geist-input-wrapper]:has([data-slot=slider-start-input])",
+      "startField": ".start-input >> input|[data-slot=slider-start-input]",
+      "group": ".group|[data-slot=slider]",
+      "control": ".control|[data-slot=slider-control]",
+      "track": ".track|[data-slot=slider-track]",
+      "fill": ".fill|[data-slot=slider-indicator]",
+      "thumb": ".thumb|[data-slot=slider-thumb]",
+      "thumbAfter": ".thumb::after|[data-slot=slider-thumb]::after",
+      "thumbInput": ".thumb input|[data-slot=slider-thumb] input",
+      "thumb2": ".thumb[data-index='1']|[data-slot=slider-thumb][data-index='1']",
+      "endInput": ".end-input >> .wrap|[data-geist-input-wrapper]:has([data-slot=slider-end-input])",
+      "endField": ".end-input >> input|[data-slot=slider-end-input]"
+    },
+    "textParts": ["row", "text"]
+  }
+}

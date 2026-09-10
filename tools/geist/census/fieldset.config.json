@@ -1,0 +1,58 @@
+{
+  "note": "One root per fieldset (three in the Multiple example). Both sides at an 1100px viewport (below the reference's xl breakpoint) with one 666px preview width. The two disabled walls of the wall example: `wall` is the content's own (the composed acme-disabled-wall), `box-wall` the one the example writes last in its box. `actions.margin-left` is `auto`, resolved against the space the status text leaves: textProps reads it as soft. The remaining hard lines are the documented min-width context split (the button as a flex item of its host; the root as a block child of the host in the flex column).",
+  "themes": ["light", "dark"],
+  "viewport": 1100,
+  "geist": {
+    "side": "geist",
+    "page": "fieldset",
+    "marker": "data-geist-fieldset",
+    "width": "666px",
+    "textParts": ["title", "subtitle", "error", "warning", "row", "content", "footer", "status", "actions", "action", "action2", "button", "button2", "wall", "box-wall"],
+    "textProps": { "actions": ["margin-left"] },
+    "children": {
+      "content": ".content|[data-geist-fieldset-content]",
+      "title": ".title|h4",
+      "subtitle": ".subtitle|[data-geist-fieldset-subtitle]",
+      "row": ".row|.mt-4",
+      "error": ".error|[data-geist-fieldset-error]",
+      "warning": ".warning|[data-geist-fieldset-warning]",
+      "wall": "acme-disabled-wall >> .wall|.geist-disabled-wall",
+      "box-wall": "acme-disabled-wall:last-child >> .wall|.geist-disabled-wall:last-child",
+      "footer": ".footer|footer",
+      "status": ".status|[data-geist-fieldset-footer-status]",
+      "actions": ".actions|[data-geist-fieldset-footer-actions]",
+      "action": ".action|[data-geist-fieldset-footer-action]",
+      "action2": ".action:nth-child(2)|[data-geist-fieldset-footer-action]:nth-child(2)",
+      "button": "acme-button >> .btn|[data-geist-fieldset-footer-action] [data-geist-button]",
+      "button2": "acme-button:nth-of-type(2) >> .btn|[data-geist-fieldset-footer-action]:nth-child(2) [data-geist-button]",
+      "label": "acme-button >> .label|[data-geist-button] .truncate"
+    }
+  },
+  "ours": {
+    "side": "ours",
+    "page": "fieldset",
+    "host": "acme-fieldset",
+    "ours": ".fieldset",
+    "width": "666px",
+    "textParts": ["title", "subtitle", "error", "warning", "row", "content", "footer", "status", "actions", "action", "action2", "button", "button2", "wall", "box-wall"],
+    "textProps": { "actions": ["margin-left"] },
+    "children": {
+      "content": ".content|[data-geist-fieldset-content]",
+      "title": ".title|h4",
+      "subtitle": ".subtitle|[data-geist-fieldset-subtitle]",
+      "row": ".row|.mt-4",
+      "error": ".error|[data-geist-fieldset-error]",
+      "warning": ".warning|[data-geist-fieldset-warning]",
+      "wall": "acme-disabled-wall >> .wall|.geist-disabled-wall",
+      "box-wall": "acme-disabled-wall:last-child >> .wall|.geist-disabled-wall:last-child",
+      "footer": ".footer|footer",
+      "status": ".status|[data-geist-fieldset-footer-status]",
+      "actions": ".actions|[data-geist-fieldset-footer-actions]",
+      "action": ".action|[data-geist-fieldset-footer-action]",
+      "action2": ".action:nth-child(2)|[data-geist-fieldset-footer-action]:nth-child(2)",
+      "button": "acme-button >> .btn|[data-geist-fieldset-footer-action] [data-geist-button]",
+      "button2": "acme-button:nth-of-type(2) >> .btn|[data-geist-fieldset-footer-action]:nth-child(2) [data-geist-button]",
+      "label": "acme-button >> .label|[data-geist-button] .truncate"
+    }
+  }
+}

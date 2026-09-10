@@ -1,0 +1,705 @@
+{
+ "page": "description",
+ "title": "Description",
+ "lede": "Displays a brief heading and subheading to communicate any additional information or context a user needs to continue.",
+ "primitives": [
+  "data-geist-button",
+  "data-geist-description-content",
+  "data-geist-description-title",
+  "data-geist-kbd",
+  "data-geist-textarea-wrapper",
+  "data-react-aria-pressable"
+ ],
+ "examples": [
+  {
+   "heading": "Default",
+   "description": "",
+   "code": "import { Description } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Description\n      content=\"Data about this section.\"\n      title=\"Section Title\"\n      tooltip=\"Additional context about what this section refers to.\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "dl",
+       "attrs": {
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "m-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin:0"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "dt",
+         "attrs": {
+          "data-geist-description-title": ""
+         },
+         "styles": [
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "!leading-[14px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:14px!important;line-height:14px!important"
+          },
+          {
+           "cls": "min-h-[14px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "min-height:14px"
+          },
+          {
+           "cls": "capitalize",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-transform:capitalize"
+          },
+          {
+           "cls": "whitespace-nowrap",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "text-[var(--ds-gray-900)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mb-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:.5rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "align-[-2px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "vertical-align:-2px"
+            },
+            {
+             "cls": "ml-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:.25rem"
+            }
+           ],
+           "unresolved": [
+            "s-[14px]"
+           ],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "data-testid": "legacy/tooltip-trigger",
+              "data-version": "v1",
+              "tabindex": "0"
+             },
+             "styles": [
+              {
+               "cls": "inline-flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-flex"
+              },
+              {
+               "cls": "h-fit",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:fit-content"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "data-glyph": "circular",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                },
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ],
+         "text": "Section Title"
+        },
+        {
+         "tag": "dd",
+         "attrs": {
+          "data-geist-description-content": ""
+         },
+         "styles": [
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "text-[var(--ds-gray-1000)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "!leading-4",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 4)!important;line-height:1rem!important"
+          },
+          {
+           "cls": "font-medium",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Data about this section."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Text right",
+   "description": "",
+   "code": "import { Description } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Description\n      content=\"Data about this section.\"\n      right\n      title=\"Section Title\"\n      tooltip=\"Additional context about what this section refers to.\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "dl",
+       "attrs": {
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "m-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin:0"
+        },
+        {
+         "cls": "text-right",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "text-align:right"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "dt",
+         "attrs": {
+          "data-geist-description-title": ""
+         },
+         "styles": [
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "!leading-[14px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:14px!important;line-height:14px!important"
+          },
+          {
+           "cls": "min-h-[14px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "min-height:14px"
+          },
+          {
+           "cls": "capitalize",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-transform:capitalize"
+          },
+          {
+           "cls": "whitespace-nowrap",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "text-[var(--ds-gray-900)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mb-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:.5rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "align-[-2px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "vertical-align:-2px"
+            },
+            {
+             "cls": "ml-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:.25rem"
+            }
+           ],
+           "unresolved": [
+            "s-[14px]"
+           ],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "data-testid": "legacy/tooltip-trigger",
+              "data-version": "v1",
+              "tabindex": "0"
+             },
+             "styles": [
+              {
+               "cls": "inline-flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-flex"
+              },
+              {
+               "cls": "h-fit",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:fit-content"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "data-glyph": "circular",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                },
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ],
+         "text": "Section Title"
+        },
+        {
+         "tag": "dd",
+         "attrs": {
+          "data-geist-description-content": ""
+         },
+         "styles": [
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "text-[var(--ds-gray-1000)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "!leading-4",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 4)!important;line-height:1rem!important"
+          },
+          {
+           "cls": "font-medium",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Data about this section."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Ellipsis",
+   "description": "",
+   "code": "import { Description } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\nexport function Component(): JSX.Element {\n  return (\n    <Description\n      content=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed venenatis libero. Phasellus consectetur turpis ac est pulvinar finibus. Mauris non tellus pretium, vehicula lectus sed, iaculis ex. Integer eu aliquet turpis. Cras sem nulla, commodo ut libero id, suscipit pulvinar lorem.\"\n      ellipsis\n      title=\"Section Title\"\n      tooltip=\"Additional context about what this section refers to.\"\n    />\n  );\n}\n",
+   "dom": [
+    {
+     "tag": "div",
+     "attrs": {},
+     "styles": [
+      {
+       "cls": "w-full",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "width:100%"
+      },
+      {
+       "cls": "p-6",
+       "state": "",
+       "at": "@layer utilities",
+       "decl": "padding:1.5rem"
+      }
+     ],
+     "unresolved": [],
+     "children": [
+      {
+       "tag": "dl",
+       "attrs": {
+        "data-version": "v1"
+       },
+       "styles": [
+        {
+         "cls": "m-0",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "margin:0"
+        },
+        {
+         "cls": "w-full",
+         "state": "",
+         "at": "@layer utilities",
+         "decl": "width:100%"
+        },
+        {
+         "cls": "[&>dt]:overflow-hidden",
+         "state": ">dt",
+         "at": "@layer utilities",
+         "decl": "overflow:hidden"
+        },
+        {
+         "cls": "[&>dt]:truncate",
+         "state": ">dt",
+         "at": "@layer utilities",
+         "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+        },
+        {
+         "cls": "[&>dd]:truncate",
+         "state": ">dd",
+         "at": "@layer utilities",
+         "decl": "text-overflow:ellipsis;white-space:nowrap;overflow:hidden"
+        }
+       ],
+       "unresolved": [],
+       "children": [
+        {
+         "tag": "dt",
+         "attrs": {
+          "data-geist-description-title": ""
+         },
+         "styles": [
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "!leading-[14px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:14px!important;line-height:14px!important"
+          },
+          {
+           "cls": "min-h-[14px]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "min-height:14px"
+          },
+          {
+           "cls": "capitalize",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "text-transform:capitalize"
+          },
+          {
+           "cls": "whitespace-nowrap",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "white-space:nowrap"
+          },
+          {
+           "cls": "text-[var(--ds-gray-900)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-900)"
+          },
+          {
+           "cls": "mb-2",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "margin-bottom:.5rem"
+          }
+         ],
+         "unresolved": [],
+         "children": [
+          {
+           "tag": "span",
+           "attrs": {},
+           "styles": [
+            {
+             "cls": "inline-block",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "display:inline-block"
+            },
+            {
+             "cls": "align-[-2px]",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "vertical-align:-2px"
+            },
+            {
+             "cls": "ml-1",
+             "state": "",
+             "at": "@layer utilities",
+             "decl": "margin-left:.25rem"
+            }
+           ],
+           "unresolved": [
+            "s-[14px]"
+           ],
+           "children": [
+            {
+             "tag": "span",
+             "attrs": {
+              "data-testid": "legacy/tooltip-trigger",
+              "data-version": "v1",
+              "tabindex": "0"
+             },
+             "styles": [
+              {
+               "cls": "inline-flex",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "display:inline-flex"
+              },
+              {
+               "cls": "h-fit",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "height:fit-content"
+              },
+              {
+               "cls": "items-center",
+               "state": "",
+               "at": "@layer utilities",
+               "decl": "align-items:center"
+              }
+             ],
+             "unresolved": [],
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "data-slot": "geist-icon",
+                "data-glyph": "circular",
+                "style": "color:currentColor"
+               },
+               "styles": [],
+               "unresolved": [],
+               "children": [
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                },
+                {
+                 "tag": "path",
+                 "attrs": {},
+                 "styles": [],
+                 "unresolved": [],
+                 "children": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ],
+         "text": "Section Title"
+        },
+        {
+         "tag": "dd",
+         "attrs": {
+          "data-geist-description-content": ""
+         },
+         "styles": [
+          {
+           "cls": "text-sm",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))"
+          },
+          {
+           "cls": "text-[var(--ds-gray-1000)]",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "color:var(--ds-gray-1000)"
+          },
+          {
+           "cls": "!leading-4",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-leading:calc(.25rem * 4)!important;line-height:1rem!important"
+          },
+          {
+           "cls": "font-medium",
+           "state": "",
+           "at": "@layer utilities",
+           "decl": "--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)"
+          }
+         ],
+         "unresolved": [],
+         "children": [],
+         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed venenatis libero. Phasellus consectetur turpis ac est pulvinar finibus. Mauris non tellus pretium, vehicula lectus sed, iaculis ex. Integer eu aliquet turpis. Cras sem nulla, commodo ut libero id, suscipit pulvinar lorem."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

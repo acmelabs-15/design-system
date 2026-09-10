@@ -1,0 +1,22 @@
+{
+  "heading": "Deleted",
+  "description": "The DELETED state has no rendered example; its class string comes from the component's client code (label, message and colour per state).",
+  "code": "export function Component(): JSX.Element {\n  return <StatusDot label state=\"DELETED\" />;\n}",
+  "dom": [
+    {
+      "tag": "div",
+      "class": "w-full p-6",
+      "children": [
+        {
+          "tag": "span",
+          "class": "inline-flex items-center",
+          "attrs": { "aria-label": "Deleted", "title": "This deployment was deleted.", "data-testid": "geistcn/status-dot" },
+          "children": [
+            { "tag": "span", "class": "inline-block size-2.5 rounded-full bg-[var(--accents-2)]" },
+            { "tag": "span", "class": "text-label-14 ml-2 leading-[16px]", "text": "Deleted" }
+          ]
+        }
+      ]
+    }
+  ]
+}

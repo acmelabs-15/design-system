@@ -1,0 +1,509 @@
+{
+ "heading": "Open in transit",
+ "description": "The card on each side as it moves from a neighbouring trigger (within 150px, the pointer arriving before the inactive timeout): the shell, the stem and the content take the 250ms move transition on transform, width and height.",
+ "code": "import { ContextCardTrigger } from '@vercel/geistcn/components';\nimport type { JSX } from 'react';\n\n// The card moved from a neighbouring trigger: the 250ms move transition on transform, width and height.\nexport function Component(): JSX.Element {\n  return (\n    <div className=\"flex flex-row items-stretch justify-around flex-initial\">\n      <div className=\"flex flex-col items-center justify-center flex-initial\">\n        <ContextCardTrigger content=\"The Evil Rabbit Jumped over the Fence\" side=\"top\">\n          <span>Top</span>\n        </ContextCardTrigger>\n      </div>\n      <div className=\"flex flex-col items-center justify-center flex-initial\">\n        <ContextCardTrigger content=\"The Evil Rabbit Jumped over the Fence\" side=\"bottom\">\n          <span>Bottom</span>\n        </ContextCardTrigger>\n      </div>\n      <div className=\"flex flex-col items-center justify-center flex-initial\">\n        <ContextCardTrigger content=\"The Evil Rabbit Jumped over the Fence\" side=\"left\">\n          <span>Left</span>\n        </ContextCardTrigger>\n      </div>\n      <div className=\"flex flex-col items-center justify-center flex-initial\">\n        <ContextCardTrigger content=\"The Evil Rabbit Jumped over the Fence\" side=\"right\">\n          <span>Right</span>\n        </ContextCardTrigger>\n      </div>\n    </div>\n  );\n}\n",
+ "dom": [
+  {
+   "tag": "div",
+   "class": "flex flex-row items-stretch justify-around flex-initial",
+   "children": [
+    {
+     "tag": "div",
+     "class": "flex flex-col items-center justify-center flex-initial",
+     "children": [
+      {
+       "tag": "div",
+       "class": "inline-flex cursor-pointer flex-[0_1_auto] overflow-hidden",
+       "children": [
+        {
+         "tag": "span",
+         "text": "Top"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "w-full h-full inset-0 fixed pointer-events-none z-[100000]",
+       "children": [
+        {
+         "tag": "div",
+         "class": "min-w-max transition-all duration-150 ease-[easing-function:cubic-bezier(0.3,_0.57,_0.07,_0.95)] will-change-[transform,width,height] motion-reduce:!transition-none",
+         "attrs": {
+          "style": "opacity:1"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute bg-background-100 bg-clip-padding rounded-[6px] overflow-visible pointer-events-none z-[1000000] shadow-[var(--ds-shadow-tooltip),0_0_0_1px_var(--ds-background-100)] w-fit [--context-card-tip-stroke:#DBDBDB] dark-theme:[--context-card-tip-stroke:#252525] transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+           "attrs": {
+            "data-skip-transition": "false",
+            "style": "transform:translate(180px,96px);width:271px;height:50px"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "class": "w-[14px] h-[7px] absolute grid place-content-center z-[999999999] origin-center top-full -translate-x-1/2 rotate-0 transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+             "attrs": {
+              "data-skip-transition": "false",
+              "data-side": "top",
+              "style": "left:calc(50% + 0px)"
+             },
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "width": "14",
+                "height": "7",
+                "viewBox": "0 0 14 7",
+                "fill": "none",
+                "xmlns": "http://www.w3.org/2000/svg"
+               },
+               "children": [
+                {
+                 "tag": "g",
+                 "attrs": {
+                  "clip-path": "url(#clip0_11069_2571)"
+                 },
+                 "children": [
+                  {
+                   "tag": "path",
+                   "attrs": {
+                    "d": "M15 -0.5V0.5H12.9834L12.8184 0.508789C12.4377 0.550822 12.0853 0.738056 11.8359 1.03418L8.53027 4.95996C7.73114 5.90893 6.26886 5.90892 5.46973 4.95996L2.16406 1.03418C1.87905 0.695733 1.45907 0.5 1.0166 0.5H-1V-0.5H15Z",
+                    "fill": "var(--ds-background-100)",
+                    "style": "fill:var(--ds-background-100);fill-opacity:1;stroke:var(--context-card-tip-stroke);stroke-opacity:1"
+                   }
+                  }
+                 ]
+                },
+                {
+                 "tag": "defs",
+                 "children": [
+                  {
+                   "tag": "clipPath",
+                   "attrs": {
+                    "id": "clip0_11069_2571"
+                   },
+                   "children": [
+                    {
+                     "tag": "rect",
+                     "attrs": {
+                      "width": "14",
+                      "height": "7",
+                      "fill": "white",
+                      "style": "fill:white;fill-opacity:1"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "children": [
+              {
+               "tag": "div",
+               "class": "absolute top-0 p-3 left-0 max-w-max transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+               "attrs": {
+                "style": "pointer-events:all;width:max-content;position:absolute"
+               },
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "min-w-max transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+                 "attrs": {
+                  "style": "opacity:1"
+                 },
+                 "text": "The Evil Rabbit Jumped over the Fence"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "flex flex-col items-center justify-center flex-initial",
+     "children": [
+      {
+       "tag": "div",
+       "class": "inline-flex cursor-pointer flex-[0_1_auto] overflow-hidden",
+       "children": [
+        {
+         "tag": "span",
+         "text": "Bottom"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "w-full h-full inset-0 fixed pointer-events-none z-[100000]",
+       "children": [
+        {
+         "tag": "div",
+         "class": "min-w-max transition-all duration-150 ease-[easing-function:cubic-bezier(0.3,_0.57,_0.07,_0.95)] will-change-[transform,width,height] motion-reduce:!transition-none",
+         "attrs": {
+          "style": "opacity:1"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute bg-background-100 bg-clip-padding rounded-[6px] overflow-visible pointer-events-none z-[1000000] shadow-[var(--ds-shadow-tooltip),0_0_0_1px_var(--ds-background-100)] w-fit [--context-card-tip-stroke:#DBDBDB] dark-theme:[--context-card-tip-stroke:#252525] transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+           "attrs": {
+            "data-skip-transition": "false",
+            "style": "transform:translate(320px,212px);width:271px;height:50px"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "class": "w-[14px] h-[7px] absolute grid place-content-center z-[999999999] origin-center bottom-full -translate-x-1/2 rotate-180 transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+             "attrs": {
+              "data-skip-transition": "false",
+              "data-side": "bottom",
+              "style": "left:calc(50% + 0px)"
+             },
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "width": "14",
+                "height": "7",
+                "viewBox": "0 0 14 7",
+                "fill": "none",
+                "xmlns": "http://www.w3.org/2000/svg"
+               },
+               "children": [
+                {
+                 "tag": "g",
+                 "attrs": {
+                  "clip-path": "url(#clip0_11069_2571)"
+                 },
+                 "children": [
+                  {
+                   "tag": "path",
+                   "attrs": {
+                    "d": "M15 -0.5V0.5H12.9834L12.8184 0.508789C12.4377 0.550822 12.0853 0.738056 11.8359 1.03418L8.53027 4.95996C7.73114 5.90893 6.26886 5.90892 5.46973 4.95996L2.16406 1.03418C1.87905 0.695733 1.45907 0.5 1.0166 0.5H-1V-0.5H15Z",
+                    "fill": "var(--ds-background-100)",
+                    "style": "fill:var(--ds-background-100);fill-opacity:1;stroke:var(--context-card-tip-stroke);stroke-opacity:1"
+                   }
+                  }
+                 ]
+                },
+                {
+                 "tag": "defs",
+                 "children": [
+                  {
+                   "tag": "clipPath",
+                   "attrs": {
+                    "id": "clip0_11069_2571"
+                   },
+                   "children": [
+                    {
+                     "tag": "rect",
+                     "attrs": {
+                      "width": "14",
+                      "height": "7",
+                      "fill": "white",
+                      "style": "fill:white;fill-opacity:1"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "children": [
+              {
+               "tag": "div",
+               "class": "absolute top-0 p-3 left-0 max-w-max transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+               "attrs": {
+                "style": "pointer-events:all;width:max-content;position:absolute"
+               },
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "min-w-max transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+                 "attrs": {
+                  "style": "opacity:1"
+                 },
+                 "text": "The Evil Rabbit Jumped over the Fence"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "flex flex-col items-center justify-center flex-initial",
+     "children": [
+      {
+       "tag": "div",
+       "class": "inline-flex cursor-pointer flex-[0_1_auto] overflow-hidden",
+       "children": [
+        {
+         "tag": "span",
+         "text": "Left"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "w-full h-full inset-0 fixed pointer-events-none z-[100000]",
+       "children": [
+        {
+         "tag": "div",
+         "class": "min-w-max transition-all duration-150 ease-[easing-function:cubic-bezier(0.3,_0.57,_0.07,_0.95)] will-change-[transform,width,height] motion-reduce:!transition-none",
+         "attrs": {
+          "style": "opacity:1"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute bg-background-100 bg-clip-padding rounded-[6px] overflow-visible pointer-events-none z-[1000000] shadow-[var(--ds-shadow-tooltip),0_0_0_1px_var(--ds-background-100)] w-fit [--context-card-tip-stroke:#DBDBDB] dark-theme:[--context-card-tip-stroke:#252525] transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+           "attrs": {
+            "data-skip-transition": "false",
+            "style": "transform:translate(40px,150px);width:271px;height:50px"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "class": "w-[14px] h-[7px] absolute grid place-content-center z-[999999999] origin-center left-full -translate-y-1/2 rotate-[270deg] -ml-[3.5px] transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+             "attrs": {
+              "data-skip-transition": "false",
+              "data-side": "left",
+              "style": "top:calc(50% + 0px)"
+             },
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "width": "14",
+                "height": "7",
+                "viewBox": "0 0 14 7",
+                "fill": "none",
+                "xmlns": "http://www.w3.org/2000/svg"
+               },
+               "children": [
+                {
+                 "tag": "g",
+                 "attrs": {
+                  "clip-path": "url(#clip0_11069_2571)"
+                 },
+                 "children": [
+                  {
+                   "tag": "path",
+                   "attrs": {
+                    "d": "M15 -0.5V0.5H12.9834L12.8184 0.508789C12.4377 0.550822 12.0853 0.738056 11.8359 1.03418L8.53027 4.95996C7.73114 5.90893 6.26886 5.90892 5.46973 4.95996L2.16406 1.03418C1.87905 0.695733 1.45907 0.5 1.0166 0.5H-1V-0.5H15Z",
+                    "fill": "var(--ds-background-100)",
+                    "style": "fill:var(--ds-background-100);fill-opacity:1;stroke:var(--context-card-tip-stroke);stroke-opacity:1"
+                   }
+                  }
+                 ]
+                },
+                {
+                 "tag": "defs",
+                 "children": [
+                  {
+                   "tag": "clipPath",
+                   "attrs": {
+                    "id": "clip0_11069_2571"
+                   },
+                   "children": [
+                    {
+                     "tag": "rect",
+                     "attrs": {
+                      "width": "14",
+                      "height": "7",
+                      "fill": "white",
+                      "style": "fill:white;fill-opacity:1"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "children": [
+              {
+               "tag": "div",
+               "class": "absolute top-0 p-3 left-0 max-w-max transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+               "attrs": {
+                "style": "pointer-events:all;width:max-content;position:absolute"
+               },
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "min-w-max transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+                 "attrs": {
+                  "style": "opacity:1"
+                 },
+                 "text": "The Evil Rabbit Jumped over the Fence"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tag": "div",
+     "class": "flex flex-col items-center justify-center flex-initial",
+     "children": [
+      {
+       "tag": "div",
+       "class": "inline-flex cursor-pointer flex-[0_1_auto] overflow-hidden",
+       "children": [
+        {
+         "tag": "span",
+         "text": "Right"
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "class": "w-full h-full inset-0 fixed pointer-events-none z-[100000]",
+       "children": [
+        {
+         "tag": "div",
+         "class": "min-w-max transition-all duration-150 ease-[easing-function:cubic-bezier(0.3,_0.57,_0.07,_0.95)] will-change-[transform,width,height] motion-reduce:!transition-none",
+         "attrs": {
+          "style": "opacity:1"
+         },
+         "children": [
+          {
+           "tag": "div",
+           "class": "absolute bg-background-100 bg-clip-padding rounded-[6px] overflow-visible pointer-events-none z-[1000000] shadow-[var(--ds-shadow-tooltip),0_0_0_1px_var(--ds-background-100)] w-fit [--context-card-tip-stroke:#DBDBDB] dark-theme:[--context-card-tip-stroke:#252525] transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+           "attrs": {
+            "data-skip-transition": "false",
+            "style": "transform:translate(640px,150px);width:271px;height:50px"
+           },
+           "children": [
+            {
+             "tag": "div",
+             "class": "w-[14px] h-[7px] absolute grid place-content-center z-[999999999] origin-center right-full -translate-y-1/2 rotate-90 -mr-[3.5px] transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+             "attrs": {
+              "data-skip-transition": "false",
+              "data-side": "right",
+              "style": "top:calc(50% + 0px)"
+             },
+             "children": [
+              {
+               "tag": "svg",
+               "attrs": {
+                "width": "14",
+                "height": "7",
+                "viewBox": "0 0 14 7",
+                "fill": "none",
+                "xmlns": "http://www.w3.org/2000/svg"
+               },
+               "children": [
+                {
+                 "tag": "g",
+                 "attrs": {
+                  "clip-path": "url(#clip0_11069_2571)"
+                 },
+                 "children": [
+                  {
+                   "tag": "path",
+                   "attrs": {
+                    "d": "M15 -0.5V0.5H12.9834L12.8184 0.508789C12.4377 0.550822 12.0853 0.738056 11.8359 1.03418L8.53027 4.95996C7.73114 5.90893 6.26886 5.90892 5.46973 4.95996L2.16406 1.03418C1.87905 0.695733 1.45907 0.5 1.0166 0.5H-1V-0.5H15Z",
+                    "fill": "var(--ds-background-100)",
+                    "style": "fill:var(--ds-background-100);fill-opacity:1;stroke:var(--context-card-tip-stroke);stroke-opacity:1"
+                   }
+                  }
+                 ]
+                },
+                {
+                 "tag": "defs",
+                 "children": [
+                  {
+                   "tag": "clipPath",
+                   "attrs": {
+                    "id": "clip0_11069_2571"
+                   },
+                   "children": [
+                    {
+                     "tag": "rect",
+                     "attrs": {
+                      "width": "14",
+                      "height": "7",
+                      "fill": "white",
+                      "style": "fill:white;fill-opacity:1"
+                     }
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "tag": "div",
+             "children": [
+              {
+               "tag": "div",
+               "class": "absolute top-0 p-3 left-0 max-w-max transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+               "attrs": {
+                "style": "pointer-events:all;width:max-content;position:absolute"
+               },
+               "children": [
+                {
+                 "tag": "div",
+                 "class": "min-w-max transition-[transform,width,height] duration-250 ease-[easing-function:cubic-bezier(0.29,0.31,0.05,0.96)] will-change-[transform,width,height] motion-reduce:!transition-none",
+                 "attrs": {
+                  "style": "opacity:1"
+                 },
+                 "text": "The Evil Rabbit Jumped over the Fence"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
