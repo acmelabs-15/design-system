@@ -249,5 +249,27 @@ So the animation itself never dropped a frame. What Peter feels is the layer com
 alongside it.
 
 **Verified after the change:** 608 tests pass; book and book.dark hold at 0 hard, re-measured
-(`will-change` does not alter a computed-style reading). The commit cost itself cannot be measured
-from script — it needs another Chrome trace to confirm, which is the honest limit of what I can say.
+(`will-change` does not alter a computed-style reading).
+
+### `will-change` is NOT proven to fix it (2026-09-10)
+
+With a Chrome DevTools MCP available I recorded my own A/B: 16 hovers with the change, 16 without,
+same page, same driver.
+
+| | worst `Commit` | main tasks >100ms | worst frame gap |
+|---|---|---|---|
+| Without `will-change` | **0.4 ms** | 0 | 17.4 ms |
+| With `will-change` | 1.4 ms | 0 | 17.6 ms |
+
+**The control shows no layer commit either.** So `will-change` did not fix what Peter's trace
+showed — that environment simply does not reproduce here. His Chrome recorded a 4,253 ms `Commit`;
+mine records 0.4 ms on the identical page.
+
+What differs: his session carried **six browser extensions** and 145 wheel events (scrolling while
+hovering); the MCP's Chrome has none of either. Scrolling is not the cause — the long commits
+correlate with `pointerenter` (five within 1ms) far more than with wheel (two).
+
+`will-change: transform` is kept because it is the correct hint for a `preserve-3d` box whose
+transform animates, and the motion package's own demos use it. But it is **an unproven fix for the
+hitch**, and saying otherwise would be wrong. Confirming it needs a trace from Peter's own Chrome,
+with the change in place.
