@@ -1,0 +1,61 @@
+# Decided: what parity means, and what it does not
+
+Decided by Peter on 2026-09-10. This governs every element. Linked from `PLAN.md`.
+
+## The rule
+
+**We match style, behaviour and functionality. We do not match implementation.**
+
+The reference is React. Ours is Lit web components: a different platform with different idioms,
+different composition rules and a different consumer. Copying React's internal shape into a web
+component does not make the port more faithful, it makes it worse on the platform it actually runs
+on.
+
+So each implementation decision is made on this question: **what is the best decision for a Lit web
+component that has to reach style, behaviour and functional parity with the reference?** Not: what
+did React do?
+
+## What this means for the public API
+
+Our API does not have to be identical to theirs. It has to be:
+
+1. **Consistent with itself.** One name for one concept, everywhere. Where the reference uses two
+   names for one concept across different components, we pick one and use it throughout.
+2. **Idiomatic for Lit and the web-component community.** Standard attribute and property
+   conventions, standard event patterns, nothing that fights the platform. Where the reference's
+   choice would surprise a web-component consumer, ours wins.
+3. **Familiar to someone arriving from the reference.** This is the balance. We are building a
+   one-to-one port of the reference's style, behaviour and functionality, so a person who knows the
+   reference should recognise our API and guess it correctly most of the time. Do not rename for
+   novelty; deviate only where consistency or the platform requires it.
+
+Where the reference contradicts itself, that is a licence to choose the better name, not an
+instruction to reproduce the contradiction.
+
+## What stays strictly matched
+
+The rule loosens naming. It does not loosen the port:
+
+- **Style parity** stays exact, proven by the census to zero hard differences in both themes.
+- **Behaviour parity** stays exact: the same states, the same keyboard handling, the same focus
+  movement, the same motion.
+- **Functional parity** stays exact: every capability the reference's component has, ours has.
+- **Fonts** stay Google Sans Flex and Google Sans Code.
+- **Nothing under `src/`** names the reference.
+
+## The first case this settled
+
+The reference's Button puts the visual look on `type` and the HTML button type on `typeName`. Its
+own documentation flags that as a trap. Across its 77 pages the reference uses `variant` 174 times
+and `type` 37 times, so `variant` is its own dominant name for the concept.
+
+**Our naming stands: `variant` for the look, `type` for the HTML type.** It is self-consistent, it
+is what a web-component consumer expects from `type` on an element that renders a `<button>`, and it
+matches the reference's own majority name. No rename.
+
+## Applying it from here
+
+When a naming difference appears, record it and move on rather than reopening this decision. Where a
+case genuinely needs judgement, the order is: self-consistency first, platform idiom second,
+familiarity to a reference user third. Only raise it with Peter if those three point in different
+directions and the choice changes the public API.

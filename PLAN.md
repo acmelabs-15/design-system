@@ -13,9 +13,31 @@ Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 `acme-` prefix. Repo `~/dev/ACMElabs/design-system`. Pure Bun: no Node runtime, no Python.
 Docs on GitHub Pages, package on npm (0.1.1 published).
 
-**The goal is a one-to-one port of the reference design system at vercel.com/geist.** Every
-element matches on styles, states, functionality and API. Every docs page shows the same sections
-as the reference page. The foundations pages match too.
+**The goal is a one-to-one port of the reference design system at vercel.com/geist**: style,
+behaviour and functionality. Every docs page shows the same sections as the reference page. The
+foundations pages match too.
+
+**Parity is not implementation parity.** Decided by Peter on 2026-09-10, and it governs every
+element: see [docs/decisions/parity-scope.md](docs/decisions/parity-scope.md). The reference is
+React; ours is Lit web components. Copying React's internal shape into a web component does not make
+the port more faithful, it makes it worse on the platform it runs on. So every implementation
+decision answers one question: *what is the best decision for a Lit web component that has to reach
+style, behaviour and functional parity with the reference?*
+
+Our public API therefore does not have to be identical to theirs. It has to be, in this order:
+
+1. **Consistent with itself** — one name for one concept, everywhere.
+2. **Idiomatic for Lit and the web-component community** — where the reference's choice would
+   surprise a web-component consumer, ours wins.
+3. **Familiar to someone arriving from the reference** — they should recognise our API and guess it
+   correctly. Never rename for novelty.
+
+Where the reference contradicts itself, that is a licence to choose the better name, not an
+instruction to reproduce the contradiction.
+
+What this does **not** loosen: style parity stays exact and census-proven to zero hard differences
+in both themes; behaviour and functionality stay exact, including states, keyboard handling, focus
+movement and motion.
 
 **Functionality counts as much as appearance, and the census cannot see it.** The census reads
 computed styles. It cannot tell you that a button does nothing when clicked. So every element and
@@ -129,7 +151,8 @@ This plan is the entry point. These carry detail too large to inline:
 |---|---|
 | [tools/geist/README.md](tools/geist/README.md) | The full runbook for the parity pipeline, and every guarantee the generator makes |
 | [docs/analysis/functional-parity-sources.md](docs/analysis/functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
-| [docs/decisions/prop-naming-vs-reference.md](docs/decisions/prop-naming-vs-reference.md) | Open decision for Peter: how literally prop names must match, given the reference contradicts itself |
+| [docs/decisions/parity-scope.md](docs/decisions/parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
+| [docs/decisions/prop-naming-vs-reference.md](docs/decisions/prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
 
 ---
 
@@ -420,11 +443,19 @@ Where a package ships vanilla only, write the Lit wrapper or controller here.
 - [x] The dialog reset lives in `src/shared/dialog.ts`; modal, drawer and sheet import it
 - [x] Menu follow-ups: `width` accepts `auto` plus `min-width`; `offset` replaces the gap constant; context-menu is modal with scroll lock, as the reference's Radix menu is
 - [x] Docs app: a census page titles itself "<Element> (census)"
-- [ ] **Prop naming against the reference** — the reference's Button puts the visual look on `type`
-  and the HTML button type on `typeName`; ours uses `variant` and `type`. The reference is not
-  self-consistent (`variant` appears 174 times across its pages, `type` 37), and its own prose
-  flags its arrangement as a trap. Written up in
-  [docs/decisions/prop-naming-vs-reference.md](docs/decisions/prop-naming-vs-reference.md) `[?]`
+- [x] **Prop naming against the reference** — settled by the parity-scope decision. The reference's
+  Button puts the visual look on `type` and the HTML type on `typeName`, and flags that as a trap
+  in its own prose; it uses `variant` 174 times against `type` 37 across its pages. Our `variant`
+  and `type` stand: self-consistent, idiomatic, and the reference's own majority name. No rename.
+- [ ] **One name per concept: rename the visual-look prop to `variant`** `[?]`. The audit under the
+  parity-scope rule found we inherited the reference's inconsistency. **Eleven elements use
+  `variant` for the visual look. Six use `type`:** feedback, fieldset, select, progress, tooltip
+  and snippet. Feedback carries the worst of it — `type` for the look and `buttonType` for the HTML
+  type, which is precisely the split we rejected on button. None of the six already has a `variant`
+  property, so the rename collides with nothing. It is still a breaking change to a published
+  package, so confirm the timing with Peter before doing it, and consider keeping `type` as a
+  deprecated alias for one minor version.
+- [ ] Sweep the same way for every other concept that may carry two names (size, shape, state).
 - [ ] Select: decide the house-only `options` property, which feedback uses `[?]`
 - [ ] Foundations pages: the reference's exact heading levels, or ours `[?]`
 

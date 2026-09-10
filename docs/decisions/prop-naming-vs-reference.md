@@ -1,6 +1,12 @@
-# Open decision: how literally does "API identical" apply to prop names?
+# Settled: how literally does "API identical" apply to prop names?
 
-Raised 2026-09-10. Linked from `PLAN.md`. **Needs Peter.**
+Raised and settled 2026-09-10. **Decided by [parity-scope.md](parity-scope.md):** parity covers
+style, behaviour and functionality, never implementation, and our API must be self-consistent and
+idiomatic for Lit first, familiar to a reference user second.
+
+**Outcome for this case: our naming stands.** `variant` for the visual look, `type` for the HTML
+button type. No rename. This file is kept for the evidence it gathered, which is what made the
+general rule necessary.
 
 ## What was found
 
@@ -53,10 +59,15 @@ because it is the only one where the reference splits the two meanings across tw
 3. **Match the reference wherever it is consistent, keep ours where the reference contradicts
    itself.** Middle path, but needs a written rule for which is which, or it becomes arbitrary.
 
-## Why this is Peter's call
+## How it was settled
 
-Both paths are defensible, the choice changes the public API of a published package, and reading
-more reference material will not settle it: the reference contradicts itself, so the answer is a
-judgement about what "identical" is for.
+Peter's answer reframed the question rather than picking an option: functional, style and behaviour
+parity was never meant to imply implementation parity. The reference is React and ours is Lit, so
+the right implementation is the best one for a Lit web component that reaches parity — not a
+transcription of React's choices.
 
-Until it is settled, no element's prop names should be renamed on this basis.
+That makes option 1 correct here, for a better reason than "it is more conventional": where the
+reference contradicts itself, we choose the name that is self-consistent and idiomatic. `variant`
+is also the reference's own majority name, so familiarity is preserved too.
+
+The general rule now lives in [parity-scope.md](parity-scope.md) and governs every future case.
