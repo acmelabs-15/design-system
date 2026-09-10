@@ -1,6 +1,26 @@
 // Browser census: computed styles of the example roots of one component, per interaction state.
 // Runs on the live Geist page and on our docs page; the collector on :4183 stores the result.
 // Usage in a page: window.__census({ side: "geist"|"ours", marker: "data-geist-button", host: "acme-button", ours: ".btn", props: [...], children: { label: ".label|.truncate" } })
+const PSEUDO = { hover: "data-hover", "focus-visible": "data-focus", focus: "data-focus", active: "data-active" };
+// An escaped colon belongs to a utility class name (`.has-\[\:focus\]\:...`), not to a pseudo-class: left alone, or the selector breaks and the rule stays unrewritten.
+//
+// The descendant clause (`[data-focus] *`) carries a state down to the parts inside the element
+// that holds it, which is what a rule like `.btn:hover .label` needs. A compound that is the
+// pseudo-class alone (`:focus-visible { ... }`, with no tag, class or attribute beside it) must
+// not take it: with the clause it matches every descendant of the focused element, so a global
+// focus ring lands on each icon and span inside. Such a compound keeps the element clause only.
+const bare = (sel, at) => {
+  const before = sel[at - 1];
+  return before === undefined || before === " " || before === ">" || before === "+" || before === "~" || before === "," || before === "(";
+};
+const attr = (sel) =>
+  sel.replace(/(?<!\\):(focus-visible|focus|hover|active)(?![a-z-])/g, (m, p, at) =>
+    bare(sel, at) ? `:is(${m},[${PSEUDO[p]}])` : `:is(${m},[${PSEUDO[p]}],[${PSEUDO[p]}] *)`,
+  );
+// The rewrite is the harness's one piece of real selector logic, and a mistake in it reports a
+// difference the element does not have. It is exposed so a test can drive the same function the
+// census runs, rather than a copy of it that can drift.
+
 window.__census = async (cfg) => {
   const PROPS = cfg.props ?? [
     "display", "height", "width", "min-width", "max-width", "padding-left", "padding-right", "padding-top", "padding-bottom",
@@ -31,14 +51,16 @@ window.__census = async (cfg) => {
       }
   };
   calm(document);
-  // A reference page that keys hover, focus and active off pseudo-classes (a script cannot set
-  // those) gets each rewritten, once per sheet, to "the pseudo-class, or its state attribute on the
-  // element or an ancestor" (`:hover` -> `:is(:hover,[data-hover],[data-hover] *)`), so the state
-  // attributes set on a root below reach the same rules as ours, a peer input's states included.
-  // Ours keys every state off the attributes already; its sheets stay as they are.
-  const PSEUDO = { hover: "data-hover", "focus-visible": "data-focus", focus: "data-focus", active: "data-active" };
-  // An escaped colon belongs to a utility class name (`.has-\[\:focus\]\:...`), not to a pseudo-class: left alone, or the selector breaks and the rule stays unrewritten.
-  const attr = (sel) => sel.replace(/(?<!\\):(focus-visible|focus|hover|active)(?![a-z-])/g, (m, p) => `:is(${m},[${PSEUDO[p]}],[${PSEUDO[p]}] *)`);
+  // A page that keys hover, focus and active off pseudo-classes (a script cannot set those) gets
+  // each rewritten, once per sheet, to "the pseudo-class, or its state attribute on the element or
+  // an ancestor" (`:hover` -> `:is(:hover,[data-hover],[data-hover] *)`), so the state attributes
+  // set on a root below reach the same rules, a peer input's states included.
+  //
+  // Both sides are rewritten. Most of our generated sheets key their states off the attributes
+  // already, and a rewrite leaves those untouched, but not all of them do: a rule the reference
+  // wrote as a real `:hover` or `:focus-visible` comes through the generator as one. Rewriting the
+  // reference alone leaves such a rule of ours unreachable, so the state reads as its resting value
+  // and the diff reports a difference that the element does not have.
   window.__rewritten ??= new WeakSet();
   const rewrite = (rules) => {
     for (const r of rules) {
@@ -58,7 +80,7 @@ window.__census = async (cfg) => {
     }
     for (const h of root.querySelectorAll("*")) if (h.shadowRoot) rewriteAll(h.shadowRoot);
   };
-  if (cfg.side === "geist") rewriteAll(document);
+  rewriteAll(document);
   // The page reacts to the theme change through observers and element updates, which are microtasks: yield to them.
   for (let i = 0; i < 8; i++) await Promise.resolve();
   // A child of ours may be slotted light DOM, or sit inside a slotted subtree: look through the root's slots after the shadow tree.
@@ -187,3 +209,6 @@ window.__census = async (cfg) => {
   await fetch("http://localhost:4183/census", { method: "POST", mode: "cors", headers: { "content-type": "application/json" }, body });
   return { previews: previews.length, roots: out.length };
 };
+
+// Exported for the harness test; a browser ignores this, and the census reads `attr` directly.
+if (typeof module !== "undefined") module.exports = { attr };
