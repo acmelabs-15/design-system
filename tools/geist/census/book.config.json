@@ -1,5 +1,5 @@
 {
-  "note": "Reconstructed 2026-09-10 from the saved results (reconstruct.ts) plus the reference class names read out of the map and verified in the live mirror. The saved results this replaces were STALE: they read the reference's band at 131px and body at 109px, while the live mirror renders 135 and 105 \u2014 which is exactly what we render. The icon part is `.content svg, .content img` on BOTH sides, not `[slot=icon]`: our book renders a slot with a FALLBACK svg beside it, so a slot-only selector finds an icon on the three custom-icon books and nothing on the other eighteen. Verified: this selector finds one on all 21 roots per side, and the two sides pair root for root including the 36x56 illustration at index 1. The reference's custom icon is an <img> logo pair (light and dark, one hidden), so its icon part reads color:transparent and an aspect-ratio; ours is an inline svg, and that difference is real and expected. Both sides carry 21 roots over 8 previews.",
+  "note": "Reconstructed 2026-09-10 from the saved results plus selectors read out of the live mirror, with a control. BH179W_stripe appears TWICE per book: on the outer rotateWrapper (the full 240px book) and on the real band inside BH179W_book, so `band` must be `.BH179W_book > .BH179W_stripe` \u2014 a bare .BH179W_stripe returns the outer one and every number after it is wrong. Six of the 21 roots have no band at all (the simple variant), which the saved run also records. The icon part uses DIFFERENT selectors per side, and both are needed. Theirs is scoped to .BH179W_content, because a bare one finds the 197x149 illustration in example 4 before the icon. Ours is a bare `svg, img`. Our icon is SLOTTED, and the census's slot fallback matches the WHOLE selector against slotted elements, so `.content svg` finds nothing \u2014 a slotted svg has no .content ancestor in the light DOM. A `>>` hop does not help either: that crosses SHADOW ROOTS via dive(), and .content is a plain div, so every hop returns null. The bare selector matches the saved reference on every root but ex4.1, where both sides read zero height. Verified: each finds exactly one icon on all 21 roots of its own side. Control that proves the setup: root 0 reads band 196x115 and body 196x125 live, exactly what the saved run recorded. In DARK the reference's custom icon is a light/dark IMAGE PAIR and the light file is display:none, so a plain querySelector returns the hidden one (0x0) while the visible dark file reads 16x16 like ours. No selector fixes that in both themes at once \u2014 the hidden twin is the light file in dark and the dark file in light, and a :not() inside a comma list still matches through the fallback \u2014 so the dark reading is an ACCEPTED entry in diff.ts instead, with the evidence that their visible dark file reads 16x16 exactly like ours.",
   "themes": [
     "light",
     "dark"
@@ -18,14 +18,14 @@
     "children": {
       "wrap": ".wrap|.BH179W_rotateWrapper",
       "cover": ".cover|.BH179W_book",
-      "band": ".band|.BH179W_stripe",
-      "bandIllustration": ".band .illustration|.BH179W_stripe .BH179W_illustration",
-      "bandBind": ".band .bind|.BH179W_stripe .BH179W_bind",
+      "band": ".band|.BH179W_book > .BH179W_stripe",
+      "bandIllustration": ".band .illustration|.BH179W_book > .BH179W_stripe .BH179W_illustration",
+      "bandBind": ".band .bind|.BH179W_book > .BH179W_stripe .BH179W_bind",
       "body": ".body|.BH179W_body",
       "bodyBind": ".body .bind|.BH179W_body .BH179W_bind",
       "content": ".content|.BH179W_content",
       "title": ".title|.BH179W_title",
-      "icon": ".content svg, .content img|.BH179W_content svg, .BH179W_content img",
+      "icon": "svg, img|.BH179W_content svg, .BH179W_content img",
       "pages": ".pages|.BH179W_pages",
       "back": ".back|.BH179W_back"
     }
@@ -45,14 +45,14 @@
     "children": {
       "wrap": ".wrap|.BH179W_rotateWrapper",
       "cover": ".cover|.BH179W_book",
-      "band": ".band|.BH179W_stripe",
-      "bandIllustration": ".band .illustration|.BH179W_stripe .BH179W_illustration",
-      "bandBind": ".band .bind|.BH179W_stripe .BH179W_bind",
+      "band": ".band|.BH179W_book > .BH179W_stripe",
+      "bandIllustration": ".band .illustration|.BH179W_book > .BH179W_stripe .BH179W_illustration",
+      "bandBind": ".band .bind|.BH179W_book > .BH179W_stripe .BH179W_bind",
       "body": ".body|.BH179W_body",
       "bodyBind": ".body .bind|.BH179W_body .BH179W_bind",
       "content": ".content|.BH179W_content",
       "title": ".title|.BH179W_title",
-      "icon": ".content svg, .content img|.BH179W_content svg, .BH179W_content img",
+      "icon": "svg, img|.BH179W_content svg, .BH179W_content img",
       "pages": ".pages|.BH179W_pages",
       "back": ".back|.BH179W_back"
     }

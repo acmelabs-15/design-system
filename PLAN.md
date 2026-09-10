@@ -693,11 +693,10 @@ differences point at something real.
   one cause, and Peter accepted it rather than fixing it
   (`notes/analysis/element-child-radius.md`).
 
-- [ ] **book (142) — stale measurement, no element defect found.** Our values match the live
-  reference; the saved reference reading does not, the same drift that hit badge. Re-measuring is
-  blocked on a census that settles a transition: the book animates `transform` over 0.25s, and the
-  census reads synchronously, so a re-run catches the band mid-flight. `book.config.json` is
-  written and verified apart from that. Full account in `notes/analysis/book-stale-census.md`.
+  **book: 142 → 0 hard, both themes.** Every difference was the measurement, not the element: all
+  162 geometry readings match exactly. Four faults, the first being that `BH179W_stripe` names two
+  boxes per book. Written up in `notes/analysis/book-census-config.md`, including two wrong turns —
+  I blamed a transition the census already disables, and I compared the wrong roots.
 
   **code-block, 2026-09-10.** Its 31 hard differences are three causes only, and none is an element
   defect the census can see:

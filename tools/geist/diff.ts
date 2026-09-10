@@ -75,6 +75,38 @@ const norm = (p: string, v: string) => {
  */
 const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string, ours: string) => boolean }[] = [
   {
+    // The book's icon: the reference passes an <img> logo pair, ours an inline <svg>, and these four
+    // properties are what separates the two element types rather than anything either book styles.
+    // Verified 2026-09-10 against bare elements in the browser: `overflow` clip-vs-hidden is the UA
+    // default for img against svg. `color: transparent` and `max-width: 100%` are their page's own
+    // image handling (hiding a logo's alt text, and a Tailwind image reset). `flex-shrink: 0` is
+    // OUR docs page: its example writes class="ic" on the icon it passes in, and tokens.css carries
+    // `.ic { flex: none }`. Demo markup on both sides, like the badge case. Every geometry reading
+    // on this page matches exactly — 162 of 162 — so the books themselves agree.
+    why: "book icon element type: theirs is an <img> logo, ours an inline <svg>; these four are UA defaults and each page's own demo styling, not the element",
+    test: (part, prop, gv, ov) =>
+      part === "icon" &&
+      // An SVG element returns an empty string from getComputedStyle for a layout property it does
+      // not apply, where their <img> returns a real value. Root 10's icon is our slotted
+      // illustration in a `simple` book, hidden with zero height on both sides, so all 38 of its
+      // properties read this way.
+      // In DARK their custom icon is a light/dark IMAGE PAIR: the light file is display:none and
+      // querySelector returns it, so the census reads a 0x0 hidden twin while the visible dark file
+      // reads 16x16 exactly like ours. No selector fixes that in both themes at once, because the
+      // hidden twin swaps sides. Verified in the browser, both themes.
+      (gv === "none" && ov === "block") ||
+        (prop === "height" && gv === "auto" && ov === "16px") ||
+        (prop === "__rect" && String(gv) === "0,0" && /^1[56],1[67]$/.test(String(ov))) ||
+      // Its rect follows: a box with no layout reports 0x0 on ours, 156x0 on theirs. Zero height on
+      // both sides, so neither renders anything.
+      ((prop === "__rect" && /^\d+,[01]$/.test(String(gv)) && String(ov) === "0,0") ||
+        (ov === "" && gv !== "") ||
+        (prop === "overflow" && gv === "clip" && ov === "hidden") ||
+        (prop === "color" && /^rgba?\(0, ?0, ?0, ?0\)$/.test(gv)) ||
+        (prop === "max-width" && gv === "100%" && ov === "none") ||
+        (prop === "flex-shrink" && gv === "1" && ov === "0")),
+  },
+  {
     // Accepted by Peter 2026-09-10 rather than fixed. The reference has exactly one elementChild
     // example and it is size="small", so the generator has no evidence that an element-child
     // button's radius follows its size, and emits `.el { border-radius: .375rem }` with no `:not(.lg)`
