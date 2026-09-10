@@ -263,3 +263,90 @@ live fade sampled mid-flight.
 Both sides can be driven in one session with real input. So compare **live against live in the same run**
 rather than against a stored baseline: a change on the reference's side then shows up as a reviewable
 difference instead of a mystery failure weeks later.
+
+---
+
+## Measuring motion when the window is not being drawn
+
+Researched and tested 2026-09-10, after Peter asked whether a Chrome setting could keep animations
+observable with the window minimized.
+
+### The answer: no setting exists, and none can
+
+Two independent investigations reached the same conclusion from Chromium's own source, and every
+candidate flag was tested rather than assumed.
+
+The gate is in the compositor's scheduler. When a widget is not visible it **unsubscribes from the frame
+source entirely** — a hard disconnect, not a throttle. The specification agrees: the event loop's
+rendering steps filter out any document whose visibility state is hidden, and animation-frame callbacks
+only run inside those steps. So a hidden page gets no frames by construction.
+
+Minimizing is **not** occlusion. Chromium treats a minimized or backgrounded window as `HIDDEN` and a
+covered one as `OCCLUDED`, on different code paths. That distinction matters, because the one switch that
+looks relevant only upgrades `OCCLUDED` to `VISIBLE` and never touches `HIDDEN`.
+
+Tested with the window minimized, all giving zero frames:
+
+`--disable-backgrounding-occluded-windows`, `--disable-renderer-backgrounding`,
+`--disable-background-timer-throttling`, `--disable-features=CalculateNativeWinOcclusion`,
+`--disable-features=IntensiveWakeUpThrottling`, `--run-all-compositor-stages-before-draw`,
+`--disable-gpu-vsync`, `--disable-frame-rate-limit`.
+
+The frame-rate switches drove a *visible* window to roughly 12,000 frames a second and still produced
+zero when minimized, which proves the gate is visibility rather than rate. The timer switches do not
+touch animation frames at all. Playwright and Puppeteer already pass the first three by default, so
+adding them changes nothing.
+
+No `chrome://settings` item, no enterprise policy and no macOS setting changes it. Memory and energy
+savers act on background tabs. One macOS detail worth knowing: display sleep also stops frames, even for
+a window that is not minimized.
+
+### What works instead: seek the animation and read the style
+
+The escape hatch is that `getComputedStyle` and `getAnimations` both force Blink to update animation
+timing **on demand**, off the frame path. So an animation can be moved to any point and sampled with no
+frames at all.
+
+Verified by hand, with frames confirmed dead first:
+
+| Seek point | Opacity | Transform |
+|---|---|---|
+| 0% | 0 | translateX(0px) |
+| 25% | 0.25 | translateX(50px) |
+| 50% | 0.5 | translateX(100px) |
+| 75% | 0.75 | translateX(150px) |
+| 100% | 1 | translateX(200px) |
+
+And on our own live tooltip: 0 at the start, **0.315 at halfway**, 1 at the end.
+
+`tools/geist/motion.js` implements this. Paste it into a page and call `window.__motion(element)`.
+
+### Three traps, each found by hand
+
+**Pause before seeking, always.** Chromium's animation clock advances against wall time between tasks, so
+an unpaused animation moves between the seek and the read. Every sample then lands past the end and
+reports the fill value, which reads as a completely broken animation. Measured on the same element:
+unpaused gave 0 at all five points; paused gave 0, 0.315, 1.
+
+**The easing is usually not where you look first.** Our tooltip's effect timing reports `linear` while
+the keyframes and the CSS rule both say `ease-in`, and the interpolated value at halfway (0.315, not 0.5)
+proves the keyframes win. Read the effect timing, the keyframes and the computed style, and compare all
+three.
+
+**A finished animation reads its fill value everywhere.** Catch a bubble mid-exit and every sample looks
+wrong. Confirm the animation's state before trusting a sample, and prefer a freshly opened element.
+
+### Two rejected alternatives, for the record
+
+- Forcing the page active through the debugging protocol's lifecycle command does not restore frames. It
+  only un-freezes, and the browser code never marks the widget shown.
+- The virtual-time policy only fast-forwards delayed tasks, not frames, and one test run deadlocked on it.
+
+### What this means for us
+
+Motion checks do not need a visible window. They need the seek technique, which works in the preview pane
+whatever its state. Keep the frame probe anyway, because a check that genuinely needs a drawn frame — a
+screenshot — still requires visibility.
+
+One consequence worth noting: a common actionability check in test tools compares an element's box across
+animation frames, so it **hangs forever** with no frames. Avoid waiting on that in a hidden pane.
