@@ -682,13 +682,20 @@ differences point at something real.
   reported differences were computed across misaligned roots; and the reference has one root with no
   cell at all, whose icon reads 24x16 against the 14x14 every cell icon reads.
 
-- [ ] Remaining: book (142), split-button-trigger (240), choicebox (558). code-block stands at 31,
-  all three causes known (see below).
+- [ ] Remaining: split-button-trigger (240), choicebox (558). code-block stands at 31, all three
+  causes known (see below).
 
   **Done 2026-09-10.** badge: 0 hard, its 51 differences were the reference's own demos authoring
   `class="relative"` on the icons they pass in — now an ACCEPTED entry with that evidence.
-  split-button: 60 → **4**, both themes, after rebuilding its census config; the last 4 are one
-  cause, written up in `notes/analysis/element-child-radius.md`, and need a decision from Peter.
+  split-button: 60 → **0 hard**, both themes, after rebuilding its census config; the last 4 were
+  one cause, and Peter accepted it rather than fixing it
+  (`notes/analysis/element-child-radius.md`).
+
+- [ ] **book (142) — stale measurement, no element defect found.** Our values match the live
+  reference; the saved reference reading does not, the same drift that hit badge. Re-measuring is
+  blocked on a census that settles a transition: the book animates `transform` over 0.25s, and the
+  census reads synchronously, so a re-run catches the band mid-flight. `book.config.json` is
+  written and verified apart from that. Full account in `notes/analysis/book-stale-census.md`.
 
   **code-block, 2026-09-10.** Its 31 hard differences are three causes only, and none is an element
   defect the census can see:
