@@ -21,7 +21,9 @@ fs.mkdirSync(path.join(DIST, "bundle"), { recursive: true });
 const walk = (d: string): string[] =>
   fs
     .readdirSync(d, { withFileTypes: true })
-    .flatMap((e) => (e.isDirectory() ? (e.name === "__tests__" ? [] : walk(path.join(d, e.name))) : e.name.endsWith(".ts") && !e.name.endsWith(".d.ts") ? [path.join(d, e.name)] : []));
+    .flatMap((e) =>
+      e.isDirectory() ? (e.name === "__tests__" ? [] : walk(path.join(d, e.name))) : e.name.endsWith(".ts") && !e.name.endsWith(".d.ts") && !e.name.endsWith(".geist.ts") ? [path.join(d, e.name)] : [],
+    ); // .geist.ts mappings feed tools/geist/gen.ts, not the package
 const files = walk(SRC);
 const compilerOptions: ts.CompilerOptions = {
   target: ts.ScriptTarget.ES2022,
@@ -89,13 +91,13 @@ for (const [name, minify] of [
 // For hosts that allow a script from a CDN but no stylesheet from one (the artifact CSP), one tag.
 {
   const tokens = fs.readFileSync(path.join(ROOT, "tokens.css"), "utf8");
-  const entry = path.join(DIST, "standalone-entry.js");
+  const entry = path.join(DIST, `standalone-entry-${process.pid}.js`); // per process: builds may run concurrently
   fs.writeFileSync(
     entry,
-    `import "./index.js";\nconst css = ${JSON.stringify(tokens)};\nif (!document.querySelector("style[data-acme-tokens]")) { const s = document.createElement("style"); s.dataset.acmeTokens = ""; s.textContent = css; document.head.prepend(s); }\n`,
+    `import "./index";\nconst css = ${JSON.stringify(tokens)};\nif (!document.querySelector("style[data-acme-tokens]")) { const s = document.createElement("style"); s.dataset.acmeTokens = ""; s.textContent = css; document.head.prepend(s); }\n`,
   );
   const r = await Bun.build({ entrypoints: [entry], outdir: path.join(DIST, "bundle"), naming: "design-system.standalone.min.js", target: "browser", format: "esm", minify: true, sourcemap: "none" });
-  fs.unlinkSync(entry);
+  fs.rmSync(entry, { force: true });
   if (!r.success) {
     for (const l of r.logs) console.error(l);
     process.exit(1);

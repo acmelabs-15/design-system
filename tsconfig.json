@@ -1,3 +1,6 @@
+// Type-checking only, for the editor and `tsc --noEmit`. dist/ is emitted by scripts/build.ts,
+// which builds its own program with its own rootDir/outDir; setting them here fenced src/ off from
+// the tools/ that .geist.ts mappings import at authoring time.
 {
   "compilerOptions": {
     "target": "ES2022",
@@ -7,13 +10,16 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "strict": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "dist",
-    "rootDir": "src",
+    "noEmit": true,
     "skipLibCheck": true,
-    "types": ["bun","node"],
-    "plugins": [{ "name": "ts-lit-plugin" }]
+    "types": ["bun", "node"],
+    "plugins": [
+      { "name": "ts-lit-plugin", "tags": ["lit", "element", "css"] },
+      {
+        "name": "typescript-lit-html-plugin",
+        "tags": ["html", "template", "css"]
+      }
+    ]
   },
-  "include": ["src"]
+  "include": ["src", "tools", "docs-src"]
 }

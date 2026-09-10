@@ -11,6 +11,7 @@
   },
   "files": [
     "dist",
+    "assets",
     "tokens.css",
     "dashboard.css",
     "README.md"
@@ -43,12 +44,21 @@
     "prepublishOnly": "bun run build && bun test && bun run docs"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1",
+    "@internationalized/date": "^3.12.4",
     "@lit-labs/motion": "^1.1.0",
     "@lit-labs/router": "^0.1.4",
     "@lit-labs/signals": "^0.3.0",
     "@lit-labs/virtualizer": "^2.1.1",
+    "@tanstack/charts": "0.16.2",
+    "@tanstack/highlight": "^0.0.10",
+    "@tanstack/lit-form": "^1.25.5",
+    "@tanstack/lit-hotkeys": "^0.11.0",
+    "@tanstack/lit-store": "^0.13.2",
     "@tanstack/lit-virtual": "^3.14.0",
     "@tanstack/markdown": "^0.0.13",
+    "@tanstack/pacer": "^0.22.0",
+    "@zag-js/remove-scroll": "^1.43.3",
     "lit": "^3.3.3",
     "urlpattern-polyfill": "^10.0.0"
   },
@@ -56,11 +66,11 @@
     "@biomejs/biome": "^2.0.0",
     "@happy-dom/global-registrator": "^20.14.0",
     "@lit-labs/compiler": "^1.1.2",
-    "@tanstack/highlight": "^0.0.10",
     "@types/bun": "^1.4.2",
     "@types/node": "^26.5.0",
     "happy-dom": "^15.11.0",
     "ts-lit-plugin": "^2.0.2",
-    "typescript": "~5.9.0"
+    "typescript": "~5.9.0",
+    "typescript-lit-html-plugin": "^0.9.1"
   }
 }
