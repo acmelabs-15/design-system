@@ -128,6 +128,12 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
 
 - Every CSS declaration ships through the generator. Fix a defect **in the generator**, never
   work around it in an element.
+- **A map's `ignore` list is a permanent claim, not a way to park a puzzle.** Naming a class there
+  says "this class produces no style in the reference", and the generator then drops it from every
+  future run. So it needs the same evidence as any other claim: the rule that wins, read in the
+  browser, with its selector. Reaching for it because a class *appears* inert is how a real
+  declaration gets silently deleted — `my-4` on the code block was put there on that reasoning and
+  reverted, because the class works and the reference's own docs page was zeroing it.
 - **A host keeps a real box, unless the reference renders no box there.** `display: contents` is the
   exception, not the default, and it needs the same evidence as any other claim: the reference's own
   element is the box its container lays out, and a host of ours in between takes that place instead.
@@ -263,6 +269,26 @@ This trips people up, so it is written out.
   `avatar-wrap` are three roots measured on the one avatar page.
 - Today: **125 measured roots across 69 reference pages.**
 - A **hard** difference is a defect. A **soft** difference comes from the fonts and is expected.
+- **A hard difference is a defect only after three other explanations are ruled out.** Each has bitten
+  more than once, and each produces a difference that looks real and points at our element:
+
+  | Explanation | How it shows | How to rule it out |
+  |---|---|---|
+  | The saved result is stale | A property we already fixed still differs | Read the value in the browser before believing the file |
+  | The two preview columns differ in width | Anything full-width or in a percentage | Fix both sides with `width` |
+  | **The reference's docs page styles its own demo** | A property with no plausible source in the component | Find the rule that wins, in the browser, and read its selector |
+
+  The third is the most dangerous, because nothing in the harness separates a component's own style
+  from the page furniture around it. The census reads the rendered page, so both look the same. A real
+  case: the reference's code-block page carries `[aria-label="Hello world"] { margin: 0 !important }`,
+  unlayered and keyed on the literal demo string, which zeroes a margin the component really has.
+
+- **When a rule seems not to exist, suspect the search before the page.** A walk over
+  `document.styleSheets` must recurse into every grouping rule — `@layer`, `@media`, `@supports`,
+  `@container` — or it silently walks past their contents. The reference ships Tailwind v4, whose
+  `utilities` layer alone holds 2,482 rules. A walk that misses them reports "no rule matches" for a
+  rule that plainly applies, and every conclusion drawn from that is wrong. Test the walk against a
+  rule known to apply before trusting a negative result.
 
 ### Accepted leftovers
 
