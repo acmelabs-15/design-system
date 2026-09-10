@@ -75,6 +75,11 @@ export class AcmeBook extends AcmeElement {
          (which is what the census reads) and the directive alone travels between them. */
       .wrap {
         transition: none;
+        /* The cover is a preserve-3d subtree under a perspective, so the browser builds its layer
+           tree when the transform first moves and discards it after — a 350ms Commit measured on
+           every hover, landing within 1ms of pointerenter. Naming the property that moves keeps the
+           layer between hovers. */
+        will-change: transform;
       }
     `,
   ];

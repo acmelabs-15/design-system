@@ -2089,6 +2089,11 @@ Please use the static 'html' tag function. See https://lit.dev/docs/templates/ex
          (which is what the census reads) and the directive alone travels between them. */
       .wrap {
         transition: none;
+        /* The cover is a preserve-3d subtree under a perspective, so the browser builds its layer
+           tree when the transform first moves and discards it after — a 350ms Commit measured on
+           every hover, landing within 1ms of pointerenter. Naming the property that moves keeps the
+           layer between hovers. */
+        will-change: transform;
       }
     `]}caught(){let e=this.wrap&&getComputedStyle(this.wrap).transform;return e&&e!=="none"?e:void 0}attributeChangedCallback(e,r,i){if(e==="title"){if(i!==null)this.title=i,this.removeAttribute("title");return}super.attributeChangedCallback(e,r,i)}connectedCallback(){super.connectedCallback(),this.hasIcon=!!this.querySelector('[slot="icon"]')}firstUpdated(){this.hasIcon||=!!this.querySelector('[slot="icon"]')}updated(){this.interaction.attach(this.root)}render(){let e=this.variant!=="simple",r=this.color||(e?"var(--ds-amber-600)":""),i=[r&&`--book-color:${r}`,this.textColor&&`--book-text-color:${this.textColor}`].filter(Boolean).join(";"),s={["_$litType$"]:aS,values:[e?b:nS]};return{["_$litType$"]:lS,values:[this.cls("book",{stripe:e,simple:!e,color:!!r,textured:this.textured}),rS(this.width).join(";"),()=>this.turn(!0),()=>this.turn(!1),i||b,Gv({guard:()=>this.gesture.get().hovered,onFrames:()=>this.frames.get()}),e?{["_$litType$"]:cS,values:[s]}:b,this.title,e?{["_$litType$"]:dS,values:[this.iconSlotted,this.hasIcon?b:se("layers",16)]}:s,this.textured?{["_$litType$"]:hS,values:[iS(this.title)?180:0]}:b]}}};Oi([d()],li.prototype,"title",void 0);Oi([d()],li.prototype,"variant",void 0);Oi([d()],li.prototype,"color",void 0);Oi([d({attribute:"text-color"})],li.prototype,"textColor",void 0);Oi([d({converter:sS})],li.prototype,"width",void 0);Oi([d({type:Boolean})],li.prototype,"textured",void 0);Oi([E()],li.prototype,"hasIcon",void 0);Oi([P(".book")],li.prototype,"root",void 0);Oi([P(".wrap")],li.prototype,"wrap",void 0);li=Oi([x("acme-book")],li);var iy=f`
   .item:where(:not(.menu)) {
@@ -17652,5 +17657,5 @@ ${r}
       <div><acme-button type="submit" variant="primary" ?disabled=${!this.form.api.state.canSubmit}>Create Account</acme-button></div>
     </form>`}}Sb=fo([x("docs-form-demo")],Sb);window.acme={toasts:Dt,createToastQueue:_d};document.addEventListener("click",(t)=>{let e=t.target.closest(".showbar");if(!e)return;let r=e.closest(".showcase"),i=r.dataset.open==="true";if(r.dataset.open=String(!i),e.setAttribute("aria-expanded",String(!i)),e.lastChild)e.lastChild.textContent=i?"Show code":"Hide code"});
 
-//# debugId=22565DEF09BEDC0164756E2164756E21
+//# debugId=5011C6E64CD6A06D64756E2164756E21
 //# sourceMappingURL=app.js.map

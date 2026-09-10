@@ -200,3 +200,54 @@ re-measured.
 
 **The lesson worth keeping:** a synthetic event on the element you are animating is not the gesture.
 Dispatch where the real pointer lands, or the handler you are not testing is the one that breaks it.
+
+
+## What the Chrome traces showed (2026-09-10)
+
+Peter recorded two traces in Chrome. The second one caught the hover — 30 `pointerenter` events —
+and it names a cause the first could not.
+
+### The first trace measured page load, not the hover
+
+Zero mentions of the animation, four pointer dispatches, none producing one. Its headline was a
+422ms LCP render delay, and splitting the script time by origin shows why that is not ours to fix:
+
+| Source | Main-thread script time |
+|---|---|
+| Browser extensions | **171 ms** |
+| Ours (`localhost:4180`) | **32 ms** |
+| Unattributed | 28 ms |
+
+1Password, React DevTools and two colour pickers cost five times our own code. Rendering itself is
+cheap: layout 29ms, paint 29ms, style 22ms across the whole load. The one finding that is genuinely
+ours — the docs page loads a single 1.3MB `app.js` with every element in it — is about the docs
+site's loading strategy, not the package a consumer installs.
+
+### The second trace: a 350ms layer commit on hover
+
+The DevTools report led with INP 4,497ms, but its own breakdown reads **input delay 3,497ms,
+processing 3ms**. Our handler took 3ms. The long wait is on the **Compositor** thread and contains
+only short GPU tasks — an idle wait between the recording starting and the click, not blocking work.
+
+The real finding is on the main thread: ten `Commit` → `UpdateLayer` tasks of 350–540ms, and **five
+of them land within 1ms of a `pointerenter`**. Each carries a different `layerId`, so a new layer is
+built per hover and discarded after. That is the hitch.
+
+**Why:** the cover is a `preserve-3d` subtree under a `perspective`, and nothing told the browser
+the transform was going to move, so it built the 3D layer tree on demand every time.
+`will-change: transform` on `.wrap` keeps it between hovers. The package's own hero demo does the
+same on its animated boxes.
+
+### One reading of mine that was wrong, and how
+
+I first measured frame gaps with `AnimationFrame::Presentation` and reported a 133ms gap as the
+jerk. That is main-thread rAF, and our animation runs on the compositor: during that same gap the
+trace shows **16 compositor frames submitted and presented**. Measuring `PipelineReporter` instead —
+real presented frames — the worst gap during any hover is **17.5 ms**, a steady 60fps.
+
+So the animation itself never dropped a frame. What Peter feels is the layer commit that fires
+alongside it.
+
+**Verified after the change:** 608 tests pass; book and book.dark hold at 0 hard, re-measured
+(`will-change` does not alter a computed-style reading). The commit cost itself cannot be measured
+from script — it needs another Chrome trace to confirm, which is the honest limit of what I can say.
