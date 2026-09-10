@@ -161,6 +161,8 @@ Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build ou
 | File | What it holds |
 |---|---|
 | [tools/geist/README.md](tools/geist/README.md) | The full runbook for the parity pipeline, and every guarantee the generator makes |
+| [notes/analysis/behaviour-verification-method.md](notes/analysis/behaviour-verification-method.md) | How behaviour parity gets proven: the four instruments, what each is for, and the traps. Includes the test-tier decision and the cheap checks we were missing |
+| [notes/analysis/hand-rolled-audit.md](notes/analysis/hand-rolled-audit.md) | Living record of what we hand-roll that a package could own, with an assessment and reason for each |
 | [notes/analysis/functional-parity-sources.md](notes/analysis/functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
 | [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
 | [notes/decisions/prop-naming-vs-reference.md](notes/decisions/prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
