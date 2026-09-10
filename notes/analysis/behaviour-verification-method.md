@@ -175,3 +175,32 @@ event rather than a mystery failure weeks later.
 
 - Whether the reference uses React Aria beyond button press handling. Sweep per component.
 - Whether `delegatesFocus` changes `:focus-visible` behaviour. The documentation is silent; test it.
+
+---
+
+## Browser access: what works today, and what is missing
+
+Tested 2026-09-10 against Peter's own Chrome.
+
+Two separate paths reach a browser, and neither is currently sufficient for the parity work:
+
+| Path | Status | What it can do |
+|---|---|---|
+| The built-in browser pane | Works | Reaches localhost. **Cannot reach the reference site**, and fires no timers or animation frames, so anything waiting on one hangs. |
+| Peter's Chrome, direct control | **Half working** | Lists tabs, opens a URL, reports the current tab's address and title. **Cannot execute script or read page content.** |
+| Peter's Chrome, via the extension | Not connected | Reports no connected browser. |
+
+The failing calls return "Google Chrome is not running", which is misleading. Chrome *is* running: 19
+processes, a real window, and a listener on the debugging port. Two facts explain it:
+
+- Chrome was launched with `--no-startup-window`, as a background helper rather than a browser session.
+- The debugging port answers **404** to the protocol's own endpoints, so whatever holds the port is not
+  serving the debugging protocol.
+
+So the capability gap is real and specific: **we can put a page in front of Chrome but cannot read what it
+rendered.** Every instrument in this document that compares the reference against us — computed role and
+name, the accessibility tree, trusted keyboard input, overlay placement — needs the reading half.
+
+**What would close it:** the Chrome extension connecting, or Chrome started normally with the debugging
+protocol actually served. Until then the reference-comparison work in section 5.5 stays blocked, and
+everything that runs against localhost alone continues unaffected.

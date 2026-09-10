@@ -412,10 +412,24 @@ build, so a behaviour we never wired stays invisible. The oracle must come from 
 - [ ] Add the four cheap emulation checks: forced colors (a `box-shadow` focus ring vanishes there),
   reduced motion, touch, print.
 
-### 5.5 Check overlays against the live reference `[ ]`
+### 5.5 Check overlays against the live reference `[ ]` — blocked on browser access
 
-Placement, motion and keyboard behaviour cannot be measured by the census. Needs Peter's own Chrome,
-currently disconnected. Use trusted driver input only: synthetic events do not drive the reference at all.
+Placement, motion and keyboard behaviour cannot be measured by the census.
+
+**Tested 2026-09-10: browser access is half working, and the missing half is the one we need.** Peter's
+Chrome accepts navigation and reports tab addresses, but **script execution and page reading both fail**.
+The error says Chrome is not running, which is wrong — it is, with a real window — but it was launched as
+a background helper and its debugging port answers 404 to the protocol's own endpoints. The extension path
+reports no connected browser.
+
+So we can put a page in front of Chrome and cannot read what it rendered. Every reference comparison needs
+the reading half: computed role and name, the accessibility tree, trusted keyboard input, overlay
+placement. Details in
+[notes/analysis/behaviour-verification-method.md](notes/analysis/behaviour-verification-method.md).
+
+Everything that runs against localhost alone is unaffected, so this blocks only reference comparison.
+When access is fixed: use trusted driver input only, because synthetic events do not drive the reference
+at all.
 
 ### 5.6 Package and practice audits `[ ]`
 
