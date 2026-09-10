@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 05:10 PDT.
+how we prove it, and where we are. Updated 2026-09-10 03:40 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -151,15 +151,6 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   from here. This file stays the entry point: reading it, and the files it links, is enough to know
   the whole project.
 
-### The tools, and what each decides
-
-| Tool | What it decides | What it refuses to decide |
-|---|---|---|
-| `bun tools/geist/gen.ts <name>` | The element's whole stylesheet, from the map and the spec | Nothing — it is fully deterministic |
-| `bun tools/geist/diff.ts <page>` | Hard, soft, or accepted, by exact rule | Whether a new difference should become accepted |
-| `bun tools/geist/contract.ts` | Extracts 442 reference behaviour statements and 40 wired callbacks, sorted by who can decide them | Whether our element satisfies any of them |
-| `bun tools/geist/config.ts <name>` | The mechanical half of a census config | The five fields that carry the measurement's meaning: prepare, viewport, width, text parts, hops |
-
 ### Supporting documents
 
 This plan is the entry point. These carry detail too large to inline:
@@ -170,11 +161,8 @@ Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build ou
 | File | What it holds |
 |---|---|
 | [tools/geist/README.md](tools/geist/README.md) | The full runbook for the parity pipeline, and every guarantee the generator makes |
-| [notes/analysis/systematic-approach.md](notes/analysis/systematic-approach.md) | **Read this second.** The method: what a script decides, what a person decides, and the measured evidence for where that line falls |
 | [notes/analysis/behaviour-verification-method.md](notes/analysis/behaviour-verification-method.md) | How behaviour parity gets proven: the four instruments, what each is for, and the traps. Includes the test-tier decision and the cheap checks we were missing |
 | [notes/analysis/hand-rolled-audit.md](notes/analysis/hand-rolled-audit.md) | Living record of what we hand-roll that a package could own, with an assessment and reason for each |
-| [notes/analysis/lit-practice-review.md](notes/analysis/lit-practice-review.md) | Which Lit mechanisms we use and which we are missing, checked against our own code. Includes the accessibility evidence for keeping ARIA on inner elements |
-| [notes/analysis/package-choices.md](notes/analysis/package-choices.md) | Every package choice with its evidence: confirmed, worth adopting, or to avoid. Records that no Zag adapter for Lit exists |
 | [notes/analysis/functional-parity-sources.md](notes/analysis/functional-parity-sources.md) | What is and is not obtainable for verifying behaviour, and the method that follows. Records that there is no source code to read, so nobody looks twice |
 | [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md) | **Decided.** What parity means: style, behaviour and functionality, never implementation. The rule every API choice is judged against |
 | [notes/decisions/prop-naming-vs-reference.md](notes/decisions/prop-naming-vs-reference.md) | The button `type`/`typeName` case that raised the question, kept for its evidence. Settled by the parity-scope decision |
@@ -249,10 +237,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Tests | 583 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
-| Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |
-| Pages reporting real differences | 21, listed in section 5.1. All against measurements older than today's generator fixes |
-| Elements the generator reproduces byte-identically | 90 of 95. The other five each drop an unused legacy variable or a duplicate line |
-| Maps the generator reports clean | 93 of 129. The rest report cascade notes and documented reference quirks, not defects |
+| Parity, measured | **not currently provable — see section 4** |
 
 ### Wave 3: overlays
 
