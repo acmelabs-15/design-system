@@ -1,0 +1,37 @@
+{
+ "note": "The next link, read as a root in its own right. Its left margin is `ml-auto` on both sides, so it absorbs whatever the row's two links leave, and their widths follow their text, which is set in our own font: read as soft, the same way the pagination config reads it. `width` fixes both previews at 600px, because the row is full width and the two preview columns differ. The four states are read: the link carries the reference's hover, focus and active styling.",
+ "themes": ["light", "dark"],
+ "pagination-next": {
+  "geist": {
+   "side": "geist",
+   "page": "pagination-next",
+   "marker": "nav[aria-label='pagination'] a.ml-auto",
+   "width": "600px",
+   "textParts": ["root", "label", "row", "title"],
+   "textProps": { "root": ["margin-left"] },
+   "children": {
+    "label": ".label|:scope > span",
+    "row": ".row|:scope > div",
+    "title": ".title|:scope > div > span:not([class*=absolute])",
+    "chev": ".chev|:scope > div > span[class*=absolute]",
+    "svg": ".chev svg|svg"
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "pagination-next",
+   "host": "acme-pagination",
+   "ours": ".link.next",
+   "width": "600px",
+   "textParts": ["root", "label", "row", "title"],
+   "textProps": { "root": ["margin-left"] },
+   "children": {
+    "label": ".label|:scope > span",
+    "row": ".row|:scope > div",
+    "title": ".title|:scope > div > span:not([class*=absolute])",
+    "chev": ".chev|:scope > div > span[class*=absolute]",
+    "svg": ".chev svg|svg"
+   }
+  }
+ }
+}

@@ -1,0 +1,46 @@
+{
+ "note": "The progress track: a relative wrapper holding a native `<progress>` bar, and on the segmented example a set of stops laid over it. The reference marks none of these, so the root is named by the wrapper's own shape (`div:has(> progress)`) and the parts by tag and position. `stop.left` is read as soft: it is `calc(10% - 7px)` on both sides, a percentage of the track, and the track fills its container, which is a different width in each preview column. `width` fixes both previews at 600px, because the track fills its container and the two preview columns are different widths (812 against 891), which would otherwise make every width in the chain differ. `states` is `base` alone, matching the recorded run: the bar has no interactive state of its own, and the tooltip on the segmented example is a behaviour check.",
+ "themes": [
+  "light",
+  "dark"
+ ],
+ "progress": {
+  "geist": {
+   "side": "geist",
+   "page": "progress",
+   "marker": "div:has(> progress)",
+   "states": [
+    ""
+   ],
+   "textProps": {
+    "stop": [
+     "left"
+    ]
+   },
+   "children": {
+    "bar": ".bar|progress",
+    "stop": ".stop|div.absolute"
+   },
+   "width": "600px"
+  },
+  "ours": {
+   "side": "ours",
+   "page": "progress",
+   "host": "acme-progress",
+   "ours": ".progress",
+   "states": [
+    ""
+   ],
+   "textProps": {
+    "stop": [
+     "left"
+    ]
+   },
+   "children": {
+    "bar": ".bar|progress",
+    "stop": ".stop|div.absolute"
+   },
+   "width": "600px"
+  }
+ }
+}
