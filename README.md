@@ -91,9 +91,9 @@ git push --follow-tags   # the tag starts the publish
 - Values come from vercel.com/geist. Where Geist has the component, Geist's value is the value.
 - The type families never change: Google Sans Flex for text, Google Sans Code for numbers,
   labels and code.
-- State is TanStack Store, which is signal-based underneath: state shared between elements (the
-  theme, the toast queue) lives in a store in `src/shared/state.ts`; state inside a single element
-  stays on Lit's own reactive properties. Virtualization is TanStack virtual, syntax highlighting
+- State is TanStack Store, which is signal-based underneath. State shared between elements (the theme,
+  the toast queue) lives in `src/shared/state.ts`; an element's own state is a store created per
+  instance, the way TanStack Form creates one per form and per field. Virtualization is TanStack virtual, syntax highlighting
   TanStack highlight, markdown TanStack markdown, forms TanStack form, charts TanStack charts,
   hotkeys TanStack hotkeys, and rate limiting TanStack pacer.
 - Overlay placement is `@floating-ui/dom`, scroll lock `@zag-js/remove-scroll`, and dates

@@ -14,7 +14,7 @@ by something smaller and more modern. This file is the standing record of those 
 | `@floating-ui/dom` for overlay placement | Still the standard. CSS anchor positioning now exists in all three engines, but the Safari and Firefox floors are very recent, so it is not a replacement yet. |
 | `@internationalized/date` for dates | Keep. The native `Temporal` API has reached the final standards stage and ships in Chrome, Firefox and Edge, but **Safari has not shipped it**, and the polyfill is about a megabyte. Revisit when Safari ships. |
 | `@tanstack/lit-virtual` for virtualization | Keep, and **do not** ship the Lit labs virtualizer alongside it. That package has had no functional work in fourteen months and 86 open issues; TanStack shipped days ago. |
-| TanStack Store for state | Peter's rule, and correct: it is signal-based underneath, so it is a store built on signals rather than a heavier layer over them. |
+| TanStack Store for state | Peter's rule, and correct: it is signal-based underneath, so it is a store built on signals rather than a heavier layer over them. It holds an element's own state too, per instance, as TanStack Form does — see [../decisions/state-on-tanstack-store.md](../decisions/state-on-tanstack-store.md), which records the evidence and replaces a narrowing I wrote without asking. |
 | `@zag-js/remove-scroll` for scroll lock | Keep. |
 | Vendored command-score | Keep. The npm package is **archived and last published in 2016**; the upstream library vendors it too, and ours is parity-driven. |
 

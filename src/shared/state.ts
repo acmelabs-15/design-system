@@ -1,7 +1,10 @@
-// Shared application state on TanStack Store, which is signal-based underneath: the theme and the
-// toast queue. Elements read a store with `TanStackStoreSelector` (re-exported as `StoreSelector`)
-// and re-render only when their selection changes. State inside a single element stays on Lit's own
-// reactive properties; anything shared between elements belongs in a store here.
+// Application state on TanStack Store, which is signal-based underneath: the theme and the toast
+// queue live here, and elements read them with `TanStackStoreSelector` (re-exported as
+// `StoreSelector`), re-rendering only when their selection changes.
+//
+// An element's OWN state is also a TanStack Store, created per instance, the way TanStack Form
+// creates one per form and per field. It lives in the element rather than here, because it is not
+// shared. See notes/decisions/state-on-tanstack-store.md for the pattern and its traps.
 import { createStore, TanStackStoreSelector } from "@tanstack/lit-store";
 import type { TemplateResult } from "lit";
 
