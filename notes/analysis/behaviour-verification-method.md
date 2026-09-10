@@ -178,54 +178,85 @@ event rather than a mystery failure weeks later.
 
 ---
 
-## Browser access: solved, and which tool for which job
+## Browser access: solved, and how to measure motion
 
-Tested 2026-09-10. Both usable paths were driven against the live reference in the same session and
-produced **identical measurements** — the same tooltip text, the same 247 by 29 box, the same
-`aria-describedby` wiring. That agreement is itself a useful cross-check.
+Tested repeatedly on 2026-09-10, including with the preview pane open, minimized to the dock, and
+restored. Both usable paths were driven against the live reference and produced **identical
+measurements** — the same tooltip text, the same 247 by 29 box, the same `aria-describedby` wiring, the
+same animation name. That agreement between two independent instruments is itself a useful cross-check.
 
-One difference decides which to use.
+### Do not trust `document.visibilityState` as the gate
 
-| | Built-in browser pane | Chrome DevTools protocol |
+The obvious rule — "frames fire when the page is visible" — is wrong, and acting on it would have made us
+skip motion checks that work.
+
+Observed, in the same pane, minutes apart:
+
+| Pane state | `visibilityState` | Frames fire | `getAnimations()` on the document |
+|---|---|---|---|
+| Hidden behind the terminal | `hidden` | no | 0 |
+| Open and on screen | `visible` | yes | 8 |
+| Minimized to the dock | `hidden` | no | 0 |
+| Restored | **`hidden`** | **yes** | 0 |
+
+The last row is the important one: frames fired while the page still reported itself hidden, and the
+document-level animation count stayed at zero even though a real animation was running on an element.
+
+**So test the capability, never the flag.** Before a motion assertion, run one frame probe and branch on
+the result. `visibilityState` and a document-wide animation count are both unreliable proxies.
+
+### The probe, and how to read a live animation
+
+Ask for a frame with a timeout, then read the animation from the **element**, not the document:
+
+```js
+const framesFire = await new Promise((r) => {
+  let done = false;
+  requestAnimationFrame(() => { done = true; r(true); });
+  setTimeout(() => { if (!done) r(false); }, 1200);
+});
+```
+
+Then sample the same element twice, with a gap, and compare. A single reading cannot tell a running
+animation from a finished one:
+
+```js
+const a1 = bubble.getAnimations({ subtree: true }).map((a) => ({ name: a.animationName, state: a.playState, t: a.currentTime }));
+await new Promise((r) => setTimeout(r, 150));
+const a2 = bubble.getAnimations({ subtree: true }).map((a) => ({ name: a.animationName, state: a.playState, t: a.currentTime }));
+```
+
+This works. On our own tooltip it caught the fade **mid-flight** at 55% opacity, running, then finished at
+100% — with the pane minimized and `visibilityState` reading `hidden` throughout.
+
+### What each path is for
+
+| | Built-in preview pane | Chrome DevTools protocol |
 |---|---|---|
 | Reaches the reference site | Yes | Yes |
-| Reads the page and runs script | Yes | Yes |
+| Reads the page, runs script | Yes | Yes |
 | Real hover and key input | Yes | Yes |
-| Accessibility tree | Yes | Yes, with element identifiers for interaction |
-| Timers fire | Yes | Yes |
-| **Animation frames fire** | **No** | **Yes** |
-| Page visibility | `hidden` | `visible` |
+| Accessibility tree | Yes | Yes, with identifiers for interaction |
+| Timers | Always | Always |
+| Frames | **Probe first** | Yes when its page is visible |
 | Runs in | Its own pane | **Peter's real Chrome, with his tabs** |
 
-### The rule
+**Default to the preview pane.** It does not touch Peter's browser, and with the frame probe it handles
+motion too. Reach for the DevTools protocol when the probe says frames are not firing and the check needs
+them, or when element identifiers make an interaction easier.
 
-**Use the DevTools protocol for anything involving motion.** Its page is visible, so animation frames
-run and `document.getAnimations()` reports real work — 11 running animations on the reference's tooltip
-page. Every motion check depends on that: exit transitions, the reduced-motion assertion, and any
-placement that settles over a frame.
-
-**The built-in pane is fine for everything static**, and it is the safer default because it does not touch
-Peter's own browser. Reading computed styles, checking what is open at rest, reading the accessibility
-tree, asserting roles and names.
-
-An earlier note in this file said the pane could not reach the reference at all. That is no longer true and
-has been corrected. What remains true is the hidden-page limitation: **anything waiting on an animation
-frame hangs there**, which is why the census scripts must never wait on one.
-
-### Courtesy, since one path is Peter's own browser
-
-The DevTools path attaches to his real Chrome and lists his tabs. So: open what you need, close only what
-you opened, and never close a tab you did not create.
+Courtesy for the DevTools path: it attaches to Peter's real Chrome and lists his tabs, so open what you
+need and close only what you opened.
 
 ### What was verified end to end
 
 On the live reference: the full accessibility tree with roles and names; **real hover opened a tooltip**,
 which matters because the reference ignores synthetic events; and with it open, `position: absolute`, a
-247 by 29 box, its transform matrix, and that `aria-describedby` is wired **only while open** — behaviour
-our element must match and the census cannot see.
+247 by 29 box, its transform matrix, the `fadeInTooltip` animation, and that `aria-describedby` is wired
+**only while open** — behaviour our element must match and the census cannot see.
 
-On our own docs server: all 31 tooltip elements found, **none open at rest**, which is what the docs
-cleanup was for, and shadow roots reachable so a comparison can read inside our elements.
+On our own docs server: every tooltip element found, **none open at rest**, shadow roots reachable, and a
+live fade sampled mid-flight.
 
 ### The rule this settles
 

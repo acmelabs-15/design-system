@@ -446,13 +446,11 @@ export class AcmeTooltip extends AcmeElement {
         open
           ? html`<div class="layer" popover="manual">
               ${touch ? html`<div class="backdrop"></div>` : nothing}
-              <div class=${cls} id=${this.uid} role="tooltip" part="tooltip" ?data-kbd=${hasKbd} style=${styleMap({ left: "0px", top: "0px", maxWidth: this.maxWidth || null, padding: this.padding || null })}>
-                ${
+              <div class=${cls} id=${this.uid} role="tooltip" part="tooltip" ?data-kbd=${hasKbd} style=${styleMap({ left: "0px", top: "0px", maxWidth: this.maxWidth || null, padding: this.padding || null })}>${
                   this.tip
                     ? html`<div class="arrow" part="arrow" aria-hidden="true"><svg height=${g.h} viewBox=${`0 0 ${g.w} ${g.h}`} width=${g.w} xmlns="http://www.w3.org/2000/svg">${svg`<path d=${g.d}></path>`}</svg></div>`
                     : nothing
-                }${text}<slot name="content" @slotchange=${this.markContent}></slot>
-              </div>
+                }${text}<slot name="content" @slotchange=${this.markContent}></slot></div>
             </div>`
           : nothing
       }`;

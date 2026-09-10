@@ -414,14 +414,19 @@ build, so a behaviour we never wired stays invisible. The oracle must come from 
 
 ### 5.5 Compare against the live reference `[ ]`
 
-**Unblocked 2026-09-10.** Two paths now work and agree with each other, producing identical
-measurements against the live reference. One difference decides which to use: **animation frames fire only
-under the Chrome DevTools protocol**, because its page is visible; the built-in pane is hidden, so anything
-waiting on a frame hangs there.
+**Unblocked 2026-09-10.** Two paths work and agree exactly on the live reference: same box, same wiring,
+same animation name.
 
-So: **DevTools protocol for motion**, built-in pane for everything static. The DevTools path attaches to
-Peter's real Chrome, so close only tabs you opened. Direct control of his Chrome remains unusable for this
-— it navigates but cannot read a page. Full comparison in
+**Motion works in the preview pane too, but probe for it rather than trusting a flag.**
+`document.visibilityState` is not a reliable gate — frames were observed firing while the page reported
+itself `hidden`, and the document-wide animation count read zero while a real animation ran on an element.
+So: run a one-frame probe with a timeout, then read animations from the **element** and sample twice with a
+gap, since one reading cannot tell running from finished. Verified by catching our tooltip's fade
+mid-flight at 55% opacity with the pane minimized.
+
+Default to the preview pane; it does not touch Peter's browser. Use the DevTools protocol when the probe
+says frames are not firing, or when element identifiers make an interaction easier — and close only tabs
+you opened there. Method and code in
 [notes/analysis/behaviour-verification-method.md](notes/analysis/behaviour-verification-method.md).
 
 First real finding from it, already: the reference wires `aria-describedby` on a tooltip trigger **only

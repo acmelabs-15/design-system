@@ -135,4 +135,14 @@ describe("acme-tooltip", () => {
     await open.updateComplete;
     expect(bubble(open)).toBeNull();
   });
+  test("the bubble holds no whitespace text nodes: pre-line would turn them into blank lines", async () => {
+    // The bubble renders `white-space: pre-line`, as the reference's does, so a newline left in the
+    // template is a real line break on screen. That shipped once: indentation around the arrow and the
+    // slot made the bubble 130px tall where the reference's is 29px. The guard is structural, because a
+    // height assertion needs layout and happy-dom has none.
+    const el = await mount(`<acme-tooltip shown="1" text="${TEXT}"><span>Trigger</span></acme-tooltip>`);
+    const bubble = el.shadowRoot!.querySelector('[role="tooltip"]')!;
+    const blank = [...bubble.childNodes].filter((n) => n.nodeType === 3 && (n.textContent ?? "") !== "" && (n.textContent ?? "").trim() === "");
+    expect(blank.map((n) => JSON.stringify(n.textContent))).toEqual([]);
+  });
 });
