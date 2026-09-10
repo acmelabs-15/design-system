@@ -70,4 +70,31 @@ describe("acme-copy-button", () => {
     expect(b.getAttribute("size")).toBe("small");
     expect(b.getAttribute("shape")).toBe("circle");
   });
+
+  test("the icon slot is always rendered, so content assigned at any time reaches it", async () => {
+    // The slot must never be removed or replaced conditionally: a removed slot cannot receive an
+    // assignment, slotchange never fires, and an icon added after the first render is lost. That was
+    // a real regression here, caught by Peter and reproduced in the browser before this test existed.
+    //
+    // The glyph is rendered BESIDE the slot rather than as its native fallback, because a composing
+    // element forwards a slot of its own into this one and a forwarded slot counts as assigned
+    // content even when empty — the native fallback would then never show. `hasIcon` is read from
+    // `assignedElements({ flatten: true })`, which resolves the forwarded slot to what it holds.
+    const bare = await mount(`<acme-copy-button text-to-copy="x"></acme-copy-button>`);
+    expect(bare.shadowRoot!.querySelector(".copy slot[name=icon]")).not.toBeNull();
+    expect(bare.shadowRoot!.querySelector(".copy > svg")).not.toBeNull();
+
+    const withIcon = await mount(`<acme-copy-button text-to-copy="x"><svg slot="icon"></svg></acme-copy-button>`);
+    const slot = withIcon.shadowRoot!.querySelector(".copy slot[name=icon]") as HTMLSlotElement;
+    expect(slot).not.toBeNull();
+    expect(slot.assignedElements({ flatten: true }).length).toBe(1);
+
+    // Added after the first render: the slot is still there to receive it.
+    const late = await mount(`<acme-copy-button text-to-copy="x"></acme-copy-button>`);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("slot", "icon");
+    late.appendChild(svg);
+    const lateSlot = late.shadowRoot!.querySelector(".copy slot[name=icon]") as HTMLSlotElement;
+    expect(lateSlot.assignedElements({ flatten: true }).length).toBe(1);
+  });
 });

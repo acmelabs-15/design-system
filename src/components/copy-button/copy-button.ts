@@ -50,7 +50,16 @@ export class AcmeCopyButton extends AcmeElement {
   @property({ type: Object }) hover?: ButtonColors;
   @property({ type: Object }) active?: ButtonColors;
   @state() private done = false;
+  /** Whether anything is slotted for the icon. A composing element forwards a slot of its own into
+   *  this one, and a forwarded slot counts as assigned content even when it is empty, so the native
+   *  fallback would never show. `flatten` resolves the forwarded slot to what it actually holds, and
+   *  the glyph is rendered beside the slot rather than inside it. */
+  @state() private hasIcon = false;
   private timer?: ReturnType<typeof setTimeout>;
+
+  private readIconSlot = (e: Event) => {
+    this.hasIcon = (e.target as HTMLSlotElement).assignedElements({ flatten: true }).length > 0;
+  };
 
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -96,7 +105,9 @@ export class AcmeCopyButton extends AcmeElement {
       ${copied ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}
       <div class=${this.cls("stack", { copied })}>
         <div class="check">${glyphSized("check")}</div>
-        <div class="copy"><slot name="icon">${glyphSized("copy")}</slot></div>
+        <div class="copy">
+          <slot name="icon" @slotchange=${this.readIconSlot}></slot>${this.hasIcon ? nothing : glyphSized("copy")}
+        </div>
       </div>
     </acme-button>`;
   }

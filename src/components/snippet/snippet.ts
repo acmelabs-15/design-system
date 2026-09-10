@@ -49,9 +49,6 @@ export class AcmeSnippet extends AcmeElement {
   @property() width = "";
   /** Shows the check whatever the button did (controlled). */
   @property({ type: Boolean }) copied = false;
-  /** Whether the consumer slotted an icon. An empty forwarded slot still reads as assigned content in
-   *  the copy button, which would hide its own copy glyph, so the slot is forwarded only when filled. */
-  @state() private hasIcon = false;
   @query(".action") private action!: HTMLElement | null;
   @query("acme-copy-button") private button?: AcmeCopyButton;
   private interaction = new Interaction(this);
@@ -61,14 +58,8 @@ export class AcmeSnippet extends AcmeElement {
     return Array.isArray(this.text) ? this.text : this.text ? [this.text] : [];
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.hasIcon = !!this.querySelector('[slot="icon"]');
-  }
-
   updated() {
     this.interaction.attach(this.action);
-    this.hasIcon = !!this.querySelector('[slot="icon"]');
   }
 
   /** What the copy button writes to the clipboard: `copy-text` when set, else the lines joined. */
@@ -109,8 +100,8 @@ export class AcmeSnippet extends AcmeElement {
                 text-to-copy=${this.clipboardText}
                 ?copied=${this.copied}
                 part="button"
-                >${this.hasIcon ? html`<slot name="icon" slot="icon"></slot>` : nothing}</acme-copy-button
-              >
+                ><slot name="icon" slot="icon"></slot
+              ></acme-copy-button>
             </div>`
           : nothing
       }
