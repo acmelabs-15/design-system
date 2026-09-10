@@ -1,10 +1,9 @@
 import { css, html, nothing } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
-import { AcmeElement, boolish, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { toasts } from "../../shared/state";
-import "../button/button";
-import { copyButtonCss } from "../copy-button/copy-button.styles";
+import type { AcmeCopyButton } from "../copy-button/copy-button";
+import "../copy-button/copy-button";
 import { snippetCss } from "./snippet.styles";
 
 const text = { fromAttribute: (v: string | null): string | string[] => (v?.trim().startsWith("[") ? (JSON.parse(v) as string[]) : (v ?? "")) };
@@ -23,7 +22,6 @@ export class AcmeSnippet extends AcmeElement {
   static styles = [
     sharedCss,
     snippetCss,
-    copyButtonCss,
     css`
       :host {
         display: block;
@@ -51,9 +49,11 @@ export class AcmeSnippet extends AcmeElement {
   @property() width = "";
   /** Shows the check whatever the button did (controlled). */
   @property({ type: Boolean }) copied = false;
-  @state() private done = false;
+  /** Whether the consumer slotted an icon. An empty forwarded slot still reads as assigned content in
+   *  the copy button, which would hide its own copy glyph, so the slot is forwarded only when filled. */
+  @state() private hasIcon = false;
   @query(".action") private action!: HTMLElement | null;
-  private timer?: ReturnType<typeof setTimeout>;
+  @query("acme-copy-button") private button?: AcmeCopyButton;
   private interaction = new Interaction(this);
 
   /** The lines shown. */
@@ -61,32 +61,28 @@ export class AcmeSnippet extends AcmeElement {
     return Array.isArray(this.text) ? this.text : this.text ? [this.text] : [];
   }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    clearTimeout(this.timer);
+  connectedCallback() {
+    super.connectedCallback();
+    this.hasIcon = !!this.querySelector('[slot="icon"]');
   }
 
   updated() {
     this.interaction.attach(this.action);
+    this.hasIcon = !!this.querySelector('[slot="icon"]');
   }
 
-  async copy() {
-    const value = this.copyText || (Array.isArray(this.text) ? this.text.join("\n") : this.text);
-    clearTimeout(this.timer);
-    try {
-      await navigator.clipboard.writeText(value);
-      this.done = true;
-      this.timer = setTimeout(() => {
-        this.done = false;
-      }, 1000);
-      this.dispatchEvent(new CustomEvent("acme-copy", { detail: { text: value }, bubbles: true, composed: true }));
-    } catch {
-      toasts.error("Failed to copy to clipboard");
-    }
+  /** What the copy button writes to the clipboard: `copy-text` when set, else the lines joined. */
+  get clipboardText(): string {
+    return this.copyText || (Array.isArray(this.text) ? this.text.join("\n") : this.text);
+  }
+
+  /** Copies the snippet, as clicking its button does. The button owns the clipboard write, the
+   *  one-second check and the `acme-copy` event, which bubbles through this element. */
+  copy(): void {
+    this.button?.copy();
   }
 
   render() {
-    const copied = this.copied || this.done;
     const empty = !this.text && !!this.placeholder;
     const c = this.cls("snippet", {
       "no-prompt": !this.prompt,
@@ -104,11 +100,16 @@ export class AcmeSnippet extends AcmeElement {
       ${
         this.icon
           ? html`<div class="action">
-              <acme-button variant="secondary" shape="square" size="small" svg-only ?disabled=${this.notFocusable} aria-label="Copy to clipboard" @click=${this.copy} part="button"
-                >${copied ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}<div class=${this.cls("stack", { copied })}>
-                  <div class="check">${glyphSized("check")}</div>
-                  <div class="copy"><slot name="icon">${glyphSized("copy")}</slot></div>
-                </div></acme-button
+              <acme-copy-button
+                variant="secondary"
+                shape="square"
+                size="small"
+                ?disabled=${this.notFocusable}
+                label="Copy to clipboard"
+                text-to-copy=${this.clipboardText}
+                ?copied=${this.copied}
+                part="button"
+                >${this.hasIcon ? html`<slot name="icon" slot="icon"></slot>` : nothing}</acme-copy-button
               >
             </div>`
           : nothing

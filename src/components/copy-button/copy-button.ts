@@ -12,6 +12,10 @@ import "../button/button";
  * glyph, that swap for one second after a successful copy (or while `copied` is set), with an
  * assertive status line for screen readers. A failed copy raises an error toast. Fires
  * `acme-copy` on success and `acme-copy-error` on failure; a slotted `icon` replaces the copy glyph.
+ *
+ * The button inside is an `acme-button`, and its `button` part is forwarded with `exportparts`, so an
+ * element that composes this one reaches the real button with `acme-copy-button::part(button)` rather
+ * than landing on the host in between.
  */
 @customElement("acme-copy-button")
 export class AcmeCopyButton extends AcmeElement {
@@ -53,7 +57,9 @@ export class AcmeCopyButton extends AcmeElement {
     clearTimeout(this.timer);
   }
 
-  private copy = async () => {
+  /** Writes `text-to-copy` to the clipboard, shows the check for a second, and fires `acme-copy`.
+   *  Public because an element that composes this one exposes its own `copy()` and delegates here. */
+  copy = async () => {
     const text = this.textToCopy;
     clearTimeout(this.timer);
     try {
@@ -85,7 +91,7 @@ export class AcmeCopyButton extends AcmeElement {
       .hover=${this.hover}
       .active=${this.active}
       @click=${this.copy}
-      part="button"
+      exportparts="button"
     >
       ${copied ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}
       <div class=${this.cls("stack", { copied })}>

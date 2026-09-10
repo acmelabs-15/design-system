@@ -39,7 +39,7 @@ export const snippetCss = css`
     background-color: var(--ds-gray-1000) !important;
     color: var(--ds-gray-100) !important;
   }
-  .snippet :where(.action) :where(acme-button)::part(button) {
+  .snippet :where(.action) :where(acme-copy-button)::part(button) {
     background-color: #0000 !important;
     color: inherit;
     box-shadow: none !important;
@@ -56,7 +56,7 @@ export const snippetCss = css`
     font-size: 13px;
     line-height: 20px;
   }
-  .snippet :where(.action) :where(acme-button) svg {
+  .snippet :where(.action) :where(acme-copy-button) svg {
     flex-shrink: 0;
   }
   .snippet pre::-webkit-scrollbar {
@@ -72,17 +72,17 @@ export const snippetCss = css`
     .snippet :where(.action)[data-hover] {
       opacity: 0.8;
     }
-    .snippet :where(.action) :where(acme-button)::part(button):hover {
+    .snippet :where(.action) :where(acme-copy-button)::part(button):hover {
       box-shadow: 0 0 0 1px var(--themed-border) !important;
     }
   }
-  .snippet :where(.action) :where(acme-button)::part(button):disabled {
+  .snippet :where(.action) :where(acme-copy-button)::part(button):disabled {
     color: var(--ds-gray-700);
   }
-  .snippet :where(.action) :where(acme-button)[aria-disabled="true"]::part(button) {
+  .snippet :where(.action) :where(acme-copy-button)[aria-disabled="true"]::part(button) {
     color: var(--ds-gray-700);
   }
-  .snippet :where(.action) :where(acme-button)[data-hover]::part(button) {
+  .snippet :where(.action) :where(acme-copy-button)[data-hover]::part(button) {
     color: var(--themed-fg);
   }
   .snippet:where(:not(.no-prompt)) pre:before {

@@ -16,6 +16,10 @@ glyph, that swap for one second after a successful copy (or while `copied` is se
 assertive status line for screen readers. A failed copy raises an error toast. Fires
 `acme-copy` on success and `acme-copy-error` on failure; a slotted `icon` replaces the copy glyph.
 
+The button inside is an `acme-button`, and its `button` part is forwarded with `exportparts`, so an
+element that composes this one reaches the real button with `acme-copy-button::part(button)` rather
+than landing on the host in between.
+
 | Attribute | Property | Type | Default | Description |
 |---|---|---|---|---|
 | `text-to-copy` | `textToCopy` | `string` | `""` | The string that goes to the clipboard. |

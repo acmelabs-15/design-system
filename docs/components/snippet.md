@@ -84,8 +84,6 @@ half opacity; `compact` is the 36px one-line box; `icon="false"` drops the butto
 
 Slots: `icon`
 
-Events: `acme-copy`
-
 ## Best Practices
 
 - Use Snippet for one shell command the user should copy. Use inline code for tokens (env var names, paths) and Code Block for multi-line source.
