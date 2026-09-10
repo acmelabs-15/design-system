@@ -1,7 +1,7 @@
 # Parity port plan
 
 The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 09:10 PDT.
+how we prove it, and where we are. Updated 2026-09-10 09:55 PDT.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -366,7 +366,34 @@ the mechanical half and prints the five judgement fields it refuses to guess), t
 
 67 of 125 roots still have no saved config. Save one for every root touched.
 
-### 5.2 Fix what survives `[ ]`
+### 5.2 Fix what survives `[~]`
+
+Working the 21 pages that report differences, cheapest first. **All 21 have matching root counts per
+side**, so unlike context-card these numbers are not a harness fault — the setup is sound and the
+differences point at something real.
+
+- [x] **separator — at parity.** Its 5 differences were the docs page's own spacing. The reference's
+  page spaces its row with `space-x-4` and `space-x-2`, which put a margin on every child; ours uses
+  `gap` on the same row. Verified in the browser that the spacing is identical: 16px against 16, 8
+  against 8, none where the row stacks. Recorded as soft, with the reason.
+- [~] **collapse and collapse-group — cause found, config being rebuilt.** Their single difference is
+  an expanded panel's height, 85 against 173. **Ours is correct and the reference's page is stale:**
+  its panel measures height 0 with 40px of content hidden by overflow, while carrying
+  `aria-expanded="true"`. Confirmed on the **live** site, not only the mirror, and clicking the
+  heading there does not open it either — the opening is script-driven and does not complete on a
+  freshly loaded page. `aria-expanded` matches on both sides, which is the real check.
+
+  Blocked on one thing: neither page had a saved census config, and the reconstruction I derived from
+  the map picks 6 roots on the reference against 7 on ours. **A root-count mismatch makes every
+  downstream number meaningless**, so the marker needs pinning down before this can be called done.
+
+- [ ] Remaining, in cost order: pagination (1), tabs (1), scroller-narrow (1), description (6),
+  error (2), search-init (2), snippet (2), input (4), pagination-next (4), progress (6),
+  clearable-input (6), tab (20), code-block (31), badge (51), split-button (60), book (142),
+  split-button-trigger (240), choicebox (558).
+
+  A lesson already earned: **a page with no saved config is more expensive than its difference count
+  suggests**, because the config has to be rebuilt and verified before the count means anything.
 
 In the generator, never in an element. A new accepted leftover goes in the `ACCEPTED` table in
 `diff.ts` with its reason, so the classification stays the same on every run.

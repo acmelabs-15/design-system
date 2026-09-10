@@ -1,0 +1,32 @@
+{
+ "note": "The root's horizontal margin is read as soft: the reference's docs page spaces its row with `space-x-4` and `space-x-2`, which put a margin on every child, while ours uses `gap` on the same row. Verified in the browser that the resulting spacing is identical \u2014 16px against 16, 8 against 8, none where the row stacks vertically \u2014 so this is the page's layout mechanism, not the element's style.",
+ "themes": [
+  "light",
+  "dark"
+ ],
+ "separator": {
+  "geist": {
+   "side": "geist",
+   "page": "separator",
+   "marker": "[data-slot='separator']",
+   "textProps": {
+    "root": [
+     "margin-right",
+     "margin-left"
+    ]
+   }
+  },
+  "ours": {
+   "side": "ours",
+   "page": "separator",
+   "host": "acme-separator",
+   "ours": ".separator",
+   "textProps": {
+    "root": [
+     "margin-right",
+     "margin-left"
+    ]
+   }
+  }
+ }
+}
