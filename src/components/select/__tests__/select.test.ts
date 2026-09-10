@@ -24,6 +24,15 @@ describe("acme-select", () => {
     expect(wrap(await mount(`<acme-select size="large"></acme-select>`)).className.trim()).toBe("wrap lg");
   });
 
+  test("tiny is the tier below small and marks the wrapper", async () => {
+    expect(wrap(await mount(`<acme-select size="tiny"></acme-select>`)).className.trim()).toBe("wrap tiny");
+    // The medium default is written :not(.sm, .lg) in the generated sheet, so tiny must not also
+    // take the medium rules: it carries its own class and no size class of another tier.
+    const cls = wrap(await mount(`<acme-select size="tiny"></acme-select>`)).className;
+    expect(cls).not.toContain("sm");
+    expect(cls).not.toContain("lg");
+  });
+
   test("a start place renders and marks the wrapper; a slotted end replaces the chevron", async () => {
     const el = await mount(`<acme-select placeholder="Default"><svg slot="start"></svg><svg slot="end" id="s"></svg></acme-select>`);
     expect(wrap(el).className.trim()).toBe("wrap has-start");

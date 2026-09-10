@@ -41,9 +41,11 @@ export const geist: GeistMap = {
           ours: ".actions",
           pick: has("gap-1"),
           children: [
-            // The switcher is an acme-select, styled by its own map: the reference builds a face div
-            // over a transparent native select, we compose the element that already does this.
-            { ours: "acme-select.switcher", pick: (c) => c.children.some((k) => k.tag === "select"), extends: "select", leaf: true },
+            // The switcher is an acme-select at the tiny size, carrying its own generated styles.
+            // It is NOT mapped to the reference's wrapper: they build a 32px borderless face over a
+            // transparent native select, and their h-8 sized OUR host, leaving a 32px box around a
+            // 24px field. Same rule as the switch above — where we choose a different control from
+            // theirs, its size is ours to set (notes/decisions/compose-the-language-switcher.md).
             // The block composes acme-copy-button, which composes acme-button, so the reference's
             // button sits two elements down on ours. The classes the block adds land on the copy
             // button's own `button` part, which it forwards with exportparts.

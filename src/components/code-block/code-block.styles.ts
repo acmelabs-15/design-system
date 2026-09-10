@@ -125,9 +125,6 @@ export const codeBlockCss = css`
     height: 1.75rem;
     color: var(--ds-gray-900) !important;
   }
-  .code-block :where(.bar) :where(.actions) :where(acme-select.switcher) {
-    height: 2rem;
-  }
   .code-block:where(:not(.with-bar)) :where(.content) {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;

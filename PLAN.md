@@ -206,6 +206,17 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
   — it removes the host but promotes the inner element into the same flow. A block host of zero
   height does. Check what the composed host contributes to layout before assuming the inner
   element's `position: absolute` settles it.
+- **A generated rule sizes OUR host from THEIR control, so unmap a control we chose differently.**
+  Verified 2026-09-10 twice on code-block. Their tab strip's rules clipped our switch's ring, and
+  their select wrapper's `h-8` left our host a 32px box around a 24px field. Both were mapped to the
+  reference's node, so the generator wrote their sizing onto ours. The generator then reports an
+  unmapped child, which is the accurate outcome and belongs in the map's comment rather than being
+  silenced.
+- **A value the generator writes from the reference is not ours to tokenise.** Verified 2026-09-10:
+  `acme-button`'s `.tiny` height reads as a hard-coded 24px, and it is generated from the
+  reference's own `h-[24px]`. An edit there is reverted on the next `gen.ts` run. A new house token
+  serves the elements we add a tier to ourselves; the generated element keeps taking its value from
+  the reference.
 - **A rule written for the reference's control clips ours when the two are different boxes.**
   Verified 2026-09-10: the map pointed our `acme-switch` at the reference's tab-list node, so the
   generator wrote their scrolling strip rules onto it. Their underlined tabs scroll correctly; our
@@ -357,7 +368,7 @@ These are differences we accept, with the reason. They are also in the runbook.
 | Maps written | 129 |
 | Sketches | 187 |
 | Specs extracted | 76 |
-| Tests | 608 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
+| Tests | 609 pass, 0 fail — and they pass with the corpus absent, the way CI runs |
 | Build, docs build | pass |
 | Committed | **0.2.0 released 2026-09-10.** Eight commits pushed to main, tag v0.2.0 published to npm |
 | Pages at zero hard differences | **103 of 124**, with accepted leftovers classified by rule in `diff.ts` |

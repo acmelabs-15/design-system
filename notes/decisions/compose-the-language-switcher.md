@@ -71,3 +71,41 @@ the same shape: a rule written for their box applied to ours, which is a differe
 `display: contents` was tried first for the floating host and is wrong: it removes the host box but
 promotes the inner `acme-button` into the frame's flow, where its `inline-block` display takes the
 same 24px line. Measured, not assumed.
+
+## The tiny size tier
+
+Decided 2026-09-10 by Peter, who asked for a size below small on the select and for space in the
+bar and above the frame.
+
+**The tier is called `tiny`, not `extra-small`.** The reference already ships this size and names
+it that: their button spec carries a "Tiny tertiary icon" example at `height: 24px`, and
+`acme-button` already implements `ButtonSize` `"tiny"`. A second name for one concept would give
+the system two words for the same thing.
+
+**Scope: the select only, with a token.** `--acme-form-tiny-height` (24px), `-font` and
+`-line-height` are added to the house sheet's `:root`, beside the generated
+`--acme-form-small-*` tiers. Those generated tiers are derived by the token pipeline from the
+reference's own `--geist-form-*` names and must not be hand-edited, which is why ours lives in
+`src/geist.css`.
+
+**One correction to what was said when the decision was put.** I described the button's 24px as
+hard-coded. It is not: `button.styles.ts` is generated, and its `.tiny` rule comes from the
+reference's own `h-[24px]`. So `acme-button` does not read the new token and must not be changed to
+— the generator owns that value, and an edit there is overwritten on the next run. The token serves
+the elements we add the tier to ourselves.
+
+Seven other elements keep a three-tier scale. Each gains `tiny` when it needs it.
+
+## The two spacing gaps
+
+| Gap | Was | Now | Why |
+|---|---|---|---|
+| Strip to frame | 0px | 12px | The reference's own `mb-3` on its tab strip. We lost it when the switch stopped being mapped to their tab list, so it is restored on our own `.strip` rule. |
+| Select to copy button | 4px | 8px | The reference's `gap-1` is 4px between two flat, borderless items. Ours holds a bordered select, where 4px puts a visible border against the button. The row also stretched its items, so `align-items: center` was added with it. |
+
+## A third unmapping, for the same reason as the switch
+
+The switcher was still mapped to the reference's select wrapper, whose `h-8` sized **our** host: a
+32px box around a 24px field. Same rule as the switch — where we choose a different control from
+theirs, its size is ours to set. `acme-select.switcher` is no longer mapped, and the generator now
+reports two unmapped children on this page. Both are deliberate and recorded in the map.

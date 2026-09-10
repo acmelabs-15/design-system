@@ -62,9 +62,19 @@ export class AcmeCodeBlock extends AcmeElement {
       /* The strip carries the reference's scrolling tab-strip rule, which is right for their
          underlined tabs. Our acme-switch is a bordered segmented control, and its ring is a
          box-shadow, which paints outside the border box and so is clipped by that scrolling.
-         One pixel of padding on each side gives the ring its room. */
+         One pixel of padding on each side gives the ring its room. The margin is the reference's
+         own mb-3 (0.75rem) between its strip and the frame, which we lost when the switch stopped being
+         mapped to their tab list. */
       .strip {
         padding: 1px;
+        margin-bottom: 0.75rem;
+      }
+      /* The reference's actions row is gap-1 (4px) between two flat, borderless items. Ours holds a
+         bordered select, so 4px puts its border hard against the copy button. The row also stretches
+         its items by default, which left the select's host 32px tall around a 24px field. */
+      .actions {
+        align-items: center;
+        gap: 0.5rem;
       }
     `,
   ];
@@ -172,7 +182,7 @@ export class AcmeCodeBlock extends AcmeElement {
                   switcher.length
                     ? html`<acme-select
                         class="switcher"
-                        size="small"
+                        size="tiny"
                         .options=${switcher}
                         .value=${this.value}
                         aria-label="Language"

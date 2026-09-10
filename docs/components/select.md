@@ -4,8 +4,17 @@ Display a dropdown list of items.
 
 ## Sizes
 
+`tiny` 24 / `small` 32 / `medium` 36 / `large` 40. The reference ships the tiny tier on its button only; ours carries it here too, for a select that sits in a toolbar beside other 24px controls.
+
 ```html
 <div class="row" style="flex-wrap:wrap;gap:0;align-items:stretch">
+  <div style="display:flex;flex-direction:column;align-items:flex-start;flex:1;min-width:1px;max-width:100%">
+    <acme-select aria-label="Tiny" placeholder="Tiny" size="tiny">
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </acme-select>
+  </div>
   <div style="display:flex;flex-direction:column;align-items:flex-start;flex:1;min-width:1px;max-width:100%">
     <acme-select aria-label="Small" placeholder="Small" size="small">
       <option>Option 1</option>
@@ -151,7 +160,7 @@ carries the value.
 | `placeholder` | `placeholder` | `string` | `""` | The disabled first option; its text is its value. |
 | `value` | `value` | `string` | `""` |  |
 | `name` | `name` | `string` | `""` |  |
-| `size` | `size` | `SelectSize` | `"medium"` |  |
+| `size` | `size` | `SelectSize` | `"medium"` | `tiny` 24 / `small` 32 / `medium` 36 / `large` 40. |
 | `variant` | `variant` | `"default" \| "secondary"` | `"default"` | `secondary`: no ring, gray-900 text, the field shifted 12px left. |
 | `error` | `error` | `string` | `""` | The message under the field; the field reads as invalid and its ring turns red. |
 | `width` | `width` | `string` | `""` | A fixed width for the label element and the message, as CSS. |

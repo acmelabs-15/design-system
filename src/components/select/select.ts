@@ -7,7 +7,7 @@ import { selectLabelCss } from "./select-label.styles";
 import "../error/error";
 import { atomState } from "../../shared/atom-state";
 
-export type SelectSize = "small" | "medium" | "large";
+export type SelectSize = "tiny" | "small" | "medium" | "large";
 /** An option: its text, or a value with its label. */
 export type SelectOption = string | { value: string; label: string; disabled?: boolean };
 
@@ -42,6 +42,20 @@ export class AcmeSelect extends AcmeElement {
       .field {
         display: block;
       }
+      /* The tier below small. The reference ships this size on its button only ("Tiny tertiary
+         icon", 24px) and never on a select, so these rules are ours: the generated sheet is derived
+         from the reference and carries no tiny. The medium default is written :not(.sm, .lg) there,
+         so tiny has to out-specify it rather than rely on the cascade. */
+      .wrap.tiny :where(select) {
+        height: var(--acme-form-tiny-height);
+        font-size: var(--acme-form-tiny-font);
+        line-height: var(--acme-form-tiny-line-height);
+        border-radius: 0.25rem;
+        padding-inline: 0.5rem 1.75rem;
+      }
+      .wrap.tiny :where(.end) {
+        right: 0.5rem;
+      }
     `,
   ];
   /** The text above the field. */
@@ -50,6 +64,7 @@ export class AcmeSelect extends AcmeElement {
   @property() placeholder = "";
   @property() value = "";
   @property() name = "";
+  /** `tiny` 24 / `small` 32 / `medium` 36 / `large` 40. */
   @property() size: SelectSize = "medium";
   /** `secondary`: no ring, gray-900 text, the field shifted 12px left. */
   @property() variant: "default" | "secondary" = "default";
@@ -140,6 +155,7 @@ export class AcmeSelect extends AcmeElement {
   render() {
     const errId = `${this.uid}-error`;
     const cls = this.cls("wrap", {
+      tiny: this.size === "tiny",
       sm: this.size === "small",
       lg: this.size === "large",
       error: !!this.error,

@@ -18,7 +18,9 @@ export const doc: Doc = {
   examples: [
     {
       h: "Sizes",
+      p: "`tiny` 24 / `small` 32 / `medium` 36 / `large` 40. The reference ships the tiny tier on its button only; ours carries it here too, for a select that sits in a toolbar beside other 24px controls.",
       html: row([
+        `<acme-select aria-label="Tiny" placeholder="Tiny" size="tiny">${three}</acme-select>`,
         `<acme-select aria-label="Small" placeholder="Small" size="small">${three}</acme-select>`,
         `<acme-select aria-label="Default" placeholder="Default">${three}</acme-select>`,
         `<acme-select aria-label="Large" placeholder="Large" size="large">${three}</acme-select>`,

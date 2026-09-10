@@ -21,6 +21,16 @@
 :root {
   color-scheme: light;
   --scrim: hsla(0, 0%, 95%, 0.8);
+  /* The form tier below small. The reference ships this size on its button only ("Tiny tertiary
+     icon", height 24px) and gives it no token, so the name is ours and the value is theirs.
+     acme-button does NOT read this token: its .tiny rule is generated from the reference's own
+     h-[24px], so the generator owns that value and an edit there would be overwritten. This token
+     serves the elements we add the tier to ourselves, acme-select first. It sits beside the
+     generated --acme-form-small/-height tiers, which the token pipeline derives from the
+     reference's --geist-form-* names and which must not be hand-edited. */
+  --acme-form-tiny-height: 24px;
+  --acme-form-tiny-font: 0.8125rem;
+  --acme-form-tiny-line-height: 1rem;
   /* Deployment status and chart series, as the Vercel dashboard draws them (same in both themes) */
   --st-ready: #50e3c2;
   --st-error: #ee0000;
