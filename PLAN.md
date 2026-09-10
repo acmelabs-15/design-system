@@ -135,6 +135,14 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
 - Tests live in `__tests__/` beside the file, named `<file>.test.ts`, using `bun:test`.
 - Decisions that are Peter's go through the question dialog, one at a time. **Commit only when
   Peter asks.**
+- **Evidence, never inference.** Every claim about how the reference behaves traces to something
+  observed: its own prose, its own example code, its compiled output, or its live behaviour. Finding
+  that the reference wraps Radix, cmdk or react-aria tells us *where to look*, never what the answer
+  is — a wrapper can pass different options, override a handler, use one part and hand-roll the rest,
+  or pin an older version. Upstream documentation is a hypothesis to check against the reference, and
+  where they disagree the reference wins, because the reference is what we are porting. Where
+  evidence is unavailable, record the gap as unverified rather than filling it with something
+  plausible.
 - **Write the decision down the moment it is agreed, not later.** Every decision, every scope
   change and every clarification lands in this file as part of the same turn it was settled in. A
   decision that lives only in the conversation is lost the next time the context resets, and the

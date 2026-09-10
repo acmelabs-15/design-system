@@ -52,6 +52,33 @@ anything recovered from a bundle. Real examples from `button.md`:
 **Action:** treat these 574 statements as a behaviour checklist. For each, assert the behaviour holds
 in our element, or record why it does not apply.
 
+### The rule that governs every source below: evidence, never inference
+
+**Nothing is assumed. Every claim about reference behaviour traces to something observed.**
+
+This matters most for the upstream libraries. Finding Radix, cmdk and react-aria under the reference
+tells us *where to look*. It never tells us what the answer is. The reference wraps those libraries,
+and a wrapper can:
+
+- pass options that change the library's default behaviour,
+- override a handler and do something else entirely,
+- use one part of a library and hand-roll the rest,
+- pin an older version whose behaviour differs from today's documentation,
+- or style it so that what a user perceives differs from what the library does.
+
+So an upstream library's documentation is a **hypothesis** to check against the reference, never a
+substitute for checking. The order is always: read the upstream docs to know what question to ask,
+then confirm the answer against the reference itself — its own prose, its own example code, its own
+compiled output, or its live behaviour. If those disagree with the upstream docs, the reference wins,
+because the reference is what we are porting.
+
+The same rule applies to our own API. Radix's prop names are not our target; parity with the
+reference is, under the naming rules in
+[../decisions/parity-scope.md](../decisions/parity-scope.md).
+
+Where evidence is genuinely unavailable, record the gap as unverified. Do not fill it with a
+plausible inference.
+
 ### 2. Upstream open-source libraries underneath the reference — high value
 
 The reference is not all bespoke. Grepping our own saved chunks confirms it composes public
@@ -63,10 +90,14 @@ libraries:
 | cmdk | 5 |
 | react-aria | 4 |
 
-Where a reference element wraps one of these, **the state machine and keyboard behaviour we are
-matching is already documented and open source.** Port against the upstream documentation rather
-than reverse-engineering the wrapper, and the reference's own code reduces to styling plus a thin
-prop layer.
+Where a reference element wraps one of these, the upstream library's documented state machine is the
+**fastest way to learn what to test for** — which keys should do what, where focus should land, what
+ARIA the pattern needs.
+
+It is not, on its own, evidence about the reference. Per the rule above, confirm each behaviour
+against the reference itself before treating it as the target. In practice the reference's wrapper is
+mostly styling plus a thin prop layer, so upstream behaviour often does carry through — but "often"
+is not "always", and the difference is exactly where a port goes wrong.
 
 This confirms findings the port already reached independently and recorded per element: combobox is
 a Radix popover with match-sorter, context-menu is a Radix context menu, command-menu is cmdk-based,
