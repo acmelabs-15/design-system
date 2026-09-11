@@ -13,8 +13,8 @@ No build step. Two tags:
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.1/tokens.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.1/dist/bundle/design-system.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/tokens.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/bundle/design-system.min.js"></script>
 
 <acme-button variant="primary">Deploy</acme-button>
 <acme-badge hue="green" subtle>Ready</acme-badge>
@@ -24,7 +24,7 @@ A host that admits a script from a CDN but no stylesheet from one (the Claude ar
 takes the standalone bundle, which installs `tokens.css` into the document on import:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.1/dist/bundle/design-system.standalone.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/bundle/design-system.standalone.min.js"></script>
 ```
 
 `tokens.css` is the global layer: the color scales, the semantic tokens, the reset, the type
@@ -55,12 +55,31 @@ src/
   shared/                       helpers used by several elements; element-less style families
   components/<name>/
     <name>.ts                   the element
-    <name>.styles.ts            its Lit css`` module (generated from the audited sheet)
+    <name>.styles.ts            its Lit css`` module (GENERATED from the audited sheet; do not edit)
     __tests__/<name>.test.ts    bun:test with happy-dom
 docs-src/                       the docs site: a Lit app on @lit-labs/router, one fragment per page
-docs/                           the built site (GitHub Pages serves it)
+docs/                           the built site (GENERATED; GitHub Pages serves it)
 scripts/                        split-css, build, dev server
+tools/geist/                    the parity pipeline: specs, maps, sketches, generator, census
+notes/                          hand-written analysis, decisions, and the current pass
+tokens.css, dashboard.css       the global CSS layers (GENERATED)
 ```
+
+## Generated files
+
+These are committed but written by scripts. Editing them by hand is lost on the next run.
+
+| Path | Written by | Edit instead |
+|---|---|---|
+| `tokens.css` | `bun run split` | the audited sheet in `tools/geist/` |
+| `dashboard.css` | `bun run build` | `scripts/build.ts` |
+| `src/components/<name>/<name>.styles.ts` | `bun run split` or `bun tools/geist/gen.ts <name>` | `tools/geist/maps/<name>.ts` |
+| `docs/` | `bun run docs` | `docs-src/` |
+| `dist/` (not committed) | `bun run build` | `src/` |
+
+## Working on this repo
+
+Start with `AGENTS.md`. It gives the reading order, the rules, and the current work.
 
 ## Scripts
 
@@ -79,7 +98,7 @@ Publishing runs in GitHub Actions through npm's Trusted Publisher (OpenID Connec
 `publish-package.yml`, environment `publish-package`; no npm token anywhere.
 
 ```sh
-npm version patch        # bumps package.json and tags v0.1.x
+npm version patch        # bumps package.json and tags v0.2.x
 git push --follow-tags   # the tag starts the publish
 ```
 

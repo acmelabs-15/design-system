@@ -1,7 +1,11 @@
 # Parity port plan
 
-The one and only plan for this project. Read this file first and you know what we are building,
-how we prove it, and where we are. Updated 2026-09-10 10:40 PDT.
+The record of the parity port, and the standing rules that came out of it. Updated 2026-09-10.
+
+> **The parity port is closed. The current work is the systematization pass:
+> [notes/alignment/README.md](notes/alignment/README.md).** `AGENTS.md` is the entry point for any
+> agent and gives the reading order. Section 1 of this file (the rules and the package stack) still
+> governs; sections 5.1–5.5 are paused until the pass settles which elements survive.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
@@ -318,7 +322,7 @@ date-fns, luxon, moment, hotkeys-js, mousetrap, chart.js and d3 in `src/` return
 
 ### Supporting documents
 
-This plan is the entry point. These carry detail too large to inline:
+`AGENTS.md` is the entry point. These carry detail too large to inline:
 
 Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build output and
 `bun run docs` overwrites it.
@@ -326,6 +330,7 @@ Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build ou
 | File | What it holds |
 |---|---|
 | [tools/geist/README.md](tools/geist/README.md) | The full runbook for the parity pipeline, and every guarantee the generator makes |
+| [notes/alignment/README.md](notes/alignment/README.md) | **The current work.** The systematization pass: goal, phases, disposition register, and where it stands |
 | [notes/analysis/systematic-approach.md](notes/analysis/systematic-approach.md) | **Read this second.** The method: what a script decides, what a person decides, and the measured evidence for where that line falls |
 | [notes/analysis/behaviour-verification-method.md](notes/analysis/behaviour-verification-method.md) | How behaviour parity gets proven: the four instruments, what each is for, and the traps. Includes the test-tier decision and the cheap checks we were missing |
 | [notes/analysis/hand-rolled-audit.md](notes/analysis/hand-rolled-audit.md) | Living record of what we hand-roll that a package could own, with an assessment and reason for each |
@@ -525,6 +530,11 @@ The generator is now faithful and deterministic. The element code on disk is cor
 ---
 
 ## 5. What has to happen next, in order
+
+> **Paused, 2026-09-10.** Sections 5.1–5.5 measure parity for elements the systematization pass may
+> delete, rename or rebuild. They resume for whatever survives, against the amended parity scope
+> (see [notes/alignment/README.md](notes/alignment/README.md), Phase 0). Section 5.7's cleanup items
+> are absorbed into the pass where noted.
 
 ### 5.1 Re-measure the 21 pages that report differences `[ ]`
 
@@ -883,13 +893,13 @@ is the better call:
 ### 5.7 Cleanup `[ ]`
 
 - [ ] Rename `src/geist.css` and remove the dead hand-written rules the generated modules replaced
-- [ ] Prune `tokens.css` to the tiers the elements read (260 KB today)
-- [ ] Split the bundle: charts, forms, markdown and highlighting as separate entries (1.33 MB minified today)
+- [ ] Prune `tokens.css` to the tiers the elements read (260 KB today). Absorbed into the pass, Phase 1.8.
+- [ ] Split the bundle: charts, forms, markdown and highlighting as separate entries (1.33 MB minified today). Absorbed into the pass, Phase 1.8.
 - [ ] Sheet: the non-modal form is the reference default and should open as a manual popover, so the page stays interactive. Today it uses `showModal` and makes the page inert.
 - [ ] Menu: the reference's mobile path. Under 601px the list opens inside a drawer, which sets no shadow on it. Absent from the corpus, so sketch it alongside the combobox mobile form.
 - [ ] Modal: a `form` option wrapping body and footer, so destructive-action-modal drops its two context lines
 - [ ] Combobox: the reference's mobile form, a button that opens a drawer under 601px
-- [ ] **Move the animated elements onto `@lit-labs/motion`.** Two patterns cover nearly all of it:
+- [ ] **Move the animated elements onto `@lit-labs/motion`** (or whatever the pass's Phase 1.5 research settles on)**.** Two patterns cover nearly all of it:
 
   1. *A box whose size changes.* Collapse is the clearest case: it measures the body with
      `getBoundingClientRect` and drives an inline pixel height, which is precisely what the
@@ -919,7 +929,7 @@ is the better call:
   icon, breadcrumbs' layout, and the real HTML attribute on button, copy-button, split-button and input.
   The test and the reasoning are in [notes/decisions/parity-scope.md](notes/decisions/parity-scope.md).
   It changes the 0.2.0 interface on seven elements, which costs a release note and nothing more.
-- [ ] Sweep the same way for every other concept that may carry two names (size, shape, state).
+- [x] ~~Sweep the same way for every other concept that may carry two names (size, shape, state).~~ Superseded by the systematization pass, Phase 2.6.
 - [ ] Select: decide the house-only `options` property, which feedback uses `[?]`
 - [ ] Foundations pages: the reference's exact heading levels, or ours `[?]`
 
