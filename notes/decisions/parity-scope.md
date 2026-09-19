@@ -2,6 +2,8 @@
 
 Decided by Peter on 2026-09-10. This governs every element. Linked from `PLAN.md`.
 
+The systematization pass supersedes this note's unconditional exact-parity requirements: [systematization-goal.md](systematization-goal.md) permits named, sourced, explicitly verified differences. The interface priority order and other settled choices below remain in force.
+
 ## The rule
 
 **We match style, behaviour and functionality. We do not match implementation.**

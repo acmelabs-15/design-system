@@ -128,3 +128,43 @@ The causes seen so far, each worth checking before believing any count:
 
 **The check that catches all five: compare root counts per side before reading any difference count.**
 If they differ, nothing downstream means anything. The runner prints them for exactly this reason.
+
+## Agent Skills for the systematization pass
+
+Checked 2026-09-19. Peter chose to use the pack throughout the remaining pass, with the existing decisions and approval steps preserved. See [the decision](../decisions/agent-skills-workflow.md).
+
+### Installation and evidence
+
+- Official site: <https://skills.addy.ie/>. The site advertises 24 skills; the installed repository contains 25 `SKILL.md` files. Use the installed count.
+- Official Codex guide: <https://github.com/addyosmani/agent-skills/blob/c004a74784a08295d52749b04cda634125b9a581/docs/codex-setup.md>. It specifies native marketplace registration and plugin installation, and direct skill invocation in Codex. Its Claude Code slash commands and personas are not the Codex integration.
+- The repository README warns that individual skill copies omit the repository-level shared references. The native plugin preserves these paths, so it was used instead of separate skill copies.
+- Commands run: `codex plugin marketplace add addyosmani/agent-skills`, then `codex plugin add agent-skills@agent-skills --json`.
+- Verification: `codex plugin list --marketplace agent-skills --json` reports `installed: true`, `enabled: true`, version `0.6.10`. The cache contains 25 skills and all seven shared reference files.
+- Installed root: `/Users/peterkloss/.codex/plugins/cache/agent-skills/agent-skills/0.6.10`. Marketplace commit: `c004a74784a08295d52749b04cda634125b9a581`.
+- Availability is verified on disk and in CLI state. Automatic discovery in a subsequent app turn is not yet verified; the upstream Codex guide advises a new session if discovery has not refreshed. Skills can be read directly from the installed root in this task.
+
+### Applying the pack to our existing documents
+
+The following skill bodies were read in full from the installed version: `spec-driven-development`, `source-driven-development`, `api-and-interface-design`, `planning-and-task-breakdown`, and `incremental-implementation`.
+
+- **Goals and element specifications:** use the clarification and acceptance-criteria checks from `spec-driven-development`. Keep the pass README and the planned inventory as our documents. That skill explicitly supports existing specification formats at lines 150–154; a second root specification would duplicate our record.
+- **Research and interface design:** use `source-driven-development` to check installed versions and official documentation, and `api-and-interface-design` to describe contracts before implementing them. Apply the web-component conventions selected by this pass; its REST naming examples are not Lit rules.
+- **Migration planning:** use `planning-and-task-breakdown` for dependencies, small tasks, and explicit verification. Record them in `notes/alignment/migration-plan.md`, as Phase 5 requires, rather than creating a competing `tasks/plan.md` and `tasks/todo.md`.
+- **Implementation:** use `incremental-implementation` after migration approval. One logical change includes the necessary source, map, generated output, documentation, and tests. The rough file-count guidance must not split a replacement into an incomplete interface change.
+- **Testing and review:** the installed pack includes `test-driven-development`, `browser-testing-with-devtools`, `performance-optimization`, and `code-review-and-quality`. Read their full instructions when that stage begins; those workflows have not been executed in this installation turn.
+
+### Defaults that project instructions override
+
+- `api-and-interface-design/SKILL.md:125` prefers additive, backward-compatible changes. This package has no consumers and replaces old interfaces outright. Keep that project decision.
+- `api-and-interface-design/SKILL.md:146` gives REST-oriented naming examples, including boolean prefixes and uppercase enum values. Naming here follows Lit practice, the domain model, and Peter's approved conventions.
+- `incremental-implementation/SKILL.md:41` commits after every slice. `PLAN.md:159` requires Peter to ask before a commit. Verification can finish while the changes remain uncommitted.
+- `spec-driven-development/SKILL.md:182` defaults to `tasks/` output. The pass already assigns its specification and migration records to `notes/alignment/`; retain those paths.
+- Generic examples do not change the mandated package stack, the generator's ownership of CSS, test locations, or the required build sequence. Evidence about the reference stays in notes and tooling, not in `src/` comments.
+
+No project build or runtime behaviour changed during installation. After installation, Peter separately confirmed the existing pass scope. Its seven principles are recorded, and the later walkthrough selected the [shadow-role mapping](../decisions/floating-surface-shadows.md). Plugin adoption itself did not approve element interfaces or implementation.
+
+## Phase 1 extension checkpoint
+
+Peter expanded the pass after the original nine-subject walkthrough. The [extension register](../alignment/additional-functionality-review.md) preserves the completed research, decisions and later acceptance obligations. The current checkpoint is Phase 2.3: Stat is next, with detailed Toolbar composition returning during Group review. Follow the [pass handoff](../alignment/README.md#where-we-are). The seven-phase lifecycle and source freeze remain intact; the extension is not a restart or implementation approval.
+
+The records-only capture saves decisions made while Plan mode prevented file writes. Accepted directions and initial research are separate. Future capture turns must propagate changed decisions into the handoff and existing subject analyses, rather than create a second file on the same subject.

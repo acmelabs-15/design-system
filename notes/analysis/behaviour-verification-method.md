@@ -423,3 +423,13 @@ screenshot — still requires visibility.
 
 One consequence worth noting: a common actionability check in test tools compares an element's box across
 animation frames, so it **hangs forever** with no frames. Avoid waiting on that in a hidden pane.
+
+## Phase 1 browser evidence, 2026-09-19
+
+An isolated Chrome 153 context ran against a fresh temporary build. The main checkout was not rebuilt or modified. A real click in the fixture changed Copy Button's public `copied` value to true; its rendered copied class remained false. This confirms the earlier unit-environment finding with a browser oracle.
+
+Native form probes distinguish working behaviour from gaps: Input's reset restores both its value and FormData. An empty required Input, however, has an invalid inner native input while its outer form reports valid. A disabled fieldset disables the custom-element host for submission while the inner native input's disabled property remains false. These results should become acceptance fixtures for the approved form-control work.
+
+All 608 existing tests pass. The active happy-dom environment reports no attachInternals or CustomStateSet and a zero layout rectangle. The new findings therefore do not contradict the test run; they expose mechanisms that run outside its coverage.
+
+These probes are not a full behaviour-parity sweep or a cross-browser accessibility certification. Preserve the earlier reference-driven method, use real input for user gestures, and assert the consumer-visible outcome rather than an internal field alone.

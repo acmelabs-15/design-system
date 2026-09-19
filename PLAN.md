@@ -7,6 +7,10 @@ The record of the parity port, and the standing rules that came out of it. Updat
 > agent and gives the reading order. Section 1 of this file (the rules and the package stack) still
 > governs; sections 5.1–5.5 are paused until the pass settles which elements survive.
 
+The pass's [goal](notes/decisions/systematization-goal.md) amends unconditional exact parity while preserving the standing stack and build rules. Its other Phase 0 records cover [composition](notes/decisions/composition-over-count.md), [non-canonical elements](notes/decisions/non-canonical-elements.md), [reference systems](notes/decisions/reference-systems.md), [floating shadows](notes/decisions/floating-surface-shadows.md), [tab indicators](notes/decisions/material-tab-indicator.md), and [icons](notes/decisions/shared-icon-library.md). Peter confirmed the existing pass scope on 2026-09-19; this does not approve implementation.
+
+Phase 1 review on 2026-09-19 selected [retaining Lit Motion](notes/decisions/animation-package.md), [one element per icon](notes/decisions/icon-element-shape.md), [Material Symbols SVGs with Rounded/unfilled defaults](notes/decisions/material-symbols-icons.md), and [published match-sorter](notes/decisions/match-sorter.md). The original Zag runtime choice was superseded by [native Lit behaviour ports using the full house stack](notes/decisions/zag-behaviour-ports.md). Other selections include [separate committed generated styles](notes/decisions/generated-style-location.md), [workflow-built documentation](notes/decisions/documentation-publishing.md), [selective artifact imports](notes/decisions/selective-component-loading.md), and the [shadow role mapping](notes/decisions/floating-surface-shadows.md). Material Web remains an implementation reference. **The original research and [Phase 1 extension](notes/alignment/additional-functionality-review.md) are complete. Phase 2 is in progress: the [glossary contexts and message-family dispositions](notes/alignment/phase-2-review.md) are recorded; Phase 2.3 is in progress: Card, Fieldset and the Group/Toolbar/selection responsibility split are selected; Stat is next. Detailed Toolbar composition and Entity/Item return during the Group review.** Final interfaces, migration and implementation verification remain later; source changes still wait for Phase 5 approval.
+
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
 ---
@@ -84,6 +88,24 @@ Behaviour is built on these, not on the reference's own dependencies:
 - `@internationalized/date` for dates
 - A vendored copy of cmdk's command-score
 - Our own controllers: `Interaction`, `RovingTabindex`
+
+Phase 1 additions selected 2026-09-19, for implementation only after Phase 5 approval:
+
+- [Native Lit behaviour ports](notes/decisions/zag-behaviour-ports.md) for Pin Input, Number Input, Scroll Area, Steps and resizable panes. This supersedes the earlier actual Zag component dependency/adapter selection. Use TanStack Store, Lit Motion, generated styling and every other applicable house package/convention. Zag is a source reference; do not use its createMachine/interpreter, vanilla runtime or state store. Ports may create new components, rebuild existing ones or replace them outright. The selected capabilities and Phase 5 gate stand.
+- Published `match-sorter` for ComboBox ranking, replacing the local copy after [compatibility verification](notes/decisions/match-sorter.md). Command Menu's separate scorer stays unchanged.
+- [@internationalized/number](notes/decisions/number-utilities.md) as an independent Number Input utility, retaining the full house implementation. It is selected but not installed; 3.6.8 was researched, not pinned for the eventual migration.
+- A [separate React integration package](notes/decisions/react-integration.md) and [native forms with optional TanStack Form](notes/decisions/native-and-managed-forms.md). Exact exports and integration versions remain for the later reviews.
+- Development tooling: [Oxlint + Oxfmt with Ultracite and Stylelint](notes/decisions/lint-toolchain.md), replacing Biome through a coordinated future migration. Current project configuration remains Biome.
+
+The extension also selects [Material motion roles](notes/decisions/material-motion-system.md), [shape support](notes/decisions/shape-support.md), [full custom themes](notes/decisions/custom-themes.md) and the [blue house accent](notes/decisions/blue-accent.md). The font/appearance table above describes the house baseline; consumer themes can override visual settings under the new theme contract. [SSR is excluded altogether](notes/decisions/server-rendering.md). [Toast uses the house stack](notes/decisions/toast-behaviour.md), not an extension of the four-control Zag approval. The later review selects [versioned consumer skills](notes/decisions/consumer-skills.md), a [documentation/API MCP](notes/decisions/design-system-mcp.md), [Intent development tooling](notes/decisions/intent-tooling.md), and [TanStack Devtools for the optional inspector](notes/decisions/design-system-devtools.md). [Live AI control is outside this pass](notes/decisions/ai-authoring-scope.md). [Responsive scope/defaults](notes/decisions/responsive-system.md) and [Box](notes/decisions/box-primitive.md) are also selected. TanStack Config practices remain migration recommendations, not package or automation adoption.
+
+The latest control review selects [darker blue with white text](notes/decisions/blue-accent.md) and [optional ripples, off by default](notes/decisions/optional-ripples.md). The example colours are not a complete approved state palette; ripple configuration remains for the inventory.
+
+The foundation follow-up selects [shared spacing-only density](notes/decisions/density.md), normal by default, with normal inherited spacing for menus/dialogs/Toasts and a 24 × 24 CSS-pixel clickable-area floor in explicitly selected compact mode. Larger touch-friendly sizing remains available; no new universal normal-mode target is selected. [LTR/RTL support](notes/decisions/bidirectional-support.md) covers pages/sections in Lit/React. [Shared moving indicators](notes/decisions/shared-selection-indicator.md) use Lit Motion for suitable single-selection groups without adding another Zag dependency. Exact interfaces and component eligibility remain in later reviews.
+
+[Shape morphing follows demonstrated house needs](notes/decisions/shape-support.md). The full Material shape catalogue is not required. Use ordinary shape properties first; add custom geometry only for a concrete inventory need. No geometry package is selected.
+
+[Table must support consumers who use TanStack Table](notes/decisions/tanstack-table-compatibility.md); the design system does not integrate or run that package. Applications own its processing, state and optional experimental workers. TanStack Table is not part of the mandated design-system runtime stack. Consumer examples/checks can use it; 9.2.4 is the investigated baseline, not a future pin. **TanStack Virtual is chosen for virtualization in both Lit and React.** [Reusable results pagination](notes/decisions/results-pagination.md) supplies numbered/compact navigation and unknown-total support, with application-owned page state and data loading. The page-position/page-size/navigation parts boundary is [under review](notes/decisions/results-pagination.md#review-pending-after-the-chakra-ui-pro-example); jump-to-page detail remains separate. Follow the [current handoff](notes/alignment/README.md#where-we-are) for Phase 2 work.
 
 These are not suggestions. **When a piece of functionality falls to one of these packages, that
 package is the one to use** — for every item on the list, not only the obvious ones. Syntax
@@ -331,7 +353,33 @@ Hand-written notes live under `notes/`, never under `docs/`: `docs/` is build ou
 |---|---|
 | [tools/geist/README.md](tools/geist/README.md) | The full runbook for the parity pipeline, and every guarantee the generator makes |
 | [notes/alignment/README.md](notes/alignment/README.md) | **The current work.** The systematization pass: goal, phases, disposition register, and where it stands |
+| [notes/decisions/systematization-goal.md](notes/decisions/systematization-goal.md) | **Decided.** Interface consistency is the main test of success for the systematization pass; composition, appearance, and behaviour remain in scope |
+| [notes/decisions/agent-skills-workflow.md](notes/decisions/agent-skills-workflow.md) | **Decided.** Use Addy Osmani's Agent Skills for the remaining pass, preserving project decisions and approval steps |
+| [notes/decisions/custom-elements-manifest.md](notes/decisions/custom-elements-manifest.md) | **Decided.** Use the standard Custom Elements Manifest analyzer; verify its output on this repository before replacing the current extractor |
+| [notes/decisions/browser-verification.md](notes/decisions/browser-verification.md) | **Decided.** Require Chromium, Firefox and WebKit verification alongside the Bun unit tier |
+| [notes/decisions/animation-package.md](notes/decisions/animation-package.md) | **Decided.** Retain Lit Motion for its technical fit, subject to browser checks; implementation effort does not decide the choice |
+| [notes/decisions/icon-element-shape.md](notes/decisions/icon-element-shape.md) | **Decided.** One element per icon, with shared behaviour and selective imports |
+| [notes/decisions/material-symbols-icons.md](notes/decisions/material-symbols-icons.md) | **Decided.** Material Symbols SVGs, Rounded/unfilled defaults, three supported families and official filled/unfilled artwork; no icon font or two-tone |
+| [notes/decisions/zag-behaviour-ports.md](notes/decisions/zag-behaviour-ports.md) | **Current.** Native Lit ports using the full house stack; new/rebuilt/replacement components allowed. Supersedes Zag runtime/adapter adoption |
+| [notes/decisions/zag-lit-integration.md](notes/decisions/zag-lit-integration.md) | **Superseded.** Historical five-control Zag runtime/adapter selection |
+| [notes/decisions/pin-input-behaviour.md](notes/decisions/pin-input-behaviour.md) | **Decided.** Separate-field Pin Input; native Lit port |
+| [notes/decisions/number-input-behaviour.md](notes/decisions/number-input-behaviour.md) | **Decided.** Formatted Number Input and stepping; native Lit port |
+| [notes/decisions/scroll-area-behaviour.md](notes/decisions/scroll-area-behaviour.md) | **Decided.** Custom scrollbar controls over native scrolling; native Lit port |
+| [notes/decisions/steps-behaviour.md](notes/decisions/steps-behaviour.md) | **Decided.** Interactive Steps with navigation/content; native Lit port |
+| [notes/decisions/match-sorter.md](notes/decisions/match-sorter.md) | **Decided.** Published package replaces the local ComboBox ranking copy after wider compatibility tests |
+| [notes/decisions/generated-style-location.md](notes/decisions/generated-style-location.md) | **Decided.** Move generated styles under src/generated and retain them in Git for the current pipeline |
+| [notes/decisions/documentation-publishing.md](notes/decisions/documentation-publishing.md) | **Decided.** Build the website in a GitHub Pages workflow; stop committing generated pages |
+| [notes/decisions/selective-component-loading.md](notes/decisions/selective-component-loading.md) | **Decided.** Selective imports are the normal static-artifact path; the complete bundle stays available |
 | [notes/analysis/systematic-approach.md](notes/analysis/systematic-approach.md) | **Read this second.** The method: what a script decides, what a person decides, and the measured evidence for where that line falls |
+| [notes/alignment/phase-1-review.md](notes/alignment/phase-1-review.md) | Completed Phase 1 findings and decisions; current Phase 2 work is in the pass handoff |
+| [notes/alignment/additional-functionality-review.md](notes/alignment/additional-functionality-review.md) | Completed Phase 1 extension: decisions, evidence and later acceptance obligations |
+| [notes/analysis/codebase-systematization.md](notes/analysis/codebase-systematization.md) | Phase 1 codebase census, shared-responsibility findings and focused browser reproductions |
+| [notes/analysis/animation-package.md](notes/analysis/animation-package.md) | Animation comparison, measured package costs, retention decision and verification limits |
+| [notes/analysis/icon-library.md](notes/analysis/icon-library.md) | Icon shapes, licences, historical import measurements and Material Symbols SVG evidence; records the selected shape/source and open defaults |
+| [notes/analysis/repository-layout.md](notes/analysis/repository-layout.md) | Reference-library survey, proposed layout and verified generator ownership |
+| [notes/analysis/build-performance.md](notes/analysis/build-performance.md) | Isolated build, selective-entry measurements, CSS delivery and SSR experiment |
+| [notes/analysis/documentation-site.md](notes/analysis/documentation-site.md) | Proposed standard docs page, manifest contract and doc-component responsibilities |
+| [notes/analysis/floating-surface-shadows.md](notes/analysis/floating-surface-shadows.md) | Shadow role evidence, Material plain/rich tooltip distinction, Toast comparison and verification limits |
 | [notes/analysis/behaviour-verification-method.md](notes/analysis/behaviour-verification-method.md) | How behaviour parity gets proven: the four instruments, what each is for, and the traps. Includes the test-tier decision and the cheap checks we were missing |
 | [notes/analysis/hand-rolled-audit.md](notes/analysis/hand-rolled-audit.md) | Living record of what we hand-roll that a package could own, with an assessment and reason for each |
 | [notes/analysis/lit-practice-review.md](notes/analysis/lit-practice-review.md) | Which Lit mechanisms we use and which we are missing, checked against our own code. Includes the accessibility evidence for keeping ARIA on inner elements |
@@ -899,7 +947,7 @@ is the better call:
 - [ ] Menu: the reference's mobile path. Under 601px the list opens inside a drawer, which sets no shadow on it. Absent from the corpus, so sketch it alongside the combobox mobile form.
 - [ ] Modal: a `form` option wrapping body and footer, so destructive-action-modal drops its two context lines
 - [ ] Combobox: the reference's mobile form, a button that opens a drawer under 601px
-- [ ] **Move the animated elements onto `@lit-labs/motion`** (or whatever the pass's Phase 1.5 research settles on)**.** Two patterns cover nearly all of it:
+- [ ] **Move the animated elements onto `@lit-labs/motion`.** Retention was [selected in Phase 1.5 review](notes/decisions/animation-package.md); implementation remains gated by Phase 5 approval. Two patterns cover nearly all of it:
 
   1. *A box whose size changes.* Collapse is the clearest case: it measures the body with
      `getBoundingClientRect` and drives an inline pixel height, which is precisely what the
@@ -995,7 +1043,7 @@ be. This is in the standing rules because it removes work from every decision he
   Peter, 2026-09-10. The reference has no such component among its 77 pages, so this is ours to
   design rather than port, and no web component library models it either except Nord's alpha
   `nord-input-group`.
-- **An icon element.** Worth doing; not now. Peter, 2026-09-10.
+- **Icon elements.** Deferred on 2026-09-10; the 2026-09-19 pass review selected [one element per icon](notes/decisions/icon-element-shape.md) using [Material Symbols SVGs](notes/decisions/material-symbols-icons.md). Detailed inventory and implementation still await the pass's approval gates.
 - **Narrowing the 64 slotted `!important` rules.** 11 of them genuinely need it; the other 53 never
   meet a page rule and only cost a consumer their inline style. Whether to narrow them, and whether
   to adopt Spectrum's `:not([class])` guard, is undecided — the case that raised it dissolved when the

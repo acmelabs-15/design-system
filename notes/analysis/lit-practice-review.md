@@ -1,5 +1,7 @@
 # Lit practice review
 
+Current-pass update: the dated section at the end records fresh 2026-09-19 measurements. Historical counts below are not current task counts.
+
 Researched 2026-09-10 against lit.dev and the installed packages, then every actionable claim was
 checked against this repository before being written down. Linked from `PLAN.md`.
 
@@ -138,3 +140,71 @@ until a recent version. If we adopt any of it, pin a current checker.
 **On `delegatesFocus`:** correct for a single-control wrapper, wrong for a composite or anything with a
 roving tabindex. We already have that right — no element combines it with the roving controller. The one
 trap to avoid is pairing it with a host `tabindex`, which creates two tab stops where there should be one.
+
+## Systematization recheck, 2026-09-19
+
+The AST baseline now finds 150 registered elements and no actual Lit `@state` declarations. Local state uses 129 `@atomState` declarations in 52 files. The older migration count is obsolete. See [codebase-systematization.md](codebase-systematization.md) for the method and limits.
+
+Two current defects directly affect interface predictability:
+
+- `docs-src/api.ts:45` assumes kebab-case default attributes. [Lit specifies lowercase property names](https://lit.dev/docs/components/properties/#observed-attributes). Comparing against the runtime confirms one wrong entry: `acme-stat.meterLabel` is documented as `meter-label` but observes `meterlabel`.
+- `docs-src/api.ts:33` reads each class in isolation. The same runtime comparison finds 32 missing properties, across menu-button, search, and multi-select. A manifest or replacement extractor must preserve inheritance and accessors, not merely reproduce the current tables.
+
+The copy button's derived store also fails to follow its plain Lit `copied` property after initial rendering. This is now confirmed in both happy-dom and isolated Chrome 153. This identifies a gap between the two reactive systems; it is not evidence against the chosen state package. Validate the bridge and test property transitions when designing the shared state pattern.
+
+Official Lit publishing guidance was read on 2026-09-19: <https://lit.dev/docs/tools/publishing/>. It supports publishing unbundled modules, declarations, and tag-name types, with CDN bundles kept distinct. It also recommends explicit file extensions in import specifiers. The existing build's unbundled/CDN split is therefore useful infrastructure to preserve while investigating entry-point size and registration effects.
+
+## Phase 1.2 conclusions
+
+Walkthrough decisions, 2026-09-19: Peter selected the [standard manifest analyzer](../decisions/custom-elements-manifest.md) and [required Chromium, Firefox and WebKit checks](../decisions/browser-verification.md). The source-code freeze still applies.
+
+**Recommendation: fix contract metadata and native form/state behaviour before adopting more framework mechanisms.** Keep the controllers and shared stylesheet objects already working here.
+
+| Mechanism | Current evidence | Recommendation and cost |
+|---|---|---|
+| Reactive controllers | Interaction, Places, state adapters and RovingTabindex already use them | Consolidate common lifecycle ownership; each controller must reconnect, clean up and avoid duplicate state |
+| Directives | Form binding is an AsyncDirective; Book uses animate; templates use classMap/styleMap/repeat/unsafeHTML | Use live for native values that change outside Lit when the approved contract needs it; ref/ifDefined where they remove actual ambiguity. Do not adopt cache or repeat merely to increase directive count |
+| ElementInternals/form association | 13 declarations; Input reset and FormData work in Chrome, but required validity and fieldset-disabled forwarding are incomplete | Standardize value, validity, reset, disabled state and event propagation in the form-control contract; keep TanStack Form as the higher-level form library |
+| CustomStateSet | No `.states.add/delete/has` calls found in current source | Use for genuinely private styling state after mapping/census support is designed; preserve public reflected attributes that consumers depend on |
+| Scoped registries | The agreed pre-1.0 adoption remains; MDN BCD lists constructor support in Chrome 146, Safari 26 and Firefox preview | Keep the fallback decision explicit and inventory composition dependencies before implementation |
+| SSR | Bare import succeeds; compiled rendering fails in the controlled experiment, and Fieldset initializes MutationObserver without a guard | Do not claim SSR-ready. If required, provide a compatible server build and lifecycle/hydration tests |
+| Manifest | Current custom extractor misses 32 runtime properties and one attribute name | Generate a standard CEM, compare it against runtime metadata, and annotate slots/events/parts/properties; use it for both docs and agent references |
+| Testing | 608 passing tests; happy-dom lacks attachInternals, CustomStateSet and layout | Keep Bun's unit tier and add real-browser fixtures for the missing platform behaviour; unit success is not behaviour parity |
+
+The [controller lifecycle](https://lit.dev/docs/composition/controllers/) explicitly supports connect/disconnect and before/after update ownership. [Property documentation](https://lit.dev/docs/components/properties/) distinguishes input attributes from optional reflection and recommends `useDefault` where appropriate. The source scan still finds only two `useDefault` occurrences against 95 reflected-property occurrences; audit intent, not just the count.
+
+[MDN compatibility data for :state](https://github.com/mdn/browser-compat-data/blob/main/css/selectors/state.json) gives Chrome 125, Firefox 126 and Safari 17.4 for the current selector syntax. The older Chrome 90 CustomStateSet API entry does not mean `:state()` itself worked then. [Registry data](https://github.com/mdn/browser-compat-data/blob/main/api/CustomElementRegistry.json) still distinguishes stable support from Firefox preview. Check the selected support floor before relying on either.
+
+[ElementInternals.setValidity](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/setValidity) is the explicit form-validity channel. Rendering a required native input inside a shadow tree is not enough to give its custom-element host the same validity. The browser fixture demonstrates that gap here; Select already forwards a subset of validity at `select.ts:134`, so the current shapes differ within one control family.
+
+The [CEM analyzer](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/) supports Lit and inheritance linking, while still requiring JSDoc for slots and styling hooks. Web Awesome, Spectrum and Nord publish manifests; Material uses Lit's analyzer. Recommend the standard analyzer as a development dependency, subject to Peter's package decision and a representative-output check.
+
+The browser tier should use Bun orchestration with a browser driver initially, preserving the project's runtime rule. Spectrum's browser/Vitest setup is useful precedent, not authorization to replace Bun with Vitest. No new test framework is needed merely to reproduce the existing defects. The full browser matrix and assistive-technology checks remain acceptance work for the later implementation.
+
+The current docs app still contains four `@state()` fields (`docs-src/app/docs-app.ts`), outside the source-only count. Include these in the TanStack integration work because the standing state rule applies throughout the project.
+
+## Phase 1 extension: React and forms
+
+Captured 2026-09-19. Peter selected [a separate React package](../decisions/react-integration.md), [native forms plus optional TanStack Form](../decisions/native-and-managed-forms.md), and [no server rendering](../decisions/server-rendering.md).
+
+### React
+
+The [Lit React guide](https://lit.dev/docs/frameworks/react/) motivates createComponent wrappers, but its blanket limitations on React properties/events need qualification: [React 19 custom-element support](https://react.dev/blog/2024/12/05/react-19#support-for-custom-elements) and the [React custom HTML element reference](https://react.dev/reference/react-dom/components#custom-html-elements) support properties and custom events with exact event naming/case. Wrappers still provide typed JSX and ergonomic event mapping.
+
+Inspected @lit/react create-component source: reserved props, prototype-based property detection, property/listener synchronization and cleanup. Registry snapshots: @lit/react 1.0.8 and @lit-labs/gen-wrapper-react 0.3.5. The latter brings its own Lit analyzer; it must not replace the approved CEM analyzer silently. [Web Awesome's generator](https://github.com/shoelace-style/webawesome/blob/next/packages/webawesome/scripts/make-react.js) provides a CEM-based precedent.
+
+React children still need real DOM elements to carry slot attributes. Do not copy a display:contents workaround against our wrapper-box rule. No React runtime integration or JSX table-cell rendering was proven in this extension.
+
+Later clarification: [Table is a consumer integration target](../decisions/tanstack-table-compatibility.md), not a house TanStack Table adapter. The application renders its own headers, rows and cells, using React for React content and Lit for Lit content. The required verification is that the house structure preserves that framework ownership, context, identity, event handling, element access and cleanup. A React-to-Lit cell-renderer bridge is not selected. TanStack Virtual is explicitly required for virtualization in both framework paths.
+
+### Forms
+
+src/shared/form.ts exports the existing TanStackFormController and bindField helper. The directive maps values/checked, touched/invalid errors, input/change/blur and connection cleanup. This is limited integration, not proof of full managed-form support.
+
+Source inspection found setFormValue updates in the Input update cycle and gaps in validity/fieldset-disabled/state-restoration callbacks. Earlier Chrome probes showed that an empty required inner input could be invalid while the containing form was valid; disabled-fieldset behaviour did not reach the inner control. Input reset/FormData restoration worked in that probe. Do not describe declaring formAssociated alone as a complete native-form contract.
+
+Material Web's actual [form-associated behaviour](https://github.com/material-components/material-web/blob/main/labs/behaviors/form-associated.ts) and [constraint-validation behaviour](https://github.com/material-components/material-web/blob/main/labs/behaviors/constraint-validation.ts) were read: synchronous name/disabled/value handling and validity callbacks are useful implementation references. Chakra's Input uses Ark Field; Radix TextField renders a native input. Those wrappers do not directly solve custom-element form association.
+
+TanStack snapshots: form-core/react-form 1.33.5, lit-form 1.25.5, with its separate lit-store dependency. [Lit quick start](https://tanstack.com/form/latest/docs/framework/lit/quick-start), [validation](https://tanstack.com/form/latest/docs/framework/lit/guides/validation), [arrays](https://tanstack.com/form/latest/docs/framework/react/guides/arrays), [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) and [native validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation) informed the comparison.
+
+Acceptance must cover form values, serialization, validation, disabled state, reset/restoration and synchronous event/FormData consistency, plus nested/array fields, async validation and submission in managed mode. Final ownership and API details remain open.
