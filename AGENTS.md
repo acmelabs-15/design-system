@@ -70,6 +70,8 @@ Several **generated files are committed**, in places that read as source. The sc
 
 Hand-written: `src/` except `*.styles.ts`, `docs-src/`, `scripts/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
 
+`CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`; the link follows.
+
 Build order: `bun run split && bun run build && bun run docs && bun test`. `docs` needs `dist/` from `build`.
 
 Phase 1.7 of the pass reviews this layout; until it lands, the table above is the map.
