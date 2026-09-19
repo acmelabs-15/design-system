@@ -1,0 +1,128 @@
+{
+  "date": "2026-09-19",
+  "scope": "Phase 1 extension; no implementation",
+  "combobox": {
+    "method": "Chrome DevTools, existing built docs, isolated page; temporary DOM styles restored; page and read-only server closed",
+    "source": "docs-src/pages/components/combobox.ts:107",
+    "label": "CONTENTFUL_MANAGEMENT_APP_INSTALLATION_ID",
+    "listWidth": 288,
+    "rowPaddingInline": 8,
+    "baseline": {
+      "rowWidth": 276,
+      "rowScroll": 368,
+      "contentWidth": 360.40625,
+      "labelHeight": 20
+    },
+    "minWidthZeroOnly": {
+      "rowWidth": 276,
+      "rowScroll": 360,
+      "contentWidth": 260,
+      "labelHeight": 20
+    },
+    "withOverflowWrapAnywhere": {
+      "rowWidth": 276,
+      "rowScroll": 276,
+      "contentWidth": 260,
+      "labelHeight": 40
+    },
+    "restored": {
+      "rowScroll": 368,
+      "contentWidth": 360.40625,
+      "labelHeight": 20
+    },
+    "limits": [
+      "One browser example, not all engines or final implementation",
+      "Browser version not recorded for this particular probe"
+    ]
+  },
+  "zagToast": {
+    "package": "@zag-js/toast",
+    "version": "1.44.0",
+    "location": "/tmp/acme-toast-probe.Qq09QE",
+    "method": "Published createStore API under Bun, no browser/Lit adapter",
+    "sequence": [
+      [
+        "createStore",
+        {
+          "max": 1
+        }
+      ],
+      [
+        "create",
+        {
+          "id": "front",
+          "title": "Front"
+        }
+      ],
+      [
+        "create",
+        {
+          "id": "queued",
+          "title": "Loading",
+          "type": "loading"
+        }
+      ],
+      [
+        "update",
+        "queued",
+        {
+          "title": "Complete",
+          "type": "success"
+        }
+      ],
+      [
+        "remove",
+        "front"
+      ],
+      [
+        "getVisibleToasts"
+      ],
+      [
+        "remove",
+        "queued"
+      ],
+      [
+        "getVisibleToasts"
+      ],
+      [
+        "getCount"
+      ]
+    ],
+    "firstVisible": [
+      {
+        "id": "queued",
+        "type": "loading",
+        "title": "Loading"
+      }
+    ],
+    "secondVisible": [],
+    "finalCount": 1,
+    "events": [
+      {
+        "id": "front",
+        "type": "info",
+        "title": "Front"
+      },
+      {
+        "id": "front",
+        "dismiss": true
+      },
+      {
+        "id": "queued",
+        "type": "loading",
+        "title": "Loading"
+      },
+      {
+        "id": "queued",
+        "dismiss": true
+      },
+      {
+        "id": "queued",
+        "type": "success",
+        "title": "Complete"
+      }
+    ],
+    "conclusion": "An update to a queued ID does not replace the queued loading item; later exposed state and count diverge.",
+    "decision": "Do not adopt Zag Toast; use existing house stack"
+  }
+}

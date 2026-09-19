@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-19",
+  "runtime": "1.4.0",
+  "intent": "0.4.0",
+  "validation": {
+    "beforeCorrectionExit": 1,
+    "afterCorrectionExit": 0,
+    "packagingWarnings": 3
+  },
+  "installedVersion": "1.0.1",
+  "contentMatches": true,
+  "blockedWithEmptyAllowlist": true,
+  "blockedOutput": "Cannot load skill use \"@test-intent/skills-leaf#core\": package \"@test-intent/skills-leaf\" is not listed in intent.skills.\n",
+  "limits": [
+    "Synthetic fixture only; not a design-system skill evaluation",
+    "No repository setup, hooks, config edits or publication",
+    "Validation and loading are distinct; loading alone does not validate skill structure"
+  ],
+  "scratchDirectory": "/tmp/acme-intent-probe.vVbAWP",
+  "sourceFixture": "https://github.com/TanStack/intent/tree/main/packages/intent/tests/fixtures/integration/skills-leaf",
+  "publishedVersusMain": "The published CLI and current main-branch implementation were inspected separately; main may contain changes beyond 0.4.0."
+}

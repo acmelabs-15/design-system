@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-19",
+  "runtime": "Bun 1.4.0",
+  "browser": "Chrome 153",
+  "packages": {
+    "devtools": "0.14.2",
+    "reactDevtools": "0.10.12",
+    "react": "19.3.0",
+    "reactDom": "19.3.0",
+    "lit": "3.3.3"
+  },
+  "integration": {
+    "lit": {
+      "mount": true,
+      "counterChange": "0 -> 1",
+      "unmount": {
+        "connected": 1,
+        "disconnected": 1,
+        "pluginDestroyed": 1,
+        "remainingHostChildren": 0
+      }
+    },
+    "react": {
+      "mount": true,
+      "counterChange": "0 -> 1",
+      "unmount": {
+        "mounted": 1,
+        "cleaned": 1,
+        "remainingHostChildren": 0
+      }
+    }
+  },
+  "assets": {
+    "initial": "Two packaged font URLs returned 404 after bundling",
+    "cause": "Published JavaScript asset modules use new URL(relativePath, import.meta.url); the probe bundle moved the referencing module without relocating font assets.",
+    "probeFix": "A scoped Bun onLoad hook turns those two font modules into file imports; Bun emits fonts under publicPath /dev/.",
+    "after": "Both font requests returned 200; no error-level console messages on corrected Lit reload."
+  },
+  "production": {
+    "entryBytes": 59,
+    "content": "document.body.dataset.probe=\"production-without-devtools\";\n",
+    "devtoolsOrFontOutputs": false
+  },
+  "limits": [
+    "Synthetic panels only, not the design-system inspector",
+    "One browser, no Firefox or WebKit run",
+    "No actual component/event/theme inspection implemented",
+    "No network event bus or editor source bridge tested",
+    "Solid is a dependency of the development shell",
+    "The published core package also declares an intent executable; avoid ambiguous bare CLI names when integrating with @tanstack/intent",
+    "Initial Lit fixture used shadowing class fields; corrected to constructor assignments before successful tests"
+  ],
+  "projectFilesChanged": false,
+  "scratchDirectory": "/tmp/acme-devtools-probe.XOV6Nd",
+  "fixtureSources": {
+    "entry.ts": "if (process.env.NODE_ENV === \"development\") { import(\"./dev.ts\"); } else { document.body.dataset.probe = \"production-without-devtools\"; }\n",
+    "dev.ts": "import { LitElement, html, render, nothing } from \"lit\";\nimport React, { useEffect, useState } from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport { TanStackDevtoolsCore } from \"@tanstack/devtools\";\nimport { TanStackDevtools } from \"@tanstack/react-devtools\";\n\nconst probe = (window as any).__probe = { litConnected: 0, litDisconnected: 0, reactMounted: 0, reactCleaned: 0, pluginDestroyed: 0 };\nclass ProbePanel extends LitElement {\n  static properties = { count: {type: Number}, theme: {}, opened: {type: Boolean} };\n  declare count: number; declare theme: string; declare opened: boolean;\n  constructor(){super();this.count=0;this.theme=\"\";this.opened=false;}\n  connectedCallback() { super.connectedCallback(); probe.litConnected++; }\n  disconnectedCallback() { super.disconnectedCallback(); probe.litDisconnected++; }\n  render() { return html`<p>Lit panel — theme: ${this.theme}</p><button @click=${()=>this.count++}>Lit value: ${this.count}</button>`; }\n}\ncustomElements.define(\"probe-panel\", ProbePanel);\nfunction ReactPanel() {\n const [count,setCount] = useState(0);\n useEffect(()=>{probe.reactMounted++;return ()=>{probe.reactCleaned++;};},[]);\n return React.createElement(\"button\",{onClick:()=>setCount(v=>v+1)},\"React value: \"+count);\n}\nconst mode = new URLSearchParams(location.search).get(\"mode\") ?? \"lit\";\ndocument.querySelector(\"#mode\")!.textContent=mode;\nconst host=document.querySelector(\"#tools\") as HTMLDivElement;\nlet dispose: (()=>void) | undefined;\nfunction mount(){\n if(dispose)return;\n if(mode===\"react\"){\n  const root=createRoot(host);\n  root.render(React.createElement(TanStackDevtools,{config:{defaultOpen:true,theme:\"light\"},eventBusConfig:{connectToServerBus:false},plugins:[{id:\"probe-react\",name:\"React probe\",defaultOpen:true,render:React.createElement(ReactPanel)}]}));\n  dispose=()=>root.unmount();\n }else{\n  let panelHost:HTMLElement|undefined;\n  const devtools=new TanStackDevtoolsCore({config:{defaultOpen:true,theme:\"light\"},eventBusConfig:{connectToServerBus:false},plugins:[{id:\"probe-lit\",name:\"Lit probe\",defaultOpen:true,render:(el,props)=>{panelHost=el;render(html`<probe-panel .theme=${props.theme} .opened=${props.devtoolsOpen}></probe-panel>`,el);},destroy:()=>{probe.pluginDestroyed++;if(panelHost)render(nothing,panelHost);}}]});\n  devtools.mount(host);\n  dispose=()=>devtools.unmount();\n }\n}\ndocument.querySelector(\"#unmount\")!.addEventListener(\"click\",()=>{dispose?.();dispose=undefined;});\ndocument.querySelector(\"#mount\")!.addEventListener(\"click\",mount);\nmount();\n",
+    "index.html": "<!doctype html><html><head><meta charset=\"utf-8\"><title>Devtools integration probe</title></head><body><h1>Devtools integration probe</h1><p id=\"mode\"></p><button id=\"unmount\">Unmount tools</button><button id=\"mount\">Mount tools</button><div id=\"tools\"></div><script type=\"module\" src=\"/dev/entry.js\"></script></body></html>\n"
+  },
+  "build": {
+    "target": "browser",
+    "format": "esm",
+    "developmentConditions": [
+      "browser",
+      "development"
+    ],
+    "productionConditions": [
+      "browser",
+      "production"
+    ],
+    "environmentDefine": "process.env.NODE_ENV",
+    "fontLoaders": {
+      ".ttf": "file",
+      ".woff2": "file"
+    },
+    "developmentPublicPath": "/dev/",
+    "assetAdapter": "For the two devtools-ui/dist/esm/assets/fonts/*.js modules, resolve the static new URL path against the original module and export a Bun file import instead. This is a scoped probe, not a general asset transformer."
+  }
+}

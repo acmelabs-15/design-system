@@ -1,0 +1,2866 @@
+{
+  "rows": [
+    {
+      "name": "tabs",
+      "file": "src/components/tabs/tabs.ts",
+      "lines": 129,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "sync",
+        "firstUpdated",
+        "updated",
+        "select",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default",
+        "panels"
+      ]
+    },
+    {
+      "name": "side-nav",
+      "file": "src/components/side-nav/side-nav.ts",
+      "lines": 59,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "split-button",
+      "file": "src/components/split-button/split-button.ts",
+      "lines": 224,
+      "composes": [
+        "button"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "enabledItems",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-click"
+      ],
+      "slots": [
+        "default",
+        "items"
+      ]
+    },
+    {
+      "name": "subnav",
+      "file": "src/components/subnav/subnav.ts",
+      "lines": 47,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "kbd",
+      "file": "src/components/kbd/kbd.ts",
+      "lines": 69,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "scan",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "filters",
+      "file": "src/components/filters/filters.ts",
+      "lines": 27,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "grid-page",
+      "file": "src/components/grid-page/grid-page.ts",
+      "lines": 63,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "banner",
+        "default"
+      ]
+    },
+    {
+      "name": "note",
+      "file": "src/components/note/note.ts",
+      "lines": 95,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "label",
+        "action",
+        "icon",
+        "default"
+      ]
+    },
+    {
+      "name": "theme-switcher",
+      "file": "src/components/theme-switcher/theme-switcher.ts",
+      "lines": 110,
+      "composes": [],
+      "methods": [
+        "updated",
+        "choose",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": []
+    },
+    {
+      "name": "legend",
+      "file": "src/components/legend/legend.ts",
+      "lines": 32,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "entity-list",
+      "file": "src/components/entity-list/entity-list.ts",
+      "lines": 53,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "header",
+        "default"
+      ]
+    },
+    {
+      "name": "context-card",
+      "file": "src/components/context-card/context-card.ts",
+      "lines": 512,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "settle",
+        "yield",
+        "measure",
+        "shell",
+        "activate",
+        "deactivate",
+        "replace",
+        "enter",
+        "delayFor",
+        "leave",
+        "close",
+        "draw",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "content"
+      ]
+    },
+    {
+      "name": "toaster",
+      "file": "src/components/toaster/toaster.ts",
+      "lines": 141,
+      "composes": [
+        "toast"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "bind",
+        "unbind",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "appbar",
+      "file": "src/components/appbar/appbar.ts",
+      "lines": 60,
+      "composes": [
+        "theme-switcher"
+      ],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "logo",
+        "crumbs",
+        "default",
+        "tools"
+      ]
+    },
+    {
+      "name": "drawer",
+      "file": "src/components/drawer/drawer.ts",
+      "lines": 354,
+      "composes": [],
+      "methods": [
+        "show",
+        "close",
+        "disconnectedCallback",
+        "dismiss",
+        "canSwipe",
+        "begin",
+        "move",
+        "end",
+        "watchKeyboard",
+        "unwatchKeyboard",
+        "focusInitial",
+        "unmount",
+        "willUpdate",
+        "updated",
+        "panelStyle",
+        "render"
+      ],
+      "events": [
+        "acme-close",
+        "acme-open"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "pagination",
+      "file": "src/components/pagination/pagination.ts",
+      "lines": 69,
+      "composes": [],
+      "methods": [
+        "updated",
+        "link",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "center"
+      ]
+    },
+    {
+      "name": "choicebox",
+      "file": "src/components/choicebox/choicebox.ts",
+      "lines": 174,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "emit",
+        "choose",
+        "sync",
+        "formResetCallback",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "show-more",
+      "file": "src/components/show-more/show-more.ts",
+      "lines": 55,
+      "composes": [
+        "button"
+      ],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "video",
+      "file": "src/components/video/video.ts",
+      "lines": 261,
+      "composes": [],
+      "methods": [
+        "willUpdate",
+        "firstUpdated",
+        "updated",
+        "disconnectedCallback",
+        "play",
+        "pause",
+        "fraction",
+        "endDrag",
+        "render"
+      ],
+      "events": [
+        "acme-play"
+      ],
+      "slots": []
+    },
+    {
+      "name": "tooltip",
+      "file": "src/components/tooltip/tooltip.ts",
+      "lines": 466,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "anchor",
+        "measure",
+        "show",
+        "showLater",
+        "hide",
+        "hideSoon",
+        "focusableContent",
+        "bindWindow",
+        "unbindWindow",
+        "content",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "content"
+      ]
+    },
+    {
+      "name": "grid-system",
+      "file": "src/components/grid-system/grid-system.ts",
+      "lines": 95,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "assign",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "lazy"
+      ]
+    },
+    {
+      "name": "tasks",
+      "file": "src/components/tasks/tasks.ts",
+      "lines": 27,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "stat-desc",
+      "file": "src/components/stat-desc/stat-desc.ts",
+      "lines": 30,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "stat-foot",
+      "file": "src/components/stat-foot/stat-foot.ts",
+      "lines": 32,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "calendar",
+      "file": "src/components/calendar/calendar.ts",
+      "lines": 414,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "willUpdate",
+        "updated",
+        "place",
+        "disabled",
+        "pick",
+        "applyPreset",
+        "label",
+        "move",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": []
+    },
+    {
+      "name": "radio",
+      "file": "src/components/radio/radio.ts",
+      "lines": 112,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "focus",
+        "select",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "card",
+      "file": "src/components/card/card.ts",
+      "lines": 21,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "status-dot",
+      "file": "src/components/status-dot/status-dot.ts",
+      "lines": 52,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "kv",
+      "file": "src/components/kv/kv.ts",
+      "lines": 30,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "sub",
+        "value",
+        "conv"
+      ]
+    },
+    {
+      "name": "code-block",
+      "file": "src/components/code-block/code-block.ts",
+      "lines": 231,
+      "composes": [
+        "copy-button",
+        "switch",
+        "switch-control",
+        "select",
+        "split-button",
+        "split-button-item",
+        "button"
+      ],
+      "methods": [
+        "opts",
+        "updated",
+        "copy",
+        "reference",
+        "switched",
+        "switchTo",
+        "render"
+      ],
+      "events": [
+        "acme-reference",
+        "acme-change"
+      ],
+      "slots": [
+        "icon"
+      ]
+    },
+    {
+      "name": "panel",
+      "file": "src/components/panel/panel.ts",
+      "lines": 44,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "actions",
+        "head",
+        "default",
+        "footer"
+      ]
+    },
+    {
+      "name": "load-more",
+      "file": "src/components/load-more/load-more.ts",
+      "lines": 55,
+      "composes": [
+        "button"
+      ],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "menu-divider",
+      "file": "src/components/menu-divider/menu-divider.ts",
+      "lines": 31,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "copy-button",
+      "file": "src/components/copy-button/copy-button.ts",
+      "lines": 140,
+      "composes": [
+        "button"
+      ],
+      "methods": [
+        "disconnectedCallback",
+        "render"
+      ],
+      "events": [
+        "acme-copy",
+        "acme-copy-error"
+      ],
+      "slots": [
+        "icon"
+      ]
+    },
+    {
+      "name": "combobox-option",
+      "file": "src/components/combobox-option/combobox-option.ts",
+      "lines": 158,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "select",
+        "render"
+      ],
+      "events": [
+        "acme-select"
+      ],
+      "slots": [
+        "start",
+        "end",
+        "default"
+      ]
+    },
+    {
+      "name": "progress",
+      "file": "src/components/progress/progress.ts",
+      "lines": 77,
+      "composes": [
+        "tooltip"
+      ],
+      "methods": [
+        "fg",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "file",
+      "file": "src/components/file/file.ts",
+      "lines": 79,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "label"
+      ]
+    },
+    {
+      "name": "setting-rows",
+      "file": "src/components/setting-rows/setting-rows.ts",
+      "lines": 27,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "input",
+      "file": "src/components/input/input.ts",
+      "lines": 178,
+      "composes": [
+        "error"
+      ],
+      "methods": [
+        "readSlots",
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "updated",
+        "formResetCallback",
+        "focus",
+        "render"
+      ],
+      "events": [
+        "acme-input",
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "entity",
+      "file": "src/components/entity/entity.ts",
+      "lines": 90,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "updated",
+        "scan",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "left",
+        "default",
+        "right",
+        "footer"
+      ]
+    },
+    {
+      "name": "shell",
+      "file": "src/components/shell/shell.ts",
+      "lines": 32,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "side",
+        "topbar",
+        "default"
+      ]
+    },
+    {
+      "name": "trend",
+      "file": "src/components/trend/trend.ts",
+      "lines": 34,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "markdown",
+      "file": "src/components/markdown/markdown.ts",
+      "lines": 71,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "skeleton",
+      "file": "src/components/skeleton/skeleton.ts",
+      "lines": 82,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "scan",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "separator",
+      "file": "src/components/separator/separator.ts",
+      "lines": 40,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "panel-head",
+      "file": "src/components/panel-head/panel-head.ts",
+      "lines": 30,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "heading",
+        "actions"
+      ]
+    },
+    {
+      "name": "toast",
+      "file": "src/components/toast/toast.ts",
+      "lines": 216,
+      "composes": [],
+      "methods": [
+        "disconnectedCallback",
+        "startTimer",
+        "hide",
+        "firstUpdated",
+        "updated",
+        "geometry",
+        "button",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "folder",
+      "file": "src/components/folder/folder.ts",
+      "lines": 82,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-toggle"
+      ],
+      "slots": [
+        "label",
+        "default"
+      ]
+    },
+    {
+      "name": "chart",
+      "file": "src/components/chart/chart.ts",
+      "lines": 139,
+      "composes": [],
+      "methods": [
+        "colors",
+        "definition",
+        "options",
+        "updated",
+        "connectedCallback",
+        "disconnectedCallback",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "head",
+        "default",
+        "tip",
+        "legend"
+      ]
+    },
+    {
+      "name": "chip",
+      "file": "src/components/chip/chip.ts",
+      "lines": 25,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "panels",
+      "file": "src/components/panels/panels.ts",
+      "lines": 36,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "toolbar",
+      "file": "src/components/toolbar/toolbar.ts",
+      "lines": 30,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "end"
+      ]
+    },
+    {
+      "name": "multi-select",
+      "file": "src/components/multi-select/multi-select.ts",
+      "lines": 395,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "show",
+        "close",
+        "hoverRow",
+        "hoverCheckbox",
+        "focus",
+        "within",
+        "formResetCallback",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "trigger",
+        "default"
+      ]
+    },
+    {
+      "name": "relative-time",
+      "file": "src/components/relative-time/relative-time.ts",
+      "lines": 219,
+      "composes": [
+        "context-card"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "shortAge",
+        "longAge",
+        "inZone",
+        "startAge",
+        "stopAge",
+        "willUpdate",
+        "row",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "file": "src/components/checkbox/checkbox.ts",
+      "lines": 112,
+      "composes": [],
+      "methods": [
+        "focus",
+        "updated",
+        "formResetCallback",
+        "render",
+        "connectedCallback",
+        "firstUpdated"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "code",
+      "file": "src/components/code/code.ts",
+      "lines": 70,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "snippet",
+      "file": "src/components/snippet/snippet.ts",
+      "lines": 117,
+      "composes": [
+        "copy-button"
+      ],
+      "methods": [
+        "updated",
+        "copy",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "icon"
+      ]
+    },
+    {
+      "name": "label",
+      "file": "src/components/label/label.ts",
+      "lines": 49,
+      "composes": [],
+      "methods": [
+        "focusTarget",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "pill",
+      "file": "src/components/pill/pill.ts",
+      "lines": 27,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "icon",
+        "default"
+      ]
+    },
+    {
+      "name": "ricon",
+      "file": "src/components/ricon/ricon.ts",
+      "lines": 30,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "destructive-modal",
+      "file": "src/components/destructive-modal/destructive-modal.ts",
+      "lines": 158,
+      "composes": [
+        "modal",
+        "note",
+        "input",
+        "error",
+        "button"
+      ],
+      "methods": [
+        "show",
+        "close",
+        "updated",
+        "cancel",
+        "render"
+      ],
+      "events": [
+        "acme-confirm"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "slider",
+      "file": "src/components/slider/slider.ts",
+      "lines": 437,
+      "composes": [
+        "input"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "formResetCallback",
+        "willUpdate",
+        "updated",
+        "emit",
+        "setValue",
+        "input",
+        "focusThumb",
+        "fromPointer",
+        "endDrag",
+        "fromInput",
+        "field",
+        "thumb",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "project-banner",
+      "file": "src/components/project-banner/project-banner.ts",
+      "lines": 78,
+      "composes": [],
+      "methods": [
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-action"
+      ],
+      "slots": [
+        "icon",
+        "default"
+      ]
+    },
+    {
+      "name": "command-group",
+      "file": "src/components/command-group/command-group.ts",
+      "lines": 36,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "empty-state",
+      "file": "src/components/empty-state/empty-state.ts",
+      "lines": 75,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "readSlots",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "icon",
+        "title",
+        "description",
+        "default"
+      ]
+    },
+    {
+      "name": "tile",
+      "file": "src/components/tile/tile.ts",
+      "lines": 32,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "collapse",
+      "file": "src/components/collapse/collapse.ts",
+      "lines": 122,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "updated",
+        "measure",
+        "toggle",
+        "render"
+      ],
+      "events": [
+        "acme-toggle",
+        "acme-expand"
+      ],
+      "slots": [
+        "title",
+        "default"
+      ]
+    },
+    {
+      "name": "spinner",
+      "file": "src/components/spinner/spinner.ts",
+      "lines": 63,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "tab",
+      "file": "src/components/tab/tab.ts",
+      "lines": 100,
+      "composes": [
+        "tooltip"
+      ],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "updated",
+        "focus",
+        "render"
+      ],
+      "events": [
+        "acme-tab-select"
+      ],
+      "slots": [
+        "icon",
+        "default"
+      ]
+    },
+    {
+      "name": "loading-dots",
+      "file": "src/components/loading-dots/loading-dots.ts",
+      "lines": 54,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "scan",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "link-card",
+      "file": "src/components/link-card/link-card.ts",
+      "lines": 32,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "badge"
+      ]
+    },
+    {
+      "name": "icon-tile",
+      "file": "src/components/icon-tile/icon-tile.ts",
+      "lines": 29,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "disabled-wall",
+      "file": "src/components/disabled-wall/disabled-wall.ts",
+      "lines": 32,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "feedback",
+      "file": "src/components/feedback/feedback.ts",
+      "lines": 530,
+      "composes": [
+        "select",
+        "input",
+        "textarea",
+        "button"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "later",
+        "focusTrigger",
+        "focusField",
+        "reset",
+        "payload",
+        "succeed",
+        "close",
+        "pick",
+        "leave",
+        "willUpdate",
+        "updated",
+        "faces",
+        "form",
+        "done",
+        "inlineStyle",
+        "render"
+      ],
+      "events": [
+        "acme-open",
+        "acme-close"
+      ],
+      "slots": [
+        "start",
+        "end"
+      ]
+    },
+    {
+      "name": "combobox",
+      "file": "src/components/combobox/combobox.ts",
+      "lines": 744,
+      "composes": [
+        "spinner"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "inFooter",
+        "show",
+        "openWithSelection",
+        "close",
+        "clear",
+        "setValue",
+        "setSelectedValue",
+        "setSelectedIndex",
+        "getSelectedIndex",
+        "focus",
+        "takeValue",
+        "choose",
+        "navigate",
+        "step",
+        "sizeList",
+        "orderRows",
+        "syncText",
+        "formResetCallback",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-change",
+        "acme-input",
+        "acme-clear"
+      ],
+      "slots": [
+        "start-icon",
+        "default",
+        "footer"
+      ]
+    },
+    {
+      "name": "context-menu",
+      "file": "src/components/context-menu/context-menu.ts",
+      "lines": 273,
+      "composes": [
+        "menu",
+        "menu-item"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "inList",
+        "show",
+        "close",
+        "placeMenu",
+        "clearPress",
+        "lock",
+        "release",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-escape"
+      ],
+      "slots": [
+        "default",
+        "items"
+      ]
+    },
+    {
+      "name": "tags",
+      "file": "src/components/tags/tags.ts",
+      "lines": 19,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "search",
+      "file": "src/components/search/search.ts",
+      "lines": 48,
+      "composes": [
+        "spinner"
+      ],
+      "methods": [
+        "renderStart",
+        "renderEnd",
+        "clear"
+      ],
+      "events": [],
+      "slots": [
+        "start"
+      ]
+    },
+    {
+      "name": "toggle",
+      "file": "src/components/toggle/toggle.ts",
+      "lines": 129,
+      "composes": [],
+      "methods": [
+        "readLight",
+        "connectedCallback",
+        "firstUpdated",
+        "focus",
+        "updated",
+        "formResetCallback",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "metric-list",
+      "file": "src/components/metric-list/metric-list.ts",
+      "lines": 37,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "tiles",
+      "file": "src/components/tiles/tiles.ts",
+      "lines": 31,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "bar-rows",
+      "file": "src/components/bar-rows/bar-rows.ts",
+      "lines": 33,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "menu-button",
+      "file": "src/components/menu-button/menu-button.ts",
+      "lines": 143,
+      "composes": [
+        "spinner"
+      ],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "willUpdate",
+        "readContent",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "start",
+        "end",
+        "default"
+      ]
+    },
+    {
+      "name": "grid-cross",
+      "file": "src/components/grid-cross/grid-cross.ts",
+      "lines": 37,
+      "composes": [],
+      "methods": [
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "browser",
+      "file": "src/components/browser/browser.ts",
+      "lines": 105,
+      "composes": [
+        "button"
+      ],
+      "methods": [
+        "disconnectedCallback",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "json-view",
+      "file": "src/components/json-view/json-view.ts",
+      "lines": 273,
+      "composes": [],
+      "methods": [
+        "willUpdate",
+        "isOpen",
+        "toggle",
+        "items",
+        "focusItem",
+        "selectionTouches",
+        "mark",
+        "key",
+        "value",
+        "node",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "stat-delta",
+      "file": "src/components/stat-delta/stat-delta.ts",
+      "lines": 33,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "grid-cell",
+      "file": "src/components/grid-cell/grid-cell.ts",
+      "lines": 71,
+      "composes": [],
+      "methods": [
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "textarea",
+      "file": "src/components/textarea/textarea.ts",
+      "lines": 103,
+      "composes": [
+        "error"
+      ],
+      "methods": [
+        "updated",
+        "formResetCallback",
+        "focus",
+        "render"
+      ],
+      "events": [
+        "acme-input",
+        "acme-change"
+      ],
+      "slots": []
+    },
+    {
+      "name": "logs",
+      "file": "src/components/logs/logs.ts",
+      "lines": 29,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "button",
+      "file": "src/components/button/button.ts",
+      "lines": 210,
+      "composes": [
+        "spinner"
+      ],
+      "methods": [
+        "firstUpdated",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "start",
+        "end",
+        "default"
+      ]
+    },
+    {
+      "name": "stat",
+      "file": "src/components/stat/stat.ts",
+      "lines": 58,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "icon",
+        "label",
+        "context",
+        "end",
+        "default",
+        "trend",
+        "delta",
+        "desc",
+        "meter-label",
+        "spark",
+        "meta",
+        "foot"
+      ]
+    },
+    {
+      "name": "multi-select-row",
+      "file": "src/components/multi-select-row/multi-select-row.ts",
+      "lines": 237,
+      "composes": [
+        "checkbox"
+      ],
+      "methods": [
+        "activeElement",
+        "focus",
+        "act",
+        "toggle",
+        "selectOnly",
+        "selectAll",
+        "connectedCallback",
+        "firstUpdated",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-select"
+      ],
+      "slots": [
+        "leading",
+        "default"
+      ]
+    },
+    {
+      "name": "description",
+      "file": "src/components/description/description.ts",
+      "lines": 51,
+      "composes": [
+        "tooltip"
+      ],
+      "methods": [
+        "firstUpdated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "table",
+      "file": "src/components/table/table.ts",
+      "lines": 190,
+      "composes": [
+        "checkbox"
+      ],
+      "methods": [
+        "willUpdate",
+        "updated",
+        "cell",
+        "rowClick",
+        "select",
+        "row",
+        "rowsInWindow",
+        "render"
+      ],
+      "events": [
+        "acme-row",
+        "acme-select"
+      ],
+      "slots": []
+    },
+    {
+      "name": "item",
+      "file": "src/components/item/item.ts",
+      "lines": 35,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "lead",
+        "default",
+        "title-extra",
+        "meta",
+        "tags",
+        "end",
+        "actions",
+        "chev"
+      ]
+    },
+    {
+      "name": "text-copy",
+      "file": "src/components/text-copy/text-copy.ts",
+      "lines": 117,
+      "composes": [
+        "tooltip"
+      ],
+      "methods": [
+        "disconnectedCallback",
+        "updated",
+        "swap",
+        "layer",
+        "render"
+      ],
+      "events": [
+        "acme-copy"
+      ],
+      "slots": []
+    },
+    {
+      "name": "menu",
+      "file": "src/components/menu/menu.ts",
+      "lines": 371,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstEnabled",
+        "show",
+        "close",
+        "select",
+        "inTrigger",
+        "onListKey",
+        "typeahead",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-escape"
+      ],
+      "slots": [
+        "trigger",
+        "default",
+        "items"
+      ]
+    },
+    {
+      "name": "gauge",
+      "file": "src/components/gauge/gauge.ts",
+      "lines": 101,
+      "composes": [],
+      "methods": [
+        "palette",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "task",
+      "file": "src/components/task/task.ts",
+      "lines": 31,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "icon",
+        "default",
+        "end"
+      ]
+    },
+    {
+      "name": "stat-strip",
+      "file": "src/components/stat-strip/stat-strip.ts",
+      "lines": 42,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "book",
+      "file": "src/components/book/book.ts",
+      "lines": 250,
+      "composes": [],
+      "methods": [
+        "caught",
+        "attributeChangedCallback",
+        "connectedCallback",
+        "firstUpdated",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "illustration",
+        "icon"
+      ]
+    },
+    {
+      "name": "avatar",
+      "file": "src/components/avatar/avatar.ts",
+      "lines": 134,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "willUpdate",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "icon"
+      ]
+    },
+    {
+      "name": "command-menu",
+      "file": "src/components/command-menu/command-menu.ts",
+      "lines": 573,
+      "composes": [
+        "breadcrumbs",
+        "breadcrumb"
+      ],
+      "methods": [
+        "show",
+        "close",
+        "setInputValue",
+        "setPages",
+        "addPage",
+        "connectedCallback",
+        "disconnectedCallback",
+        "onPage",
+        "apply",
+        "sort",
+        "takeInput",
+        "highlight",
+        "toPage",
+        "exit",
+        "unmount",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-close",
+        "acme-open"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "fieldset",
+      "file": "src/components/fieldset/fieldset.ts",
+      "lines": 124,
+      "composes": [
+        "disabled-wall"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "collect",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "title",
+        "subtitle",
+        "error",
+        "warning",
+        "default",
+        "footer",
+        "status"
+      ]
+    },
+    {
+      "name": "switch",
+      "file": "src/components/switch/switch.ts",
+      "lines": 110,
+      "composes": [],
+      "methods": [
+        "sync",
+        "connectedCallback",
+        "formResetCallback",
+        "firstUpdated",
+        "updated",
+        "select",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "phone",
+      "file": "src/components/phone/phone.ts",
+      "lines": 72,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "avatar-group",
+      "file": "src/components/avatar-group/avatar-group.ts",
+      "lines": 83,
+      "composes": [
+        "avatar"
+      ],
+      "methods": [
+        "avatar",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "menu-section",
+      "file": "src/components/menu-section/menu-section.ts",
+      "lines": 51,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "menu-item",
+      "file": "src/components/menu-item/menu-item.ts",
+      "lines": 134,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "readSlots",
+        "focus",
+        "activate",
+        "select",
+        "render"
+      ],
+      "events": [
+        "acme-select"
+      ],
+      "slots": [
+        "start",
+        "end",
+        "default"
+      ]
+    },
+    {
+      "name": "fold",
+      "file": "src/components/fold/fold.ts",
+      "lines": 35,
+      "composes": [],
+      "methods": [
+        "toggle",
+        "render"
+      ],
+      "events": [
+        "acme-toggle"
+      ],
+      "slots": [
+        "closed",
+        "open"
+      ]
+    },
+    {
+      "name": "command-item",
+      "file": "src/components/command-item/command-item.ts",
+      "lines": 118,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "select",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "start",
+        "default",
+        "end"
+      ]
+    },
+    {
+      "name": "error-card",
+      "file": "src/components/error-card/error-card.ts",
+      "lines": 63,
+      "composes": [],
+      "methods": [
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-retry"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "command-divider",
+      "file": "src/components/command-divider/command-divider.ts",
+      "lines": 29,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "radio-group",
+      "file": "src/components/radio-group/radio-group.ts",
+      "lines": 103,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "sync",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "choicebox-item",
+      "file": "src/components/choicebox-item/choicebox-item.ts",
+      "lines": 132,
+      "composes": [
+        "radio",
+        "checkbox",
+        "tooltip"
+      ],
+      "methods": [
+        "attributeChangedCallback",
+        "connectedCallback",
+        "firstUpdated",
+        "hasChildren",
+        "focus",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "tab-panel",
+      "file": "src/components/tab-panel/tab-panel.ts",
+      "lines": 29,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "modal-inset",
+      "file": "src/components/modal-inset/modal-inset.ts",
+      "lines": 59,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "place",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "split-button-item",
+      "file": "src/components/split-button-item/split-button-item.ts",
+      "lines": 75,
+      "composes": [],
+      "methods": [
+        "focus",
+        "render"
+      ],
+      "events": [
+        "acme-select"
+      ],
+      "slots": [
+        "icon",
+        "default"
+      ]
+    },
+    {
+      "name": "select",
+      "file": "src/components/select/select.ts",
+      "lines": 202,
+      "composes": [
+        "error"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "updated",
+        "formResetCallback",
+        "focus",
+        "renderOption",
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "start",
+        "end"
+      ]
+    },
+    {
+      "name": "topbar",
+      "file": "src/components/topbar/topbar.ts",
+      "lines": 34,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "start",
+        "center",
+        "end"
+      ]
+    },
+    {
+      "name": "filter",
+      "file": "src/components/filter/filter.ts",
+      "lines": 40,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [
+        "acme-select",
+        "acme-remove"
+      ],
+      "slots": [
+        "icon",
+        "default"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "file": "src/components/breadcrumb/breadcrumb.ts",
+      "lines": 81,
+      "composes": [
+        "tooltip"
+      ],
+      "methods": [
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "scroller",
+      "file": "src/components/scroller/scroller.ts",
+      "lines": 220,
+      "composes": [
+        "button"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "updated",
+        "observe",
+        "offset",
+        "read",
+        "go",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "clearable-input",
+      "file": "src/components/clearable-input/clearable-input.ts",
+      "lines": 141,
+      "composes": [
+        "kbd",
+        "input"
+      ],
+      "methods": [
+        "updated",
+        "formResetCallback",
+        "emit",
+        "clear",
+        "focus",
+        "renderStart",
+        "renderEnd",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "switch-control",
+      "file": "src/components/switch-control/switch-control.ts",
+      "lines": 122,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "focus",
+        "sizeIcon",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-switch-select"
+      ],
+      "slots": [
+        "icon",
+        "default"
+      ]
+    },
+    {
+      "name": "items",
+      "file": "src/components/items/items.ts",
+      "lines": 29,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "file-tree",
+      "file": "src/components/file-tree/file-tree.ts",
+      "lines": 36,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "modal",
+      "file": "src/components/modal/modal.ts",
+      "lines": 395,
+      "composes": [],
+      "methods": [
+        "show",
+        "close",
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "hasSlotContent",
+        "dismiss",
+        "focusInitial",
+        "unmount",
+        "willUpdate",
+        "updated",
+        "panelStyle",
+        "render"
+      ],
+      "events": [
+        "acme-enter",
+        "acme-close",
+        "acme-open"
+      ],
+      "slots": [
+        "subtitle",
+        "heading",
+        "default",
+        "actions"
+      ]
+    },
+    {
+      "name": "sheet",
+      "file": "src/components/sheet/sheet.ts",
+      "lines": 218,
+      "composes": [],
+      "methods": [
+        "show",
+        "close",
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "triggers",
+        "markTriggers",
+        "dismiss",
+        "focusInitial",
+        "unmount",
+        "exit",
+        "willUpdate",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-close",
+        "acme-open"
+      ],
+      "slots": [
+        "trigger",
+        "heading",
+        "header",
+        "default",
+        "footer"
+      ]
+    },
+    {
+      "name": "legend-item",
+      "file": "src/components/legend-item/legend-item.ts",
+      "lines": 46,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "metric",
+      "file": "src/components/metric/metric.ts",
+      "lines": 40,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [
+        "acme-metric-select"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "setting-row",
+      "file": "src/components/setting-row/setting-row.ts",
+      "lines": 29,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "control"
+      ]
+    },
+    {
+      "name": "check",
+      "file": "src/components/check/check.ts",
+      "lines": 34,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [
+        "acme-change"
+      ],
+      "slots": [
+        "default",
+        "sub"
+      ]
+    },
+    {
+      "name": "error",
+      "file": "src/components/error/error.ts",
+      "lines": 51,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "strip-item",
+      "file": "src/components/strip-item/strip-item.ts",
+      "lines": 37,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [
+        "acme-strip-select"
+      ],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "breadcrumbs",
+      "file": "src/components/breadcrumbs/breadcrumbs.ts",
+      "lines": 51,
+      "composes": [],
+      "methods": [
+        "firstUpdated",
+        "updated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "panel-foot",
+      "file": "src/components/panel-foot/panel-foot.ts",
+      "lines": 35,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "actions"
+      ]
+    },
+    {
+      "name": "tag",
+      "file": "src/components/tag/tag.ts",
+      "lines": 20,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "middle-truncate",
+      "file": "src/components/middle-truncate/middle-truncate.ts",
+      "lines": 251,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "updated",
+        "measure",
+        "setShown",
+        "refit",
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "bar-row",
+      "file": "src/components/bar-row/bar-row.ts",
+      "lines": 38,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "label",
+        "value",
+        "default"
+      ]
+    },
+    {
+      "name": "page-head",
+      "file": "src/components/page-head/page-head.ts",
+      "lines": 33,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "heading",
+        "meta",
+        "actions"
+      ]
+    },
+    {
+      "name": "collapse-group",
+      "file": "src/components/collapse-group/collapse-group.ts",
+      "lines": 83,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "change",
+        "apply",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "banner",
+      "file": "src/components/banner/banner.ts",
+      "lines": 91,
+      "composes": [
+        "button"
+      ],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "firstUpdated",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default",
+        "mobile",
+        "start"
+      ]
+    },
+    {
+      "name": "spark",
+      "file": "src/components/spark/spark.ts",
+      "lines": 45,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "entity-content",
+      "file": "src/components/entity-content/entity-content.ts",
+      "lines": 88,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "firstUpdated",
+        "scan",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "title",
+        "description",
+        "avatar"
+      ]
+    },
+    {
+      "name": "button-group",
+      "file": "src/components/button-group/button-group.ts",
+      "lines": 21,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "grid",
+      "file": "src/components/grid/grid.ts",
+      "lines": 249,
+      "composes": [],
+      "methods": [
+        "connectedCallback",
+        "disconnectedCallback",
+        "watchSystem",
+        "clipSpans",
+        "guides",
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "default"
+      ]
+    },
+    {
+      "name": "badge",
+      "file": "src/components/badge/badge.ts",
+      "lines": 60,
+      "composes": [],
+      "methods": [
+        "render"
+      ],
+      "events": [],
+      "slots": [
+        "icon",
+        "default"
+      ]
+    },
+    {
+      "name": "dots-menu",
+      "file": "src/components/dots-menu/dots-menu.ts",
+      "lines": 109,
+      "composes": [
+        "menu",
+        "menu-button"
+      ],
+      "methods": [
+        "show",
+        "close",
+        "updated",
+        "render"
+      ],
+      "events": [
+        "acme-escape"
+      ],
+      "slots": [
+        "default"
+      ]
+    }
+  ],
+  "pureRender": [
+    "side-nav",
+    "subnav",
+    "filters",
+    "legend",
+    "appbar",
+    "show-more",
+    "tasks",
+    "stat-desc",
+    "stat-foot",
+    "card",
+    "status-dot",
+    "kv",
+    "panel",
+    "load-more",
+    "menu-divider",
+    "setting-rows",
+    "shell",
+    "trend",
+    "separator",
+    "panel-head",
+    "chip",
+    "panels",
+    "toolbar",
+    "pill",
+    "ricon",
+    "command-group",
+    "tile",
+    "link-card",
+    "icon-tile",
+    "disabled-wall",
+    "tags",
+    "metric-list",
+    "tiles",
+    "bar-rows",
+    "stat-delta",
+    "logs",
+    "stat",
+    "item",
+    "task",
+    "stat-strip",
+    "phone",
+    "command-divider",
+    "tab-panel",
+    "topbar",
+    "filter",
+    "items",
+    "file-tree",
+    "legend-item",
+    "metric",
+    "setting-row",
+    "check",
+    "error",
+    "strip-item",
+    "panel-foot",
+    "tag",
+    "bar-row",
+    "page-head",
+    "spark",
+    "button-group",
+    "badge"
+  ],
+  "byUsage": {
+    "button": [
+      "split-button",
+      "show-more",
+      "code-block",
+      "load-more",
+      "copy-button",
+      "destructive-modal",
+      "feedback",
+      "browser",
+      "scroller",
+      "banner"
+    ],
+    "toast": [
+      "toaster"
+    ],
+    "theme-switcher": [
+      "appbar"
+    ],
+    "copy-button": [
+      "code-block",
+      "snippet"
+    ],
+    "switch": [
+      "code-block"
+    ],
+    "switch-control": [
+      "code-block"
+    ],
+    "select": [
+      "code-block",
+      "feedback"
+    ],
+    "split-button": [
+      "code-block"
+    ],
+    "split-button-item": [
+      "code-block"
+    ],
+    "tooltip": [
+      "progress",
+      "tab",
+      "description",
+      "text-copy",
+      "choicebox-item",
+      "breadcrumb"
+    ],
+    "error": [
+      "input",
+      "destructive-modal",
+      "textarea",
+      "select"
+    ],
+    "context-card": [
+      "relative-time"
+    ],
+    "modal": [
+      "destructive-modal"
+    ],
+    "note": [
+      "destructive-modal"
+    ],
+    "input": [
+      "destructive-modal",
+      "slider",
+      "feedback",
+      "clearable-input"
+    ],
+    "textarea": [
+      "feedback"
+    ],
+    "spinner": [
+      "combobox",
+      "search",
+      "menu-button",
+      "button"
+    ],
+    "menu": [
+      "context-menu",
+      "dots-menu"
+    ],
+    "menu-item": [
+      "context-menu"
+    ],
+    "checkbox": [
+      "multi-select-row",
+      "table",
+      "choicebox-item"
+    ],
+    "breadcrumbs": [
+      "command-menu"
+    ],
+    "breadcrumb": [
+      "command-menu"
+    ],
+    "disabled-wall": [
+      "fieldset"
+    ],
+    "avatar": [
+      "avatar-group"
+    ],
+    "radio": [
+      "choicebox-item"
+    ],
+    "kbd": [
+      "clearable-input"
+    ],
+    "menu-button": [
+      "dots-menu"
+    ]
+  }
+}

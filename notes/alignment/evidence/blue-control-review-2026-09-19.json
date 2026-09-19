@@ -1,0 +1,360 @@
+{
+  "researchedOn": "2026-09-19",
+  "scope": "Third records-only checkpoint; source unchanged; implementation acceptance incomplete",
+  "browserProbe": {
+    "url": "http://127.0.0.1:4199/components/button#custom",
+    "server": "Temporary read-only Bun server serving existing docs; stopped after probe",
+    "page": "Isolated Chrome page, closed after probe",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+    "p3": false,
+    "method": "Computed CSS states; sRGB 8-bit canvas conversion; temporary attributes restored",
+    "results": [
+      {
+        "theme": "light",
+        "states": [
+          {
+            "state": "normal",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(0, 114, 245)",
+            "foregroundSRGB8": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundSRGB8": [
+              0,
+              114,
+              245,
+              255
+            ],
+            "contrast": 4.444030652517849,
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "opacity": "1"
+          },
+          {
+            "state": "hover",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(11, 123, 254)",
+            "foregroundSRGB8": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundSRGB8": [
+              11,
+              123,
+              254,
+              255
+            ],
+            "contrast": 3.9783543835964816,
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "opacity": "1"
+          },
+          {
+            "state": "pressed",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(0, 114, 245)",
+            "foregroundSRGB8": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundSRGB8": [
+              0,
+              114,
+              245,
+              255
+            ],
+            "contrast": 4.444030652517849,
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "opacity": "1"
+          },
+          {
+            "state": "focus",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(11, 123, 254)",
+            "foregroundSRGB8": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundSRGB8": [
+              11,
+              123,
+              254,
+              255
+            ],
+            "contrast": 3.9783543835964816,
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "opacity": "1"
+          }
+        ],
+        "tokens": {
+          "600": {
+            "value": "hsla(208, 100%, 66%, 1)",
+            "sRGB8": [
+              82,
+              174,
+              255,
+              255
+            ],
+            "whiteContrast": 2.3709555498409163
+          },
+          "700": {
+            "value": "hsla(212, 100%, 48%, 1)",
+            "sRGB8": [
+              0,
+              114,
+              245,
+              255
+            ],
+            "whiteContrast": 4.444030652517849
+          },
+          "800": {
+            "value": "hsla(212, 100%, 41%, 1)",
+            "sRGB8": [
+              0,
+              98,
+              209,
+              255
+            ],
+            "whiteContrast": 5.725560965649308
+          },
+          "900": {
+            "value": "hsla(211, 100%, 42%, 1)",
+            "sRGB8": [
+              0,
+              104,
+              214,
+              255
+            ],
+            "whiteContrast": 5.3149301900426575
+          }
+        }
+      },
+      {
+        "theme": "dark",
+        "states": [
+          {
+            "state": "normal",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(0, 114, 245)",
+            "foregroundSRGB8": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundSRGB8": [
+              0,
+              114,
+              245,
+              255
+            ],
+            "contrast": 4.444030652517849,
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "opacity": "1"
+          },
+          {
+            "state": "hover",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(11, 123, 254)",
+            "foregroundSRGB8": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundSRGB8": [
+              11,
+              123,
+              254,
+              255
+            ],
+            "contrast": 3.9783543835964816,
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "opacity": "1"
+          },
+          {
+            "state": "pressed",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(0, 114, 245)",
+            "foregroundSRGB8": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundSRGB8": [
+              0,
+              114,
+              245,
+              255
+            ],
+            "contrast": 4.444030652517849,
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "opacity": "1"
+          },
+          {
+            "state": "focus",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(11, 123, 254)",
+            "foregroundSRGB8": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundSRGB8": [
+              11,
+              123,
+              254,
+              255
+            ],
+            "contrast": 3.9783543835964816,
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "opacity": "1"
+          }
+        ],
+        "tokens": {
+          "600": {
+            "value": "hsla(206, 100%, 50%, 1)",
+            "sRGB8": [
+              0,
+              144,
+              255,
+              255
+            ],
+            "whiteContrast": 3.26426381933503
+          },
+          "700": {
+            "value": "hsla(212, 100%, 48%, 1)",
+            "sRGB8": [
+              0,
+              114,
+              245,
+              255
+            ],
+            "whiteContrast": 4.444030652517849
+          },
+          "800": {
+            "value": "hsla(212, 100%, 41%, 1)",
+            "sRGB8": [
+              0,
+              98,
+              209,
+              255
+            ],
+            "whiteContrast": 5.725560965649308
+          },
+          "900": {
+            "value": "hsla(210, 100%, 66%, 1)",
+            "sRGB8": [
+              82,
+              168,
+              255,
+              255
+            ],
+            "whiteContrast": 2.498863501048304
+          }
+        }
+      }
+    ]
+  },
+  "methodLimits": [
+    "Temporary theme and interaction attributes, transitions disabled, then restored; not full input-event testing",
+    "8-bit sRGB conversion; P3 unavailable",
+    "No Firefox or WebKit run; no complete control/state/non-text contrast matrix"
+  ],
+  "tokenFiles": {
+    "paths": [
+      "tokens.css",
+      "docs/tokens.css"
+    ],
+    "sha256": "86d49956e5e510170ee34399272e80a8432e0fd52851074fa6c98f41fd113866"
+  },
+  "exactHslBlue700WhiteContrast": 4.436143744,
+  "preview": {
+    "path": "/Users/peterkloss/.codex/visualizations/2026/09/11/01a08f33-2059-7b23-9412-209b913e74ab/blue-button-options.html",
+    "settings": {
+      "fontSize": 14,
+      "fontWeight": 500,
+      "width": 160,
+      "height": 36,
+      "radius": 6,
+      "themes": [
+        "light",
+        "dark"
+      ]
+    },
+    "options": [
+      {
+        "option": "A",
+        "selected": true,
+        "foreground": "#FFFFFF",
+        "rest": "#0062D1",
+        "hover": "#0068D6",
+        "restContrast": 5.725560965649308,
+        "hoverContrast": 5.3149301900426575
+      },
+      {
+        "option": "B",
+        "selected": false,
+        "foreground": "#000000",
+        "rest": "#0072F5",
+        "hover": "#0B7BFE",
+        "restContrast": 4.725439953503034,
+        "hoverContrast": 5.278564445285978
+      }
+    ],
+    "decision": "Darker blue with white text; not an approved final all-state palette",
+    "reply": "Yup, let's go with A."
+  },
+  "ripples": {
+    "decision": "Off by default; opt-in supported",
+    "publicSettings": "Not selected",
+    "illustrativeOverlay": {
+      "base": "#0062D1",
+      "text": "#FFFFFF",
+      "overlay": "#FFFFFF",
+      "cases": [
+        {
+          "opacity": 0.08,
+          "contrast": 4.949584
+        },
+        {
+          "opacity": 0.12,
+          "contrast": 4.594761
+        },
+        {
+          "opacity": 0.1904,
+          "contrast": 4.022744
+        }
+      ],
+      "limit": "Hypothetical opacities, not measured Material token values or final house settings"
+    }
+  },
+  "sourceLinks": [
+    "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+    "https://github.com/material-components/material-web/blob/main/checkbox/internal/_checkbox.scss",
+    "https://github.com/material-components/material-web/blob/main/checkbox/internal/checkbox.ts",
+    "https://github.com/material-components/material-web/blob/main/radio/internal/_radio.scss",
+    "https://github.com/material-components/material-web/blob/main/switch/internal/_handle.scss",
+    "https://github.com/material-components/material-web/blob/main/switch/internal/_icon.scss",
+    "https://github.com/material-components/material-web/blob/main/ripple/internal/ripple.ts",
+    "https://github.com/material-components/material-web/blob/main/ripple/internal/_ripple.scss",
+    "https://github.com/material-components/material-web/blob/main/docs/components/ripple.md"
+  ]
+}

@@ -1,0 +1,4514 @@
+{
+  "date": "2026-09-19",
+  "runtime": "Bun 1.4.0",
+  "versions": {
+    "biome": "2.5.12",
+    "ultracite": "7.12.0",
+    "oxlint": "1.83.0",
+    "oxfmt": "0.68.0",
+    "oxlintTsgolint": "7.0.2002",
+    "stylelint": "17.15.0",
+    "postcssLit": "1.4.1"
+  },
+  "scratchDirectory": "/tmp/acme-tooling-probe.fuNif5",
+  "method": "Candidate packages installed only in scratch. Native/type-aware/CSS checks read project files. Formatting only changed six copied/probe files in scratch.",
+  "projectPathsChecked": [
+    "src",
+    "scripts",
+    "docs-src"
+  ],
+  "summaries": {
+    "biome-fixture": {
+      "summary": {
+        "changed": 0,
+        "unchanged": 1,
+        "matches": 0,
+        "duration": 33069375,
+        "errors": 2,
+        "warnings": 0,
+        "infos": 0,
+        "skipped": 0,
+        "suggestedFixesSkipped": 0,
+        "diagnosticsNotPrinted": 0,
+        "scannerDuration": 2872417
+      },
+      "diagnosticCount": 2,
+      "ruleCounts": {
+        "lint/correctness/noUnknownProperty": 1,
+        "lint/suspicious/noDuplicateProperties": 1
+      },
+      "representativeDiagnostics": [
+        {
+          "severity": "error",
+          "message": "Unknown property is not allowed.",
+          "category": "lint/correctness/noUnknownProperty",
+          "location": {
+            "path": "samples/embedded.ts",
+            "start": {
+              "line": 2,
+              "column": 52
+            },
+            "end": {
+              "line": 2,
+              "column": 68
+            }
+          },
+          "advices": []
+        },
+        {
+          "severity": "error",
+          "message": "Duplicate properties can lead to unexpected behavior and may override previous declarations unintentionally.",
+          "category": "lint/suspicious/noDuplicateProperties",
+          "location": {
+            "path": "samples/embedded.ts",
+            "start": {
+              "line": 2,
+              "column": 41
+            },
+            "end": {
+              "line": 2,
+              "column": 46
+            }
+          },
+          "advices": [
+            {
+              "start": {
+                "line": 2,
+                "column": 31
+              },
+              "end": {
+                "line": 2,
+                "column": 36
+              },
+              "text": "Remove or rename the duplicate property to ensure consistent styling."
+            }
+          ]
+        }
+      ]
+    },
+    "biome-repo": {
+      "summary": {
+        "changed": 0,
+        "unchanged": 532,
+        "matches": 0,
+        "duration": 263206000,
+        "errors": 15,
+        "warnings": 693,
+        "infos": 0,
+        "skipped": 0,
+        "suggestedFixesSkipped": 0,
+        "diagnosticsNotPrinted": 0,
+        "scannerDuration": 7837375
+      },
+      "diagnosticCount": 708,
+      "ruleCounts": {
+        "lint/correctness/noUnusedVariables": 1,
+        "lint/complexity/noImportantStyles": 334,
+        "lint/correctness/noUnusedPrivateClassMembers": 8,
+        "lint/style/noDescendingSpecificity": 347,
+        "lint/correctness/noUnusedFunctionParameters": 1,
+        "lint/suspicious/noTemplateCurlyInString": 1,
+        "suppressions/unused": 1,
+        "lint/correctness/noUnknownProperty": 4,
+        "lint/suspicious/noDuplicateCustomProperties": 10,
+        "lint/suspicious/noAssignInExpressions": 1
+      },
+      "representativeDiagnostics": [
+        {
+          "severity": "warning",
+          "message": "This variable strip is unused.",
+          "category": "lint/correctness/noUnusedVariables",
+          "location": {
+            "path": "docs-src/skill-reference.ts",
+            "start": {
+              "line": 18,
+              "column": 7
+            },
+            "end": {
+              "line": 18,
+              "column": 12
+            }
+          },
+          "advices": []
+        },
+        {
+          "severity": "warning",
+          "message": "Avoid the use of the !important style.",
+          "category": "lint/complexity/noImportantStyles",
+          "location": {
+            "path": "src/base.ts",
+            "start": {
+              "line": 23,
+              "column": 19
+            },
+            "end": {
+              "line": 23,
+              "column": 29
+            }
+          },
+          "advices": []
+        },
+        {
+          "severity": "warning",
+          "message": "Avoid the use of the !important style.",
+          "category": "lint/complexity/noImportantStyles",
+          "location": {
+            "path": "src/components/avatar/avatar-wrap.styles.ts",
+            "start": {
+              "line": 55,
+              "column": 27
+            },
+            "end": {
+              "line": 55,
+              "column": 37
+            }
+          },
+          "advices": []
+        },
+        {
+          "severity": "warning",
+          "message": "Avoid the use of the !important style.",
+          "category": "lint/complexity/noImportantStyles",
+          "location": {
+            "path": "src/components/avatar/avatar-wrap.styles.ts",
+            "start": {
+              "line": 59,
+              "column": 20
+            },
+            "end": {
+              "line": 59,
+              "column": 30
+            }
+          },
+          "advices": []
+        },
+        {
+          "severity": "warning",
+          "message": "Avoid the use of the !important style.",
+          "category": "lint/complexity/noImportantStyles",
+          "location": {
+            "path": "src/components/avatar/avatar-wrap.styles.ts",
+            "start": {
+              "line": 51,
+              "column": 20
+            },
+            "end": {
+              "line": 51,
+              "column": 30
+            }
+          },
+          "advices": []
+        },
+        {
+          "severity": "warning",
+          "message": "Avoid the use of the !important style.",
+          "category": "lint/complexity/noImportantStyles",
+          "location": {
+            "path": "src/components/avatar/avatar-wrap.styles.ts",
+            "start": {
+              "line": 37,
+              "column": 20
+            },
+            "end": {
+              "line": 37,
+              "column": 30
+            }
+          },
+          "advices": []
+        },
+        {
+          "severity": "warning",
+          "message": "Avoid the use of the !important style.",
+          "category": "lint/complexity/noImportantStyles",
+          "location": {
+            "path": "src/components/badge/badge.styles.ts",
+            "start": {
+              "line": 180,
+              "column": 28
+            },
+            "end": {
+              "line": 180,
+              "column": 38
+            }
+          },
+          "advices": []
+        },
+        {
+          "severity": "warning",
+          "message": "Avoid the use of the !important style.",
+          "category": "lint/complexity/noImportantStyles",
+          "location": {
+            "path": "src/components/badge/badge.styles.ts",
+            "start": {
+              "line": 181,
+              "column": 20
+            },
+            "end": {
+              "line": 181,
+              "column": 30
+            }
+          },
+          "advices": []
+        }
+      ]
+    },
+    "oxlint-fixture": {
+      "numberOfFiles": 1,
+      "activeRules": 419,
+      "diagnosticCount": 2,
+      "ruleCounts": {
+        "import(newline-after-import)": 1,
+        "eslint(no-empty-function)": 1
+      },
+      "representativeDiagnostics": [
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "samples/embedded.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 0,
+                "length": 32,
+                "line": 1,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Unexpected empty function",
+          "code": "eslint(no-empty-function)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-empty-function.html",
+          "help": "Consider removing this function or adding logic to it.",
+          "filename": "samples/embedded.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 174,
+                "length": 2,
+                "line": 3,
+                "column": 68
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "oxlint-file": {
+      "numberOfFiles": 528,
+      "activeRules": 419,
+      "diagnosticCount": 4331,
+      "ruleCounts": {
+        "import(newline-after-import)": 159,
+        "eslint(sort-keys)": 1078,
+        "typescript(no-non-null-assertion)": 664,
+        "unicorn(prefer-dom-node-dataset)": 227,
+        "eslint(no-plusplus)": 60,
+        "eslint(prefer-destructuring)": 94,
+        "import(consistent-type-specifier-style)": 31,
+        "unicorn(prefer-spread)": 71,
+        "unicorn(numeric-separators-style)": 3,
+        "promise(avoid-new)": 44,
+        "promise(param-names)": 44,
+        "eslint(no-promise-executor-return)": 44,
+        "eslint(no-await-in-loop)": 33,
+        "eslint(no-use-before-define)": 13,
+        "eslint(curly)": 873,
+        "unicorn(prefer-query-selector)": 20,
+        "typescript(no-explicit-any)": 31,
+        "eslint(require-await)": 8,
+        "eslint(no-void)": 5,
+        "unicorn(no-useless-promise-resolve-reject)": 2,
+        "unicorn(prefer-dom-node-append)": 11,
+        "unicorn(consistent-function-scoping)": 9,
+        "eslint(no-negated-condition)": 18,
+        "eslint(no-nested-ternary)": 58,
+        "unicorn(no-negated-condition)": 18,
+        "typescript(class-literal-property-style)": 3,
+        "eslint(no-empty)": 22,
+        "eslint(class-methods-use-this)": 44,
+        "eslint(no-new)": 2,
+        "eslint(require-unicode-regexp)": 201,
+        "typescript(consistent-type-definitions)": 35,
+        "typescript(method-signature-style)": 21,
+        "unicorn(prefer-export-from)": 1,
+        "typescript(parameter-properties)": 5,
+        "unicorn(consistent-existence-index-check)": 8,
+        "eslint(no-inline-comments)": 16,
+        "eslint(no-shadow)": 3,
+        "unicorn(prefer-string-replace-all)": 40,
+        "unicorn(no-array-sort)": 14,
+        "eslint(no-empty-function)": 5,
+        "unicorn(empty-brace-spaces)": 3,
+        "import(no-mutable-exports)": 1,
+        "unicorn(prefer-native-coercion-functions)": 3,
+        "eslint(no-bitwise)": 13,
+        "promise(prefer-await-to-then)": 12,
+        "eslint(prefer-named-capture-group)": 70,
+        "eslint(func-style)": 25,
+        "unicorn(prefer-at)": 12,
+        "unicorn(prefer-number-coercion)": 7,
+        "eslint(default-case)": 4,
+        "unicorn(switch-case-braces)": 43,
+        "eslint(complexity)": 14,
+        "eslint(eqeqeq)": 11,
+        "eslint(no-eq-null)": 11,
+        "unicorn(no-array-for-each)": 8,
+        "unicorn(no-array-method-this-argument)": 2,
+        "promise(prefer-await-to-callbacks)": 1,
+        "node(callback-return)": 1,
+        "promise(no-callback-in-promise)": 2,
+        "eslint(no-unused-vars)": 2,
+        "eslint(one-var)": 4,
+        "eslint(sort-vars)": 3,
+        "unicorn(no-array-reduce)": 1,
+        "unicorn(no-useless-undefined)": 1,
+        "unicorn(no-array-reverse)": 1,
+        "unicorn(prefer-array-find)": 1,
+        "oxc(no-barrel-file)": 1,
+        "unicorn(prefer-ternary)": 1,
+        "eslint(no-template-curly-in-string)": 1,
+        "unicorn(catch-error-name)": 2,
+        "unicorn(prefer-number-properties)": 4,
+        "unicorn(prefer-math-trunc)": 1,
+        "unicorn(prefer-code-point)": 1,
+        "unicorn(text-encoding-identifier-case)": 13,
+        "eslint(max-classes-per-file)": 2,
+        "unicorn(no-await-expression-member)": 6,
+        "import(no-duplicates)": 1,
+        "eslint(no-loop-func)": 1,
+        "eslint(no-new-func)": 2,
+        "eslint(prefer-template)": 1
+      },
+      "representativeDiagnostics": [
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/theme-switcher/theme-switcher-option.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/split-button-item/split-button-item.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/split-button/split-button-menu.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/destructive-modal/destructive-modal.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/relative-time/relative-time-trigger.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/context-card/context-card-trigger.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/multi-select-row/multi-select-row.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Object keys should be sorted",
+          "code": "eslint(sort-keys)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/sort-keys.html",
+          "help": "Replace `name: \"--acme-exit-opacity\", syntax: \"*\", inherits: false, initialValue: \"1\"` with `inherits: false, initialValue: \"1\", name: \"--acme-exit-opacity\", syntax: \"*\"`.",
+          "filename": "src/components/multi-select/multi-select-content.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 207,
+                "length": 80,
+                "line": 6,
+                "column": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "oxlint-all-typed": {
+      "numberOfFiles": 528,
+      "activeRules": 474,
+      "diagnosticCount": 6394,
+      "ruleCounts": {
+        "import(newline-after-import)": 159,
+        "eslint(sort-keys)": 1078,
+        "typescript(no-non-null-assertion)": 664,
+        "import(consistent-type-specifier-style)": 31,
+        "unicorn(prefer-spread)": 71,
+        "unicorn(numeric-separators-style)": 3,
+        "eslint(no-plusplus)": 60,
+        "unicorn(prefer-dom-node-dataset)": 227,
+        "eslint(prefer-destructuring)": 94,
+        "eslint(require-unicode-regexp)": 201,
+        "promise(avoid-new)": 44,
+        "promise(param-names)": 44,
+        "eslint(no-promise-executor-return)": 44,
+        "eslint(no-await-in-loop)": 33,
+        "eslint(no-use-before-define)": 13,
+        "eslint(curly)": 873,
+        "unicorn(no-array-sort)": 14,
+        "unicorn(prefer-query-selector)": 20,
+        "unicorn(consistent-function-scoping)": 9,
+        "eslint(no-negated-condition)": 18,
+        "eslint(no-nested-ternary)": 58,
+        "unicorn(no-negated-condition)": 18,
+        "typescript(no-explicit-any)": 31,
+        "eslint(no-empty)": 22,
+        "typescript(consistent-type-definitions)": 35,
+        "typescript(method-signature-style)": 21,
+        "eslint(no-new)": 2,
+        "eslint(require-await)": 8,
+        "eslint(no-void)": 5,
+        "unicorn(no-useless-promise-resolve-reject)": 2,
+        "unicorn(prefer-dom-node-append)": 11,
+        "eslint(no-bitwise)": 13,
+        "typescript(class-literal-property-style)": 3,
+        "eslint(class-methods-use-this)": 44,
+        "unicorn(prefer-export-from)": 1,
+        "typescript(parameter-properties)": 5,
+        "unicorn(consistent-existence-index-check)": 8,
+        "import(no-mutable-exports)": 1,
+        "unicorn(prefer-native-coercion-functions)": 3,
+        "eslint(prefer-named-capture-group)": 70,
+        "eslint(no-empty-function)": 5,
+        "unicorn(empty-brace-spaces)": 3,
+        "eslint(no-inline-comments)": 16,
+        "eslint(no-shadow)": 3,
+        "unicorn(prefer-string-replace-all)": 40,
+        "eslint(func-style)": 25,
+        "promise(prefer-await-to-then)": 12,
+        "unicorn(switch-case-braces)": 43,
+        "unicorn(prefer-at)": 12,
+        "eslint(no-unused-vars)": 2,
+        "eslint(complexity)": 14,
+        "eslint(default-case)": 4,
+        "unicorn(prefer-number-coercion)": 7,
+        "unicorn(no-array-for-each)": 8,
+        "eslint(eqeqeq)": 11,
+        "eslint(no-eq-null)": 11,
+        "eslint(one-var)": 4,
+        "eslint(sort-vars)": 3,
+        "unicorn(no-array-reduce)": 1,
+        "promise(no-callback-in-promise)": 2,
+        "unicorn(no-useless-undefined)": 1,
+        "unicorn(no-array-method-this-argument)": 2,
+        "promise(prefer-await-to-callbacks)": 1,
+        "node(callback-return)": 1,
+        "unicorn(prefer-array-find)": 1,
+        "unicorn(no-array-reverse)": 1,
+        "oxc(no-barrel-file)": 1,
+        "unicorn(catch-error-name)": 2,
+        "eslint(no-template-curly-in-string)": 1,
+        "unicorn(prefer-math-trunc)": 1,
+        "unicorn(prefer-code-point)": 1,
+        "unicorn(prefer-number-properties)": 4,
+        "unicorn(prefer-ternary)": 1,
+        "unicorn(text-encoding-identifier-case)": 13,
+        "eslint(max-classes-per-file)": 2,
+        "unicorn(no-await-expression-member)": 6,
+        "import(no-duplicates)": 1,
+        "eslint(no-loop-func)": 1,
+        "eslint(no-new-func)": 2,
+        "eslint(prefer-template)": 1,
+        "typescript(TS2345)": 1,
+        "typescript(TS2531)": 4,
+        "typescript(TS2352)": 1,
+        "typescript(TS2322)": 1,
+        "typescript(TS5097)": 1,
+        "typescript(no-unsafe-type-assertion)": 552,
+        "typescript(no-unnecessary-type-assertion)": 52,
+        "typescript(strict-boolean-expressions)": 182,
+        "typescript(no-unsafe-argument)": 25,
+        "typescript(no-redundant-type-constituents)": 4,
+        "typescript(prefer-nullish-coalescing)": 22,
+        "typescript(prefer-readonly)": 465,
+        "typescript(no-confusing-void-expression)": 117,
+        "typescript(no-misused-promises)": 7,
+        "typescript(strict-void-return)": 128,
+        "typescript(no-floating-promises)": 9,
+        "typescript(no-unnecessary-type-conversion)": 5,
+        "typescript(no-unsafe-assignment)": 41,
+        "typescript(no-unsafe-member-access)": 167,
+        "typescript(no-unnecessary-type-arguments)": 2,
+        "typescript(unbound-method)": 12,
+        "typescript(switch-exhaustiveness-check)": 2,
+        "typescript(promise-function-async)": 23,
+        "typescript(no-unsafe-return)": 10,
+        "typescript(no-base-to-string)": 5,
+        "typescript(prefer-regexp-exec)": 4,
+        "typescript(no-unnecessary-boolean-literal-compare)": 1,
+        "typescript(non-nullable-type-assertion-style)": 151,
+        "typescript(return-await)": 3,
+        "typescript(no-unsafe-call)": 58,
+        "typescript(no-unnecessary-type-parameters)": 3,
+        "typescript(await-thenable)": 1,
+        "typescript(no-implied-eval)": 2,
+        "typescript(no-unnecessary-template-expression)": 1,
+        "typescript(prefer-includes)": 1
+      },
+      "representativeDiagnostics": [
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/destructive-modal/destructive-modal.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/theme-switcher/theme-switcher-option.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/command-menu/command-menu-item.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/split-button-item/split-button-item.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/relative-time/relative-time-trigger.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/multi-select-row/multi-select-row.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Expected 1 empty line after import statement not followed by another import.",
+          "code": "import(newline-after-import)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/import/newline-after-import.html",
+          "help": "Add empty line(s) after import",
+          "filename": "src/components/relative-time/relative-time-label.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 107,
+                "length": 26,
+                "line": 2,
+                "column": 1
+              }
+            }
+          ]
+        },
+        {
+          "message": "Object keys should be sorted",
+          "code": "eslint(sort-keys)",
+          "severity": "error",
+          "url": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/sort-keys.html",
+          "help": "Replace `name: \"--acme-exit-opacity\", syntax: \"*\", inherits: false, initialValue: \"1\"` with `inherits: false, initialValue: \"1\", name: \"--acme-exit-opacity\", syntax: \"*\"`.",
+          "filename": "src/components/multi-select/multi-select-content.styles.ts",
+          "labels": [
+            {
+              "span": {
+                "offset": 207,
+                "length": 80,
+                "line": 6,
+                "column": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "stylelint-fixture": {
+      "files": 1,
+      "ruleCounts": {
+        "declaration-block-no-duplicate-properties": 1,
+        "property-no-unknown": 1
+      },
+      "parseErrors": 0,
+      "invalidOptions": 0,
+      "representativeDiagnostics": [
+        {
+          "source": "/private/tmp/acme-tooling-probe.fuNif5/samples/embedded.ts",
+          "deprecations": [],
+          "invalidOptionWarnings": [],
+          "parseErrors": [],
+          "errored": true,
+          "warnings": [
+            {
+              "line": 4,
+              "column": 5,
+              "endLine": 4,
+              "endColumn": 10,
+              "rule": "declaration-block-no-duplicate-properties",
+              "severity": "error",
+              "text": "Duplicate property \"color\" (declaration-block-no-duplicate-properties)"
+            },
+            {
+              "line": 6,
+              "column": 5,
+              "endLine": 6,
+              "endColumn": 21,
+              "rule": "property-no-unknown",
+              "severity": "error",
+              "text": "Unknown property \"unknown-property\" (property-no-unknown)"
+            }
+          ]
+        }
+      ]
+    },
+    "stylelint-ts": {
+      "files": 528,
+      "ruleCounts": {
+        "declaration-no-important": 328,
+        "no-descending-specificity": 55,
+        "property-no-unknown": 4
+      },
+      "parseErrors": 0,
+      "invalidOptions": 0,
+      "representativeDiagnostics": [
+        {
+          "source": "/Users/peterkloss/Dev/ACMElabs/design-system/src/base.ts",
+          "deprecations": [],
+          "invalidOptionWarnings": [],
+          "parseErrors": [],
+          "errored": true,
+          "warnings": [
+            {
+              "line": 23,
+              "column": 19,
+              "endLine": 23,
+              "endColumn": 29,
+              "rule": "declaration-no-important",
+              "severity": "error",
+              "text": "Disallowed !important (declaration-no-important)"
+            }
+          ]
+        },
+        {
+          "source": "/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/field.styles.ts",
+          "deprecations": [],
+          "invalidOptionWarnings": [],
+          "parseErrors": [],
+          "errored": true,
+          "warnings": [
+            {
+              "line": 40,
+              "column": 3,
+              "endLine": 40,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field.sm input\" to come before selector \".field input:not([type=\"checkbox\"]):not([type=\"radio\"])\", at line 27 (no-descending-specificity)"
+            },
+            {
+              "line": 44,
+              "column": 3,
+              "endLine": 44,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field select\" to come before selector \".field.sm select\", at line 40 (no-descending-specificity)"
+            },
+            {
+              "line": 47,
+              "column": 3,
+              "endLine": 47,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field.lg input\" to come before selector \".field input:not([type=\"checkbox\"]):not([type=\"radio\"])\", at line 27 (no-descending-specificity)"
+            },
+            {
+              "line": 73,
+              "column": 3,
+              "endLine": 73,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field input:hover\" to come before selector \".field input:not([type=\"checkbox\"]):not([type=\"radio\"])\", at line 27 (no-descending-specificity)"
+            },
+            {
+              "line": 78,
+              "column": 3,
+              "endLine": 78,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field input:focus\" to come before selector \".field input:not([type=\"checkbox\"]):not([type=\"radio\"])\", at line 27 (no-descending-specificity)"
+            },
+            {
+              "line": 157,
+              "column": 3,
+              "endLine": 157,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field .affix > input\" to come before selector \".field input:not([type=\"checkbox\"]):not([type=\"radio\"])\", at line 27 (no-descending-specificity)"
+            }
+          ]
+        }
+      ]
+    },
+    "stylelint-all": {
+      "files": 530,
+      "ruleCounts": {
+        "declaration-no-important": 334,
+        "no-descending-specificity": 437,
+        "declaration-block-no-duplicate-custom-properties": 829,
+        "property-no-unknown": 4
+      },
+      "parseErrors": 0,
+      "invalidOptions": 0,
+      "representativeDiagnostics": [
+        {
+          "source": "/Users/peterkloss/Dev/ACMElabs/design-system/src/base.ts",
+          "deprecations": [],
+          "invalidOptionWarnings": [],
+          "parseErrors": [],
+          "errored": true,
+          "warnings": [
+            {
+              "line": 23,
+              "column": 19,
+              "endLine": 23,
+              "endColumn": 29,
+              "rule": "declaration-no-important",
+              "severity": "error",
+              "text": "Disallowed !important (declaration-no-important)"
+            }
+          ]
+        },
+        {
+          "source": "/Users/peterkloss/Dev/ACMElabs/design-system/src/geist.css",
+          "deprecations": [],
+          "invalidOptionWarnings": [],
+          "parseErrors": [],
+          "errored": true,
+          "warnings": [
+            {
+              "line": 216,
+              "column": 17,
+              "endLine": 216,
+              "endColumn": 27,
+              "rule": "declaration-no-important",
+              "severity": "error",
+              "text": "Disallowed !important (declaration-no-important)"
+            },
+            {
+              "line": 3452,
+              "column": 15,
+              "endLine": 3452,
+              "endColumn": 25,
+              "rule": "declaration-no-important",
+              "severity": "error",
+              "text": "Disallowed !important (declaration-no-important)"
+            },
+            {
+              "line": 9942,
+              "column": 33,
+              "endLine": 9942,
+              "endColumn": 43,
+              "rule": "declaration-no-important",
+              "severity": "error",
+              "text": "Disallowed !important (declaration-no-important)"
+            },
+            {
+              "line": 9943,
+              "column": 34,
+              "endLine": 9943,
+              "endColumn": 44,
+              "rule": "declaration-no-important",
+              "severity": "error",
+              "text": "Disallowed !important (declaration-no-important)"
+            },
+            {
+              "line": 9944,
+              "column": 34,
+              "endLine": 9944,
+              "endColumn": 44,
+              "rule": "declaration-no-important",
+              "severity": "error",
+              "text": "Disallowed !important (declaration-no-important)"
+            },
+            {
+              "line": 9945,
+              "column": 27,
+              "endLine": 9945,
+              "endColumn": 37,
+              "rule": "declaration-no-important",
+              "severity": "error",
+              "text": "Disallowed !important (declaration-no-important)"
+            },
+            {
+              "line": 640,
+              "column": 1,
+              "endLine": 640,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 650,
+              "column": 1,
+              "endLine": 650,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat .context\" to come before selector \".stat .head:has(.icon.tile) .context\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 693,
+              "column": 1,
+              "endLine": 693,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat .head:has(.ricon)\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 697,
+              "column": 1,
+              "endLine": 697,
+              "endColumn": 31,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat .head:has(.ricon) .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 698,
+              "column": 1,
+              "endLine": 698,
+              "endColumn": 33,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat .head:has(.ricon) .context\" to come before selector \".stat .head:has(.icon.tile) .context\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 785,
+              "column": 1,
+              "endLine": 785,
+              "endColumn": 7,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".spark\" to come before selector \".stat .spark\", at line 764 (no-descending-specificity)"
+            },
+            {
+              "line": 1168,
+              "column": 1,
+              "endLine": 1168,
+              "endColumn": 9,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".iconbtn\" to come before selector \".iconbtn:hover\", at line 1139 (no-descending-specificity)"
+            },
+            {
+              "line": 1264,
+              "column": 1,
+              "endLine": 1264,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".switch-control .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 1374,
+              "column": 1,
+              "endLine": 1374,
+              "endColumn": 23,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tabs [role=\"tab\"] .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 1413,
+              "column": 1,
+              "endLine": 1413,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toggle .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 1420,
+              "column": 1,
+              "endLine": 1420,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toggle.normal .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 1426,
+              "column": 1,
+              "endLine": 1426,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toggle .track\" to come before selector \".stat .meter .track\", at line 794 (no-descending-specificity)"
+            },
+            {
+              "line": 1527,
+              "column": 1,
+              "endLine": 1527,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".checkbox input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 1528,
+              "column": 1,
+              "endLine": 1528,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".radio input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 1541,
+              "column": 1,
+              "endLine": 1541,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".checkbox input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 1544,
+              "column": 1,
+              "endLine": 1544,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".radio input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 1547,
+              "column": 1,
+              "endLine": 1547,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".checkbox input:hover\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 1548,
+              "column": 1,
+              "endLine": 1548,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".radio input:hover\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 1552,
+              "column": 1,
+              "endLine": 1552,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".checkbox input:checked\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 1564,
+              "column": 1,
+              "endLine": 1564,
+              "endColumn": 30,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".checkbox input:indeterminate\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 1574,
+              "column": 1,
+              "endLine": 1574,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".radio input:checked\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 1585,
+              "column": 1,
+              "endLine": 1585,
+              "endColumn": 30,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".checkbox input:focus-visible\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 1586,
+              "column": 1,
+              "endLine": 1586,
+              "endColumn": 27,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".radio input:focus-visible\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 1626,
+              "column": 1,
+              "endLine": 1626,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".badge .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 1743,
+              "column": 1,
+              "endLine": 1743,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".badge.sm .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 1754,
+              "column": 1,
+              "endLine": 1754,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".badge.lg .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 1799,
+              "column": 1,
+              "endLine": 1799,
+              "endColumn": 10,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".pill .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 1811,
+              "column": 1,
+              "endLine": 1811,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".pill.sm .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 1821,
+              "column": 1,
+              "endLine": 1821,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".pill.lg .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 1838,
+              "column": 1,
+              "endLine": 1838,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".pill.count .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 1907,
+              "column": 1,
+              "endLine": 1907,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".status-dot b\" to come before selector \".stat .desc b\", at line 725 (no-descending-specificity)"
+            },
+            {
+              "line": 2002,
+              "column": 1,
+              "endLine": 2002,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note > .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 2003,
+              "column": 1,
+              "endLine": 2003,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".banner > .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 2017,
+              "column": 1,
+              "endLine": 2017,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 2023,
+              "column": 1,
+              "endLine": 2023,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note .btn\" to come before selector \".btn-group > .btn:first-child\", at line 1065 (no-descending-specificity)"
+            },
+            {
+              "line": 2035,
+              "column": 1,
+              "endLine": 2035,
+              "endColumn": 8,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 2070,
+              "column": 1,
+              "endLine": 2070,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note.success a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 2071,
+              "column": 1,
+              "endLine": 2071,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note.info a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 2075,
+              "column": 1,
+              "endLine": 2075,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note.error a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 2079,
+              "column": 1,
+              "endLine": 2079,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note.warning a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 2083,
+              "column": 1,
+              "endLine": 2083,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note.violet a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 2087,
+              "column": 1,
+              "endLine": 2087,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note.cyan a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 2132,
+              "column": 1,
+              "endLine": 2132,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note.disabled .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 2164,
+              "column": 1,
+              "endLine": 2164,
+              "endColumn": 28,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".empty-state .icon-tile .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 2193,
+              "column": 1,
+              "endLine": 2193,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".empty-state .actions a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 2202,
+              "column": 1,
+              "endLine": 2202,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".note-text\" to come before selector \".note .note-text\", at line 2010 (no-descending-specificity)"
+            },
+            {
+              "line": 2306,
+              "column": 1,
+              "endLine": 2306,
+              "endColumn": 10,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table td\" to come before selector \".table td:first-child\", at line 2278 (no-descending-specificity)"
+            },
+            {
+              "line": 2312,
+              "column": 1,
+              "endLine": 2312,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table td b\" to come before selector \".stat .desc b\", at line 725 (no-descending-specificity)"
+            },
+            {
+              "line": 2317,
+              "column": 1,
+              "endLine": 2317,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.lined td\" to come before selector \".table.flush td:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 2333,
+              "column": 1,
+              "endLine": 2333,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.bordered td\" to come before selector \".table.flush td:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 2336,
+              "column": 1,
+              "endLine": 2336,
+              "endColumn": 33,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.bordered tr:last-child td\" to come before selector \".table.interactive tbody tr:hover td\", at line 2323 (no-descending-specificity)"
+            },
+            {
+              "line": 2410,
+              "column": 1,
+              "endLine": 2410,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.framed th\" to come before selector \".table.flush th:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 2411,
+              "column": 1,
+              "endLine": 2411,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.framed td\" to come before selector \".table.flush td:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 2431,
+              "column": 1,
+              "endLine": 2431,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table .empty td\" to come before selector \".table.flush td:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 2436,
+              "column": 1,
+              "endLine": 2436,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table tfoot td\" to come before selector \".table td:first-child\", at line 2278 (no-descending-specificity)"
+            },
+            {
+              "line": 2596,
+              "column": 1,
+              "endLine": 2596,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field.sm input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 2600,
+              "column": 1,
+              "endLine": 2600,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field select\" to come before selector \".field.sm select\", at line 2596 (no-descending-specificity)"
+            },
+            {
+              "line": 2603,
+              "column": 1,
+              "endLine": 2603,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field.lg input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 2629,
+              "column": 1,
+              "endLine": 2629,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field input:hover\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 2634,
+              "column": 1,
+              "endLine": 2634,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field input:focus\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 2664,
+              "column": 1,
+              "endLine": 2664,
+              "endColumn": 23,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field input[disabled]\" to come before selector \".checkbox input[disabled]:checked\", at line 1595 (no-descending-specificity)"
+            },
+            {
+              "line": 2713,
+              "column": 1,
+              "endLine": 2713,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".field .affix > input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 2883,
+              "column": 1,
+              "endLine": 2883,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".modal-h .sub\" to come before selector \".table td .sub\", at line 2421 (no-descending-specificity)"
+            },
+            {
+              "line": 2894,
+              "column": 1,
+              "endLine": 2894,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".modal-h p b\" to come before selector \".stat .desc b\", at line 725 (no-descending-specificity)"
+            },
+            {
+              "line": 2897,
+              "column": 1,
+              "endLine": 2897,
+              "endColumn": 9,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".modal-b\" to come before selector \".modal.sticky .modal-b\", at line 2860 (no-descending-specificity)"
+            },
+            {
+              "line": 2946,
+              "column": 1,
+              "endLine": 2946,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".modal-f .btn\" to come before selector \".btn-group > .btn:first-child\", at line 1065 (no-descending-specificity)"
+            },
+            {
+              "line": 2985,
+              "column": 1,
+              "endLine": 2985,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".modal .irreversible .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 2998,
+              "column": 1,
+              "endLine": 2998,
+              "endColumn": 31,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".modal .modal-b .field label b\" to come before selector \".stat .meter .meter-label.lg b\", at line 759 (no-descending-specificity)"
+            },
+            {
+              "line": 3076,
+              "column": 1,
+              "endLine": 3076,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".sheet-h p\" to come before selector \".modal-b p + p\", at line 2904 (no-descending-specificity)"
+            },
+            {
+              "line": 3077,
+              "column": 1,
+              "endLine": 3077,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".sheet-h ::slotted(*)\" to come before selector \".toggle .ico ::slotted(*)\", at line 1495 (no-descending-specificity)"
+            },
+            {
+              "line": 3190,
+              "column": 1,
+              "endLine": 3190,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".menu button\" to come before selector \".switch button:hover\", at line 1228 (no-descending-specificity)"
+            },
+            {
+              "line": 3191,
+              "column": 1,
+              "endLine": 3191,
+              "endColumn": 8,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".menu a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 3207,
+              "column": 1,
+              "endLine": 3207,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".menu a:hover\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 3209,
+              "column": 1,
+              "endLine": 3209,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".menu a:focus-visible\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 3390,
+              "column": 1,
+              "endLine": 3390,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tooltip ::slotted(*)\" to come before selector \".toggle .ico ::slotted(*)\", at line 1495 (no-descending-specificity)"
+            },
+            {
+              "line": 3483,
+              "column": 1,
+              "endLine": 3483,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".spinner i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3501,
+              "column": 1,
+              "endLine": 3501,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".spinner.sm i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3510,
+              "column": 1,
+              "endLine": 3510,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".spinner.lg i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3519,
+              "column": 1,
+              "endLine": 3519,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".spinner.xl i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3528,
+              "column": 1,
+              "endLine": 3528,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".spinner.x2 i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3537,
+              "column": 1,
+              "endLine": 3537,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".spinner.x3 i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3546,
+              "column": 1,
+              "endLine": 3546,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".spinner.x4 i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3565,
+              "column": 1,
+              "endLine": 3565,
+              "endColumn": 8,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".dots i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3579,
+              "column": 1,
+              "endLine": 3579,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".dots i:nth-child(2)\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3582,
+              "column": 1,
+              "endLine": 3582,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".dots i:nth-child(3)\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3609,
+              "column": 1,
+              "endLine": 3609,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".progress > i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3616,
+              "column": 1,
+              "endLine": 3616,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".progress.success > i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3617,
+              "column": 1,
+              "endLine": 3617,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".progress.accent > i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3620,
+              "column": 1,
+              "endLine": 3620,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".progress.error > i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3623,
+              "column": 1,
+              "endLine": 3623,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".progress.warning > i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3626,
+              "column": 1,
+              "endLine": 3626,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".progress.secondary > i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3633,
+              "column": 1,
+              "endLine": 3633,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".progress.sm > i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 3676,
+              "column": 1,
+              "endLine": 3676,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".gauge svg\" to come before selector \".stat .spark svg\", at line 768 (no-descending-specificity)"
+            },
+            {
+              "line": 3810,
+              "column": 1,
+              "endLine": 3810,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".avatar-wrap .service .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 3874,
+              "column": 1,
+              "endLine": 3874,
+              "endColumn": 35,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".avatar-wrap .service ::slotted(*)\" to come before selector \".field .affix > span ::slotted(*)\", at line 2703 (no-descending-specificity)"
+            },
+            {
+              "line": 3970,
+              "column": 1,
+              "endLine": 3970,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toast > span\" to come before selector \".note.sm > span\", at line 2126 (no-descending-specificity)"
+            },
+            {
+              "line": 3971,
+              "column": 1,
+              "endLine": 3971,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toast > p\" to come before selector \".modal-b p + p\", at line 2904 (no-descending-specificity)"
+            },
+            {
+              "line": 4001,
+              "column": 1,
+              "endLine": 4001,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toast .actions .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 4017,
+              "column": 1,
+              "endLine": 4017,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toast.success .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 4018,
+              "column": 1,
+              "endLine": 4018,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toast.error .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 4027,
+              "column": 1,
+              "endLine": 4027,
+              "endColumn": 9,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".toast a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 4123,
+              "column": 1,
+              "endLine": 4123,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".appbar-nav a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 4136,
+              "column": 1,
+              "endLine": 4136,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".appbar-nav a:hover\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 4162,
+              "column": 1,
+              "endLine": 4162,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".appbar .crumbs a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 4165,
+              "column": 1,
+              "endLine": 4165,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".appbar .crumbs b\" to come before selector \".stat .meter .meter-label.lg b\", at line 759 (no-descending-specificity)"
+            },
+            {
+              "line": 4191,
+              "column": 1,
+              "endLine": 4191,
+              "endColumn": 4,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 4247,
+              "column": 1,
+              "endLine": 4247,
+              "endColumn": 7,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".trend\" to come before selector \".stat .value .trend\", at line 683 (no-descending-specificity)"
+            },
+            {
+              "line": 4259,
+              "column": 1,
+              "endLine": 4259,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".trend .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 4298,
+              "column": 1,
+              "endLine": 4298,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel-head .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 4305,
+              "column": 1,
+              "endLine": 4305,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel-head .sub\" to come before selector \".table td .sub\", at line 2421 (no-descending-specificity)"
+            },
+            {
+              "line": 4318,
+              "column": 1,
+              "endLine": 4318,
+              "endColumn": 23,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel-head .actions a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 4342,
+              "column": 1,
+              "endLine": 4342,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".legend .value\" to come before selector \".gauge.tiny .value\", at line 3701 (no-descending-specificity)"
+            },
+            {
+              "line": 4369,
+              "column": 1,
+              "endLine": 4369,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".bar-row .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 4377,
+              "column": 1,
+              "endLine": 4377,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".bar-row .head .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 4394,
+              "column": 1,
+              "endLine": 4394,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".bar-row .track\" to come before selector \".stat .meter .track\", at line 794 (no-descending-specificity)"
+            },
+            {
+              "line": 4400,
+              "column": 1,
+              "endLine": 4400,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".bar-row .fill\" to come before selector \".stat .meter .fill\", at line 800 (no-descending-specificity)"
+            },
+            {
+              "line": 4425,
+              "column": 1,
+              "endLine": 4425,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".bar-row.sm .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 4484,
+              "column": 1,
+              "endLine": 4484,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".item .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 4493,
+              "column": 1,
+              "endLine": 4493,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".item .meta\" to come before selector \".appbar .brand .meta\", at line 4107 (no-descending-specificity)"
+            },
+            {
+              "line": 4503,
+              "column": 1,
+              "endLine": 4503,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".item .meta .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 4512,
+              "column": 1,
+              "endLine": 4512,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".item .end\" to come before selector \".stat .head .end\", at line 587 (no-descending-specificity)"
+            },
+            {
+              "line": 4553,
+              "column": 1,
+              "endLine": 4553,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".item .end small\" to come before selector \".bar-row .head .value small\", at line 4388 (no-descending-specificity)"
+            },
+            {
+              "line": 4664,
+              "column": 1,
+              "endLine": 4664,
+              "endColumn": 7,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ricon\" to come before selector \".stat .head .ricon\", at line 690 (no-descending-specificity)"
+            },
+            {
+              "line": 4678,
+              "column": 1,
+              "endLine": 4678,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ricon.sm .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 4724,
+              "column": 1,
+              "endLine": 4724,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tile .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 4737,
+              "column": 1,
+              "endLine": 4737,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tile .value\" to come before selector \".gauge.tiny .value\", at line 3701 (no-descending-specificity)"
+            },
+            {
+              "line": 4752,
+              "column": 1,
+              "endLine": 4752,
+              "endColumn": 6,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tags\" to come before selector \".item .tags\", at line 4570 (no-descending-specificity)"
+            },
+            {
+              "line": 4784,
+              "column": 1,
+              "endLine": 4784,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".card-foot > *\" to come before selector \".legend.list > *\", at line 4355 (no-descending-specificity)"
+            },
+            {
+              "line": 4789,
+              "column": 1,
+              "endLine": 4789,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".card-foot .mono\" to come before selector \".item .title .mono\", at line 4542 (no-descending-specificity)"
+            },
+            {
+              "line": 4792,
+              "column": 1,
+              "endLine": 4792,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".card-foot .link\" to come before selector \".stat .foot .link\", at line 838 (no-descending-specificity)"
+            },
+            {
+              "line": 4846,
+              "column": 1,
+              "endLine": 4846,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".chart .tip .row b\" to come before selector \".stat .meter .meter-label.lg b\", at line 759 (no-descending-specificity)"
+            },
+            {
+              "line": 4885,
+              "column": 1,
+              "endLine": 4885,
+              "endColumn": 10,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".filter b\" to come before selector \".stat .desc b\", at line 725 (no-descending-specificity)"
+            },
+            {
+              "line": 4888,
+              "column": 1,
+              "endLine": 4888,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".filter .x\" to come before selector \".toast > .x:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 4912,
+              "column": 1,
+              "endLine": 4912,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".filter.suggest b\" to come before selector \".stat .meter .meter-label.lg b\", at line 759 (no-descending-specificity)"
+            },
+            {
+              "line": 4918,
+              "column": 1,
+              "endLine": 4918,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".filter .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 4945,
+              "column": 1,
+              "endLine": 4945,
+              "endColumn": 10,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".qseg > *\" to come before selector \".legend.list > *\", at line 4355 (no-descending-specificity)"
+            },
+            {
+              "line": 4960,
+              "column": 1,
+              "endLine": 4960,
+              "endColumn": 9,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".qseg .x\" to come before selector \".toast > .x:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 4985,
+              "column": 1,
+              "endLine": 4985,
+              "endColumn": 29,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".search .prefix ::slotted(*)\" to come before selector \".field .affix > span ::slotted(*)\", at line 2703 (no-descending-specificity)"
+            },
+            {
+              "line": 4989,
+              "column": 1,
+              "endLine": 4989,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".search .x\" to come before selector \".toast > .x:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 5009,
+              "column": 1,
+              "endLine": 5009,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".search input[disabled]\" to come before selector \".checkbox input[disabled]:checked\", at line 1595 (no-descending-specificity)"
+            },
+            {
+              "line": 5014,
+              "column": 1,
+              "endLine": 5014,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".search input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 5024,
+              "column": 1,
+              "endLine": 5024,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".search input:hover\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 5027,
+              "column": 1,
+              "endLine": 5027,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".search input:focus\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 5039,
+              "column": 1,
+              "endLine": 5039,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".search.sm input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 5068,
+              "column": 1,
+              "endLine": 5068,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".page-head .back .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 5091,
+              "column": 1,
+              "endLine": 5091,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".page-head .meta\" to come before selector \".appbar .brand .meta\", at line 4107 (no-descending-specificity)"
+            },
+            {
+              "line": 5116,
+              "column": 1,
+              "endLine": 5116,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel-h .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 5123,
+              "column": 1,
+              "endLine": 5123,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel-h .sub\" to come before selector \".table td .sub\", at line 2421 (no-descending-specificity)"
+            },
+            {
+              "line": 5129,
+              "column": 1,
+              "endLine": 5129,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel-h .when\" to come before selector \".chart .tip .when\", at line 4836 (no-descending-specificity)"
+            },
+            {
+              "line": 5141,
+              "column": 1,
+              "endLine": 5141,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel-h .actions a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 5243,
+              "column": 1,
+              "endLine": 5243,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel .title-lg\" to come before selector \".panel-b.form.disabled .title-lg\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 5250,
+              "column": 1,
+              "endLine": 5250,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".panel .desc\" to come before selector \".panel-b.form.disabled .desc\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 5303,
+              "column": 1,
+              "endLine": 5303,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".chart-head\" to come before selector \".panel.chart .chart-head\", at line 5262 (no-descending-specificity)"
+            },
+            {
+              "line": 5309,
+              "column": 1,
+              "endLine": 5309,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".chart-head .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 5316,
+              "column": 1,
+              "endLine": 5316,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".chart-head .value\" to come before selector \".gauge.tiny .value\", at line 3701 (no-descending-specificity)"
+            },
+            {
+              "line": 5327,
+              "column": 1,
+              "endLine": 5327,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat-legend\" to come before selector \".chart-head .stat-legend\", at line 5324 (no-descending-specificity)"
+            },
+            {
+              "line": 5332,
+              "column": 1,
+              "endLine": 5332,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat-legend > *\" to come before selector \".legend.list > *\", at line 4355 (no-descending-specificity)"
+            },
+            {
+              "line": 5485,
+              "column": 1,
+              "endLine": 5485,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".fold .expand .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 5508,
+              "column": 1,
+              "endLine": 5508,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tile.plain .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 5569,
+              "column": 1,
+              "endLine": 5569,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cellspark svg\" to come before selector \".stat .spark svg\", at line 768 (no-descending-specificity)"
+            },
+            {
+              "line": 5630,
+              "column": 1,
+              "endLine": 5630,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.geist th\" to come before selector \".table.flush th:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 5647,
+              "column": 1,
+              "endLine": 5647,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.geist td\" to come before selector \".table.flush td:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 5659,
+              "column": 1,
+              "endLine": 5659,
+              "endColumn": 28,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.geist td:first-child\" to come before selector \".table.lined tr:last-child td\", at line 2320 (no-descending-specificity)"
+            },
+            {
+              "line": 5663,
+              "column": 1,
+              "endLine": 5663,
+              "endColumn": 27,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".table.geist td:last-child\" to come before selector \".table.lined tr:last-child td\", at line 2320 (no-descending-specificity)"
+            },
+            {
+              "line": 5704,
+              "column": 1,
+              "endLine": 5704,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".side-top .name\" to come before selector \".menu .user .name\", at line 3153 (no-descending-specificity)"
+            },
+            {
+              "line": 5748,
+              "column": 1,
+              "endLine": 5748,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".side-nav a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 5763,
+              "column": 1,
+              "endLine": 5763,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".side-nav a:hover\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 5772,
+              "column": 1,
+              "endLine": 5772,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".side-nav a .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 5824,
+              "column": 1,
+              "endLine": 5824,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".side-nav .back .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 5836,
+              "column": 1,
+              "endLine": 5836,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".side-foot .name\" to come before selector \".menu .user .name\", at line 3153 (no-descending-specificity)"
+            },
+            {
+              "line": 5943,
+              "column": 1,
+              "endLine": 5943,
+              "endColumn": 10,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".task .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 5948,
+              "column": 1,
+              "endLine": 5948,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".task .end\" to come before selector \".stat .head .end\", at line 587 (no-descending-specificity)"
+            },
+            {
+              "line": 5958,
+              "column": 1,
+              "endLine": 5958,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".task.done .text\" to come before selector \".check:has(input:checked) .text\", at line 2546 (no-descending-specificity)"
+            },
+            {
+              "line": 5987,
+              "column": 1,
+              "endLine": 5987,
+              "endColumn": 6,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ring\" to come before selector \".chart .ring\", at line 4654 (no-descending-specificity)"
+            },
+            {
+              "line": 6021,
+              "column": 1,
+              "endLine": 6021,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".check-circle .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 6319,
+              "column": 1,
+              "endLine": 6319,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".snippet .iconbtn\" to come before selector \".toast > .iconbtn:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 6414,
+              "column": 1,
+              "endLine": 6414,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".code-tabs\" to come before selector \".code-block .code-tabs\", at line 6252 (no-descending-specificity)"
+            },
+            {
+              "line": 6436,
+              "column": 1,
+              "endLine": 6436,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".code-tabs .iconbtn\" to come before selector \".toast > .iconbtn:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 6449,
+              "column": 1,
+              "endLine": 6449,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".menu .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 6504,
+              "column": 1,
+              "endLine": 6504,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".empty-state.flat .title\" to come before selector \".panel.chart .chart-head .title\", at line 5265 (no-descending-specificity)"
+            },
+            {
+              "line": 6529,
+              "column": 1,
+              "endLine": 6529,
+              "endColumn": 10,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".subnav a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 6541,
+              "column": 1,
+              "endLine": 6541,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".subnav a:hover\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 6557,
+              "column": 1,
+              "endLine": 6557,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".accordion .item\" to come before selector \".items.boxed .item\", at line 4462 (no-descending-specificity)"
+            },
+            {
+              "line": 6563,
+              "column": 1,
+              "endLine": 6563,
+              "endColumn": 28,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".accordion .item:last-child\" to come before selector \".items.striped .item:nth-child(odd)\", at line 5984 (no-descending-specificity)"
+            },
+            {
+              "line": 6566,
+              "column": 1,
+              "endLine": 6566,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".accordion .sub\" to come before selector \".table td .sub\", at line 2421 (no-descending-specificity)"
+            },
+            {
+              "line": 6570,
+              "column": 1,
+              "endLine": 6570,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".accordion .sub .item\" to come before selector \".items.striped .item:nth-child(odd)\", at line 5984 (no-descending-specificity)"
+            },
+            {
+              "line": 6573,
+              "column": 1,
+              "endLine": 6573,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".accordion .item .title\" to come before selector \".panel.chart .chart-head .title\", at line 5265 (no-descending-specificity)"
+            },
+            {
+              "line": 6599,
+              "column": 1,
+              "endLine": 6599,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".acc-bar .lead-chev\" to come before selector \".item[aria-expanded=\"true\"] .lead-chev\", at line 6043 (no-descending-specificity)"
+            },
+            {
+              "line": 6634,
+              "column": 1,
+              "endLine": 6634,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".kv-grid .v\" to come before selector \".menu .kv-row .v\", at line 6465 (no-descending-specificity)"
+            },
+            {
+              "line": 6668,
+              "column": 1,
+              "endLine": 6668,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".logrow .t b\" to come before selector \".stat .meter .meter-label.lg b\", at line 759 (no-descending-specificity)"
+            },
+            {
+              "line": 6737,
+              "column": 1,
+              "endLine": 6737,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".link-card .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 6743,
+              "column": 1,
+              "endLine": 6743,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".link-card .desc\" to come before selector \".panel-b.form.disabled .desc\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 6748,
+              "column": 1,
+              "endLine": 6748,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".link-card .badge\" to come before selector \".item .meta .badge\", at line 4507 (no-descending-specificity)"
+            },
+            {
+              "line": 6762,
+              "column": 1,
+              "endLine": 6762,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".rec-card .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 6767,
+              "column": 1,
+              "endLine": 6767,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".rec-card .desc\" to come before selector \".panel-b.form.disabled .desc\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 6781,
+              "column": 1,
+              "endLine": 6781,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat-strip button\" to come before selector \".switch button:hover\", at line 1228 (no-descending-specificity)"
+            },
+            {
+              "line": 6799,
+              "column": 1,
+              "endLine": 6799,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat-strip .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 6806,
+              "column": 1,
+              "endLine": 6806,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".stat-strip .value\" to come before selector \".gauge.tiny .value\", at line 3701 (no-descending-specificity)"
+            },
+            {
+              "line": 6829,
+              "column": 1,
+              "endLine": 6829,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".metric-list button\" to come before selector \".switch button:hover\", at line 1228 (no-descending-specificity)"
+            },
+            {
+              "line": 6847,
+              "column": 1,
+              "endLine": 6847,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".metric-list .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 6854,
+              "column": 1,
+              "endLine": 6854,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".metric-list .value\" to come before selector \".gauge.tiny .value\", at line 3701 (no-descending-specificity)"
+            },
+            {
+              "line": 6861,
+              "column": 1,
+              "endLine": 6861,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".metric-list .value small\" to come before selector \".bar-row .head .value small\", at line 4388 (no-descending-specificity)"
+            },
+            {
+              "line": 6872,
+              "column": 1,
+              "endLine": 6872,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".threshold i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 6916,
+              "column": 1,
+              "endLine": 6916,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".usage-sum .row2 b\" to come before selector \".stat .meter .meter-label.lg b\", at line 759 (no-descending-specificity)"
+            },
+            {
+              "line": 6930,
+              "column": 1,
+              "endLine": 6930,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".usage-sum .bar i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 6943,
+              "column": 1,
+              "endLine": 6943,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".classes .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 6980,
+              "column": 1,
+              "endLine": 6980,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".classes .rowline b\" to come before selector \".stat .meter .meter-label.lg b\", at line 759 (no-descending-specificity)"
+            },
+            {
+              "line": 6993,
+              "column": 1,
+              "endLine": 6993,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".severity i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 7020,
+              "column": 1,
+              "endLine": 7020,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".issue .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 7027,
+              "column": 1,
+              "endLine": 7027,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".issue .desc\" to come before selector \".panel-b.form.disabled .desc\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 7079,
+              "column": 1,
+              "endLine": 7079,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".option > input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 7087,
+              "column": 1,
+              "endLine": 7087,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".option .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 7101,
+              "column": 1,
+              "endLine": 7101,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".option .sub\" to come before selector \".table td .sub\", at line 2421 (no-descending-specificity)"
+            },
+            {
+              "line": 7114,
+              "column": 1,
+              "endLine": 7114,
+              "endColumn": 33,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".option:has(input:checked) .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 7165,
+              "column": 1,
+              "endLine": 7165,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".choicebox .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 7171,
+              "column": 1,
+              "endLine": 7171,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".choicebox .sub\" to come before selector \".table td .sub\", at line 2421 (no-descending-specificity)"
+            },
+            {
+              "line": 7177,
+              "column": 1,
+              "endLine": 7177,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".choicebox > input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 7196,
+              "column": 1,
+              "endLine": 7196,
+              "endColumn": 33,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".choicebox > input:focus-visible\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 7221,
+              "column": 1,
+              "endLine": 7221,
+              "endColumn": 38,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".choicebox:has(input:checked) > input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 7224,
+              "column": 1,
+              "endLine": 7224,
+              "endColumn": 36,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".choicebox:has(input:checked) .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 7231,
+              "column": 1,
+              "endLine": 7231,
+              "endColumn": 38,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".choicebox:has(input[disabled]) .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 7235,
+              "column": 1,
+              "endLine": 7235,
+              "endColumn": 29,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".choicebox > input[disabled]\" to come before selector \".checkbox input[disabled]:checked\", at line 1595 (no-descending-specificity)"
+            },
+            {
+              "line": 7261,
+              "column": 1,
+              "endLine": 7261,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".matrix .group td\" to come before selector \".table.flush td:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 7273,
+              "column": 1,
+              "endLine": 7273,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".matrix td a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 7294,
+              "column": 1,
+              "endLine": 7294,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".setting-row .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 7299,
+              "column": 1,
+              "endLine": 7299,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".setting-row .desc\" to come before selector \".panel-b.form.disabled .desc\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 7304,
+              "column": 1,
+              "endLine": 7304,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".setting-row .end\" to come before selector \".stat .head .end\", at line 587 (no-descending-specificity)"
+            },
+            {
+              "line": 7314,
+              "column": 1,
+              "endLine": 7314,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".setting-row .lead-chev\" to come before selector \".item[aria-expanded=\"true\"] .lead-chev\", at line 6043 (no-descending-specificity)"
+            },
+            {
+              "line": 7327,
+              "column": 1,
+              "endLine": 7327,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".select-list .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 7340,
+              "column": 1,
+              "endLine": 7340,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".select-list .item\" to come before selector \".items.boxed .item\", at line 4462 (no-descending-specificity)"
+            },
+            {
+              "line": 7346,
+              "column": 1,
+              "endLine": 7346,
+              "endColumn": 30,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".select-list .item:last-child\" to come before selector \".items.striped .item:nth-child(odd)\", at line 5984 (no-descending-specificity)"
+            },
+            {
+              "line": 7349,
+              "column": 1,
+              "endLine": 7349,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".select-list .item .title\" to come before selector \".panel.chart .chart-head .title\", at line 5265 (no-descending-specificity)"
+            },
+            {
+              "line": 7370,
+              "column": 1,
+              "endLine": 7370,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".plan-head .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 7376,
+              "column": 1,
+              "endLine": 7376,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".plan-head .range\" to come before selector \".classes .head .range\", at line 6953 (no-descending-specificity)"
+            },
+            {
+              "line": 7381,
+              "column": 1,
+              "endLine": 7381,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".plan-head .actions\" to come before selector \".select-list .head .actions\", at line 7337 (no-descending-specificity)"
+            },
+            {
+              "line": 7404,
+              "column": 1,
+              "endLine": 7404,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".icon-row .ricon\" to come before selector \".stat .head .ricon\", at line 690 (no-descending-specificity)"
+            },
+            {
+              "line": 7416,
+              "column": 1,
+              "endLine": 7416,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".icon-row .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 7421,
+              "column": 1,
+              "endLine": 7421,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".icon-row .value\" to come before selector \".gauge.tiny .value\", at line 3701 (no-descending-specificity)"
+            },
+            {
+              "line": 7427,
+              "column": 1,
+              "endLine": 7427,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".icon-row .end\" to come before selector \".stat .head .end\", at line 587 (no-descending-specificity)"
+            },
+            {
+              "line": 7445,
+              "column": 1,
+              "endLine": 7445,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".icon-row .bar i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 7461,
+              "column": 1,
+              "endLine": 7461,
+              "endColumn": 23,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".section-title + .desc\" to come before selector \".panel-b.form.disabled .desc\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 7467,
+              "column": 1,
+              "endLine": 7467,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".section-title + .desc a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 7493,
+              "column": 1,
+              "endLine": 7493,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".deploy-row > *\" to come before selector \".legend.list > *\", at line 4355 (no-descending-specificity)"
+            },
+            {
+              "line": 7499,
+              "column": 1,
+              "endLine": 7499,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".deploy-row .mono\" to come before selector \".item .title .mono\", at line 4542 (no-descending-specificity)"
+            },
+            {
+              "line": 7503,
+              "column": 1,
+              "endLine": 7503,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".deploy-row .when\" to come before selector \".chart .tip .when\", at line 4836 (no-descending-specificity)"
+            },
+            {
+              "line": 7526,
+              "column": 1,
+              "endLine": 7526,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-row .logo\" to come before selector \".appbar .brand .logo\", at line 4089 (no-descending-specificity)"
+            },
+            {
+              "line": 7541,
+              "column": 1,
+              "endLine": 7541,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-row .name\" to come before selector \".menu .user .name\", at line 3153 (no-descending-specificity)"
+            },
+            {
+              "line": 7549,
+              "column": 1,
+              "endLine": 7549,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-row .sub\" to come before selector \".table td .sub\", at line 2421 (no-descending-specificity)"
+            },
+            {
+              "line": 7567,
+              "column": 1,
+              "endLine": 7567,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-row .commit .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 7572,
+              "column": 1,
+              "endLine": 7572,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-row .end\" to come before selector \".stat .head .end\", at line 587 (no-descending-specificity)"
+            },
+            {
+              "line": 7652,
+              "column": 1,
+              "endLine": 7652,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".breadcrumbs a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 7656,
+              "column": 1,
+              "endLine": 7656,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".breadcrumbs a:hover\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 7660,
+              "column": 1,
+              "endLine": 7660,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".breadcrumbs .sep\" to come before selector \".appbar .crumbs .sep\", at line 4169 (no-descending-specificity)"
+            },
+            {
+              "line": 7669,
+              "column": 1,
+              "endLine": 7669,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".breadcrumbs.menu a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 7681,
+              "column": 1,
+              "endLine": 7681,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".breadcrumbs .sep .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 7728,
+              "column": 1,
+              "endLine": 7728,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".site-banner b\" to come before selector \".stat .desc b\", at line 725 (no-descending-specificity)"
+            },
+            {
+              "line": 7732,
+              "column": 1,
+              "endLine": 7732,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".site-banner .btn\" to come before selector \".btn-group > .btn:first-child\", at line 1065 (no-descending-specificity)"
+            },
+            {
+              "line": 7754,
+              "column": 1,
+              "endLine": 7754,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-banner .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 7760,
+              "column": 1,
+              "endLine": 7760,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-banner a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 7761,
+              "column": 1,
+              "endLine": 7761,
+              "endColumn": 23,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-banner button\" to come before selector \".switch button:hover\", at line 1228 (no-descending-specificity)"
+            },
+            {
+              "line": 7778,
+              "column": 1,
+              "endLine": 7778,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-banner.success a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 7787,
+              "column": 1,
+              "endLine": 7787,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-banner.warning a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 7796,
+              "column": 1,
+              "endLine": 7796,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".project-banner.error a\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 7801,
+              "column": 1,
+              "endLine": 7801,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".error-text\" to come before selector \".panel .error-text\", at line 5194 (no-descending-specificity)"
+            },
+            {
+              "line": 7806,
+              "column": 1,
+              "endLine": 7806,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".error-text b\" to come before selector \".stat .desc b\", at line 725 (no-descending-specificity)"
+            },
+            {
+              "line": 7809,
+              "column": 1,
+              "endLine": 7809,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".error-text a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 7817,
+              "column": 1,
+              "endLine": 7817,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".error-text a .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 7835,
+              "column": 1,
+              "endLine": 7835,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".error-card .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 7841,
+              "column": 1,
+              "endLine": 7841,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".error-card .message\" to come before selector \".empty-state.flat .message\", at line 6509 (no-descending-specificity)"
+            },
+            {
+              "line": 7853,
+              "column": 1,
+              "endLine": 7853,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".items.entity .item\" to come before selector \".items.striped .item:nth-child(odd)\", at line 5984 (no-descending-specificity)"
+            },
+            {
+              "line": 7890,
+              "column": 1,
+              "endLine": 7890,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".load-more.no-radius .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 7912,
+              "column": 1,
+              "endLine": 7912,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".show-more .btn\" to come before selector \".btn-group > .btn:first-child\", at line 1065 (no-descending-specificity)"
+            },
+            {
+              "line": 7919,
+              "column": 1,
+              "endLine": 7919,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".show-more .btn .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 7922,
+              "column": 1,
+              "endLine": 7922,
+              "endColumn": 29,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".show-more.expanded .btn .ic\" to come before selector \".select-list .item .meta .check-circle .ic\", at line 7357 (no-descending-specificity)"
+            },
+            {
+              "line": 7932,
+              "column": 1,
+              "endLine": 7932,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".pagination a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 7939,
+              "column": 1,
+              "endLine": 7939,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".pagination a small\" to come before selector \".kv .key small\", at line 2223 (no-descending-specificity)"
+            },
+            {
+              "line": 7944,
+              "column": 1,
+              "endLine": 7944,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".pagination a b\" to come before selector \".stat .desc b\", at line 725 (no-descending-specificity)"
+            },
+            {
+              "line": 8163,
+              "column": 1,
+              "endLine": 8163,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".theme-switch button\" to come before selector \".switch button:hover\", at line 1228 (no-descending-specificity)"
+            },
+            {
+              "line": 8178,
+              "column": 1,
+              "endLine": 8178,
+              "endColumn": 42,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".theme-switch button[aria-pressed=\"true\"]\" to come before selector \".code-tabs .switch button[aria-pressed=\"true\"]\", at line 6432 (no-descending-specificity)"
+            },
+            {
+              "line": 8183,
+              "column": 1,
+              "endLine": 8183,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".theme-switch button .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 8194,
+              "column": 1,
+              "endLine": 8194,
+              "endColumn": 28,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".theme-switch.sm button .ic\" to come before selector \".empty-state.flat .icon-tile .ic\", at line 6500 (no-descending-specificity)"
+            },
+            {
+              "line": 8212,
+              "column": 1,
+              "endLine": 8212,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".copy-text .text\" to come before selector \".check:has(input:checked) .text\", at line 2546 (no-descending-specificity)"
+            },
+            {
+              "line": 8217,
+              "column": 1,
+              "endLine": 8217,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".copy-text .iconbtn\" to come before selector \".toast > .iconbtn:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 8280,
+              "column": 1,
+              "endLine": 8280,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".book .icon\" to come before selector \".stat .head .icon\", at line 595 (no-descending-specificity)"
+            },
+            {
+              "line": 8290,
+              "column": 1,
+              "endLine": 8290,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".book .icon ::slotted(*)\" to come before selector \".field .affix > span ::slotted(*)\", at line 2703 (no-descending-specificity)"
+            },
+            {
+              "line": 8303,
+              "column": 1,
+              "endLine": 8303,
+              "endColumn": 33,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".book .illustration ::slotted(*)\" to come before selector \".field .affix > span ::slotted(*)\", at line 2703 (no-descending-specificity)"
+            },
+            {
+              "line": 8308,
+              "column": 1,
+              "endLine": 8308,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".book .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 8379,
+              "column": 1,
+              "endLine": 8379,
+              "endColumn": 23,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".browser-bar .lights i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 8409,
+              "column": 1,
+              "endLine": 8409,
+              "endColumn": 27,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".browser-bar .address span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8489,
+              "column": 1,
+              "endLine": 8489,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".calendar .cal-main\" to come before selector \".calendar.horizontal .cal-main\", at line 8486 (no-descending-specificity)"
+            },
+            {
+              "line": 8495,
+              "column": 1,
+              "endLine": 8495,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".calendar .cal-form\" to come before selector \".calendar.horizontal .cal-form\", at line 8479 (no-descending-specificity)"
+            },
+            {
+              "line": 8510,
+              "column": 1,
+              "endLine": 8510,
+              "endColumn": 33,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".calendar .cal-form .field input\" to come before selector \".field .affix > .inset:first-child > input\", at line 2747 (no-descending-specificity)"
+            },
+            {
+              "line": 8518,
+              "column": 1,
+              "endLine": 8518,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".calendar .cal-form .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 8564,
+              "column": 1,
+              "endLine": 8564,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-head .iconbtn\" to come before selector \".toast > .iconbtn:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 8583,
+              "column": 1,
+              "endLine": 8583,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-join > .btn\" to come before selector \".btn-group > .btn:first-child\", at line 1065 (no-descending-specificity)"
+            },
+            {
+              "line": 8590,
+              "column": 1,
+              "endLine": 8590,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-join.sm > .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 8600,
+              "column": 1,
+              "endLine": 8600,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-join > * + *\" to come before selector \".legend.list > *\", at line 4355 (no-descending-specificity)"
+            },
+            {
+              "line": 8607,
+              "column": 1,
+              "endLine": 8607,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-join.stacked > .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 8622,
+              "column": 1,
+              "endLine": 8622,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-period\" to come before selector \".cal-join > .cal-period\", at line 8583 (no-descending-specificity)"
+            },
+            {
+              "line": 8640,
+              "column": 1,
+              "endLine": 8640,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-period:hover\" to come before selector \".cal-join.sm > .cal-period\", at line 8590 (no-descending-specificity)"
+            },
+            {
+              "line": 8650,
+              "column": 1,
+              "endLine": 8650,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-trigger .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 8658,
+              "column": 1,
+              "endLine": 8658,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid th\" to come before selector \".table.flush th:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 8667,
+              "column": 1,
+              "endLine": 8667,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td\" to come before selector \".table td:first-child\", at line 2278 (no-descending-specificity)"
+            },
+            {
+              "line": 8671,
+              "column": 1,
+              "endLine": 8671,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td span\" to come before selector \".note.sm > span\", at line 2126 (no-descending-specificity)"
+            },
+            {
+              "line": 8683,
+              "column": 1,
+              "endLine": 8683,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td span:hover\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8686,
+              "column": 1,
+              "endLine": 8686,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td.out span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8689,
+              "column": 1,
+              "endLine": 8689,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td.far span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8692,
+              "column": 1,
+              "endLine": 8692,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td.range span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8697,
+              "column": 1,
+              "endLine": 8697,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td.start span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8698,
+              "column": 1,
+              "endLine": 8698,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td.end span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8699,
+              "column": 1,
+              "endLine": 8699,
+              "endColumn": 27,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td.selected span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8704,
+              "column": 1,
+              "endLine": 8704,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td.today span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8707,
+              "column": 1,
+              "endLine": 8707,
+              "endColumn": 40,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td[aria-disabled=\"true\"] span\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8711,
+              "column": 1,
+              "endLine": 8711,
+              "endColumn": 32,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-grid td span:focus-visible\" to come before selector \".field .affix > span:first-child\", at line 2707 (no-descending-specificity)"
+            },
+            {
+              "line": 8726,
+              "column": 1,
+              "endLine": 8726,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cal-presets .btn\" to come before selector \".btn-group > .btn:first-child\", at line 1065 (no-descending-specificity)"
+            },
+            {
+              "line": 8742,
+              "column": 1,
+              "endLine": 8742,
+              "endColumn": 19,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".clearable > input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 8753,
+              "column": 1,
+              "endLine": 8753,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".clearable.cmdk > input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 8759,
+              "column": 1,
+              "endLine": 8759,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".clearable > input:hover\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 8762,
+              "column": 1,
+              "endLine": 8762,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".clearable > input:focus\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 8767,
+              "column": 1,
+              "endLine": 8767,
+              "endColumn": 29,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".clearable > input[disabled]\" to come before selector \".checkbox input[disabled]:checked\", at line 1595 (no-descending-specificity)"
+            },
+            {
+              "line": 8772,
+              "column": 1,
+              "endLine": 8772,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".clearable .end\" to come before selector \".stat .head .end\", at line 587 (no-descending-specificity)"
+            },
+            {
+              "line": 8781,
+              "column": 1,
+              "endLine": 8781,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".clearable .x\" to come before selector \".toast > .x:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 8802,
+              "column": 1,
+              "endLine": 8802,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox > input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 8812,
+              "column": 1,
+              "endLine": 8812,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox > input:focus\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 8817,
+              "column": 1,
+              "endLine": 8817,
+              "endColumn": 28,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox > input[disabled]\" to come before selector \".checkbox input[disabled]:checked\", at line 1595 (no-descending-specificity)"
+            },
+            {
+              "line": 8821,
+              "column": 1,
+              "endLine": 8821,
+              "endColumn": 39,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox > input[aria-invalid=\"true\"]\" to come before selector \".field input[aria-invalid=\"true\"]:focus\", at line 2646 (no-descending-specificity)"
+            },
+            {
+              "line": 8822,
+              "column": 1,
+              "endLine": 8822,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox.errored > input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 8828,
+              "column": 1,
+              "endLine": 8828,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox > .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 8836,
+              "column": 1,
+              "endLine": 8836,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox > .x\" to come before selector \".toast > .x:hover\", at line 3990 (no-descending-specificity)"
+            },
+            {
+              "line": 8851,
+              "column": 1,
+              "endLine": 8851,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox.sm > input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 8854,
+              "column": 1,
+              "endLine": 8854,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox.lg > input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 8882,
+              "column": 1,
+              "endLine": 8882,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox-option .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 8892,
+              "column": 1,
+              "endLine": 8892,
+              "endColumn": 29,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".combobox-option.auto .label\" to come before selector \".stat .head:has(.icon.tile) .label\", at line 619 (no-descending-specificity)"
+            },
+            {
+              "line": 8932,
+              "column": 1,
+              "endLine": 8932,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cmdk-input input\" to come before selector \".toggle input:checked\", at line 1455 (no-descending-specificity)"
+            },
+            {
+              "line": 8946,
+              "column": 1,
+              "endLine": 8946,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cmdk-input input:focus\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 8979,
+              "column": 1,
+              "endLine": 8979,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".cmdk-item .end\" to come before selector \".stat .head .end\", at line 587 (no-descending-specificity)"
+            },
+            {
+              "line": 9029,
+              "column": 1,
+              "endLine": 9029,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".context-card .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 9035,
+              "column": 1,
+              "endLine": 9035,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".context-card .desc\" to come before selector \".panel-b.form.disabled .desc\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 9052,
+              "column": 1,
+              "endLine": 9052,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".context-card .rows b\" to come before selector \".stat .meter .meter-label.lg b\", at line 759 (no-descending-specificity)"
+            },
+            {
+              "line": 9056,
+              "column": 1,
+              "endLine": 9056,
+              "endColumn": 23,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".context-card .actions\" to come before selector \".select-list .head .actions\", at line 7337 (no-descending-specificity)"
+            },
+            {
+              "line": 9093,
+              "column": 1,
+              "endLine": 9093,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".drawer .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 9104,
+              "column": 1,
+              "endLine": 9104,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".drawer .actions\" to come before selector \".select-list .head .actions\", at line 7337 (no-descending-specificity)"
+            },
+            {
+              "line": 9181,
+              "column": 1,
+              "endLine": 9181,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".feedback-panel .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 9193,
+              "column": 1,
+              "endLine": 9193,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".feedback-panel .body\" to come before selector \".drawer.scroll .body\", at line 9112 (no-descending-specificity)"
+            },
+            {
+              "line": 9196,
+              "column": 1,
+              "endLine": 9196,
+              "endColumn": 25,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".feedback-panel textarea\" to come before selector \".field.lg textarea\", at line 2620 (no-descending-specificity)"
+            },
+            {
+              "line": 9223,
+              "column": 1,
+              "endLine": 9223,
+              "endColumn": 27,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".feedback-panel .foot .btn\" to come before selector \".btn-group.split > .btn:first-child\", at line 1077 (no-descending-specificity)"
+            },
+            {
+              "line": 9246,
+              "column": 1,
+              "endLine": 9246,
+              "endColumn": 8,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 9247,
+              "column": 1,
+              "endLine": 9247,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree button\" to come before selector \".switch button:hover\", at line 1228 (no-descending-specificity)"
+            },
+            {
+              "line": 9269,
+              "column": 1,
+              "endLine": 9269,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree a:hover\" to come before selector \".stat .foot.bar a\", at line 851 (no-descending-specificity)"
+            },
+            {
+              "line": 9274,
+              "column": 1,
+              "endLine": 9274,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree summary .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 9279,
+              "column": 1,
+              "endLine": 9279,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree a .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 9280,
+              "column": 1,
+              "endLine": 9280,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree button .ic\" to come before selector \".stat .meta .ic\", at line 738 (no-descending-specificity)"
+            },
+            {
+              "line": 9286,
+              "column": 1,
+              "endLine": 9286,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree summary .caret\" to come before selector \".fold[data-open=\"true\"] .fold-h .caret\", at line 5453 (no-descending-specificity)"
+            },
+            {
+              "line": 9293,
+              "column": 1,
+              "endLine": 9293,
+              "endColumn": 37,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree details[open] > summary .caret\" to come before selector \".fold[data-open=\"true\"] .fold-h .caret\", at line 5453 (no-descending-specificity)"
+            },
+            {
+              "line": 9309,
+              "column": 1,
+              "endLine": 9309,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".tree .type .ic\" to come before selector \".description dt .info .ic\", at line 886 (no-descending-specificity)"
+            },
+            {
+              "line": 9361,
+              "column": 1,
+              "endLine": 9361,
+              "endColumn": 23,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".entity-content .title\" to come before selector \".table td .title\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 9368,
+              "column": 1,
+              "endLine": 9368,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".entity-content .desc\" to come before selector \".panel-b.form.disabled .desc\", at line 5190 (no-descending-specificity)"
+            },
+            {
+              "line": 9489,
+              "column": 1,
+              "endLine": 9489,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".json .row\" to come before selector \".chart .tip .row\", at line 4840 (no-descending-specificity)"
+            },
+            {
+              "line": 9495,
+              "column": 1,
+              "endLine": 9495,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".json .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 9500,
+              "column": 1,
+              "endLine": 9500,
+              "endColumn": 20,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".json .kids > .head\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 9504,
+              "column": 1,
+              "endLine": 9504,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".json .head:hover\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 9505,
+              "column": 1,
+              "endLine": 9505,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".json .head:focus-visible\" to come before selector \".stat .head:has(.icon.tile)\", at line 615 (no-descending-specificity)"
+            },
+            {
+              "line": 9515,
+              "column": 1,
+              "endLine": 9515,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".json .caret\" to come before selector \".fold[data-open=\"true\"] .fold-h .caret\", at line 5453 (no-descending-specificity)"
+            },
+            {
+              "line": 9544,
+              "column": 1,
+              "endLine": 9544,
+              "endColumn": 9,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".json .n\" to come before selector \".classes .rowline .n\", at line 6975 (no-descending-specificity)"
+            },
+            {
+              "line": 9578,
+              "column": 1,
+              "endLine": 9578,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ms-row .checkbox\" to come before selector \".checkbox:has(input[disabled])\", at line 1603 (no-descending-specificity)"
+            },
+            {
+              "line": 9581,
+              "column": 1,
+              "endLine": 9581,
+              "endColumn": 24,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ms-row .checkbox input\" to come before selector \".toggle.amber input:checked\", at line 1499 (no-descending-specificity)"
+            },
+            {
+              "line": 9584,
+              "column": 1,
+              "endLine": 9584,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ms-row button\" to come before selector \".switch button:hover\", at line 1228 (no-descending-specificity)"
+            },
+            {
+              "line": 9621,
+              "column": 1,
+              "endLine": 9621,
+              "endColumn": 22,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ms-row:hover .action\" to come before selector \".ms-row button:hover .action\", at line 9619 (no-descending-specificity)"
+            },
+            {
+              "line": 9626,
+              "column": 1,
+              "endLine": 9626,
+              "endColumn": 21,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".ms-row:hover .count\" to come before selector \".ms-row button:hover .count\", at line 9624 (no-descending-specificity)"
+            },
+            {
+              "line": 9658,
+              "column": 1,
+              "endLine": 9658,
+              "endColumn": 16,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".phone .address\" to come before selector \".browser.dark .browser-bar .address\", at line 8437 (no-descending-specificity)"
+            },
+            {
+              "line": 9755,
+              "column": 1,
+              "endLine": 9755,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".video video\" to come before selector \".phone .screen video\", at line 9687 (no-descending-specificity)"
+            },
+            {
+              "line": 9756,
+              "column": 1,
+              "endLine": 9756,
+              "endColumn": 11,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".video img\" to come before selector \".phone .screen img\", at line 9687 (no-descending-specificity)"
+            },
+            {
+              "line": 9803,
+              "column": 1,
+              "endLine": 9803,
+              "endColumn": 26,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".video-controls .progress\" to come before selector \".item .end .progress\", at line 4558 (no-descending-specificity)"
+            },
+            {
+              "line": 9809,
+              "column": 1,
+              "endLine": 9809,
+              "endColumn": 30,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".video-controls .progress > i\" to come before selector \".btn.loading .dots i\", at line 1120 (no-descending-specificity)"
+            },
+            {
+              "line": 9926,
+              "column": 3,
+              "endLine": 9926,
+              "endColumn": 18,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".checkbox input\" to come before selector \".field input:not([type=\"checkbox\"]):not([type=\"radio\"])\", at line 9915 (no-descending-specificity)"
+            },
+            {
+              "line": 9927,
+              "column": 3,
+              "endLine": 9927,
+              "endColumn": 15,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".radio input\" to come before selector \".field input:not([type=\"checkbox\"]):not([type=\"radio\"])\", at line 9915 (no-descending-specificity)"
+            },
+            {
+              "line": 9986,
+              "column": 1,
+              "endLine": 9986,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".markdown p\" to come before selector \".modal-b p + p\", at line 2904 (no-descending-specificity)"
+            },
+            {
+              "line": 10001,
+              "column": 1,
+              "endLine": 10001,
+              "endColumn": 12,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".markdown a\" to come before selector \".stat .foot a\", at line 832 (no-descending-specificity)"
+            },
+            {
+              "line": 10006,
+              "column": 1,
+              "endLine": 10006,
+              "endColumn": 17,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".markdown strong\" to come before selector \".table td strong\", at line 2312 (no-descending-specificity)"
+            },
+            {
+              "line": 10066,
+              "column": 1,
+              "endLine": 10066,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".markdown th\" to come before selector \".table.flush th:first-child\", at line 2284 (no-descending-specificity)"
+            },
+            {
+              "line": 10074,
+              "column": 1,
+              "endLine": 10074,
+              "endColumn": 13,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".markdown td\" to come before selector \".table td:first-child\", at line 2278 (no-descending-specificity)"
+            },
+            {
+              "line": 10079,
+              "column": 1,
+              "endLine": 10079,
+              "endColumn": 14,
+              "rule": "no-descending-specificity",
+              "severity": "error",
+              "text": "Expected selector \".markdown img\" to come before selector \".phone .screen img\", at line 9687 (no-descending-specificity)"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "formatter": {
+    "copiedFiles": [
+      "button.ts",
+      "button.styles.ts",
+      "combobox-option.ts",
+      "book.styles.ts",
+      "format-generated.ts"
+    ],
+    "fixture": "embedded.ts",
+    "writeExit": 0,
+    "secondCheckExit": 0,
+    "formattedFixture": "import { css, html } from \"lit\";\nexport const styles = css`\n  .card {\n    color: red;\n    color: blue;\n    unknown-property: 1;\n  }\n`;\nexport const view = html`<img src=\"example.png\" /><button\n    @click=${() => {}}\n    .disabled=${false}\n  >\n    Save\n  </button>`;\n"
+  },
+  "cssProbeConfig": {
+    "rules": {
+      "property-no-unknown": true,
+      "declaration-block-no-duplicate-properties": true,
+      "declaration-block-no-duplicate-custom-properties": true,
+      "declaration-no-important": true,
+      "no-descending-specificity": true
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.{ts,js,tsx,jsx}"
+        ],
+        "customSyntax": "postcss-lit"
+      }
+    ]
+  },
+  "limitations": [
+    "Original Oxlint JSON captured through a pipe ended prematurely; a direct-file capture was complete. Root cause not established.",
+    "Different tools checked different file types/rules; counts and one-run timings are not comparable performance scores.",
+    "TypeScript-Go differs from the installed TypeScript 5.9 compiler; successful execution does not establish equivalence.",
+    "CSS syntax adapters have interpolation limits; no parser errors is not proof every template was analyzed.",
+    "Intentional generated CSS fallback declarations can be reported as duplicates.",
+    "No project autofix, init, editor installation, dependency change or build occurred."
+  ],
+  "reproduction": [
+    "Install the exact candidate versions in a fresh scratch directory with bun add --ignore-scripts.",
+    "Create oxlint.config.ts extending ultracite/oxlint/core and explicitly preserving its ignorePatterns for this baseline probe.",
+    "Run the scratch Oxlint CLI with Bun and --format json against src scripts docs-src from the repository; use direct-file output for a complete report.",
+    "Repeat with --type-aware --type-check; keep the existing project TypeScript check independently.",
+    "Run Biome check with --formatter-enabled=false --assist-enabled=false --reporter=json.",
+    "Use the saved CSS probe config with Stylelint under Bun, resolving postcss-lit from the scratch directory.",
+    "Copy representative Lit files into scratch, apply ultracite/oxfmt, then run a second --check. Do not format the repository during research."
+  ]
+}

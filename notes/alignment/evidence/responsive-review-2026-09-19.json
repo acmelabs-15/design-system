@@ -1,0 +1,69 @@
+{
+  "date": "2026-09-19",
+  "selected": {
+    "scope": [
+      "layout",
+      "typography",
+      "component sizes",
+      "appropriate visual variants"
+    ],
+    "defaultBands": "Material five bands",
+    "referenceThresholds": [
+      600,
+      840,
+      1200,
+      1600
+    ],
+    "browserFontScaling": true,
+    "derivedRemThresholdsAt16px": [
+      37.5,
+      52.5,
+      75,
+      100
+    ],
+    "boxPrimitive": true
+  },
+  "open": [
+    "Public breakpoint names and attribute/property syntax",
+    "Exact range boundaries and supported per-property values",
+    "Custom configuration and window/container contract",
+    "Final browser verification"
+  ],
+  "localEvidence": {
+    "files": [
+      "src/components/grid/grid.ts",
+      "src/components/grid/grid.styles.ts",
+      "src/components/grid-cell/grid-cell.ts",
+      "src/components/grid-system/grid-system.ts"
+    ],
+    "observations": [
+      "Existing Responsive<T> and JSON converter",
+      "Grid-specific required sm and neighbour-filling rules",
+      "Truthy fallback operators need review for zero/false values",
+      "Viewport and container CSS queries and use-container are already present",
+      "No house responsive source was changed"
+    ]
+  },
+  "chakra": {
+    "version": "3.37.0",
+    "artifact": "https://registry.npmjs.org/@chakra-ui/react/-/react-3.37.0.tgz",
+    "inspectedFile": "package/dist/esm/styled-system/breakpoints.js",
+    "sourceFiles": [
+      "packages/react/src/styled-system/breakpoints.ts",
+      "packages/react/src/styled-system/normalize.ts",
+      "packages/react/src/styled-system/conditions.ts",
+      "packages/react/src/styled-system/unit-conversion.ts"
+    ],
+    "discrepancy": "Docs describe smDown as including the small band; published builder stops below its starting threshold, with max adjusted by 0.04px.",
+    "scope": "Source/artifact inspection, not a browser test of Chakra"
+  },
+  "standards": {
+    "url": "https://drafts.csswg.org/mediaqueries-4/#units",
+    "finding": "Relative media-query units use initial font values/user preferences, not page-authored font-size declarations."
+  },
+  "boxReferences": [
+    "https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/components/box/index.ts",
+    "https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/box.tsx"
+  ],
+  "materialWeb": "Targeted tree searches found no equivalent Box or general responsive layout component; no native implementation inferred from tokens."
+}
