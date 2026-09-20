@@ -1,0 +1,147 @@
+{
+  "capturedAt": "2026-09-20T13:56:32.759Z",
+  "scope": "Persist Plan-mode layout scope/tag selections and Chakra invalid-style source correction",
+  "answers": [
+    {
+      "id": "layout_shared_styling_scope",
+      "answer": "Share the set (Recommended)",
+      "meaning": "Box, Flex, Stack/HStack/VStack, Grid, Simple Grid and Group share the focused styling set: spacing, dimensions, positioning, visibility, colors, borders, corners, shadows and parent placement.",
+      "limits": "Scope choice only; exact properties/types, native as sets and unverified behavior are not approved."
+    },
+    {
+      "id": "layout_structural_tags",
+      "answer": "Share Box’s set (Recommended)",
+      "meaning": "Flex, Stack/HStack/VStack, Grid, Simple Grid and Group support Box's div/span/section/article/main/nav/aside/header/footer native set, div default, retaining flex/grid arrangement; span requires phrasing content.",
+      "limits": "Real wrapper geometry and accessible semantics require verification; no arbitrary as/asChild support or implementation approval."
+    },
+    {
+      "id": "invalid_layout_style_input",
+      "answer": "whatever chakra does",
+      "meaning": "Peter requests matching Chakra's actual behavior; neither offered policy selected. Inspect source before deriving policy, distinguish React style inputs from house HTML JSON.",
+      "resolved": "partially",
+      "sourceFinding": "The pinned Chakra style pipeline derives styles from current props, skips nullish leaves, transforms token values or raw values, serializes CSS and replaces the generated class. It does not implement a last-valid-input store or universal CSS-value validation. JavaScript object inputs mean house HTML JSON decoding has no direct Chakra counterpart.",
+      "direction": "Follow Chakra's current-input CSS behavior for comparable style values; withdraw the previous last-valid-value recommendation. Do not automatically equate this with clearing every malformed input or with a universal development warning.",
+      "unresolved": "Malformed HTML JSON and structurally invalid house responsive data have no demonstrated Chakra equivalent. Keep a bounded converter-contract gap; do not infer user selection of either offered fallback.",
+      "verification": "Complete pinned source inspection of css.ts, serialize.ts, use-resolved-props.ts, utility.ts, system.ts, factory.tsx, conditions.ts, normalize.ts. No new browser run.",
+      "sources": [
+        "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/css.ts",
+        "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/serialize.ts",
+        "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/use-resolved-props.ts",
+        "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/utility.ts",
+        "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/system.ts",
+        "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/factory.tsx",
+        "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/conditions.ts",
+        "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/normalize.ts"
+      ]
+    }
+  ],
+  "approvedComponentEntries": [],
+  "newProductionBehaviorImplemented": false,
+  "sourceInspection": {
+    "commit": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+    "repository": "https://github.com/chakra-ui/chakra-ui",
+    "files": [
+      {
+        "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/css.ts",
+        "coverage": "Complete source file read",
+        "lines": 90
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/serialize.ts",
+        "coverage": "Complete source file read",
+        "lines": 85
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/use-resolved-props.ts",
+        "coverage": "Complete source file read",
+        "lines": 78
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/utility.ts",
+        "coverage": "Complete source file read",
+        "lines": 219
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/system.ts",
+        "coverage": "Complete source file read",
+        "lines": 326
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/factory.tsx",
+        "coverage": "Complete source file read",
+        "lines": 312
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/conditions.ts",
+        "coverage": "Complete source file read",
+        "lines": 49
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/normalize.ts",
+        "coverage": "Complete source file read",
+        "lines": 16
+      }
+    ],
+    "observations": [
+      {
+        "file": "use-resolved-props.ts",
+        "lines": "28-63",
+        "finding": "Computes current style inputs; no separate last-valid-value store."
+      },
+      {
+        "file": "css.ts",
+        "lines": "28-60",
+        "finding": "Skips nullish leaves, transforms/merges current normalized CSS and sorts rules."
+      },
+      {
+        "file": "utility.ts",
+        "lines": "153-185",
+        "finding": "Token or raw input reaches per-property transform; no universal value validator here."
+      },
+      {
+        "file": "system.ts",
+        "lines": "90-123",
+        "finding": "Property-name recognition and responsive-array normalization do not define house JSON behavior."
+      },
+      {
+        "file": "factory.tsx",
+        "lines": "148-208,249-257",
+        "finding": "Current styles become serialized CSS and generated class supplied to the element."
+      },
+      {
+        "file": "conditions.ts",
+        "lines": "14-37",
+        "finding": "Known-condition lookup retains unresolved names; no blanket house responsive validation contract."
+      }
+    ]
+  },
+  "priorEvidence": [
+    "core-layout-proposal-2026-09-20.json",
+    "box-contract-review-2026-09-20.json",
+    "layout-typography-review-2026-09-19.json"
+  ],
+  "recordUpdates": [
+    "notes/decisions/layout-spacing-properties.md",
+    "notes/decisions/additional-component-capabilities.md",
+    "notes/analysis/design-foundations.md",
+    "notes/alignment/inventory.md",
+    "notes/alignment/README.md",
+    "notes/alignment/remaining-work.md",
+    "notes/alignment/phase-2-review.md"
+  ],
+  "withdrawnRecommendation": "Reject invalid complete input and retain previous accepted values as a general house styling policy.",
+  "unresolved": {
+    "question": "Malformed HTML JSON and structurally invalid house responsive inputs",
+    "reason": "No direct Chakra input-path equivalent",
+    "owner": "R01 / E02-E03",
+    "returnPoint": "Before dependent shared-convention and component approval",
+    "keepOpen": true
+  },
+  "verification": {
+    "sourceInspection": true,
+    "runtimeTestsRun": false,
+    "browserTestsRun": false,
+    "dependenciesChanged": false,
+    "fullInventoryApproved": false
+  }
+}

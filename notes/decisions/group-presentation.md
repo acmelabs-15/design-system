@@ -36,4 +36,6 @@ Peter answered “Align with what chakra does” for attached wrapping. Re-read 
 
 Peter again chose Chakra's behaviour for nested appearance defaults. Each nested Group supplies a fresh set of compatible defaults. Unspecified settings use the component defaults, rather than merge the outer Group's defaults. Explicit child settings still override them. CSS theme inheritance is a separate contract and remains unchanged.
 
+The later [Stack separator choice](stack-layout.md#separator-spacing-and-wrapped-lines) makes automatic Stack dividers follow visible rows/columns. It does not revise this Group decision: attached corners still follow member order, without per-wrapped-row correction. Review the two presentation contracts separately when composing them.
+
 Sources: [Group implementation](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/group/group.tsx), [ButtonGroup provider](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/button/button-group.tsx), [choice record](../alignment/evidence/phase-4-checkpoint-2026-09-19.json). These choices do not approve the entire Group inventory entry or source implementation.

@@ -1,0 +1,2629 @@
+{
+  "date": "2026-09-20",
+  "decision": {
+    "id": "C-STYLE-03",
+    "questionId": "lit_style_order_authoring",
+    "answer": "Add Lit helper (Recommended)",
+    "selected": "Add a Lit authoring helper that receives overlapping styles together in an ordered object, preserving the existing declaration-order rule, individual component properties, static HTML authoring and TanStack canonical state.",
+    "limits": "Helper naming, exact ownership, complete input/lifecycle/definition and responsive contracts remain to verify; no production implementation or full inventory approval."
+  },
+  "persisted": true,
+  "next": "Continue C-SPACE with helper naming/types, managed-property ownership and competing writers; bring scoped-registry/adoption behaviour into the shared platform acceptance work. Then complete responsive value/validation, token/density and dependent inventory contracts. Do not re-ask adding the helper, declaration order or absent getters.",
+  "testSource": "\nimport {html,render,nothing,noChange,css} from \"lit\";\nimport {AsyncDirective,directive,PartType} from \"lit/async-directive.js\";\nimport {Capturing} from \"./dist/base.js\";\nconst result=[];\nconst check=(name,actual,expected)=>result.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\nclass Probe extends Capturing {\n static styles=css`#content{padding:24px;padding-inline:4px}`;\n applications=0;\n applyInputs(values){this.applications++;for(const key of [\"padding\",\"paddingInline\"])this[key]=values[key];this.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);}\n}\nclass Inputs extends AsyncDirective {\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\"Element expression required\");}\n element;values={};generation=0;\n render(){return noChange;}\n update(part,[values]){this.element=part.element;this.values={...values};this.schedule(true);return noChange;}\n schedule(explicitUpdate=false){\n  const generation=++this.generation;\n  const registry=this.element.ownerDocument.defaultView.customElements;\n  if(registry.get(this.element.localName)){if(explicitUpdate||this.isConnected)this.apply(generation,explicitUpdate);return;}\n  if(!this.isConnected)return;\n  const weak=new WeakRef(this);\n  registry.whenDefined(this.element.localName).then(()=>weak.deref()?.apply(generation,false));\n }\n apply(generation,explicitUpdate){\n  if(generation!==this.generation||(!explicitUpdate&&!this.isConnected))return;\n  const registry=this.element.ownerDocument.defaultView.customElements;registry.upgrade(this.element);\n  this.element.applyInputs(this.values);\n }\n disconnected(){this.generation++;}\n reconnected(){this.schedule();}\n}\nconst inputs=directive(Inputs);\nconst mount=()=>{const e=document.createElement(\"div\");document.body.append(e);return e;};\nconst settle=async e=>{await Promise.resolve();await Promise.resolve();await e.updateComplete;};\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\"#content\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\ntry{\n const earlyRoot=mount();const drawEarly=v=>render(html`<helper-early ${inputs(v)}></helper-early>`,earlyRoot);\n drawEarly({paddingInline:\"8px\",padding:\"16px\"});const early=earlyRoot.firstElementChild;\n drawEarly({padding:\"20px\",paddingInline:\"4px\"});customElements.define(\"helper-early\",class extends Probe{});await settle(early);\n check(\"definition preserves element identity\",earlyRoot.firstElementChild===early,true);\n check(\"latest pending values win\", [early.padding,early.paddingInline],[\"20px\",\"4px\"]);\n check(\"latest pending order wins\",early.declarationOrder,[\"padding\",\"paddingInline\"]);\n check(\"obsolete pending callback does not apply\",early.applications,1);\n check(\"late definition rendered result\",edges(early),[\"20px\",\"4px\",\"20px\",\"4px\"]);\n drawEarly({paddingInline:\"4px\",padding:\"20px\"});await settle(early);\n check(\"same-value reorder preserves identity\",earlyRoot.firstElementChild===early,true);\n check(\"same-value reorder rendered result\",edges(early),[\"20px\",\"20px\",\"20px\",\"20px\"]);\n drawEarly({paddingInline:\"6px\"});await settle(early);\n check(\"omitted broad input clears canonical value\",early.padding===undefined,true);\n check(\"omission exposes CSS defaults\",edges(early),[\"24px\",\"6px\",\"24px\",\"6px\"]);\n drawEarly({});await settle(early);\n check(\"empty set clears both canonical inputs\",early.padding===undefined&&early.paddingInline===undefined,true);\n check(\"empty set restores CSS defaults\",edges(early),[\"24px\",\"4px\",\"24px\",\"4px\"]);\n const mutable={padding:\"12px\",paddingInline:\"3px\"};drawEarly(mutable);await settle(early);mutable.paddingInline=\"5px\";drawEarly(mutable);await settle(early);\n check(\"same-object updates are read\",edges(early),[\"12px\",\"5px\",\"12px\",\"5px\"]);\n const removedRoot=mount();render(html`<helper-removed ${inputs({padding:\"16px\"})}></helper-removed>`,removedRoot);const removed=removedRoot.firstElementChild;\n render(nothing,removedRoot);customElements.define(\"helper-removed\",class extends Probe{});customElements.upgrade(removed);await Promise.resolve();await Promise.resolve();\n check(\"removed pending directive does not apply after definition\",removed.applications,0);\n const pausedRoot=mount();const drawPaused=v=>render(html`<helper-paused ${inputs(v)}></helper-paused>`,pausedRoot);\n const part=drawPaused({padding:\"16px\",paddingInline:\"8px\"});const paused=pausedRoot.firstElementChild;part.setConnected(false);drawPaused({paddingInline:\"3px\",padding:\"12px\"});\n customElements.define(\"helper-paused\",class extends Probe{});await Promise.resolve();await Promise.resolve();\n check(\"definition while disconnected does not run pending write\",paused.applications,0);\n part.setConnected(true);await settle(paused);\n check(\"reconnect applies newest pending input once\",paused.applications,1);\n check(\"reconnect preserves intended order\",paused.declarationOrder,[\"paddingInline\",\"padding\"]);\n check(\"reconnect rendered result\",edges(paused),[\"12px\",\"12px\",\"12px\",\"12px\"]);\n part.setConnected(false);drawPaused({padding:\"10px\",paddingInline:\"2px\"});\n check(\"explicit update while disconnected updates canonical state synchronously\",[paused.padding,paused.paddingInline],[\"10px\",\"2px\"]);\n part.setConnected(true);await settle(paused);\n check(\"already-defined reconnect preserves order\",edges(paused),[\"10px\",\"2px\",\"10px\",\"2px\"]);\n const detachedRoot=document.createElement(\"div\");render(html`<helper-detached ${inputs({padding:\"18px\",paddingInline:\"7px\"})}></helper-detached>`,detachedRoot);const detached=detachedRoot.firstElementChild;\n customElements.define(\"helper-detached\",class extends Probe{});await Promise.resolve();await Promise.resolve();document.body.append(detachedRoot);await settle(detached);\n check(\"detached rendered tree upgraded on definition\",detached instanceof Probe,true);\n check(\"detached rendered tree keeps values\",edges(detached),[\"18px\",\"7px\",\"18px\",\"7px\"]);\n window.__helperLifecycle={done:true,results:result,passed:result.filter(x=>x.pass).length,total:result.length};\n}catch(error){window.__helperLifecycle={done:true,error:String(error),stack:error.stack,results:result};}\n",
+  "sources": [
+    "https://lit.dev/docs/templates/custom-directives/#async-directives",
+    "https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined",
+    "node_modules/lit-html/development/async-directive.d.ts",
+    "https://dom.spec.whatwg.org/#dom-document-importnode",
+    "https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode",
+    "https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/initialize",
+    "node_modules/lit-html/development/lit-html.d.ts:359",
+    "node_modules/lit-html/development/lit-html.js:725"
+  ],
+  "results": {
+    "baseline": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "errors": [],
+        "result": {
+          "done": true,
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "latest pending order wins",
+              "actual": [
+                "padding",
+                "paddingInline"
+              ],
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": true
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "late definition rendered result",
+              "actual": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-value reorder preserves identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "same-value reorder rendered result",
+              "actual": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "expected": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "omitted broad input clears canonical value",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "omission exposes CSS defaults",
+              "actual": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "expected": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "empty set clears both canonical inputs",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "empty set restores CSS defaults",
+              "actual": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "expected": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-object updates are read",
+              "actual": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "expected": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "removed pending directive does not apply after definition",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "definition while disconnected does not run pending write",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "reconnect applies newest pending input once",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "reconnect preserves intended order",
+              "actual": [
+                "paddingInline",
+                "padding"
+              ],
+              "expected": [
+                "paddingInline",
+                "padding"
+              ],
+              "pass": true
+            },
+            {
+              "name": "reconnect rendered result",
+              "actual": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "expected": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "explicit update while disconnected updates canonical state synchronously",
+              "actual": [
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "already-defined reconnect preserves order",
+              "actual": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree upgraded on definition",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree keeps values",
+              "actual": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "expected": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "pass": true
+            }
+          ],
+          "passed": 21,
+          "total": 21
+        }
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "errors": [],
+        "result": {
+          "done": true,
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "latest pending order wins",
+              "actual": [
+                "padding",
+                "paddingInline"
+              ],
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": true
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "late definition rendered result",
+              "actual": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-value reorder preserves identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "same-value reorder rendered result",
+              "actual": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "expected": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "omitted broad input clears canonical value",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "omission exposes CSS defaults",
+              "actual": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "expected": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "empty set clears both canonical inputs",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "empty set restores CSS defaults",
+              "actual": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "expected": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-object updates are read",
+              "actual": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "expected": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "removed pending directive does not apply after definition",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "definition while disconnected does not run pending write",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "reconnect applies newest pending input once",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "reconnect preserves intended order",
+              "actual": [
+                "paddingInline",
+                "padding"
+              ],
+              "expected": [
+                "paddingInline",
+                "padding"
+              ],
+              "pass": true
+            },
+            {
+              "name": "reconnect rendered result",
+              "actual": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "expected": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "explicit update while disconnected updates canonical state synchronously",
+              "actual": [
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "already-defined reconnect preserves order",
+              "actual": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree upgraded on definition",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree keeps values",
+              "actual": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "expected": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "pass": true
+            }
+          ],
+          "passed": 21,
+          "total": 21
+        }
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "errors": [
+          "Unhandled Promise Rejection: TypeError: this.element.applyInputs is not a function. (In 'this.element.applyInputs(this.values)', 'this.element.applyInputs' is undefined)"
+        ],
+        "result": {
+          "done": true,
+          "error": "TypeError: null is not an object (evaluating 'e.shadowRoot.querySelector')",
+          "stack": "edges@http://127.0.0.1:55545/probe.js:2306:42\nmodule code@http://127.0.0.1:55545/probe.js:2322:49",
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                null,
+                null
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": false
+            },
+            {
+              "name": "latest pending order wins",
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": false
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "expected": 1,
+              "pass": false
+            }
+          ]
+        }
+      }
+    ],
+    "registryExplicit": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "errors": [],
+        "result": {
+          "done": true,
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "latest pending order wins",
+              "actual": [
+                "padding",
+                "paddingInline"
+              ],
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": true
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "late definition rendered result",
+              "actual": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-value reorder preserves identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "same-value reorder rendered result",
+              "actual": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "expected": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "omitted broad input clears canonical value",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "omission exposes CSS defaults",
+              "actual": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "expected": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "empty set clears both canonical inputs",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "empty set restores CSS defaults",
+              "actual": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "expected": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-object updates are read",
+              "actual": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "expected": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "removed pending directive does not apply after definition",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "definition while disconnected does not run pending write",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "reconnect applies newest pending input once",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "reconnect preserves intended order",
+              "actual": [
+                "paddingInline",
+                "padding"
+              ],
+              "expected": [
+                "paddingInline",
+                "padding"
+              ],
+              "pass": true
+            },
+            {
+              "name": "reconnect rendered result",
+              "actual": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "expected": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "explicit update while disconnected updates canonical state synchronously",
+              "actual": [
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "already-defined reconnect preserves order",
+              "actual": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree upgraded on definition",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree keeps values",
+              "actual": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "expected": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "pass": true
+            }
+          ],
+          "passed": 21,
+          "total": 21
+        }
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "errors": [],
+        "result": {
+          "done": true,
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "latest pending order wins",
+              "actual": [
+                "padding",
+                "paddingInline"
+              ],
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": true
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "late definition rendered result",
+              "actual": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-value reorder preserves identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "same-value reorder rendered result",
+              "actual": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "expected": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "omitted broad input clears canonical value",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "omission exposes CSS defaults",
+              "actual": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "expected": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "empty set clears both canonical inputs",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "empty set restores CSS defaults",
+              "actual": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "expected": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-object updates are read",
+              "actual": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "expected": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "removed pending directive does not apply after definition",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "definition while disconnected does not run pending write",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "reconnect applies newest pending input once",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "reconnect preserves intended order",
+              "actual": [
+                "paddingInline",
+                "padding"
+              ],
+              "expected": [
+                "paddingInline",
+                "padding"
+              ],
+              "pass": true
+            },
+            {
+              "name": "reconnect rendered result",
+              "actual": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "expected": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "explicit update while disconnected updates canonical state synchronously",
+              "actual": [
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "already-defined reconnect preserves order",
+              "actual": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree upgraded on definition",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree keeps values",
+              "actual": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "expected": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "pass": true
+            }
+          ],
+          "passed": 21,
+          "total": 21
+        }
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "errors": [],
+        "result": {
+          "done": true,
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "latest pending order wins",
+              "actual": [
+                "padding",
+                "paddingInline"
+              ],
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": true
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "late definition rendered result",
+              "actual": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-value reorder preserves identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "same-value reorder rendered result",
+              "actual": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "expected": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "omitted broad input clears canonical value",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "omission exposes CSS defaults",
+              "actual": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "expected": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "empty set clears both canonical inputs",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "empty set restores CSS defaults",
+              "actual": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "expected": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-object updates are read",
+              "actual": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "expected": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "removed pending directive does not apply after definition",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "definition while disconnected does not run pending write",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "reconnect applies newest pending input once",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "reconnect preserves intended order",
+              "actual": [
+                "paddingInline",
+                "padding"
+              ],
+              "expected": [
+                "paddingInline",
+                "padding"
+              ],
+              "pass": true
+            },
+            {
+              "name": "reconnect rendered result",
+              "actual": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "expected": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "explicit update while disconnected updates canonical state synchronously",
+              "actual": [
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "already-defined reconnect preserves order",
+              "actual": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree upgraded on definition",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree keeps values",
+              "actual": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "expected": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "pass": true
+            }
+          ],
+          "passed": 21,
+          "total": 21
+        }
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "errors": [],
+        "result": {
+          "done": true,
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "latest pending order wins",
+              "actual": [
+                "padding",
+                "paddingInline"
+              ],
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": true
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "late definition rendered result",
+              "actual": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-value reorder preserves identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "same-value reorder rendered result",
+              "actual": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "expected": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "omitted broad input clears canonical value",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "omission exposes CSS defaults",
+              "actual": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "expected": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "empty set clears both canonical inputs",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "empty set restores CSS defaults",
+              "actual": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "expected": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-object updates are read",
+              "actual": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "expected": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "removed pending directive does not apply after definition",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "definition while disconnected does not run pending write",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "reconnect applies newest pending input once",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "reconnect preserves intended order",
+              "actual": [
+                "paddingInline",
+                "padding"
+              ],
+              "expected": [
+                "paddingInline",
+                "padding"
+              ],
+              "pass": true
+            },
+            {
+              "name": "reconnect rendered result",
+              "actual": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "expected": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "explicit update while disconnected updates canonical state synchronously",
+              "actual": [
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "already-defined reconnect preserves order",
+              "actual": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree upgraded on definition",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree keeps values",
+              "actual": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "expected": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "pass": true
+            }
+          ],
+          "passed": 21,
+          "total": 21
+        }
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "errors": [],
+        "result": {
+          "done": true,
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "latest pending order wins",
+              "actual": [
+                "padding",
+                "paddingInline"
+              ],
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": true
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "late definition rendered result",
+              "actual": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-value reorder preserves identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "same-value reorder rendered result",
+              "actual": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "expected": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "omitted broad input clears canonical value",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "omission exposes CSS defaults",
+              "actual": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "expected": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "empty set clears both canonical inputs",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "empty set restores CSS defaults",
+              "actual": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "expected": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-object updates are read",
+              "actual": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "expected": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "removed pending directive does not apply after definition",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "definition while disconnected does not run pending write",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "reconnect applies newest pending input once",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "reconnect preserves intended order",
+              "actual": [
+                "paddingInline",
+                "padding"
+              ],
+              "expected": [
+                "paddingInline",
+                "padding"
+              ],
+              "pass": true
+            },
+            {
+              "name": "reconnect rendered result",
+              "actual": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "expected": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "explicit update while disconnected updates canonical state synchronously",
+              "actual": [
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "already-defined reconnect preserves order",
+              "actual": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree upgraded on definition",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree keeps values",
+              "actual": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "expected": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "pass": true
+            }
+          ],
+          "passed": 21,
+          "total": 21
+        }
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "errors": [],
+        "result": {
+          "done": true,
+          "results": [
+            {
+              "name": "definition preserves element identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "latest pending values win",
+              "actual": [
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "latest pending order wins",
+              "actual": [
+                "padding",
+                "paddingInline"
+              ],
+              "expected": [
+                "padding",
+                "paddingInline"
+              ],
+              "pass": true
+            },
+            {
+              "name": "obsolete pending callback does not apply",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "late definition rendered result",
+              "actual": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "expected": [
+                "20px",
+                "4px",
+                "20px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-value reorder preserves identity",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "same-value reorder rendered result",
+              "actual": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "expected": [
+                "20px",
+                "20px",
+                "20px",
+                "20px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "omitted broad input clears canonical value",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "omission exposes CSS defaults",
+              "actual": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "expected": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "empty set clears both canonical inputs",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "empty set restores CSS defaults",
+              "actual": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "expected": [
+                "24px",
+                "4px",
+                "24px",
+                "4px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "same-object updates are read",
+              "actual": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "expected": [
+                "12px",
+                "5px",
+                "12px",
+                "5px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "removed pending directive does not apply after definition",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "definition while disconnected does not run pending write",
+              "actual": 0,
+              "expected": 0,
+              "pass": true
+            },
+            {
+              "name": "reconnect applies newest pending input once",
+              "actual": 1,
+              "expected": 1,
+              "pass": true
+            },
+            {
+              "name": "reconnect preserves intended order",
+              "actual": [
+                "paddingInline",
+                "padding"
+              ],
+              "expected": [
+                "paddingInline",
+                "padding"
+              ],
+              "pass": true
+            },
+            {
+              "name": "reconnect rendered result",
+              "actual": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "expected": [
+                "12px",
+                "12px",
+                "12px",
+                "12px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "explicit update while disconnected updates canonical state synchronously",
+              "actual": [
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "already-defined reconnect preserves order",
+              "actual": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "expected": [
+                "10px",
+                "2px",
+                "10px",
+                "2px"
+              ],
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree upgraded on definition",
+              "actual": true,
+              "expected": true,
+              "pass": true
+            },
+            {
+              "name": "detached rendered tree keeps values",
+              "actual": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "expected": [
+                "18px",
+                "7px",
+                "18px",
+                "7px"
+              ],
+              "pass": true
+            }
+          ],
+          "passed": 21,
+          "total": 21
+        }
+      }
+    ]
+  },
+  "registrySource": "\nimport {html,render as baseRender,nothing,noChange,css} from \"lit\";\nimport {AsyncDirective,directive,PartType} from \"lit/async-directive.js\";\nimport {Capturing} from \"./dist/base.js\";\nconst creationScope={importNode(node,deep){return \"customElementRegistry\" in Element.prototype ? document.importNode(node,{selfOnly:!deep,customElementRegistry:customElements}) : document.importNode(node,deep);}};\nconst render=(value,container)=>baseRender(value,container,{creationScope});\nconst result=[];\nconst check=(name,actual,expected)=>result.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\nclass Probe extends Capturing {\n static styles=css`#content{padding:24px;padding-inline:4px}`;\n applications=0;\n applyInputs(values){this.applications++;for(const key of [\"padding\",\"paddingInline\"])this[key]=values[key];this.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);}\n}\nclass Inputs extends AsyncDirective {\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\"Element expression required\");}\n element;values={};generation=0;\n render(){return noChange;}\n update(part,[values]){this.element=part.element;this.values={...values};this.schedule(true);return noChange;}\n schedule(explicitUpdate=false){\n  const generation=++this.generation;\n  const registry=this.element.ownerDocument.defaultView.customElements;\n  if(registry.get(this.element.localName)){if(explicitUpdate||this.isConnected)this.apply(generation,explicitUpdate);return;}\n  if(!this.isConnected)return;\n  const weak=new WeakRef(this);\n  registry.whenDefined(this.element.localName).then(()=>weak.deref()?.apply(generation,false));\n }\n apply(generation,explicitUpdate){\n  if(generation!==this.generation||(!explicitUpdate&&!this.isConnected))return;\n  const registry=this.element.ownerDocument.defaultView.customElements;registry.upgrade(this.element);\n  this.element.applyInputs(this.values);\n }\n disconnected(){this.generation++;}\n reconnected(){this.schedule();}\n}\nconst inputs=directive(Inputs);\nconst mount=()=>{const e=document.createElement(\"div\");document.body.append(e);return e;};\nconst settle=async e=>{await Promise.resolve();await Promise.resolve();await e.updateComplete;};\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\"#content\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\ntry{\n const earlyRoot=mount();const drawEarly=v=>render(html`<helper-early ${inputs(v)}></helper-early>`,earlyRoot);\n drawEarly({paddingInline:\"8px\",padding:\"16px\"});const early=earlyRoot.firstElementChild;\n drawEarly({padding:\"20px\",paddingInline:\"4px\"});customElements.define(\"helper-early\",class extends Probe{});await settle(early);\n check(\"definition preserves element identity\",earlyRoot.firstElementChild===early,true);\n check(\"latest pending values win\", [early.padding,early.paddingInline],[\"20px\",\"4px\"]);\n check(\"latest pending order wins\",early.declarationOrder,[\"padding\",\"paddingInline\"]);\n check(\"obsolete pending callback does not apply\",early.applications,1);\n check(\"late definition rendered result\",edges(early),[\"20px\",\"4px\",\"20px\",\"4px\"]);\n drawEarly({paddingInline:\"4px\",padding:\"20px\"});await settle(early);\n check(\"same-value reorder preserves identity\",earlyRoot.firstElementChild===early,true);\n check(\"same-value reorder rendered result\",edges(early),[\"20px\",\"20px\",\"20px\",\"20px\"]);\n drawEarly({paddingInline:\"6px\"});await settle(early);\n check(\"omitted broad input clears canonical value\",early.padding===undefined,true);\n check(\"omission exposes CSS defaults\",edges(early),[\"24px\",\"6px\",\"24px\",\"6px\"]);\n drawEarly({});await settle(early);\n check(\"empty set clears both canonical inputs\",early.padding===undefined&&early.paddingInline===undefined,true);\n check(\"empty set restores CSS defaults\",edges(early),[\"24px\",\"4px\",\"24px\",\"4px\"]);\n const mutable={padding:\"12px\",paddingInline:\"3px\"};drawEarly(mutable);await settle(early);mutable.paddingInline=\"5px\";drawEarly(mutable);await settle(early);\n check(\"same-object updates are read\",edges(early),[\"12px\",\"5px\",\"12px\",\"5px\"]);\n const removedRoot=mount();render(html`<helper-removed ${inputs({padding:\"16px\"})}></helper-removed>`,removedRoot);const removed=removedRoot.firstElementChild;\n render(nothing,removedRoot);customElements.define(\"helper-removed\",class extends Probe{});customElements.upgrade(removed);await Promise.resolve();await Promise.resolve();\n check(\"removed pending directive does not apply after definition\",removed.applications,0);\n const pausedRoot=mount();const drawPaused=v=>render(html`<helper-paused ${inputs(v)}></helper-paused>`,pausedRoot);\n const part=drawPaused({padding:\"16px\",paddingInline:\"8px\"});const paused=pausedRoot.firstElementChild;part.setConnected(false);drawPaused({paddingInline:\"3px\",padding:\"12px\"});\n customElements.define(\"helper-paused\",class extends Probe{});await Promise.resolve();await Promise.resolve();\n check(\"definition while disconnected does not run pending write\",paused.applications,0);\n part.setConnected(true);await settle(paused);\n check(\"reconnect applies newest pending input once\",paused.applications,1);\n check(\"reconnect preserves intended order\",paused.declarationOrder,[\"paddingInline\",\"padding\"]);\n check(\"reconnect rendered result\",edges(paused),[\"12px\",\"12px\",\"12px\",\"12px\"]);\n part.setConnected(false);drawPaused({padding:\"10px\",paddingInline:\"2px\"});\n check(\"explicit update while disconnected updates canonical state synchronously\",[paused.padding,paused.paddingInline],[\"10px\",\"2px\"]);\n part.setConnected(true);await settle(paused);\n check(\"already-defined reconnect preserves order\",edges(paused),[\"10px\",\"2px\",\"10px\",\"2px\"]);\n const detachedRoot=document.createElement(\"div\");render(html`<helper-detached ${inputs({padding:\"18px\",paddingInline:\"7px\"})}></helper-detached>`,detachedRoot);const detached=detachedRoot.firstElementChild;\n customElements.define(\"helper-detached\",class extends Probe{});await Promise.resolve();await Promise.resolve();document.body.append(detachedRoot);await settle(detached);\n check(\"detached rendered tree upgraded on definition\",detached instanceof Probe,true);\n check(\"detached rendered tree keeps values\",edges(detached),[\"18px\",\"7px\",\"18px\",\"7px\"]);\n window.__helperLifecycle={done:true,results:result,passed:result.filter(x=>x.pass).length,total:result.length};\n}catch(error){window.__helperLifecycle={done:true,error:String(error),stack:error.stack,results:result};}\n",
+  "scripts": {
+    "baselineServer": "\nimport path from \"node:path\";const scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nawait Bun.write(path.join(scratch,\"helper-lifecycle-probe.js\"),\"\\nimport {html,render,nothing,noChange,css} from \\\"lit\\\";\\nimport {AsyncDirective,directive,PartType} from \\\"lit/async-directive.js\\\";\\nimport {Capturing} from \\\"./dist/base.js\\\";\\nconst result=[];\\nconst check=(name,actual,expected)=>result.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\\nclass Probe extends Capturing {\\n static styles=css`#content{padding:24px;padding-inline:4px}`;\\n applications=0;\\n applyInputs(values){this.applications++;for(const key of [\\\"padding\\\",\\\"paddingInline\\\"])this[key]=values[key];this.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);}\\n}\\nclass Inputs extends AsyncDirective {\\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\\\"Element expression required\\\");}\\n element;values={};generation=0;\\n render(){return noChange;}\\n update(part,[values]){this.element=part.element;this.values={...values};this.schedule(true);return noChange;}\\n schedule(explicitUpdate=false){\\n  const generation=++this.generation;\\n  const registry=this.element.ownerDocument.defaultView.customElements;\\n  if(registry.get(this.element.localName)){if(explicitUpdate||this.isConnected)this.apply(generation,explicitUpdate);return;}\\n  if(!this.isConnected)return;\\n  const weak=new WeakRef(this);\\n  registry.whenDefined(this.element.localName).then(()=>weak.deref()?.apply(generation,false));\\n }\\n apply(generation,explicitUpdate){\\n  if(generation!==this.generation||(!explicitUpdate&&!this.isConnected))return;\\n  const registry=this.element.ownerDocument.defaultView.customElements;registry.upgrade(this.element);\\n  this.element.applyInputs(this.values);\\n }\\n disconnected(){this.generation++;}\\n reconnected(){this.schedule();}\\n}\\nconst inputs=directive(Inputs);\\nconst mount=()=>{const e=document.createElement(\\\"div\\\");document.body.append(e);return e;};\\nconst settle=async e=>{await Promise.resolve();await Promise.resolve();await e.updateComplete;};\\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\\\"#content\\\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\\ntry{\\n const earlyRoot=mount();const drawEarly=v=>render(html`<helper-early ${inputs(v)}></helper-early>`,earlyRoot);\\n drawEarly({paddingInline:\\\"8px\\\",padding:\\\"16px\\\"});const early=earlyRoot.firstElementChild;\\n drawEarly({padding:\\\"20px\\\",paddingInline:\\\"4px\\\"});customElements.define(\\\"helper-early\\\",class extends Probe{});await settle(early);\\n check(\\\"definition preserves element identity\\\",earlyRoot.firstElementChild===early,true);\\n check(\\\"latest pending values win\\\", [early.padding,early.paddingInline],[\\\"20px\\\",\\\"4px\\\"]);\\n check(\\\"latest pending order wins\\\",early.declarationOrder,[\\\"padding\\\",\\\"paddingInline\\\"]);\\n check(\\\"obsolete pending callback does not apply\\\",early.applications,1);\\n check(\\\"late definition rendered result\\\",edges(early),[\\\"20px\\\",\\\"4px\\\",\\\"20px\\\",\\\"4px\\\"]);\\n drawEarly({paddingInline:\\\"4px\\\",padding:\\\"20px\\\"});await settle(early);\\n check(\\\"same-value reorder preserves identity\\\",earlyRoot.firstElementChild===early,true);\\n check(\\\"same-value reorder rendered result\\\",edges(early),[\\\"20px\\\",\\\"20px\\\",\\\"20px\\\",\\\"20px\\\"]);\\n drawEarly({paddingInline:\\\"6px\\\"});await settle(early);\\n check(\\\"omitted broad input clears canonical value\\\",early.padding===undefined,true);\\n check(\\\"omission exposes CSS defaults\\\",edges(early),[\\\"24px\\\",\\\"6px\\\",\\\"24px\\\",\\\"6px\\\"]);\\n drawEarly({});await settle(early);\\n check(\\\"empty set clears both canonical inputs\\\",early.padding===undefined&&early.paddingInline===undefined,true);\\n check(\\\"empty set restores CSS defaults\\\",edges(early),[\\\"24px\\\",\\\"4px\\\",\\\"24px\\\",\\\"4px\\\"]);\\n const mutable={padding:\\\"12px\\\",paddingInline:\\\"3px\\\"};drawEarly(mutable);await settle(early);mutable.paddingInline=\\\"5px\\\";drawEarly(mutable);await settle(early);\\n check(\\\"same-object updates are read\\\",edges(early),[\\\"12px\\\",\\\"5px\\\",\\\"12px\\\",\\\"5px\\\"]);\\n const removedRoot=mount();render(html`<helper-removed ${inputs({padding:\\\"16px\\\"})}></helper-removed>`,removedRoot);const removed=removedRoot.firstElementChild;\\n render(nothing,removedRoot);customElements.define(\\\"helper-removed\\\",class extends Probe{});customElements.upgrade(removed);await Promise.resolve();await Promise.resolve();\\n check(\\\"removed pending directive does not apply after definition\\\",removed.applications,0);\\n const pausedRoot=mount();const drawPaused=v=>render(html`<helper-paused ${inputs(v)}></helper-paused>`,pausedRoot);\\n const part=drawPaused({padding:\\\"16px\\\",paddingInline:\\\"8px\\\"});const paused=pausedRoot.firstElementChild;part.setConnected(false);drawPaused({paddingInline:\\\"3px\\\",padding:\\\"12px\\\"});\\n customElements.define(\\\"helper-paused\\\",class extends Probe{});await Promise.resolve();await Promise.resolve();\\n check(\\\"definition while disconnected does not run pending write\\\",paused.applications,0);\\n part.setConnected(true);await settle(paused);\\n check(\\\"reconnect applies newest pending input once\\\",paused.applications,1);\\n check(\\\"reconnect preserves intended order\\\",paused.declarationOrder,[\\\"paddingInline\\\",\\\"padding\\\"]);\\n check(\\\"reconnect rendered result\\\",edges(paused),[\\\"12px\\\",\\\"12px\\\",\\\"12px\\\",\\\"12px\\\"]);\\n part.setConnected(false);drawPaused({padding:\\\"10px\\\",paddingInline:\\\"2px\\\"});\\n check(\\\"explicit update while disconnected updates canonical state synchronously\\\",[paused.padding,paused.paddingInline],[\\\"10px\\\",\\\"2px\\\"]);\\n part.setConnected(true);await settle(paused);\\n check(\\\"already-defined reconnect preserves order\\\",edges(paused),[\\\"10px\\\",\\\"2px\\\",\\\"10px\\\",\\\"2px\\\"]);\\n const detachedRoot=document.createElement(\\\"div\\\");render(html`<helper-detached ${inputs({padding:\\\"18px\\\",paddingInline:\\\"7px\\\"})}></helper-detached>`,detachedRoot);const detached=detachedRoot.firstElementChild;\\n customElements.define(\\\"helper-detached\\\",class extends Probe{});await Promise.resolve();await Promise.resolve();document.body.append(detachedRoot);await settle(detached);\\n check(\\\"detached rendered tree upgraded on definition\\\",detached instanceof Probe,true);\\n check(\\\"detached rendered tree keeps values\\\",edges(detached),[\\\"18px\\\",\\\"7px\\\",\\\"18px\\\",\\\"7px\\\"]);\\n window.__helperLifecycle={done:true,results:result,passed:result.filter(x=>x.pass).length,total:result.length};\\n}catch(error){window.__helperLifecycle={done:true,error:String(error),stack:error.stack,results:result};}\\n\");\nconst build=await Bun.build({entrypoints:[path.join(scratch,\"helper-lifecycle-probe.js\")],target:\"browser\",format:\"esm\",write:false});if(!build.success)throw Error(JSON.stringify(build.logs));const js=await build.outputs[0].text();\nconst server=Bun.serve({hostname:\"127.0.0.1\",port:0,fetch(r){return new URL(r.url).pathname===\"/probe.js\"?new Response(js,{headers:{\"content-type\":\"text/javascript\"}}):new Response('<!doctype html><title>Style helper lifecycle probe</title><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"content-type\":\"text/html\"}})}});console.log(JSON.stringify({url:server.url.href}));\n",
+    "baselineDriver": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst outputs=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const browser=await type.launch({headless:true,...options});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",e=>errors.push(String(e)));await page.goto(\"http://127.0.0.1:55545/\");await page.waitForFunction(()=>window.__helperLifecycle?.done,undefined,{timeout:30000});return {engine,version:browser.version(),errors,result:await page.evaluate(()=>window.__helperLifecycle)};}finally{await browser.close();}}));\nawait Bun.write(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/helper-lifecycle-results.json\",JSON.stringify(outputs,null,2));console.log(JSON.stringify(outputs.map(x=>({engine:x.engine,version:x.version,errors:x.errors,passed:x.result.passed,total:x.result.total,failures:x.result.results.filter(y=>!y.pass).map(y=>y.name)}))));\n",
+    "reducedSource": "\nimport {html,render} from \"lit\";import{Directive,directive}from\"lit/directive.js\";\nconst touch=directive(class extends Directive{render(){}update(part){return this.render();}});\nconst make=()=>{const e=document.createElement(\"div\");document.body.append(e);return e;};\nconst cases=[];\nconst a=document.createElement(\"plain-late-a\");document.body.append(a);cases.push([\"createElement\",a]);\nconst t=document.createElement(\"template\");t.innerHTML=\"<plain-late-b></plain-late-b>\";const b=t.content.cloneNode(true);const be=b.firstElementChild;document.body.append(b);cases.push([\"template cloneNode\",be]);\nconst t2=document.createElement(\"template\");t2.innerHTML=\"<plain-late-c></plain-late-c>\";const c=document.importNode(t2.content,true);const ce=c.firstElementChild;document.body.append(c);cases.push([\"template importNode\",ce]);\nconst d=make();render(html`<plain-late-d></plain-late-d>`,d);cases.push([\"Lit empty\",d.firstElementChild]);\nconst e=make();render(html`<plain-late-e .value=${1}></plain-late-e>`,e);cases.push([\"Lit property\",e.firstElementChild]);\nconst f=make();render(html`<plain-late-f ${touch()}></plain-late-f>`,f);cases.push([\"Lit element directive\",f.firstElementChild]);\nconst out=[];for(const [name,el]of cases){const C=class extends HTMLElement{method(){return true}};customElements.define(el.localName,C);customElements.upgrade(el);out.push({name,tag:el.localName,upgraded:el instanceof C,method:typeof el.method,owner:el.ownerDocument===document,connected:el.isConnected});}\nwindow.__reducedUpgrade={done:true,results:out};\n",
+    "reducedServer": "\nimport path from \"node:path\";const scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nawait Bun.write(path.join(scratch,\"helper-reduced-probe.js\"),\"\\nimport {html,render} from \\\"lit\\\";import{Directive,directive}from\\\"lit/directive.js\\\";\\nconst touch=directive(class extends Directive{render(){}update(part){return this.render();}});\\nconst make=()=>{const e=document.createElement(\\\"div\\\");document.body.append(e);return e;};\\nconst cases=[];\\nconst a=document.createElement(\\\"plain-late-a\\\");document.body.append(a);cases.push([\\\"createElement\\\",a]);\\nconst t=document.createElement(\\\"template\\\");t.innerHTML=\\\"<plain-late-b></plain-late-b>\\\";const b=t.content.cloneNode(true);const be=b.firstElementChild;document.body.append(b);cases.push([\\\"template cloneNode\\\",be]);\\nconst t2=document.createElement(\\\"template\\\");t2.innerHTML=\\\"<plain-late-c></plain-late-c>\\\";const c=document.importNode(t2.content,true);const ce=c.firstElementChild;document.body.append(c);cases.push([\\\"template importNode\\\",ce]);\\nconst d=make();render(html`<plain-late-d></plain-late-d>`,d);cases.push([\\\"Lit empty\\\",d.firstElementChild]);\\nconst e=make();render(html`<plain-late-e .value=${1}></plain-late-e>`,e);cases.push([\\\"Lit property\\\",e.firstElementChild]);\\nconst f=make();render(html`<plain-late-f ${touch()}></plain-late-f>`,f);cases.push([\\\"Lit element directive\\\",f.firstElementChild]);\\nconst out=[];for(const [name,el]of cases){const C=class extends HTMLElement{method(){return true}};customElements.define(el.localName,C);customElements.upgrade(el);out.push({name,tag:el.localName,upgraded:el instanceof C,method:typeof el.method,owner:el.ownerDocument===document,connected:el.isConnected});}\\nwindow.__reducedUpgrade={done:true,results:out};\\n\");\nconst build=await Bun.build({entrypoints:[path.join(scratch,\"helper-reduced-probe.js\")],target:\"browser\",format:\"esm\",write:false});if(!build.success)throw Error(JSON.stringify(build.logs));const js=await build.outputs[0].text();\nconst server=Bun.serve({hostname:\"127.0.0.1\",port:0,fetch(r){return new URL(r.url).pathname===\"/probe.js\"?new Response(js,{headers:{\"content-type\":\"text/javascript\"}}):new Response('<!doctype html><title>Style helper lifecycle probe</title><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"content-type\":\"text/html\"}})}});console.log(JSON.stringify({url:server.url.href}));\n",
+    "reducedDriver": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst{chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst results=await Promise.all([{name:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{name:\"firefox\",type:firefox},{name:\"webkit\",type:webkit}].map(async({name,type,options})=>{const b=await type.launch({headless:true,...options});try{const p=await b.newPage();await p.goto(\"http://127.0.0.1:55670/\");await p.waitForFunction(()=>window.__reducedUpgrade?.done);return{engine:name,result:await p.evaluate(()=>window.__reducedUpgrade)};}finally{await b.close();}}));console.log(JSON.stringify(results));\n",
+    "registryPaths": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst{chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst all=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const b=await type.launch({headless:true,...options});try{const results=[];for(const mode of [\"default-import\",\"explicit-registry\",\"initialize\",\"clone\"]){const page=await b.newPage();await page.goto(\"about:blank\");results.push(await page.evaluate(mode=>{try{const t=document.createElement(\"template\"),tag=\"isolated-registry-probe\";t.innerHTML=\"<\"+tag+\"><span>child</span></\"+tag+\">\";const f=mode===\"clone\"?t.content.cloneNode(true):mode===\"explicit-registry\"?document.importNode(t.content,{selfOnly:false,customElementRegistry:customElements}):document.importNode(t.content,true);const e=f.firstElementChild;const before={supported:\"customElementRegistry\"in e,nullRegistry:e.customElementRegistry===null,globalRegistry:e.customElementRegistry===customElements};document.body.append(f);if(mode===\"initialize\")customElements.initialize(e);const C=class extends HTMLElement{ok(){return true}};customElements.define(tag,C);customElements.upgrade(e);return {mode,before,upgraded:e instanceof C,globalRegistry:e.customElementRegistry===customElements,childPreserved:e.querySelector(\"span\")?.textContent===\"child\"};}catch(error){return{mode,error:String(error)};}},mode));await page.close();}return{engine,results};}finally{await b.close();}}));console.log(JSON.stringify(all));\n",
+    "registryServer": "\nimport path from \"node:path\";const scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nawait Bun.write(path.join(scratch,\"helper-registry-probe.js\"),\"\\nimport {html,render as baseRender,nothing,noChange,css} from \\\"lit\\\";\\nimport {AsyncDirective,directive,PartType} from \\\"lit/async-directive.js\\\";\\nimport {Capturing} from \\\"./dist/base.js\\\";\\nconst creationScope={importNode(node,deep){return \\\"customElementRegistry\\\" in Element.prototype ? document.importNode(node,{selfOnly:!deep,customElementRegistry:customElements}) : document.importNode(node,deep);}};\\nconst render=(value,container)=>baseRender(value,container,{creationScope});\\nconst result=[];\\nconst check=(name,actual,expected)=>result.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\\nclass Probe extends Capturing {\\n static styles=css`#content{padding:24px;padding-inline:4px}`;\\n applications=0;\\n applyInputs(values){this.applications++;for(const key of [\\\"padding\\\",\\\"paddingInline\\\"])this[key]=values[key];this.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);}\\n}\\nclass Inputs extends AsyncDirective {\\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\\\"Element expression required\\\");}\\n element;values={};generation=0;\\n render(){return noChange;}\\n update(part,[values]){this.element=part.element;this.values={...values};this.schedule(true);return noChange;}\\n schedule(explicitUpdate=false){\\n  const generation=++this.generation;\\n  const registry=this.element.ownerDocument.defaultView.customElements;\\n  if(registry.get(this.element.localName)){if(explicitUpdate||this.isConnected)this.apply(generation,explicitUpdate);return;}\\n  if(!this.isConnected)return;\\n  const weak=new WeakRef(this);\\n  registry.whenDefined(this.element.localName).then(()=>weak.deref()?.apply(generation,false));\\n }\\n apply(generation,explicitUpdate){\\n  if(generation!==this.generation||(!explicitUpdate&&!this.isConnected))return;\\n  const registry=this.element.ownerDocument.defaultView.customElements;registry.upgrade(this.element);\\n  this.element.applyInputs(this.values);\\n }\\n disconnected(){this.generation++;}\\n reconnected(){this.schedule();}\\n}\\nconst inputs=directive(Inputs);\\nconst mount=()=>{const e=document.createElement(\\\"div\\\");document.body.append(e);return e;};\\nconst settle=async e=>{await Promise.resolve();await Promise.resolve();await e.updateComplete;};\\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\\\"#content\\\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\\ntry{\\n const earlyRoot=mount();const drawEarly=v=>render(html`<helper-early ${inputs(v)}></helper-early>`,earlyRoot);\\n drawEarly({paddingInline:\\\"8px\\\",padding:\\\"16px\\\"});const early=earlyRoot.firstElementChild;\\n drawEarly({padding:\\\"20px\\\",paddingInline:\\\"4px\\\"});customElements.define(\\\"helper-early\\\",class extends Probe{});await settle(early);\\n check(\\\"definition preserves element identity\\\",earlyRoot.firstElementChild===early,true);\\n check(\\\"latest pending values win\\\", [early.padding,early.paddingInline],[\\\"20px\\\",\\\"4px\\\"]);\\n check(\\\"latest pending order wins\\\",early.declarationOrder,[\\\"padding\\\",\\\"paddingInline\\\"]);\\n check(\\\"obsolete pending callback does not apply\\\",early.applications,1);\\n check(\\\"late definition rendered result\\\",edges(early),[\\\"20px\\\",\\\"4px\\\",\\\"20px\\\",\\\"4px\\\"]);\\n drawEarly({paddingInline:\\\"4px\\\",padding:\\\"20px\\\"});await settle(early);\\n check(\\\"same-value reorder preserves identity\\\",earlyRoot.firstElementChild===early,true);\\n check(\\\"same-value reorder rendered result\\\",edges(early),[\\\"20px\\\",\\\"20px\\\",\\\"20px\\\",\\\"20px\\\"]);\\n drawEarly({paddingInline:\\\"6px\\\"});await settle(early);\\n check(\\\"omitted broad input clears canonical value\\\",early.padding===undefined,true);\\n check(\\\"omission exposes CSS defaults\\\",edges(early),[\\\"24px\\\",\\\"6px\\\",\\\"24px\\\",\\\"6px\\\"]);\\n drawEarly({});await settle(early);\\n check(\\\"empty set clears both canonical inputs\\\",early.padding===undefined&&early.paddingInline===undefined,true);\\n check(\\\"empty set restores CSS defaults\\\",edges(early),[\\\"24px\\\",\\\"4px\\\",\\\"24px\\\",\\\"4px\\\"]);\\n const mutable={padding:\\\"12px\\\",paddingInline:\\\"3px\\\"};drawEarly(mutable);await settle(early);mutable.paddingInline=\\\"5px\\\";drawEarly(mutable);await settle(early);\\n check(\\\"same-object updates are read\\\",edges(early),[\\\"12px\\\",\\\"5px\\\",\\\"12px\\\",\\\"5px\\\"]);\\n const removedRoot=mount();render(html`<helper-removed ${inputs({padding:\\\"16px\\\"})}></helper-removed>`,removedRoot);const removed=removedRoot.firstElementChild;\\n render(nothing,removedRoot);customElements.define(\\\"helper-removed\\\",class extends Probe{});customElements.upgrade(removed);await Promise.resolve();await Promise.resolve();\\n check(\\\"removed pending directive does not apply after definition\\\",removed.applications,0);\\n const pausedRoot=mount();const drawPaused=v=>render(html`<helper-paused ${inputs(v)}></helper-paused>`,pausedRoot);\\n const part=drawPaused({padding:\\\"16px\\\",paddingInline:\\\"8px\\\"});const paused=pausedRoot.firstElementChild;part.setConnected(false);drawPaused({paddingInline:\\\"3px\\\",padding:\\\"12px\\\"});\\n customElements.define(\\\"helper-paused\\\",class extends Probe{});await Promise.resolve();await Promise.resolve();\\n check(\\\"definition while disconnected does not run pending write\\\",paused.applications,0);\\n part.setConnected(true);await settle(paused);\\n check(\\\"reconnect applies newest pending input once\\\",paused.applications,1);\\n check(\\\"reconnect preserves intended order\\\",paused.declarationOrder,[\\\"paddingInline\\\",\\\"padding\\\"]);\\n check(\\\"reconnect rendered result\\\",edges(paused),[\\\"12px\\\",\\\"12px\\\",\\\"12px\\\",\\\"12px\\\"]);\\n part.setConnected(false);drawPaused({padding:\\\"10px\\\",paddingInline:\\\"2px\\\"});\\n check(\\\"explicit update while disconnected updates canonical state synchronously\\\",[paused.padding,paused.paddingInline],[\\\"10px\\\",\\\"2px\\\"]);\\n part.setConnected(true);await settle(paused);\\n check(\\\"already-defined reconnect preserves order\\\",edges(paused),[\\\"10px\\\",\\\"2px\\\",\\\"10px\\\",\\\"2px\\\"]);\\n const detachedRoot=document.createElement(\\\"div\\\");render(html`<helper-detached ${inputs({padding:\\\"18px\\\",paddingInline:\\\"7px\\\"})}></helper-detached>`,detachedRoot);const detached=detachedRoot.firstElementChild;\\n customElements.define(\\\"helper-detached\\\",class extends Probe{});await Promise.resolve();await Promise.resolve();document.body.append(detachedRoot);await settle(detached);\\n check(\\\"detached rendered tree upgraded on definition\\\",detached instanceof Probe,true);\\n check(\\\"detached rendered tree keeps values\\\",edges(detached),[\\\"18px\\\",\\\"7px\\\",\\\"18px\\\",\\\"7px\\\"]);\\n window.__helperLifecycle={done:true,results:result,passed:result.filter(x=>x.pass).length,total:result.length};\\n}catch(error){window.__helperLifecycle={done:true,error:String(error),stack:error.stack,results:result};}\\n\");\nconst build=await Bun.build({entrypoints:[path.join(scratch,\"helper-registry-probe.js\")],target:\"browser\",format:\"esm\",write:false});if(!build.success)throw Error(JSON.stringify(build.logs));const js=await build.outputs[0].text();\nconst server=Bun.serve({hostname:\"127.0.0.1\",port:0,fetch(r){return new URL(r.url).pathname===\"/probe.js\"?new Response(js,{headers:{\"content-type\":\"text/javascript\"}}):new Response('<!doctype html><title>Style helper lifecycle probe</title><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"content-type\":\"text/html\"}})}});console.log(JSON.stringify({url:server.url.href}));\n",
+    "registryDriver": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst outputs=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const browser=await type.launch({headless:true,...options});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",e=>errors.push(String(e)));await page.goto(\"http://127.0.0.1:55836/\");await page.waitForFunction(()=>window.__helperLifecycle?.done,undefined,{timeout:30000});return {engine,version:browser.version(),errors,result:await page.evaluate(()=>window.__helperLifecycle)};}finally{await browser.close();}}));\nawait Bun.write(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/helper-registry-lifecycle-results.json\",JSON.stringify(outputs,null,2));console.log(JSON.stringify(outputs.map(x=>({engine:x.engine,version:x.version,errors:x.errors,passed:x.result.passed,total:x.result.total,failures:x.result.results.filter(y=>!y.pass).map(y=>y.name)}))));\n",
+    "compiledServer": "\nimport path from \"node:path\";const scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nconst ts=(await import(process.cwd()+\"/node_modules/typescript/lib/typescript.js\")).default;const {compileLitTemplates}=await import(process.cwd()+\"/node_modules/@lit-labs/compiler/index.js\");const transformed=ts.transpileModule(\"\\nimport {html,render as baseRender,nothing,noChange,css} from \\\"lit\\\";\\nimport {AsyncDirective,directive,PartType} from \\\"lit/async-directive.js\\\";\\nimport {Capturing} from \\\"./dist/base.js\\\";\\nconst creationScope={importNode(node,deep){return \\\"customElementRegistry\\\" in Element.prototype ? document.importNode(node,{selfOnly:!deep,customElementRegistry:customElements}) : document.importNode(node,deep);}};\\nconst render=(value,container)=>baseRender(value,container,{creationScope});\\nconst result=[];\\nconst check=(name,actual,expected)=>result.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\\nclass Probe extends Capturing {\\n static styles=css`#content{padding:24px;padding-inline:4px}`;\\n applications=0;\\n applyInputs(values){this.applications++;for(const key of [\\\"padding\\\",\\\"paddingInline\\\"])this[key]=values[key];this.declarationOrder=Object.keys(values).filter(k=>values[k]!==undefined);}\\n}\\nclass Inputs extends AsyncDirective {\\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\\\"Element expression required\\\");}\\n element;values={};generation=0;\\n render(){return noChange;}\\n update(part,[values]){this.element=part.element;this.values={...values};this.schedule(true);return noChange;}\\n schedule(explicitUpdate=false){\\n  const generation=++this.generation;\\n  const registry=this.element.ownerDocument.defaultView.customElements;\\n  if(registry.get(this.element.localName)){if(explicitUpdate||this.isConnected)this.apply(generation,explicitUpdate);return;}\\n  if(!this.isConnected)return;\\n  const weak=new WeakRef(this);\\n  registry.whenDefined(this.element.localName).then(()=>weak.deref()?.apply(generation,false));\\n }\\n apply(generation,explicitUpdate){\\n  if(generation!==this.generation||(!explicitUpdate&&!this.isConnected))return;\\n  const registry=this.element.ownerDocument.defaultView.customElements;registry.upgrade(this.element);\\n  this.element.applyInputs(this.values);\\n }\\n disconnected(){this.generation++;}\\n reconnected(){this.schedule();}\\n}\\nconst inputs=directive(Inputs);\\nconst mount=()=>{const e=document.createElement(\\\"div\\\");document.body.append(e);return e;};\\nconst settle=async e=>{await Promise.resolve();await Promise.resolve();await e.updateComplete;};\\nconst edges=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\\\"#content\\\"));return[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\\ntry{\\n const earlyRoot=mount();const drawEarly=v=>render(html`<helper-early ${inputs(v)}></helper-early>`,earlyRoot);\\n drawEarly({paddingInline:\\\"8px\\\",padding:\\\"16px\\\"});const early=earlyRoot.firstElementChild;\\n drawEarly({padding:\\\"20px\\\",paddingInline:\\\"4px\\\"});customElements.define(\\\"helper-early\\\",class extends Probe{});await settle(early);\\n check(\\\"definition preserves element identity\\\",earlyRoot.firstElementChild===early,true);\\n check(\\\"latest pending values win\\\", [early.padding,early.paddingInline],[\\\"20px\\\",\\\"4px\\\"]);\\n check(\\\"latest pending order wins\\\",early.declarationOrder,[\\\"padding\\\",\\\"paddingInline\\\"]);\\n check(\\\"obsolete pending callback does not apply\\\",early.applications,1);\\n check(\\\"late definition rendered result\\\",edges(early),[\\\"20px\\\",\\\"4px\\\",\\\"20px\\\",\\\"4px\\\"]);\\n drawEarly({paddingInline:\\\"4px\\\",padding:\\\"20px\\\"});await settle(early);\\n check(\\\"same-value reorder preserves identity\\\",earlyRoot.firstElementChild===early,true);\\n check(\\\"same-value reorder rendered result\\\",edges(early),[\\\"20px\\\",\\\"20px\\\",\\\"20px\\\",\\\"20px\\\"]);\\n drawEarly({paddingInline:\\\"6px\\\"});await settle(early);\\n check(\\\"omitted broad input clears canonical value\\\",early.padding===undefined,true);\\n check(\\\"omission exposes CSS defaults\\\",edges(early),[\\\"24px\\\",\\\"6px\\\",\\\"24px\\\",\\\"6px\\\"]);\\n drawEarly({});await settle(early);\\n check(\\\"empty set clears both canonical inputs\\\",early.padding===undefined&&early.paddingInline===undefined,true);\\n check(\\\"empty set restores CSS defaults\\\",edges(early),[\\\"24px\\\",\\\"4px\\\",\\\"24px\\\",\\\"4px\\\"]);\\n const mutable={padding:\\\"12px\\\",paddingInline:\\\"3px\\\"};drawEarly(mutable);await settle(early);mutable.paddingInline=\\\"5px\\\";drawEarly(mutable);await settle(early);\\n check(\\\"same-object updates are read\\\",edges(early),[\\\"12px\\\",\\\"5px\\\",\\\"12px\\\",\\\"5px\\\"]);\\n const removedRoot=mount();render(html`<helper-removed ${inputs({padding:\\\"16px\\\"})}></helper-removed>`,removedRoot);const removed=removedRoot.firstElementChild;\\n render(nothing,removedRoot);customElements.define(\\\"helper-removed\\\",class extends Probe{});customElements.upgrade(removed);await Promise.resolve();await Promise.resolve();\\n check(\\\"removed pending directive does not apply after definition\\\",removed.applications,0);\\n const pausedRoot=mount();const drawPaused=v=>render(html`<helper-paused ${inputs(v)}></helper-paused>`,pausedRoot);\\n const part=drawPaused({padding:\\\"16px\\\",paddingInline:\\\"8px\\\"});const paused=pausedRoot.firstElementChild;part.setConnected(false);drawPaused({paddingInline:\\\"3px\\\",padding:\\\"12px\\\"});\\n customElements.define(\\\"helper-paused\\\",class extends Probe{});await Promise.resolve();await Promise.resolve();\\n check(\\\"definition while disconnected does not run pending write\\\",paused.applications,0);\\n part.setConnected(true);await settle(paused);\\n check(\\\"reconnect applies newest pending input once\\\",paused.applications,1);\\n check(\\\"reconnect preserves intended order\\\",paused.declarationOrder,[\\\"paddingInline\\\",\\\"padding\\\"]);\\n check(\\\"reconnect rendered result\\\",edges(paused),[\\\"12px\\\",\\\"12px\\\",\\\"12px\\\",\\\"12px\\\"]);\\n part.setConnected(false);drawPaused({padding:\\\"10px\\\",paddingInline:\\\"2px\\\"});\\n check(\\\"explicit update while disconnected updates canonical state synchronously\\\",[paused.padding,paused.paddingInline],[\\\"10px\\\",\\\"2px\\\"]);\\n part.setConnected(true);await settle(paused);\\n check(\\\"already-defined reconnect preserves order\\\",edges(paused),[\\\"10px\\\",\\\"2px\\\",\\\"10px\\\",\\\"2px\\\"]);\\n const detachedRoot=document.createElement(\\\"div\\\");render(html`<helper-detached ${inputs({padding:\\\"18px\\\",paddingInline:\\\"7px\\\"})}></helper-detached>`,detachedRoot);const detached=detachedRoot.firstElementChild;\\n customElements.define(\\\"helper-detached\\\",class extends Probe{});await Promise.resolve();await Promise.resolve();document.body.append(detachedRoot);await settle(detached);\\n check(\\\"detached rendered tree upgraded on definition\\\",detached instanceof Probe,true);\\n check(\\\"detached rendered tree keeps values\\\",edges(detached),[\\\"18px\\\",\\\"7px\\\",\\\"18px\\\",\\\"7px\\\"]);\\n window.__helperLifecycle={done:true,results:result,passed:result.filter(x=>x.pass).length,total:result.length};\\n}catch(error){window.__helperLifecycle={done:true,error:String(error),stack:error.stack,results:result};}\\n\",{fileName:\"helper-probe.js\",compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,experimentalDecorators:true,useDefineForClassFields:false},transformers:{before:[compileLitTemplates()]}});await Bun.write(path.join(scratch,\"helper-registry-compiled.js\"),transformed.outputText);\nconst build=await Bun.build({entrypoints:[path.join(scratch,\"helper-registry-compiled.js\")],target:\"browser\",format:\"esm\",write:false});if(!build.success)throw Error(JSON.stringify(build.logs));const js=await build.outputs[0].text();\nconst server=Bun.serve({hostname:\"127.0.0.1\",port:0,fetch(r){return new URL(r.url).pathname===\"/probe.js\"?new Response(js,{headers:{\"content-type\":\"text/javascript\"}}):new Response('<!doctype html><title>Style helper lifecycle probe</title><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"content-type\":\"text/html\"}})}});console.log(JSON.stringify({url:server.url.href,compiled:transformed.outputText.includes(\"_$litType$\")}));\n",
+    "compiledDriver": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst outputs=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const browser=await type.launch({headless:true,...options});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",e=>errors.push(String(e)));await page.goto(\"http://127.0.0.1:56099/\");await page.waitForFunction(()=>window.__helperLifecycle?.done,undefined,{timeout:30000});return {engine,version:browser.version(),errors,result:await page.evaluate(()=>window.__helperLifecycle)};}finally{await browser.close();}}));\nawait Bun.write(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/helper-compiled-lifecycle-results.json\",JSON.stringify(outputs,null,2));console.log(JSON.stringify(outputs.map(x=>({engine:x.engine,version:x.version,errors:x.errors,passed:x.result.passed,total:x.result.total,failures:x.result.results.filter(y=>!y.pass).map(y=>y.name)}))));\n",
+    "webkitDiagnostic": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst b=await webkit.launch({headless:true});try{const page=await b.newPage();const errors=[];const logs=[];page.on(\"pageerror\",e=>errors.push(String(e)));page.on(\"console\",m=>logs.push({type:m.type(),text:m.text()}));await page.goto(\"http://127.0.0.1:55545/\");await page.waitForFunction(()=>window.__helperLifecycle?.done);console.log(JSON.stringify(await page.evaluate(()=>{const e=document.querySelector(\"helper-early\"),c=customElements.get(\"helper-early\");const before={connected:e.isConnected,constructor:e.constructor.name,instance:e instanceof c,method:typeof e.applyInputs,outer:e.outerHTML,shadow:!!e.shadowRoot,ownKeys:Object.keys(e),sameRegistry:e.ownerDocument.defaultView.customElements===customElements};customElements.upgrade(e);const created=document.createElement(\"helper-early\");return{result:window.__helperLifecycle,before,afterUpgrade:{constructor:e.constructor.name,instance:e instanceof c,method:typeof e.applyInputs,shadow:!!e.shadowRoot},created:{constructor:created.constructor.name,instance:created instanceof c,method:typeof created.applyInputs,shadow:!!created.shadowRoot}};})));console.log(JSON.stringify({errors,logs}));}finally{await b.close();}\n"
+  },
+  "reducedResults": [
+    {
+      "engine": "chromium",
+      "result": {
+        "done": true,
+        "results": [
+          {
+            "name": "createElement",
+            "tag": "plain-late-a",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "template cloneNode",
+            "tag": "plain-late-b",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "template importNode",
+            "tag": "plain-late-c",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit empty",
+            "tag": "plain-late-d",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit property",
+            "tag": "plain-late-e",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit element directive",
+            "tag": "plain-late-f",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          }
+        ]
+      }
+    },
+    {
+      "engine": "firefox",
+      "result": {
+        "done": true,
+        "results": [
+          {
+            "name": "createElement",
+            "tag": "plain-late-a",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "template cloneNode",
+            "tag": "plain-late-b",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "template importNode",
+            "tag": "plain-late-c",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit empty",
+            "tag": "plain-late-d",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit property",
+            "tag": "plain-late-e",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit element directive",
+            "tag": "plain-late-f",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          }
+        ]
+      }
+    },
+    {
+      "engine": "webkit",
+      "result": {
+        "done": true,
+        "results": [
+          {
+            "name": "createElement",
+            "tag": "plain-late-a",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "template cloneNode",
+            "tag": "plain-late-b",
+            "upgraded": true,
+            "method": "function",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "template importNode",
+            "tag": "plain-late-c",
+            "upgraded": false,
+            "method": "undefined",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit empty",
+            "tag": "plain-late-d",
+            "upgraded": false,
+            "method": "undefined",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit property",
+            "tag": "plain-late-e",
+            "upgraded": false,
+            "method": "undefined",
+            "owner": true,
+            "connected": true
+          },
+          {
+            "name": "Lit element directive",
+            "tag": "plain-late-f",
+            "upgraded": false,
+            "method": "undefined",
+            "owner": true,
+            "connected": true
+          }
+        ]
+      }
+    }
+  ],
+  "registryPathsResults": [
+    {
+      "engine": "chromium",
+      "results": [
+        {
+          "mode": "default-import",
+          "before": {
+            "supported": true,
+            "nullRegistry": false,
+            "globalRegistry": true
+          },
+          "upgraded": true,
+          "globalRegistry": true,
+          "childPreserved": true
+        },
+        {
+          "mode": "explicit-registry",
+          "before": {
+            "supported": true,
+            "nullRegistry": false,
+            "globalRegistry": true
+          },
+          "upgraded": true,
+          "globalRegistry": true,
+          "childPreserved": true
+        },
+        {
+          "mode": "initialize",
+          "before": {
+            "supported": true,
+            "nullRegistry": false,
+            "globalRegistry": true
+          },
+          "upgraded": true,
+          "globalRegistry": true,
+          "childPreserved": true
+        },
+        {
+          "mode": "clone",
+          "before": {
+            "supported": true,
+            "nullRegistry": true,
+            "globalRegistry": false
+          },
+          "upgraded": true,
+          "globalRegistry": true,
+          "childPreserved": true
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "results": [
+        {
+          "mode": "default-import",
+          "before": {
+            "supported": false,
+            "nullRegistry": false,
+            "globalRegistry": false
+          },
+          "upgraded": true,
+          "globalRegistry": false,
+          "childPreserved": true
+        },
+        {
+          "mode": "explicit-registry",
+          "before": {
+            "supported": false,
+            "nullRegistry": false,
+            "globalRegistry": false
+          },
+          "upgraded": true,
+          "globalRegistry": false,
+          "childPreserved": true
+        },
+        {
+          "mode": "initialize",
+          "error": "TypeError: customElements.initialize is not a function"
+        },
+        {
+          "mode": "clone",
+          "before": {
+            "supported": false,
+            "nullRegistry": false,
+            "globalRegistry": false
+          },
+          "upgraded": true,
+          "globalRegistry": false,
+          "childPreserved": true
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "results": [
+        {
+          "mode": "default-import",
+          "before": {
+            "supported": true,
+            "nullRegistry": true,
+            "globalRegistry": false
+          },
+          "upgraded": false,
+          "globalRegistry": false,
+          "childPreserved": true
+        },
+        {
+          "mode": "explicit-registry",
+          "before": {
+            "supported": true,
+            "nullRegistry": false,
+            "globalRegistry": true
+          },
+          "upgraded": true,
+          "globalRegistry": true,
+          "childPreserved": true
+        },
+        {
+          "mode": "initialize",
+          "before": {
+            "supported": true,
+            "nullRegistry": true,
+            "globalRegistry": false
+          },
+          "upgraded": true,
+          "globalRegistry": true,
+          "childPreserved": true
+        },
+        {
+          "mode": "clone",
+          "before": {
+            "supported": true,
+            "nullRegistry": true,
+            "globalRegistry": false
+          },
+          "upgraded": true,
+          "globalRegistry": true,
+          "childPreserved": true
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "All 21 global-registry lifecycle cases pass in Chromium 153, Firefox 155 and WebKit 26.6 after explicit registry selection at Lit's public creationScope/importNode boundary; the same 21 pass after Lit compilation.",
+    "Baseline passes Chromium/Firefox but WebKit does not upgrade late-defined importNode-created elements and the helper then lacks the target method. A six-route reduced test without house components reproduces the issue in native importNode and ordinary Lit templates; createElement and cloneNode controls upgrade.",
+    "Fresh-page registry experiments prevent cross-case contamination: WebKit default import has null registry and fails late upgrade; an explicit registry or initialize fixes it. Chromium passes both; Firefox lacks initialize/scoped registry support in this run.",
+    "The modern DOM importNode dictionary uses selfOnly, not deep. The final test uses the standard field. An earlier exploratory script supplied unrecognized deep:true and has been superseded by isolated standard-field checks.",
+    "Use the intended registry when creating nodes through supported Lit creationScope; do not hide a generic import/registry problem inside the styling directive or patch global DOM methods.",
+    "The tested helper uses AsyncDirective, WeakRef to avoid strongly retaining a discarded directive in a pending whenDefined callback, and generation checks to prevent stale asynchronous writes. Tests verify callback effects, not garbage collection or subscription performance.",
+    "Explicit updates to an already-defined element while the Lit part is disconnected still update canonical inputs synchronously; pending late-definition callbacks are suspended/cancelled and reconnect applies current inputs.",
+    "Two string-valued inputs and the global registry only. Scoped registries, adopted documents, complete ownership/cleanup policy, concurrent writers, full types, responsive inputs and all styling properties remain open.",
+    "No production source, project dependencies, app settings or notes were changed in Plan mode. All owned servers/browser processes are stopped; temporary fixture files/caches remain."
+  ],
+  "resourcesStopped": true,
+  "recordBaselineVerification": {
+    "recordsChecked": 141,
+    "localLinksChecked": 1293,
+    "headingLinksChecked": 254,
+    "brokenLinks": [],
+    "protectedFilesChecked": 870,
+    "protectedFileDifferences": [],
+    "evidenceJsonFilesValidated": [
+      "spacing-stack-review-2026-09-20.json",
+      "shape-geometry-review-2026-09-19.json",
+      "build-bundles.json",
+      "material-dialog-review-2026-09-19.json",
+      "style-package-verification-2026-09-20.json",
+      "package-survey.json",
+      "phase-2-closure-2026-09-19.json",
+      "phase-2-terms-census-2026-09-19.json",
+      "layout-typography-review-2026-09-19.json",
+      "phase-3-checkpoint-2026-09-19.json",
+      "flow-diagram-review-2026-09-19.json",
+      "toolbar-reference-review-2026-09-19.json",
+      "tooling-evaluation-2026-09-19.json",
+      "responsive-spacing-review-2026-09-20.json",
+      "chakra-pro-collection-audit.json",
+      "phase-4-checkpoint-2026-09-19.json",
+      "native-port-mapping-2026-09-19.json",
+      "box-contract-review-2026-09-20.json",
+      "table-review-2026-09-19.json",
+      "layout-contract-review-2026-09-19.json",
+      "additional-probes-2026-09-19.json",
+      "stat-review-2026-09-19.json",
+      "field-list-review-2026-09-19.json",
+      "zag-strategy-review-2026-09-19.json",
+      "group-review-2026-09-19.json",
+      "material-full-review-2026-09-19.json",
+      "devtools-probe-2026-09-19.json",
+      "message-family-review-2026-09-19.json",
+      "intent-probe-2026-09-19.json",
+      "state-bridge-comparison-2026-09-19.json",
+      "container-family-review-2026-09-19.json",
+      "material-list-specs-2026-09-19.json",
+      "package-bundles.json",
+      "filter-comparison.json",
+      "shared-style-values-review-2026-09-20.json",
+      "query-stack-grid-review-2026-09-19.json",
+      "blue-control-review-2026-09-19.json",
+      "pace-review-2026-09-19.json",
+      "disposition-checkpoint-2026-09-19.json",
+      "resizable-panes-2026-09-19.json",
+      "style-input-integration-review-2026-09-20.json",
+      "style-pipeline-comparison-2026-09-19.json",
+      "joint-composition-review-2026-09-19.json",
+      "responsive-review-2026-09-19.json",
+      "composition-candidates.json",
+      "extension-capture-verification.json",
+      "capability-checkpoint-2026-09-19.json",
+      "native-form-mechanism-2026-09-19.json",
+      "notes-consistency-review-2026-09-19.json",
+      "chakra-pro-review-ledger.json",
+      "material-field-specs-2026-09-19.json",
+      "verification.json",
+      "material-navigation-specs-2026-09-19.json",
+      "primitive-interfaces-review-2026-09-20.json",
+      "token-reachability.json",
+      "foundation-followup-2026-09-19.json",
+      "row-pattern-survey-2026-09-19.json",
+      "existing-state-integration-2026-09-19.json",
+      "protected-files.json",
+      "declaration-order-probe-2026-09-20.json"
+    ]
+  },
+  "kind": "selected-lit-style-helper-and-lifecycle-verification",
+  "capturedAt": "2026-09-20T11:13:12.226Z",
+  "phase": 4,
+  "decisionsCaptured": 1,
+  "implementationChanged": false,
+  "projectDependenciesChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "reproduction": {
+    "packageFixture": "notes/alignment/evidence/style-package-verification-2026-09-20.json",
+    "temporaryPackageCache": {
+      "dir": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U"
+    },
+    "browserDriver": {
+      "cache": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk",
+      "driverRoot": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package",
+      "browsersPath": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers",
+      "version": "1.63.0",
+      "integrity": "sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==",
+      "verified": true,
+      "catalog": [
+        {
+          "name": "firefox",
+          "revision": "1543",
+          "installByDefault": true,
+          "browserVersion": "155.0",
+          "title": "Firefox"
+        },
+        {
+          "name": "webkit",
+          "revision": "2359",
+          "installByDefault": true,
+          "revisionOverrides": {
+            "mac14": "2251",
+            "mac14-arm64": "2251"
+          },
+          "browserVersion": "26.6",
+          "title": "WebKit"
+        }
+      ]
+    },
+    "notes": "Scripts use the previously captured compiled Capturing fixture and dedicated temporary browser cache. Paths/ports describe the probe run and may need to be recreated. Production code was not modified. The isolated registry matrix is authoritative; earlier combined-page exploration is superseded."
+  },
+  "registryExploration": {
+    "supersededCombinedPageScript": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst{chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst all=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const b=await type.launch({headless:true,...options});try{const page=await b.newPage();await page.goto(\"about:blank\");const result=await page.evaluate(()=>{const out=[];for(const [i,mode]of [\"default-import\",\"explicit-registry\",\"initialize\",\"clone\"].entries()){try{const t=document.createElement(\"template\"),tag=\"registry-path-\"+i;t.innerHTML=\"<\"+tag+\"></\"+tag+\">\";const f=mode===\"clone\"?t.content.cloneNode(true):mode===\"explicit-registry\"?document.importNode(t.content,{deep:true,customElementRegistry:customElements}):document.importNode(t.content,true);const e=f.firstElementChild;const before={supported:\"customElementRegistry\"in e,nullRegistry:e.customElementRegistry===null,globalRegistry:e.customElementRegistry===customElements};document.body.append(f);if(mode===\"initialize\")customElements.initialize(e);const C=class extends HTMLElement{ok(){return true}};customElements.define(tag,C);customElements.upgrade(e);out.push({mode,before,upgraded:e instanceof C,globalRegistry:e.customElementRegistry===customElements,method:typeof e.ok});}catch(error){out.push({mode,error:String(error)});}}return{initializeAvailable:typeof customElements.initialize,results:out};});return{engine,result};}finally{await b.close();}}));console.log(JSON.stringify(all));\n",
+    "supersededCombinedPageResult": [
+      {
+        "engine": "chromium",
+        "result": {
+          "initializeAvailable": "function",
+          "results": [
+            {
+              "mode": "default-import",
+              "before": {
+                "supported": true,
+                "nullRegistry": false,
+                "globalRegistry": true
+              },
+              "upgraded": true,
+              "globalRegistry": true,
+              "method": "function"
+            },
+            {
+              "mode": "explicit-registry",
+              "before": {
+                "supported": true,
+                "nullRegistry": false,
+                "globalRegistry": true
+              },
+              "upgraded": true,
+              "globalRegistry": true,
+              "method": "function"
+            },
+            {
+              "mode": "initialize",
+              "before": {
+                "supported": true,
+                "nullRegistry": false,
+                "globalRegistry": true
+              },
+              "upgraded": true,
+              "globalRegistry": true,
+              "method": "function"
+            },
+            {
+              "mode": "clone",
+              "before": {
+                "supported": true,
+                "nullRegistry": true,
+                "globalRegistry": false
+              },
+              "upgraded": true,
+              "globalRegistry": true,
+              "method": "function"
+            }
+          ]
+        }
+      },
+      {
+        "engine": "firefox",
+        "result": {
+          "initializeAvailable": "undefined",
+          "results": [
+            {
+              "mode": "default-import",
+              "before": {
+                "supported": false,
+                "nullRegistry": false,
+                "globalRegistry": false
+              },
+              "upgraded": true,
+              "globalRegistry": false,
+              "method": "function"
+            },
+            {
+              "mode": "explicit-registry",
+              "before": {
+                "supported": false,
+                "nullRegistry": false,
+                "globalRegistry": false
+              },
+              "upgraded": true,
+              "globalRegistry": false,
+              "method": "function"
+            },
+            {
+              "mode": "initialize",
+              "error": "TypeError: customElements.initialize is not a function"
+            },
+            {
+              "mode": "clone",
+              "before": {
+                "supported": false,
+                "nullRegistry": false,
+                "globalRegistry": false
+              },
+              "upgraded": true,
+              "globalRegistry": false,
+              "method": "function"
+            }
+          ]
+        }
+      },
+      {
+        "engine": "webkit",
+        "result": {
+          "initializeAvailable": "function",
+          "results": [
+            {
+              "mode": "default-import",
+              "before": {
+                "supported": true,
+                "nullRegistry": true,
+                "globalRegistry": false
+              },
+              "upgraded": false,
+              "globalRegistry": false,
+              "method": "undefined"
+            },
+            {
+              "mode": "explicit-registry",
+              "before": {
+                "supported": true,
+                "nullRegistry": false,
+                "globalRegistry": true
+              },
+              "upgraded": true,
+              "globalRegistry": true,
+              "method": "function"
+            },
+            {
+              "mode": "initialize",
+              "before": {
+                "supported": true,
+                "nullRegistry": false,
+                "globalRegistry": true
+              },
+              "upgraded": true,
+              "globalRegistry": true,
+              "method": "function"
+            },
+            {
+              "mode": "clone",
+              "before": {
+                "supported": true,
+                "nullRegistry": true,
+                "globalRegistry": false
+              },
+              "upgraded": true,
+              "globalRegistry": true,
+              "method": "function"
+            }
+          ]
+        }
+      }
+    ],
+    "reason": "Repeated modes on one page can share template/registry state; the final matrix uses a fresh page for each mode and the standard selfOnly field."
+  },
+  "ownershipFollowup": {
+    "date": "2026-09-20",
+    "evidence": "lit-style-ownership-review-2026-09-20.json",
+    "decisions": [
+      "C-STYLE-04: Only supplied settings (Recommended)",
+      "C-STYLE-05: Restore helper value (Recommended)"
+    ],
+    "note": "Original lifecycle snapshot is preserved. Supplied-key ownership and next-render reassertion are now selected; helper-expression removal, final types and full scoped/responsive coverage remain open."
+  }
+}

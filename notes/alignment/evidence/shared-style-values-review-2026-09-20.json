@@ -1,0 +1,206 @@
+{
+  "date": "2026-09-20",
+  "decisions": [
+    {
+      "id": "C-SPACE-06",
+      "answer": "Signed tokens (Recommended)",
+      "decision": "Support negative forms of the selected spacing steps for margins and positioning offsets where CSS permits. Derive negatives from positive theme values; padding and gap remain nonnegative.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "C-SIZE-01",
+      "answer": "Steps and CSS (Recommended)",
+      "decision": "Width, height and their minimum/maximum limits accept the selected numeric theme steps plus valid CSS sizes. Numeric values identify theme steps, not pixels; step 8 defaults to 2rem.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "C-SIZE-02",
+      "answer": "Separate categories (Recommended)",
+      "decision": "Keep size and spacing tokens independently adjustable, with matching default numeric steps. Changing a spacing token need not change the corresponding dimension token; density remains a separate spacing-only policy to specify.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "C-STYLE-01",
+      "answer": "Match Chakra order",
+      "decision": "For overlapping style properties under the same responsive condition, follow Chakra's declaration-order behavior rather than a fixed all-sides/axis/side priority. This is declaration order, not automatically latest value-update order. Define the cross-HTML/Lit/React contract explicitly.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    }
+  ],
+  "sources": [
+    "https://chakra-ui.com/docs/styling/style-props/spacing",
+    "https://www.radix-ui.com/themes/docs/overview/layout",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/token-middleware.ts",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/token-transforms.ts",
+    "https://chakra-ui.com/docs/styling/style-props/sizing",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/theme/tokens/sizes.ts",
+    "https://chakra-ui.com/docs/theming/customization/sizes",
+    "https://chakra-ui.com/docs/theming/customization/spacing",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/css.ts",
+    "https://raw.githubusercontent.com/radix-ui/themes/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/styles/utilities/padding.css",
+    "https://raw.githubusercontent.com/radix-ui/themes/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/styles/utilities/margin.css"
+  ],
+  "proNegativeExamples": [
+    {
+      "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-copy-api-key-01/block.tsx",
+      "line": 61,
+      "text": "<Clipboard.Trigger asChild me=\"-2\">"
+    },
+    {
+      "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-profile-with-theme/block.tsx",
+      "line": 32,
+      "text": "<Button variant=\"ghost\" size=\"xs\" textStyle=\"sm\" me=\"-2\">"
+    },
+    {
+      "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/onboarding-workspace-03/invite-link.tsx",
+      "line": 15,
+      "text": "<IconButton size=\"xs\" variant=\"ghost\" colorPalette=\"gray\" me=\"-2\">"
+    },
+    {
+      "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/sharing-00/block.tsx",
+      "line": 57,
+      "text": "<IconButton variant=\"surface\" size=\"xs\" me=\"-2\">"
+    },
+    {
+      "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/sharing-02/block.tsx",
+      "line": 101,
+      "text": "<Button variant=\"outline\" size=\"xs\" me=\"-2\" bg=\"bg\">"
+    },
+    {
+      "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/sharing-04/block.tsx",
+      "line": 49,
+      "text": "<Button bg=\"bg\" size=\"sm\" variant=\"outline\" me=\"-2.5\">"
+    }
+  ],
+  "coverage": {
+    "chakra": "Complete token-middleware.ts and token-transforms.ts read; addNegativeTokens derives from original CSS variable. Complete spacing guide main content read. Complete sizes.ts, CSS builder and its relevant utility dependencies read; full sizing/custom sizes/custom spacing guides read. CSS builder probe is isolated and uses pass-through context for full CSS names/lengths.",
+    "pro": "Full onboarding-workspace-03/invite-link.tsx read; other matches are lexical evidence only. Full webhooks-form-02/collapsible-section.tsx read after all-938-file AST scan found one all-side-plus-specific padding use (p=4 and pt=4). That equal-value example does not establish conflict priority.",
+    "local": "src/generated/theme.css negative declarations inspected; current literal negatives not a required new API.",
+    "radix": "padding.css read completely; margin.css initial output was truncated and continued from line 330 through 964, completing the missing section. Source shows fixed broad/axis/side grouping, not a verified whole-build cross-breakpoint policy."
+  },
+  "paddingOrder": {
+    "questionStatus": "Answered after user clarification; initial 'What does Chakra do?' did not resolve the choice.",
+    "probe": {
+      "pin": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "sourceFiles": [
+        "utils/is.ts",
+        "utils/compact.ts",
+        "utils/memo.ts",
+        "utils/merge.ts",
+        "utils/walk-object.ts",
+        "styled-system/singleton.ts",
+        "styled-system/sort-at-params.ts",
+        "styled-system/sort-at-rules.ts",
+        "styled-system/css.ts"
+      ],
+      "scope": "Unmodified function bodies, imports/export declarations removed for in-memory execution. Full CSS properties/lengths, identity normalization and transform, no responsive conditions or React/theme integration.",
+      "cases": [
+        {
+          "input": {
+            "padding": "16px",
+            "paddingInline": "8px"
+          },
+          "output": {
+            "padding": "16px",
+            "paddingInline": "8px"
+          },
+          "cssText": "padding:16px;padding-inline:8px"
+        },
+        {
+          "input": {
+            "paddingInline": "8px",
+            "padding": "16px"
+          },
+          "output": {
+            "paddingInline": "8px",
+            "padding": "16px"
+          },
+          "cssText": "padding-inline:8px;padding:16px"
+        }
+      ]
+    },
+    "sourceProbeScript": "import ts from \"typescript\";\nconst pin=\"1ff9873754e9913fc3d849d23c0844a628f5f20d\", root=\"https://raw.githubusercontent.com/chakra-ui/chakra-ui/\"+pin+\"/packages/react/src/\";\nconst files=[\"utils/is.ts\",\"utils/compact.ts\",\"utils/memo.ts\",\"utils/merge.ts\",\"utils/walk-object.ts\",\"styled-system/singleton.ts\",\"styled-system/sort-at-params.ts\",\"styled-system/sort-at-rules.ts\",\"styled-system/css.ts\"];\nlet combined=\"\";for(const file of files){const r=await fetch(root+file);if(!r.ok)throw Error(file+\" \"+r.status);let source=await r.text();const sf=ts.createSourceFile(file,source,ts.ScriptTarget.Latest,true,ts.ScriptKind.TS);const ranges=sf.statements.filter(ts.isImportDeclaration).map(n=>[n.getStart(sf),n.end]).reverse();for(const [a,b] of ranges)source=source.slice(0,a)+source.slice(b);combined+=new Bun.Transpiler({loader:\"ts\"}).transformSync(source).replace(/\\bexport\\s+(?=(const|function|class|let|var)\\b)/g,\"\")+\"\\n\";}\nconst create=new Function(combined+\";return createCssFn;\")();\nconst css=create({normalize:s=>s,transform:(prop,value)=>({[prop]:value}),conditions:{sort:p=>p,resolve:p=>p,expandAtRule:p=>p}});\nconst inputs=[{padding:\"16px\",paddingInline:\"8px\"},{paddingInline:\"8px\",padding:\"16px\"}];\nconsole.log(JSON.stringify({pin,sourceFiles:files,scope:\"Unmodified function bodies, imports/export declarations removed for in-memory execution. Full CSS properties/lengths, identity normalization and transform, no responsive conditions or React/theme integration.\",cases:inputs.map(input=>{const output=css(input);return {input,output,cssText:Object.entries(output).map(([k,v])=>k.replace(/[A-Z]/g,c=>\"-\"+c.toLowerCase())+\":\"+v).join(\";\")};})},null,2));",
+    "proCensus": {
+      "files": 938,
+      "count": 1,
+      "examples": [
+        {
+          "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/webhooks-form-02/collapsible-section.tsx",
+          "line": 47,
+          "tag": "Box",
+          "attrs": [
+            "p=\"4\"",
+            "pt=\"4\""
+          ]
+        }
+      ]
+    },
+    "limits": "Isolated CSS builder with identity normalization/transform for full CSS properties and fixed lengths, followed by native Chromium declarations. No complete Chakra React render, house implementation, responsive condition combination or three-engine test.",
+    "browser": {
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "cases": [
+        {
+          "id": "case-0",
+          "style": "padding:16px;padding-inline:8px",
+          "top": "16px",
+          "right": "8px",
+          "bottom": "16px",
+          "left": "8px"
+        },
+        {
+          "id": "case-1",
+          "style": "padding-inline:8px;padding:16px",
+          "top": "16px",
+          "right": "16px",
+          "bottom": "16px",
+          "left": "16px"
+        }
+      ]
+    },
+    "reproductionFile": "padding-order-probe-2026-09-20.html",
+    "browserPageClosed": true
+  },
+  "remaining": [
+    "Cross-framework declaration-order representation, including initialization, later value updates, removal/re-addition and pre-definition writes",
+    "Interaction of declaration order with selected responsive-query ordering",
+    "Shared validation, CSS values, inheritance/defaults and token resolution",
+    "Spacing-only density mapping and explicit size token behavior",
+    "Complete Box/style-target interface review and remaining component rows"
+  ],
+  "localOrderFinding": {
+    "file": "node_modules/@lit/reactive-element/development/reactive-element.js",
+    "ranges": [
+      "535-553",
+      "859-865"
+    ],
+    "finding": "Pre-upgrade own properties are saved by iterating constructor.elementProperties.keys() and replayed from that Map. This ordering is based on Lit property metadata, not a recovered record of authored property order.",
+    "consequence": "Treat declaration-order preservation across pre-definition writes as an explicit mechanism/specification gate; do not assume callback arrival order matches authored order.",
+    "verification": "Installed source inspection only; no new pre-upgrade behavior probe run in this review."
+  },
+  "next": "Resolve declaration-order representation across HTML/Lit/React, especially pre-definition property replay, before completing the shared style contract; then resume Box property review.",
+  "phase": 4,
+  "scope": "Four shared negative-spacing, dimension-token, theme-category and declaration-order choices",
+  "persisted": true,
+  "implementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "projectDependenciesChanged": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Historical checkpoint; source finding was subsequently exercised without changing the recorded choices.",
+    "laterRecord": "declaration-order-probe-2026-09-20.json",
+    "currentHandoff": "../README.md#where-we-are",
+    "finding": "Early property/binding reordering reproduced; separate-property public capture candidate passes 15 targeted Chromium checks. No mechanism or public API replacement approved.",
+    "remaining": "React ordering, style/manifest metadata, defaults/lifecycle and additional browser engines"
+  },
+  "styleInputFollowup": {
+    "date": "2026-09-20",
+    "evidence": "style-input-integration-review-2026-09-20.json",
+    "note": "Declaration-order direction stands. Follow-up provides bounded cross-engine/React feasibility and selects absent CSS-input getters; this does not approve the complete protocol or property table.",
+    "originalResultsPreserved": true
+  }
+}

@@ -635,14 +635,38 @@
   "commitCreated": false,
   "pushPerformed": false,
   "followupStatus": {
-    "scope": "Snapshot at its capture time; later selections do not alter the recorded answers or measurements.",
-    "laterRecord": "layout-contract-review-2026-09-19.json",
+    "scope": "Snapshot at capture time; later selections do not change the recorded answers or measurements.",
+    "laterRecord": "box-contract-review-2026-09-20.json",
     "currentHandoff": "../README.md#where-we-are",
     "settledSince": [
       "Shared layout/spacing property naming and numbered token keys",
       "Explicit CSS spacing values alongside theme values",
       "Between-threshold boundary meaning",
-      "Stack default gap and named directions"
+      "Stack default gap and named directions",
+      "Nearest/named container targeting and startup-only breakpoint configuration",
+      "Stack alignment defaults and optional automatic separators",
+      "Both Simple Grid sizing modes and minimum-width precedence",
+      "JSON attributes with corresponding JavaScript property values",
+      "Chakra generated-query ordering model for overlaps, independent of object key order",
+      "Rem house spacing scale using a 16px reference; Stack token 2 becomes 0.5rem",
+      "Complete 34-step positive Chakra spacing scale plus zero",
+      "Automatic Stack separator spacing matches Chakra: gap on each side plus divider thickness",
+      "Automatic Stack separators follow visible flex lines; Group member-order corners unchanged",
+      "Standard primitive naming attributes with shared forwarding",
+      "Inline Box as=span",
+      "Text as=p/span/div with p default",
+      "Box nine-tag set with div default",
+      "Responsive parent-layout placement on Box host",
+      "Box default display follows native tag",
+      "Token and valid CSS inputs for Box visual values"
+    ],
+    "laterRecords": [
+      "layout-contract-review-2026-09-19.json",
+      "query-stack-grid-review-2026-09-19.json",
+      "responsive-spacing-review-2026-09-20.json",
+      "spacing-stack-review-2026-09-20.json",
+      "primitive-interfaces-review-2026-09-20.json",
+      "box-contract-review-2026-09-20.json"
     ]
   }
 }

@@ -207,5 +207,35 @@
   "inventoryApproved": false,
   "migrationApproved": false,
   "commitCreated": false,
-  "pushPerformed": false
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Historical capture; later choices do not rewrite earlier answers or measurements.",
+    "laterRecords": [
+      "query-stack-grid-review-2026-09-19.json",
+      "responsive-spacing-review-2026-09-20.json",
+      "spacing-stack-review-2026-09-20.json",
+      "primitive-interfaces-review-2026-09-20.json",
+      "shared-style-values-review-2026-09-20.json"
+    ],
+    "laterRecord": "shared-style-values-review-2026-09-20.json",
+    "currentHandoff": "../README.md#where-we-are",
+    "settledSince": [
+      "Nearest/named container targeting and startup-only breakpoint configuration",
+      "Stack alignment defaults and optional automatic separators",
+      "Both Simple Grid sizing modes and minimum-width precedence",
+      "JSON attributes with corresponding JavaScript property values",
+      "Chakra generated-query ordering model for overlaps, independent of object key order",
+      "Rem house spacing scale using a 16px reference; Stack token 2 becomes 0.5rem",
+      "Complete 34-step positive Chakra spacing scale plus zero",
+      "Automatic Stack separator spacing matches Chakra: gap on each side plus divider thickness",
+      "Automatic Stack separators follow visible flex lines; Group member-order corners unchanged",
+      "Standard primitive naming attributes with shared forwarding",
+      "Inline Box as=span",
+      "Text as=p/span/div with p default",
+      "Signed spacing tokens derived from positive values where CSS permits",
+      "Numeric dimension steps plus CSS values",
+      "Separate size and spacing theme categories with matching defaults",
+      "Chakra declaration-order direction within the same condition; cross-framework representation unresolved"
+    ]
+  }
 }

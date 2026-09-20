@@ -105,3 +105,13 @@ CodeBlock examples separate title/status, language or file controls, copy, conte
 Docs Kit provides implemented query/index handling, but its search source lacks complete input/dialog/result semantics and turns errors into empty results. Generated search content loses inline code terms. Its generated CodeGroup content also has a nested structure that differs from the text extractor's assumptions; the likely rendering defect is source evidence, not a tested result. Do not adopt its search or MDX packages merely because they appear in the kit.
 
 Documentation pagination and lesson navigation use adjacent-document links, distinct from result-page controls. Timeline examples permit arbitrary date indicators and multiple content regions. Static instructions and scroll-linked reading progress remain separate from interactive Steps. These findings inform the Phase 4 documentation/component review; they do not approve new interfaces or automatic movement.
+
+## Complete Phase 4 documentation proposal
+
+The [documentation/tooling proposal](../alignment/inventory/documentation-tooling.md) now specifies the page contract, seven documentation units, cleanup/reset/source fidelity, complete manifest tables, persistent document navigation, tested recipes and version-matched HTML/Lit/React references. It keeps static rendering functions where they suffice rather than turning every section into a custom element. Results Pagination remains a separate consumer family; the Pro-inspired coordinated parts are Q15 in the [five-question register](../alignment/proposal-questions.md).
+
+This is proposal assembly, not source implementation or final page-layout approval. CEM/private-member classification, packaged API consistency, native table/light-DOM styling delivery and example acceptance remain named engineering gates. Historical API omission/build counts above retain their dated scope; the fresh [source snapshot](../alignment/evidence/current-public-interfaces-2026-09-20.json) is static coverage, not a replacement manifest.
+
+### Whole-set approval and Phase 5 handoff
+
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.

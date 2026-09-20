@@ -64,3 +64,11 @@ Peter selected Intent as development tooling. Pin/review alpha upgrades, validat
 The inspected Material Web tree had no AGENTS.md/SKILL.md/MCP/agent or inspector/devtool entries matching the targeted search. This establishes the search result, not that every possible authoring aid is absent. Its metadata/docs remain implementation references; no equivalent agent platform was demonstrated.
 
 The main adoption choices are resolved. Remaining work belongs to the future inventory and migration reviews: skill taxonomy/evaluations, versioned sources, MCP transport/interfaces/hosting and release integration. Do not reopen the selected skills/MCP/Intent direction merely because those implementation details remain to specify.
+
+## Complete tooling proposal
+
+The [Phase 4 tooling contract](../alignment/inventory/documentation-tooling.md) now proposes release-qualified documentation resources/tools, local stdio delivery, explicit version/framework resolution, shared generated API/example data and a concrete consumer-skill taxonomy. No runtime AI operations, project mutations, network model calls or global hook installation are introduced. These are reviewable proposals under selected capabilities, not shipped services or newly approved tool names.
+
+### Whole-set approval and Phase 5 handoff
+
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.

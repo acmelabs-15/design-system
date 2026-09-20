@@ -703,3 +703,17 @@ The style-production question was premature: Peter requested source/community-pr
 No current audit finding requires reversing the accepted directions. Comparative evidence is still incomplete for exact controller/base seams, state bridging, native-form mechanics and theme propagation. Preserve all-engine verification, compiler/CEM/React compatibility and nested lifecycle tests as gates. An implementation recommendation can change if those checks warrant it; do not silently overwrite Peter's earlier choice or treat selection as proof.
 
 Subsequent style follow-up: Peter selected [compiled CSS feeding generated Lit modules](../decisions/style-production.md) after the completed source/artifact comparison. The earlier unselected/premature-recommendation account above is historical; tool choice and implementation acceptance remain open.
+
+## Full Phase 4 proposal assembly
+
+Peter requested all remaining proposals before more questions. The [complete index](../alignment/inventory.md#complete-proposal-set) now links thirteen family/foundation/tooling files plus the existing core layout contracts. The [coverage map](../alignment/proposal-coverage.md) routes all 150 registered source tags and carries all thirty numbered extension records. The record contains 91 numbered component/family/adapter entries and seven documentation units; those are specification units, not a final public-tag count or completed implementation tasks.
+
+A fresh TypeScript AST pass over every registered source class records 778 direct property declarations and public-looking members, slots/parts/event literals with source locations/hashes. The [snapshot](../alignment/evidence/current-public-interfaces-2026-09-20.json) explicitly does not replace inherited/runtime CEM analysis. It informed replacement mappings and prevented retained source families from disappearing from the proposal set.
+
+Cross-family corrections include separating value/open/expanded/current notifications, treating copy/load/completion as results rather than action requests, keeping Group separate from form/selection/keyboard ownership, and proposing native author-owned Table/List/Data List structures. Markdown's proposed component-owned native output supports real heading fragment targets. These are house adaptations with browser/style/semantics gates, not claimed reference implementations.
+
+The [remaining decision register](../alignment/proposal-questions.md) contains five user-owned topics after source/engineering triage. Existing-source defaults, parser lookup, native serialization details, catalog delivery and workload benchmarking are not a second question queue. Complete-inventory approval and all named mechanism/style/browser gates remain. No production code, dependencies or generated output changed during assembly.
+
+### Whole-set approval and Phase 5 handoff
+
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.

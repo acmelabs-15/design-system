@@ -1,0 +1,908 @@
+{
+  "date": "2026-09-20",
+  "persisted": true,
+  "evidence": {
+    "localSources": [
+      "node_modules/lit-html/development/directives/style-map.js",
+      "node_modules/lit-html/development/directives/live.js",
+      "src/shared/state.ts",
+      "src/shared/form.ts",
+      "notes/decisions/design-system-devtools.md"
+    ],
+    "urls": [
+      "https://lit.dev/docs/templates/directives/#stylemap",
+      "https://lit.dev/docs/templates/directives/#live",
+      "https://tanstack.com/store/latest/docs/reference/functions/batch"
+    ],
+    "findings": [
+      "styleMap tracks previously supplied keys, removes keys that disappear or become nullish, and writes each currently supplied key on updates; it does not loop over every possible CSS property to clear unlisted names.",
+      "styleMap writes inline CSS, not house component properties/tokens, so it supplies an ownership pattern rather than a drop-in house helper.",
+      "Ordinary Lit property bindings compare with prior bound values; live() explicitly compares against current DOM values. The house helper must document whether it reasserts its controlled values, rather than silently claim all Lit bindings do this.",
+      "The existing shared/state.ts re-exports TanStack batch; use and verify it for multiple canonical input writes rather than add a state engine.",
+      "Existing bind(field) uses a public AsyncDirective and reasserts its supplied field values/errors during render; it does not implement style ownership.",
+      "Inspector read-only versus editing capability is explicitly unresolved. Any future editing must account for helper-controlled properties being reasserted or retained under the upcoming choice.",
+      "Three-field ownership/batching fixture passes all 19 assertions in Chromium, Firefox and WebKit; an unbatched control demonstrates a subscriber observing a partly updated pair.",
+      "Before the second answer, reasserting current inputs on each helper render was tested as a proposal. Peter then selected it explicitly as C-STYLE-05.",
+      "C-STYLE-04 and C-STYLE-05 are selected by Peter; the existing prototype's controlled reassertion test now verifies the selected outcome. No code change or repeat run was needed after that answer."
+    ]
+  },
+  "proposal": {
+    "question": "Should the helper manage only the settings supplied through it, or become the sole input for all supported CSS styling properties on that element?",
+    "recommendation": "Manage only supplied settings and clear ones it previously managed when removed; preserve unrelated independently supplied properties. Keep overlapping settings together. Exact competing-writer/lifecycle details remain to complete.",
+    "status": "Peter selected Only supplied settings (Recommended), C-STYLE-04."
+  },
+  "testSource": "\nimport {html,render as baseRender,noChange,css} from \"lit\";\nimport {AsyncDirective,directive,PartType} from \"lit/async-directive.js\";\nimport {createStore,batch} from \"@tanstack/lit-store\";\nimport {Capturing} from \"./dist/base.js\";\nimport {atomState} from \"./dist/shared/atom-state.js\";\nconst creationScope={importNode(node,deep){return \"customElementRegistry\" in Element.prototype ? document.importNode(node,{selfOnly:!deep,customElementRegistry:customElements}) : document.importNode(node,deep);}};\nconst render=(v,container)=>baseRender(v,container,{creationScope});\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\nclass Owned extends Capturing {\n static styles=css`#content {padding:24px;padding-inline:4px;background-color:transparent}`;\n static get observedAttributes(){return [...super.observedAttributes,\"background-color\"];}\n attributeChangedCallback(name,old,value){if(name===\"background-color\"){this.backgroundColor=value??undefined;return;}super.attributeChangedCallback(name,old,value);}\n applyInputs(values,previousKeys=[],batched=true){\n  const touched=new Set([...previousKeys,...Object.keys(values)]),unmanaged=this.declarationOrder.filter(k=>!touched.has(k));\n  const write=()=>{for(const key of previousKeys)if(!Object.hasOwn(values,key))this[key]=undefined;for(const key of Object.keys(values))this[key]=values[key];this.declarationOrder=[...unmanaged,...Object.keys(values).filter(k=>values[k]!==undefined)];};\n  if(batched)batch(write);else write();\n }\n}\natomState()(Owned.prototype,\"backgroundColor\");\nconst desc=Object.getOwnPropertyDescriptor(Owned.prototype,\"backgroundColor\");\nObject.defineProperty(Owned.prototype,\"backgroundColor\",{...desc,set(value){this.record(\"backgroundColor\",value);desc.set.call(this,value);}});\ncustomElements.define(\"owned-style-probe\",Owned);\nclass Inputs extends AsyncDirective {\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\"Element expression required\");}\n element;values={};generation=0;previousKeys=[];\n render(){return noChange;}\n update(part,[values]){this.element=part.element;this.values={...values};this.schedule(true);return noChange;}\n schedule(explicitUpdate=false){\n  const generation=++this.generation;\n  const registry=this.element.ownerDocument.defaultView.customElements;\n  if(registry.get(this.element.localName)){if(explicitUpdate||this.isConnected)this.apply(generation,explicitUpdate);return;}\n  if(!this.isConnected)return;\n  const weak=new WeakRef(this);\n  registry.whenDefined(this.element.localName).then(()=>weak.deref()?.apply(generation,false));\n }\n apply(generation,explicitUpdate){\n  if(generation!==this.generation||(!explicitUpdate&&!this.isConnected))return;\n  const registry=this.element.ownerDocument.defaultView.customElements;registry.upgrade(this.element);\n  const previousKeys=this.previousKeys;this.previousKeys=Object.keys(this.values);this.element.applyInputs(this.values,previousKeys);\n }\n disconnected(){this.generation++;}\n reconnected(){this.schedule();}\n}\nconst inputs=directive(Inputs);\n\nconst box=()=>{const e=document.createElement(\"div\");document.body.append(e);return e;};\nconst output=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\"#content\"));return{padding:[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft],background:s.backgroundColor};};\ntry{\n const root=box();const draw=values=>render(html`<owned-style-probe background-color=\"red\" title=\"Unrelated\" ${inputs(values)}></owned-style-probe>`,root);\n draw({padding:\"16px\",paddingInline:\"8px\"});const e=root.firstElementChild;await e.updateComplete;\n check(\"initial helper leaves unrelated canonical input\",e.backgroundColor,\"red\");\n check(\"initial helper leaves unrelated source attribute\",e.getAttribute(\"background-color\"),\"red\");\n check(\"initial helper leaves unrelated native attribute\",e.title,\"Unrelated\");\n check(\"initial helper output\",output(e),{padding:[\"16px\",\"8px\",\"16px\",\"8px\"],background:\"rgb(255, 0, 0)\"});\n const observed=[];const derived=createStore(()=>JSON.stringify([e.padding,e.paddingInline,e.backgroundColor,e.declarationOrder]));const sub=derived.subscribe(v=>observed.push(JSON.parse(v)));\n observed.length=0;draw({padding:\"20px\",paddingInline:\"4px\"});\n check(\"grouped write updates canonical state synchronously\",[e.padding,e.paddingInline],[\"20px\",\"4px\"]);\n check(\"batched subscriber sees one complete update\",observed,[[\"20px\",\"4px\",\"red\",[\"backgroundColor\",\"padding\",\"paddingInline\"]]]);\n await e.updateComplete;\n observed.length=0;e.applyInputs({padding:\"40px\",paddingInline:\"9px\"},[\"padding\",\"paddingInline\"],false);\n check(\"unbatched control exposes intermediate values\",observed.some(x=>x[0]===\"40px\"&&x[1]===\"4px\"),true);\n observed.length=0;draw({padding:\"20px\",paddingInline:\"4px\"});await e.updateComplete;\n check(\"prototype reasserts inputs on next helper render\",[e.padding,e.paddingInline],[\"20px\",\"4px\"]);\n draw({paddingInline:\"6px\"});await e.updateComplete;\n check(\"removing previously owned key clears it\",e.padding===undefined,true);\n check(\"removed broad input exposes default while unrelated stays\",output(e),{padding:[\"24px\",\"6px\",\"24px\",\"6px\"],background:\"rgb(255, 0, 0)\"});\n e.backgroundColor=\"blue\";draw({paddingInline:\"7px\"});await e.updateComplete;\n check(\"subsequent helper update preserves unrelated direct write\",e.backgroundColor,\"blue\");\n check(\"subsequent helper computed background stays blue\",output(e).background,\"rgb(0, 0, 255)\");\n draw({});await e.updateComplete;\n check(\"empty set clears formerly owned properties\",e.padding===undefined&&e.paddingInline===undefined,true);\n check(\"empty set leaves unrelated property\",e.backgroundColor,\"blue\");\n draw({backgroundColor:\"green\",padding:\"12px\"});await e.updateComplete;\n check(\"helper can acquire a newly supplied setting\",e.backgroundColor,\"green\");\n draw({padding:\"12px\"});await e.updateComplete;\n check(\"removing acquired setting clears it instead of restoring old value\",e.backgroundColor===undefined,true);\n check(\"cleared acquired setting exposes CSS default\",output(e).background,\"rgba(0, 0, 0, 0)\");\n draw({paddingInline:\"3px\",padding:\"14px\"});await e.updateComplete;\n check(\"owned order still applies\",output(e).padding,[\"14px\",\"14px\",\"14px\",\"14px\"]);\n check(\"helper updates preserve element identity\",root.firstElementChild===e,true);\n sub.unsubscribe();\n window.__ownershipProbe={done:true,results,passed:results.filter(x=>x.pass).length,total:results.length};\n}catch(error){window.__ownershipProbe={done:true,error:String(error),stack:error.stack,results};}\n",
+  "testLimits": [
+    "Reassertion after external writes was a proposal when tested and is now selected as C-STYLE-05.",
+    "Three scalar fields and global registry; no complete responsive/final type validation.",
+    "Clearing a key is tested; removing the helper expression itself has a separate lifecycle/ownership contract.",
+    "The unbatched comparison deliberately exposes an intermediate subscriber state; its assertion passing is evidence against unbatched publication, not approval of that behavior.",
+    "Batching checks cover coherent notifications for the tested writes, not exception rollback, every subscriber or all future converters.",
+    "The fixture's acquired background-color input clears to undefined/CSS defaults on removal; this is not approval of multiple concurrent writers for the same property or automatic restoration of an old input snapshot."
+  ],
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.48",
+      "errors": [],
+      "result": {
+        "done": true,
+        "results": [
+          {
+            "name": "initial helper leaves unrelated canonical input",
+            "actual": "red",
+            "expected": "red",
+            "pass": true
+          },
+          {
+            "name": "initial helper leaves unrelated source attribute",
+            "actual": "red",
+            "expected": "red",
+            "pass": true
+          },
+          {
+            "name": "initial helper leaves unrelated native attribute",
+            "actual": "Unrelated",
+            "expected": "Unrelated",
+            "pass": true
+          },
+          {
+            "name": "initial helper output",
+            "actual": {
+              "padding": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "expected": {
+              "padding": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "pass": true
+          },
+          {
+            "name": "grouped write updates canonical state synchronously",
+            "actual": [
+              "20px",
+              "4px"
+            ],
+            "expected": [
+              "20px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "batched subscriber sees one complete update",
+            "actual": [
+              [
+                "20px",
+                "4px",
+                "red",
+                [
+                  "backgroundColor",
+                  "padding",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "6px",
+                "red",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "6px",
+                "blue",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "7px",
+                "blue",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                null,
+                "blue",
+                [
+                  "backgroundColor"
+                ]
+              ],
+              [
+                "12px",
+                null,
+                "green",
+                [
+                  "backgroundColor",
+                  "padding"
+                ]
+              ],
+              [
+                "12px",
+                null,
+                null,
+                [
+                  "padding"
+                ]
+              ],
+              [
+                "14px",
+                "3px",
+                null,
+                [
+                  "paddingInline",
+                  "padding"
+                ]
+              ]
+            ],
+            "expected": [
+              [
+                "20px",
+                "4px",
+                "red",
+                [
+                  "backgroundColor",
+                  "padding",
+                  "paddingInline"
+                ]
+              ]
+            ],
+            "pass": true
+          },
+          {
+            "name": "unbatched control exposes intermediate values",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "prototype reasserts inputs on next helper render",
+            "actual": [
+              "20px",
+              "4px"
+            ],
+            "expected": [
+              "20px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "removing previously owned key clears it",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "removed broad input exposes default while unrelated stays",
+            "actual": {
+              "padding": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "expected": {
+              "padding": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "pass": true
+          },
+          {
+            "name": "subsequent helper update preserves unrelated direct write",
+            "actual": "blue",
+            "expected": "blue",
+            "pass": true
+          },
+          {
+            "name": "subsequent helper computed background stays blue",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "pass": true
+          },
+          {
+            "name": "empty set clears formerly owned properties",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "empty set leaves unrelated property",
+            "actual": "blue",
+            "expected": "blue",
+            "pass": true
+          },
+          {
+            "name": "helper can acquire a newly supplied setting",
+            "actual": "green",
+            "expected": "green",
+            "pass": true
+          },
+          {
+            "name": "removing acquired setting clears it instead of restoring old value",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "cleared acquired setting exposes CSS default",
+            "actual": "rgba(0, 0, 0, 0)",
+            "expected": "rgba(0, 0, 0, 0)",
+            "pass": true
+          },
+          {
+            "name": "owned order still applies",
+            "actual": [
+              "14px",
+              "14px",
+              "14px",
+              "14px"
+            ],
+            "expected": [
+              "14px",
+              "14px",
+              "14px",
+              "14px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "helper updates preserve element identity",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          }
+        ],
+        "passed": 19,
+        "total": 19
+      }
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "errors": [],
+      "result": {
+        "done": true,
+        "results": [
+          {
+            "name": "initial helper leaves unrelated canonical input",
+            "actual": "red",
+            "expected": "red",
+            "pass": true
+          },
+          {
+            "name": "initial helper leaves unrelated source attribute",
+            "actual": "red",
+            "expected": "red",
+            "pass": true
+          },
+          {
+            "name": "initial helper leaves unrelated native attribute",
+            "actual": "Unrelated",
+            "expected": "Unrelated",
+            "pass": true
+          },
+          {
+            "name": "initial helper output",
+            "actual": {
+              "padding": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "expected": {
+              "padding": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "pass": true
+          },
+          {
+            "name": "grouped write updates canonical state synchronously",
+            "actual": [
+              "20px",
+              "4px"
+            ],
+            "expected": [
+              "20px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "batched subscriber sees one complete update",
+            "actual": [
+              [
+                "20px",
+                "4px",
+                "red",
+                [
+                  "backgroundColor",
+                  "padding",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "6px",
+                "red",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "6px",
+                "blue",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "7px",
+                "blue",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                null,
+                "blue",
+                [
+                  "backgroundColor"
+                ]
+              ],
+              [
+                "12px",
+                null,
+                "green",
+                [
+                  "backgroundColor",
+                  "padding"
+                ]
+              ],
+              [
+                "12px",
+                null,
+                null,
+                [
+                  "padding"
+                ]
+              ],
+              [
+                "14px",
+                "3px",
+                null,
+                [
+                  "paddingInline",
+                  "padding"
+                ]
+              ]
+            ],
+            "expected": [
+              [
+                "20px",
+                "4px",
+                "red",
+                [
+                  "backgroundColor",
+                  "padding",
+                  "paddingInline"
+                ]
+              ]
+            ],
+            "pass": true
+          },
+          {
+            "name": "unbatched control exposes intermediate values",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "prototype reasserts inputs on next helper render",
+            "actual": [
+              "20px",
+              "4px"
+            ],
+            "expected": [
+              "20px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "removing previously owned key clears it",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "removed broad input exposes default while unrelated stays",
+            "actual": {
+              "padding": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "expected": {
+              "padding": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "pass": true
+          },
+          {
+            "name": "subsequent helper update preserves unrelated direct write",
+            "actual": "blue",
+            "expected": "blue",
+            "pass": true
+          },
+          {
+            "name": "subsequent helper computed background stays blue",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "pass": true
+          },
+          {
+            "name": "empty set clears formerly owned properties",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "empty set leaves unrelated property",
+            "actual": "blue",
+            "expected": "blue",
+            "pass": true
+          },
+          {
+            "name": "helper can acquire a newly supplied setting",
+            "actual": "green",
+            "expected": "green",
+            "pass": true
+          },
+          {
+            "name": "removing acquired setting clears it instead of restoring old value",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "cleared acquired setting exposes CSS default",
+            "actual": "rgba(0, 0, 0, 0)",
+            "expected": "rgba(0, 0, 0, 0)",
+            "pass": true
+          },
+          {
+            "name": "owned order still applies",
+            "actual": [
+              "14px",
+              "14px",
+              "14px",
+              "14px"
+            ],
+            "expected": [
+              "14px",
+              "14px",
+              "14px",
+              "14px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "helper updates preserve element identity",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          }
+        ],
+        "passed": 19,
+        "total": 19
+      }
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "errors": [],
+      "result": {
+        "done": true,
+        "results": [
+          {
+            "name": "initial helper leaves unrelated canonical input",
+            "actual": "red",
+            "expected": "red",
+            "pass": true
+          },
+          {
+            "name": "initial helper leaves unrelated source attribute",
+            "actual": "red",
+            "expected": "red",
+            "pass": true
+          },
+          {
+            "name": "initial helper leaves unrelated native attribute",
+            "actual": "Unrelated",
+            "expected": "Unrelated",
+            "pass": true
+          },
+          {
+            "name": "initial helper output",
+            "actual": {
+              "padding": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "expected": {
+              "padding": [
+                "16px",
+                "8px",
+                "16px",
+                "8px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "pass": true
+          },
+          {
+            "name": "grouped write updates canonical state synchronously",
+            "actual": [
+              "20px",
+              "4px"
+            ],
+            "expected": [
+              "20px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "batched subscriber sees one complete update",
+            "actual": [
+              [
+                "20px",
+                "4px",
+                "red",
+                [
+                  "backgroundColor",
+                  "padding",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "6px",
+                "red",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "6px",
+                "blue",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                "7px",
+                "blue",
+                [
+                  "backgroundColor",
+                  "paddingInline"
+                ]
+              ],
+              [
+                null,
+                null,
+                "blue",
+                [
+                  "backgroundColor"
+                ]
+              ],
+              [
+                "12px",
+                null,
+                "green",
+                [
+                  "backgroundColor",
+                  "padding"
+                ]
+              ],
+              [
+                "12px",
+                null,
+                null,
+                [
+                  "padding"
+                ]
+              ],
+              [
+                "14px",
+                "3px",
+                null,
+                [
+                  "paddingInline",
+                  "padding"
+                ]
+              ]
+            ],
+            "expected": [
+              [
+                "20px",
+                "4px",
+                "red",
+                [
+                  "backgroundColor",
+                  "padding",
+                  "paddingInline"
+                ]
+              ]
+            ],
+            "pass": true
+          },
+          {
+            "name": "unbatched control exposes intermediate values",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "prototype reasserts inputs on next helper render",
+            "actual": [
+              "20px",
+              "4px"
+            ],
+            "expected": [
+              "20px",
+              "4px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "removing previously owned key clears it",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "removed broad input exposes default while unrelated stays",
+            "actual": {
+              "padding": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "expected": {
+              "padding": [
+                "24px",
+                "6px",
+                "24px",
+                "6px"
+              ],
+              "background": "rgb(255, 0, 0)"
+            },
+            "pass": true
+          },
+          {
+            "name": "subsequent helper update preserves unrelated direct write",
+            "actual": "blue",
+            "expected": "blue",
+            "pass": true
+          },
+          {
+            "name": "subsequent helper computed background stays blue",
+            "actual": "rgb(0, 0, 255)",
+            "expected": "rgb(0, 0, 255)",
+            "pass": true
+          },
+          {
+            "name": "empty set clears formerly owned properties",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "empty set leaves unrelated property",
+            "actual": "blue",
+            "expected": "blue",
+            "pass": true
+          },
+          {
+            "name": "helper can acquire a newly supplied setting",
+            "actual": "green",
+            "expected": "green",
+            "pass": true
+          },
+          {
+            "name": "removing acquired setting clears it instead of restoring old value",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          },
+          {
+            "name": "cleared acquired setting exposes CSS default",
+            "actual": "rgba(0, 0, 0, 0)",
+            "expected": "rgba(0, 0, 0, 0)",
+            "pass": true
+          },
+          {
+            "name": "owned order still applies",
+            "actual": [
+              "14px",
+              "14px",
+              "14px",
+              "14px"
+            ],
+            "expected": [
+              "14px",
+              "14px",
+              "14px",
+              "14px"
+            ],
+            "pass": true
+          },
+          {
+            "name": "helper updates preserve element identity",
+            "actual": true,
+            "expected": true,
+            "pass": true
+          }
+        ],
+        "passed": 19,
+        "total": 19
+      }
+    }
+  ],
+  "serverSource": "\nimport path from \"node:path\";const scratch=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U\";\nawait Bun.write(path.join(scratch,\"owned-style-probe.js\"),\"\\nimport {html,render as baseRender,noChange,css} from \\\"lit\\\";\\nimport {AsyncDirective,directive,PartType} from \\\"lit/async-directive.js\\\";\\nimport {createStore,batch} from \\\"@tanstack/lit-store\\\";\\nimport {Capturing} from \\\"./dist/base.js\\\";\\nimport {atomState} from \\\"./dist/shared/atom-state.js\\\";\\nconst creationScope={importNode(node,deep){return \\\"customElementRegistry\\\" in Element.prototype ? document.importNode(node,{selfOnly:!deep,customElementRegistry:customElements}) : document.importNode(node,deep);}};\\nconst render=(v,container)=>baseRender(v,container,{creationScope});\\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\\nclass Owned extends Capturing {\\n static styles=css`#content {padding:24px;padding-inline:4px;background-color:transparent}`;\\n static get observedAttributes(){return [...super.observedAttributes,\\\"background-color\\\"];}\\n attributeChangedCallback(name,old,value){if(name===\\\"background-color\\\"){this.backgroundColor=value??undefined;return;}super.attributeChangedCallback(name,old,value);}\\n applyInputs(values,previousKeys=[],batched=true){\\n  const touched=new Set([...previousKeys,...Object.keys(values)]),unmanaged=this.declarationOrder.filter(k=>!touched.has(k));\\n  const write=()=>{for(const key of previousKeys)if(!Object.hasOwn(values,key))this[key]=undefined;for(const key of Object.keys(values))this[key]=values[key];this.declarationOrder=[...unmanaged,...Object.keys(values).filter(k=>values[k]!==undefined)];};\\n  if(batched)batch(write);else write();\\n }\\n}\\natomState()(Owned.prototype,\\\"backgroundColor\\\");\\nconst desc=Object.getOwnPropertyDescriptor(Owned.prototype,\\\"backgroundColor\\\");\\nObject.defineProperty(Owned.prototype,\\\"backgroundColor\\\",{...desc,set(value){this.record(\\\"backgroundColor\\\",value);desc.set.call(this,value);}});\\ncustomElements.define(\\\"owned-style-probe\\\",Owned);\\nclass Inputs extends AsyncDirective {\\n constructor(info){super(info);if(info.type!==PartType.ELEMENT)throw Error(\\\"Element expression required\\\");}\\n element;values={};generation=0;previousKeys=[];\\n render(){return noChange;}\\n update(part,[values]){this.element=part.element;this.values={...values};this.schedule(true);return noChange;}\\n schedule(explicitUpdate=false){\\n  const generation=++this.generation;\\n  const registry=this.element.ownerDocument.defaultView.customElements;\\n  if(registry.get(this.element.localName)){if(explicitUpdate||this.isConnected)this.apply(generation,explicitUpdate);return;}\\n  if(!this.isConnected)return;\\n  const weak=new WeakRef(this);\\n  registry.whenDefined(this.element.localName).then(()=>weak.deref()?.apply(generation,false));\\n }\\n apply(generation,explicitUpdate){\\n  if(generation!==this.generation||(!explicitUpdate&&!this.isConnected))return;\\n  const registry=this.element.ownerDocument.defaultView.customElements;registry.upgrade(this.element);\\n  const previousKeys=this.previousKeys;this.previousKeys=Object.keys(this.values);this.element.applyInputs(this.values,previousKeys);\\n }\\n disconnected(){this.generation++;}\\n reconnected(){this.schedule();}\\n}\\nconst inputs=directive(Inputs);\\n\\nconst box=()=>{const e=document.createElement(\\\"div\\\");document.body.append(e);return e;};\\nconst output=e=>{const s=getComputedStyle(e.shadowRoot.querySelector(\\\"#content\\\"));return{padding:[s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft],background:s.backgroundColor};};\\ntry{\\n const root=box();const draw=values=>render(html`<owned-style-probe background-color=\\\"red\\\" title=\\\"Unrelated\\\" ${inputs(values)}></owned-style-probe>`,root);\\n draw({padding:\\\"16px\\\",paddingInline:\\\"8px\\\"});const e=root.firstElementChild;await e.updateComplete;\\n check(\\\"initial helper leaves unrelated canonical input\\\",e.backgroundColor,\\\"red\\\");\\n check(\\\"initial helper leaves unrelated source attribute\\\",e.getAttribute(\\\"background-color\\\"),\\\"red\\\");\\n check(\\\"initial helper leaves unrelated native attribute\\\",e.title,\\\"Unrelated\\\");\\n check(\\\"initial helper output\\\",output(e),{padding:[\\\"16px\\\",\\\"8px\\\",\\\"16px\\\",\\\"8px\\\"],background:\\\"rgb(255, 0, 0)\\\"});\\n const observed=[];const derived=createStore(()=>JSON.stringify([e.padding,e.paddingInline,e.backgroundColor,e.declarationOrder]));const sub=derived.subscribe(v=>observed.push(JSON.parse(v)));\\n observed.length=0;draw({padding:\\\"20px\\\",paddingInline:\\\"4px\\\"});\\n check(\\\"grouped write updates canonical state synchronously\\\",[e.padding,e.paddingInline],[\\\"20px\\\",\\\"4px\\\"]);\\n check(\\\"batched subscriber sees one complete update\\\",observed,[[\\\"20px\\\",\\\"4px\\\",\\\"red\\\",[\\\"backgroundColor\\\",\\\"padding\\\",\\\"paddingInline\\\"]]]);\\n await e.updateComplete;\\n observed.length=0;e.applyInputs({padding:\\\"40px\\\",paddingInline:\\\"9px\\\"},[\\\"padding\\\",\\\"paddingInline\\\"],false);\\n check(\\\"unbatched control exposes intermediate values\\\",observed.some(x=>x[0]===\\\"40px\\\"&&x[1]===\\\"4px\\\"),true);\\n observed.length=0;draw({padding:\\\"20px\\\",paddingInline:\\\"4px\\\"});await e.updateComplete;\\n check(\\\"prototype reasserts inputs on next helper render\\\",[e.padding,e.paddingInline],[\\\"20px\\\",\\\"4px\\\"]);\\n draw({paddingInline:\\\"6px\\\"});await e.updateComplete;\\n check(\\\"removing previously owned key clears it\\\",e.padding===undefined,true);\\n check(\\\"removed broad input exposes default while unrelated stays\\\",output(e),{padding:[\\\"24px\\\",\\\"6px\\\",\\\"24px\\\",\\\"6px\\\"],background:\\\"rgb(255, 0, 0)\\\"});\\n e.backgroundColor=\\\"blue\\\";draw({paddingInline:\\\"7px\\\"});await e.updateComplete;\\n check(\\\"subsequent helper update preserves unrelated direct write\\\",e.backgroundColor,\\\"blue\\\");\\n check(\\\"subsequent helper computed background stays blue\\\",output(e).background,\\\"rgb(0, 0, 255)\\\");\\n draw({});await e.updateComplete;\\n check(\\\"empty set clears formerly owned properties\\\",e.padding===undefined&&e.paddingInline===undefined,true);\\n check(\\\"empty set leaves unrelated property\\\",e.backgroundColor,\\\"blue\\\");\\n draw({backgroundColor:\\\"green\\\",padding:\\\"12px\\\"});await e.updateComplete;\\n check(\\\"helper can acquire a newly supplied setting\\\",e.backgroundColor,\\\"green\\\");\\n draw({padding:\\\"12px\\\"});await e.updateComplete;\\n check(\\\"removing acquired setting clears it instead of restoring old value\\\",e.backgroundColor===undefined,true);\\n check(\\\"cleared acquired setting exposes CSS default\\\",output(e).background,\\\"rgba(0, 0, 0, 0)\\\");\\n draw({paddingInline:\\\"3px\\\",padding:\\\"14px\\\"});await e.updateComplete;\\n check(\\\"owned order still applies\\\",output(e).padding,[\\\"14px\\\",\\\"14px\\\",\\\"14px\\\",\\\"14px\\\"]);\\n check(\\\"helper updates preserve element identity\\\",root.firstElementChild===e,true);\\n sub.unsubscribe();\\n window.__ownershipProbe={done:true,results,passed:results.filter(x=>x.pass).length,total:results.length};\\n}catch(error){window.__ownershipProbe={done:true,error:String(error),stack:error.stack,results};}\\n\");\nconst build=await Bun.build({entrypoints:[path.join(scratch,\"owned-style-probe.js\")],target:\"browser\",format:\"esm\",write:false});if(!build.success)throw Error(JSON.stringify(build.logs));const js=await build.outputs[0].text();\nconst server=Bun.serve({hostname:\"127.0.0.1\",port:0,fetch(r){return new URL(r.url).pathname===\"/probe.js\"?new Response(js,{headers:{\"content-type\":\"text/javascript\"}}):new Response('<!doctype html><title>Style helper ownership and batching</title><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"content-type\":\"text/html\"}})}});console.log(JSON.stringify({url:server.url.href}));\n",
+  "driverSource": "\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst {chromium,firefox,webkit}=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst outputs=await Promise.all([{engine:\"chromium\",type:chromium,options:{executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}},{engine:\"firefox\",type:firefox},{engine:\"webkit\",type:webkit}].map(async({engine,type,options})=>{const browser=await type.launch({headless:true,...options});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",e=>errors.push(String(e)));await page.goto(\"http://127.0.0.1:57138/\");await page.waitForFunction(()=>window.__ownershipProbe?.done,undefined,{timeout:30000});return {engine,version:browser.version(),errors,result:await page.evaluate(()=>window.__ownershipProbe)};}finally{await browser.close();}}));\nawait Bun.write(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U/owned-style-results.json\",JSON.stringify(outputs,null,2));console.log(JSON.stringify(outputs.map(x=>({engine:x.engine,version:x.version,errors:x.errors,passed:x.result.passed,total:x.result.total,failures:x.result.results.filter(y=>!y.pass).map(y=>y.name)}))));\n",
+  "resourcesStopped": true,
+  "nextChoice": {
+    "question": "If outside code changes a helper-managed property, should the next parent helper render reassert its supplied value even when that supplied value has not changed?",
+    "recommendation": "Reassert helper inputs on each render, following styleMap and the inspected @lit/react wrapper; no continuous interception of direct writes.",
+    "alternative": "Only write when the helper input changes, like ordinary Lit property bindings, allowing outside writes to persist between input changes.",
+    "inspectorDependency": "Do not decide inspector editing now; return to this controlled-input behavior if editing is included.",
+    "status": "Selected Restore helper value (Recommended)"
+  },
+  "decisions": [
+    {
+      "id": "C-STYLE-04",
+      "questionId": "lit_style_helper_owned_properties",
+      "answer": "Only supplied settings (Recommended)",
+      "selected": "The Lit helper manages the styling settings supplied through it and clears previously managed settings when removed. Unrelated independently supplied attributes/properties remain intact. Overlapping settings stay together in the helper.",
+      "limits": "Same-key external-write behavior is subsequently selected as C-STYLE-05. Exact name/types, removal of the helper expression itself, broader competing-writer rules, scoped registries and full responsive/property coverage remain."
+    },
+    {
+      "id": "C-STYLE-05",
+      "questionId": "lit_style_helper_external_writes",
+      "answer": "Restore helper value (Recommended)",
+      "selected": "Reapply supplied helper-managed values on each parent/helper template render, even when the supplied values have not changed. Direct external property writes update canonical state immediately and remain effective until a later helper render. Persistent changes belong in helper inputs.",
+      "basis": "Peter's explicit answer after comparison with Lit styleMap, ordinary property bindings and the tested React wrapper.",
+      "limits": "No continuous interception or automatic rollback of property writes. Inspector editing capability remains a later decision; retained-value behavior after removing the helper expression itself is still separate."
+    }
+  ],
+  "next": "Complete helper-expression removal/lifecycle ownership and final name/types; inspect scoped registries/adopted documents, then finish responsive/token/density contracts. Do not re-ask supplied-key ownership or next-render reassertion. Inspector editing remains a later choice with this dependency.",
+  "kind": "lit-style-helper-ownership-and-controlled-inputs",
+  "capturedAt": "2026-09-20T11:33:17.313Z",
+  "phase": 4,
+  "decisionsCaptured": 2,
+  "implementationChanged": false,
+  "projectDependenciesChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "reproduction": {
+    "baseFixture": "notes/alignment/evidence/style-package-verification-2026-09-20.json",
+    "lifecycleFixture": "notes/alignment/evidence/lit-style-helper-review-2026-09-20.json",
+    "temporaryPackageCache": {
+      "dir": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-package-probe-valn2U"
+    },
+    "browserDriver": {
+      "cache": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk",
+      "driverRoot": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package",
+      "browsersPath": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers",
+      "version": "1.63.0",
+      "integrity": "sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==",
+      "verified": true,
+      "catalog": [
+        {
+          "name": "firefox",
+          "revision": "1543",
+          "installByDefault": true,
+          "browserVersion": "155.0",
+          "title": "Firefox"
+        },
+        {
+          "name": "webkit",
+          "revision": "2359",
+          "installByDefault": true,
+          "revisionOverrides": {
+            "mac14": "2251",
+            "mac14-arm64": "2251"
+          },
+          "browserVersion": "26.6",
+          "title": "WebKit"
+        }
+      ]
+    },
+    "notes": "Uses the saved compiled Capturing base and a three-field scratch subclass. The ownership harness was bundled without a new Lit-compiler transform or strict helper type check; earlier compiled lifecycle evidence remains distinct. Temporary paths and ports may need recreation."
+  }
+}

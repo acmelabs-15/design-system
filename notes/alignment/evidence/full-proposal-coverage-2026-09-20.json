@@ -1,0 +1,1810 @@
+{
+  "date": "2026-09-20",
+  "scope": "Full Phase 4 proposal assembly coverage",
+  "groups": [
+    {
+      "id": "R01",
+      "name": "Shared rules and themes",
+      "file": "notes/alignment/inventory/foundations.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [],
+      "sourceTags": 0
+    },
+    {
+      "id": "R02",
+      "name": "Layout and attached groups",
+      "file": "notes/alignment/inventory/layout.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "L-06",
+        "L-07",
+        "L-08",
+        "L-09"
+      ],
+      "sourceTags": 2
+    },
+    {
+      "id": "R03",
+      "name": "Text and formatting",
+      "file": "notes/alignment/inventory/typography.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "T-01",
+        "T-02",
+        "T-03",
+        "T-04",
+        "T-05",
+        "T-06",
+        "T-07",
+        "T-08",
+        "T-09",
+        "T-10",
+        "T-11"
+      ],
+      "sourceTags": 4
+    },
+    {
+      "id": "R04",
+      "name": "Actions, icons and identity",
+      "file": "notes/alignment/inventory/actions.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "A-01",
+        "A-02",
+        "A-03",
+        "A-04",
+        "A-05",
+        "A-06",
+        "A-07",
+        "A-08",
+        "A-09",
+        "A-10"
+      ],
+      "sourceTags": 15
+    },
+    {
+      "id": "R05",
+      "name": "Selection and tabs",
+      "file": "notes/alignment/inventory/selection.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "S-01",
+        "S-02",
+        "S-03",
+        "S-04",
+        "S-05",
+        "S-06",
+        "S-07"
+      ],
+      "sourceTags": 11
+    },
+    {
+      "id": "R06",
+      "name": "Inputs and forms",
+      "file": "notes/alignment/inventory/inputs-forms.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "F-01",
+        "F-02",
+        "F-03",
+        "F-04",
+        "F-05",
+        "F-06",
+        "F-07",
+        "F-08",
+        "F-09",
+        "F-10"
+      ],
+      "sourceTags": 16
+    },
+    {
+      "id": "R07",
+      "name": "Surfaces and content composition",
+      "file": "notes/alignment/inventory/surfaces.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "C-01",
+        "C-02",
+        "C-03",
+        "C-04",
+        "C-05"
+      ],
+      "sourceTags": 21
+    },
+    {
+      "id": "R08",
+      "name": "Navigation and disclosure",
+      "file": "notes/alignment/inventory/navigation-disclosure.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "N-01",
+        "N-02",
+        "N-03",
+        "N-04",
+        "N-05",
+        "N-06",
+        "N-07",
+        "N-08",
+        "N-09",
+        "N-10",
+        "N-11",
+        "N-12"
+      ],
+      "sourceTags": 28
+    },
+    {
+      "id": "R09",
+      "name": "Messages, progress and statistics",
+      "file": "notes/alignment/inventory/messages-statistics.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "M-01",
+        "M-02",
+        "M-03",
+        "M-04",
+        "M-05",
+        "M-06",
+        "M-07",
+        "M-08"
+      ],
+      "sourceTags": 24
+    },
+    {
+      "id": "R10",
+      "name": "Overlays and help",
+      "file": "notes/alignment/inventory/overlays-help.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "O-01",
+        "O-02",
+        "O-03",
+        "O-04",
+        "O-05",
+        "O-06"
+      ],
+      "sourceTags": 7
+    },
+    {
+      "id": "R11",
+      "name": "Tables, charts and diagrams",
+      "file": "notes/alignment/inventory/data-displays.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "D-05"
+      ],
+      "sourceTags": 7
+    },
+    {
+      "id": "R12",
+      "name": "Rich content and media",
+      "file": "notes/alignment/inventory/rich-content.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [
+        "RC-01",
+        "RC-02",
+        "RC-03",
+        "RC-04",
+        "RC-05",
+        "RC-06",
+        "RC-07"
+      ],
+      "sourceTags": 8
+    },
+    {
+      "id": "R13",
+      "name": "Documentation and public tooling",
+      "file": "notes/alignment/inventory/documentation-tooling.md",
+      "status": "Design approved; verification and migration pending",
+      "entryIds": [],
+      "sourceTags": 0
+    }
+  ],
+  "sourceTagCoverage": {
+    "count": 150,
+    "missing": [],
+    "duplicateAssignments": [],
+    "unknownAssignments": [],
+    "entries": [
+      {
+        "sourceTag": "acme-appbar",
+        "sourceFile": "src/components/appbar/appbar.ts",
+        "sourceLine": 8,
+        "sourceSha256": "77135047dcf5207d95eefabbf32d64cad196ca283faa86364687c40d8845e620",
+        "record": "inventory/navigation-disclosure.md#n-01-app-bar",
+        "entry": "N-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-avatar",
+        "sourceFile": "src/components/avatar/avatar.ts",
+        "sourceLine": 37,
+        "sourceSha256": "b31aad41a5651886d91f877247ca84a7e3efa582e239988842e8252a52c75378",
+        "record": "inventory/actions.md#a-07-avatar",
+        "entry": "A-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-avatar-group",
+        "sourceFile": "src/components/avatar-group/avatar-group.ts",
+        "sourceLine": 16,
+        "sourceSha256": "9276a55f52f7dca6c553656454a7b076b8829c9643231be6927c0638f9918847",
+        "record": "inventory/actions.md#a-08-avatar-group",
+        "entry": "A-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-badge",
+        "sourceFile": "src/components/badge/badge.ts",
+        "sourceLine": 18,
+        "sourceSha256": "17bf7c9926a38c17b6218fe2052bf30f8a00b55420a4711e8c75eacb81146cfe",
+        "record": "inventory/actions.md#a-09-badge-pill-and-tag",
+        "entry": "A-09",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-banner",
+        "sourceFile": "src/components/banner/banner.ts",
+        "sourceLine": 25,
+        "sourceSha256": "921cbde3f7d86fa4da4981f9b39358a35e69472e05a4ba2e75f0c3cd7c61ae1d",
+        "record": "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "entry": "M-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-bar-row",
+        "sourceFile": "src/components/bar-row/bar-row.ts",
+        "sourceLine": 8,
+        "sourceSha256": "d96d32ccefff7a5c3bbca1a1fd82e694d40f181894341c173f91dddaa965a76e",
+        "record": "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "entry": "recipes",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-bar-rows",
+        "sourceFile": "src/components/bar-rows/bar-rows.ts",
+        "sourceLine": 5,
+        "sourceSha256": "c1dc822868eabae22966f5f2bc89262a5c756029aacd3bb7b5e36132ab05cc7b",
+        "record": "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "entry": "recipes",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-book",
+        "sourceFile": "src/components/book/book.ts",
+        "sourceLine": 63,
+        "sourceSha256": "97764762f2453367595a5686ba551e6afe4980cd2a186208dcc056118f73ffd3",
+        "record": "inventory/rich-content.md#rc-05-book",
+        "entry": "RC-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-breadcrumb",
+        "sourceFile": "src/components/breadcrumb/breadcrumb.ts",
+        "sourceLine": 18,
+        "sourceSha256": "9ca20c81db967b2a213c6557c89e800b304fd462197264f6652cf63fd4194f46",
+        "record": "inventory/navigation-disclosure.md#n-05-breadcrumbs",
+        "entry": "N-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-breadcrumbs",
+        "sourceFile": "src/components/breadcrumbs/breadcrumbs.ts",
+        "sourceLine": 13,
+        "sourceSha256": "4c8435a0a0c5df7f5dd9d7a95e8184a752dc3a21fe973566393784ca269c57d8",
+        "record": "inventory/navigation-disclosure.md#n-05-breadcrumbs",
+        "entry": "N-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-browser",
+        "sourceFile": "src/components/browser/browser.ts",
+        "sourceLine": 38,
+        "sourceSha256": "178b5d57e3d7907480dbeef1b6804570c1f3fdaac33ab53f9768822079db1405",
+        "record": "inventory/rich-content.md#rc-06-browser",
+        "entry": "RC-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-button",
+        "sourceFile": "src/components/button/button.ts",
+        "sourceLine": 36,
+        "sourceSha256": "864bdf46a913f19e9223b05f315d9bf2c406e0e02a761c52112e30d763e41106",
+        "record": "inventory/actions.md#a-01-button",
+        "entry": "A-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-button-group",
+        "sourceFile": "src/components/button-group/button-group.ts",
+        "sourceLine": 7,
+        "sourceSha256": "fdb228b2f721c6aa9d80621bdf26773c6f5aaf63bab39a56cf58316e313b57ec",
+        "record": "inventory.md#g-01-group",
+        "entry": "G-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-calendar",
+        "sourceFile": "src/components/calendar/calendar.ts",
+        "sourceLine": 49,
+        "sourceSha256": "8b636a306bdcc664223585b382f66bdbaee255be595777f3ffb3cb1772819e95",
+        "record": "inventory/inputs-forms.md#f-08-calendar",
+        "entry": "F-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-card",
+        "sourceFile": "src/components/card/card.ts",
+        "sourceLine": 7,
+        "sourceSha256": "bbe8373f9855a5dda1dd650bf9e45b888830e90b6caee4f52640fe02b6f67767",
+        "record": "inventory/surfaces.md#c-01-card",
+        "entry": "C-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-chart",
+        "sourceFile": "src/components/chart/chart.ts",
+        "sourceLine": 22,
+        "sourceSha256": "f17ba01b7bf94caca955122a7f09b005013b8b2da3e210b717b9f870eb758ad1",
+        "record": "inventory/data-displays.md#d-03-chart",
+        "entry": "D-03",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-check",
+        "sourceFile": "src/components/check/check.ts",
+        "sourceLine": 7,
+        "sourceSha256": "d25016e76f214d0215a24401c9da259f3ea7887b70e3bcedfa8969dc2209ff55",
+        "record": "inventory/inputs-forms.md#f-09-field-fieldset-and-label",
+        "entry": "F-09",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-checkbox",
+        "sourceFile": "src/components/checkbox/checkbox.ts",
+        "sourceLine": 16,
+        "sourceSha256": "5e50ffd11751052af4b62a1530cdcddf59ff13f40ebb8c29be7591c4eb7005e5",
+        "record": "inventory/selection.md#s-01-checkbox-and-checkbox-group",
+        "entry": "S-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-chip",
+        "sourceFile": "src/components/chip/chip.ts",
+        "sourceLine": 7,
+        "sourceSha256": "cd2cc6ff443dfb4479326c212c807cecad091284f74bd69ff3a6cf5d795eb64c",
+        "record": "inventory/actions.md#a-03-toggle-button",
+        "entry": "A-03",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-choicebox",
+        "sourceFile": "src/components/choicebox/choicebox.ts",
+        "sourceLine": 22,
+        "sourceSha256": "5aa562d4715d9f39bcb33fb39f84057bd444d7ca8fb3f74f31c65e1e4f0c419d",
+        "record": "inventory/selection.md#s-03-checkbox-card-and-radio-card",
+        "entry": "S-03",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-choicebox-item",
+        "sourceFile": "src/components/choicebox-item/choicebox-item.ts",
+        "sourceLine": 23,
+        "sourceSha256": "2a3141e742496df2c144c49b44ebefac9e5d728dfd50ef0a17de2387c05dab43",
+        "record": "inventory/selection.md#s-03-checkbox-card-and-radio-card",
+        "entry": "S-03",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-clearable-input",
+        "sourceFile": "src/components/clearable-input/clearable-input.ts",
+        "sourceLine": 15,
+        "sourceSha256": "122448305d07becc7c3423a1f379d15d723600d4f4a77cce347f0260f1f35513",
+        "record": "inventory/inputs-forms.md#f-01-input-and-search",
+        "entry": "F-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-code",
+        "sourceFile": "src/components/code/code.ts",
+        "sourceLine": 31,
+        "sourceSha256": "fd181e7cf660ac0b622b855abe13012d8dba1e17369594b9ef580f2ddefb8a20",
+        "record": "inventory/typography.md#shared-typography-interface",
+        "entry": "T-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-code-block",
+        "sourceFile": "src/components/code-block/code-block.ts",
+        "sourceLine": 43,
+        "sourceSha256": "53da5a4c3fade1e0b39988218245b7662882de0b45d2b738adf913f665657ddc",
+        "record": "inventory/rich-content.md#rc-01-code-block",
+        "entry": "RC-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-collapse",
+        "sourceFile": "src/components/collapse/collapse.ts",
+        "sourceLine": 19,
+        "sourceSha256": "fa5de707d2820e45caf5d12ee0903957c24a975ca6ea0a93658aeab92bee31db",
+        "record": "inventory/navigation-disclosure.md#n-09-accordion-and-collapsible",
+        "entry": "N-09",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-collapse-group",
+        "sourceFile": "src/components/collapse-group/collapse-group.ts",
+        "sourceLine": 14,
+        "sourceSha256": "b9bcbfd0d0af19242d495411e6880beb438c6088a814752d9300ae066331c058",
+        "record": "inventory/navigation-disclosure.md#n-09-accordion-and-collapsible",
+        "entry": "N-09",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-combobox",
+        "sourceFile": "src/components/combobox/combobox.ts",
+        "sourceLine": 79,
+        "sourceSha256": "d775fe64315895ae9f8b3f07158ebd0da7de269613abcc6855b8a8185f9bd0ec",
+        "record": "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "entry": "F-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-combobox-option",
+        "sourceFile": "src/components/combobox-option/combobox-option.ts",
+        "sourceLine": 28,
+        "sourceSha256": "0a34530ca4dedf7d5a3fcfa219e57a9222e1ca532bc639e571c1044224d33fab",
+        "record": "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "entry": "F-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-command-divider",
+        "sourceFile": "src/components/command-divider/command-divider.ts",
+        "sourceLine": 11,
+        "sourceSha256": "49d1cbff9e2088e6d747d547e701f81790d55a0e47c2df71f41366c713aaa6cc",
+        "record": "inventory/navigation-disclosure.md#n-08-command-menu",
+        "entry": "N-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-command-group",
+        "sourceFile": "src/components/command-group/command-group.ts",
+        "sourceLine": 11,
+        "sourceSha256": "29970cea8afb9059582e7794d843501e47e5aace52f70ee11108f98260b075fa",
+        "record": "inventory/navigation-disclosure.md#n-08-command-menu",
+        "entry": "N-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-command-item",
+        "sourceFile": "src/components/command-item/command-item.ts",
+        "sourceLine": 23,
+        "sourceSha256": "a0da57a89858073767d97febd3bd261fd0af431204e6b1089eaa079fd6f8489e",
+        "record": "inventory/navigation-disclosure.md#n-08-command-menu",
+        "entry": "N-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-command-menu",
+        "sourceFile": "src/components/command-menu/command-menu.ts",
+        "sourceLine": 56,
+        "sourceSha256": "604b7766405578e07327c95bf1e48c5bc24e3c3d117df169f5a9313a6ef63d66",
+        "record": "inventory/navigation-disclosure.md#n-08-command-menu",
+        "entry": "N-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-context-card",
+        "sourceFile": "src/components/context-card/context-card.ts",
+        "sourceLine": 98,
+        "sourceSha256": "97a5a6edd0232557cef6bee1989f12c4c8ead4d00a555f5e7e68c8dc0c575a8b",
+        "record": "inventory/overlays-help.md#o-05-hover-card",
+        "entry": "O-05",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-context-menu",
+        "sourceFile": "src/components/context-menu/context-menu.ts",
+        "sourceLine": 41,
+        "sourceSha256": "839a2b3a02ec3b707cb14e4d9114489739bb913d56b1ef39fc1481eb516e5769",
+        "record": "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "entry": "N-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-copy-button",
+        "sourceFile": "src/components/copy-button/copy-button.ts",
+        "sourceLine": 28,
+        "sourceSha256": "c39507147340f87a8302487396872d9aa0a90a4cbc1c9ec3b7c1028c5e1530b4",
+        "record": "inventory/actions.md#a-05-copy-button",
+        "entry": "A-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-description",
+        "sourceFile": "src/components/description/description.ts",
+        "sourceLine": 13,
+        "sourceSha256": "09b09a63c880d0c71cb8251ef35153ef2c8ba9de2c7957862b12f6a9b6e365e4",
+        "record": "inventory/surfaces.md#c-04-data-list",
+        "entry": "C-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-destructive-modal",
+        "sourceFile": "src/components/destructive-modal/destructive-modal.ts",
+        "sourceLine": 30,
+        "sourceSha256": "020851d5e68c5b84cf9e31cc8d9c2327f0253c03ec474d66488b69f0e5e92d97",
+        "record": "inventory/overlays-help.md#o-02-alert-dialog",
+        "entry": "O-02",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-disabled-wall",
+        "sourceFile": "src/components/disabled-wall/disabled-wall.ts",
+        "sourceLine": 11,
+        "sourceSha256": "976c851cea39efe5568775522e63b512e00aea01be64940d8057e41ee0d75cba",
+        "record": "inventory/surfaces.md#c-05-disabled-wall",
+        "entry": "C-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-dots-menu",
+        "sourceFile": "src/components/dots-menu/dots-menu.ts",
+        "sourceLine": 25,
+        "sourceSha256": "4b5c7efb5799dbca188d031e1971b9d9bf5a3669005c9d82088749ba7cf91ff7",
+        "record": "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "entry": "N-07",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-drawer",
+        "sourceFile": "src/components/drawer/drawer.ts",
+        "sourceLine": 55,
+        "sourceSha256": "43baf5c44038ddb59fa491aff5031cdff6ad4d2114c19b07e276ba51126ef901",
+        "record": "inventory/overlays-help.md#o-03-drawer",
+        "entry": "O-03",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-empty-state",
+        "sourceFile": "src/components/empty-state/empty-state.ts",
+        "sourceLine": 16,
+        "sourceSha256": "102028048fb8bd6f6b04313d565bdc70a39e181c4590ab4b6916b06efe4e9db3",
+        "record": "inventory/messages-statistics.md#m-04-empty-state",
+        "entry": "M-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-entity",
+        "sourceFile": "src/components/entity/entity.ts",
+        "sourceLine": 19,
+        "sourceSha256": "15188a17361c95364318f374c8d7317ff6939f2e421393d13938d32c24779db7",
+        "record": "inventory/surfaces.md#c-02-item",
+        "entry": "C-02",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-entity-content",
+        "sourceFile": "src/components/entity-content/entity-content.ts",
+        "sourceLine": 14,
+        "sourceSha256": "9f17bf6e887c06b02bbab0bfb227a2cae03fb83a39005319bda4eb6952c57a8b",
+        "record": "inventory/surfaces.md#c-02-item",
+        "entry": "C-02",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-entity-list",
+        "sourceFile": "src/components/entity-list/entity-list.ts",
+        "sourceLine": 14,
+        "sourceSha256": "6aa2269971fb201dc31ed3b1b344a11d1feeaef6bce69cb6b752c203fd6fc193",
+        "record": "inventory/surfaces.md#c-02-item",
+        "entry": "C-02",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-error",
+        "sourceFile": "src/components/error/error.ts",
+        "sourceLine": 13,
+        "sourceSha256": "91a0e08992579271bc172ece212dba4617e08c6c9cfcaa76683ece68330dcf2d",
+        "record": "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "entry": "M-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-error-card",
+        "sourceFile": "src/components/error-card/error-card.ts",
+        "sourceLine": 17,
+        "sourceSha256": "4dc06cdcc0f8de22e452339fd9f7319bd32d4118c97c9338e7082250059dce95",
+        "record": "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "entry": "M-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-feedback",
+        "sourceFile": "src/components/feedback/feedback.ts",
+        "sourceLine": 90,
+        "sourceSha256": "147cb82094e280e15cb7f3fa26568910056106a7bbb474f993ea084f133aeb77",
+        "record": "inventory/messages-statistics.md#m-03-feedback",
+        "entry": "M-03",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-fieldset",
+        "sourceFile": "src/components/fieldset/fieldset.ts",
+        "sourceLine": 21,
+        "sourceSha256": "5ea5164422630b0be847e8d164ef047b4f3e1243c47eafe05052f0a4574a06fd",
+        "record": "inventory/inputs-forms.md#f-09-field-fieldset-and-label",
+        "entry": "F-09",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-file",
+        "sourceFile": "src/components/file/file.ts",
+        "sourceLine": 29,
+        "sourceSha256": "007d065ad8f7bf1a1144442e07203d1eff49c59bd474d7dd65ee37385ac3c0f4",
+        "record": "inventory/navigation-disclosure.md#n-06-tree-view",
+        "entry": "N-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-file-tree",
+        "sourceFile": "src/components/file-tree/file-tree.ts",
+        "sourceLine": 12,
+        "sourceSha256": "2d3b8093d9a9ae7cfa37a321d4acca81ee3434eed8de1e136b6b4645b6fdcd23",
+        "record": "inventory/navigation-disclosure.md#n-06-tree-view",
+        "entry": "N-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-filter",
+        "sourceFile": "src/components/filter/filter.ts",
+        "sourceLine": 7,
+        "sourceSha256": "c04bdd1eeb983c936012df0794ca80e85a3d6003daf105d35de7fbd333a12edb",
+        "record": "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "entry": "F-06",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-filters",
+        "sourceFile": "src/components/filters/filters.ts",
+        "sourceLine": 6,
+        "sourceSha256": "7c5e412e43b56ed4903ee6d6c7a96e8c8c6e07e73c7498dcadadc3340d81a335",
+        "record": "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "entry": "F-06",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-fold",
+        "sourceFile": "src/components/fold/fold.ts",
+        "sourceLine": 7,
+        "sourceSha256": "0be6e859d0e4fab86ce3a9731c2d8f3821a90366026128719c1b3899eac0b886",
+        "record": "inventory/navigation-disclosure.md#n-09-accordion-and-collapsible",
+        "entry": "N-09",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-folder",
+        "sourceFile": "src/components/folder/folder.ts",
+        "sourceLine": 22,
+        "sourceSha256": "9bac3a5d73f61cbb960b1576f5b55bd3c7f707edb39f7400c15a02097449d520",
+        "record": "inventory/navigation-disclosure.md#n-06-tree-view",
+        "entry": "N-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-gauge",
+        "sourceFile": "src/components/gauge/gauge.ts",
+        "sourceLine": 26,
+        "sourceSha256": "85beaa161b6e6038dd45002b1ade430e86146f0fd0af5e34d02d085b934b3ca0",
+        "record": "inventory/messages-statistics.md#m-06-meter",
+        "entry": "M-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-grid",
+        "sourceFile": "src/components/grid/grid.ts",
+        "sourceLine": 123,
+        "sourceSha256": "7779edcceb35f578bb1d765f1e999df805fe6e8f7d62273b44cfd9cebf2a424a",
+        "record": "inventory.md#l-05-grid",
+        "entry": "L-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-grid-cell",
+        "sourceFile": "src/components/grid-cell/grid-cell.ts",
+        "sourceLine": 20,
+        "sourceSha256": "3bb100f238387f11a8558a4c44fde8dffbdb8d83ab4607a47232a6183a42559e",
+        "record": "inventory.md#l-05-grid",
+        "entry": "L-05",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-grid-cross",
+        "sourceFile": "src/components/grid-cross/grid-cross.ts",
+        "sourceLine": 12,
+        "sourceSha256": "38e650133e0a803ed291f89cbb71fb3ad441a3a5286d3fca2da5d88178ed4eba",
+        "record": "inventory.md#l-05-grid",
+        "entry": "L-05",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-grid-page",
+        "sourceFile": "src/components/grid-page/grid-page.ts",
+        "sourceLine": 13,
+        "sourceSha256": "14e984280a3bb99af9614dcfaf049435214e2ada8ab3c56c09186069301c6df5",
+        "record": "inventory.md#l-05-grid",
+        "entry": "L-05",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-grid-system",
+        "sourceFile": "src/components/grid-system/grid-system.ts",
+        "sourceLine": 17,
+        "sourceSha256": "d29ea7d95698b85239d784f91de77277b6240f46e06a0724695ddd4fba32320f",
+        "record": "inventory.md#l-05-grid",
+        "entry": "L-05",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-icon-tile",
+        "sourceFile": "src/components/icon-tile/icon-tile.ts",
+        "sourceLine": 12,
+        "sourceSha256": "8dff80acccfdcc5e7a43bf058f428ba81daa8fec22be63958c63bdca44345478",
+        "record": "inventory/actions.md#a-06-per-icon-elements-and-icon-tile",
+        "entry": "A-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-input",
+        "sourceFile": "src/components/input/input.ts",
+        "sourceLine": 31,
+        "sourceSha256": "6320a51acaa2ff489b1264b9bf54105fec10e5ffdf7dc3752bd45417fcafdda3",
+        "record": "inventory/inputs-forms.md#f-01-input-and-search",
+        "entry": "F-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-item",
+        "sourceFile": "src/components/item/item.ts",
+        "sourceLine": 9,
+        "sourceSha256": "a19e20a7d1b9beb3f58e289a786afa1df2e8767df71ef1ac6f1769843af8fd40",
+        "record": "inventory/surfaces.md#c-02-item",
+        "entry": "C-02",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-items",
+        "sourceFile": "src/components/items/items.ts",
+        "sourceLine": 6,
+        "sourceSha256": "0f7e01b96db200af4d282f8b568acd23757331bb3bded475f2027a3d3813299f",
+        "record": "inventory/surfaces.md#c-02-item",
+        "entry": "C-02",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-json-view",
+        "sourceFile": "src/components/json-view/json-view.ts",
+        "sourceLine": 45,
+        "sourceSha256": "8643d2876fbbd39bc7b8c72fbdf2b1952694d3ce2b305e5b886200b636142112",
+        "record": "inventory/rich-content.md#rc-03-json-view",
+        "entry": "RC-03",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-kbd",
+        "sourceFile": "src/components/kbd/kbd.ts",
+        "sourceLine": 18,
+        "sourceSha256": "0a1620bd84fee2952255e22ec570ba3941ee247369fe645c7eee4056443612da",
+        "record": "inventory/typography.md#shared-typography-interface",
+        "entry": "T-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-kv",
+        "sourceFile": "src/components/kv/kv.ts",
+        "sourceLine": 7,
+        "sourceSha256": "b1d5cc2fc1ee405d4be251480b49a6a6058d6a0ad203731ee70a30fd46f82372",
+        "record": "inventory/surfaces.md#c-04-data-list",
+        "entry": "C-04",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-label",
+        "sourceFile": "src/components/label/label.ts",
+        "sourceLine": 12,
+        "sourceSha256": "f201093d22e9d7ee6e3c6cfe8de838e0c39f5f0c84326cd23b92d638fe59b666",
+        "record": "inventory/inputs-forms.md#f-09-field-fieldset-and-label",
+        "entry": "F-09",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-legend",
+        "sourceFile": "src/components/legend/legend.ts",
+        "sourceLine": 7,
+        "sourceSha256": "6bf50bf6c88b586e8bcfef999632cbe218441be20664825b787d1f3d5d18aff0",
+        "record": "inventory/data-displays.md#d-04-sparkline-and-legend",
+        "entry": "D-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-legend-item",
+        "sourceFile": "src/components/legend-item/legend-item.ts",
+        "sourceLine": 7,
+        "sourceSha256": "28acb5b46a3731be70f67165824a04f870a7600c7353a9bf2b47d34b7ea6ddca",
+        "record": "inventory/data-displays.md#d-04-sparkline-and-legend",
+        "entry": "D-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-link-card",
+        "sourceFile": "src/components/link-card/link-card.ts",
+        "sourceLine": 8,
+        "sourceSha256": "c126109ac69158b31aa14513dc85a224e20d0da53e76113dc5d11fe81cec2f73",
+        "record": "inventory/surfaces.md#c-01-card",
+        "entry": "C-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-load-more",
+        "sourceFile": "src/components/load-more/load-more.ts",
+        "sourceLine": 15,
+        "sourceSha256": "afaf7beb98fff323882772638459c8b7482d30319fb40e36597fc793d0e0525b",
+        "record": "inventory/navigation-disclosure.md#n-12-show-show-more-and-load-more",
+        "entry": "N-12",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-loading-dots",
+        "sourceFile": "src/components/loading-dots/loading-dots.ts",
+        "sourceLine": 13,
+        "sourceSha256": "0cf2e18988659dab506341a37696cf64be075af76db6a7b72b9d23cfe06a1166",
+        "record": "inventory/messages-statistics.md#m-05-spinner-progress-and-skeleton",
+        "entry": "M-05",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-logs",
+        "sourceFile": "src/components/logs/logs.ts",
+        "sourceLine": 7,
+        "sourceSha256": "8a2206fcd6b265b2ff663c81ce5c3bd27dcd2535fe78a4d4d9b4d3c203441d4f",
+        "record": "inventory/data-displays.md#d-01-table",
+        "entry": "D-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-markdown",
+        "sourceFile": "src/components/markdown/markdown.ts",
+        "sourceLine": 26,
+        "sourceSha256": "e772e6714598febba1e95286a355b76d0978e71827970078f9ca51ab80c67aa1",
+        "record": "inventory/rich-content.md#rc-04-markdown",
+        "entry": "RC-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-menu",
+        "sourceFile": "src/components/menu/menu.ts",
+        "sourceLine": 36,
+        "sourceSha256": "b014b7a5809cdf8425cdb47e6d3358a79056940e4463bc618778ea6f526df232",
+        "record": "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "entry": "N-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-menu-button",
+        "sourceFile": "src/components/menu-button/menu-button.ts",
+        "sourceLine": 25,
+        "sourceSha256": "e511c5de352e77c529af233e4183673a6db4bb5b25bbeabef9c1c1dbbcd8700f",
+        "record": "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "entry": "N-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-menu-divider",
+        "sourceFile": "src/components/menu-divider/menu-divider.ts",
+        "sourceLine": 7,
+        "sourceSha256": "660699145f1602e63ddc63c9090e93480545011936a72fc86e0c144bc6ab9ef3",
+        "record": "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "entry": "N-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-menu-item",
+        "sourceFile": "src/components/menu-item/menu-item.ts",
+        "sourceLine": 18,
+        "sourceSha256": "97fd9b7b015fc36986344103b5db7fe446b14b9eccaa35cad821561a4c40cd76",
+        "record": "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "entry": "N-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-menu-section",
+        "sourceFile": "src/components/menu-section/menu-section.ts",
+        "sourceLine": 13,
+        "sourceSha256": "fe3d4e6649a2b7ca6ce633885bbe531fd14269138f6f60334c17d6670cb7d0a2",
+        "record": "inventory/navigation-disclosure.md#n-07-menu-and-context-menu",
+        "entry": "N-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-metric",
+        "sourceFile": "src/components/metric/metric.ts",
+        "sourceLine": 6,
+        "sourceSha256": "0bed02ca154f1e0cbe319f20dba64d0c54cbda107eef4a2cb865a1c471d120cc",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-metric-list",
+        "sourceFile": "src/components/metric-list/metric-list.ts",
+        "sourceLine": 8,
+        "sourceSha256": "e6420db791e9ca1169b41a8c22a4a52a7a368f9d3a473e810e9964c30126e911",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-middle-truncate",
+        "sourceFile": "src/components/middle-truncate/middle-truncate.ts",
+        "sourceLine": 115,
+        "sourceSha256": "1d4196caa674dff7565f94f74df58ebc424646cb1ba3eadbf7657d43d2fe9005",
+        "record": "inventory/typography.md#shared-typography-interface",
+        "entry": "T-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-modal",
+        "sourceFile": "src/components/modal/modal.ts",
+        "sourceLine": 73,
+        "sourceSha256": "3284a991713b3fa7d6886beaa0c0f215bd656088a3dd28548bb21b77b84d1ba4",
+        "record": "inventory/overlays-help.md#o-01-dialog",
+        "entry": "O-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-modal-inset",
+        "sourceFile": "src/components/modal-inset/modal-inset.ts",
+        "sourceLine": 12,
+        "sourceSha256": "36b1ad58190479a6d8b1f45d961a0603cc430fbb0a46efcd6d14e962f6718bf0",
+        "record": "inventory/overlays-help.md#o-01-dialog",
+        "entry": "O-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-multi-select",
+        "sourceFile": "src/components/multi-select/multi-select.ts",
+        "sourceLine": 41,
+        "sourceSha256": "05476fcf489a0276afc6f980c8aeefd137183381df2dc048a3e9e977b9a1c2f6",
+        "record": "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "entry": "F-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-multi-select-row",
+        "sourceFile": "src/components/multi-select-row/multi-select-row.ts",
+        "sourceLine": 33,
+        "sourceSha256": "e0ee2491ec6d70969a58b60c5929775dfeb9ae497f964898a68b7837c2f084b0",
+        "record": "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "entry": "F-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-note",
+        "sourceFile": "src/components/note/note.ts",
+        "sourceLine": 18,
+        "sourceSha256": "0a2fd99cfd2dab517a15d7a4e6761f675da5d7bbe6bce9f9ae8b8d1b2965e1ae",
+        "record": "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "entry": "M-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-page-head",
+        "sourceFile": "src/components/page-head/page-head.ts",
+        "sourceLine": 8,
+        "sourceSha256": "565b4742bba9a548a63f9fe5a58aed80219c11095e4270bd1072218e2a900806",
+        "record": "inventory/navigation-disclosure.md#n-01-app-bar",
+        "entry": "N-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-pagination",
+        "sourceFile": "src/components/pagination/pagination.ts",
+        "sourceLine": 15,
+        "sourceSha256": "da55037d7fd3f12f7334aefcec1cb089c0b0b9984fb3df29bf8756a1350cb828",
+        "record": "inventory/documentation-tooling.md#documentation-units",
+        "entry": "DocNavigation",
+        "disposition": "Retire old document-navigation interface; retain its function in DocNavigation; results Pagination is a separate selected capability"
+      },
+      {
+        "sourceTag": "acme-panel",
+        "sourceFile": "src/components/panel/panel.ts",
+        "sourceLine": 9,
+        "sourceSha256": "ae4a6856d6fbec2169ad4341f84b19ab292f33181f63c4d09d44983d026ddb03",
+        "record": "inventory/surfaces.md#c-01-card",
+        "entry": "C-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-panel-foot",
+        "sourceFile": "src/components/panel-foot/panel-foot.ts",
+        "sourceLine": 7,
+        "sourceSha256": "67ccb542b2a385a0cf5126a246d038a27893b501c6e6bc9510d4c6deace5275a",
+        "record": "inventory/surfaces.md#c-01-card",
+        "entry": "C-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-panel-head",
+        "sourceFile": "src/components/panel-head/panel-head.ts",
+        "sourceLine": 7,
+        "sourceSha256": "349faa7695457f4a14865583348fd6f51c3982078ff5ed4dc773a3917114e1df",
+        "record": "inventory/surfaces.md#c-01-card",
+        "entry": "C-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-panels",
+        "sourceFile": "src/components/panels/panels.ts",
+        "sourceLine": 6,
+        "sourceSha256": "93c2f2bb232dc5063d2dd4920ac3b0f7a39c95571cd256a88db7f781ccd9a347",
+        "record": "inventory.md#l-05-grid",
+        "entry": "L-05",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-phone",
+        "sourceFile": "src/components/phone/phone.ts",
+        "sourceLine": 22,
+        "sourceSha256": "5101a115bffe35a3b0eb5a2905a9391079b3cf4d93f1a9a0007cfab17ea3b6a2",
+        "record": "inventory/rich-content.md#rc-06-browser",
+        "entry": "RC-06",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-pill",
+        "sourceFile": "src/components/pill/pill.ts",
+        "sourceLine": 7,
+        "sourceSha256": "a0704c751cf3965a391d01436a88769fc2be3101131d48a4ea50bb5cc7d3b07b",
+        "record": "inventory/actions.md#a-09-badge-pill-and-tag",
+        "entry": "A-09",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-progress",
+        "sourceFile": "src/components/progress/progress.ts",
+        "sourceLine": 26,
+        "sourceSha256": "bf94b423ff1c386068f55ec0413cbb0ced0c154c34101423b231aa06ea1ee86a",
+        "record": "inventory/messages-statistics.md#m-05-spinner-progress-and-skeleton",
+        "entry": "M-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-project-banner",
+        "sourceFile": "src/components/project-banner/project-banner.ts",
+        "sourceLine": 25,
+        "sourceSha256": "b8e8e736335e57499a3ad80cbc68a9a3789103fbe213750157b2215cd7cda050",
+        "record": "inventory/messages-statistics.md#m-01-alert-and-banner",
+        "entry": "M-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-radio",
+        "sourceFile": "src/components/radio/radio.ts",
+        "sourceLine": 16,
+        "sourceSha256": "19e3f50896c667f6d8933d2c585f05f4ece441ceaf5be57ac73334d2643ade50",
+        "record": "inventory/selection.md#s-02-radio-and-radio-group",
+        "entry": "S-02",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-radio-group",
+        "sourceFile": "src/components/radio-group/radio-group.ts",
+        "sourceLine": 13,
+        "sourceSha256": "51e2acfbb0593820c788c72cb97a4ab12d242cd6f6f67bfa805f11b46c07ea87",
+        "record": "inventory/selection.md#s-02-radio-and-radio-group",
+        "entry": "S-02",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-relative-time",
+        "sourceFile": "src/components/relative-time/relative-time.ts",
+        "sourceLine": 68,
+        "sourceSha256": "7f9a1edaf31587a5f8e8ad58b8a6b8127e87039f4c76215fad13e1e43e025efa",
+        "record": "inventory/typography.md#shared-typography-interface",
+        "entry": "T-09",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-ricon",
+        "sourceFile": "src/components/ricon/ricon.ts",
+        "sourceLine": 7,
+        "sourceSha256": "a72ca74207edc0c9a4a889b4a1a425b49eba9815f7fbf1f4c2f6db498a06f418",
+        "record": "inventory/actions.md#a-06-per-icon-elements-and-icon-tile",
+        "entry": "A-06",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-scroller",
+        "sourceFile": "src/components/scroller/scroller.ts",
+        "sourceLine": 34,
+        "sourceSha256": "d502e19934c2fea5454d6bf3086dc373228985e897ab1736a1eb2fdec35559a2",
+        "record": "inventory/layout.md#l-08-scroll-area",
+        "entry": "L-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-search",
+        "sourceFile": "src/components/search/search.ts",
+        "sourceLine": 16,
+        "sourceSha256": "fbf0577849dd3bee156a025af0444182ab1f751db57b42510094bbf4d0f11c87",
+        "record": "inventory/inputs-forms.md#f-01-input-and-search",
+        "entry": "F-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-select",
+        "sourceFile": "src/components/select/select.ts",
+        "sourceLine": 32,
+        "sourceSha256": "7646346e7bb7a30a4962ec49eee84ec7bedb567b29e34455c8578d151a65736d",
+        "record": "inventory/inputs-forms.md#f-06-select-combobox-and-multi-select",
+        "entry": "F-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-separator",
+        "sourceFile": "src/components/separator/separator.ts",
+        "sourceLine": 11,
+        "sourceSha256": "b5f00cf57e3b3afd01a3d901dea1b995cb0b7b837a1a9eced134fb7315269cd8",
+        "record": "inventory/layout.md#l-07-separator",
+        "entry": "L-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-setting-row",
+        "sourceFile": "src/components/setting-row/setting-row.ts",
+        "sourceLine": 7,
+        "sourceSha256": "e105331ffe8d917969012031a3491f1418bfad5e4c9b22203e7a9895332249a7",
+        "record": "inventory/surfaces.md#c-02-item",
+        "entry": "C-02",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-setting-rows",
+        "sourceFile": "src/components/setting-rows/setting-rows.ts",
+        "sourceLine": 6,
+        "sourceSha256": "ac0ea810040663ceb17c8f08bc257879e6e4ac51e2e9e15e6b39949c7beb380b",
+        "record": "inventory/surfaces.md#c-02-item",
+        "entry": "C-02",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-sheet",
+        "sourceFile": "src/components/sheet/sheet.ts",
+        "sourceLine": 30,
+        "sourceSha256": "dcc7757a80de98fb2b20ad97538b50d4fee06cc9cabc0a8bc6d08b74dc99d3c9",
+        "record": "inventory/overlays-help.md#o-03-drawer",
+        "entry": "O-03",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-shell",
+        "sourceFile": "src/components/shell/shell.ts",
+        "sourceLine": 7,
+        "sourceSha256": "c67d823908543b04b94aeec7e9126a97d777858aa16e8ead3a00d2dc55119b34",
+        "record": "inventory/navigation-disclosure.md#n-01-app-bar",
+        "entry": "N-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-show-more",
+        "sourceFile": "src/components/show-more/show-more.ts",
+        "sourceLine": 13,
+        "sourceSha256": "c0e5a39eb6e9a89dc5110a6c5e1b87564b8e8e55d56b0269fe30924f8faaba38",
+        "record": "inventory/navigation-disclosure.md#n-12-show-show-more-and-load-more",
+        "entry": "N-12",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-side-nav",
+        "sourceFile": "src/components/side-nav/side-nav.ts",
+        "sourceLine": 6,
+        "sourceSha256": "c129282c3cfea8205a4fd9eda58148d72fa771ba2dc261b6f09194964b278b7f",
+        "record": "inventory/navigation-disclosure.md#n-03-sidebar",
+        "entry": "N-03",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-skeleton",
+        "sourceFile": "src/components/skeleton/skeleton.ts",
+        "sourceLine": 20,
+        "sourceSha256": "2c430f7688572ca5d31937099be6fcfde6adbcf0d1aba330c660d01800368ac5",
+        "record": "inventory/messages-statistics.md#m-05-spinner-progress-and-skeleton",
+        "entry": "M-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-slider",
+        "sourceFile": "src/components/slider/slider.ts",
+        "sourceLine": 88,
+        "sourceSha256": "28ffd9481d7b93c8571e9167381e948f470cbafa2b5b57381df724349d5ad998",
+        "record": "inventory/inputs-forms.md#f-07-slider",
+        "entry": "F-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-snippet",
+        "sourceFile": "src/components/snippet/snippet.ts",
+        "sourceLine": 20,
+        "sourceSha256": "aa1d6ea0d514099dd59a57378cdd8f7b6a087ceb80318f20850e5719a949137e",
+        "record": "inventory/rich-content.md#rc-02-snippet",
+        "entry": "RC-02",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-spark",
+        "sourceFile": "src/components/spark/spark.ts",
+        "sourceLine": 7,
+        "sourceSha256": "61df18754f30315a49bc9d6097bd57bdb1980ec0a859a35124fb78c144184554",
+        "record": "inventory/data-displays.md#d-04-sparkline-and-legend",
+        "entry": "D-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-spinner",
+        "sourceFile": "src/components/spinner/spinner.ts",
+        "sourceLine": 26,
+        "sourceSha256": "d948a779db230b200490f9e66bfd05503f43f829635164d4e74354df8fb44dc1",
+        "record": "inventory/messages-statistics.md#m-05-spinner-progress-and-skeleton",
+        "entry": "M-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-split-button",
+        "sourceFile": "src/components/split-button/split-button.ts",
+        "sourceLine": 28,
+        "sourceSha256": "d05bcca47e8a3c9df83cdb81fba26907f10e479c8104e27ee889d0f3e8284453",
+        "record": "inventory/actions.md#a-04-split-button",
+        "entry": "A-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-split-button-item",
+        "sourceFile": "src/components/split-button-item/split-button-item.ts",
+        "sourceLine": 11,
+        "sourceSha256": "b73b47f2f3a597dc67cc1e9ed266a8dc7c0690cdbb3702deaa773af482c4e32f",
+        "record": "inventory/actions.md#a-04-split-button",
+        "entry": "A-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-stat",
+        "sourceFile": "src/components/stat/stat.ts",
+        "sourceLine": 10,
+        "sourceSha256": "71c17022017915e56d8ab62a32ab67139d456f6c9061342a50b77e6c45c0cdbe",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-stat-delta",
+        "sourceFile": "src/components/stat-delta/stat-delta.ts",
+        "sourceLine": 7,
+        "sourceSha256": "db3e54453df1ead3333898080d846026da84e44cfcb74ade3a53891014516deb",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-stat-desc",
+        "sourceFile": "src/components/stat-desc/stat-desc.ts",
+        "sourceLine": 6,
+        "sourceSha256": "b091ba979e02251ed6dfbfe9859dd0f07c4fce8ca2ba0065e0409ed3b5fa1a74",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-stat-foot",
+        "sourceFile": "src/components/stat-foot/stat-foot.ts",
+        "sourceLine": 6,
+        "sourceSha256": "6cf09cdc1fc680a85fc853c48b526f642c69722471bafdfd86fdbe89d5c03bc7",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-stat-strip",
+        "sourceFile": "src/components/stat-strip/stat-strip.ts",
+        "sourceLine": 9,
+        "sourceSha256": "3950717b171ced91da25fa67a3f087ca8e6ddbf3995c6e6ed46d51147e4a94b1",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-status-dot",
+        "sourceFile": "src/components/status-dot/status-dot.ts",
+        "sourceLine": 24,
+        "sourceSha256": "a7306d59c47ce4ee7915111fc5d1f991524b0524eb1cd72e77a7fa91a074fe94",
+        "record": "inventory/messages-statistics.md#m-08-status",
+        "entry": "M-08",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-strip-item",
+        "sourceFile": "src/components/strip-item/strip-item.ts",
+        "sourceLine": 7,
+        "sourceSha256": "132e3149a68787d922295f3211e92151cd25ada7177dbc6e42e4eeb8bdb11ca5",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-subnav",
+        "sourceFile": "src/components/subnav/subnav.ts",
+        "sourceLine": 7,
+        "sourceSha256": "4c2a3c0af66a3b7a7c393214a0c95aee0ab56be085068678dd109b04d4133328",
+        "record": "inventory/navigation-disclosure.md#n-03-sidebar",
+        "entry": "N-03",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-switch",
+        "sourceFile": "src/components/switch/switch.ts",
+        "sourceLine": 17,
+        "sourceSha256": "aaecc5d0facd8595ecd6a77bf137e7b539f52399d58b12241538e07e276ec545",
+        "record": "inventory/selection.md#s-05-segmented-control",
+        "entry": "S-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-switch-control",
+        "sourceFile": "src/components/switch-control/switch-control.ts",
+        "sourceLine": 15,
+        "sourceSha256": "bab81d91700714f73b4e1cfc62a946df3fed1c3657197964ed54f50e93d4d01c",
+        "record": "inventory/selection.md#s-05-segmented-control",
+        "entry": "S-05",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-tab",
+        "sourceFile": "src/components/tab/tab.ts",
+        "sourceLine": 15,
+        "sourceSha256": "6e7378fa1185d6843d618edb6b07738d19d8d8fef6e56060ce2a0e7c1910d5b2",
+        "record": "inventory/selection.md#s-06-tabs",
+        "entry": "S-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-tab-panel",
+        "sourceFile": "src/components/tab-panel/tab-panel.ts",
+        "sourceLine": 5,
+        "sourceSha256": "57a45961c679cff6af9ea449a8d2e06e30dcf66d79ea03aab855da68cc301ce8",
+        "record": "inventory/selection.md#s-06-tabs",
+        "entry": "S-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-table",
+        "sourceFile": "src/components/table/table.ts",
+        "sourceLine": 31,
+        "sourceSha256": "dd28265617903a846cae46f1c5aa4d7d3be80c25cfffd4776aa55a9c8f450d9f",
+        "record": "inventory/data-displays.md#d-01-table",
+        "entry": "D-01",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-tabs",
+        "sourceFile": "src/components/tabs/tabs.ts",
+        "sourceLine": 18,
+        "sourceSha256": "b5b0e43f25a912c330d8cf493e2a5161ed8f84b9b05be01e774c508bc3c09310",
+        "record": "inventory/selection.md#s-06-tabs",
+        "entry": "S-06",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-tag",
+        "sourceFile": "src/components/tag/tag.ts",
+        "sourceLine": 7,
+        "sourceSha256": "67888d52f82f397a44c7babfe8dc582bc9de7fe807d0ad544346f0480651cf17",
+        "record": "inventory/actions.md#a-09-badge-pill-and-tag",
+        "entry": "A-09",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-tags",
+        "sourceFile": "src/components/tags/tags.ts",
+        "sourceLine": 6,
+        "sourceSha256": "c383745f8b4d630ac1a69f97eaea42fd9594d577dcb5e64a652310b05690c9a8",
+        "record": "inventory/actions.md#a-09-badge-pill-and-tag",
+        "entry": "A-09",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-task",
+        "sourceFile": "src/components/task/task.ts",
+        "sourceLine": 7,
+        "sourceSha256": "cfeb0a8d1de765bea778c3b9358f0ab1636a441031182ab9aacd7f4e49102098",
+        "record": "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "entry": "recipes",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-tasks",
+        "sourceFile": "src/components/tasks/tasks.ts",
+        "sourceLine": 6,
+        "sourceSha256": "01b0f2478f563f02222583ecabb0113046d53ff4b9795001143b63ab3c58a7b4",
+        "record": "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "entry": "recipes",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-text-copy",
+        "sourceFile": "src/components/text-copy/text-copy.ts",
+        "sourceLine": 22,
+        "sourceSha256": "5298ebddd6ce1af66c78d352d2b9e10238b79eabef5ee6771b7d18949180b918",
+        "record": "inventory/actions.md#a-05-copy-button",
+        "entry": "A-05",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-textarea",
+        "sourceFile": "src/components/textarea/textarea.ts",
+        "sourceLine": 17,
+        "sourceSha256": "0ab26d29baa9b8af6fceafdc8b78b6e0bb27cb995171bc6e477da7e2926b5e1f",
+        "record": "inventory/inputs-forms.md#f-03-textarea",
+        "entry": "F-03",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-theme-switcher",
+        "sourceFile": "src/components/theme-switcher/theme-switcher.ts",
+        "sourceLine": 42,
+        "sourceSha256": "49f54fb9e5badeb39137909f3a798d7dff04dbd7a69879c32eac5c5237b668e6",
+        "record": "inventory/actions.md#a-10-theme-switcher",
+        "entry": "A-10",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-tile",
+        "sourceFile": "src/components/tile/tile.ts",
+        "sourceLine": 6,
+        "sourceSha256": "0a58320a1e2826662a5526338a448d65f5e9fa417da81c3749a364bf099c7089",
+        "record": "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "entry": "recipes",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-tiles",
+        "sourceFile": "src/components/tiles/tiles.ts",
+        "sourceLine": 7,
+        "sourceSha256": "0b7dc20aad2f3cd18c146f56263e52bf2849ef7441d8634776926f128d28d1d6",
+        "record": "inventory/surfaces.md#required-recipes-and-migration-mapping",
+        "entry": "recipes",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-toast",
+        "sourceFile": "src/components/toast/toast.ts",
+        "sourceLine": 39,
+        "sourceSha256": "591f43a9576b851aa805d585577e3ddb27e4521aaca4445b054f2a065bee799d",
+        "record": "inventory/messages-statistics.md#m-02-toast-and-viewport",
+        "entry": "M-02",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-toaster",
+        "sourceFile": "src/components/toaster/toaster.ts",
+        "sourceLine": 23,
+        "sourceSha256": "38f7f39d8a5686e745d6b9f43f9b978e61520494b3e718bc83602aa4fa345ee7",
+        "record": "inventory/messages-statistics.md#m-02-toast-and-viewport",
+        "entry": "M-02",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-toggle",
+        "sourceFile": "src/components/toggle/toggle.ts",
+        "sourceLine": 27,
+        "sourceSha256": "dc5b721e2287c824a0a8492d28e3a68a44b5a1c8a37ba43cdcca36fad55cdb71",
+        "record": "inventory/selection.md#s-04-switch",
+        "entry": "S-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-toolbar",
+        "sourceFile": "src/components/toolbar/toolbar.ts",
+        "sourceLine": 6,
+        "sourceSha256": "550cfa94d217575e3fa6927783d41ab074b0cf8cc8aba564132d307b6f8d8225",
+        "record": "inventory/navigation-disclosure.md#n-02-toolbar",
+        "entry": "N-02",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-tooltip",
+        "sourceFile": "src/components/tooltip/tooltip.ts",
+        "sourceLine": 80,
+        "sourceSha256": "af5944d4cbcc9455603f4895778a9d7ab8fb747d434a1054c643277dadd7ca20",
+        "record": "inventory/overlays-help.md#o-04-tooltip",
+        "entry": "O-04",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      },
+      {
+        "sourceTag": "acme-topbar",
+        "sourceFile": "src/components/topbar/topbar.ts",
+        "sourceLine": 6,
+        "sourceSha256": "75208448b88a6efff2c0d59489abfce85573b791e4b649cd71a00493642dcd69",
+        "record": "inventory/navigation-disclosure.md#n-01-app-bar",
+        "entry": "N-01",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-trend",
+        "sourceFile": "src/components/trend/trend.ts",
+        "sourceLine": 7,
+        "sourceSha256": "dba3e9d3892efb3f7494a3aff9d591bb9a7351cea8952b5248e4cf13b3e69f6e",
+        "record": "inventory/messages-statistics.md#m-07-stat",
+        "entry": "M-07",
+        "disposition": "Remove old interface; use linked replacement/recipe"
+      },
+      {
+        "sourceTag": "acme-video",
+        "sourceFile": "src/components/video/video.ts",
+        "sourceLine": 44,
+        "sourceSha256": "931ebb48f44476993b46e190ef70b792373d3f1edc2d52e2748191644b70d54f",
+        "record": "inventory/rich-content.md#rc-07-video",
+        "entry": "RC-07",
+        "disposition": "Retain or rebuild capability under linked proposed contract"
+      }
+    ]
+  },
+  "acceptedExtensions": [
+    {
+      "number": 1,
+      "sourceText": "[Separate React integration package](../decisions/react-integration.md). Exact package names and renderer integration remain open.",
+      "workGroup": "R13",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R13"
+    },
+    {
+      "number": 2,
+      "sourceText": "[Consumer compatibility with the full TanStack Table capability set](../decisions/tanstack-table-compatibility.md). The design system does not integrate/run TanStack Table. Applications own processing, state and workers; the house Table provides structure, appearance and interaction/measurement access. Earlier house-adapter proposals misread the request.",
+      "workGroup": "R11",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R11"
+    },
+    {
+      "number": 3,
+      "sourceText": "[Native HTML forms plus optional TanStack Form](../decisions/native-and-managed-forms.md).",
+      "workGroup": "R06",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R06"
+    },
+    {
+      "number": 4,
+      "sourceText": "[No server-side rendering](../decisions/server-rendering.md). Excluded, not deferred. Server data processing remains possible.",
+      "workGroup": "Excluded: SSR",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "Excluded: SSR"
+    },
+    {
+      "number": 5,
+      "sourceText": "[Material spring roles and both Standard/Expressive schemes](../decisions/material-motion-system.md), chosen by context; retain Lit Motion.",
+      "workGroup": "R01",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R01"
+    },
+    {
+      "number": 6,
+      "sourceText": "[Shape morphing follows demonstrated component needs](../decisions/shape-support.md). The later clarification supersedes the broad Material catalogue requirement. Use ordinary shape properties first and custom geometry only for a concrete need; no geometry package is selected. The earlier accidental option remains withdrawn.",
+      "workGroup": "R01",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R01"
+    },
+    {
+      "number": 7,
+      "sourceText": "[Wrap complete names in multi-line ComboBox options](../decisions/combobox-long-labels.md).",
+      "workGroup": "R06",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R06"
+    },
+    {
+      "number": 8,
+      "sourceText": "[Overlapping Toasts, newest messages visible, implemented with the house stack](../decisions/toast-behaviour.md). No Zag Toast dependency.",
+      "workGroup": "R09",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R09"
+    },
+    {
+      "number": 9,
+      "sourceText": "[Explicit activation for interactive rich help](../decisions/rich-help-activation.md).",
+      "workGroup": "R10",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R10"
+    },
+    {
+      "number": 10,
+      "sourceText": "[Full visual themes on pages and nested sections](../decisions/custom-themes.md).",
+      "workGroup": "R01",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R01"
+    },
+    {
+      "number": 11,
+      "sourceText": "[Darker blue with white text](../decisions/blue-accent.md), selected after the original blue example failed the measured normal-text contrast threshold. Exact per-control/state values and broader contrast verification remain open.",
+      "workGroup": "R01",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R01"
+    },
+    {
+      "number": 12,
+      "sourceText": "[Oxlint + Oxfmt with Ultracite, plus Stylelint](../decisions/lint-toolchain.md), for the later migration.",
+      "workGroup": "E05 / Phase 5",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "E05 / Phase 5"
+    },
+    {
+      "number": 13,
+      "sourceText": "Keep Toast under the existing community-naming rule; the [survey](../analysis/floating-surface-shadows.md#phase-1-extension-toast-and-rich-help) supports it. This was a research conclusion, not a new explicit naming vote.",
+      "workGroup": "R09",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R09"
+    },
+    {
+      "number": 14,
+      "sourceText": "Always evaluate the actual Material Web Lit implementation alongside Material guidance. The [reference decision](../decisions/reference-systems.md) retains this requirement.",
+      "workGroup": "All groups: standing reference policy",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "All groups: standing reference policy"
+    },
+    {
+      "number": 15,
+      "sourceText": "[Responsive layout and appearance with Material bands and font-relative thresholds](../decisions/responsive-system.md). Three distinct choices; exact interface remains open.",
+      "workGroup": "R01",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R01"
+    },
+    {
+      "number": 16,
+      "sourceText": "[Box as a planned primitive](../decisions/box-primitive.md).",
+      "workGroup": "R02",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R02"
+    },
+    {
+      "number": 17,
+      "sourceText": "[Versioned consumer skills](../decisions/consumer-skills.md).",
+      "workGroup": "R13",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R13"
+    },
+    {
+      "number": 18,
+      "sourceText": "[A version-matched documentation/API MCP server](../decisions/design-system-mcp.md), explicitly requested in the same reply as the skills selection.",
+      "workGroup": "R13",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R13"
+    },
+    {
+      "number": 19,
+      "sourceText": "[TanStack Intent as development tooling](../decisions/intent-tooling.md).",
+      "workGroup": "R13",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R13"
+    },
+    {
+      "number": 20,
+      "sourceText": "[AI authoring support only in this pass](../decisions/ai-authoring-scope.md); no live AI component control.",
+      "workGroup": "R13; live AI control excluded",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R13; live AI control excluded"
+    },
+    {
+      "number": 21,
+      "sourceText": "[A shared Lit/React inspector using TanStack Devtools](../decisions/design-system-devtools.md), explicitly confirmed after the Solid dependency was explained.",
+      "workGroup": "R13",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R13"
+    },
+    {
+      "number": 22,
+      "sourceText": "[Ripples off by default, with opt-in support](../decisions/optional-ripples.md). Configuration scope and applicable controls remain for the inventory; selection-state animations remain part of the separate motion decision.",
+      "workGroup": "R01 / R04 / R05 / R06",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R01 / R04 / R05 / R06"
+    },
+    {
+      "number": 23,
+      "sourceText": "[TanStack Virtual for both Lit and React virtualization](../decisions/tanstack-table-compatibility.md#framework-rendering-and-virtualization), explicitly confirmed. For Table, the application connects it to our exposed layout/measurement targets.",
+      "workGroup": "R11; coordinate other virtualized collections",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R11; coordinate other virtualized collections"
+    },
+    {
+      "number": 24,
+      "sourceText": "[Reusable results pagination](../decisions/results-pagination.md): numbered/compact controls and unknown totals; application-owned page state/loading and no TanStack Table dependency. The earlier page-size recipe boundary is [under review](../decisions/results-pagination.md#review-pending-after-the-chakra-ui-pro-example): evaluate optional page-position, page-size and navigation parts together before the inventory is approved. Jump-to-page detail remains separate.",
+      "workGroup": "R11",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R11"
+    },
+    {
+      "number": 25,
+      "sourceText": "[Resizable panes](../decisions/resizable-panes.md): user resizing by drag/keyboard, optional collapse with previous-size restoration, and application-owned preference saving remain selected. The original @zag-js/splitter runtime choice is superseded by the native port strategy below. Correct the known behaviour inconsistencies in the house port; exact interfaces remain open.",
+      "workGroup": "R02",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R02"
+    },
+    {
+      "number": 26,
+      "sourceText": "[Shared density](../decisions/density.md): spacing-only page/section settings, normal by default; menus/dialogs/Toasts retain normal inherited spacing; compact buttons/similar controls have a 24 × 24 CSS-pixel clickable-area floor with larger touch-friendly sizing available. Three separate answers; no universal 48px normal-mode target was selected.",
+      "workGroup": "R01",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R01"
+    },
+    {
+      "number": 27,
+      "sourceText": "[Both reading directions](../decisions/bidirectional-support.md) for pages and sections in Lit/React, including keyboard behaviour, appropriate icons and mixed-direction content. Applications supply translations.",
+      "workGroup": "R01",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R01"
+    },
+    {
+      "number": 28,
+      "sourceText": "[Shared moving selection indicators](../decisions/shared-selection-indicator.md) using Lit Motion for suitable single-selection groups. Each control keeps its appearance/selection rules; no additional Zag dependency.",
+      "workGroup": "R05",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R05"
+    },
+    {
+      "number": 29,
+      "sourceText": "[Native Lit behaviour ports using the full house stack](../decisions/zag-behaviour-ports.md) supersede the earlier five-control Zag runtime/adapter selection. Peter rejects a Zag adapter and its createMachine/state mechanism, requires the established TanStack Store and Lit Motion approaches plus all other applicable house rules, and explicitly permits new components, rebuilds or replacements. React wraps the same implementation. Selected capabilities remain.",
+      "workGroup": "E01 / R02 / R06 / R08",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "E01 / R02 / R06 / R08"
+    },
+    {
+      "number": 30,
+      "sourceText": "[Independent Adobe number utilities](../decisions/number-utilities.md) for Number Input parsing/formatting, retaining the full house implementation. Version 3.6.8 was researched, not pinned for future release; installation remains gated by migration approval.",
+      "workGroup": "R06",
+      "status": "Carried into complete proposal set or explicitly excluded",
+      "owner": "R06"
+    }
+  ],
+  "newUserDecisions": [
+    "Apply definitive references instead of repeating preference questions",
+    "Assemble every remaining Phase 4 proposal before reviewing genuine questions"
+  ],
+  "approval": {
+    "completeInventory": true,
+    "approvedBy": "Peter",
+    "approvedOn": "2026-09-20",
+    "record": "inventory-approval-2026-09-20.json",
+    "phase5Migration": false,
+    "productionChanges": false
+  },
+  "limits": [
+    "Source-tag routing is not runtime or semantic verification.",
+    "The icon catalogue is generated and is not enumerated as a fixed tag count.",
+    "Whole-set design approved; named engineering gates and Phase 5 migration approval remain."
+  ],
+  "componentFamilyAdapterEntryCount": 91,
+  "documentationUnits": 7,
+  "userOwnedQuestionIds": [],
+  "nativeContentFamilies": [
+    "Table",
+    "List",
+    "Data List",
+    "Markdown"
+  ],
+  "namingAndFieldClassificationLimit": "Typed family entries and generated metadata must distinguish public APIs from implementation fields; source routing does not prove interface completeness or runtime behavior.",
+  "resolvedQuestionIds": [
+    "Q02",
+    "Q08",
+    "Q13",
+    "Q14",
+    "Q15"
+  ]
+}

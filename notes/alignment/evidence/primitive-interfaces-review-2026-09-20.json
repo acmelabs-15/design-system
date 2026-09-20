@@ -1,0 +1,151 @@
+{
+  "date": "2026-09-20",
+  "phase": 4,
+  "scope": "Primitive accessible naming, inline Box and Text tag set; communication repair",
+  "decisions": [
+    {
+      "id": "C-AS-01",
+      "answer": "I think option one.",
+      "decision": "Use standard aria-label, aria-labelledby and aria-describedby inputs for primitive inner-element naming/description, through shared forwarding that prevents duplicate wrapper names and handles supported element references.",
+      "qualification": "User also explicitly criticized dense question writing and lack of visible formatting; repair communication before another question.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "L-BOX-02",
+      "answer": "Include span (Recommended)",
+      "decision": "Box supports as=span for inline content alongside its block structural containers, with inline wrapping, spacing and borders to verify. Text retains typography responsibility.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "T-TEXT-02",
+      "answer": "p, span, div (Recommended)",
+      "decision": "Text's native as set is p, span and div; default p. Heading and Field retain heading/form-label responsibilities.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    }
+  ],
+  "sources": [
+    "https://raw.githubusercontent.com/material-components/material-web/56a486b147b8b7e95e6e8035fa02aed7e0009a85/internal/aria/delegate.ts",
+    "https://raw.githubusercontent.com/material-components/material-web/56a486b147b8b7e95e6e8035fa02aed7e0009a85/internal/aria/aria.ts",
+    "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Reflected_attributes",
+    "https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLabelledByElements",
+    "https://lit.dev/docs/components/shadow-dom/",
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::part",
+    "https://www.radix-ui.com/themes/docs/components/box",
+    "https://www.radix-ui.com/themes/docs/components/text"
+  ],
+  "probe": {
+    "reproductionFile": "primitive-semantics-probe-2026-09-20.html",
+    "measurements": {
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "placement": [
+        {
+          "id": "host-placement",
+          "hostWidth": 210,
+          "innerWidth": 210,
+          "hostGridColumn": "span 2",
+          "innerGridColumn": "auto"
+        },
+        {
+          "id": "inner-placement",
+          "hostWidth": 100,
+          "innerWidth": 100,
+          "hostGridColumn": "auto",
+          "innerGridColumn": "span 2"
+        }
+      ],
+      "refs": [
+        {
+          "id": "idref-string",
+          "attribute": "external-name",
+          "references": []
+        },
+        {
+          "id": "idref-element",
+          "attribute": "",
+          "references": [
+            "external-name"
+          ]
+        }
+      ],
+      "documentHeadings": 0
+    },
+    "accessibilityTree": "## Latest page snapshot\nuid=1_0 RootWebArea \"Primitive semantics and styling probe\" url=\"[standalone reproduction]\"\n  uid=1_1 ignored\n    uid=1_2 ignored\n      uid=1_3 paragraph\n        uid=1_4 StaticText \"Outer placement\"\n          uid=1_5 InlineTextBox \"Outer placement\"\n      uid=1_6 ignored\n        uid=1_7 generic\n          uid=1_8 generic\n            uid=1_9 StaticText \"Spans two columns\"\n              uid=1_5 InlineTextBox \"Spans two columns\"\n        uid=1_10 generic\n          uid=1_11 StaticText \"Other\"\n            uid=1_5 InlineTextBox \"Other\"\n      uid=1_12 paragraph\n        uid=1_13 StaticText \"Inner placement\"\n          uid=1_5 InlineTextBox \"Inner placement\"\n      uid=1_14 ignored\n        uid=1_15 generic\n          uid=1_16 generic\n            uid=1_17 StaticText \"Inner span setting\"\n              uid=1_5 InlineTextBox \"Inner span \"\n              uid=1_5 InlineTextBox \"setting\"\n        uid=1_18 generic\n          uid=1_19 StaticText \"Other\"\n            uid=1_5 InlineTextBox \"Other\"\n      uid=1_20 paragraph\n        uid=1_21 StaticText \"External title\"\n          uid=1_5 InlineTextBox \"External title\"\n      uid=1_22 generic\n        uid=1_23 heading \"Visible heading\" level=\"2\"\n          uid=1_24 ignored\n            uid=1_25 StaticText \"Visible heading\"\n              uid=1_5 InlineTextBox \"Visible heading\"\n      uid=1_26 generic \"Host label\"\n        uid=1_27 heading \"Visible heading\" level=\"2\"\n          uid=1_28 ignored\n            uid=1_29 StaticText \"Visible heading\"\n              uid=1_5 InlineTextBox \"Visible heading\"\n      uid=1_30 generic \"Explicit label\"\n        uid=1_31 heading \"Explicit label\" level=\"2\"\n          uid=1_32 ignored\n            uid=1_33 StaticText \"Visible heading\"\n              uid=1_5 InlineTextBox \"Visible heading\"\n      uid=1_34 generic\n        uid=1_35 generic\n          uid=1_36 StaticText \"Named section string\"\n            uid=1_5 InlineTextBox \"Named section string\"\n      uid=1_37 generic\n        uid=1_38 region \"External title\"\n          uid=1_39 StaticText \"Named section reference\"\n            uid=1_5 InlineTextBox \"Named section reference\"\n",
+    "snapshotNormalization": "Replaced the synthetic data URL with a placeholder; remaining accessibility text is tool output.",
+    "findings": [
+      "Outer host grid-column:span 2 spans 210px; setting that property on the inner part leaves the host at 100px in the same grid.",
+      "A native h2 inside the shadow root exposes heading level 2 with slotted visible text.",
+      "Host-only aria-label names a separate generic node and does not rename the inner heading; copying the label to both creates two named AX nodes.",
+      "Inner aria-labelledby string cannot resolve the outside external-name ID; ariaLabelledByElements resolves the parent-scope element and yields a region named External title.",
+      "document.querySelectorAll(h1...h6) returns zero for the three shadow headings; TOC discovery needs an explicit house-heading contract.",
+      "These are synthetic Chromium results, not production components, actual screen-reader speech or three-engine certification."
+    ],
+    "scope": "Native HTML with declarative shadow roots and one element-reference assignment; no production component or Lit/React/state integration",
+    "pageClosedAfterReview": true,
+    "screenReaderSpeechTested": false,
+    "allThreeEnginesTested": false
+  },
+  "sourceFindings": [
+    "Material Web delegate.ts/aria.ts read in full at 56a486b147b8b7e95e6e8035fa02aed7e0009a85. It shifts supported scalar ARIA attributes into data attributes, overrides attribute/property access, and explicitly lacks IDREF support.",
+    "Do not copy Material's dataset state or DOM-method overrides as an approved mechanism; house TanStack state and interface invariants still apply.",
+    "MDN documents same-tree scope for string ID attributes and same-or-parent scope for reflected element references; the earlier living-analysis wording must distinguish them.",
+    "Pro lexical search of all indexed JSX/TSX files found no literal aria-labelledby or aria-describedby; this does not establish no library-generated relationships.",
+    "Pro AST scan of literal Box as attributes found structural header/nav/footer/aside/main uses plus form/list/table/text/custom-component substitutions; these are source examples, not automatically approved Lit tag capabilities. No direct literal Box as=span was found.",
+    "Radix Box API supports div/span; Text API supports span/div/label/p. The house selections retain its separately chosen defaults and component responsibilities."
+  ],
+  "coverage": {
+    "materialWebPin": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+    "fullSourceFiles": [
+      "internal/aria/delegate.ts",
+      "internal/aria/aria.ts"
+    ],
+    "localSource": [
+      "src/base.ts (complete)",
+      "src/components/card/card.ts and card.styles.ts (complete)",
+      "Button/Panel attribute/render search; no complete re-read claimed"
+    ],
+    "web": "Lit shadow DOM, CSS part, reflected-attribute scope and ariaLabelledByElements sections; Radix Box API/main content and Text tag API/examples. No new full Material component-documentation review claimed.",
+    "pro": "All 938 indexed JSX/TSX files searched for literal aria-labelledby/aria-describedby (zero hits) and AST-scanned for direct Box as attributes. Prior full-corpus review remains the reference baseline; this scan does not establish rendered semantics."
+  },
+  "communicationRepair": {
+    "date": "2026-09-20",
+    "cause": "Known host rendering limitation was ignored; long question bodies were sent despite saved instruction that they display as a dense paragraph.",
+    "rule": "Follow the selected skill's writing and layout guidance. Choose the layout first and retain all decision-relevant research, context, recommendation and consequences in the question surface. Use the host's separate option descriptions for trade-offs. Length follows the decision; do not impose a short-question rule or treat shortening as the repair. Account for reported rendering limits without assuming Markdown or line breaks work.",
+    "localSkillReRead": true,
+    "codexReferenceReRead": true,
+    "firstFollowingQuestion": "box_inline_span",
+    "answerDelivered": true,
+    "renderingVerifiedByScreenshot": false,
+    "userClarification": "The questions do not necessarily have to be short; align their formatting and writing with the Ask User Question skill."
+  },
+  "remaining": [
+    "Exact Box structural tag set, default display and host/inner style-target mapping",
+    "Naming forwarding mechanism and precise DOM/property/update/removal contracts",
+    "Dynamic reference changes, descriptions, as changes, nested roots, disconnect/reconnect and all-engine accessibility checks",
+    "Heading/TOC discovery, host IDs/fragment focus and Field reference coordination",
+    "Complete shared property lists, density mappings, Stack separators and remaining row approvals"
+  ],
+  "next": "Complete shared/Box/Stack/typography property and native-target contracts; preserve selected choices and follow the local skill's writing/layout guidance without an arbitrary length target.",
+  "persisted": true,
+  "implementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Snapshot at capture time; later selections do not change the recorded answers or measurements.",
+    "currentHandoff": "../README.md#where-we-are",
+    "laterRecord": "box-contract-review-2026-09-20.json",
+    "laterRecords": [
+      "box-contract-review-2026-09-20.json"
+    ],
+    "settledSince": [
+      "Box nine-tag set with div default",
+      "Responsive parent-layout placement on Box host",
+      "Box default display follows native tag",
+      "Token and valid CSS inputs for Box visual values"
+    ]
+  }
+}

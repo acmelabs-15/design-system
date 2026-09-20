@@ -1,0 +1,139 @@
+{
+  "capturedAt": "2026-09-20T13:00:14.612Z",
+  "scope": "Six core-layout public-contract proposals assembled from existing decisions and source review",
+  "status": "Proposed for review; no new Peter decisions; no entry approval",
+  "entries": [
+    "L-01 Box",
+    "L-02 Stack/HStack/VStack",
+    "L-03 Simple Grid",
+    "L-04 Flex",
+    "L-05 Grid",
+    "G-01 Group"
+  ],
+  "contractOwner": "notes/alignment/inventory.md",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/group/group.tsx",
+      "sha256": "9d1a57d7dda55f745cfc8d3c394806dc0ba46c50fcf19182d3b8e4d87bd5ded4",
+      "coverage": "Complete pinned source file read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/button/button-group.tsx",
+      "sha256": "a29650aa25651e37280166b753c298222a48a82f82561b2bc5c12c59dd7fa276",
+      "coverage": "Complete pinned source file read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/flex/flex.tsx",
+      "sha256": "9110eeff35d55ef393a54f1cb5d84de32f3bf5c46dde3def73449038bc6980a0",
+      "coverage": "Complete pinned source file read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/grid/grid.tsx",
+      "sha256": "b1d28b0fcbb65986d3a512f14d13dde762a32bd9918a5850976010a396e44b4e",
+      "coverage": "Complete pinned source file read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/simple-grid/simple-grid.tsx",
+      "sha256": "7ae745bc7eff2c9f801858cd5ada5c11f8c6d899df68a1f5da67031cdfccfd3b",
+      "coverage": "Complete pinned source file read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/stack.tsx",
+      "sha256": "e09cbdce61bd0e9d311e9c7acb3dca36b34668f6ec081a3a96ce444cff3fea64",
+      "coverage": "Complete pinned source file read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/breakpoints.ts",
+      "sha256": "69b53e64461b2b4f032f011395d9f97316aa5aa2c20e23d11c19b3cbf8cbf206",
+      "coverage": "Complete pinned source file read"
+    }
+  ],
+  "additionalSources": [
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/sort-at-params.ts",
+      "coverage": "Complete pinned source file read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/radix-ui/themes/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/components/flex.props.tsx",
+      "coverage": "Complete pinned source file read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/radix-ui/themes/1faff10ac26ae17f09944d418c6949b93fc6b566/packages/radix-ui-themes/src/components/grid.props.tsx",
+      "coverage": "Complete pinned source file read; final lines through 237 completed this follow-up"
+    }
+  ],
+  "privateSources": [
+    {
+      "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/kits/course-kit/components/views/lesson-view.tsx",
+      "exists": true,
+      "sha256": "e0ded020be93accf69a77bfb9c85a4892e67cd5cdf2ee9f62d9741fac0184f9f",
+      "coverage": "Complete file read; licensed content stays in private collection"
+    },
+    {
+      "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/charts-02/block.tsx",
+      "exists": true,
+      "sha256": "0ab6ce0eec69c38be8a5ad773fbc2ebbbaec746c71998be9996782480c08371f",
+      "coverage": "Complete file read; licensed content stays in private collection"
+    },
+    {
+      "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/webhooks-form-01/secret-input.tsx",
+      "exists": true,
+      "sha256": "84ab28f81626513b92e9d0a84a58eb164a83f3b4f3bb8bd6ed56ccf48358c941",
+      "coverage": "Complete file read; licensed content stays in private collection"
+    },
+    {
+      "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/property-panel-01/theme-selector.tsx",
+      "exists": true,
+      "sha256": "fda03f61f68d8331762b4e46e744c1ffd4e22177aabb6ea2608acf6dce345755",
+      "coverage": "Complete file read; licensed content stays in private collection"
+    },
+    {
+      "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/webhooks-event-log-03/delivery-log-pagination.tsx",
+      "exists": true,
+      "sha256": "6e2f63db44f66e5a8c9e29d8408926df049279a321168679d0203494767ad2ba",
+      "coverage": "Complete file read; licensed content stays in private collection"
+    }
+  ],
+  "reusedEvidence": [
+    "material-full-review-2026-09-19.json",
+    "group-review-2026-09-19.json",
+    "chakra-pro-review-ledger.json",
+    "box-contract-review-2026-09-20.json",
+    "query-stack-grid-review-2026-09-19.json",
+    "spacing-stack-review-2026-09-20.json",
+    "primitive-interfaces-review-2026-09-20.json",
+    "lit-style-ownership-review-2026-09-20.json",
+    "remaining-work-consolidation-2026-09-20.json"
+  ],
+  "referenceFindings": [
+    "Chakra Group arrangement and ButtonGroup provider are separate; broader house Group remains a selected difference.",
+    "Chakra SimpleGrid does not clamp the authored minimum; one-column fallback and atomic invalid-input policy are house proposals.",
+    "Chakra Group uses .5rem default gap, horizontal orientation, center alignment and grow-dependent block display.",
+    "Pro demonstrates semantic Box regions and Stack as article, action groups inside input compositions, and separately owned pagination/selection state.",
+    "Retained Lit boxes require their own geometry evidence; React source does not prove equivalent behavior.",
+    "Material evidence is reused from the completed full review; no new Material measurements or house numerical changes."
+  ],
+  "newUserDecisions": [],
+  "approvedEntries": [],
+  "runtimeTestsRun": false,
+  "implementationChanged": false,
+  "reviewPoints": [
+    "Common styling/semantic surface",
+    "Group compatible size/variant propagation",
+    "Invalid-input and narrow automatic-grid behavior"
+  ],
+  "approvalGates": [
+    "R01 responsive parsing/ordering/configuration and theme/density contracts",
+    "E02 real-host geometry/semantics/scoped registries",
+    "E04 wrapped-line Stack dividers and Group visual focus/seams",
+    "R04-R06 actual Group child values/participation",
+    "E03 representative generated-CSS three-engine gate before Phase 5 approval"
+  ],
+  "recordCorrection": "Pass section 4.2 now applies Peter's ordinary-Stack versus Group clarification; the outdated always-Group sentence was removed.",
+  "limits": [
+    "Six proposals are ready for review, not ready for implementation approval.",
+    "All thirteen review groups remain open; Phase 5 and Phase 6 remain.",
+    "Exact export paths/theme registration and control enums remain with their owning groups.",
+    "Source review and records verification are not new rendered or behavior tests."
+  ]
+}

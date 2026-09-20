@@ -1,0 +1,445 @@
+{
+  "date": "2026-09-20",
+  "phase": 4,
+  "scope": "Complete spacing step selection and Stack separator spacing/wrapping choices",
+  "decisions": [
+    {
+      "id": "C-SPACE-05",
+      "answer": "Chakra scale (Recommended)",
+      "decision": "Adopt Chakra's 34 documented positive spacing steps, with zero supported, using the already-selected rem values and theme overrides.",
+      "keys": [
+        0.5,
+        1,
+        1.5,
+        2,
+        2.5,
+        3,
+        3.5,
+        4,
+        4.5,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        72,
+        80,
+        96
+      ],
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "L-STACK-05",
+      "answer": "Match Chakra spacing",
+      "decision": "Automatic Stack separators use the configured gap on each side of the divider. They increase item-to-item distance by two gaps plus divider thickness; at zero gap the divider still contributes thickness.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    },
+    {
+      "id": "L-STACK-06",
+      "answer": "Follow wrapped rows (Recommended)",
+      "decision": "Automatic Stack separators appear only between neighbouring items on the same visible flex line. Apply equivalent behavior for a vertical Stack wrapping into columns. Suppress outer-edge dividers, retain selected per-side spacing for visible dividers, and verify resize/hide/reorder and all three engines. Does not change Group member-order joined-corner rules.",
+      "persisted": true,
+      "status": "CONFIRMED"
+    }
+  ],
+  "spacingDefaults": {
+    "0": "0",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "7": "1.75rem",
+    "8": "2rem",
+    "9": "2.25rem",
+    "10": "2.5rem",
+    "11": "2.75rem",
+    "12": "3rem",
+    "14": "3.5rem",
+    "16": "4rem",
+    "20": "5rem",
+    "24": "6rem",
+    "28": "7rem",
+    "32": "8rem",
+    "36": "9rem",
+    "40": "10rem",
+    "44": "11rem",
+    "48": "12rem",
+    "52": "13rem",
+    "56": "14rem",
+    "60": "15rem",
+    "64": "16rem",
+    "72": "18rem",
+    "80": "20rem",
+    "96": "24rem",
+    "0.5": "0.125rem",
+    "1.5": "0.375rem",
+    "2.5": "0.625rem",
+    "3.5": "0.875rem",
+    "4.5": "1.125rem"
+  },
+  "spacingCensus": {
+    "scope": "Literal numeric spacing props on JSX tags; direct scalar and object/array values, no evaluated spreads/expressions or proof of Chakra ownership",
+    "files": 938,
+    "values": {
+      "0": 145,
+      "1": 276,
+      "2": 377,
+      "3": 375,
+      "4": 671,
+      "5": 134,
+      "6": 369,
+      "7": 1,
+      "8": 325,
+      "9": 1,
+      "10": 63,
+      "12": 149,
+      "14": 6,
+      "16": 121,
+      "20": 90,
+      "24": 80,
+      "32": 7,
+      "48": 1,
+      "-24": 1,
+      "-16": 1,
+      "-14": 1,
+      "-10": 3,
+      "-3.5": 2,
+      "-3": 1,
+      "-2.5": 3,
+      "-2": 6,
+      "-1": 7,
+      "0.5": 25,
+      "1.5": 26,
+      "2.5": 33,
+      "3.5": 12
+    },
+    "sourceLocations": [
+      {
+        "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/page-header-with-actions-01/block.tsx",
+        "line": 31,
+        "tag": "HStack",
+        "attribute": "gap=\"5\""
+      },
+      {
+        "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/sidebar-with-collapsible/navbar.tsx",
+        "line": 9,
+        "tag": "Container",
+        "attribute": "py=\"2.5\""
+      },
+      {
+        "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-api-key-01/create-api-key-dialog.tsx",
+        "line": 59,
+        "tag": "SegmentGroup.Root",
+        "attribute": "p=\"0.5\""
+      },
+      {
+        "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-roles/role-card.tsx",
+        "line": 34,
+        "tag": "Wrap",
+        "attribute": "gap=\"1.5\""
+      },
+      {
+        "file": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/webhooks-list-02/webhook-item.tsx",
+        "line": 15,
+        "tag": "Stack",
+        "attribute": "py=\"3.5\""
+      }
+    ],
+    "note": "Full paths are provided for five targeted examples. Aggregate counts cover matching JSX attributes, not verified imports for every tag; evaluated spreads/expressions are excluded.",
+    "attributeNames": [
+      "gap",
+      "rowGap",
+      "columnGap",
+      "p",
+      "px",
+      "py",
+      "pt",
+      "pb",
+      "ps",
+      "pe",
+      "pl",
+      "pr",
+      "padding",
+      "paddingInline",
+      "paddingBlock",
+      "paddingInlineStart",
+      "paddingInlineEnd",
+      "paddingBlockStart",
+      "paddingBlockEnd",
+      "m",
+      "mx",
+      "my",
+      "mt",
+      "mb",
+      "ms",
+      "me",
+      "ml",
+      "mr",
+      "margin",
+      "marginInline",
+      "marginBlock"
+    ]
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/theme/tokens/spacing.ts",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/stack.tsx",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/stack-separator.tsx",
+    "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/get-separator-style.ts",
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/row-rule",
+    "https://drafts.csswg.org/css-gaps-1/"
+  ],
+  "coverage": {
+    "spacingSource": "Complete pinned 37-line spacing token source",
+    "stackSource": "Complete stack.tsx, stack-separator.tsx and get-separator-style.ts",
+    "proReReads": [
+      "blocks/sidebar-with-collapsible/navbar.tsx",
+      "blocks/setting-api-key-01/create-api-key-dialog.tsx",
+      "blocks/webhooks-list-02/webhook-item.tsx",
+      "blocks/charts-00/stat-card.tsx",
+      "blocks/sidebar-with-collapsible/sidebar.tsx"
+    ],
+    "browser": "Chrome/153.0.0.0 in a dedicated isolated context; viewport/DOM measurements and screenshot inspected",
+    "web": "MDN row-rule availability and description; CSS Gaps draft opened, not a complete spec review"
+  },
+  "wrapProbe": {
+    "scope": "Standalone native HTML/CSS reproduction of the inspected Chakra Stack separator layout; not installed Chakra React or a house implementation",
+    "result": {
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+      "rowRuleSupported": true,
+      "stacks": [
+        {
+          "width": "150",
+          "children": [
+            {
+              "kind": "item",
+              "name": "A",
+              "x": 9,
+              "y": 45,
+              "width": 100,
+              "height": 30
+            },
+            {
+              "kind": "sep",
+              "name": "AB",
+              "x": 117,
+              "y": 45,
+              "width": 1,
+              "height": 30
+            },
+            {
+              "kind": "item",
+              "name": "B",
+              "x": 9,
+              "y": 75,
+              "width": 100,
+              "height": 30
+            },
+            {
+              "kind": "sep",
+              "name": "BC",
+              "x": 117,
+              "y": 75,
+              "width": 1,
+              "height": 30
+            },
+            {
+              "kind": "item",
+              "name": "C",
+              "x": 9,
+              "y": 105,
+              "width": 100,
+              "height": 30
+            }
+          ]
+        },
+        {
+          "width": "220",
+          "children": [
+            {
+              "kind": "item",
+              "name": "A",
+              "x": 9,
+              "y": 181,
+              "width": 100,
+              "height": 30
+            },
+            {
+              "kind": "sep",
+              "name": "AB",
+              "x": 117,
+              "y": 181,
+              "width": 1,
+              "height": 30
+            },
+            {
+              "kind": "item",
+              "name": "B",
+              "x": 126,
+              "y": 181,
+              "width": 100,
+              "height": 30
+            },
+            {
+              "kind": "sep",
+              "name": "BC",
+              "x": 17,
+              "y": 211,
+              "width": 1,
+              "height": 30
+            },
+            {
+              "kind": "item",
+              "name": "C",
+              "x": 26,
+              "y": 211,
+              "width": 100,
+              "height": 30
+            }
+          ]
+        },
+        {
+          "width": "350",
+          "children": [
+            {
+              "kind": "item",
+              "name": "A",
+              "x": 9,
+              "y": 287,
+              "width": 100,
+              "height": 30
+            },
+            {
+              "kind": "sep",
+              "name": "AB",
+              "x": 117,
+              "y": 287,
+              "width": 1,
+              "height": 30
+            },
+            {
+              "kind": "item",
+              "name": "B",
+              "x": 126,
+              "y": 287,
+              "width": 100,
+              "height": 30
+            },
+            {
+              "kind": "sep",
+              "name": "BC",
+              "x": 234,
+              "y": 287,
+              "width": 1,
+              "height": 30
+            },
+            {
+              "kind": "item",
+              "name": "C",
+              "x": 243,
+              "y": 287,
+              "width": 100,
+              "height": 30
+            }
+          ]
+        }
+      ]
+    },
+    "screenshotReviewed": true,
+    "observations": [
+      "150px outer width: AB and BC dividers remain after items at the ends of rows.",
+      "220px outer width: BC divider starts the second row before C.",
+      "350px outer width: all items and dividers fit on one row.",
+      "CSS.supports(row-rule) is true in this Chromium instance; syntax support is not cross-browser or layout certification."
+    ],
+    "allEngineVerification": false,
+    "productionImplementationChanged": false,
+    "reproductionFile": "stack-separator-wrap-probe-2026-09-20.html",
+    "screenshotLocation": "Reviewed in conversation; no screenshot file saved.",
+    "testSetup": {
+      "itemWidthPx": 100,
+      "itemHeightPx": 30,
+      "separatorWidthPx": 1,
+      "separatorMarginEachSidePx": 8,
+      "containerOuterWidthsPx": [
+        150,
+        220,
+        350
+      ],
+      "containerBorderEachSidePx": 1,
+      "flexWrap": "wrap",
+      "direction": "row",
+      "layout": "Native HTML/CSS using the reference separator structure; no React or Lit runtime"
+    },
+    "pageClosedAfterReview": true
+  },
+  "selectedVersusOpen": {
+    "selected": [
+      "34 positive spacing steps with rem defaults, plus zero",
+      "Configured gap on both sides of a visible automatic Stack separator",
+      "Automatic Stack separators follow visual flex lines and avoid outer-edge dividers"
+    ],
+    "notChanged": [
+      "Group's member-order corner handling",
+      "No custom separator templates selected",
+      "Spacing-only density and independent compact clickable-area floor",
+      "No source implementation before Phase 5 approval"
+    ],
+    "remaining": [
+      "Exact shared layout property list/types/defaults and density mappings",
+      "Complete Box/native attribute and styling targets",
+      "Stack separator implementation preserving slotted/text children and framework ownership",
+      "Cross-axis spacing and complete wrapped-separator behavior, including RTL and reversed directions",
+      "Full component-row approval and required Chromium/Firefox/WebKit checks"
+    ]
+  },
+  "limitations": [
+    "The synthetic Chrome 153 probe reproduces source-order wrapping defects; it does not implement or verify the selected wrapped-line correction.",
+    "No Firefox or WebKit check ran in this review.",
+    "CSS.supports(row-rule) establishes syntax acceptance in one browser, not layout correctness or cross-browser availability.",
+    "The CSS Gaps specification was opened for background; no complete-spec review is claimed.",
+    "Numeric spacing census does not select negative-token interfaces or prove every possible consumer usage."
+  ],
+  "next": "Complete shared property lists/types/defaults and density mappings, Box/native attribute targets and Stack separator details; then complete inventory entries for approval.",
+  "persisted": true,
+  "implementationChanged": false,
+  "projectDependenciesChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Historical capture; later choices do not rewrite earlier answers or measurements.",
+    "currentHandoff": "../README.md#where-we-are",
+    "laterRecord": "shared-style-values-review-2026-09-20.json",
+    "laterRecords": [
+      "shared-style-values-review-2026-09-20.json"
+    ],
+    "settledSince": [
+      "Signed spacing tokens derived from positive values where CSS permits",
+      "Numeric dimension steps plus CSS values",
+      "Separate size and spacing theme categories with matching defaults",
+      "Chakra declaration-order direction within the same condition; cross-framework representation unresolved"
+    ]
+  }
+}

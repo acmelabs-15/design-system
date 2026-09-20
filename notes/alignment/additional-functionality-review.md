@@ -3,7 +3,7 @@
 **Current handoff:** [the pass status and next step](README.md#where-we-are). This completed review preserves its research evidence and dated checkpoints. Later decision notes supersede earlier recommendations; implementation remains gated by the approved inventory and migration plan.
 
 
-Research checkpoint closed 2026-09-19 after the extended walkthrough and coverage audit. **Phase 1 research is complete. Phase 2 is now in progress; its [separate review](phase-2-review.md) records the glossary and message-family decisions.** Implementation, interface design and acceptance checks remain in their scheduled later phases. The original nine-subject walkthrough remains available in [phase-1-review.md](phase-1-review.md); this register covers the extension.
+Research checkpoint closed 2026-09-19 after the extended walkthrough and coverage audit. At that capture, Phase 2 had begun; its [separate review](phase-2-review.md) now records closure. Follow the central handoff for the current phase. Implementation, interface design and acceptance checks remain in their scheduled later phases. The original nine-subject walkthrough remains available in [phase-1-review.md](phase-1-review.md); this register covers the extension.
 
 ## Source and authority
 

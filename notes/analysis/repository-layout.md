@@ -175,3 +175,51 @@ Before implementation approval, test representative house styles, exact escaping
 ### Selection after comparison
 
 Peter accepted the evidence-supported direction: compiled CSS feeds generated Lit style modules, with explicit document-style, registration and metadata output paths. [Decision](../decisions/style-production.md). Earlier partial/unselected statements above record the sequence of the investigation; this selection is current. No build tool or source implementation is selected by implication.
+
+## Full proposal output boundaries
+
+The [complete inventory set](../alignment/inventory.md#complete-proposal-set) proposes native author-owned Table/List/Data List content and component-owned native Markdown prose to preserve semantics and real fragment targets. Those families require generated scoped document CSS alongside shadow-style outputs; they must not rely on a shadow stylesheet styling unrelated light-DOM descendants.
+
+This fits the selected explicit document-output direction, but it is not yet verified pipeline support. Include these representative cases in the existing pre-Phase-5 CSS scope/registration/selective-loading/source-map gate. The proposal does not select a new compiler, edit generated modules, import a React renderer or create a compatibility stylesheet for retired interfaces. [Family/code coverage and limits](../alignment/evidence/full-proposal-review-2026-09-20.json).
+
+### Whole-set approval and Phase 5 handoff
+
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.
+
+## M00 compiler and browser evidence, 2026-09-20
+
+The [saved probe](../alignment/evidence/m00-prerequisites-2026-09-20.json) compares installed Bun 1.4.0 output with Lightning CSS 1.33.0 in a separate scratch package. Project dependencies and generator outputs remain unchanged. This is evaluation under the approved migration, not dependency adoption.
+
+Bun.build was exercised with direct CSS and a TypeScript entry importing CSS, each with linked, external and inline sourcemaps. All six builds succeeded, but CSS output had no CSS map or sourceMappingURL. JavaScript maps were emitted where applicable. This is a reproduced gap in these modes/version, not proof that every Bun route or later version lacks CSS maps. [Bun CSS documentation](https://bun.com/docs/bundler/css) describes its compiler; broad full-stack map claims do not establish this build path.
+
+Lightning CSS runs under Bun and provides parsed transformations plus CSS source maps. The candidate compiles existing Button and Separator CSS and small nesting/escaping/registration/container fixtures. Twelve build assertions pass: deterministic code/maps, original sourcesContent, invalid CSS rejection, explicit nesting lowering, duplicate/conflicting registration handling, exact CSS through the generated Lit template and a decoded selector mapping back to its original location. Probe targets are test settings, not a newly selected support policy.
+
+All three engines render expected button dimensions/color, both separator orientations, a non-inheriting registered-property default, container rule, literal escaped content and scoped document-list color. The outside list is a negative scope control. No page errors occur.
+
+Document CSS is explicitly authored for native content, not blindly rewritten from shadow selectors. Importing existing generated modules supplies representative house input only; production must start at generator-owned CSS. Sources: [Lightning CSS API](https://lightningcss.dev/docs.html), [bundling](https://lightningcss.dev/bundling.html), installed 1.33.0 types.
+
+Recommendation: Lightning CSS is a concrete candidate because it supplies the missing map interface and passes these bounded checks. It is not yet selected. Continuous authored-CSS-to-Lit-to-final-JS debugging, final map packaging, full corpus integration and selective consumer delivery remain open. The results do not close all of M00.
+
+## M00 compiler, map and package conclusions, 2026-09-20
+
+The [completion evidence](../alignment/evidence/m00-completion-2026-09-20.json) supplies the remaining bounded compiler and package checks. Lightning CSS 1.33.0 remains a proposed build dependency; Peter has not yet selected it.
+
+Both installed Bun 1.4.0 and isolated Bun 1.4.2 emit no CSS maps in the six tested direct-CSS/TS-import modes. esbuild documents CSS transforms and maps but does not expose a parsed-tree modification API. Lightning CSS supplies maps and a typed CSS visitor, so registration validation does not need a second parser. This is the evidence-based recommendation; no speed ranking is claimed. Sources: [esbuild CSS](https://esbuild.github.io/content-types/#css), [plugin limits](https://esbuild.github.io/plugins/#plugin-api-limitations), [Lightning transforms](https://lightningcss.dev/transforms.html).
+
+Useful map delivery now passes the actual path: CSS input → compiler map → generated Lit template → minified Bun bundle → adopted stylesheet. Chromium's CSS debugger recognizes the original source URL, map and exact source content. All three engines render the bundled output correctly. This maps CSS directly to CSS; JavaScript breakpoints inside CSS strings are not the debugging interface. Firefox/WebKit map UIs were not automated. Debug maps remain separate from minimal production delivery.
+
+A complete syntax scan covers 166 existing style modules plus the house sheet. It exposes one real generator fault: command-menu-input emits an intermediate ::part(list) before a descendant selector. In tools/geist/gen.ts, retail() includes a part for every mapped segment even though mapped descendants live under the custom-element host. A scratch change retains the part only on the final segment. The baseline generator fails strict compilation; the corrected generator reports no unresolved rules and all 167 outputs compile without warnings. With actual Breadcrumbs/Breadcrumb components at 320px, each browser shows the first crumb's intended 12px margin only after the correction; the second stays at 0. Production generator edits belong in M02, not in the generated module.
+
+Packed representative HTML, Lit and React consumers pass 152 assertions, including 21 browser cases across the three engines. Class imports register nothing; definition imports register required dependencies; @lit/react wraps the same actual class. Object/native-child identity, events, token CSS, document-style scope and unmount work. Metafiles show one retained Lit/TanStack implementation and no optional heavy engines or debug maps. The current root's named Button import retains Chart/Table and 497 modules; that red comparison supports the approved class/definition split.
+
+An initial fixture omitted token CSS and produced a transparent default Button; the repaired packed example checks a concrete nontransparent result. Bun packs workspace:^ as ^0.0.1 and workspace:* as exact 0.0.1 after workspace installation. A direct local-tarball peer install tried public npm; a loopback registry verifies the intended matching-version registry route. No public package was published.
+
+These checks establish representative M00 feasibility. Final generated exports, every rebuilt family, release versions, actual CDN behavior and complete consumer acceptance remain with M03/M22/M26. They are not additional design questions.
+
+## Compiler selection and first migration slice
+
+Peter selected option A on 2026-09-20: Lightning CSS 1.33.0 as a build-only dependency. [Decision](../decisions/style-production.md#compiler-selected-2026-09-20). The preceding candidate-status statements describe the investigation before that reply; the compiler is now selected and installed.
+
+The first M01 slice moves the audited stylesheet unchanged to styles/house.css and updates split/development consumers. Development changes to the authored sheet run split before build/docs; changes to generated styles rebuild consumers without rerunning split. This avoids a regeneration loop while preserving independently regenerated styles. Two scratch-server integration tests check served output, split count and failure preservation; the old watcher fails the source-change oracle.
+
+Build and documentation generation pass with no generated package/site CSS changes. The focused scripts pass strict TypeScript and Biome. The broader repository TypeScript command reports the same 13 diagnostics as a separately built HEAD checkout; no new diagnostic is introduced. [Complete slice evidence](../alignment/evidence/m01-house-style-path-2026-09-20.json). Remaining M01 paths and M02 compiler delivery are next, not declared complete.

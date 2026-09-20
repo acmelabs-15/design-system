@@ -63,6 +63,7 @@ A conditional development entry compiled to a 59-byte production stub with no De
 ### Remaining design and verification
 
 - Define useful properties/events/theme/state views; read-only inspection versus temporary editing is not selected.
+- If editing is selected, account for [helper-controlled styling inputs](../decisions/layout-spacing-properties.md#external-writes-to-helper-managed-settings): a direct property edit is effective immediately but can be overwritten by the next helper/template render. Distinguish that temporary edit from a persistent change to supplied input. No editing bridge or inspector mutation behavior is selected by this dependency.
 - Verify the real inspector in Chromium, Firefox and WebKit, including repeated mount/unmount, hidden panels, subscriptions and controlled components.
 - Keep all normal library/CDN/React production entries free of the inspector, Solid and developer assets.
 - Design the Bun asset and optional source-location integration; no Vite migration is selected.
@@ -95,3 +96,27 @@ The full local .github/workflows/publish-package.yml is already configured for n
 Bun's publish documentation was read. Examined upstream proposals do not establish a released replacement: [provenance PR 30522](https://github.com/oven-sh/bun/pull/30522) was open/unmerged; [OIDC PR 29374](https://github.com/oven-sh/bun/pull/29374) was closed/unmerged at inspection. This is not an exhaustive proof that every Bun-based route is impossible.
 
 Preserve the existing trusted-publishing/provenance guarantees while resolving a verified path consistent with the pure-Bun rule. Do not silently replace them with a permanent token or claim the runtime conflict is solved. No publication or credential/configuration action was performed.
+
+## Complete inspector proposal
+
+The [Phase 4 inspector contract](../alignment/inventory/documentation-tooling.md#inspector) specifies explicit mounting/disposal, scoped collection, bounded event retention, sensitive-value redaction, Lit/React use of one tool and production exclusion. Q08 asks only the actual remaining read-only-versus-temporary-editing scope. The selected Solid/TanStack Devtools delivery and helper-controlled-input boundary stand; no persistent editing bridge or source rewriting is silently added. Proposal assembly does not certify the real packaged inspector.
+
+### Whole-set approval and Phase 5 handoff
+
+On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.
+
+## M00 Bun release probe, 2026-09-20
+
+The [saved Bun-only probe](../alignment/evidence/m00-prerequisites-2026-09-20.json) runs npm CLI 12.0.2 under Bun 1.4.0 in an isolated scratch package. npm pack succeeds with an explicit file allowlist and lifecycle scripts disabled. Empty temporary npm configuration files and a loopback registry isolate the fixture; no account configuration or project files change.
+
+A local mock exercises the unmodified npm OIDC helper: request an identity token with the registry audience, exchange it for a scoped registry token, query public package visibility and automatically enable provenance for a public repository/package. All assertions pass. Fake tokens stay local. An in-memory configuration recorder prevents disk writes.
+
+This supports a possible Bun-hosted npm CLI route. It does not establish official Bun support or a finished publisher. [npm trusted-publisher documentation](https://docs.npmjs.com/trusted-publishers/) states Node/npm requirements. The installed provenance source invokes Sigstore; actual signing, transparency-log behavior and GitHub Actions integration remain unverified. No package publication or external signing request occurred. Preserve trusted publishing and provenance rather than replacing either with a permanent token.
+
+## M00 release mechanism conclusion, 2026-09-20
+
+The [completion probe](../alignment/evidence/m00-completion-2026-09-20.json) now runs the unmodified npm 12.0.2 publication library and Sigstore signing code under Bun 1.4.0. All endpoints are loopback test services. A local certificate issuer verifies proof of possession; Bun executes real ECDSA signing. Independent signature verification passes, tampering fails, the statement's SHA-512 matches the packed tarball, workflow claims match the fixture, and npm attaches both tarball and provenance to its outgoing local request. The mock witness is explicitly not a real trusted transparency-log proof.
+
+Together with the earlier npm CLI pack and OIDC-exchange tests, this establishes a concrete Bun-hosted npm route without replacing trusted publishing or provenance. Candidate invocation: Bun runs the pinned npm CLI JavaScript entry with the prepacked tarball, public access, provenance and lifecycle scripts disabled. It requires no Node executable and no long-lived publication token. Workspace packing is covered by the package-delivery fixture.
+
+This is bounded local runtime compatibility, not an assertion of official npm support for Bun. npm documentation still names Node. M25 must pin and run the same smoke checks on the Linux release runner, then verify actual GitHub/npm identity configuration and real Sigstore behavior before enabling publication. Those environment checks cannot be represented by fake local credentials. M00 performs no remote publication, signing-service write, account change or workflow dispatch. OpenSSL issues only the local test certificate; production signing remains npm/Sigstore running under Bun.

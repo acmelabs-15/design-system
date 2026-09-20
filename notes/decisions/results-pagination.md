@@ -12,4 +12,14 @@ Evidence: [pagination research](../analysis/documentation-site.md#results-pagina
 
 ## Review pending after the Chakra UI Pro example
 
+**Resolved 2026-09-20:** the later [whole-set approval](inventory-approval.md) selects the coordinated parts described below. The following paragraph records the original request.
+
 On 2026-09-19 Peter pointed to the event-log example's page-position text, page-size selector and navigation as capabilities that may belong in Pagination itself rather than a custom recipe. Evaluate optional coordinated parts in the Pagination family, reusing shared controls. This requests reconsideration of the earlier recipe boundary, not a final replacement interface. Application-owned page/page-size/data loading, unknown-total support and the absence of a house TanStack Table engine still stand. The [Pro review](../alignment/chakra-pro-review.md) and [follow-up analysis](../analysis/documentation-site.md#chakra-pro-pagination-review) carry the evidence and return point.
+
+## Approved coordinated parts
+
+Decided 2026-09-20 by Peter through “I approve all proposals.”
+
+Peter's whole-set approval selects optional coordinated Pagination Position and Page Size parts in the Pagination family, reusing shared controls. This resolves the Pro-inspired boundary review above and supersedes the earlier page-size-recipe-only boundary. The application still owns page/page size, reset policy and data loading. Unknown totals do not create a fabricated last page. Jump-to-page remains the documented Number Input composition.
+
+[Complete approval record](inventory-approval.md), [closed question register](../alignment/proposal-questions.md).
