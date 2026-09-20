@@ -10,10 +10,10 @@ The [central handoff](README.md#where-we-are) owns current status. The [inventor
 | Phase 3 | Architecture responsibilities agreed; mechanism gates remain explicit |
 | Phase 4 | Complete design approved: all thirteen groups, conventions and documentation/tooling |
 | Complete inventory approval | Granted 2026-09-20 by Peter; technical verification is not implied |
-| User-owned decision queue | Closed; all five recommendations approved in [the register](proposal-questions.md) |
+| User-owned decision queue | Original five recommendations approved in [the register](proposal-questions.md); one new [M05 lifecycle contract revision](evidence/m05-style-helper-lifecycle-2026-09-20.json) is pending |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
 | Phase 5 | [Migration plan approved](../decisions/migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01–M04 complete; M05 shared state/style mechanisms active |
+| Phase 6 | M01–M04 complete; M05 state/appearance/order/range modules implemented; public helper lifecycle revision pending, remaining style/theme integration active |
 
 These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The design contracts are approved; they are not implemented or verified components. Technical gates remain distinct from the recorded design review.
 

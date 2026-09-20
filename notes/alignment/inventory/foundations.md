@@ -85,6 +85,8 @@ Use [the core shared responsive contract](../inventory.md#responsive-authoring-p
 
 styleInputs remains the proposed Lit helper name. Its supplied-key ownership and next-render reassertion are selected. React synchronizes complete prop order through its wrapper. Helper expression removal, conflicting writers and exact range-equivalence validation remain engineering gates. For malformed structured JSON, propose the installed Lit converter's invalid-to-null behavior mapped to the selected absent-style value undefined: remove that input's override, keep unrelated inputs, and issue a development diagnostic. Do not retain a previous style snapshot. A five-case Bun probe of @lit/reactive-element 2.1.2 confirms its converter result, not the final house renderer. Valid scalar CSS is recognized before JSON so bracketed grid lines survive. Q03 is resolved as this explicit house adaptation; browser/atomic update verification remains required. Do not introduce a last-valid CSS store on the claim that Chakra has one.
 
+**M05 implementation finding:** the [helper-removal reproduction](../evidence/m05-style-helper-lifecycle-2026-09-20.json) exposes a conflict between automatic expression-removal cleanup and preserving inputs on temporary disconnection. The recommendation to clear explicitly with an empty helper input is pending Peter; the rest of this approved contract stands.
+
 ## Motion, shapes and indicators
 
 Use Lit Motion. Standard and Expressive Material roles are selected per context, not one universal scheme. Utility motion uses Standard; prominent demonstrative examples may use Expressive. Spatial/effect roles remain distinct. Reduced motion preserves state/focus outcomes with immediate or non-spatial transitions as applicable.

@@ -271,6 +271,8 @@ html`<acme-box ${styleInputs({
 
 The selected helper rules apply: only supplied keys are managed, removed keys clear, unrelated settings remain, and each parent/helper render reasserts its current inputs. Recommend that removing the helper expression clears its remaining owned inputs, with ownership tracking preventing cleanup from erasing a newer helper's inputs. Disconnection alone is not expression removal. Mixed overlapping writers are unsupported authoring; group overlapping settings into this single input. Preserve the previously tested immediate direct-write/next-render reassertion behavior.
 
+**Implementation finding, 2026-09-20:** the approved automatic expression-removal cleanup above conflicts with Lit's public lifecycle. Temporary disconnect and permanent removal share one callback; removal while already disconnected provides no further callback. The [three-engine reproduction and alternatives](evidence/m05-style-helper-lifecycle-2026-09-20.json) require a bounded revision before this part is implemented. Explicit empty-helper clearing is recommended, not selected. The rest of the input/ownership/order contract stands.
+
 React wraps the same Lit components and supplies ordinary properties in declaration order:
 
 ```tsx

@@ -59,7 +59,7 @@ Record fixtures/results and failures in existing analysis/evidence. A technical 
 
 - M04-03 closes 27 more retirement dependencies through retained examples, recipe/style cleanup and Toolbar ownership. M04 is complete: 109 components remain and eleven coupled implementations have explicit replacement owners in the [ledger](evidence/m04-removals-2026-09-20.json). Final checks: 592 tests and all-engine composition checks pass. Continue with M05 shared mechanisms.
 
-- M05-01 refines the existing canonical state helper and passes all-engine ordinary/compiled public-state checks, metadata checks and 604 tests. [Evidence](evidence/m05-state-2026-09-20.json). The M05-02 headless appearance resolver also passes its focused unit, strict-type and three-engine checks; [evidence](evidence/m05-appearance-2026-09-20.json). Ordered styling and responsive normalization are in progress; theme scope remains. Group provider lookup/integration belongs to M07.
+- M05-01 refines the existing canonical state helper and passes all-engine ordinary/compiled public-state checks, metadata checks and 604 tests. [Evidence](evidence/m05-state-2026-09-20.json). The M05-02 headless appearance resolver also passes its focused unit, strict-type and three-engine checks; [evidence](evidence/m05-appearance-2026-09-20.json). M05-03 implements canonical ordered inputs and responsive normalization; [evidence](evidence/m05-styles-2026-09-20.json). Full style/HTML/renderer integration and theme scope remain. The [Lit helper-removal conflict](evidence/m05-style-helper-lifecycle-2026-09-20.json) needs a bounded authoring-contract revision before the public directive is implemented. Group provider lookup/integration belongs to M07.
 
 ## Ordered implementation work packages
 
