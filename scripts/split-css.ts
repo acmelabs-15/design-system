@@ -42,7 +42,6 @@ const MAP: [string, RegExp][] = [
   ["tooltip", /^(\[data-tooltip\]|\.tooltip)/],
   ["skeleton", /^(\.skeleton|@keyframes shimmer)/],
   ["spinner", /^(\.spinner|@keyframes spin)/],
-  ["loading-dots", /^(\.dots|@keyframes dots)/],
   ["video", /^\.progress/], // the house bar rules: the video scrubber is their only user (acme-progress is generated)
   ["gauge", /^(\.gauge|\.ring\b|\.score-ring|@keyframes gauge-spin)/],
   ["load-more", /^\.load-more/],
@@ -85,8 +84,6 @@ const MAP: [string, RegExp][] = [
   ["description", /^\.description/],
   ["breadcrumbs", /^\.breadcrumbs?\b/],
   ["banner", /^\.site-banner/],
-  ["project-banner", /^\.project-banner/],
-  ["error-card", /^\.error-card/],
   ["error", /^\.error-text/],
   ["show-more", /^\.show-more/],
   ["pagination", /^\.pagination/],
@@ -107,7 +104,6 @@ const MAP: [string, RegExp][] = [
   ["grid", /^\.gs\b|^\.gs-/],
   ["json-view", /^\.json/],
   ["multi-select", /^(\.multi-select|\.ms-row)/],
-  ["phone", /^\.phone/],
   ["relative-time", /^(\.time-card|\.reltime)/],
   ["video", /^\.video/],
 ];

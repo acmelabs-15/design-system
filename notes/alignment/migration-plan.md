@@ -55,6 +55,8 @@ Record fixtures/results and failures in existing analysis/evidence. A technical 
 
 - M04-01 removes seven dependency-closed tags, four pages and eleven style entries; 142 source components remain. Retained styles are byte-identical; 656 tests pass. [Removal ledger](evidence/m04-removals-2026-09-20.json). Remaining isolated and coupled removals stay explicit.
 
+- M04-02 removes six more isolated tags and 57 dedicated tooling artifacts. Retained generation inputs stay intact; 273 surviving CSS files are unchanged and 614 tests pass. The source count is now 136. Review approves the slice; example/style-owner closures remain.
+
 ## Ordered implementation work packages
 
 The table fixes dependency order and atomic replacement boundaries. Each work package is split into vertical commits by the named slice, normally 3–8 authored files plus tests/generated/site output. Mechanical path/registration batches can touch many files and are explicitly labelled. Counts below are planning ranges from the current tree, not measured final diffs. Each replacement removes the old interface and updates every internal consumer in that same slice; there are no compatibility exports or legacy modes.

@@ -1117,9 +1117,6 @@ a:hover {
   background: transparent;
   border-color: transparent;
 }
-.btn.loading .dots i {
-  background: currentColor;
-}
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -3359,7 +3356,7 @@ dialog::backdrop {
   color: var(--ds-background-100);
 }
 
-/* ---------- Loading: Skeleton, Spinner, Loading dots, Progress ---------- */
+/* ---------- Loading: Skeleton, Spinner, Progress ---------- */
 .skeleton {
   display: block;
   position: relative;
@@ -3505,49 +3502,6 @@ dialog::backdrop {
   }
   100% {
     opacity: 0.15;
-  }
-}
-/* Loading dots (Geist): sm 2 · md 3 · lg 4, gray-900 pulsing from .2 */
-.dots {
-  display: inline-flex;
-  gap: 4px;
-  align-items: center;
-  vertical-align: middle;
-}
-.dots i {
-  width: var(--dot, 3px);
-  height: var(--dot, 3px);
-  border-radius: 50%;
-  background: var(--text-2);
-  opacity: 0.2;
-  animation: dots 1.4s infinite;
-}
-.dots.sm {
-  --dot: 2px;
-}
-.dots.lg {
-  --dot: 4px;
-}
-.dots i:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.dots i:nth-child(3) {
-  animation-delay: 0.4s;
-}
-@keyframes dots {
-  0%,
-  80%,
-  100% {
-    opacity: 0.2;
-  }
-  40% {
-    opacity: 1;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .dots i {
-    animation: none;
-    opacity: 0.6;
   }
 }
 /* Progress (Geist): 10px, radius 6, gray track, gray-1000 value; success blue, error red, warning amber */
@@ -7412,67 +7366,7 @@ a.breadcrumb.menu:hover {
   border: 0;
   box-shadow: var(--ds-shadow-border-inset);
 }
-/* Project banner (Geist): project-wide state that needs resolution, never dismissible */
-.project-banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 8px 0;
-  border: 1px solid var(--border);
-  background: var(--comp);
-  color: var(--text-2);
-  font-size: 14px;
-  line-height: 20px;
-}
-.project-banner .ic,
-.project-banner ::slotted([slot="icon"]) {
-  width: 16px;
-  height: 16px;
-  flex: none;
-}
-.project-banner a,
-.project-banner button {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 14px;
-  color: var(--text);
-  padding: 4px 0;
-  border-radius: 2px;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  text-decoration: none;
-}
-.project-banner.success {
-  background: var(--ds-blue-100);
-  border-color: var(--ds-blue-400);
-  color: var(--ds-blue-900);
-}
-.project-banner.success a,
-.project-banner.success button {
-  color: var(--ds-blue-1000);
-}
-.project-banner.warning {
-  background: var(--ds-amber-100);
-  border-color: var(--ds-amber-400);
-  color: var(--ds-amber-900);
-}
-.project-banner.warning a,
-.project-banner.warning button {
-  color: var(--ds-amber-1000);
-}
-.project-banner.error {
-  background: var(--ds-red-100);
-  border-color: var(--ds-red-400);
-  color: var(--ds-red-900);
-}
-.project-banner.error a,
-.project-banner.error button {
-  color: var(--ds-red-1000);
-}
-/* Error (Geist): inline error copy, and the error card */
+/* Error (Geist): inline error copy */
 .error-text {
   font-size: 14px;
   line-height: 20px;
@@ -7499,24 +7393,6 @@ a.breadcrumb.menu:hover {
 .error-text.lg {
   font-size: 16px;
   line-height: 24px;
-}
-.error-card {
-  background: var(--ds-red-100);
-  border: 1px solid var(--ds-red-400);
-  border-radius: var(--r);
-  padding: 16px;
-  color: var(--ds-red-900);
-}
-.error-card .title {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  margin: 0;
-}
-.error-card .message {
-  font-size: 14px;
-  line-height: 20px;
-  margin: 4px 0 0;
 }
 /* Entity (Geist): a row of content with one or two controls at the right */
 .items.entity {
@@ -9268,74 +9144,6 @@ button.entity:hover {
 .ms-row button:focus-visible .count,
 .ms-row:hover .count {
   display: none;
-}
-/* Phone: device chrome, decorative */
-.phone {
-  position: relative;
-  width: 320px;
-  padding: 8px;
-  border-radius: 48px;
-  background: var(--ds-gray-1000);
-  flex: none;
-}
-.phone .screen {
-  position: relative;
-  aspect-ratio: 304 / 659;
-  border-radius: 40px;
-  background: var(--ds-gray-800);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.phone .island {
-  position: absolute;
-  left: 50%;
-  top: 12px;
-  transform: translateX(-50%);
-  width: 96px;
-  height: 27px;
-  border-radius: 999px;
-  background: var(--ds-gray-1000);
-  z-index: 2;
-}
-.phone .address {
-  position: absolute;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 189px;
-  height: 38px;
-  padding: 0 16px;
-  border-radius: 999px;
-  background: var(--ds-gray-alpha-300);
-  color: var(--ds-background-100);
-  font-size: 14px;
-  line-height: 16px;
-  z-index: 2;
-}
-.phone .home {
-  position: absolute;
-  left: 50%;
-  bottom: 8px;
-  transform: translateX(-50%);
-  width: 109px;
-  height: 4px;
-  border-radius: 999px;
-  background: var(--ds-background-100);
-  z-index: 2;
-}
-.phone .screen img,
-.phone .screen video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.phone.light .screen {
-  background: var(--surface);
 }
 /* Relative time card: a timestamp with its hover card */
 .time-card {
