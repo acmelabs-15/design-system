@@ -424,3 +424,9 @@ The baseline helper failed five of the 24 saved public-state checks in each of C
 Each binding now has the official render subscription plus a named observer. Exact counts across moves and zero subscriptions after disposal remain tested; the per-host connection hook still schedules one update. Focused tests pass 25 cases/96 assertions; the full suite passes 604 tests. Strict helper/fixture typing and generated-manifest default/type/attribute checks pass. An independent review approves the bounded change. [Evidence and full reproductions](../alignment/evidence/m05-state-2026-09-20.json).
 
 This enables the approved public-state pattern; it does not claim every existing component has already migrated its public fields. Authored/effective appearance, ordered styling, responsive rendering and nested themes remain separate M05 mechanisms, followed by M06 native-form integration.
+
+## M05-02 inherited named appearance, 2026-09-20
+
+The shared resolver now separates authored presence from effective size/variant values in TanStack atoms. It accepts the current participating Group provider explicitly. An explicit child input wins, including an input equal to the component default. Clearing it restores inheritance. A fresh nested provider does not merge ancestor defaults. Unsupported inherited values use the child default and expose immutable diagnostic data.
+
+Nine focused tests and strict TypeScript checks pass. Eleven browser checks pass in each of Chromium, Firefox and WebKit; independent review finds no required defects. [Sources, reproduction and results](../alignment/evidence/m05-appearance-2026-09-20.json). This implements the state rule only. Group membership, DOM provider selection and component integration remain M07 and the relevant family batches.

@@ -1,0 +1,383 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6",
+  "batch": "M05-02",
+  "status": "implemented; focused verification and independent review passed",
+  "scope": "Headless authored/effective size and variant resolution. Group membership and DOM provider selection remain M07.",
+  "files": [
+    "src/shared/inherited-appearance.ts",
+    "src/shared/__tests__/inherited-appearance.test.ts"
+  ],
+  "contract": [
+    "Explicit authored child input wins even when equal to its component default.",
+    "Clearing resumes current-provider inheritance.",
+    "Nested provider replaces, never merges, ancestor defaults.",
+    "Unsupported inherited values use the component default with immutable diagnostic data.",
+    "TanStack atoms own mutable state; consumer subscriptions own their lifetime."
+  ],
+  "unit": {
+    "passed": 9,
+    "failed": 0,
+    "assertions": 35
+  },
+  "strictTypes": {
+    "diagnostics": 0,
+    "scope": "helper and adjacent tests",
+    "verifiedBy": "implementation and independent review agents"
+  },
+  "review": {
+    "agent": "/root/review_style_pipeline",
+    "verdict": "approved",
+    "requiredFindings": []
+  },
+  "browser": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "component defaults",
+            "actual": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "ok": true
+          },
+          {
+            "name": "inherited settings",
+            "actual": {
+              "size": "large",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "large",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "authored default still overrides provider",
+            "actual": "medium",
+            "expected": "medium",
+            "ok": true
+          },
+          {
+            "name": "clear resumes inheritance",
+            "actual": "small",
+            "expected": "small",
+            "ok": true
+          },
+          {
+            "name": "nested provider starts fresh",
+            "actual": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "ok": true
+          },
+          {
+            "name": "unsupported inherited value uses default",
+            "actual": {
+              "size": "medium",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "unsupported inherited value is inspectable",
+            "actual": [
+              [
+                "size",
+                "huge"
+              ]
+            ],
+            "expected": [
+              [
+                "size",
+                "huge"
+              ]
+            ],
+            "ok": true
+          },
+          {
+            "name": "provider publishes one effective update",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "masked provider does not publish",
+            "actual": 2,
+            "expected": 2,
+            "ok": true
+          },
+          {
+            "name": "disposed observation does not lose current state",
+            "actual": {
+              "size": "small",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "small",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "immutable result",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "component defaults",
+            "actual": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "ok": true
+          },
+          {
+            "name": "inherited settings",
+            "actual": {
+              "size": "large",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "large",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "authored default still overrides provider",
+            "actual": "medium",
+            "expected": "medium",
+            "ok": true
+          },
+          {
+            "name": "clear resumes inheritance",
+            "actual": "small",
+            "expected": "small",
+            "ok": true
+          },
+          {
+            "name": "nested provider starts fresh",
+            "actual": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "ok": true
+          },
+          {
+            "name": "unsupported inherited value uses default",
+            "actual": {
+              "size": "medium",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "unsupported inherited value is inspectable",
+            "actual": [
+              [
+                "size",
+                "huge"
+              ]
+            ],
+            "expected": [
+              [
+                "size",
+                "huge"
+              ]
+            ],
+            "ok": true
+          },
+          {
+            "name": "provider publishes one effective update",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "masked provider does not publish",
+            "actual": 2,
+            "expected": 2,
+            "ok": true
+          },
+          {
+            "name": "disposed observation does not lose current state",
+            "actual": {
+              "size": "small",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "small",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "immutable result",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "component defaults",
+            "actual": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "ok": true
+          },
+          {
+            "name": "inherited settings",
+            "actual": {
+              "size": "large",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "large",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "authored default still overrides provider",
+            "actual": "medium",
+            "expected": "medium",
+            "ok": true
+          },
+          {
+            "name": "clear resumes inheritance",
+            "actual": "small",
+            "expected": "small",
+            "ok": true
+          },
+          {
+            "name": "nested provider starts fresh",
+            "actual": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "solid"
+            },
+            "ok": true
+          },
+          {
+            "name": "unsupported inherited value uses default",
+            "actual": {
+              "size": "medium",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "medium",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "unsupported inherited value is inspectable",
+            "actual": [
+              [
+                "size",
+                "huge"
+              ]
+            ],
+            "expected": [
+              [
+                "size",
+                "huge"
+              ]
+            ],
+            "ok": true
+          },
+          {
+            "name": "provider publishes one effective update",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "masked provider does not publish",
+            "actual": 2,
+            "expected": 2,
+            "ok": true
+          },
+          {
+            "name": "disposed observation does not lose current state",
+            "actual": {
+              "size": "small",
+              "variant": "outline"
+            },
+            "expected": {
+              "size": "small",
+              "variant": "outline"
+            },
+            "ok": true
+          },
+          {
+            "name": "immutable result",
+            "actual": false,
+            "expected": false,
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "reproduction": {
+    "fixture": "import { createAtom } from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/@tanstack/lit-store/dist/index.js\";\nimport { createInheritedAppearance } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/inherited-appearance.ts\";\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nconst appearance=createInheritedAppearance({size:{supported:[\"small\",\"medium\",\"large\"],defaultValue:\"medium\"},variant:{supported:[\"solid\",\"outline\"],defaultValue:\"solid\"}});\ncheck(\"component defaults\",appearance.effective.get(),{size:\"medium\",variant:\"solid\"});\nconst outer=createAtom({size:\"large\",variant:\"outline\"});\nappearance.setProvider(outer);\ncheck(\"inherited settings\",appearance.effective.get(),{size:\"large\",variant:\"outline\"});\nappearance.setAuthored({size:\"medium\"});\nouter.set({size:\"small\",variant:\"outline\"});\ncheck(\"authored default still overrides provider\",appearance.effective.get().size,\"medium\");\nappearance.setAuthored({size:undefined});\ncheck(\"clear resumes inheritance\",appearance.effective.get().size,\"small\");\nappearance.setProvider(createAtom({}));\ncheck(\"nested provider starts fresh\",appearance.effective.get(),{size:\"medium\",variant:\"solid\"});\nconst inner=createAtom({size:\"huge\",variant:\"outline\"});\nappearance.setProvider(inner);\ncheck(\"unsupported inherited value uses default\",appearance.effective.get(),{size:\"medium\",variant:\"outline\"});\ncheck(\"unsupported inherited value is inspectable\",appearance.diagnostics.get().map(v=>[v.property,v.value]),[[\"size\",\"huge\"]]);\nlet calls=0;const subscription=appearance.effective.subscribe(()=>calls++);\ninner.set({size:\"large\",variant:\"outline\"});\ncheck(\"provider publishes one effective update\",calls,1);\nappearance.setAuthored({size:\"medium\",variant:\"solid\"});\nconst before=calls;inner.set({size:\"small\",variant:\"outline\"});\ncheck(\"masked provider does not publish\",calls,before);\nsubscription.unsubscribe();appearance.setAuthored({size:undefined,variant:undefined});\ncheck(\"disposed observation does not lose current state\",appearance.effective.get(),{size:\"small\",variant:\"outline\"});\ncheck(\"immutable result\",Reflect.set(appearance.effective.get(),\"size\",\"large\"),false);\nwindow.__results={results};\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-appearance\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "limits": [
+    "No Group DOM integration or component field adoption is claimed.",
+    "This pure state module adds no CSS or visual changes.",
+    "The next combined M05 build and full suite are pending while other shared mechanisms are in progress."
+  ]
+}
