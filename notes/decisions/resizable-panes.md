@@ -21,3 +21,9 @@ The published 1.44.0 connector reports the layout orientation as the separator o
 Verify dragging, keyboard operation, size constraints, collapse/reopen, focus and hidden content, RTL, nested layouts and disconnect/reconnect in Chromium, Firefox and WebKit. The exact name, public fields, defaults, event payloads, storage example format and responsive restoration rules remain for architecture/inventory/migration review. No source work begins before Phase 5 approval.
 
 Evidence: [pane behaviour](../analysis/design-foundations.md#resizable-panes), [package comparison](../analysis/package-choices.md#resizable-pane-package-comparison), and [probe record](../alignment/evidence/resizable-panes-2026-09-19.json).
+
+## Shadcn composition reference
+
+Peter subsequently requested [shadcn Base Resizable](https://ui.shadcn.com/docs/components/base/resizable) and its use where appropriate in other components/layouts. Inclusion is already covered by this decision. Add its Panel Group/Panel/Handle composition to the comparison, and examine suitable Sidebar, supporting-pane, editor and Scroll Area combinations. This does not make all those surfaces resizable by default.
+
+The inspected wrapper uses react-resizable-panels, even though its documentation route says Base. Keep the selected shared Lit implementation and React wrapper; no separate React engine is adopted. Exact house names, parts and responsive/collapse/focus/scroll combinations remain inventory work. [Follow-up evidence](../analysis/design-foundations.md#shadcn-resizable-follow-up), [request record](../alignment/evidence/disposition-checkpoint-2026-09-19.json).

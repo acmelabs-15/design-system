@@ -25,7 +25,7 @@ The final inventory fixes the surviving set before implementation. The recommend
 | command-menu dialog; modal drawer | `--shadow-6` | Dialog role; extending this tier to modal drawers was explicit in Peter's selected option and still needs inventory verification |
 | sheet, while present as a modal surface | `--shadow-6` | Dialog role; Phase 2 already schedules replacement by Drawer, so do not implement a separate lasting sheet treatment |
 
-These are role assignments, not approval of every current element's survival or interface. The inventory resolves renamed/composed surfaces and any non-modal drawer treatment. Plain Tooltip is distinct from an interactive rich information panel; the latter's name, role, focus behaviour and composition remain for Phase 2. Material's elevation numbers do not map directly to Radix's shadow numbers.
+These are role assignments, not approval of every current element's survival or interface. The inventory resolves renamed/composed surfaces and any non-modal drawer treatment. Plain Tooltip is distinct from an interactive rich information panel; Hover Card and Toggle Tip now have selected purposes under the [overlay-help decision](overlay-help-components.md), while exact focus and composition contracts remain inventory work. Material's elevation numbers do not map directly to Radix's shadow numbers.
 
 ## Evidence behind the two exceptions
 

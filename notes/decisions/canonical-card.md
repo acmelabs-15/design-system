@@ -9,3 +9,5 @@ Card supplies the defined presentation for related content. Box remains the gene
 Use the house stack and shared primitives. Exact sections, slots, properties, heading semantics, link/action behaviour, nested controls, responsive behaviour and visual treatments remain for architecture/inventory review. Those later decisions must be checked against this scope; they are not implicitly approved by the retention decision. No compatibility aliases or source implementation are authorized before Phase 5 approval.
 
 Evidence: [container analysis](../analysis/codebase-systematization.md#phase-2-container-family), [Box decision](box-primitive.md), and [Phase 2 review](../alignment/phase-2-review.md#container-decisions).
+
+In the later [Stat/Tile review](stat-family.md), Peter separately selected removal of Tile/Tiles: integration-style related-content surfaces use Card, measurements use Stat, and shared layout arranges them. That later selection does not turn every Stat into a Card or change the still-open row/Field responsibilities.

@@ -4,7 +4,7 @@ Decided 2026-09-19 by Peter.
 
 Rich help containing links or buttons opens through click, tap or keyboard activation. It does not automatically open on pointer hover. Peter selected explicit activation after comparing Material's persistent rich tooltip and Chakra's Toggle Tip built from Popover.
 
-Plain tooltips and supplementary hover previews remain separate behaviours. This decision does not finalize the surviving tags, whether Toggle Tip is a recipe, or the full Phase 2 Tooltip/Hover Card/Popover disposition.
+Plain tooltips and supplementary hover previews remain separate behaviours. The later [help-component decision](overlay-help-components.md) adds a named Toggle Tip and removes Context Card. Tooltip and Hover Card retain distinct purposes; exact overlay interfaces and accessibility remain inventory work.
 
 Material Web's inspected repository provides tooltip tokens but no Tooltip Lit component. Use the published guidance as guidance, not as evidence of a shipped Lit implementation.
 

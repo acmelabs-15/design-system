@@ -2,7 +2,7 @@
 
 Decided by Peter on 2026-09-10. This governs every element. Linked from `PLAN.md`.
 
-The systematization pass supersedes this note's unconditional exact-parity requirements: [systematization-goal.md](systematization-goal.md) permits named, sourced, explicitly verified differences. The interface priority order and other settled choices below remain in force.
+The systematization pass supersedes this note's unconditional exact-parity requirements: [systematization-goal.md](systematization-goal.md) permits named, sourced, explicitly verified differences. The later [bidirectional-support decision](bidirectional-support.md) also supersedes the no-RTL section below, and [custom themes](custom-themes.md) qualify fixed house appearance as the default rather than the only supported theme. The interface priority order remains in force; apply later decision notes where they supersede this dated port record.
 
 ## The rule
 
@@ -94,6 +94,8 @@ contact with that element. So the first test outranks the third even when they p
 directions, and this is now the written tie-breaker rather than a judgement to re-make each time.
 
 ## Decided: no right-to-left support, because the reference has none
+
+**Superseded by [bidirectional-support.md](bidirectional-support.md):** the current pass includes LTR/RTL for pages and sections. The evidence and reasoning below describe the 2026-09-10 port decision, not the current scope.
 
 Decided 2026-09-10, on evidence rather than preference. Peter's position was that it is not a priority
 unless it comes free with the reference's own implementation. It does not.
