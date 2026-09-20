@@ -1,5 +1,8 @@
 # Phase 1 extension: additional functionality
 
+**Current handoff:** [the pass status and next step](README.md#where-we-are). This completed review preserves its research evidence and dated checkpoints. Later decision notes supersede earlier recommendations; implementation remains gated by the approved inventory and migration plan.
+
+
 Research checkpoint closed 2026-09-19 after the extended walkthrough and coverage audit. **Phase 1 research is complete. Phase 2 is now in progress; its [separate review](phase-2-review.md) records the glossary and message-family decisions.** Implementation, interface design and acceptance checks remain in their scheduled later phases. The original nine-subject walkthrough remains available in [phase-1-review.md](phase-1-review.md); this register covers the extension.
 
 ## Source and authority
@@ -70,7 +73,7 @@ Peter also requests removal of the named docs footer and continuously available 
 | Native and managed form support | Reviewed; direction selected | Detailed ownership and browser contract remain for design/verification. |
 | Numbered/data pagination | Capability selected; optional-parts boundary reopened | Reusable numbered/compact results navigation and unknown totals. Application owns state/loading. Evaluate page-position/page-size/navigation as coordinated optional parts after the full Pro review; no replacement interface selected. Jump-to-page detail remains separate; document navigation is a distinct concept. |
 | Toast stacking | Reviewed; direction selected | Reference behaviours and local gaps identified; final limit, timing, actions and API remain in the inventory. |
-| Plain/rich tooltip distinction | Reviewed; activation selected | Final Tooltip/Hover Card/Popover/Toggle Tip dispositions belong to Phase 2. |
+| Plain/rich tooltip distinction | Reviewed; activation selected | Later Phase 2 keeps Tooltip/Hover Card/Toggle Tip and removes Context Card; exact accessibility and Popover interfaces remain inventory work. |
 | Blue default accent | Direction selected; broader verification pending | Original Custom button measured below 4.5:1 in both themes; Peter chose darker blue with white text. Exact state tokens, other controls, non-text contrast and gamut/browser checks remain. [Foundation analysis](../analysis/design-foundations.md#blue-accent-contrast-and-visual-choice). |
 | Full custom themes | Reviewed; scope selected | Authoring format, token contract, inheritance and overlay propagation need design and tests. |
 | Toast versus Snackbar naming | Reviewed | Keep Toast; bounded official-library survey, not market-share statistics. |
@@ -92,13 +95,13 @@ Agent and developer tools are tracked in [agent tooling](../analysis/agent-tooli
 
 ## Resume here
 
-**No question is currently pending.** User-facing capability selections stand. The five-control Zag adapter/runtime strategy is superseded by native Lit ports using the full house stack. New/rebuilt/replacement components are allowed. Do not repeat settled capability questions, revive a Zag interpreter/adapter or restart a house TanStack Table integration.
+**This capability walkthrough is closed.** Follow the central handoff for active questions. The five-control Zag adapter/runtime strategy is superseded by native Lit ports using the full house stack. Do not repeat settled capability questions, revive a Zag runtime or add a house TanStack Table engine.
 
-**Phase 2.3 is in progress; Stat is next.** The [Phase 2 review](phase-2-review.md) records the glossary/message decisions, one flexible Card, Fieldset form grouping and the selected Group/Toolbar/selection responsibility split. Detailed Toolbar composition and unanswered Entity/Item return during Phase 2.4 Group, with explicit completion gates. Check earlier decisions and upcoming dependencies before recommendations. Continue useful work between questions, with one substantive decision at a time.
+The [Phase 2 disposition/terminology review](phase-2-review.md#phase-2-closure) is complete. Follow the [current handoff](README.md#where-we-are) and [inventory](inventory.md) for exact interfaces and composition rules. Card, Fieldset, Group/Toolbar ownership, focused Item, Tree View, Sidebar, TOC, formatters, settings recipes and Data List are selected. Check prior and upcoming dependencies without reopening settled capability choices.
 
 The [five native-port mappings](../analysis/package-choices.md#five-native-behaviour-port-mappings) are recorded. @internationalized/number is selected. Shape morphing is needs-driven; the full Material catalogue is not a research gate. Do not repeat those choices or resume a generic shape-library selection without a concrete component need.
 
-Exact component interfaces, responsive syntax, inspector panels, MCP transport/hosting and release coordination remain for their later inventory/architecture/migration reviews. Do not hold Phase 1 open merely because implementation acceptance tests cannot run before source changes, but do finish genuine research gaps before the Phase 2 handoff.
+Exact component interfaces, inspector panels, MCP transport/hosting and release coordination continue in the inventory and migration reviews. Responsive selections now live in the [responsive decision](../decisions/responsive-system.md) and inventory; only their explicitly listed details remain open. Preserve separate pre-approval evidence gates and implementation acceptance checks.
 
 ## Phase 1 closure audit
 
@@ -130,7 +133,7 @@ The fourth capture corrects Table ownership throughout the active plan/decisions
 
 The fifth capture records the four pane decisions in one subject note, explicitly extends Zag adoption to Splitter, saves package/source comparisons and synthetic probe limits, and completes the queued Table research record. [Pane evidence](evidence/resizable-panes-2026-09-19.json). No pane implementation, upstream fix/report, project installation or browser acceptance followed from these selections.
 
-The sixth capture records five answers in three notes (density, bidirectional support and shared indicator), layout recipe recommendations, input/state/token findings, the synthetic Interaction listener probe and the updated continuous-work preference. [Foundation evidence](evidence/foundation-followup-2026-09-19.json). Source findings and synthetic reproductions remain distinct from browser acceptance. The Radix segmented-control reference characterization was corrected from current source; final house semantics remain a Phase 2 question.
+The sixth capture records five answers in three notes (density, bidirectional support and shared indicator), layout recipe recommendations, input/state/token findings, the synthetic Interaction listener probe and the updated continuous-work preference. [Foundation evidence](evidence/foundation-followup-2026-09-19.json). Source findings and synthetic reproductions remain distinct from browser acceptance. The Radix segmented-control reference characterization was corrected from current source; the later [Segmented Control decision](../decisions/segmented-control.md) selects the house radio semantics; exact interfaces remain inventory work.
 
 The subsequent strategy correction supersedes Zag runtime/adapter adoption for five controls, while retaining their capabilities. Official vanilla support was found and its Zag-store runtime inspected; it does not satisfy Peter's clarified constraints. [Strategy evidence](evidence/zag-strategy-review-2026-09-19.json). The prior measurements remain historical source evidence, not measurements of the new ports. No source/runtime change was performed.
 

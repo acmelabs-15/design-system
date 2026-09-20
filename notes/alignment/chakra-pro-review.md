@@ -1,5 +1,8 @@
 # Complete Chakra UI Pro reference review
 
+**Current handoff:** [the pass status and next step](README.md#where-we-are). This completed review preserves its research evidence and dated checkpoints. Later decision notes supersede earlier recommendations; implementation remains gated by the approved inventory and migration plan.
+
+
 Started and completed 2026-09-19. **Complete source review, with no sampling:** all 338 catalog blocks, their 1,003 exposed source files, and all 250 supplied kit files. The 49 Webhooks, Property Panels and Settings examples were the first group, not a scope limit. All seven Free Blocks aliases match the main catalog source byte-for-byte.
 
 This is full source review plus default preview DOM inspection, not certification of every interactive state, viewport or accessibility behaviour. No reference template was installed or executed locally. Package implementation remains unchanged.
@@ -53,9 +56,9 @@ For each completed family, record composition, public settings/slots, state and 
 
 Peter further emphasized that these examples show how components can be flexible, extended and composed, and how more complex versions expose broader capability needs. Evaluate every family through that lens: identify useful extension points, simple-to-complex composition, responsibilities that should stay in shared primitives, and application-specific logic. Capture required capabilities and gaps with source evidence; do not reduce the review to deciding whether each named example deserves a new element, or automatically adopt the most complex reference interface.
 
-Peter also explicitly connected the row variations to Checkbox Cards and Radio Cards. Compare descriptive, actionable, settings, expandable and selectable rows together. Investigate whether a consistent row/Entity interface adds value, whether composition suffices, and which selection responsibilities belong to Checkbox/Radio Cards and their groups. This is an open design investigation, not selection of one all-purpose Entity. The complete set of examples is intended to expose capability requirements and boundaries that isolated controls or a sample survey could miss.
+Peter connected the row variations to Checkbox Cards and Radio Cards. The resulting review selected one focused Item family while keeping layout, surface, selection, forms and navigation distinct. Review exact compositions in the inventory; this is not an open vote on retaining a universal Entity component.
 
-Card and Fieldset directions remain accepted. Entity/Item is still [unanswered and deferred](phase-2-review.md#entity-and-item). New reference evidence can motivate a revision, but does not silently reverse or approve a disposition. The later [Group/Toolbar/selection responsibility split](../decisions/toolbar-group-responsibilities.md) is selected; detailed keyboard/composition rules and App Bar/Search boundaries remain open.
+Card and Fieldset directions remain accepted. [Focused Item](../decisions/item-content-family.md) and [App Bar consolidation](../decisions/app-bar.md) are selected, as is the [Group/Toolbar/selection split](../decisions/toolbar-group-responsibilities.md). Exact composition, keyboard behaviour, expanded Search interfaces and migration paths remain inventory/migration work. New reference evidence cannot silently reverse a selection.
 
 Peter specifically requested reconsidering [results pagination](../decisions/results-pagination.md): Webhooks Event Log 03 combines page-position text, numbered/previous/next navigation and page-size selection. Evaluate whether these should be coordinated optional parts of Pagination rather than an application-defined wrapper. Bring this back with the relevant complete review findings, before approving the Pagination inventory entry. The prior recipe boundary is under review; no final new interface is selected.
 
@@ -65,6 +68,6 @@ Peter explicitly authorized increased parallelism. Four workers covered separate
 
 The full review identifies useful evidence for arbitrary row content/actions, associated labels, form-group semantics, media-rich selection cards, optional pagination parts, flexible Code and Stat parts, and clear application-owned state. These are design inputs, not newly approved scope. Several examples leave persistence or domain actions unimplemented; retain those limits when using them as references.
 
-Use the completed ledger and searchable collection in the remaining decision walk. Stat with Tile is next in Phase 2.3. Revisit detailed Toolbar composition and Entity/Item with Group and selection cards in Phase 2.4, and reconsider the Pagination optional-parts question before its inventory approval. New evidence can challenge a decision; only Peter selects a changed direction.
+Use the completed ledger and searchable collection during the [current inventory review](inventory.md). The family/disposition choices are settled; do not restart Phase 2. Carry detailed Toolbar/selection/Item combinations into their inventory entries, and revisit Pagination's optional-parts question before that entry is approved. New evidence can challenge a decision; Peter selects any changed direction.
 
 Source implementation remains frozen until Phase 5 approval. Peter subsequently authorized committing and pushing the research records; the licensed source collection remains private and outside the repository.

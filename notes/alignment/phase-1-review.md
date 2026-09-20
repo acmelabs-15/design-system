@@ -1,6 +1,9 @@
 # Phase 1: findings and recommendations
 
-The original nine-subject research and walkthrough reached a handoff on 2026-09-19. Peter then expanded Phase 1. **The [additional-functionality review](additional-functionality-review.md) records the completed extension and closure audit. The [Phase 2 review](phase-2-review.md) now records the glossary and message-family decisions; Phase 2.3 is in progress, with Card and Fieldset directions selected and Entity/Item deferred to Group.** The ledger below preserves original findings; later decisions supersede the Zag runtime strategy and broad Material-shape-catalogue interpretation.
+**Current handoff:** [the pass status and next step](README.md#where-we-are). This completed review preserves its research evidence and dated checkpoints. Later decision notes supersede earlier recommendations; implementation remains gated by the approved inventory and migration plan.
+
+
+The original nine-subject research and the [additional-functionality extension](additional-functionality-review.md#phase-1-closure-audit) are complete. The [Phase 2 closure](phase-2-review.md#phase-2-closure) records resolved dispositions and terminology. This ledger preserves research findings; later decisions supersede the Zag runtime strategy and broad Material-shape-catalogue interpretation. Follow the central handoff for current work.
 
 Source baseline: commit `91ece56e2046ea7a5aeec5160c5dcfca7dbdd7de`, plus the existing uncommitted notes. The research protected 870 source/build-input files with fingerprints; all match. Project package files and generated outputs are unchanged. Candidate dependencies and experimental builds stayed under `/tmp`.
 
@@ -38,7 +41,7 @@ Zag supplies Pin Input, Number Input, Scroll Area and Steps behaviour, but no do
 
 The fuzzy-filter test uses 33 labels from our own examples. Upstream match-sorter agrees with the current helper on all nine queries; faster candidates change the answers.
 
-**Decided:** actual Zag dependencies for [Pin Input](../decisions/pin-input-behaviour.md), [Number Input](../decisions/number-input-behaviour.md), [Scroll Area](../decisions/scroll-area-behaviour.md) and [interactive Steps](../decisions/steps-behaviour.md), through the planned [Lit/TanStack integration](../decisions/zag-lit-integration.md). Scroll Area supplies custom bars with native scrolling; Steps supplies navigation and corresponding content. Chakra uses Zag through Ark for those two components; Radix Scroll Area uses its own React logic. Each integration still needs acceptance tests.
+**Current decision:** [native Lit behaviour ports using the full house stack](../decisions/zag-behaviour-ports.md) for Pin Input, Number Input, Scroll Area, Steps and resizable panes. The earlier actual Zag dependency/adapter choice is superseded. Preserve the selected control capabilities; use TanStack state, Lit Motion, generated styling and the other mandated integrations. The preceding package comparison is historical evidence, not authorization to restore a Zag runtime.
 
 **Decided:** use [published match-sorter](../decisions/match-sorter.md), subject to broader compatibility fixtures. **Still proposed:** compose Timeline without a separate behaviour package; its exact inventory and the other control interfaces remain open.
 
@@ -106,7 +109,7 @@ This is a research review, not a release certification. The full per-element beh
 
 ## Decisions to take next
 
-The original walkthrough and [Phase 1 extension](additional-functionality-review.md#phase-1-closure-audit) are complete at the research level. The glossary/context discussion is also complete; the current checkpoint is Phase 2.3, with Stat next and Toolbar composition returning during Group review. Follow the [current handoff](README.md#where-we-are). Detailed interfaces, complete path changes, export contracts and documentation components remain for later reviews. No completed discussion here approves source implementation or the entire Phase 4 inventory. Do not reopen selected choices without new evidence.
+The original walkthrough, Phase 1 extension and Phase 2 disposition/terminology review are closed. Continue from the [current handoff](README.md#where-we-are) and [inventory](inventory.md). Detailed interfaces, export contracts, documentation components and path migrations require their recorded approvals. No research conclusion here approves implementation or a complete inventory entry.
 
 ## Guided walkthrough
 
@@ -118,17 +121,17 @@ Peter requested one item at a time. Start with interface accuracy and split larg
 4. **Icon shape — decided:** one element per icon, selected 2026-09-19. [Decision](../decisions/icon-element-shape.md). Exact names and imports remain to design.
 5. **Icon source — decided:** Material Symbols SVGs, selected 2026-09-19. [Decision](../decisions/material-symbols-icons.md). Three families, official filled/unfilled forms, default/style switching/overrides/separate imports; no font or two-tone.
 6. **Icon defaults — decided:** Rounded, then unfilled, in separate answers. Other families and fill states remain supported. [Decision](../decisions/material-symbols-icons.md).
-7. **Pin Input — decided:** actual `@zag-js/pin-input` dependency for the separate-field control. The package-use clarification resolved the earlier uncertainty about reference-only use. [Decision](../decisions/pin-input-behaviour.md).
-8. **Number Input — decided:** actual `@zag-js/number-input` dependency for formatted entry and stepping controls. [Decision](../decisions/number-input-behaviour.md).
-9. **Scroll Area — decided:** custom bars with native content scrolling, then Zag as the behaviour package. [Decision](../decisions/scroll-area-behaviour.md). Visibility defaults and the relationship to the current Scroller remain open.
+7. **Pin Input — current:** selected separate-field control, implemented as a [native Lit behaviour port](../decisions/pin-input-behaviour.md). Actual Zag dependency adoption is superseded.
+8. **Number Input — current:** formatted entry and stepping through a [native Lit behaviour port](../decisions/number-input-behaviour.md), with the selected independent number utility.
+9. **Scroll Area — current:** custom controls over native scrolling, implemented as a native Lit port and replacing Scroller. [Decision](../decisions/scroll-area-behaviour.md). Exact visibility defaults remain inventory work.
 10. **ComboBox ranking — decided:** published match-sorter, subject to wider compatibility tests. [Decision](../decisions/match-sorter.md).
-11. **Steps — decided:** interactive navigation/content, then Zag as the behaviour package. [Decision](../decisions/steps-behaviour.md). Navigation and validation boundaries remain for the inventory.
-12. **Shared integration condition:** preserve Lit rendering and TanStack state through our own verified integration; no official Lit adapter or successful local adapter is claimed. [Decision](../decisions/zag-lit-integration.md).
+11. **Steps — current:** interactive navigation/content through a native Lit port. [Decision](../decisions/steps-behaviour.md). Navigation and validation details remain inventory work.
+12. **Shared implementation condition:** use the full house stack, including canonical TanStack state and Lit Motion, with no Zag adapter/interpreter/store. [Current strategy](../decisions/zag-behaviour-ports.md); [superseded strategy record](../decisions/zag-lit-integration.md).
 13. **Reference scope — decided:** include Material Web in future implementation comparisons. This does not adopt every Material visual treatment or dependency. [Reference roles](../decisions/reference-systems.md).
 14. **Generated styles — decided:** separate src/generated folder, with generated styles still committed. [Decision](../decisions/generated-style-location.md).
 15. **Site output — decided:** workflow-built GitHub Pages site, with generated output excluded from Git. Exact paths, workflow triggers and migration details remain to specify. [Decision](../decisions/documentation-publishing.md).
 16. **Artifact loading — decided:** import needed components by default; keep the complete bundle available. Direct-browser selective delivery still requires implementation and verification. [Decision](../decisions/selective-component-loading.md).
 17. **Shadows — decided:** plain Tooltip none; Toast 5; hover cards 4; menus/popovers 5; dialogs/modal drawers 6. [Decision](../decisions/floating-surface-shadows.md).
-18. **Next — updated:** review Stat with Tile in Phase 2.3. The [Phase 2 record](phase-2-review.md) contains the completed glossary/message/container choices and the Toolbar/Group return point. Timeline composition, detailed docs interfaces and the complete migration layout remain proposals for their scheduled later reviews, not missing package approvals.
+18. **Current continuation:** family dispositions and terminology are closed. Use the [inventory](inventory.md) and [central handoff](README.md#where-we-are) for remaining interfaces and approval steps. Timeline composition, detailed documentation interfaces and final migration paths remain their explicit later-phase obligations, not missing package approvals.
 
 No source code changed. The original decision capture is complete; the newer extension has its own current checkpoint and research register. Use his [local question skill](/Users/peterkloss/Dev/ACMElabs/ask-user-question/skills/ask-user-question/SKILL.md) when the walkthrough resumes. Keep the question premise compact and comparison details in separate option rows because Peter reports flattened paragraph breaks. The [host investigation](../analysis/question-dialog-countdown.md) preserves the blocking route and verification limits. A request for reference evidence is a clarification, not a choice: answer it, then return to the unresolved decision through the tool.
