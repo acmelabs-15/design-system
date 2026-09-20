@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { loadingDotsStructureCss } from "../../generated/components/loading-dots/loading-dots-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { loadingDotsCss } from "./loading-dots.styles";
+import { loadingDotsCss } from "../../generated/components/loading-dots/loading-dots.styles";
 
 /**
  * Loading dots: three dots blinking in turn, after any content the element holds. The root
@@ -15,11 +16,7 @@ export class AcmeLoadingDots extends AcmeElement {
   static styles = [
     sharedCss,
     loadingDotsCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    loadingDotsStructureCss,
   ];
   /** `sm`, `md`, `lg`, or a dot diameter in pixels. */
   @property() size: "sm" | "md" | "lg" | string = "md";

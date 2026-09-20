@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { commandMenuDividerCss } from "../command-menu/command-menu-divider.styles";
+import { commandMenuDividerCss } from "../../generated/components/command-menu/command-menu-divider.styles";
 
 /**
  * A hairline between command menu rows, 8px above and below, spanning the list's padding. The

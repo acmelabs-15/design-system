@@ -115,3 +115,9 @@ This is proposal assembly, not source implementation or final page-layout approv
 ### Whole-set approval and Phase 5 handoff
 
 On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.
+
+## M01/M02 source and output routing
+
+The authored site now lives under site; local generation writes _site. It copies only document styles/maps from dist/styles and continues to build 104 pages documenting 150 current elements. The source move and compiler changes pass the existing rendering suite. [Evidence](../alignment/evidence/m02-css-pipeline-2026-09-20.json).
+
+GitHub Pages still serves main/docs, verified through the repository API on 2026-09-20. The tracked docs tree remains an untouched published snapshot while local development uses _site. Switching the workflow and removing that snapshot remains the publishing migration. No site deployment or repository setting was changed.

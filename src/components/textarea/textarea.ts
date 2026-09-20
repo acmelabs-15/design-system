@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { textareaStructureCss } from "../../generated/components/textarea/textarea-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { textareaCss } from "./textarea.styles";
+import { textareaCss } from "../../generated/components/textarea/textarea.styles";
 import "../error/error";
 
 export type TextareaSize = "small" | "medium" | "large";
@@ -20,14 +21,7 @@ export class AcmeTextarea extends AcmeElement {
   static styles = [
     sharedCss,
     textareaCss,
-    css`
-      :host {
-        display: block;
-      }
-      .field {
-        display: block;
-      }
-    `,
+    textareaStructureCss,
   ];
   @property() placeholder = "";
   @property() value = "";

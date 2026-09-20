@@ -1,0 +1,40 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const browserCopyCss = css`.stack :where(.check) {
+  justify-content: center;
+  align-items: center;
+  transition-property: all;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(0, 0, .2, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(0, 0, .2, 1);
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.stack {
+  position: relative;
+}
+
+.stack :where(.copy) {
+  justify-content: center;
+  align-items: center;
+  transition-property: all;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(0, 0, .2, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(0, 0, .2, 1);
+  display: flex;
+}
+
+.stack:where(:not(.copied)) :where(.check), .stack:where(.copied) :where(.copy) {
+  opacity: 0;
+  scale: 0;
+}
+
+.stack:where(.copied) :where(.check), .stack:where(:not(.copied)) :where(.copy) {
+  opacity: 1;
+  scale: 1;
+}
+`;

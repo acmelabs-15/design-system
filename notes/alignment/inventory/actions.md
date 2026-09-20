@@ -1,6 +1,6 @@
 # Actions, icons and identity — R04
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Complete proposal for review.** All entries use [shared conventions](foundations.md). Their common layout/style inputs are only those explicitly listed, not the entire layout API by accident. Sources: existing classes recorded in [the AST snapshot](../evidence/current-public-interfaces-2026-09-20.json), assigned Geist behavior, [icon decisions](../../decisions/material-symbols-icons.md), [Toggle Button](../../decisions/toggle-button.md), [Avatar Group](../../decisions/avatar-group.md).
 

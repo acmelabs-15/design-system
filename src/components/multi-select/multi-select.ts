@@ -1,13 +1,14 @@
+import { multiSelectStructureCss } from "../../generated/components/multi-select/multi-select-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
-import { css, html, nothing } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeMultiSelectRow, MultiSelectAction, MultiSelectOwner } from "../multi-select-row/multi-select-row";
 import "../multi-select-row/multi-select-row";
 import { atomState } from "../../shared/atom-state";
-import { multiSelectCss } from "./multi-select.styles";
-import { multiSelectContentCss } from "./multi-select-content.styles";
+import { multiSelectCss } from "../../generated/components/multi-select/multi-select.styles";
+import { multiSelectContentCss } from "../../generated/components/multi-select/multi-select-content.styles";
 
 export type MultiSelectSide = "top" | "right" | "bottom" | "left";
 export type MultiSelectAlign = "start" | "center" | "end";
@@ -45,25 +46,7 @@ export class AcmeMultiSelect extends AcmeElement implements MultiSelectOwner {
     sharedCss,
     multiSelectCss,
     multiSelectContentCss,
-    css`
-      :host {
-        display: block;
-      }
-      /* The list rises to the top layer as a manual popover: the browser's popover box (fixed, inset, bordered, padded, scrolling, on a canvas fill) gives way to a bare wrapper the script places, as wide as its content. */
-      .floating {
-        position: fixed;
-        inset: auto;
-        margin: 0;
-        border: 0;
-        padding: 0;
-        width: auto;
-        min-width: max-content;
-        height: auto;
-        overflow: visible;
-        background: transparent;
-        color: inherit;
-      }
-    `,
+    multiSelectStructureCss,
   ];
   @property({ type: Boolean, reflect: true }) open = false;
   @property({ reflect: true }) name = "";

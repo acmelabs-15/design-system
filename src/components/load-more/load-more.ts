@@ -1,9 +1,10 @@
-import { css, html } from "lit";
+import { loadMoreStructureCss } from "../../generated/components/load-more/load-more-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { loadMoreCss } from "./load-more.styles";
-import { loadMorePlaceholderCss } from "./load-more-placeholder.styles";
+import { loadMoreCss } from "../../generated/components/load-more/load-more.styles";
+import { loadMorePlaceholderCss } from "../../generated/components/load-more/load-more-placeholder.styles";
 import "../button/button";
 
 /**
@@ -18,14 +19,7 @@ export class AcmeLoadMore extends AcmeElement {
     sharedCss,
     loadMoreCss,
     loadMorePlaceholderCss,
-    css`
-      :host {
-        display: block;
-      }
-      acme-button {
-        display: block;
-      }
-    `,
+    loadMoreStructureCss,
   ];
   @property({ type: Boolean }) loading = false;
   @property({ type: Boolean, reflect: true }) disabled = false;

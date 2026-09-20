@@ -1,24 +1,15 @@
-import { css, html } from "lit";
+import { topbarStructureCss } from "../../generated/components/topbar/topbar-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { shellCss } from "../shell/shell.styles";
+import { shellCss } from "../../generated/components/shell/shell.styles";
 
 @customElement("acme-topbar")
 export class AcmeTopbar extends AcmeElement {
   static styles = [
     sharedCss,
     shellCss,
-    css`
-      :host {
-        display: block;
-        position: sticky;
-        top: 0;
-        z-index: 5;
-      }
-      .topbar {
-        position: static;
-      }
-    `,
+    topbarStructureCss,
   ];
   @property() center = "";
   render() {

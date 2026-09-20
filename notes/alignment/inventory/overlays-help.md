@@ -1,6 +1,6 @@
 # Overlays and contextual help — R10
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved family contract.** Use the selected [controller/native-surface architecture](../../decisions/overlay-architecture.md), [Dialog/Alert Dialog split](../../decisions/dialog-components.md), [help purposes](../../decisions/overlay-help-components.md) and [shadow roles](../../decisions/floating-surface-shadows.md). No new overlay engine or React runtime.
 

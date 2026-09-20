@@ -1,19 +1,15 @@
-import { css, html, nothing } from "lit";
+import { tileStructureCss } from "../../generated/components/tile/tile-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { tileCss } from "./tile.styles";
+import { tileCss } from "../../generated/components/tile/tile.styles";
 
 @customElement("acme-tile")
 export class AcmeTile extends AcmeElement {
   static styles = [
     sharedCss,
     tileCss,
-    css`
-      :host {
-        display: block;
-        min-width: 0;
-      }
-    `,
+    tileStructureCss,
   ];
   @property() label = "";
   @property() qualifier = "";

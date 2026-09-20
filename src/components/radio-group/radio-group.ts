@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { radioGroupStructureCss } from "../../generated/components/radio-group/radio-group-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeRadio } from "../radio/radio";
-import { radioGroupCss } from "./radio-group.styles";
+import { radioGroupCss } from "../../generated/components/radio-group/radio-group.styles";
 
 /**
  * A group of acme-radio items with one value: a radiogroup that names itself through `label`
@@ -16,12 +17,7 @@ export class AcmeRadioGroup extends AcmeElement {
   static styles = [
     sharedCss,
     radioGroupCss,
-    css`
-      /* A block box, as the root is: the group fills it. */
-      :host {
-        display: block;
-      }
-    `,
+    radioGroupStructureCss,
   ];
   /** The group's name for assistive technology; not shown. */
   @property() label = "";

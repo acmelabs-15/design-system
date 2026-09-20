@@ -1,0 +1,400 @@
+@media (prefers-color-scheme: dark) {
+
+}
+
+.stat {
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
+  display: flex;
+}
+
+.stat .head {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2px 8px;
+  min-height: 16px;
+  line-height: 16px;
+  display: flex;
+}
+
+.stat .head .end {
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  line-height: 16px;
+  display: inline-flex;
+}
+
+.stat .head .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-2);
+  flex: none;
+  place-items: center;
+  display: inline-grid;
+}
+
+.stat .head > .icon {
+  margin-left: auto;
+}
+
+.stat .head .icon.tile {
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--comp);
+  order: -1;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+}
+
+.stat .head:has(.icon.tile) {
+  align-items: center;
+  row-gap: 10px;
+}
+
+.stat .head:has(.icon.tile) .label, .stat .head:has(.icon.tile) .context {
+  flex: 100%;
+  order: 1;
+}
+
+.stat .head .label.title {
+  font-family: var(--sans);
+  letter-spacing: -.32px;
+  text-transform: none;
+  color: var(--text);
+  white-space: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.stat .head .context.sub {
+  font-family: var(--sans);
+  font-size: var(--t-sm);
+  flex: 100%;
+  order: 2;
+  line-height: 18px;
+}
+
+.stat .label {
+  font-size: var(--t-2xs);
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--text-2);
+  font-family: var(--mono);
+  white-space: nowrap;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.stat .context {
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  color: var(--text-2);
+  overflow-wrap: anywhere;
+  flex: 120px;
+  line-height: 16px;
+}
+
+.stat .context.flash {
+  color: var(--accent-ink);
+}
+
+.stat .value {
+  font-family: var(--mono);
+  font-size: var(--t-2xl);
+  letter-spacing: -.96px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0;
+  padding-top: 4px;
+  font-weight: 600;
+  line-height: 32px;
+  display: flex;
+}
+
+.stat .value .unit {
+  font-size: var(--t-md);
+  color: var(--text-2);
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.stat .value .trend {
+  letter-spacing: 0;
+  align-self: center;
+}
+
+.stat .value .trend.end {
+  margin-left: auto;
+}
+
+.stat .head .ricon {
+  order: -1;
+}
+
+.stat .head:has(.ricon) {
+  align-items: center;
+  row-gap: 10px;
+}
+
+.stat .head:has(.ricon) .label, .stat .head:has(.ricon) .context {
+  flex: 100%;
+  order: 1;
+}
+
+.stat .delta {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  color: var(--text-2);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  line-height: 16px;
+  display: flex;
+}
+
+.stat .delta.good {
+  color: var(--success-ink);
+}
+
+.stat .delta.bad {
+  color: var(--warn-ink);
+}
+
+.stat .desc {
+  font-size: var(--t-sm);
+  color: var(--text-2);
+  margin: 0;
+  line-height: 18px;
+}
+
+.stat .desc b {
+  color: var(--text);
+  font-weight: 550;
+}
+
+.stat .meta {
+  font-size: var(--t-sm);
+  color: var(--text-2);
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  line-height: 18px;
+  display: flex;
+}
+
+.stat .meta .ic {
+  width: 14px;
+  height: 14px;
+}
+
+.stat .meter {
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding-top: 12px;
+  display: flex;
+}
+
+.stat .meter:last-child, .stat .meter:has( + .foot:last-child) {
+  margin-top: auto;
+}
+
+.stat .meter .meter-label.lg {
+  font-family: var(--sans);
+  font-size: var(--t-md);
+  color: var(--text-2);
+  line-height: 20px;
+}
+
+.stat .meter .meter-label.lg b {
+  color: var(--text);
+  font-weight: 500;
+  font-family: var(--mono);
+}
+
+.stat .spark {
+  margin: 0;
+  padding-top: 8px;
+}
+
+.stat .spark svg {
+  width: 100%;
+  height: 40px;
+  display: block;
+  overflow: visible;
+}
+
+.spark .line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.spark .area {
+  fill: currentColor;
+  opacity: .12;
+}
+
+.spark {
+  color: var(--success);
+}
+
+.spark.down {
+  color: var(--warn);
+}
+
+.spark.flat {
+  color: var(--text-2);
+}
+
+.stat .meter .track {
+  background: var(--track);
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.stat .meter .fill {
+  background: var(--accent);
+  height: 100%;
+  transition: width .3s var(--ease);
+  border-radius: 999px;
+  display: block;
+}
+
+.stat .meter.warn .fill {
+  background: var(--warn);
+}
+
+.stat .meter .meter-label {
+  font-family: var(--mono);
+  font-size: var(--t-2xs);
+  color: var(--text-2);
+  justify-content: space-between;
+  gap: 8px;
+  line-height: 16px;
+  display: flex;
+}
+
+.stat .foot {
+  font-family: var(--mono);
+  font-size: var(--t-2xs);
+  color: var(--text-2);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin: auto 0 0;
+  padding-top: 8px;
+  line-height: 16px;
+  display: flex;
+}
+
+.stat .foot a {
+  font-family: var(--sans);
+  font-size: var(--t-sm);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.stat .foot .link {
+  margin-left: auto;
+}
+
+.stat .foot.bar {
+  margin: auto calc(-1 * var(--pad-cell-x)) calc(-1 * var(--pad-cell-y));
+  padding: 12px var(--pad-cell-x);
+  border-top: 1px solid var(--hair);
+  justify-content: center;
+}
+
+.stat .foot.bar a {
+  align-items: center;
+  gap: 6px;
+  display: inline-flex;
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 600px) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 767px) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 760px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (pointer: coarse) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}

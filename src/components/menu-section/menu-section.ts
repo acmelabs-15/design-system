@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { menuSectionStructureCss } from "../../generated/components/menu-section/menu-section-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { menuSectionCss } from "./menu-section.styles";
+import { menuSectionCss } from "../../generated/components/menu-section/menu-section.styles";
 
 let seq = 0;
 
@@ -15,14 +16,7 @@ export class AcmeMenuSection extends AcmeElement {
   static styles = [
     sharedCss,
     menuSectionCss,
-    css`
-      :host {
-        display: block;
-      }
-      .section {
-        list-style: none;
-      }
-    `,
+    menuSectionStructureCss,
   ];
   @property() heading = "";
   private uid = `menu-section-${(++seq).toString(36)}`;

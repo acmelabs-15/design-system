@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { fileStructureCss } from "../../generated/components/file/file-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
-import { fileCss } from "./file.styles";
+import { fileCss } from "../../generated/components/file/file.styles";
 
 /** The file kinds, each with its own 14px icon. */
 export type FileType = "file" | "lambda" | "edge-function" | "middleware";
@@ -31,11 +32,7 @@ export class AcmeFile extends AcmeElement {
   static styles = [
     sharedCss,
     fileCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    fileStructureCss,
   ];
   /** The file's name: its text and tooltip. */
   @property() name = "";

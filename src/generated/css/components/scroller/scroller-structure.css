@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+:host([with-buttons]) {
+  gap: inherit;
+  flex-direction: column;
+  display: flex;
+}

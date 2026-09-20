@@ -1,9 +1,10 @@
-import { css, html } from "lit";
+import { entityListStructureCss } from "../../generated/components/entity-list/entity-list-structure.styles";
+import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { entityListCss } from "./entity-list.styles";
-import { entityListWrapCss } from "./entity-list-wrap.styles";
+import { entityListCss } from "../../generated/components/entity-list/entity-list.styles";
+import { entityListWrapCss } from "../../generated/components/entity-list/entity-list-wrap.styles";
 
 /**
  * Entity list: a list in the page background, ringed by the border shadow, radius 5, clipping its
@@ -17,11 +18,7 @@ export class AcmeEntityList extends AcmeElement {
     sharedCss,
     entityListCss,
     entityListWrapCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    entityListStructureCss,
   ];
   @atomState() private hasHeader = false;
 

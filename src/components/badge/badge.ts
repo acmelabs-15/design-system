@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { badgeStructureCss } from "../../generated/components/badge/badge-structure.styles";
+import { html } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { badgeCss } from "./badge.styles";
+import { badgeCss } from "../../generated/components/badge/badge.styles";
 
 export type BadgeVariant = "gray" | "blue" | "purple" | "amber" | "red" | "pink" | "green" | "teal" | "inverted" | "trial" | "turbo";
 export type BadgeSize = "sm" | "md" | "lg";
@@ -20,11 +21,7 @@ export class AcmeBadge extends AcmeElement {
   static styles = [
     sharedCss,
     badgeCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    badgeStructureCss,
   ];
   /** gray · blue · purple · amber · red · pink · green · teal · inverted · trial · turbo. */
   @property() variant: BadgeVariant = "gray";

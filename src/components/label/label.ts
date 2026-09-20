@@ -1,7 +1,8 @@
-import { css, html, nothing } from "lit";
+import { labelStructureCss } from "../../generated/components/label/label-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { labelCss } from "./label.styles";
+import { labelCss } from "../../generated/components/label/label.styles";
 
 /**
  * Label: the text above a form control. The label element carries `for` and the modifier
@@ -14,11 +15,7 @@ export class AcmeLabel extends AcmeElement {
   static styles = [
     sharedCss,
     labelCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    labelStructureCss,
   ];
   /** The label text; content in the default slot follows it. */
   @property() value = "";

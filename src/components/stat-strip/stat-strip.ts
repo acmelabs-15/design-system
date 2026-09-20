@@ -1,9 +1,10 @@
-import { css, html } from "lit";
+import { statStripStructureCss } from "../../generated/components/stat-strip/stat-strip-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { badgeCss } from "../badge/badge.styles";
+import { badgeCss } from "../../generated/components/badge/badge.styles";
 import type { AcmeStripItem } from "../strip-item/strip-item";
-import { statStripCss } from "./stat-strip.styles";
+import { statStripCss } from "../../generated/components/stat-strip/stat-strip.styles";
 
 /** Vercel stat strip: selectable figures across the top of a chart card. Items: acme-strip-item. */
 @customElement("acme-stat-strip")
@@ -12,17 +13,7 @@ export class AcmeStatStrip extends AcmeElement {
     sharedCss,
     statStripCss,
     badgeCss,
-    css`
-      :host {
-        display: block;
-      }
-      .stat-strip {
-        margin: 0;
-      }
-      ::slotted(acme-strip-item) {
-        display: contents;
-      }
-    `,
+    statStripStructureCss,
   ];
   @property() value = "";
   render() {

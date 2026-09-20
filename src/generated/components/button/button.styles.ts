@@ -1,0 +1,330 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const buttonCss = css`.btn:where(:not(.unstyled)) {
+  cursor: pointer;
+  vertical-align: baseline;
+  max-width: 100%;
+  color: var(--themed-fg, var(--ds-background-100));
+  -webkit-user-select: none;
+  user-select: none;
+  border-style: solid;
+  border-width: 0;
+  outline-style: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  text-decoration-line: none;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  display: flex;
+  position: relative;
+  translate: 0;
+}
+
+.btn :where(.start) :where(.dots) {
+  aspect-ratio: 1;
+  color: var(--ds-gray-700);
+  display: inline-block;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.btn :where(.end) {
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  margin-left: .25rem;
+  margin-right: .125rem;
+  display: flex;
+}
+
+.btn :where(.start) {
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  min-width: 1.25rem;
+  margin-right: 3px;
+  display: flex;
+}
+
+.btn:where(.el) :where(.label) {
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.btn:where(:not(.icon):not(.el)) :where(.label) {
+  display: inline-block;
+}
+
+.btn:where(.icon) :where(.label) {
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.btn:where(.sm) :where(.start) :where(.dots) {
+  width: .75rem;
+  height: .75rem;
+}
+
+.btn:where(:not(.tiny, .sm, .lg)) :where(.start) :where(.dots) {
+  width: 1rem;
+  height: 1rem;
+}
+
+.btn:where(.lg) :where(.start) :where(.dots) {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.btn:where(.sm.icon) {
+  height: 32px;
+  width: var(--acme-form-small-height);
+}
+
+.btn:where(:not(.tiny, .sm, .lg).icon) {
+  height: var(--acme-form-height);
+  width: var(--acme-form-height);
+}
+
+.btn:where(.lg.icon) {
+  height: var(--acme-form-large-height);
+  width: var(--acme-form-large-height);
+}
+
+.btn:where(:not(.icon):not(.unstyled)) {
+  height: var(--height);
+  padding-inline: var(--acme-gap-half) !important;
+}
+
+.btn:where(.tiny) {
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.btn:where(.link) {
+  width: fit-content;
+}
+
+.btn :where(.label) {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-inline: .375rem;
+  overflow: hidden;
+}
+
+.btn:where(:is(.circle, .rounded)) {
+  border-radius: 2147483647px !important;
+}
+
+.btn:where(.lg) {
+  font-size: var(--acme-form-large-font);
+  line-height: var(--acme-form-large-line-height);
+  --height: var(--ds-size-large);
+  --x-padding: 14px;
+  border-radius: 8px;
+}
+
+.btn:where(:is(.link, .custom)), .btn:where(.el), .btn:where(:not(.tiny, .lg):is(.tertiary, .error, .warning)), .btn:where(:not(.lg).loading), .btn:where(:not(.tiny, .lg).square), .btn:where(.sm:disabled), .btn:where(.secondary:disabled), .btn:where(:not(.tiny, .lg):not(.shadow):not(.icon):not(.unstyled)) {
+  border-radius: .375rem;
+}
+
+.btn:where(:not(.tertiary):not(.unstyled)) {
+  background-color: var(--themed-bg, var(--ds-gray-1000));
+}
+
+.btn:where(.icon) {
+  padding-inline: 0 !important;
+}
+
+.btn:where(:not(.square, .circle, .rounded):not(.unstyled)) {
+  padding-right: var(--x-padding) !important;
+  padding-left: var(--x-padding) !important;
+}
+
+.btn:where(.sm) {
+  font-size: var(--acme-form-small-font);
+  --height: 32px;
+  --spinner-size: 16px;
+  --x-padding: 6px;
+}
+
+.btn:where(:not(.tiny, .sm, .lg):not(.unstyled)) {
+  --height: var(--ds-size-medium);
+  --x-padding: 10px;
+  font-size: 14px;
+}
+
+.btn:where(.tertiary:disabled) {
+  opacity: .5;
+}
+
+.btn:where(.secondary) {
+  box-shadow: 0 0 0 1px var(--themed-border, transparent);
+  --themed-bg: var(--ds-background-100);
+  --themed-border: var(--ds-gray-400);
+  --themed-fg: var(--ds-gray-1000);
+}
+
+.btn:where(:is(.secondary, .tertiary)) {
+  --themed-hover-bg: var(--ds-gray-alpha-200);
+}
+
+.btn:where(.tiny) slot::slotted(svg), .btn:where(.tiny) slot > svg {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+.btn:where(:not(.unstyled)) slot::slotted(svg), .btn:where(:not(.unstyled)) slot > svg {
+  flex-shrink: 0 !important;
+}
+
+.btn:where(:not(.sm, .lg):is(.secondary, .error, .warning)):disabled, .btn:where(:not(.secondary, .tertiary, .error, .warning):disabled):disabled {
+  background-color: var(--ds-gray-100);
+}
+
+.btn :where(.start) slot::slotted(svg), .btn :where(.start) slot > svg, .btn :where(.end) slot::slotted(svg), .btn :where(.end) slot > svg {
+  width: var(--ds-control-decoration-size) !important;
+  height: var(--ds-control-decoration-size) !important;
+}
+
+.btn:where(.custom)[data-custom-button]:not([disabled]) {
+  color: var(--button-custom-fg) !important;
+  background: var(--button-custom-bg) !important;
+  --themed-border: var(--button-custom-border) !important;
+}
+
+.btn:where(.custom)[data-custom-button][data-focus] {
+  box-shadow: 0 0 0 1px var(--acme-background), 0 0 0 3px var(--button-custom-bg-hover, var(--button-custom-bg, var(--acme-foreground))) !important;
+  color: var(--button-custom-fg-hover) !important;
+  background: var(--button-custom-bg-hover) !important;
+  --themed-border: var(--button-custom-border-hover) !important;
+}
+
+.btn:where(.custom)[data-custom-button][data-hover] {
+  color: var(--button-custom-fg-hover) !important;
+  background: var(--button-custom-bg-hover) !important;
+  --themed-border: var(--button-custom-border-hover) !important;
+}
+
+.btn:where(.custom)[data-custom-button][data-active] {
+  color: var(--button-custom-fg-active, var(--button-custom-fg-hover)) !important;
+  background: var(--button-custom-bg-active, var(--button-custom-bg-hover)) !important;
+  --themed-border: var(--button-custom-border-active, var(--button-custom-border-hover)) !important;
+}
+
+.btn:where(.tertiary) {
+  --lighten-color: #fffc;
+  --themed-border: transparent;
+  background-color: #0000;
+  color: var(--themed-bg, var(--ds-gray-1000)) !important;
+}
+
+.btn:where(:not(.unstyled)):disabled {
+  cursor: not-allowed;
+  color: var(--ds-gray-700);
+  --themed-border: var(--ds-gray-400) !important;
+}
+
+.btn:where(:is(.tiny, .sm, .lg)):disabled, .btn:where(:is(.link, .custom)):disabled, .btn:where(:not(.tiny, .sm, .lg).icon):disabled, .btn:where(:not(.sm, .lg).loading):disabled, .btn:where(:not(.unstyled):not(:disabled)):disabled {
+  background-color: var(--ds-gray-100);
+}
+
+.btn:where(.tertiary:disabled):disabled {
+  box-shadow: none;
+  background-color: #0000;
+}
+
+.btn:where(:not(.unstyled))[aria-disabled="true"] {
+  cursor: not-allowed;
+  color: var(--ds-gray-700);
+  --themed-border: var(--ds-gray-400) !important;
+}
+
+.btn:where(:is(.tiny, .sm, .lg))[aria-disabled="true"], .btn:where(:is(.link, .custom))[aria-disabled="true"], .btn:where(:not(.sm, .lg):is(.secondary, .error, .warning))[aria-disabled="true"], .btn:where(:not(.tiny, .sm, .lg).icon)[aria-disabled="true"], .btn:where(:not(.sm, .lg).loading)[aria-disabled="true"], .btn:where(:not(.unstyled):not(:disabled))[aria-disabled="true"], .btn:where(:not(.secondary, .tertiary, .error, .warning):disabled)[aria-disabled="true"] {
+  background-color: var(--ds-gray-100);
+}
+
+.btn:where(.tertiary:disabled)[aria-disabled="true"] {
+  box-shadow: none;
+  background-color: #0000;
+}
+
+.btn:where(.shadow) {
+  box-shadow: var(--ds-shadow-border-small);
+}
+
+.btn:where(:not(.tertiary):not(.unstyled)):disabled, .btn:where(:not(.tertiary):not(.unstyled))[aria-disabled="true"] {
+  box-shadow: 0 0 0 1px var(--themed-border, transparent);
+}
+
+.btn:where(.secondary)[data-hover] {
+  background-color: var(--ds-gray-100);
+  color: var(--themed-fg);
+}
+
+.btn:where(:not(.secondary):not(.unstyled))[data-hover] {
+  background-color: var(--themed-hover-bg, #383838);
+  --themed-border: var(--themed-hover-bg, var(--ds-gray-200));
+}
+
+.btn:where(.tertiary)[data-hover] {
+  --themed-border: var(--ds-gray-alpha-200) !important;
+}
+
+.btn:where(.secondary:not(.shadow))[data-focus] {
+  box-shadow: 0 0 0 1px var(--themed-border, transparent), 0 0 0 2px var(--ds-background-100), 0 0 0 4px var(--ds-focus-color);
+}
+
+.btn:where(:not(.unstyled))[data-focus] {
+  box-shadow: var(--ds-focus-ring);
+  transition-property: none;
+}
+
+:where(:host([data-dark])) .btn:where(.secondary)[data-hover] {
+  background-color: var(--ds-gray-200);
+}
+
+:where(:host([data-dark])) .btn:where(:not(.secondary):not(.unstyled))[data-hover] {
+  background-color: var(--themed-hover-bg, #ccc);
+}
+
+.btn:where(:not(.unstyled))[data-hover]:disabled {
+  background-color: var(--ds-gray-100);
+}
+
+.btn:where(.error) {
+  --themed-fg: var(--ds-contrast-fg);
+  --themed-bg: var(--ds-red-800);
+  --themed-border: var(--themed-bg);
+  --themed-hover-bg: var(--ds-red-900);
+  --themed-press-bg: #ffaba3;
+  --themed-focus-ring: #ffaba3;
+}
+
+.btn:where(.warning) {
+  --themed-fg: #0a0a0a;
+  --themed-bg: var(--ds-amber-800);
+  --themed-border: var(--themed-bg);
+  --themed-hover-bg: #d27504;
+  --themed-press-bg: #a35200;
+  --themed-focus-ring: #a35200;
+}
+
+:host(:not([data-dark])) .btn:where(.error) {
+  --themed-fg: #f5f5f5;
+  --themed-hover-bg: #ae292f;
+  --themed-press-bg: #7c1316;
+  --themed-focus-ring: #7c1316;
+}
+`;

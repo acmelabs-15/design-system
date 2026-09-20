@@ -1,4 +1,5 @@
-import { css, html, nothing, svg } from "lit";
+import { codeBlockStructureCss } from "../../generated/components/code-block/code-block-structure.styles";
+import { html, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
@@ -10,8 +11,8 @@ import "../switch-control/switch-control";
 import { sourceOf, tokenLines } from "../code/code";
 import type { AcmeCopyButton } from "../copy-button/copy-button";
 import "../copy-button/copy-button";
-import { copyButtonCss } from "../copy-button/copy-button.styles";
-import { codeBlockCss } from "./code-block.styles";
+import { copyButtonCss } from "../../generated/components/copy-button/copy-button.styles";
+import { codeBlockCss } from "../../generated/components/code-block/code-block.styles";
 
 export type CodeBlockOption = { label: string; value: string };
 /** A language switch: its options, or `{ options, value }` as the reference writes it. */
@@ -46,44 +47,7 @@ export class AcmeCodeBlock extends AcmeElement {
     sharedCss,
     codeBlockCss,
     copyButtonCss,
-    css`
-      :host {
-        display: block;
-      }
-      /* The reference's block carries my-4, so the generated sheet sets margin-block: 1rem and that
-         is the element's correct default. Their docs page then cancels it on every demo it holds,
-         which a page of ours cannot do through a shadow boundary. This property is the way across:
-         our docs preview sets it to 0, and any other page keeps the reference's spacing. */
-      .code-block {
-        margin-block: var(--acme-code-block-margin-block, 1rem);
-      }
-      /* The reference has no host between the frame and its floating button: the button itself is the
-         absolutely-positioned box. Ours has two, acme-copy-button and the acme-button inside it, and
-         an in-flow inline box takes a line of the frame's 24px line-height, which pushed the code
-         down and left the button floating in the gap above it. A block host of zero height takes no
-         line, and the frame stays the positioning context its absolute button resolves against. */
-      acme-copy-button.floating {
-        display: block;
-        height: 0;
-      }
-      /* The strip carries the reference's scrolling tab-strip rule, which is right for their
-         underlined tabs. Our acme-switch is a bordered segmented control, and its ring is a
-         box-shadow, which paints outside the border box and so is clipped by that scrolling.
-         One pixel of padding on each side gives the ring its room. The margin is the reference's
-         own mb-3 (0.75rem) between its strip and the frame, which we lost when the switch stopped being
-         mapped to their tab list. */
-      .strip {
-        padding: 1px;
-        margin-bottom: 0.75rem;
-      }
-      /* The reference's actions row is gap-1 (4px) between two flat, borderless items. Ours holds a
-         bordered select, so 4px puts its border hard against the copy button. The row also stretches
-         its items by default, which left the select's host 32px tall around a 24px field. */
-      .actions {
-        align-items: center;
-        gap: 0.5rem;
-      }
-    `,
+    codeBlockStructureCss,
   ];
   /** The paste destination shown in the bar; empty hides the bar. */
   @property() filename = "";

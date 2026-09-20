@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { paginationStructureCss } from "../../generated/components/pagination/pagination-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { paginationCss } from "./pagination.styles";
-import { paginationLinkCss } from "./pagination-link.styles";
+import { paginationCss } from "../../generated/components/pagination/pagination.styles";
+import { paginationLinkCss } from "../../generated/components/pagination/pagination-link.styles";
 
 /**
  * Pagination. The previous and next sibling pages as two links in a full-width space-between
@@ -18,15 +19,7 @@ export class AcmePagination extends AcmeElement {
     sharedCss,
     paginationCss,
     paginationLinkCss,
-    css`
-      :host {
-        display: block;
-      }
-      /* The shadow reset colors links; a pagination link takes the text color, as the reference's page reset has it inherit. */
-      .link {
-        color: inherit;
-      }
-    `,
+    paginationStructureCss,
   ];
   /** Destination page name of the previous link; empty hides the link. */
   @property({ attribute: "prev-title" }) prevTitle = "";

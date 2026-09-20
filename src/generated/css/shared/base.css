@@ -1,0 +1,107 @@
+:host, *, :before, :after {
+  box-sizing: border-box;
+  border: 0 solid;
+  border-color: var(--color-gray-200, currentcolor);
+  margin: 0;
+  padding: 0;
+}
+
+:host {
+  tab-size: 4;
+  display: block;
+}
+
+:host([hidden]) {
+  display: none !important;
+}
+
+slot {
+  background-color: inherit;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  vertical-align: middle;
+  display: block;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+::slotted(img), ::slotted(svg), ::slotted(video), ::slotted(canvas), ::slotted(audio), ::slotted(iframe), ::slotted(embed), ::slotted(object) {
+  vertical-align: middle;
+  display: block;
+}
+
+::slotted(img), ::slotted(video) {
+  max-width: 100%;
+  height: auto;
+}
+
+button, input, select, optgroup, textarea {
+  font: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  opacity: 1;
+  background-color: #0000;
+  border-radius: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+}
+
+h1, h2, h3, h4, p, dl, dd {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.sr {
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.ic {
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.85px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.mono {
+  font-family: var(--mono);
+}

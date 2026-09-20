@@ -1,0 +1,5 @@
+.backdrop {
+  z-index: calc(var(--ds-z-tooltip) - 1);
+  position: fixed;
+  inset: 0;
+}

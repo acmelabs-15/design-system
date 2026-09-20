@@ -1,0 +1,144 @@
+@media (prefers-color-scheme: dark) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 600px) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+.options {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  display: grid;
+}
+
+.option {
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  min-height: 70px;
+  color: var(--text);
+  align-items: flex-start;
+  gap: 24px;
+  padding: 12px;
+  display: flex;
+}
+
+.option:hover {
+  border-color: var(--border-hover);
+}
+
+.option > input {
+  order: 1;
+  margin: 2px 0 0 auto;
+}
+
+.option .body {
+  flex: 1;
+  min-width: 0;
+}
+
+.option .head {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+}
+
+.option .head .badge {
+  height: 20px;
+  padding: 0 8px;
+  font-size: 11px;
+}
+
+.option .sub {
+  color: var(--text-2);
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.option.span {
+  grid-column: 1 / -1;
+}
+
+.option:has(input:checked) {
+  border-color: var(--ds-blue-600);
+  background: var(--ds-blue-100);
+}
+
+.option:has(input:checked) .head, .option:has(input:checked) .sub {
+  color: var(--ds-blue-900);
+}
+
+@media (width <= 767px) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 760px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (pointer: coarse) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}

@@ -1,0 +1,39 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const bannerCss = css`.banner {
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  max-width: 1080px;
+  display: none;
+}
+
+.banner :where(.text) {
+  font-family: var(--acme-font-sans);
+  color: var(--ds-gray-900);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+@media (width >= 961px) {
+  .banner {
+    display: flex;
+  }
+}
+
+.banner :where(.text) > slot::slotted(strong), .banner :where(.text) > slot > strong {
+  color: var(--ds-gray-1000) !important;
+  font-weight: 550 !important;
+}
+
+.banner slot::slotted(b), .banner slot > b {
+  color: var(--ds-gray-1000) !important;
+  font-weight: 600 !important;
+}
+
+.banner :where(acme-button.action) svg {
+  flex-shrink: 0;
+}
+`;

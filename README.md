@@ -13,7 +13,7 @@ No build step. Two tags:
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/tokens.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/styles/tokens.css">
 <script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/bundle/design-system.min.js"></script>
 
 <acme-button variant="primary">Deploy</acme-button>
@@ -40,7 +40,7 @@ bun add @acmelabs/design-system
 
 ```ts
 import "@acmelabs/design-system"; // every element registers on import
-import "@acmelabs/design-system/tokens.css";
+import "@acmelabs/design-system/styles/tokens.css";
 ```
 
 The unbundled build under `dist/` keeps Lit as a dependency, so one copy of Lit serves the whole
@@ -49,34 +49,40 @@ app. Single elements import from `@acmelabs/design-system/dist/components/<name>
 ## Layout
 
 ```
-styles/house.css                the audited house stylesheet
+styles/                         authored house, component and shared CSS inputs
 src/
-  base.ts                       AcmeElement, the shared shadow reset, the icon glyphs
+  base.ts                       AcmeElement and shared helpers
   index.ts                      re-exports every element
-  shared/                       helpers used by several elements; element-less style families
+  shared/                       shared behavior
   components/<name>/
     <name>.ts                   the element
-    <name>.styles.ts            its Lit css`` module (GENERATED from the audited sheet; do not edit)
     __tests__/<name>.test.ts    bun:test with happy-dom
-docs-src/                       the docs site: a Lit app on @lit-labs/router, one fragment per page
-docs/                           the built site (GENERATED; GitHub Pages serves it)
+  generated/
+    css/                        canonical CSS inputs, compiled CSS and maps
+    components/, shared/        generated Lit style modules
+    style-manifest.json         producer/input/output fingerprints
+site/                           authored documentation app and pages
+_site/                          generated local site (not committed)
+dist/                           package modules, bundles and document styles
 scripts/                        split-css, build, dev server
 tools/geist/                    the parity pipeline: specs, maps, sketches, generator, census
 notes/                          hand-written analysis, decisions, and the current pass
-tokens.css, dashboard.css       the global CSS layers (GENERATED)
 ```
 
 ## Generated files
 
-These are committed but written by scripts. Editing them by hand is lost on the next run.
+Generated inputs under src/generated are committed. Package and site outputs are disposable. Edit the named sources; the build checks generated fingerprints.
 
 | Path | Written by | Edit instead |
 |---|---|---|
-| `tokens.css` | `bun run split` | `styles/house.css` and the generated theme |
-| `dashboard.css` | `bun run build` | `scripts/build.ts` |
-| `src/components/<name>/<name>.styles.ts` | `bun run split` or `bun tools/geist/gen.ts <name>` | `tools/geist/maps/<name>.ts` |
-| `docs/` | `bun run docs` | `docs-src/` |
-| `dist/` (not committed) | `bun run build` | `src/` |
+| `src/generated/css/` and Lit style modules | `split` or the mapped generator | `styles/` or `tools/geist/maps/` |
+| `src/generated/style-manifest.json` | style producers | its recorded source inputs |
+| `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css` and the generated theme |
+| `dist/styles/dashboard.css` | `build` | compiled recipe inputs selected in `scripts/build.ts` |
+| `_site/` | `bun run docs` | `site/` |
+| `dist/` | `bun run build` | `src/` and generated inputs |
+
+Component CSS intermediates stay in the repository. The package's style directory contains document styles and maps. The unminified browser bundle includes CSS debugger maps; production JavaScript bundles omit them.
 
 ## Working on this repo
 
@@ -87,11 +93,11 @@ Start with `AGENTS.md`. It gives the reading order, the rules, and the current w
 | Command | What it does |
 |---|---|
 | `bun run build` | Transpiles `src/` with the Lit template compiler into `dist/`, then bundles `dist/bundle/design-system(.min).js` |
-| `bun run docs` | Builds the docs site into `docs/` |
+| `bun run docs` | Builds the docs site into `_site/` |
 | `bun run dev` | Rebuilds on change and serves the docs at <http://localhost:4180> |
 | `bun test` | Unit tests plus a render test of every docs page |
 | `bun run lint` | Biome |
-| `bun run split` | Regenerates `tokens.css` and the style modules from the audited house sheet |
+| `bun run split` | Compiles house/authored CSS into committed CSS, maps and Lit modules |
 
 ## Release
 

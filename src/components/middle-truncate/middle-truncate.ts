@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { middleTruncateStructureCss } from "../../generated/components/middle-truncate/middle-truncate-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { middleTruncateCss } from "./middle-truncate.styles";
+import { middleTruncateCss } from "../../generated/components/middle-truncate/middle-truncate.styles";
 
 /** Graphemes, so a cut never splits a surrogate pair or a combining sequence. */
 const segmenter = typeof Intl !== "undefined" && "Segmenter" in Intl ? new Intl.Segmenter(undefined, { granularity: "grapheme" }) : null;
@@ -117,11 +118,7 @@ export class AcmeMiddleTruncate extends AcmeElement {
   static styles = [
     sharedCss,
     middleTruncateCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    middleTruncateStructureCss,
   ];
   @property() value = "";
   @atomState() private shown: Cut = whole([]);

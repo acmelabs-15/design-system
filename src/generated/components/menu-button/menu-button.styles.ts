@@ -1,0 +1,112 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const menuButtonCss = css`.btn :where(.label) :where(.inner) :where(.chev) {
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 30px;
+  color: var(--accents-3);
+  -webkit-user-select: none;
+  user-select: none;
+  tap-highlight-color: transparent;
+  background-image: none;
+  border-style: solid;
+  border-width: 0;
+  outline-style: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-decoration-line: none;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --acme-gradient-from, --acme-gradient-via, --acme-gradient-to;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .15s;
+  display: inline-flex;
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  translate: 0 -50%;
+}
+
+.btn:where(:not(.chevron)) :where(.label) {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.btn :where(.label) :where(.inner) {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .25rem;
+  width: 100%;
+  display: flex;
+}
+
+.btn:where(.chevron) :where(.label) {
+  flex-grow: 1;
+  display: inline-block;
+}
+
+.btn :where(.label) :where(.inner) :where(.chev) :where(svg) {
+  width: var(--ds-control-decoration-size);
+  height: var(--ds-control-decoration-size);
+}
+
+.btn:where(.icon-only) :where(.label) {
+  flex-shrink: 0;
+}
+
+.btn:where(:not(.open)) :where(.label) :where(.inner) :where(.chev) :where(svg) {
+  transition-property: transform, translate, scale, rotate;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .15s;
+  rotate: 0deg;
+}
+
+.btn:where(.open) :where(.label) :where(.inner) :where(.chev) :where(svg) {
+  transition-property: none;
+  rotate: 180deg;
+}
+
+.btn :where(.label) {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-inline: .375rem;
+  overflow: hidden;
+}
+
+.btn:where(.open.icon-only:not(.unstyled)) {
+  background-color: var(--ds-gray-400);
+}
+
+.btn:where(.chevron) {
+  padding-right: 2.5rem !important;
+}
+
+@media (forced-colors: active) {
+  .btn :where(.label) :where(.inner) :where(.chev) {
+    outline-offset: 2px;
+    outline: 2px solid #0000;
+  }
+}
+
+.btn:where(:not(.unstyled)) svg {
+  flex-shrink: 0;
+}
+
+.btn:where(.unstyled) > span {
+  padding-inline: 0 !important;
+}
+
+.btn:where(.secondary)[data-hover="true"] :where(.label) :where(.inner) :where(.chev) {
+  color: var(--ds-gray-1000);
+}
+
+.btn:where(.secondary)[data-hover] {
+  box-shadow: 0 0 0 1px var(--ds-gray-alpha-500);
+  background-color: var(--ds-background-100) !important;
+}
+`;

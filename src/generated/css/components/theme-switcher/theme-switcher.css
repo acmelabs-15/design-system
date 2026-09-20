@@ -1,0 +1,28 @@
+.switcher :where(.legend) {
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.switcher {
+  isolation: isolate;
+  width: fit-content;
+  height: 2rem;
+  box-shadow: var(--ds-shadow-border);
+  border-style: solid;
+  border-width: 0;
+  border-radius: 2147483647px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.switcher[data-small] {
+  height: 1.5rem;
+}

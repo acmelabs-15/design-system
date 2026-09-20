@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { skeletonStructureCss } from "../../generated/components/skeleton/skeleton-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { skeletonCss } from "./skeleton.styles";
+import { skeletonCss } from "../../generated/components/skeleton/skeleton.styles";
 
 const px = (v: string | number) => (typeof v === "number" ? `${v}px` : /^\d+(\.\d+)?$/.test(v) ? `${v}px` : v);
 /** Unset stays undefined (automatic); `show="false"` turns it off; any other value turns it on. */
@@ -22,11 +23,7 @@ export class AcmeSkeleton extends AcmeElement {
   static styles = [
     sharedCss,
     skeletonCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    skeletonStructureCss,
   ];
   /** Pixels or any CSS length ("100%"). */
   @property() width: string | number = "";

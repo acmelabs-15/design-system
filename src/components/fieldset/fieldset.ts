@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { fieldsetStructureCss } from "../../generated/components/fieldset/fieldset-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeButton } from "../button/button";
-import { fieldsetCss } from "./fieldset.styles";
+import { fieldsetCss } from "../../generated/components/fieldset/fieldset.styles";
 import "../disabled-wall/disabled-wall";
 import { atomState } from "../../shared/atom-state";
 
@@ -24,11 +25,7 @@ export class AcmeFieldset extends AcmeElement {
   static styles = [
     sharedCss,
     fieldsetCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    fieldsetStructureCss,
   ];
   /** The title line; the `title` slot adds to it. */
   @property() heading = "";

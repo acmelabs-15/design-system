@@ -1,8 +1,9 @@
+import { tableStructureCss } from "../../generated/components/table/table-structure.styles";
 import { WindowVirtualizerController } from "@tanstack/lit-virtual";
-import { css, html, nothing } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { tableCss } from "./table.styles";
+import { tableCss } from "../../generated/components/table/table.styles";
 import "../checkbox/checkbox";
 
 /** A column: `key` reads the row, `label` heads it, `width` sizes its col (e.g. "44%"), `numeric` gives its digits tabular figures, `render` draws the cell from the row. */
@@ -33,14 +34,7 @@ export class AcmeTable extends AcmeElement {
   static styles = [
     sharedCss,
     tableCss,
-    css`
-      :host {
-        display: block;
-      }
-      .num {
-        font-variant-numeric: tabular-nums;
-      }
-    `,
+    tableStructureCss,
   ];
   /** `[{ key, label, width?, numeric?, render? }]`. */
   @property({ type: Array }) columns: Column[] = [];

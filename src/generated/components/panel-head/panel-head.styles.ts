@@ -1,0 +1,40 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const panelHeadCss = css`.panel-head {
+  margin-bottom: var(--s-4);
+  align-items: flex-start;
+  gap: 12px;
+  display: flex;
+}
+
+.panel-head .title {
+  letter-spacing: -.32px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.panel-head .sub {
+  font-size: var(--t-sm);
+  color: var(--text-2);
+  margin: 0;
+  line-height: 18px;
+}
+
+.panel-head .actions {
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  display: flex;
+}
+
+.panel-head .actions a {
+  font-size: var(--t-sm);
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  display: inline-flex;
+}
+`;

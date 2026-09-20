@@ -1,14 +1,15 @@
+import { chartStructureCss } from "../../generated/components/chart/chart-structure.styles";
 import { areaY, barY, defineChart, lineY } from "@tanstack/charts";
 import { mountChart } from "@tanstack/charts/dom";
 import { scaleBand } from "@tanstack/charts/scales/band";
 import { scaleLinear } from "@tanstack/charts/scales/linear";
 import { scalePoint } from "@tanstack/charts/scales/point";
 import { tooltip } from "@tanstack/charts/tooltip";
-import { css, html } from "lit";
+import { html } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { legendCss } from "../legend/legend.styles";
-import { chartCss } from "./chart.styles";
+import { legendCss } from "../../generated/components/legend/legend.styles";
+import { chartCss } from "../../generated/components/chart/chart.styles";
 
 type Row = Record<string, unknown>;
 type Host = { update(options: Record<string, unknown>): void; destroy(): void };
@@ -25,31 +26,7 @@ export class AcmeChart extends AcmeElement {
     sharedCss,
     chartCss,
     legendCss,
-    css`
-      :host {
-        display: block;
-      }
-      ::slotted(svg) {
-        display: block;
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-      }
-      .host {
-        width: 100%;
-        height: 100%;
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--text-2);
-      }
-      .host svg {
-        display: block;
-        overflow: visible;
-      }
-      .host text {
-        fill: var(--text-2);
-      }
-    `,
+    chartStructureCss,
   ];
   @property({ type: Number }) height = 180;
   /** line, bar or area. */

@@ -2,7 +2,7 @@ import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, paths, sharedCss } from "../../base";
 import "../tooltip/tooltip";
-import { descriptionCss } from "./description.styles";
+import { descriptionCss } from "../../generated/components/description/description.styles";
 
 /**
  * Description: a definition list of one Title Case key (dt, 14px gray-900, capitalized) and its

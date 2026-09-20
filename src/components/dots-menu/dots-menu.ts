@@ -1,8 +1,9 @@
-import { css, html } from "lit";
+import { dotsMenuStructureCss } from "../../generated/components/dots-menu/dots-menu-structure.styles";
+import { html } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import type { AcmeMenu, MenuCloseKind } from "../menu/menu";
-import { dotsMenuCss } from "./dots-menu.styles";
+import { dotsMenuCss } from "../../generated/components/dots-menu/dots-menu.styles";
 import "../menu/menu";
 import "../menu-button/menu-button";
 
@@ -27,11 +28,7 @@ export class AcmeDotsMenu extends AcmeElement {
   static styles = [
     sharedCss,
     dotsMenuCss,
-    css`
-      :host {
-        display: inline-block;
-      }
-    `,
+    dotsMenuStructureCss,
   ];
   @property({ type: Boolean, reflect: true }) disabled = false;
   /** The dots icon's width and height in px. */

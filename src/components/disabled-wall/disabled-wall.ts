@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { disabledWallStructureCss } from "../../generated/components/disabled-wall/disabled-wall-structure.styles";
+import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { disabledWallCss } from "./disabled-wall.styles";
+import { disabledWallCss } from "../../generated/components/disabled-wall/disabled-wall.styles";
 
 /**
  * Disabled wall: an empty overlay that covers its positioned container, shows the not-allowed
@@ -13,11 +14,7 @@ export class AcmeDisabledWall extends AcmeElement {
   static styles = [
     sharedCss,
     disabledWallCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    disabledWallStructureCss,
   ];
   render() {
     return html`<div class="wall" aria-hidden="true" part="wall"></div>`;

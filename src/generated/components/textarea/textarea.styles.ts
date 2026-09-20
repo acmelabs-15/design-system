@@ -1,0 +1,129 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const textareaCss = css`.wrap :where(textarea) {
+  resize: none;
+  appearance: none;
+  background-color: var(--ds-background-100);
+  width: 100%;
+  min-width: 0;
+  color: var(--acme-foreground);
+  border-style: none;
+  outline-style: none;
+  order: 1;
+  padding-block: .625rem;
+  padding-inline: .75rem;
+  display: inline-flex;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 100%;
+  font-weight: 400;
+  transition-property: all;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .15s;
+  display: flex;
+  overflow: hidden;
+}
+
+.wrap:where(.lg) {
+  border-radius: .5rem;
+}
+
+.wrap:where(:not(.lg)) {
+  font-size: .875rem;
+  line-height: calc(1.25 / .875);
+  border-radius: .375rem;
+}
+
+.wrap:where(:not(.error)) {
+  box-shadow: 0 0 0 1px var(--ds-gray-alpha-400);
+}
+
+.wrap:where(.error) {
+  box-shadow: 0 0 0 1px var(--ds-red-900), 0 0 0 4px var(--ds-red-300);
+}
+
+.wrap :where(textarea)::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.wrap :where(textarea)::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.wrap :where(textarea)::-webkit-search-results-button {
+  -webkit-appearance: none;
+}
+
+.wrap :where(textarea)::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.wrap:where(.lg) > input {
+  height: var(--ds-size-large);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.wrap:where(:not(.sm, .lg)) > input {
+  height: var(--ds-size-medium);
+}
+
+.wrap:where(.sm) > input {
+  height: 2rem;
+}
+
+.wrap > input {
+  padding-inline: .75rem;
+}
+
+@media (hover: hover) {
+  .wrap:where(:not(.error))[data-hover] {
+    box-shadow: 0 0 0 1px var(--ds-gray-alpha-500);
+  }
+
+  .wrap:where(.error)[data-hover] {
+    box-shadow: 0 0 0 1px var(--ds-red-900), 0 0 0 4px var(--ds-red-500);
+  }
+}
+
+.wrap :where(textarea):focus {
+  outline-style: none;
+}
+
+.wrap :where(textarea):disabled {
+  cursor: not-allowed;
+  background-color: var(--ds-gray-100);
+  color: var(--ds-gray-700);
+  opacity: 1;
+  -webkit-text-fill-color: var(--accents-3);
+}
+
+.wrap:where(:not(.error))[data-focus] {
+  box-shadow: 0 0 0 1px var(--ds-gray-alpha-600), 0 0 0 4px #00000029 !important;
+}
+
+.wrap:where(.error)[data-focus] {
+  box-shadow: 0 0 0 1px var(--ds-red-900), 0 0 0 4px var(--ds-red-300);
+}
+
+:where(:host([data-dark])) .wrap:where(:not(.error))[data-focus] {
+  box-shadow: 0 0 0 1px var(--ds-gray-alpha-600), 0 0 0 4px #ffffff3d !important;
+}
+
+.wrap :where(textarea)[rows] {
+  height: unset;
+}
+
+.wrap :where(textarea):disabled::placeholder {
+  color: var(--accents-3);
+}
+
+@media (hover: hover) {
+  .wrap:where(:not(.error))[data-hover]:has(input:disabled), .wrap:where(:not(.error))[data-hover]:has(textarea:disabled) {
+    box-shadow: 0 0 0 1px var(--ds-gray-alpha-400);
+  }
+}
+`;

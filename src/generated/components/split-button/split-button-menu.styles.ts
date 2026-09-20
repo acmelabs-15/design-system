@@ -1,0 +1,43 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const splitButtonMenuCss = css`.menu {
+  z-index: var(--ds-z-menu);
+  transition-property: opacity;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.menu :where(.list) {
+  overscroll-behavior: contain;
+  background-color: var(--ds-background-100);
+  box-shadow: var(--ds-shadow-menu);
+  padding: var(--ds-popover-padding);
+  font-size: .875rem;
+  line-height: calc(1.25 / .875);
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  outline-style: none;
+  margin: 0;
+  overflow: hidden auto;
+}
+
+@media not all and (width >= 601px) {
+  .menu :where(.list) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    width: unset !important;
+  }
+}
+
+@media (width >= 601px) {
+  .menu:where(:not(.end)) {
+    translate: var(--split-button-menu-offset) 0;
+  }
+}
+
+.menu[data-phase="exiting"] {
+  opacity: 0;
+}
+`;

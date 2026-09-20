@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+
+::slotted(acme-legend-item) {
+  display: contents;
+}

@@ -1,8 +1,9 @@
-import { css, html } from "lit";
+import { panelFootStructureCss } from "../../generated/components/panel-foot/panel-foot-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { buttonCss } from "../button/button.styles";
-import { panelCss } from "../panel/panel.styles";
+import { buttonCss } from "../../generated/components/button/button.styles";
+import { panelCss } from "../../generated/components/panel/panel.styles";
 
 @customElement("acme-panel-foot")
 export class AcmePanelFoot extends AcmeElement {
@@ -10,16 +11,7 @@ export class AcmePanelFoot extends AcmeElement {
     sharedCss,
     panelCss,
     buttonCss,
-    css`
-      :host {
-        display: block;
-      }
-      .panel-f .actions {
-        margin-left: auto;
-        display: flex;
-        gap: 8px;
-      }
-    `,
+    panelFootStructureCss,
   ];
   @property({ type: Boolean }) tinted = false;
   render() {

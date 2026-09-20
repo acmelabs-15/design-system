@@ -1,0 +1,334 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const comboboxCss = css`.combobox :where(.field) :where(.start) {
+  pointer-events: none;
+  z-index: 10;
+  color: var(--ds-gray-700);
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  translate: 0 -50%;
+}
+
+.combobox :where(.status) {
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.combobox :where(.field) :where(.end) {
+  width: auto;
+  color: var(--ds-gray-700);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --acme-gradient-from, --acme-gradient-via, --acme-gradient-to;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, 1, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(.4, 0, 1, 1);
+  position: absolute;
+  top: 50%;
+  right: 2.5rem;
+  translate: 0 -50%;
+}
+
+.combobox :where(.field) :where(.clear) {
+  box-sizing: border-box;
+  height: var(--ds-size-medium);
+  cursor: pointer;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-user-select: none;
+  user-select: none;
+  tap-highlight-color: transparent;
+  background-image: none;
+  border-style: solid;
+  border-width: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  outline-style: none;
+  order: 2;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-block: 0;
+  padding-inline: .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-decoration-line: none;
+  transition-property: all;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(0, 0, .2, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(0, 0, .2, 1);
+  display: inline-flex;
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  translate: 0 -50%;
+  width: 2.5rem !important;
+  margin-right: 0 !important;
+}
+
+.combobox :where(.field) :where(.toggle) {
+  box-sizing: border-box;
+  cursor: pointer;
+  vertical-align: baseline;
+  color: var(--ds-gray-700);
+  -webkit-user-select: none;
+  user-select: none;
+  tap-highlight-color: transparent;
+  background-image: none;
+  border-style: solid;
+  border-width: 0;
+  outline-style: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-decoration-line: none;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --acme-gradient-from, --acme-gradient-via, --acme-gradient-to;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, 1, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(.4, 0, 1, 1);
+  display: inline-flex;
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  translate: 0 -50%;
+  width: 2.5rem !important;
+  margin-right: 0 !important;
+}
+
+.combobox {
+  border-radius: .375rem;
+  outline-style: none;
+  transition-property: box-shadow;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .2s;
+  position: relative;
+}
+
+.combobox :where(.field) {
+  z-index: 0;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.combobox :where(.field) :where(.input) {
+  height: var(--ds-size-medium);
+  min-height: var(--ds-size-medium);
+  cursor: text;
+  appearance: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: var(--ds-background-100);
+  text-align: left;
+  width: 100%;
+  font-weight: var(--font-sans);
+  background-clip: padding-box;
+  border-style: solid;
+  border-width: 0;
+  border-radius: .375rem;
+  outline-style: none;
+  margin: 0;
+  padding-block: 0;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .2s;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  overflow: hidden;
+}
+
+.combobox :where(.field) :where(.start) :where(.icon), .combobox :where(.field) :where(.clear) :where(.icon), .combobox :where(.field) :where(.toggle) :where(.icon) {
+  width: var(--ds-control-decoration-size);
+  height: var(--ds-control-decoration-size);
+}
+
+.combobox:where(.lg) :where(.field) :where(.clear), .combobox:where(.lg) :where(.field) :where(.toggle) {
+  height: var(--ds-size-large) !important;
+}
+
+.combobox:where(.sm) :where(.field) :where(.clear), .combobox:where(.sm) :where(.field) :where(.toggle) {
+  height: 2rem !important;
+}
+
+.combobox:where(:not(.sm, .lg)) :where(.field) :where(.toggle) {
+  height: 30px !important;
+}
+
+.combobox:where(:not(.sm, .lg)) :where(.field) :where(.clear) {
+  height: 100% !important;
+}
+
+.combobox:where(:not(.open)) :where(.field) :where(.toggle) :where(.icon) {
+  transition-property: transform, translate, scale, rotate;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .15s;
+  rotate: 0deg;
+}
+
+.combobox:where(.open) :where(.field) :where(.toggle) :where(.icon) {
+  transition-property: none;
+  rotate: 180deg;
+}
+
+.combobox:where(.no-start) :where(.field) :where(.input) {
+  padding-left: .75rem;
+  padding-right: 1.5rem;
+}
+
+.combobox:where(:not(.no-start)) :where(.field) :where(.input) {
+  padding-left: 2.5rem;
+  padding-right: 2.25rem;
+}
+
+.combobox:where(.lg) :where(.field) {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.combobox:where(:not(.lg)) :where(.field) {
+  font-size: .875rem;
+  line-height: calc(1.25 / .875);
+}
+
+.combobox:where(:not(.errored)) :where(.field) :where(.clear) {
+  color: var(--ds-gray-700);
+}
+
+.combobox:where(:not(.errored)) :where(.field) :where(.input) {
+  color: var(--ds-gray-1000);
+  box-shadow: 0 0 0 1px var(--ds-gray-alpha-400);
+}
+
+.combobox:where(.errored) :where(.field) :where(.input) {
+  color: var(--ds-red-800);
+  box-shadow: 0 0 0 1px var(--ds-red-900), 0 0 0 4px var(--ds-red-300);
+}
+
+.combobox:where(.errored) :where(.field) :where(.clear) {
+  color: var(--ds-red-800);
+}
+
+.combobox:where(.keyboard) :where(.field) :where(.input) {
+  box-shadow: var(--ds-focus-ring) !important;
+}
+
+@media (forced-colors: active) {
+  .combobox, .combobox :where(.field) :where(.input), .combobox :where(.field) :where(.clear), .combobox :where(.field) :where(.toggle) {
+    outline-offset: 2px;
+    outline: 2px solid #0000;
+  }
+}
+
+@media (width >= 401px) {
+  .combobox :where(.field) :where(.input) {
+    min-height: 0;
+  }
+}
+
+.combobox :where(.field) :where(.input)::placeholder {
+  color: var(--ds-gray-700);
+}
+
+.combobox:where(.lg) :where(.field) > input {
+  height: var(--ds-size-large);
+}
+
+.combobox:where(.sm) :where(.field) > input {
+  height: 2rem;
+}
+
+.combobox :where(.field) :where(.clear) > span {
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.combobox :where(.field) :where(.toggle) > span {
+  display: inline-flex;
+}
+
+@media (hover: hover) {
+  .combobox[data-hover] :where(.field) :where(.clear) {
+    color: var(--acme-foreground);
+  }
+
+  .combobox[data-hover] :where(.field) :where(.toggle) {
+    color: var(--ds-gray-1000);
+  }
+
+  .combobox:where(:not(.errored))[data-hover] :where(.field) :where(.input) {
+    box-shadow: 0 0 0 1px var(--ds-gray-alpha-500);
+  }
+
+  .combobox:where(.errored) :where(.field) :where(.clear)[data-hover] {
+    color: var(--ds-red-800);
+  }
+}
+
+.combobox[data-focus] {
+  box-shadow: var(--ds-focus-ring);
+}
+
+.combobox :where(.field) :where(.input)[data-focus] {
+  outline-style: none;
+}
+
+@media (forced-colors: active) {
+  .combobox :where(.field) :where(.input)[data-focus] {
+    outline-offset: 2px;
+    outline: 2px solid #0000;
+  }
+}
+
+.combobox :where(.field) :where(.clear)[data-focus] {
+  box-shadow: 0 0 0 0 #fff, 0 0 0 calc(2px + 0px) var(--ds-focus-color);
+}
+
+.combobox :where(.field) :where(.input):disabled {
+  cursor: not-allowed;
+  background-color: var(--ds-gray-100);
+  color: var(--ds-gray-700);
+}
+
+.combobox :where(.field) :where(.clear):disabled {
+  cursor: not-allowed;
+}
+
+.combobox :where(.field) :where(.toggle):disabled {
+  cursor: not-allowed;
+  color: var(--ds-gray-700);
+}
+
+@media (width >= 401px) {
+  .combobox :where(.field) :where(.input)[data-focus] {
+    box-shadow: 0 0 0 1px var(--ds-gray-alpha-600), 0 0 0 4px #00000029 !important;
+  }
+
+  :where(:host([data-dark])) .combobox :where(.field) :where(.input)[data-focus] {
+    box-shadow: 0 0 0 1px var(--ds-gray-alpha-600), 0 0 0 4px #ffffff3d !important;
+  }
+}
+
+@media (hover: hover) {
+  .combobox[data-hover] :where(.field) :where(.input):disabled {
+    box-shadow: 0 0 0 1px var(--ds-gray-alpha-400) !important;
+  }
+}
+`;

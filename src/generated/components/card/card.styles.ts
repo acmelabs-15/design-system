@@ -1,0 +1,79 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const cardCss = css`.card .stat .foot.bar {
+  margin: auto calc(-1 * var(--pad-card)) calc(-1 * var(--pad-card));
+  padding: 12px var(--pad-card);
+}
+
+.card {
+  background: var(--surface);
+  box-shadow: var(--ds-shadow-border);
+  border-radius: var(--r-sm);
+  padding: var(--pad-card);
+  border: 0;
+}
+
+.card.raised {
+  box-shadow: var(--ds-shadow-border-small);
+}
+
+.card.flat {
+  border-color: #0000;
+  border-top: 1px solid var(--hair);
+  background: none;
+  border-radius: 0;
+  padding: 20px 2px 2px;
+}
+
+.card.feature {
+  box-shadow: var(--ds-shadow-border-medium);
+}
+
+.card > .eyebrow {
+  margin-bottom: var(--s-4);
+  align-items: center;
+  gap: var(--s-2);
+  display: flex;
+}
+
+.readout {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 15px 17px;
+}
+
+.card-foot {
+  border-top: 1px solid var(--hair);
+  font-size: var(--t-xs);
+  color: var(--text-2);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-top: 14px;
+  padding-top: 12px;
+  line-height: 16px;
+  display: flex;
+}
+
+.card-foot > * {
+  align-items: center;
+  gap: 5px;
+  display: inline-flex;
+}
+
+.card-foot .mono {
+  font-family: var(--mono);
+}
+
+.card-foot .link {
+  font-size: var(--t-sm);
+  color: var(--text);
+  margin-left: auto;
+  font-weight: 500;
+}
+
+.card .card-foot:last-child {
+  margin-bottom: 0;
+}
+`;

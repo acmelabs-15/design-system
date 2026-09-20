@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, sharedCss } from "../../base";
 import "../tooltip/tooltip";
-import { progressCss } from "./progress.styles";
+import { progressCss } from "../../generated/components/progress/progress.styles";
 
 export type ProgressVariant = "" | "success" | "error" | "warning" | "secondary";
 export type ProgressStop = { value: number; tooltip?: string };

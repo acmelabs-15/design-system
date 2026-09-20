@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { choiceboxItemStructureCss } from "../../generated/components/choicebox-item/choicebox-item-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { choiceboxItemCss } from "./choicebox-item.styles";
+import { choiceboxItemCss } from "../../generated/components/choicebox-item/choicebox-item.styles";
 import "../checkbox/checkbox";
 import "../radio/radio";
 import "../tooltip/tooltip";
@@ -25,13 +26,7 @@ export class AcmeChoiceboxItem extends AcmeElement {
   static styles = [
     sharedCss,
     choiceboxItemCss,
-    css`
-      /* The host is the row's flex item (its share is mirrored from the tile); a column, so the tile fills it. */
-      :host {
-        display: flex;
-        flex-direction: column;
-      }
-    `,
+    choiceboxItemStructureCss,
   ];
   /** The tile's title (the `title` attribute is read into this property and removed, so no tooltip shows). */
   @property({ attribute: "title" }) heading = "";

@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { shellStructureCss } from "../../generated/components/shell/shell-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { shellCss } from "./shell.styles";
+import { shellCss } from "../../generated/components/shell/shell.styles";
 
 /** Vercel shell: sidebar, top bar, ground. Slots: side, topbar, default (content). */
 @customElement("acme-shell")
@@ -9,14 +10,7 @@ export class AcmeShell extends AcmeElement {
   static styles = [
     sharedCss,
     shellCss,
-    css`
-      :host {
-        display: block;
-      }
-      .shell.framed {
-        height: var(--frame-h, 760px);
-      }
-    `,
+    shellStructureCss,
   ];
   @property({ type: Boolean }) framed = false;
   render() {

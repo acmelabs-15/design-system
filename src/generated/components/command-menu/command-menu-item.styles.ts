@@ -1,0 +1,78 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const commandMenuItemCss = css`.item :where(.keys) {
+  gap: .25rem;
+  margin-left: auto;
+  display: none;
+}
+
+.item :where(.end) {
+  align-items: stretch;
+  gap: .25rem;
+  margin-left: auto;
+  display: flex;
+}
+
+.item {
+  min-height: var(--ds-size-large);
+  cursor: pointer;
+  font-size: .875rem;
+  line-height: calc(1.25 / .875);
+  border-radius: .375rem;
+  align-items: center;
+  gap: .75rem;
+  padding-block: 0;
+  padding-inline: .5rem;
+  scroll-margin-block: .5rem;
+  display: flex;
+}
+
+.item :where(.start) {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--ds-gray-900);
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.item :where(.keys) :where(.key) {
+  background-color: var(--ds-background-100);
+  text-align: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  font-size: .75rem;
+  line-height: 21px;
+  font-weight: var(--font-sans-fallback);
+  text-transform: capitalize;
+  box-shadow: var(--ds-shadow-border);
+  border-radius: .25rem;
+  padding-block: 0;
+  padding-inline: .25rem;
+}
+
+@media (width >= 401px) {
+  .item {
+    min-height: var(--ds-size-medium);
+  }
+}
+
+.item[data-focus] {
+  background-color: var(--ds-gray-alpha-100);
+}
+
+@media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
+    .item :where(.keys)[data-hover] {
+      display: flex;
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item[data-selected="true"] {
+    background-color: var(--ds-gray-alpha-100);
+  }
+}
+`;

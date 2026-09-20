@@ -1,8 +1,9 @@
-import { css, html } from "lit";
+import { statDeltaStructureCss } from "../../generated/components/stat-delta/stat-delta-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { statCss } from "../stat/stat.styles";
-import { trendCss } from "../trend/trend.styles";
+import { statCss } from "../../generated/components/stat/stat.styles";
+import { trendCss } from "../../generated/components/trend/trend.styles";
 
 @customElement("acme-stat-delta")
 export class AcmeStatDelta extends AcmeElement {
@@ -10,14 +11,7 @@ export class AcmeStatDelta extends AcmeElement {
     sharedCss,
     statCss,
     trendCss,
-    css`
-      :host {
-        display: block;
-      }
-      dd {
-        margin: 0;
-      }
-    `,
+    statDeltaStructureCss,
   ];
   @property() tone: "" | "good" | "bad" = "";
   render() {

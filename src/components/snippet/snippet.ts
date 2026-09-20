@@ -1,10 +1,11 @@
-import { css, html, nothing } from "lit";
+import { snippetStructureCss } from "../../generated/components/snippet/snippet-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCopyButton } from "../copy-button/copy-button";
 import "../copy-button/copy-button";
-import { snippetCss } from "./snippet.styles";
+import { snippetCss } from "../../generated/components/snippet/snippet.styles";
 
 const text = { fromAttribute: (v: string | null): string | string[] => (v?.trim().startsWith("[") ? (JSON.parse(v) as string[]) : (v ?? "")) };
 
@@ -22,11 +23,7 @@ export class AcmeSnippet extends AcmeElement {
   static styles = [
     sharedCss,
     snippetCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    snippetStructureCss,
   ];
   @property({ converter: text }) text: string | string[] = "";
   /** Goes to the clipboard instead of `text`. */

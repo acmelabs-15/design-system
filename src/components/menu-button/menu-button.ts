@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { menuButtonStructureCss } from "../../generated/components/menu-button/menu-button-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { glyphSized } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { AcmeButton, type ButtonColors } from "../button/button";
-import { menuButtonCss } from "./menu-button.styles";
+import { menuButtonCss } from "../../generated/components/menu-button/menu-button.styles";
 
 const customVars = (suffix: string, c?: ButtonColors) =>
   c
@@ -27,15 +28,7 @@ export class AcmeMenuButton extends AcmeButton {
   static styles = [
     ...AcmeButton.styles,
     menuButtonCss,
-    css`
-      /* The trigger is a block child of its wrapper, as it is of the reference page: the button root keeps its own display and a zero min-width. */
-      :host {
-        display: inline-block;
-      }
-      :host([block]) {
-        display: block;
-      }
-    `,
+    menuButtonStructureCss,
   ];
   /** A chevron at the end of the label that turns while the menu is open. */
   @property({ type: Boolean, attribute: "show-chevron" }) showChevron = false;

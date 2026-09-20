@@ -1,6 +1,6 @@
 # Remaining layout components — R02
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved layout contracts.** Core Box/Flex/Stack/Grid/Simple Grid/Group contracts stay in [inventory.md](../inventory.md). Apply [shared conventions](foundations.md). These entries finish the rest of the layout scope; they are not new inclusion decisions.
 

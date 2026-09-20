@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { toggleStructureCss } from "../../generated/components/toggle/toggle-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
-import { toggleCss } from "./toggle.styles";
+import { toggleCss } from "../../generated/components/toggle/toggle.styles";
 
 export type ToggleSize = "small" | "medium" | "large";
 export type ToggleColor = "" | "amber" | "amber-inverted" | "red" | "amber-track-only";
@@ -30,12 +31,7 @@ export class AcmeToggle extends AcmeElement {
   static styles = [
     sharedCss,
     toggleCss,
-    css`
-      /* An inline flex box, as the root is: the host sits on the line the root would, and the root fills it. */
-      :host {
-        display: inline-flex;
-      }
-    `,
+    toggleStructureCss,
   ];
   @property({ type: Boolean, reflect: true }) checked = false;
   @property({ type: Boolean, reflect: true }) disabled = false;

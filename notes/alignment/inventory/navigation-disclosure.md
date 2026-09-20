@@ -1,6 +1,6 @@
 # Navigation and disclosure — R08
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved family contract.** All entries inherit [conventions](foundations.md). Native links own navigation; collection controls own selection; disclosures own expanded state. Assigned references and exact house differences are in the linked decisions and [joint analysis](../../analysis/codebase-systematization.md#joint-content-selection-and-navigation-review). Source-defined defaults must be verified rather than turned into preference questions.
 

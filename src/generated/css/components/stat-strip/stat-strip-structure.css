@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.stat-strip {
+  margin: 0;
+}
+
+::slotted(acme-strip-item) {
+  display: contents;
+}

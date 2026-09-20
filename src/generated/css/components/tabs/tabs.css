@@ -1,0 +1,27 @@
+.tabs {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: .75rem;
+  padding-bottom: 1px;
+  display: flex;
+  overflow-x: auto;
+}
+
+.tabs:where(:not(.secondary)) {
+  box-shadow: 0 -1px 0 var(--accents-2) inset;
+  gap: 1.5rem;
+}
+
+.tabs:where(.secondary) {
+  box-shadow: none !important;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs[data-focus-within] {
+  overflow: visible;
+}

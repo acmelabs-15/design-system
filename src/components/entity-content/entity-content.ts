@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { entityContentStructureCss } from "../../generated/components/entity-content/entity-content-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { createStore, StoreSelector } from "../../shared/state";
-import { entityContentCss } from "./entity-content.styles";
+import { entityContentCss } from "../../generated/components/entity-content/entity-content.styles";
 
 /**
  * Entity content: the text of an entity row, the title (14px semibold) over the description
@@ -16,11 +17,7 @@ export class AcmeEntityContent extends AcmeElement {
   static styles = [
     sharedCss,
     entityContentCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    entityContentStructureCss,
   ];
   /** The title line. */
   @property() title = "";

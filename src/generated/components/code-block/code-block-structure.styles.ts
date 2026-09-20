@@ -1,0 +1,25 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const codeBlockStructureCss = css`:host {
+  display: block;
+}
+
+.code-block {
+  margin-block: var(--acme-code-block-margin-block, 1rem);
+}
+
+acme-copy-button.floating {
+  height: 0;
+  display: block;
+}
+
+.strip {
+  margin-bottom: .75rem;
+  padding: 1px;
+}
+
+.actions {
+  align-items: center;
+  gap: .5rem;
+}
+`;

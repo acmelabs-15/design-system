@@ -4,9 +4,9 @@ import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import "../context-card/context-card";
 import { atomState } from "../../shared/atom-state";
-import { relativeTimeCardCss } from "./relative-time-card.styles";
-import { relativeTimeLabelCss } from "./relative-time-label.styles";
-import { relativeTimeTriggerCss } from "./relative-time-trigger.styles";
+import { relativeTimeCardCss } from "../../generated/components/relative-time/relative-time-card.styles";
+import { relativeTimeLabelCss } from "../../generated/components/relative-time/relative-time-label.styles";
+import { relativeTimeTriggerCss } from "../../generated/components/relative-time/relative-time-trigger.styles";
 
 /** The side of the trigger the card opens on. */
 export type RelativeTimeSide = "top" | "right" | "bottom" | "left";

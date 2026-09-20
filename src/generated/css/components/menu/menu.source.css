@@ -1,0 +1,6 @@
+.floating{z-index:var(--ds-z-menu);transition-property:opacity;transition-timing-function:cubic-bezier(.4, 0, .2, 1);transition-duration:.15s;animation-duration:.15s;animation-timing-function:cubic-bezier(.4,0,.2,1)}
+.floating :where(.menu){margin:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;background-color:var(--ds-background-100);box-shadow:var(--ds-shadow-menu);border-radius:12px;padding:var(--ds-popover-padding);font-size:.875rem;line-height:calc(1.25 / .875);outline-style:none;-webkit-overflow-scrolling:touch}
+@media not all and (min-width:601px){
+.floating :where(.menu){width:unset !important;border-bottom-right-radius:0;border-bottom-left-radius:0}
+}
+.floating[data-phase=exiting]{opacity:0}

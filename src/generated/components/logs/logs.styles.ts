@@ -1,0 +1,82 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const logsCss = css`.logs {
+  font-family: var(--mono);
+  flex-direction: column;
+  font-size: 13px;
+  line-height: 24px;
+  display: flex;
+}
+
+.logrow {
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  grid-template-columns: 150px 48px 44px 180px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 3px 8px;
+  display: grid;
+}
+
+.logrow:nth-child(odd) {
+  background: var(--surface-2);
+}
+
+.logrow .t {
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.logrow .t b {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.logrow .method {
+  border-radius: 4px;
+  padding: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  display: inline-block;
+}
+
+.logrow .http {
+  padding: 2px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.logrow .http.ok {
+  color: var(--ds-green-900);
+}
+
+.logrow .http.err {
+  color: var(--ds-red-900);
+}
+
+.logrow .host {
+  color: var(--text-2);
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.logrow .path {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.logs-head {
+  font-family: var(--sans);
+  color: var(--ds-gray-800);
+  grid-template-columns: 150px 48px 44px 180px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 14px;
+  line-height: 24px;
+  display: grid;
+}
+`;

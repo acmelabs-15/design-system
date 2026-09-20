@@ -1,0 +1,96 @@
+@media (prefers-color-scheme: dark) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 600px) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+.with-rail {
+  gap: var(--s-4);
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
+  display: grid;
+}
+
+.rail {
+  gap: var(--s-4);
+  top: calc(var(--bar-h) + 16px);
+  flex-direction: column;
+  display: flex;
+  position: sticky;
+}
+
+@media (width <= 900px) {
+  .with-rail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rail {
+    position: static;
+  }
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 767px) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 760px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (pointer: coarse) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}

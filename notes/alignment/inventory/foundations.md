@@ -1,6 +1,6 @@
 # Shared conventions and foundations — R01
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved Phase 4 design. Not yet approved for implementation.** This file owns the proposed cross-family contract. The selected responsive/style rules and detailed layout property table remain in [the core inventory](../inventory.md#c-resp-shared-responsive-convention); this file does not reopen them. [The closed decision register](../proposal-questions.md) records the selected recommendations separately from engineering verification.
 

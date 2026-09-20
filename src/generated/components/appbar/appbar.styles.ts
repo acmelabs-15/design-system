@@ -1,0 +1,158 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const appbarCss = css`.appbar {
+  z-index: 100;
+  align-items: center;
+  gap: var(--s-4);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  height: 52px;
+  padding: 0 24px;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.appbar .brand {
+  min-width: 0;
+  color: var(--text);
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  display: flex;
+}
+
+.appbar .brand .logo {
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+  flex: none;
+  place-items: center;
+  display: grid;
+}
+
+.appbar .brand .name {
+  letter-spacing: -.28px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.appbar .brand .meta {
+  font-size: var(--t-2xs);
+  color: var(--text-2);
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+
+.appbar-nav {
+  scrollbar-width: none;
+  gap: 2px;
+  min-width: 0;
+  display: flex;
+  overflow-x: auto;
+}
+
+.appbar-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.appbar-nav a {
+  border-radius: var(--r-sm);
+  height: 30px;
+  color: var(--text-2);
+  white-space: nowrap;
+  transition: var(--dur) var(--ease);
+  align-items: center;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.appbar-nav a:hover {
+  color: var(--text);
+  background: var(--comp);
+  text-decoration: none;
+}
+
+.appbar-nav a[aria-current="true"] {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.appbar .tools {
+  align-items: center;
+  gap: var(--s-2);
+  flex: none;
+  margin-left: auto;
+  display: flex;
+}
+
+.appbar .crumbs {
+  min-width: 0;
+  font-size: var(--t-sm);
+  color: var(--text-2);
+  white-space: nowrap;
+  align-items: center;
+  gap: 6px;
+  line-height: 20px;
+  display: flex;
+}
+
+.appbar .crumbs a {
+  color: var(--text-2);
+}
+
+.appbar .crumbs b {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.appbar .crumbs .sep {
+  color: var(--ds-gray-600);
+}
+
+.appbar .tools .avatar {
+  cursor: pointer;
+}
+
+.subbar {
+  top: var(--bar-h);
+  z-index: 99;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  position: sticky;
+}
+
+.subbar .tabs {
+  box-shadow: none;
+}
+
+:root:has(.subbar) {
+  --bar-h: 103px;
+}
+
+@media (width <= 760px) {
+  .appbar {
+    gap: var(--s-2);
+    padding: 0 14px;
+  }
+
+  .appbar .brand .meta, .appbar .crumbs {
+    display: none;
+  }
+
+  .subbar {
+    padding: 0 14px;
+  }
+}
+`;

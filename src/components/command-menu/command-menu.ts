@@ -1,6 +1,7 @@
+import { commandMenuStructureCss } from "../../generated/components/command-menu/command-menu-structure.styles";
 import { HotkeyController, type RegisterableHotkey } from "@tanstack/lit-hotkeys";
 import { preventBodyScroll } from "@zag-js/remove-scroll";
-import { css, html, nothing } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { commandScore } from "../../shared/command-score";
@@ -11,10 +12,10 @@ import { atomState } from "../../shared/atom-state";
 import type { AcmeCommandDivider } from "../command-divider/command-divider";
 import type { AcmeCommandGroup } from "../command-group/command-group";
 import type { AcmeCommandItem, CommandItemSelectDetail } from "../command-item/command-item";
-import { commandMenuCss } from "./command-menu.styles";
-import { commandMenuInputCss } from "./command-menu-input.styles";
-import { commandMenuListCss } from "./command-menu-list.styles";
-import { commandMenuOverlayCss } from "./command-menu-overlay.styles";
+import { commandMenuCss } from "../../generated/components/command-menu/command-menu.styles";
+import { commandMenuInputCss } from "../../generated/components/command-menu/command-menu-input.styles";
+import { commandMenuListCss } from "../../generated/components/command-menu/command-menu-list.styles";
+import { commandMenuOverlayCss } from "../../generated/components/command-menu/command-menu-overlay.styles";
 
 /** A page of the menu: its crumb's label and the placeholder its searchbox shows. */
 export type CommandMenuPage = { label: string; placeholder?: string };
@@ -57,26 +58,7 @@ const WATCHED = ["value", "disabled", "page", "always-render", "slot"];
 export class AcmeCommandMenu extends AcmeElement {
   static styles = [
     sharedCss,
-    css`
-      /* The dialog element's own box (a canvas fill, a text color, a fit-content size with a size cap,
-         insets to every edge, a scrolling overflow, selectable text) gives way to a plain block's, so the
-         derived rules after this lay the dialog out as they would any fixed box. A closed dialog keeps the
-         platform's own absence: it is not laid out, whatever the rules say about the box. */
-      dialog:not([open]) {
-        display: none;
-      }
-      dialog {
-        width: auto;
-        height: auto;
-        inset: auto;
-        overflow: visible;
-        background: transparent;
-        color: inherit;
-        max-width: none;
-        max-height: none;
-        user-select: auto;
-      }
-    `,
+    commandMenuStructureCss,
     commandMenuCss,
     commandMenuOverlayCss,
     commandMenuInputCss,

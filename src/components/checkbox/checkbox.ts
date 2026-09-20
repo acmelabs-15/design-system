@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { checkboxStructureCss } from "../../generated/components/checkbox/checkbox-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
-import { checkboxCss } from "./checkbox.styles";
+import { checkboxCss } from "../../generated/components/checkbox/checkbox.styles";
 
 /**
  * A control that switches between checked and unchecked. A label root wraps a visually hidden
@@ -19,12 +20,7 @@ export class AcmeCheckbox extends AcmeElement {
   static styles = [
     sharedCss,
     checkboxCss,
-    css`
-      /* An inline flex box, as the root is: the host sits on the line the root would, and the root fills it. */
-      :host {
-        display: inline-flex;
-      }
-    `,
+    checkboxStructureCss,
   ];
   @property({ type: Boolean, reflect: true }) checked = false;
   @property({ type: Boolean, reflect: true }) indeterminate = false;

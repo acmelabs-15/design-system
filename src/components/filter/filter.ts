@@ -1,7 +1,8 @@
-import { css, html, nothing } from "lit";
+import { filterStructureCss } from "../../generated/components/filter/filter-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { filterCss } from "./filter.styles";
+import { filterCss } from "../../generated/components/filter/filter.styles";
 
 /** Vercel filter chips: a pill that names a key and value, with a remove; `suggest` for a dashed suggestion, `add` for the trigger. */
 @customElement("acme-filter")
@@ -9,11 +10,7 @@ export class AcmeFilter extends AcmeElement {
   static styles = [
     sharedCss,
     filterCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    filterStructureCss,
   ];
   @property() key = "";
   @property() value = "";

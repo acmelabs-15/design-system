@@ -1,9 +1,10 @@
-import { css, html } from "lit";
+import { browserStructureCss } from "../../generated/components/browser/browser-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, paths, sharedCss } from "../../base";
 import { toasts } from "../../shared/state";
-import { browserCss } from "./browser.styles";
-import { browserCopyCss } from "./browser-copy.styles";
+import { browserCss } from "../../generated/components/browser/browser.styles";
+import { browserCopyCss } from "../../generated/components/browser/browser-copy.styles";
 import "../button/button";
 import { atomState } from "../../shared/atom-state";
 
@@ -41,11 +42,7 @@ export class AcmeBrowser extends AcmeElement {
     sharedCss,
     browserCss,
     browserCopyCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    browserStructureCss,
   ];
   /** The URL the address bar shows and the copy button copies. */
   @property() address = "";

@@ -1,8 +1,8 @@
 # Documentation and consumer tooling — R13
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
-**Approved design; implementation remains gated.** Sources: [documentation investigation](../../analysis/documentation-site.md), [agent tooling](../../analysis/agent-tooling.md), [developer tooling](../../analysis/developer-tooling.md), [selected React package](../../decisions/react-integration.md). These are tools for the selected artifact-authoring workflow, not live AI control.
+**Approved design; implementation acceptance remains required.** Sources: [documentation investigation](../../analysis/documentation-site.md), [agent tooling](../../analysis/agent-tooling.md), [developer tooling](../../analysis/developer-tooling.md), [selected React package](../../decisions/react-integration.md). These are tools for the selected artifact-authoring workflow, not live AI control.
 
 ## Package and API publication
 

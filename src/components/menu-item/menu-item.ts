@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { menuItemStructureCss } from "../../generated/components/menu-item/menu-item-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, paths, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
-import { menuItemCss } from "./menu-item.styles";
+import { menuItemCss } from "../../generated/components/menu-item/menu-item.styles";
 
 let seq = 0;
 
@@ -20,14 +21,7 @@ export class AcmeMenuItem extends AcmeElement {
   static styles = [
     sharedCss,
     menuItemCss,
-    css`
-      :host {
-        display: block;
-      }
-      .link {
-        list-style: none;
-      }
-    `,
+    menuItemStructureCss,
   ];
   @property() href = "";
   /** Opens the link in a new tab. */

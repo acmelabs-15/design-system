@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { projectBannerStructureCss } from "../../generated/components/project-banner/project-banner-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { projectBannerCss } from "./project-banner.styles";
+import { projectBannerCss } from "../../generated/components/project-banner/project-banner.styles";
 
 export type ProjectBannerVariant = "gray" | "success" | "warning" | "error";
 
@@ -27,13 +28,7 @@ export class AcmeProjectBanner extends AcmeElement {
   static styles = [
     sharedCss,
     projectBannerCss,
-    css`
-      /* A column, the root's usual context: three of the four reference examples stack it in one. */
-      :host {
-        display: flex;
-        flex-direction: column;
-      }
-    `,
+    projectBannerStructureCss,
   ];
   /** Severity: `error` for critical or payment-blocking states, `warning` for an exceptional state, `success` for a positive mitigation, `gray` for routine notices. */
   @property() variant: ProjectBannerVariant = "gray";

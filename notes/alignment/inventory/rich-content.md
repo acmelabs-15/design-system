@@ -1,6 +1,6 @@
 # Rich content and media — R12
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved family contract.** House primitives, shared state, generated CSS, TanStack highlighting/Markdown and Lit Motion remain required. Inputs below describe the proposed final interface; source evidence comes from the [complete current declaration snapshot](../evidence/current-public-interfaces-2026-09-20.json) and the referenced source files. No old aliases survive migration.
 

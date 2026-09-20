@@ -1,12 +1,13 @@
+import { tooltipStructureCss } from "../../generated/components/tooltip/tooltip-structure.styles";
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
-import { css, html, nothing, svg } from "lit";
+import { html, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { tooltipCss } from "./tooltip.styles";
-import { tooltipBackdropCss } from "./tooltip-backdrop.styles";
-import { tooltipTriggerCss } from "./tooltip-trigger.styles";
+import { tooltipCss } from "../../generated/components/tooltip/tooltip.styles";
+import { tooltipBackdropCss } from "../../generated/components/tooltip/tooltip-backdrop.styles";
+import { tooltipTriggerCss } from "../../generated/components/tooltip/tooltip-trigger.styles";
 
 /** Where the bubble opens; `auto` picks top or bottom by the trigger's place in the viewport. */
 export type TooltipPosition = "auto" | "top" | "bottom" | "left" | "right";
@@ -84,26 +85,7 @@ export class AcmeTooltip extends AcmeElement {
     tooltipTriggerCss,
     tooltipCss,
     tooltipBackdropCss,
-    css`
-      /* The floating layer is a popover in the top layer: the browser's own box for one (fixed,
-         centred, bordered, padded, clipping) gives way to a flat strip at the viewport's origin, as
-         wide as the viewport so the bubble's fit-content width has the room a page gives it, and the
-         bubble is placed from there in viewport coordinates. */
-      .layer {
-        position: fixed;
-        inset: auto;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 0;
-        margin: 0;
-        border: 0;
-        padding: 0;
-        overflow: visible;
-        background: none;
-        color: inherit;
-      }
-    `,
+    tooltipStructureCss,
   ];
   /** The bubble's text; a trailing period is dropped. The `content` slot takes markup instead or as well. */
   @property() text = "";

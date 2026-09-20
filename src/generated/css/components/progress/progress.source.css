@@ -1,0 +1,14 @@
+.progress :where(.stop){pointer-events:auto;position:absolute;top:0;bottom:0;z-index:10;display:grid}
+.progress :where(.stop) :where(.lines){pointer-events:auto;z-index:10;display:flex;align-items:center;justify-content:center}
+.progress{position:relative}
+.progress :where(.stop) :where(.trigger) :where(.hit){position:relative;isolation:isolate;z-index:20}
+.progress :where(.bar){display:block;appearance:none;overflow:hidden;border-radius:var(--acme-radius);border-style:solid;border-width:0;background-color:var(--ds-gray-200)}
+.progress :where(.stop) :where(.trigger){display:inline-flex;height:fit-content;align-items:center}
+.progress :where(.stop) :where(.lines) :where(.line){height:100%;width:1px;background-color:var(--ds-gray-alpha-600)}
+.progress :where(.stop) :where(.lines) :where(.line-bg){height:100%;width:1px;background-color:var(--ds-background-100)}
+.progress:where(.with-stops) :where(.bar)::-moz-progress-bar{border-radius:0 !important}
+.progress :where(.bar)::-moz-progress-bar{border-radius:var(--acme-radius);background-color:var(--fg);transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:cubic-bezier(.4, 0, .2, 1);transition-duration:.15s}
+.progress :where(.bar)::-webkit-progress-bar{border-radius:var(--acme-radius);background-color:var(--ds-gray-200)}
+.progress:where(.with-stops) :where(.bar)::-webkit-progress-value{border-radius:0 !important}
+.progress :where(.bar)::-webkit-progress-value{border-radius:var(--acme-radius);background-color:var(--fg);transition-property:width .1s ease-in,background-color .1s ease-in;transition-timing-function:cubic-bezier(.4, 0, .2, 1);transition-duration:.15s}
+.progress :where(.stop) :where(.trigger) :where(.hit):after{content:"";position:absolute;inset-inline:calc(--x-offset * -1);inset-block:-.5rem}

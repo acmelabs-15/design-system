@@ -1,10 +1,11 @@
-import { css, html, nothing } from "lit";
+import { selectStructureCss } from "../../generated/components/select/select-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
-import { selectCss } from "./select.styles";
-import { selectLabelCss } from "./select-label.styles";
+import { selectCss } from "../../generated/components/select/select.styles";
+import { selectLabelCss } from "../../generated/components/select/select-label.styles";
 import "../error/error";
 import { atomState } from "../../shared/atom-state";
 
@@ -36,28 +37,7 @@ export class AcmeSelect extends AcmeElement {
     sharedCss,
     selectCss,
     selectLabelCss,
-    css`
-      :host {
-        display: block;
-      }
-      .field {
-        display: block;
-      }
-      /* The tier below small. The reference ships this size on its button only ("Tiny tertiary
-         icon", 24px) and never on a select, so these rules are ours: the generated sheet is derived
-         from the reference and carries no tiny. The medium default is written :not(.sm, .lg) there,
-         so tiny has to out-specify it rather than rely on the cascade. */
-      .wrap.tiny :where(select) {
-        height: var(--acme-form-tiny-height);
-        font-size: var(--acme-form-tiny-font);
-        line-height: var(--acme-form-tiny-line-height);
-        border-radius: 0.25rem;
-        padding-inline: 0.5rem 1.75rem;
-      }
-      .wrap.tiny :where(.end) {
-        right: 0.5rem;
-      }
-    `,
+    selectStructureCss,
   ];
   /** The text above the field. */
   @property() label = "";

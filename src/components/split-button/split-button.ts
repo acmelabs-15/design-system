@@ -1,11 +1,12 @@
+import { splitButtonStructureCss } from "../../generated/components/split-button/split-button-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
-import { css, html, nothing } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, query, queryAssignedElements } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeSplitButtonItem } from "../split-button-item/split-button-item";
-import { splitButtonCss } from "./split-button.styles";
-import { splitButtonMenuCss } from "./split-button-menu.styles";
+import { splitButtonCss } from "../../generated/components/split-button/split-button.styles";
+import { splitButtonMenuCss } from "../../generated/components/split-button/split-button-menu.styles";
 import "../button/button";
 import { atomState } from "../../shared/atom-state";
 
@@ -31,25 +32,7 @@ export class AcmeSplitButton extends AcmeElement {
     sharedCss,
     splitButtonCss,
     splitButtonMenuCss,
-    css`
-      :host {
-        display: inline-flex;
-        position: relative;
-      }
-      /* The menu rises to the top layer as a manual popover: the browser's popover box (fixed, inset, bordered, padded, scrolling, on a canvas fill) gives way to a bare wrapper the script places. */
-      .popover {
-        position: fixed;
-        inset: auto;
-        margin: 0;
-        border: 0;
-        padding: 0;
-        width: max-content;
-        height: auto;
-        overflow: visible;
-        background: transparent;
-        color: inherit;
-      }
-    `,
+    splitButtonStructureCss,
   ];
   /** `default` (the primary look; `primary` is accepted) or `secondary`. */
   @property() variant: "default" | "primary" | "secondary" = "default";

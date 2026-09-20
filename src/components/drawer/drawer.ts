@@ -4,11 +4,11 @@ import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { dialogResetCss } from "../../shared/dialog";
+import { dialogResetCss } from "../../generated/shared/dialog-reset.styles";
 import { deepActive, tabbables } from "../modal/modal";
-import { drawerCss } from "./drawer.styles";
-import { drawerBackdropCss } from "./drawer-backdrop.styles";
-import { drawerOverlayCss } from "./drawer-overlay.styles";
+import { drawerCss } from "../../generated/components/drawer/drawer.styles";
+import { drawerBackdropCss } from "../../generated/components/drawer/drawer-backdrop.styles";
+import { drawerOverlayCss } from "../../generated/components/drawer/drawer-overlay.styles";
 
 /** The popup's height: `max` (the viewport), a number of px, or its content's. */
 export type DrawerHeight = "" | "max" | number;

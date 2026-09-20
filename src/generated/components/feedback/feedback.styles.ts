@@ -1,0 +1,337 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const feedbackCss = css`.panel:where(:not(.inline)) :where(.box) {
+  z-index: 101;
+  background-color: var(--ds-background-100);
+  width: 340px;
+  box-shadow: var(--ds-shadow-menu);
+  border-radius: .75rem;
+  animation: .1s cubic-bezier(.16, 1, .3, 1) feedbackFadeIn;
+}
+
+.panel:where(.inline) {
+  justify-content: center;
+  display: flex;
+}
+
+.panel :where(.box) :where(.head) {
+  padding-block: .5rem;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  padding-left: 1rem;
+  padding-right: .5rem;
+  display: flex;
+}
+
+.panel :where(.box) :where(.head) :where(.emojis) {
+  color: var(--ds-gray-900);
+  align-items: center;
+  gap: 1px;
+  display: flex;
+}
+
+.panel :where(.box) :where(.head) :where(.emojis) :where(.emoji) {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  color: var(--ds-gray-900);
+  background-color: #0000;
+  border-style: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition-property: background, border-color;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .2s;
+  display: flex;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) {
+  flex-direction: column;
+  gap: .5rem;
+  padding: .5rem;
+  display: flex;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.hint) {
+  font-family: var(--acme-font-sans);
+  color: var(--ds-gray-900);
+  justify-content: flex-end;
+  align-items: center;
+  gap: .25rem;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  display: flex;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.foot) {
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-color: var(--accents-2);
+  background-color: var(--accents-1);
+  justify-content: space-between;
+  padding: .75rem;
+  display: flex;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) {
+  color: var(--ds-gray-900);
+  align-items: center;
+  gap: 1px;
+  display: flex;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) :where(.emoji) {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  color: var(--ds-gray-900);
+  background-color: #0000;
+  border-style: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition-property: background, border-color;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .2s;
+  display: flex;
+}
+
+.panel :where(.box) :where(.done) {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  height: 100%;
+  display: flex;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.error) {
+  grid-template-rows: 1fr;
+  transition-property: grid-template-rows, opacity;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .2s;
+  display: grid;
+  overflow: hidden;
+}
+
+.panel:where(.up) {
+  height: 3rem;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(acme-textarea)::part(textarea) {
+  height: 100px;
+}
+
+.panel:where(.sent) :where(.box) {
+  height: 195px;
+}
+
+.panel :where(.box) :where(.phase) :where(form) {
+  height: 100%;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.error) :where(.error-inner) {
+  min-height: 0;
+}
+
+.panel:where(.inline) :where(.box) {
+  background-color: var(--ds-background-100);
+  width: fit-content;
+  box-shadow: var(--ds-shadow-border-small);
+  transition-property: height, width, border-radius, transform, background-color;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(0, 0, .2, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(0, 0, .2, 1);
+}
+
+.panel:where(.full) :where(.box) {
+  width: 100%;
+}
+
+.panel :where(.box) :where(.done) :where(svg) {
+  opacity: 0;
+  animation: .5s .1s forwards feedbackAppear;
+  translate: 0 .25rem;
+}
+
+.panel :where(.box) :where(.done) :where(.received) {
+  font-family: var(--acme-font-sans);
+  opacity: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  animation: .5s .2s forwards feedbackAppear;
+  translate: 0 .25rem;
+}
+
+.panel :where(.box) :where(.done) :where(.thanks) {
+  font-family: var(--acme-font-sans);
+  opacity: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  animation: .5s .4s forwards feedbackAppear;
+  translate: 0 .25rem;
+}
+
+.panel :where(.box) {
+  overflow: hidden;
+}
+
+.panel :where(.box) :where(.head) :where(.copy) {
+  font-family: var(--acme-font-sans);
+  white-space: nowrap;
+  color: var(--ds-gray-900);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.error) :where(.error-inner) :where(p) {
+  font-family: var(--acme-font-sans);
+  color: var(--ds-red-900);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.panel :where(.box) :where(.phase) {
+  transition-property: opacity, translate;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .2s;
+}
+
+.panel :where(.box) :where(.head) :where(.copy) > strong, .panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.error) :where(.error-inner) :where(p) > strong, .panel :where(.box) :where(.done) :where(.received) > strong, .panel :where(.box) :where(.done) :where(.thanks) > strong {
+  color: var(--ds-gray-1000);
+  font-weight: 550;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.hint) > strong {
+  color: var(--ds-gray-1000);
+  font-weight: 500;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(acme-button) svg {
+  flex-shrink: 0;
+}
+
+.panel :where(.box) :where(.head) :where(.emojis) :where(.emoji) svg path, .panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) :where(.emoji) svg path {
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+@media (hover: hover) {
+  .panel :where(.box) :where(.head) :where(.emojis) :where(.emoji)[data-hover], .panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) :where(.emoji)[data-hover] {
+    border-color: var(--ds-blue-300);
+    background-color: var(--ds-blue-300);
+  }
+}
+
+.panel :where(.box) :where(.head) :where(.emojis) :where(.emoji)[data-focus], .panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) :where(.emoji)[data-focus] {
+  box-shadow: var(--ds-focus-ring);
+  outline-style: none;
+}
+
+@media (forced-colors: active) {
+  .panel :where(.box) :where(.head) :where(.emojis) :where(.emoji)[data-focus], .panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) :where(.emoji)[data-focus] {
+    outline-offset: 2px;
+    outline: 2px solid #0000;
+  }
+}
+
+.panel :where(.box) :where(.head) :where(.emojis) :where(.emoji)[aria-checked="true"], .panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) :where(.emoji)[aria-checked="true"] {
+  border-color: var(--ds-blue-300);
+  background-color: var(--ds-blue-300);
+}
+
+.panel:where(:not(.inline)) :where(.box)[data-align="end"] {
+  transform-origin: 100% 0;
+}
+
+.panel:where(:not(.inline)) :where(.box)[data-align="start"] {
+  transform-origin: 0 0;
+}
+
+.panel :where(.box) :where(.phase)[data-phase="exiting"] {
+  opacity: 0;
+  translate: 0 -.25rem;
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.error)[data-phase="exiting"] {
+  opacity: 0;
+  grid-template-rows: 0fr;
+}
+
+.panel:where(:not(.inline)) :where(.box)[data-state="closed"] {
+  animation: .2s cubic-bezier(.16, 1, .3, 1) forwards feedbackFadeOut;
+}
+
+@starting-style {
+  .panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.error)[data-enter="animate"] {
+    opacity: 0;
+    grid-template-rows: 0fr;
+  }
+}
+
+.panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(acme-textarea)[rows]::part(textarea) {
+  height: unset;
+}
+
+@media (hover: hover) {
+  .panel :where(.box) :where(.head) :where(.emojis) :where(.emoji)[data-hover] svg path, .panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) :where(.emoji)[data-hover] svg path {
+    fill: var(--ds-blue-900);
+  }
+}
+
+.panel :where(.box) :where(.head) :where(.emojis) :where(.emoji)[aria-checked="true"] svg path, .panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(.emojis) :where(.emoji)[aria-checked="true"] svg path {
+  fill: var(--ds-blue-900);
+}
+
+@keyframes feedbackFadeIn {
+  0% {
+    opacity: 0;
+    scale: .95;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes feedbackAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes feedbackFadeOut {
+  0% {
+    opacity: 1;
+    scale: 1;
+  }
+
+  to {
+    opacity: 0;
+    scale: .95;
+  }
+}
+`;

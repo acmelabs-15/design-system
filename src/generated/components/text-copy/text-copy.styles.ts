@@ -1,0 +1,96 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const textCopyCss = css`.text-copy :where(.body) :where(.swap) :where(.layer) {
+  transition-property: opacity, scale;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .15s;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  position: absolute;
+  inset: 0;
+}
+
+.text-copy :where(.body) :where(.swap) {
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+}
+
+.text-copy {
+  cursor: pointer;
+  width: 100%;
+  color: var(--accents-7);
+  background-image: none;
+  border-style: none;
+  outline-width: 0;
+  outline-style: solid;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --acme-gradient-from, --acme-gradient-via, --acme-gradient-to;
+  transition-duration: .1s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .1s;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  display: flex;
+}
+
+.text-copy :where(.body) {
+  align-items: center;
+  gap: .375rem;
+  width: 100%;
+  display: flex;
+}
+
+.text-copy :where(.body) :where(.text) {
+  white-space: nowrap;
+  color: inherit;
+}
+
+.text-copy :where(.body) svg {
+  min-width: 1rem;
+}
+
+.text-copy svg {
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --acme-gradient-from, --acme-gradient-via, --acme-gradient-to;
+  transition-duration: .1s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .1s;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  color: var(--accents-5) !important;
+}
+
+@media (hover: hover) {
+  .text-copy[data-hover] {
+    color: var(--acme-foreground);
+  }
+}
+
+.text-copy :where(.body) :where(.swap) :where(.layer)[data-phase="exiting"] {
+  opacity: 0;
+  scale: .5;
+}
+
+@starting-style {
+  .text-copy :where(.body) :where(.swap) :where(.layer)[data-enter="animate"] {
+    opacity: 0;
+    scale: .5;
+  }
+}
+
+@media (hover: hover) {
+  .text-copy[data-hover] svg {
+    color: var(--acme-foreground) !important;
+  }
+}
+
+.text-copy:where(.ellipsis) :where(.body) :where(.text) {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  min-width: 0;
+  max-width: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+`;

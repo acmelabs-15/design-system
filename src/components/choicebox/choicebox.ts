@@ -1,10 +1,11 @@
-import { css, html, nothing } from "lit";
+import { choiceboxStructureCss } from "../../generated/components/choicebox/choicebox-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { RovingTabindex } from "../../shared/roving-tabindex";
 import type { AcmeChoiceboxItem } from "../choicebox-item/choicebox-item";
-import { labelCss } from "../label/label.styles";
-import { choiceboxCss } from "./choicebox.styles";
+import { labelCss } from "../../generated/components/label/label.styles";
+import { choiceboxCss } from "../../generated/components/choicebox/choicebox.styles";
 
 let uid = 0;
 
@@ -26,12 +27,7 @@ export class AcmeChoicebox extends AcmeElement {
     sharedCss,
     labelCss,
     choiceboxCss,
-    css`
-      /* A block box, as the root is: the group fills it. */
-      :host {
-        display: block;
-      }
-    `,
+    choiceboxStructureCss,
   ];
   /** radio (single-select) or checkbox (multi-select). */
   @property() type: "radio" | "checkbox" = "radio";

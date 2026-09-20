@@ -2,7 +2,7 @@ import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { breakpointVars, type Responsive, responsive } from "../grid/grid";
-import { gridCrossCss } from "./grid-cross.styles";
+import { gridCrossCss } from "../../generated/components/grid-cross/grid-cross.styles";
 
 /**
  * A cross on a guide intersection of `acme-grid`: `row` and `column` are grid line numbers (1 is

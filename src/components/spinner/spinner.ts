@@ -1,7 +1,8 @@
-import { css, html, nothing } from "lit";
+import { spinnerStructureCss } from "../../generated/components/spinner/spinner-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { spinnerCss } from "./spinner.styles";
+import { spinnerCss } from "../../generated/components/spinner/spinner.styles";
 
 export type SpinnerSize = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl";
 /** Per size: [blade count, cycle ms, modifier class]. The box and blade sizes are in the styles. */
@@ -28,11 +29,7 @@ export class AcmeSpinner extends AcmeElement {
   static styles = [
     sharedCss,
     spinnerCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    spinnerStructureCss,
   ];
   /** sm · md · lg · xl · 2xl · 3xl · 4xl. */
   @property() size: SpinnerSize = "md";

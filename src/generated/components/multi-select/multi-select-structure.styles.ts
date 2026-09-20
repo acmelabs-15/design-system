@@ -1,0 +1,20 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const multiSelectStructureCss = css`:host {
+  display: block;
+}
+
+.floating {
+  width: auto;
+  min-width: max-content;
+  height: auto;
+  color: inherit;
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  inset: auto;
+  overflow: visible;
+}
+`;

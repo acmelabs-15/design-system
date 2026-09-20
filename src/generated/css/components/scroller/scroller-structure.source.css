@@ -1,0 +1,9 @@
+:host {
+        display: block;
+      }
+      /* The buttons sit beside the viewport in a column that takes the parent's gap between them. */
+      :host([with-buttons]) {
+        display: flex;
+        flex-direction: column;
+        gap: inherit;
+      }

@@ -2,7 +2,7 @@ import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { type Breakpoint, breakpointVars, type GridPosition, perBreakpoint, positionCount, positionValue, type Responsive, responsive } from "../grid/grid";
-import { gridCellCss } from "./grid-cell.styles";
+import { gridCellCss } from "../../generated/components/grid-cell/grid-cell.styles";
 
 /** Reads a breakpoint list from `hide` (`sm`, `"xs md"` or JSON). */
 const breakpoints = {

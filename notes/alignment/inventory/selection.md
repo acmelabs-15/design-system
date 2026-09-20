@@ -1,6 +1,6 @@
 # Selection and tabs — R05
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved family contract.** These components share semantics/behavior primitives, not one ambiguous selected-state property. Use [foundations](foundations.md), native forms, house blue state roles and the [selected internal indicator](../../decisions/shared-selection-indicator.md). References and house differences are recorded in [selection review](../../analysis/codebase-systematization.md#phase-2-closure-review) and [Group review](../../analysis/codebase-systematization.md#comprehensive-chakra-group-review).
 

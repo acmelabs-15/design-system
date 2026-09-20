@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { switchControlStructureCss } from "../../generated/components/switch-control/switch-control-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
-import { switchControlCss } from "./switch-control.styles";
+import { switchControlCss } from "../../generated/components/switch-control/switch-control.styles";
 
 /**
  * One option of an acme-switch: a visually hidden radio and a padded label box. The root carries
@@ -17,14 +18,7 @@ export class AcmeSwitchControl extends AcmeElement {
   static styles = [
     sharedCss,
     switchControlCss,
-    css`
-      /* The host takes the root's place among the group's flex items: it grows with its siblings and stretches to the group's height; the root fills it. */
-      :host {
-        display: flex;
-        flex: 1 1 0%;
-        align-self: stretch;
-      }
-    `,
+    switchControlStructureCss,
   ];
   @property() value = "";
   /** The text; read to screen readers when the `icon` slot carries the meaning. */

@@ -1,8 +1,9 @@
-import { css, html, nothing, svg } from "lit";
+import { phoneStructureCss } from "../../generated/components/phone/phone-structure.styles";
+import { html, nothing, svg } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { formatAddress } from "../browser/browser";
-import { phoneCss } from "./phone.styles";
+import { phoneCss } from "../../generated/components/phone/phone.styles";
 
 /** A navigation-bar glyph: a 24-box stroke path sized by the bar's own rules (5cqw square). */
 const key = (d: string) =>
@@ -24,11 +25,7 @@ export class AcmePhone extends AcmeElement {
   static styles = [
     sharedCss,
     phoneCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    phoneStructureCss,
   ];
   /** The URL the navigation bar shows; without one the bar and the gradient stay out. */
   @property() address = "";

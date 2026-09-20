@@ -2,7 +2,7 @@ import { html, nothing, svg, type TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { boolish } from "../../base";
 import { AcmeClearableInput } from "../clearable-input/clearable-input";
-import { searchInputCss } from "./search-input.styles";
+import { searchInputCss } from "../../generated/components/search/search-input.styles";
 import "../spinner/spinner";
 
 /** The magnifying glass, 16px, drawn in the current color. */

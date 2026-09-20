@@ -1,0 +1,159 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const commandMenuInputCss = css`.head {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: var(--ds-gray-alpha-400);
+  background-color: var(--ds-background-100);
+  padding: var(--padding);
+  --padding: 12px;
+  position: relative;
+}
+
+.head :where(.crumbs) {
+  margin: 0 0 .625rem;
+  position: relative;
+}
+
+.head :where(.field) :where(.esc) {
+  cursor: pointer;
+  background-color: var(--ds-background-100);
+  height: 1.25rem;
+  font-size: .75rem;
+  line-height: calc(1 / .75);
+  box-shadow: var(--ds-shadow-border);
+  border-style: none;
+  border-radius: .25rem;
+  outline-style: none;
+  align-items: center;
+  margin-left: auto;
+  padding-block: 0;
+  padding-inline: .25rem;
+  transition-property: background;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .2s;
+  display: none;
+}
+
+.head :where(.field) {
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--padding);
+  padding-block: 0;
+  padding-inline: .25rem;
+  display: flex;
+}
+
+.head :where(.field) :where(.input) {
+  height: 1.75rem;
+  color: var(--ds-gray-1000);
+  background-color: #0000;
+  border-style: none;
+  outline-style: none;
+  flex: 1;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (forced-colors: active) {
+  .head :where(.field) :where(.input), .head :where(.field) :where(.esc) {
+    outline-offset: 2px;
+    outline: 2px solid #0000;
+  }
+}
+
+@media not all and (width >= 401px) {
+  .head {
+    position: sticky;
+    top: 0;
+  }
+}
+
+@media (width >= 401px) {
+  .head :where(.field) :where(.input) {
+    font-size: 1.125rem;
+    line-height: calc(1.75 / 1.125);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .head :where(.field) :where(.esc) {
+    display: flex;
+  }
+}
+
+.head :where(.field) :where(.input)::placeholder {
+  color: var(--ds-gray-700);
+}
+
+@media not all and (width >= 401px) {
+  .head :where(.crumbs) > :where(acme-breadcrumbs)::part(list) {
+    margin-inline: calc(var(--padding) * -1);
+  }
+}
+
+.head :where(.loading):after {
+  content: "";
+  background-image: linear-gradient(to right in oklab, transparent 0%, var(--ds-gray-1000) 50%, transparent 100%);
+  opacity: 1;
+  width: 50%;
+  height: .125rem;
+  animation: 1.1s cubic-bezier(.455, .03, .515, .955) infinite cmdkLoading;
+  position: absolute;
+  bottom: -1.5px;
+}
+
+.head :where(.field) :where(.esc)[data-focus] {
+  box-shadow: var(--ds-focus-ring);
+}
+
+@media not all and (width >= 401px) {
+  .head :where(.crumbs):before {
+    content: "";
+    width: var(--padding);
+    background-image: linear-gradient(to right in oklab, var(--ds-background-100) 10%, transparent 100%);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -.75rem;
+  }
+
+  .head :where(.crumbs):after {
+    content: "";
+    width: var(--padding);
+    background-image: linear-gradient(to left in oklab, var(--ds-background-100) 10%, transparent 100%);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -.75rem;
+  }
+}
+
+@media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
+    .head :where(.field) :where(.esc)[data-hover] {
+      background-color: var(--ds-gray-100);
+    }
+  }
+}
+
+@media not all and (width >= 401px) {
+  .head :where(.crumbs) > :where(acme-breadcrumbs) :where(acme-breadcrumb):first-of-type::part(item) {
+    margin-left: var(--padding);
+  }
+}
+
+@keyframes cmdkLoading {
+  0% {
+    opacity: 1;
+    transform: translate(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(300%);
+  }
+}
+`;

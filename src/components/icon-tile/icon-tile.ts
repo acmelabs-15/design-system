@@ -1,7 +1,7 @@
 import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { iconTileCss } from "./icon-tile.styles";
+import { iconTileCss } from "../../generated/components/icon-tile/icon-tile.styles";
 
 /**
  * Icon tile: the bordered 8px-radius tile around an empty state's icon (the `icon` slot of

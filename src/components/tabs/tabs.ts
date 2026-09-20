@@ -1,11 +1,12 @@
-import { css, html, nothing } from "lit";
+import { tabsStructureCss } from "../../generated/components/tabs/tabs-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query, queryAssignedElements } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { RovingTabindex } from "../../shared/roving-tabindex";
 import type { AcmeTab } from "../tab/tab";
 import type { AcmeTabPanel } from "../tab-panel/tab-panel";
-import { tabsCss } from "./tabs.styles";
+import { tabsCss } from "../../generated/components/tabs/tabs.styles";
 
 /**
  * Tabs. A row of `acme-tab` under an inset hairline (`variant="secondary"`: rounded pills,
@@ -20,11 +21,7 @@ export class AcmeTabs extends AcmeElement {
   static styles = [
     sharedCss,
     tabsCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    tabsStructureCss,
   ];
   /** The selected tab's value. */
   @property() value = "";

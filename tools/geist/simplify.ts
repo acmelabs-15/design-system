@@ -6,7 +6,7 @@
 // `--font-geist-*`) stay as variables: they are the theme, and our tokens.css supplies them.
 import fs from "node:fs";
 import path from "node:path";
-import { rootVars } from "./tw";
+import { rootVars, sheetOrder } from "./tw";
 
 const cssDir = path.join(import.meta.dir, "corpus/css");
 
@@ -26,7 +26,7 @@ let themes: { light: Record<string, string>; dark: Record<string, string> } = { 
 function load() {
   if (loaded) return;
   loaded = true;
-  const cssText = fs.readdirSync(cssDir).map((f) => fs.readFileSync(path.join(cssDir, f), "utf8")).join("\n");
+  const cssText = sheetOrder().map((f) => fs.readFileSync(path.join(cssDir, f), "utf8")).join("\n");
   for (const m of cssText.matchAll(/@property (--tw-[a-z0-9-]+)\{([^}]*)\}/g)) {
     twProperty[m[1]] = `@property ${m[1]} { ${m[2].trim().replace(/;\s*/g, "; ").replace(/;\s*$/, "")}; }`;
     const iv = m[2].match(/initial-value:([^;]*)/);

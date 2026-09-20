@@ -1,0 +1,6 @@
+/* The host takes the root's place among the group's flex items: it grows with its siblings and stretches to the group's height; the root fills it. */
+      :host {
+        display: flex;
+        flex: 1 1 0%;
+        align-self: stretch;
+      }

@@ -6,7 +6,7 @@ The [remaining-work queue](remaining-work.md) is the complete review index. It g
 
 ## Complete proposal set
 
-The original six layout entries remain below. Each other family has one owning proposal file; shared conventions apply across them. All entries are approved as design contracts under the [whole-set approval](../decisions/inventory-approval.md). Approval does not certify implementation or close the Phase 5 implementation gate.
+The original six layout entries remain below. Each other family has one owning proposal file; shared conventions apply across them. All entries are approved as design contracts under the [whole-set approval](../decisions/inventory-approval.md). Approval alone does not certify implementation. M00 is closed; implementation proceeds through the verified migration batches.
 
 | Group | Contract owner |
 | --- | --- |

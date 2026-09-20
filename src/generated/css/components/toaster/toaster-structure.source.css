@@ -1,0 +1,12 @@
+/* The area is a manual popover in the top layer, so it overlays every dialog: the browser's own box for one (inset, centred, bordered, padded, clipping, on a canvas fill) gives way to a bare box the area's own rules place. */
+      .area {
+        inset: auto;
+        margin: 0;
+        border: 0;
+        padding: 0;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        background: transparent;
+        color: inherit;
+      }

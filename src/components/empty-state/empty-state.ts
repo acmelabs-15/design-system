@@ -2,7 +2,7 @@ import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { emptyStateCss } from "./empty-state.styles";
+import { emptyStateCss } from "../../generated/components/empty-state/empty-state.styles";
 
 /**
  * Empty state: fills a space that has no content yet. A full-width bordered column, centred: an

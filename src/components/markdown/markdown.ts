@@ -13,7 +13,7 @@ import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { markdownCss } from "./markdown.styles";
+import { markdownCss } from "../../generated/components/markdown/markdown.styles";
 
 const highlighter = createHighlighter({ languages: [plaintext, htmlLang, cssLang, js, ts, tsx, json, shell], fallbackLanguage: "plaintext" });
 const highlightCode = createTanStackMarkdownHighlighter(highlighter);

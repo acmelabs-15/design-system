@@ -1,10 +1,11 @@
-import { css, html, nothing } from "lit";
+import { videoStructureCss } from "../../generated/components/video/video-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { reduced } from "../../shared/overlay";
-import { videoCss } from "./video.styles";
+import { videoCss } from "../../generated/components/video/video.styles";
 
 /** The control bar hides this long after the pointer last moved over the player. */
 const HIDE_MS = 3000;
@@ -46,11 +47,7 @@ export class AcmeVideo extends AcmeElement {
   static styles = [
     sharedCss,
     videoCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    videoStructureCss,
   ];
   /** The video URL. */
   @property() src = "";

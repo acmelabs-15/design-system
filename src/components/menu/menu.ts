@@ -1,11 +1,12 @@
+import { menuStructureCss } from "../../generated/components/menu/menu-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
-import { css, html, nothing } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { RovingTabindex } from "../../shared/roving-tabindex";
 import type { AcmeMenuItem } from "../menu-item/menu-item";
-import { menuCss } from "./menu.styles";
+import { menuCss } from "../../generated/components/menu/menu.styles";
 
 export type MenuPosition = "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" | "left" | "left-start" | "left-end" | "right" | "right-start" | "right-end";
 /** How the menu was opened or closed: by the keys (focus returns to the trigger on close) or by a pointer. */
@@ -38,24 +39,7 @@ export class AcmeMenu extends AcmeElement {
   static styles = [
     sharedCss,
     menuCss,
-    css`
-      :host {
-        display: inline-block;
-      }
-      /* The list rises to the top layer as a manual popover: the browser's popover box (fixed, inset, bordered, padded, scrolling, on a canvas fill) gives way to a bare wrapper the script places. */
-      .floating {
-        position: fixed;
-        inset: auto;
-        margin: 0;
-        border: 0;
-        padding: 0;
-        width: max-content;
-        height: auto;
-        overflow: visible;
-        background: transparent;
-        color: inherit;
-      }
-    `,
+    menuStructureCss,
   ];
   @property({ type: Boolean, reflect: true }) open = false;
   /** Where the list opens: side, then alignment. */

@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { gaugeStructureCss } from "../../generated/components/gauge/gauge-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, paths, sharedCss } from "../../base";
-import { gaugeCss } from "./gauge.styles";
+import { gaugeCss } from "../../generated/components/gauge/gauge.styles";
 
 /** Either value thresholds to colors (`{"0": "...", "34": "...", "68": "..."}`) or `{ primary, secondary }`. */
 export type GaugeColors = Record<string, string>;
@@ -28,11 +29,7 @@ export class AcmeGauge extends AcmeElement {
   static styles = [
     sharedCss,
     gaugeCss,
-    css`
-      :host {
-        display: grid;
-      }
-    `,
+    gaugeStructureCss,
   ];
   @property({ type: Number }) value = 0;
   @property() size: GaugeSize = "small";

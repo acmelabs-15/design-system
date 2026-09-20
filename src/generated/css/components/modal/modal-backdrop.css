@@ -1,0 +1,40 @@
+dialog:where(.sheet)::backdrop {
+  z-index: var(--ds-z-modal);
+  background-color: var(--ds-background-200);
+  transition-property: opacity;
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(.32, .72, 0, 1);
+  animation-duration: .3s;
+  animation-timing-function: cubic-bezier(.32, .72, 0, 1);
+  position: fixed;
+  inset: 0;
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  dialog:where(.sheet)::backdrop {
+    background-color: color-mix(in oklab, var(--ds-background-200) 50%, transparent);
+  }
+}
+
+dialog:where(.sheet)[data-ending-style]::backdrop, dialog:where(.sheet)[data-starting-style]::backdrop {
+  opacity: 0;
+}
+
+dialog:where(:not(.sheet))::backdrop {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity var(--ds-motion-overlay-duration) var(--ds-motion-overlay-timing);
+  background-color: var(--ds-overlay-backdrop-color);
+  pointer-events: none;
+  z-index: var(--ds-z-modal);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+dialog:where([data-open])::backdrop {
+  opacity: var(--ds-overlay-backdrop-opacity);
+  pointer-events: all;
+}

@@ -4,11 +4,11 @@ import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { dialogResetCss } from "../../shared/dialog";
-import { modalCss } from "./modal.styles";
-import { modalActionCss } from "./modal-action.styles";
-import { modalBackdropCss } from "./modal-backdrop.styles";
-import { modalOverlayCss } from "./modal-overlay.styles";
+import { dialogResetCss } from "../../generated/shared/dialog-reset.styles";
+import { modalCss } from "../../generated/components/modal/modal.styles";
+import { modalActionCss } from "../../generated/components/modal/modal-action.styles";
+import { modalBackdropCss } from "../../generated/components/modal/modal-backdrop.styles";
+import { modalOverlayCss } from "../../generated/components/modal/modal-overlay.styles";
 
 const TABBABLE = 'a[href],button:not([disabled]),input:not([disabled]):not([type=hidden]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"]),[contenteditable="true"]';
 const visible = (el: HTMLElement) => (typeof el.checkVisibility === "function" ? el.checkVisibility() : true);

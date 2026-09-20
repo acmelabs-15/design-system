@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { sliderStructureCss } from "../../generated/components/slider/slider-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { labelCss } from "../label/label.styles";
-import { sliderCss } from "./slider.styles";
+import { labelCss } from "../../generated/components/label/label.styles";
+import { sliderCss } from "../../generated/components/slider/slider.styles";
 import "../input/input";
 import { atomState } from "../../shared/atom-state";
 
@@ -92,12 +93,7 @@ export class AcmeSlider extends AcmeElement {
     sharedCss,
     labelCss,
     sliderCss,
-    css`
-      /* A block, as the column's context is (a form): the column is its block child and fills its width. */
-      :host {
-        display: block;
-      }
-    `,
+    sliderStructureCss,
   ];
   /** One value (`[50]` or `50`) or a range (`[50, 75]`). Defaults to `min`. */
   @property({ converter: values }) value: number[] = [];

@@ -1,7 +1,8 @@
-import { css, html, nothing } from "lit";
+import { splitButtonItemStructureCss } from "../../generated/components/split-button-item/split-button-item-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { splitButtonItemCss } from "./split-button-item.styles";
+import { splitButtonItemCss } from "../../generated/components/split-button-item/split-button-item.styles";
 
 /**
  * One row of a split button's menu: the title (Title Case, Verb + Noun) in the default slot,
@@ -13,11 +14,7 @@ export class AcmeSplitButtonItem extends AcmeElement {
   static styles = [
     sharedCss,
     splitButtonItemCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    splitButtonItemStructureCss,
   ];
   @property() description = "";
   @property({ type: Boolean, reflect: true }) disabled = false;

@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { riconStructureCss } from "../../generated/components/ricon/ricon-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { riconCss } from "./ricon.styles";
+import { riconCss } from "../../generated/components/ricon/ricon.styles";
 
 /** House round icon: a tinted circle for a state or a kind. */
 @customElement("acme-ricon")
@@ -9,11 +10,7 @@ export class AcmeRicon extends AcmeElement {
   static styles = [
     sharedCss,
     riconCss,
-    css`
-      :host {
-        display: inline-grid;
-      }
-    `,
+    riconStructureCss,
   ];
   @property() hue: "" | "green" | "red" | "amber" | "blue" | "purple" | "teal" | "pink" = "";
   @property({ type: Boolean }) small = false;

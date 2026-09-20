@@ -1,11 +1,12 @@
-import { css, html, nothing } from "lit";
+import { multiSelectRowStructureCss } from "../../generated/components/multi-select-row/multi-select-row-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCheckbox } from "../checkbox/checkbox";
 import "../checkbox/checkbox";
 import { atomState } from "../../shared/atom-state";
-import { multiSelectRowCss } from "./multi-select-row.styles";
+import { multiSelectRowCss } from "../../generated/components/multi-select-row/multi-select-row.styles";
 
 export type MultiSelectAction = "toggle" | "selectOnly" | "selectAll";
 export type MultiSelectCheckboxPosition = "start" | "end";
@@ -35,11 +36,7 @@ export class AcmeMultiSelectRow extends AcmeElement {
   static styles = [
     sharedCss,
     multiSelectRowCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    multiSelectRowStructureCss,
   ];
   /** The row's name: the button's accessible name, the checkbox's label, and the text when the default slot is empty. */
   @property() name = "";

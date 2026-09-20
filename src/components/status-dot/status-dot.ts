@@ -1,7 +1,8 @@
-import { css, html, nothing } from "lit";
+import { statusDotStructureCss } from "../../generated/components/status-dot/status-dot-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { statusDotCss } from "./status-dot.styles";
+import { statusDotCss } from "../../generated/components/status-dot/status-dot.styles";
 
 export type DeployState = "QUEUED" | "BUILDING" | "READY" | "ERROR" | "CANCELED" | "DELETED";
 
@@ -26,11 +27,7 @@ export class AcmeStatusDot extends AcmeElement {
   static styles = [
     sharedCss,
     statusDotCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    statusDotStructureCss,
   ];
   /** QUEUED · BUILDING · READY · ERROR · CANCELED · DELETED (lower case is accepted). */
   @property() state: DeployState = "QUEUED";

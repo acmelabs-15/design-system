@@ -1,8 +1,9 @@
-import { css, html, type TemplateResult } from "lit";
+import { codeStructureCss } from "../../generated/components/code/code-structure.styles";
+import { html, type TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { highlighter, langOf } from "../../shared/highlight";
-import { codeCss } from "./code.styles";
+import { codeCss } from "../../generated/components/code/code.styles";
 
 /** The token kinds the styles name, per highlighter kind (the rest keep their name). */
 const KIND: Record<string, string> = { attr: "attr-name", literal: "boolean", type: "class-name", link: "url", meta: "prolog", heading: "title", command: "function", "code-inline": "code" };
@@ -33,11 +34,7 @@ export class AcmeCode extends AcmeElement {
   static styles = [
     sharedCss,
     codeCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    codeStructureCss,
   ];
   /** The language of the source; unset highlights nothing. */
   @property() syntax = "";

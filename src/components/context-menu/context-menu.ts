@@ -1,10 +1,11 @@
+import { contextMenuStructureCss } from "../../generated/components/context-menu/context-menu-structure.styles";
 import { preventBodyScroll } from "@zag-js/remove-scroll";
-import { css, html, nothing } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { toasts } from "../../shared/state";
 import type { AcmeMenu, MenuCloseKind } from "../menu/menu";
-import { contextMenuCss } from "./context-menu.styles";
+import { contextMenuCss } from "../../generated/components/context-menu/context-menu.styles";
 import "../menu/menu";
 import "../menu-item/menu-item";
 import { atomState } from "../../shared/atom-state";
@@ -43,28 +44,7 @@ export class AcmeContextMenu extends AcmeElement {
   static styles = [
     sharedCss,
     contextMenuCss,
-    css`
-      /* The wrapper around the content: an inline span whose long press is the menu's, not the browser's, as the script styles it. */
-      :host {
-        display: inline;
-        -webkit-touch-callout: none;
-      }
-      /* The composed menu is the point the list anchors to: an empty box the script places at the pointer, out of the content's flow. */
-      acme-menu {
-        position: fixed;
-        width: 0;
-        height: 0;
-      }
-      .anchor {
-        display: block;
-        width: 0;
-        height: 0;
-      }
-      /* The list takes pointer events while the page behind it takes none. */
-      acme-menu::part(floating) {
-        pointer-events: auto;
-      }
-    `,
+    contextMenuStructureCss,
   ];
   /** Whether the menu is open: follows the menu, and opens (at the last point) or closes it when set. */
   @property({ type: Boolean, reflect: true }) open = false;

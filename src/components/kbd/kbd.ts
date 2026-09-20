@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { kbdStructureCss } from "../../generated/components/kbd/kbd-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { kbdCss } from "./kbd.styles";
-import { tooltipKbdCss } from "./tooltip-kbd.styles";
+import { kbdCss } from "../../generated/components/kbd/kbd.styles";
+import { tooltipKbdCss } from "../../generated/components/kbd/tooltip-kbd.styles";
 
 /** True on Apple platforms, where the modifiers render as glyphs (⌘ ⌥ ⌃). */
 export const isMac = () => typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform);
@@ -22,15 +23,7 @@ export class AcmeKbd extends AcmeElement {
     kbdCss,
     // A key inside a tooltip's bubble takes the bubble's rules for it (the tooltip marks the key).
     tooltipKbdCss,
-    css`
-      /* The reference's key is one element: inline-flex in prose, and blockified to flex when a flex
-         row holds it, so the row sizes to the key's own 20px rather than to a line box. A host box of
-         ours would sit between the row and the key and take that place instead, so the host stands
-         aside and the key is the box every container lays out. */
-      :host {
-        display: contents;
-      }
-    `,
+    kbdStructureCss,
   ];
   @property({ type: Boolean }) small = false;
   @property({ type: Boolean }) meta = false;

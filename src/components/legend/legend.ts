@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { legendStructureCss } from "../../generated/components/legend/legend-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { legendCss } from "./legend.styles";
+import { legendCss } from "../../generated/components/legend/legend.styles";
 
 /** House legend: dot, label and a value; `list` stacks them. Items: acme-legend-item with `hue` or `series`. */
 @customElement("acme-legend")
@@ -9,14 +10,7 @@ export class AcmeLegend extends AcmeElement {
   static styles = [
     sharedCss,
     legendCss,
-    css`
-      :host {
-        display: block;
-      }
-      ::slotted(acme-legend-item) {
-        display: contents;
-      }
-    `,
+    legendStructureCss,
   ];
   @property({ type: Boolean }) list = false;
   render() {

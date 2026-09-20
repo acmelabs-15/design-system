@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { radioStructureCss } from "../../generated/components/radio/radio-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
-import { radioCss } from "./radio.styles";
+import { radioCss } from "../../generated/components/radio/radio.styles";
 
 /**
  * One choice of a set: a visually hidden radio, a 16px circle that fills with an 8px dot when
@@ -19,12 +20,7 @@ export class AcmeRadio extends AcmeElement {
   static styles = [
     sharedCss,
     radioCss,
-    css`
-      /* An inline flex box, as the root is: the host sits on the line the root would, and the root fills it. */
-      :host {
-        display: inline-flex;
-      }
-    `,
+    radioStructureCss,
   ];
   @property({ type: Boolean, reflect: true }) checked = false;
   @property({ type: Boolean, reflect: true }) disabled = false;

@@ -1,0 +1,3 @@
+dialog:where(.sheet){pointer-events:none;position:fixed;inset:0;z-index:var(--ds-z-modal);display:flex;align-items:flex-end}
+dialog :where(.trap){outline-style:none}
+dialog:where(:not(.sheet)){width:100vw;height:-webkit-fill-available;z-index:var(--ds-z-modal);flex-direction:column;place-content:center;align-items:center;display:flex;position:fixed;top:0;left:0;overflow:auto}

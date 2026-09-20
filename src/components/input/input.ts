@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { inputStructureCss } from "../../generated/components/input/input-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { inputCss } from "./input.styles";
-import { inputLabelCss } from "./input-label.styles";
+import { inputCss } from "../../generated/components/input/input.styles";
+import { inputLabelCss } from "../../generated/components/input/input-label.styles";
 import "../error/error";
 import { atomState } from "../../shared/atom-state";
 
@@ -35,16 +36,7 @@ export class AcmeInput extends AcmeElement {
     sharedCss,
     inputCss,
     inputLabelCss,
-    css`
-      /* A flex column: the wrapper is its flex item, as it is in the stacks the field usually sits in, and fills the host width. */
-      :host {
-        display: flex;
-        flex-direction: column;
-      }
-      .field {
-        display: block;
-      }
-    `,
+    inputStructureCss,
   ];
   /** The text above the field. */
   @property() label = "";

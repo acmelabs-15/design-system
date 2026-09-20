@@ -1,8 +1,9 @@
-import { css, html } from "lit";
+import { breadcrumbsStructureCss } from "../../generated/components/breadcrumbs/breadcrumbs-structure.styles";
+import { html } from "lit";
 import { customElement, property, queryAssignedElements } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeBreadcrumb } from "../breadcrumb/breadcrumb";
-import { breadcrumbsCss } from "./breadcrumbs.styles";
+import { breadcrumbsCss } from "../../generated/components/breadcrumbs/breadcrumbs.styles";
 
 /**
  * Breadcrumbs: where the page sits in the site's hierarchy, as a row of `acme-breadcrumb`
@@ -15,11 +16,7 @@ export class AcmeBreadcrumbs extends AcmeElement {
   static styles = [
     sharedCss,
     breadcrumbsCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    breadcrumbsStructureCss,
   ];
   /** `text`: a navigation list with chevrons between the crumbs; `menu`: a row of chips. */
   @property() type: "text" | "menu" = "text";

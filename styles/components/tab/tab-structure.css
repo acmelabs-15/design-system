@@ -1,0 +1,8 @@
+:host {
+        display: inline-flex;
+      }
+      /* The shadow reset's svg rule, for the slotted icon (the reference's page reset blocks every svg). */
+      .icon ::slotted(svg) {
+        display: block;
+        vertical-align: middle;
+      }

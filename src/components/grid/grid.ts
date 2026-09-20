@@ -1,10 +1,11 @@
-import { css, html, nothing } from "lit";
+import { gridStructureCss } from "../../generated/components/grid/grid-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import type { AcmeGridCell } from "../grid-cell/grid-cell";
 import type { AcmeGridSystem } from "../grid-system/grid-system";
-import { gridCss } from "./grid.styles";
+import { gridCss } from "../../generated/components/grid/grid.styles";
 
 /** The breakpoints, by viewport width: xs to 400, sm to 600, smd to 768, md to 960, lg beyond. */
 export type Breakpoint = "xs" | "sm" | "smd" | "md" | "lg";
@@ -125,11 +126,7 @@ export class AcmeGrid extends AcmeElement {
   static styles = [
     sharedCss,
     gridCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    gridStructureCss,
   ];
   @property({ converter: responsive }) columns: Responsive<number> = 1;
   @property({ converter: responsive }) rows: Responsive<number> = 1;

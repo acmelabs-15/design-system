@@ -1,0 +1,148 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const chartCss = css`.chart {
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  display: flex;
+}
+
+.chart .plot {
+  min-height: 180px;
+  position: relative;
+}
+
+.chart .plot svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.chart .grid {
+  stroke: var(--ds-gray-100);
+  stroke-width: 1px;
+}
+
+.chart .grid.dashed {
+  stroke-dasharray: 2 4;
+  stroke: var(--border);
+}
+
+.chart .axis {
+  font-family: var(--mono);
+  fill: var(--text-2);
+  font-size: 10px;
+}
+
+.chart .series {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  color: var(--accent);
+}
+
+.chart .series.dashed {
+  stroke-dasharray: 4 4;
+}
+
+.chart .area {
+  fill: currentColor;
+  opacity: .12;
+  color: var(--accent);
+}
+
+.chart .bar {
+  fill: currentColor;
+  color: var(--accent);
+}
+
+.chart .bar.muted {
+  color: var(--ds-gray-500);
+}
+
+.chart .marker {
+  fill: currentColor;
+  color: var(--accent);
+  stroke: var(--surface);
+  stroke-width: 2px;
+}
+
+.chart .ring {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 14px;
+}
+
+.chart .ring.track {
+  color: var(--comp);
+}
+
+.chart .tip {
+  z-index: 5;
+  pointer-events: none;
+  background: var(--surface);
+  border-radius: var(--r);
+  box-shadow: var(--ds-shadow-tooltip);
+  font-size: var(--t-sm);
+  min-width: 120px;
+  padding: 8px 12px;
+  line-height: 18px;
+  position: absolute;
+}
+
+.chart .tip .when {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.chart .tip .row {
+  color: var(--text-2);
+  justify-content: space-between;
+  gap: 12px;
+  display: flex;
+}
+
+.chart .tip .row b {
+  font-family: var(--mono);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.chart .cursor {
+  stroke: var(--ds-gray-500);
+  stroke-width: 1px;
+}
+
+.chart .step {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5px;
+  color: var(--accent);
+}
+
+.chart .step-area {
+  fill: currentColor;
+  opacity: .2;
+  color: var(--accent);
+}
+
+.chart .tip .series {
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.chart .tip .series .dot {
+  width: 6px;
+  height: 6px;
+}
+
+.chart .tip .muted {
+  color: var(--text-2);
+  font-size: var(--t-xs);
+}
+`;

@@ -2,7 +2,7 @@ import { html, nothing, type PropertyValues } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { errorCardCss } from "./error-card.styles";
+import { errorCardCss } from "../../generated/components/error-card/error-card.styles";
 
 /** The failure a card reports: its message and, from a server boundary, its digest. */
 export type ErrorCardError = { message?: string; digest?: string };

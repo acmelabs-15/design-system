@@ -1,7 +1,7 @@
 import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { commandMenuGroupCss } from "../command-menu/command-menu-group.styles";
+import { commandMenuGroupCss } from "../../generated/components/command-menu/command-menu-group.styles";
 
 /**
  * A group of command menu rows under a `heading` (Title Case, one or two words): a 36px row of

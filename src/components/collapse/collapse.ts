@@ -1,10 +1,11 @@
-import { css, html, nothing } from "lit";
+import { collapseStructureCss } from "../../generated/components/collapse/collapse-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCollapseGroup } from "../collapse-group/collapse-group";
-import { collapseCss } from "./collapse.styles";
+import { collapseCss } from "../../generated/components/collapse/collapse.styles";
 
 /**
  * Collapse. A bordered block with a heading (24px semibold; `size="small"` 16px medium) whose
@@ -21,11 +22,7 @@ export class AcmeCollapse extends AcmeElement {
   static styles = [
     sharedCss,
     collapseCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    collapseStructureCss,
   ];
   /** The Title Case topic name in the trigger. */
   @property() title = "";

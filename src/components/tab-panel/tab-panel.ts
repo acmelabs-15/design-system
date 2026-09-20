@@ -1,4 +1,5 @@
-import { css, html } from "lit";
+import { tabPanelStructureCss } from "../../generated/components/tab-panel/tab-panel-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 
@@ -6,14 +7,7 @@ import { AcmeElement, sharedCss } from "../../base";
 export class AcmeTabPanel extends AcmeElement {
   static styles = [
     sharedCss,
-    css`
-      :host {
-        display: block;
-      }
-      :host([hidden]) {
-        display: none;
-      }
-    `,
+    tabPanelStructureCss,
   ];
   @property() value = "";
   render() {

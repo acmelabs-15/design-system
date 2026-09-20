@@ -1,0 +1,90 @@
+.progress :where(.stop) {
+  pointer-events: auto;
+  z-index: 10;
+  display: grid;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.progress :where(.stop) :where(.lines) {
+  pointer-events: auto;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.progress {
+  position: relative;
+}
+
+.progress :where(.stop) :where(.trigger) :where(.hit) {
+  isolation: isolate;
+  z-index: 20;
+  position: relative;
+}
+
+.progress :where(.bar) {
+  appearance: none;
+  border-radius: var(--acme-radius);
+  background-color: var(--ds-gray-200);
+  border-style: solid;
+  border-width: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.progress :where(.stop) :where(.trigger) {
+  align-items: center;
+  height: fit-content;
+  display: inline-flex;
+}
+
+.progress :where(.stop) :where(.lines) :where(.line) {
+  background-color: var(--ds-gray-alpha-600);
+  width: 1px;
+  height: 100%;
+}
+
+.progress :where(.stop) :where(.lines) :where(.line-bg) {
+  background-color: var(--ds-background-100);
+  width: 1px;
+  height: 100%;
+}
+
+.progress:where(.with-stops) :where(.bar)::-moz-progress-bar {
+  border-radius: 0 !important;
+}
+
+.progress :where(.bar)::-moz-progress-bar {
+  border-radius: var(--acme-radius);
+  background-color: var(--fg);
+  transition-property: width .1s ease-in,background-color .1s ease-in;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.progress :where(.bar)::-webkit-progress-bar {
+  border-radius: var(--acme-radius);
+  background-color: var(--ds-gray-200);
+}
+
+.progress:where(.with-stops) :where(.bar)::-webkit-progress-value {
+  border-radius: 0 !important;
+}
+
+.progress :where(.bar)::-webkit-progress-value {
+  border-radius: var(--acme-radius);
+  background-color: var(--fg);
+  transition-property: width .1s ease-in,background-color .1s ease-in;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.progress :where(.stop) :where(.trigger) :where(.hit):after {
+  content: "";
+  inset-inline: calc(--x-offset * -1);
+  position: absolute;
+  inset-block: -.5rem;
+}

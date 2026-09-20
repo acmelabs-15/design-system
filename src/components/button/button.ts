@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { buttonStructureCss } from "../../generated/components/button/button-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { Places } from "../../shared/places";
-import { buttonCss } from "./button.styles";
+import { buttonCss } from "../../generated/components/button/button.styles";
 import "../spinner/spinner";
 import { atomState } from "../../shared/atom-state";
 
@@ -40,18 +41,7 @@ export class AcmeButton extends AcmeElement {
   static styles = [
     sharedCss,
     buttonCss,
-    css`
-      :host {
-        display: inline-flex;
-        max-width: 100%;
-      }
-      :host([block]) {
-        display: flex;
-      }
-      :host([block]) .btn {
-        width: 100%;
-      }
-    `,
+    buttonStructureCss,
   ];
   /** default (primary, gray-1000) · secondary (white with a ring) · tertiary (transparent) · error · warning · custom. The default is the primary look, as in the reference. */
   @property() variant: ButtonVariant = "default";

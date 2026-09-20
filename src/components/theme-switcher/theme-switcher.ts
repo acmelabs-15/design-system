@@ -1,10 +1,11 @@
-import { css, html, nothing, svg } from "lit";
+import { themeSwitcherStructureCss } from "../../generated/components/theme-switcher/theme-switcher-structure.styles";
+import { html, nothing, svg } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { StoreSelector, type Theme, themeStore } from "../../shared/state";
-import { themeSwitcherCss } from "./theme-switcher.styles";
-import { themeSwitcherOptionCss } from "./theme-switcher-option.styles";
+import { themeSwitcherCss } from "../../generated/components/theme-switcher/theme-switcher.styles";
+import { themeSwitcherOptionCss } from "../../generated/components/theme-switcher/theme-switcher-option.styles";
 
 /** The three options in order: the theme key each one sets, and its icon at the two sizes (16px glyphs, drawn smaller in a small control). */
 const OPTIONS: { key: "system" | "light" | "dark"; theme: Theme; icon: string; smallIcon: string }[] = [
@@ -45,11 +46,7 @@ export class AcmeThemeSwitcher extends AcmeElement {
     sharedCss,
     themeSwitcherCss,
     themeSwitcherOptionCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    themeSwitcherStructureCss,
   ];
   /** The 24px pill. */
   @property({ type: Boolean }) small = false;

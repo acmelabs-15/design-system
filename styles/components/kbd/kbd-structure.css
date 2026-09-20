@@ -1,0 +1,7 @@
+/* The reference's key is one element: inline-flex in prose, and blockified to flex when a flex
+         row holds it, so the row sizes to the key's own 20px rather than to a line box. A host box of
+         ours would sit between the row and the key and take that place instead, so the host stands
+         aside and the key is the box every container lays out. */
+      :host {
+        display: contents;
+      }

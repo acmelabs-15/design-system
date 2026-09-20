@@ -1,9 +1,10 @@
-import { css, html, nothing, svg } from "lit";
+import { avatarStructureCss } from "../../generated/components/avatar/avatar-structure.styles";
+import { html, nothing, svg } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { avatarCss } from "./avatar.styles";
-import { avatarWrapCss } from "./avatar-wrap.styles";
+import { avatarCss } from "../../generated/components/avatar/avatar.styles";
+import { avatarWrapCss } from "../../generated/components/avatar/avatar-wrap.styles";
 
 /** The avatar image for a username at twice the rendered size, for high-density screens; no username gives the generic image. */
 export const avatarUrl = (username: string, size: number) => `https://vercel.com/api/www/avatar?${username ? `u=${encodeURIComponent(username)}&` : ""}s=${size * 2}`;
@@ -40,11 +41,7 @@ export class AcmeAvatar extends AcmeElement {
     sharedCss,
     avatarCss,
     avatarWrapCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    avatarStructureCss,
   ];
   /** Image source; wins over `username`. */
   @property() src = "";

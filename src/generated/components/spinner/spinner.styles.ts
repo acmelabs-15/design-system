@@ -1,0 +1,114 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const spinnerCss = css`.spinner :where(.sr) {
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.spinner :where(.blade) {
+  transform-origin: 50%;
+  color: currentColor;
+  will-change: transform;
+  background-color: currentColor;
+  border-radius: 2147483647px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.spinner {
+  aspect-ratio: 1;
+  color: var(--ds-gray-700);
+  display: inline-block;
+  position: relative;
+  transform: translateZ(0);
+}
+
+.spinner:where(.sm) {
+  width: .75rem;
+  height: .75rem;
+}
+
+.spinner:where(:not(.sm, .lg, .xl, .x2, .x3, .x4)) {
+  width: 1rem;
+  height: 1rem;
+}
+
+.spinner:where(.lg) {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.spinner:where(.xl) {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.spinner:where(.x2) {
+  width: 2rem;
+  height: 2rem;
+}
+
+.spinner:where(.x3) {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.spinner:where(.x4) {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.spinner:where(:not(.sm, .lg, .xl, .x2, .x3, .x4)) :where(.blade) {
+  width: .25rem;
+  height: 1.5px;
+}
+
+.spinner:where(.sm) :where(.blade) {
+  width: 3px;
+  height: 1.5px;
+}
+
+.spinner:where(.xl) :where(.blade) {
+  width: .375rem;
+  height: 2.5px;
+}
+
+.spinner:where(.x2) :where(.blade) {
+  width: .5rem;
+  height: 2.5px;
+}
+
+.spinner:where(.lg) :where(.blade) {
+  width: 5px;
+  height: 2px;
+}
+
+.spinner:where(.x4) :where(.blade) {
+  width: .875rem;
+  height: 3.5px;
+}
+
+.spinner:where(.x3) :where(.blade) {
+  width: .625rem;
+  height: 3px;
+}
+
+@keyframes spinner-opacity {
+  0% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: .15;
+  }
+}
+`;

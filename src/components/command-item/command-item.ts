@@ -3,7 +3,7 @@ import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
-import { commandMenuItemCss } from "../command-menu/command-menu-item.styles";
+import { commandMenuItemCss } from "../../generated/components/command-menu/command-menu-item.styles";
 
 /** A keybind's keys as the row shows them: the platform modifiers render as glyphs. */
 const glyphOf = (key: string) => (key === "Meta" ? "⌘" : key === "Shift" ? "⇧" : key);

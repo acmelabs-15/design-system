@@ -1,0 +1,18 @@
+/* The dialog element's own box (a canvas fill, a text color, a fit-content size with a size cap,
+         insets to every edge, a scrolling overflow, selectable text) gives way to a plain block's, so the
+         derived rules after this lay the dialog out as they would any fixed box. A closed dialog keeps the
+         platform's own absence: it is not laid out, whatever the rules say about the box. */
+      dialog:not([open]) {
+        display: none;
+      }
+      dialog {
+        width: auto;
+        height: auto;
+        inset: auto;
+        overflow: visible;
+        background: transparent;
+        color: inherit;
+        max-width: none;
+        max-height: none;
+        user-select: auto;
+      }

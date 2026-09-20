@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { chipCss } from "./chip.styles";
+import { chipCss } from "../../generated/components/chip/chip.styles";
 
 /** House chip: a pressable filter pill; `pressed` fills solid. */
 @customElement("acme-chip")

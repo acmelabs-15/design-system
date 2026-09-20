@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { showMoreStructureCss } from "../../generated/components/show-more/show-more-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
-import { showMoreCss } from "./show-more.styles";
+import { showMoreCss } from "../../generated/components/show-more/show-more.styles";
 import "../button/button";
 
 /**
@@ -15,14 +16,7 @@ export class AcmeShowMore extends AcmeElement {
   static styles = [
     sharedCss,
     showMoreCss,
-    css`
-      :host {
-        display: block;
-      }
-      acme-button {
-        display: block;
-      }
-    `,
+    showMoreStructureCss,
   ];
   @property({ type: Boolean, reflect: true }) expanded = false;
   /** The spinner, while expanded (the text reads "Show More" meanwhile). */

@@ -1,11 +1,12 @@
-import { css, html, nothing, svg } from "lit";
+import { bookStructureCss } from "../../generated/components/book/book-structure.styles";
+import { html, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AnimateController, animate } from "@lit-labs/motion";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { createStore, StoreEffect, StoreSelector } from "../../shared/state";
 import { Interaction } from "../../shared/interaction";
-import { bookCss } from "./book.styles";
+import { bookCss } from "../../generated/components/book/book.styles";
 
 /** A width in px, or one per breakpoint: `xs` (≤ 400), `sm` (≤ 600), `smd` (≤ 768), `md` (≤ 960), `lg` (≤ 960 and above), `xl`; a missing breakpoint falls back on the nearest smaller one. */
 export type BookWidth = number | { xs?: number; sm: number; smd?: number; md?: number; lg?: number; xl?: number };
@@ -65,23 +66,7 @@ export class AcmeBook extends AcmeElement {
   static styles = [
     sharedCss,
     bookCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-      /* The generated sheet transitions this box between its rest and hover rules, and the
-         directive animates the same property. Two animations on one property race for the first
-         frame — the hitch on hover-in. With the transition off, the rules only HOLD the two states
-         (which is what the census reads) and the directive alone travels between them. */
-      .wrap {
-        transition: none;
-        /* The cover is a preserve-3d subtree under a perspective, so the browser builds its layer
-           tree when the transform first moves and discards it after — a 350ms Commit measured on
-           every hover, landing within 1ms of pointerenter. Naming the property that moves keeps the
-           layer between hovers. */
-        will-change: transform;
-      }
-    `,
+    bookStructureCss,
   ];
   /** The cover title. The attribute is read and removed, so the element shows no tooltip. */
   @property() override title = "";

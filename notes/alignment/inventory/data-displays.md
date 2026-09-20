@@ -1,6 +1,6 @@
 # Tables, pagination, charts and diagrams — R11
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved family contract.** Data processing stays with the application. Keep the [selected TanStack Table boundary](../../decisions/tanstack-table-compatibility.md), TanStack Virtual in both frameworks, TanStack Charts and [ELK viewer scope](../../decisions/flow-diagram.md). This page supplies concrete interfaces and acceptance, not a claim of verified compatibility.
 

@@ -1,0 +1,5 @@
+/* A flex column: the group is its flex item, so it fills the host width and takes the flex-item minimum size. */
+      :host {
+        display: flex;
+        flex-direction: column;
+      }

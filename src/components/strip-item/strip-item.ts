@@ -1,8 +1,9 @@
-import { css, html } from "lit";
+import { stripItemStructureCss } from "../../generated/components/strip-item/strip-item-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { badgeCss } from "../badge/badge.styles";
-import { statStripCss } from "../stat-strip/stat-strip.styles";
+import { badgeCss } from "../../generated/components/badge/badge.styles";
+import { statStripCss } from "../../generated/components/stat-strip/stat-strip.styles";
 
 @customElement("acme-strip-item")
 export class AcmeStripItem extends AcmeElement {
@@ -10,16 +11,7 @@ export class AcmeStripItem extends AcmeElement {
     sharedCss,
     statStripCss,
     badgeCss,
-    css`
-      :host {
-        display: contents;
-      }
-      .stat-strip {
-        display: contents;
-        background: none;
-        margin: 0;
-      }
-    `,
+    stripItemStructureCss,
   ];
   @property() value = "";
   @property() label = "";

@@ -1,7 +1,8 @@
-import { css, html, nothing, type TemplateResult } from "lit";
+import { clearableInputStructureCss } from "../../generated/components/clearable-input/clearable-input-structure.styles";
+import { html, nothing, type TemplateResult } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
-import { clearableInputCss } from "./clearable-input.styles";
+import { clearableInputCss } from "../../generated/components/clearable-input/clearable-input.styles";
 import "../input/input";
 import "../kbd/kbd";
 import type { AcmeInput } from "../input/input";
@@ -18,14 +19,7 @@ export class AcmeClearableInput extends AcmeElement {
   static styles = [
     sharedCss,
     clearableInputCss,
-    css`
-      :host {
-        display: block;
-      }
-      .input {
-        display: block;
-      }
-    `,
+    clearableInputStructureCss,
   ];
   @property() value = "";
   @property() placeholder = "";

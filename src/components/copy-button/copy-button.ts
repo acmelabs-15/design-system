@@ -1,10 +1,11 @@
-import { css, html, nothing } from "lit";
+import { copyButtonStructureCss } from "../../generated/components/copy-button/copy-button-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { createStore, StoreSelector, toasts } from "../../shared/state";
 import type { ButtonColors, ButtonSize, ButtonVariant } from "../button/button";
-import { copyButtonCss } from "./copy-button.styles";
+import { copyButtonCss } from "../../generated/components/copy-button/copy-button.styles";
 import "../button/button";
 
 /**
@@ -30,14 +31,7 @@ export class AcmeCopyButton extends AcmeElement {
   static styles = [
     sharedCss,
     copyButtonCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-      acme-button {
-        display: inline-block;
-      }
-    `,
+    copyButtonStructureCss,
   ];
   /** The string that goes to the clipboard. */
   @property({ attribute: "text-to-copy" }) textToCopy = "";

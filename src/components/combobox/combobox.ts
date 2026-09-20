@@ -1,5 +1,6 @@
+import { comboboxStructureCss } from "../../generated/components/combobox/combobox-structure.styles";
 import { autoUpdate, computePosition, flip, hide, offset, shift } from "@floating-ui/dom";
-import { css, html, LitElement, nothing, svg } from "lit";
+import { html, LitElement, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
@@ -7,8 +8,8 @@ import { matchSorter } from "../../shared/match-sorter";
 import type { AcmeComboboxOption } from "../combobox-option/combobox-option";
 import "../spinner/spinner";
 import { atomState } from "../../shared/atom-state";
-import { comboboxCss } from "./combobox.styles";
-import { comboboxListCss } from "./combobox-list.styles";
+import { comboboxCss } from "../../generated/components/combobox/combobox.styles";
+import { comboboxListCss } from "../../generated/components/combobox/combobox-list.styles";
 
 export type ComboboxSize = "small" | "medium" | "large";
 export type ComboboxSide = "top" | "right" | "bottom" | "left";
@@ -84,28 +85,7 @@ export class AcmeCombobox extends AcmeElement {
     sharedCss,
     comboboxCss,
     comboboxListCss,
-    css`
-      :host {
-        display: block;
-      }
-      /* The host is the item of the parent's layout (a stretched row): the shell takes the height the host is given. */
-      .combobox {
-        height: 100%;
-      }
-      /* The list rises to the top layer as a manual popover: the browser's popover box (fixed, inset, bordered, padded, scrolling, on a canvas fill) gives way to a bare wrapper the script places. */
-      .floating {
-        position: fixed;
-        inset: auto;
-        margin: 0;
-        border: 0;
-        padding: 0;
-        width: max-content;
-        height: auto;
-        overflow: visible;
-        background: transparent;
-        color: inherit;
-      }
-    `,
+    comboboxStructureCss,
   ];
   @property() placeholder = "";
   /** The chosen row's value; empty for none. */

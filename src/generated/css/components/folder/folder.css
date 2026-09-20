@@ -1,0 +1,90 @@
+.folder :where(.toggle) :where(.icon) {
+  text-align: center;
+  color: var(--ds-gray-900);
+  margin-right: .5rem;
+  display: inline-block;
+}
+
+.folder :where(.toggle) {
+  background-color: #0000;
+  border-style: none;
+  border-radius: .25rem;
+  flex-grow: 1;
+  align-items: center;
+  width: 100%;
+  height: 1.75rem;
+  margin-left: -.5rem;
+  padding-block: .25rem;
+  padding-inline: .5rem;
+  display: flex;
+}
+
+.folder :where(.toggle) :where(.name) {
+  font-family: var(--font-mono);
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+}
+
+.folder {
+  white-space: nowrap;
+  color: var(--accents-8);
+  -webkit-user-select: none;
+  user-select: none;
+  flex-direction: column;
+  line-height: 1.75rem;
+  list-style-type: none;
+  display: flex;
+}
+
+.folder slot::slotted(a), .folder slot > a {
+  white-space: nowrap !important;
+  color: var(--accents-8) !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  padding-right: 1em !important;
+  line-height: 1 !important;
+  text-decoration-line: none !important;
+  display: block !important;
+}
+
+.folder :where(.toggle) :where(.name) slot::slotted(a), .folder :where(.toggle) :where(.name) slot > a {
+  vertical-align: text-bottom !important;
+  transition-property: opacity !important;
+  transition-duration: .1s !important;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1) !important;
+  animation-duration: .1s !important;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1) !important;
+}
+
+.folder:where(:not(.open)) button {
+  cursor: pointer;
+}
+
+.folder :where(.toggle) :where(.icon) svg {
+  vertical-align: middle;
+}
+
+.folder ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@media (hover: hover) {
+  .folder :where(.toggle)[data-hover] {
+    background-color: var(--ds-gray-200);
+  }
+}
+
+.folder .indent {
+  background-image: linear-gradient(to right,transparent 11.5px,var(--indent-color) 11.5px,var(--indent-color) 12.5px,transparent 12.5px);
+  vertical-align: top;
+  --indent-color: var(--ds-gray-400);
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  width: 23px;
+  height: 1.75rem;
+  display: inline-block;
+  translate: -.25rem;
+}

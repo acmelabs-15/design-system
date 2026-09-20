@@ -1,8 +1,9 @@
-import { css, html } from "lit";
+import { gridPageStructureCss } from "../../generated/components/grid-page/grid-page-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { gridPageCss } from "./grid-page.styles";
+import { gridPageCss } from "../../generated/components/grid-page/grid-page.styles";
 
 /**
  * The page a grid system sits on: a background-200 column with 16px of vertical padding on
@@ -15,11 +16,7 @@ export class AcmeGridPage extends AcmeElement {
   static styles = [
     sharedCss,
     gridPageCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    gridPageStructureCss,
   ];
   @property({ type: Boolean, attribute: "remove-padding-y" }) removePaddingY = false;
   @property({ type: Boolean, attribute: "remove-bottom-margin" }) removeBottomMargin = false;

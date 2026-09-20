@@ -1,0 +1,55 @@
+.classes {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  display: grid;
+}
+
+.classes .head {
+  background: var(--surface-2);
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+}
+
+.classes .head .range {
+  color: var(--text-2);
+  margin-left: auto;
+  font-weight: 400;
+}
+
+.classes .head.poor {
+  color: var(--ds-red-900);
+}
+
+.classes .head.mid {
+  color: var(--ds-amber-900);
+}
+
+.classes .head.good {
+  color: var(--ds-green-900);
+}
+
+.classes .rowline {
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 16px;
+  font-size: 14px;
+  display: flex;
+}
+
+.classes .rowline .n {
+  color: var(--ds-gray-700);
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.classes .rowline b {
+  text-align: right;
+  min-width: 28px;
+  font-weight: 600;
+}

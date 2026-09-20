@@ -1,0 +1,6 @@
+.pagination :where(.center){position:absolute;top:50%;left:50%;z-index:2;translate:calc(calc(1 / 2 * 100%) * -1) calc(calc(1 / 2 * 100%) * -1)}
+.pagination{position:relative;display:flex;width:100%;flex-wrap:wrap;align-items:flex-start;justify-content:space-between}
+@media not all and (min-width:1200px){
+.pagination :where(.center){display:none}
+}
+.pagination a{text-decoration-line:none}

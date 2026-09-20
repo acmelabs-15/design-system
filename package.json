@@ -12,8 +12,6 @@
   "files": [
     "dist",
     "assets",
-    "tokens.css",
-    "dashboard.css",
     "README.md"
   ],
   "main": "./dist/index.js",
@@ -28,9 +26,8 @@
     "./bundle": "./dist/bundle/design-system.js",
     "./bundle/min": "./dist/bundle/design-system.min.js",
     "./bundle/standalone": "./dist/bundle/design-system.standalone.min.js",
-    "./tokens.css": "./tokens.css",
-    "./dashboard.css": "./dashboard.css",
-    "./dist/*": "./dist/*"
+    "./dist/*": "./dist/*",
+    "./styles/*": "./dist/styles/*"
   },
   "sideEffects": true,
   "scripts": {
@@ -39,7 +36,7 @@
     "test": "bun test",
     "lint": "bun x biome check .",
     "lint:fix": "bun x biome check --write .",
-    "docs": "bun docs-src/build.ts",
+    "docs": "bun site/build.ts",
     "dev": "bun scripts/dev.ts",
     "prepublishOnly": "bun run build && bun test && bun run docs"
   },

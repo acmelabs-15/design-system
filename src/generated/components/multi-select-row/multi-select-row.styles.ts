@@ -1,0 +1,149 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const multiSelectRowCss = css`.row {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.row:where(.end) :where(.action) {
+  order: 1;
+}
+
+.row :where(.action) :where(.tail) :where(.hint) {
+  text-align: right;
+  min-width: 64px;
+  font-size: .75rem;
+  line-height: calc(1 / .75);
+  color: var(--ds-gray-900);
+  opacity: 0;
+  border-radius: .25rem;
+  margin-left: auto;
+  padding-block: .125rem;
+  padding-inline: .25rem;
+  font-weight: 400;
+}
+
+.row :where(.box) {
+  justify-content: center;
+  align-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+}
+
+.row:where(.end) :where(.box) {
+  order: 2;
+  width: 2rem;
+}
+
+.row :where(.box) :where(acme-checkbox)::part(checkbox) {
+  border-radius: .25rem;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: .25rem;
+  display: flex;
+  align-items: center !important;
+}
+
+.row :where(.action) :where(.body) {
+  align-items: center;
+  gap: .5rem;
+  min-width: 0;
+  display: flex;
+}
+
+.row :where(.action) :where(.tail) {
+  align-items: center;
+  display: flex;
+}
+
+.row :where(.action) :where(.body) :where(.name) {
+  min-width: 0;
+  font-family: var(--acme-font-sans);
+  color: var(--ds-gray-1000);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.row :where(.action) :where(.body) :where(.leading) {
+  color: var(--ds-gray-900);
+  flex-shrink: 0;
+}
+
+.row:where(.disabled) :where(.action) {
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+.row:where(.checkbox-hovered) :where(.box) :where(acme-checkbox)::part(checkbox), .row:where(.hovered) :where(.action) {
+  background-color: var(--ds-gray-100);
+}
+
+.row :where(.action) {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #0000;
+  border-style: none;
+  border-radius: .25rem;
+  outline-style: none;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: .25rem;
+  display: flex;
+}
+
+.row:where(.checkbox-hovered) :where(.action) {
+  background-color: #0000 !important;
+}
+
+.row:where(.checkbox-hovered) :where(.action) :where(.tail) :where(.hint) {
+  opacity: 1;
+}
+
+.row :where(.action) :where(.body) :where(.name) > strong {
+  color: var(--ds-gray-1000);
+  font-weight: 500;
+}
+
+@media (hover: hover) {
+  .row :where(.action)[data-hover] :where(.tail) :where(.hint) {
+    opacity: 1;
+  }
+}
+
+.row :where(.action)[data-focus] :where(.tail) :where(.hint) {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .row[data-hover] :where(.action) :where(.tail) :where(.hint) {
+    opacity: 1;
+  }
+
+  .row :where(.box) :where(acme-checkbox)[data-hover]::part(checkbox), .row :where(.action)[data-hover] {
+    background-color: var(--ds-gray-100);
+  }
+
+  .row:where(.disabled) :where(.action)[data-hover] {
+    background-color: #0000;
+  }
+}
+
+.row :where(.action)[data-focus] {
+  background-color: var(--ds-gray-100);
+}
+
+.row :where(.box) :where(acme-checkbox)[data-active]::part(checkbox), .row :where(.action)[data-active] {
+  background-color: var(--ds-gray-200);
+}
+
+.row:where(.disabled) :where(.action)[data-active] {
+  background-color: #0000;
+}
+`;

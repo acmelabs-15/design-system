@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+
+.tiles {
+  grid-template-columns: repeat(auto-fit, minmax(var(--tile-min, 104px), 1fr));
+}

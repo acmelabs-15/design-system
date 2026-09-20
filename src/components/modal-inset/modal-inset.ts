@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { modalInsetStructureCss } from "../../generated/components/modal-inset/modal-inset-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { modalInsetCss } from "./modal-inset.styles";
+import { modalInsetCss } from "../../generated/components/modal-inset/modal-inset.styles";
 
 /**
  * The full-bleed tinted block inside a modal's body: it runs through the body's padding on both
@@ -14,11 +15,7 @@ export class AcmeModalInset extends AcmeElement {
   static styles = [
     sharedCss,
     modalInsetCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    modalInsetStructureCss,
   ];
   /** The inset is the last thing in the body: it meets the footer with no bottom hairline. */
   @property({ type: Boolean, reflect: true }) last = false;

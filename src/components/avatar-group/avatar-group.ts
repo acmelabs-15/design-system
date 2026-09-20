@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { avatarGroupStructureCss } from "../../generated/components/avatar-group/avatar-group-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import "../avatar/avatar";
 import type { AvatarService } from "../avatar/avatar";
-import { avatarGroupCss } from "./avatar-group.styles";
+import { avatarGroupCss } from "../../generated/components/avatar-group/avatar-group.styles";
 
 export type AvatarMember = { username?: string; src?: string; letter?: string; title?: string; git?: AvatarService };
 
@@ -18,11 +19,7 @@ export class AcmeAvatarGroup extends AcmeElement {
   static styles = [
     sharedCss,
     avatarGroupCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    avatarGroupStructureCss,
   ];
   /** The members, in order: `[{ "username": "rauchg" }, { "src": "…", "title": "…" }, { "letter": "SL" }]`. */
   @property({ type: Array }) members: AvatarMember[] = [];

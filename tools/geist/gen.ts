@@ -8,7 +8,7 @@
 // Run: bun tools/geist/gen.ts [name ...]   (default: every mapping in tools/geist/maps)
 import fs from "node:fs";
 import path from "node:path";
-import { formatGenerated } from "../../scripts/format-generated";
+import { writeStyle, type PropertyRegistration } from "../../scripts/styles";
 import { atoms, type Decl, loadReference, parseDecls, serialize, simplify, twProperty } from "./simplify";
 import { allRules, keyframesOf, resolve } from "./tw";
 
@@ -1297,7 +1297,7 @@ function laterOnRoot(own: Iterable<string>, composed: Iterable<string>): string[
 }
 
 /** `parent` is the mapping this one `extends`: its roots' classes are the composed element's and are skipped, except those that reach only beyond its tree (see {@link deepReach}), which this element's own tree needs. */
-export function generate(name: string, map: GeistMap, parent?: GeistMap, extended: Record<string, GeistMap> = {}): { css: string; report: string[] } {
+export function generate(name: string, map: GeistMap, parent?: GeistMap, extended: Record<string, GeistMap> = {}): { css: string; report: string[]; properties: PropertyRegistration[] } {
   // The reference sheets load on demand, so read them before anything here touches twProperty.
   loadReference();
   const spec = JSON.parse(fs.readFileSync(path.join(specDir, `${map.page}.json`), "utf8")) as Spec;
@@ -1646,7 +1646,7 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
       const { segs, tail: end } = segments(t);
       let key = parentKey;
       let hits = 0;
-      const out = segs.map(({ comb, seg }) => {
+      const out = segs.map(({ comb, seg }, index) => {
         const type = seg.match(/^(?:[a-zA-Z][\w-]*|\*)/)?.[0];
         // Only a child ours composes (a part, or a custom element of ours) replaces the reference's tag; a child that keeps its tag (`input`, `svg`) needs no rewrite.
         // Every node the compound reaches under the rule's own parents (children for `>`, descendants otherwise) must be the mapped child's:
@@ -1658,7 +1658,7 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
             : (childrenOf.get(key) ?? []).filter(
                 (k) => (k.part || /^[a-zA-Z][\w]*-[\w-]*$/.test(k.ours)) && k.nodes.some((n) => nodeMatches(seg, n)) && k.parents.every((p) => under(p).every((n) => !nodeMatches(seg, n) || k.nodes.includes(n))),
               );
-        if (found.length !== 1) {
+        if (found.length !== 1 || !type) {
           key = undefined as unknown as string;
           return { comb, seg };
         }
@@ -1666,7 +1666,7 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
         key = found[0].tail;
         const own = seg.slice(type.length);
         const sel = slottedChildren.has(found[0].ours) ? found[0].ours : `:where(${found[0].ours})`;
-        return { comb, seg: found[0].part ? `${sel}${own}::part(${found[0].part})` : `${sel}${own}` };
+        return { comb, seg: found[0].part && index === segs.length - 1 ? `${sel}${own}::part(${found[0].part})` : `${sel}${own}` };
       });
       return hits ? out.map(({ comb, seg }) => `${comb === " " ? " " : ` ${comb} `}${seg}`).join("") + end : t;
     };
@@ -1808,13 +1808,9 @@ export const rename = (s: string) =>
     .replace(/--radix-popover-/g, "--acme-popover-")
     .replace(/\[data-slot=geist-icon\]/g, "")
     .replace(/data-geist-/g, "data-acme-");
-const escTpl = (s: string) => s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
 
 /**
- * Writes one element's style module from its mapping.
- *
- * The file is written unformatted; the caller formats the whole batch through
- * {@link formatGenerated} so one Biome process covers every element.
+ * Emits compiled CSS, a source map, a Lit module and input fingerprints for one mapping.
  *
  * @param name* - The element's mapping name under tools/geist/maps.
  *
@@ -1823,7 +1819,8 @@ const escTpl = (s: string) => s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").repl
 export async function writeStyles(name: string): Promise<{ file: string; report: string[] }> {
   const mapFile = path.join(import.meta.dir, "maps", `${name}.ts`);
   const { geist } = (await import(mapFile)) as { geist: GeistMap };
-  const dir = path.join(ROOT, "src/components", geist.element ?? name);
+  const dir = path.join(ROOT, "src/generated/components", geist.element ?? name);
+  fs.mkdirSync(dir, { recursive: true });
   const load = async (n: string) => ((await import(path.join(import.meta.dir, "maps", `${n}.ts`))) as { geist: GeistMap }).geist;
   const parent = geist.extends ? await load(geist.extends.split("/")[0]) : undefined;
   // The mappings the root and the children extend (instances of other elements inside this one), and those these extend in turn (a menu button that is a button).
@@ -1846,13 +1843,12 @@ export async function writeStyles(name: string): Promise<{ file: string; report:
   }
   await collect(geist.children);
   const { css, report, properties } = generate(name, geist, parent, maps);
-  const id = `${name.replace(/-([a-z])/g, (_, c) => c.toUpperCase())}Css`;
   let own = rename(css);
   for (const [theirs, ours] of Object.entries(geist.assets ?? {})) own = own.replaceAll(theirs, ours);
-  // The composition variables the module keeps, registered document-wide with the reference's defaults (see `registerProperties`).
-  const register = properties.length ? `import { registerProperties } from "../../base";\n\nregisterProperties(${JSON.stringify(properties.map((p) => ({ ...p, name: rename(p.name) })))});\n` : "";
-  const file = path.join(dir, `${name}.styles.ts`);
-  fs.writeFileSync(file, `// Generated by the style generator from the reference spec. Do not edit; edit the mapping and regenerate.\nimport { css } from "lit";\n${register}export const ${id} = css\`\n${escTpl(own)}\n\`;\n`);
+  const inputs = ["tools/geist/gen.ts", "tools/geist/tw.ts", "tools/geist/simplify.ts", "tools/geist/maps/"+name+".ts", ...Object.keys(maps).map(n => "tools/geist/maps/"+n+".ts"), ...(geist.extends ? ["tools/geist/maps/"+geist.extends.split("/")[0]+".ts"] : []), ...new Set([geist, ...(parent ? [parent] : []), ...Object.values(maps)].map(m => "tools/geist/spec/"+m.page+".json"))];
+  const externalInputs = [...new Bun.Glob("tools/geist/corpus/css/*.css").scanSync(ROOT), ...new Bun.Glob("tools/geist/corpus/html/*.html").scanSync(ROOT)];
+  writeStyle("components/"+(geist.element ?? name)+"/"+name, own, { producer: "mapped", inputs, externalInputs, properties: properties.map(p => ({...p, name: rename(p.name)})) });
+  const file = path.join(dir, name+".styles.ts");
   return { file, report };
 }
 
@@ -1864,15 +1860,11 @@ if (import.meta.main) {
         .readdirSync(path.join(import.meta.dir, "maps"))
         .filter((f) => f.endsWith(".ts"))
         .map((f) => f.replace(/\.ts$/, ""));
-  const written: string[] = [];
   for (const n of all) {
-    const { file, report } = await writeStyles(n);
-    written.push(file);
+    const { report } = await writeStyles(n);
     console.log(`${n}: ${report.length ? `\n  - ${report.join("\n  - ")}` : "clean"}`);
   }
 
-  // One Biome pass over the batch, so a regenerated module is already formatted.
-  await formatGenerated(written);
 }
 
 /** The per-declaration rules a topological sort cannot place, with their conflicting neighbours, for the cycle report. */

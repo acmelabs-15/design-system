@@ -1,10 +1,11 @@
-import { css, html, nothing, svg } from "lit";
+import { contextCardStructureCss } from "../../generated/components/context-card/context-card-structure.styles";
+import { html, nothing, svg } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { contextCardCss } from "./context-card.styles";
-import { contextCardTriggerCss } from "./context-card-trigger.styles";
+import { contextCardCss } from "../../generated/components/context-card/context-card.styles";
+import { contextCardTriggerCss } from "../../generated/components/context-card/context-card-trigger.styles";
 
 /** The side of the trigger the card opens on. */
 export type ContextCardSide = "top" | "bottom" | "left" | "right";
@@ -101,19 +102,7 @@ export class AcmeContextCard extends AcmeElement {
     sharedCss,
     contextCardTriggerCss,
     contextCardCss,
-    css`
-      /* The floating layer is a popover in the top layer: the browser's own box for one (centred,
-         bordered, padded, clipping, on a canvas) gives way to the flat viewport-filling layer the
-         card is placed in, in viewport coordinates. */
-      .layer {
-        margin: 0;
-        border: 0;
-        padding: 0;
-        overflow: visible;
-        background: none;
-        color: inherit;
-      }
-    `,
+    contextCardStructureCss,
   ];
   /** The card's text; the `content` slot takes markup instead or as well. */
   @property() content = "";

@@ -1,6 +1,6 @@
 # Surfaces and structured content — R07
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved family contract.** Use [shared conventions](foundations.md), assigned reference behavior and the selected distinctions among Card, Item, List, Field and selection controls. None becomes a universal interactive row.
 

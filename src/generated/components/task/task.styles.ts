@@ -1,0 +1,56 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const taskCss = css`.tasks {
+  flex-direction: column;
+  gap: 4px;
+  display: flex;
+}
+
+.task.done {
+  background: var(--ds-blue-200);
+}
+
+.task {
+  border-radius: var(--r-sm);
+  background: var(--ds-gray-alpha-100);
+  height: 36px;
+  color: var(--text-2);
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+  display: flex;
+}
+
+.task:hover {
+  color: var(--text);
+}
+
+.task .ic {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.task .end {
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  display: inline-flex;
+}
+
+.task.done {
+  background: var(--ds-blue-300);
+  color: var(--ds-blue-900);
+}
+
+.task.done .text {
+  text-decoration: line-through;
+}
+
+.task.disabled {
+  opacity: .5;
+}
+`;

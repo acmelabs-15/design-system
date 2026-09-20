@@ -1,0 +1,27 @@
+.layer{pointer-events:none;position:fixed;inset:0;z-index:100000;height:100%;width:100%}
+.layer :where(.fade) :where(.card){pointer-events:none;position:absolute;z-index:1000000;width:fit-content;overflow:visible;border-radius:6px;background-color:var(--ds-background-100);background-clip:padding-box;box-shadow:var(--ds-shadow-tooltip), 0 0 0 1px var(--ds-background-100);--context-card-tip-stroke:#dbdbdb}
+.layer :where(.fade) :where(.card) :where(.arrow){position:absolute;z-index:999999999;display:grid;height:7px;width:14px;transform-origin:50%;place-content:center}
+.layer :where(.fade) :where(.card) :where(.box){position:absolute;top:0;left:0;max-width:max-content;padding:.75rem;transition-property:transform,width,height;transition-timing-function:cubic-bezier(.29,.31,.05,.96);transition-duration:.25s;will-change:transform,width,height;animation-duration:.25s;animation-timing-function:cubic-bezier(.29,.31,.05,.96)}
+.layer:where(.top) :where(.fade) :where(.card) :where(.arrow){top:100%;rotate:0deg}
+.layer:where(:not(.top,.bottom,.left)) :where(.fade) :where(.card) :where(.arrow){right:100%;margin-right:-3.5px;rotate:90deg}
+.layer:where(.bottom) :where(.fade) :where(.card) :where(.arrow){bottom:100%;rotate:180deg}
+.layer:where(.left) :where(.fade) :where(.card) :where(.arrow){left:100%;margin-left:-3.5px;rotate:270deg}
+.layer :where(.fade){min-width:max-content;transition-property:all;transition-timing-function:cubic-bezier(.3,.57,.07,.95);transition-duration:.15s;will-change:transform,width,height;animation-duration:.15s;animation-timing-function:cubic-bezier(.3,.57,.07,.95)}
+.layer :where(.fade) :where(.card) :where(.box) :where(.body){min-width:max-content;will-change:transform,width,height}
+.layer:where(:is(.top,.bottom)) :where(.fade) :where(.card) :where(.arrow){translate:calc(calc(1 / 2 * 100%) * -1) 0}
+.layer:where(:not(.top,.bottom)) :where(.fade) :where(.card) :where(.arrow){translate:0 calc(calc(1 / 2 * 100%) * -1)}
+.layer:where(:not(.skip)) :where(.fade) :where(.card){transition-property:transform,width,height;transition-timing-function:cubic-bezier(.29,.31,.05,.96);transition-duration:.25s;will-change:transform,width,height;animation-duration:.25s;animation-timing-function:cubic-bezier(.29,.31,.05,.96)}
+.layer:where(:not(.skip)) :where(.fade) :where(.card) :where(.arrow){transition-property:transform,width,height;transition-timing-function:cubic-bezier(.29,.31,.05,.96);transition-duration:.25s;will-change:transform,width,height;animation-duration:.25s;animation-timing-function:cubic-bezier(.29,.31,.05,.96)}
+.layer:where(:not(.skip)) :where(.fade) :where(.card) :where(.box) :where(.body){transition-property:transform,width,height;transition-timing-function:cubic-bezier(.29,.31,.05,.96);transition-duration:.25s;animation-duration:.25s;animation-timing-function:cubic-bezier(.29,.31,.05,.96)}
+.layer:where(.skip) :where(.fade) :where(.card){transition-property:none !important}
+.layer:where(.skip) :where(.fade) :where(.card) :where(.arrow){transition-property:none !important}
+.layer:where(.skip) :where(.fade) :where(.card) :where(.box){transition-property:none !important}
+.layer:where(.skip) :where(.fade) :where(.card) :where(.box) :where(.body){transition-property:none !important;transition-timing-function:cubic-bezier(.3,.57,.07,.95);transition-duration:.15s;animation-duration:.15s;animation-timing-function:cubic-bezier(.3,.57,.07,.95)}
+@media (prefers-reduced-motion:reduce){
+.layer :where(.fade){transition-property:none !important}
+.layer:where(:not(.skip)) :where(.fade) :where(.card){transition-property:none !important}
+.layer:where(:not(.skip)) :where(.fade) :where(.card) :where(.arrow){transition-property:none !important}
+.layer :where(.fade) :where(.card) :where(.box){transition-property:none !important}
+.layer :where(.fade) :where(.card) :where(.box) :where(.body){transition-property:none !important}
+}
+:where(:host([data-dark])) .layer :where(.fade) :where(.card){--context-card-tip-stroke:#252525}

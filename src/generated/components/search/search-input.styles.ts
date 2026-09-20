@@ -1,0 +1,12 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const searchInputCss = css`.input :where(slot[name="start"]) :where(acme-spinner)::part(spinner) {
+  width: var(--ds-control-decoration-size);
+  height: var(--ds-control-decoration-size);
+}
+
+.input :where(slot[name="start"])::slotted(svg), .input :where(slot[name="start"]) > svg {
+  width: var(--ds-control-decoration-size) !important;
+  height: var(--ds-control-decoration-size) !important;
+}
+`;

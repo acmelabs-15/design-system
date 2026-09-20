@@ -1,9 +1,10 @@
-import { css, html } from "lit";
+import { entityStructureCss } from "../../generated/components/entity/entity-structure.styles";
+import { html } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
-import { entityCss } from "./entity.styles";
+import { entityCss } from "../../generated/components/entity/entity.styles";
 
 /** The row element: a list item (the default, for an acme-entity-list), a button for a clickable row, or a plain block. */
 export type EntityTag = "li" | "button" | "div";
@@ -21,11 +22,7 @@ export class AcmeEntity extends AcmeElement {
   static styles = [
     sharedCss,
     entityCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    entityStructureCss,
   ];
   /** `li` (default) · `button` for a clickable row · `div`. */
   @property({ reflect: true, useDefault: true }) as: EntityTag = "li";

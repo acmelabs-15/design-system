@@ -1,7 +1,8 @@
-import { css, html, nothing } from "lit";
+import { taskStructureCss } from "../../generated/components/task/task-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyph, sharedCss } from "../../base";
-import { taskCss } from "./task.styles";
+import { taskCss } from "../../generated/components/task/task.styles";
 
 /** Vercel task row: a tinted 36px row with an icon, done or not. */
 @customElement("acme-task")
@@ -9,11 +10,7 @@ export class AcmeTask extends AcmeElement {
   static styles = [
     sharedCss,
     taskCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    taskStructureCss,
   ];
   @property() href = "#";
   @property({ type: Boolean }) done = false;

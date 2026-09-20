@@ -1,0 +1,81 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const metricListCss = css`.metric-list {
+  border-radius: var(--r-sm);
+  box-shadow: var(--ds-shadow-border-small);
+  background: var(--surface);
+  flex-direction: column;
+  display: flex;
+  overflow: hidden;
+}
+
+.metric-list button {
+  text-align: left;
+  background: var(--surface-2);
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  width: 100%;
+  color: var(--text);
+  font: inherit;
+  padding: 16px;
+  display: block;
+}
+
+.metric-list button:last-child {
+  border-bottom: 0;
+}
+
+.metric-list button[aria-selected="true"] {
+  background: var(--surface);
+}
+
+.metric-list .label {
+  letter-spacing: -.28px;
+  color: var(--text-2);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.metric-list .value {
+  font-variant-numeric: tabular-nums;
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.metric-list .value small {
+  color: var(--ds-gray-800);
+  margin-left: 2px;
+  font-size: 12px;
+}
+
+.threshold {
+  gap: 2px;
+  height: 3px;
+  margin-top: 12px;
+  display: flex;
+}
+
+.threshold i {
+  background: var(--ds-gray-300);
+  border-radius: 2px;
+  flex: 1;
+  height: 100%;
+  display: block;
+}
+
+.threshold i.good {
+  background: var(--ds-green-700);
+}
+
+.threshold i.mid {
+  background: var(--ds-amber-700);
+}
+
+.threshold i.bad {
+  background: var(--ds-red-700);
+}
+`;

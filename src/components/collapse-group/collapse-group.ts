@@ -1,9 +1,10 @@
+import { collapseGroupStructureCss } from "../../generated/components/collapse-group/collapse-group-structure.styles";
 import { Store, type Subscription } from "@tanstack/lit-store";
-import { css, html } from "lit";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeCollapse } from "../collapse/collapse";
-import { collapseGroupCss } from "./collapse-group.styles";
+import { collapseGroupCss } from "../../generated/components/collapse-group/collapse-group.styles";
 
 /**
  * Collapse group. A stack of `acme-collapse` under one shared top border. One panel is open at
@@ -16,11 +17,7 @@ export class AcmeCollapseGroup extends AcmeElement {
   static styles = [
     sharedCss,
     collapseGroupCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    collapseGroupStructureCss,
   ];
   /** Lets several panels stay open at once. */
   @property({ type: Boolean }) multiple = false;

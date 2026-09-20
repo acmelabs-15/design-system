@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { folderStructureCss } from "../../generated/components/folder/folder-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
-import { folderCss } from "./folder.styles";
+import { folderCss } from "../../generated/components/folder/folder.styles";
 
 /** 24-box stroke glyphs: the closed folder and the open one, 16px. */
 const FOLDER_CLOSED = "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z";
@@ -24,11 +25,7 @@ export class AcmeFolder extends AcmeElement {
   static styles = [
     sharedCss,
     folderCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    folderStructureCss,
   ];
   /** The folder's name: its text and tooltip. */
   @property() name = "";

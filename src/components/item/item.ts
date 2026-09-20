@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { itemStructureCss } from "../../generated/components/item/item-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { badgeCss } from "../badge/badge.styles";
-import { buttonCss } from "../button/button.styles";
-import { itemCss } from "./item.styles";
+import { badgeCss } from "../../generated/components/badge/badge.styles";
+import { buttonCss } from "../../generated/components/button/button.styles";
+import { itemCss } from "../../generated/components/item/item.styles";
 
 /** House item row: avatar, title and meta, amount and badge, actions. */
 @customElement("acme-item")
@@ -13,11 +14,7 @@ export class AcmeItem extends AcmeElement {
     itemCss,
     badgeCss,
     buttonCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    itemStructureCss,
   ];
   @property() href = "";
   @property() amount = "";

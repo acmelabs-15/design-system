@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { noteStructureCss } from "../../generated/components/note/note-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { noteCss } from "./note.styles";
+import { noteCss } from "../../generated/components/note/note.styles";
 
 export type NoteVariant = "" | "success" | "error" | "warning" | "secondary" | "violet" | "cyan";
 
@@ -20,11 +21,7 @@ export class AcmeNote extends AcmeElement {
   static styles = [
     sharedCss,
     noteCss,
-    css`
-      :host {
-        width: 100%;
-      }
-    `,
+    noteStructureCss,
   ];
   /** Meaning: `error`, `warning`, `success`, `secondary`, `violet`, `cyan`; unset is the default info note. */
   @property() variant: NoteVariant = "";

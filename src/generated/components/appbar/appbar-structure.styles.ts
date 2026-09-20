@@ -1,0 +1,36 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const appbarStructureCss = css`:host {
+  z-index: 100;
+  display: block;
+  position: sticky;
+  top: 0;
+}
+
+.appbar {
+  position: static;
+}
+
+::slotted(a) {
+  border-radius: var(--r-sm);
+  height: 30px;
+  color: var(--text-2);
+  white-space: nowrap;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+  display: inline-flex;
+}
+
+::slotted(a:hover) {
+  color: var(--text);
+  background: var(--comp);
+}
+
+::slotted(a[aria-current="true"]) {
+  color: var(--text);
+  font-weight: 500;
+}
+`;

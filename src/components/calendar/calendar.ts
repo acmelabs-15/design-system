@@ -1,11 +1,12 @@
-import { css, html, nothing } from "lit";
+import { calendarStructureCss } from "../../generated/components/calendar/calendar-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyph, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { fieldCss } from "../../shared/field.styles";
-import { buttonCss } from "../button/button.styles";
-import { kbdCss } from "../kbd/kbd.styles";
-import { calendarCss } from "./calendar.styles";
+import { fieldCss } from "../../generated/shared/field.styles";
+import { buttonCss } from "../../generated/components/button/button.styles";
+import { kbdCss } from "../../generated/components/kbd/kbd.styles";
+import { calendarCss } from "../../generated/components/calendar/calendar.styles";
 
 /** A preset range: fixed `start`/`end` (Date or ISO), or relative to now with `days`, `weeks` or `months` back. */
 export type CalendarPreset = { text: string; start?: Date | string; end?: Date | string; days?: number; weeks?: number; months?: number };
@@ -54,28 +55,7 @@ export class AcmeCalendar extends AcmeElement {
     fieldCss,
     buttonCss,
     kbdCss,
-    css`
-      :host {
-        display: inline-block;
-        position: relative;
-      }
-      .calendar {
-        display: none;
-      }
-      :host([open]) .calendar {
-        display: flex;
-      }
-      :host([static]) .calendar {
-        display: flex;
-        position: static;
-      }
-      .field {
-        margin: 0;
-      }
-      .cal-trigger {
-        gap: 8px;
-      }
-    `,
+    calendarStructureCss,
   ];
   /** The start date (ISO `YYYY-MM-DD`). */
   @property() value = "";

@@ -3,8 +3,8 @@ import { customElement, property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { ToastItem, ToastQueue, ToastText } from "../../shared/state";
-import { buttonCss } from "../button/button.styles";
-import { toastCss } from "./toast.styles";
+import { buttonCss } from "../../generated/components/button/button.styles";
+import { toastCss } from "../../generated/components/toast/toast.styles";
 
 export type { ToastItem, ToastOptions, ToastQueue, ToastText, ToastType, ToastVisual } from "../../shared/state";
 

@@ -1,0 +1,11 @@
+/* The floating layer is a popover in the top layer: the browser's own box for one (centred,
+         bordered, padded, clipping, on a canvas) gives way to the flat viewport-filling layer the
+         card is placed in, in viewport coordinates. */
+      .layer {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        overflow: visible;
+        background: none;
+        color: inherit;
+      }

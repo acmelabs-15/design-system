@@ -1,7 +1,8 @@
-import { css, html, nothing } from "lit";
+import { kvStructureCss } from "../../generated/components/kv/kv-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { kvCss } from "./kv.styles";
+import { kvCss } from "../../generated/components/kv/kv.styles";
 
 /** House key-value row with a hairline. */
 @customElement("acme-kv")
@@ -9,11 +10,7 @@ export class AcmeKv extends AcmeElement {
   static styles = [
     sharedCss,
     kvCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    kvStructureCss,
   ];
   @property() when = "";
   @property({ type: Boolean }) soon = false;

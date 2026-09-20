@@ -1,0 +1,339 @@
+@media (prefers-color-scheme: dark) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field label, .flabel, .form-label {
+  color: var(--text-2);
+  text-transform: capitalize;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  display: block;
+}
+
+.form-label.plain {
+  text-transform: none;
+}
+
+.form-label.solo {
+  margin-bottom: 0;
+}
+
+.field input:not([type="checkbox"]):not([type="radio"]), .field select, .field textarea {
+  width: 100%;
+  height: var(--form);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  transition: var(--dur) var(--ease);
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.field.sm input, .field.sm select {
+  height: var(--form-sm);
+}
+
+.field select {
+  padding-right: 36px;
+}
+
+.field.lg input, .field.lg select {
+  height: var(--form-lg);
+  border-radius: var(--r);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.field textarea {
+  resize: vertical;
+  height: auto;
+  min-height: 100px;
+  padding: 10px 12px;
+  line-height: 20px;
+}
+
+.field textarea[rows] {
+  min-height: 0;
+}
+
+.field.lg textarea {
+  border-radius: var(--r);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.field input::placeholder, .field textarea::placeholder {
+  color: var(--ds-gray-700);
+}
+
+.field input:hover, .field select:hover, .field textarea:hover {
+  border-color: var(--border-hover);
+}
+
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--border-active);
+  box-shadow: var(--ds-shadow-border-small);
+  outline: none;
+}
+
+.field input[aria-invalid="true"], .field select[aria-invalid="true"], .field textarea[aria-invalid="true"] {
+  border-color: var(--warn-ink);
+}
+
+.field input[aria-invalid="true"]:focus, .field textarea[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px var(--warn-weak);
+}
+
+.field .msg {
+  color: var(--text-2);
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 20px;
+  display: block;
+}
+
+.field .msg.error {
+  color: var(--warn-ink);
+}
+
+.field.lg .msg {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.field input[disabled], .field select[disabled], .field textarea[disabled] {
+  color: var(--ds-gray-700);
+  cursor: not-allowed;
+  background: var(--comp);
+}
+
+.field input[readonly], .field textarea[readonly] {
+  background: var(--surface-2);
+  color: var(--text-2);
+}
+
+.field textarea[readonly] {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.field .affix {
+  align-items: stretch;
+  display: flex;
+}
+
+.field .affix > span {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--ds-gray-700);
+  white-space: nowrap;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 20px;
+  display: inline-flex;
+}
+
+.field .affix > span.plain {
+  background: var(--surface);
+}
+
+.field .affix > span.icon {
+  justify-content: center;
+  width: 38px;
+  padding: 0;
+}
+
+.field .affix > span .ic, .field .affix > span ::slotted(*) {
+  color: var(--text-2);
+}
+
+.field .affix > span:first-child {
+  border-right: 0;
+}
+
+.field .affix > span:last-child {
+  border-left: 0;
+}
+
+.field .affix > input {
+  border-radius: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.field .affix > .inset {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  position: relative;
+}
+
+.field .affix > .inset > input {
+  border-radius: 0;
+  width: 100%;
+}
+
+.field .affix > .inset > input.pad-r {
+  padding-right: 38px;
+}
+
+.field .affix > .inset > input.pad-l {
+  padding-left: 38px;
+}
+
+.field .affix > .inset > .in-ic {
+  color: var(--text-2);
+  pointer-events: none;
+  display: inline-flex;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
+
+.field .affix > .inset > .in-ic.start {
+  left: 12px;
+  right: auto;
+}
+
+.field .affix > :first-child, .field .affix > .inset:first-child > input {
+  border-top-left-radius: var(--r-sm);
+  border-bottom-left-radius: var(--r-sm);
+}
+
+.field .affix > :last-child, .field .affix > .inset:last-child > input {
+  border-top-right-radius: var(--r-sm);
+  border-bottom-right-radius: var(--r-sm);
+}
+
+.field .affix.rounded > :first-child, .field .affix.rounded > .inset:first-child > input {
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+}
+
+.field .affix.rounded > :last-child, .field .affix.rounded > .inset:last-child > input {
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+}
+
+.field.lg .affix > :first-child, .field.lg .affix > .inset:first-child > input {
+  border-top-left-radius: var(--r);
+  border-bottom-left-radius: var(--r);
+}
+
+.field.lg .affix > :last-child, .field.lg .affix > .inset:last-child > input {
+  border-top-right-radius: var(--r);
+  border-bottom-right-radius: var(--r);
+}
+
+.grid2 {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  display: grid;
+}
+
+.kbd.sm, .search .kbd, .menu .kbd, .side-find .kbd, .field .kbd {
+  min-width: 20px;
+  height: 20px;
+  color: var(--text-2);
+  padding: 0 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+@media (width <= 600px) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+.fieldset {
+  background: var(--surface);
+  border-radius: var(--r-sm);
+  box-shadow: var(--ds-shadow-border);
+  min-width: 0;
+  position: relative;
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 767px) {
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}
+
+@media (width <= 900px) {
+
+}
+
+@media (width <= 760px) {
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width <= 560px) {
+
+}
+
+@media (pointer: coarse) {
+  .field input:not([type="checkbox"]):not([type="radio"]), .field select {
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+}

@@ -2,8 +2,8 @@ import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
-import { bannerCss } from "./banner.styles";
-import { bannerMobileCss } from "./banner-mobile.styles";
+import { bannerCss } from "../../generated/components/banner/banner.styles";
+import { bannerMobileCss } from "../../generated/components/banner/banner-mobile.styles";
 import "../button/button";
 import { atomState } from "../../shared/atom-state";
 

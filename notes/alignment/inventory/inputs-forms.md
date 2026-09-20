@@ -1,6 +1,6 @@
 # Inputs and form composition — R06
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved family contract.** Use [native forms and event conventions](foundations.md#forms-and-focus). TanStack Store owns component state; optional TanStack Form binds that same state. Sources: [forms/Field decisions](../../decisions/native-and-managed-forms.md), [native behavior ports](../../decisions/zag-behaviour-ports.md), current declarations and [practice review](../../analysis/lit-practice-review.md). No Zag runtime or custom Zag adapter is adopted.
 

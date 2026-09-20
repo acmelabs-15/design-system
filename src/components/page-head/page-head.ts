@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { pageHeadStructureCss } from "../../generated/components/page-head/page-head-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, glyph, sharedCss } from "../../base";
-import { buttonCss } from "../button/button.styles";
-import { pageHeadCss } from "./page-head.styles";
+import { buttonCss } from "../../generated/components/button/button.styles";
+import { pageHeadCss } from "../../generated/components/page-head/page-head.styles";
 
 /** Vercel page head: title, meta line and actions. */
 @customElement("acme-page-head")
@@ -11,11 +12,7 @@ export class AcmePageHead extends AcmeElement {
     sharedCss,
     pageHeadCss,
     buttonCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    pageHeadStructureCss,
   ];
   @property() heading = "";
   @property() back = "";

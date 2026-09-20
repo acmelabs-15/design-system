@@ -62,16 +62,19 @@ Several **generated files are committed**, in places that read as source. The sc
 
 | Path | Written by | Source of truth |
 |---|---|---|
-| `tokens.css` (repo root) | `bun run split` → `scripts/split-css.ts` | `styles/house.css` and `src/generated/theme.css` |
-| `dashboard.css` (repo root) | `bun run build` → `scripts/build.ts` | `scripts/build.ts` |
-| `src/components/<name>/<name>.styles.ts` | `bun run split` / `bun tools/geist/gen.ts <name>` | `tools/geist/maps/<name>.ts` and the spec |
-| `docs/` (entire directory) | `bun run docs` → `docs-src/build.ts` | `docs-src/` |
-| `dist/` (gitignored) | `bun run build` | `src/` |
+| `src/generated/css/` | style producers | `styles/`, mappings and committed specs |
+| `src/generated/components/` and `src/generated/shared/` | `scripts/styles.ts` | compiled CSS under `src/generated/css/` |
+| `src/generated/style-manifest.json` | style producers | input/output fingerprints and registration definitions |
+| `dist/styles/` | `bun run build` | compiled document/token/recipe CSS and maps |
+| `_site/` | `bun run docs` → `site/build.ts` | `site/` and `dist/` |
+| `dist/` (gitignored) | `bun run build` | `src/` and verified generated inputs |
 
-Hand-written: `styles/house.css`, `src/` except `*.styles.ts`, `docs-src/`, `scripts/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
+The tracked `docs/` tree is the published snapshot while Pages still serves main/docs. Its removal and the workflow deployment switch remain assigned to the publishing migration; it is not the local build output.
+
+Hand-written: `styles/`, `src/` except `src/generated/`, `site/`, `scripts/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`; the link follows.
 
 Build order: `bun run split && bun run build && bun run docs && bun test`. `docs` needs `dist/` from `build`.
 
-Phase 1.7 of the pass reviews this layout; until it lands, the table above is the map.
+The table records the implemented M01/M02 layout. Mapped-source changes use `bun tools/geist/gen.ts <name>`; `split` regenerates house and authored styles. Build rejects stale generated inputs.

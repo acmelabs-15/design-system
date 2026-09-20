@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { pillCss } from "./pill.styles";
+import { pillCss } from "../../generated/components/pill/pill.styles";
 
 /** Geist Pill: the badge shape as a link, white with an inset ring, sm 20 · md 24 · lg 32; a logo may lead in the `icon` slot. */
 @customElement("acme-pill")

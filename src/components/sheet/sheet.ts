@@ -1,13 +1,14 @@
+import { sheetStructureCss } from "../../generated/components/sheet/sheet-structure.styles";
 import { preventBodyScroll } from "@zag-js/remove-scroll";
-import { css, html, nothing } from "lit";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { dialogResetCss } from "../../shared/dialog";
+import { dialogResetCss } from "../../generated/shared/dialog-reset.styles";
 import { Interaction } from "../../shared/interaction";
 import { deepActive, tabbables } from "../modal/modal";
-import { sheetCss } from "./sheet.styles";
-import { sheetOverlayCss } from "./sheet-overlay.styles";
+import { sheetCss } from "../../generated/components/sheet/sheet.styles";
+import { sheetOverlayCss } from "../../generated/components/sheet/sheet-overlay.styles";
 
 export type SheetSide = "top" | "right" | "bottom" | "left";
 /** Why the sheet asks to close: the Escape key or a press outside the panel. */
@@ -32,12 +33,7 @@ export class AcmeSheet extends AcmeElement {
   static styles = [
     sharedCss,
     dialogResetCss,
-    css`
-      /* A sheet without an overlay draws no backdrop. */
-      dialog:where(.bare)::backdrop {
-        display: none;
-      }
-    `,
+    sheetStructureCss,
     sheetOverlayCss,
     sheetCss,
   ];

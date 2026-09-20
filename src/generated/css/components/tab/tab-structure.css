@@ -1,0 +1,8 @@
+:host {
+  display: inline-flex;
+}
+
+.icon ::slotted(svg) {
+  vertical-align: middle;
+  display: block;
+}

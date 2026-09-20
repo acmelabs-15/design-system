@@ -1,0 +1,14 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const radioGroupCss = css`.radio-group :where(.sr) {
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border-width: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+`;

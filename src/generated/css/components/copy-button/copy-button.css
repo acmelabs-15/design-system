@@ -1,0 +1,24 @@
+.stack :where(.check), .stack :where(.copy) {
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-duration: .2s;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  position: absolute;
+}
+
+.stack {
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+}
+
+.stack:where(:not(.copied)) :where(.check), .stack:where(.copied) :where(.copy) {
+  opacity: 0;
+  scale: .5;
+}
+
+.stack:where(.copied) :where(.check), .stack:where(:not(.copied)) :where(.copy) {
+  opacity: 1;
+  scale: 1;
+}

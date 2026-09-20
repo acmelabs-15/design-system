@@ -1,8 +1,9 @@
-import { css, html, nothing } from "lit";
+import { breadcrumbStructureCss } from "../../generated/components/breadcrumb/breadcrumb-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { breadcrumbCss } from "./breadcrumb.styles";
+import { breadcrumbCss } from "../../generated/components/breadcrumb/breadcrumb.styles";
 import "../tooltip/tooltip";
 import { atomState } from "../../shared/atom-state";
 
@@ -22,11 +23,7 @@ export class AcmeBreadcrumb extends AcmeElement {
   static styles = [
     sharedCss,
     breadcrumbCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-    `,
+    breadcrumbStructureCss,
   ];
   /** The current page. */
   @property({ type: Boolean, reflect: true }) active = false;

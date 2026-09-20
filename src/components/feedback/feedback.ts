@@ -1,11 +1,12 @@
+import { feedbackStructureCss } from "../../generated/components/feedback/feedback-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
-import { css, html, nothing, svg } from "lit";
+import { html, nothing, svg } from "lit";
 import { customElement, property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
 import { reduced } from "../../shared/overlay";
-import { feedbackCss } from "./feedback.styles";
+import { feedbackCss } from "../../generated/components/feedback/feedback.styles";
 import "../button/button";
 import "../input/input";
 import "../select/select";
@@ -92,15 +93,7 @@ export class AcmeFeedback extends AcmeElement {
   static styles = [
     sharedCss,
     feedbackCss,
-    css`
-      :host {
-        display: inline-flex;
-        position: relative;
-      }
-      :host([variant="inline"]) {
-        display: block;
-      }
-    `,
+    feedbackStructureCss,
   ];
   /** The source the submission names. */
   @property() label = "";

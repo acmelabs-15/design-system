@@ -1,0 +1,54 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const trendCss = css`.trend {
+  font-family: var(--mono);
+  font-size: var(--t-xs);
+  color: var(--text-2);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  align-items: center;
+  gap: 3px;
+  font-weight: 500;
+  line-height: 16px;
+  display: inline-flex;
+}
+
+.trend .ic {
+  width: 12px;
+  height: 12px;
+}
+
+.trend.up {
+  color: var(--success-ink);
+}
+
+.trend.down {
+  color: var(--warn-ink);
+}
+
+.trend.pill {
+  background: var(--comp);
+  border-radius: 999px;
+  height: 22px;
+  padding: 0 8px;
+}
+
+.trend.pill.up {
+  background: var(--success-weak);
+}
+
+.trend.pill.down {
+  background: var(--warn-weak);
+}
+
+.trend.lg {
+  font-size: var(--t-sm);
+}
+
+.trend-note {
+  font-size: var(--t-xs);
+  color: var(--text-2);
+  line-height: 16px;
+  font-family: var(--sans);
+}
+`;

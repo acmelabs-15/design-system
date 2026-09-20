@@ -1,0 +1,44 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const usageSumCss = css`.usage-sum {
+  background: var(--surface-2);
+  border-radius: var(--r-sm);
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  display: flex;
+}
+
+.usage-sum .row2 {
+  color: var(--text-2);
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+}
+
+.usage-sum .row2 b {
+  color: var(--text);
+  font-weight: 500;
+  display: block;
+}
+
+.usage-sum .row2 .right {
+  text-align: right;
+}
+
+.usage-sum .bar {
+  background: var(--track);
+  border-radius: 6px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.usage-sum .bar i {
+  background: var(--ds-blue-700);
+  border-radius: 999px;
+  height: 100%;
+  display: block;
+}
+`;

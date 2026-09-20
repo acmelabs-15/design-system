@@ -1,0 +1,97 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const barRowCss = css`.bar-row {
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0;
+  display: flex;
+}
+
+.bar-row .head {
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+}
+
+.bar-row .head .label {
+  color: var(--text);
+  min-width: 0;
+}
+
+.bar-row .head .value {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.bar-row .head .value small {
+  color: var(--text-2);
+  font-weight: 400;
+  font-size: inherit;
+  margin-right: 6px;
+}
+
+.bar-row .track {
+  background: var(--track);
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.bar-row .fill {
+  background: var(--accent);
+  height: 100%;
+  transition: width .3s var(--ease);
+  border-radius: 999px;
+  display: block;
+}
+
+.bar-row .result {
+  font-size: var(--t-sm);
+  color: var(--text-2);
+  justify-content: space-between;
+  gap: 8px;
+  line-height: 16px;
+  display: flex;
+}
+
+.bar-row .result .good {
+  color: var(--success-ink);
+}
+
+.bar-row .result .bad {
+  color: var(--warn-ink);
+}
+
+.bar-row.sm {
+  gap: 4px;
+  padding: 6px 0;
+}
+
+.bar-row.sm .head {
+  font-size: var(--t-sm);
+  line-height: 18px;
+}
+
+.bar-row.sm .track {
+  height: 4px;
+}
+
+.bar-rows {
+  flex-direction: column;
+  display: flex;
+}
+
+.bar-rows.lined .bar-row {
+  border-bottom: 1px solid var(--hair);
+}
+
+.bar-rows.lined .bar-row:last-child {
+  border-bottom: 0;
+}
+`;

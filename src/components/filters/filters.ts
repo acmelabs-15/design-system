@@ -1,18 +1,15 @@
-import { css, html } from "lit";
+import { filtersStructureCss } from "../../generated/components/filters/filters-structure.styles";
+import { html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { filterCss } from "../filter/filter.styles";
+import { filterCss } from "../../generated/components/filter/filter.styles";
 
 @customElement("acme-filters")
 export class AcmeFilters extends AcmeElement {
   static styles = [
     sharedCss,
     filterCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    filtersStructureCss,
   ];
   render() {
     return html`<div class="filters-row"><slot></slot></div>`;

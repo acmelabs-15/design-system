@@ -1,8 +1,9 @@
-import { css, html } from "lit";
+import { switchStructureCss } from "../../generated/components/switch/switch-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeSwitchControl } from "../switch-control/switch-control";
-import { switchCss } from "./switch.styles";
+import { switchCss } from "../../generated/components/switch/switch.styles";
 import "../switch-control/switch-control";
 
 export type SwitchSize = "small" | "medium" | "large";
@@ -20,13 +21,7 @@ export class AcmeSwitch extends AcmeElement {
   static styles = [
     sharedCss,
     switchCss,
-    css`
-      /* A flex column: the group is its flex item, so it fills the host width and takes the flex-item minimum size. */
-      :host {
-        display: flex;
-        flex-direction: column;
-      }
-    `,
+    switchStructureCss,
   ];
   /** The checked control's value. */
   @property() value = "";

@@ -1,10 +1,11 @@
-import { css, html, nothing } from "lit";
+import { textCopyStructureCss } from "../../generated/components/text-copy/text-copy-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { html as staticHtml, unsafeStatic } from "lit/static-html.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { toasts } from "../../shared/state";
-import { textCopyCss } from "./text-copy.styles";
+import { textCopyCss } from "../../generated/components/text-copy/text-copy.styles";
 import "../tooltip/tooltip";
 import { atomState } from "../../shared/atom-state";
 
@@ -24,14 +25,7 @@ export class AcmeTextCopy extends AcmeElement {
   static styles = [
     sharedCss,
     textCopyCss,
-    css`
-      :host {
-        display: block;
-      }
-      acme-tooltip {
-        display: block;
-      }
-    `,
+    textCopyStructureCss,
   ];
   /** The string that goes to the clipboard; without it the element renders nothing. */
   @property({ attribute: "text-to-copy" }) textToCopy = "";

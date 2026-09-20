@@ -1,0 +1,4 @@
+/* A sheet without an overlay draws no backdrop. */
+      dialog:where(.bare)::backdrop {
+        display: none;
+      }

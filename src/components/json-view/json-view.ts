@@ -1,7 +1,8 @@
-import { css, html, nothing, type TemplateResult } from "lit";
+import { jsonViewStructureCss } from "../../generated/components/json-view/json-view-structure.styles";
+import { html, nothing, type TemplateResult } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
-import { jsonViewCss } from "./json-view.styles";
+import { jsonViewCss } from "../../generated/components/json-view/json-view.styles";
 
 type Entry = readonly [string, unknown];
 const isObject = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
@@ -47,11 +48,7 @@ export class AcmeJsonView extends AcmeElement {
   static styles = [
     sharedCss,
     jsonViewCss,
-    css`
-      :host {
-        display: inline;
-      }
-    `,
+    jsonViewStructureCss,
   ];
   /** The object or array to render; JSON in the attribute. */
   @property({ type: Object }) data: unknown = {};

@@ -9,7 +9,7 @@ import "../note/note";
 import "../error/error";
 import type { AcmeInput } from "../input/input";
 import type { ModalDismissReason } from "../modal/modal";
-import { destructiveModalCss } from "./destructive-modal.styles";
+import { destructiveModalCss } from "../../generated/components/destructive-modal/destructive-modal.styles";
 
 /** Why the modal cancelled: the Cancel button, the Escape key or a press outside the panel. */
 export type DestructiveCancelReason = "cancel" | ModalDismissReason;

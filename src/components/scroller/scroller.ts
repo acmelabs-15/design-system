@@ -1,10 +1,11 @@
+import { scrollerStructureCss } from "../../generated/components/scroller/scroller-structure.styles";
 import { Debouncer } from "@tanstack/pacer";
-import { css, html, nothing, type PropertyValues } from "lit";
+import { html, nothing, type PropertyValues } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
-import { scrollerCss } from "./scroller.styles";
-import { scrollerButtonsCss } from "./scroller-buttons.styles";
+import { scrollerCss } from "../../generated/components/scroller/scroller.styles";
+import { scrollerButtonsCss } from "../../generated/components/scroller/scroller-buttons.styles";
 import "../button/button";
 import { atomState } from "../../shared/atom-state";
 
@@ -37,17 +38,7 @@ export class AcmeScroller extends AcmeElement {
     sharedCss,
     scrollerCss,
     scrollerButtonsCss,
-    css`
-      :host {
-        display: block;
-      }
-      /* The buttons sit beside the viewport in a column that takes the parent's gap between them. */
-      :host([with-buttons]) {
-        display: flex;
-        flex-direction: column;
-        gap: inherit;
-      }
-    `,
+    scrollerStructureCss,
   ];
   /** The viewport's width: a number in px, or any CSS length. */
   @property() width = "100%";

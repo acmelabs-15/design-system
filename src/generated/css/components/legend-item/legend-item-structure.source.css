@@ -1,0 +1,16 @@
+:host {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+      }
+      .value {
+        margin-left: auto;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        flex: none;
+        background: currentColor;
+      }

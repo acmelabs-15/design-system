@@ -1,6 +1,6 @@
 # Messages, progress and statistics — R09
 
-**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation awaits the Phase 5 migration plan. [Approval](../../decisions/inventory-approval.md).
+**Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
 **Approved family contract.** Preserve the glossary's Toast/Alert/Banner contexts and the [selected component dispositions](../../decisions/message-context-and-errors.md). Use shared primitives, events, state, theme and motion. Existing declarations are in [the AST snapshot](../evidence/current-public-interfaces-2026-09-20.json).
 

@@ -26,20 +26,20 @@ async function waitFor<T>(read: () => Promise<T>, accepts: (value: T) => boolean
 
 async function fixture() {
   const root = await mkdtemp(path.join(tmpdir(), "acme-dev-watch-"));
-  for (const dir of ["scripts", "styles", "src/generated", "docs-src", "docs", "dist"]) {
+  for (const dir of ["scripts", "styles", "src/generated", "site", "_site", "dist"]) {
     await mkdir(path.join(root, dir), { recursive: true });
   }
   const source = process.env.ACME_DEV_TEST_SOURCE ? await Bun.file(process.env.ACME_DEV_TEST_SOURCE).text() : await Bun.file(path.join(import.meta.dir, "../dev.ts")).text();
   await Bun.write(path.join(root, "scripts/dev.ts"), `${source.replace("Bun.serve({", "const server = Bun.serve({").replace("port: 4180", "port: 0")}\nconsole.log("TEST_PORT=" + server.port);\n`);
   await Bun.write(path.join(root, "styles/house.css"), "initial");
-  await Bun.write(path.join(root, "docs/index.html"), "initial");
+  await Bun.write(path.join(root, "_site/index.html"), "initial");
   await Bun.write(path.join(root, "runs.txt"), "0");
   await Bun.write(
     path.join(root, "scripts/split-css.ts"),
     'const css = await Bun.file("styles/house.css").text(); if(css==="FAIL"){await Bun.write("failure.txt","rejected");process.exit(1);} await Bun.write("src/generated/theme.css",css); await Bun.write("src/probe.styles.ts",css); await Bun.write("runs.txt",String(Number(await Bun.file("runs.txt").text())+1));',
   );
   await Bun.write(path.join(root, "scripts/build.ts"), 'await Bun.write("dist/page.html",await Bun.file("src/generated/theme.css").text());');
-  await Bun.write(path.join(root, "docs-src/build.ts"), 'await Bun.write("docs/index.html",await Bun.file("dist/page.html").text());');
+  await Bun.write(path.join(root, "site/build.ts"), 'await Bun.write("_site/index.html",await Bun.file("dist/page.html").text());');
   const child = Bun.spawn([process.execPath, "scripts/dev.ts", "--no-build"], {
     cwd: root,
     stdout: "pipe",

@@ -1,22 +1,15 @@
-import { css, html } from "lit";
+import { statFootStructureCss } from "../../generated/components/stat-foot/stat-foot-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { statCss } from "../stat/stat.styles";
+import { statCss } from "../../generated/components/stat/stat.styles";
 
 @customElement("acme-stat-foot")
 export class AcmeStatFoot extends AcmeElement {
   static styles = [
     sharedCss,
     statCss,
-    css`
-      :host {
-        display: block;
-        margin-top: auto;
-      }
-      dd {
-        margin: 0;
-      }
-    `,
+    statFootStructureCss,
   ];
   @property({ type: Boolean }) bar = false;
   render() {

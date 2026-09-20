@@ -1,8 +1,9 @@
-import { css, html } from "lit";
+import { tabStructureCss } from "../../generated/components/tab/tab-structure.styles";
+import { html } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { tabCss } from "./tab.styles";
+import { tabCss } from "../../generated/components/tab/tab.styles";
 import "../tooltip/tooltip";
 import { atomState } from "../../shared/atom-state";
 
@@ -17,16 +18,7 @@ export class AcmeTab extends AcmeElement {
   static styles = [
     sharedCss,
     tabCss,
-    css`
-      :host {
-        display: inline-flex;
-      }
-      /* The shadow reset's svg rule, for the slotted icon (the reference's page reset blocks every svg). */
-      .icon ::slotted(svg) {
-        display: block;
-        vertical-align: middle;
-      }
-    `,
+    tabStructureCss,
   ];
   @property() value = "";
   @property({ type: Boolean, reflect: true }) selected = false;

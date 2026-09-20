@@ -1,9 +1,10 @@
-import { css, html, nothing, svg } from "lit";
+import { comboboxOptionStructureCss } from "../../generated/components/combobox-option/combobox-option-structure.styles";
+import { html, nothing, svg } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { atomState } from "../../shared/atom-state";
-import { comboboxOptionCss } from "./combobox-option.styles";
+import { comboboxOptionCss } from "../../generated/components/combobox-option/combobox-option.styles";
 
 export type ComboboxOptionSize = "small" | "medium" | "large";
 
@@ -30,11 +31,7 @@ export class AcmeComboboxOption extends AcmeElement {
   static styles = [
     sharedCss,
     comboboxOptionCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    comboboxOptionStructureCss,
   ];
   @property() value = "";
   /** The text the filter reads and the field shows once chosen; unset, the row's text, or its value when the content is not plain text. */

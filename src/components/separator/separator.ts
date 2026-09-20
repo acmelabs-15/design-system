@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { separatorStructureCss } from "../../generated/components/separator/separator-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { separatorCss } from "./separator.styles";
+import { separatorCss } from "../../generated/components/separator/separator.styles";
 
 /**
  * Separator: a 1px gray-200 line. Horizontal fills the width; vertical fills the height of the
@@ -13,16 +14,7 @@ export class AcmeSeparator extends AcmeElement {
   static styles = [
     sharedCss,
     separatorCss,
-    css`
-      :host {
-        display: block;
-      }
-      :host([orientation="vertical"]) {
-        display: inline-block;
-        height: 100%;
-        vertical-align: top;
-      }
-    `,
+    separatorStructureCss,
   ];
   /** horizontal · vertical. */
   @property() orientation: "horizontal" | "vertical" = "horizontal";

@@ -1,9 +1,10 @@
-import { css, html, nothing } from "lit";
+import { toasterStructureCss } from "../../generated/components/toaster/toaster-structure.styles";
+import { html, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { type ToastQueue, toasts } from "../../shared/state";
-import { toasterCss } from "./toaster.styles";
+import { toasterCss } from "../../generated/components/toaster/toaster.styles";
 import "../toast/toast";
 import { atomState } from "../../shared/atom-state";
 
@@ -24,20 +25,7 @@ export { createToastQueue, toasts } from "../../shared/state";
 export class AcmeToaster extends AcmeElement {
   static styles = [
     sharedCss,
-    css`
-      /* The area is a manual popover in the top layer, so it overlays every dialog: the browser's own box for one (inset, centred, bordered, padded, clipping, on a canvas fill) gives way to a bare box the area's own rules place. */
-      .area {
-        inset: auto;
-        margin: 0;
-        border: 0;
-        padding: 0;
-        width: auto;
-        height: auto;
-        overflow: visible;
-        background: transparent;
-        color: inherit;
-      }
-    `,
+    toasterStructureCss,
     toasterCss,
   ];
   /** The queue this viewport shows: the shared `toasts` unless set. */

@@ -1,7 +1,8 @@
-import { css, html, LitElement, nothing } from "lit";
+import { gridSystemStructureCss } from "../../generated/components/grid-system/grid-system-structure.styles";
+import { html, LitElement, nothing } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { gridSystemCss } from "./grid-system.styles";
+import { gridSystemCss } from "../../generated/components/grid-system/grid-system.styles";
 
 /** A number (or a bare number in an attribute) is px; any other length stays as written. */
 const px = (v: number | string | undefined) => (typeof v === "number" || (typeof v === "string" && /^\d+(\.\d+)?$/.test(v.trim())) ? `${v}px` : v);
@@ -19,11 +20,7 @@ export class AcmeGridSystem extends AcmeElement {
   static styles = [
     sharedCss,
     gridSystemCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    gridSystemStructureCss,
   ];
   static shadowRootOptions = { ...LitElement.shadowRootOptions, slotAssignment: "manual" as const };
   /** The guide line width: a number of px or a length. */

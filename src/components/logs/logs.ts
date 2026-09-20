@@ -1,7 +1,8 @@
-import { css, html } from "lit";
+import { logsStructureCss } from "../../generated/components/logs/logs-structure.styles";
+import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { logsCss } from "./logs.styles";
+import { logsCss } from "../../generated/components/logs/logs.styles";
 
 /** Vercel logs: striped 30px mono rows. Pass `rows` of {time, method, status, host, path}. */
 @customElement("acme-logs")
@@ -9,11 +10,7 @@ export class AcmeLogs extends AcmeElement {
   static styles = [
     sharedCss,
     logsCss,
-    css`
-      :host {
-        display: block;
-      }
-    `,
+    logsStructureCss,
   ];
   @property({ type: Array }) rows: { time: string; method: string; status: number; host: string; path: string }[] = [];
   render() {

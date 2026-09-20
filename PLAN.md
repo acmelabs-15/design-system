@@ -416,7 +416,7 @@ The proof is measurement, not opinion. The tooling lives in `tools/geist/`, and
    a sketch and added with `extract.ts synth`.
 2. **Map** — write `maps/<name>.ts`: our root selector, each prop value to one modifier class,
    the children, the slotted tags.
-3. **Generate** — `bun tools/geist/gen.ts <name>` writes `src/components/<name>/<name>.styles.ts`.
+3. **Generate** — `bun tools/geist/gen.ts <name>` writes `src/generated/components/<name>/<name>.styles.ts` and its compiled CSS/maps.
    Read the report until only known reference inconsistencies remain.
 4. **Template** — rebuild the element's DOM to match the reference, with our class names and our
    package stack. Comments never name the reference.
