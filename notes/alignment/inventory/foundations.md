@@ -2,7 +2,7 @@
 
 **Approved 2026-09-20 by Peter as part of the full proposal set.** The stated recommendations are selected. Technical verification remains required; implementation follows the approved migration plan. [Approval](../../decisions/inventory-approval.md).
 
-**Approved Phase 4 design. Not yet approved for implementation.** This file owns the proposed cross-family contract. The selected responsive/style rules and detailed layout property table remain in [the core inventory](../inventory.md#c-resp-shared-responsive-convention); this file does not reopen them. [The closed decision register](../proposal-questions.md) records the selected recommendations separately from engineering verification.
+**Approved design and migration scope; implementation is active.** This file owns the cross-family contract. The selected responsive/style rules and detailed layout property table remain in [the core inventory](../inventory.md#c-resp-shared-responsive-convention); this file does not reopen them. [The closed decision register](../proposal-questions.md) records the selected recommendations separately from engineering verification.
 
 ## Contract used by every entry
 
@@ -52,7 +52,7 @@ Proposed uniform event settings: bubbles=true, composed=true. Ordinary notificat
 
 Programmatic assignments update canonical/native state without pretending to be a user input/commit. Store subscriptions remain the programmatic observation path. Reset/restoration synchronize without synthetic user changes. A composite stops internal coordination from becoming duplicate public notifications. Controlled application-owned components (Pagination, Table data processing, action confirmation) emit requests and render supplied state; they do not run the application's work.
 
-These payload/timing proposals implement the selected meaning-based event direction; they still require full convention review. They do not rename native platform events or treat a changed Lit property map as an emitted DOM event. Test user, programmatic, reset and reconnect paths separately.
+These approved payload/timing rules implement the selected meaning-based event direction. They do not rename native platform events or treat a changed Lit property map as an emitted DOM event. Test user, programmatic, reset and reconnect paths separately during each family migration.
 
 ## Forms and focus
 
@@ -97,11 +97,11 @@ Propose ripple?: boolean on action/selection controls, resolving absent to false
 
 Every proposal requires meaningful native/HTML/Lit/React behavior checks, accessibility and all three engines. Visual references and house deviations are identified per entry. Reuse the reviewed Pro corpus alongside assigned reference systems. No source change, dependency installation, generated output or new SKILL.md is part of this proposal assembly.
 
-The existing pre-Phase-5 generated-CSS gate remains: representative compilation, scope, registrations, source maps, escaping, determinism, invalid-input failures, selective delivery and rendered results. Current partial probes do not close that gate. Browser work for actual components remains Phase 6 after an approved migration.
+The pre-implementation generated-CSS gate was completed in M00, and M01–M03 implemented the compiler, paths and package delivery. Those checks do not replace full browser acceptance for each component in Phase 6. See the [current implementation handoff](../README.md#where-we-are).
 
 ## Convention audit and before/after examples
 
-These measurements come from the fresh 150-class AST snapshot; they are direct declarations/literal occurrences, not inherited/runtime API coverage. They justify preserving established patterns and identify actual normalization work.
+These measurements come from the 2026-09-20 pre-migration 150-class AST snapshot; they are direct declarations/literal occurrences, not inherited/runtime API coverage. They justify preserving established patterns and identify actual normalization work.
 
 | Convention | Before → proposed after | Current measured adoption |
 | --- | --- | --- |
@@ -111,7 +111,7 @@ These measurements come from the fresh 150-class AST snapshot; they are direct d
 | Text regions | Chart head → header; Stat desc/foot → description/footer | Eight of 124 literal named-slot occurrences use head/foot/desc/title; native title keeps its own platform meaning |
 | Inside affixes | start-icon → start where it is inside leading content | 22/124 named-slot occurrences are already start/end; other slot purposes are not automatically violations |
 | Public event prefix/meaning | acme-toggle/acme-expand → acme-expanded-change; slider live acme-change → acme-input | 68 captured public event literal occurrences already have acme-; 25 distinct captured names still need meaning/timing/payload normalization |
-| Exports/types | ad-hoc imports → explicit class/definition entries and separate typed React package | New complete export contract is not implemented; package-consumer checks remain required |
+| Exports/types | ad-hoc imports → explicit class/definition entries and separate typed React package | Core entries and packed-consumer checks completed in M03; React wrappers remain M22 |
 | CSS hooks | private selector access → documented parts/tokens/native-content hooks | Existing metadata extraction does not establish full public hook coverage; CEM/runtime comparison is the required completion check |
 
 Keep palette/reference token values distinct from semantic component roles. Generate a documented token manifest that maps each public theme key to one CSS custom property and source role; no duplicate alias names are introduced. Existing palette variables are not renamed solely for novelty. New shared numeric spacing/size variables must reflect the selected categories and full scale, with migration mappings recorded in Phase 5. Exact emitted variable names are an engineering naming table to verify against generated output, not another preference interview.

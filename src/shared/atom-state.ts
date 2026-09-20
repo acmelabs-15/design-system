@@ -9,8 +9,8 @@
 //     toggle() { this.open = !this.open; }         // writes the atom, re-renders the element
 //   }
 //
-// One atom per instance, created on first access, the way TanStack Form creates a store per form and
-// per field. The shared connection hook schedules TanStack's subscription update when the host connects.
+// Each instance creates its field atoms before the first update. The shared connection hook
+// schedules TanStack's subscription update when the host connects.
 //
 // Derived state stays explicit. A value computed from two fields is a derived store, because that is
 // the thing a plain field cannot express and the reason the rule is worth following:
@@ -32,12 +32,56 @@
 // Pass `shallow` from the store package for a field holding an object the element rebuilds.
 
 import { type Atom, createAtom, TanStackStoreAtom } from "@tanstack/lit-store";
-import type { ReactiveControllerHost, ReactiveElement } from "lit";
+import type { ReactiveElement } from "lit";
 import { connectStore } from "./store-connection";
 
-type Host = ReactiveControllerHost & object;
+type Host = ReactiveElement;
 /** The atoms of one host, keyed by field name, so several fields on one element stay independent. */
-const atoms = new WeakMap<Host, Map<PropertyKey, TanStackStoreAtom<unknown>>>();
+const atoms = new WeakMap<Host, Map<PropertyKey, NamedAtom<unknown>>>();
+
+/** Records public property changes even when an application writes the atom directly. */
+class NamedAtom<T> extends TanStackStoreAtom<T> {
+  private previous: T;
+
+  constructor(
+    private host: Host,
+    private name: PropertyKey,
+    private store: Atom<T>,
+  ) {
+    super(host, () => store);
+    this.previous = store.get();
+    const sync = (value: T) => {
+      const old = this.previous;
+      this.previous = value;
+      if (!Object.is(old, value)) this.notify(old);
+    };
+    let subscription: { unsubscribe(): void } | undefined;
+    host.addController({
+      hostConnected: () => {
+        sync(store.get());
+        subscription = store.subscribe(sync);
+      },
+      hostDisconnected: () => {
+        subscription?.unsubscribe();
+        subscription = undefined;
+      },
+    });
+    connectStore(host);
+  }
+
+  override set(value: T | ((previous: T) => T)): void {
+    // An external write inside a batch may not have notified Lit yet.
+    const old = this.previous;
+    if (typeof value === "function") super.set(value as (previous: T) => T);
+    else super.set(value);
+    this.previous = this.store.get();
+    this.notify(old);
+  }
+
+  private notify(old: T): void {
+    this.host.requestUpdate(this.name, old);
+  }
+}
 
 /**
  * A reactive field backed by an atom. Reads and writes look like a plain field; the element
@@ -54,6 +98,9 @@ const atoms = new WeakMap<Host, Map<PropertyKey, TanStackStoreAtom<unknown>>>();
  * `compare` sets the equality the atom uses to decide whether anything changed. It defaults to
  * identity, so an object mutated in place does not re-render; pass `shallow` from the store package
  * for a field that holds an object it rebuilds.
+ *
+ * A public property keeps Lit's metadata: put `@property({noAccessor:true, ...})` below
+ * `@atomState()` so Lit registers its metadata before this decorator installs the accessor.
  */
 export function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T) => boolean }) {
   return (proto: object, name: PropertyKey) => {
@@ -62,7 +109,8 @@ export function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T
     // controller after `hostUpdate` has already run for that cycle, so the controller never
     // subscribes and the element stops re-rendering for that field.
     (proto.constructor as typeof ReactiveElement).addInitializer((host) => {
-      atomFor<T>(host as Host, name, undefined as T, shared, options);
+      atomFor<T>(host, name, undefined as T, shared, options);
+      if (shared) host.requestUpdate(name, undefined);
     });
     Object.defineProperty(proto, name, {
       configurable: true,
@@ -72,12 +120,7 @@ export function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T
       },
       set(this: Host, value: T) {
         const atom = atomFor<T>(this, name, value as T, shared, options);
-        const old = atom.value;
         atom.set(() => value as T);
-        // Tell Lit the property changed, so `changedProperties.has(name)` still answers in
-        // `updated` and `willUpdate`. The atom already requested the update; this only records
-        // the change, and an element that asks which of its fields moved keeps working.
-        (this as unknown as ReactiveElement).requestUpdate(name, old);
       },
     });
   };
@@ -86,24 +129,21 @@ export function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T
 /**
  * The atom for one field of one host, created on first touch.
  *
- * A field's initial value is assigned in the constructor, which reaches the setter before any read,
- * so the first write seeds the atom rather than overwriting a default. That is why the setter passes
- * its value in: creating the atom empty and setting it immediately would notify a subscriber that
- * does not exist yet, and leave the atom's own equality check with nothing to compare against.
+ * The Lit initializer creates the binding before field initialization. Constructor assignments then
+ * write through that binding. A shared atom retains its current value until an explicit assignment.
  */
-function atomFor<T>(host: Host, name: PropertyKey, seed: T, shared?: Atom<T>, options?: { compare?: (a: T, b: T) => boolean }): TanStackStoreAtom<T> {
+function atomFor<T>(host: Host, name: PropertyKey, seed: T, shared?: Atom<T>, options?: { compare?: (a: T, b: T) => boolean }): NamedAtom<T> {
   let byName = atoms.get(host);
   if (!byName) {
     byName = new Map();
     atoms.set(host, byName);
   }
-  let bound = byName.get(name) as TanStackStoreAtom<T> | undefined;
+  let bound = byName.get(name) as NamedAtom<T> | undefined;
   if (!bound) {
     // A shared atom is bound as it is; otherwise this instance gets one of its own.
-    const store = shared ?? createAtom(seed, options as never);
-    bound = new TanStackStoreAtom(host, () => store);
-    connectStore(host);
-    byName.set(name, bound as TanStackStoreAtom<unknown>);
+    const store = shared ?? createAtom<T>(seed, options);
+    bound = new NamedAtom(host, name, store);
+    byName.set(name, bound as NamedAtom<unknown>);
   }
   return bound;
 }

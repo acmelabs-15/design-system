@@ -9,6 +9,40 @@ import { analyzeManifest, normalizeManifest } from "../manifest";
 import { LitElement } from "lit";
 import * as classes from "../../src/index";
 
+test("store-backed public properties retain manifest defaults and inherited attribute metadata", async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-public-state-manifest-"));
+  const repository = path.resolve(import.meta.dir, "../..");
+  try {
+    fs.mkdirSync(path.join(root, "src/shared"), { recursive: true });
+    fs.symlinkSync(path.join(repository, "node_modules"), path.join(root, "node_modules"), "dir");
+    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    for (const name of ["atom-state", "store-connection"]) fs.copyFileSync(path.join(repository, "src/shared", name + ".ts"), path.join(root, "src/shared", name + ".ts"));
+    let source = fs
+      .readFileSync(path.join(repository, "src/shared/__tests__/fixtures/atom-state-public.ts"), "utf8")
+      .replaceAll('"../../atom-state"', '"./shared/atom-state"')
+      .replaceAll('"../../store-connection"', '"./shared/store-connection"');
+    source +=
+      '\ncustomElements.define("acme-public-probe",PublicAtomProbe);\nexport class Converted extends PublicAtomProbe { static properties={count:{attribute:"amount",noAccessor:true,reflect:true,useDefault:true,converter:{fromAttribute:(value:string|null)=>value===null?null:Number(value.slice(1)),toAttribute:(value:number)=>"#"+value}}}; }\ncustomElements.define("acme-converted-probe",Converted);\n';
+    fs.writeFileSync(path.join(root, "src/probe.ts"), source);
+    const { manifest, issues } = await analyzeManifest(root);
+    expect(issues).toEqual([]);
+    const elements = manifest.modules
+      .flatMap((module) => module.declarations ?? [])
+      .filter((declaration): declaration is ClassDeclaration & CustomElement => declaration.kind === "class" && "tagName" in declaration && !!declaration.tagName);
+    expect(elements).toHaveLength(2);
+    for (const [tag, attribute] of [
+      ["acme-public-probe", "count"],
+      ["acme-converted-probe", "amount"],
+    ]) {
+      const element = elements.find((element) => element.tagName === tag)!;
+      expect(element.members?.find((member) => member.name === "count")).toMatchObject({ kind: "field", type: { text: "number" }, default: "0", attribute, reflects: true });
+      expect(element.attributes?.find((member) => member.fieldName === "count")).toMatchObject({ name: attribute, type: { text: "number" }, default: "0" });
+    }
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("the manifest matches every registered Lit class and its runtime property attributes", async () => {
   const { manifest, issues } = await analyzeManifest();
   expect(issues).toEqual([]);
