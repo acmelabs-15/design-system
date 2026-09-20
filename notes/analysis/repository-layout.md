@@ -112,3 +112,66 @@ Important qualifications:
 The package-layout decision preserves one underlying component system. React-specific rendering, especially TanStack Table JSX cells, needs an explicit bridge rather than an assumed generic wrapper. [Lit practice findings](lit-practice-review.md#phase-1-extension-react-and-forms).
 
 The completed [TanStack Config convention review](developer-tooling.md#tanstack-config) proposes package-artifact checks, explicit quality commands, release intent and dependency alignment. It does not select Nx, pnpm, Vite, ESLint or other new tooling. Consumer-skill/MCP and inspector packaging must be considered alongside the separate React package in the later layout review.
+
+## Phase 3 style-production comparison
+
+**Partial research, 2026-09-19. No production model selected.** Peter requested evidence of best practices and actual community implementations before deciding between parallel CSS-derived outputs and a generated Lit-style central artifact. The [evidence/quality rule](../decisions/evidence-and-implementation-quality.md) applies; the local ownership defect does not select its replacement. [Coverage snapshot](../alignment/evidence/style-pipeline-comparison-2026-09-19.json).
+
+### Material Web
+
+At source pin 56a486b147b8b7e95e6e8035fa02aed7e0009a85, the complete root build configuration, css-to-ts converter and TypeScript configurations were read. Sass emits compressed CSS; [the converter](https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/scripts/css-to-ts.ts#L26) generates a named Lit CSSResult and a default styles.styleSheet export. It escapes backslashes, backticks and template interpolation, and strips CSS sourceMappingURL comments. TypeScript then emits JavaScript, declarations and JavaScript maps. Those maps do not by themselves prove preservation of original Sass mappings through the embedding step.
+
+[Build configuration](https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/package.json#L90), [output settings](https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/tsconfig.base.json#L20). Published 2.5.0 uses a different recorded git head; current source and published output must remain distinguished. Main component/theme consumption and property registration still need tracing in this comparison. The earlier Labs reads do not substitute for that work.
+
+### Spectrum Web Components
+
+At pin 18c1177b5352c89569eacfe95660fc0ab27030d7, the current tree separates first-generation and gen2 builds. Published Button/Theme 1.12.2 is first-generation; the inspected gen2 source package identifies 2.0.0-beta.3, whose publication was not verified.
+
+The complete root/package configurations and two Vite configurations were read. [Gen2 configuration](https://github.com/adobe/spectrum-web-components/blob/18c1177b5352c89569eacfe95660fc0ab27030d7/gen2/packages/swc/vite.config.ts#L43) defines a component-CSS path through vite-plugin-lit-css and a separate standalone PostCSS path, excludes _lit-styles from standalone output, and rewrites CSS imports when flattening output. Token expansion, prefixing, selected preset-env features, external dependencies, preserved modules, maps and minification are configured. [Exports](https://github.com/adobe/spectrum-web-components/blob/18c1177b5352c89569eacfe95660fc0ab27030d7/gen2/packages/swc/package.json#L17) include per-component and global styles.
+
+Plugin implementation/order and emitted artifacts remain uninspected. The configuration does not establish that both paths consume one identical normalized CSS artifact. First-generation build-css.js/css-tools.js/build-ts.js were located, not read. Complete representative component/theme/token chains and registration handling before making that claim.
+
+### Web Awesome
+
+At pin 6d29eb0a71ca6d4fb9a127940126a62a7668d59c, a second reader inspected the full [build script](https://github.com/shoelace-style/webawesome/blob/6d29eb0a71ca6d4fb9a127940126a62a7668d59c/packages/webawesome/scripts/build.js#L77), [Button module](https://github.com/shoelace-style/webawesome/blob/6d29eb0a71ca6d4fb9a127940126a62a7668d59c/packages/webawesome/src/components/button/button.ts#L53) and shared size stylesheet. The source uses reusable authored Lit CSS modules, copies global styles, emits bundled/unbundled output and generates CEM before dependent docs/wrappers. Only the Button-specific stylesheet header was inspected; no complete output-equivalence or maps claim is made.
+
+### Supported conclusion and next work
+
+Peter's subsequent stated preference is compiled CSS converted into generated Lit style modules. He explicitly clarified “leaning towards”; no final production-model selection follows from that wording.
+
+CSS upstream of a generated Lit wrapper is an established approach; authored Lit CSS and separate global pipelines also exist. This is not evidence of a universal community preference, nor of which model best meets the house requirements. Keep every house CSS declaration under generator ownership regardless of artifact format.
+
+Finish the missing source and published-output traces, compare global/recipe outputs, registration, maps, escaping, determinism and selective delivery, then return a recommendation to Peter. No dependency, build script or generated output changed during this comparison.
+
+## Completed bounded style-pipeline comparison
+
+The follow-up source and published-artifact checks support **compiled CSS converted into generated Lit style modules** for this house generator. Peter initially leaned toward it and subsequently [selected the direction](../decisions/style-production.md) after this comparison. [Updated evidence and probe](../alignment/evidence/style-pipeline-comparison-2026-09-19.json). The partial snapshot above records earlier coverage, superseded by this completed bounded comparison.
+
+### Verified production paths
+
+- **Material Web:** the main Filled Button composes shared, shared-elevation and filled generated CSSResult modules; Divider also consumes generated styles. In published 2.5.0, AST-decoded CSS from all three Button style modules exactly matches its compiled CSS after source-map-comment removal. Eight relevant shared/token Sass files match the inspected source. Token fallback chains remain CSS variables, so compilation does not freeze every theme value. [Filled Button](https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/button/filled-button.ts), [token module](https://github.com/material-components/material-web/blob/56a486b147b8b7e95e6e8035fa02aed7e0009a85/tokens/_md-comp-filled-button.scss).
+- **Spectrum first generation:** Lightning CSS resolves/bundles/minifies authored CSS, css-tools emits generated Lit CSSResult TypeScript, and esbuild emits JavaScript. Button and Theme consume these outputs. Published 1.12.2 confirms generated stylesheet modules. [CSS tooling](https://github.com/adobe/spectrum-web-components/blob/18c1177b5352c89569eacfe95660fc0ab27030d7/1st-gen/scripts/css-tools.js), [Theme adoption](https://github.com/adobe/spectrum-web-components/blob/18c1177b5352c89569eacfe95660fc0ab27030d7/1st-gen/tools/theme/src/Theme.ts).
+- **Spectrum second generation:** the Lit-CSS plugin wraps Vite's processed inline CSS as Lit JavaScript; generated TypeScript is not necessary for this delivery pattern. The separate global-elements generator deliberately transforms host/slot selectors, omits component-only rules and adds a cascade layer from shared CSS sources. Document output is not recovered from emitted Lit JavaScript. Published 2.0.0-beta.3 verifies component CSS modules plus global-button.css, tokens.css and swc.css. [Global generator](https://github.com/adobe/spectrum-web-components/blob/18c1177b5352c89569eacfe95660fc0ab27030d7/gen2/packages/tools/vite-global-elements-css/index.js), [Lit-CSS plugin](https://github.com/redfox-mx/vite-lit-css).
+- **Web Awesome contrast:** its full 370-line Button stylesheet is authored Lit CSS with reusable styles; the build copies global CSS and emits bundled/unbundled distributions. It does not reverse-parse generated JavaScript to recover CSS. This remains a valid authored model, not a reason to abandon the house generator. [Stylesheet](https://github.com/shoelace-style/webawesome/blob/6d29eb0a71ca6d4fb9a127940126a62a7668d59c/packages/webawesome/src/components/button/button.styles.ts).
+
+These are distinct source pipelines; two Spectrum generations are not two independent communities. The comparison establishes viable practice and requirements fit, not universal preference or measured performance superiority.
+
+### Conversion and registration checks
+
+The main Material converter was exercised in memory under Bun with mocked file I/O. All five cases preserve the expected Lit CSSResult text: custom properties/selectors, CSS Unicode escapes/backslashes, literal template syntax, data URLs/at-rules and source-map-comment removal. No repository file or full build was changed by the probe. This tests the inspected main converter, not the older release converter: 2.5.0 lacks its explicit backslash/backtick/interpolation escaping. The first-generation Spectrum wrapper also lacks an explicit comparable escaping step; that observation alone is not a reproduced defect.
+
+Our generator already produces CSS plus property-registration metadata and escapes template syntax. Preserve both outputs. Material's converter does not extract/register properties; its Labs ripple does so separately. Spectrum's global swc.css contains nine prompt-field @property rules with a comment explaining shadow-root limitations; published output includes them. [Registration source](https://github.com/adobe/spectrum-web-components/blob/18c1177b5352c89569eacfe95660fc0ab27030d7/gen2/packages/swc/stylesheets/swc.css). One compiled initial color changes format and has not been browser-tested.
+
+Source maps also need an explicit house policy. Material ships separate Sass-to-CSS and generated-TS-to-JS maps. Spectrum first-generation maps point at generated CSS TypeScript. The inspected gen2 Button map names authored CSS but has empty mappings; its global CSS has no accompanying map. Merely enabling sourcemap does not establish useful authored-CSS debugging.
+
+### Evidence-supported recommendation
+
+Keep generator-owned sources authoritative. Compile their CSS, then produce generated Lit style modules as one delivery form. Produce document tokens, approved global/recipe styles, registrations and metadata from the appropriate source records, with explicit scope conversion. Shared sources do not mean identical shadow and document CSS.
+
+This fits the house's existing CSS outputs and removes dependency on reconstructing them from generated TypeScript syntax. It is an ownership and dependency argument, not a claim that one path compiles faster or takes less effort. It selects neither Sass, Vite, Lightning CSS nor a particular plugin. Generated-style placement/version control and the Bun requirement stand.
+
+Before implementation approval, test representative house styles, exact escaping, CSS scope, registrations/conflicts, deterministic generation, invalid-input failures, selective imports and source maps. Verify rendered outcomes in all three engines. The comparison did not execute upstream builds or provide browser acceptance; large published artifacts received structural/content checks rather than a claim of exhaustive visual reading. Deeper token implementation and every library component remain outside this bounded study.
+
+### Selection after comparison
+
+Peter accepted the evidence-supported direction: compiled CSS feeds generated Lit style modules, with explicit document-style, registration and metadata output paths. [Decision](../decisions/style-production.md). Earlier partial/unselected statements above record the sequence of the investigation; this selection is current. No build tool or source implementation is selected by implication.

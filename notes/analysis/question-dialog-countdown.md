@@ -10,7 +10,7 @@ Use the standard blocking question tool in Plan mode for the walkthrough. Do not
 
 The code path is verified. Peter subsequently switched to Plan mode, and the standard question tool returned his animation clarification and icon choices. This establishes successful answer delivery; the absence of a visible countdown has not been independently confirmed by screenshot or explicit user report. The assistant cannot change its active collaboration mode itself. [Official app-server documentation](https://learn.chatgpt.com/docs/app-server#toolrequestuserinput) describes auto-resolution request metadata; the installed app's blocking check is the more specific evidence for this case.
 
-The standard analyzer and three-browser choices were received before this troubleshooting interruption. Later blocking questions delivered the icon defaults, Zag, filtering, Steps, generated-style location, website output, selective loading and shadow choices linked from the [current handoff](../alignment/README.md). Peter left Plan mode to persist each batch. The walkthrough is now at the Phase 2 handoff; preserve answered decisions rather than re-asking them.
+The standard analyzer and three-browser choices were received before this troubleshooting interruption. Later blocking questions delivered the icon defaults, Zag, filtering, Steps, generated-style location, website output, selective loading and shadow choices linked from the [current handoff](../alignment/README.md). Peter left Plan mode to persist each batch. That capture reached the Phase 2 handoff. Follow the current pass handoff for the active phase; preserve answered decisions rather than re-asking them.
 
 ## Local skill and question formatting, 2026-09-19
 

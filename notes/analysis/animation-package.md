@@ -89,13 +89,44 @@ The [evidence record](../alignment/evidence/blue-control-review-2026-09-19.json)
 
 ## Shared selection indicator
 
-[Peter selected shared moving-indicator behaviour](../decisions/shared-selection-indicator.md) for suitable single-selection groups, extending the tab-only scope without changing each control's appearance or selection rules. Retain Lit Motion; the element/controller/helper form remains for architecture review. No additional Zag package is selected.
+[Peter selected one shared active-indicator component](../decisions/shared-selection-indicator.md) for suitable single-selection groups, extending the tab-only scope without changing each control's appearance or selection rules. His later clarification places Lit Motion inside this component: it owns movement and resizing, while Tabs, Segmented Control and other suitable controls supply the selected target. Both horizontal and vertical orientations are required capabilities of the shared component. A separate indicator animation in each control is excluded. Public naming and the target/measurement interface remain for architecture review. Checkbox and multi-select controls do not use this travelling indicator. No additional Zag package is selected.
 
 The actual [Material Web Tab](https://github.com/material-components/material-web/blob/main/tabs/internal/tab.ts) measures the previous/current indicator rectangles, cancels existing animations and applies a translate/scale animation for 250ms. Reduced motion falls back to opacity. This is timed tab-specific source, not a generic spring implementation. Current house Tabs and the segmented control (switch.ts) update selection without a shared travelling-indicator mechanism.
 
-[Chakra's Segmented Control guide](https://chakra-ui.com/docs/components/segmented-control) exposes an Indicator part. Its recipe reads width/height/top/left variables. Ark's use-segment-group.ts uses @zag-js/radio-group with direction/root context; there was no separate @zag-js/segment-group machine at the inspected path. This is implementation evidence, not authorization to add the radio-group dependency. [Radix Segmented Control](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/segmented-control.tsx) also renders an indicator and currently uses ToggleGroup type=single. Its current source differs from the earlier plan's radio-backed characterization; resolve semantics from current evidence in Phase 2.
+[Chakra's Segmented Control guide](https://chakra-ui.com/docs/components/segmented-control) exposes an Indicator part. Its recipe reads width/height/top/left variables. Ark's use-segment-group.ts uses @zag-js/radio-group with direction/root context; there was no separate @zag-js/segment-group machine at the inspected path. This is implementation evidence, not authorization to add the radio-group dependency. [Radix Segmented Control](https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/segmented-control.tsx) also renders an indicator and currently uses ToggleGroup type=single. Its current source differs from the earlier plan's radio-backed characterization; the house subsequently selected [radio-based Segmented Control](../decisions/segmented-control.md), while preserving this reference difference as evidence.
 
-Required later cases: interrupted/reversed selection, differing item sizes, font/content changes, reordered or removed items, scrolling, horizontal/vertical layouts where supported, RTL, reduced motion and cleanup. The moving visual must remain distinct from accessible selected state and keyboard focus. No shared implementation or browser acceptance ran. [Source record](../alignment/evidence/foundation-followup-2026-09-19.json).
+Required later cases: interrupted/reversed selection, differing item sizes, font/content changes, reordered or removed items, scrolling, horizontal and vertical orientations, changes of orientation or text direction, RTL, reduced motion and cleanup. The moving visual must remain distinct from accessible selected state and keyboard focus. No shared implementation or browser acceptance ran. [Source record](../alignment/evidence/foundation-followup-2026-09-19.json).
+
+### Shared indicator ownership and visual references
+
+Captured 2026-09-19 during the Group review. Peter's clarification settles the animation owner: one shared active-indicator component contains the Lit Motion integration and owns movement and resizing. He also explicitly requires support for both horizontal and vertical orientations. A consuming control supplies the selected target. Its selection state, form value where applicable, keyboard behavior and focus remain with that control. TanStack Store and generated CSS remain the selected house approach.
+
+Peter subsequently selected radio-based Segmented Control composed with Group presentation and the shared indicator. This selects ownership, not an exact public API or identical keyboard behaviour for all single-selection controls. Group supplies the arrangement; it must not silently acquire selection ownership. Checkbox and multi-select controls retain their own selected-state presentation and do not participate in a travelling indicator.
+
+The two user attachments specify a related visual treatment:
+
+- [Source/Output Tabs](../alignment/evidence/tabs-variant-reference-2026-09-19.png): white rounded outer surface, light outline, and an inset rounded light-gray fill behind Source. Peter requested this as an additional Tabs variant.
+- [Icon Segmented Control](../alignment/evidence/segmented-control-reference-2026-09-19.png): grid/list choices in three example sizes or proportions, using the same outlined outer surface and inset selected fill. The attachment establishes the visual relationship, not exact size or radius tokens.
+
+No variant name, default treatment, exact dimensions, dark-theme mapping or new duration was selected from these images. The [Material primary-tab treatment](../decisions/material-tab-indicator.md) remains available with its own appearance and states. The shared component must support each participating treatment without duplicating the animation implementation.
+
+#### Source evidence and its limits
+
+The Group investigation read Chakra's Segmented Control implementation, its style configuration, all 11 documentation examples, and the Tabs style configuration at commit `1ff9873754e9913fc3d849d23c0844a628f5f20d`. Relevant sources are [Segment Group](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/segment-group/segment-group.tsx), [Segment Group styles](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/theme/recipes/segment-group.ts), and [Tabs styles](https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/theme/recipes/tabs.ts). The [Group evidence record](../alignment/evidence/group-review-2026-09-19.json) carries the complete file census, source versions and observed contracts.
+
+The same investigation read the published Ark UI `5.39.2` Segment Group hook/root and the complete Zag `1.43.3` Radio Group connector. Ark's Segment Group is backed by Radio Group. Zag supplies indicator geometry through left/top/width/height variables and a 150ms CSS transition. That reference explains how the selected target determines the indicator bounds; it does not select Zag's runtime, state machine, CSS animation or duration for this library. House movement and resizing belong inside the shared Lit Motion component.
+
+Ark's inspected Segment Group hook and root do not consume Field context. A documentation example placed inside Field therefore does not prove automatic group-label, help-text, error-text or invalid-state association. Those connections require an explicit contract and browser verification.
+
+#### Dependencies before implementation
+
+- **Field and Radio:** establish group naming, help/error association, required/disabled handling and form ownership before accepting the proposed composition.
+- **Group:** preserve layout and joined-surface behavior without making Group own selection or indicator animation.
+- **Tabs and Segmented Control:** establish each control's keyboard and selection contract. Keyboard focus and selected target can differ; the indicator follows selection, not focus by accident.
+- **Orientation, RTL and geometry:** support both horizontal and vertical orientations. Verify changes of orientation and text direction, logical placement, scrolling, different item sizes, content/font changes, resize, removal and reorder. The target interface must handle these without per-control animation copies. Consumer-specific orientation support remains an inventory decision.
+- **Motion and shape:** keep house-specific shapes, interruption/reversal, reduced motion and cleanup in the shared implementation. Determine how each visual treatment supplies its resting shape and bounds before choosing exact parameters.
+
+These dependencies return during the Field/Group/Radio/Tabs decisions and the architecture/inventory review. Source reading and the screenshots are evidence; they are not a completed implementation or a browser acceptance result.
 
 ## Needs-driven shape evaluation
 

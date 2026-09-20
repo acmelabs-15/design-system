@@ -66,7 +66,7 @@ and duration formatting. None is needed at our support floor.
 
 **Plural message formatting.** Lit's localisation package cannot express a plural rule, an open issue
 since 2021. Across 151 elements that is 151 chances to be wrong in a language with plural categories.
-The native message-format API is in no engine yet. If we ever localise, this needs a decision.
+The original investigation recorded no native message-format support. That is historical platform evidence, not a freshly verified browser-support claim. No message-format engine is selected; revisit only if an inventory requirement needs it.
 
 ## Unverified
 
@@ -109,7 +109,7 @@ The scope is bounded to the controls Peter selected; it is not permission to mov
 
 ### Scroll Area: reference practice and selected package
 
-The current Scroller (`src/components/scroller/scroller.ts`) uses browser scrolling, reads overflow edges, and provides fades plus optional previous/next buttons. Its generated stylesheet hides browser scrollbars. That is not evidence that the future Scroll Area should omit visible controls. The Phase 2 relationship between those elements is still open.
+The current Scroller (`src/components/scroller/scroller.ts`) uses browser scrolling, reads overflow edges, and provides fades plus optional previous/next buttons. Its generated stylesheet hides browser scrollbars. That is not evidence that the future Scroll Area should omit visible controls. Peter subsequently selected [Scroll Area replacing Scroller](../decisions/scroll-area-behaviour.md#replace-scroller); exact capabilities and interfaces remain inventory work.
 
 [Chakra Scroll Area](https://chakra-ui.com/docs/components/scroll-area) provides styled bars and handles, hover/always visibility options, sizes and both axes. Its [implementation](https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/components/scroll-area/scroll-area.tsx) wraps Ark; [Ark directly imports Zag Scroll Area](https://github.com/chakra-ui/ark/blob/main/packages/react/src/components/scroll-area/use-scroll-area.ts). Zag's inspected `getViewportProps` uses `overflow: auto`; browser scrolling remains underneath its custom controls.
 
@@ -246,3 +246,57 @@ Read the full [Adobe NumberParser reference](https://react-aria.adobe.com/intern
 An isolated Bun probe of 3.6.8, installed only in a temporary directory with scripts disabled, passed German 1.234,5 → 1234.5; Arabic ١٢٫٥ → 12.5; 12% → 0.12; accounting ($25.50) → -25.5; and accepted '-' and '.' as partial input while complete parse returned NaN. These six cases establish parser API behaviour only, not a Lit control, form, IME or browser pass. [Probe evidence](../alignment/evidence/native-port-mapping-2026-09-19.json).
 
 The alternative was a house parser built around Intl formatting data, with its locale/partial-input behaviour maintained here. Peter selected the independent package because that responsibility is already its purpose and it introduces no competing UI/state framework. Do not repeat that question or reopen the rejected Zag runtime to obtain the parser transitively.
+
+## Flow Diagram library review
+
+Researched 2026-09-19 after Peter supplied a flow-diagram screenshot. [Final decision](../decisions/flow-diagram.md): an interactive viewer using ELK plus a house Lit renderer. [Structured evidence, versions, measurements, source pins and probe options](../alignment/evidence/flow-diagram-review-2026-09-19.json). This extends the current pass; the earlier Phase 1 closure remains a historical checkpoint.
+
+### Requirements and evaluation method
+
+The screenshot contains unequal content-rich nodes, controls, directional arrows, rounded orthogonal bends, labels and a return loop. Peter selected automatic layout/routing, pan/zoom and usable controls inside nodes, not a flow editor. No existing flow/diagram component or package was found in the targeted source-path/package scan. Reference styling must adapt to the house stack.
+
+Separate node layout, obstacle routing, curve/arrow drawing and viewport interaction. A smoothstep or Bézier helper alone does not know about intervening nodes. Assess source and published versions independently. Three parallel research tracks examined layout engines, X6/JointJS and Lit-native packages, while the main review examined Google Graph Renderer, xyflow documentation and a small pan/zoom utility. Search-result counts are not unique-source or complete-repository counts.
+
+### Selected engine: ELK
+
+[ELK](https://github.com/kieler/elkjs) is a layout engine, not a renderer. [Layered layout](https://eclipse.dev/elk/reference/algorithms/org-eclipse-elk-layered.html) accepts node sizes, ports, labels and compound structure; it returns node positions and edge sections. Orthogonal routing, cardinal ports, feedback edges and spacing options directly address this viewer. The caller must measure the real Lit content and labels.
+
+Published elkjs 0.12.0 was investigated. Its complete browser bundle measures 1,609,707 raw bytes / 467,676 gzip bytes. Separate API plus minified worker files total 465,667 gzip bytes. These are in-memory gzip-level-9 measurements of published files, not final house bundle/CDN transfer or browser startup results. Lazy separate delivery avoids charging unrelated components; workers address scheduling, not download size. Metadata reports EPL-2.0 OR GPL-3.0-or-later with secondary-license conditions in the notice; preserve applicable package notices during normal dependency review.
+
+ELK's automatic layout can change other node positions after a resize. Model-order/semi-interactive options do not guarantee unchanged coordinates. Its browser package is not a general router for fixed arbitrary node positions; the separate Java Libavoid integration is not supplied by elkjs. [Maintainer discussion](https://github.com/kieler/elkjs/issues/210). A fixed-position requirement would reopen the engine comparison before inventory approval.
+
+### Geometry probe
+
+The published bundle ran entirely in memory under Bun 1.4.0. Six varied-size nodes form a forward chain, plus a labelled Specs-to-Interview return edge. Fixed cardinal midpoint ports connect forward East-to-West and return North-to-North. This models the screenshot's topology, not its exact coordinates. Layered/RIGHT/ORTHOGONAL layout uses feedbackEdges=true, node spacing 40, edge-node spacing 14 and between-layer spacing 60. These are probe settings, not selected house defaults.
+
+All six edges have sections; nodes, routes and labels have finite coordinates. No node overlaps, diagonal segments or segments crossing unrelated node interiors were found. Repeating after Specs height 140 becomes 280 passes the same checks, but moves other nodes vertically by about 69px. A follow-up checks explicit internal node labels. A generated 100-node/109-edge graph with ten return loops passes the basic geometry checks.
+
+Single observed layout times are about 158 ms for the first six-node case, 44 ms for the resized case and 682 ms for 100 nodes. They are not stable benchmarks or browser-worker timing. The in-memory harness masked Bun's global self to avoid bundled fake-worker runtime misclassification. No library or repository code was patched. Rounded path/stroke/arrow geometry, all edge-label collisions, nested graphs, dense crossings, DOM measurement and screen-reader behaviour were not tested.
+
+### Alternatives: layout and routing
+
+- [Dagre 3.1.1](https://github.com/dagrejs/dagre) has a much smaller ESM artifact,48,559 raw/16,959 gzip bytes including Graphlib. Current source includes dynamic layout history and per-cluster directions; old claims that it is abandoned or has no dynamic support are stale. Its route points do not supply the requested obstacle-aware orthogonal routing/port contract.
+- [Libavoid](https://www.adaptagrams.org/documentation/libavoid.html) supports obstacle routing while shapes move/resize and exposes connection pins. [libavoid-js 0.5.0-beta.5](https://github.com/Aksem/libavoid-js) adds 198,677 gzip bytes for JS+WASM; with Dagre,215,636 gzip bytes. It remains a fallback for fixed-position rerouting. The inspected wrapper has no exposed edge-label placement API, needs worker/WASM cleanup integration, and its exports.types points to missing dist/libavoid.d.ts while declarations live in dist/index.d.ts. Metadata is LGPL-2.1-or-later.
+- [D2's current JavaScript package](https://unpkg.com/@d2lang/d2@0.1.34/README.md) is @d2lang/d2, not the older @terrastruct namespace. Its compiler can return coordinates/routes without rendering SVG, but input remains D2 markup and its browser compiler/WASM bundle is 11,514,165 raw/8,789,791 gzip bytes. Current releases include open-source TALA; older pages calling TALA proprietary or Dagre unmaintained are stale. The extra translation and payload do not fit measured house nodes as directly as ELK.
+
+### Alternatives: complete renderers
+
+[X6](https://github.com/antvis/X6) 3.1.8 and [JointJS Core](https://github.com/clientIO/joint) 4.3.3 are actively published, framework-neutral candidates. X6's HTML shape can accept an HTMLElement; JointJS can host HTML in a custom view. Both use SVG foreignObject, requiring house-control/focus/transform/animation browser checks. Both separate routers from connectors; basic orthogonal routing is not obstacle routing. Their Manhattan routers may fall back to orthogonal routes that ignore obstacles. Neither reviewed default guarantees exact return lanes or collision-free label placement.
+
+X6 offers built-in pan/zoom and interaction guards. Its HTML update empties/reinserts content unless an effect filter limits updates, creating a Lit focus/state risk. JointJS Core supplies scale/translate and pan/pinch events; its ready-made PaperScroller belongs to commercial Plus. Its official DirectedGraph addon uses Dagre 1.1.4 and handles only the first edge label in its label option. Both still need node measurement and layout integration. X6's complete minified published runtime measured 168,758 gzip bytes; JointJS145,531, excluding layout. These are not selective viewer builds. Peter selected ELK with the house renderer over X6 plus ELK.
+
+[React Flow's own layout guide](https://reactflow.dev/learn/layouting/layouting) separates rendering from external layout/routing. Its React renderer would introduce another framework path. The [xyflow system README](https://github.com/xyflow/xyflow/blob/main/packages/system/README.md) calls the vanilla utilities a shared layer for React/Svelte Flow and explicitly says they are not intended for unrelated libraries; no dedicated public API docs are provided.
+
+[Google Graph Renderer](https://github.com/google/graph-renderer) 1.1.0 is Lit-native and accepts custom node/label templates. Its published core is 16,152 gzip bytes, excluding Lit/RxJS peers. Its optional /elk path service is 3,300 gzip bytes, but only turns supplied edge sections into paths; it does not run ELK layout. Inspected node code expects supplied dimensions; targeted root/node inspection found no complete keyboard/relationship accessibility implementation. Root disconnect removes listeners initialized in firstUpdated, a reconnection risk requiring runtime reproduction. Disabled node dragging can let pointer events reach viewport panning. Its own RxJS state/CSS animation and ^0.9.0 ELK peer range need review against the house stack/current engine. Production use is the project's claim, not an independently verified speed/robustness result.
+
+### Smaller Lit candidates and auxiliary helpers
+
+- [Gliba/lit-flow](https://github.com/Gliba/lit-flow) publishes 0.4.12 while inspected source identifies 0.4.19. It supports Lit content, size observation and open-shadow handle discovery, but uses endpoint-only xyflow routes. Viewer flags are inconsistently enforced, HTML label positioning uses a Bézier midpoint even for other path types, and its test script is a failing placeholder. Published full bundle 50,803 gzip bytes; CSS additional.
+- [ghchinoy/litflow](https://github.com/ghchinoy/litflow) 0.5.2 includes layout options but keeps Dagre node positions and discards its edge geometry. Delete/Backspace and keyboard movement can still edit graphs with dragging disabled. Its event.target-only typing guard misses retargeted shadow controls. It owns a signals store and its resize path does not prove automatic relayout. Entry 53,525 gzip bytes with runtime imports still external.
+- [Node Flow Elements](https://github.com/JulianCataldo/node-flow-elements), now @node-flow-elements/core 0.1.0, has useful slots, composedPath handling and size observation. Its links are cubic Béziers and disconnect on double-click by default; complete viewer-only obstacle routing was not established. It uses signals and @lit-labs/motion, which is the same motion package family as ours; that alone does not establish compatible state/animation ownership.
+- [lit-isoflow](https://github.com/eviltik/lit-isoflow) 1.1.0 has a read-only viewer mode but models isometric icons/tiles. Its reviewed A* caller supplies a walkable grid without node obstacles, so the algorithm name is not evidence of obstacle avoidance.
+- [Panzoom](https://github.com/timmywil/panzoom) 4.6.2 is an optional viewport candidate: published minified file 10,125 raw / 3,857 gzip bytes, no runtime dependencies declared. Exclusion controls, pointer/pinch handling and transform hooks are useful, but house shadow-control isolation, motion and cleanup still need checks. Neither Panzoom nor Google's curve utility is selected by the ELK decision.
+
+### Required return points
+
+Before approving Flow Diagram's inventory: define measured content/labels, stable identifiers, layout ordering and acceptable movement, async stale-result handling, worker delivery, viewport controls and accessible node/relationship reading. Include real buttons/inputs/switches, text selection, popups and inner scrolling so diagram gestures never consume control interaction. Check custom themes, density, RTL, reduced motion, focus retention and reconnect in Chromium/Firefox/WebKit. Specify graph scale from intended use; the100-node probe is not a supported limit. Nested groups, export and fixed-position overrides remain unselected; editing/execution are outside the selected viewer scope. Package references do not authorize source changes before Phase 5.

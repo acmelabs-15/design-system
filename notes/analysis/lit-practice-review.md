@@ -207,4 +207,55 @@ Material Web's actual [form-associated behaviour](https://github.com/material-co
 
 TanStack snapshots: form-core/react-form 1.33.5, lit-form 1.25.5, with its separate lit-store dependency. [Lit quick start](https://tanstack.com/form/latest/docs/framework/lit/quick-start), [validation](https://tanstack.com/form/latest/docs/framework/lit/guides/validation), [arrays](https://tanstack.com/form/latest/docs/framework/react/guides/arrays), [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) and [native validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Constraint_validation) informed the comparison.
 
-Acceptance must cover form values, serialization, validation, disabled state, reset/restoration and synchronous event/FormData consistency, plus nested/array fields, async validation and submission in managed mode. Final ownership and API details remain open.
+Acceptance must cover form values, serialization, validation, disabled state, reset/restoration and synchronous event/FormData consistency, plus nested/array fields, async validation and submission in managed mode. Shared native-form ownership is now selected in [native-form-architecture.md](../decisions/native-form-architecture.md). Exact control-specific rules and interfaces remain inventory work.
+
+## Phase 3 state and form mechanism follow-up
+
+The [expanded state-bridge comparison](../alignment/evidence/state-bridge-comparison-2026-09-19.json) runs the same fixtures against canonical-store accessors and a willUpdate copying bridge. Each passes nine post-update checks for defaults, explicit same-default reflection, number/boolean conversion, attribute removal, object identity, named change reporting through the property path and reconnect. Direct accessors additionally preserve synchronous agreement and state updates when shouldUpdate rejects rendering. Raw store-only changes without named Lit notification do not reflect attributes; render notification alone is not a public-property contract.
+
+Peter reaffirmed canonical TanStack ownership. This rules out treating a Lit property as an independently authoritative mutable value and periodically copying it into the store. The remaining problem is complete notification/metadata integration, not which system owns state. Tests are Bun/happy-dom, not browser acceptance.
+
+The installed-source audit found additional obligations: subclass metadata can replace or preserve accessors in different ways; preserved wrappers can capture base options; base initializers run before subclass private fields; pre-upgrade properties replay after defaults/attributes; useDefault has equal-value reflection rules; selector updates do not populate named change sets; and overriding Lit's property factories is deprecated in the installed implementation. Keep normal Lit declarations. CEM source recognizes standard property decorators/static declarations and getter/setter pairs; that is not a completed manifest run.
+
+A parallel native-form comparison read fourteen complete Material/Web Awesome source files. Material uses ElementInternals/form/validation mixins and synchronous form-value updates; Web Awesome uses a specialised base plus validators and generally synchronizes during willUpdate. Radio ownership differs: Material associates each Radio, while Web Awesome's Radio Group owns submission and individual Radio submission is suppressed. These are concrete alternatives, not proof of one universal mechanism.
+
+A controller still needs native callback/static/property bridges; Lit lifecycle hooks alone do not receive all form callbacks. Compare mechanisms through immediate FormData/validity after assignment, current/default/reset/restoration, disabled fieldsets and first-legend exceptions, external form ownership, one composite submission, changed/nested radio collections, RTL, cross-shadow Field labels and optional TanStack Form. Reference focus/label patterns do not certify arbitrary external Field-to-shadow-control associations. No native-form mechanism or implementation has been selected by this follow-up.
+
+## Existing state integration verification
+
+The existing atomState helper was imported unchanged into the public-property probe. Its existing regression suite and adapter-reconnection tests passed: eleven tests and twenty-five assertions. [Reproducible fixture and results](../alignment/evidence/existing-state-integration-2026-09-19.json).
+
+The same twelve public-integration checks ran in happy-dom and Chromium using installed Lit 3.3.3 / ReactiveElement 2.1.2 and patched @tanstack/lit-store 0.13.2. Ten passed in both: synchronous canonical/derived state, named notifications through the property setter, conversions, explicit same-default reflection, attribute removal, gated rendering, detached property writes/reconnection, shared writes through the accessor and an inherited metadata case.
+
+Two failures reproduced in Chromium:
+
+- With the tested static declarations (noAccessor/reflect/useDefault), default count/value attributes appear initially when the contract expects them absent.
+- An external shared-atom write updates rendering and the public getter, but the reflected attribute remains at its previous value and changedProperties is empty.
+
+These are public-integration gaps, not proof that the helper's existing internal-state use is broken. Lit marks existing accessors as wrapped and treats their initial default capture specially; the helper's constructor-time named notification interacts with that path. For external atom writes, the installed selector requests rendering without a property name, whereas the helper's setter supplies the named notification. Both mechanisms need deliberate integration; a second state owner is not a solution.
+
+The current published @tanstack/lit-store 0.14.1 archive was also inspected in memory with its integrity verified. Its complete exports/selector/atom sources add selector.value but still contain unnamed render notification and no hostConnected hook in the selector. No upgrade was installed, and no resolution of these integration gaps or the reconnect requirement is inferred merely from its newer version.
+
+The evidence supports evaluating a focused refactor or rewrite of the existing helper rather than discarding it. It does not yet select the final mechanism. Remaining checks include initialization/upgrade timing, full inherited metadata, converters/equality/batching, internal and shared writes, CEM/compiler/React compatibility and Firefox/WebKit. No production source was changed.
+
+### Focused state-helper refinement
+
+A scratch copy now retains atomState's TanStack accessors and the official TanStackStoreAtom. It adds a lifecycle-managed named notification for external atom writes, reconciles changes on reconnection, and captures the initial shared value before consumer assignments. Public declarations use ordinary Lit property metadata registered before the atom accessor is installed. This uses public APIs; it does not read or change Lit's private default-value fields.
+
+The [saved candidate and fixture](../alignment/evidence/existing-state-integration-2026-09-19.json) pass 24 targeted cases in both happy-dom and Chromium. The eleven existing regression tests also pass when copied into scratch with only the helper import redirected. Strict type checking of the candidate helper passes. The initial type check caught overloaded setter forwarding; the candidate now explicitly distinguishes updater functions from values, without suppressing the error.
+
+The expanded cases cover assignments before connection, pre-definition property replay, preserving defaults after those assignments, external changes while detached, first connection after a shared change, NaN, signed zero, batching, and subclass attribute/converter changes. A control using only the revised declarations and the unchanged helper passes 19 of 24 cases. Declaration order resolves local initial reflection, but shared default capture and external-change notification also need the helper refinement.
+
+This closes the bounded feasibility question: the existing integration can be extended without a second state owner or a replacement store engine. It is not final approval of this exact decorator API. The paired decorators are order-sensitive, and the prototype adds a named-notification subscription alongside the official render subscription. Authoring enforcement or improved composition, subscription/teardown costs, CEM output, the actual compiler pipeline, React wrappers and Firefox/WebKit remain explicit acceptance work before migration approval. Native-form evaluation can proceed against the synchronous canonical-state requirement without waiting for a final decorator spelling.
+
+## Native form timing and callback probe
+
+The [reproducible Chromium comparison](../alignment/evidence/native-form-mechanism-2026-09-19.json) holds the text control, TanStack state, native callback bridge and validation rule constant. It varies when ElementInternals receives the state: immediately on change or during Lit's update cycle. Immediate synchronization passes all fifteen checks. Render-cycle synchronization passes nine and fails six: immediate submission, required validity, clearing invalidity, a gated render, reset submission and the explicitly invoked restoration callback.
+
+Both variants pass the after-update disabled-fieldset cases, including re-enabling, retaining a control's own disabled attribute and the first-legend exception. They also pass external form ownership, immediate name changes, reconnection and one submission despite the inner native input. The scratch controller receives form-associated, disabled, reset and restoration callbacks through a small host mixin. This establishes callback composition feasibility; it does not establish superiority over every specialised form base.
+
+The result supports a specific module requirement: synchronize native submission and validity when canonical state changes, independently of rendering. Keep the browser's effective disabled state distinct from the control's own disabled attribute. Forward native callbacks through one deliberate host bridge; ordinary Lit controller hooks cannot replace them. Each control still supplies its serialization, restoration and validation rules.
+
+The existing Input updates setFormValue in updated and has no inspected native disabled/restoration callback or validity mirroring. The earlier complete Material Web and Web Awesome source comparison supplies actual Lit references for different internal packaging. Chakra and Radix native-input wrappers and the already-reviewed Pro form compositions inform consumer composition, but they do not supply custom-element callbacks. The render-cycle fixture is a timing control, not a test of Web Awesome itself.
+
+This is a text-control mechanism probe, not certification of forms. The restoration check calls the callback explicitly; browser history/autofill was not exercised. Checkbox/radio/compound values, submitters, reportValidity focus, cross-shadow Field associations, optional TanStack Form, React and Firefox/WebKit remain required before migration approval. No final controller/base/mixin interface is selected by this result.

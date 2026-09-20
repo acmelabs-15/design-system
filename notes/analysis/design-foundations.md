@@ -27,13 +27,29 @@ Material Web exposes scoped CSS custom properties for colour, typography and sha
 
 ## Responsive system
 
-**Selected:** [responsive layout and appearance, Material bands, and font-relative thresholds](../decisions/responsive-system.md). Exact property syntax, names, ranges and per-property support remain for the inventory.
+### Phase 4 authoring choices
 
-Material's five reference bands change at 600, 840, 1200 and 1600. Peter chose them separately from Chakra-style authoring capabilities. At a 16px browser default, the direct rem conversion is 37.5, 52.5, 75 and 100; larger browser defaults move the thresholds wider.
+Peter selected both named objects and positional arrays, alongside plain values. He selected compact, medium, expanded, large and extraLarge as the five band names and array order. Existing font-relative transitions remain 37.5, 52.5, 75 and 100rem. He also selected window and explicitly chosen container widths, with window width as the default and authors establishing the query container.
+
+The current Grid source already reads JSON object/array attributes and exposes useContainer, but its required sm key, neighbour filling and truthy fallback rules are not the new contract. The Chakra responsive page was re-read for its object/array capabilities; CSS size-query guidance establishes the container mechanism. The earlier Chakra Down-range discrepancy remains unresolved by those capability choices. Define serialization, skipped positions, range precedence and container selection in the shared convention before approving dependent inventory entries. [Decision](../decisions/responsive-system.md), [answers and source scope](../alignment/evidence/phase-4-checkpoint-2026-09-19.json).
+
+The next review selected application-wide adjustment of the four ordered font-relative transitions, retaining fixed names/array order and Material defaults. Chakra's complete customization/breakpoint pages demonstrate configurable systems; Radix documents fixed built-in widths. The complete Pro index search found documentation and fixture/metadata matches, not a demonstrated custom-breakpoint implementation. Docs Kit's theming prose lists widths that differ from current Chakra defaults; this is not evidence of active configuration. Preserve source roles.
+
+Peter also selected one-band, below-threshold and between-threshold targeting in responsive objects. The complete pinned Chakra breakpoints.ts was re-read: Down uses a maximum below the band's start, Only uses the next band's start as its upper edge, and between conditions end below the upper named threshold. Peter subsequently selected Chakra's range meaning with native CSS boundaries: include the lower threshold and exclude the upper one. Its 0.04px adjustment is not copied. Complete condition names, overlap handling and configuration delivery remain to specify. [Capability choices](../alignment/evidence/layout-typography-review-2026-09-19.json), [boundary choice](../alignment/evidence/layout-contract-review-2026-09-19.json).
+
+**Selected:** [responsive layout and appearance, Material bands, font-relative thresholds, Material names, objects/arrays and both query modes](../decisions/responsive-system.md). Exact serialization, ranges and per-property support remain for the inventory.
+
+Material's five reference bands change at 600, 840, 1200 and 1600. Peter chose them separately from Chakra-style authoring capabilities. For window queries at a 16px browser default, the direct rem conversion is 37.5, 52.5, 75 and 100; larger browser defaults move those thresholds wider. Container-query font resolution is clarified below.
 
 Chakra 3.37.0 source and its published breakpoint builder were read, including normalization/conditions/unit conversion. Its defaults are base plus 30/48/62/80/96rem. Radix uses initial plus 520/768/1024/1280/1640px. Both demonstrate responsive property values; their defaults are comparison data, not our selected widths.
 
-Chakra also offers ranges, only/down targeting, hideFrom/hideBelow and custom thresholds. These capabilities informed the proposal. Arrays, shorthand names and complete CSS-as-props coverage were not separately selected.
+Chakra also offers ranges, only/down targeting, hideFrom/hideBelow and custom thresholds. These capabilities informed the proposal. Peter subsequently selected arrays and Material band names; Chakra shorthand names and complete CSS-as-props coverage are not selected by those choices.
+
+### Responsive font-basis audit
+
+The post-deadline audit found that media-query initial-font rules had been carried into the container discussion without their platform distinction. The CSS Conditional Rules specification evaluates relative units in container conditions from computed values; rem refers to the root font size. Media queries instead use the initial font basis. WPT's font-relative-units source explicitly sets a root font and tests the resulting rem container condition. This is specification/test-source evidence, not a new local browser run.
+
+Peter selected native CSS behaviour: keep browser-default-based window thresholds and computed-root-based container thresholds. At a 16px browser default and 20px authored root, 37.5rem means 600px for the window condition and 750px for the container condition. Add both font-change cases to acceptance; do not normalize the two bases. The prior six capability choices stand. [Decision and primary sources](../decisions/responsive-system.md#native-font-basis-for-each-query-mode), [bounded audit](../alignment/evidence/pace-review-2026-09-19.json).
 
 ### Existing house implementation
 
@@ -43,7 +59,7 @@ That is evidence for a usable platform path, not an approved general interface. 
 
 ### Reference discrepancies and boundary tests
 
-Chakra's requested page says smDown includes the small band, while the published 3.37.0 builder sets its maximum just below that band's starting threshold. At the default 16px conversion, smDown is below 480px, not the full 480–768 band. Its ranges use the upper named threshold as an exclusive boundary adjusted by 0.04px. Define the house semantics explicitly and test boundary/fractional widths rather than copying ambiguous prose.
+Chakra's requested page says smDown includes the small band, while the published 3.37.0 builder sets its maximum just below that band's starting threshold. At the default 16px conversion, smDown is below 480px, not the full 480–768 band. Its ranges use the upper named threshold as an exclusive boundary adjusted by 0.04px. The house now selects that between-threshold meaning with exact native CSS comparisons. Test boundary/fractional widths; the complete condition names and overlap rules remain open rather than copying ambiguous prose.
 
 The [CSS Media Queries specification](https://drafts.csswg.org/mediaqueries-4/#units) bases relative lengths on initial font values/user preferences, not page declarations. Chakra's FAQ also mentions changing HTML font size; that should not be repeated as a guarantee about media-query thresholds. Browser-default font scaling and page-authored theme font sizes are distinct.
 
@@ -56,6 +72,28 @@ The [CSS Media Queries specification](https://drafts.csswg.org/mediaqueries-4/#u
 Material Web's targeted repository search found no equivalent Box/layout/container component. The current house Card adds a visual treatment and Panel adds heading/body/footer structure; neither is the same general role.
 
 Box earns its planned place through the shared theme/responsive contract. Keep child arrangement and Card treatment distinguishable. The inventory must define its finite interface and real host-box behaviour. Chakra's changing-tag/asChild mechanism is not automatically a Lit-host capability, and internal composition must not add unnecessary wrapper boxes.
+
+### Selected Box styling scope
+
+Peter selected focused shared properties for spacing, dimensions, positioning, visibility and surface appearance, with theme values and responsive support. Ordinary CSS supplies uncommon rules. This preserves the selected Box purpose without adopting Chakra's entire CSS-as-props and pseudo-state styling interface. Flex, Stack and Grid retain their additional arrangement responsibilities.
+
+The complete Chakra Box/factory and Radix Box main documentation was read. A read-only TypeScript AST census visited every one of the Pro index's 938 JSX/TSX files, finding 479 literal Box tags across 240 files. Frequent properties included background (bg, 82), position (76), color (52), flex (42), padding (p, 39), corners and borders. The full property counts are saved; aliases and runtime-generated tag references were not counted. These are source-authoring observations, not proof of every rendered use or a requirement to copy each property. [Decision](../decisions/box-primitive.md#focused-styling-interface), [census](../alignment/evidence/layout-typography-review-2026-09-19.json).
+
+### Shared spacing and Stack contracts
+
+Peter selected numbered theme spacing keys plus valid explicit CSS lengths/expressions. Theme keys do not mean pixel counts; literal overrides are not automatically density-scaled. He also selected full CSS names, logical directions, camelCase JavaScript properties and kebab-case HTML attributes, without duplicate shorthand aliases. Radix's complete layout/spacing documentation demonstrates scale values alongside raw CSS values. Chakra's complete spacing page demonstrates numbered keys. Neither reference selects the house's final complete token table or units.
+
+The current generated house theme has a 4px base and step 2 at 8px. Peter selected token 2 as Stack/HStack/VStack's default gap, with overrides including zero. HStack/VStack retain their named directions in the component interface; general Stack supports responsive direction. The complete pinned Stack/HStack/VStack sources show a 0.5rem gap and named wrappers explicitly setting row/column. Chakra's broad CSS property path can still override those defaults, so it is not evidence of an immutable direction. The house's narrower interface is the selected contract.
+
+An AST census read all 938 indexed Pro JSX/TSX files: 1,064 literal Stack tags (127 without explicit gap), 626 HStack (302 without explicit gap) and 92 VStack (20 without explicit gap). Explicit numeric and responsive gaps occur frequently. Spreads and runtime defaults were not evaluated. These counts support examining defaults and overrides, not a claim that every omitted value reaches the same runtime setting. [Layout/spacing decision](../decisions/layout-spacing-properties.md), [Stack decision](../decisions/stack-layout.md), [source and counts](../alignment/evidence/layout-contract-review-2026-09-19.json).
+
+### Primitive semantics and typography defaults
+
+Peter selected defined suitable native tag sets per primitive, paragraph semantics (p) for Text by default and h2 for Heading by default. Text supports span for inline phrasing; Heading supports h1–h6, with visual size independent of semantic level. Exact Box/Text tag sets and attribute forwarding remain inventory work. The React package still wraps the Lit implementation; arbitrary React substitution and asChild are not selected.
+
+Pinned Chakra text/index.tsx and heading/index.tsx were read completely and confirm p/h2. Radix Text and its property definitions, plus Heading property definitions, were read and confirm span/h1 with restricted tag sets; those Radix URLs refer to main rather than an immutable commit. The Pro census found 917 literal Text tags: 908 without explicit as, eight span and one h3. This demonstrates reliance on defaults in that corpus, not semantic correctness or broad community preference.
+
+Lit retains its custom-element host around the native semantic element. Final composition must verify inline/block layout, allowed native content, attribute targets and computed accessible semantics through shadow/slotted content. Documentation of the intended tag alone does not prove those behaviours. [Decision](../decisions/additional-component-capabilities.md#primitive-tag-sets-and-typography-defaults), [review scope and limitations](../alignment/evidence/layout-typography-review-2026-09-19.json).
 
 ## Other findings and work ahead
 
@@ -197,3 +235,11 @@ The browser diagrams confirm the difference between visible geometry and interac
 Selection, focus and a transient state layer are separate. Material allows focus and selection to coexist while applying one visual state layer at a time; it does not specify a complete priority algorithm among simultaneous transient states. Its general disabled-focus and Escape-clearing advice must be reconciled with web widget semantics. Optional ripples, house focus treatment and Lit Motion remain the baseline unless new evidence supports a separately selected revision.
 
 Return spacing/density proposals to the shared conventions and affected component inventory entries. Check the chosen Group/Toolbar/selection split, responsive behaviour and overlay density together before proposing a global adjustment.
+
+## Shadcn Resizable follow-up
+
+Peter explicitly requested [shadcn Base Resizable](https://ui.shadcn.com/docs/components/base/resizable) for use in suitable components and layouts. The [resizable-pane decision](../decisions/resizable-panes.md) already selects pointer/keyboard resizing, optional collapse with previous-size restoration, and application-owned preference saving. Inclusion does not need another vote.
+
+The full page text and [base Resizable wrapper](https://github.com/shadcn-ui/ui/blob/main/apps/v4/registry/bases/base/ui/resizable.tsx) were read. It composes Group, Panel and Separator from react-resizable-panels, with horizontal/vertical layouts and an optional visible handle. “Base” in this URL does not mean the resizing engine is Base UI. The earlier package review already identifies react-resizable-panels as React-specific; this follow-up does not change the native Lit/TanStack Store/shared-motion implementation with React wrapping the same components.
+
+Use this concrete composition reference when reviewing Sidebar, main/supporting panes, editors, Scroll Area and other suitable layouts. Do not automatically make every Sidebar resizable. The inventory must coordinate responsive mode changes, resize constraints, collapse/reopening, focus, RTL, nested panes, scroll viewport measurement and consumer-owned saving. Exact public naming/parts/defaults remain open. [Request record](../alignment/evidence/disposition-checkpoint-2026-09-19.json).

@@ -155,7 +155,7 @@ The following skill bodies were read in full from the installed version: `spec-d
 
 ### Defaults that project instructions override
 
-- `api-and-interface-design/SKILL.md:125` prefers additive, backward-compatible changes. This package has no consumers and replaces old interfaces outright. Keep that project decision.
+- `api-and-interface-design/SKILL.md:125` prefers additive, backward-compatible changes. This package has no other consumers and replaces old interfaces outright. Peter reaffirmed that code, JSDoc, README and consumer docs describe the current design only; replacement history belongs in notes and Git. No aliases, fallback implementations, deprecated exports or legacy modes. Migration skills must not introduce compatibility stages into the final package.
 - `api-and-interface-design/SKILL.md:146` gives REST-oriented naming examples, including boolean prefixes and uppercase enum values. Naming here follows Lit practice, the domain model, and Peter's approved conventions.
 - `incremental-implementation/SKILL.md:41` commits after every slice. `PLAN.md:159` requires Peter to ask before a commit. Verification can finish while the changes remain uncommitted.
 - `spec-driven-development/SKILL.md:182` defaults to `tasks/` output. The pass already assigns its specification and migration records to `notes/alignment/`; retain those paths.
@@ -165,6 +165,26 @@ No project build or runtime behaviour changed during installation. After install
 
 ## Phase 1 extension checkpoint
 
-Peter expanded the pass after the original nine-subject walkthrough. The [extension register](../alignment/additional-functionality-review.md) preserves the completed research, decisions and later acceptance obligations. The current checkpoint is Phase 2.3: Stat is next, with detailed Toolbar composition returning during Group review. Follow the [pass handoff](../alignment/README.md#where-we-are). The seven-phase lifecycle and source freeze remain intact; the extension is not a restart or implementation approval.
+Historical checkpoint: the current status is in the [pass handoff](../alignment/README.md#where-we-are). The paragraph below records the earlier capture.
+
+At this historical capture, Peter had expanded the pass and Phase 2 was still underway. That phase has since closed; use the [central handoff](../alignment/README.md#where-we-are) for current work. The [extension register](../alignment/additional-functionality-review.md) preserves completed research and acceptance obligations. The seven-phase lifecycle and source freeze remain intact.
 
 The records-only capture saves decisions made while Plan mode prevented file writes. Accepted directions and initial research are separate. Future capture turns must propagate changed decisions into the handoff and existing subject analyses, rather than create a second file on the same subject.
+
+## Evidence and implementation quality reaffirmation
+
+Reaffirmed 2026-09-19 by Peter. [Standing decision](../decisions/evidence-and-implementation-quality.md), [retrospective audit](../alignment/phase-3-review.md#evidence-audit). The existing rules were already clear; the correction is to apply them before a recommendation is put forward.
+
+Every consequential recommendation needs current code evidence, relevant official/reference practice and tests appropriate to the claim. State observed facts, limited feasibility results, comparative reasoning and unknowns separately. Investigate missing facts; do not invent assumptions to make a proposal appear complete. Community preference requires a stated survey and its limits, not a handful of names presented as consensus.
+
+Choose the best implementation for the agreed requirements: correctness, accessibility, maintainability, testability, performance and integration fit. Fastest, easiest, familiar, convenient, fewer lines and fewer files do not decide the outcome. Reuse research and parallelize independent work to improve pace without lowering this bar.
+
+When a previously suggested or selected direction lacks adequate comparative support, preserve the choice history, record the evidence gap and reevaluate the mechanism. Bring a concrete revision to Peter if new evidence changes the recommendation. A user-approved direction, documented framework pattern or passing simulated-DOM probe is not a completed browser implementation.
+
+At the initial audit, CSS-first remained unselected and state integration had only a six-case happy-dom probe. Subsequently Peter selected the compiled-CSS direction after comparison. The actual existing state helper and a focused scratch refinement have now been checked, alongside native-form timing. The [architecture closeout](../alignment/phase-3-review.md#phase-3-closure) assigns remaining interface decisions and implementation checks to their return points. This is not blanket revalidation or completed implementation certification.
+
+## Keeping the record synchronized
+
+Peter explicitly reaffirmed that every affected note must stay current. A capture updates the owning decision, living analysis, inventory, active handoff and any other note that presents the changed choice as current or still open. Search the full notes set for older names, contrary scope and stale phase/next-step wording; updating only the newest paragraph is insufficient.
+
+Keep current phase and next-step information in the central pass handoff. Completed reviews link there instead of repeating a phase number that will drift. Preserve dated measurements and superseded decision history, but label them and link their replacements so they cannot be read as active instructions. Check local file/heading links, evidence JSON and source fingerprints after the capture. This process does not turn draft interfaces into approvals or unverified evidence into passing tests.
