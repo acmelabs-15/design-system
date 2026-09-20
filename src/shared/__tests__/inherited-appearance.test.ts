@@ -1,4 +1,6 @@
 import { describe, expect, expectTypeOf, test } from "bun:test";
+import path from "node:path";
+import ts from "typescript";
 import { createAtom } from "@tanstack/lit-store";
 import { createInheritedAppearance, type AppearanceDefaults } from "../inherited-appearance";
 
@@ -140,3 +142,80 @@ describe("inherited appearance", () => {
     expect(appearance.effective.get().size).toBe("medium");
   });
 });
+
+const source = path.resolve(import.meta.dir, "../inherited-appearance.ts");
+const virtualDirectory = path.join(import.meta.dir, "__emitted_appearance__");
+const options: ts.CompilerOptions = {
+  target: ts.ScriptTarget.ES2022,
+  module: ts.ModuleKind.ESNext,
+  moduleResolution: ts.ModuleResolutionKind.Bundler,
+  experimentalDecorators: true,
+  useDefineForClassFields: false,
+  skipLibCheck: true,
+  lib: ["lib.es2022.d.ts", "lib.dom.d.ts", "lib.dom.iterable.d.ts"],
+};
+
+function checkConsumer(declarations: Map<string, string>, code: string): readonly ts.Diagnostic[] {
+  const file = path.join(virtualDirectory, "consumer.ts");
+  const files = new Map(declarations).set(file, code);
+  const compilerOptions = { ...options, strict: true, noEmit: true };
+  const host = ts.createCompilerHost(compilerOptions);
+  const originalFileExists = host.fileExists.bind(host);
+  const originalDirectoryExists = host.directoryExists?.bind(host);
+  const originalReadFile = host.readFile.bind(host);
+  const originalGetSourceFile = host.getSourceFile.bind(host);
+  host.fileExists = (name) => files.has(name) || originalFileExists(name);
+  host.directoryExists = (name) => name === virtualDirectory || originalDirectoryExists?.(name) === true;
+  host.readFile = (name) => files.get(name) ?? originalReadFile(name);
+  host.getSourceFile = (name, languageVersion, ...rest) => {
+    const text = files.get(name);
+    return text === undefined ? originalGetSourceFile(name, languageVersion, ...rest) : ts.createSourceFile(name, text, languageVersion, true);
+  };
+  return ts.getPreEmitDiagnostics(ts.createProgram([file], compilerOptions, host));
+}
+
+for (const strict of [false, true]) {
+  test(`emitted appearance declarations retain absence and readonly contracts with strict=${strict}`, () => {
+    const declarations = new Map<string, string>();
+    const program = ts.createProgram([source], {
+      ...options,
+      strict,
+      declaration: true,
+      declarationMap: true,
+      emitDeclarationOnly: true,
+      rootDir: path.dirname(source),
+      outDir: virtualDirectory,
+    });
+    expect(ts.getPreEmitDiagnostics(program)).toEqual([]);
+    const emitted = program.emit(undefined, (name, text) => declarations.set(path.resolve(name), text));
+    expect(emitted.diagnostics).toEqual([]);
+    expect(declarations.has(path.join(virtualDirectory, "inherited-appearance.d.ts"))).toBe(true);
+
+    const consumer = `
+      import {createInheritedAppearance} from './inherited-appearance';
+      type Equal<A,B> = (<T>()=>T extends A?1:2) extends (<T>()=>T extends B?1:2) ? true : false;
+      const variantOnly=createInheritedAppearance({variant:{supported:['solid','outline'] as const,defaultValue:'solid'}});
+      const variantValue=variantOnly.effective.get();
+      const missingSize: typeof variantValue.size=undefined;
+      const absentIsUndefined: Equal<typeof variantValue.size,undefined>=true;
+      const variantKeepsAbsence: Equal<typeof variantValue.variant,'solid'|'outline'|undefined>=true;
+      const sizeOnly=createInheritedAppearance({size:{supported:['small','medium'] as const,defaultValue:'medium'}});
+      const sizeValue=sizeOnly.effective.get();
+      const missingVariant: typeof sizeValue.variant=undefined;
+      const sizeKeepsAbsence: Equal<typeof sizeValue.size,'small'|'medium'|undefined>=true;
+      sizeOnly.setAuthored({size:undefined});
+      sizeOnly.setProvider(undefined);
+    `;
+    expect(checkConsumer(declarations, consumer).map((diagnostic) => ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"))).toEqual([]);
+    const mutations = checkConsumer(
+      declarations,
+      consumer +
+        `
+      sizeOnly.effective.get().size='small';
+      sizeOnly.authored.get().size='small';
+      sizeOnly.diagnostics.get().push({code:'unsupported-inherited-value',property:'size',value:'tiny',supported:[]});
+    `,
+    );
+    expect(mutations.map((diagnostic) => diagnostic.code).sort()).toEqual([2339, 2540, 2540]);
+  });
+}

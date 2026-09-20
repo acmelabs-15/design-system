@@ -10,6 +10,13 @@ export type AppearanceDiagnostic = Readonly<{
   value: string;
   supported: readonly string[];
 }>;
+export type InheritedAppearance<Size extends string, Variant extends string> = Readonly<{
+  authored: ReadonlyAtom<AuthoredAppearance<Size, Variant>>;
+  effective: ReadonlyAtom<EffectiveAppearance<Size, Variant>>;
+  diagnostics: ReadonlyAtom<readonly AppearanceDiagnostic[]>;
+  setAuthored(inputs: AuthoredAppearance<Size, Variant>): void;
+  setProvider(source: ReadonlyAtom<AppearanceDefaults> | undefined): void;
+}>;
 
 function ownDefinition<Value extends string>(definition: AppearanceDefinition<Value> | undefined): AppearanceDefinition<Value> | undefined {
   if (!definition) return undefined;
@@ -21,16 +28,19 @@ function ownDefinition<Value extends string>(definition: AppearanceDefinition<Va
  * The consumer validates child enum values and supplies the nearest participating provider.
  * Subscriptions belong to consumers; this module owns no DOM lookup or connection effects.
  */
-export function createInheritedAppearance<Size extends string = never, Variant extends string = never>(definitions: { size?: AppearanceDefinition<Size>; variant?: AppearanceDefinition<Variant> }) {
+export function createInheritedAppearance<Size extends string = never, Variant extends string = never>(definitions: {
+  size?: AppearanceDefinition<Size>;
+  variant?: AppearanceDefinition<Variant>;
+}): InheritedAppearance<Size, Variant> {
   const size = ownDefinition(definitions.size);
   const variant = ownDefinition(definitions.variant);
   const authoredState = createAtom<AuthoredAppearance<Size, Variant>>(Object.freeze({}));
-  const provider = createAtom<ReadonlyAtom<AppearanceDefaults> | undefined>(undefined);
+  const provider = createAtom<{ source?: ReadonlyAtom<AppearanceDefaults> }>({});
   const authored = createAtom(() => authoredState.get());
   const resolution = createAtom(() => {
     const inputs = authored.get();
     const needsProvider = (size !== undefined && inputs.size === undefined) || (variant !== undefined && inputs.variant === undefined);
-    const inherited = needsProvider ? provider.get()?.get() : undefined;
+    const inherited = needsProvider ? provider.get().source?.get() : undefined;
     const diagnostics: AppearanceDiagnostic[] = [];
     const resolve = <Value extends string>(property: "size" | "variant", definition: AppearanceDefinition<Value> | undefined, input: Value | undefined): Value | undefined => {
       if (!definition) return undefined;
@@ -67,7 +77,7 @@ export function createInheritedAppearance<Size extends string = never, Variant e
       authoredState.set(Object.freeze(next));
     },
     setProvider(source: ReadonlyAtom<AppearanceDefaults> | undefined): void {
-      provider.set(() => source);
+      provider.set({ source });
     },
   });
 }
