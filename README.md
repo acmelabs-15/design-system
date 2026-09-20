@@ -49,6 +49,7 @@ app. Single elements import from `@acmelabs/design-system/dist/components/<name>
 ## Layout
 
 ```
+styles/house.css                the audited house stylesheet
 src/
   base.ts                       AcmeElement, the shared shadow reset, the icon glyphs
   index.ts                      re-exports every element
@@ -71,7 +72,7 @@ These are committed but written by scripts. Editing them by hand is lost on the 
 
 | Path | Written by | Edit instead |
 |---|---|---|
-| `tokens.css` | `bun run split` | the audited sheet in `tools/geist/` |
+| `tokens.css` | `bun run split` | `styles/house.css` and the generated theme |
 | `dashboard.css` | `bun run build` | `scripts/build.ts` |
 | `src/components/<name>/<name>.styles.ts` | `bun run split` or `bun tools/geist/gen.ts <name>` | `tools/geist/maps/<name>.ts` |
 | `docs/` | `bun run docs` | `docs-src/` |

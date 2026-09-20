@@ -62,13 +62,13 @@ Several **generated files are committed**, in places that read as source. The sc
 
 | Path | Written by | Source of truth |
 |---|---|---|
-| `tokens.css` (repo root) | `bun run split` → `scripts/split-css.ts` | the audited house sheet in `tools/geist/` |
+| `tokens.css` (repo root) | `bun run split` → `scripts/split-css.ts` | `styles/house.css` and `src/generated/theme.css` |
 | `dashboard.css` (repo root) | `bun run build` → `scripts/build.ts` | `scripts/build.ts` |
 | `src/components/<name>/<name>.styles.ts` | `bun run split` / `bun tools/geist/gen.ts <name>` | `tools/geist/maps/<name>.ts` and the spec |
 | `docs/` (entire directory) | `bun run docs` → `docs-src/build.ts` | `docs-src/` |
 | `dist/` (gitignored) | `bun run build` | `src/` |
 
-Hand-written: `src/` except `*.styles.ts`, `docs-src/`, `scripts/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
+Hand-written: `styles/house.css`, `src/` except `*.styles.ts`, `docs-src/`, `scripts/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`; the link follows.
 

@@ -4,13 +4,13 @@
 //   src/components/<name>/<name>.styles.ts  one Lit css`` module per element, beside it, the exact rule blocks
 //   src/shared/<name>.styles.ts  families with no element of their own (field, and the dashboard recipes)
 //                           the class-based sheet carried, so shadow styles keep Geist's values
-// Run: bun scripts/split-css.ts [path-to-geist.css]
+// Run: bun scripts/split-css.ts [path-to-house.css]
 import fs from "node:fs";
 import path from "node:path";
 import { formatGenerated } from "./format-generated";
 
 const ROOT = path.resolve(import.meta.dir, "..");
-const SRC = process.argv[2] ?? path.join(ROOT, "src/geist.css"); // the audited house sheet, the source of every element style
+const SRC = process.argv[2] ?? path.join(ROOT, "styles/house.css"); // the audited house sheet, the source of every element style
 const css = fs.readFileSync(SRC, "utf8");
 
 /* ---------- parse into top-level blocks ---------- */
