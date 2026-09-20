@@ -1,6 +1,6 @@
 import { separatorStructureCss } from "../../generated/components/separator/separator-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { separatorCss } from "../../generated/components/separator/separator.styles";
 
@@ -9,7 +9,7 @@ import { separatorCss } from "../../generated/components/separator/separator.sty
  * row it sits in. The host renders as its contents, so the line itself is the flex or block
  * item, and a percentage height resolves against the row.
  */
-@customElement("acme-separator")
+
 export class AcmeSeparator extends AcmeElement {
   static styles = [
     sharedCss,

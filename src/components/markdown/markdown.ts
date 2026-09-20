@@ -10,7 +10,7 @@ import { tsx } from "@tanstack/highlight/languages/tsx";
 import { createTanStackMarkdownHighlighter } from "@tanstack/highlight/markdown";
 import { renderHtml } from "@tanstack/markdown/html";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { markdownCss } from "../../generated/components/markdown/markdown.styles";
@@ -23,7 +23,7 @@ const highlightCode = createTanStackMarkdownHighlighter(highlighter);
  * fences highlighted by TanStack Highlight, set in the Geist type scale. Raw HTML in the source
  * is escaped unless `allow-html` is set, which is a trusted-content decision.
  */
-@customElement("acme-markdown")
+
 export class AcmeMarkdown extends AcmeElement {
   static styles = [sharedCss, markdownCss];
   /** The Markdown source; when empty, the element's own text content is used. */

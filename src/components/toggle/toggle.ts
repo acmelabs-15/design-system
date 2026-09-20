@@ -1,6 +1,6 @@
 import { toggleStructureCss } from "../../generated/components/toggle/toggle-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -25,7 +25,7 @@ const COLORS: Record<Exclude<ToggleColor, "">, [string, string, string, string]>
  * (data-hover, data-focus, data-active) and the own states (data-checked, data-disabled).
  * Form-associated and labelable.
  */
-@customElement("acme-toggle")
+
 export class AcmeToggle extends AcmeElement {
   static formAssociated = true;
   static styles = [

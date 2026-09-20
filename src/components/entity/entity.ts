@@ -1,6 +1,6 @@
 import { entityStructureCss } from "../../generated/components/entity/entity-structure.styles";
 import { html } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -17,7 +17,7 @@ export type EntityTag = "li" | "button" | "div";
  * background, tints on hover and emits `click` on the host. The columns are the `left` and `right`
  * parts, for a consumer's own border or padding.
  */
-@customElement("acme-entity")
+
 export class AcmeEntity extends AcmeElement {
   static styles = [
     sharedCss,

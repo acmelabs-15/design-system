@@ -1,8 +1,8 @@
 import { avatarGroupStructureCss } from "../../generated/components/avatar-group/avatar-group-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
-import "../avatar/avatar";
+
 import type { AvatarService } from "../avatar/avatar";
 import { avatarGroupCss } from "../../generated/components/avatar-group/avatar-group.styles";
 
@@ -14,7 +14,7 @@ export type AvatarMember = { username?: string; src?: string; letter?: string; t
  * holds the next member and, when more than one is hidden (or `extra` says so), a small
  * "+N" counter on a dark disc. The first member sits on top unless `reverse`.
  */
-@customElement("acme-avatar-group")
+
 export class AcmeAvatarGroup extends AcmeElement {
   static styles = [
     sharedCss,

@@ -1,11 +1,10 @@
 import { legendItemStructureCss } from "../../generated/components/legend-item/legend-item-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { legendCss } from "../../generated/components/legend/legend.styles";
 import { statusDotCss } from "../../generated/components/status-dot/status-dot.styles";
 
-@customElement("acme-legend-item")
 export class AcmeLegendItem extends AcmeElement {
   static styles = [
     sharedCss,

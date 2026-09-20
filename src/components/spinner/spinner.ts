@@ -1,6 +1,6 @@
 import { spinnerStructureCss } from "../../generated/components/spinner/spinner-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { spinnerCss } from "../../generated/components/spinner/spinner.styles";
 
@@ -24,7 +24,7 @@ const SIZES: Record<SpinnerSize, [number, number, string]> = {
  * (gray-700 by default); `color` sets it. The host carries `data-glyph="circular"`, so a badge
  * or button icon slot pulls the round glyph in like any other.
  */
-@customElement("acme-spinner")
+
 export class AcmeSpinner extends AcmeElement {
   static styles = [
     sharedCss,

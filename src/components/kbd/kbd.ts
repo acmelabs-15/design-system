@@ -1,6 +1,6 @@
 import { kbdStructureCss } from "../../generated/components/kbd/kbd-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { kbdCss } from "../../generated/components/kbd/kbd.styles";
@@ -16,7 +16,7 @@ export const isMac = () => typeof navigator !== "undefined" && /Mac|iPhone|iPad/
  * radius 4, the background colour with a 1px ring, a 4px (small 2px) left margin. The host is an
  * inline box, so the key cap keeps its inline-flex box in the line of text around it.
  */
-@customElement("acme-kbd")
+
 export class AcmeKbd extends AcmeElement {
   static styles = [
     sharedCss,

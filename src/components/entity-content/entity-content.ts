@@ -1,6 +1,6 @@
 import { entityContentStructureCss } from "../../generated/components/entity-content/entity-content-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { createStore, StoreSelector } from "../../shared/state";
 import { entityContentCss } from "../../generated/components/entity-content/entity-content.styles";
@@ -12,7 +12,7 @@ import { entityContentCss } from "../../generated/components/entity-content/enti
  * its text. A title or description that is not plain text goes in the `title` or `description`
  * slot instead of the attribute.
  */
-@customElement("acme-entity-content")
+
 export class AcmeEntityContent extends AcmeElement {
   static styles = [
     sharedCss,

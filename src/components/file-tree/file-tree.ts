@@ -1,6 +1,6 @@
 import { fileTreeStructureCss } from "../../generated/components/file-tree/file-tree-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { fileTreeCss } from "../../generated/components/file-tree/file-tree.styles";
 
@@ -10,7 +10,7 @@ import { fileTreeCss } from "../../generated/components/file-tree/file-tree.styl
  * tree in a padded card: the page background, the smallest shadow, radius 8, padding 24 and 16px
  * text.
  */
-@customElement("acme-file-tree")
+
 export class AcmeFileTree extends AcmeElement {
   static styles = [
     sharedCss,

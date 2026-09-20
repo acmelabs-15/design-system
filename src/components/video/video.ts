@@ -1,6 +1,6 @@
 import { videoStructureCss } from "../../generated/components/video/video-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -42,7 +42,7 @@ const glyph = (d: string) =>
  * `lazy` defers the source until the frame comes within 20% of the viewport. `acme-play` fires
  * whenever playback starts, with the source in `detail.src`.
  */
-@customElement("acme-video")
+
 export class AcmeVideo extends AcmeElement {
   static styles = [
     sharedCss,

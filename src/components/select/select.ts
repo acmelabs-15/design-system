@@ -1,12 +1,12 @@
 import { selectStructureCss } from "../../generated/components/select/select-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
 import { selectCss } from "../../generated/components/select/select.styles";
 import { selectLabelCss } from "../../generated/components/select/select-label.styles";
-import "../error/error";
+
 import { atomState } from "../../shared/atom-state";
 
 export type SelectSize = "tiny" | "small" | "medium" | "large";
@@ -30,7 +30,7 @@ const chevron = html`<svg class="chevron" width="16" height="16" viewBox="0 0 24
  * `width` sizes the label element and the message. Form-associated and labelable; `acme-change`
  * carries the value.
  */
-@customElement("acme-select")
+
 export class AcmeSelect extends AcmeElement {
   static formAssociated = true;
   static styles = [

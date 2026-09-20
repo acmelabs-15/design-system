@@ -1,12 +1,12 @@
 import { comboboxStructureCss } from "../../generated/components/combobox/combobox-structure.styles";
 import { autoUpdate, computePosition, flip, hide, offset, shift } from "@floating-ui/dom";
 import { html, LitElement, nothing, svg } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { matchSorter } from "../../shared/match-sorter";
 import type { AcmeComboboxOption } from "../combobox-option/combobox-option";
-import "../spinner/spinner";
+
 import { atomState } from "../../shared/atom-state";
 import { comboboxCss } from "../../generated/components/combobox/combobox.styles";
 import { comboboxListCss } from "../../generated/components/combobox/combobox-list.styles";
@@ -31,25 +31,6 @@ let seq = 0;
 const GLASS = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M1.5 6.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0M6.5 0a6.5 6.5 0 1 0 4.03 11.6l3.74 3.73 1.06-1.06-3.74-3.74A6.5 6.5 0 0 0 6.5 0"></path>`;
 const CROSS = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12.53 4.53 9.06 8l3.47 3.47-1.06 1.06L8 9.06l-3.47 3.47-1.06-1.06L6.94 8 3.47 4.53l1.06-1.06L8 6.94l3.47-3.47 1.06 1.06Z"></path>`;
 const CHEVRON = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M8 10.94 3.53 6.47l1.06-1.06L8 8.82l3.41-3.41 1.06 1.06L8 10.94Z"></path>`;
-
-/** How focus last arrived: the keys (Tab, Escape) or a pointer. A field focused from the keys shows the focus ring. */
-let modality: "keyboard" | "pointer" = "pointer";
-if (typeof document !== "undefined") {
-  document.addEventListener(
-    "keydown",
-    (e) => {
-      if (e.key === "Tab" || e.key === "Escape") modality = "keyboard";
-    },
-    true,
-  );
-  document.addEventListener(
-    "pointerdown",
-    () => {
-      modality = "pointer";
-    },
-    true,
-  );
-}
 
 /** Ranks the rows by their value and label. */
 const defaultFilter: ComboboxFilter = (rows, query) => matchSorter(rows, query, { keys: [(r) => r.value, (r) => r.text] });
@@ -77,7 +58,7 @@ const defaultFilter: ComboboxFilter = (rows, query) => matchSorter(rows, query, 
  * typed text. Fires `acme-input` (typed text), `acme-change` (`detail.value`, null on clear),
  * `acme-clear`, `acme-open` and `acme-close`. Form-associated and labelable.
  */
-@customElement("acme-combobox")
+
 export class AcmeCombobox extends AcmeElement {
   static formAssociated = true;
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
@@ -173,6 +154,11 @@ export class AcmeCombobox extends AcmeElement {
   private stopAutoUpdate?: () => void;
   private watch?: MutationObserver;
   private resize?: ResizeObserver;
+  private modality: "keyboard" | "pointer" = "pointer";
+  private eventDocument?: Document;
+  private onDocumentKey = (event: KeyboardEvent) => {
+    if (event.key === "Tab" || event.key === "Escape") this.modality = "keyboard";
+  };
   // The shell's group hover and its own focus ring; any focus of the field is its focus state; the clear button's keyboard focus ring.
   private shellState = new Interaction(this, { anyFocus: true, ownFocus: true, disabled: () => false });
   private inputState = new Interaction(this, { anyFocus: true, disabled: () => false });
@@ -192,7 +178,9 @@ export class AcmeCombobox extends AcmeElement {
       this.watch = new MutationObserver(() => this.readChildren());
       this.watch.observe(this, { childList: true, subtree: true, attributes: true, attributeFilter: ["value", "label", "slot", "menu", "display-last", "disabled"] });
     }
-    document.addEventListener("pointerdown", this.onOutside, true);
+    this.eventDocument = this.ownerDocument;
+    this.eventDocument.addEventListener("pointerdown", this.onOutside, true);
+    this.eventDocument.addEventListener("keydown", this.onDocumentKey, true);
     this.addEventListener("acme-select", this.onRowSelect);
     this.addEventListener("mousemove", this.onRowMove);
     // The footer's slotted control: its keys and presses reach the host through the light DOM.
@@ -206,7 +194,9 @@ export class AcmeCombobox extends AcmeElement {
     this.resize?.disconnect();
     this.stopAutoUpdate?.();
     clearTimeout(this.settleTimer);
-    document.removeEventListener("pointerdown", this.onOutside, true);
+    this.eventDocument?.removeEventListener("pointerdown", this.onOutside, true);
+    this.eventDocument?.removeEventListener("keydown", this.onDocumentKey, true);
+    this.eventDocument = undefined;
     this.removeEventListener("acme-select", this.onRowSelect);
     this.removeEventListener("mousemove", this.onRowMove);
     this.removeEventListener("keydown", this.onFooterKey);
@@ -348,7 +338,7 @@ export class AcmeCombobox extends AcmeElement {
   };
 
   private onFocus = () => {
-    this.keyboard = modality === "keyboard";
+    this.keyboard = this.modality === "keyboard";
     this.openWithSelection();
   };
 
@@ -497,6 +487,7 @@ export class AcmeCombobox extends AcmeElement {
   };
 
   private onOutside = (e: Event) => {
+    this.modality = "pointer";
     if (this.open && !e.composedPath().includes(this)) this.close();
   };
 

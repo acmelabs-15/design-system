@@ -1,6 +1,6 @@
 import { menuSectionStructureCss } from "../../generated/components/menu-section/menu-section-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { menuSectionCss } from "../../generated/components/menu-section/menu-section.styles";
 
@@ -11,7 +11,7 @@ let seq = 0;
  * shows as a tooltip; `heading` is the same) in gray-800 over a plain group list of the slotted
  * `acme-menu-item`s.
  */
-@customElement("acme-menu-section")
+
 export class AcmeMenuSection extends AcmeElement {
   static styles = [
     sharedCss,

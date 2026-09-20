@@ -2,12 +2,11 @@ import { commandMenuStructureCss } from "../../generated/components/command-menu
 import { HotkeyController, type RegisterableHotkey } from "@tanstack/lit-hotkeys";
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { commandScore } from "../../shared/command-score";
 import { Interaction } from "../../shared/interaction";
-import "../breadcrumb/breadcrumb";
-import "../breadcrumbs/breadcrumbs";
+
 import { atomState } from "../../shared/atom-state";
 import type { AcmeCommandDivider } from "../command-divider/command-divider";
 import type { AcmeCommandGroup } from "../command-group/command-group";
@@ -54,7 +53,7 @@ const WATCHED = ["value", "disabled", "page", "always-render", "slot"];
  * or a crumb); a row's `acme-select` bubbles through, and the menu closes on it unless the row keeps
  * it open or the event is canceled.
  */
-@customElement("acme-command-menu")
+
 export class AcmeCommandMenu extends AcmeElement {
   static styles = [
     sharedCss,

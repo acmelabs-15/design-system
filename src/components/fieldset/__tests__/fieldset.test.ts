@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeButton } from "../../button/button";
 import type { AcmeFieldset } from "../fieldset";
 

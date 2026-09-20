@@ -1,11 +1,10 @@
 import { loadMoreStructureCss } from "../../generated/components/load-more/load-more-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { loadMoreCss } from "../../generated/components/load-more/load-more.styles";
 import { loadMorePlaceholderCss } from "../../generated/components/load-more/load-more-placeholder.styles";
-import "../button/button";
 
 /**
  * Load more button. A full-width secondary submit button that appends more items to a list,
@@ -13,7 +12,7 @@ import "../button/button";
  * disables it; `no-gap` removes the space above; `no-border-radius` squares the corners so it
  * sits flush with the list; `placeholder` renders an empty block of the same height instead.
  */
-@customElement("acme-load-more")
+
 export class AcmeLoadMore extends AcmeElement {
   static styles = [
     sharedCss,

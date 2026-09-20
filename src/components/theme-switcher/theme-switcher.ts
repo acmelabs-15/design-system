@@ -1,9 +1,9 @@
 import { themeSwitcherStructureCss } from "../../generated/components/theme-switcher/theme-switcher-structure.styles";
 import { html, nothing, svg } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { StoreSelector, type Theme, themeStore } from "../../shared/state";
+import { connectTheme, StoreSelector, type Theme, themeStore } from "../../shared/state";
 import { themeSwitcherCss } from "../../generated/components/theme-switcher/theme-switcher.styles";
 import { themeSwitcherOptionCss } from "../../generated/components/theme-switcher/theme-switcher-option.styles";
 
@@ -40,7 +40,7 @@ let seq = 0;
  * element. Each option span keeps its radio's states as attributes (data-checked, data-disabled,
  * data-focus) beside the interaction states. `disabled` greys every option and blocks the change.
  */
-@customElement("acme-theme-switcher")
+
 export class AcmeThemeSwitcher extends AcmeElement {
   static styles = [
     sharedCss,
@@ -52,12 +52,22 @@ export class AcmeThemeSwitcher extends AcmeElement {
   @property({ type: Boolean }) small = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
   private uid = `theme-switch-${++seq}`;
+  private stopTheme?: () => void;
   private interactions = OPTIONS.map(() => new Interaction(this, { disabled: () => this.disabled }));
 
   constructor() {
     super();
     // Re-renders whenever the shared theme changes, from this element or any other.
     new StoreSelector(this, () => themeStore);
+  }
+  connectedCallback() {
+    this.stopTheme = connectTheme(this.ownerDocument);
+    super.connectedCallback();
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.stopTheme?.();
+    this.stopTheme = undefined;
   }
   updated() {
     const options = this.renderRoot.querySelectorAll<HTMLElement>(".option");

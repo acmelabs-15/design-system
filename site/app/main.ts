@@ -1,7 +1,13 @@
 // Entry for the docs app bundle: the design system (compiled), the router app, and the
 // "Show code" toggle. Bundled by site/build.ts into _site/app.js.
 import { createToastQueue, toasts } from "../../dist/index";
-import "./docs-app";
+import "../../dist/all";
+import { AcmeDocsApp, DocsFormDemo, DocsSwatch, DocsTokens } from "./docs-app";
+
+customElements.define("docs-tokens", DocsTokens);
+customElements.define("docs-swatch", DocsSwatch);
+customElements.define("docs-form-demo", DocsFormDemo);
+customElements.define("acme-docs-app", AcmeDocsApp);
 
 declare global {
   interface Window {

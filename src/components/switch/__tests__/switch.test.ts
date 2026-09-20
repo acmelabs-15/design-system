@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeSwitchControl } from "../../switch-control/switch-control";
 import type { AcmeSwitch } from "../switch";
 

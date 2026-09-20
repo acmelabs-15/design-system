@@ -1,5 +1,5 @@
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { iconTileCss } from "../../generated/components/icon-tile/icon-tile.styles";
 
@@ -9,7 +9,7 @@ import { iconTileCss } from "../../generated/components/icon-tile/icon-tile.styl
  * text; the slotted icon sets its own size (32px in an empty state). `size` fixes the tile's width
  * and height (a number is pixels).
  */
-@customElement("acme-icon-tile")
+
 export class AcmeIconTile extends AcmeElement {
   static styles = [sharedCss, iconTileCss];
   /** Width and height of the tile: a number in pixels, or any CSS length. Unset, the tile wraps its icon. */

@@ -1,6 +1,6 @@
 import { breadcrumbsStructureCss } from "../../generated/components/breadcrumbs/breadcrumbs-structure.styles";
 import { html } from "lit";
-import { customElement, property, queryAssignedElements } from "lit/decorators.js";
+import { property, queryAssignedElements } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeBreadcrumb } from "../breadcrumb/breadcrumb";
 import { breadcrumbsCss } from "../../generated/components/breadcrumbs/breadcrumbs.styles";
@@ -11,7 +11,7 @@ import { breadcrumbsCss } from "../../generated/components/breadcrumbs/breadcrum
  * a chevron after each but the last; `type="menu"` is a row of 12px chips 8px apart that scrolls
  * sideways on a narrow screen. The list hands its type to the crumbs.
  */
-@customElement("acme-breadcrumbs")
+
 export class AcmeBreadcrumbs extends AcmeElement {
   static styles = [
     sharedCss,

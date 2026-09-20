@@ -98,7 +98,6 @@ const MAP: [string, RegExp][] = [
   ["scroller", /^\.scroller/],
   ["slider", /^\.slider/],
   ["theme-switcher", /^\.theme-switch/],
-  ["text-copy", /^\.copy-text/],
   ["book", /^\.book/],
   ["browser", /^\.browser/],
   ["calendar", /^(\.calendar|\.cal-)/],

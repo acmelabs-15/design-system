@@ -1,11 +1,10 @@
 import { statDeltaStructureCss } from "../../generated/components/stat-delta/stat-delta-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { statCss } from "../../generated/components/stat/stat.styles";
 import { trendCss } from "../../generated/components/trend/trend.styles";
 
-@customElement("acme-stat-delta")
 export class AcmeStatDelta extends AcmeElement {
   static styles = [
     sharedCss,

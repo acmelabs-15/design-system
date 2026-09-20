@@ -1,8 +1,7 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-import { registerProperties } from "../../../base";
-registerProperties([{"name":"--acme-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-z","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-scale-x","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-y","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-z","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-rotate-x","syntax":"*","inherits":false},{"name":"--acme-rotate-y","syntax":"*","inherits":false},{"name":"--acme-rotate-z","syntax":"*","inherits":false},{"name":"--acme-skew-x","syntax":"*","inherits":false},{"name":"--acme-skew-y","syntax":"*","inherits":false}]);
-export const tooltipCss = css`.tip {
+import { withStyleProperties } from "../../../shared/style-properties";
+export const tooltipCss = /* @__PURE__ */ withStyleProperties(css`.tip {
   pointer-events: none;
   position: absolute;
 }
@@ -1198,4 +1197,4 @@ export const tooltipCss = css`.tip {
     pointer-events: all;
   }
 }
-`;
+`, [{"name":"--acme-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-z","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-scale-x","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-y","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-z","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-rotate-x","syntax":"*","inherits":false},{"name":"--acme-rotate-y","syntax":"*","inherits":false},{"name":"--acme-rotate-z","syntax":"*","inherits":false},{"name":"--acme-skew-x","syntax":"*","inherits":false},{"name":"--acme-skew-y","syntax":"*","inherits":false}]);

@@ -1,11 +1,11 @@
 import { multiSelectStructureCss } from "../../generated/components/multi-select/multi-select-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeMultiSelectRow, MultiSelectAction, MultiSelectOwner } from "../multi-select-row/multi-select-row";
-import "../multi-select-row/multi-select-row";
+
 import { atomState } from "../../shared/atom-state";
 import { multiSelectCss } from "../../generated/components/multi-select/multi-select.styles";
 import { multiSelectContentCss } from "../../generated/components/multi-select/multi-select-content.styles";
@@ -39,7 +39,7 @@ const CHEVRON = "m14.06 5.5-.53.53-4.82 4.82a1 1 0 0 1-1.42 0L2.47 6.03l-.53-.53
  * Fires `acme-open` and `acme-close`. Form-associated (an entry per checked row under `name`) and
  * labelable; `disabled` disables the trigger.
  */
-@customElement("acme-multi-select")
+
 export class AcmeMultiSelect extends AcmeElement implements MultiSelectOwner {
   static formAssociated = true;
   static styles = [

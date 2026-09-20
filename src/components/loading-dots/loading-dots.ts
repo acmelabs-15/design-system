@@ -1,6 +1,6 @@
 import { loadingDotsStructureCss } from "../../generated/components/loading-dots/loading-dots-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { loadingDotsCss } from "../../generated/components/loading-dots/loading-dots.styles";
@@ -11,7 +11,7 @@ import { loadingDotsCss } from "../../generated/components/loading-dots/loading-
  * margin, then the three dot spans (the second and third delayed). Dot sizes sm 2 · md 3 · lg 4,
  * or a number of pixels.
  */
-@customElement("acme-loading-dots")
+
 export class AcmeLoadingDots extends AcmeElement {
   static styles = [
     sharedCss,

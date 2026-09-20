@@ -1,5 +1,5 @@
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { commandMenuGroupCss } from "../../generated/components/command-menu/command-menu-group.styles";
 
@@ -8,7 +8,7 @@ import { commandMenuGroupCss } from "../../generated/components/command-menu/com
  * 13px gray text over the slotted `acme-command-item` rows. The menu hides the group while no row
  * in it matches the query. `page` keeps the group, rows included, to one page of the menu.
  */
-@customElement("acme-command-group")
+
 export class AcmeCommandGroup extends AcmeElement {
   static styles = [sharedCss, commandMenuGroupCss];
   @property() heading = "";

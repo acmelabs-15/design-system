@@ -1,8 +1,8 @@
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, sharedCss } from "../../base";
-import "../tooltip/tooltip";
+
 import { progressCss } from "../../generated/components/progress/progress.styles";
 
 export type ProgressVariant = "" | "success" | "error" | "warning" | "secondary";
@@ -23,7 +23,7 @@ const len = (v: string | number) => (typeof v === "number" || /^\d+(\.\d+)?$/.te
  * `variant` or `colors`. `stops` draw 1px ticks at values, each with a hover tooltip; a bar with
  * stops has square value corners.
  */
-@customElement("acme-progress")
+
 export class AcmeProgress extends AcmeElement {
   static styles = [sharedCss, progressCss];
   @property({ type: Number }) value = 0;

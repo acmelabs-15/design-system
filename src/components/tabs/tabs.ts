@@ -1,6 +1,6 @@
 import { tabsStructureCss } from "../../generated/components/tabs/tabs-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query, queryAssignedElements } from "lit/decorators.js";
+import { property, query, queryAssignedElements } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { RovingTabindex } from "../../shared/roving-tabindex";
@@ -16,7 +16,7 @@ import { tabsCss } from "../../generated/components/tabs/tabs.styles";
  * after a key move until a tab blurs. `disabled` disables every tab. Fires `acme-change`
  * (`detail.value`). `acme-tab-panel` elements in the `panels` slot show for their value.
  */
-@customElement("acme-tabs")
+
 export class AcmeTabs extends AcmeElement {
   static styles = [
     sharedCss,

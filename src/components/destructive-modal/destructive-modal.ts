@@ -1,12 +1,8 @@
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { createStore, StoreSelector } from "../../shared/state";
-import "../modal/modal";
-import "../input/input";
-import "../button/button";
-import "../note/note";
-import "../error/error";
+
 import type { AcmeInput } from "../input/input";
 import type { ModalDismissReason } from "../modal/modal";
 import { destructiveModalCss } from "../../generated/components/destructive-modal/destructive-modal.styles";
@@ -27,7 +23,7 @@ export type DestructiveCancelReason = "cancel" | ModalDismissReason;
  * dispatches `acme-confirm` and leaves the modal open; Cancel, Escape and a press outside dispatch
  * `acme-cancel` (cancelable, `detail.reason`) and close it unless the event is prevented.
  */
-@customElement("acme-destructive-modal")
+
 export class AcmeDestructiveModal extends AcmeElement {
   static styles = [sharedCss, destructiveModalCss];
   /** Open state; `show()` and `close()` set it. */

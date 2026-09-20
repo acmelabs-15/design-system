@@ -1,12 +1,12 @@
 import { scrollerStructureCss } from "../../generated/components/scroller/scroller-structure.styles";
 import { Debouncer } from "@tanstack/pacer";
 import { html, nothing, type PropertyValues } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { scrollerCss } from "../../generated/components/scroller/scroller.styles";
 import { scrollerButtonsCss } from "../../generated/components/scroller/scroller-buttons.styles";
-import "../button/button";
+
 import { atomState } from "../../shared/atom-state";
 
 /** A number is a length in px; anything else is a CSS length. */
@@ -32,7 +32,7 @@ const NONE: Edges = { top: false, right: false, bottom: false, left: false };
  * The children sit in the default slot; the container that holds them is the `content` part
  * (the place for a gap between them).
  */
-@customElement("acme-scroller")
+
 export class AcmeScroller extends AcmeElement {
   static styles = [
     sharedCss,

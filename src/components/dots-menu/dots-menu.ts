@@ -1,11 +1,9 @@
 import { dotsMenuStructureCss } from "../../generated/components/dots-menu/dots-menu-structure.styles";
 import { html } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import type { AcmeMenu, MenuCloseKind } from "../menu/menu";
 import { dotsMenuCss } from "../../generated/components/dots-menu/dots-menu.styles";
-import "../menu/menu";
-import "../menu-button/menu-button";
 
 /** The three dots on a 16-box: across, or stacked. */
 const DOTS = {
@@ -23,7 +21,7 @@ const DOTS = {
  * Fires `acme-open` and `acme-close` (`detail.kind`) as the menu does. The trigger is the `trigger`
  * part; the menu's `floating` and `menu` parts are exported.
  */
-@customElement("acme-dots-menu")
+
 export class AcmeDotsMenu extends AcmeElement {
   static styles = [
     sharedCss,

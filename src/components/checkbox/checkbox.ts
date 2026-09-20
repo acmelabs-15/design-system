@@ -1,6 +1,6 @@
 import { checkboxStructureCss } from "../../generated/components/checkbox/checkbox-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -14,7 +14,7 @@ import { checkboxCss } from "../../generated/components/checkbox/checkbox.styles
  * an outer label toggles it, and the form receives `value` while checked. `indeterminate` is
  * visual only and clears on the next change.
  */
-@customElement("acme-checkbox")
+
 export class AcmeCheckbox extends AcmeElement {
   static formAssociated = true;
   static styles = [

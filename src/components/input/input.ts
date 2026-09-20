@@ -1,11 +1,11 @@
 import { inputStructureCss } from "../../generated/components/input/input-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { inputCss } from "../../generated/components/input/input.styles";
 import { inputLabelCss } from "../../generated/components/input/input-label.styles";
-import "../error/error";
+
 import { atomState } from "../../shared/atom-state";
 
 export type InputSize = "small" | "medium" | "large";
@@ -29,7 +29,7 @@ const PLACES = ["start-addon", "start", "end-addon", "end"] as const;
  * field; `error` renders the message under it and marks the field invalid. Form-associated and
  * labelable.
  */
-@customElement("acme-input")
+
 export class AcmeInput extends AcmeElement {
   static formAssociated = true;
   static styles = [

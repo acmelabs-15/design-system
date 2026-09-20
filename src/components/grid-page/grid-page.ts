@@ -1,6 +1,6 @@
 import { gridPageStructureCss } from "../../generated/components/grid-page/grid-page-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { gridPageCss } from "../../generated/components/grid-page/grid-page.styles";
@@ -11,7 +11,7 @@ import { gridPageCss } from "../../generated/components/grid-page/grid-page.styl
  * takes the place of the top padding on large screens; `remove-padding-y` drops the padding,
  * `remove-bottom-margin` pulls the page up by the width of a guide.
  */
-@customElement("acme-grid-page")
+
 export class AcmeGridPage extends AcmeElement {
   static styles = [
     sharedCss,

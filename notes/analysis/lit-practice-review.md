@@ -406,3 +406,11 @@ Strict TypeScript declarations and CEM agree on scalar, readonly-array and respo
 Native List/Table/Data List fixtures preserve author-owned nodes and browser roles. Inline/block hosts retain actual boxes. External, scoped and adopted controls submit immediately. Input naming is checked against browser accessibility snapshots. The Field candidate uses same-shadow text mirrors plus registered activation targets; complex labels/descriptions and other control families remain implementation tests.
 
 Firefox's first synchronous synthetic label click after iframe adoption does not focus, although the handler runs and later direct focus works. Real Playwright label clicks pass beside a native label/input oracle in all three engines. That synthetic observation remains recorded; no timer, retry or preventDefault workaround is introduced. These browser checks do not claim a screen-reader session or autofill/history certification.
+
+## Owned store reconnect hook shipped through the package, 2026-09-20
+
+Fresh M03 package consumers exposed the limit of the local lit-store patch. Normal registry installs did not apply it, and selectors stopped rendering after a move in all three engines. M00 had explicitly patched its consumer fixture. That passing result remains a representative mechanism check, not proof of transitive patch delivery.
+
+The existing StoreSelector and atomState now share src/shared/store-connection.ts. It registers one requestUpdate-on-connect controller per host. The official TanStackStoreSelector and TanStackStoreAtom continue to own selection, subscriptions and values; there is no replacement state engine. The implementation works with unpatched @tanstack/lit-store 0.13.2. The removed dependency patch and its rationale remain in Git/history.
+
+Fourteen focused tests pass, including detached shared-atom changes, repeated moves, exact active-subscription counts, one connection update for mixed bindings, and selector comparison options. Fresh packed consumers pass repeated Theme Switcher reconnection and detached catch-up in Chromium, Firefox and WebKit. M05 still owns the wider canonical public-state, declaration-order, external named-notification and theme-scope integration.

@@ -6,7 +6,7 @@ import { scaleLinear } from "@tanstack/charts/scales/linear";
 import { scalePoint } from "@tanstack/charts/scales/point";
 import { tooltip } from "@tanstack/charts/tooltip";
 import { html } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { legendCss } from "../../generated/components/legend/legend.styles";
 import { chartCss } from "../../generated/components/chart/chart.styles";
@@ -20,7 +20,7 @@ type Host = { update(options: Record<string, unknown>): void; destroy(): void };
  * axes and the tooltip. Without `data`, the default slot takes a hand-drawn SVG as before.
  * Slots: head, default (custom plot), tip, legend.
  */
-@customElement("acme-chart")
+
 export class AcmeChart extends AcmeElement {
   static styles = [
     sharedCss,

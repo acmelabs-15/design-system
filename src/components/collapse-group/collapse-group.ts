@@ -1,7 +1,7 @@
 import { collapseGroupStructureCss } from "../../generated/components/collapse-group/collapse-group-structure.styles";
 import { Store, type Subscription } from "@tanstack/lit-store";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeCollapse } from "../collapse/collapse";
 import { collapseGroupCss } from "../../generated/components/collapse-group/collapse-group.styles";
@@ -12,7 +12,7 @@ import { collapseGroupCss } from "../../generated/components/collapse-group/coll
  * While nothing has been chosen, the panels show their own `default-expanded` state, and a
  * `default-expanded` panel cannot close itself.
  */
-@customElement("acme-collapse-group")
+
 export class AcmeCollapseGroup extends AcmeElement {
   static styles = [
     sharedCss,

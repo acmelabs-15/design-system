@@ -1,5 +1,6 @@
+import "../../../define/video";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { type AcmeVideo, formatTime } from "../video";
 
 const SRC = "https://example.com/clip.mp4";

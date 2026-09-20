@@ -1,13 +1,13 @@
 import { splitButtonStructureCss } from "../../generated/components/split-button/split-button-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { html, nothing } from "lit";
-import { customElement, property, query, queryAssignedElements } from "lit/decorators.js";
+import { property, query, queryAssignedElements } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeSplitButtonItem } from "../split-button-item/split-button-item";
 import { splitButtonCss } from "../../generated/components/split-button/split-button.styles";
 import { splitButtonMenuCss } from "../../generated/components/split-button/split-button-menu.styles";
-import "../button/button";
+
 import { atomState } from "../../shared/atom-state";
 
 /** The menu keeps its box for this long after it starts to fade out. */
@@ -26,7 +26,7 @@ const MENU_GAP = 8;
  * Down opens; in the menu Up and Down move, Home and End jump, Escape closes and returns focus,
  * Tab closes; a click outside closes.
  */
-@customElement("acme-split-button")
+
 export class AcmeSplitButton extends AcmeElement {
   static styles = [
     sharedCss,

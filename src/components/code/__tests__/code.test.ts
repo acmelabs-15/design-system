@@ -1,5 +1,6 @@
+import "../../../define/code";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeCode } from "../code";
 import { tokenLines } from "../code";
 

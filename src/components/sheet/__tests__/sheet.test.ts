@@ -1,5 +1,6 @@
+import "../../../define/modal";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { deepActive } from "../../modal/modal";
 import type { AcmeSheet } from "../sheet";
 

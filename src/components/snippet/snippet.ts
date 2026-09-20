@@ -1,10 +1,10 @@
 import { snippetStructureCss } from "../../generated/components/snippet/snippet-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCopyButton } from "../copy-button/copy-button";
-import "../copy-button/copy-button";
+
 import { snippetCss } from "../../generated/components/snippet/snippet.styles";
 
 const text = { fromAttribute: (v: string | null): string | string[] => (v?.trim().startsWith("[") ? (JSON.parse(v) as string[]) : (v ?? "")) };
@@ -18,7 +18,7 @@ const text = { fromAttribute: (v: string | null): string | string[] => (v?.trim(
  * half opacity; `compact` is the 36px one-line box; `icon="false"` drops the button and
  * `not-focusable` disables it. Fires `acme-copy` after a copy; a failed copy raises an error toast.
  */
-@customElement("acme-snippet")
+
 export class AcmeSnippet extends AcmeElement {
   static styles = [
     sharedCss,

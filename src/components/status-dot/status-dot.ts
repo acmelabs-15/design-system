@@ -1,6 +1,6 @@
 import { statusDotStructureCss } from "../../generated/components/status-dot/status-dot-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { statusDotCss } from "../../generated/components/status-dot/status-dot.styles";
 
@@ -22,7 +22,7 @@ const STATES: Record<DeployState, { label: string; message: string; cls: string 
  * child span; with `label` the state name follows the dot as text. Queued, canceled and deleted
  * share the neutral colour; building is the warning colour, ready the cyan, error the error red.
  */
-@customElement("acme-status-dot")
+
 export class AcmeStatusDot extends AcmeElement {
   static styles = [
     sharedCss,

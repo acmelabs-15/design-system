@@ -1,10 +1,9 @@
 import { metricStructureCss } from "../../generated/components/metric/metric-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { metricListCss } from "../../generated/components/metric-list/metric-list.styles";
 
-@customElement("acme-metric")
 export class AcmeMetric extends AcmeElement {
   static styles = [
     sharedCss,

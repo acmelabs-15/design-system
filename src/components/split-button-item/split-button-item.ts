@@ -1,6 +1,6 @@
 import { splitButtonItemStructureCss } from "../../generated/components/split-button-item/split-button-item-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { splitButtonItemCss } from "../../generated/components/split-button-item/split-button-item.styles";
 
@@ -9,7 +9,7 @@ import { splitButtonItemCss } from "../../generated/components/split-button-item
  * an 18px `icon` before it, and a `description` below in gray-900. A menu item row that
  * highlights on hover and keyboard focus; Enter, Space or a click select it. Fires `acme-select`.
  */
-@customElement("acme-split-button-item")
+
 export class AcmeSplitButtonItem extends AcmeElement {
   static styles = [
     sharedCss,

@@ -3,26 +3,10 @@ import { baseCss } from "./generated/shared/base.styles";
 // and small helpers for class lists and icons.
 import { type CSSResultGroup, html, LitElement, type TemplateResult } from "lit";
 import { classMap } from "lit/directives/class-map.js";
+import { registerStyleProperties } from "./shared/style-properties";
 
 /** Rules every shadow root needs: the reset the global sheet gives the page, plus .ic and .sr. The host takes the reset too: an element of ours slotted into another (a grid cell) then reads as a reset page element. */
 export const sharedCss = baseCss;
-
-/**
- * Registers composition variables document-wide, once each: a generated module's variables that
- * compose a property at runtime (the layers of a box-shadow) need their defaults registered, and an
- * `@property` rule inside a shadow tree's sheet registers nothing. A name already registered, or a
- * runtime without the registry, is passed over.
- */
-export const registerProperties = (props: { name: string; syntax: string; inherits: boolean; initialValue?: string }[]) => {
-  if (typeof CSS === "undefined" || typeof CSS.registerProperty !== "function") return;
-  for (const p of props) {
-    try {
-      CSS.registerProperty(p);
-    } catch {
-      // Already registered by another module.
-    }
-  }
-};
 
 /**
  * Where the package's asset files (logos, textures) load from. The default is the published
@@ -74,8 +58,16 @@ const watchDark = (host: HTMLElement) => {
 export class AcmeElement extends LitElement {
   static styles: CSSResultGroup = sharedCss;
   connectedCallback() {
+    this.registerStyles();
     super.connectedCallback();
     watchDark(this);
+  }
+  adoptedCallback() {
+    this.registerStyles();
+  }
+  private registerStyles() {
+    const view = this.ownerDocument.defaultView as (Window & { CSS?: typeof CSS }) | null;
+    registerStyleProperties((this.constructor as typeof AcmeElement).styles, view?.CSS);
   }
   disconnectedCallback() {
     super.disconnectedCallback();

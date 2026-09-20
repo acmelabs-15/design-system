@@ -1746,7 +1746,7 @@ export function generate(name: string, map: GeistMap, parent?: GeistMap, extende
   const lines: string[] = [];
   // The kept variables are registered as the reference registers them, document-wide with their
   // defaults: an `@property` rule in a shadow tree's sheet registers nothing, so the module
-  // registers them at runtime (`registerProperties` in src/base.ts) from this list.
+  // registers them when the component uses its styles, from this list.
   const properties = [...new Set([...kept.values()].flatMap((s) => [...s]))].map((n) => {
     const m = twProperty[n].match(/syntax:\s*"([^"]*)";\s*inherits:\s*(true|false)(?:;\s*initial-value:\s*([^;}]*))?/);
     if (!m) throw new Error(`${name}: unreadable registration of ${n}: ${twProperty[n]}`);

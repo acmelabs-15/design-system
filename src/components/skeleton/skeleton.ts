@@ -1,6 +1,6 @@
 import { skeletonStructureCss } from "../../generated/components/skeleton/skeleton-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { skeletonCss } from "../../generated/components/skeleton/skeleton.styles";
@@ -18,7 +18,7 @@ const tristate = { fromAttribute: (v: string | null) => (v === null ? undefined 
  * default) and the bottom margin from `box-height` are inline styles. The host renders as its
  * contents, so the block itself is the flex or block item of the layout around it.
  */
-@customElement("acme-skeleton")
+
 export class AcmeSkeleton extends AcmeElement {
   static styles = [
     sharedCss,

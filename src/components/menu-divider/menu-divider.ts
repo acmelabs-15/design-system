@@ -1,11 +1,11 @@
 import { menuDividerStructureCss } from "../../generated/components/menu-divider/menu-divider-structure.styles";
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+
 import { AcmeElement, sharedCss } from "../../base";
 import { menuDividerCss } from "../../generated/components/menu-divider/menu-divider.styles";
 
 /** A 1px separator row between the rows of a menu, bleeding into the list's padding. */
-@customElement("acme-menu-divider")
+
 export class AcmeMenuDivider extends AcmeElement {
   static styles = [
     sharedCss,

@@ -1,6 +1,6 @@
 import { switchControlStructureCss } from "../../generated/components/switch-control/switch-control-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -13,7 +13,7 @@ import { switchControlCss } from "../../generated/components/switch-control/swit
  * only. The icon is sized 16px, 20px in a large control. A control directly inside a group takes
  * the group's size; a wrapped one (a tooltip) uses its own.
  */
-@customElement("acme-switch-control")
+
 export class AcmeSwitchControl extends AcmeElement {
   static styles = [
     sharedCss,

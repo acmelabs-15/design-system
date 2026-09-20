@@ -1,6 +1,6 @@
 import { comboboxOptionStructureCss } from "../../generated/components/combobox-option/combobox-option-structure.styles";
 import { html, nothing, svg } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { atomState } from "../../shared/atom-state";
@@ -26,7 +26,7 @@ const CHECK = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="eveno
  * `size`. A pointer release on the row fires `acme-select` (cancelable: a handler that prevents
  * it takes the selection over).
  */
-@customElement("acme-combobox-option")
+
 export class AcmeComboboxOption extends AcmeElement {
   static styles = [
     sharedCss,

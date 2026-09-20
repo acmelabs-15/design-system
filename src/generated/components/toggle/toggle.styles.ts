@@ -1,8 +1,7 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-import { registerProperties } from "../../../base";
-registerProperties([{"name":"--acme-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-z","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-scale-x","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-y","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-z","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-rotate-x","syntax":"*","inherits":false},{"name":"--acme-rotate-y","syntax":"*","inherits":false},{"name":"--acme-rotate-z","syntax":"*","inherits":false},{"name":"--acme-skew-x","syntax":"*","inherits":false},{"name":"--acme-skew-y","syntax":"*","inherits":false}]);
-export const toggleCss = css`.toggle :where(input) {
+import { withStyleProperties } from "../../../shared/style-properties";
+export const toggleCss = /* @__PURE__ */ withStyleProperties(css`.toggle :where(input) {
   clip-path: inset(50%);
   white-space: nowrap;
   border-width: 0;
@@ -242,4 +241,4 @@ export const toggleCss = css`.toggle :where(input) {
 :where(:host([data-dark])) .toggle:where(:not([data-disabled])) :where(.track) :where(.thumb) :where(.icon) {
   color: var(--thumb-fg-color-override, var(--ds-background-100));
 }
-`;
+`, [{"name":"--acme-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-z","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-scale-x","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-y","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-z","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-rotate-x","syntax":"*","inherits":false},{"name":"--acme-rotate-y","syntax":"*","inherits":false},{"name":"--acme-rotate-z","syntax":"*","inherits":false},{"name":"--acme-skew-x","syntax":"*","inherits":false},{"name":"--acme-skew-y","syntax":"*","inherits":false}]);

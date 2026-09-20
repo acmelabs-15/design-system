@@ -1,5 +1,5 @@
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
@@ -20,7 +20,7 @@ export type CommandItemSelectDetail = { value: string; label: string; item: Acme
  * click or Enter selects it: `acme-select` fires (cancelable; `detail.value`), and the menu closes
  * unless `close-on-callback="false"`.
  */
-@customElement("acme-command-item")
+
 export class AcmeCommandItem extends AcmeElement {
   static styles = [sharedCss, commandMenuItemCss];
   /** The value the query is scored against and a selection reports; the label, lowercased, when empty. */

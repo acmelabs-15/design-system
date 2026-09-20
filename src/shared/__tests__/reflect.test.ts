@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../index";
+import "../../all";
 
 /**
  * A reflected property whose default is not empty writes that default onto the host as an attribute

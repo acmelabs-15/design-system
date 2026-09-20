@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeCollapseGroup } from "../../collapse-group/collapse-group";
 import type { AcmeCollapse } from "../collapse";
 

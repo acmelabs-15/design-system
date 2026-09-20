@@ -155,7 +155,7 @@ export function validateRegistrations(groups: Registration[][]): Registration[] 
   return [...known.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export function litStyleModule(exportName: string, css: string, properties: PropertyRegistration[] = [], base = "../../../base"): string {
+export function litStyleModule(exportName: string, css: string, properties: PropertyRegistration[] = [], registrationHelper = "../../../shared/style-properties"): string {
   const tick = String.fromCharCode(96);
   const escaped = css
     .replaceAll("\\", "\\\\")
@@ -163,13 +163,16 @@ export function litStyleModule(exportName: string, css: string, properties: Prop
     .replaceAll("$" + "{", "\\$" + "{");
   return (
     '// Generated from compiled CSS. Edit its generator input.\nimport { css } from "lit";\n' +
-    (properties.length ? "import { registerProperties } from " + JSON.stringify(base) + ";\nregisterProperties(" + JSON.stringify(properties) + ");\n" : "") +
+    (properties.length ? "import { withStyleProperties } from " + JSON.stringify(registrationHelper) + ";\n" : "") +
     "export const " +
     exportName +
-    " = css" +
+    " = " +
+    (properties.length ? "/* @__PURE__ */ withStyleProperties(" : "") +
+    "css" +
     tick +
     escaped +
     tick +
+    (properties.length ? ", " + JSON.stringify(properties) + ")" : "") +
     ";\n"
   );
 }
@@ -193,7 +196,7 @@ export function writeStyle(
   const moduleFile = "src/generated/" + key + ".styles.ts";
   const fullSource = ((properties.length ? properties.map(propertyCss).join("\n") + "\n" : "") + source).replace(/[\t ]+$/gm, "");
   const compiled = compileStyle(fullSource, path.basename(sourceFile));
-  // @property is delivered in document CSS or registered explicitly by the component module.
+  // @property is delivered in document CSS or registered when a component uses its styles.
   const componentCss =
     options.module === false
       ? compiled.css
@@ -220,8 +223,8 @@ export function writeStyle(
     [mapFile]: map,
   };
   if (options.module !== false) {
-    const base = slash(path.relative(path.dirname(moduleFile), "src/base"));
-    files[moduleFile] = litStyleModule(exportName, css, properties, base.startsWith(".") ? base : "./" + base);
+    const helper = slash(path.relative(path.dirname(moduleFile), "src/shared/style-properties"));
+    files[moduleFile] = litStyleModule(exportName, css, properties, helper.startsWith(".") ? helper : "./" + helper);
   }
   const inputs = [...new Set([...options.inputs, "scripts/styles.ts"])];
   const entry: StyleEntry = {

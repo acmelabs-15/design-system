@@ -1,6 +1,6 @@
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
@@ -52,7 +52,7 @@ const heightAttr = {
  * open modal; `reset-scroll` scrolls the popup to its top whenever it changes; `acme-scroll` fires as
  * the popup scrolls.
  */
-@customElement("acme-drawer")
+
 export class AcmeDrawer extends AcmeElement {
   static styles = [sharedCss, dialogResetCss, drawerOverlayCss, drawerBackdropCss, drawerCss];
   /** Open state; `show()` and `close()` set it. */

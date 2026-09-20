@@ -1,5 +1,6 @@
+import "../../../define/modal";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { type AcmeModal, deepActive } from "../modal";
 
 const mount = async (markup: string) => {

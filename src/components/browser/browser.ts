@@ -1,11 +1,11 @@
 import { browserStructureCss } from "../../generated/components/browser/browser-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, paths, sharedCss } from "../../base";
 import { toasts } from "../../shared/state";
 import { browserCss } from "../../generated/components/browser/browser.styles";
 import { browserCopyCss } from "../../generated/components/browser/browser-copy.styles";
-import "../button/button";
+
 import { atomState } from "../../shared/atom-state";
 
 /** The address as the bar shows it: no scheme, no `www.`, no trailing slash. */
@@ -36,7 +36,7 @@ const control = (d: string) =>
  * theme. The frame is decorative: set `aria-hidden="true"` on the element and describe the
  * screenshot inside it.
  */
-@customElement("acme-browser")
+
 export class AcmeBrowser extends AcmeElement {
   static styles = [
     sharedCss,

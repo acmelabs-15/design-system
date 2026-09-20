@@ -1,6 +1,6 @@
 import { statStructureCss } from "../../generated/components/stat/stat-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { badgeCss } from "../../generated/components/badge/badge.styles";
 import { statusDotCss } from "../../generated/components/status-dot/status-dot.styles";
@@ -8,7 +8,7 @@ import { trendCss } from "../../generated/components/trend/trend.styles";
 import { statCss } from "../../generated/components/stat/stat.styles";
 
 /** House Stat: the one component for a headline figure. Slots: label, context, icon, end, default (value), unit, trend, delta, desc, meter, spark, meta, foot. */
-@customElement("acme-stat")
+
 export class AcmeStat extends AcmeElement {
   static styles = [
     sharedCss,

@@ -1,10 +1,9 @@
 import { toolbarStructureCss } from "../../generated/components/toolbar/toolbar-structure.styles";
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+
 import { AcmeElement, sharedCss } from "../../base";
 import { pageHeadCss } from "../../generated/components/page-head/page-head.styles";
 
-@customElement("acme-toolbar")
 export class AcmeToolbar extends AcmeElement {
   static styles = [
     sharedCss,

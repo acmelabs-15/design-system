@@ -1,6 +1,6 @@
 import { gaugeStructureCss } from "../../generated/components/gauge/gauge-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, paths, sharedCss } from "../../base";
 import { gaugeCss } from "../../generated/components/gauge/gauge.styles";
@@ -24,7 +24,7 @@ const LABEL: Record<GaugeSize, { size: number; weight: number } | null> = { tiny
  * scale, or `colors`; `arc-priority="equal"` shares the gap between both arcs; `show-value`
  * prints the number in the middle; `indeterminate` grays both arcs and shows an icon instead.
  */
-@customElement("acme-gauge")
+
 export class AcmeGauge extends AcmeElement {
   static styles = [
     sharedCss,

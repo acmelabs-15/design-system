@@ -1,10 +1,10 @@
 import { tabStructureCss } from "../../generated/components/tab/tab-structure.styles";
 import { html } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { tabCss } from "../../generated/components/tab/tab.styles";
-import "../tooltip/tooltip";
+
 import { atomState } from "../../shared/atom-state";
 
 /**
@@ -13,7 +13,7 @@ import { atomState } from "../../shared/atom-state";
  * `value` names it; an `icon` slot goes before the title; `disabled` with a `tooltip` explains
  * the constraint (shown below). The selected tab is the tabbable one.
  */
-@customElement("acme-tab")
+
 export class AcmeTab extends AcmeElement {
   static styles = [
     sharedCss,

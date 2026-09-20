@@ -1,15 +1,14 @@
 // Application state on TanStack Store, which is signal-based underneath: the theme and the toast
-// queue live here, and elements read them with `TanStackStoreSelector` (re-exported as
-// `StoreSelector`), re-rendering only when their selection changes.
+// queue live here, and elements read them with `StoreSelector`, re-rendering only when their selection changes.
 //
 // An element's OWN state is also a TanStack Store, created per instance, the way TanStack Form
 // creates one per form and per field. It lives in the element rather than here, because it is not
 // shared. See notes/decisions/state-on-tanstack-store.md for the pattern and its traps.
-import { createStore, TanStackStoreSelector } from "@tanstack/lit-store";
+import { createStore } from "@tanstack/lit-store";
 import type { ReactiveController, ReactiveControllerHost, TemplateResult } from "lit";
 
 export { batch, createStore } from "@tanstack/lit-store";
-export const StoreSelector = TanStackStoreSelector;
+export { StoreSelector } from "./store-connection";
 
 /** What a store gives a subscriber: a current value and a subscription. */
 type Subscribable<T> = { get: () => T; subscribe: (fn: (value: T) => void) => { unsubscribe: () => void } };
@@ -49,30 +48,53 @@ export type Theme = "auto" | "light" | "dark";
 const THEME_KEY = "theme-pref";
 const isTheme = (v: unknown): v is Theme => v === "auto" || v === "light" || v === "dark";
 /** The theme remembered from an earlier visit, else the one the page set on its root, else auto. */
-const initialTheme = (): Theme => {
+const initialTheme = (document: Document): Theme => {
   try {
-    const saved = localStorage.getItem(THEME_KEY);
+    const saved = document.defaultView?.localStorage.getItem(THEME_KEY);
     if (isTheme(saved)) return saved;
   } catch {}
-  const set = typeof document !== "undefined" ? document.documentElement.dataset.theme : undefined;
+  const set = document.documentElement.dataset.theme;
   return isTheme(set) ? set : "auto";
 };
 /**
  * "auto" follows prefers-color-scheme; "light" and "dark" set data-theme on the root element.
  * Every change lands on the root as `data-theme` (none for auto) and is remembered for the next visit.
  */
-export const themeStore = createStore<Theme>(initialTheme());
-const paintTheme = (v: Theme) => {
+export const themeStore = createStore<Theme>("auto");
+const paintTheme = (document: Document, v: Theme) => {
   const root = document.documentElement;
   if (v === "auto") delete root.dataset.theme;
   else root.dataset.theme = v;
   try {
-    localStorage.setItem(THEME_KEY, v);
+    document.defaultView?.localStorage.setItem(THEME_KEY, v);
   } catch {}
 };
-if (typeof document !== "undefined") {
-  if (themeStore.state !== "auto") paintTheme(themeStore.state);
-  themeStore.subscribe(() => paintTheme(themeStore.state));
+let themeInitialized = false;
+const themeDocuments = new WeakMap<Document, { users: number; unsubscribe(): void }>();
+
+/** Binds the shared theme to a document while it has an attached theme control. */
+export function connectTheme(document: Document): () => void {
+  let connection = themeDocuments.get(document);
+  if (!connection) {
+    if (!themeInitialized) {
+      themeStore.setState(() => initialTheme(document));
+      themeInitialized = true;
+    }
+    if (themeStore.state !== "auto") paintTheme(document, themeStore.state);
+    const subscription = themeStore.subscribe(() => paintTheme(document, themeStore.state));
+    connection = {users:0, unsubscribe:()=>subscription.unsubscribe()};
+    themeDocuments.set(document, connection);
+  }
+  connection.users++;
+  let connected = true;
+  return () => {
+    if (!connected) return;
+    connected = false;
+    if (--connection.users === 0) {
+      connection.unsubscribe();
+      themeDocuments.delete(document);
+    }
+  };
 }
 
 /** A toast's tone: the plain surface, or the filled success (blue), error (red) and warning (amber) boxes. */

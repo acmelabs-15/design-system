@@ -1,6 +1,6 @@
 import { middleTruncateStructureCss } from "../../generated/components/middle-truncate/middle-truncate-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { middleTruncateCss } from "../../generated/components/middle-truncate/middle-truncate.styles";
@@ -113,7 +113,7 @@ const unschedule = (key: object) => {
  * title, a visually hidden span keeps it for assistive tech, and a copy of the visible text yields
  * the matching part of the full value.
  */
-@customElement("acme-middle-truncate")
+
 export class AcmeMiddleTruncate extends AcmeElement {
   static styles = [
     sharedCss,

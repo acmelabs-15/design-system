@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { type Breakpoint, breakpointVars, type GridPosition, perBreakpoint, positionCount, positionValue, type Responsive, responsive } from "../grid/grid";
 import { gridCellCss } from "../../generated/components/grid-cell/grid-cell.styles";
@@ -17,7 +17,7 @@ const breakpoints = {
  * `behind-grid` puts it under them; `no-padding` and `overflow` open the box; `hide` names the
  * breakpoints at which the cell is not displayed.
  */
-@customElement("acme-grid-cell")
+
 export class AcmeGridCell extends AcmeElement {
   static styles = [sharedCss, gridCellCss];
   @property({ converter: responsive }) row: Responsive<GridPosition> = "auto";

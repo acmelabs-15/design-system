@@ -1,6 +1,6 @@
 import { entityListStructureCss } from "../../generated/components/entity-list/entity-list-structure.styles";
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { entityListCss } from "../../generated/components/entity-list/entity-list.styles";
@@ -12,7 +12,7 @@ import { entityListWrapCss } from "../../generated/components/entity-list/entity
  * default slot. A `header` slot stacks a heading over the list (12px apart); the list then rounds
  * its bottom corners only.
  */
-@customElement("acme-entity-list")
+
 export class AcmeEntityList extends AcmeElement {
   static styles = [
     sharedCss,

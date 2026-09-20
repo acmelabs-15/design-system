@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 
 describe("acme-modal-inset", () => {
   test("renders its slot, reflects last, and marks an inset no div follows", async () => {

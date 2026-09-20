@@ -1,10 +1,10 @@
 import { breadcrumbStructureCss } from "../../generated/components/breadcrumb/breadcrumb-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { breadcrumbCss } from "../../generated/components/breadcrumb/breadcrumb.styles";
-import "../tooltip/tooltip";
+
 import { atomState } from "../../shared/atom-state";
 
 /**
@@ -16,7 +16,7 @@ import { atomState } from "../../shared/atom-state";
  * off shows the full text in a tooltip on hover (desktop only). `href` makes the crumb a link:
  * an anchor around the text in a list, the chip itself in a menu.
  */
-@customElement("acme-breadcrumb")
+
 export class AcmeBreadcrumb extends AcmeElement {
   /** Focus on the host lands on the link or the chip. */
   static shadowRootOptions = { ...AcmeElement.shadowRootOptions, delegatesFocus: true };

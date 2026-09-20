@@ -1,6 +1,6 @@
 import { collapseStructureCss } from "../../generated/components/collapse/collapse-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -17,7 +17,7 @@ import { collapseCss } from "../../generated/components/collapse/collapse.styles
  * unless the group is `multiple`, and a `default-expanded` panel cannot close itself
  * (its trigger reads aria-disabled while open).
  */
-@customElement("acme-collapse")
+
 export class AcmeCollapse extends AcmeElement {
   static styles = [
     sharedCss,

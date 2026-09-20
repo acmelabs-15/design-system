@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { breakpointVars, type Responsive, responsive } from "../grid/grid";
 import { gridCrossCss } from "../../generated/components/grid-cross/grid-cross.styles";
@@ -9,7 +9,7 @@ import { gridCrossCss } from "../../generated/components/grid-cross/grid-cross.s
  * the first line, the count plus one the last), plain or per breakpoint as JSON. 21px wide on large
  * screens, 15px on medium, 11px on small; two lines in the cross color, as wide as the guides.
  */
-@customElement("acme-grid-cross")
+
 export class AcmeGridCross extends AcmeElement {
   static styles = [sharedCss, gridCrossCss];
   @property({ converter: responsive }) row: Responsive<number> = 1;

@@ -1,10 +1,10 @@
 import { fieldsetStructureCss } from "../../generated/components/fieldset/fieldset-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeButton } from "../button/button";
 import { fieldsetCss } from "../../generated/components/fieldset/fieldset.styles";
-import "../disabled-wall/disabled-wall";
+
 import { atomState } from "../../shared/atom-state";
 
 export type FieldsetVariant = "" | "error" | "warning";
@@ -20,7 +20,7 @@ export type FieldsetVariant = "" | "error" | "warning";
  * wrapper of their own, so the element assigns its slots itself.
  * @slot actions - Action controls, each assigned to its own wrapper.
  */
-@customElement("acme-fieldset")
+
 export class AcmeFieldset extends AcmeElement {
   static shadowRootOptions: ShadowRootInit = { ...AcmeElement.shadowRootOptions, slotAssignment: "manual" };
   static styles = [

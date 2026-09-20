@@ -1,10 +1,10 @@
 import { multiSelectRowStructureCss } from "../../generated/components/multi-select-row/multi-select-row-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCheckbox } from "../checkbox/checkbox";
-import "../checkbox/checkbox";
+
 import { atomState } from "../../shared/atom-state";
 import { multiSelectRowCss } from "../../generated/components/multi-select-row/multi-select-row.styles";
 
@@ -31,7 +31,7 @@ let seq = 0;
  * `checkbox-hovered` are set from outside. `value` is what the form takes for a checked row (the
  * name when unset); `checkbox-name` names the checkbox itself (the name when unset).
  */
-@customElement("acme-multi-select-row")
+
 export class AcmeMultiSelectRow extends AcmeElement {
   static styles = [
     sharedCss,

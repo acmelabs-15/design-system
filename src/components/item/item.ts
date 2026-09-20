@@ -1,13 +1,13 @@
 import { itemStructureCss } from "../../generated/components/item/item-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { badgeCss } from "../../generated/components/badge/badge.styles";
 import { buttonCss } from "../../generated/components/button/button.styles";
 import { itemCss } from "../../generated/components/item/item.styles";
 
 /** House item row: avatar, title and meta, amount and badge, actions. */
-@customElement("acme-item")
+
 export class AcmeItem extends AcmeElement {
   static styles = [
     sharedCss,

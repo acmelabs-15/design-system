@@ -1,11 +1,11 @@
 import { shellStructureCss } from "../../generated/components/shell/shell-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { shellCss } from "../../generated/components/shell/shell.styles";
 
 /** Vercel shell: sidebar, top bar, ground. Slots: side, topbar, default (content). */
-@customElement("acme-shell")
+
 export class AcmeShell extends AcmeElement {
   static styles = [
     sharedCss,

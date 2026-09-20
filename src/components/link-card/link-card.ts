@@ -1,12 +1,12 @@
 import { linkCardStructureCss } from "../../generated/components/link-card/link-card-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { badgeCss } from "../../generated/components/badge/badge.styles";
 import { linkCardCss } from "../../generated/components/link-card/link-card.styles";
 
 /** Vercel link card: a title and one-line description, raised on hover. */
-@customElement("acme-link-card")
+
 export class AcmeLinkCard extends AcmeElement {
   static styles = [
     sharedCss,

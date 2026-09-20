@@ -1,8 +1,7 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-import { registerProperties } from "../../../base";
-registerProperties([{"name":"--acme-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"},{"name":"--acme-inset-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"},{"name":"--acme-ring-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"},{"name":"--acme-inset-ring-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"},{"name":"--acme-ring-offset-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"}]);
-export const projectBannerCss = css`.project-banner {
+import { withStyleProperties } from "../../../shared/style-properties";
+export const projectBannerCss = /* @__PURE__ */ withStyleProperties(css`.project-banner {
   z-index: 30;
   border-top-style: solid;
   border-top-width: 1px;
@@ -147,4 +146,4 @@ export const projectBannerCss = css`.project-banner {
   --acme-shadow: var(--banner-focus-color) !important;
   box-shadow: var(--acme-inset-shadow), var(--acme-inset-ring-shadow), var(--acme-ring-offset-shadow), var(--acme-ring-shadow), var(--acme-shadow) !important;
 }
-`;
+`, [{"name":"--acme-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"},{"name":"--acme-inset-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"},{"name":"--acme-ring-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"},{"name":"--acme-inset-ring-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"},{"name":"--acme-ring-offset-shadow","syntax":"*","inherits":false,"initialValue":"0 0 #0000"}]);

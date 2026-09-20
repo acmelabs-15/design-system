@@ -4,7 +4,7 @@
 import { describe, expect, test } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
-import "../../src/index.ts";
+import "../../src/all";
 
 const DOCS = path.resolve(import.meta.dir, "../../_site");
 const PAGES = path.join(DOCS, "pages");

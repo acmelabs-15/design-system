@@ -1,6 +1,6 @@
 import { errorStructureCss } from "../../generated/components/error/error-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { errorCss } from "../../generated/components/error/error.styles";
 
@@ -11,7 +11,7 @@ export type ErrorInfo = { message: string; action?: string; link?: string };
  * icon sits left of the text; `label` adds a bold prefix ("Email Error:"); `error` renders a
  * message and an action link that opens in a new tab. Sizes small 13 / medium 14 / large 16.
  */
-@customElement("acme-error")
+
 export class AcmeError extends AcmeElement {
   static styles = [
     sharedCss,

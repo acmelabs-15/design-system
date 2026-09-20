@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeSplitButtonItem } from "../../split-button-item/split-button-item";
 import type { AcmeSplitButton } from "../split-button";
 

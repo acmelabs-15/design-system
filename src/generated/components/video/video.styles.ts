@@ -1,8 +1,7 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-import { registerProperties } from "../../../base";
-registerProperties([{"name":"--acme-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-z","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-scale-x","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-y","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-z","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-rotate-x","syntax":"*","inherits":false},{"name":"--acme-rotate-y","syntax":"*","inherits":false},{"name":"--acme-rotate-z","syntax":"*","inherits":false},{"name":"--acme-skew-x","syntax":"*","inherits":false},{"name":"--acme-skew-y","syntax":"*","inherits":false}]);
-export const videoCss = css`.video :where(.box) :where(.frame) :where(.controls) :where(.track) :where(progress) {
+import { withStyleProperties } from "../../../shared/style-properties";
+export const videoCss = /* @__PURE__ */ withStyleProperties(css`.video :where(.box) :where(.frame) :where(.controls) :where(.track) :where(progress) {
   pointer-events: none;
   background-color: var(--ds-gray-1000);
   border-radius: 5px;
@@ -174,4 +173,4 @@ export const videoCss = css`.video :where(.box) :where(.frame) :where(.controls)
   box-shadow: var(--ds-focus-ring);
   border-radius: .25rem;
 }
-`;
+`, [{"name":"--acme-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-translate-z","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-scale-x","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-y","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-scale-z","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-rotate-x","syntax":"*","inherits":false},{"name":"--acme-rotate-y","syntax":"*","inherits":false},{"name":"--acme-rotate-z","syntax":"*","inherits":false},{"name":"--acme-skew-x","syntax":"*","inherits":false},{"name":"--acme-skew-y","syntax":"*","inherits":false}]);

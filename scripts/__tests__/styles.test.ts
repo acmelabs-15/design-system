@@ -3,6 +3,29 @@ import { mkdir, mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { compileStyle, litStyleModule, partitionStyleSheet, validateRegistrations, verifyStyleManifest, writeStyle } from "../styles";
+import { registerStyleProperties } from "../../src/shared/style-properties";
+
+test("generated Lit styles attach defaults without registering them during import", async () => {
+  const properties = [{ name: "--acme-module-test", syntax: "<length>", inherits: false, initialValue: "2px" }];
+  const compiled = compileStyle(":host {width:var(--acme-module-test)}", "probe.css");
+  const code = litStyleModule("probeCss", compiled.css, properties, new URL("../../src/shared/style-properties.ts", import.meta.url).href);
+  const directory = await mkdtemp(path.join(tmpdir(), "acme-registered-css-"));
+  try {
+    const file = path.join(directory, "style.mjs");
+    await Bun.write(file, code.replace('"lit"', JSON.stringify(new URL("../../node_modules/lit/index.js", import.meta.url).href)));
+    const module = await import(file);
+    expect(module.probeCss.cssText).toBe(compiled.css);
+    const calls: unknown[] = [];
+    registerStyleProperties(module.probeCss, {
+      registerProperty(property) {
+        calls.push(property);
+      },
+    });
+    expect(calls).toEqual(properties);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
 
 test("compiled CSS survives Lit template escaping exactly and maps to its CSS input", async () => {
   const text = '.probe::after { content: "tick: ' + String.fromCharCode(96) + " interpolation: $" + '{name} slash: \\\\ é"; }\n';

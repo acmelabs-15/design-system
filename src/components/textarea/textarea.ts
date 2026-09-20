@@ -1,10 +1,9 @@
 import { textareaStructureCss } from "../../generated/components/textarea/textarea-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { textareaCss } from "../../generated/components/textarea/textarea.styles";
-import "../error/error";
 
 export type TextareaSize = "small" | "medium" | "large";
 
@@ -15,7 +14,7 @@ export type TextareaSize = "small" | "medium" | "large";
  * data-focus: focus within the field, data-active); `error` renders the message under it and
  * marks the field invalid. Form-associated and labelable.
  */
-@customElement("acme-textarea")
+
 export class AcmeTextarea extends AcmeElement {
   static formAssociated = true;
   static styles = [

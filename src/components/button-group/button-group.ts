@@ -1,10 +1,10 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { buttonCss } from "../../generated/components/button/button.styles";
 
 /** A joined group of buttons; add `split` for the Geist split button. */
-@customElement("acme-button-group")
+
 export class AcmeButtonGroup extends AcmeElement {
   static styles = [sharedCss, buttonCss];
   @property({ type: Boolean }) split = false;

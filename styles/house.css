@@ -8199,38 +8199,6 @@ a.breadcrumb.menu:hover {
   color: var(--ds-gray-500);
   pointer-events: none;
 }
-/* Separator (Geist) is .separator above. Text with copy button */
-.copy-text {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--ds-gray-800);
-  min-width: 0;
-}
-.copy-text .text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.copy-text .iconbtn {
-  width: 24px;
-  height: 24px;
-  border: 0;
-  background: transparent;
-  color: var(--text-2);
-  border-radius: 4px;
-  flex: none;
-}
-.copy-text .iconbtn:hover {
-  color: var(--text);
-  background: var(--ds-gray-alpha-200);
-}
-.copy-text .iconbtn.ok {
-  color: var(--success-ink);
-}
-
 /* ---------- Geist components added Sep 9 2026: the sixteen interactive and chrome pages ---------- */
 /* Book: a decorative cover for marketing and docs landings */
 .book {

@@ -1,6 +1,6 @@
 import { gridStructureCss } from "../../generated/components/grid/grid-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import type { AcmeGridCell } from "../grid-cell/grid-cell";
@@ -121,7 +121,7 @@ type Span = { row: [number, number]; column: [number, number] };
  * A solid cell clips the guides it covers. The system's debug and dashed modes reach the section as
  * `data-debug` and `data-dashed`.
  */
-@customElement("acme-grid")
+
 export class AcmeGrid extends AcmeElement {
   static styles = [
     sharedCss,

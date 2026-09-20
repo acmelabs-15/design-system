@@ -1,4 +1,4 @@
-import { describe, expect, test } from "bun:test";
+import { describe, expect, spyOn, test } from "bun:test";
 import { createAtom, shallow } from "@tanstack/lit-store";
 import { html, LitElement } from "lit";
 import { atomState } from "../atom-state";
@@ -122,7 +122,6 @@ describe("atomState", () => {
   });
 
   test("survives the host being moved in the DOM", async () => {
-    // The adapter's hostConnected patch is what makes this hold; see store-reconnect.test.ts.
     document.body.innerHTML = "<div id='from'></div><div id='to'></div>";
     const el = document.createElement("atom-state-probe") as Probe;
     document.getElementById("from")!.appendChild(el);
@@ -154,6 +153,57 @@ describe("atomState with a shared atom", () => {
     await b.updateComplete;
     expect(b.who).toBe("Grace");
     expect(b.textContent).toBe("Grace");
+  });
+
+  test("follows detached changes and reconnects without accumulating subscriptions", async () => {
+    document.body.innerHTML = "<div id='destination'></div>";
+    who.set("initial");
+    let active = 0;
+    const subscribe = who.subscribe.bind(who);
+    const subscriptionSpy = spyOn(who, "subscribe").mockImplementation((listener) => {
+      active++;
+      const subscription = subscribe(typeof listener === "function" ? { next: listener } : listener);
+      return {
+        unsubscribe() {
+          active--;
+          subscription.unsubscribe();
+        },
+      };
+    });
+    const a = document.createElement("shared-probe") as SharedProbe;
+    const b = document.createElement("shared-probe") as SharedProbe;
+    try {
+      document.body.append(a, b);
+      await Promise.all([a.updateComplete, b.updateComplete]);
+      expect(active).toBe(2);
+
+      a.remove();
+      expect(active).toBe(1);
+      who.set("detached");
+      await b.updateComplete;
+      expect(a.textContent).toBe("initial");
+      expect(b.textContent).toBe("detached");
+
+      document.body.append(a);
+      await a.updateComplete;
+      expect(a.textContent).toBe("detached");
+      expect(active).toBe(2);
+
+      for (const value of ["first", "second", "third"]) {
+        document.getElementById("destination")!.append(a);
+        await a.updateComplete;
+        expect(active).toBe(2);
+        who.set(value);
+        await Promise.all([a.updateComplete, b.updateComplete]);
+        expect(a.textContent).toBe(value);
+        expect(b.textContent).toBe(value);
+      }
+    } finally {
+      a.remove();
+      b.remove();
+      subscriptionSpy.mockRestore();
+    }
+    expect(active).toBe(0);
   });
 });
 

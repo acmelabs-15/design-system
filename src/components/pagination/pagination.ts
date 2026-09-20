@@ -1,6 +1,6 @@
 import { paginationStructureCss } from "../../generated/components/pagination/pagination-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { paginationCss } from "../../generated/components/pagination/pagination.styles";
@@ -13,7 +13,7 @@ import { paginationLinkCss } from "../../generated/components/pagination/paginat
  * The accessible name reads "Go to previous page: <title>". An end without a title renders no
  * link. The `center` slot sits between them, on viewports of 1200px and up.
  */
-@customElement("acme-pagination")
+
 export class AcmePagination extends AcmeElement {
   static styles = [
     sharedCss,

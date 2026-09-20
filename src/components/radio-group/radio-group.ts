@@ -1,6 +1,6 @@
 import { radioGroupStructureCss } from "../../generated/components/radio-group/radio-group-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeRadio } from "../radio/radio";
 import { radioGroupCss } from "../../generated/components/radio-group/radio-group.styles";
@@ -11,7 +11,7 @@ import { radioGroupCss } from "../../generated/components/radio-group/radio-grou
  * disabled items, Tab leaves the group; `disabled` reaches every item; `required` reports
  * through the form. Slot: default.
  */
-@customElement("acme-radio-group")
+
 export class AcmeRadioGroup extends AcmeElement {
   static formAssociated = true;
   static styles = [

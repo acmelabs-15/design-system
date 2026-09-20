@@ -1,27 +1,15 @@
-// A store selector must keep following its store after its host is moved in the DOM.
-//
-// @tanstack/lit-store 0.13.2 ships TanStackStoreSelector with hostUpdate and hostDisconnected and no
-// hostConnected. Disconnecting tears the subscription down and clears the remembered store;
-// reconnecting does nothing, and hostUpdate returns early because the store has not changed. The
-// element then never hears from the store again, silently and permanently.
-//
-// We patch it (patches/@tanstack%2Flit-store@0.13.2.patch) with the fix Peter proposed:
-//
-//   hostConnected() { this.#host.requestUpdate() }
-//
-// which routes the resubscription through Lit's own update cycle rather than around it.
-//
-// This test is the reason the patch exists. If a version bump drops it, this fails rather than the
-// failure reaching an element.
-import { describe, expect, test } from "bun:test";
-import { createStore, TanStackStoreSelector } from "@tanstack/lit-store";
+// Store subscriptions follow the host across disconnects and DOM moves.
+import { describe, expect, spyOn, test } from "bun:test";
+import { createAtom } from "@tanstack/lit-store";
 import { html, LitElement } from "lit";
+import { atomState } from "../atom-state";
+import { createStore, StoreSelector } from "../state";
 
 const store = createStore(0);
 
 class ReconnectProbe extends LitElement {
   renders = 0;
-  selector = new TanStackStoreSelector(this, () => store);
+  selector = new StoreSelector(this, () => store);
   createRenderRoot() {
     return this;
   }
@@ -31,6 +19,39 @@ class ReconnectProbe extends LitElement {
   }
 }
 customElements.define("store-reconnect-probe", ReconnectProbe);
+
+const shared = createAtom(0);
+class MultipleBindingsProbe extends LitElement {
+  @atomState(shared) value!: number;
+  first = new StoreSelector(this, () => shared);
+  second = new StoreSelector(this, () => shared);
+  createRenderRoot() {
+    return this;
+  }
+  render() {
+    return html`${this.value}`;
+  }
+}
+customElements.define("store-multiple-bindings-probe", MultipleBindingsProbe);
+
+class SelectionProbe extends LitElement {
+  source = createStore({ label: "first", other: 0 });
+  renders = 0;
+  selection = new StoreSelector(
+    this,
+    () => this.source,
+    (value) => ({ label: value.label }),
+    { compare: (a, b) => a.label === b.label },
+  );
+  createRenderRoot() {
+    return this;
+  }
+  render() {
+    this.renders++;
+    return html`${this.source.get().label}`;
+  }
+}
+customElements.define("store-selection-reconnect-probe", SelectionProbe);
 
 describe("a store selector across a move", () => {
   test("keeps following the store after its host is re-parented", async () => {
@@ -69,5 +90,45 @@ describe("a store selector across a move", () => {
     }
     expect(el.textContent!.trim()).toBe("12");
     expect(el.renders).toBeGreaterThan(before + 2);
+  });
+
+  test("schedules one connection update for a host with selectors and atom fields", async () => {
+    document.body.innerHTML = "<div id='destination'></div>";
+    const el = document.createElement("store-multiple-bindings-probe") as MultipleBindingsProbe;
+    document.body.append(el);
+    await el.updateComplete;
+    const updates = spyOn(el, "requestUpdate");
+    try {
+      for (let move = 0; move < 3; move++) {
+        updates.mockClear();
+        document.getElementById("destination")!.append(el);
+        await el.updateComplete;
+        expect(updates).toHaveBeenCalledTimes(1);
+      }
+      shared.set(5);
+      await el.updateComplete;
+      expect(el.textContent).toBe("5");
+    } finally {
+      el.remove();
+      updates.mockRestore();
+    }
+  });
+
+  test("preserves selector and comparison options after reconnect", async () => {
+    document.body.innerHTML = "<div id='destination'></div>";
+    const el = document.createElement("store-selection-reconnect-probe") as SelectionProbe;
+    document.body.append(el);
+    await el.updateComplete;
+    document.getElementById("destination")!.append(el);
+    await el.updateComplete;
+    const renders = el.renders;
+    el.source.setState((value) => ({ ...value, other: 1 }));
+    await el.updateComplete;
+    expect(el.renders).toBe(renders);
+    el.source.setState((value) => ({ ...value, label: "second" }));
+    await el.updateComplete;
+    expect(el.textContent).toBe("second");
+    expect(el.renders).toBe(renders + 1);
+    el.remove();
   });
 });

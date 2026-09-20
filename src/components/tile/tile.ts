@@ -1,10 +1,9 @@
 import { tileStructureCss } from "../../generated/components/tile/tile-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { tileCss } from "../../generated/components/tile/tile.styles";
 
-@customElement("acme-tile")
 export class AcmeTile extends AcmeElement {
   static styles = [
     sharedCss,

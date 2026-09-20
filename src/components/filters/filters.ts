@@ -1,10 +1,9 @@
 import { filtersStructureCss } from "../../generated/components/filters/filters-structure.styles";
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+
 import { AcmeElement, sharedCss } from "../../base";
 import { filterCss } from "../../generated/components/filter/filter.styles";
 
-@customElement("acme-filters")
 export class AcmeFilters extends AcmeElement {
   static styles = [
     sharedCss,

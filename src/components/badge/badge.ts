@@ -1,6 +1,6 @@
 import { badgeStructureCss } from "../../generated/components/badge/badge-structure.styles";
 import { html } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { badgeCss } from "../../generated/components/badge/badge.styles";
 
@@ -16,7 +16,7 @@ export type BadgeSize = "sm" | "md" | "lg";
  * A circular glyph icon (`data-glyph="circular"`) pulls in closer; the slot mirrors the marker so
  * the root's rule sees it.
  */
-@customElement("acme-badge")
+
 export class AcmeBadge extends AcmeElement {
   static styles = [
     sharedCss,

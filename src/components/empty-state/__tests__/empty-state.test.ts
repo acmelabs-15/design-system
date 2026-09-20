@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeIconTile } from "../../icon-tile/icon-tile";
 import type { AcmeEmptyState } from "../empty-state";
 

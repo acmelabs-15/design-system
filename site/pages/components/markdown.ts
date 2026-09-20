@@ -33,7 +33,7 @@ export const doc: Doc = {
   \`\`\`
 
   \`\`\`ts
-  import "@acmelabs/design-system";
+  import "@acmelabs/design-system/define/toaster";
   import { toasts } from "@acmelabs/design-system";
   toasts.success("Domain added");
   \`\`\`

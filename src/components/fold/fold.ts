@@ -1,11 +1,11 @@
 import { foldStructureCss } from "../../generated/components/fold/fold-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, glyph, sharedCss } from "../../base";
 import { foldCss } from "../../generated/components/fold/fold.styles";
 
 /** Vercel fold: a section that shows tiles closed and charts open. Slots: closed, open. */
-@customElement("acme-fold")
+
 export class AcmeFold extends AcmeElement {
   static styles = [
     sharedCss,

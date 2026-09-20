@@ -1,5 +1,6 @@
+import "../../../define/relative-time";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { AcmeRelativeTime } from "../relative-time";
 
 const mount = async (markup: string) => {

@@ -1,11 +1,11 @@
 import { sliderStructureCss } from "../../generated/components/slider/slider-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query, queryAll } from "lit/decorators.js";
+import { property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { labelCss } from "../../generated/components/label/label.styles";
 import { sliderCss } from "../../generated/components/slider/slider.styles";
-import "../input/input";
+
 import { atomState } from "../../shared/atom-state";
 
 /** `value` as an attribute: a bare number (`value="40"`) or a JSON list (`value="[50, 75]"`). */
@@ -86,7 +86,7 @@ const HIDDEN = "clip-path:inset(50%);overflow:hidden;white-space:nowrap;border:0
  * change, `acme-commit` when a drag ends and after every keyboard change. Form-associated: a
  * range submits `name` twice.
  */
-@customElement("acme-slider")
+
 export class AcmeSlider extends AcmeElement {
   static formAssociated = true;
   static styles = [

@@ -1,5 +1,6 @@
+import "../../../define/modal";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeInput } from "../../input/input";
 import { type AcmeModal, deepActive } from "../../modal/modal";
 import type { AcmeDestructiveModal } from "../destructive-modal";

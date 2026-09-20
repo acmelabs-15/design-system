@@ -1,6 +1,6 @@
 import { noteStructureCss } from "../../generated/components/note/note-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { noteCss } from "../../generated/components/note/note.styles";
@@ -16,7 +16,7 @@ const ICON: Record<string, string> = { "": "info", success: "check", error: "ale
  * `label` (a bold prefix), `icon` (replaces the variant's icon), `action` (one small button, which
  * a disabled note disables too).
  */
-@customElement("acme-note")
+
 export class AcmeNote extends AcmeElement {
   static styles = [
     sharedCss,

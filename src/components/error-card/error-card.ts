@@ -1,5 +1,5 @@
 import { html, nothing, type PropertyValues } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { errorCardCss } from "../../generated/components/error-card/error-card.styles";
@@ -14,7 +14,7 @@ export type ErrorCardError = { message?: string; digest?: string };
  * label) that dispatches `acme-retry`; `retry-label` is its accessible name. `error` takes the
  * failure itself: its digest and message go to the console, the title is what the user reads.
  */
-@customElement("acme-error-card")
+
 export class AcmeErrorCard extends AcmeElement {
   static styles = [sharedCss, errorCardCss];
   /** The title line; the default slot adds rich content to it. */

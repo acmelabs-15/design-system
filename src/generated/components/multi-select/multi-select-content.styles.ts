@@ -1,8 +1,7 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-import { registerProperties } from "../../../base";
-registerProperties([{"name":"--acme-exit-opacity","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-exit-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-exit-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-exit-scale","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-exit-rotate","syntax":"*","inherits":false,"initialValue":"0"}]);
-export const multiSelectContentCss = css`.content {
+import { withStyleProperties } from "../../../shared/style-properties";
+export const multiSelectContentCss = /* @__PURE__ */ withStyleProperties(css`.content {
   max-height: min(calc(var(--acme-popover-content-available-height) - 16px), 384px);
   min-width: var(--acme-popover-trigger-width);
   background-color: var(--ds-background-100);
@@ -29,4 +28,4 @@ export const multiSelectContentCss = css`.content {
     transform: translate3d(var(--acme-exit-translate-x, 0), var(--acme-exit-translate-y, 0), 0) scale3d(var(--acme-exit-scale, 1), var(--acme-exit-scale, 1), var(--acme-exit-scale, 1)) rotate(var(--acme-exit-rotate, 0));
   }
 }
-`;
+`, [{"name":"--acme-exit-opacity","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-exit-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-exit-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-exit-scale","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-exit-rotate","syntax":"*","inherits":false,"initialValue":"0"}]);

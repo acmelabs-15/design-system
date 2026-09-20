@@ -1,6 +1,6 @@
 import { calendarStructureCss } from "../../generated/components/calendar/calendar-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, glyph, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { fieldCss } from "../../generated/shared/field.styles";
@@ -47,7 +47,7 @@ const fmt = (s: string, year = true) => {
 };
 
 /** Geist Calendar: a date-range picker behind a secondary trigger labelled with the chosen range; a 280px popover with Start / End inputs, a timezone select, Apply, and the month grid (32px cells, blue-900 selection). Presets are real buttons; `compact` and `stacked` join a period combobox to the trigger; `horizontal-layout` puts the form beside the grid. */
-@customElement("acme-calendar")
+
 export class AcmeCalendar extends AcmeElement {
   static styles = [
     sharedCss,

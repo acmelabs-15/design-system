@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { themeStore } from "../../../shared/state";
 import type { AcmeThemeSwitcher } from "../theme-switcher";
 

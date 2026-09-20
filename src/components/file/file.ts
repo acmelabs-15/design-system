@@ -1,6 +1,6 @@
 import { fileStructureCss } from "../../generated/components/file/file-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -27,7 +27,7 @@ const glyph = (d: string) =>
  * it. `label` shows in place of `name` (the `label` slot holds rich content); the row's tooltip is
  * that text. A click bubbles out as a plain `click` event.
  */
-@customElement("acme-file")
+
 export class AcmeFile extends AcmeElement {
   static styles = [
     sharedCss,

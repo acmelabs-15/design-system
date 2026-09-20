@@ -1,5 +1,6 @@
+import "../../../define/grid";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeGridCell } from "../../grid-cell/grid-cell";
 import type { AcmeGridCross } from "../../grid-cross/grid-cross";
 import type { AcmeGridPage } from "../../grid-page/grid-page";

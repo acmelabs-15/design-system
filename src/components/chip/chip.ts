@@ -1,10 +1,10 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { chipCss } from "../../generated/components/chip/chip.styles";
 
 /** House chip: a pressable filter pill; `pressed` fills solid. */
-@customElement("acme-chip")
+
 export class AcmeChip extends AcmeElement {
   static styles = [sharedCss, chipCss];
   @property({ type: Boolean, reflect: true }) pressed = false;

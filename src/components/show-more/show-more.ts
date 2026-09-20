@@ -1,9 +1,8 @@
 import { showMoreStructureCss } from "../../generated/components/show-more/show-more-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { showMoreCss } from "../../generated/components/show-more/show-more.styles";
-import "../button/button";
 
 /**
  * Show more. A hairline rule with a small rounded secondary button in the middle that reads
@@ -11,7 +10,7 @@ import "../button/button";
  * controlled: a click bubbles as a native `click`, and the owner sets `expanded`. `loading` shows
  * the spinner while expanded; `no-border` hides the rule; slotted content replaces the text.
  */
-@customElement("acme-show-more")
+
 export class AcmeShowMore extends AcmeElement {
   static styles = [
     sharedCss,

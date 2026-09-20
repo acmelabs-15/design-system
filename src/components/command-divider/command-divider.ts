@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { commandMenuDividerCss } from "../../generated/components/command-menu/command-menu-divider.styles";
 
@@ -8,7 +8,7 @@ import { commandMenuDividerCss } from "../../generated/components/command-menu/c
  * menu hides it while a query narrows the list, unless `always-render`. `page` keeps it to one
  * page of the menu.
  */
-@customElement("acme-command-divider")
+
 export class AcmeCommandDivider extends AcmeElement {
   static styles = [sharedCss, commandMenuDividerCss];
   /** The line stays while a query narrows the list. */

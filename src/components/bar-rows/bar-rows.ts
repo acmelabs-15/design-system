@@ -1,9 +1,8 @@
 import { barRowsStructureCss } from "../../generated/components/bar-rows/bar-rows-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 
-@customElement("acme-bar-rows")
 export class AcmeBarRows extends AcmeElement {
   static styles = [
     sharedCss,

@@ -1,11 +1,11 @@
 import { trendStructureCss } from "../../generated/components/trend/trend-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, glyph, sharedCss } from "../../base";
 import { trendCss } from "../../generated/components/trend/trend.styles";
 
 /** House Trend: a signed change with its direction; pill when it stands alone. */
-@customElement("acme-trend")
+
 export class AcmeTrend extends AcmeElement {
   static styles = [
     sharedCss,

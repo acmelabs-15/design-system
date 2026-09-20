@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { emptyStateCss } from "../../generated/components/empty-state/empty-state.styles";
@@ -13,7 +13,7 @@ import { emptyStateCss } from "../../generated/components/empty-state/empty-stat
  * heading. Slots: default (the calls to action), `icon`, `title` and `description` (rich content
  * in place of the attributes).
  */
-@customElement("acme-empty-state")
+
 export class AcmeEmptyState extends AcmeElement {
   static styles = [sharedCss, emptyStateCss];
   /** The title line, Title Case. */

@@ -15,6 +15,10 @@ export const doc: Doc = {
       code: `import { LitElement, html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { TanStackFormController, bindField } from "@acmelabs/design-system";
+import "@acmelabs/design-system/define/input";
+import "@acmelabs/design-system/define/select";
+import "@acmelabs/design-system/define/toggle";
+import "@acmelabs/design-system/define/button";
 
 @customElement("signup-form")
 export class SignupForm extends LitElement {

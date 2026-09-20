@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeContextCard } from "../context-card";
 
 const mount = async (markup: string) => {

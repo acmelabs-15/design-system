@@ -1,10 +1,9 @@
 import { switchStructureCss } from "../../generated/components/switch/switch-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeSwitchControl } from "../switch-control/switch-control";
 import { switchCss } from "../../generated/components/switch/switch.styles";
-import "../switch-control/switch-control";
 
 export type SwitchSize = "small" | "medium" | "large";
 
@@ -15,7 +14,7 @@ export type SwitchSize = "small" | "medium" | "large";
  * such as a tooltip, keeps its own size), keeps one control checked, moves the selection with
  * the arrow keys, and reports the value to its form. Sizes small 32 / medium 36 / large 40.
  */
-@customElement("acme-switch")
+
 export class AcmeSwitch extends AcmeElement {
   static formAssociated = true;
   static styles = [

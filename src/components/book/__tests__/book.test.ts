@@ -1,5 +1,6 @@
+import "../../../define/book";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { type AcmeBook, textureFlipped, widthVars } from "../book";
 
 const mount = async (markup: string) => {

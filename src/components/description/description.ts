@@ -1,7 +1,7 @@
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, paths, sharedCss } from "../../base";
-import "../tooltip/tooltip";
+
 import { descriptionCss } from "../../generated/components/description/description.styles";
 
 /**
@@ -10,7 +10,7 @@ import { descriptionCss } from "../../generated/components/description/descripti
  * tooltip that opens on hover or keyboard focus; `right` aligns the text right; `ellipsis`
  * truncates both lines.
  */
-@customElement("acme-description")
+
 export class AcmeDescription extends AcmeElement {
   static styles = [sharedCss, descriptionCss];
   /** The Title Case key. */

@@ -1,11 +1,11 @@
 import { buttonStructureCss } from "../../generated/components/button/button-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { Places } from "../../shared/places";
 import { buttonCss } from "../../generated/components/button/button.styles";
-import "../spinner/spinner";
+
 import { atomState } from "../../shared/atom-state";
 
 /** `default` is the primary look (gray-1000); `custom` takes its colors from `normal`, `hover` and `active`; `unstyled` is only the reset and the label, for a control that draws its own look. */
@@ -34,7 +34,7 @@ const customVars = (suffix: string, c?: ButtonColors) =>
  * secondary, tertiary, error, warning, custom; shapes square, circle, rounded; svg-only for icon
  * buttons, which need an aria-label.
  */
-@customElement("acme-button")
+
 export class AcmeButton extends AcmeElement {
   /** Focus on the host lands on the inner control. */
   static shadowRootOptions = { ...AcmeElement.shadowRootOptions, delegatesFocus: true };

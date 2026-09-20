@@ -1,6 +1,6 @@
 import { radioStructureCss } from "../../generated/components/radio/radio-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -14,7 +14,7 @@ import { radioCss } from "../../generated/components/radio/radio.styles";
  * Form-associated and labelable; inside acme-radio-group the group sets its name, checked
  * state and Tab stop.
  */
-@customElement("acme-radio")
+
 export class AcmeRadio extends AcmeElement {
   static formAssociated = true;
   static styles = [

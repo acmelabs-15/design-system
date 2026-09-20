@@ -10,8 +10,7 @@
 //   }
 //
 // One atom per instance, created on first access, the way TanStack Form creates a store per form and
-// per field. `TanStackStoreAtom` wraps `TanStackStoreSelector`, so this inherits the `hostConnected`
-// patch in patches/ — without it an element moved in the DOM stops following its own state.
+// per field. The shared connection hook schedules TanStack's subscription update when the host connects.
 //
 // Derived state stays explicit. A value computed from two fields is a derived store, because that is
 // the thing a plain field cannot express and the reason the rule is worth following:
@@ -34,6 +33,7 @@
 
 import { type Atom, createAtom, TanStackStoreAtom } from "@tanstack/lit-store";
 import type { ReactiveControllerHost, ReactiveElement } from "lit";
+import { connectStore } from "./store-connection";
 
 type Host = ReactiveControllerHost & object;
 /** The atoms of one host, keyed by field name, so several fields on one element stay independent. */
@@ -93,12 +93,16 @@ export function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T
  */
 function atomFor<T>(host: Host, name: PropertyKey, seed: T, shared?: Atom<T>, options?: { compare?: (a: T, b: T) => boolean }): TanStackStoreAtom<T> {
   let byName = atoms.get(host);
-  if (!byName) atoms.set(host, (byName = new Map()));
+  if (!byName) {
+    byName = new Map();
+    atoms.set(host, byName);
+  }
   let bound = byName.get(name) as TanStackStoreAtom<T> | undefined;
   if (!bound) {
     // A shared atom is bound as it is; otherwise this instance gets one of its own.
     const store = shared ?? createAtom(seed, options as never);
     bound = new TanStackStoreAtom(host, () => store);
+    connectStore(host);
     byName.set(name, bound as TanStackStoreAtom<unknown>);
   }
   return bound;

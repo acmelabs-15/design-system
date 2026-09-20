@@ -1,6 +1,6 @@
 import { disabledWallStructureCss } from "../../generated/components/disabled-wall/disabled-wall-structure.styles";
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+
 import { AcmeElement, sharedCss } from "../../base";
 import { disabledWallCss } from "../../generated/components/disabled-wall/disabled-wall.styles";
 
@@ -9,7 +9,7 @@ import { disabledWallCss } from "../../generated/components/disabled-wall/disabl
  * cursor and blocks text selection. Place it last inside a `position: relative` box; disabled
  * fieldset content renders one of its own.
  */
-@customElement("acme-disabled-wall")
+
 export class AcmeDisabledWall extends AcmeElement {
   static styles = [
     sharedCss,

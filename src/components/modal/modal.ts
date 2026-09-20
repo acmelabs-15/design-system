@@ -1,6 +1,6 @@
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
@@ -70,7 +70,7 @@ const SHEET_EXIT_MS = 400;
  * action, else the panel. `acme-open` fires on open, `acme-enter` on Enter, `acme-close` once the
  * modal has left.
  */
-@customElement("acme-modal")
+
 export class AcmeModal extends AcmeElement {
   static styles = [sharedCss, dialogResetCss, modalOverlayCss, modalBackdropCss, modalCss, modalActionCss];
   /** Open state; `show()` and `close()` set it. */

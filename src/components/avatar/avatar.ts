@@ -1,6 +1,6 @@
 import { avatarStructureCss } from "../../generated/components/avatar/avatar-structure.styles";
 import { html, nothing, svg } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { avatarCss } from "../../generated/components/avatar/avatar.styles";
@@ -35,7 +35,7 @@ const MARKS: Record<string, { box: string; d: string }> = {
  * `placeholder` shell. `git` adds a 14px service dot at the bottom left with the provider's mark;
  * an `icon` slot puts a custom icon in that dot; `icon-background` marks the dot's white disc.
  */
-@customElement("acme-avatar")
+
 export class AcmeAvatar extends AcmeElement {
   static styles = [
     sharedCss,

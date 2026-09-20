@@ -1,4 +1,4 @@
-// @acmelabs/design-system — every acme-* element, registered on import. One directory per component.
+// Component classes and shared authoring helpers.
 export * from "./base";
 export * from "./components/appbar/appbar";
 export * from "./components/avatar/avatar";
@@ -137,7 +137,6 @@ export * from "./components/tag/tag";
 export * from "./components/tags/tags";
 export * from "./components/task/task";
 export * from "./components/tasks/tasks";
-export * from "./components/text-copy/text-copy";
 export * from "./components/textarea/textarea";
 export * from "./components/theme-switcher/theme-switcher";
 export * from "./components/tile/tile";

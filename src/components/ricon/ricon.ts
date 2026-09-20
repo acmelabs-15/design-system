@@ -1,11 +1,11 @@
 import { riconStructureCss } from "../../generated/components/ricon/ricon-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { riconCss } from "../../generated/components/ricon/ricon.styles";
 
 /** House round icon: a tinted circle for a state or a kind. */
-@customElement("acme-ricon")
+
 export class AcmeRicon extends AcmeElement {
   static styles = [
     sharedCss,

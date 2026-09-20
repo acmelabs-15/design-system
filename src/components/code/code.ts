@@ -1,6 +1,6 @@
 import { codeStructureCss } from "../../generated/components/code/code-structure.styles";
 import { html, type TemplateResult } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { highlighter, langOf } from "../../shared/highlight";
 import { codeCss } from "../../generated/components/code/code.styles";
@@ -29,7 +29,7 @@ export const sourceOf = (el: Element) => (el.textContent ?? "").replace(/^\n/, "
  * with syntax highlighting. The default slot's text is the source; `syntax` names its language
  * (`javascript`, `tsx`, `json`, `bash`, …); tokens carry `token <kind>` so the kinds' colors apply.
  */
-@customElement("acme-code")
+
 export class AcmeCode extends AcmeElement {
   static styles = [
     sharedCss,

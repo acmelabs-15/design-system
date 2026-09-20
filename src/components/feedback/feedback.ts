@@ -1,16 +1,13 @@
 import { feedbackStructureCss } from "../../generated/components/feedback/feedback-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { html, nothing, svg } from "lit";
-import { customElement, property, query, queryAll } from "lit/decorators.js";
+import { property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
 import { reduced } from "../../shared/overlay";
 import { feedbackCss } from "../../generated/components/feedback/feedback.styles";
-import "../button/button";
-import "../input/input";
-import "../select/select";
-import "../textarea/textarea";
+
 import { atomState } from "../../shared/atom-state";
 
 export type FeedbackVariant = "" | "inline";
@@ -88,7 +85,7 @@ type Phase = "entered" | "exiting" | null;
  * outside closes, focus returns to the trigger. The default slot is unused; `start` and `end`
  * decorate the trigger. Fires `acme-open`, `acme-close` and `acme-submit` (the payload).
  */
-@customElement("acme-feedback")
+
 export class AcmeFeedback extends AcmeElement {
   static styles = [
     sharedCss,

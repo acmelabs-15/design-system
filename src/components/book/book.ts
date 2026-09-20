@@ -1,6 +1,6 @@
 import { bookStructureCss } from "../../generated/components/book/book-structure.styles";
 import { html, nothing, svg } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AnimateController, animate } from "@lit-labs/motion";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
@@ -61,7 +61,7 @@ const defaultIllustration = svg`<svg width="36" height="56" viewBox="0 0 36 56" 
  * object (`{"sm":150,"md":196}`); the cover keeps a 49:60 ratio, the spine, the title size and
  * the gaps follow the width. `textured` lays a paper grain over the cover.
  */
-@customElement("acme-book")
+
 export class AcmeBook extends AcmeElement {
   static styles = [
     sharedCss,

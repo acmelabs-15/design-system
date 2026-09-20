@@ -1,11 +1,10 @@
 import { stripItemStructureCss } from "../../generated/components/strip-item/strip-item-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { badgeCss } from "../../generated/components/badge/badge.styles";
 import { statStripCss } from "../../generated/components/stat-strip/stat-strip.styles";
 
-@customElement("acme-strip-item")
 export class AcmeStripItem extends AcmeElement {
   static styles = [
     sharedCss,

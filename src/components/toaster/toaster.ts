@@ -1,11 +1,11 @@
 import { toasterStructureCss } from "../../generated/components/toaster/toaster-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { type ToastQueue, toasts } from "../../shared/state";
 import { toasterCss } from "../../generated/components/toaster/toaster.styles";
-import "../toast/toast";
+
 import { atomState } from "../../shared/atom-state";
 
 export type { ToastItem, ToastOptions, ToastQueue, ToastText, ToastType, ToastVisual } from "../../shared/state";
@@ -21,7 +21,7 @@ export { createToastQueue, toasts } from "../../shared/state";
  * several viewports on one queue the first connected renders, and the next takes over when it
  * leaves.
  */
-@customElement("acme-toaster")
+
 export class AcmeToaster extends AcmeElement {
   static styles = [
     sharedCss,

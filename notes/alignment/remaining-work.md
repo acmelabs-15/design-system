@@ -13,7 +13,7 @@ The [central handoff](README.md#where-we-are) owns current status. The [inventor
 | User-owned decision queue | Closed; all five recommendations approved in [the register](proposal-questions.md) |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
 | Phase 5 | [Migration plan approved](../decisions/migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01/M02 implemented and verified; M03 manifest implemented; registration/delivery work active |
+| Phase 6 | M01–M03 complete; M04 dependency-closed removals active |
 
 These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The design contracts are approved; they are not implemented or verified components. Technical gates remain distinct from the recorded design review.
 

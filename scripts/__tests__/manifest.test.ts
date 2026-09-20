@@ -1,3 +1,4 @@
+import "../../src/all";
 import { expect, test } from "bun:test";
 import { create, ts } from "@custom-elements-manifest/analyzer";
 import type { ClassDeclaration, CustomElement } from "custom-elements-manifest/schema";

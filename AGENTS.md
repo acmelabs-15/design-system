@@ -65,16 +65,20 @@ Several **generated files are committed**, in places that read as source. The sc
 | `src/generated/css/` | style producers | `styles/`, mappings and committed specs |
 | `src/generated/components/` and `src/generated/shared/` | `scripts/styles.ts` | compiled CSS under `src/generated/css/` |
 | `src/generated/style-manifest.json` | style producers | input/output fingerprints and registration definitions |
+| `src/define/`, `src/all.ts` and component package exports | `scripts/entries.ts` | `HTMLElementTagNameMap` records and owned component markup |
+| `dist/custom-elements.json` | `scripts/manifest.ts` | component declarations, templates and annotations |
 | `dist/styles/` | `bun run build` | compiled document/token/recipe CSS and maps |
+| `dist/cdn/` | `bun run build` | selective definitions and one shared browser module graph |
+| `.artifacts/packages/` | `bun run pack` | built outputs and production-only package metadata |
 | `_site/` | `bun run docs` → `site/build.ts` | `site/` and `dist/` |
 | `dist/` (gitignored) | `bun run build` | `src/` and verified generated inputs |
 
 The tracked `docs/` tree is the published snapshot while Pages still serves main/docs. Its removal and the workflow deployment switch remain assigned to the publishing migration; it is not the local build output.
 
-Hand-written: `styles/`, `src/` except `src/generated/`, `site/`, `scripts/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
+Hand-written: `styles/`, `src/` except `src/generated/`, `src/define/` and `src/all.ts`; `site/`, `scripts/`, `packages/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`; the link follows.
 
 Build order: `bun run split && bun run build && bun run docs && bun test`. `docs` needs `dist/` from `build`.
 
-The table records the implemented M01/M02 layout. Mapped-source changes use `bun tools/geist/gen.ts <name>`; `split` regenerates house and authored styles. Build rejects stale generated inputs.
+Mapped-source changes use `bun tools/geist/gen.ts <name>`; `split` regenerates house and authored styles. Build rejects stale generated inputs and refreshes registration entries, exports and API metadata. `bun run pack` stages production metadata; development patch settings stay in the authoring package.

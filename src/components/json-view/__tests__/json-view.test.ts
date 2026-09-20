@@ -1,5 +1,6 @@
+import "../../../define/json-view";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { type AcmeJsonView, makeJsonViewHighlightPattern } from "../json-view";
 
 const mount = async (markup: string) => {

@@ -9,15 +9,18 @@ Docs: <https://acmelabs-15.github.io/design-system/>
 
 ## Use it from a CDN
 
-No build step. Two tags:
+No build step. Import the elements the page uses:
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/styles/tokens.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/bundle/design-system.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/styles/tokens.css">
+<script type="module">
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/cdn/define/button.js";
+  import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/cdn/define/badge.js";
+</script>
 
 <acme-button variant="primary">Deploy</acme-button>
-<acme-badge hue="green" subtle>Ready</acme-badge>
+<acme-badge variant="green" contrast="low">Ready</acme-badge>
 ```
 
 A host that admits a script from a CDN but no stylesheet from one (the Claude artifact CSP is one)
@@ -28,8 +31,9 @@ takes the standalone bundle, which installs `tokens.css` into the document on im
 ```
 
 `tokens.css` is the global layer: the color scales, the semantic tokens, the reset, the type
-classes and the layout utilities. The bundle is self-contained (Lit and the labs packages are
-inside it) and registers every `acme-*` element. `dashboard.css` carries the page-level recipes
+classes and the layout utilities. Selective entries share runtime chunks and register their owned
+component dependencies. The full `dist/cdn/all.js` entry registers every element and includes the
+heavy component packages. The standalone bundle also installs tokens. `dashboard.css` carries the page-level recipes
 the Vercel dashboard composes in light DOM.
 
 ## Install from npm
@@ -39,12 +43,15 @@ bun add @acmelabs/design-system
 ```
 
 ```ts
-import "@acmelabs/design-system"; // every element registers on import
+import "@acmelabs/design-system/define/button";
 import "@acmelabs/design-system/styles/tokens.css";
 ```
 
 The unbundled build under `dist/` keeps Lit as a dependency, so one copy of Lit serves the whole
-app. Single elements import from `@acmelabs/design-system/dist/components/<name>/<name>.js`.
+app. Use `@acmelabs/design-system/define/<name>` to register an element and its owned dependencies.
+Use `@acmelabs/design-system/all` for full registration. Import classes from
+`@acmelabs/design-system/components/<name>` or the package root for explicit or scoped registration;
+these entries do not register elements or change the document.
 
 The package publishes its element API as `@acmelabs/design-system/custom-elements.json`.
 The build generates this standard manifest from the element declarations and templates. The
@@ -56,7 +63,8 @@ website and Markdown reference read the same manifest.
 styles/                         authored house, component and shared CSS inputs
 src/
   base.ts                       AcmeElement and shared helpers
-  index.ts                      re-exports every element
+  index.ts                      exports classes and authoring helpers
+  all.ts, define/               generated registration entries
   shared/                       shared behavior
   components/<name>/
     <name>.ts                   the element
@@ -81,6 +89,7 @@ Generated inputs under src/generated are committed. Package and site outputs are
 |---|---|---|
 | `src/generated/css/` and Lit style modules | `split` or the mapped generator | `styles/` or `tools/geist/maps/` |
 | `src/generated/style-manifest.json` | style producers | its recorded source inputs |
+| `src/define/`, `src/all.ts`, component exports in package.json | `scripts/entries.ts` | tag-map declarations and owned component markup |
 | `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css` and the generated theme |
 | `dist/styles/dashboard.css` | `build` | compiled recipe inputs selected in `scripts/build.ts` |
 | `dist/custom-elements.json` | `build` or `bun run manifest` | element declarations, templates and documented dynamic slots |
@@ -104,6 +113,8 @@ Start with `AGENTS.md`. It gives the reading order, the rules, and the current w
 | `bun run lint` | Biome |
 | `bun run split` | Compiles house/authored CSS into committed CSS, maps and Lit modules |
 | `bun run manifest` | Generates the standard element API manifest used by documentation |
+| `bun run entries` | Generates selective and full registration entries |
+| `bun run pack` | Packs built outputs with production metadata into `.artifacts/packages/`; keeps development patch/configuration private |
 
 ## Release
 

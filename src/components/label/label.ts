@@ -1,6 +1,6 @@
 import { labelStructureCss } from "../../generated/components/label/label-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { labelCss } from "../../generated/components/label/label.styles";
 
@@ -10,7 +10,7 @@ import { labelCss } from "../../generated/components/label/label.styles";
  * capitalized unless `bypass-casing`. A click focuses the element `for` names, in the same
  * root as the label.
  */
-@customElement("acme-label")
+
 export class AcmeLabel extends AcmeElement {
   static styles = [
     sharedCss,

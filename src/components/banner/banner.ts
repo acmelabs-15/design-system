@@ -1,10 +1,10 @@
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { bannerCss } from "../../generated/components/banner/banner.styles";
 import { bannerMobileCss } from "../../generated/components/banner/banner-mobile.styles";
-import "../button/button";
+
 import { atomState } from "../../shared/atom-state";
 
 /** The viewport width from which the wide row shows and the mobile button hides, as the styles have it. */
@@ -22,7 +22,7 @@ const arrow = html`<svg slot="end" viewBox="0 0 16 16" width="16" height="16" ar
  * Slots: default (the message), `start` (an icon before the message), `mobile` (shorter copy for
  * the mobile button). Parts: `banner` (the wide row), `mobile` (the mobile button).
  */
-@customElement("acme-banner")
+
 export class AcmeBanner extends AcmeElement {
   static styles = [sharedCss, bannerCss, bannerMobileCss];
   /** The action button's label. */

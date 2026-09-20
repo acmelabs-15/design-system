@@ -1,6 +1,6 @@
 import { projectBannerStructureCss } from "../../generated/components/project-banner/project-banner-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { projectBannerCss } from "../../generated/components/project-banner/project-banner.styles";
@@ -23,7 +23,7 @@ const FOCUS: Record<ProjectBannerVariant, string> = {
  * interaction states (data-hover, data-focus, data-active) and writes its focus ring, colored per
  * variant, as an inline style. Slots: default (the label), `icon`.
  */
-@customElement("acme-project-banner")
+
 export class AcmeProjectBanner extends AcmeElement {
   static styles = [
     sharedCss,

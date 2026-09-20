@@ -1,11 +1,10 @@
 import { panelFootStructureCss } from "../../generated/components/panel-foot/panel-foot-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { buttonCss } from "../../generated/components/button/button.styles";
 import { panelCss } from "../../generated/components/panel/panel.styles";
 
-@customElement("acme-panel-foot")
 export class AcmePanelFoot extends AcmeElement {
   static styles = [
     sharedCss,

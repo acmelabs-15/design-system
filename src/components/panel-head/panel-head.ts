@@ -1,11 +1,11 @@
 import { panelHeadStructureCss } from "../../generated/components/panel-head/panel-head-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { panelHeadCss } from "../../generated/components/panel-head/panel-head.styles";
 
 /** A card or section head with a title, sub line and actions. */
-@customElement("acme-panel-head")
+
 export class AcmePanelHead extends AcmeElement {
   static styles = [
     sharedCss,

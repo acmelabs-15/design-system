@@ -1,10 +1,9 @@
 import { clearableInputStructureCss } from "../../generated/components/clearable-input/clearable-input-structure.styles";
 import { html, nothing, type TemplateResult } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { clearableInputCss } from "../../generated/components/clearable-input/clearable-input.styles";
-import "../input/input";
-import "../kbd/kbd";
+
 import type { AcmeInput } from "../input/input";
 
 /**
@@ -13,7 +12,7 @@ import type { AcmeInput } from "../input/input";
  * to Esc while the field has a value (`data-animate` on the field). Clearing fires `acme-input`
  * and `acme-clear` and returns focus to the field. Form-associated and labelable.
  */
-@customElement("acme-clearable-input")
+
 export class AcmeClearableInput extends AcmeElement {
   static formAssociated = true;
   static styles = [

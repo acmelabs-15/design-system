@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index.ts";
+import "../../../all";
 import type { AcmeChart } from "../chart.ts";
 
 describe("acme-chart", () => {

@@ -1,6 +1,6 @@
 import { menuItemStructureCss } from "../../generated/components/menu-item/menu-item-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, paths, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { menuItemCss } from "../../generated/components/menu-item/menu-item.styles";
@@ -16,7 +16,7 @@ let seq = 0;
  * (`selected`, the `data-selected` state: gray-alpha-100, red-100 on an error row) as the keys
  * and the pointer move over the rows. A click, Enter or Space fires `acme-select`.
  */
-@customElement("acme-menu-item")
+
 export class AcmeMenuItem extends AcmeElement {
   static styles = [
     sharedCss,

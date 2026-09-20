@@ -1,5 +1,5 @@
 import { html, nothing, svg } from "lit";
-import { customElement, property, query, queryAll } from "lit/decorators.js";
+import { property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { ToastItem, ToastQueue, ToastText } from "../../shared/state";
@@ -36,7 +36,7 @@ const sized = (v: unknown): v is { height: number; content: ToastText } => typeo
  * to its own height and the timers pause. The fourth toast from the front is hidden, the third on
  * a viewport of 400px or less.
  */
-@customElement("acme-toast")
+
 export class AcmeToast extends AcmeElement {
   static styles = [sharedCss, buttonCss, toastCss];
   /** The toast shown. */

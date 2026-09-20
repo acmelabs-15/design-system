@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeMenuButton } from "../../menu-button/menu-button";
 import type { AcmeMenuItem } from "../../menu-item/menu-item";
 import type { AcmeMenu } from "../menu";

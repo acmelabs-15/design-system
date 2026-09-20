@@ -1,10 +1,9 @@
 import { tableStructureCss } from "../../generated/components/table/table-structure.styles";
 import { WindowVirtualizerController } from "@tanstack/lit-virtual";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { tableCss } from "../../generated/components/table/table.styles";
-import "../checkbox/checkbox";
 
 /** A column: `key` reads the row, `label` heads it, `width` sizes its col (e.g. "44%"), `numeric` gives its digits tabular figures, `render` draws the cell from the row. */
 export type Column = { key: string; label: string; numeric?: boolean; width?: string; render?: (row: Record<string, unknown>) => unknown };
@@ -29,7 +28,7 @@ const ROW_PX: Record<TableDensity, number> = { default: 40, compact: 30 };
  * every row (indeterminate while only some are), each row's toggles its index in `selected`,
  * and a change is reported as `acme-select`. A cell with no value shows an em dash.
  */
-@customElement("acme-table")
+
 export class AcmeTable extends AcmeElement {
   static styles = [
     sharedCss,

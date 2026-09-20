@@ -1,10 +1,10 @@
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+
 import { AcmeElement, sharedCss } from "../../base";
 import { tagCss } from "../../generated/components/tag/tag.styles";
 
 /** House tag: a small gray mono keyword. Wrap several in acme-tags. */
-@customElement("acme-tag")
+
 export class AcmeTag extends AcmeElement {
   static styles = [sharedCss, tagCss];
   render() {

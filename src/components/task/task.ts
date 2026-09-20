@@ -1,11 +1,11 @@
 import { taskStructureCss } from "../../generated/components/task/task-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, glyph, sharedCss } from "../../base";
 import { taskCss } from "../../generated/components/task/task.styles";
 
 /** Vercel task row: a tinted 36px row with an icon, done or not. */
-@customElement("acme-task")
+
 export class AcmeTask extends AcmeElement {
   static styles = [
     sharedCss,

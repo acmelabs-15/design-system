@@ -1,12 +1,12 @@
 import { barRowStructureCss } from "../../generated/components/bar-row/bar-row-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { trendCss } from "../../generated/components/trend/trend.styles";
 import { barRowCss } from "../../generated/components/bar-row/bar-row.styles";
 
 /** House bar row: label, value, a bar, and the result under it. */
-@customElement("acme-bar-row")
+
 export class AcmeBarRow extends AcmeElement {
   static styles = [
     sharedCss,

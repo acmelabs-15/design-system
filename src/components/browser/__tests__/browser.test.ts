@@ -1,5 +1,6 @@
+import "../../../define/browser";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { type AcmeBrowser, formatAddress } from "../browser";
 
 const mount = async (markup: string) => {

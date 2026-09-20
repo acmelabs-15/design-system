@@ -1,11 +1,11 @@
 import { settingRowStructureCss } from "../../generated/components/setting-row/setting-row-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { settingRowCss } from "../../generated/components/setting-row/setting-row.styles";
 
 /** Vercel setting row: a title and description with a control at the right. */
-@customElement("acme-setting-row")
+
 export class AcmeSettingRow extends AcmeElement {
   static styles = [
     sharedCss,

@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { html, LitElement } from "lit";
-import "../../index.ts";
+import "../../all";
 import { bindField, TanStackFormController } from "../../index.ts";
 
 class TestForm extends LitElement {

@@ -1,11 +1,11 @@
 import { checkStructureCss } from "../../generated/components/check/check-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { checkCss } from "../../generated/components/check/check.styles";
 
 /** House checklist row: a 20px box, a text with a sub line, and a when. */
-@customElement("acme-check")
+
 export class AcmeCheck extends AcmeElement {
   static styles = [
     sharedCss,

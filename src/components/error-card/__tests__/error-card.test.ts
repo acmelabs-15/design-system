@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, spyOn, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeErrorCard } from "../error-card";
 
 const mount = async (markup: string) => {

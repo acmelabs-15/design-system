@@ -1,12 +1,12 @@
 import { appbarStructureCss } from "../../generated/components/appbar/appbar-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { buttonCss } from "../../generated/components/button/button.styles";
 import { appbarCss } from "../../generated/components/appbar/appbar.styles";
 
 /** House app bar: sticky, brand left, section links middle, tools right, with the Geist theme switcher. */
-@customElement("acme-appbar")
+
 export class AcmeAppbar extends AcmeElement {
   static styles = [
     sharedCss,

@@ -1,6 +1,6 @@
 import { jsonViewStructureCss } from "../../generated/components/json-view/json-view-structure.styles";
 import { html, nothing, type TemplateResult } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { jsonViewCss } from "../../generated/components/json-view/json-view.styles";
 
@@ -43,7 +43,7 @@ export function makeJsonViewHighlightPattern(terms: string[]): RegExp | null {
  * character jumps to the next node whose label starts with it. `highlight-pattern` marks matches in
  * keys and primitive values. Levels below `default-expand-depth` (3) start open.
  */
-@customElement("acme-json-view")
+
 export class AcmeJsonView extends AcmeElement {
   static styles = [
     sharedCss,

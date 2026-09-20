@@ -1,3 +1,4 @@
+import "../../../all";
 import { afterEach, beforeEach, describe, expect, jest, test } from "bun:test";
 import { createToastQueue, type ToastQueue, toasts } from "../../../index";
 import type { AcmeToaster } from "../../toaster/toaster";

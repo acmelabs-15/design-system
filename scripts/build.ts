@@ -13,10 +13,13 @@ import { compileLitTemplates } from "@lit-labs/compiler";
 import ts from "typescript";
 import { litStyleModule, verifyStyleManifest, writeStyle } from "./styles";
 import { writeManifest } from "./manifest";
+import { writeEntries, writePackageExports } from "./entries";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = path.join(ROOT, "src"),
   DIST = path.join(ROOT, "dist");
+const components = writeEntries(ROOT);
+writePackageExports(components, ROOT);
 const styles = verifyStyleManifest(ROOT, ["document/dashboard"]);
 const recipes = ["deploy", "plan", "usage-sum", "classes", "severity", "option", "info-ic", "rail", "subnav", "link-card", "logs", "task", "code", "check"];
 const recipeFiles = recipes.map((name) => {
@@ -94,13 +97,32 @@ if (diags.length) {
 
 await writeManifest();
 
+// Selective browser entries share one runtime graph, including the explicit all entry.
+{
+  const result = await Bun.build({
+    entrypoints: [path.join(DIST, "all.js"), ...components.map(component => path.join(DIST, "define", component.name + ".js"))],
+    root: DIST,
+    outdir: path.join(DIST, "cdn"),
+    target: "browser",
+    format: "esm",
+    splitting: true,
+    minify: true,
+    sourcemap: "none",
+    naming: {entry:"[dir]/[name].[ext]",chunk:"chunks/[name]-[hash].[ext]",asset:"assets/[name]-[hash].[ext]"},
+    metafile: true,
+  });
+  if (!result.success) throw new AggregateError(result.logs, "Selective browser build failed");
+  fs.mkdirSync(path.join(ROOT, ".artifacts"), {recursive:true});
+  fs.writeFileSync(path.join(ROOT, ".artifacts/cdn-metafile.json"), JSON.stringify(result.metafile, null, 2) + "\n");
+}
+
 // 3. The self-contained browser bundle.
 for (const [name, minify] of [
   ["design-system.js", false],
   ["design-system.min.js", true],
 ] as const) {
   const r = await Bun.build({
-    entrypoints: [path.join(DIST, "index.js")],
+    entrypoints: [path.join(DIST, "all.js")],
     outdir: path.join(DIST, "bundle"),
     naming: name,
     target: "browser",
@@ -126,7 +148,7 @@ for (const [name, minify] of [
                 const map = fs.readFileSync(path.join(ROOT, "src/generated/css", key + ".css.map"), "utf8");
                 const debugCss = css + "\n/*# sourceURL=acme-styles://" + key + ".css */\n/*# sourceMappingURL=data:application/json;base64," + Buffer.from(map).toString("base64") + " */";
                 return {
-                  contents: litStyleModule(entry.exportName, debugCss, entry.properties, path.relative(path.dirname(args.path), path.join(DIST, "base.js")).split(path.sep).join("/")),
+                  contents: litStyleModule(entry.exportName, debugCss, entry.properties, path.relative(path.dirname(args.path), path.join(DIST, "shared/style-properties.js")).split(path.sep).join("/")),
                   loader: "js",
                   resolveDir: path.dirname(args.path),
                 };
@@ -148,7 +170,7 @@ for (const [name, minify] of [
   const entry = path.join(DIST, `standalone-entry-${process.pid}.js`); // per process: builds may run concurrently
   fs.writeFileSync(
     entry,
-    `import "./index";\nconst css = ${JSON.stringify(tokens)};\nif (!document.querySelector("style[data-acme-tokens]")) { const s = document.createElement("style"); s.dataset.acmeTokens = ""; s.textContent = css; document.head.prepend(s); }\n`,
+    `import "./all";\nconst css = ${JSON.stringify(tokens)};\nif (!document.querySelector("style[data-acme-tokens]")) { const s = document.createElement("style"); s.dataset.acmeTokens = ""; s.textContent = css; document.head.prepend(s); }\n`,
   );
   const r = await Bun.build({ entrypoints: [entry], outdir: path.join(DIST, "bundle"), naming: "design-system.standalone.min.js", target: "browser", format: "esm", minify: true, sourcemap: "none" });
   fs.rmSync(entry, { force: true });

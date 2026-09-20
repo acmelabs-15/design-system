@@ -1,8 +1,8 @@
 import { DateFormatter, getLocalTimeZone } from "@internationalized/date";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import "../context-card/context-card";
+
 import { atomState } from "../../shared/atom-state";
 import { relativeTimeCardCss } from "../../generated/components/relative-time/relative-time-card.styles";
 import { relativeTimeLabelCss } from "../../generated/components/relative-time/relative-time-label.styles";
@@ -65,7 +65,7 @@ const zoneFormatters = (timeZone: string) => {
  * read through `@internationalized/date`. `date` is the moment in epoch milliseconds; without one,
  * the slotted content stands alone and no card opens.
  */
-@customElement("acme-relative-time")
+
 export class AcmeRelativeTime extends AcmeElement {
   static styles = [sharedCss, relativeTimeTriggerCss, relativeTimeLabelCss, relativeTimeCardCss];
   /** The moment, in epoch milliseconds. */

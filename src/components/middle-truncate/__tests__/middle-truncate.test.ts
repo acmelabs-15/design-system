@@ -1,5 +1,6 @@
+import "../../../define/middle-truncate";
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import { type AcmeMiddleTruncate, cut, expandSelection, fitCut } from "../middle-truncate";
 
 const mount = async (markup: string) => {

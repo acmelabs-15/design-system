@@ -1,10 +1,9 @@
 import { panelsStructureCss } from "../../generated/components/panels/panels-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { panelCss } from "../../generated/components/panel/panel.styles";
 
-@customElement("acme-panels")
 export class AcmePanels extends AcmeElement {
   static styles = [
     sharedCss,

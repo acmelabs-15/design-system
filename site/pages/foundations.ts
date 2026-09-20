@@ -23,8 +23,11 @@ const iconRows = [
   ["shield", "lock", "github", "folder", "play", "image", "filter", "trophy"],
 ];
 const install = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
-<link rel="stylesheet" href="${cdn}/styles/tokens.css">
-<script type="module" src="${cdn}/dist/bundle/design-system.min.js"></script>
+<link rel="stylesheet" href="${cdn}/dist/styles/tokens.css">
+<script type="module">
+  import "${cdn}/dist/cdn/define/button.js";
+  import "${cdn}/dist/cdn/define/badge.js";
+</script>
 
 <acme-button>Deploy</acme-button>
 <acme-badge variant="green" contrast="low">Ready</acme-badge>`;
@@ -69,7 +72,7 @@ export const intro: Doc = {
     "",
     "## Components",
     "",
-    "Building blocks for any page, available as web components from a CDN with no build step, or from npm as `@acmelabs/design-system`. Every element is `acme-*` and registers on import.",
+    "Building blocks for any page, available as web components from a CDN with no build step, or from npm as `@acmelabs/design-system`. Definition entries register their `acme-*` element and its owned dependencies.",
     "",
     "```html",
     install,
@@ -81,10 +84,10 @@ export const intro: Doc = {
     `<script type="module" src="${cdn}/dist/bundle/design-system.standalone.min.js"></script>`,
     "```",
     "",
-    "From npm, one import registers every element; single elements import from `dist/components/<name>/<name>.js`.",
+    "From npm, use `define/<name>` for selective registration or `all` for full registration. The package root and `components/<name>` export classes without registration.",
     "",
     "```ts",
-    'import "@acmelabs/design-system";',
+    'import "@acmelabs/design-system/define/button";',
     'import "@acmelabs/design-system/styles/tokens.css";',
     "```",
     "",

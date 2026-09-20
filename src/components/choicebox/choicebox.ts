@@ -1,6 +1,6 @@
 import { choiceboxStructureCss } from "../../generated/components/choicebox/choicebox-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { RovingTabindex } from "../../shared/roving-tabindex";
 import type { AcmeChoiceboxItem } from "../choicebox-item/choicebox-item";
@@ -20,7 +20,7 @@ let uid = 0;
  * start. Form-associated: the chosen value(s) submit under `name`. Fires `acme-change` with
  * `{ value }`. Slot: default (acme-choicebox-item elements).
  */
-@customElement("acme-choicebox")
+
 export class AcmeChoicebox extends AcmeElement {
   static formAssociated = true;
   static styles = [

@@ -1,7 +1,7 @@
 import { tooltipStructureCss } from "../../generated/components/tooltip/tooltip-structure.styles";
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { html, nothing, svg } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
@@ -78,7 +78,7 @@ const arrowOffset = (bubbleWidth: number) => Math.min(20, Math.max(12, bubbleWid
  * closes it as the trigger takes focus, `trigger-tabindex` sets the trigger's tab order (`none`
  * for no tab stop), `cursor` its pointer, `use-parent-for-bounding-rect` measures the host's parent.
  */
-@customElement("acme-tooltip")
+
 export class AcmeTooltip extends AcmeElement {
   static styles = [
     sharedCss,

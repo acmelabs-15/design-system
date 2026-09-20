@@ -1,16 +1,12 @@
 import { codeBlockStructureCss } from "../../generated/components/code-block/code-block-structure.styles";
 import { html, nothing, svg } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import "../button/button";
-import "../split-button/split-button";
-import "../select/select";
-import "../switch/switch";
-import "../switch-control/switch-control";
+
 import { sourceOf, tokenLines } from "../code/code";
 import type { AcmeCopyButton } from "../copy-button/copy-button";
-import "../copy-button/copy-button";
+
 import { copyButtonCss } from "../../generated/components/copy-button/copy-button.styles";
 import { codeBlockCss } from "../../generated/components/code-block/code-block.styles";
 
@@ -41,7 +37,7 @@ const v0Prompt = (code: string) =>
  * language; a change fires `acme-change`). `v0="ask"` adds an Open in v0 link in a foot,
  * `v0="build"` a split button. Copies fire `acme-copy`.
  */
-@customElement("acme-code-block")
+
 export class AcmeCodeBlock extends AcmeElement {
   static styles = [
     sharedCss,

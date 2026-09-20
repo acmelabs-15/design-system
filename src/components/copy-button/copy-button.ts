@@ -1,12 +1,11 @@
 import { copyButtonStructureCss } from "../../generated/components/copy-button/copy-button-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { createStore, StoreSelector, toasts } from "../../shared/state";
 import type { ButtonColors, ButtonSize, ButtonVariant } from "../button/button";
 import { copyButtonCss } from "../../generated/components/copy-button/copy-button.styles";
-import "../button/button";
 
 /**
  * Copy button. An icon-only button (secondary, square, medium by default) that writes
@@ -26,7 +25,7 @@ import "../button/button";
  * the whole stack and takes the button's own inline padding; `icon` is one absolutely-positioned layer
  * inside a 16px stack, so padding on it overflows the stack instead of widening the button.
  */
-@customElement("acme-copy-button")
+
 export class AcmeCopyButton extends AcmeElement {
   static styles = [
     sharedCss,

@@ -1,11 +1,11 @@
 import { sparkStructureCss } from "../../generated/components/spark/spark-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { statCss } from "../../generated/components/stat/stat.styles";
 
 /** Sparkline: pass `points` (numbers) and a `tone`. */
-@customElement("acme-spark")
+
 export class AcmeSpark extends AcmeElement {
   static styles = [
     sharedCss,

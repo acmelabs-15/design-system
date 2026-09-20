@@ -3,7 +3,7 @@
 // Renders in light DOM so the page rules, the icon sprite and the examples live in the document.
 import { Router } from "@lit-labs/router";
 import { html, LitElement, nothing } from "lit";
-import { customElement, state } from "lit/decorators.js";
+import { state } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { bindField, setAssetsBase, TanStackFormController } from "../../dist/index";
 
@@ -22,7 +22,6 @@ setAssetsBase(`${prefix}/assets/`);
 const ICON_CHART = html`<svg class="ic" width="16" height="16" slot="logo" aria-hidden="true"><use href="#i-chart"></use></svg>`;
 const cache = new Map<string, string>();
 
-@customElement("acme-docs-app")
 export class AcmeDocsApp extends LitElement {
   private nav: Nav = window.__docsNav ?? [];
   private flat = this.nav.flatMap((g) => g.items);
@@ -144,7 +143,6 @@ export class AcmeDocsApp extends LitElement {
 }
 
 /** The Colors page: rows reading the live value of each token, redrawn when the theme changes. */
-@customElement("docs-tokens")
 export class DocsTokens extends LitElement {
   @state() private tick = 0;
   createRenderRoot() {
@@ -168,7 +166,6 @@ export class DocsTokens extends LitElement {
 }
 
 /** The Colors page: one swatch of a scale. The token is its tooltip; a right click copies the raw value. */
-@customElement("docs-swatch")
 export class DocsSwatch extends LitElement {
   createRenderRoot() {
     return this;
@@ -197,7 +194,6 @@ declare global {
 }
 
 /** The Forms page demo: TanStack Form bound to the acme inputs with bindField. */
-@customElement("docs-form-demo")
 export class DocsFormDemo extends LitElement {
   private form = new TanStackFormController(this, {
     defaultValues: { name: "", email: "", plan: "hobby", updates: true },

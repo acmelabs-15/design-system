@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { detectPlatform } from "@tanstack/hotkeys";
-import "../../../index";
+import "../../../all";
 import type { AcmeCommandItem } from "../../command-item/command-item";
 import type { AcmeCommandMenu } from "../command-menu";
 

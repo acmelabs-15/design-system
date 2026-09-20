@@ -1,7 +1,7 @@
 import { menuStructureCss } from "../../generated/components/menu/menu-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift, size } from "@floating-ui/dom";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { RovingTabindex } from "../../shared/roving-tabindex";
@@ -34,7 +34,7 @@ const editable = (el: EventTarget | null) =>
  * `close-on-select="false"`. `hover-mode` opens it while the pointer is over the menu and closes it
  * `hover-close-delay` ms after it leaves. Fires `acme-open` and `acme-close` (`detail.kind`).
  */
-@customElement("acme-menu")
+
 export class AcmeMenu extends AcmeElement {
   static styles = [
     sharedCss,

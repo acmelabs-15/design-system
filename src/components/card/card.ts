@@ -1,10 +1,10 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { cardCss } from "../../generated/components/card/card.styles";
 
 /** House card: the block that must read as its own object. */
-@customElement("acme-card")
+
 export class AcmeCard extends AcmeElement {
   static styles = [sharedCss, cardCss];
   @property() variant: "" | "raised" | "flat" | "feature" = "";

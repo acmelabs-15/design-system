@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeComboboxOption } from "../../combobox-option/combobox-option";
 import type { AcmeCombobox } from "../combobox";
 

@@ -1,6 +1,6 @@
 import { gridSystemStructureCss } from "../../generated/components/grid-system/grid-system-structure.styles";
 import { html, LitElement, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { gridSystemCss } from "../../generated/components/grid-system/grid-system.styles";
 
@@ -15,7 +15,7 @@ const px = (v: number | string | undefined) => (typeof v === "number" || (typeof
  * `debug` tints the guides amber and names the breakpoint in a corner overlay; `dashed-guides`
  * draws every guide dashed.
  */
-@customElement("acme-grid-system")
+
 export class AcmeGridSystem extends AcmeElement {
   static styles = [
     sharedCss,

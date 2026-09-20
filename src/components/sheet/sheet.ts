@@ -1,7 +1,7 @@
 import { sheetStructureCss } from "../../generated/components/sheet/sheet-structure.styles";
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { dialogResetCss } from "../../generated/shared/dialog-reset.styles";
@@ -28,7 +28,7 @@ export type SheetDismissReason = "escape" | "outside";
  * to the first tabbable element in the panel, else the panel, and returns to the opener on close.
  * `acme-open` fires on open, `acme-close` once the sheet has left.
  */
-@customElement("acme-sheet")
+
 export class AcmeSheet extends AcmeElement {
   static styles = [
     sharedCss,

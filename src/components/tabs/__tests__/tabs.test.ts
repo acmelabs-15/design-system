@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeTab } from "../../tab/tab";
 import type { AcmeTabs } from "../tabs";
 

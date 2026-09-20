@@ -1,6 +1,6 @@
 import { folderStructureCss } from "../../generated/components/folder/folder-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
@@ -20,7 +20,7 @@ const glyph = (d: string) =>
  * folder). A click flips `open` and fires `acme-toggle` (`detail.open`, `detail.name`). `label`
  * shows in place of `name` (the `label` slot holds rich content); the row's tooltip is that text.
  */
-@customElement("acme-folder")
+
 export class AcmeFolder extends AcmeElement {
   static styles = [
     sharedCss,

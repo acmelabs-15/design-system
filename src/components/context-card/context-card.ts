@@ -1,6 +1,6 @@
 import { contextCardStructureCss } from "../../generated/components/context-card/context-card-structure.styles";
 import { html, nothing, svg } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
@@ -96,7 +96,7 @@ const stage = {
  * card, `hide` keeps it closed, `shown` sets the open bits (1 hover, 2 focus, 4 touch; 8 marks
  * a card that moved here from a neighbour), `disable-triggers` ignores every trigger.
  */
-@customElement("acme-context-card")
+
 export class AcmeContextCard extends AcmeElement {
   static styles = [
     sharedCss,

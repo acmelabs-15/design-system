@@ -1,12 +1,12 @@
 import { metricListStructureCss } from "../../generated/components/metric-list/metric-list-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import type { AcmeMetric } from "../metric/metric";
 import { metricListCss } from "../../generated/components/metric-list/metric-list.styles";
 
 /** Vercel metric list: a column of selectable metric cards. */
-@customElement("acme-metric-list")
+
 export class AcmeMetricList extends AcmeElement {
   static styles = [
     sharedCss,

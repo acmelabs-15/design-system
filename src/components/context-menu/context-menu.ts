@@ -1,13 +1,12 @@
 import { contextMenuStructureCss } from "../../generated/components/context-menu/context-menu-structure.styles";
 import { preventBodyScroll } from "@zag-js/remove-scroll";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { toasts } from "../../shared/state";
 import type { AcmeMenu, MenuCloseKind } from "../menu/menu";
 import { contextMenuCss } from "../../generated/components/context-menu/context-menu.styles";
-import "../menu/menu";
-import "../menu-item/menu-item";
+
 import { atomState } from "../../shared/atom-state";
 
 /** A press this long on a touch or pen pointer opens the menu. */
@@ -39,7 +38,7 @@ const linkOf = (node: EventTarget | null): string => {
  * `close()` drive it. Fires `acme-open` and `acme-close` (`detail.kind`). The menu's `floating` and
  * `menu` parts are exported.
  */
-@customElement("acme-context-menu")
+
 export class AcmeContextMenu extends AcmeElement {
   static styles = [
     sharedCss,

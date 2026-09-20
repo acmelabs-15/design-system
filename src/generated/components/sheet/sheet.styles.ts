@@ -1,8 +1,7 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-import { registerProperties } from "../../../base";
-registerProperties([{"name":"--acme-exit-opacity","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-exit-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-exit-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-exit-scale","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-exit-rotate","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-enter-opacity","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-enter-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-enter-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-enter-scale","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-enter-rotate","syntax":"*","inherits":false,"initialValue":"0"}]);
-export const sheetCss = css`dialog {
+import { withStyleProperties } from "../../../shared/style-properties";
+export const sheetCss = /* @__PURE__ */ withStyleProperties(css`dialog {
   z-index: var(--ds-z-drawer);
   background-color: var(--ds-background-100);
   box-shadow: var(--ds-shadow-modal-elevated);
@@ -196,4 +195,4 @@ dialog:where(.top)[data-state="open"] {
     transform: translate3d(var(--acme-enter-translate-x, 0), var(--acme-enter-translate-y, 0), 0) scale3d(var(--acme-enter-scale, 1), var(--acme-enter-scale, 1), var(--acme-enter-scale, 1)) rotate(var(--acme-enter-rotate, 0));
   }
 }
-`;
+`, [{"name":"--acme-exit-opacity","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-exit-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-exit-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-exit-scale","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-exit-rotate","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-enter-opacity","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-enter-translate-x","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-enter-translate-y","syntax":"*","inherits":false,"initialValue":"0"},{"name":"--acme-enter-scale","syntax":"*","inherits":false,"initialValue":"1"},{"name":"--acme-enter-rotate","syntax":"*","inherits":false,"initialValue":"0"}]);

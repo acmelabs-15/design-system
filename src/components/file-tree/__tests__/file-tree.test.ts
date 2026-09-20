@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeFile } from "../../file/file";
 import type { AcmeFolder } from "../../folder/folder";
 import type { AcmeFileTree } from "../file-tree";

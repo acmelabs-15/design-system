@@ -1,9 +1,8 @@
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+
 import { AcmeElement, sharedCss } from "../../base";
 import { tagCss } from "../../generated/components/tag/tag.styles";
 
-@customElement("acme-tags")
 export class AcmeTags extends AcmeElement {
   static styles = [sharedCss, tagCss];
   render() {

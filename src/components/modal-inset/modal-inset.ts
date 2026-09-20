@@ -1,6 +1,6 @@
 import { modalInsetStructureCss } from "../../generated/components/modal-inset/modal-inset-structure.styles";
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { modalInsetCss } from "../../generated/components/modal-inset/modal-inset.styles";
 
@@ -10,7 +10,7 @@ import { modalInsetCss } from "../../generated/components/modal-inset/modal-inse
  * tinted fill. `last` makes it the body's final block: it meets the footer with no bottom hairline
  * and no body padding under it. An inset with no div after it drops its bottom hairline too.
  */
-@customElement("acme-modal-inset")
+
 export class AcmeModalInset extends AcmeElement {
   static styles = [
     sharedCss,

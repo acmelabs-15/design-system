@@ -1,6 +1,6 @@
 import { phoneStructureCss } from "../../generated/components/phone/phone-structure.styles";
 import { html, nothing, svg } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { AcmeElement, boolish, paths, sharedCss } from "../../base";
 import { formatAddress } from "../browser/browser";
 import { phoneCss } from "../../generated/components/phone/phone.styles";
@@ -20,7 +20,7 @@ const key = (d: string) =>
  * with a gray outline) for a light surrounding page. The frame is decorative: set
  * `aria-hidden="true"` on the element and describe the screenshot inside it.
  */
-@customElement("acme-phone")
+
 export class AcmePhone extends AcmeElement {
   static styles = [
     sharedCss,

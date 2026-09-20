@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 import type { AcmeShowMore } from "../show-more";
 
 const mount = async (markup: string) => {

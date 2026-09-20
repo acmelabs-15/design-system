@@ -1,12 +1,10 @@
 import { choiceboxItemStructureCss } from "../../generated/components/choicebox-item/choicebox-item-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property, query } from "lit/decorators.js";
+import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { choiceboxItemCss } from "../../generated/components/choicebox-item/choicebox-item.styles";
-import "../checkbox/checkbox";
-import "../radio/radio";
-import "../tooltip/tooltip";
+
 import { atomState } from "../../shared/atom-state";
 
 /**
@@ -21,7 +19,7 @@ import { atomState } from "../../shared/atom-state";
  * so clicks inside it do not toggle the tile. The tile is a flex item of the group's row and
  * takes an equal share of it. Slot: default (the content shown while selected).
  */
-@customElement("acme-choicebox-item")
+
 export class AcmeChoiceboxItem extends AcmeElement {
   static styles = [
     sharedCss,

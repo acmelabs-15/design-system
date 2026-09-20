@@ -1,6 +1,6 @@
 import { menuButtonStructureCss } from "../../generated/components/menu-button/menu-button-structure.styles";
 import { html, nothing } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 import { glyphSized } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { AcmeButton, type ButtonColors } from "../button/button";
@@ -23,7 +23,7 @@ const customVars = (suffix: string, c?: ButtonColors) =>
  * `variant="unstyled"` (or `type="unstyled"`) is a bare reset button around custom content (an
  * avatar), its label flush.
  */
-@customElement("acme-menu-button")
+
 export class AcmeMenuButton extends AcmeButton {
   static styles = [
     ...AcmeButton.styles,

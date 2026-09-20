@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import "../../../index";
+import "../../../all";
 
 const mount = async (markup: string) => {
   document.body.innerHTML = markup;
