@@ -64,16 +64,6 @@
       "import": "./dist/components/banner/banner.js",
       "default": "./dist/components/banner/banner.js"
     },
-    "./components/bar-row": {
-      "types": "./dist/components/bar-row/bar-row.d.ts",
-      "import": "./dist/components/bar-row/bar-row.js",
-      "default": "./dist/components/bar-row/bar-row.js"
-    },
-    "./components/bar-rows": {
-      "types": "./dist/components/bar-rows/bar-rows.d.ts",
-      "import": "./dist/components/bar-rows/bar-rows.js",
-      "default": "./dist/components/bar-rows/bar-rows.js"
-    },
     "./components/book": {
       "types": "./dist/components/book/book.d.ts",
       "import": "./dist/components/book/book.js",
@@ -118,11 +108,6 @@
       "types": "./dist/components/chart/chart.d.ts",
       "import": "./dist/components/chart/chart.js",
       "default": "./dist/components/chart/chart.js"
-    },
-    "./components/check": {
-      "types": "./dist/components/check/check.d.ts",
-      "import": "./dist/components/check/check.js",
-      "default": "./dist/components/check/check.js"
     },
     "./components/checkbox": {
       "types": "./dist/components/checkbox/checkbox.d.ts",
@@ -234,21 +219,6 @@
       "import": "./dist/components/empty-state/empty-state.js",
       "default": "./dist/components/empty-state/empty-state.js"
     },
-    "./components/entity": {
-      "types": "./dist/components/entity/entity.d.ts",
-      "import": "./dist/components/entity/entity.js",
-      "default": "./dist/components/entity/entity.js"
-    },
-    "./components/entity-content": {
-      "types": "./dist/components/entity-content/entity-content.d.ts",
-      "import": "./dist/components/entity-content/entity-content.js",
-      "default": "./dist/components/entity-content/entity-content.js"
-    },
-    "./components/entity-list": {
-      "types": "./dist/components/entity-list/entity-list.d.ts",
-      "import": "./dist/components/entity-list/entity-list.js",
-      "default": "./dist/components/entity-list/entity-list.js"
-    },
     "./components/error": {
       "types": "./dist/components/error/error.d.ts",
       "import": "./dist/components/error/error.js",
@@ -273,11 +243,6 @@
       "types": "./dist/components/file-tree/file-tree.d.ts",
       "import": "./dist/components/file-tree/file-tree.js",
       "default": "./dist/components/file-tree/file-tree.js"
-    },
-    "./components/fold": {
-      "types": "./dist/components/fold/fold.d.ts",
-      "import": "./dist/components/fold/fold.js",
-      "default": "./dist/components/fold/fold.js"
     },
     "./components/folder": {
       "types": "./dist/components/folder/folder.d.ts",
@@ -329,11 +294,6 @@
       "import": "./dist/components/item/item.js",
       "default": "./dist/components/item/item.js"
     },
-    "./components/items": {
-      "types": "./dist/components/items/items.d.ts",
-      "import": "./dist/components/items/items.js",
-      "default": "./dist/components/items/items.js"
-    },
     "./components/json-view": {
       "types": "./dist/components/json-view/json-view.d.ts",
       "import": "./dist/components/json-view/json-view.js",
@@ -359,20 +319,10 @@
       "import": "./dist/components/legend-item/legend-item.js",
       "default": "./dist/components/legend-item/legend-item.js"
     },
-    "./components/link-card": {
-      "types": "./dist/components/link-card/link-card.d.ts",
-      "import": "./dist/components/link-card/link-card.js",
-      "default": "./dist/components/link-card/link-card.js"
-    },
     "./components/load-more": {
       "types": "./dist/components/load-more/load-more.d.ts",
       "import": "./dist/components/load-more/load-more.js",
       "default": "./dist/components/load-more/load-more.js"
-    },
-    "./components/logs": {
-      "types": "./dist/components/logs/logs.d.ts",
-      "import": "./dist/components/logs/logs.js",
-      "default": "./dist/components/logs/logs.js"
     },
     "./components/markdown": {
       "types": "./dist/components/markdown/markdown.d.ts",
@@ -434,35 +384,10 @@
       "import": "./dist/components/note/note.js",
       "default": "./dist/components/note/note.js"
     },
-    "./components/page-head": {
-      "types": "./dist/components/page-head/page-head.d.ts",
-      "import": "./dist/components/page-head/page-head.js",
-      "default": "./dist/components/page-head/page-head.js"
-    },
     "./components/pagination": {
       "types": "./dist/components/pagination/pagination.d.ts",
       "import": "./dist/components/pagination/pagination.js",
       "default": "./dist/components/pagination/pagination.js"
-    },
-    "./components/panel": {
-      "types": "./dist/components/panel/panel.d.ts",
-      "import": "./dist/components/panel/panel.js",
-      "default": "./dist/components/panel/panel.js"
-    },
-    "./components/panel-foot": {
-      "types": "./dist/components/panel-foot/panel-foot.d.ts",
-      "import": "./dist/components/panel-foot/panel-foot.js",
-      "default": "./dist/components/panel-foot/panel-foot.js"
-    },
-    "./components/panel-head": {
-      "types": "./dist/components/panel-head/panel-head.d.ts",
-      "import": "./dist/components/panel-head/panel-head.js",
-      "default": "./dist/components/panel-head/panel-head.js"
-    },
-    "./components/panels": {
-      "types": "./dist/components/panels/panels.d.ts",
-      "import": "./dist/components/panels/panels.js",
-      "default": "./dist/components/panels/panels.js"
     },
     "./components/pill": {
       "types": "./dist/components/pill/pill.d.ts",
@@ -489,11 +414,6 @@
       "import": "./dist/components/relative-time/relative-time.js",
       "default": "./dist/components/relative-time/relative-time.js"
     },
-    "./components/ricon": {
-      "types": "./dist/components/ricon/ricon.d.ts",
-      "import": "./dist/components/ricon/ricon.js",
-      "default": "./dist/components/ricon/ricon.js"
-    },
     "./components/scroller": {
       "types": "./dist/components/scroller/scroller.d.ts",
       "import": "./dist/components/scroller/scroller.js",
@@ -519,20 +439,10 @@
       "import": "./dist/components/sheet/sheet.js",
       "default": "./dist/components/sheet/sheet.js"
     },
-    "./components/shell": {
-      "types": "./dist/components/shell/shell.d.ts",
-      "import": "./dist/components/shell/shell.js",
-      "default": "./dist/components/shell/shell.js"
-    },
     "./components/show-more": {
       "types": "./dist/components/show-more/show-more.d.ts",
       "import": "./dist/components/show-more/show-more.js",
       "default": "./dist/components/show-more/show-more.js"
-    },
-    "./components/side-nav": {
-      "types": "./dist/components/side-nav/side-nav.d.ts",
-      "import": "./dist/components/side-nav/side-nav.js",
-      "default": "./dist/components/side-nav/side-nav.js"
     },
     "./components/skeleton": {
       "types": "./dist/components/skeleton/skeleton.d.ts",
@@ -589,25 +499,10 @@
       "import": "./dist/components/stat-foot/stat-foot.js",
       "default": "./dist/components/stat-foot/stat-foot.js"
     },
-    "./components/stat-strip": {
-      "types": "./dist/components/stat-strip/stat-strip.d.ts",
-      "import": "./dist/components/stat-strip/stat-strip.js",
-      "default": "./dist/components/stat-strip/stat-strip.js"
-    },
     "./components/status-dot": {
       "types": "./dist/components/status-dot/status-dot.d.ts",
       "import": "./dist/components/status-dot/status-dot.js",
       "default": "./dist/components/status-dot/status-dot.js"
-    },
-    "./components/strip-item": {
-      "types": "./dist/components/strip-item/strip-item.d.ts",
-      "import": "./dist/components/strip-item/strip-item.js",
-      "default": "./dist/components/strip-item/strip-item.js"
-    },
-    "./components/subnav": {
-      "types": "./dist/components/subnav/subnav.d.ts",
-      "import": "./dist/components/subnav/subnav.js",
-      "default": "./dist/components/subnav/subnav.js"
     },
     "./components/switch": {
       "types": "./dist/components/switch/switch.d.ts",
@@ -644,21 +539,6 @@
       "import": "./dist/components/tag/tag.js",
       "default": "./dist/components/tag/tag.js"
     },
-    "./components/tags": {
-      "types": "./dist/components/tags/tags.d.ts",
-      "import": "./dist/components/tags/tags.js",
-      "default": "./dist/components/tags/tags.js"
-    },
-    "./components/task": {
-      "types": "./dist/components/task/task.d.ts",
-      "import": "./dist/components/task/task.js",
-      "default": "./dist/components/task/task.js"
-    },
-    "./components/tasks": {
-      "types": "./dist/components/tasks/tasks.d.ts",
-      "import": "./dist/components/tasks/tasks.js",
-      "default": "./dist/components/tasks/tasks.js"
-    },
     "./components/textarea": {
       "types": "./dist/components/textarea/textarea.d.ts",
       "import": "./dist/components/textarea/textarea.js",
@@ -668,16 +548,6 @@
       "types": "./dist/components/theme-switcher/theme-switcher.d.ts",
       "import": "./dist/components/theme-switcher/theme-switcher.js",
       "default": "./dist/components/theme-switcher/theme-switcher.js"
-    },
-    "./components/tile": {
-      "types": "./dist/components/tile/tile.d.ts",
-      "import": "./dist/components/tile/tile.js",
-      "default": "./dist/components/tile/tile.js"
-    },
-    "./components/tiles": {
-      "types": "./dist/components/tiles/tiles.d.ts",
-      "import": "./dist/components/tiles/tiles.js",
-      "default": "./dist/components/tiles/tiles.js"
     },
     "./components/toast": {
       "types": "./dist/components/toast/toast.d.ts",
@@ -703,11 +573,6 @@
       "types": "./dist/components/tooltip/tooltip.d.ts",
       "import": "./dist/components/tooltip/tooltip.js",
       "default": "./dist/components/tooltip/tooltip.js"
-    },
-    "./components/topbar": {
-      "types": "./dist/components/topbar/topbar.d.ts",
-      "import": "./dist/components/topbar/topbar.js",
-      "default": "./dist/components/topbar/topbar.js"
     },
     "./components/trend": {
       "types": "./dist/components/trend/trend.d.ts",

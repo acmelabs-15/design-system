@@ -5,6 +5,8 @@ import { describe, expect, test } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
 import "../../src/all";
+import { loadDocs } from "../pages/components/index";
+import * as foundations from "../pages/foundations";
 
 const DOCS = path.resolve(import.meta.dir, "../../_site");
 const PAGES = path.join(DOCS, "pages");
@@ -15,8 +17,14 @@ const LIGHT = new Set(["acme-toaster", "acme-menu-divider", "acme-grid-cross", "
 const settle = () => new Promise((r) => setTimeout(r, 20));
 
 describe("docs site", () => {
-  test("the shell, its 404 twin, the app and the fragments are built", () => {
-    expect(fragments.length).toBeGreaterThan(80);
+  test("the shell, its 404 twin, the app and every authored page are built", async () => {
+    const componentPages = await loadDocs();
+    const foundationPages = Object.values(foundations);
+    expect(componentPages.length).toBeGreaterThan(0);
+    expect(foundationPages.length).toBeGreaterThan(0);
+    const expected = [...foundationPages.map(page => page.id + ".html"), ...componentPages.map(page => "components/" + page.id + ".html")];
+    expect(new Set(expected).size).toBe(expected.length);
+    expect([...fragments].sort()).toEqual(expected.sort());
     const index = fs.readFileSync(path.join(DOCS, "index.html"), "utf8");
     expect(fs.readFileSync(path.join(DOCS, "404.html"), "utf8")).toBe(index);
     expect(index).toContain("<acme-docs-app>");

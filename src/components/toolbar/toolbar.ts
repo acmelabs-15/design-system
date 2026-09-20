@@ -2,12 +2,12 @@ import { toolbarStructureCss } from "../../generated/components/toolbar/toolbar-
 import { html } from "lit";
 
 import { AcmeElement, sharedCss } from "../../base";
-import { pageHeadCss } from "../../generated/components/page-head/page-head.styles";
+import { toolbarCss } from "../../generated/components/toolbar/toolbar.styles";
 
 export class AcmeToolbar extends AcmeElement {
   static styles = [
     sharedCss,
-    pageHeadCss,
+    toolbarCss,
     toolbarStructureCss,
   ];
   render() {

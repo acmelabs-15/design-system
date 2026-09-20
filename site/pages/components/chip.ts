@@ -5,7 +5,7 @@ export const doc: Doc = {
   id: "chip",
   title: "Chip",
   lede: "A pressable filter pill; pressed fills solid. Tags are the static small gray keywords.",
-  tags: ["acme-chip", "acme-tag", "acme-tags"],
+  tags: ["acme-chip", "acme-tag"],
   house: true,
   examples: [
     {
@@ -14,7 +14,7 @@ export const doc: Doc = {
     },
     {
       h: "Tags",
-      html: `<acme-tags><acme-tag>next.js</acme-tag><acme-tag>edge</acme-tag><acme-tag>iad1</acme-tag></acme-tags>`,
+      html: `<div class="row"><acme-tag>next.js</acme-tag><acme-tag>edge</acme-tag><acme-tag>iad1</acme-tag></div>`,
     },
   ],
 };

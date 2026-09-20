@@ -28,14 +28,14 @@ export const doc: Doc = {
       html: `<div class="cells" style="--cols:2"><acme-stat class="cell" label="Revenue">$62,450<acme-trend slot="trend" direction="up">+4.8%</acme-trend><acme-stat-delta slot="delta"><acme-trend pill direction="up" note="vs last month">+6.03%</acme-trend></acme-stat-delta></acme-stat><acme-stat class="cell" label="Churn">3.2%<acme-trend slot="trend" direction="down">−0.4%</acme-trend><acme-stat-desc slot="desc">Lower is better.</acme-stat-desc></acme-stat></div>`,
     },
     {
-      h: "In a bar row",
-      html: `<acme-bar-row label="Equities" value="45%" percent="45" style="display:block;max-width:360px"><span>Target 50%</span><acme-trend direction="up">+2.1%</acme-trend></acme-bar-row>`,
+      h: "Allocation",
+      html: `<section class="vstack" aria-label="Equities allocation"><div class="row"><h3 class="text-label-14">Equities</h3><span class="mono">45%</span></div><meter min="0" max="100" value="45" aria-label="Equities share of portfolio">45%</meter><div class="row"><span class="text-copy-13 muted">Target 50%</span><acme-trend direction="up">+2.1%</acme-trend></div></section>`,
     },
   ],
   practices: {
     "When to use": [
       "A change over a period, never a state: a badge names a state, a trend never does.",
-      "Plain when it follows a value or sits in a bar row; a pill when it stands alone in a head or beside a vs-note.",
+      "Plain when it follows a value; a pill when it stands alone in a heading or beside a comparison note.",
     ],
     Content: ["Always signed (+4.8%, −2.1%); the arrow carries the direction; the note names the baseline (vs last month)."],
   },

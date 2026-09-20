@@ -49,20 +49,6 @@ export const planCss = css`.plan-head {
   background: var(--surface-2);
 }
 
-.icon-row .ricon {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  width: 40px;
-  height: 40px;
-  color: var(--text-2);
-}
-
-.icon-row .ricon.hue-blue {
-  color: var(--ds-blue-700);
-  background: var(--surface);
-  border-color: var(--ds-blue-400);
-}
-
 .icon-row .label {
   color: var(--text-2);
   font-size: 14px;

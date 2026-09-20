@@ -133,20 +133,6 @@
   margin-left: auto;
 }
 
-.stat .head .ricon {
-  order: -1;
-}
-
-.stat .head:has(.ricon) {
-  align-items: center;
-  row-gap: 10px;
-}
-
-.stat .head:has(.ricon) .label, .stat .head:has(.ricon) .context {
-  flex: 100%;
-  order: 1;
-}
-
 .stat .delta {
   font-family: var(--mono);
   font-size: var(--t-xs);

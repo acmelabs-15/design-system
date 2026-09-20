@@ -1,9 +1,9 @@
 {
   "date": "2026-09-20",
   "phase": "M04",
-  "status": "active",
+  "status": "complete: dependency-closed removals and coupled-replacement ledger",
   "originalSourceTags": 150,
-  "sourceCount": 136,
+  "sourceCount": 109,
   "previousRemoval": "acme-text-copy in M03",
   "batches": [
     {
@@ -1872,28 +1872,547 @@
         "Historical protected-files.json"
       ],
       "commit": "See Git history: remove isolated retired displays and wrappers"
+    },
+    {
+      "id": "M04-03",
+      "tags": [
+        "acme-check",
+        "acme-task",
+        "acme-tasks",
+        "acme-logs",
+        "acme-link-card",
+        "acme-entity",
+        "acme-entity-content",
+        "acme-entity-list",
+        "acme-panel",
+        "acme-panel-head",
+        "acme-panel-foot",
+        "acme-panels",
+        "acme-ricon",
+        "acme-items",
+        "acme-tags",
+        "acme-stat-strip",
+        "acme-strip-item",
+        "acme-fold",
+        "acme-bar-row",
+        "acme-bar-rows",
+        "acme-tile",
+        "acme-tiles",
+        "acme-shell",
+        "acme-side-nav",
+        "acme-subnav",
+        "acme-topbar",
+        "acme-page-head"
+      ],
+      "closure": "Retained example consumers migrated; dashboard recipe inputs removed with their owners; Toolbar takes ownership of its existing declarations.",
+      "removed": {
+        "componentDirectories": 27,
+        "sitePages": 13,
+        "styleEntries": 44,
+        "maps": [
+          "tools/geist/maps/entity-content.ts",
+          "tools/geist/maps/entity-list.ts",
+          "tools/geist/maps/entity-list-wrap.ts",
+          "tools/geist/maps/entity.ts"
+        ],
+        "entityArtifacts": [
+          "tools/geist/spec/entity.json",
+          "tools/geist/contract/entity.md",
+          "tools/geist/sketch/entity.header.json",
+          "tools/geist/sketch/entity.clickable.json",
+          "tools/geist/census/entity.geist.json",
+          "tools/geist/census/entity.ours.json",
+          "tools/geist/census/entity.dark.geist.json",
+          "tools/geist/census/entity.dark.ours.json",
+          "tools/geist/census/entity-content.geist.json",
+          "tools/geist/census/entity-content.ours.json",
+          "tools/geist/census/entity-content.dark.geist.json",
+          "tools/geist/census/entity-content.dark.ours.json",
+          "tools/geist/census/entity-list.geist.json",
+          "tools/geist/census/entity-list.ours.json",
+          "tools/geist/census/entity-list.dark.geist.json",
+          "tools/geist/census/entity-list.dark.ours.json",
+          "tools/geist/census/entity-list-wrap.geist.json",
+          "tools/geist/census/entity-list-wrap.ours.json",
+          "tools/geist/census/entity-list-wrap.dark.geist.json",
+          "tools/geist/census/entity-list-wrap.dark.ours.json"
+        ]
+      },
+      "css": {
+        "retainedStylesChecked": 229,
+        "unchanged": 223,
+        "changed": [
+          {
+            "key": "components/item/item",
+            "file": "src/generated/css/components/item/item.css"
+          },
+          {
+            "key": "components/stat/stat",
+            "file": "src/generated/css/components/stat/stat.css"
+          },
+          {
+            "key": "components/tag/tag",
+            "file": "src/generated/css/components/tag/tag.css"
+          },
+          {
+            "key": "document/dashboard",
+            "file": "src/generated/css/document/dashboard.css"
+          },
+          {
+            "key": "shared/field",
+            "file": "src/generated/css/shared/field.css"
+          },
+          {
+            "key": "shared/plan",
+            "file": "src/generated/css/shared/plan.css"
+          }
+        ],
+        "newEntries": [
+          "components/toolbar/toolbar"
+        ],
+        "expectedChanges": [
+          "Item: remove retired Items wrapper selectors",
+          "Tag: remove retired Tags wrapper selector",
+          "Stat and Plan: remove unused Ricon selectors",
+          "Field: remove retired Side Nav selector from shared rule",
+          "Dashboard: remove retired recipe families",
+          "New Toolbar sheet: same declarations formerly owned by Page Head"
+        ],
+        "sourceRangeRemoval": {
+          "rules": 207,
+          "selectors": [
+            ".check",
+            ".check:last-child",
+            ".check input[type=\"checkbox\"]",
+            ".check input[type=\"checkbox\"]::after",
+            ".check:hover input[type=\"checkbox\"]",
+            ".check input[type=\"checkbox\"]:checked",
+            ".check input[type=\"checkbox\"]:checked::after",
+            ".check input[type=\"checkbox\"]:focus-visible",
+            ".check:has(input[disabled])",
+            ".check .text",
+            ".check .text small",
+            ".check:has(input:checked) .text",
+            ".check .when",
+            ".side-find .kbd",
+            ".panel-head",
+            ".panel-head .title",
+            ".panel-head .sub",
+            ".panel-head .actions",
+            ".panel-head .actions a",
+            ".bar-row",
+            ".bar-row .head",
+            ".bar-row .head .label",
+            ".bar-row .head .value",
+            ".bar-row .head .value small",
+            ".bar-row .track",
+            ".bar-row .fill",
+            ".bar-row .result",
+            ".bar-row .result .good",
+            ".bar-row .result .bad",
+            ".bar-row.sm",
+            ".bar-row.sm .head",
+            ".bar-row.sm .track",
+            ".bar-rows",
+            ".bar-rows.lined .bar-row",
+            ".bar-rows.lined .bar-row:last-child",
+            ".items",
+            ".items.boxed",
+            ".items.boxed .item",
+            ".items.boxed .item.success",
+            ".items.boxed .item.error",
+            ".items.boxed .item.warning",
+            ".ricon",
+            ".ricon.sm",
+            ".ricon.sm .ic",
+            ".ricon.hue-green",
+            ".ricon.hue-red",
+            ".ricon.hue-amber",
+            ".ricon.hue-blue",
+            ".ricon.hue-purple",
+            ".ricon.hue-teal",
+            ".ricon.hue-pink",
+            ".tiles",
+            ".tile",
+            ".tile .label",
+            ".tile .value",
+            ".tile.lg .value",
+            ".tags",
+            ".panel",
+            ".panel-h",
+            ".panel-h .title",
+            ".panel-h .sub",
+            ".panel-h .when",
+            ".panel-h .actions",
+            ".panel-h .actions a",
+            ".panel-b",
+            ".panel-b.tight",
+            ".panel-b + .panel-b",
+            ".panel-f",
+            ".panel-f.tinted",
+            ".panel.danger",
+            ".panel.error",
+            ".panel.danger .panel-f.tinted",
+            ".panel.error .panel-f.tinted",
+            ".panel.warning",
+            ".panel.warning .panel-f.tinted",
+            ".panel-b.form.disabled",
+            ".panel-b.form.disabled .title-lg",
+            ".panel-b.form.disabled .desc",
+            ".panel .error-text",
+            ".panel .warning-text",
+            ".panel-f.tinted .status",
+            ".panel-f.tinted .status a",
+            ".panel-b.form",
+            ".panel .title-lg",
+            ".panel .desc",
+            ".panel.chart",
+            ".panel.chart .chart-head",
+            ".panel.chart .chart-head .title",
+            ".panel-f .actions",
+            ".panel > .items",
+            ".panel > .table-wrap",
+            ".panel .expand",
+            ".panels",
+            ".panels",
+            ".fold",
+            ".fold-h",
+            ".fold-h .caret",
+            ".fold[data-open=\"true\"] .fold-h .caret",
+            ".fold-closed",
+            ".fold-open",
+            ".fold[data-open=\"true\"] .fold-closed",
+            ".fold[data-open=\"false\"] .fold-open",
+            ".fold .expand",
+            ".panel .expand.pill-btn",
+            ".fold .expand .ic",
+            ".count-dot",
+            ".tile.plain .label",
+            ".tile.plain .label .q",
+            ".tiles:has(.tile.plain)",
+            ".tile.plain .label .q",
+            ".tile.plain .value",
+            ".tile.plain",
+            ".shell",
+            ".shell.framed",
+            ".shell > .side",
+            ".shell > .main",
+            ".side-top",
+            ".side-top .name",
+            ".side-top .plan",
+            ".side-top .switcher",
+            ".side-find",
+            ".side-find .kbd",
+            ".side-nav",
+            ".side-nav a",
+            ".side-nav a:hover",
+            ".side-nav a[aria-current=\"true\"]",
+            ".side-nav a .ic",
+            ".side-nav a .chev",
+            ".side-nav a .count",
+            ".side-nav .group",
+            ".side-nav .section",
+            ".side-nav .section .iconbtn",
+            ".side-nav .back",
+            ".side-nav .back .ic",
+            ".side-foot",
+            ".side-foot .name",
+            ".topbar",
+            ".topbar .center",
+            ".topbar .center .crumb",
+            ".topbar .center .sep",
+            ".topbar .switch-btn",
+            ".topbar .switch-btn:hover",
+            ".topbar .switch-btn .updown",
+            ".content",
+            ".content.wide",
+            ".shell",
+            ".shell > .side",
+            ".tasks",
+            ".task.done",
+            ".task",
+            ".task:hover",
+            ".task .ic",
+            ".task .end",
+            ".task.done",
+            ".task.done .text",
+            ".task.disabled",
+            ".items.striped .item",
+            ".items.striped .item .title",
+            ".items.striped .item .amount",
+            ".items.striped .item:nth-child(odd)",
+            ".subnav",
+            ".subnav a",
+            ".subnav a:hover",
+            ".subnav a[aria-current=\"true\"]",
+            ".logs",
+            ".logrow",
+            ".logrow:nth-child(odd)",
+            ".logrow .t",
+            ".logrow .t b",
+            ".logrow .method",
+            ".logrow .http",
+            ".logrow .http.ok",
+            ".logrow .http.err",
+            ".logrow .host",
+            ".logrow .path",
+            ".logs-head",
+            ".link-cards",
+            ".link-card",
+            ".link-card:hover",
+            ".link-card .title",
+            ".link-card .desc",
+            ".link-card .badge",
+            ".rec-card",
+            ".rec-card .title",
+            ".rec-card .desc",
+            ".stat-strip",
+            ".stat-strip button",
+            ".stat-strip button:hover",
+            ".stat-strip button[aria-selected=\"true\"]",
+            ".stat-strip .label",
+            ".stat-strip .value",
+            ".stat-strip .value .badge",
+            ".items.entity",
+            ".items.entity .item",
+            ".items.entity .item:last-child",
+            ".items.entity .item .title",
+            ".items.entity .item .meta",
+            ".items.entity .item .end",
+            ".items.entity .item.selectable",
+            ".items.entity .item.selectable:hover",
+            ".entity",
+            "button.entity",
+            "button.entity:hover",
+            ".entity .col",
+            ".entity .col.right",
+            ".entity .content",
+            ".entity-content",
+            ".entity-content .title",
+            ".entity-content .desc",
+            ".entity-list",
+            ".check",
+            ".check input[type=\"checkbox\"]"
+          ]
+        },
+        "orphanRemoval": {
+          "rules": 6,
+          "selectors": [
+            ".stat .head .ricon",
+            ".stat .head:has(.ricon)",
+            ".stat .head:has(.ricon) .label",
+            ".stat .head:has(.ricon) .context",
+            ".item .tags",
+            ".icon-row .ricon",
+            ".icon-row .ricon.hue-blue"
+          ]
+        }
+      },
+      "verification": {
+        "build": "462 modules;98 compiled templates;109 manifest elements",
+        "docs": "80 pages;109 elements;0 undocumented",
+        "fullSuite": "592 passed;7542 assertions;86 files",
+        "browser": {
+          "engines": [
+            {
+              "engine": "chromium",
+              "version": "153.0.8010.48",
+              "pages": [
+                {
+                  "name": "item",
+                  "undefinedTags": [],
+                  "listItems": 3,
+                  "amounts": [
+                    "−$1,200.00",
+                    "+$8,400.00",
+                    "−$62.10",
+                    "$62,450"
+                  ],
+                  "edit": true,
+                  "decorative": true
+                },
+                {
+                  "name": "chart",
+                  "undefinedTags": [],
+                  "headings": [
+                    "Requests",
+                    "Uptime"
+                  ],
+                  "charts": 4
+                },
+                {
+                  "name": "chip",
+                  "undefinedTags": [],
+                  "chips": 4,
+                  "tags": 3
+                },
+                {
+                  "name": "trend",
+                  "undefinedTags": [],
+                  "value": 45,
+                  "label": "Equities share of portfolio",
+                  "text": "Equities45%45%Target 50%+2.1%"
+                }
+              ]
+            },
+            {
+              "engine": "firefox",
+              "version": "155.0",
+              "pages": [
+                {
+                  "name": "item",
+                  "undefinedTags": [],
+                  "listItems": 3,
+                  "amounts": [
+                    "−$1,200.00",
+                    "+$8,400.00",
+                    "−$62.10",
+                    "$62,450"
+                  ],
+                  "edit": true,
+                  "decorative": true
+                },
+                {
+                  "name": "chart",
+                  "undefinedTags": [],
+                  "headings": [
+                    "Requests",
+                    "Uptime"
+                  ],
+                  "charts": 4
+                },
+                {
+                  "name": "chip",
+                  "undefinedTags": [],
+                  "chips": 4,
+                  "tags": 3
+                },
+                {
+                  "name": "trend",
+                  "undefinedTags": [],
+                  "value": 45,
+                  "label": "Equities share of portfolio",
+                  "text": "Equities45%45%Target 50%+2.1%"
+                }
+              ]
+            },
+            {
+              "engine": "webkit",
+              "version": "26.6",
+              "pages": [
+                {
+                  "name": "item",
+                  "undefinedTags": [],
+                  "listItems": 3,
+                  "amounts": [
+                    "−$1,200.00",
+                    "+$8,400.00",
+                    "−$62.10",
+                    "$62,450"
+                  ],
+                  "edit": true,
+                  "decorative": true
+                },
+                {
+                  "name": "chart",
+                  "undefinedTags": [],
+                  "headings": [
+                    "Requests",
+                    "Uptime"
+                  ],
+                  "charts": 4
+                },
+                {
+                  "name": "chip",
+                  "undefinedTags": [],
+                  "chips": 4,
+                  "tags": 3
+                },
+                {
+                  "name": "trend",
+                  "undefinedTags": [],
+                  "value": 45,
+                  "label": "Equities share of portfolio",
+                  "text": "Equities45%45%Target 50%+2.1%"
+                }
+              ]
+            }
+          ],
+          "errors": []
+        },
+        "review": "Approve: no required defects",
+        "docsOracle": "Exact authored fragment set, not arbitrary page-count threshold"
+      },
+      "visualChanges": [
+        "Native list structure and markers replace retired Items wrappers",
+        "Decorative SVGs replace Ricon circles",
+        "Native meter replaces the Bar Row demonstration",
+        "Native headings/descriptions replace Panel Head examples"
+      ],
+      "fixtures": {
+        "cssRemoval": "import fs from \"node:fs\";import ts from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/typescript/lib/typescript.js\";import {transform} from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lightningcss/node/index.js\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",houseFile=root+\"/styles/house.css\",splitFile=root+\"/scripts/split-css.ts\";\nconst split=fs.readFileSync(splitFile,\"utf8\"),ast=ts.createSourceFile(splitFile,split,ts.ScriptTarget.Latest,true);\nconst declaration=ast.statements.filter(ts.isVariableStatement).flatMap(s=>s.declarationList.declarations).find(d=>d.name.getText(ast)===\"MAP\");\nif(!declaration?.initializer)throw new Error(\"No routing map\");const map=Function(\"return (\"+declaration.initializer.getText(ast)+\");\")();\nconst retired=new Set([\"check\",\"task\",\"logs\",\"link-card\",\"entity\",\"panel\",\"panel-head\",\"ricon\",\"stat-strip\",\"fold\",\"bar-row\",\"tile\",\"shell\",\"subnav\"]);\nconst owner=selector=>map.find(([name,regex])=>regex.test(selector.trim()))?.[0]??null;\nfunction selectors(text){const out=[];let quote=\"\",escape=false,depth=0,start=0;for(let i=0;i<text.length;i++){const c=text[i];if(escape){escape=false;continue;}if(c===\"\\\\\"){escape=true;continue;}if(quote){if(c===quote)quote=\"\";continue;}if(c==='\"'||c===\"'\"){quote=c;continue;}if(c===\"(\"||c===\"[\")depth++;if(c===\")\"||c===\"]\")depth--;if(c===\",\"&&depth===0){out.push(text.slice(start,i));start=i+1;}}out.push(text.slice(start));return out;}\nfunction boundaries(source,start){let quote=\"\",escape=false,comment=false,depth=0,open=-1;for(let i=start;i<source.length;i++){const c=source[i],next=source[i+1];if(comment){if(c===\"*\"&&next===\"/\"){comment=false;i++;}continue;}if(escape){escape=false;continue;}if(c===\"\\\\\"){escape=true;continue;}if(quote){if(c===quote)quote=\"\";continue;}if(c==='\"'||c===\"'\"){quote=c;continue;}if(c===\"/\"&&next===\"*\"){comment=true;i++;continue;}if(c===\"{\"){if(open<0)open=i;depth++;}if(c===\"}\"&&--depth===0)return{open,end:i+1};}throw new Error(\"Unclosed CSS rule at \"+start);}\nlet source=fs.readFileSync(houseFile,\"utf8\");const offsets=[];let position=0;for(const line of source.split(\"\\n\")){offsets.push(position);position+=line.length+1;}const edits=[],removed=[];\ntransform({filename:\"house.css\",code:Buffer.from(source),minify:false,visitor:{Rule(rule){\n if(![\"style\",\"keyframes\"].includes(rule.type)||!rule.value?.loc)return;\n const loc=rule.value.loc,start=offsets[loc.line]+loc.column-1,bound=boundaries(source,start),head=source.slice(start,bound.open);\n const list=selectors(head),drop=selector=>retired.has(owner(selector))||/^\\s*\\.(items|tags)(?![\\w-])/.test(selector);\n const keep=list.filter(selector=>!drop(selector));\n if(keep.length===list.length)return;\n removed.push(...list.filter(drop).map(s=>s.trim()));\n edits.push({start,end:keep.length?bound.open:bound.end,text:keep.length?keep.join(\",\")+\" \":\"\"});\n}}});\nfor(const edit of edits.sort((a,b)=>b.start-a.start))source=source.slice(0,edit.start)+edit.text+source.slice(edit.end);\nsource=source.replace(/\\n[ \\t]*\\n(?:[ \\t]*\\n)+/g,\"\\n\\n\");\nfs.writeFileSync(\"/tmp/acme-m04-third-house-before.css\",fs.readFileSync(houseFile));\nfs.writeFileSync(houseFile,source);fs.writeFileSync(\"/tmp/acme-m04-third-css-removal.json\",JSON.stringify({rules:edits.length,selectors:removed},null,2));\nconsole.log({rules:edits.length,selectors:removed.length});\n",
+        "browser": "import assert from \"node:assert/strict\";import fs from \"node:fs\";\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst report={engines:[],errors:[]};fs.mkdirSync(\"/tmp/acme-m04-compositions\",{recursive:true});\nfor(const engine of [\"chromium\",\"firefox\",\"webkit\"]){\nconst browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});\ntry{const page=await browser.newPage({viewport:{width:1280,height:900}});page.on(\"pageerror\",e=>report.errors.push({engine,message:e.message}));const pages=[];\nfor(const name of [\"item\",\"chart\",\"chip\",\"trend\"]){\nawait page.goto(\"http://localhost:4180/components/\"+name);await page.locator(\"#api\").waitFor();\nconst result=await page.evaluate(async name=>{\n const hosts=[...document.querySelectorAll(\"acme-\"+name)];await Promise.all(hosts.map(host=>host.updateComplete));\n const visible=[];function visit(root){for(const el of root.querySelectorAll(\"*\")){if(el.localName.startsWith(\"acme-\")&&!customElements.get(el.localName))visible.push(el.localName);if(el.shadowRoot)visit(el.shadowRoot);}}visit(document);\n if(name===\"item\"){const items=[...document.querySelectorAll(\".preview acme-item\")];return{undefinedTags:visible,listItems:document.querySelectorAll('.preview ul[aria-label=\"Transactions\"] > li').length,amounts:items.map(item=>item.shadowRoot?.querySelector(\".amount\")?.textContent?.trim()),edit:!!document.querySelector('acme-button[aria-label=\"Edit Internet transaction\"]'),decorative:[...document.querySelectorAll(\".preview svg[slot=lead]\")].every(svg=>svg.getAttribute(\"aria-hidden\")===\"true\")};}\n if(name===\"chart\")return{undefinedTags:visible,headings:[...document.querySelectorAll(\".preview [slot=head] h3\")].map(h=>h.textContent),charts:document.querySelectorAll(\".preview acme-chart\").length};\n if(name===\"chip\")return{undefinedTags:visible,chips:document.querySelectorAll(\".preview acme-chip\").length,tags:document.querySelectorAll(\".preview acme-tag\").length};\n const meter=document.querySelector(\".preview meter\");return{undefinedTags:visible,value:meter?.value,label:meter?.getAttribute(\"aria-label\"),text:meter?.closest(\"section\")?.textContent};\n},name);\nassert.deepEqual(result.undefinedTags,[]);\nif(name===\"item\"){assert.equal(result.listItems,3);assert.deepEqual(result.amounts,[\"−$1,200.00\",\"+$8,400.00\",\"−$62.10\",\"$62,450\"]);assert(result.edit&&result.decorative);}\nif(name===\"chart\"){assert.deepEqual(result.headings,[\"Requests\",\"Uptime\"]);assert.equal(result.charts,4);}\nif(name===\"chip\"){assert.equal(result.chips,4);assert.equal(result.tags,3);}\nif(name===\"trend\"){assert.equal(result.value,45);assert(result.label&&result.text.includes(\"Target 50%\")&&result.text.includes(\"+2.1%\"));}\nif(engine===\"chromium\")await page.screenshot({path:\"/tmp/acme-m04-compositions/\"+name+\".png\",fullPage:false});\npages.push({name,...result});\n}\nreport.engines.push({engine,version:browser.version(),pages});console.log(engine+\" compositions passed\");\n}finally{await browser.close();}}\nassert.equal(report.errors.length,0);await Bun.write(\"/tmp/acme-m04-compositions/results.json\",JSON.stringify(report,null,2)+\"\\n\");"
+      },
+      "commit": "See Git history: close retired composition dependencies"
     }
   ],
   "remaining": {
     "immediate": [],
-    "smallClosure": [
-      "check/task/tasks/logs/link-card dashboard recipe ownership",
-      "entity/entity-content/entity-list and reflection fixture",
-      "panel/panel-head/panel-foot/panels and Chart examples",
-      "ricon/items/tags and retained examples/shared styles",
-      "stat-strip/strip-item and token description",
-      "fold/bar-row/bar-rows/tile/tiles and Trend example",
-      "shell/side-nav/subnav/topbar and dashboard CSS"
-    ],
+    "smallClosure": [],
     "coupled": [
-      "clearable-input: Search inheritance",
-      "context-card: Relative Time and Snippet",
-      "error: Input/Select/Textarea",
-      "grid-cell/grid-cross/grid-page/grid-system: retained Grid and foundations",
-      "pagination: running docs navigation",
-      "sheet/modal-inset: retained overlays and examples",
-      "page-head: Toolbar style ownership",
-      "trend: Stat/Stat Delta style ownership"
+      {
+        "tags": [
+          "acme-clearable-input"
+        ],
+        "consumer": "Search class inheritance",
+        "returnAt": "M11 Input/Search replacement"
+      },
+      {
+        "tags": [
+          "acme-context-card"
+        ],
+        "consumer": "Relative Time and Snippet examples",
+        "returnAt": "M17 Hover Card/Toggle Tip, with retained consumer migration"
+      },
+      {
+        "tags": [
+          "acme-error"
+        ],
+        "consumer": "Input, Select and Textarea",
+        "returnAt": "M06 shared naming/validation and M11/F06 control integration"
+      },
+      {
+        "tags": [
+          "acme-grid-cell",
+          "acme-grid-cross",
+          "acme-grid-page",
+          "acme-grid-system"
+        ],
+        "consumer": "Grid structure, examples and generation special cases",
+        "returnAt": "M07 ordinary Grid/Simple Grid replacement"
+      },
+      {
+        "tags": [
+          "acme-pagination"
+        ],
+        "consumer": "Documentation Previous/Next navigation",
+        "returnAt": "Implement DocNavigation before M19 results Pagination API; final docs audit M23"
+      },
+      {
+        "tags": [
+          "acme-sheet",
+          "acme-modal-inset"
+        ],
+        "consumer": "Retained overlays, ComboBox/Modal examples and reflection checks",
+        "returnAt": "M17 Dialog/Drawer replacement with coordinated consumers"
+      },
+      {
+        "tags": [
+          "acme-trend"
+        ],
+        "consumer": "Stat/Stat Delta styles and examples",
+        "returnAt": "M18 complete Stat family; transfer styles and change-display behavior together"
+      }
     ]
   },
   "boundaries": [

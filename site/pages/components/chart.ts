@@ -13,7 +13,7 @@ export const doc: Doc = {
     {
       h: "Line chart",
       p: "Two series from one row set: y takes a comma-separated list of keys. Hover for the tooltip.",
-      html: `<acme-chart type="line" x="month" y="edge,serverless" points height="200" data='${rows}' aria-label="Requests by month"><acme-panel-head slot="head" heading="Requests" sub="Last 6 months"></acme-panel-head><acme-legend slot="legend"><acme-legend-item series="1" value="94k">Edge</acme-legend-item><acme-legend-item series="2" value="38k">Serverless</acme-legend-item></acme-legend></acme-chart>`,
+      html: `<acme-chart type="line" x="month" y="edge,serverless" points height="200" data='${rows}' aria-label="Requests by month"><div slot="head"><h3 class="text-heading-16">Requests</h3><p class="text-copy-14 muted">Last 6 months</p></div><acme-legend slot="legend"><acme-legend-item series="1" value="94k">Edge</acme-legend-item><acme-legend-item series="2" value="38k">Serverless</acme-legend-item></acme-legend></acme-chart>`,
     },
     {
       h: "Bar chart",
@@ -26,7 +26,7 @@ export const doc: Doc = {
     {
       h: "Custom plot",
       p: "Without data, the default slot takes any SVG; the frame draws the head and the legend.",
-      html: `<acme-chart height="160"><acme-panel-head slot="head" heading="Uptime" sub="Last 7 days"></acme-panel-head><svg viewBox="0 0 600 160" preserveAspectRatio="none" style="width:100%;height:100%"><polyline fill="none" stroke="var(--chart-1)" stroke-width="2" points="0,120 100,90 200,100 300,60 400,70 500,30 600,40"/></svg><acme-legend slot="legend"><acme-legend-item series="1" value="99.98%">Uptime</acme-legend-item></acme-legend></acme-chart>`,
+      html: `<acme-chart height="160" aria-label="Uptime over the last 7 days"><div slot="head"><h3 class="text-heading-16">Uptime</h3><p class="text-copy-14 muted">Last 7 days</p></div><svg viewBox="0 0 600 160" preserveAspectRatio="none" style="width:100%;height:100%"><polyline fill="none" stroke="var(--chart-1)" stroke-width="2" points="0,120 100,90 200,100 300,60 400,70 500,30 600,40"/></svg><acme-legend slot="legend"><acme-legend-item series="1" value="99.98%">Uptime</acme-legend-item></acme-legend></acme-chart>`,
     },
     {
       h: "Legend list",
@@ -34,7 +34,7 @@ export const doc: Doc = {
     },
   ],
   practices: {
-    "When to use": ["A trend over time or a comparison across categories inside a panel or a stat. A Gauge for one ratio, a Progress for one fraction, a bar row for a labelled list of shares."],
+    "When to use": ["A trend over time or a comparison across categories inside a Card or Stat. Use a Gauge for one ratio, a Progress for task completion, or a labelled list for shares."],
     Behavior: [
       "Series colors come from the chart tokens, so the same series keeps its color across a page and both themes.",
       "Points only when the reader must pick a value; the tooltip carries the exact figures.",

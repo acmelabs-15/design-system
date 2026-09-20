@@ -21,7 +21,7 @@ const SRC = path.join(ROOT, "src"),
 const components = writeEntries(ROOT);
 writePackageExports(components, ROOT);
 const styles = verifyStyleManifest(ROOT, ["document/dashboard"]);
-const recipes = ["deploy", "plan", "usage-sum", "classes", "severity", "option", "info-ic", "rail", "subnav", "link-card", "logs", "task", "code", "check"];
+const recipes = ["deploy", "plan", "usage-sum", "classes", "severity", "option", "info-ic", "rail", "code"];
 const recipeFiles = recipes.map((name) => {
   const key = styles.entries["shared/" + name] ? "shared/" + name : "components/" + name + "/" + name;
   return "src/generated/css/" + key + ".css";

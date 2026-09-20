@@ -242,7 +242,7 @@ export const fieldCss = css`.field {
   display: grid;
 }
 
-.kbd.sm, .search .kbd, .menu .kbd, .side-find .kbd, .field .kbd {
+.kbd.sm, .search .kbd, .menu .kbd, .field .kbd {
   min-width: 20px;
   height: 20px;
   color: var(--text-2);

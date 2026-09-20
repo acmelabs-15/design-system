@@ -1,12 +1,6 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-export const tagCss = css`.tags {
-  flex-wrap: wrap;
-  gap: 6px;
-  display: flex;
-}
-
-.tag {
+export const tagCss = css`.tag {
   background: var(--comp);
   height: 20px;
   color: var(--text-2);

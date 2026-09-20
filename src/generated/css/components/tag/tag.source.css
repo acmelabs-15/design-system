@@ -30,12 +30,6 @@
 
 }
 
-.tags {
-  flex-wrap: wrap;
-  gap: 6px;
-  display: flex;
-}
-
 .tag {
   background: var(--comp);
   height: 20px;
@@ -48,14 +42,6 @@
   padding: 0 8px;
   line-height: 16px;
   display: inline-flex;
-}
-
-@media (width <= 900px) {
-
-}
-
-@media (width <= 900px) {
-
 }
 
 @media (width <= 900px) {

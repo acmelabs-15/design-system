@@ -1,11 +1,6 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-export const itemCss = css`.items {
-  flex-direction: column;
-  display: flex;
-}
-
-.item {
+export const itemCss = css`.item {
   border-bottom: 1px solid var(--hair);
   align-items: center;
   gap: 12px;
@@ -16,32 +11,6 @@ export const itemCss = css`.items {
 
 .item:last-child {
   border-bottom: 0;
-}
-
-.items.boxed {
-  gap: 8px;
-}
-
-.items.boxed .item {
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  background: var(--surface);
-  padding: 12px 14px;
-}
-
-.items.boxed .item.success {
-  border-color: var(--ds-green-400);
-  background: var(--ds-green-100);
-}
-
-.items.boxed .item.error {
-  border-color: var(--ds-red-400);
-  background: var(--ds-red-100);
-}
-
-.items.boxed .item.warning {
-  border-color: var(--ds-amber-400);
-  background: var(--ds-amber-100);
 }
 
 .item .body {
@@ -150,10 +119,6 @@ export const itemCss = css`.items {
   flex: none;
 }
 
-.item .tags {
-  margin-top: 8px;
-}
-
 .item a.title {
   text-decoration: none;
 }
@@ -178,31 +143,6 @@ export const itemCss = css`.items {
   .item .actions {
     margin-left: auto;
   }
-}
-
-.items.striped .item {
-  border: 0;
-  border-radius: 4px;
-  gap: 8px;
-  min-height: 32px;
-  padding: 4px 8px;
-}
-
-.items.striped .item .title {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-}
-
-.items.striped .item .amount {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: var(--t-xs);
-  color: var(--text-2);
-}
-
-.items.striped .item:nth-child(odd) {
-  background: var(--surface-2);
 }
 
 .item .lead-chev {
@@ -349,46 +289,5 @@ export const itemCss = css`.items {
 .select-list .item .meta .check-circle .ic {
   width: 10px;
   height: 10px;
-}
-
-.items.entity {
-  box-shadow: var(--ds-shadow-border);
-  background: var(--surface);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.items.entity .item {
-  border-bottom: 1px solid var(--border);
-  gap: 12px;
-  min-height: 72px;
-  padding: 16px;
-}
-
-.items.entity .item:last-child {
-  border-bottom: 0;
-}
-
-.items.entity .item .title {
-  font-weight: 600;
-}
-
-.items.entity .item .meta {
-  margin-top: 0;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.items.entity .item .end {
-  color: var(--text-2);
-  font-size: 14px;
-}
-
-.items.entity .item.selectable {
-  cursor: pointer;
-}
-
-.items.entity .item.selectable:hover {
-  background: var(--surface-2);
 }
 `;

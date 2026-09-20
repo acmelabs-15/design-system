@@ -13,7 +13,7 @@ Phase 1 selected [Lit Motion](notes/decisions/animation-package.md), [per-icon M
 
 Research and terminology are closed; [Phase 3 architecture responsibilities](notes/alignment/phase-3-review.md#phase-3-closure) are recorded. Peter approved the complete [Phase 4 inventory, conventions and documentation/tooling](notes/decisions/inventory-approval.md), then the [Phase 5 migration plan](notes/decisions/migration-approval.md). Phase 6 implementation is authorized; no repeated approval is required for its slices.
 
-M00 prerequisites and M01–M03 are complete. The [M03 delivery record](notes/alignment/evidence/m03-delivery-2026-09-20.json) covers explicit registration, selective browser delivery, production packing, reconnect correction and private workspace boundaries. Continue with dependency-closed M04 removals, then the shared M05 mechanisms. The [central handoff](notes/alignment/README.md#where-we-are) owns current progress and acceptance limits. Publishing remains separately authorized.
+M00 prerequisites and M01–M04 are complete. The [M03 delivery record](notes/alignment/evidence/m03-delivery-2026-09-20.json) covers explicit registration, selective browser delivery, production packing, reconnect correction and private workspace boundaries. The [removal ledger](notes/alignment/evidence/m04-removals-2026-09-20.json) records completed and coupled retirements. Continue with the shared M05 mechanisms. The [central handoff](notes/alignment/README.md#where-we-are) owns current progress and acceptance limits. Publishing remains separately authorized.
 
 Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 

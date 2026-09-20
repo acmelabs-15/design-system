@@ -150,10 +150,6 @@
   stroke-width: 1px;
 }
 
-@media (width <= 900px) {
-
-}
-
 .chart .step {
   fill: none;
   stroke: currentColor;
@@ -182,10 +178,6 @@
 .chart .tip .muted {
   color: var(--text-2);
   font-size: var(--t-xs);
-}
-
-@media (width <= 900px) {
-
 }
 
 @media (width <= 767px) {

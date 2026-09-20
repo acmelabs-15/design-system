@@ -383,8 +383,8 @@ ${section(
   ttable(
     trow(`<span class="eyebrow">Eyebrow label</span>`, ".eyebrow · 11 mono caps .09em", "Cell and card labels") +
       trow(`<span class="mono" style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.96px">$62,450</span>`, "acme-stat value · 24/32 mono 600", "The one headline figure") +
-      trow(`<span style="font-size:32px;line-height:40px;letter-spacing:-.79px;font-weight:600">2,847</span>`, "acme-strip-item value · 32/40 600", "The analytics strip figure"),
+      trow(`<span style="font-size:32px;line-height:40px;letter-spacing:-.79px;font-weight:600">2,847</span>`, "Analytics value · 32/40 600", "A prominent measurement"),
   ),
-  "Styles Geist has no page for: the mono eyebrow label, the Stat value, and the analytics strip value from the dashboard.",
+  "Styles Geist has no page for: the mono eyebrow label, the Stat value, and the prominent analytics value from the dashboard.",
 )}`,
 };
