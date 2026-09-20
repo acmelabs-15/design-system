@@ -717,3 +717,11 @@ The [remaining decision register](../alignment/proposal-questions.md) contains f
 ### Whole-set approval and Phase 5 handoff
 
 On 2026-09-20 Peter said “I approve all proposals.” The [approval record](../decisions/inventory-approval.md) selects the complete set and the five stated recommendations. Earlier proposal/unselected statements above retain their historical evidence scope; current design status is approved. Peter subsequently [approved the migration plan](../decisions/migration-approval.md) through “approved”. M00 technical prerequisites remain active before dependent implementation. Production implementation has not started; approval is not a runtime result.
+
+## M04 dependency-closed removal checkpoint, 2026-09-20
+
+The first batch removes Filter/Filters, Key Value, Setting Row/Setting Rows and Metric/Metric List. The source graph, authored pages and style imports have no retained consumers of these seven tags. Their classes, four pages, eleven style entries, authored rules and generated/export metadata are removed together. The approved destinations remain controls, Data List, Item/Field and Stat/selection compositions; their later family work is not declared complete.
+
+The retained-CSS comparison caught unused kv-grid rules falling through the retired KV route into Item. Removing those dead rules and the unreachable alternate route restores all 283 surviving CSS files exactly. The review also identified an unshipped, unused Menu extras block containing kv-row; it is removed. Build/docs and 656 tests pass. The independent review approves this slice. [Living removal ledger and evidence](../alignment/evidence/m04-removals-2026-09-20.json).
+
+Remaining removals are grouped by real dependency closure. Dashboard recipe inputs, Chart/Item/Trend examples and shared style owners require explicit migration; Search, form messages, Grid, docs navigation and overlays retain their coupled implementations until their assigned replacement batches. No consumer compatibility layer is introduced.

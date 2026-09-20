@@ -2205,54 +2205,6 @@ a:hover {
 }
 
 /* ---------- Lists and tables ---------- */
-/* Hairline key-value rows (ours) */
-.kv {
-  display: flex;
-  gap: 14px;
-  padding: var(--pad-row);
-  border-bottom: 1px solid var(--hair);
-  align-items: baseline;
-}
-.kv:last-child {
-  border-bottom: none;
-}
-.kv .key {
-  flex: 1;
-  min-width: 0;
-}
-.kv .key small {
-  color: var(--text-2);
-  display: block;
-  font-size: var(--t-xs);
-  line-height: 16px;
-  margin-top: 1px;
-}
-.kv .value {
-  font-weight: 600;
-  font-family: var(--mono);
-  font-size: var(--t-sm);
-  white-space: nowrap;
-}
-.kv .value .conv {
-  display: block;
-  font-weight: 400;
-  font-size: var(--t-2xs);
-  color: var(--text-2);
-  margin-top: 2px;
-  text-align: right;
-}
-.kv .when {
-  font-family: var(--mono);
-  font-size: var(--t-xs);
-  color: var(--text-2);
-  white-space: nowrap;
-  min-width: 64px;
-  padding-top: 2px;
-}
-.kv .when.soon {
-  color: var(--text);
-  font-weight: 600;
-}
 /* Table (Geist): 36px Title Case header, 40px rows, numeric columns mono */
 .table-wrap {
   overflow-x: auto;
@@ -4853,120 +4805,6 @@ html {
   stroke-width: 1;
 }
 
-/* ---------- Filter chips (Vercel dashboard): 32px pills that build a query ---------- */
-.filters-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-.filter {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--text);
-  white-space: nowrap;
-  cursor: pointer;
-  transition: var(--dur) var(--ease);
-}
-.filter:hover {
-  border-color: var(--border-hover);
-}
-.filter .key {
-  color: var(--text-2);
-}
-.filter b {
-  font-weight: 500;
-}
-.filter .x {
-  margin-left: 2px;
-  width: 16px;
-  height: 16px;
-  display: inline-grid;
-  place-items: center;
-  border-radius: 50%;
-  color: var(--text-2);
-  border: 0;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-}
-.filter .x:hover {
-  background: var(--comp);
-  color: var(--text);
-}
-.filter.suggest {
-  border-style: dashed;
-  color: var(--ds-gray-800);
-}
-.filter.suggest .key {
-  color: var(--ds-gray-800);
-}
-.filter.suggest b {
-  color: var(--ds-gray-900);
-}
-.filter.add {
-  font-weight: 500;
-}
-.filter .ic {
-  width: 14px;
-  height: 14px;
-}
-/* Query builder rows: label, then joined segments */
-.qrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  min-height: 36px;
-}
-.qrow > .qlabel {
-  width: 72px;
-  font-size: 14px;
-  color: var(--text);
-  flex: none;
-}
-.qseg {
-  display: inline-flex;
-  align-items: stretch;
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  background: var(--surface);
-  height: 36px;
-  overflow: hidden;
-}
-.qseg > * {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 12px;
-  font-size: 14px;
-  border-right: 1px solid var(--border);
-  white-space: nowrap;
-}
-.qseg > *:last-child {
-  border-right: 0;
-}
-.qseg .k {
-  color: var(--text-2);
-}
-.qseg .x {
-  padding: 0 10px;
-  color: var(--text-2);
-  cursor: pointer;
-}
-.qseg .x:hover {
-  background: var(--comp);
-  color: var(--text);
-}
-
 /* ---------- Search field (Vercel): icon left, 36px ---------- */
 .search {
   position: relative;
@@ -6445,41 +6283,6 @@ code.inline {
   padding: 1px 5px;
 }
 
-/* ---------- Menu extras (Vercel popover): section heads and key-value rows ---------- */
-.menu .head {
-  padding: 8px 8px 4px;
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--text-2);
-}
-.menu .kv-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  height: 36px;
-  padding: 0 8px;
-  font-size: 14px;
-  color: var(--text);
-}
-.menu .kv-row .v {
-  font-family: var(--mono);
-  font-variant-numeric: tabular-nums;
-  color: var(--text);
-}
-.menu .kv-row.muted {
-  color: var(--text-2);
-}
-.menu .kv-row.muted .v {
-  color: var(--text-2);
-}
-.menu.wide {
-  min-width: 300px;
-}
-.menu button .ic.end {
-  margin-left: auto;
-}
-
 /* ---------- Empty state, flat (Vercel): tinted ground, no dashed border ---------- */
 .empty-state.flat {
   border: 0;
@@ -6621,25 +6424,6 @@ code.inline {
   letter-spacing: -0.28px;
   font-weight: 500;
 }
-.kv-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px 24px;
-}
-.kv-grid .k {
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--text-2);
-}
-.kv-grid .v {
-  font-size: 14px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 2px;
-}
-
 /* ---------- Log rows (Vercel logs): 30px striped mono rows ---------- */
 .logs {
   display: flex;
@@ -6817,74 +6601,6 @@ code.inline {
   font-size: 12px;
 }
 
-/* ---------- Metric list (Vercel speed insights): a column of selectable metric cards ---------- */
-.metric-list {
-  display: flex;
-  flex-direction: column;
-  border-radius: var(--r-sm);
-  box-shadow: var(--ds-shadow-border-small);
-  overflow: hidden;
-  background: var(--surface);
-}
-.metric-list button {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 16px;
-  background: var(--surface-2);
-  border: 0;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  color: var(--text);
-  font: inherit;
-}
-.metric-list button:last-child {
-  border-bottom: 0;
-}
-.metric-list button[aria-selected="true"] {
-  background: var(--surface);
-}
-.metric-list .label {
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.28px;
-  font-weight: 600;
-  color: var(--text-2);
-}
-.metric-list .value {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 500;
-  margin-top: 8px;
-  font-variant-numeric: tabular-nums;
-}
-.metric-list .value small {
-  font-size: 12px;
-  color: var(--ds-gray-800);
-  margin-left: 2px;
-}
-.threshold {
-  display: flex;
-  gap: 2px;
-  height: 3px;
-  margin-top: 12px;
-}
-.threshold i {
-  display: block;
-  height: 100%;
-  flex: 1;
-  background: var(--ds-gray-300);
-  border-radius: 2px;
-}
-.threshold i.good {
-  background: var(--ds-green-700);
-}
-.threshold i.mid {
-  background: var(--ds-amber-700);
-}
-.threshold i.bad {
-  background: var(--ds-red-700);
-}
 .score-ring {
   width: 40px;
   height: 40px;
@@ -7274,47 +6990,6 @@ code.inline {
   color: var(--text);
   text-decoration: underline;
   text-underline-offset: 2px;
-}
-
-/* ---------- Setting rows (Vercel remote caching): a title and description with a control at the right ---------- */
-.setting-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.setting-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 16px;
-  border-radius: var(--r-sm);
-  border: 1px solid var(--border);
-  background: var(--surface);
-}
-.setting-row .title {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 500;
-}
-.setting-row .desc {
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--text-2);
-}
-.setting-row .end {
-  margin-left: auto;
-  flex: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.setting-row.expander {
-  cursor: pointer;
-}
-.setting-row .lead-chev {
-  width: 16px;
-  height: 16px;
-  color: var(--text-2);
 }
 
 /* ---------- Select list (Vercel deployment protection): a select-all head and checkbox rows ---------- */

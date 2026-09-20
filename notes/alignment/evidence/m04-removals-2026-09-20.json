@@ -1,0 +1,968 @@
+{
+  "date": "2026-09-20",
+  "phase": "M04",
+  "status": "active",
+  "originalSourceTags": 150,
+  "sourceCount": 142,
+  "previousRemoval": "acme-text-copy in M03",
+  "batches": [
+    {
+      "id": "M04-01",
+      "tags": [
+        "acme-filter",
+        "acme-filters",
+        "acme-kv",
+        "acme-setting-row",
+        "acme-setting-rows",
+        "acme-metric",
+        "acme-metric-list"
+      ],
+      "destinations": {
+        "Filter": "F-06 controls and compositions",
+        "Key Value": "C-04 Data List",
+        "Settings rows": "C-02 Item and horizontal Field compositions",
+        "Metrics": "M-07 Stat and selection compositions"
+      },
+      "closure": "No incoming retained source imports, owned tags, authored site examples or shared-style consumers.",
+      "removed": {
+        "componentDirectories": 7,
+        "sitePages": 4,
+        "styleEntries": 11
+      },
+      "css": {
+        "retainedStylesChecked": 283,
+        "changed": [],
+        "corrections": [
+          "Old KV regex also captured unused kv-grid rules; removed those rules and unreachable fallback routing rather than reroute them into Item.",
+          "Removed unshipped unused Menu extras including kv-row; retained Menu still uses mapped styles."
+        ],
+        "beforeHashes": {
+          "components/appbar/appbar": {
+            "src/generated/css/components/appbar/appbar.css": "535708181eb4481357fae596d661685b5a17cc7d84e8ebb157ae136f05696c7f"
+          },
+          "components/appbar/appbar-structure": {
+            "src/generated/css/components/appbar/appbar-structure.css": "2def4557d1f275f119cfa3fbaad40b515dbb10633fab358ce80f87da57d3f19a"
+          },
+          "components/avatar-group/avatar-group": {
+            "src/generated/css/components/avatar-group/avatar-group.css": "93bbf23639ba59aad67eb1ccb7a8cb8015f4fcb658e7ab7144ddff0b40501cf9"
+          },
+          "components/avatar-group/avatar-group-structure": {
+            "src/generated/css/components/avatar-group/avatar-group-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/avatar/avatar": {
+            "src/generated/css/components/avatar/avatar.css": "95dda15f8ec6d7dbb8b2f73bc36ddc267e1b0db973a7f0585443af2b6adbedeb"
+          },
+          "components/avatar/avatar-structure": {
+            "src/generated/css/components/avatar/avatar-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/avatar/avatar-wrap": {
+            "src/generated/css/components/avatar/avatar-wrap.css": "c9ec35de7ddd23b4796d85740d62b96c056d8ab7ba57348091a634f80d04e097"
+          },
+          "components/badge/badge": {
+            "src/generated/css/components/badge/badge.css": "e04046b8c97aac5417e3eb846b2fd1e9a222722eee9cab58ca0efc7e611744ca"
+          },
+          "components/badge/badge-structure": {
+            "src/generated/css/components/badge/badge-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/banner/banner": {
+            "src/generated/css/components/banner/banner.css": "51472b65dcb320b9f603592b095e03919d81c4fa39fc747c5a0a22870b75304d"
+          },
+          "components/banner/banner-mobile": {
+            "src/generated/css/components/banner/banner-mobile.css": "0c7b531aaafc3cc914c270cb82bd8ec7593d969f71427e2e11527b8c9a01ee7a"
+          },
+          "components/bar-row/bar-row": {
+            "src/generated/css/components/bar-row/bar-row.css": "5b0462008467df8c3c85d2c7cb987d0efa8f5e2c3679c0941ac0e62f95fb9f9d"
+          },
+          "components/bar-row/bar-row-structure": {
+            "src/generated/css/components/bar-row/bar-row-structure.css": "15a384d6339c0779b445013fd19938a88ce97de1b6b898bed42221bc8ad873ef"
+          },
+          "components/bar-rows/bar-rows-structure": {
+            "src/generated/css/components/bar-rows/bar-rows-structure.css": "36d40b15f25e82373e5c5d24270075a954e39d407908338e0058b8639d967268"
+          },
+          "components/book/book": {
+            "src/generated/css/components/book/book.css": "50b4893529e538acbb421ca64e1504a2634eda1f3a5922e01968e75291e2f58c"
+          },
+          "components/book/book-structure": {
+            "src/generated/css/components/book/book-structure.css": "32e027cf90fd3b905e85e18e494a1a148d8c44918a84196672c4325ffde35fce"
+          },
+          "components/breadcrumb/breadcrumb": {
+            "src/generated/css/components/breadcrumb/breadcrumb.css": "6e90168ddeb9ee24a71a474a5082af823ddd9dc4456555666a2212cd3731f712"
+          },
+          "components/breadcrumb/breadcrumb-structure": {
+            "src/generated/css/components/breadcrumb/breadcrumb-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/breadcrumbs/breadcrumbs": {
+            "src/generated/css/components/breadcrumbs/breadcrumbs.css": "19dd9c760a682b31493255a9dcb6c242c582d6cf53b1aa87bf4a44d727c9315e"
+          },
+          "components/breadcrumbs/breadcrumbs-structure": {
+            "src/generated/css/components/breadcrumbs/breadcrumbs-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/browser/browser": {
+            "src/generated/css/components/browser/browser.css": "cc6edf6f9940b0409f1fdfe930d91acda2d0c2827f8384a80cc328825625460d"
+          },
+          "components/browser/browser-copy": {
+            "src/generated/css/components/browser/browser-copy.css": "2733b94d42e7da286c2181de4560fc47e750f4e6df4330379e686000ca300fc5"
+          },
+          "components/browser/browser-structure": {
+            "src/generated/css/components/browser/browser-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/button/button": {
+            "src/generated/css/components/button/button.css": "3026b3cd5dd9245168422544f015316b54b8f49c331feb8b460772e2975e98c3"
+          },
+          "components/button/button-structure": {
+            "src/generated/css/components/button/button-structure.css": "de859660379198054bfb5978aca8f7bbdbb0fcbdd2118c43297b91b8b7297b42"
+          },
+          "components/calendar/calendar": {
+            "src/generated/css/components/calendar/calendar.css": "5ccb035b75e591ed151679b57f1f96e0ee67c2320ef7479fcff30573faca82ef"
+          },
+          "components/calendar/calendar-structure": {
+            "src/generated/css/components/calendar/calendar-structure.css": "fb791b5f141ea43f5b6868c574e711022d760426c1c25cbbfee2c9cf7a5173c2"
+          },
+          "components/card/card": {
+            "src/generated/css/components/card/card.css": "f9075c1d4daa7849979181f28c8ec0fbaf8ef3e0faf9d49f23a1fc059099f305"
+          },
+          "components/chart/chart": {
+            "src/generated/css/components/chart/chart.css": "837c83e2ab16945be45ba06a9dcb510f7b6ed2a79b871c97e1d76e5a3c384cf2"
+          },
+          "components/chart/chart-structure": {
+            "src/generated/css/components/chart/chart-structure.css": "e5c044e6ea6ea1547d3211af5c95c67292f123b3677ff74907b6d2e3dba65a84"
+          },
+          "components/check/check": {
+            "src/generated/css/components/check/check.css": "e8785cf519a24e91f880df6bd85feb655a67d0da3242d3757d6b2a77cbc1bbf4"
+          },
+          "components/check/check-structure": {
+            "src/generated/css/components/check/check-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/checkbox/checkbox": {
+            "src/generated/css/components/checkbox/checkbox.css": "7a3cf5b1b94d84220e59aefe081de2a575b85fba246bb19b6c7049b2b748d16e"
+          },
+          "components/checkbox/checkbox-structure": {
+            "src/generated/css/components/checkbox/checkbox-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/chip/chip": {
+            "src/generated/css/components/chip/chip.css": "bcbf7472902ab2e5f8e482e9534ae2d342358cf90bfd78081c97ca10343c0be6"
+          },
+          "components/choicebox-item/choicebox-item": {
+            "src/generated/css/components/choicebox-item/choicebox-item.css": "220c47b86438614d18cbaaa614f6570e3207601f05418db5cbcd09db3250b862"
+          },
+          "components/choicebox-item/choicebox-item-structure": {
+            "src/generated/css/components/choicebox-item/choicebox-item-structure.css": "487956a62397e35a29526019c10d735982ed7b5ca48ea761307a4c0444cc7c34"
+          },
+          "components/choicebox/choicebox": {
+            "src/generated/css/components/choicebox/choicebox.css": "7ea483bc31b394b87f0c791311752d43099009752034a0d287b5a6984d211782"
+          },
+          "components/choicebox/choicebox-structure": {
+            "src/generated/css/components/choicebox/choicebox-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/clearable-input/clearable-input": {
+            "src/generated/css/components/clearable-input/clearable-input.css": "1d6ed53bbee61dab1a126827096b0bae949295dfeba3c51f3c4f3205d39ab7c1"
+          },
+          "components/clearable-input/clearable-input-structure": {
+            "src/generated/css/components/clearable-input/clearable-input-structure.css": "85fdd60b31a8b4c78159ede23ab03ab2124e8fe40895382db84905a74b956685"
+          },
+          "components/code-block/code-block": {
+            "src/generated/css/components/code-block/code-block.css": "8a9c30b973149049e40e989b4fc60e3f1e604202def873ba4e8c4b41d60f1a30"
+          },
+          "components/code-block/code-block-structure": {
+            "src/generated/css/components/code-block/code-block-structure.css": "f0eb3909bf06336cb24ac889d9380c9c940cf24ef32ab7e6a4ca7f3f0b33a5a3"
+          },
+          "components/code/code": {
+            "src/generated/css/components/code/code.css": "25cc3308b0d0bf36d5d3efde49995fe0be5fe01627e1904d8783914b3f615bc3"
+          },
+          "components/code/code-structure": {
+            "src/generated/css/components/code/code-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/collapse-group/collapse-group": {
+            "src/generated/css/components/collapse-group/collapse-group.css": "aa78e11c5556ad73f61acc63da27b6beac3ff18147d9cfebd7aef2e57e859e3d"
+          },
+          "components/collapse-group/collapse-group-structure": {
+            "src/generated/css/components/collapse-group/collapse-group-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/collapse/collapse": {
+            "src/generated/css/components/collapse/collapse.css": "e3c350c3127d14d18996e35fb2ce5d01ca76bdb2cdd41d6b2cacc2dce9207b5a"
+          },
+          "components/collapse/collapse-structure": {
+            "src/generated/css/components/collapse/collapse-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/combobox-option/combobox-option": {
+            "src/generated/css/components/combobox-option/combobox-option.css": "17d9fbb56454bb06064d4e82841a247d1e21cfe1057014d606e7e066e948bea7"
+          },
+          "components/combobox-option/combobox-option-structure": {
+            "src/generated/css/components/combobox-option/combobox-option-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/combobox/combobox": {
+            "src/generated/css/components/combobox/combobox.css": "66ab720b463be7bd9d78a4be86373aa0b46aae221f457f7568cef06ee89a68e8"
+          },
+          "components/combobox/combobox-list": {
+            "src/generated/css/components/combobox/combobox-list.css": "7b38c3bb38b5f397352bb4e0cebba532ef9ada7fbc9ef3f30ec0bd0f7837d7d3"
+          },
+          "components/combobox/combobox-structure": {
+            "src/generated/css/components/combobox/combobox-structure.css": "c8a79ebbd6df6e926fccf89efed701f802592595ae76bd053f2d9492585bcb49"
+          },
+          "components/command-menu/command-menu": {
+            "src/generated/css/components/command-menu/command-menu.css": "859a1c7e030709ab6bd6b81794077c4051d527ea061165271adb969f32c0b987"
+          },
+          "components/command-menu/command-menu-divider": {
+            "src/generated/css/components/command-menu/command-menu-divider.css": "5e3b4affb246310c51e5a6b63d38af19b8774d27fbea384ccc0845ab952e5c38"
+          },
+          "components/command-menu/command-menu-group": {
+            "src/generated/css/components/command-menu/command-menu-group.css": "a655d78448ef1ab6e5ffbe3207179ebf6adf1a4d98275efaf1db68400c3ccda4"
+          },
+          "components/command-menu/command-menu-input": {
+            "src/generated/css/components/command-menu/command-menu-input.css": "d2f8ad350dec0f108d01ac07a5878687fdfca9c51517ef3d74a1b0d3f04e67ca"
+          },
+          "components/command-menu/command-menu-item": {
+            "src/generated/css/components/command-menu/command-menu-item.css": "a88907df20a60902c86d3f467e5e336677d86f8b6175202efc573196a7e208bb"
+          },
+          "components/command-menu/command-menu-list": {
+            "src/generated/css/components/command-menu/command-menu-list.css": "a33aff36b5ae3a6a095adecf8d71294376e3a0f9add45721601dbc8ef2916bdd"
+          },
+          "components/command-menu/command-menu-overlay": {
+            "src/generated/css/components/command-menu/command-menu-overlay.css": "e03225fce7f03b8eb42a8b88e5c84ce1ed3e2f853080dd83e37a43524c374aeb"
+          },
+          "components/command-menu/command-menu-structure": {
+            "src/generated/css/components/command-menu/command-menu-structure.css": "60eaac2ba097c679956f7e4479841285ceec3de79f7e900069f0f9b28a9421af"
+          },
+          "components/context-card/context-card": {
+            "src/generated/css/components/context-card/context-card.css": "a9d8e78332ebadab3e797026fa9b8fff121eab7cb0f07493bddbb2a58eefb87f"
+          },
+          "components/context-card/context-card-structure": {
+            "src/generated/css/components/context-card/context-card-structure.css": "608d991f391824619f07cd6224cd3ffa9b8d5789469ffa054c6a8d6d7a8cbb5e"
+          },
+          "components/context-card/context-card-trigger": {
+            "src/generated/css/components/context-card/context-card-trigger.css": "b8ebd9a63c6f2f2ebd13f26dcc100bd1fc8639c965e2520a8eba5b2f3f1b63e9"
+          },
+          "components/context-menu/context-menu": {
+            "src/generated/css/components/context-menu/context-menu.css": "d110271450e9fd08f4451a09915074c80e596d12ff315caf9acabcf645d6d8dd"
+          },
+          "components/context-menu/context-menu-structure": {
+            "src/generated/css/components/context-menu/context-menu-structure.css": "a794ab81aa6e5432b0be8780bf80995731bef8a06ab3b1d053df45d18785c508"
+          },
+          "components/copy-button/copy-button": {
+            "src/generated/css/components/copy-button/copy-button.css": "1a4a9316f3a3622f246f91db44a8df28ad0f4b6fcc681e5495a4e58d6f45e287"
+          },
+          "components/copy-button/copy-button-structure": {
+            "src/generated/css/components/copy-button/copy-button-structure.css": "da162591eb0742b34aa8fea0c0174075b29639a1cb755f4b82e62d189ccf0857"
+          },
+          "components/description/description": {
+            "src/generated/css/components/description/description.css": "18336bb2bf54b07f70f697f10aea5c7207bcab58819914ef6589b6347a8679d3"
+          },
+          "components/destructive-modal/destructive-modal": {
+            "src/generated/css/components/destructive-modal/destructive-modal.css": "27aa7c9a34683bf211e7decf7613b617d21e1636297900aca7333853585adc42"
+          },
+          "components/disabled-wall/disabled-wall": {
+            "src/generated/css/components/disabled-wall/disabled-wall.css": "248fdcf908de0493470147ed0a93ea8c46b136d993148664d9c5f237f7117a28"
+          },
+          "components/disabled-wall/disabled-wall-structure": {
+            "src/generated/css/components/disabled-wall/disabled-wall-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/dots-menu/dots-menu": {
+            "src/generated/css/components/dots-menu/dots-menu.css": "8866260a1bc0368b8bd5ca329d9bba3366a57085c3b0330a05267284f5cd3f6e"
+          },
+          "components/dots-menu/dots-menu-structure": {
+            "src/generated/css/components/dots-menu/dots-menu-structure.css": "1ea6f58f703a32e18c8c28246ae670bb25d73a0a64af61a1aaf91b7b3d18b25a"
+          },
+          "components/drawer/drawer": {
+            "src/generated/css/components/drawer/drawer.css": "52b07fd44c9a1ad859095046f88ad08657ef0bb97db991d00d50ea51d4eff092"
+          },
+          "components/drawer/drawer-backdrop": {
+            "src/generated/css/components/drawer/drawer-backdrop.css": "686ca1cdd8c4a1af4d0a7d878e3782af51e1a8a5b5079324409661ea165b0c96"
+          },
+          "components/drawer/drawer-overlay": {
+            "src/generated/css/components/drawer/drawer-overlay.css": "c5975c6e4141b890b4d2f43c9d30adb2b4c094d23e9274fc183d7a66986b68be"
+          },
+          "components/empty-state/empty-state": {
+            "src/generated/css/components/empty-state/empty-state.css": "c3e38b92b78595f3c00867343b6dc85389bd47431c6d0c173d781d753eddcc71"
+          },
+          "components/entity-content/entity-content": {
+            "src/generated/css/components/entity-content/entity-content.css": "83d9efeb9d1549ad33cf4b917f89517c7d9f077955a05a217f55d44a8b824f5e"
+          },
+          "components/entity-content/entity-content-structure": {
+            "src/generated/css/components/entity-content/entity-content-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/entity-list/entity-list": {
+            "src/generated/css/components/entity-list/entity-list.css": "f9c22d4f2b3563d32df7723d83fc85ccf9fe1233e9412adbc7bd37e70717bd1d"
+          },
+          "components/entity-list/entity-list-structure": {
+            "src/generated/css/components/entity-list/entity-list-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/entity-list/entity-list-wrap": {
+            "src/generated/css/components/entity-list/entity-list-wrap.css": "b9e06d552f197b6504c5003cd3071e6750e1e9f65a3aba61c01208dc0200c5d7"
+          },
+          "components/entity/entity": {
+            "src/generated/css/components/entity/entity.css": "94e9bea9b242e2657db8a0e1885c2354fff95024dafaddf54612cca962722900"
+          },
+          "components/entity/entity-structure": {
+            "src/generated/css/components/entity/entity-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/error-card/error-card": {
+            "src/generated/css/components/error-card/error-card.css": "5fa654280d78ee4c999aa790ad9d0e75926aee0b2840aa1ac1ee5c56d3e62b72"
+          },
+          "components/error/error": {
+            "src/generated/css/components/error/error.css": "36f9575f93680e4b26df5ddbd260b30dfa8315e95b45e3cee1c6fe06b8dd33a1"
+          },
+          "components/error/error-structure": {
+            "src/generated/css/components/error/error-structure.css": "185f1bd23a4b83e324051c74f3774b75125be6f369eca23f4cdac89b8f10c730"
+          },
+          "components/feedback/feedback": {
+            "src/generated/css/components/feedback/feedback.css": "3aee5676b30ab5bfc0578bf073fb4196f2424a97b143220b6483d83954667bf6"
+          },
+          "components/feedback/feedback-structure": {
+            "src/generated/css/components/feedback/feedback-structure.css": "d6e7854a606cdb75514feba1c602c2c96cda4b2be5b53f5f51ec4d6c6425add7"
+          },
+          "components/fieldset/fieldset": {
+            "src/generated/css/components/fieldset/fieldset.css": "f1b8db581e9d9492209d97a2864309adf304572f7f5a19d677151877a8f48cf3"
+          },
+          "components/fieldset/fieldset-structure": {
+            "src/generated/css/components/fieldset/fieldset-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/file-tree/file-tree": {
+            "src/generated/css/components/file-tree/file-tree.css": "9e0236432e9e99c7e5dfa671b62dfc17e09ca083167ef8514628acc24c58d005"
+          },
+          "components/file-tree/file-tree-structure": {
+            "src/generated/css/components/file-tree/file-tree-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/file/file": {
+            "src/generated/css/components/file/file.css": "8ba740cec69115f783448e40cc07a161de327366552a5e5549a196849e8d8690"
+          },
+          "components/file/file-structure": {
+            "src/generated/css/components/file/file-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/filter/filter": {
+            "src/generated/css/components/filter/filter.css": "4768d841ca72650527f57c073404597fc8ba02c767787d0984b9c8e1f392206d"
+          },
+          "components/filter/filter-structure": {
+            "src/generated/css/components/filter/filter-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/filters/filters-structure": {
+            "src/generated/css/components/filters/filters-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/fold/fold": {
+            "src/generated/css/components/fold/fold.css": "744538dece950719c2f920426b327209d778f3196b84d31ab8c24b35c630bad0"
+          },
+          "components/fold/fold-structure": {
+            "src/generated/css/components/fold/fold-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/folder/folder": {
+            "src/generated/css/components/folder/folder.css": "3476644be841d77dae671d3c8a0ca13abd931778c7d1a3619322c4c17c1e0bc7"
+          },
+          "components/folder/folder-structure": {
+            "src/generated/css/components/folder/folder-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/gauge/gauge": {
+            "src/generated/css/components/gauge/gauge.css": "036a45ad7523ce30e67d928414beae1572a57b48e2a193efa1a86b903f395784"
+          },
+          "components/gauge/gauge-structure": {
+            "src/generated/css/components/gauge/gauge-structure.css": "35c90fc82cbab9d4c5b6cea9c11bee499ed083e1204fb93be7933eb3e2554ed7"
+          },
+          "components/grid-cell/grid-cell": {
+            "src/generated/css/components/grid-cell/grid-cell.css": "97afa2978728e4a66ced4360ada3756fc5dc7b6498a6a42358311fdc1750e92e"
+          },
+          "components/grid-cross/grid-cross": {
+            "src/generated/css/components/grid-cross/grid-cross.css": "272909107f5850f44a402f02a8dd0d311964f40c0ccd7790832663eb660c7a2a"
+          },
+          "components/grid-page/grid-page": {
+            "src/generated/css/components/grid-page/grid-page.css": "da81be7fef811c7ea44e8b1a61df5602cf5b222070651fddee5dc4f737e41fe3"
+          },
+          "components/grid-page/grid-page-structure": {
+            "src/generated/css/components/grid-page/grid-page-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/grid-system/grid-system": {
+            "src/generated/css/components/grid-system/grid-system.css": "410a2cd46071548024b1efe8a31bcd35017e6261ed9808143751a4407a439601"
+          },
+          "components/grid-system/grid-system-structure": {
+            "src/generated/css/components/grid-system/grid-system-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/grid/grid": {
+            "src/generated/css/components/grid/grid.css": "efb0fb4240f09be80465849a3b88b70d3740c4d324c1a5517767134e126227eb"
+          },
+          "components/grid/grid-structure": {
+            "src/generated/css/components/grid/grid-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/icon-tile/icon-tile": {
+            "src/generated/css/components/icon-tile/icon-tile.css": "8526131163669bd3aeaa0ce64a7182ffd208e7343088a92efbd5b38eba63a086"
+          },
+          "components/input/input": {
+            "src/generated/css/components/input/input.css": "817184aee4cd0ba50cffaa3d3e6a312ab8a1d1e0f0d520adb24e64380ff2a4a6"
+          },
+          "components/input/input-label": {
+            "src/generated/css/components/input/input-label.css": "a891dfa3bfb194372b05eb21bd721a83314d213ecb2ea7385d6cfc31b04650b8"
+          },
+          "components/input/input-structure": {
+            "src/generated/css/components/input/input-structure.css": "af5a4ed96b650f90ed81f7deae86bf86302bb816b6d34d7d3783854cb63ccbe1"
+          },
+          "components/item/item": {
+            "src/generated/css/components/item/item.css": "22a78e5fc44d00d2622eed6c94197d6fbc811f06f5e0278215454dddfc6edc0e"
+          },
+          "components/item/item-structure": {
+            "src/generated/css/components/item/item-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/items/items-structure": {
+            "src/generated/css/components/items/items-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/json-view/json-view": {
+            "src/generated/css/components/json-view/json-view.css": "b63d47f7e45ce67f1e7e23e17423f20ce9a8f454af018c4738c5daf8e7aedcdc"
+          },
+          "components/json-view/json-view-structure": {
+            "src/generated/css/components/json-view/json-view-structure.css": "4a0fc20d5d9f19b576a3b6c4a494427988b7aad7ff85a71e80d97d44fa7c05b7"
+          },
+          "components/kbd/kbd": {
+            "src/generated/css/components/kbd/kbd.css": "02a7ea8fe9e51073f514e52c122733161e328d2c2a379dd71fb1f0758dbde8df"
+          },
+          "components/kbd/kbd-structure": {
+            "src/generated/css/components/kbd/kbd-structure.css": "185f1bd23a4b83e324051c74f3774b75125be6f369eca23f4cdac89b8f10c730"
+          },
+          "components/kbd/tooltip-kbd": {
+            "src/generated/css/components/kbd/tooltip-kbd.css": "450f08f4469dc6ea39741f57f1d72c556a17dbdd4a517974fec7bd97dd4a28b2"
+          },
+          "components/kv/kv": {
+            "src/generated/css/components/kv/kv.css": "9a15483f3330c0911871df3133cd70bee8b27f5d20542474b5db06e8fe62ef7c"
+          },
+          "components/kv/kv-structure": {
+            "src/generated/css/components/kv/kv-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/label/label": {
+            "src/generated/css/components/label/label.css": "edbee916f3e38106e8ec41cd2c7c72c88ce4dc4d6e8adebfb0a48d5df06509b0"
+          },
+          "components/label/label-structure": {
+            "src/generated/css/components/label/label-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/legend-item/legend-item-structure": {
+            "src/generated/css/components/legend-item/legend-item-structure.css": "8483e68e719c252df40c9964fb6fdea6e6dd5c82352573f29da178976ae502aa"
+          },
+          "components/legend/legend": {
+            "src/generated/css/components/legend/legend.css": "67f0aaa797ce4685e0cf42cfae8f75a7c3c21991d8e525c845bd0d0b6db3b3e6"
+          },
+          "components/legend/legend-structure": {
+            "src/generated/css/components/legend/legend-structure.css": "8b1b493f1add9d117552d9d3386eb9f383804b3f259e42f3fce48acea4f2f216"
+          },
+          "components/link-card/link-card": {
+            "src/generated/css/components/link-card/link-card.css": "c1e582537abf62f4e5be45b53659f3f9746ff0be650b40716b098960ebfc84bd"
+          },
+          "components/link-card/link-card-structure": {
+            "src/generated/css/components/link-card/link-card-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/load-more/load-more": {
+            "src/generated/css/components/load-more/load-more.css": "3d04039b7135036396506e1b4f11e0262d6b43d8fb5973e17c5b2a4219db6705"
+          },
+          "components/load-more/load-more-placeholder": {
+            "src/generated/css/components/load-more/load-more-placeholder.css": "b0da794f6a030552d06c84a858cd0b148b4bcf18147ef1a4a79f5769fc92ff43"
+          },
+          "components/load-more/load-more-structure": {
+            "src/generated/css/components/load-more/load-more-structure.css": "40eca69bf05e7e3b22bdd04f5e7aace3416840a671a4b8d6686f575e9e66dfe1"
+          },
+          "components/loading-dots/loading-dots": {
+            "src/generated/css/components/loading-dots/loading-dots.css": "4b0259a8516220cb3a37fa5e0e1b72e1a8e1c4f7a0f6de3957945f98f29ddeba"
+          },
+          "components/loading-dots/loading-dots-structure": {
+            "src/generated/css/components/loading-dots/loading-dots-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/logs/logs": {
+            "src/generated/css/components/logs/logs.css": "3132b984d060dbe3e27c55cfd2d26d62575b5f14eed4c3daf80f23851f143416"
+          },
+          "components/logs/logs-structure": {
+            "src/generated/css/components/logs/logs-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/markdown/markdown": {
+            "src/generated/css/components/markdown/markdown.css": "30cef7973d3d603f59590d15baeed188568fbbc67e832469d8b369704835c752"
+          },
+          "components/menu-button/menu-button": {
+            "src/generated/css/components/menu-button/menu-button.css": "a4614a4555c94b57cc670421d883bac8ab53f347548c21ecfd2303d5eac61798"
+          },
+          "components/menu-button/menu-button-structure": {
+            "src/generated/css/components/menu-button/menu-button-structure.css": "75f670faf86916f7514405b5748ea34a997486698124081896c7e6e502ab0e24"
+          },
+          "components/menu-divider/menu-divider": {
+            "src/generated/css/components/menu-divider/menu-divider.css": "59c97d4ffb67dd4195448b986bd3da1f65703d0a7c4ab634a00530bc1798f8fa"
+          },
+          "components/menu-divider/menu-divider-structure": {
+            "src/generated/css/components/menu-divider/menu-divider-structure.css": "0f1ebb7be2ff0d705327ad03c8f0450aef85362005a574599916d14aa8f40043"
+          },
+          "components/menu-item/menu-item": {
+            "src/generated/css/components/menu-item/menu-item.css": "bc91361b1db3443cc29553b52764203e317e7efe0a77ed44db9401bad5ad4e89"
+          },
+          "components/menu-item/menu-item-structure": {
+            "src/generated/css/components/menu-item/menu-item-structure.css": "abeb6adecbfb3a6ed930aa12b3e57ace7b37eaf4773fd9fb3daa37f0bc7cfcb2"
+          },
+          "components/menu-section/menu-section": {
+            "src/generated/css/components/menu-section/menu-section.css": "0ff59d9a86a9054bc0f73329a75599b125f258d12b39ddd23efad31b425e299a"
+          },
+          "components/menu-section/menu-section-structure": {
+            "src/generated/css/components/menu-section/menu-section-structure.css": "f226d77294f01fbd37e067fb5e3c5f179180b4e81587fe1c0ca4df09631c5780"
+          },
+          "components/menu/menu": {
+            "src/generated/css/components/menu/menu.css": "e3d63502ae526cae2b106e0ffe8e950e4539e3b19237e79d5daded818ab1e3c2"
+          },
+          "components/menu/menu-structure": {
+            "src/generated/css/components/menu/menu-structure.css": "296f58166fcd7990bb870a61003c713e55ab87bc4fa8eedd061c59de3376b3df"
+          },
+          "components/metric-list/metric-list": {
+            "src/generated/css/components/metric-list/metric-list.css": "69fbd9d6336e187530e36ad0157a6445c458d089bc8e17e82202159d16de09bb"
+          },
+          "components/metric-list/metric-list-structure": {
+            "src/generated/css/components/metric-list/metric-list-structure.css": "3058d3f6a2177f234d32133fe0ae761e4a1c356bf27dd074902a5898901d9cce"
+          },
+          "components/metric/metric-structure": {
+            "src/generated/css/components/metric/metric-structure.css": "c2fa841e4a12e1ced85cbafddd5aef1f8ba2073069194098ef1d755f1334dab9"
+          },
+          "components/middle-truncate/middle-truncate": {
+            "src/generated/css/components/middle-truncate/middle-truncate.css": "26d1bc9504d5380effe7fe35811803a4ad8bcba5f84520eeaa5b8e8167214f34"
+          },
+          "components/middle-truncate/middle-truncate-structure": {
+            "src/generated/css/components/middle-truncate/middle-truncate-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/modal-inset/modal-inset": {
+            "src/generated/css/components/modal-inset/modal-inset.css": "8f66744729a646dc7ef15dbe4f1a4abae95054da69f9401ac24059a11630fa26"
+          },
+          "components/modal-inset/modal-inset-structure": {
+            "src/generated/css/components/modal-inset/modal-inset-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/modal/modal": {
+            "src/generated/css/components/modal/modal.css": "b57d8e85d75646ce6975ada04ebbf4467ef3caa65eb0899586e55019fb0e39c2"
+          },
+          "components/modal/modal-action": {
+            "src/generated/css/components/modal/modal-action.css": "6342a84472de4cbfe439226cb0b87e99e8b1ac63876ec69674be1df4f8103392"
+          },
+          "components/modal/modal-backdrop": {
+            "src/generated/css/components/modal/modal-backdrop.css": "7acbba273f03b33988e9b8528b4aa155179e5788570292bca699a0bfcaea3740"
+          },
+          "components/modal/modal-overlay": {
+            "src/generated/css/components/modal/modal-overlay.css": "0ec6e291db44c9e82f025d304f42e90327cc499fa388b55e9b7f6b9d66b71bf2"
+          },
+          "components/multi-select-row/multi-select-row": {
+            "src/generated/css/components/multi-select-row/multi-select-row.css": "f6ad4d57065ea3ffb7b0a23a4e3eb5359fe95b2bf3e96f5a3a4d3688021527a2"
+          },
+          "components/multi-select-row/multi-select-row-structure": {
+            "src/generated/css/components/multi-select-row/multi-select-row-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/multi-select/multi-select": {
+            "src/generated/css/components/multi-select/multi-select.css": "e022beb8d63fba63191be644eb6b5f5084354222bf46fd541e4bc78b23c314f0"
+          },
+          "components/multi-select/multi-select-content": {
+            "src/generated/css/components/multi-select/multi-select-content.css": "da9552a4d4ab3737d979bbffcd9efdd8bcf4254462d8e67c2af1908bce997810"
+          },
+          "components/multi-select/multi-select-structure": {
+            "src/generated/css/components/multi-select/multi-select-structure.css": "2c2d7f9a38c52216dd7b022d13aedcaaccaef363fa2159a069e1ab381abc029f"
+          },
+          "components/note/note": {
+            "src/generated/css/components/note/note.css": "5e2e61a4f37f9cc1848e2b3e796a13980d6ca22b907823d8f5238401e95fc879"
+          },
+          "components/note/note-structure": {
+            "src/generated/css/components/note/note-structure.css": "164535d3e4f18a89fab7dfa0dba1601a29ef6ed340343b0439667733894c21e0"
+          },
+          "components/page-head/page-head": {
+            "src/generated/css/components/page-head/page-head.css": "d4539fbe7bc71a82e6101e17926f79f4edea8c84bb5e3c6d7d20ffe83304f62a"
+          },
+          "components/page-head/page-head-structure": {
+            "src/generated/css/components/page-head/page-head-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/pagination/pagination": {
+            "src/generated/css/components/pagination/pagination.css": "c1732e3f561342b1ac152a56f8c17449ecdb567d7c3f3205b9c6823dca0a3a92"
+          },
+          "components/pagination/pagination-link": {
+            "src/generated/css/components/pagination/pagination-link.css": "1ad428d103500d3679d8e53fe4c4dc2738c7bd1e96e7e5d615bcfbc0ed63ac15"
+          },
+          "components/pagination/pagination-structure": {
+            "src/generated/css/components/pagination/pagination-structure.css": "cc5d0f0ddc1be0d96de013404c73def7afbab447b1a976ddd29ce81514d1a158"
+          },
+          "components/panel-foot/panel-foot-structure": {
+            "src/generated/css/components/panel-foot/panel-foot-structure.css": "cc15cf34393e79dceb6a851ea1faf9f376ef7998a4f4298731f12a71d616c0f7"
+          },
+          "components/panel-head/panel-head": {
+            "src/generated/css/components/panel-head/panel-head.css": "0a531b341dab8e0a7fa5b1e0cbba2c81b3f8936c957deaa7fbbef42f7ef539f1"
+          },
+          "components/panel-head/panel-head-structure": {
+            "src/generated/css/components/panel-head/panel-head-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/panel/panel": {
+            "src/generated/css/components/panel/panel.css": "19d2dace4af4e201a77247b8677170f9f89350d2b3abb75ded939fee97821bc6"
+          },
+          "components/panel/panel-structure": {
+            "src/generated/css/components/panel/panel-structure.css": "9bb6bd82d5cfb79f758db743e0ae6fe8b8fb319038fbe5c3cd0f1b5f48b8c895"
+          },
+          "components/panels/panels-structure": {
+            "src/generated/css/components/panels/panels-structure.css": "8120246aa37e7a4ee5a9b5bb6f57bdaa2a4b3d81d3e78a8f2ab2670bdf09c65b"
+          },
+          "components/phone/phone": {
+            "src/generated/css/components/phone/phone.css": "e4c81a781859fa7a5c9bcf27e9407a1523f6b854db6d1f0a469e780a1c7d96ce"
+          },
+          "components/phone/phone-structure": {
+            "src/generated/css/components/phone/phone-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/pill/pill": {
+            "src/generated/css/components/pill/pill.css": "9ee7d1345f1310c466f6e8705e4e78abf791ebb2de2b80b2433a597a0e7388d3"
+          },
+          "components/progress/progress": {
+            "src/generated/css/components/progress/progress.css": "0a3877bccf44b46f000b2c9d5a659cfcc928effc4a41f9eff89074b3d578e1bc"
+          },
+          "components/project-banner/project-banner": {
+            "src/generated/css/components/project-banner/project-banner.css": "a52b2b28ca4ba688ba88c0446223045c6eb7186070df3a578c4cf4f8d55688b9"
+          },
+          "components/project-banner/project-banner-structure": {
+            "src/generated/css/components/project-banner/project-banner-structure.css": "487956a62397e35a29526019c10d735982ed7b5ca48ea761307a4c0444cc7c34"
+          },
+          "components/radio-group/radio-group": {
+            "src/generated/css/components/radio-group/radio-group.css": "8eec772394a31604d24ecc6a9809ece5dd2e58938ba4251a560c22e2a7d800df"
+          },
+          "components/radio-group/radio-group-structure": {
+            "src/generated/css/components/radio-group/radio-group-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/radio/radio": {
+            "src/generated/css/components/radio/radio.css": "e08b881132b4443ed2f8ef267b3f7746fc37c0da9d8cf9c3f7e6d1b9cc756039"
+          },
+          "components/radio/radio-structure": {
+            "src/generated/css/components/radio/radio-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/relative-time/relative-time-card": {
+            "src/generated/css/components/relative-time/relative-time-card.css": "deb1a45e0554c5b2f2facf2ec58b56517169936d386588ddef2187d98688394c"
+          },
+          "components/relative-time/relative-time-label": {
+            "src/generated/css/components/relative-time/relative-time-label.css": "445da47714ea7f941f29ab8ec9ee9db9b89a5dd9c82553bfe597bba336114e3c"
+          },
+          "components/relative-time/relative-time-trigger": {
+            "src/generated/css/components/relative-time/relative-time-trigger.css": "37fbb2d6409a5fbe0a3e08a84cb326eeb40eedbe45d41e3b9d113fda104130f0"
+          },
+          "components/ricon/ricon": {
+            "src/generated/css/components/ricon/ricon.css": "5f457adacbbd3ad1cc10327771b522fb1f33cced97cb781e5ac02045cd01507c"
+          },
+          "components/ricon/ricon-structure": {
+            "src/generated/css/components/ricon/ricon-structure.css": "8335b43412132cdc23c5064c80f03ff6d999eeaed2c4fa93cd76821259dd835f"
+          },
+          "components/scroller/scroller": {
+            "src/generated/css/components/scroller/scroller.css": "b868d1d8b675353d8755ce73dbf14d315a7508979b5721ee28e94bae1d56dc93"
+          },
+          "components/scroller/scroller-buttons": {
+            "src/generated/css/components/scroller/scroller-buttons.css": "cb26c01b88cf8afdf9189b49f837669ac6aacd8d3c86f347ef8cf616fa317818"
+          },
+          "components/scroller/scroller-structure": {
+            "src/generated/css/components/scroller/scroller-structure.css": "c88638b9b6ce84c6e09c0eb6300e358aa12261680bc6d4676027eb1bec433605"
+          },
+          "components/search/search-input": {
+            "src/generated/css/components/search/search-input.css": "c2e3758dcdc258884e77c56b6f583d10f6355964e7088f505b9ac06c8604dabf"
+          },
+          "components/select/select": {
+            "src/generated/css/components/select/select.css": "09c46b3ded7e59eaa8d45c9d6c6b06eb5df52014425af200805ac99d8dc4dcaa"
+          },
+          "components/select/select-label": {
+            "src/generated/css/components/select/select-label.css": "b072c35d60a65e40c168aa5346b4000239b6423fdee870c1d0cd096505d44945"
+          },
+          "components/select/select-structure": {
+            "src/generated/css/components/select/select-structure.css": "ddfd3676de3a79d83c388492d8b00ac27b520ae4e25435aadc60f4fe41b22be3"
+          },
+          "components/separator/separator": {
+            "src/generated/css/components/separator/separator.css": "8b8327d8808cd1f48300a973789b75f1a3c7a11457ecc46242929dec712d79c3"
+          },
+          "components/separator/separator-structure": {
+            "src/generated/css/components/separator/separator-structure.css": "b0902131044fc4d34857dd8ae7e7ea427cc67f411aaa54ffaddbc5bc1636432f"
+          },
+          "components/setting-row/setting-row": {
+            "src/generated/css/components/setting-row/setting-row.css": "f423f08f8d1b2768b9be957566bb7e8911a2ed1fb21d951b0176f8aadb47524a"
+          },
+          "components/setting-row/setting-row-structure": {
+            "src/generated/css/components/setting-row/setting-row-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/setting-rows/setting-rows-structure": {
+            "src/generated/css/components/setting-rows/setting-rows-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/sheet/sheet": {
+            "src/generated/css/components/sheet/sheet.css": "d7aa6f553d86d7b90c431dec6eb40568f9d582ce5e7d0cd964dc70e7351a541a"
+          },
+          "components/sheet/sheet-overlay": {
+            "src/generated/css/components/sheet/sheet-overlay.css": "e35fb372fac25129ccf3f33b0345834d3e6fdd0b20c8b9c4b702124096c519d0"
+          },
+          "components/sheet/sheet-structure": {
+            "src/generated/css/components/sheet/sheet-structure.css": "95e83473cdd7ab25328aa44140022d4f1bcd2e6e057a2cb4d3a81202a85d6ed8"
+          },
+          "components/shell/shell": {
+            "src/generated/css/components/shell/shell.css": "370c0678556476bc595fb7e2abdc49b3c3de69187b2fa7b68b9a35e3b7c240db"
+          },
+          "components/shell/shell-structure": {
+            "src/generated/css/components/shell/shell-structure.css": "663308126b9fd9335094a5b2b28ebaed7b1f54cccd4d2f80fab28be04c04c366"
+          },
+          "components/show-more/show-more": {
+            "src/generated/css/components/show-more/show-more.css": "bffa112214f81e69aafaae46240b470bd48942ca4193ba83f7f6f1193099760a"
+          },
+          "components/show-more/show-more-structure": {
+            "src/generated/css/components/show-more/show-more-structure.css": "40eca69bf05e7e3b22bdd04f5e7aace3416840a671a4b8d6686f575e9e66dfe1"
+          },
+          "components/side-nav/side-nav-structure": {
+            "src/generated/css/components/side-nav/side-nav-structure.css": "f5b09651991a19bdc528097c7b98e70c88de8f148bd0d315afb29c83d4f57d95"
+          },
+          "components/skeleton/skeleton": {
+            "src/generated/css/components/skeleton/skeleton.css": "f9db312740a09e87d99aee4844232d1a1736c696ea256852ab491bc97ca49217"
+          },
+          "components/skeleton/skeleton-structure": {
+            "src/generated/css/components/skeleton/skeleton-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/slider/slider": {
+            "src/generated/css/components/slider/slider.css": "73cdd44aee8b55db6b20243579066bd479162d7e8b17d40640bbd13222727337"
+          },
+          "components/slider/slider-structure": {
+            "src/generated/css/components/slider/slider-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/snippet/snippet": {
+            "src/generated/css/components/snippet/snippet.css": "cde3c22ac73b567428eb1feaa54762b851f7da2ec16c6a69ef4b48e1cdf6b4c3"
+          },
+          "components/snippet/snippet-structure": {
+            "src/generated/css/components/snippet/snippet-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/spark/spark-structure": {
+            "src/generated/css/components/spark/spark-structure.css": "47ab6df612b1688a12eb23fde1015bf0889658022a62121b001827a01b654040"
+          },
+          "components/spinner/spinner": {
+            "src/generated/css/components/spinner/spinner.css": "b991b88d7f7e17f6feb7e73811c54cfe02d8c0bb4feb67f3324329df8acc1739"
+          },
+          "components/spinner/spinner-structure": {
+            "src/generated/css/components/spinner/spinner-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/split-button-item/split-button-item": {
+            "src/generated/css/components/split-button-item/split-button-item.css": "83d339e8dcbb0ea5a1bd2be5e4c844f28ceb70c30b680cf42b55878949280a10"
+          },
+          "components/split-button-item/split-button-item-structure": {
+            "src/generated/css/components/split-button-item/split-button-item-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/split-button/split-button": {
+            "src/generated/css/components/split-button/split-button.css": "0d5b00e945e5de4a5d473cbe62dc8fea65d3eec90042a87cf138f55c7a55900f"
+          },
+          "components/split-button/split-button-menu": {
+            "src/generated/css/components/split-button/split-button-menu.css": "275e2c2cf788071b0e6e759b62d2b2d2b1ef39fabc1072e6c14779af2e4f5d28"
+          },
+          "components/split-button/split-button-structure": {
+            "src/generated/css/components/split-button/split-button-structure.css": "46ba6f1f6b270b905de158c2dbbd3bf79dea5ef65d226681d2ddd7a54225222a"
+          },
+          "components/stat-delta/stat-delta-structure": {
+            "src/generated/css/components/stat-delta/stat-delta-structure.css": "46468d100ae165de1161e5bc379d3c5fcfb6fbac24c3f6effd11b90ddf5a2d9c"
+          },
+          "components/stat-desc/stat-desc-structure": {
+            "src/generated/css/components/stat-desc/stat-desc-structure.css": "46468d100ae165de1161e5bc379d3c5fcfb6fbac24c3f6effd11b90ddf5a2d9c"
+          },
+          "components/stat-foot/stat-foot-structure": {
+            "src/generated/css/components/stat-foot/stat-foot-structure.css": "fa9161947d015ee7af497781672b34c8d29d7d2aec995867ab6f303334a9ae2a"
+          },
+          "components/stat-strip/stat-strip": {
+            "src/generated/css/components/stat-strip/stat-strip.css": "61bbe8349a37283849b7a288771d2eb573cba4c5e96152128a89d0b940f6fb41"
+          },
+          "components/stat-strip/stat-strip-structure": {
+            "src/generated/css/components/stat-strip/stat-strip-structure.css": "9373e51f2d5a3c44815ec9c19e74b3f97205b9211a72ddc6d2e30499e06ff3ca"
+          },
+          "components/stat/stat": {
+            "src/generated/css/components/stat/stat.css": "0e9c69eb536c49cd73b13d6dc16e05526563419ba6198ff193eeeb33c5e5ef3d"
+          },
+          "components/stat/stat-structure": {
+            "src/generated/css/components/stat/stat-structure.css": "9ead90dc870a2ace8e525da1aa98af6e495bd5c5b68d47b7292bb9244f828b00"
+          },
+          "components/status-dot/status-dot": {
+            "src/generated/css/components/status-dot/status-dot.css": "640e900e5552bf2173ebfb0c15033d5efb9b7565955b0462f3f9927376fcd1f7"
+          },
+          "components/status-dot/status-dot-structure": {
+            "src/generated/css/components/status-dot/status-dot-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/strip-item/strip-item-structure": {
+            "src/generated/css/components/strip-item/strip-item-structure.css": "8e37cae5e93a6e082e86c7e7abe3b4f58c12db58f10f1531413c004d8ee9f20e"
+          },
+          "components/subnav/subnav": {
+            "src/generated/css/components/subnav/subnav.css": "3c3fa8d8d6c1f2f476420276c815e895da0bdba08239c7cb50b637fc6f050134"
+          },
+          "components/subnav/subnav-structure": {
+            "src/generated/css/components/subnav/subnav-structure.css": "c67b2cdcb53e6a14f36f7baa652c958c2a43f1d9900a2d7718bcfbe848930ad6"
+          },
+          "components/switch-control/switch-control": {
+            "src/generated/css/components/switch-control/switch-control.css": "df56ec4cb498ba851e6bd1cefe1d2910064ea66ade0f588a63bf0c886a0d6477"
+          },
+          "components/switch-control/switch-control-structure": {
+            "src/generated/css/components/switch-control/switch-control-structure.css": "b3c4388e11e20a7f0a466541e92ae050afce02d51fc3b6cf8cd9bae0d1adafac"
+          },
+          "components/switch/switch": {
+            "src/generated/css/components/switch/switch.css": "9e5ddc7f5bc473971f3cd0a480f5404fc988b87c1c54f030cbb5a5e779576b45"
+          },
+          "components/switch/switch-structure": {
+            "src/generated/css/components/switch/switch-structure.css": "487956a62397e35a29526019c10d735982ed7b5ca48ea761307a4c0444cc7c34"
+          },
+          "components/tab-panel/tab-panel-structure": {
+            "src/generated/css/components/tab-panel/tab-panel-structure.css": "525ca331f0cf836eafcb831f75f73ab51a59b035484541921204b3451a8ead2c"
+          },
+          "components/tab/tab": {
+            "src/generated/css/components/tab/tab.css": "b2138c472e69df4b8a71446b2313016e20f01a2da9265e91fb672a7e662d84ca"
+          },
+          "components/tab/tab-structure": {
+            "src/generated/css/components/tab/tab-structure.css": "6aa603233e9a00ac09d3ebc3a2e10ed4e125287343a00e3e736e66bd94cb27e3"
+          },
+          "components/table/table": {
+            "src/generated/css/components/table/table.css": "5ed9b78a21f430d47c9c62c52097bcbf4678417251ee5d23c76e19741a0877ea"
+          },
+          "components/table/table-structure": {
+            "src/generated/css/components/table/table-structure.css": "e3358b5615d6f82440a1ff8965ce46832594b6fd30898a6c8ae47c09cd7cf91b"
+          },
+          "components/tabs/tabs": {
+            "src/generated/css/components/tabs/tabs.css": "f92cd7bce7937ebcb405dabdcb88328403a0d6d9e53d6eb33a96ca8c07da2959"
+          },
+          "components/tabs/tabs-structure": {
+            "src/generated/css/components/tabs/tabs-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/tag/tag": {
+            "src/generated/css/components/tag/tag.css": "42cf458915155998e85ceeb1abaaedc955d35dbe7fcb67592e630eee9556ae02"
+          },
+          "components/task/task": {
+            "src/generated/css/components/task/task.css": "5bd64af5166af5298ad6dd9a9572bc08cc04373a48d53c98198a45065211ce5b"
+          },
+          "components/task/task-structure": {
+            "src/generated/css/components/task/task-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/tasks/tasks-structure": {
+            "src/generated/css/components/tasks/tasks-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "components/textarea/textarea": {
+            "src/generated/css/components/textarea/textarea.css": "b5c78766ca69e2ad2f04418739b4b7d4bb6751c5671e94b90dafcb548278db3c"
+          },
+          "components/textarea/textarea-structure": {
+            "src/generated/css/components/textarea/textarea-structure.css": "848e1e53939fafeb369f5db90c3c31b64b15f1cfa2ac265c4bd8f988ca1b0a6c"
+          },
+          "components/theme-switcher/theme-switcher": {
+            "src/generated/css/components/theme-switcher/theme-switcher.css": "39861d1c4241aafba2d2312ee70855483b29d3605d20cb2b7368e55146c1b61b"
+          },
+          "components/theme-switcher/theme-switcher-option": {
+            "src/generated/css/components/theme-switcher/theme-switcher-option.css": "b97599bb1a01e206291b12848fa6cd76095d698949c9b6329fc855df57c070f0"
+          },
+          "components/theme-switcher/theme-switcher-structure": {
+            "src/generated/css/components/theme-switcher/theme-switcher-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/tile/tile": {
+            "src/generated/css/components/tile/tile.css": "2ea7193b97effa688d2d11b82e23cb28481a8a0ae5dd2fecf8db98e0d5c7ef62"
+          },
+          "components/tile/tile-structure": {
+            "src/generated/css/components/tile/tile-structure.css": "b1f22cec685745efa0a4f83ce68edde69353aaa62d328df21bef2a734f578e6c"
+          },
+          "components/tiles/tiles-structure": {
+            "src/generated/css/components/tiles/tiles-structure.css": "82a8d24358282e64b502fc82c7cc574c7016cb29ccfbfb4b64fd7d7dac456578"
+          },
+          "components/toast/toast": {
+            "src/generated/css/components/toast/toast.css": "8325f9b1436a77ec1e94bb6f6b7e7cfa66bb0f8d9f2be5d4510f7a91d935e8e7"
+          },
+          "components/toaster/toaster": {
+            "src/generated/css/components/toaster/toaster.css": "e252c487c2cf5e03c91a9438d32a57e72593ddde0f7e24f24f43b40b2347ad21"
+          },
+          "components/toaster/toaster-structure": {
+            "src/generated/css/components/toaster/toaster-structure.css": "af4919ac3f318fcaf57221bdee59c40ab3196d973182fdb3edfbda31fe70b7a7"
+          },
+          "components/toggle/toggle": {
+            "src/generated/css/components/toggle/toggle.css": "47b41a492075049e2971d97b6e0618cd7c5ed69bbfbe87e1d7d00177f90366cc"
+          },
+          "components/toggle/toggle-structure": {
+            "src/generated/css/components/toggle/toggle-structure.css": "2a1f2108f1127f8f667fc5c6e2d55a7bab9b71a26042a35a67cfc4b349bbc7f2"
+          },
+          "components/toolbar/toolbar-structure": {
+            "src/generated/css/components/toolbar/toolbar-structure.css": "f54b371128b1539589b61c8303441c55ed14f8c5b7c4167765a13744e9eefd7f"
+          },
+          "components/tooltip/tooltip": {
+            "src/generated/css/components/tooltip/tooltip.css": "7992340617db6db8d4f096d49bfed4be76bc1499488accb309b2da0f57962ec3"
+          },
+          "components/tooltip/tooltip-backdrop": {
+            "src/generated/css/components/tooltip/tooltip-backdrop.css": "de92b69e41d0b5b6c138679e953b6a8a4bf3cab3f778db9d9a0421bf2cc94e83"
+          },
+          "components/tooltip/tooltip-structure": {
+            "src/generated/css/components/tooltip/tooltip-structure.css": "35ae6d726b67de1d4fd827469debe244a790b95a3a2d37ff837cfe1a3f42d5fc"
+          },
+          "components/tooltip/tooltip-trigger": {
+            "src/generated/css/components/tooltip/tooltip-trigger.css": "e5c60d394272c068547ffc16f555cff067193875414b18dd8a70c8fc94da6adc"
+          },
+          "components/topbar/topbar-structure": {
+            "src/generated/css/components/topbar/topbar-structure.css": "91405e0a8dc921cb8bd32359f6526f395ddc770aee79ea44568fd9036eb3c6ca"
+          },
+          "components/trend/trend": {
+            "src/generated/css/components/trend/trend.css": "58033fed3772e12a1ead35034730a0c5379816371cd82ed358ffd670c02867a0"
+          },
+          "components/trend/trend-structure": {
+            "src/generated/css/components/trend/trend-structure.css": "867b54dc69e65e54d8afe7725effafd939c2ecc7ef9ae7c156cace7882c21a3e"
+          },
+          "components/video/video": {
+            "src/generated/css/components/video/video.css": "ba6d1f9e3e2ec9ce00e52825805eaeb902ae34aa77be2b9912c27f6bced45a29"
+          },
+          "components/video/video-structure": {
+            "src/generated/css/components/video/video-structure.css": "ec2c89fde913caff741baa0b0f3cf68a9acb5e85467e4f21b6c824fdad201394"
+          },
+          "document/dashboard": {
+            "src/generated/css/document/dashboard.css": "8763d1a824b5e32dc7ce42454c042f71b1821c9725b276e24b4e1b3bf0654c76"
+          },
+          "document/tokens": {
+            "src/generated/css/document/tokens.css": "84d54146936c2b5e70dca4179763a98886faa51a359759a4893f3b28d1dca0d7"
+          },
+          "shared/base": {
+            "src/generated/css/shared/base.css": "3c9daef07f9969bc688cdb524765ab36b19b2de7eb152158686424b32282e8d3"
+          },
+          "shared/classes": {
+            "src/generated/css/shared/classes.css": "9c39984eab15382f9d7cb2da9972ba8c2470a0f8d3b7eafcc4591fb5da7241ba"
+          },
+          "shared/deploy": {
+            "src/generated/css/shared/deploy.css": "4847e65dd9647c505e75e7843a6676298c13b9daaa37c2b40dc1b069fd50f745"
+          },
+          "shared/dialog-reset": {
+            "src/generated/css/shared/dialog-reset.css": "60eaac2ba097c679956f7e4479841285ceec3de79f7e900069f0f9b28a9421af"
+          },
+          "shared/field": {
+            "src/generated/css/shared/field.css": "df3a49dce376c795203c18e6a8613ab3f7d1d23c7b035904ef0c1a8752f501f6"
+          },
+          "shared/info-ic": {
+            "src/generated/css/shared/info-ic.css": "62526797306a51d1c69a535ee190a6000cb769f082795b622b4083ca4a3ae292"
+          },
+          "shared/option": {
+            "src/generated/css/shared/option.css": "ed981a01b1528862d106aee989fc7a6ab0c98aa67bbbeae53eb65eb9892d2651"
+          },
+          "shared/plan": {
+            "src/generated/css/shared/plan.css": "7c0fc68946798c31d120227cda7c1d1101e2b953e76c38bf0c904456211fe268"
+          },
+          "shared/rail": {
+            "src/generated/css/shared/rail.css": "8aa855aebcd2176769f15cb3d2560408af7780364d694be788a42b9fe84e7739"
+          },
+          "shared/severity": {
+            "src/generated/css/shared/severity.css": "f54c081597a0b8de781159d70426cef996c594cebd585121895cb8e91b22a05f"
+          },
+          "shared/usage-sum": {
+            "src/generated/css/shared/usage-sum.css": "4738b7aff701595b41ee34f3db4aea14e9b78a14dfe09e112314cdc8c2460e73"
+          }
+        }
+      },
+      "verification": {
+        "build": "581 modules;123 compiled Lit templates;142 manifest elements",
+        "docs": "99 pages;142 elements;0 undocumented",
+        "fullSuite": "656 passed;8377 assertions;95 files",
+        "finalCssCleanup": "Rebuilt after deleting unshipped dead rules; all283 surviving CSS files remain byte-identical",
+        "review": "Approve: no required defects;128 targeted tests pass"
+      },
+      "commit": "See Git history: remove unused filter, metric and settings-row families"
+    }
+  ],
+  "remaining": {
+    "immediate": [
+      "error-card",
+      "loading-dots",
+      "phone",
+      "project-banner",
+      "dots-menu",
+      "destructive-modal"
+    ],
+    "smallClosure": [
+      "check/task/tasks/logs/link-card dashboard recipe ownership",
+      "entity/entity-content/entity-list and reflection fixture",
+      "panel/panel-head/panel-foot/panels and Chart examples",
+      "ricon/items/tags and retained examples/shared styles",
+      "stat-strip/strip-item and token description",
+      "fold/bar-row/bar-rows/tile/tiles and Trend example",
+      "shell/side-nav/subnav/topbar and dashboard CSS"
+    ],
+    "coupled": [
+      "clearable-input: Search inheritance",
+      "context-card: Relative Time and Snippet",
+      "error: Input/Select/Textarea",
+      "grid-cell/grid-cross/grid-page/grid-system: retained Grid and foundations",
+      "pagination: running docs navigation",
+      "sheet/modal-inset: retained overlays and examples",
+      "page-head: Toolbar style ownership",
+      "trend: Stat/Stat Delta style ownership"
+    ]
+  },
+  "boundaries": [
+    "Frozen docs snapshot remains until M25.",
+    "No compatibility aliases or deprecation notices.",
+    "No outward publication or push."
+  ]
+}
