@@ -51,7 +51,7 @@ Record fixtures/results and failures in existing analysis/evidence. A technical 
 - M00 is closed following Peter's compiler selection.
 - M01 first slice: styles/house.css replaces the old source path; split and development watching consume it. The exact compiler dependency is installed. [Checks and baseline comparison](evidence/m01-house-style-path-2026-09-20.json).
 - M01/M02 are implemented and verified. Generated modules, canonical CSS/maps, input/output manifest, site/_site routing and document output are in place. All 128 static library CSS blocks enter the generator; the intermediate-part selector defect is fixed; reverse-parsing and the old formatter are removed. [Evidence and review](evidence/m02-css-pipeline-2026-09-20.json).
-- M03 is active: actual CEM integration, definition/class entries and package skeletons. Final Linux publication/Pages settings remain M25, including removal of the frozen docs snapshot.
+- M03 manifest slice is implemented: analyzer patch, runtime-checked metadata, normalized package paths, build and site/Markdown consumption. [Verification and review](evidence/m03-manifest-2026-09-20.json). Definition/class/browser entries and package skeletons remain active. Final Linux publication/Pages settings remain M25, including removal of the frozen docs snapshot.
 
 ## Ordered implementation work packages
 

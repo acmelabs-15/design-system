@@ -2,6 +2,16 @@
 
 Phase 1.9, researched 2026-09-19. **Recommendation: establish one accurate manifest-driven page contract and reuse the existing shared renderers, then extract the interactive doc components that contract needs.** A framework change is not justified by the evidence.
 
+## M03 manifest implementation — 2026-09-20
+
+The build now runs the pinned standard analyzer 0.11.0 through scripts/manifest.ts and publishes dist/custom-elements.json. site/api.ts reads that manifest for website and Markdown output. Source parsing in the former site extractor is removed. Static Lit templates supply slots, parts and forwarded parts; the TypeScript checker supplies finite event-name unions, payload types and missing member/return types. Fieldset explicitly documents its manually assigned public actions slot. Menu relay and Clearable Input event-name types describe their existing dispatches without changing runtime behavior.
+
+The checked-in Bun patch fixes the analyzer's quote classification, missing programmatic declaration exports, lowercase default Lit attributes, events in callbacks/constructors, and identifier names incorrectly reported as event names. The first independent review found the identifier-event defect and missing/inconsistent type/default facts. A failing test reproduced the gap; the corrected generator synchronizes attributes with their linked fields and rejects undocumented dynamic metadata. The second review approved this bounded slice.
+
+Runtime verification covers every one of the 150 exported/registered classes and all 809 reactive properties. Every public field has a type, every public method has a return type, and attribute type/default facts match their fields. Search/Clearable Input expose exactly their three real events; Slider exposes change/commit. Chrome renders the corrected Stat attribute, Dots Menu events and Fieldset actions slot. Full build and all 104 documentation pages pass. [Reproducible checks and limits](../alignment/evidence/m03-manifest-2026-09-20.json).
+
+The complete DocAPI layout, CSS-property/state annotations for rebuilt families, and final consumer delivery remain assigned to M03/M23. Empty annotation categories are not evidence that a future family has no supported styling API. This slice does not certify the final inventory or selective import delivery.
+
 Walkthrough decision, 2026-09-19: Peter selected `@custom-elements-manifest/analyzer` as the manifest generator. [Decision record](../decisions/custom-elements-manifest.md). Its output still needs a repository-specific trial; the page layout and doc-component interfaces remain proposals.
 
 The later walkthrough reviewed the existing shared renderers, missing API data, example reset/cleanup and matching displayed/executed code. [Material Web's documentation generator](https://github.com/material-components/material-web/blob/main/scripts/analyzer/update-docs.ts) was rechecked: it replaces marked API sections while retaining authored guidance. The discussion carries these findings into Phase 4; it does not approve the final page layout or proposed doc-component names. Separately, Peter selected [workflow-built website publishing](../decisions/documentation-publishing.md) and [selective component loading](../decisions/selective-component-loading.md).

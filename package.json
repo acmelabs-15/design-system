@@ -27,7 +27,8 @@
     "./bundle/min": "./dist/bundle/design-system.min.js",
     "./bundle/standalone": "./dist/bundle/design-system.standalone.min.js",
     "./dist/*": "./dist/*",
-    "./styles/*": "./dist/styles/*"
+    "./styles/*": "./dist/styles/*",
+    "./custom-elements.json": "./dist/custom-elements.json"
   },
   "sideEffects": true,
   "scripts": {
@@ -38,7 +39,8 @@
     "lint:fix": "bun x biome check --write .",
     "docs": "bun site/build.ts",
     "dev": "bun scripts/dev.ts",
-    "prepublishOnly": "bun run build && bun test && bun run docs"
+    "prepublishOnly": "bun run build && bun test && bun run docs",
+    "manifest": "bun scripts/manifest.ts"
   },
   "dependencies": {
     "@floating-ui/dom": "^1",
@@ -59,6 +61,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
+    "@custom-elements-manifest/analyzer": "0.11.0",
     "@happy-dom/global-registrator": "^20.14.0",
     "@lit-labs/compiler": "^1.1.2",
     "@types/bun": "^1.4.2",
@@ -70,6 +73,8 @@
     "typescript-lit-html-plugin": "^0.9.1"
   },
   "patchedDependencies": {
-    "@tanstack/lit-store@0.13.2": "patches/@tanstack%2Flit-store@0.13.2.patch"
-  }
+    "@tanstack/lit-store@0.13.2": "patches/@tanstack%2Flit-store@0.13.2.patch",
+    "@custom-elements-manifest/analyzer@0.11.0": "patches/@custom-elements-manifest%2Fanalyzer@0.11.0.patch"
+  },
+  "customElements": "./dist/custom-elements.json"
 }

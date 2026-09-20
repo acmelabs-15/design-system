@@ -203,7 +203,7 @@ const apiTables = (els: ElementApi[]) =>
               }</div>`,
           )
           .join(""),
-        "Every reactive property reflects from its attribute; array and object values take JSON in the attribute. Events bubble and are composed.",
+        "The element manifest supplies this API. A dash in the attribute column means the property has no attribute.",
       )
     : "";
 

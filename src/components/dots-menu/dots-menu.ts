@@ -56,10 +56,10 @@ export class AcmeDotsMenu extends AcmeElement {
   }
 
   /** The menu's own events stop at this shadow root: they fire again from the host, and `open` follows. */
-  private relay = (e: Event) => {
+  private relay = (e: CustomEvent<{ kind: MenuCloseKind }> & { readonly type: "acme-open" | "acme-close" }) => {
     const menu = e.target as AcmeMenu;
     this.open = menu.open;
-    this.dispatchEvent(new CustomEvent(e.type, { bubbles: true, detail: (e as CustomEvent).detail }));
+    this.dispatchEvent(new CustomEvent(e.type, { bubbles: true, detail: e.detail }));
   };
 
   /** Escape asks first: a listener on the host that cancels keeps the menu open. */

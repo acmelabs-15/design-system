@@ -46,6 +46,10 @@ import "@acmelabs/design-system/styles/tokens.css";
 The unbundled build under `dist/` keeps Lit as a dependency, so one copy of Lit serves the whole
 app. Single elements import from `@acmelabs/design-system/dist/components/<name>/<name>.js`.
 
+The package publishes its element API as `@acmelabs/design-system/custom-elements.json`.
+The build generates this standard manifest from the element declarations and templates. The
+website and Markdown reference read the same manifest.
+
 ## Layout
 
 ```
@@ -79,6 +83,7 @@ Generated inputs under src/generated are committed. Package and site outputs are
 | `src/generated/style-manifest.json` | style producers | its recorded source inputs |
 | `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css` and the generated theme |
 | `dist/styles/dashboard.css` | `build` | compiled recipe inputs selected in `scripts/build.ts` |
+| `dist/custom-elements.json` | `build` or `bun run manifest` | element declarations, templates and documented dynamic slots |
 | `_site/` | `bun run docs` | `site/` |
 | `dist/` | `bun run build` | `src/` and generated inputs |
 
@@ -98,6 +103,7 @@ Start with `AGENTS.md`. It gives the reading order, the rules, and the current w
 | `bun test` | Unit tests plus a render test of every docs page |
 | `bun run lint` | Biome |
 | `bun run split` | Compiles house/authored CSS into committed CSS, maps and Lit modules |
+| `bun run manifest` | Generates the standard element API manifest used by documentation |
 
 ## Release
 

@@ -196,7 +196,7 @@ export class AcmeContextMenu extends AcmeElement {
   }
 
   /** The menu's own events stop at this shadow root: they fire again from the host, and `open` follows. */
-  private relay = (e: Event) => {
+  private relay = (e: CustomEvent<{ kind: MenuCloseKind }> & { readonly type: "acme-open" | "acme-close" }) => {
     const menu = e.target as AcmeMenu;
     this.open = menu.open;
     if (e.type === "acme-open") this.lock();
@@ -207,7 +207,7 @@ export class AcmeContextMenu extends AcmeElement {
       this.outside = false;
       this.linkHref = "";
     }
-    this.dispatchEvent(new CustomEvent(e.type, { bubbles: true, detail: (e as CustomEvent).detail }));
+    this.dispatchEvent(new CustomEvent(e.type, { bubbles: true, detail: e.detail }));
   };
 
   /** Escape asks first: a listener on the host that cancels keeps the menu open. */

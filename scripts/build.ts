@@ -12,6 +12,7 @@ import path from "node:path";
 import { compileLitTemplates } from "@lit-labs/compiler";
 import ts from "typescript";
 import { litStyleModule, verifyStyleManifest, writeStyle } from "./styles";
+import { writeManifest } from "./manifest";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = path.join(ROOT, "src"),
@@ -90,6 +91,8 @@ if (diags.length) {
   console.error(`${diags.length} type errors`);
   process.exit(1);
 }
+
+await writeManifest();
 
 // 3. The self-contained browser bundle.
 for (const [name, minify] of [

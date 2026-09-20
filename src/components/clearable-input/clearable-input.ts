@@ -50,7 +50,7 @@ export class AcmeClearableInput extends AcmeElement {
   formResetCallback() {
     this.value = this.getAttribute("value") ?? "";
   }
-  protected emit(type: string) {
+  protected emit(type: "acme-input" | "acme-change" | "acme-clear") {
     this.dispatchEvent(new CustomEvent(type, { detail: { value: this.value }, bubbles: true, composed: true }));
   }
   /** Empties the field (firing `acme-input` and `acme-clear` when it had a value) and focuses it. */

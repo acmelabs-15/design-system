@@ -18,6 +18,7 @@ export type FieldsetVariant = "" | "error" | "warning";
  * `heading`), `subtitle`, `error`, `warning`, `status`, `actions` (one acme-button each, small
  * unless sized), `footer` (text in place of the status and the actions). The actions each get a
  * wrapper of their own, so the element assigns its slots itself.
+ * @slot actions - Action controls, each assigned to its own wrapper.
  */
 @customElement("acme-fieldset")
 export class AcmeFieldset extends AcmeElement {
