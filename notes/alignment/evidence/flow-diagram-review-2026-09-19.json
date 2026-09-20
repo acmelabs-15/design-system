@@ -1,0 +1,335 @@
+{
+  "scope": {
+    "requested": "Flow-diagram component styled like supplied screenshot, adapted to house standards; robust connector arrows, curves/corners; research modern fast/light libraries.",
+    "screenshot": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/codex-clipboard-529c610c-8439-4b31-bed8-9ae75f5f4441.png",
+    "questionId": "flow_diagram_interaction_scope",
+    "answer": "Interactive viewer (Recommended)",
+    "selected": "Render supplied nodes/connections with automatic layout/routing, pan/zoom and controls inside nodes. No node/connection authoring or reconnecting editor in current scope.",
+    "unselected": "Package, public API, graph scale, nested groups, navigation, export, layout overrides and exact motion remain open.",
+    "savedToProject": true,
+    "engineQuestionId": "flow_diagram_engine_direction",
+    "engineAnswer": "ELK with house Lit viewer (Recommended)",
+    "engineDecision": "Use ELK for automatic graph layout and routing, with house Lit node/SVG rendering and existing TanStack Store, Lit Motion, generated styles and React wrapping same component. Load layout engine separately when needed. No X6/ReactFlow renderer or diagram editor adopted.",
+    "open": "Exact public interface/name/parts, graph scale, worker packaging and cancellation, measurement/relayout stability, panzoom helper, SVG rounding helper, arrow-label layout, accessible relationships, nested groups, export and override controls remain inventory/architecture work."
+  },
+  "layout": {
+    "reviewer": "review_course_kit",
+    "sourcesReviewed": 17,
+    "elk": {
+      "version": "0.12.0",
+      "published": "2026-07-17",
+      "licenseMetadata": "EPL-2.0 OR GPL-3.0-or-later; notice contains secondary-license conditions",
+      "raw": 1609707,
+      "gzip": 467676,
+      "apiPlusWorkerGzip": 465667,
+      "source": "https://github.com/kieler/elkjs",
+      "algorithm": "https://eclipse.dev/elk/reference/algorithms/org-eclipse-elk-layered.html",
+      "limits": [
+        "Automatic layout routes; not arbitrary fixed-position obstacle router",
+        "Promise alone not worker; configure worker explicitly",
+        "Relayout can move other nodes",
+        "Rounded path/stroke/arrow clearance still rendering responsibility",
+        "Caller measures node/label dimensions"
+      ]
+    },
+    "dagre": {
+      "version": "3.1.1",
+      "published": "2026-08-08",
+      "license": "MIT",
+      "raw": 48559,
+      "gzip": 16959,
+      "pin": "c3ed0802cd98de74c21cff1f754689ebbb0f8dae",
+      "capabilityCorrection": "Current dynamic layout history and cluster directions exist; not obstacle-aware orthogonal router"
+    },
+    "d2": {
+      "name": "@d2lang/d2",
+      "version": "0.1.34",
+      "published": "2026-09-07",
+      "license": "MPL-2.0",
+      "raw": 11514165,
+      "gzip": 8789791,
+      "limits": [
+        "Extra markup/compiler translation for existing HTML nodes",
+        "Much larger bundled compiler/WASM"
+      ],
+      "corrections": "Current package includes open-source TALA; @terrastruct namespace and old proprietary/maintenance claims stale"
+    },
+    "libavoid": {
+      "version": "0.5.0-beta.5",
+      "published": "2026-02-23",
+      "license": "LGPL-2.1-or-later",
+      "jsWasmRaw": 536046,
+      "jsWasmGzip": 198677,
+      "plusDagreGzip": 215636,
+      "role": "Fallback if fixed positions while rerouting become essential",
+      "limits": [
+        "No exposed label-placement API",
+        "WASM lifecycle/worker integration",
+        "Broken exports.types path and incomplete declarations"
+      ]
+    },
+    "measurementMethod": "Published files in memory, Bun.gzipSync level9; not CDN transfer or full house bundle measurements",
+    "probe": {
+      "nodeDimensions": [
+        [
+          120,
+          64
+        ],
+        [
+          196,
+          110
+        ],
+        [
+          160,
+          88
+        ],
+        [
+          240,
+          140
+        ],
+        [
+          208,
+          120
+        ],
+        [
+          176,
+          72
+        ]
+      ],
+      "topology": "Forward six-node chain plus specs->interview feedback edge; not exact screenshot coordinates",
+      "ports": "Four zero-size cardinal midpoint ports; FIXED_POS; forward E->W, return N->N",
+      "labels": "Forward36x20,return128x20; node labels INSIDE/H_CENTER/V_CENTER checked after initial probe",
+      "options": {
+        "elk.algorithm": "layered",
+        "elk.direction": "RIGHT",
+        "elk.edgeRouting": "ORTHOGONAL",
+        "elk.layered.feedbackEdges": "true",
+        "elk.spacing.nodeNode": "40",
+        "elk.spacing.edgeNode": "14",
+        "elk.layered.spacing.nodeNodeBetweenLayers": "60"
+      },
+      "results": {
+        "version": "elkjs0.12.0",
+        "fixture": "Six varied-size nodes [Idea,interview,refine,specs,capabilities,plan], six edges including labelled specs->interview return loop. Fixed cardinal ports, layered orthogonal routing.",
+        "checks": [
+          "6/6 sections with finite positions",
+          "No node overlap",
+          "No diagonal polyline segments",
+          "No route segment crossing unrelated node interiors"
+        ],
+        "resize": "Same checks pass after specs height140->280; other nodes moved vertically about69px. Stable positions are not guaranteed.",
+        "larger": "100 varied nodes/109 edges including10 return loops passed same basic checks.",
+        "times": "Single Bun runs: six-node cold~158ms, second six~44ms,100nodes~682ms. Not browser-worker or render benchmarks.",
+        "harnessLimit": "Bun self runtime misclassification required in-memory sandbox self undefined; not production-browser code.",
+        "unverified": [
+          "Final rounded curves after styling",
+          "All label collisions",
+          "Browser worker delivery and UI responsiveness",
+          "Screen reader/keyboard/focus",
+          "House node resizing/lifecycle"
+        ],
+        "savedToProject": true
+      }
+    },
+    "sourceLinks": [
+      "https://eclipse.dev/elk/documentation/tooldevelopers/graphdatastructure/jsonformat.html",
+      "https://eclipse.dev/elk/reference/options/org-eclipse-elk-layered-feedbackEdges.html",
+      "https://github.com/kieler/elkjs/issues/210",
+      "https://www.adaptagrams.org/documentation/libavoid.html",
+      "https://github.com/Aksem/libavoid-js"
+    ],
+    "savedToProject": true
+  },
+  "litCandidates": {
+    "reviewer": "review_marketing_blocks",
+    "sourcesReviewed": 25,
+    "candidates": [
+      {
+        "name": "lit-flow",
+        "published": "0.4.12, 2025-11-03",
+        "sourceVersion": "0.4.19",
+        "sourcePin": "cccc3f8de4249d2c8056528419d7d82bb50182b5",
+        "repo": "https://github.com/Gliba/lit-flow",
+        "fit": "Custom Lit content, observers and handles across open shadows",
+        "limits": [
+          "Endpoint-only xyflow routes, no obstacles",
+          "Viewer flags not consistently enforced",
+          "Custom HTML labels use Bezier midpoint regardless of edge type",
+          "Own mutable state/CSS motion; placeholder failing test script",
+          "Published and source versions differ"
+        ],
+        "fullArtifactGzip": 50803
+      },
+      {
+        "name": "@ghchinoy/litflow",
+        "version": "0.5.2",
+        "published": "2026-01-07",
+        "sourcePin": "cb61da44578edd7544ecc7394b84547f3b364b25",
+        "repo": "https://github.com/ghchinoy/litflow",
+        "limits": [
+          "Dagre geometry discarded except positions",
+          "Delete/Backspace and arrow movement not gated by draggable flag",
+          "Keyboard input guard event.target misses retargeted house input internals",
+          "Light DOM discovery, signals state, own animation",
+          "Resize does not necessarily rerun layout"
+        ],
+        "externalEntryGzip": 53525
+      },
+      {
+        "name": "@node-flow-elements/core",
+        "version": "0.1.0",
+        "published": "2026-05-09",
+        "sourcePin": "611059eaf13dac671ddde647ff82585ae894c5e4",
+        "repo": "https://github.com/JulianCataldo/node-flow-elements",
+        "fit": "Slotted HTML/Lit nodes, composedPath, ResizeObserver",
+        "limits": [
+          "Cubic Bezier links only",
+          "Default double-click disconnects links",
+          "Signals graph store, own layout animation; uses same @lit-labs/motion package but integration still needs house review",
+          "No complete viewer switch/obstacle routing established"
+        ]
+      },
+      {
+        "name": "lit-isoflow",
+        "version": "1.1.0",
+        "published": "2026-07-16",
+        "sourcePin": "abccd6fc88cf9b252d45011d4c3d2bb56ae677a3",
+        "repo": "https://github.com/eviltik/lit-isoflow",
+        "limits": [
+          "Isometric icon/tile model, not rich node content",
+          "A* caller creates walkable grid without node obstacles; not evidence of obstacle avoidance"
+        ]
+      }
+    ],
+    "upstream": "https://github.com/xyflow/xyflow/blob/main/packages/system/README.md says not intended for unrelated libraries; no dedicated API docs",
+    "verification": "Source-level findings only; no browser reproduction or complete repository audit",
+    "savedToProject": true
+  },
+  "editorCandidates": {
+    "reviewer": "review_docs_kit",
+    "sourcesReviewed": 29,
+    "x6": {
+      "version": "3.1.8",
+      "published": "2026-08-11",
+      "license": "MIT",
+      "pin": "b14ca27540693c610257e7687c663f122deb0006",
+      "html": "Shape.HTML accepts HTMLElement in SVG foreignObject. Content rerender empties/reinserts nodes unless effect filter; focus/state reconnection risk.",
+      "routing": "Manhattan obstacle routing + rounded connector; may fallback to non-obstacle orth routing",
+      "layout": "External; official example @antv/layout; ELK alternative requires bridge.",
+      "viewport": "Built-in pan/wheel/guards; disable editing separately",
+      "artifact": {
+        "raw": 583499,
+        "gzip": 168758
+      },
+      "deps": [
+        "dom-align",
+        "lodash-es",
+        "mousetrap",
+        "utility-types"
+      ]
+    },
+    "joint": {
+      "version": "4.3.3",
+      "published": "2026-09-04",
+      "license": "MPL-2.0",
+      "pin": "881e49d8f5e4aea080875c653997260acea67870",
+      "html": "Custom ElementView/foreignObject; source supports ordinary HTML, not verified Lit integration",
+      "routing": "Manhattan + straight cornerType cubic; old rounded deprecated; fallback can ignore obstacles",
+      "layout": "Official DirectedGraph4.3.0 uses Dagre~1.1.4/graphlib~2.2.4; first label only for setLabels.",
+      "viewport": "Core scale/translate and pan/pinch; ready PaperScroller requires Plus",
+      "artifact": {
+        "raw": 474207,
+        "gzip": 145531
+      },
+      "deps": []
+    },
+    "sharedLimits": [
+      "Measured node dimensions and relayout pipeline remain caller work",
+      "HTML control event isolation needs shadow-aware handling",
+      "Browser/Safari transform-opacity tests required, not proven currently broken",
+      "Accessible relationships/focus order/viewport controls remain house work",
+      "No guaranteed label avoidance/outside-return-lane from default route options"
+    ],
+    "verification": "Full shipped minified artifacts excluding layout, not final tree-shaken bundles. Source/metadata, no house browser proof.",
+    "savedToProject": true
+  },
+  "google": {
+    "repo": "https://github.com/google/graph-renderer",
+    "sourcePin": "9f2544602b6c0ff27370f602722d6a06f60789c1",
+    "package": "@google/graph-renderer@1.1.0",
+    "published": "2026-05-15",
+    "licenseSource": "Repository Apache-2.0; npm version metadata omitted license field",
+    "readme": "Read fully; project self-reports use in Gemini Enterprise/Application Integration, not independently verified production/performance proof",
+    "strengths": [
+      "Lit node and label templates",
+      "SVG endpoint markers and edge path injection",
+      "Pan/zoom and minimap",
+      "Per-node dragDisabled permits viewer scope"
+    ],
+    "limits": [
+      "ELK service only converts supplied edge.sections into SVG; no automatic layout invocation",
+      "No node-content ResizeObserver found in inspected node component; dimensions supplied in data",
+      "Default path signature receives edge/source/target only, not obstacle graph",
+      "Root uses RxJS BehaviorSubjects and own state/CSS motion",
+      "Root removes pointer/wheel/resize handlers on disconnect, initialization lives in firstUpdated: reconnection risk not yet browser tested",
+      "Disabled node drag returns before stopPropagation; root pan starts for any primary pointerdown: inner-control event isolation needs testing",
+      "No keyboard/accessibility handling found in targeted root/node source scan; not an exhaustive package accessibility audit",
+      "ELK peer range ^0.9.0 differs from currently published0.12.0"
+    ],
+    "sizes": {
+      "corePublishedBytes": 69239,
+      "coreGzipLevel9": 16152,
+      "coreExcludes": [
+        "Lit",
+        "RxJS"
+      ],
+      "elkPathUtilityBytes": 10054,
+      "elkPathUtilityGzipLevel9": 3300,
+      "elkPathUtilityExcludesLayoutEngine": true,
+      "integrityVerified": true
+    },
+    "assessment": "Useful reference/possible narrow path utility. Not yet recommendation as a turnkey house viewer.",
+    "savedToProject": true
+  },
+  "acceptance": {
+    "scope": "Interactive viewer only",
+    "cases": [
+      "Screenshot topology: unequal cards, labelled backward connection, branch/merge, multiple attachment sides",
+      "Changes in text wrapping, font load, control expansion and container resize update routes without losing focus",
+      "No routes through unrelated node interiors; arrow endpoints remain on intended ports",
+      "Rounded bends do not cut through nodes; arrow clearance and label placement preserve readability",
+      "Select/textinput/switch/button interactions do not pan, drag, delete or reconnect nodes",
+      "Keyboard reachable nodes/controls and equivalent textual relationships; focus visible and scrolled into view",
+      "Viewport pan/zoom, fit/reset, touch/pinch, nested page/node scrolling",
+      "RTL, light/dark/custom themes, house density/icons/motion and reduced motion",
+      "Async worker race handling, stable layout updates, teardown/reconnect",
+      "Separate route computation benchmarks from render FPS and total browser startup/transfer size"
+    ],
+    "unselected": "Exact scale limits, publicparts, loading defaults, nested groups, export and package choice.",
+    "savedToProject": true
+  },
+  "placement": "Add requested component/capability to current pass. Extend notes/analysis/package-choices.md with sourced comparison and measures; codebase-systematization.md with family dependencies; decision note for selected viewer/ELK direction; README and phase2 register with inventory returnpoints. Copy supplied screenshot to evidence on next authorized record save.",
+  "dependencies": [
+    "Selected Card/Item/Field/Group/controls provide node content; no workflow-execution engine",
+    "Shared custom themes/density/icons/motion",
+    "Separate lazy diagram/layout delivery with browser-ready worker",
+    "Resizable/Scroll Area/Sidebar container measurement",
+    "Table/chart selection and focus policies not automatically graph semantics"
+  ],
+  "revisit": "If fixed node positions while rerouting becomes required, revisit engine choice with Dagre+Libavoid or another router before inventory approval. ELK alone does not establish that capability.",
+  "researchStatus": "Parallel first comparison and limited geometry probes complete; browser integration/performance/accessibility, full redraw stability and final bundle remain unverified.",
+  "sourceCounts": {
+    "directSearchResults": 11,
+    "parallelSearchResults": 71,
+    "totalSearchResults": 82,
+    "notUniqueSourceCount": true
+  },
+  "savedToProject": true,
+  "date": "2026-09-19",
+  "persisted": true,
+  "referenceImage": "notes/alignment/evidence/flow-diagram-reference-2026-09-19.png",
+  "referenceImageVerification": {
+    "sha256": "8874e659c6520e457366306bc79de554651910db266d28d789a5e0585c22cedd",
+    "matchesSuppliedImage": true
+  }
+}

@@ -65,5 +65,30 @@
     "https://github.com/chakra-ui/chakra-ui/blob/main/packages/react/src/components/box/index.ts",
     "https://github.com/radix-ui/themes/blob/main/packages/radix-ui-themes/src/components/box.tsx"
   ],
-  "materialWeb": "Targeted tree searches found no equivalent Box or general responsive layout component; no native implementation inferred from tokens."
+  "materialWeb": "Targeted tree searches found no equivalent Box or general responsive layout component; no native implementation inferred from tokens.",
+  "openListStatus": {
+    "kind": "historical",
+    "description": "The open list preserves the original Phase 1 checkpoint, not the current decision state.",
+    "supersededBy": [
+      "phase-4-checkpoint-2026-09-19.json",
+      "pace-review-2026-09-19.json",
+      "layout-typography-review-2026-09-19.json",
+      "layout-contract-review-2026-09-19.json"
+    ],
+    "settled": [
+      "Plain values plus responsive named objects and positional arrays",
+      "Material public band names and array order",
+      "Viewport default plus explicitly selected container queries",
+      "Native CSS font bases for viewport and container queries",
+      "Application-wide configurable transition widths with fixed Material names/order",
+      "One-band, below-threshold and between-threshold responsive ranges",
+      "Between-threshold ranges include the lower and exclude the upper named threshold, using native CSS comparisons"
+    ],
+    "remaining": [
+      "Serialization and skipped entries",
+      "Complete condition-name mapping, overlap precedence and per-property support",
+      "Configuration interface/lifecycle and container declaration/selection",
+      "Implementation verification"
+    ]
+  }
 }

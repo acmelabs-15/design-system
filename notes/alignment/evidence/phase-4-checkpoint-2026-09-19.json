@@ -1,0 +1,103 @@
+{
+  "date": "2026-09-19",
+  "phase": 4,
+  "scope": "Group and shared responsive capabilities; not full inventory approval",
+  "decisions": [
+    {
+      "id": "G-01-A",
+      "status": "CONFIRMED",
+      "answer": "Align with what chakra does.",
+      "interpretation": "Permit wrap independently of attached; CSS flexWrap semantics, no per-wrapped-line recalculation of attached corner markers. Proposed single-line restriction is rejected. Exact responsive serialization remains conventions work.",
+      "source": "https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/group/group.tsx",
+      "persisted": true
+    },
+    {
+      "id": "G-01-B",
+      "status": "CONFIRMED",
+      "answer": "Align with a chakra does.",
+      "interpretation": "Each nested Group starts a new set of compatible appearance defaults. Unspecified settings use component defaults rather than merge outer Group values. Explicit child settings win. Theme inheritance is unaffected.",
+      "source": "https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/button/button-group.tsx",
+      "persisted": true
+    },
+    {
+      "id": "G-01-C",
+      "status": "CONFIRMED",
+      "answer": "Independent settings (Recommended)",
+      "interpretation": "Group attachment and outer border are independent capabilities; allow either or both. Outer-frame and joining styles preserve the needs of segmented controls and input add-ons. Exact property names/tokens still require the common inventory conventions.",
+      "persisted": true
+    },
+    {
+      "id": "C-RESP-01",
+      "status": "CONFIRMED",
+      "answer": "Objects and arrays",
+      "interpretation": "Support scalar values plus responsive named objects and positional arrays. Static HTML must have a serializable form. Breakpoint names, skipped positions and compound-value ambiguity still need the shared responsive contract.",
+      "persisted": true
+    },
+    {
+      "id": "C-RESP-02",
+      "status": "CONFIRMED",
+      "answer": "Material names (Recommended)",
+      "interpretation": "Use compact, medium, expanded, large, extraLarge as the five responsive band names and array order; preserve existing rem thresholds.",
+      "persisted": true
+    },
+    {
+      "id": "C-RESP-03",
+      "status": "CONFIRMED",
+      "answer": "Window and container (Recommended)",
+      "interpretation": "Shared responsive system supports viewport and explicitly selected container widths. Viewport is default; authors establish a query container. Exact container authoring and threshold customization remain inventory conventions work.",
+      "persisted": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/group/group.tsx",
+      "coverage": "Complete 175-line source read; independent flexWrap forwarding, attached gap/edge styles, ordered member markers"
+    },
+    {
+      "url": "https://github.com/chakra-ui/chakra-ui/blob/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/button/button-group.tsx",
+      "coverage": "Complete 25-line source read; fresh variantProps passed to provider"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/styling/responsive-design",
+      "coverage": "Complete rendered main text: scalar/object/array forms, breakpoints, ranges, visibility and customization pointers. Prior range-prose/source discrepancy remains recorded."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries",
+      "coverage": "Size-query and named-container sections read; full 1776-line navigation-heavy page not claimed."
+    },
+    {
+      "path": "src/components/grid/grid.ts",
+      "coverage": "Existing Responsive type/converter/restrict/perBreakpoint code read; useContainer property located at line 145"
+    },
+    {
+      "path": "src/components/grid/grid.styles.ts",
+      "coverage": "Existing container query occurrences inspected; no new runtime test"
+    },
+    {
+      "path": "notes/alignment/evidence/group-review-2026-09-19.json",
+      "coverage": "Prior complete Chakra/Pro comparison reused; not a new full-corpus review"
+    }
+  ],
+  "remaining": [
+    "Final Group property names, tokens and compatibility matrix",
+    "Responsive serialization, skipped positions, range rules, container declaration/selection and threshold customization",
+    "Complete Group row approval and all other inventory/conventions/docs entries",
+    "Phase 5 migration approval"
+  ],
+  "implementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Snapshot at its capture time; later selections do not alter the recorded answers or measurements.",
+    "laterRecord": "layout-contract-review-2026-09-19.json",
+    "currentHandoff": "../README.md#where-we-are",
+    "settledSince": [
+      "Shared layout/spacing property naming and numbered token keys",
+      "Explicit CSS spacing values alongside theme values",
+      "Between-threshold boundary meaning",
+      "Stack default gap and named directions"
+    ]
+  }
+}

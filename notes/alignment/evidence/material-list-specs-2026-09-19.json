@@ -1,0 +1,191 @@
+{
+  "date": "2026-09-19",
+  "url": "https://m3.material.io/components/lists/specs",
+  "coverage": "Full text, both token sets expanded at Default/Light, all 35 static figures inspected via in-app browser",
+  "limits": [
+    "No exhaustive animation/theme permutations",
+    "Graphical shape/elevation values not invented",
+    "Text-only configuration asset depicts leading checkmarks despite its alt text; checked exact source URL and loaded image"
+  ],
+  "tokens": {
+    "common": "List - Common\narrow_drop_down\nsearch\nvisibility\ngrid_view\ncollapse_all\nToken\nDefault, Light\narrow_drop_down\nfolder_open\nColor\nkeyboard_arrow_down\nfolder_open\nColor / Enabled\nkeyboard_arrow_down\nList list item container color\n#FEF7FF\nList list item segmented container color\n#FEF7FF\nList list item label text color\n#1D1B20\nList list item supporting text color\n#49454F\nList list item overline color\n#49454F\nList list item divider color\nwarning\n#79747E\nList list item divider height\nwarning\n1dp\nList list item container height\nwarning\n56dp\nOne line list item container height\nwarning\n56dp\nThree lines list item container height\nwarning\n88dp\nTwo lines list item container height\nwarning\n72dp\nList list item leading icon color\n#49454F\nList list item trailing icon color\n#49454F\nList list item unselected trailing icon color\n#1D1B20\nList list item trailing supporting text color\n#49454F\nList list item leading avatar color\n#EADDFF\nList list item leading avatar label color\n#4F378B\nList list item container elevation\nfolder_open\nColor / Enabled - Selected\nkeyboard_arrow_down\nList list item selected container color\n#E8DEF8\nList list item selected label text color\n#4A4458\nList list item selected supporting text color\n#4A4458\nList list item selected trailing supporting text color\n#4A4458\nList list item selected leading icon color\n#4A4458\nList list item selected trailing icon color\n#4A4458\nList list item selected overline color\n#4A4458\nfolder_open\nColor / Disabled\nkeyboard_arrow_down\nList list item disabled state layer color\n#1D1B20\nList list item disabled state layer opacity\n0.1\nList list item disabled label text color\n#1D1B20\nList list item disabled label text opacity\n0.38\nList list item disabled supporting text color\n#1D1B20\nList list item disabled supporting text opacity\n0.38\nList list item disabled overline color\n#1D1B20\nList list item disabled overline opacity\n0.38\nList list item disabled leading icon color\n#1D1B20\nList list item disabled leading icon opacity\n0.38\nList list item disabled trailing icon color\n#1D1B20\nList list item disabled trailing icon opacity\n0.38\nfolder_open\nColor / Disabled - Selected\nkeyboard_arrow_down\nList list item selected disabled container color\n#1D1B20\nList list item selected disabled container opacity\n0.38\nList list item selected disabled label text color\n#1D1B20\nList list item selected disabled label text opacity\n0.38\nList list item selected disabled supporting text color\n#1D1B20\nList list item selected disabled supporting text opacity\n0.38\nList list item selected disabled trailing supporting text color\n#1D1B20\nList list item selected disabled trailing supporting text opacity\n0.38\nList list item selected disabled overline color\n#1D1B20\nList list item selected disabled overline opacity\n0.38\nList list item selected disabled state layer color\n#1D1B20\nList list item selected disabled state layer opacity\n0.1\nList list item selected disabled leading icon color\n#1D1B20\nList list item selected disabled leading icon opacity\n0.38\nList list item selected disabled trailing icon color\n#1D1B20\nList list item selected disabled trailing icon opacity\n0.38\nfolder_open\nColor / Hovered\nkeyboard_arrow_down\nList list item hover state layer color\n#1D1B20\nList list item hover state layer opacity\n0.08\nList list item hover label text color\n#1D1B20\nList list item hover leading icon color\n#49454F\nList list item hover trailing icon color\n#49454F\nfolder_open\nColor / Hovered - Selected\nkeyboard_arrow_down\nList list item selected hover state layer color\n#1D1B20\nList list item selected hover state layer opacity\n0.08\nList list item selected hover label text color\n#4A4458\nList list item selected hover leading icon color\n#1D1B20\nList list item selected hover trailing icon color\n#1D1B20\nfolder_open\nColor / Focused\nkeyboard_arrow_down\nList list item focus state layer color\n#1D1B20\nList list item focus state layer opacity\n0.1\nList list item focus label text color\n#1D1B20\nList list item focus leading icon color\n#49454F\nList list item focus trailing icon color\n#49454F\nfolder_open\nColor / Focused / Focus indicator\nkeyboard_arrow_down\nList list item focus indicator color\n#625B71\nList list item focus indicator thickness\n3dp\nList list item focus indicator offset\n-3dp\nfolder_open\nColor / Focused - Selected\nkeyboard_arrow_down\nList list item selected focus state layer color\n#1D1B20\nList list item selected focus state layer opacity\n0.1\nList list item selected focus label text color\n#4A4458\nList list item selected focus leading icon color\n#1D1B20\nList list item selected focus trailing icon color\n#1D1B20\nfolder_open\nColor / Pressed (ripple)\nkeyboard_arrow_down\nList list item pressed state layer color\n#1D1B20\nList list item pressed state layer opacity\n0.1\nList list item pressed label text color\n#1D1B20\nList list item pressed leading icon color\n#49454F\nList list item pressed trailing icon color\n#49454F\nfolder_open\nColor / Pressed - Selected\nkeyboard_arrow_down\nList list item selected pressed state layer color\n#1D1B20\nList list item selected pressed state layer opacity\n0.1\nList list item selected pressed label text color\n#4A4458\nList list item selected pressed trailing icon color\n#1D1B20\nList list item selected pressed leading icon color\n#1D1B20\nfolder_open\nColor / Dragged (baseline only)\nkeyboard_arrow_down\nList list item dragged container color\nList list item dragged label text color\n#1D1B20\nList list item selected dragged label text color\n#4A4458\nList list item dragged state layer color\n#1D1B20\nList list item dragged state layer opacity\n0.16\nList list item selected dragged state layer color\n#1D1B20\nList list item selected dragged state layer opacity\n0.16\nList list item dragged leading icon color\n#49454F\nList list item selected dragged leading icon color\n#1D1B20\nList list item dragged trailing icon color\n#49454F\nList list item selected dragged trailing icon color\n#1D1B20\nfolder_open\nSpacing\nkeyboard_arrow_down\nList list item leading space\n16dp\nList list item trailing space\n16dp\nList list item top space\n10dp\nList list item bottom space\n10dp\nList list item between space\n12dp\nList list item divider leading space\n16dp\nList list item divider trailing space\n16dp\nList list item divider top space\n0\nList list item divider bottom space\n0\nList segment gap\n2dp\nfolder_open\nShape\nkeyboard_arrow_down\nList container shape\nList list item container shape\nList list item container expressive shape\nList list item container disabled expressive shape\nList list item container hovered expressive shape\nList list item container focused expressive shape\nList list item container pressed expressive shape\nList list item container dragged expressive shape\nList list item container selected expressive shape\nList list item container selected disabled expressive shape\nList list item container selected hovered expressive shape\nList list item container selected focsued expressive shape\nList list item container selected pressed expressive shape\nList list item container selected dragged expressive shape\nList list item leading avatar shape\nList list item leading video shape\nList list item leading image shape\nList list item leading image expressive shape\nList list item selected container shape\nfolder_open\nSize and typography\nkeyboard_arrow_down\nList list item leading avatar label type\n\nAa\n\nList list item leading avatar size\n40dp\nList list item leading avatar label font\nRoboto\nList list item leading avatar label line height\n24pt\nList list item leading avatar label size\n16pt\nList list item leading avatar label tracking\n0.15pt\nList list item leading avatar label weight\n500\nList list item leading icon size\n24dp\nList list item leading icon expressive size\n20dp\nList list item leading image width\n56dp\nList list item leading image height\n56dp\nList list item leading video width\n100dp\nList list item small leading video width\n100dp\nList list item small leading video height\n56dp\nList list item large leading video width\n114dp\nList list item large leading video height\n64dp\nOne line list item container height\n56dp\nTwo lines list item container height\n72dp\nThree lines list item container height\n88dp\nList list item trailing icon size\n24dp\nList list item trailing icon expressive size\n20dp\nList list item label text type\n\nAa\n\nList list item label text font\nRoboto\nList list item label text line height\n24pt\nList list item label text size\n16pt\nList list item label text tracking\n0.5pt\nList list item label text weight\n400\nList list item trailing supporting text type\n\nAa\n\nList list item trailing supporting text font\nRoboto\nList list item trailing supporting text line height\n16pt\nList list item trailing supporting text size\n11pt\nList list item trailing supporting text tracking\n0.5pt\nList list item trailing supporting text weight\n500\nList list item supporting text type\n\nAa\n\nList list item supporting text font\nRoboto\nList list item supporting text line height\n20pt\nList list item supporting text size\n14pt\nList list item supporting text tracking\n0.25pt\nList list item supporting text weight\n400\nList list item overline type\n\nAa\n\nList list item overline font\nRoboto\nList list item overline line height\n16pt\nList list item overline size\n11pt\nList list item overline tracking\n0.5pt\nList list item overline weight\n500",
+    "expand": "List - Expand\narrow_drop_down\nsearch\nvisibility\ngrid_view\ncollapse_all\nToken\nDefault, Light\narrow_drop_down\nfolder_open\nColor\nkeyboard_arrow_down\nList expand expanded list item container color\n#FEF7FF\nList expand expanded list item segmented container color\n#FEF7FF\nList expand collapsed list item trailing icon container color\n#FEF7FF\nList expand collapsed list item trailing icon icon color\n#1D1B20\nList expand expanded list item trailing icon container color\n#F3EDF7\nList expand expanded list item trailing icon icon color\n#1D1B20\nfolder_open\nShape\nkeyboard_arrow_down\nList expand container shape\nList expand trailing icon shape"
+  },
+  "images": [
+    {
+      "index": 0,
+      "alt": "2 expressive lists: a photos list on a tablet, and a song list on mobile.",
+      "url": "https://lh3.googleusercontent.com/za34_v9MVYFLgx4_LMophxugdmjrYW0gWSPfWtA_ntmDC74Lx_qID9YyOa7IEqJ73xCrYnCAXghjFmDugBK86DdvpEUUKbkfWTYCA2pV5iwt=s0"
+    },
+    {
+      "index": 1,
+      "alt": "3 baseline list items with square corners.",
+      "url": "https://lh3.googleusercontent.com/N4Dqm-y0qh8NW2KuKAqcRAmf_oyfUyeY2HgR3cHvoCwL-cM6j7fuAg97gGrX73Rs25WTv-POEG1ZSlXeyFPRkjhexmngaaSJMDJV0azeZXhV=s0"
+    },
+    {
+      "index": 2,
+      "alt": "A standard list and segmented list in dark mode.",
+      "url": "https://lh3.googleusercontent.com/AjWZ3hS3wVVBYsai8chTl-DhNYum8MkyLgX24Q1dLLV43O6P2gRIbTqcrvQMXwyFG9Jai3R-zExVwkBZ5A3QZGW4EryAzfylOS6N0FB1brD8=s0"
+    },
+    {
+      "index": 3,
+      "alt": "A single-action list with 4 items and no additional actions.",
+      "url": "https://lh3.googleusercontent.com/b5GgNFwCct9zCo3T-5FIclsjz95tsQWzwwptHqyfIs9ooGmMg8C4FLlknKKmivn_ho5bbYRLRnaxophUvZLmKrLqm1bkGF4tEyHNR4_CObV0og=s0"
+    },
+    {
+      "index": 4,
+      "alt": "A list with 4 items. Each item has 2 trailing icons for additional actions.",
+      "url": "https://lh3.googleusercontent.com/YZNJPefhDxEZHejO2AZtRcJlJmExP5SKLT5whDkHInauUNxfIgYBOXhlhXukAnjNfZRDhVUlk5fRz8QNgGAWqUaDPYkKANg3ZJ1vyK0GXZA=s0"
+    },
+    {
+      "index": 5,
+      "alt": "A list with 1 item selected.",
+      "url": "https://lh3.googleusercontent.com/N1XQO63f9X32oDtv-OfmhY2QXVt4JpIIbZVk7BmB_2FcLR7QDWORgKJOQkA81-R5pujkxNiZHTMRgjMuAcytlrMERtLFsohNDJDu888bY3g=s0"
+    },
+    {
+      "index": 6,
+      "alt": "A list with 2 items selected.",
+      "url": "https://lh3.googleusercontent.com/ANybLHYX4h2Z9SkeL_p_Pp1K3Wg9plho_Lbg3-Z5d7NwszrsXTlRm434BJIm0mbM1Km5s9XFun2jYrYZqVcj3vRF0rRY-Dk3ZpeQLYrzooMq=s0"
+    },
+    {
+      "index": 8,
+      "alt": "A list item is swiped, and reveals 3 more actions.",
+      "url": "https://lh3.googleusercontent.com/7CIUKy6Fim2680D81iGn6XanxNoVlnFioAJfyYiwtTyF2xh2_RvyyLsLSFZoUj6LRfn6MVEyvaHyv_W0q2Al0pNkZL2JYjKuWHfF8q1vLvk=s0"
+    },
+    {
+      "index": 9,
+      "alt": "Diagram with 10 elements that can be included in lists.",
+      "url": "https://lh3.googleusercontent.com/Sa8xghsBnkEPnF8eS5BsRjuohsdTmqbkr_f1sENLSXj6Vvj60a-fAE32n9nUI8ErJeIbxkQPPl7wExD8qwxOM1aUbjPPV60s-E5vfR6EN6i7=s0"
+    },
+    {
+      "index": 10,
+      "alt": "A diagram with leading, content, and trailing slots.",
+      "url": "https://lh3.googleusercontent.com/xpDca9BbXlTiv20zpU4gfBwt6MkKXaY5ZNLRcxAljGC5QsVXgH3mKaHiaEI6okSs2gUhacnLEdM2zCIC5raKpqBZl476yJ8Qchx5bxvt6Kywwg=s0"
+    },
+    {
+      "index": 11,
+      "alt": "Slot diagram showing slot placement in the middle of the list.",
+      "url": "https://lh3.googleusercontent.com/jx4zxtSR4RN6N-1sCYapnbcg_EJOMuolnJBIPdx5aR9tEJ3PB1VtfNmemVGd-IKUMyPhpg1xj2FOUwBYzeekhv1rOIX4bE33jmMPNbV10RTL8w=s0"
+    },
+    {
+      "index": 12,
+      "alt": "A selected list item with a checkmark in the leading slot.",
+      "url": "https://lh3.googleusercontent.com/_cCLtqaTv3_VJ2Su5-NcT91PPqYvyAFZeK-5w0av-NbLChQrKPvD3HSBWsc6adlc9M1DQGkIVd_eisASsmoVyA_2nO23ObPXfcuLp6O9sMU=s0"
+    },
+    {
+      "index": 13,
+      "alt": "A selected list item with both a checkmark in the leading slot and a bookmark in the trailing slot.",
+      "url": "https://lh3.googleusercontent.com/7ikqKMFSD3KqUsrjy_D0FguVESN7UimX34YCtDgR8Cqm5sbof9nysVBBnBgjQukuuXjAQooDRC5mtopWMuGcpNL6TIQDNjGzQ3fkSDJVFfLZrg=s0"
+    },
+    {
+      "index": 14,
+      "alt": "10 list element color roles in light mode and dark mode.",
+      "url": "https://lh3.googleusercontent.com/ARd2jFHJp7QY8tjQqnTd9qITF5sD6WqWXpapVsC25_-ej0okbpB1kkGYkJ8V7jSl-iFv0cW18ZGseOUM3x1CqZflXxkdU7T4znEQ0bJ3qCvx=s0"
+    },
+    {
+      "index": 15,
+      "alt": "6 default list states in light and dark mode.",
+      "url": "https://lh3.googleusercontent.com/WfsQdzz9ydTMtaG8lRdHEb8GmuDilZ3RVX7fNys6QemgIc3Euv0bnB2eKnFMZNxvApj-l2ZNNVTtCrgdS3CfuR6FmBFEv8ppLObmmykaM6yO=s0"
+    },
+    {
+      "index": 16,
+      "alt": "6 selected list states in light and dark mode.",
+      "url": "https://lh3.googleusercontent.com/plktb9RXA8a9SyxyQIpnF8qX_hMwZP0_SIXh-vuSRreRX9e8DbpLs90qXW4rIrtZyNyTmEbJTYmenlpK0EjS_q6HyaoZmb4ERojsZU2trNc=s0"
+    },
+    {
+      "index": 17,
+      "alt": "Size and padding measurements for list items.",
+      "url": "https://lh3.googleusercontent.com/i93JWmCnwH8J71-rjNfpGP1SCy_v1gjfHOkLAph3y86kvhmpo9uT_x75vfDsKz_NxDbnt9C5GWA4xX0rba-hRzTmxtfWPw-zncFBcbmzKiLm=s0"
+    },
+    {
+      "index": 18,
+      "alt": "A 3-item list. The middle item is unselected, with a 4dp corner radius.",
+      "url": "https://lh3.googleusercontent.com/ZP5JjdhEst35JLSuCdpnHvXs58yyjQdBREYdsNON0wtg-iHRjNtjvaPF6ekO3e3ceRrJWfJrP0ZfMVZ2EKbIqmfaRTuupnuHkDOkn1zwGORY=s0"
+    },
+    {
+      "index": 19,
+      "alt": "A 3-item list. The middle item is selected, with a 16dp corner radius.",
+      "url": "https://lh3.googleusercontent.com/UeCgyEiHh76y34mk1S7ebdWal471s5Yjj34uWFbNb0sEgl-iICDps6JeHuje-47Lb8h1F1ii1GsWSra-8nEeqSH5Mp1R4KVCD_ff9IU9Bagi=s0"
+    },
+    {
+      "index": 20,
+      "alt": "9 baseline list element color roles in light and dark mode.",
+      "url": "https://lh3.googleusercontent.com/c7bwcYNZe1HFiYuQW2r1uEEhDr_8PMPrgH911ney_P2AQnEZ64a34YKs47JbQnNjPbrtMfhw0FA7oQ3T1Euqx9HQ45ItoppUNl_7LUN5dX8=s0"
+    },
+    {
+      "index": 21,
+      "alt": "6 baseline list states in light and dark mode.",
+      "url": "https://lh3.googleusercontent.com/5lf9R5VeSpT9MZ52tQ1Gr9G6LJSo3T61BAkwRTHYYL4e0_ymdXq3TFfAieV8fBpokbyEkAP1dql3Z23YsmOgHwTzZclYa1v5eLG9J7lTYcJu=s0"
+    },
+    {
+      "index": 22,
+      "alt": "Alignment, padding, and size specifications for baseline list items with 1 line of text.",
+      "url": "https://lh3.googleusercontent.com/z9QvwXHZzQCURyxwHxCKWIzN9bFCueiLYqnmwebzTymL8CQV6SfHPmE39ptDMlyCdxfAYa3ymS7TFM3eWfJEHnzXOq7ndUBAoqGr211VXq-K=s0"
+    },
+    {
+      "index": 23,
+      "alt": "Measurements for a 3-item list with 1 line each.",
+      "url": "https://lh3.googleusercontent.com/khpu5JdGUDNFXqPEgOJ5ZWoXXvptYxD57jKRlck-ECQ1ge8a4pIcPdajOsbR3theeOCNLC8HoON7F71IWL5LsM5dFl_74zbveiiwPsZnriIqtQ=s0"
+    },
+    {
+      "index": 24,
+      "alt": "Alignment, padding, and size specifications for baseline list items with 2 lines of text.",
+      "url": "https://lh3.googleusercontent.com/LxLM2jQt0STwJFF6mM7jaAxeP09Gu8KXxM8a2gg_tCprAziEoUSMbqhONXIWU-yKoahTjXATtmhpqTaSxfe7x7UoAhhTD157g0YkJwJS-tse=s0"
+    },
+    {
+      "index": 25,
+      "alt": "Measurements for a 3-item list with 2 lines each.",
+      "url": "https://lh3.googleusercontent.com/UIM_5cKOrqy1Jgy2wF6ND6qMT0cXmrXlqkqpSr1hUtJoShVECpFJt1jn39e7aoczco9L3ABwR7O4gd366Fdwg7tfQnWGas_8LRAM0LWM7z0NRg=s0"
+    },
+    {
+      "index": 26,
+      "alt": "Alignment, padding, and size specifications for baseline list items with 3 lines of text.",
+      "url": "https://lh3.googleusercontent.com/eoubrmM-Nl9VlpagzZuJBlQ7Ze1c-LjzmdIfk2sIxw16gjTgSUXdPTTLa1P1o1klSZk9SP6JZjG3BrVkBCnvatvekRTyo1Qkq2SoN5eSHEWy=s0"
+    },
+    {
+      "index": 27,
+      "alt": "Measurements for a 3-item list with 3 lines each.",
+      "url": "https://lh3.googleusercontent.com/mX9bAsTDGyRcmgR60R9k2JBak4FqR4Iq5BHj_D9vHhsd3GwzcWjsnjvUzz4UDdrcd4KZE27gqKYtovW1ejGeDrnmqzdeoUULLnR8dLqTLZsf=s0"
+    },
+    {
+      "index": 28,
+      "alt": "1, 2, and 3-line list items with and without a leading avatar and trailing checkbox, in dark mode.",
+      "url": "https://lh3.googleusercontent.com/YtV6g40j9-XQCPCAVu67QZhyyBxdzXse8Aq4zgVnIWxg5eL0YP-62b5XRWhoQFLGZ77XDbPLnnLnc6cQrbdVy0vdd5Qop9rt2L0vbVMrGlw=s0"
+    },
+    {
+      "index": 29,
+      "alt": "1, 2, and 3-line list items with and without a leading image and trailing checkbox, in dark mode.",
+      "url": "https://lh3.googleusercontent.com/7K4R5eQvQLtvBGZ8iDlPrwl6-HftUdcPx0S6MRj8QLMuQMLlHQXj0EYkvlawvcIQOlaTsf1CAq8GIXC-zPanjI8B5o0Wznt8P_Os0Bir_Fq92A=s0"
+    },
+    {
+      "index": 30,
+      "alt": "1, 2, and 3-line list items with and without a leading video and trailing checkbox, in dark mode.",
+      "url": "https://lh3.googleusercontent.com/811g1L2vKGQ0BTtqAoZPO-jApLgGPEDiV-7oi308iwDk-GrwrWTuQmCkNSok5-5XqCp7iNaldpc6cnpOL2Xe1RfUSfURXuucBF8O5k5WUomf=s0"
+    },
+    {
+      "index": 31,
+      "alt": "1, 2, and 3-line list items with and without a leading icon and trailing checkbox, in dark mode.",
+      "url": "https://lh3.googleusercontent.com/F_D2HGWtWYSMxDVgfkIRpfgvy8O26m5Gq1uzE8tvEuo9m9sMLfRhcnuVfZSE6hyxoICYNuSzjIfA1yRVpcXvaJG1b02lEpkYn-l0scGCQTmt=s0"
+    },
+    {
+      "index": 32,
+      "alt": "1, 2, and 3-line text only list items with and without a trailing checkbox, in dark mode.",
+      "url": "https://lh3.googleusercontent.com/0D-xONvUbyoPV0EMlMrBItgWHQXbW1IV2dBVpIslSFeHc0mUoHbJsP3y9on5ym7Ch1ICbFcFH7026UzSdnQvTABrsRQhYe8yRiG2imFaK00=s0"
+    },
+    {
+      "index": 33,
+      "alt": "1, 2, and 3-line list items with and without a leading checkbox and trailing text, in dark mode.",
+      "url": "https://lh3.googleusercontent.com/3pOgKx-2m1N3ewCJ-joHRZ0IFwf-GHaxzimTyF_4-SYx_80TL6UnaBywa7ogFoCCil_KQgEFXoNmwKuXP_6dGsFC0uMqCLGE5qQpUqHOGdrxZQ=s0"
+    },
+    {
+      "index": 34,
+      "alt": "1, 2, and 3-line list items with and without a leading radio button and trailing text, in dark mode.",
+      "url": "https://lh3.googleusercontent.com/-Eph6i5PJ8k8D5ABIpITkh-WLe2a-gMsM-sq2qCDM1cFBVfQN3FGAYAwiryrXRkrF8-8Q3Exypco2Ir4iP0s0IRbZ_n-ZvFI2ZTuNUzz7bs=s0"
+    },
+    {
+      "index": 35,
+      "alt": "1, 2, and 3-line list items with and without a leading icon and trailing switch, in dark mode.",
+      "url": "https://lh3.googleusercontent.com/6qcPlbTkPuUN2vByfw3QiZU3_haTWYgitgstbbYGI9ugO1r8LknZ2RPovveQ18B9EOKQNu5robyVqrQs0AvZchLuQXeckUeWZEn2meby2vkA=s0"
+    }
+  ]
+}

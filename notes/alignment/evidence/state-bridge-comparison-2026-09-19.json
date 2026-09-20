@@ -1,0 +1,162 @@
+{
+  "date": "2026-09-19",
+  "scope": "Comparative state-bridge feasibility probe and source audit",
+  "versions": {
+    "lit": "3.3.3",
+    "reactiveElement": "2.1.2",
+    "tanstackLitStore": "0.13.2",
+    "tanstackStore": "0.11.0"
+  },
+  "userClarification": "TanStack Store is where state is read from and managed; public properties are access paths, not another state owner.",
+  "result": {
+    "runtime": "Bun and happy-dom with installed Lit/TanStack packages; no browser certification",
+    "results": [
+      {
+        "mode": "direct",
+        "checks": [
+          {
+            "name": "default attributes absent",
+            "ok": true
+          },
+          {
+            "name": "same default explicitly reflects",
+            "ok": true
+          },
+          {
+            "name": "number render and reflect",
+            "ok": true
+          },
+          {
+            "name": "attribute removal restores default",
+            "ok": true
+          },
+          {
+            "name": "number attribute conversion",
+            "ok": true
+          },
+          {
+            "name": "boolean conversion",
+            "ok": true
+          },
+          {
+            "name": "array identity preserved without reflection",
+            "ok": true
+          },
+          {
+            "name": "internal property-gate reflects and names change",
+            "ok": true
+          },
+          {
+            "name": "reconnect public write",
+            "ok": true
+          }
+        ],
+        "differences": [
+          {
+            "name": "store agrees immediately after property write",
+            "ok": true
+          },
+          {
+            "name": "store agrees immediately after internal property-gate write",
+            "ok": true
+          },
+          {
+            "name": "canonical state independent of rendering gate",
+            "ok": true
+          },
+          {
+            "name": "unbridged raw store write preserves public getter",
+            "ok": true
+          },
+          {
+            "name": "unbridged raw store write reflects attribute",
+            "ok": false
+          }
+        ]
+      },
+      {
+        "mode": "update",
+        "checks": [
+          {
+            "name": "default attributes absent",
+            "ok": true
+          },
+          {
+            "name": "same default explicitly reflects",
+            "ok": true
+          },
+          {
+            "name": "number render and reflect",
+            "ok": true
+          },
+          {
+            "name": "attribute removal restores default",
+            "ok": true
+          },
+          {
+            "name": "number attribute conversion",
+            "ok": true
+          },
+          {
+            "name": "boolean conversion",
+            "ok": true
+          },
+          {
+            "name": "array identity preserved without reflection",
+            "ok": true
+          },
+          {
+            "name": "internal property-gate reflects and names change",
+            "ok": true
+          },
+          {
+            "name": "reconnect public write",
+            "ok": true
+          }
+        ],
+        "differences": [
+          {
+            "name": "store agrees immediately after property write",
+            "ok": false
+          },
+          {
+            "name": "store agrees immediately after internal property-gate write",
+            "ok": false
+          },
+          {
+            "name": "canonical state independent of rendering gate",
+            "ok": false
+          },
+          {
+            "name": "unbridged raw store write preserves public getter",
+            "ok": false
+          },
+          {
+            "name": "unbridged raw store write reflects attribute",
+            "ok": false
+          }
+        ]
+      }
+    ]
+  },
+  "fixtureSource": "import{LitElement,html}from\"lit\";import{createStore,TanStackStoreSelector}from\"@tanstack/lit-store\";\nconst defaults=()=>({open:false,count:0,value:\"initial\",items:[]});\nconst declarations={open:{type:Boolean,reflect:true,useDefault:true},count:{type:Number,reflect:true,useDefault:true},value:{type:String,reflect:true,useDefault:true},items:{attribute:false}};\nfunction make(mode){class Probe extends LitElement{\n static properties=declarations;\n stateStore=createStore(defaults());\n derived=createStore(()=>JSON.stringify(this.stateStore.get()));\n selector=new TanStackStoreSelector(this,()=>this.derived);\n names=[];\n allowUpdate=true;\n constructor(){super();Object.assign(this,defaults());}\n commit(name,value){this[name]=value;}\n shouldUpdate(){return this.allowUpdate;}\n willUpdate(){if(mode===\"update\")this.stateStore.setState(()=>({open:this.open,count:this.count,value:this.value,items:this.items}));}\n updated(ch){this.names=[...ch.keys()];}\n render(){return html`<span>${this.derived.get()}</span>`;}\n}\nif(mode===\"direct\"){for(const name of Object.keys(declarations))Object.defineProperty(Probe.prototype,name,{configurable:true,enumerable:true,get(){return this.stateStore.get()[name];},set(value){this.stateStore.setState(old=>Object.is(old[name],value)?old:{...old,[name]:value});}});}\nreturn Probe;}\nconst results=[];\nfor(const mode of [\"direct\",\"update\"]){const tag=\"state-comparison-\"+mode;customElements.define(tag,make(mode));const el=document.createElement(tag);document.body.append(el);await el.updateComplete;\nconst row={mode,checks:[],differences:[]};const check=(name,ok)=>row.checks.push({name,ok});\ncheck(\"default attributes absent\",!el.hasAttribute(\"count\")&&!el.hasAttribute(\"value\"));\nel.count=0;await el.updateComplete;check(\"same default explicitly reflects\",el.getAttribute(\"count\")===\"0\");\nel.count=7;row.differences.push({name:\"store agrees immediately after property write\",ok:el.stateStore.get().count===7});await el.updateComplete;\ncheck(\"number render and reflect\",JSON.parse(el.shadowRoot.querySelector(\"span\").textContent).count===7&&el.getAttribute(\"count\")===\"7\");\nel.removeAttribute(\"count\");await el.updateComplete;check(\"attribute removal restores default\",el.count===0&&el.stateStore.get().count===0&&!el.hasAttribute(\"count\"));\nel.setAttribute(\"count\",\"12\");await el.updateComplete;check(\"number attribute conversion\",el.count===12&&el.stateStore.get().count===12);\nel.setAttribute(\"open\",\"\");await el.updateComplete;check(\"boolean conversion\",el.open===true&&el.stateStore.get().open===true);\nconst items=[\"a\",\"b\"];el.items=items;await el.updateComplete;check(\"array identity preserved without reflection\",el.stateStore.get().items===items&&!el.hasAttribute(\"items\"));\nel.commit(\"value\",\"internal\");row.differences.push({name:\"store agrees immediately after internal property-gate write\",ok:el.stateStore.get().value===\"internal\"});await el.updateComplete;\ncheck(\"internal property-gate reflects and names change\",el.getAttribute(\"value\")===\"internal\"&&el.names.includes(\"value\"));\nel.remove();document.body.append(el);await el.updateComplete;el.count=14;await el.updateComplete;check(\"reconnect public write\",el.stateStore.get().count===14&&el.getAttribute(\"count\")===\"14\");\nel.allowUpdate=false;el.count=15;await el.updateComplete;row.differences.push({name:\"canonical state independent of rendering gate\",ok:el.stateStore.get().count===15});\nel.allowUpdate=true;el.requestUpdate();await el.updateComplete;\nel.stateStore.setState(s=>({...s,value:\"raw-store\"}));await el.updateComplete;\nrow.differences.push({name:\"unbridged raw store write preserves public getter\",ok:el.value===\"raw-store\"});\nrow.differences.push({name:\"unbridged raw store write reflects attribute\",ok:el.getAttribute(\"value\")===\"raw-store\"});\nresults.push(row);el.remove();}\nconsole.log(JSON.stringify({runtime:\"Bun and happy-dom with installed Lit/TanStack packages; no browser certification\",results},null,2));",
+  "limits": [
+    "Simulated DOM only; no browser certification",
+    "Two minimal patterns, not all possible synchronization designs",
+    "Raw direct store writes in this fixture deliberately have no named Lit notification",
+    "Inheritance/upgrade/compiler/CEM/React cases not executed in this probe"
+  ],
+  "findings": [
+    "Both patterns pass the nine after-update checks.",
+    "Direct accessors preserve immediate public/store agreement and canonical state while rendering is gated.",
+    "The willUpdate copying pattern does not preserve those immediate guarantees.",
+    "TanStack rendering notifications alone do not reflect store-origin changes into public attributes."
+  ],
+  "next": "Design and test complete notification coverage without creating a second state owner. Retain standard Lit property metadata; do not assume a custom decorator is supported by CEM.",
+  "existingHelperCorrection": {
+    "atomState": "Existing setter already calls requestUpdate(name, oldValue)",
+    "baseline": "Reuse/evaluate atomState, official StoreSelector, StoreEffect and reconnect patch",
+    "probeLimit": "The two synthetic patterns did not test the existing helper and do not justify replacing it",
+    "next": "Probe public Lit metadata/attributes/defaults/reflection plus derived state, shared writes and lifecycle using existing helpers."
+  }
+}

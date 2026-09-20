@@ -1,0 +1,215 @@
+{
+  "date": "2026-09-19",
+  "status": "Captured: focused Item and general Tree View selected; Sidebar/TOC and remaining composition contracts open",
+  "requests": {
+    "requested": [
+      "shadcn-like Item",
+      "Card",
+      "Radio Card",
+      "Checkbox Card",
+      "Radio/Checkbox Card lists with Group",
+      "List relationship",
+      "Sidebar",
+      "TOC, specifically Pro toc-line",
+      "Evaluate File Tree as a general Tree/Tree View with file-tree use case"
+    ],
+    "selectedBaseline": [
+      "Group presentation/defaults",
+      "Field labels/help/errors",
+      "semantic List already requested and recorded",
+      "Card",
+      "native forms and shared indicator decisions"
+    ],
+    "open": "Sidebar/TOC addition and scope; exact Item/Card/selection/navigation relationships; specialised groups, Setting Row and companion migration. Item retention and general Tree View direction are now selected.",
+    "treeDirection": {
+      "source": "Peter proposes generalizing File Tree to Tree/Tree View that also supports non-file hierarchies.",
+      "status": "Selected: General Tree View; exact public interface and advanced capabilities remain open",
+      "dependencies": [
+        "Sidebar nested navigation vs tree-widget interaction",
+        "TOC anchor navigation",
+        "expansion vs selection",
+        "stable node identities and application-owned data",
+        "icons/labels/actions",
+        "TanStack Virtual where applicable",
+        "house state/motion/forms",
+        "current File Tree capabilities and migration"
+      ],
+      "decisionSource": "general_tree_view_direction: General Tree View (Recommended)"
+    }
+  },
+  "rowDecision": {
+    "status": "Selected: focused Item family",
+    "next": "Specify relationships and companion migration without re-asking Item retention.",
+    "latestQuestion": "focused_item_scope",
+    "latestAnswer": "Focused Item (Recommended)",
+    "supersedes": "Earlier Composed examples only answer, held provisional after Peter requested prevalence and joint-composition research.",
+    "scope": "Reusable media/title/description/supporting-information/actions content structure replacing overlapping Entity/Item purposes; not a universal owner of form, navigation, selection or tree/menu behavior.",
+    "open": "Exact name/tags/parts, interactive-root contracts, reuse inside other control families, Entity/List companion migration and SettingRow disposition remain inventory/review work.",
+    "answerHistory": [
+      {
+        "question": "shared_content_row_disposition",
+        "answer": "Composed examples only",
+        "status": "Held provisional after immediate research request; superseded"
+      },
+      {
+        "question": "focused_item_scope",
+        "answer": "Focused Item (Recommended)",
+        "status": "Selected after joint review"
+      }
+    ]
+  },
+  "map": [
+    {
+      "component": "Item",
+      "purpose": "Selected focused Item family: reusable descriptive content anatomy with optional media/text/actions",
+      "possible": "Inside List/Card and some control presentation where valid markup and one interaction owner are preserved",
+      "avoid": "Universal owner of navigation, forms, selection or tree/menu behavior",
+      "selected": true
+    },
+    {
+      "component": "Card",
+      "purpose": "Related-content surface",
+      "possible": "Contains Items, List, Fields, actions and other compositions",
+      "avoid": "Whole-card interactive root wrapping unrelated interactive children"
+    },
+    {
+      "component": "Radio/Checkbox Cards",
+      "purpose": "Selection controls with card-like presentation",
+      "possible": "Arranged/attached by Group, may contain rich content or Stat; labelled collection may use Fieldset",
+      "avoid": "Treating Group as selection engine; unchecked mapping of nestedactions/Item markup"
+    },
+    {
+      "component": "Group",
+      "purpose": "Arrangement, compatible defaults, attachment, proposed outer outline; composes sharedindicator",
+      "possible": "Controls, selectioncards, externalinputaddons, supportinglayout",
+      "avoid": "Automatically assigninglist/tree/menuroles or navigation/formvalues"
+    },
+    {
+      "component": "List",
+      "purpose": "Semantic ordered/unordered/nested collection",
+      "possible": "Richcomposedcontent and independentcontrols",
+      "avoid": "Addingselection/arrownavigation merely fromappearance"
+    },
+    {
+      "component": "Sidebar",
+      "purpose": "Proposed region with responsive visibility/presentation",
+      "possible": "Navigationlinks/disclosures,TOC,TreeView,Fields/actions; Drawer whenmodal",
+      "avoid": "MakingeverychildaMenuItem/TreeItem or owningrouting/selectionimplicitly"
+    },
+    {
+      "component": "TOC",
+      "purpose": "Proposed in-page headingnavigation/currentlocation",
+      "possible": "InsideSidebar orotherregion; nativefragments and scrolltracking",
+      "avoid": "Conflatingcurrentsection with formselection; adoptingProclick-onlyanchors or observerdeltaarray"
+    },
+    {
+      "component": "TreeView",
+      "purpose": "Selected general interactive hierarchy, with File Tree as one composition",
+      "possible": "InsideSidebar,Card,Dialog; nodepresentationcustomizable",
+      "avoid": "Automatically applyingtreeinteraction toordinarynestednavigation; assumingnodecheckedstateequalsformvalue",
+      "selected": true
+    }
+  ],
+  "toc": {
+    "completeReads": "All16files across toc-line/minimal/numbers/mobile",
+    "findings": [
+      "toc-line uses stickyoverflowBox and depthindented linkswithcurrentborder; nohref/noaria-current in thatblock.",
+      "Numbers variant hasfragmenthref butpreventsdefault withoutupdatinghash/history.",
+      "Observercallback replacesactiveIDs withonlyentriesfromlatestbatch, notfullvisibilityset; sourcealgorithmneedsreplacement/verification.",
+      "Rootdata assumednonempty; missingheadingIDs ignored; clickusesglobaldocument whileobserverusesenvironmentdocument.",
+      "Smoothscroll unconditional; focus/history/reducedmotion/scrollroot/headingmutation mustbedefined.",
+      "No existinghouseTOC; docs-app hashashhandling/routerintegration returnpoint."
+    ]
+  },
+  "sidebar": {
+    "shadcnPin": "a87a63b2ca25143d26c8bd0903e4e9bc77b3f824",
+    "coverage": "32fullfiles:2docs+2implementations+28examples",
+    "findings": [
+      "DedicatedSidebarMenu ul/li/MenuButton/MenuAction parts, notneutralItem.",
+      "Currentroute styling doesnotautomaticallysupplyaria-current.",
+      "MobileSheet,Collapsible,DropdownMenu haveindependentowners.",
+      "Railclicktotoggle notdragresize; cookieswrittennotread; shortcut lackseditingguard; responsivecopies/state requirecare."
+    ]
+  },
+  "proSidebar": {
+    "uniqueCompleteFiles": 63,
+    "fileOccurrences": 111,
+    "exactDuplicates": 48,
+    "scope": "10navigationblocks,4layoutblocks,5relatednavbarblocks,14kitfiles",
+    "findings": [
+      "Richanatomy inanchors,disclosures,menutriggers,profilecontent; notoneinteractionmodel.",
+      "Prosidebarreferences don'testablishlinkrowwithindependentsecondaryaction;shadcnprovidesrealexample.",
+      "DocsKit aria-current page; TOC separateheadingstate.",
+      "Desktop/mobile copies donotprovepreservedstate.",
+      "NoindexedTreeView orScrollAreaimports; nestedlinks/ordinaryoverflow arenotproofthosecomponents."
+    ]
+  },
+  "materialNavigation": {
+    "docs": "All8Overview/Specs/Guidelines/Accessibility articles",
+    "specs": "Both full Specs article bodies; Drawer one token set and seven static figures; Rail six expressive token sets plus baseline and sixteen static figures, inspected at the displayed default modes. Baseline Rail module says Value; do not call every module Default/Light.",
+    "sourcePin": "56a486b147b8b7e95e6e8035fa02aed7e0009a85",
+    "package": "@material/web2.5.0 gitHead b4de401eb665ec63474f39319a4ba8f2145974cc",
+    "findings": [
+      "ExpressiveexpandedrailreplacesNavigationDrawerinMaterialguidance;notautomaticHouseDrawerremoval.",
+      "PublishedLabsdrawerexistsbutmainall.tsnotexported; noRailcomponentininspectedtree/archive, tokensonly.",
+      "Labsdrawersdialogrole/Escape/scrim donotestablishfocustrap/return/inert.",
+      "Catalogappdrawercomposesaside/TOC/appbarwithresponsivebehaviors,notshippedpackage.",
+      "Materialvalues,fonts/density/geometry referencesonly."
+    ]
+  },
+  "tree": {
+    "houseRead": "FileTree,Folder,File anddocs fullyread",
+    "sourceFindings": "Rootvisualwrapper;folderbuttons togglechildren;filelinks/active styling; no tree-widefocus/selection model or treeroles.",
+    "references": [
+      "https://chakra-ui.com/docs/components/tree-view",
+      "https://www.w3.org/WAI/ARIA/apg/patterns/treeview/",
+      "https://mui.com/x/react-tree-view/quickstart/"
+    ],
+    "capability": "GenericTreeCollection plus FileTree helperreturningsamemodel supports filetreeascomposition.",
+    "baselineCandidates": [
+      "stableIDs/labels",
+      "branches/leaves",
+      "expansion",
+      "visible-nodefocus/parent-childarrows/typeahead",
+      "distinctfocus/selection",
+      "disablednodes/customcontent"
+    ],
+    "advancedUnselected": [
+      "multi-selection/checkboxmeaning+propagation",
+      "asyncchildren/filtering",
+      "rename/reorder",
+      "virtualization",
+      "nativeformvalue"
+    ],
+    "selected": true,
+    "decision": "General Tree View",
+    "decisionQuestion": "general_tree_view_direction",
+    "implementationApproved": false,
+    "sourceCoverage": {
+      "chakraPin": "1ff9873754e9913fc3d849d23c0844a628f5f20d",
+      "arkVersion": "5.39.2",
+      "zagVersion": "1.43.3",
+      "muiDocsPin": "fb95cb0d6c5935e203c605711008bcdddfe9f763",
+      "read": "Complete Chakra implementation/exports/namespace/collection; Ark Tree hook/root/provider/node/item/branch/checkbox/rename/collection; Zag tree types/connector and collection declarations; eleven MUI docs",
+      "limits": "Not every MUI embedded demo or runtime implementation; no browser acceptance tests"
+    },
+    "sourceCautions": [
+      "Chakra selectedValue and checkedValue differ; MUI checkboxes operate selection. Do not silently combine models.",
+      "Chakra renderBranch prop is declared but not consumed in inspected helper.",
+      "Tree selected/checked state does not establish a native form value; Ark wrapper does not consume Field context.",
+      "Existing house Folder depth is based on connected ancestry; generic hierarchy needs explicit dynamic-node contract."
+    ]
+  },
+  "forwardDependencies": [
+    "Field/Fieldset associations",
+    "singlecurrentvsselected indicator eligibility forTOC/navigation remainsopen",
+    "Drawerfocus/modal/scrollstate",
+    "responsivepanes/RTL/density",
+    "TanStackStore/LitMotion/generatedstyles",
+    "TanStackVirtualifrequired",
+    "APGordinarydisclosurenavigation vsTree/Menu/Listbox",
+    "SettingRow/Entity companions/SideNav/Subnav/Shell disposition",
+    "General Tree View scope: distinguish baseline interaction from optional advanced capabilities; explicit FileTree/Folder/File migration"
+  ],
+  "implementationApproved": false
+}

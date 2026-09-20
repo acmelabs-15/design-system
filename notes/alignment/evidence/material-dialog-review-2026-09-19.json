@@ -1,0 +1,103 @@
+{
+  "date": "2026-09-19",
+  "component": "Dialog",
+  "coverage": {
+    "tabs": [
+      "overview",
+      "specs",
+      "guidelines",
+      "accessibility"
+    ],
+    "tabText": "Read completely; Specs required rendered-browser fallback",
+    "tokenSets": [
+      "Dialog - Basic",
+      "Dialog - Full screen"
+    ],
+    "tokenMode": "Default, Light; expanded all",
+    "specificationFiguresViewed": 6,
+    "implementation": "Complete raw material-web/dialog/internal/dialog.ts read after text extraction omitted markup",
+    "runtimeAcceptance": false
+  },
+  "observations": [
+    "Material reference values are not house defaults.",
+    "Full-screen diagram header-region measurement 64 versus table/token header height56; requires reconciliation before using values.",
+    "Some elevation/shape token values are not expressed numerically in extracted text.",
+    "Reference dismissal/focus/busy policies differ; house rules remain inventory work."
+  ],
+  "basic": "link\nCopy link\nTokens & specs\n\nSelect a component variant below to see its elements, attributes, tokens, and their values.\n\nlink\nCopy link\nDialog - Basic\narrow_drop_down\nsearch\nvisibility\ngrid_view\ncollapse_all\nToken\nDefault, Light\narrow_drop_down\nfolder_open\nEnabled\nkeyboard_arrow_down\nfolder_open\nEnabled / Container\nkeyboard_arrow_down\nDialog container color\n#ECE6F0\nDialog container elevation\nDialog container surface tint layer color\nwarning\n#6750A4\nDialog container shape\nfolder_open\nEnabled / Label text\nkeyboard_arrow_down\nDialog action label text font\nRoboto\nDialog action label text line height\n20pt\nDialog action label text size\n14pt\nDialog action label text weight\n500\nDialog action label text tracking\n0.1pt\nLabel text type style\n\nAa\n\nDialog action label text color\n#6750A4\nfolder_open\nEnabled / Icon\nkeyboard_arrow_down\nDialog icon size\n24dp\nDialog icon color\n#625B71\nfolder_open\nEnabled / Subhead\nkeyboard_arrow_down\nDialog subhead font\nwarning\nRoboto\nDialog subhead line height\nwarning\n32pt\nDialog subhead size\nwarning\n24pt\nDialog subhead weight\nwarning\n400\nDialog subhead tracking\nwarning\n0\nSubhead type style\nwarning\n\nAa\n\nDialog subhead color\nwarning\n#1D1B20\nfolder_open\nEnabled / Headline\nkeyboard_arrow_down\nDialog headline font\nRoboto\nDialog headline line height\n32pt\nDialog headline size\n24pt\nDialog headline weight\n400\nDialog headline tracking\n0\nheadline type style\n\nAa\n\nDialog headline color\n#1D1B20\nfolder_open\nEnabled / Divider\nkeyboard_arrow_down\nDialog divider color\nwarning\n#79747E\nDialog divider color\nwarning\n1dp\nfolder_open\nEnabled / Supporting text\nkeyboard_arrow_down\nDialog supporting text font\nRoboto\nDialog supporting text line height\n20pt\nDialog supporting text size\n14pt\nDialog supporting text weight\n400\nDialog supporting text tracking\n0.25pt\nSupporting text type style\n\nAa\n\nDialog supporting text color\n#49454F\nfolder_open\nHovered\nkeyboard_arrow_down\nfolder_open\nHovered / Label text\nkeyboard_arrow_down\nDialog action hover label text color\n#6750A4\nfolder_open\nHovered / State layer\nkeyboard_arrow_down\nDialog action hover state layer color\n#6750A4\nDialog action hover state layer opacity\n0.08\nfolder_open\nFocused\nkeyboard_arrow_down\nfolder_open\nFocused / Label text\nkeyboard_arrow_down\nDialog action focus label text color\n#6750A4\nfolder_open\nFocused / State layer\nkeyboard_arrow_down\nDialog action focus state layer color\n#6750A4\nDialog action focus state layer opacity\n0.1\nfolder_open\nPressed (ripple)\nkeyboard_arrow_down\nfolder_open\nPressed (ripple) / Label text\nkeyboard_arrow_down\nDialog action pressed label text color\n#6750A4\nfolder_open\nPressed (ripple) / State layer\nkeyboard_arrow_down\nDialog action pressed state layer color\n#6750A4\nDialog action pressed state layer opacity\n0.1\nlink\nCopy link\nBasic dialogs\nlink\nCopy link\nContainer\nIcon (optional) \nHeadline (optional)\nSupporting text \nDivider (optional) \nButton label text\nScrim\nlink\nCopy link\nBasic dialog color\n\nColor values are implemented through design tokens. For design, this means working with color values that correspond with tokens. For implementation, a color value will be a token that references a value. Learn more about design tokens\n\nlink\nCopy link\n\nBasic dialog color roles used for light and dark themes:\n\nSurface container high \nSecondary \nOn surface \nOn surface variant\nPrimary \nScrim\nlink\nCopy link\nBasic dialog measurements\nlink\nCopy link\n\nBasic dialog padding and size measurements\n\nlink\nCopy link\nAttribute\tValue\nContainer shape\n\t28dp corner radius\nContainer height\n\tDynamic\nContainer width\n\tMin 280dp; Max 560dp\nDivider height\n\t1dp\nIcon size\n\t24dp\nMinimum width\n\t280dp \nMaximum width\n\t560dp\nAlignment with icon\n\tCenter-aligned\nAlignment without icon\n\tStart-aligned\nTop/Left/right/bottom padding\n\t24dp\nPadding between buttons\n\t8dp\nPadding between title and body\n\t16dp\nPadding between icon and title\n\t16dp\nPadding between body and actions\n\t24dp\nlink\nCopy link\nFull-screen dialogs\nlink\nCopy link\nContainer \nHeader \nIcon (close affordance) \nHeadline (optional) \nText button \nDivider (optional)\nlink\nCopy link\nFull-screen dialog color\n\nColor values are implemented through design tokens. For design, this means working with color values that correspond with tokens. For implementation, a color value will be a token that references a value.\n\nlink\nCopy link\n\nFull-screen dialog color roles used for light and dark themes:\n\nSurface container high \nOn surface\nOn surface\nPrimary\nOn surface variant\nlink\nCopy link\nFull-screen dialog measurements\nlink\nCopy link\n\nFull-screen dialog padding and size measurements\n\nlink\nCopy link\nAttribute\tValue\nContainer shape\n\t0dp corner radius\nContainer height\n\tDynamic\nContainer width\n\tContainer width; Max 560dp\nHeader height\n\t56dp\nHeader width\n\tContainer width\nHeadline text alignment\n\tStart-aligned\nDivider height\n\t1dp\nIcon (close affordance) size\n\t24dp\nBottom action bar height\n\t56dp\nBottom action bar width\n\tContainer width\nTop/left/right padding\n\t24dp\nPadding between elements\n\t8dp",
+  "fullScreen": "link\nCopy link\nTokens & specs\n\nSelect a component variant below to see its elements, attributes, tokens, and their values.\n\nlink\nCopy link\nDialog - Full screen\narrow_drop_down\nsearch\nvisibility\ngrid_view\ncollapse_all\nToken\nDefault, Light\narrow_drop_down\nfolder_open\nEnabled\nkeyboard_arrow_down\nfolder_open\nEnabled / Container\nkeyboard_arrow_down\nFull screen dialog on-scroll container color\n#F3EDF7\nFull screen dialog container color\n#FEF7FF\nFull screen dialog container elevation\nFull screen dialog container shape\nFull screen dialog header container height\n56dp\nFull screen dialog header container color\n#FEF7FF\nFull screen dialog header container elevation\nFull screen dialog header container surface tint layer color\nwarning\n#6750A4\nFull screen dialog header on scroll container elevation\nFull screen dialog action bar container height\nwarning\n56dp\nFull screen dialog action bar container color\nwarning\n#FEF7FF\nFull screen dialog action bar container elevation\nwarning\nFull screen dialog action bar on scroll container elevation\nwarning\nfolder_open\nEnabled / Label text\nkeyboard_arrow_down\nFull screen dialog header action label text font\nRoboto\nFull screen dialog header action label text line height\n20pt\nFull screen dialog header action label text size\n14pt\nFull screen dialog header action label text weight\n500\nFull screen dialog header action label text tracking\n0.1pt\nFull screen dialog header action label text type\n\nAa\n\nFull screen dialog header action label text color\n#6750A4\nFull screen dialog action bar label text font\nwarning\nRoboto\nFull screen dialog action bar label text line height\nwarning\n20pt\nFull screen dialog action bar label text size\nwarning\n14pt\nFull screen dialog action bar label text weight\nwarning\n500\nFull screen dialog action bar label text tracking\nwarning\n0.1pt\nFull screen dialog action bar label text type\nwarning\n\nAa\n\nFull screen dialog action bar label text color\nwarning\n#6750A4\nfolder_open\nEnabled / Icon\nkeyboard_arrow_down\nFull screen dialog header icon color\n#1D1B20\nFull screen dialog header icon size\n24dp\nfolder_open\nEnabled / Headline\nkeyboard_arrow_down\nFull screen dialog header headline color\n#1D1B20\nFull screen dialog header headline font\nRoboto\nFull screen dialog header headline line height\n28pt\nFull screen dialog header headline size\n22pt\nFull screen dialog header headline weight\n400\nFull screen dialog header headline tracking\n0\nHeader type style\n\nAa\n\nfolder_open\nEnabled / Divider\nkeyboard_arrow_down\nFull screen dialog divider color\nwarning\n#E7E0EC\nFull screen dialog divider height\nwarning\n1dp\nfolder_open\nHovered\nkeyboard_arrow_down\nfolder_open\nHovered / Label text\nkeyboard_arrow_down\nFull screen dialog header action hover label text color\n#6750A4\nFull screen dialog action bar hover label text color\nwarning\n#6750A4\nfolder_open\nHovered / State layer\nkeyboard_arrow_down\nFull screen dialog header action hover state layer color\n#6750A4\nFull screen dialog header action hover state layer opacity\n0.08\nFull screen dialog action bar hover state layer color\nwarning\n#6750A4\nFull screen dialog action bar hover state layer opacity\nwarning\n0.08\nfolder_open\nFocused\nkeyboard_arrow_down\nfolder_open\nFocused / Label text\nkeyboard_arrow_down\nFull screen dialog header action focus label text color\n#6750A4\nFull screen dialog action bar focus label text color\nwarning\n#6750A4\nfolder_open\nFocused / State layer\nkeyboard_arrow_down\nFull screen dialog header action focus state layer color\n#6750A4\nFull screen dialog header action focus state layer opacity\n0.1\nFull screen dialog action bar focus state layer color\nwarning\n#6750A4\nFull screen dialog action bar focus state layer opacity\nwarning\n0.1\nfolder_open\nPressed (ripple)\nkeyboard_arrow_down\nfolder_open\nPressed (ripple) / Label text\nkeyboard_arrow_down\nFull screen dialog header action pressed label text color\n#6750A4\nFull screen dialog action bar pressed label text color\nwarning\n#6750A4\nfolder_open\nPressed (ripple) / State layer\nkeyboard_arrow_down\nFull screen dialog header action pressed state layer color\n#6750A4\nFull screen dialog header action pressed state layer opacity\n0.1\nFull screen dialog action bar pressed state layer color\nwarning\n#6750A4\nFull screen dialog action bar pressed state layer opacity\nwarning\n0.1\nlink\nCopy link\nBasic dialogs\nlink\nCopy link\nContainer\nIcon (optional) \nHeadline (optional)\nSupporting text \nDivider (optional) \nButton label text\nScrim\nlink\nCopy link\nBasic dialog color\n\nColor values are implemented through design tokens. For design, this means working with color values that correspond with tokens. For implementation, a color value will be a token that references a value. Learn more about design tokens\n\nlink\nCopy link\n\nBasic dialog color roles used for light and dark themes:\n\nSurface container high \nSecondary \nOn surface \nOn surface variant\nPrimary \nScrim\nlink\nCopy link\nBasic dialog measurements\nlink\nCopy link\n\nBasic dialog padding and size measurements\n\nlink\nCopy link\nAttribute\tValue\nContainer shape\n\t28dp corner radius\nContainer height\n\tDynamic\nContainer width\n\tMin 280dp; Max 560dp\nDivider height\n\t1dp\nIcon size\n\t24dp\nMinimum width\n\t280dp \nMaximum width\n\t560dp\nAlignment with icon\n\tCenter-aligned\nAlignment without icon\n\tStart-aligned\nTop/Left/right/bottom padding\n\t24dp\nPadding between buttons\n\t8dp\nPadding between title and body\n\t16dp\nPadding between icon and title\n\t16dp\nPadding between body and actions\n\t24dp\nlink\nCopy link\nFull-screen dialogs\nlink\nCopy link\nContainer \nHeader \nIcon (close affordance) \nHeadline (optional) \nText button \nDivider (optional)\nlink\nCopy link\nFull-screen dialog color\n\nColor values are implemented through design tokens. For design, this means working with color values that correspond with tokens. For implementation, a color value will be a token that references a value.\n\nlink\nCopy link\n\nFull-screen dialog color roles used for light and dark themes:\n\nSurface container high \nOn surface\nOn surface\nPrimary\nOn surface variant\nlink\nCopy link\nFull-screen dialog measurements\nlink\nCopy link\n\nFull-screen dialog padding and size measurements\n\nlink\nCopy link\nAttribute\tValue\nContainer shape\n\t0dp corner radius\nContainer height\n\tDynamic\nContainer width\n\tContainer width; Max 560dp\nHeader height\n\t56dp\nHeader width\n\tContainer width\nHeadline text alignment\n\tStart-aligned\nDivider height\n\t1dp\nIcon (close affordance) size\n\t24dp\nBottom action bar height\n\t56dp\nBottom action bar width\n\tContainer width\nTop/left/right padding\n\t24dp\nPadding between elements\n\t8dp",
+  "figures": [
+    {
+      "caption": "ContainerIcon (optional) Headline (optional)Supporting text Divider (optional) Button label textScrim",
+      "i": 0,
+      "images": [
+        {
+          "alt": "Anatomy diagram numbering dialog elements.",
+          "src": "https://lh3.googleusercontent.com/8zwGCq50u42Pisi3XIhquY9uN3sTnFAYcLYzdMcQ-7RGPou4Uyy5QzWjN3NWXlHALJhtxMM-lECAxX1_duYupPka9gdFn-THeTzCdggkOUit=s0"
+        }
+      ]
+    },
+    {
+      "caption": "Basic dialog color roles used for light and dark themes:Surface container high Secondary On surface On surface variantPrimary Scrim",
+      "i": 1,
+      "images": [
+        {
+          "alt": "Color mapping diagram labeling 6 color roles across the dialog and scrim.",
+          "src": "https://lh3.googleusercontent.com/OaqvzKCkUteypP4OIa5ABlelFupDNk5XXyc8cxl0SYBNXCJPqROSqNWKjvxWk1FJpSzOwqADZvwMhPgqsgj5tbMKKdvS8L1YWWmSvJ-sDi2K=s0"
+        }
+      ]
+    },
+    {
+      "caption": "Basic dialog padding and size measurements",
+      "i": 2,
+      "images": [
+        {
+          "alt": "Annotated diagram showing padding values.",
+          "src": "https://lh3.googleusercontent.com/0b11O-Tlquj7LEzCkk4IOw1EuhHgUI6KmNyMozEEr2aANs_Q3FshFNUhXzUkn2c3occn1_9y1XSndIceqhSPiMyAT4g5lr6xwcWZtqCvpNdnHw=s0"
+        }
+      ]
+    },
+    {
+      "caption": "Container Header Icon (close affordance) Headline (optional) Text button Divider (optional)",
+      "i": 3,
+      "images": [
+        {
+          "alt": "Diagram numbering 6 full-screen dialog elements.",
+          "src": "https://lh3.googleusercontent.com/DkDLF7N_cYRseSctPY0mcn5UU3s5M37UtbNZCMovSLfZacqNP1ZR-1ur4muZ0RXpZAxdcqi65q7Uc7GRZiLumQhf54hpWiUNMxgJbJNEIzc8RQ=w40"
+        },
+        {
+          "alt": "Diagram numbering 6 full-screen dialog elements.",
+          "src": "https://lh3.googleusercontent.com/DkDLF7N_cYRseSctPY0mcn5UU3s5M37UtbNZCMovSLfZacqNP1ZR-1ur4muZ0RXpZAxdcqi65q7Uc7GRZiLumQhf54hpWiUNMxgJbJNEIzc8RQ=s0"
+        }
+      ]
+    },
+    {
+      "caption": "Full-screen dialog color roles used for light and dark themes:Surface container high On surfaceOn surfacePrimaryOn surface variant",
+      "i": 4,
+      "images": [
+        {
+          "alt": "Color mapping diagram shows 5 callout markers across the dialog.",
+          "src": "https://lh3.googleusercontent.com/i7xYaPoPLi48zudMGabAj82oZQLxetMFg4YojUXfY9GlrVVdonnVQurEssQzX0LHqABfe9QcTts3lMtKa_-jYDektbV8HGkmAIKkiDuF573F8g=w40"
+        },
+        {
+          "alt": "Color mapping diagram shows 5 callout markers across the dialog.",
+          "src": "https://lh3.googleusercontent.com/i7xYaPoPLi48zudMGabAj82oZQLxetMFg4YojUXfY9GlrVVdonnVQurEssQzX0LHqABfe9QcTts3lMtKa_-jYDektbV8HGkmAIKkiDuF573F8g=s0"
+        }
+      ]
+    },
+    {
+      "caption": "Full-screen dialog padding and size measurements",
+      "i": 5,
+      "images": [
+        {
+          "alt": "Diagram noting layout measurements for padding values, title, height, and action regions.",
+          "src": "https://lh3.googleusercontent.com/5vPLkkKzW-CnlkhE29h4YwG8QzCsM7QdxQpOS0hRO82Ox4D7VqBbZgPWKd2nHnj916gkB29tjl7k_fnuuffRyMGOmS9Xg_MJpMIsMWY-Meo=w40"
+        },
+        {
+          "alt": "Diagram noting layout measurements for padding values, title, height, and action regions.",
+          "src": "https://lh3.googleusercontent.com/5vPLkkKzW-CnlkhE29h4YwG8QzCsM7QdxQpOS0hRO82Ox4D7VqBbZgPWKd2nHnj916gkB29tjl7k_fnuuffRyMGOmS9Xg_MJpMIsMWY-Meo=s0"
+        }
+      ]
+    }
+  ]
+}

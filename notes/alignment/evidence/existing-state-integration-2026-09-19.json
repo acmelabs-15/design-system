@@ -1,0 +1,531 @@
+{
+  "date": "2026-09-19",
+  "scope": "Existing house atomState integration, tested unchanged with public Lit declarations",
+  "versions": {
+    "lit": "3.3.3",
+    "reactiveElement": "2.1.2",
+    "tanstackLitStore": "0.13.2 with existing reconnect patch",
+    "tanstackStore": "0.11.0"
+  },
+  "regressionTests": {
+    "command": "bun test src/shared/__tests__/atom-state.test.ts src/shared/__tests__/store-reconnect.test.ts",
+    "passed": 11,
+    "failed": 0,
+    "assertions": 25
+  },
+  "simulatedDom": {
+    "runtime": "Bun/happy-dom, existing atomState imported unchanged; public static Lit declarations use noAccessor",
+    "results": [
+      {
+        "name": "initial reflected defaults absent",
+        "ok": false
+      },
+      {
+        "name": "same-default explicit assignment reflects",
+        "ok": true,
+        "detail": "0"
+      },
+      {
+        "name": "public getter and derived store agree synchronously",
+        "ok": true
+      },
+      {
+        "name": "named change and reflection",
+        "ok": true,
+        "detail": [
+          "count"
+        ]
+      },
+      {
+        "name": "attribute removal restores default",
+        "ok": true,
+        "detail": 0
+      },
+      {
+        "name": "number and boolean attribute conversion",
+        "ok": true
+      },
+      {
+        "name": "canonical state independent of rendering gate",
+        "ok": true
+      },
+      {
+        "name": "detached property write and reconnect",
+        "ok": true
+      },
+      {
+        "name": "shared atom through accessor reflects",
+        "ok": true
+      },
+      {
+        "name": "external shared atom write renders",
+        "ok": true
+      },
+      {
+        "name": "external shared atom write reflects",
+        "ok": false,
+        "detail": {
+          "attribute": "2",
+          "changed": []
+        }
+      },
+      {
+        "name": "inherited metadata preserves atom accessor",
+        "ok": true
+      }
+    ]
+  },
+  "chromium": {
+    "runtime": "Chromium, existing atomState imported unchanged; bundled with installed dependencies",
+    "results": [
+      {
+        "name": "initial reflected defaults absent",
+        "ok": false
+      },
+      {
+        "name": "same-default explicit assignment reflects",
+        "ok": true,
+        "detail": "0"
+      },
+      {
+        "name": "public getter and derived store agree synchronously",
+        "ok": true
+      },
+      {
+        "name": "named change and reflection",
+        "ok": true,
+        "detail": [
+          "count"
+        ]
+      },
+      {
+        "name": "attribute removal restores default",
+        "ok": true,
+        "detail": 0
+      },
+      {
+        "name": "number and boolean attribute conversion",
+        "ok": true
+      },
+      {
+        "name": "canonical state independent of rendering gate",
+        "ok": true
+      },
+      {
+        "name": "detached property write and reconnect",
+        "ok": true
+      },
+      {
+        "name": "shared atom through accessor reflects",
+        "ok": true
+      },
+      {
+        "name": "external shared atom write renders",
+        "ok": true
+      },
+      {
+        "name": "external shared atom write reflects",
+        "ok": false,
+        "detail": {
+          "attribute": "2",
+          "changed": []
+        }
+      },
+      {
+        "name": "inherited metadata preserves atom accessor",
+        "ok": true
+      }
+    ]
+  },
+  "fixtureSource": "import{LitElement,html}from\"lit\";import{createStore,createAtom,TanStackStoreSelector}from\"@tanstack/lit-store\";import{atomState}from\"./src/shared/atom-state\";\nconst shared=createAtom(1);\nclass ExistingProbe extends LitElement{\n static properties={open:{type:Boolean,reflect:true,useDefault:true,noAccessor:true},count:{type:Number,reflect:true,useDefault:true,noAccessor:true},value:{type:String,reflect:true,useDefault:true,noAccessor:true},shared:{type:Number,reflect:true,useDefault:true,noAccessor:true}};\n @atomState() open=false;\n @atomState() count=0;\n @atomState() value=\"initial\";\n @atomState(shared) declare shared:number;\n derived=createStore(()=>JSON.stringify({open:this.open,count:this.count,value:this.value,shared:this.shared}));\n selector=new TanStackStoreSelector(this,()=>this.derived);\n changed=[];\n allowUpdate=true;\n shouldUpdate(){return this.allowUpdate;}\n updated(ch){this.changed=[...ch.keys()];}\n render(){return html`<span>${this.derived.get()}</span>`;}\n}\ncustomElements.define(\"existing-atom-probe\",ExistingProbe);\nconst results=[];const check=(name,ok,detail)=>results.push({name,ok,detail});\nconst el=document.createElement(\"existing-atom-probe\");document.body.append(el);await el.updateComplete;\ncheck(\"initial reflected defaults absent\",!el.hasAttribute(\"count\")&&!el.hasAttribute(\"value\"));\nel.count=0;await el.updateComplete;check(\"same-default explicit assignment reflects\",el.getAttribute(\"count\")===\"0\",el.getAttribute(\"count\"));\nel.count=7;check(\"public getter and derived store agree synchronously\",el.count===7&&JSON.parse(el.derived.get()).count===7);await el.updateComplete;\ncheck(\"named change and reflection\",el.changed.includes(\"count\")&&el.getAttribute(\"count\")===\"7\",el.changed);\nel.removeAttribute(\"count\");await el.updateComplete;check(\"attribute removal restores default\",el.count===0&&!el.hasAttribute(\"count\"),el.count);\nel.setAttribute(\"count\",\"12\");el.setAttribute(\"open\",\"\");await el.updateComplete;check(\"number and boolean attribute conversion\",el.count===12&&el.open===true);\nel.allowUpdate=false;el.count=15;await el.updateComplete;check(\"canonical state independent of rendering gate\",el.count===15&&JSON.parse(el.derived.get()).count===15);el.allowUpdate=true;el.requestUpdate();await el.updateComplete;\nel.remove();el.value=\"detached\";document.body.append(el);await el.updateComplete;check(\"detached property write and reconnect\",el.value===\"detached\"&&el.getAttribute(\"value\")===\"detached\"&&JSON.parse(el.shadowRoot.querySelector(\"span\").textContent).value===\"detached\");\nel.shared=2;await el.updateComplete;check(\"shared atom through accessor reflects\",shared.get()===2&&el.getAttribute(\"shared\")===\"2\");\nshared.set(3);await el.updateComplete;check(\"external shared atom write renders\",el.shared===3&&JSON.parse(el.shadowRoot.querySelector(\"span\").textContent).shared===3);check(\"external shared atom write reflects\",el.getAttribute(\"shared\")===\"3\",{attribute:el.getAttribute(\"shared\"),changed:el.changed});\nclass Inherited extends ExistingProbe {static properties={count:{type:Number,noAccessor:true,reflect:true,useDefault:true}};}\ncustomElements.define(\"inherited-atom-probe\",Inherited);const sub=document.createElement(\"inherited-atom-probe\");document.body.append(sub);await sub.updateComplete;sub.count=22;await sub.updateComplete;check(\"inherited metadata preserves atom accessor\",sub.count===22&&JSON.parse(sub.derived.get()).count===22&&sub.getAttribute(\"count\")===\"22\");\nconsole.log(JSON.stringify({runtime:\"Bun/happy-dom, existing atomState imported unchanged; public static Lit declarations use noAccessor\",results},null,2));",
+  "fixtureOptions": "Public static Lit declarations use noAccessor:true, reflect:true and useDefault:true where appropriate. Existing atomState implementation and dependency patch imported unchanged.",
+  "findings": [
+    "10/12 targeted public-integration checks passed in both happy-dom and Chromium.",
+    "Initial defaults unexpectedly reflect to attributes in this composition.",
+    "Writing a shared atom externally updates getter/derived rendering but not the reflected attribute or named changedProperties."
+  ],
+  "sourceExplanation": [
+    "atomState creates an accessor recognized as wrapped by Lit; its constructor-time named notification can schedule reflection before wrapped-default capture completes.",
+    "Property setter writes call requestUpdate(name,old); external atom writes only reach upstream selector's unnamed requestUpdate()."
+  ],
+  "limitations": [
+    "Not a full public-property contract test",
+    "No Firefox/WebKit, screen-reader, compiler, CEM or React execution",
+    "No exhaustive inheritance, upgrade timing, converters or equality matrix",
+    "No source fix implemented"
+  ],
+  "latestPackageCheck": {
+    "version": "0.14.1",
+    "published": "2026-08-05",
+    "coreDependency": "0.11.1",
+    "method": "Integrity-verified npm archive; complete index, selector and atom source read without install",
+    "finding": "Adds selector.value; still supplies rendering notification without named-property reflection and no hostConnected hook in inspected selector. Upgrade alone does not establish resolution.",
+    "installed": false
+  },
+  "next": "Record a feasible refinement of the existing helper, carry authoring/toolchain and cross-browser gates into final shared-module acceptance, and continue native-form mechanism evaluation.",
+  "refinement": {
+    "status": "Scratch feasibility candidate; production source unchanged; not a final universal helper",
+    "date": "2026-09-19",
+    "changes": [
+      "Keep atomState accessors and official TanStackStoreAtom. Add lifecycle-managed named notifications for external writes and reconciliation on connection.",
+      "Register ordinary @property({noAccessor:true,...}) metadata before atomState installs the prototype accessor. Preserve Lit default capture without private Lit fields.",
+      "Capture the shared atom initial value through a named public Lit requestUpdate before consumer writes."
+    ],
+    "simulatedDom": {
+      "runtime": "scratch refinement; Bun/happy-dom",
+      "results": [
+        {
+          "name": "initial reflected defaults absent",
+          "ok": true
+        },
+        {
+          "name": "same-default explicit assignment reflects",
+          "ok": true,
+          "detail": "0"
+        },
+        {
+          "name": "public getter and derived store agree synchronously",
+          "ok": true
+        },
+        {
+          "name": "named change and reflection",
+          "ok": true,
+          "detail": [
+            "count"
+          ]
+        },
+        {
+          "name": "attribute removal restores default",
+          "ok": true,
+          "detail": 0
+        },
+        {
+          "name": "number and boolean attribute conversion",
+          "ok": true
+        },
+        {
+          "name": "canonical state independent of rendering gate",
+          "ok": true
+        },
+        {
+          "name": "detached property write and reconnect",
+          "ok": true
+        },
+        {
+          "name": "shared atom through accessor reflects",
+          "ok": true
+        },
+        {
+          "name": "external shared atom write renders",
+          "ok": true
+        },
+        {
+          "name": "external shared atom write reflects",
+          "ok": true,
+          "detail": {
+            "attribute": "3",
+            "changed": [
+              "shared"
+            ]
+          }
+        },
+        {
+          "name": "inherited metadata preserves atom accessor",
+          "ok": true
+        },
+        {
+          "name": "write before first connection preserves class default",
+          "ok": true
+        },
+        {
+          "name": "early write does not replace reset default",
+          "ok": true
+        },
+        {
+          "name": "external shared write while detached reconciles named reflection",
+          "ok": true
+        },
+        {
+          "name": "shared change before first connection",
+          "ok": true
+        },
+        {
+          "name": "pre-upgrade property wins over initial attribute",
+          "ok": true
+        },
+        {
+          "name": "pre-upgrade assignment preserves default",
+          "ok": true
+        },
+        {
+          "name": "same NaN does not report a named change",
+          "ok": true
+        },
+        {
+          "name": "signed zero keeps canonical value and named change",
+          "ok": true
+        },
+        {
+          "name": "batched external writes reflect final value",
+          "ok": true
+        },
+        {
+          "name": "subclass converter and renamed attribute",
+          "ok": true
+        },
+        {
+          "name": "subclass reflection uses subclass converter",
+          "ok": true
+        },
+        {
+          "name": "subclass converter removal restores default",
+          "ok": true
+        }
+      ]
+    },
+    "chromium": {
+      "runtime": "in-app Chromium; observed complete rendered result through accessibility tree after final rebuild",
+      "results": [
+        {
+          "name": "initial reflected defaults absent",
+          "ok": true
+        },
+        {
+          "name": "same-default explicit assignment reflects",
+          "ok": true,
+          "detail": "0"
+        },
+        {
+          "name": "public getter and derived store agree synchronously",
+          "ok": true
+        },
+        {
+          "name": "named change and reflection",
+          "ok": true,
+          "detail": [
+            "count"
+          ]
+        },
+        {
+          "name": "attribute removal restores default",
+          "ok": true,
+          "detail": 0
+        },
+        {
+          "name": "number and boolean attribute conversion",
+          "ok": true
+        },
+        {
+          "name": "canonical state independent of rendering gate",
+          "ok": true
+        },
+        {
+          "name": "detached property write and reconnect",
+          "ok": true
+        },
+        {
+          "name": "shared atom through accessor reflects",
+          "ok": true
+        },
+        {
+          "name": "external shared atom write renders",
+          "ok": true
+        },
+        {
+          "name": "external shared atom write reflects",
+          "ok": true,
+          "detail": {
+            "attribute": "3",
+            "changed": [
+              "shared"
+            ]
+          }
+        },
+        {
+          "name": "inherited metadata preserves atom accessor",
+          "ok": true
+        },
+        {
+          "name": "write before first connection preserves class default",
+          "ok": true
+        },
+        {
+          "name": "early write does not replace reset default",
+          "ok": true
+        },
+        {
+          "name": "external shared write while detached reconciles named reflection",
+          "ok": true
+        },
+        {
+          "name": "shared change before first connection",
+          "ok": true
+        },
+        {
+          "name": "pre-upgrade property wins over initial attribute",
+          "ok": true
+        },
+        {
+          "name": "pre-upgrade assignment preserves default",
+          "ok": true
+        },
+        {
+          "name": "same NaN does not report a named change",
+          "ok": true
+        },
+        {
+          "name": "signed zero keeps canonical value and named change",
+          "ok": true
+        },
+        {
+          "name": "batched external writes reflect final value",
+          "ok": true
+        },
+        {
+          "name": "subclass converter and renamed attribute",
+          "ok": true
+        },
+        {
+          "name": "subclass reflection uses subclass converter",
+          "ok": true
+        },
+        {
+          "name": "subclass converter removal restores default",
+          "ok": true
+        }
+      ]
+    },
+    "declarationOnlyControl": {
+      "runtime": "scratch refinement; Bun/happy-dom",
+      "results": [
+        {
+          "name": "initial reflected defaults absent",
+          "ok": true
+        },
+        {
+          "name": "same-default explicit assignment reflects",
+          "ok": true,
+          "detail": "0"
+        },
+        {
+          "name": "public getter and derived store agree synchronously",
+          "ok": true
+        },
+        {
+          "name": "named change and reflection",
+          "ok": true,
+          "detail": [
+            "count"
+          ]
+        },
+        {
+          "name": "attribute removal restores default",
+          "ok": true,
+          "detail": 0
+        },
+        {
+          "name": "number and boolean attribute conversion",
+          "ok": true
+        },
+        {
+          "name": "canonical state independent of rendering gate",
+          "ok": true
+        },
+        {
+          "name": "detached property write and reconnect",
+          "ok": true
+        },
+        {
+          "name": "shared atom through accessor reflects",
+          "ok": false
+        },
+        {
+          "name": "external shared atom write renders",
+          "ok": true
+        },
+        {
+          "name": "external shared atom write reflects",
+          "ok": false,
+          "detail": {
+            "attribute": null,
+            "changed": []
+          }
+        },
+        {
+          "name": "inherited metadata preserves atom accessor",
+          "ok": true
+        },
+        {
+          "name": "write before first connection preserves class default",
+          "ok": true
+        },
+        {
+          "name": "early write does not replace reset default",
+          "ok": true
+        },
+        {
+          "name": "external shared write while detached reconciles named reflection",
+          "ok": false
+        },
+        {
+          "name": "shared change before first connection",
+          "ok": false
+        },
+        {
+          "name": "pre-upgrade property wins over initial attribute",
+          "ok": true
+        },
+        {
+          "name": "pre-upgrade assignment preserves default",
+          "ok": true
+        },
+        {
+          "name": "same NaN does not report a named change",
+          "ok": true
+        },
+        {
+          "name": "signed zero keeps canonical value and named change",
+          "ok": true
+        },
+        {
+          "name": "batched external writes reflect final value",
+          "ok": false
+        },
+        {
+          "name": "subclass converter and renamed attribute",
+          "ok": true
+        },
+        {
+          "name": "subclass reflection uses subclass converter",
+          "ok": true
+        },
+        {
+          "name": "subclass converter removal restores default",
+          "ok": true
+        }
+      ]
+    },
+    "regression": {
+      "passed": 11,
+      "failed": 0,
+      "assertions": 25,
+      "method": "Copies of existing atom-state and store-reconnect tests in scratch; helper import redirected to candidate only."
+    },
+    "typecheck": {
+      "passed": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "scope": "candidate helper only",
+      "initialFailure": "Overloaded TanStack set rejected union forwarding; corrected with explicit runtime function/value branch, no suppression."
+    },
+    "candidateSource": "import {createAtom,TanStackStoreAtom,type Atom} from \"@tanstack/lit-store\";\nimport type {ReactiveElement} from \"lit\";\n\ntype Host=ReactiveElement;\nclass NamedAtom<T> extends TanStackStoreAtom<T>{\n private last:T;\n constructor(private host:Host,private name:PropertyKey,private store:Atom<T>){\n  super(host,()=>store);\n  this.last=store.get();\n  let subscription:{unsubscribe:()=>void}|undefined;\n  const sync=(value:T)=>{const previous=this.last;this.last=value;if(!Object.is(previous,value))host.requestUpdate(name,previous);};\n  host.addController({\n   hostConnected:()=>{sync(store.get());subscription=store.subscribe(sync);},\n   hostDisconnected:()=>{subscription?.unsubscribe();subscription=undefined;}\n  });\n }\n override set(value:T|((prev:T)=>T)){\n  const previous=this.store.get();\n  if(typeof value===\"function\") super.set(value as (prev:T)=>T);\n  else super.set(value);\n  this.last=this.store.get();\n  this.host.requestUpdate(this.name,previous);\n }\n}\nconst atoms=new WeakMap<Host,Map<PropertyKey,NamedAtom<unknown>>>();\nexport function atomState<T>(shared?:Atom<T>,options?:{compare?:(a:T,b:T)=>boolean}){\n return (proto:object,name:PropertyKey)=>{\n  (proto.constructor as typeof ReactiveElement).addInitializer(host=>{\n   atomFor(host,name,shared,options);\n   if(shared)host.requestUpdate(name,undefined);\n  });\n  Object.defineProperty(proto,name,{\n   configurable:true,enumerable:true,\n   get(this:Host){return atomFor<T>(this,name,shared,options).value;},\n   set(this:Host,value:T){atomFor<T>(this,name,shared,options).set(()=>value);}\n  });\n };\n}\nfunction atomFor<T>(host:Host,name:PropertyKey,shared?:Atom<T>,options?:{compare?:(a:T,b:T)=>boolean}):NamedAtom<T>{\n let map=atoms.get(host);if(!map)atoms.set(host,map=new Map());\n let bound=map.get(name) as NamedAtom<T>|undefined;\n if(!bound){bound=new NamedAtom(host,name,shared??createAtom(undefined as T,options as never));map.set(name,bound as NamedAtom<unknown>);}\n return bound;\n}\n",
+    "fixtureSource": "import{LitElement,html}from\"lit\";import{batch,createStore,createAtom,TanStackStoreSelector}from\"@tanstack/lit-store\";import{atomState}from\"./candidate\";\nimport{property}from\"lit/decorators.js\";\nconst shared=createAtom(1);\nclass ExistingProbe extends LitElement{\n @atomState() @property({type:Boolean,reflect:true,useDefault:true,noAccessor:true}) open=false;\n @atomState() @property({type:Number,reflect:true,useDefault:true,noAccessor:true}) count=0;\n @atomState() @property({type:String,reflect:true,useDefault:true,noAccessor:true}) value=\"initial\";\n @atomState(shared) @property({type:Number,reflect:true,useDefault:true,noAccessor:true}) declare shared:number;\n derived=createStore(()=>JSON.stringify({open:this.open,count:this.count,value:this.value,shared:this.shared}));\n selector=new TanStackStoreSelector(this,()=>this.derived);\n changed=[];\n allowUpdate=true;\n shouldUpdate(){return this.allowUpdate;}\n updated(ch){this.changed=[...ch.keys()];}\n render(){return html`<span>${this.derived.get()}</span>`;}\n}\ncustomElements.define(\"existing-atom-probe\",ExistingProbe);\nconst results=[];const check=(name,ok,detail)=>results.push({name,ok,detail});\nconst el=document.createElement(\"existing-atom-probe\");document.body.append(el);await el.updateComplete;\ncheck(\"initial reflected defaults absent\",!el.hasAttribute(\"count\")&&!el.hasAttribute(\"value\"));\nel.count=0;await el.updateComplete;check(\"same-default explicit assignment reflects\",el.getAttribute(\"count\")===\"0\",el.getAttribute(\"count\"));\nel.count=7;check(\"public getter and derived store agree synchronously\",el.count===7&&JSON.parse(el.derived.get()).count===7);await el.updateComplete;\ncheck(\"named change and reflection\",el.changed.includes(\"count\")&&el.getAttribute(\"count\")===\"7\",el.changed);\nel.removeAttribute(\"count\");await el.updateComplete;check(\"attribute removal restores default\",el.count===0&&!el.hasAttribute(\"count\"),el.count);\nel.setAttribute(\"count\",\"12\");el.setAttribute(\"open\",\"\");await el.updateComplete;check(\"number and boolean attribute conversion\",el.count===12&&el.open===true);\nel.allowUpdate=false;el.count=15;await el.updateComplete;check(\"canonical state independent of rendering gate\",el.count===15&&JSON.parse(el.derived.get()).count===15);el.allowUpdate=true;el.requestUpdate();await el.updateComplete;\nel.remove();el.value=\"detached\";document.body.append(el);await el.updateComplete;check(\"detached property write and reconnect\",el.value===\"detached\"&&el.getAttribute(\"value\")===\"detached\"&&JSON.parse(el.shadowRoot.querySelector(\"span\").textContent).value===\"detached\");\nel.shared=2;await el.updateComplete;check(\"shared atom through accessor reflects\",shared.get()===2&&el.getAttribute(\"shared\")===\"2\");\nshared.set(3);await el.updateComplete;check(\"external shared atom write renders\",el.shared===3&&JSON.parse(el.shadowRoot.querySelector(\"span\").textContent).shared===3);check(\"external shared atom write reflects\",el.getAttribute(\"shared\")===\"3\",{attribute:el.getAttribute(\"shared\"),changed:el.changed});\nclass Inherited extends ExistingProbe {static properties={count:{type:Number,noAccessor:true,reflect:true,useDefault:true}};}\ncustomElements.define(\"inherited-atom-probe\",Inherited);const sub=document.createElement(\"inherited-atom-probe\");document.body.append(sub);await sub.updateComplete;sub.count=22;await sub.updateComplete;check(\"inherited metadata preserves atom accessor\",sub.count===22&&JSON.parse(sub.derived.get()).count===22&&sub.getAttribute(\"count\")===\"22\");\n\nconst early=document.createElement(\"existing-atom-probe\");early.count=8;document.body.append(early);await early.updateComplete;\ncheck(\"write before first connection preserves class default\",early.count===8&&early.getAttribute(\"count\")===\"8\");early.removeAttribute(\"count\");await early.updateComplete;check(\"early write does not replace reset default\",early.count===0);\nel.remove();shared.set(4);document.body.append(el);await el.updateComplete;check(\"external shared write while detached reconciles named reflection\",el.shared===4&&el.getAttribute(\"shared\")===\"4\"&&el.changed.includes(\"shared\"));\nconst waiting=document.createElement(\"existing-atom-probe\");shared.set(5);document.body.append(waiting);await waiting.updateComplete;check(\"shared change before first connection\",waiting.shared===5&&waiting.getAttribute(\"shared\")===\"5\");\nconst pending=document.createElement(\"upgrade-atom-probe\");pending.count=31;pending.setAttribute(\"count\",\"12\");document.body.append(pending);\nclass Upgraded extends ExistingProbe{};customElements.define(\"upgrade-atom-probe\",Upgraded);await pending.updateComplete;check(\"pre-upgrade property wins over initial attribute\",pending.count===31&&pending.getAttribute(\"count\")===\"31\");pending.removeAttribute(\"count\");await pending.updateComplete;check(\"pre-upgrade assignment preserves default\",pending.count===0);\nel.count=NaN;await el.updateComplete;el.changed=[];el.count=NaN;await el.updateComplete;check(\"same NaN does not report a named change\",el.changed.length===0);\nel.count=0;await el.updateComplete;el.count=-0;await el.updateComplete;check(\"signed zero keeps canonical value and named change\",Object.is(el.count,-0)&&el.changed.includes(\"count\"));\nbatch(()=>{shared.set(6);shared.set(7);});await el.updateComplete;check(\"batched external writes reflect final value\",el.shared===7&&el.getAttribute(\"shared\")===\"7\"&&el.changed.includes(\"shared\"));\nclass Converted extends ExistingProbe{static properties={count:{attribute:\"amount\",noAccessor:true,reflect:true,useDefault:true,converter:{fromAttribute:(s)=>s===null?null:Number(s.slice(1)),toAttribute:(n)=>\"#\"+n}}};}\ncustomElements.define(\"converted-atom-probe\",Converted);const conv=document.createElement(\"converted-atom-probe\");document.body.append(conv);await conv.updateComplete;conv.setAttribute(\"amount\",\"#42\");await conv.updateComplete;check(\"subclass converter and renamed attribute\",conv.count===42);conv.count=43;await conv.updateComplete;check(\"subclass reflection uses subclass converter\",conv.getAttribute(\"amount\")===\"#43\");conv.removeAttribute(\"amount\");await conv.updateComplete;check(\"subclass converter removal restores default\",conv.count===0);\n\nconsole.log(JSON.stringify({runtime:\"scratch refinement; Bun/happy-dom\",results},null,2));",
+    "comparison": "Changing declarations alone passes 19/24 checks; it fixes local defaults but leaves shared default capture and external/reconnect notifications incomplete. Refined helper plus declarations passes 24/24 in happy-dom and Chromium.",
+    "remaining": [
+      "Decorator-order sensitivity needs an enforced authoring contract or a better supported composition before migration.",
+      "The candidate keeps official render subscription plus a named-notification subscription; subscription cost and teardown need evaluation before universal adoption.",
+      "Firefox/WebKit, CEM output, compiler pipeline and React wrapper execution remain unverified.",
+      "No exhaustive inheritance, converters, hasChanged or stress/leak coverage is claimed."
+    ]
+  }
+}

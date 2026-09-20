@@ -1,0 +1,648 @@
+{
+  "date": "2026-09-19",
+  "phase": 4,
+  "scope": "Responsive customization/ranges, Box styling breadth and primitive text semantics; partial inventory review",
+  "decisions": [
+    {
+      "id": "C-RESP-04",
+      "status": "CONFIRMED",
+      "answer": "Configurable widths (Recommended)",
+      "decision": "Allow one application-wide configuration to adjust four ordered font-relative transition widths. Keep five Material names and array positions fixed. Material thresholds remain defaults; native query font bases remain selected.",
+      "persisted": true
+    },
+    {
+      "id": "C-RESP-05",
+      "status": "CONFIRMED",
+      "answer": "Include ranges (Recommended)",
+      "decision": "Responsive objects support one-band, below-threshold and between-threshold values. Exact boundaries and conflict rules must be explicit; do not silently copy Chakra's contradictory Down prose.",
+      "persisted": true
+    },
+    {
+      "id": "L-BOX-01",
+      "status": "CONFIRMED",
+      "answer": "Focused shared set (Recommended)",
+      "decision": "Box exposes a focused shared property set for spacing, dimensions, positioning, visibility and surface appearance, with theme values and responsive support. Other rules use ordinary CSS. Broad CSS-as-properties/state-style-object interface is not selected.",
+      "persisted": true
+    },
+    {
+      "id": "T-TEXT-01",
+      "status": "CONFIRMED",
+      "answer": "Paragraph (Recommended)",
+      "decision": "Text defaults to native paragraph semantics (p); as=span supports inline phrases. Lit retains its custom-element host; styles control layout spacing independently.",
+      "persisted": true
+    },
+    {
+      "id": "L-AS-01",
+      "status": "CONFIRMED",
+      "answer": "Defined tag sets (Recommended)",
+      "decision": "Constrain as to documented suitable native tags per primitive. Heading accepts heading levels; Text suitable text containers; Box structural containers. Arbitrary HTML/custom React substitution and asChild are not selected; dedicated controls retain interactive behavior.",
+      "persisted": true
+    },
+    {
+      "id": "T-HEADING-01",
+      "status": "CONFIRMED",
+      "answer": "Default h2 (Recommended)",
+      "decision": "Heading defaults to h2. as selects h1–h6 for document hierarchy. Visual size remains independent of semantic level.",
+      "persisted": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://chakra-ui.com/docs/theming/customization/breakpoints",
+      "coverage": "Full main content read"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/theming/customization/overview",
+      "coverage": "Full main content read"
+    },
+    {
+      "url": "https://www.radix-ui.com/themes/docs/theme/breakpoints",
+      "coverage": "Full main content read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/breakpoints.ts",
+      "coverage": "Complete 140-line source read; Only/Down/range construction and 0.04px adjustment verified; not automatically selected house semantics"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/box",
+      "coverage": "Full main content read; general CSS props plus pseudo props"
+    },
+    {
+      "url": "https://www.radix-ui.com/themes/docs/components/box",
+      "coverage": "Full main content read; focused shared layout interface"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/styling/chakra-factory",
+      "coverage": "Full main content read"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/text",
+      "coverage": "Full main content read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/text/index.tsx",
+      "coverage": "Complete source read via Bun fetch after web fetch timeout; p default"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/heading/index.tsx",
+      "coverage": "Complete source read via Bun fetch; h2 default"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/radix-ui/themes/main/packages/radix-ui-themes/src/components/text.tsx",
+      "coverage": "Complete 42-line source read; span default; ref is main, not immutable pin"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/radix-ui/themes/main/packages/radix-ui-themes/src/components/text.props.tsx",
+      "coverage": "Complete source read; restricted tag set"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/radix-ui/themes/main/packages/radix-ui-themes/src/components/heading.props.tsx",
+      "coverage": "Complete source read; h1 default and h1–h6 set"
+    }
+  ],
+  "proBoxCensus": {
+    "scope": "Literal JSX Box tags across every indexed JSX/TSX source; aliases and runtime-generated tags not counted",
+    "filesRead": 938,
+    "boxTags": 479,
+    "boxFiles": 240,
+    "attributes": [
+      [
+        "bg",
+        82
+      ],
+      [
+        "position",
+        76
+      ],
+      [
+        "color",
+        52
+      ],
+      [
+        "flex",
+        42
+      ],
+      [
+        "as",
+        41
+      ],
+      [
+        "top",
+        40
+      ],
+      [
+        "w",
+        40
+      ],
+      [
+        "p",
+        39
+      ],
+      [
+        "textStyle",
+        39
+      ],
+      [
+        "rounded",
+        37
+      ],
+      [
+        "borderWidth",
+        36
+      ],
+      [
+        "borderBottomWidth",
+        35
+      ],
+      [
+        "hideBelow",
+        34
+      ],
+      [
+        "zIndex",
+        31
+      ],
+      [
+        "width",
+        30
+      ],
+      [
+        "overflow",
+        29
+      ],
+      [
+        "py",
+        27
+      ],
+      [
+        "boxSize",
+        27
+      ],
+      [
+        "px",
+        26
+      ],
+      [
+        "fontWeight",
+        25
+      ],
+      [
+        "borderRadius",
+        25
+      ],
+      [
+        "...spread",
+        22
+      ],
+      [
+        "pos",
+        21
+      ],
+      [
+        "h",
+        20
+      ],
+      [
+        "key",
+        19
+      ],
+      [
+        "bottom",
+        19
+      ],
+      [
+        "overflowY",
+        17
+      ],
+      [
+        "css",
+        16
+      ],
+      [
+        "mt",
+        16
+      ],
+      [
+        "pt",
+        16
+      ],
+      [
+        "transition",
+        14
+      ],
+      [
+        "pb",
+        14
+      ],
+      [
+        "maxW",
+        13
+      ],
+      [
+        "borderColor",
+        13
+      ],
+      [
+        "left",
+        12
+      ],
+      [
+        "mb",
+        12
+      ],
+      [
+        "height",
+        11
+      ],
+      [
+        "maxH",
+        11
+      ],
+      [
+        "inset",
+        11
+      ],
+      [
+        "minH",
+        10
+      ],
+      [
+        "flexShrink",
+        10
+      ],
+      [
+        "fontFamily",
+        9
+      ],
+      [
+        "display",
+        8
+      ],
+      [
+        "right",
+        8
+      ],
+      [
+        "ps",
+        8
+      ],
+      [
+        "textAlign",
+        7
+      ],
+      [
+        "_icon",
+        7
+      ],
+      [
+        "asChild",
+        7
+      ],
+      [
+        "my",
+        7
+      ],
+      [
+        "borderTopWidth",
+        6
+      ],
+      [
+        "whiteSpace",
+        6
+      ],
+      [
+        "overflowX",
+        6
+      ],
+      [
+        "truncate",
+        6
+      ],
+      [
+        "layerStyle",
+        6
+      ],
+      [
+        "divideY",
+        5
+      ],
+      [
+        "insetStart",
+        5
+      ],
+      [
+        "borderRightWidth",
+        5
+      ],
+      [
+        "transform",
+        5
+      ],
+      [
+        "ml",
+        5
+      ],
+      [
+        "cursor",
+        5
+      ],
+      [
+        "minW",
+        4
+      ],
+      [
+        "insetX",
+        4
+      ],
+      [
+        "gradientFrom",
+        4
+      ],
+      [
+        "gradientTo",
+        4
+      ],
+      [
+        "className",
+        4
+      ],
+      [
+        "fontSize",
+        4
+      ],
+      [
+        "mx",
+        4
+      ],
+      [
+        "opacity",
+        4
+      ],
+      [
+        "pe",
+        4
+      ],
+      [
+        "objectFit",
+        4
+      ],
+      [
+        "borderEndWidth",
+        4
+      ],
+      [
+        "pl",
+        4
+      ],
+      [
+        "padding",
+        3
+      ],
+      [
+        "bgImage",
+        3
+      ],
+      [
+        "borderLeftWidth",
+        3
+      ],
+      [
+        "hideFrom",
+        3
+      ],
+      [
+        "aria-label",
+        3
+      ],
+      [
+        "_hover",
+        3
+      ],
+      [
+        "colorPalette",
+        3
+      ],
+      [
+        "isolation",
+        2
+      ],
+      [
+        "_focusWithin",
+        2
+      ],
+      [
+        "alignSelf",
+        2
+      ],
+      [
+        "aspectRatio",
+        2
+      ],
+      [
+        "gridColumn",
+        2
+      ],
+      [
+        "alignItems",
+        2
+      ],
+      [
+        "ref",
+        2
+      ],
+      [
+        "pointerEvents",
+        2
+      ],
+      [
+        "_last",
+        2
+      ],
+      [
+        "wordBreak",
+        2
+      ],
+      [
+        "textDecoration",
+        2
+      ],
+      [
+        "paddingTop",
+        1
+      ],
+      [
+        "paddingBottom",
+        1
+      ],
+      [
+        "paddingY",
+        1
+      ],
+      [
+        "marginX",
+        1
+      ],
+      [
+        "insetEnd",
+        1
+      ],
+      [
+        "roundedBottomLeft",
+        1
+      ],
+      [
+        "borderStartWidth",
+        1
+      ],
+      [
+        "animation",
+        1
+      ],
+      [
+        "animationPlayState",
+        1
+      ],
+      [
+        "data-first",
+        1
+      ],
+      [
+        "data-last",
+        1
+      ],
+      [
+        "me",
+        1
+      ],
+      [
+        "bgGradient",
+        1
+      ],
+      [
+        "lineClamp",
+        1
+      ],
+      [
+        "_groupHover",
+        1
+      ],
+      [
+        "justifyContent",
+        1
+      ],
+      [
+        "transformOrigin",
+        1
+      ],
+      [
+        "id",
+        1
+      ],
+      [
+        "borderLeftColor",
+        1
+      ],
+      [
+        "borderBottomColor",
+        1
+      ],
+      [
+        "columnCount",
+        1
+      ],
+      [
+        "columnGap",
+        1
+      ],
+      [
+        "ms",
+        1
+      ],
+      [
+        "lineHeight",
+        1
+      ],
+      [
+        "flexDirection",
+        1
+      ],
+      [
+        "marginStart",
+        1
+      ],
+      [
+        "onClick",
+        1
+      ],
+      [
+        "onMouseEnter",
+        1
+      ]
+    ],
+    "examples": [
+      {
+        "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-accessibility/block.tsx",
+        "count": 2
+      },
+      {
+        "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-appearance/block.tsx",
+        "count": 6
+      },
+      {
+        "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-authentication/auth-card.tsx",
+        "count": 1
+      },
+      {
+        "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-export-data/block.tsx",
+        "count": 1
+      },
+      {
+        "path": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19/blocks/setting-notification/notification-item.tsx",
+        "count": 2
+      }
+    ]
+  },
+  "proTextCensus": {
+    "scope": "Literal Text tags in all indexed JSX/TSX; not a semantic/browser validation",
+    "files": 938,
+    "tags": 917,
+    "as": {
+      "(no explicit as)": 908,
+      "\"span\"": 8,
+      "\"h3\"": 1
+    }
+  },
+  "proBreakpointSearch": {
+    "term": "breakpoints",
+    "totalMatches": 5,
+    "scope": "Whole indexed source collection searched; documentation content and fixture/metadata matches, no demonstrated custom-breakpoint implementation established."
+  },
+  "limits": [
+    "Source/authoring review only; no new browser or runtime verification",
+    "Literal JSX tag census does not count aliases or runtime-generated tags",
+    "No new scope was inferred from Pro examples",
+    "Source review does not select arbitrary Chakra style factory or React runtime"
+  ],
+  "draftOnly": [
+    "Use JSON attributes for responsive objects/arrays with JS object/array property forms; exact skipped-position/validation rules not yet approved",
+    "Exact Box property list, native tag lists for Box/Text, tokens, responsive range boundaries and precedence still require inventory specification"
+  ],
+  "next": "Persist six decisions and evidence; update inventory/handoff; then specify common property names/tokens, responsive condition boundaries and layout primitive contracts.",
+  "persisted": true,
+  "implementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false,
+  "followupStatus": {
+    "scope": "Snapshot at its capture time; later selections do not alter the recorded answers or measurements.",
+    "laterRecord": "layout-contract-review-2026-09-19.json",
+    "currentHandoff": "../README.md#where-we-are",
+    "settledSince": [
+      "Shared layout/spacing property naming and numbered token keys",
+      "Explicit CSS spacing values alongside theme values",
+      "Between-threshold boundary meaning",
+      "Stack default gap and named directions"
+    ]
+  }
+}

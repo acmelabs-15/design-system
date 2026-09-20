@@ -1,0 +1,211 @@
+{
+  "date": "2026-09-19",
+  "phase": 4,
+  "scope": "Responsive boundaries, shared layout/spacing names and values, Stack family defaults; partial inventory approval only",
+  "decisions": [
+    {
+      "id": "C-RESP-06",
+      "status": "CONFIRMED",
+      "answer": "It should probably work exactly how it works with native CSS responsive definitions, no?I think we should just match  chakra",
+      "decision": "Match Chakra's range meaning: include lower named threshold, exclude upper named threshold. Express exact bounds with native CSS comparisons rather than automatically copying Chakra's 0.04px subtraction. mediumToLarge covers medium and expanded, ending when large begins.",
+      "persisted": true
+    },
+    {
+      "id": "C-SPACE-01",
+      "status": "CONFIRMED",
+      "answer": "Theme values and CSS (Recommended)",
+      "decision": "Spacing properties accept theme spacing values and explicit valid CSS lengths/expressions. Literal values are deliberate overrides and are not automatically rescaled by density. C-SPACE-02 settles numbered token keys; exact supported keys and per-property CSS grammar remain inventory work.",
+      "persisted": true
+    },
+    {
+      "id": "C-SPACE-02",
+      "status": "CONFIRMED",
+      "answer": "Numbered keys (Recommended)",
+      "decision": "Use numbered spacing token keys. Values identify theme entries rather than pixel counts; raw CSS lengths are explicitly unit-qualified where CSS requires units. Component sizes retain their separate named-word vocabulary. Exact supported keys/default values still require token specification.",
+      "persisted": true
+    },
+    {
+      "id": "C-LAYOUT-NAMES-01",
+      "status": "CONFIRMED",
+      "answer": "Full CSS names (Recommended)",
+      "decision": "Focused shared layout properties use full CSS names and logical inline/block directions. JavaScript uses camelCase and HTML uses kebab-case. No duplicate Chakra shorthand aliases.",
+      "persisted": true
+    },
+    {
+      "id": "L-STACK-01",
+      "status": "CONFIRMED",
+      "answer": "Default to token 2 (Recommended)",
+      "decision": "Stack, HStack and VStack default gap to house spacing token 2, currently 8px. Authors can override gap, including 0. Token values respond to theme/density rules.",
+      "persisted": true
+    },
+    {
+      "id": "L-STACK-02",
+      "status": "CONFIRMED",
+      "answer": "Keep named directions (Recommended)",
+      "decision": "HStack and VStack retain horizontal/vertical direction respectively in their component interfaces. Use general Stack when direction changes responsively. This does not claim CSS cannot override author styling.",
+      "persisted": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/breakpoints.ts",
+      "coverage": "Complete source read; lower-inclusive/upper-before-next semantics with fractional subtraction in reference implementation"
+    },
+    {
+      "url": "https://drafts.csswg.org/mediaqueries-5/#mq-range-context",
+      "coverage": "Range-context and min/max sections read; native strict comparisons address fractional gaps"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/css.ts",
+      "coverage": "Complete source read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/styled-system/sort-at-rules.ts",
+      "coverage": "Complete source read; comparator dependency not read in this batch, so overlap precedence remains open"
+    },
+    {
+      "url": "https://www.radix-ui.com/themes/docs/overview/layout",
+      "coverage": "Full main content read; theme-scale and CSS-value support for spacing"
+    },
+    {
+      "url": "https://www.radix-ui.com/themes/docs/theme/spacing",
+      "coverage": "Full main content read; numeric scale; Radix full-UI scaling is not selected house density behavior"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/theming/spacing",
+      "coverage": "Full main content read; numbered spacing keys and rem values; not automatic adoption of entire scale"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/stack",
+      "coverage": "Full main content read; column and 0.5rem default"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/stack.tsx",
+      "coverage": "Complete source read via Bun fetch"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/h-stack.tsx",
+      "coverage": "Complete source read via Bun fetch; explicitly supplies row after props"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/chakra-ui/1ff9873754e9913fc3d849d23c0844a628f5f20d/packages/react/src/components/stack/v-stack.tsx",
+      "coverage": "Complete source read via Bun fetch; explicitly supplies column after props"
+    }
+  ],
+  "localSource": {
+    "path": "src/generated/theme.css",
+    "coverage": "Lines 1–52 read; current base 4px, step 2 8px; named/legacy aliases are evidence, not new approved interfaces."
+  },
+  "proStackCensus": {
+    "scope": "All indexed JSX/TSX literal Stack/HStack/VStack tags; spreads and runtime defaults not evaluated",
+    "files": 938,
+    "result": {
+      "Stack": {
+        "tags": 1064,
+        "noExplicitGap": 127,
+        "gaps": {
+          "\"3\"": 110,
+          "{{ base: '6', md: '8' }}": 56,
+          "\"6\"": 91,
+          "\"1\"": 121,
+          "\"4\"": 145,
+          "\"2\"": 37,
+          "\"8\"": 73,
+          "{{ base: '2', md: '3' }}": 27,
+          "\"5\"": 14,
+          "\"10\"": 9,
+          "\"12\"": 26,
+          "\"0\"": 64,
+          "\"20\"": 7,
+          "\"1.5\"": 7,
+          "{{ base: '6', md: '10' }}": 4,
+          "{{ base: '6', md: '0' }}": 1,
+          "\"0.5\"": 15,
+          "\"2.5\"": 4,
+          "{{ base: '16' }}": 1,
+          "{{ base: '5', md: '6' }}": 27,
+          "{{ base: '3', md: '4' }}": 25,
+          "{{ base: '12', md: '16' }}": 12,
+          "{{ base: '4', md: '5' }}": 25,
+          "{{ base: '12', xl: '24' }}": 2,
+          "{{ base: '8', md: '20' }}": 2,
+          "{{ base: '4', md: '6' }}": 8,
+          "{{ base: '10', md: '20' }}": 1,
+          "{{ base: '10', md: '14' }}": 1,
+          "\"7\"": 1,
+          "{{ base: '10', md: '4' }}": 1,
+          "{{ base: '4', md: '10' }}": 1,
+          "{{ base: '8', xl: '12' }}": 1,
+          "\"16\"": 2,
+          "{{ base: '16', md: '24' }}": 1,
+          "{{ base: '12', md: '24' }}": 2,
+          "{{ base: '8', md: '12' }}": 3,
+          "{{ base: '1', md: '2' }}": 2,
+          "{{ base: '3', md: '6' }}": 1,
+          "{{ base: '6', md: '8', lg: '12' }}": 2,
+          "{{ base: '8', md: '16' }}": 1,
+          "{{ base: '8', md: '10' }}": 1,
+          "{{ base: '4', md: 8 }}": 1,
+          "{{ base: '2', lg: '3' }}": 2
+        }
+      },
+      "HStack": {
+        "tags": 626,
+        "noExplicitGap": 302,
+        "gaps": {
+          "\"5\"": 10,
+          "\"4\"": 56,
+          "\"3\"": 64,
+          "{{ base: '2', md: '3' }}": 4,
+          "\"0\"": 8,
+          "{{ base: '4', md: '10' }}": 1,
+          "{{ base: '2', md: '4' }}": 1,
+          "\"6\"": 16,
+          "\"1\"": 48,
+          "\"2\"": 82,
+          "{{ base: '5', md: '8' }}": 1,
+          "\"8\"": 13,
+          "{{ base: '5', md: '6' }}": 3,
+          "\"1.5\"": 10,
+          "\"2.5\"": 4,
+          "{{ base: '3', md: '8' }}": 1,
+          "{{ base: '3', md: '4' }}": 1,
+          "{{ base: '4', md: '3' }}": 1
+        }
+      },
+      "VStack": {
+        "tags": 92,
+        "noExplicitGap": 20,
+        "gaps": {
+          "\"2\"": 9,
+          "\"6\"": 6,
+          "\"12\"": 4,
+          "\"20\"": 2,
+          "\"3\"": 9,
+          "\"1\"": 5,
+          "\"0\"": 8,
+          "\"24\"": 3,
+          "\"8\"": 12,
+          "\"10\"": 3,
+          "{{ base: '8', md: '20' }}": 1,
+          "\"16\"": 3,
+          "\"4\"": 6,
+          "{{ base: '4', md: '8' }}": 1
+        }
+      }
+    }
+  },
+  "limits": [
+    "No new source implementation, build or browser verification",
+    "Pro census is literal JSX tag/attribute evidence; spreads and runtime-resolved defaults not evaluated",
+    "Boundary meaning selected; complete responsive condition names, overlap precedence and compiler support remain implementation/specification checks",
+    "Numbered keys selected; entire Chakra or Radix spacing scale and units are not adopted by implication"
+  ],
+  "next": "Persist six choices, update common layout/spacing and Stack inventory drafts, then specify remaining exact property lists, token values, range precedence and native tag/attribute contracts.",
+  "persisted": true,
+  "implementationChanged": false,
+  "inventoryApproved": false,
+  "migrationApproved": false,
+  "commitCreated": false,
+  "pushPerformed": false
+}
