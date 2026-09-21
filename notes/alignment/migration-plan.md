@@ -61,6 +61,8 @@ Record fixtures/results and failures in existing analysis/evidence. A technical 
 
 - M05-01 refines the existing canonical state helper and passes all-engine ordinary/compiled public-state checks, metadata checks and 604 tests. [Evidence](evidence/m05-state-2026-09-20.json). The M05-02 headless appearance resolver also passes its focused unit, strict-type and three-engine checks; [evidence](evidence/m05-appearance-2026-09-20.json). M05-03 implements canonical ordered inputs and responsive normalization; [evidence](evidence/m05-styles-2026-09-20.json). Full style/HTML/renderer integration and theme scope remain. The [Lit helper-removal conflict](evidence/m05-style-helper-lifecycle-2026-09-20.json) needs a bounded authoring-contract revision before the public directive is implemented. Group provider lookup/integration belongs to M07.
 
+- M05-04 adds startup-only breakpoint configuration, the 77-property schema and responsive HTML conversion. The build/docs and 700 tests pass, with 137 successful browser checks per engine. [Evidence](evidence/m05-responsive-inputs-2026-09-20.json). The helper cleanup decision stays pending while independent token/theme work continues.
+
 ## Ordered implementation work packages
 
 The table fixes dependency order and atomic replacement boundaries. Each work package is split into vertical commits by the named slice, normally 3–8 authored files plus tests/generated/site output. Mechanical path/registration batches can touch many files and are explicitly labelled. Counts below are planning ranges from the current tree, not measured final diffs. Each replacement removes the old interface and updates every internal consumer in that same slice; there are no compatibility exports or legacy modes.

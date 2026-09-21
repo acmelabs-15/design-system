@@ -24,7 +24,8 @@ function ownValues(value: object): [string, unknown][] {
   });
 }
 
-function conditions(overrides?: Partial<ResponsiveBreakpoints>): Map<string, ResponsiveRange> {
+/** Fill omitted transitions from the defaults and validate a complete immutable rem table. */
+export function resolveBreakpoints(overrides?: Partial<ResponsiveBreakpoints>): ResponsiveBreakpoints {
   const widths = { ...defaultBreakpoints };
   if (overrides !== undefined) {
     if (!isPlainRecord(overrides)) throw new TypeError("Breakpoints must be a plain object");
@@ -37,6 +38,12 @@ function conditions(overrides?: Partial<ResponsiveBreakpoints>): Map<string, Res
   for (let index = 1; index < starts.length; index++) {
     if (!Number.isFinite(starts[index]) || starts[index] <= starts[index - 1]) throw new RangeError("Breakpoints must be finite, positive and strictly increasing");
   }
+  return Object.freeze(widths);
+}
+
+function conditions(overrides?: Partial<ResponsiveBreakpoints>): Map<string, ResponsiveRange> {
+  const widths = resolveBreakpoints(overrides);
+  const starts = [0, ...responsiveBands.slice(1).map((name) => widths[name as keyof typeof widths])];
   const result = new Map<string, ResponsiveRange>();
   for (const [index, name] of responsiveBands.entries()) {
     result.set(name, { min: starts[index] });
