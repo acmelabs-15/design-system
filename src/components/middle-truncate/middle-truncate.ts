@@ -72,6 +72,7 @@ const expandText = (prefix: string, suffix: string, value: string, text: string)
 const offsetsIn = (el: Node, range: Range): { start: number; end: number } | null => {
   if (!el.contains(range.startContainer) || !el.contains(range.endContainer)) return null;
   try {
+    const document = el.ownerDocument!;
     const head = document.createRange();
     head.selectNodeContents(el);
     head.setEnd(range.startContainer, range.startOffset);
@@ -85,23 +86,30 @@ const offsetsIn = (el: Node, range: Range): { start: number; end: number } | nul
 };
 
 /** Resize work is batched per frame: every instance reads its width first, then every instance measures, so no read follows a write. */
-const pending = new Map<object, () => (() => void) | null>();
-let frame = 0;
-const flush = () => {
-  frame = 0;
-  const reads = [...pending.values()];
-  pending.clear();
-  for (const measure of reads.map((read) => read())) measure?.();
+type Batch = { pending: Map<object, () => (() => void) | null>; frame?: number };
+const batches = new WeakMap<Window, Batch>();
+const schedule = (view: Window, key: object, read: () => (() => void) | null) => {
+  let batch = batches.get(view);
+  if (!batch) {
+    batch = { pending: new Map() };
+    batches.set(view, batch);
+  }
+  batch.pending.set(key, read);
+  if (batch.frame !== undefined) return;
+  batch.frame = view.requestAnimationFrame(() => {
+    batch.frame = undefined;
+    const reads = [...batch.pending.values()];
+    batch.pending.clear();
+    for (const measure of reads.map((read) => read())) measure?.();
+  });
 };
-const schedule = (key: object, read: () => (() => void) | null) => {
-  pending.set(key, read);
-  if (frame === 0 && typeof requestAnimationFrame !== "undefined") frame = requestAnimationFrame(flush);
-};
-const unschedule = (key: object) => {
-  pending.delete(key);
-  if (pending.size === 0 && frame !== 0) {
-    cancelAnimationFrame(frame);
-    frame = 0;
+const unschedule = (view: Window | undefined, key: object) => {
+  const batch = view && batches.get(view);
+  if (!batch) return;
+  batch.pending.delete(key);
+  if (!batch.pending.size && batch.frame !== undefined) {
+    view!.cancelAnimationFrame(batch.frame);
+    batch.frame = undefined;
   }
 };
 
@@ -115,17 +123,17 @@ const unschedule = (key: object) => {
  */
 
 export class AcmeMiddleTruncate extends AcmeElement {
-  static styles = [
-    sharedCss,
-    middleTruncateCss,
-    middleTruncateStructureCss,
-  ];
-  @property() value = "";
+  static styles = [sharedCss, middleTruncateCss, middleTruncateStructureCss];
+  @atomState()
+  @property({ noAccessor: true, useDefault: true })
+  value = "";
   @atomState() private shown: Cut = whole([]);
   @query(".truncate") private root!: HTMLElement;
   @query(".measure") private probe!: HTMLElement;
   @query(".text") private textEl!: HTMLElement;
   private ro?: ResizeObserver;
+  private view?: Window;
+  private fonts?: FontFaceSet;
   private widths = new Map<string, number>();
   private cacheKey = "";
   private last: { avail: number; typography: string; value: string } | null = null;
@@ -133,16 +141,25 @@ export class AcmeMiddleTruncate extends AcmeElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.view = this.ownerDocument.defaultView ?? undefined;
+    this.fonts = this.ownerDocument.fonts;
     if (typeof ResizeObserver !== "undefined") this.ro = new ResizeObserver(this.queue);
-    else window.addEventListener("resize", this.queue);
-    document.fonts?.addEventListener?.("loadingdone", this.fontsChanged);
+    else this.view?.addEventListener("resize", this.queue);
+    this.fonts?.addEventListener?.("loadingdone", this.fontsChanged);
+    this.last = null;
+    this.widths.clear();
+    if (this.root) this.ro?.observe(this.root);
+    this.queue();
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this.ro?.disconnect();
-    window.removeEventListener("resize", this.queue);
-    document.fonts?.removeEventListener?.("loadingdone", this.fontsChanged);
-    unschedule(this.key);
+    this.ro = undefined;
+    this.view?.removeEventListener("resize", this.queue);
+    this.fonts?.removeEventListener?.("loadingdone", this.fontsChanged);
+    unschedule(this.view, this.key);
+    this.view = undefined;
+    this.fonts = undefined;
   }
   firstUpdated() {
     this.ro?.observe(this.root);
@@ -155,15 +172,18 @@ export class AcmeMiddleTruncate extends AcmeElement {
   /** The width available and the typography the measurement depends on. */
   private read = () => {
     if (!this.root || !this.probe) return null;
-    const s = getComputedStyle(this.probe);
+    const s = this.ownerDocument.defaultView?.getComputedStyle(this.probe);
+    if (!s) return null;
     const typography = [s.fontFamily, s.fontFeatureSettings, s.fontKerning, s.fontSize, s.fontStretch, s.fontStyle, s.fontVariationSettings, s.fontWeight, s.letterSpacing, s.textTransform].join("\0");
     return { avail: this.root.clientWidth, typography };
   };
-  private queue = () =>
-    schedule(this.key, () => {
+  private queue = () => {
+    if (!this.view || !this.isConnected) return;
+    schedule(this.view, this.key, () => {
       const r = this.read();
       return r === null ? null : () => this.measure(r);
     });
+  };
   private fontsChanged = () => {
     this.widths.clear();
     this.last = null;
@@ -202,14 +222,14 @@ export class AcmeMiddleTruncate extends AcmeElement {
     this.shown = c;
   }
   /** Measures now, outside the frame batch: the first layout, and a new value. */
-  refit() {
+  private refit() {
     const r = this.read();
     if (r) this.measure(r);
   }
 
   private onCopy = (e: ClipboardEvent) => {
     if (e.defaultPrevented || !this.shown.truncated) return;
-    const sel = (this.renderRoot as unknown as { getSelection?: () => Selection | null }).getSelection?.() ?? window.getSelection();
+    const sel = (this.renderRoot as unknown as { getSelection?: () => Selection | null }).getSelection?.() ?? this.ownerDocument.defaultView?.getSelection();
     if (!sel || sel.rangeCount === 0) return;
     const text = sel.toString();
     if (!text) return;
@@ -231,9 +251,9 @@ export class AcmeMiddleTruncate extends AcmeElement {
   render() {
     const { truncated, prefix, suffix } = this.shown;
     const value = this.value;
-    return html`<span class="truncate" title=${truncated ? value : nothing} part="text" @copy=${this.onCopy}
+    return html`<span class="truncate" title=${truncated ? value : nothing} part="root" @copy=${this.onCopy}
       >${truncated ? html`<span class="full">${value}</span>` : nothing}<span class="sizer" aria-hidden="true">${value}</span
-      ><span class="text" aria-hidden=${truncated ? "true" : nothing}
+      ><span class="text" part="text" aria-hidden=${truncated ? "true" : nothing}
         >${truncated ? html`<span>${prefix}</span><span>…</span><span>${suffix}</span>` : value}</span
       ><span class="measure" aria-hidden="true"></span
     ></span>`;

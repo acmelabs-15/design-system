@@ -1,32 +1,19 @@
-// Docs page: Keyboard Input — mirrors https://vercel.com/geist/keyboard-input
 import type { Doc } from "../../site";
-
 export const doc: Doc = {
   id: "keyboard-input",
   title: "Keyboard Input",
-  lede: "Display keyboard input that triggers an action.",
   tags: ["acme-kbd"],
+  lede: "Display named keys or author-owned key-cap content. Kbd never registers a shortcut.",
   examples: [
-    {
-      h: "Modifiers",
-      html: `<acme-kbd meta></acme-kbd><acme-kbd shift></acme-kbd><acme-kbd alt></acme-kbd><acme-kbd ctrl></acme-kbd>`,
-    },
-    {
-      h: "Combination",
-      html: `<acme-kbd meta shift></acme-kbd>`,
-    },
-    {
-      h: "Small",
-      html: `<acme-kbd small>/</acme-kbd>`,
-    },
+    { h: "Named keys", html: `<acme-kbd keys='["Mod","Shift","K"]'></acme-kbd>` },
+    { h: "Individual modifiers", html: `<acme-kbd keys='["Meta"]'></acme-kbd><acme-kbd keys='["Shift"]'></acme-kbd><acme-kbd keys='["Alt"]'></acme-kbd><acme-kbd keys='["Control"]'></acme-kbd>` },
+    { h: "Small key cap", html: '<acme-kbd size="small">/</acme-kbd>' },
   ],
   practices: {
-    "Best Practices": [
-      "Use the element for shortcut hints in prose, menu items and button suffixes. Long-form docs that narrate a shortcut write the ⌘ K shortcut as text, so the page copies to plain text unchanged.",
-      "Pass modifiers as the boolean attributes meta, shift, alt and ctrl. The element swaps ⌘ for Ctrl on Windows and Linux; a hard-coded Cmd+K ships the wrong glyph to half the readers.",
-      "The content is one key, digit or named key (K, 7, Enter, Esc). Keep its case, keep modifiers out of it, and never pack a sentence into the element.",
-      "Use small in dense surfaces (menu rows, command-bar items, table cells) where the default size crowds the text next to it.",
-      "Punctuation stays outside the element: Press ⌘ K to open the command menu. Periods, commas and or separators live in the prose, so a screen reader does not read them as keys.",
+    "Keep display separate from behavior": [
+      "keys supplies named keys in authored order. When keys is absent, the default slot supplies the content.",
+      "Platform symbols come from the shared hotkey formatter. Application message catalogs can replace visible and accessible key labels.",
+      "Use configureMessages(locale, labels) with keys such as kbd.Control and kbd.Control.label. Platform-specific labels use kbd.mac.Control or the matching windows/linux key.",
     ],
   },
 };

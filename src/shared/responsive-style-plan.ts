@@ -5,7 +5,7 @@ import { isAuthoredStyleScalar, isStyleScalar, type StyleDisplayMode, type Style
 export type ResponsiveStyleDeclaration = Readonly<{
   property: string;
   value: string;
-  target: "host" | "host-and-root";
+  target: "host" | "host-and-root" | "root";
 }>;
 export type ResponsiveStyleBlock = Readonly<{
   range: ResponsiveRange;

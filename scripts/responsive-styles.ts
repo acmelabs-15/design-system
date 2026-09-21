@@ -5,7 +5,7 @@ import { type StyleInputKey, styleInputSchema } from "../src/shared/style-input-
 
 export type GeneratedResponsiveStyleRule = Readonly<{
   property: string;
-  target: "host" | "host-and-root";
+  target: "host" | "host-and-root" | "root";
   selector: string;
   template: string;
 }>;
@@ -17,7 +17,7 @@ export type GeneratedResponsiveStyleDelivery = Readonly<{
   rules: Readonly<Record<StyleInputKey, GeneratedResponsiveStyleRule>>;
 }>;
 
-const selector = (_target: GeneratedResponsiveStyleRule["target"]) => ":host";
+const selector = (target: GeneratedResponsiveStyleRule["target"]) => (target === "root" ? '[part~="root"]' : ":host");
 
 function validateRule(rule: GeneratedResponsiveStyleRule): void {
   transform({ filename: "responsive-style-template.css", code: Buffer.from(rule.template) });

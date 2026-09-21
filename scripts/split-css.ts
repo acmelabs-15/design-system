@@ -37,7 +37,6 @@ const MAP: [string, RegExp][] = [
   ["empty-state", /^\.empty-state/],
   ["table", /^(table\.table|\.table\b|\.table-wrap|\.cellbar|\.cellspark|\.table-foot|\.matrix)/],
   ["field", /^(\.field|\.flabel|\.form-label|\.grid2)/],
-  ["kbd", /^\.kbd/],
   ["modal", /^(dialog|\.modal)/],
   ["sheet", /^(\.sheet|@keyframes sheet-)/],
   ["menu", /^\.menu/],
@@ -92,7 +91,6 @@ const MAP: [string, RegExp][] = [
   ["file-tree", /^\.tree/],
   ["json-view", /^\.json/],
   ["multi-select", /^(\.multi-select|\.ms-row)/],
-  ["relative-time", /^(\.time-card|\.reltime)/],
   ["video", /^\.video/],
 ];
 const moduleOf = (sel: string): string | null => {

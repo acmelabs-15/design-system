@@ -27,7 +27,7 @@ export const clearableInputCss = css`.input :where(.cmdk) :where(.k-esc) :where(
   margin-left: 0 !important;
 }
 
-.input :where(.cmdk) :where(.k-esc)::part(kbd) {
+.input :where(.cmdk) :where(.k-esc)::part(root) {
   transition-property: transform, translate, scale, rotate;
   transition-timing-function: var(--timing);
   transition-duration: var(--duration);
@@ -70,12 +70,12 @@ export const clearableInputCss = css`.input :where(.cmdk) :where(.k-esc) :where(
   display: flex;
 }
 
-.input :where(.clear) :where(acme-kbd)::part(kbd) {
+.input :where(.clear) :where(acme-kbd)::part(root) {
   font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-900) !important;
 }
 
-.input :where(.cmdk) :where(.k-k)::part(kbd) {
+.input :where(.cmdk) :where(.k-k)::part(root) {
   transition-property: translate;
   transition-timing-function: var(--timing);
   transition-duration: var(--duration);
@@ -100,7 +100,7 @@ export const clearableInputCss = css`.input :where(.cmdk) :where(.k-esc) :where(
   translate: -1.5rem;
 }
 
-.input[data-animate="true"] :where(.cmdk) :where(.k-esc)::part(kbd) {
+.input[data-animate="true"] :where(.cmdk) :where(.k-esc)::part(root) {
   width: 1.75rem;
   translate: 26px;
 }
@@ -109,7 +109,7 @@ export const clearableInputCss = css`.input :where(.cmdk) :where(.k-esc) :where(
   translate: calc(calc(var(--padding) * -1) * -1) 0;
 }
 
-.input[data-animate="true"] :where(.cmdk) :where(.k-k)::part(kbd) {
+.input[data-animate="true"] :where(.cmdk) :where(.k-k)::part(root) {
   translate: 33px;
 }
 

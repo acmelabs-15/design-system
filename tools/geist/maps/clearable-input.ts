@@ -4,7 +4,7 @@
 // field has a value (`data-animate` on the input host).
 import { type GeistMap, has, type SpecNode } from "../gen";
 
-const kbd = (ours: string, index: number, children?: GeistMap["children"]) => ({ ours, pick: (c: SpecNode, i: number) => c.tag === "kbd" && i === index, extends: "kbd", part: "kbd", children });
+const kbd = (ours: string, index: number, children?: GeistMap["children"]) => ({ ours, pick: (c: SpecNode, i: number) => c.tag === "kbd" && i === index, extends: "kbd", part: "root", children });
 
 export const geist: GeistMap = {
   page: "clearable-input",

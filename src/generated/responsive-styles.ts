@@ -99,5 +99,9 @@ export const responsiveStyleDelivery = Object.freeze({
   "gridAutoRows": Object.freeze({ property: "grid-auto-rows", target: "host", selector: ":host", template: ":host{grid-auto-rows:initial;}" }),
   "gridAutoFlow": Object.freeze({ property: "grid-auto-flow", target: "host", selector: ":host", template: ":host{grid-auto-flow:initial;}" }),
   "justifyItems": Object.freeze({ property: "justify-items", target: "host", selector: ":host", template: ":host{justify-items:initial;}" }),
+  "fontSize": Object.freeze({ property: "font-size", target: "host", selector: ":host", template: ":host{font-size:initial;}" }),
+  "textAlign": Object.freeze({ property: "text-align", target: "host", selector: ":host", template: ":host{text-align:initial;}" }),
+  "fontWeight": Object.freeze({ property: "font-weight", target: "host", selector: ":host", template: ":host{font-weight:initial;}" }),
+  "lineClamp": Object.freeze({ property: "-webkit-line-clamp", target: "root", selector: "[part~=\"root\"]", template: "[part~=\"root\"]{-webkit-line-clamp:initial;}" }),
   }),
 }) satisfies ResponsiveStyleDelivery;

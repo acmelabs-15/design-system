@@ -15,11 +15,12 @@ test("the generated delivery owns every common CSS declaration and target", () =
   expect(delivery.version).toBe(1);
   expect(Object.keys(delivery.rules)).toEqual(Object.keys(styleInputSchema));
   for (const [key, metadata] of Object.entries(styleInputSchema)) {
+    const selector = metadata.target === "root" ? '[part~="root"]' : ":host";
     expect(delivery.rules[key as StyleInputKey]).toEqual({
       property: metadata.cssProperty,
       target: metadata.target,
-      selector: ":host",
-      template: `:host{${metadata.cssProperty}:initial;}`,
+      selector,
+      template: `${selector}{${metadata.cssProperty}:initial;}`,
     });
   }
   expect(Object.isFrozen(delivery)).toBe(true);

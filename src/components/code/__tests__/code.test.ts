@@ -1,51 +1,45 @@
-import "../../../define/code";
-import { describe, expect, test } from "bun:test";
+import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeCode } from "../code";
-import { tokenLines } from "../code";
-
-const mount = async (markup: string) => {
-  document.body.innerHTML = markup;
-  const el = document.body.firstElementChild as AcmeCode;
-  await el.updateComplete;
-  return el;
+import { tokenLines } from "../../../shared/highlight";
+afterEach(() => document.body.replaceChildren());
+const mount = async (source: string, syntax = "") => {
+  const code = document.createElement("acme-code") as AcmeCode;
+  code.textContent = source;
+  code.syntax = syntax;
+  document.body.append(code);
+  await code.updateComplete;
+  return code;
 };
-
-describe("acme-code", () => {
-  test("renders the source in a pre with a code body, tokens as token spans", async () => {
-    const el = await mount(`<acme-code syntax="javascript">const a = 1; // one</acme-code>`);
-    const pre = el.shadowRoot!.querySelector("pre.code")!;
-    const body = pre.querySelector("code.body")!;
-    expect(body.getAttribute("style")).toContain("liga");
-    expect(body.textContent).toBe("const a = 1; // one");
-    expect(body.querySelector(".token.keyword")!.textContent).toBe("const");
-    expect(body.querySelector(".token.comment")!.textContent).toBe("// one");
-  });
-
-  test("lines split at newlines and keep their order; unknown languages stay plain", async () => {
-    const el = await mount(`<acme-code syntax="nope">
-a
-  b</acme-code>`);
-    const body = el.shadowRoot!.querySelector("code.body")!;
-    expect(body.textContent).toBe("a\n  b");
-    expect(body.querySelector(".token")).toBeNull();
-  });
-
-  test("tokenLines maps the highlighter's kinds to the styled names", () => {
-    const lines = tokenLines("<div class='x'></div>", "html");
-    const html = lines
-      .flat()
-      .map((p) => (typeof p === "string" ? p : p.strings.join("") + p.values.join("")))
-      .join("");
-    expect(html).toContain("token tag");
-    expect(html).toContain("token attr-name");
-  });
-
-  test("a change of the text re-renders", async () => {
-    const el = await mount(`<acme-code syntax="js">let x</acme-code>`);
-    el.textContent = "let y";
-    await new Promise((r) => setTimeout(r, 0));
-    await el.updateComplete;
-    expect(el.shadowRoot!.querySelector("code.body")!.textContent).toBe("let y");
-  });
+test("Code is native inline code and preserves source whitespace", async () => {
+  const code = await mount("  let x = 1;\n ");
+  const root = code.shadowRoot!.querySelector("code")!;
+  expect(root.getAttribute("part")).toBe("root");
+  expect(root.textContent).toBe("  let x = 1;\n ");
+  expect(code.shadowRoot!.querySelector("pre")).toBeNull();
+});
+test("highlighting uses escaped token text and reacts to language/text changes", async () => {
+  const code = await mount("const value = 1; // note", "js");
+  expect(code.shadowRoot!.querySelector(".token.keyword")?.textContent).toBe("const");
+  code.textContent = '<img src=x onerror="bad()">';
+  code.syntax = "html";
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  await code.updateComplete;
+  expect(code.shadowRoot!.querySelector("img")).toBeNull();
+  expect(code.shadowRoot!.querySelector("code")!.textContent).toBe('<img src=x onerror="bad()">');
+  code.syntax = "unknown";
+  await code.updateComplete;
+  expect(code.shadowRoot!.querySelector(".token")).toBeNull();
+});
+test("block consumers retain the shared token rendering helper", () => {
+  const lines = tokenLines("<div class='x'></div>", "html");
+  expect(lines.flat().some((part) => typeof part !== "string")).toBe(true);
+});
+test("Code refreshes text changed while disconnected", async () => {
+  const code = await mount("before");
+  code.remove();
+  code.textContent = "after";
+  document.body.append(code);
+  await code.updateComplete;
+  expect(code.shadowRoot!.querySelector("code")!.textContent).toBe("after");
 });

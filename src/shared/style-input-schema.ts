@@ -1,7 +1,18 @@
 import { numericTokenKeys } from "./numeric-tokens";
 
-export type StyleNumericCategory = "signed-spacing" | "nonnegative-spacing" | "size" | "positive-ratio" | "integer" | "opacity" | "nonnegative" | "zero-only" | "none";
-type StyleTarget = "host" | "host-and-root";
+export type StyleNumericCategory =
+  | "signed-spacing"
+  | "nonnegative-spacing"
+  | "size"
+  | "positive-ratio"
+  | "integer"
+  | "positive-integer"
+  | "native-number"
+  | "opacity"
+  | "nonnegative"
+  | "zero-only"
+  | "none";
+type StyleTarget = "host" | "host-and-root" | "root";
 type StyleMetadata<Property extends string, Numeric extends StyleNumericCategory, Target extends StyleTarget> = Readonly<{
   property: Property;
   attribute: string;
@@ -115,7 +126,14 @@ export const gridStyleInputSchema = Object.freeze({
   ),
   ...properties(["gap", "rowGap", "columnGap"], "nonnegative-spacing", "host"),
 });
-export const styleInputSchema = Object.freeze({ ...commonStyleInputSchema, ...flexStyleInputSchema, ...gridStyleInputSchema });
+export const layoutStyleInputSchema = Object.freeze({ ...commonStyleInputSchema, ...flexStyleInputSchema, ...gridStyleInputSchema });
+export type LayoutStyleInputKey = keyof typeof layoutStyleInputSchema;
+export const styleInputSchema = Object.freeze({
+  ...layoutStyleInputSchema,
+  ...properties(["fontSize", "textAlign"], "none", "host"),
+  ...properties(["fontWeight"], "native-number", "host"),
+  lineClamp: Object.freeze({ property: "lineClamp", attribute: "line-clamp", cssProperty: "-webkit-line-clamp", numeric: "positive-integer", target: "root" } as const),
+});
 
 export type StyleInputKey = keyof typeof styleInputSchema;
 export type StyleScalar<Property extends StyleInputKey> = (typeof styleInputSchema)[Property]["numeric"] extends "none" ? string : string | number;
@@ -150,6 +168,10 @@ export function isStyleScalar<Property extends StyleInputKey>(property: Property
       return value > 0;
     case "integer":
       return Number.isInteger(value) && supports(metadata.cssProperty, String(value));
+    case "positive-integer":
+      return Number.isInteger(value) && value > 0 && supports(metadata.cssProperty, String(value));
+    case "native-number":
+      return supports(metadata.cssProperty, String(value));
     case "opacity":
       return value >= 0 && value <= 1;
     case "nonnegative":

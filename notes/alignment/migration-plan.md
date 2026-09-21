@@ -138,3 +138,9 @@ Completion requires every approved source mapping accounted for, all final expor
 Separator, Box, Flex, Stack/HStack/VStack, Grid/Simple Grid and Group's layout/participation protocol are implemented. [Group boundary and package checks](evidence/m07-group-2026-09-21.json) link the final foundation validation. The current full suite passes 858 tests. The decorative Grid companions and ButtonGroup are removed.
 
 Remaining assigned integration edges are mandatory: M09 adds action participation and verifies the actual painted border model; M10 adds Radio/Checkbox Cards and single-selection indicator composition; M11 adds input/add-on participation. No production member-matrix pass is claimed from the protocol fixture. Continue with M08 typography/formatting, then these family integrations. The local port-4180 server is temporarily in no-watch mode to avoid concurrent generators; restore normal watching at the end of migration execution.
+
+### M08 completion — 2026-09-21
+
+All eleven typography/formatting entries are implemented. [Typography evidence](evidence/m08-typography-2026-09-21.json) records 883 passing unit/site/metadata tests, 21 basic and 26 detailed checks per engine, strict public types and four fresh packed-consumer checks per engine. [Formatter evidence](evidence/m08-formatters-2026-09-21.json) covers localized byte data and number formatting. The full build and 93-page site pass with zero undocumented elements.
+
+M16 owns final TOC use of the explicit heading-target protocol; M21 owns native Markdown content. M22/M26 must revisit the saved single-bundle Bun static-class/dynamic-definition import initialization reproduction. Split ESM works; no unproven upstream claim or compatibility alias is added. Continue with M09's icons and actions and actual Group member integration.

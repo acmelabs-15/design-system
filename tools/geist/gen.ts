@@ -59,6 +59,8 @@ export type ChildMap = {
   owns?: string[];
 };
 export type GeistMap = {
+  /** Used only as a source-system baseline for composed mappings; emits no production sheet. */
+  referenceOnly?: boolean;
   page: string;
   /** JSX tag(s) whose instances are the rendered roots, in document order; the first is the primary. */
   component: string | string[];
@@ -1819,6 +1821,7 @@ export const rename = (s: string) =>
 export async function writeStyles(name: string): Promise<{ file: string; report: string[] }> {
   const mapFile = path.join(import.meta.dir, "maps", `${name}.ts`);
   const { geist } = (await import(mapFile)) as { geist: GeistMap };
+  if (geist.referenceOnly) throw new Error(`${name}: reference-only mappings do not emit styles`);
   const dir = path.join(ROOT, "src/generated/components", geist.element ?? name);
   fs.mkdirSync(dir, { recursive: true });
   const load = async (n: string) => ((await import(path.join(import.meta.dir, "maps", `${n}.ts`))) as { geist: GeistMap }).geist;
@@ -1861,6 +1864,8 @@ if (import.meta.main) {
         .filter((f) => f.endsWith(".ts"))
         .map((f) => f.replace(/\.ts$/, ""));
   for (const n of all) {
+    const { geist } = (await import(path.join(import.meta.dir, "maps", `${n}.ts`))) as { geist: GeistMap };
+    if (geist.referenceOnly) { console.log(`${n}: reference baseline`); continue; }
     const { report } = await writeStyles(n);
     console.log(`${n}: ${report.length ? `\n  - ${report.join("\n  - ")}` : "clean"}`);
   }

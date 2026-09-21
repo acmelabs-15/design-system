@@ -15,11 +15,7 @@ import type { AcmeInput } from "../input/input";
 
 export class AcmeClearableInput extends AcmeElement {
   static formAssociated = true;
-  static styles = [
-    sharedCss,
-    clearableInputCss,
-    clearableInputStructureCss,
-  ];
+  static styles = [sharedCss, clearableInputCss, clearableInputStructureCss];
   @property() value = "";
   @property() placeholder = "";
   /** The text above the field. */
@@ -97,11 +93,11 @@ export class AcmeClearableInput extends AcmeElement {
     const has = !!this.value;
     if (this.cmdk)
       return html`<div slot="end" class="cmdk" aria-label=${has ? "Press Esc to clear" : "Press Cmd + K to open the Command Menu"}>
-        <acme-kbd class="k-esc" small aria-hidden="true"><span class="keys"><span data-key="esc">Esc</span><span data-key="cmd">⌘</span></span></acme-kbd
-        ><acme-kbd class="k-k" small aria-hidden="true">K</acme-kbd>
+        <acme-kbd class="k-esc" size="small" aria-hidden="true"><span class="keys"><span data-key="esc">Esc</span><span data-key="cmd">⌘</span></span></acme-kbd
+        ><acme-kbd class="k-k" size="small" aria-hidden="true">K</acme-kbd>
       </div>`;
     if (this.showClearButton && has)
-      return html`<button slot="end" class="clear" type="button" tabindex=${this.disabled ? "-1" : nothing} @click=${() => this.clear()}><acme-kbd small>Esc</acme-kbd></button>`;
+      return html`<button slot="end" class="clear" type="button" tabindex=${this.disabled ? "-1" : nothing} @click=${() => this.clear()}><acme-kbd size="small">Esc</acme-kbd></button>`;
     return nothing;
   }
   render() {

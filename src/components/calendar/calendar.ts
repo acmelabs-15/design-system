@@ -5,7 +5,6 @@ import { AcmeElement, glyph, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { fieldCss } from "../../generated/shared/field.styles";
 import { buttonCss } from "../../generated/components/button/button.styles";
-import { kbdCss } from "../../generated/components/kbd/kbd.styles";
 import { calendarCss } from "../../generated/components/calendar/calendar.styles";
 
 /** A preset range: fixed `start`/`end` (Date or ISO), or relative to now with `days`, `weeks` or `months` back. */
@@ -49,14 +48,7 @@ const fmt = (s: string, year = true) => {
 /** Geist Calendar: a date-range picker behind a secondary trigger labelled with the chosen range; a 280px popover with Start / End inputs, a timezone select, Apply, and the month grid (32px cells, blue-900 selection). Presets are real buttons; `compact` and `stacked` join a period combobox to the trigger; `horizontal-layout` puts the form beside the grid. */
 
 export class AcmeCalendar extends AcmeElement {
-  static styles = [
-    sharedCss,
-    calendarCss,
-    fieldCss,
-    buttonCss,
-    kbdCss,
-    calendarStructureCss,
-  ];
+  static styles = [sharedCss, calendarCss, fieldCss, buttonCss, calendarStructureCss];
   /** The start date (ISO `YYYY-MM-DD`). */
   @property() value = "";
   /** The end date (ISO). */
@@ -341,7 +333,7 @@ export class AcmeCalendar extends AcmeElement {
                 }}>`
               : nothing
           }</div>
-          <button class="btn" type="button" @click=${() => this.commit()}>Apply <kbd class="kbd sm">↵</kbd></button>
+          <button class="btn" type="button" @click=${() => this.commit()}>Apply <acme-kbd size="small" .keys=${["Enter"]}></acme-kbd></button>
           ${
             this.pinnedTimezone
               ? html`<span class="cal-tz" aria-label="Timezone">${this.pinnedTimezone}</span>`

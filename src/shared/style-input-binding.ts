@@ -1,7 +1,7 @@
 import { isPlainRecord } from "./plain-record";
 import type { ResponsiveInput, ResponsiveScalar } from "./responsive";
 import { copyResponsiveInput } from "./responsive-input";
-import { type StyleInputKey, type StyleScalar, styleInputSchema } from "./style-input-schema";
+import { type LayoutStyleInputKey as StyleInputKey, type StyleScalar, layoutStyleInputSchema as styleInputSchema } from "./style-input-schema";
 
 export type StyleInputs = Readonly<{ [Key in StyleInputKey]?: ResponsiveInput<StyleScalar<Key>> }>;
 type Patch = Readonly<Partial<Record<StyleInputKey, ResponsiveInput<ResponsiveScalar>>>>;

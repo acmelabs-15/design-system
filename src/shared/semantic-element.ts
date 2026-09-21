@@ -18,7 +18,10 @@ class SemanticAttributes implements ReactiveController {
   private observer?: MutationObserver;
   private watchedRoot?: Node;
   private connected = false;
-  constructor(private host: AcmeSemanticElement) {
+  constructor(
+    private host: AcmeSemanticElement,
+    private defaults: () => Readonly<{ role?: string; label?: string }>,
+  ) {
     host.addController(this);
   }
   get(name: Attribute): string | null {
@@ -81,8 +84,9 @@ class SemanticAttributes implements ReactiveController {
   private paint = (): void => {
     if (!this.target) return;
     const state = this.state.get();
+    const defaults = this.defaults();
     for (const name of ["role", "aria-label"] as const) {
-      const value = state[name].text;
+      const value = state[name].text ?? (name === "role" ? defaults.role : defaults.label) ?? null;
       if (value === null) this.target.removeAttribute(name);
       else this.target.setAttribute(name, value);
     }
@@ -145,7 +149,10 @@ export abstract class AcmeSemanticElement extends AcmeElement {
   static get observedAttributes(): string[] {
     return [...new Set([...super.observedAttributes, ...attributes])];
   }
-  private readonly semantic = new SemanticAttributes(this);
+  protected get semanticDefaults(): Readonly<{ role?: string; label?: string }> {
+    return {};
+  }
+  private readonly semantic = new SemanticAttributes(this, () => this.semanticDefaults);
   get role(): string | null {
     return this.semantic.get("role");
   }

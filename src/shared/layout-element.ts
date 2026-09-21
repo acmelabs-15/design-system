@@ -4,12 +4,11 @@ import { sharedCss } from "../base";
 import { layoutStructureCss } from "../generated/shared/layout-structure.styles";
 import { responsiveStyleDelivery } from "../generated/responsive-styles";
 import { atomState } from "./atom-state";
-import { optionalString } from "./attributes";
 import type { ResponsiveInput } from "./responsive";
-import { AcmeSemanticElement } from "./semantic-element";
+import { AcmeResponsiveElement } from "./responsive-element";
 import { StyleInputController } from "./style-input-controller";
 import { commonStyleInputSchema, styleInputSchema, type StyleInputKey, type StyleScalar, type StyleDisplayMode } from "./style-input-schema";
-import { ResponsiveStyleRenderer, type ResponsiveStyleTarget } from "./style-renderer";
+import { ResponsiveStyleRenderer } from "./style-renderer";
 
 export type StructuralTag = "div" | "span" | "section" | "article" | "main" | "nav" | "aside" | "header" | "footer";
 export type LayoutStyleValue<Key extends StyleInputKey> = ResponsiveInput<StyleScalar<Key>>;
@@ -96,7 +95,7 @@ export type LayoutStyleValue<Key extends StyleInputKey> = ResponsiveInput<StyleS
  * @attr grid-row - Responsive grid-row input.
  * @attr display - Responsive display input.
  */
-export abstract class AcmeLayoutElement extends AcmeSemanticElement {
+export abstract class AcmeLayoutElement extends AcmeResponsiveElement {
   static styles = [sharedCss, layoutStructureCss];
   protected static styleKeys: readonly StyleInputKey[] = Object.freeze(Object.keys(commonStyleInputSchema) as StyleInputKey[]);
   protected static layout?: "flex" | "grid";
@@ -108,12 +107,6 @@ export abstract class AcmeLayoutElement extends AcmeSemanticElement {
   @atomState()
   @property({ reflect: true, noAccessor: true, useDefault: true })
   as: StructuralTag = "div";
-  @atomState()
-  @property({ attribute: "responsive-target", noAccessor: true, useDefault: true })
-  responsiveTarget: ResponsiveStyleTarget = "window";
-  @atomState()
-  @property({ attribute: "responsive-container", noAccessor: true, converter: optionalString })
-  responsiveContainer?: string;
   protected readonly styleInputs = new StyleInputController(this, (this.constructor as typeof AcmeLayoutElement).styleKeys, {
     displayModes: (this.constructor as typeof AcmeLayoutElement).displayModes,
     supports: (property, value) => {

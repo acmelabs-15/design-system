@@ -7,7 +7,7 @@ import type { StyleDisplayMode, StyleInputKey, StyleSupports } from "./style-inp
 export type ResponsiveStyleTarget = "window" | "container";
 export type ResponsiveStyleRule = Readonly<{
   property: string;
-  target: "host" | "host-and-root";
+  target: "host" | "host-and-root" | "root";
   selector: string;
   template: string;
 }>;

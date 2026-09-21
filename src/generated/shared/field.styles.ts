@@ -242,16 +242,6 @@ export const fieldCss = css`.field {
   display: grid;
 }
 
-.kbd.sm, .search .kbd, .menu .kbd, .field .kbd {
-  min-width: 20px;
-  height: 20px;
-  font-size: 12px;
-  line-height: 20px;
-  font-weight: var(--acme-font-weight-500);
-  color: var(--text-2);
-  padding: 0 4px;
-}
-
 .fieldset {
   background: var(--surface);
   border-radius: var(--r-sm);

@@ -4,7 +4,7 @@ import { property, query } from "lit/decorators.js";
 import { AcmeElement, glyphSized, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 
-import { sourceOf, tokenLines } from "../code/code";
+import { sourceOf, tokenLines } from "../../shared/highlight";
 import type { AcmeCopyButton } from "../copy-button/copy-button";
 
 import { copyButtonCss } from "../../generated/components/copy-button/copy-button.styles";
@@ -39,12 +39,7 @@ const v0Prompt = (code: string) =>
  */
 
 export class AcmeCodeBlock extends AcmeElement {
-  static styles = [
-    sharedCss,
-    codeBlockCss,
-    copyButtonCss,
-    codeBlockStructureCss,
-  ];
+  static styles = [sharedCss, codeBlockCss, copyButtonCss, codeBlockStructureCss];
   /** The paste destination shown in the bar; empty hides the bar. */
   @property() filename = "";
   /** The language for highlighting (`jsx`, `tsx`, `json`, `bash`, `diff`, …). */
