@@ -1,0 +1,1601 @@
+{
+  "date": "2026-09-20",
+  "phase": "Phase 6 M05",
+  "scope": "Internal style-input capture into canonical TanStack ordered values; family integration is pending",
+  "unit": {
+    "tests": 11,
+    "assertions": 35,
+    "result": "pass"
+  },
+  "verification": {
+    "source": "/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-controller.ts",
+    "sha256": "a6ee95b11c731e6e9deadd092d5270d77b206c5f4c7be21f0abd15af911cdbaf",
+    "engines": [
+      {
+        "engine": "chromium",
+        "errors": [],
+        "candidatePass": 23,
+        "intentionalRed": [
+          {
+            "name": "red control Lit metadata preserves early own order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "errors": [],
+        "candidatePass": 23,
+        "intentionalRed": [
+          {
+            "name": "red control Lit metadata preserves early own order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "errors": [],
+        "candidatePass": 23,
+        "intentionalRed": [
+          {
+            "name": "red control Lit metadata preserves early own order",
+            "actual": [
+              "padding",
+              "paddingInline"
+            ],
+            "expected": [
+              "paddingInline",
+              "padding"
+            ],
+            "pass": false
+          }
+        ]
+      }
+    ]
+  },
+  "browser": [
+    {
+      "engine": "chromium",
+      "errors": [],
+      "results": [
+        {
+          "name": "early own order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "early own value immediate",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "updates preserve position",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "clear and readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "attribute order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "unrelated observed attribute",
+          "actual": "ordinary",
+          "expected": "ordinary",
+          "pass": true
+        },
+        {
+          "name": "same attribute string reasserts after property write",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "attribute remove readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached canonical updates",
+          "actual": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "expected": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "reconnect renders detached edits",
+          "actual": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "expected": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "pass": true
+        },
+        {
+          "name": "queued initial attributes do not overwrite own values",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade order before connection",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade canonical value",
+          "actual": 0,
+          "expected": 0,
+          "pass": true
+        },
+        {
+          "name": "detached attribute is synchronous",
+          "actual": 3,
+          "expected": 3,
+          "pass": true
+        },
+        {
+          "name": "ready parser attribute order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "missing input reads undefined",
+          "pass": true
+        },
+        {
+          "name": "invalid attribute clears only its value",
+          "actual": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "expected": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "red control Lit metadata preserves early own order",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": false
+        },
+        {
+          "name": "reentrant change preserves early property and real new attribute",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "native nonenumerable early data order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "native nonenumerable early value",
+          "actual": 2,
+          "expected": 2,
+          "pass": true
+        },
+        {
+          "name": "native same-text write before connection",
+          "actual": 2,
+          "expected": 2,
+          "pass": true
+        },
+        {
+          "name": "native removal before first connection",
+          "pass": true
+        },
+        {
+          "name": "native readd before first connection",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "errors": [],
+      "results": [
+        {
+          "name": "early own order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "early own value immediate",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "updates preserve position",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "clear and readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "attribute order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "unrelated observed attribute",
+          "actual": "ordinary",
+          "expected": "ordinary",
+          "pass": true
+        },
+        {
+          "name": "same attribute string reasserts after property write",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "attribute remove readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached canonical updates",
+          "actual": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "expected": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "reconnect renders detached edits",
+          "actual": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "expected": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "pass": true
+        },
+        {
+          "name": "queued initial attributes do not overwrite own values",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade order before connection",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade canonical value",
+          "actual": 0,
+          "expected": 0,
+          "pass": true
+        },
+        {
+          "name": "detached attribute is synchronous",
+          "actual": 3,
+          "expected": 3,
+          "pass": true
+        },
+        {
+          "name": "ready parser attribute order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "missing input reads undefined",
+          "pass": true
+        },
+        {
+          "name": "invalid attribute clears only its value",
+          "actual": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "expected": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "red control Lit metadata preserves early own order",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": false
+        },
+        {
+          "name": "reentrant change preserves early property and real new attribute",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "native nonenumerable early data order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "native nonenumerable early value",
+          "actual": 2,
+          "expected": 2,
+          "pass": true
+        },
+        {
+          "name": "native same-text write before connection",
+          "actual": 2,
+          "expected": 2,
+          "pass": true
+        },
+        {
+          "name": "native removal before first connection",
+          "pass": true
+        },
+        {
+          "name": "native readd before first connection",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "errors": [],
+      "results": [
+        {
+          "name": "early own order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "early own value immediate",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "updates preserve position",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "clear and readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "attribute order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "unrelated observed attribute",
+          "actual": "ordinary",
+          "expected": "ordinary",
+          "pass": true
+        },
+        {
+          "name": "same attribute string reasserts after property write",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "attribute remove readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached canonical updates",
+          "actual": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "expected": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "reconnect renders detached edits",
+          "actual": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "expected": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "pass": true
+        },
+        {
+          "name": "queued initial attributes do not overwrite own values",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade order before connection",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade canonical value",
+          "actual": 0,
+          "expected": 0,
+          "pass": true
+        },
+        {
+          "name": "detached attribute is synchronous",
+          "actual": 3,
+          "expected": 3,
+          "pass": true
+        },
+        {
+          "name": "ready parser attribute order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "missing input reads undefined",
+          "pass": true
+        },
+        {
+          "name": "invalid attribute clears only its value",
+          "actual": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "expected": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "red control Lit metadata preserves early own order",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": false
+        },
+        {
+          "name": "reentrant change preserves early property and real new attribute",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "native nonenumerable early data order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "native nonenumerable early value",
+          "actual": 2,
+          "expected": 2,
+          "pass": true
+        },
+        {
+          "name": "native same-text write before connection",
+          "actual": 2,
+          "expected": 2,
+          "pass": true
+        },
+        {
+          "name": "native removal before first connection",
+          "pass": true
+        },
+        {
+          "name": "native readd before first connection",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "reentrantRed": [
+    {
+      "engine": "chromium",
+      "errors": [],
+      "results": [
+        {
+          "name": "early own order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "early own value immediate",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "updates preserve position",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "clear and readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "attribute order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "unrelated observed attribute",
+          "actual": "ordinary",
+          "expected": "ordinary",
+          "pass": true
+        },
+        {
+          "name": "same attribute string reasserts after property write",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "attribute remove readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached canonical updates",
+          "actual": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "expected": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "reconnect renders detached edits",
+          "actual": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "expected": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "pass": true
+        },
+        {
+          "name": "queued initial attributes do not overwrite own values",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade order before connection",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade canonical value",
+          "actual": 0,
+          "expected": 0,
+          "pass": true
+        },
+        {
+          "name": "detached attribute is synchronous",
+          "actual": 3,
+          "expected": 3,
+          "pass": true
+        },
+        {
+          "name": "ready parser attribute order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "missing input reads undefined",
+          "pass": true
+        },
+        {
+          "name": "invalid attribute clears only its value",
+          "actual": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "expected": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "red control Lit metadata preserves early own order",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": false
+        },
+        {
+          "name": "reentrant change preserves early property and real new attribute",
+          "actual": [
+            [
+              "paddingInline",
+              1
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "errors": [],
+      "results": [
+        {
+          "name": "early own order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "early own value immediate",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "updates preserve position",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "clear and readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "attribute order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "unrelated observed attribute",
+          "actual": "ordinary",
+          "expected": "ordinary",
+          "pass": true
+        },
+        {
+          "name": "same attribute string reasserts after property write",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "attribute remove readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached canonical updates",
+          "actual": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "expected": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "reconnect renders detached edits",
+          "actual": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "expected": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "pass": true
+        },
+        {
+          "name": "queued initial attributes do not overwrite own values",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade order before connection",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade canonical value",
+          "actual": 0,
+          "expected": 0,
+          "pass": true
+        },
+        {
+          "name": "detached attribute is synchronous",
+          "actual": 3,
+          "expected": 3,
+          "pass": true
+        },
+        {
+          "name": "ready parser attribute order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "missing input reads undefined",
+          "pass": true
+        },
+        {
+          "name": "invalid attribute clears only its value",
+          "actual": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "expected": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "red control Lit metadata preserves early own order",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": false
+        },
+        {
+          "name": "reentrant change preserves early property and real new attribute",
+          "actual": [
+            [
+              "paddingInline",
+              1
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "errors": [],
+      "results": [
+        {
+          "name": "early own order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "early own value immediate",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "updates preserve position",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "clear and readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "attribute order immediate",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "unrelated observed attribute",
+          "actual": "ordinary",
+          "expected": "ordinary",
+          "pass": true
+        },
+        {
+          "name": "same attribute string reasserts after property write",
+          "actual": 4,
+          "expected": 4,
+          "pass": true
+        },
+        {
+          "name": "attribute remove readd appends",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "padding",
+            "paddingInline"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached canonical updates",
+          "actual": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "expected": [
+            [
+              "padding",
+              6
+            ],
+            [
+              "paddingInline",
+              3
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "reconnect renders detached edits",
+          "actual": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "expected": "[[\"padding\",6],[\"paddingInline\",3]]",
+          "pass": true
+        },
+        {
+          "name": "queued initial attributes do not overwrite own values",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              4
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade order before connection",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "detached upgrade canonical value",
+          "actual": 0,
+          "expected": 0,
+          "pass": true
+        },
+        {
+          "name": "detached attribute is synchronous",
+          "actual": 3,
+          "expected": 3,
+          "pass": true
+        },
+        {
+          "name": "ready parser attribute order",
+          "actual": [
+            "paddingInline",
+            "padding"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": true
+        },
+        {
+          "name": "missing input reads undefined",
+          "pass": true
+        },
+        {
+          "name": "invalid attribute clears only its value",
+          "actual": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "expected": [
+            [
+              "backgroundColor",
+              "red"
+            ]
+          ],
+          "pass": true
+        },
+        {
+          "name": "red control Lit metadata preserves early own order",
+          "actual": [
+            "padding",
+            "paddingInline"
+          ],
+          "expected": [
+            "paddingInline",
+            "padding"
+          ],
+          "pass": false
+        },
+        {
+          "name": "reentrant change preserves early property and real new attribute",
+          "actual": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              2
+            ]
+          ],
+          "expected": [
+            [
+              "paddingInline",
+              3
+            ],
+            [
+              "padding",
+              6
+            ]
+          ],
+          "pass": false
+        }
+      ]
+    }
+  ],
+  "reproduction": {
+    "probe": "import {LitElement,html} from 'lit';\nimport {StyleInputController as Capture} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-controller';\nconst keys=['padding','paddingInline','backgroundColor'] as const;\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\nclass Probe extends LitElement{\n static properties={labelText:{attribute:'label-text'}};\n static get observedAttributes(){return [...super.observedAttributes,'padding','padding-inline','background-color'];}\n controller=new Capture(this,keys,{supports:(name,value)=>this.ownerDocument.defaultView.CSS.supports(name,value)});\n labelText='';\n get padding(){return this.controller.get('padding');}set padding(value){this.controller.set('padding',value);}\n get paddingInline(){return this.controller.get('paddingInline');}set paddingInline(value){this.controller.set('paddingInline',value);}\n get backgroundColor(){return this.controller.get('backgroundColor');}set backgroundColor(value){this.controller.set('backgroundColor',value);}\n attributeChangedCallback(name,old,value){if(!this.controller.attributeChanged(name,old,value))super.attributeChangedCallback(name,old,value);}\n render(){return html`<span>${JSON.stringify(this.controller.entries.get())}</span>`;}\n}\nconst order=e=>e.controller.entries.get().map(([key])=>key);\nconst early=document.createElement('capture-early');early.paddingInline=2;early.padding=4;document.body.append(early);customElements.define('capture-early',class extends Probe{});\ncheck('early own order immediate',order(early),['paddingInline','padding']);check('early own value immediate',early.padding,4);await early.updateComplete;\nearly.paddingInline=1;check('updates preserve position',order(early),['paddingInline','padding']);early.paddingInline=undefined;early.paddingInline=2;check('clear and readd appends',order(early),['padding','paddingInline']);\nconst markup=document.createElement('capture-html');markup.setAttribute('padding-inline','2');markup.setAttribute('padding','4');markup.setAttribute('label-text','ordinary');document.body.append(markup);customElements.define('capture-html',class extends Probe{});check('attribute order immediate',order(markup),['paddingInline','padding']);check('unrelated observed attribute',markup.labelText,'ordinary');await markup.updateComplete;\nmarkup.padding=8;markup.setAttribute('padding','4');check('same attribute string reasserts after property write',markup.padding,4);markup.removeAttribute('padding-inline');markup.setAttribute('padding-inline','1');check('attribute remove readd appends',order(markup),['padding','paddingInline']);\nmarkup.remove();markup.setAttribute('padding','6');markup.paddingInline=3;check('detached canonical updates',markup.controller.entries.get(),[['padding',6],['paddingInline',3]]);document.body.append(markup);await markup.updateComplete;check('reconnect renders detached edits',markup.shadowRoot.textContent,JSON.stringify([['padding',6],['paddingInline',3]]));\nconst mixed=document.createElement('capture-mixed');mixed.setAttribute('padding-inline','1');mixed.setAttribute('padding','2');mixed.paddingInline=3;mixed.padding=4;document.body.append(mixed);customElements.define('capture-mixed',class extends Probe{});check('queued initial attributes do not overwrite own values',mixed.controller.entries.get(),[['paddingInline',3],['padding',4]]);\nconst detached=document.createElement('capture-detached');detached.paddingInline=0;detached.padding=2;customElements.define('capture-detached',class extends Probe{});customElements.upgrade(detached);check('detached upgrade order before connection',order(detached),['paddingInline','padding']);check('detached upgrade canonical value',detached.paddingInline,0);detached.setAttribute('padding','3');check('detached attribute is synchronous',detached.padding,3);\ncustomElements.define('capture-ready',class extends Probe{});const container=document.createElement('div');container.innerHTML='<capture-ready padding-inline=\"1\" padding=\"2\"></capture-ready>';document.body.append(container);check('ready parser attribute order',order(container.firstElementChild),['paddingInline','padding']);\nconst ready=document.createElement('capture-ready');ready.padding=undefined;check('missing input reads undefined',ready.padding,undefined);ready.backgroundColor='red';ready.setAttribute('padding','{bad');check('invalid attribute clears only its value',ready.controller.entries.get(),[['backgroundColor','red']]);\nclass Naive extends LitElement{static properties={padding:{},paddingInline:{}};order=[];values={};get padding(){return this.values.padding;}set padding(value){this.order.push('padding');this.values.padding=value;}get paddingInline(){return this.values.paddingInline;}set paddingInline(value){this.order.push('paddingInline');this.values.paddingInline=value;}render(){return html``;}}\nconst naive=document.createElement('capture-naive');naive.paddingInline=1;naive.padding=2;document.body.append(naive);customElements.define('capture-naive',Naive);await naive.updateComplete;check('red control Lit metadata preserves early own order',naive.order,['paddingInline','padding']);\nclass Reentrant extends Probe{attributeChangedCallback(name,old,value){if(name===\"padding-inline\"&&old===null)this.setAttribute(\"padding\",\"6\");super.attributeChangedCallback(name,old,value);}}\nconst reentrant=document.createElement(\"capture-reentrant\");reentrant.setAttribute(\"padding-inline\",\"1\");reentrant.setAttribute(\"padding\",\"2\");reentrant.paddingInline=3;reentrant.padding=4;document.body.append(reentrant);customElements.define(\"capture-reentrant\",Reentrant);check(\"reentrant change preserves early property and real new attribute\",reentrant.controller.entries.get(),[[\"paddingInline\",3],[\"padding\",6]]);\nconst hidden=document.createElement(\"capture-hidden\");Object.defineProperty(hidden,\"paddingInline\",{value:2,configurable:true,enumerable:false});hidden.padding=4;customElements.define(\"capture-hidden\",class extends Probe{});customElements.upgrade(hidden);check(\"native nonenumerable early data order\",order(hidden),[\"paddingInline\",\"padding\"]);check(\"native nonenumerable early value\",hidden.paddingInline,2);\nconst detachedAttrs=document.createElement(\"capture-detached-attrs\");detachedAttrs.setAttribute(\"padding-inline\",\"1\");detachedAttrs.setAttribute(\"padding\",\"2\");detachedAttrs.padding=4;customElements.define(\"capture-detached-attrs\",class extends Probe{});customElements.upgrade(detachedAttrs);detachedAttrs.setAttribute(\"padding\",\"2\");check(\"native same-text write before connection\",detachedAttrs.padding,2);detachedAttrs.removeAttribute(\"padding-inline\");check(\"native removal before first connection\",detachedAttrs.paddingInline,undefined);detachedAttrs.setAttribute(\"padding-inline\",\"1\");check(\"native readd before first connection\",order(detachedAttrs),[\"padding\",\"paddingInline\"]);\nwindow.result={results};\n",
+    "runner": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const dir='/tmp/acme-m05-style-capture';const built=await Bun.build({entrypoints:[dir+'/probe.ts'],target:'browser',format:'esm',tsconfig:'/Users/peterkloss/Dev/ACMElabs/design-system/tsconfig.json'});if(!built.success)throw new AggregateError(built.logs);const js=await built.outputs[0].text();const server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){return new URL(req.url).pathname==='/probe.js'?new Response(js,{headers:{'content-type':'text/javascript'}}):new Response('<!doctype html><body><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'content-type':'text/html'}})}});const report=[];for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch({headless:true,...(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});const page=await browser.newPage();const errors=[];page.on('pageerror',e=>{errors.push(String(e));console.log(engine,String(e));});await page.goto(server.url.href);await page.waitForFunction(()=>window.result!==undefined,{}, {timeout:4000});const result=await page.evaluate(()=>window.result);report.push({engine,errors,...result});await browser.close();}server.stop();await Bun.write(dir+'/results.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));\n",
+    "originalPrototype": "import type {ReactiveElement, ReactiveController} from 'lit';\nimport {createOrderedStyleInputs} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/ordered-style-inputs';\nimport {copyResponsiveInput,parseResponsiveAttribute} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive-input';\nimport {styleInputSchema,isStyleScalar} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-schema';\nimport {StoreSelector} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/store-connection';\nexport class Capture implements ReactiveController{\n values; initial=new Map(); attributes=new Map();\n constructor(host:ReactiveElement,keys,options){\n  for(const key of keys){if(host.constructor.elementProperties.has(key))throw new Error('Style inputs must not be registered in Lit property metadata');this.attributes.set(styleInputSchema[key].attribute,key);}\n  const scalar=(key)=>(value):value is string|number=>isStyleScalar(key,value,options.supports,options.displayModes);\n  this.values=createOrderedStyleInputs(Object.fromEntries(keys.map(key=>[key,(value)=>copyResponsiveInput(value,scalar(key))])));\n  const own=Object.getOwnPropertyNames(host).filter(key=>keys.includes(key)).map(key=>{const descriptor=Object.getOwnPropertyDescriptor(host,key);if(!descriptor.configurable||!('value'in descriptor))throw Error('Pre-upgrade style properties must be configurable data properties');return [key,descriptor.value];});\n  this.readAttribute=(name,value)=>{const key=this.attributes.get(name);const parsed=parseResponsiveAttribute(value,scalar(key),{numbers:styleInputSchema[key].numeric!=='none'});this.values.set(key,parsed.value);if(parsed.diagnostic)options.diagnostic?.({property:key,...parsed.diagnostic});};\n  for(const attr of host.attributes)if(this.attributes.has(attr.name)){this.initial.set(attr.name,attr.value);this.readAttribute(attr.name,attr.value);}\n  for(const[key,value]of own)this.values.set(key,value);\n  for(const[key]of own)Reflect.deleteProperty(host,key);\n  new StoreSelector(host,()=>this.values.entries);\n }\n\n get(key){return this.values.get(key);}\n set(key,value){this.values.set(key,value);}\n attributeChanged(name,old,value){if(!this.attributes.has(name))return false;if(old===null&&this.initial.get(name)===value){this.initial.delete(name);return true;}this.readAttribute(name,value);return true;}\n}\n",
+    "originalProbe": "import {LitElement,html} from 'lit';\nimport {Capture} from './controller';\nconst keys=['padding','paddingInline','backgroundColor'] as const;\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,pass:JSON.stringify(actual)===JSON.stringify(expected)});\nclass Probe extends LitElement{\n static properties={labelText:{attribute:'label-text'}};\n static get observedAttributes(){return [...super.observedAttributes,'padding','padding-inline','background-color'];}\n controller=new Capture(this,keys,{supports:(name,value)=>this.ownerDocument.defaultView.CSS.supports(name,value)});\n labelText='';\n get padding(){return this.controller.get('padding');}set padding(value){this.controller.set('padding',value);}\n get paddingInline(){return this.controller.get('paddingInline');}set paddingInline(value){this.controller.set('paddingInline',value);}\n get backgroundColor(){return this.controller.get('backgroundColor');}set backgroundColor(value){this.controller.set('backgroundColor',value);}\n attributeChangedCallback(name,old,value){if(!this.controller.attributeChanged(name,old,value))super.attributeChangedCallback(name,old,value);}\n render(){return html`<span>${JSON.stringify(this.controller.values.entries.get())}</span>`;}\n}\nconst order=e=>e.controller.values.entries.get().map(([key])=>key);\nconst early=document.createElement('capture-early');early.paddingInline=2;early.padding=4;document.body.append(early);customElements.define('capture-early',class extends Probe{});\ncheck('early own order immediate',order(early),['paddingInline','padding']);check('early own value immediate',early.padding,4);await early.updateComplete;\nearly.paddingInline=1;check('updates preserve position',order(early),['paddingInline','padding']);early.paddingInline=undefined;early.paddingInline=2;check('clear and readd appends',order(early),['padding','paddingInline']);\nconst markup=document.createElement('capture-html');markup.setAttribute('padding-inline','2');markup.setAttribute('padding','4');markup.setAttribute('label-text','ordinary');document.body.append(markup);customElements.define('capture-html',class extends Probe{});check('attribute order immediate',order(markup),['paddingInline','padding']);check('unrelated observed attribute',markup.labelText,'ordinary');await markup.updateComplete;\nmarkup.padding=8;markup.setAttribute('padding','4');check('same attribute string reasserts after property write',markup.padding,4);markup.removeAttribute('padding-inline');markup.setAttribute('padding-inline','1');check('attribute remove readd appends',order(markup),['padding','paddingInline']);\nmarkup.remove();markup.setAttribute('padding','6');markup.paddingInline=3;check('detached canonical updates',markup.controller.values.entries.get(),[['padding',6],['paddingInline',3]]);document.body.append(markup);await markup.updateComplete;check('reconnect renders detached edits',markup.shadowRoot.textContent,JSON.stringify([['padding',6],['paddingInline',3]]));\nconst mixed=document.createElement('capture-mixed');mixed.setAttribute('padding-inline','1');mixed.setAttribute('padding','2');mixed.paddingInline=3;mixed.padding=4;document.body.append(mixed);customElements.define('capture-mixed',class extends Probe{});check('queued initial attributes do not overwrite own values',mixed.controller.values.entries.get(),[['paddingInline',3],['padding',4]]);\nconst detached=document.createElement('capture-detached');detached.paddingInline=0;detached.padding=2;customElements.define('capture-detached',class extends Probe{});customElements.upgrade(detached);check('detached upgrade order before connection',order(detached),['paddingInline','padding']);check('detached upgrade canonical value',detached.paddingInline,0);detached.setAttribute('padding','3');check('detached attribute is synchronous',detached.padding,3);\ncustomElements.define('capture-ready',class extends Probe{});const container=document.createElement('div');container.innerHTML='<capture-ready padding-inline=\"1\" padding=\"2\"></capture-ready>';document.body.append(container);check('ready parser attribute order',order(container.firstElementChild),['paddingInline','padding']);\nconst ready=document.createElement('capture-ready');ready.padding=undefined;check('missing input reads undefined',ready.padding,undefined);ready.backgroundColor='red';ready.setAttribute('padding','{bad');check('invalid attribute clears only its value',ready.controller.values.entries.get(),[['backgroundColor','red']]);\nclass Naive extends LitElement{static properties={padding:{},paddingInline:{}};order=[];values={};get padding(){return this.values.padding;}set padding(value){this.order.push('padding');this.values.padding=value;}get paddingInline(){return this.values.paddingInline;}set paddingInline(value){this.order.push('paddingInline');this.values.paddingInline=value;}render(){return html``;}}\nconst naive=document.createElement('capture-naive');naive.paddingInline=1;naive.padding=2;document.body.append(naive);customElements.define('capture-naive',Naive);await naive.updateComplete;check('red control Lit metadata preserves early own order',naive.order,['paddingInline','padding']);\nclass Reentrant extends Probe{attributeChangedCallback(name,old,value){if(name===\"padding-inline\"&&old===null)this.setAttribute(\"padding\",\"6\");super.attributeChangedCallback(name,old,value);}}\nconst reentrant=document.createElement(\"capture-reentrant\");reentrant.setAttribute(\"padding-inline\",\"1\");reentrant.setAttribute(\"padding\",\"2\");reentrant.paddingInline=3;reentrant.padding=4;document.body.append(reentrant);customElements.define(\"capture-reentrant\",Reentrant);check(\"reentrant change preserves early property and real new attribute\",reentrant.controller.values.entries.get(),[[\"paddingInline\",3],[\"padding\",6]]);\nwindow.result={results};\n"
+  },
+  "review": "Independent review approved both capture and declaration-plan modules; 45 focused tests and strict/non-strict declaration equivalence passed.",
+  "limits": [
+    "Styles use manually composed observedAttributes and explicit accessors, outside Lit reactive property metadata.",
+    "Each family must supply accessors and explicit property/attribute documentation for the manifest; these are not yet migrated.",
+    "Mixed overlapping attribute/property writers remain unsupported as the approved authoring contract states.",
+    "No public styleInputs directive or generated component renderer is included.",
+    "The controller validates canonical input structure; the final public invalid CSS write adaptation remains its integration owner's responsibility."
+  ],
+  "integratedVerification": {
+    "split": "pass",
+    "build": "pass",
+    "docs": "pass",
+    "tests": 762,
+    "assertions": 10241,
+    "files": 102,
+    "failed": 0,
+    "review": "approved"
+  }
+}
