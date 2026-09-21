@@ -67,6 +67,8 @@ Record fixtures/results and failures in existing analysis/evidence. A technical 
 
 - M05-06 adds canonical headless theme resolution and reference-counted per-document system-preference observation. Build/docs and 732 tests pass; all 23 browser checks pass per engine after correcting a documented fixture transition race. [Evidence](evidence/m05-theme-state-2026-09-20.json). DOM scope transport, scope CSS, registration and Theme Switcher replacement remain an atomic integration boundary.
 
+- M05-07 fixes actual static stylesheet loss and first-render failures across documents without rewriting declarations. The public rendering-root boundary, owner-document cache and stable Lit anchor pass build/docs, 744 tests, real three-engine adoption/initialization checks and 114 unchanged page comparisons. [Evidence](evidence/m05-stylesheet-adoption-2026-09-20.json). Nested theme transport and token-category integration remain.
+
 ## Ordered implementation work packages
 
 The table fixes dependency order and atomic replacement boundaries. Each work package is split into vertical commits by the named slice, normally 3–8 authored files plus tests/generated/site output. Mechanical path/registration batches can touch many files and are explicitly labelled. Counts below are planning ranges from the current tree, not measured final diffs. Each replacement removes the old interface and updates every internal consumer in that same slice; there are no compatibility exports or legacy modes.

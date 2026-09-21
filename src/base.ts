@@ -1,8 +1,9 @@
-import { baseCss } from "./generated/shared/base.styles";
 // Shared base for every acme-* element: the shadow-root reset, the icon and screen-reader helpers,
 // and small helpers for class lists and icons.
 import { type CSSResultGroup, html, LitElement, type TemplateResult } from "lit";
 import { classMap } from "lit/directives/class-map.js";
+import { baseCss } from "./generated/shared/base.styles";
+import { applyStaticStyles } from "./shared/static-styles";
 import { registerStyleProperties } from "./shared/style-properties";
 
 /** Rules every shadow root needs: the reset the global sheet gives the page, plus .ic and .sr. The host takes the reset too: an element of ours slotted into another (a grid cell) then reads as a reset page element. */
@@ -57,6 +58,13 @@ const watchDark = (host: HTMLElement) => {
 
 export class AcmeElement extends LitElement {
   static styles: CSSResultGroup = sharedCss;
+  protected createRenderRoot(): HTMLElement | DocumentFragment {
+    const componentClass = this.constructor as typeof AcmeElement;
+    const root = this.shadowRoot ?? this.attachShadow(componentClass.shadowRootOptions);
+    const boundary = applyStaticStyles(root, componentClass.elementStyles);
+    this.renderOptions.renderBefore ??= boundary;
+    return root;
+  }
   connectedCallback() {
     this.registerStyles();
     super.connectedCallback();
@@ -64,6 +72,7 @@ export class AcmeElement extends LitElement {
   }
   adoptedCallback() {
     this.registerStyles();
+    if (this.renderRoot?.nodeType === 11 && "host" in this.renderRoot) applyStaticStyles(this.renderRoot as ShadowRoot, (this.constructor as typeof AcmeElement).elementStyles);
   }
   private registerStyles() {
     const view = this.ownerDocument.defaultView as (Window & { CSS?: typeof CSS }) | null;
