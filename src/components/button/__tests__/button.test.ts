@@ -88,7 +88,7 @@ describe("acme-button", () => {
     const b = root(el);
     b.dispatchEvent(new PointerEvent("pointerenter", { pointerType: "mouse" }));
     expect(b.getAttribute("data-hover")).toBe("true");
-    b.dispatchEvent(new PointerEvent("pointerdown", { pointerType: "mouse", button: 0 }));
+    b.dispatchEvent(new PointerEvent("pointerdown", { pointerType: "mouse", button: 0, isPrimary: true }));
     expect(b.getAttribute("data-active")).toBe("true");
     b.dispatchEvent(new PointerEvent("pointerleave", { pointerType: "mouse" }));
     expect(b.hasAttribute("data-hover")).toBe(false);

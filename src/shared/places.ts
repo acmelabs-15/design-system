@@ -1,77 +1,72 @@
-// The places beside an element's content: `start` and `end`, plus the field's two add-ons. One
-// controller answers "is this place occupied", so an element that renders a place only while it has
-// content asks rather than keeping booleans of its own.
-//
-//   private places = new Places(this);
-//   ...
-//   ${this.places.has("start") ? html`<span class="start">${startSlot}</span>` : startSlot}
-//
-// A place is read three ways, because none alone is enough:
-//
-//   - at connect, so the first render is correct;
-//   - again in `firstUpdated`, because a parser that connects an element before its children (happy-dom
-//     does) sees nothing at connect;
-//   - on `slotchange` and on a light-DOM mutation, so content that arrives later still lands.
-//
-// The reading is `querySelector('[slot="…"]')` on the light DOM rather than a slot's assignedNodes,
-// so it works before the shadow tree exists and in a test environment where slotchange never fires.
+import { createAtom } from "@tanstack/lit-store";
 import type { ReactiveController, ReactiveControllerHost } from "lit";
 
-/** The two places every element has, and the field's add-ons outside them. */
 export const PLACES = ["start-addon", "start", "end-addon", "end"] as const;
 export type Place = (typeof PLACES)[number];
+type Host = ReactiveControllerHost & Element & { renderRoot?: HTMLElement | DocumentFragment };
 
+function hasContent(node: Node): boolean {
+  if (node.nodeType === 3) return !!node.textContent?.trim();
+  if (node.nodeType !== 1) return false;
+  if ((node as Element).localName !== "slot") return true;
+  return (node as HTMLSlotElement).assignedNodes({ flatten: true }).some(hasContent);
+}
+
+/** Tracks content assigned to this host's declared places, including forwarded slots. */
 export class Places implements ReactiveController {
-  private filled = new Set<Place>();
+  private readonly filled = createAtom<ReadonlySet<Place>>(new Set<Place>());
   private watch?: MutationObserver;
-  private host: ReactiveControllerHost & Element;
-  /** The places this element renders; the rest are never read. */
-  private names: readonly Place[];
-  /** `:scope >` limits the read to direct children, for an element whose content may itself carry places. */
-  private scoped: boolean;
-
-  constructor(host: ReactiveControllerHost & Element, options: { places?: readonly Place[]; scoped?: boolean } = {}) {
-    this.host = host;
+  private root?: HTMLElement | DocumentFragment;
+  private readonly names: readonly Place[];
+  constructor(
+    private host: Host,
+    options: { places?: readonly Place[] } = {},
+  ) {
     this.names = options.places ?? PLACES;
-    this.scoped = options.scoped ?? false;
     host.addController(this);
   }
-
-  /** Whether a place holds content. */
   has(name: Place): boolean {
-    return this.filled.has(name);
+    return this.filled.get().has(name);
   }
-
-  /** Reads the light DOM and re-renders the host when a place changes. Bind to `slotchange`. */
-  read = () => {
-    const before = this.filled;
+  read = (): void => {
     const now = new Set<Place>();
-    for (const n of this.names) if (this.host.querySelector(`${this.scoped ? ":scope > " : ""}[slot="${n}"]`)) now.add(n);
-    if (now.size === before.size && [...now].every((n) => before.has(n))) return;
-    this.filled = now;
+    for (const name of this.names) {
+      // Direct light children are also available before a conditional slot's first render.
+      const slot = [...(this.host.renderRoot?.querySelectorAll("slot") ?? [])].find((slot) => slot.name === name);
+      const nodes = slot ? slot.assignedNodes({ flatten: true }) : [...this.host.children].filter((child) => child.getAttribute("slot") === name);
+      if (nodes.some(hasContent)) now.add(name);
+    }
+    const before = this.filled.get();
+    if (now.size === before.size && [...now].every((name) => before.has(name))) return;
+    this.filled.set(now);
     this.host.requestUpdate();
   };
-
-  hostConnected() {
+  hostConnected(): void {
     this.read();
-    if (typeof MutationObserver !== "undefined") {
-      this.watch = new MutationObserver(this.read);
-      this.watch.observe(this.host, { childList: true });
-    }
+    this.host.addEventListener("slotchange", this.read);
+    this.watch = new MutationObserver(this.read);
+    this.watch.observe(this.host, { childList: true, subtree: true, attributes: true, attributeFilter: ["slot"], characterData: true });
+    this.bindRoot();
   }
-
-  hostDisconnected() {
+  private bindRoot(): void {
+    const root = this.host.renderRoot;
+    if (root === this.root) return;
+    this.root?.removeEventListener("slotchange", this.read);
+    this.root = root;
+    this.root?.addEventListener("slotchange", this.read);
+  }
+  hostDisconnected(): void {
     this.watch?.disconnect();
     this.watch = undefined;
+    this.host.removeEventListener("slotchange", this.read);
+    this.root?.removeEventListener("slotchange", this.read);
+    this.root = undefined;
   }
-
-  // A parser that connects the element before its children (happy-dom does) sees an empty light DOM
-  // at connect, so the first update reads again. MutationObserver covers a real browser; this covers
-  // an environment that has none, and costs one querySelector per place on the first render only.
-  private first = true;
-  hostUpdate() {
-    if (!this.first) return;
-    this.first = false;
+  hostUpdate(): void {
+    this.read();
+  }
+  hostUpdated(): void {
+    this.bindRoot();
     this.read();
   }
 }

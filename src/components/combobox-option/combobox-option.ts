@@ -53,7 +53,7 @@ export class AcmeComboboxOption extends AcmeElement {
   @property({ type: Boolean, reflect: true }) chosen = false;
   /** The combobox's size; the combobox sets it. */
   @property() size: ComboboxOptionSize = "medium";
-  private places = new Places(this, { places: ["start", "end"], scoped: true });
+  private places = new Places(this, { places: ["start", "end"] });
   /** The default slot holds elements: the content renders as given, without the label span. */
   @atomState() private rich = false;
   /** The row's id: the field's `aria-activedescendant` while the row is active. */

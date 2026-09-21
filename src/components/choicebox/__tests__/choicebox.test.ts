@@ -140,7 +140,7 @@ describe("acme-choicebox", () => {
     const t = tile(a);
     t.dispatchEvent(new PointerEvent("pointerenter", { pointerType: "mouse" }));
     expect(t.getAttribute("data-hover")).toBe("true");
-    t.dispatchEvent(new PointerEvent("pointerdown", { pointerType: "mouse", button: 0 }));
+    t.dispatchEvent(new PointerEvent("pointerdown", { pointerType: "mouse", button: 0, isPrimary: true }));
     expect(t.getAttribute("data-active")).toBe("true");
     t.dispatchEvent(new PointerEvent("pointerleave", { pointerType: "mouse" }));
     expect(t.hasAttribute("data-hover")).toBe(false);

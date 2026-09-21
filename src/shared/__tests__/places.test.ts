@@ -21,6 +21,19 @@ const mount = async (markup: string) => {
 };
 
 describe("Places", () => {
+  test("a nested child's slot does not occupy the host's place", async () => {
+    const el = await mount('<places-probe><span><svg slot="start"></svg></span></places-probe>');
+    expect(el.places.has("start")).toBe(false);
+  });
+
+  test("changing a direct child's slot updates occupancy without an explicit read", async () => {
+    const el = await mount('<places-probe><span slot="start">Icon</span></places-probe>');
+    el.firstElementChild!.setAttribute("slot", "end");
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    await el.updateComplete;
+    expect(el.places.has("start")).toBe(false);
+    expect(el.places.has("end")).toBe(true);
+  });
   test("an empty element fills no place and renders no place span", async () => {
     const el = await mount(`<places-probe>Text</places-probe>`);
     expect(el.places.has("start")).toBe(false);

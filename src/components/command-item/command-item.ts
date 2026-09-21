@@ -34,7 +34,7 @@ export class AcmeCommandItem extends AcmeElement {
   @property() page = "";
   /** The highlighted row; the menu sets it. */
   @property({ type: Boolean, reflect: true }) selected = false;
-  private places = new Places(this, { places: ["start", "end"], scoped: true });
+  private places = new Places(this, { places: ["start", "end"] });
   @query(".item") private row?: HTMLElement;
   @query(".keys") private keys?: HTMLElement;
   private rowState = new Interaction(this, { anyFocus: true, disabled: () => this.disabled });
