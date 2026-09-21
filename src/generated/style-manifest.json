@@ -14556,7 +14556,7 @@
       "key": "document/dashboard",
       "producer": "document",
       "inputs": {
-        "scripts/build.ts": "e4d594d4ad45cae2d4bd54f0d72d4cf641f26b93483c73d5b380c666f3397614",
+        "scripts/build.ts": "6111bf5f1f3aa70eed37f6b2b172f8546785439db52a197f230bce6172cb6fee",
         "scripts/styles.ts": "50dca44c09bfcc914b8c7bab7ef6973a64d93064aedc13fa0add3890ff5eeae6",
         "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
         "src/generated/css/components/code/code.css": "b590dd764458e69311e6adf4fb8f58538e033bb0f117084cdadf6828028eb950",
@@ -15083,6 +15083,28 @@
       "properties": [],
       "registrations": [],
       "exportName": "fieldCss"
+    },
+    "shared/formatting": {
+      "key": "shared/formatting",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "c2ff9742b384e0a4f578176207a5e3ec961ac07029e9bbf22e083435e6ef0442",
+        "scripts/styles.ts": "50dca44c09bfcc914b8c7bab7ef6973a64d93064aedc13fa0add3890ff5eeae6",
+        "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "8b8432960206b4489c0b6956119de59c7d131f8b5d71962545fe6a2e7a2ec469",
+        "styles/shared/formatting.css": "5342eee74da120519a8fd9c3550c28d33883eecbe50898d5c1536cd252dd4522"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/shared/formatting.source.css": "5342eee74da120519a8fd9c3550c28d33883eecbe50898d5c1536cd252dd4522",
+        "src/generated/css/shared/formatting.css": "b45f74408481329e484af1bfcd35780922ca3ea418d8c9ba9986d83d464794b3",
+        "src/generated/css/shared/formatting.css.map": "a266aec917cdcaeb9952941a2211f714106f65b58c227dd016debaffc3431f50",
+        "src/generated/shared/formatting.styles.ts": "9fe608f1c5838c3eb93910f0cec8c38bbf6fecea928ec5888913441a7c2372db"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "formattingCss"
     },
     "shared/grid-layout": {
       "key": "shared/grid-layout",

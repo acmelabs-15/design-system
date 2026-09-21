@@ -1,0 +1,62 @@
+import { afterEach, expect, test } from "bun:test";
+import "../../../all";
+import type { AcmeFormatNumber } from "../format-number";
+import type { AcmeFormatByte } from "../../format-byte/format-byte";
+afterEach(() => document.body.replaceChildren());
+const text = (element: Element) => element.shadowRoot!.querySelector('[part="root"]')!.textContent;
+test("missing and empty values stay absent while zero renders", async () => {
+  document.body.innerHTML = '<acme-format-number>123</acme-format-number><acme-format-byte value=""></acme-format-byte>';
+  const number = document.querySelector("acme-format-number") as AcmeFormatNumber,
+    bytes = document.querySelector("acme-format-byte") as AcmeFormatByte;
+  await number.updateComplete;
+  await bytes.updateComplete;
+  expect(text(number)).toBe("");
+  expect(text(bytes)).toBe("");
+  expect(number.value).toBeUndefined();
+  number.value = 0;
+  await number.updateComplete;
+  expect(text(number)).toBe("0");
+});
+test("number options are owned snapshots and JSON updates use the same state", async () => {
+  const number = document.createElement("acme-format-number") as AcmeFormatNumber;
+  document.body.append(number);
+  number.locale = "en-US";
+  number.value = 1250;
+  const options: Intl.NumberFormatOptions = { style: "currency", currency: "USD" };
+  number.options = options;
+  options.currency = "EUR";
+  await number.updateComplete;
+  expect(text(number)).toBe("$1,250.00");
+  expect(Object.isFrozen(number.options)).toBe(true);
+  number.setAttribute("options", '{"maximumFractionDigits":0}');
+  await number.updateComplete;
+  expect(text(number)).toBe("1,250");
+});
+test("invalid options and nonfinite values render an empty fallback", async () => {
+  const number = document.createElement("acme-format-number") as AcmeFormatNumber;
+  document.body.append(number);
+  number.value = 1;
+  number.options = { style: "currency" };
+  await number.updateComplete;
+  expect(text(number)).toBe("");
+  number.options = {};
+  await number.updateComplete;
+  expect(text(number)).toBe("1");
+  number.setAttribute("options", "{bad");
+  await number.updateComplete;
+  expect(text(number)).toBe("");
+  number.removeAttribute("options");
+  number.value = Infinity;
+  await number.updateComplete;
+  expect(text(number)).toBe("");
+});
+test("byte configuration uses canonical defaults and a real text root", async () => {
+  document.body.innerHTML = '<acme-format-byte value="1024" unit-system="binary" locale="en-US"></acme-format-byte>';
+  const bytes = document.querySelector("acme-format-byte") as AcmeFormatByte;
+  await bytes.updateComplete;
+  expect(text(bytes)).toBe("1 KiB");
+  expect(bytes.shadowRoot!.querySelector('[part="root"]')?.localName).toBe("span");
+  bytes.removeAttribute("unit-system");
+  await bytes.updateComplete;
+  expect(bytes.unitSystem).toBe("decimal");
+});

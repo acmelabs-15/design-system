@@ -255,6 +255,16 @@
       "import": "./dist/components/folder/folder.js",
       "default": "./dist/components/folder/folder.js"
     },
+    "./components/format-byte": {
+      "types": "./dist/components/format-byte/format-byte.d.ts",
+      "import": "./dist/components/format-byte/format-byte.js",
+      "default": "./dist/components/format-byte/format-byte.js"
+    },
+    "./components/format-number": {
+      "types": "./dist/components/format-number/format-number.d.ts",
+      "import": "./dist/components/format-number/format-number.js",
+      "default": "./dist/components/format-number/format-number.js"
+    },
     "./components/gauge": {
       "types": "./dist/components/gauge/gauge.d.ts",
       "import": "./dist/components/gauge/gauge.js",
@@ -646,6 +656,7 @@
     "@lit-labs/compiler": "^1.1.2",
     "@types/bun": "^1.4.2",
     "@types/node": "^26.5.0",
+    "cldr-units-full": "48.2.0",
     "happy-dom": "^15.11.0",
     "lightningcss": "1.33.0",
     "ts-lit-plugin": "^2.0.2",

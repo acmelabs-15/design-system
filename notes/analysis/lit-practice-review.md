@@ -538,3 +538,11 @@ The complete pinned Material Web aria/delegate.ts and aria/aria.ts were re-read 
 The new fixture passes ten DOM/reference/lifecycle checks in each browser. Chromium additionally passes six actual accessibility-tree naming checks, including dynamic reference text, references without IDs, late labels, shadow-scope moves and document adoption. Firefox/WebKit native accessibility-tree or speech results are not claimed by their reference-API checks.
 
 Playwright 1.63's role-query implementation reads string aria-labelledby attributes and does not read ariaLabelledByElements. It misses both the house root and a plain native section given the same reference. Chromium's native accessibility tree correctly names both. The failing role-query control remains in the evidence; the native AX oracle is used for Chromium rather than changing production naming to satisfy a test-tool limitation.
+
+## M08 number and byte formatting — 2026-09-21
+
+[Evidence](../alignment/evidence/m08-formatters-2026-09-21.json) records sixteen focused unit/manifest/data tests and nineteen checks per browser engine. Formatters use canonical numeric inputs and inherited/explicit locale, preserve zero and negatives, ignore child text as data, and render a real inline text root. Number options are owned snapshots. Invalid combinations, malformed JSON and nonfinite values produce controlled empty presentation without logging input contents.
+
+The full current Zag byte formatter was re-read. It hardcodes 0 B and uses SI unit names after binary scaling. A local native Intl probe rejects kibibyte in English, French and Arabic. Unicode's compound-unit specification supplies localized 1024-prefix patterns and the long-name lowercasing rule. The pinned development-only CLDR data package supplies those patterns; the generated runtime table is about 14 KB and covers all 766 source locales through 52 unique sets. A build freshness check and shipped Unicode license accompany it. Native Intl remains the formatting engine. Binary short/narrow symbols remain international IEC symbols; long forms use localized prefixes.
+
+The current build has 114 elements and 88 documentation pages. The remainder of M08 is still active; these formatter checks do not close typography, Relative Time, Middle Truncate or TOC integration.

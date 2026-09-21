@@ -49,6 +49,8 @@ export * from "./components/fieldset/fieldset";
 export * from "./components/file/file";
 export * from "./components/file-tree/file-tree";
 export * from "./components/flex/flex";
+export * from "./components/format-number/format-number";
+export * from "./components/format-byte/format-byte";
 export * from "./components/folder/folder";
 export * from "./components/gauge/gauge";
 export * from "./components/h-stack/h-stack";

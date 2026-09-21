@@ -42,6 +42,8 @@ import "./define/file";
 import "./define/file-tree";
 import "./define/flex";
 import "./define/folder";
+import "./define/format-byte";
+import "./define/format-number";
 import "./define/gauge";
 import "./define/grid";
 import "./define/group";

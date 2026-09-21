@@ -17,6 +17,7 @@ import { writeEntries, writePackageExports } from "./entries";
 import { verifyTokenManifest } from "./numeric-tokens";
 import { verifyResponsiveStyleDelivery } from "./responsive-styles";
 import { verifyThemeStyleMetadata } from "./theme-tokens";
+import { verifyBytePrefixes } from "./byte-prefixes";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = path.join(ROOT, "src"),
@@ -26,6 +27,7 @@ writePackageExports(components, ROOT);
 const styles = verifyStyleManifest(ROOT, ["document/dashboard"]);
 const tokenManifest = verifyTokenManifest(ROOT);
 verifyResponsiveStyleDelivery(ROOT);
+verifyBytePrefixes(ROOT);
 verifyThemeStyleMetadata(ROOT);
 const recipes = ["deploy", "plan", "usage-sum", "classes", "severity", "option", "info-ic", "rail", "code"];
 const recipeFiles = recipes.map((name) => {
