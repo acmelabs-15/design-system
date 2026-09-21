@@ -1,4 +1,3 @@
-import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import type { IconGeometry, IconFamily } from "../src/shared/icon-artwork";
@@ -54,17 +53,58 @@ export type SymbolAsset = Readonly<{ family: IconFamily; filled: boolean; file: 
 export type SymbolRecord = Readonly<{ name: string; tag: string; className: string; assets: readonly SymbolAsset[] }>;
 export type SymbolCatalog = Readonly<{ revision: string; license: "Apache-2.0"; baseline: { weight: 400; grade: 0; opticalSize: 24 }; symbols: readonly SymbolRecord[] }>;
 
+export function verifyGitBlob(content: string, expected: string | undefined): void {
+  const actual = createHash("sha1")
+    .update(`blob ${Buffer.byteLength(content)}\0`)
+    .update(content)
+    .digest("hex");
+  if (actual !== expected) throw new Error("Artwork checkout content differs from the pinned Git object");
+}
+
+async function upstreamBaseline(upstream: string): Promise<Map<string, string>> {
+  const child = Bun.spawn(["git", "ls-tree", "-r", symbolRevision, "symbols/web", "LICENSE"], { cwd: upstream, stdout: "pipe", stderr: "pipe" });
+  const errors = new Response(child.stderr).text(),
+    reader = child.stdout.getReader(),
+    decoder = new TextDecoder(),
+    result = new Map<string, string>();
+  let pending = "";
+  const line = (line: string) => {
+    const at = line.indexOf("\t");
+    if (at < 0) return;
+    const file = line.slice(at + 1),
+      parts = file.split("/"),
+      name = parts[2];
+    if (file !== "LICENSE" && (parts.length !== 5 || !families.some((family) => parts[3] === `materialsymbols${family}`) || (parts[4] !== `${name}_24px.svg` && parts[4] !== `${name}_fill1_24px.svg`)))
+      return;
+    const hash = line.slice(0, at).split(" ")[2];
+    if (!/^[a-f0-9]{40}$/.test(hash)) throw new Error("Invalid upstream Git object record");
+    result.set(file, hash);
+  };
+  for (;;) {
+    const chunk = await reader.read();
+    if (chunk.done) break;
+    pending += decoder.decode(chunk.value, { stream: true });
+    let at: number;
+    while ((at = pending.indexOf("\n")) !== -1) {
+      line(pending.slice(0, at));
+      pending = pending.slice(at + 1);
+    }
+  }
+  pending += decoder.decode();
+  if (pending) line(pending);
+  if ((await child.exited) !== 0) throw new Error("Cannot read pinned artwork tree: " + (await errors));
+  if (result.size < 7 || !result.has("LICENSE")) throw new Error("Incomplete upstream artwork tree");
+  return result;
+}
+
 /** Import the six verified baseline files for every upstream symbol at one exact revision. */
 export async function importSymbols(upstream: string, root = ROOT): Promise<SymbolCatalog> {
   const revision = Bun.spawnSync(["git", "rev-parse", "HEAD"], { cwd: upstream, stdout: "pipe", stderr: "pipe" });
   if (revision.exitCode !== 0 || revision.stdout.toString().trim() !== symbolRevision) throw new Error("The artwork checkout must match the pinned revision");
-  const directory = path.join(upstream, "symbols/web"),
+  const expected = await upstreamBaseline(upstream),
     target = path.join(root, "assets/material-symbols");
-  const names = fs
-    .readdirSync(directory, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort();
+  const names = [...new Set([...expected.keys()].filter((file) => file !== "LICENSE").map((file) => file.split("/")[2]))].sort();
+  if (names.length * 6 !== expected.size - 1) throw new Error("Incomplete upstream family/fill coverage");
   const symbols: SymbolRecord[] = [],
     tags = new Set<string>(),
     classes = new Set<string>();
@@ -79,6 +119,7 @@ export async function importSymbols(upstream: string, root = ROOT): Promise<Symb
       for (const filled of [false, true]) {
         const source = `symbols/web/${name}/materialsymbols${family}/${name}${filled ? "_fill1" : ""}_24px.svg`,
           content = await Bun.file(path.join(upstream, source)).text();
+        verifyGitBlob(content, expected.get(source));
         parseSymbolSvg(content);
         const file = `${name}/${family}-${filled ? "filled" : "unfilled"}.svg`;
         await Bun.write(path.join(target, file), content);
@@ -88,6 +129,7 @@ export async function importSymbols(upstream: string, root = ROOT): Promise<Symb
   }
   const catalog: SymbolCatalog = { revision: symbolRevision, license: "Apache-2.0", baseline: { weight: 400, grade: 0, opticalSize: 24 }, symbols };
   const license = await Bun.file(path.join(upstream, "LICENSE")).text();
+  verifyGitBlob(license, expected.get("LICENSE"));
   if (!license.includes("Apache License") || !license.includes("Version 2.0")) throw new Error("Unexpected artwork license");
   await Bun.write(path.join(root, "assets/licenses/material-symbols.txt"), license);
   await Bun.write(path.join(target, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");
@@ -97,6 +139,7 @@ export async function verifySymbols(root = ROOT): Promise<SymbolCatalog> {
   const directory = path.join(root, "assets/material-symbols"),
     catalog = (await Bun.file(path.join(directory, "catalog.json")).json()) as SymbolCatalog;
   if (catalog.revision !== symbolRevision || catalog.license !== "Apache-2.0") throw new Error("Stale symbol source revision");
+  if (catalog.baseline.weight !== 400 || catalog.baseline.grade !== 0 || catalog.baseline.opticalSize !== 24) throw new Error("Unexpected symbol baseline");
   const actual = new Set([...new Bun.Glob("**/*.svg").scanSync({ cwd: directory })]);
   for (const symbol of catalog.symbols) {
     if (symbol.tag !== symbolTag(symbol.name) || symbol.className !== symbolClassName(symbol.name) || symbol.assets.length !== 6) throw new Error("Invalid symbol manifest");
@@ -105,6 +148,7 @@ export async function verifySymbols(root = ROOT): Promise<SymbolCatalog> {
       const key = `${asset.family}:${asset.filled}`,
         file = `${symbol.name}/${asset.family}-${asset.filled ? "filled" : "unfilled"}.svg`;
       if (!families.includes(asset.family) || typeof asset.filled !== "boolean" || variants.has(key) || asset.file !== file || !actual.delete(file)) throw new Error("Invalid symbol asset identity");
+      if (asset.source !== `symbols/web/${symbol.name}/materialsymbols${asset.family}/${symbol.name}${asset.filled ? "_fill1" : ""}_24px.svg`) throw new Error("Invalid symbol source path");
       variants.add(key);
       const content = await Bun.file(path.join(directory, file)).text();
       parseSymbolSvg(content);

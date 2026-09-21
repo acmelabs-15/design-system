@@ -3,3 +3,4 @@ linker = "hoisted"
 
 [test]
 preload = ["./scripts/test-setup.ts"]
+pathIgnorePatterns = ["assets/**", "dist/**", "_site/**", "docs/**", "src/generated/**", "tools/geist/corpus/**", ".artifacts/**"]

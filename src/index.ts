@@ -127,3 +127,4 @@ export * from "./components/trend/trend";
 export * from "./components/video/video";
 export * from "./components/v-stack/v-stack";
 export { bind as bindField, TanStackFormController } from "./shared/form";
+export { configureIcons, type IconFamily, type IconDefaults } from "./shared/icon-artwork";

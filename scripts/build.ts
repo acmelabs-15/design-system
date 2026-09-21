@@ -18,10 +18,12 @@ import { verifyTokenManifest } from "./numeric-tokens";
 import { verifyResponsiveStyleDelivery } from "./responsive-styles";
 import { verifyThemeStyleMetadata } from "./theme-tokens";
 import { verifyBytePrefixes } from "./byte-prefixes";
+import { writeIconEntries } from "./icon-entries";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = path.join(ROOT, "src"),
   DIST = path.join(ROOT, "dist");
+await writeIconEntries(ROOT);
 const components = writeEntries(ROOT);
 writePackageExports(components, ROOT);
 const styles = verifyStyleManifest(ROOT, ["document/dashboard"]);
@@ -43,6 +45,7 @@ const manifest = verifyStyleManifest(ROOT);
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(path.join(DIST, "bundle"), { recursive: true });
 fs.copyFileSync(tokenManifest, path.join(DIST, "tokens.json"));
+fs.copyFileSync(path.join(ROOT, "assets/material-symbols/catalog.json"), path.join(DIST, "icons.json"));
 for (const entry of Object.values(manifest.entries)) {
   if (entry.producer !== "document") continue;
   const target = entry.key.replace(/^document\//, "");
@@ -106,10 +109,24 @@ if (diags.length) {
 
 await writeManifest();
 
+const standaloneEntry = path.join(DIST, "standalone.js");
+const tokens = fs.readFileSync(path.join(ROOT, "src/generated/css/document/tokens.css"), "utf8");
+fs.writeFileSync(
+  standaloneEntry,
+  `import "./all.js";\nexport * from "./configure.js";\nconst css = ${JSON.stringify(tokens)};\nif (!document.querySelector("style[data-acme-tokens]")) { const s = document.createElement("style"); s.dataset.acmeTokens = ""; s.textContent = css; document.head.prepend(s); }\n`,
+);
+
 // Selective browser entries share one runtime graph, including the explicit all entry.
 {
   const result = await Bun.build({
-    entrypoints: [path.join(DIST, "all.js"), ...components.map((component) => path.join(DIST, "define", component.name + ".js"))],
+    entrypoints: [
+      path.join(DIST, "all.js"),
+      path.join(DIST, "configure.js"),
+      standaloneEntry,
+      ...components.map((component) => path.join(DIST, "define", component.name + ".js")),
+      ...[...new Bun.Glob("generated/icons/{artwork,families}/**/*.js").scanSync({ cwd: DIST })].map((file) => path.join(DIST, file)),
+      path.join(DIST, "generated/icons/all.js"),
+    ],
     root: DIST,
     outdir: path.join(DIST, "cdn"),
     target: "browser",
@@ -180,14 +197,15 @@ for (const [name, minify] of [
 // 3b. The standalone bundle: the same, plus tokens.css installed into the document on import.
 // For hosts that allow a script from a CDN but no stylesheet from one (the artifact CSP), one tag.
 {
-  const tokens = fs.readFileSync(path.join(ROOT, "src/generated/css/document/tokens.css"), "utf8");
-  const entry = path.join(DIST, `standalone-entry-${process.pid}.js`); // per process: builds may run concurrently
-  fs.writeFileSync(
-    entry,
-    `import "./all";\nconst css = ${JSON.stringify(tokens)};\nif (!document.querySelector("style[data-acme-tokens]")) { const s = document.createElement("style"); s.dataset.acmeTokens = ""; s.textContent = css; document.head.prepend(s); }\n`,
-  );
-  const r = await Bun.build({ entrypoints: [entry], outdir: path.join(DIST, "bundle"), naming: "design-system.standalone.min.js", target: "browser", format: "esm", minify: true, sourcemap: "none" });
-  fs.rmSync(entry, { force: true });
+  const r = await Bun.build({
+    entrypoints: [standaloneEntry],
+    outdir: path.join(DIST, "bundle"),
+    naming: "design-system.standalone.min.js",
+    target: "browser",
+    format: "esm",
+    minify: true,
+    sourcemap: "none",
+  });
   if (!r.success) {
     for (const l of r.logs) console.error(l);
     process.exit(1);

@@ -19,22 +19,24 @@ No build step. Import the elements the page uses:
   import "https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/cdn/define/badge.js";
 </script>
 
-<acme-button variant="primary">Deploy</acme-button>
+<acme-button>Deploy</acme-button>
 <acme-badge variant="green" contrast="low">Ready</acme-badge>
 ```
 
 A host that admits a script from a CDN but no stylesheet from one (the Claude artifact CSP is one)
-takes the standalone bundle, which installs `tokens.css` into the document on import:
+can use the browser bootstrap, which installs `tokens.css` into the document on import:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/bundle/design-system.standalone.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@acmelabs/design-system@0.2/dist/cdn/standalone.js"></script>
 ```
 
 `tokens.css` is the global layer: the color scales, the semantic tokens, the reset, the type
 classes and the layout utilities. Selective entries share runtime chunks and register their owned
-component dependencies. The full `dist/cdn/all.js` entry registers every element and includes the
+component dependencies. The `dist/cdn/all.js` entry registers the component library and includes the
 heavy component packages. The standalone bundle also installs tokens. `dashboard.css` carries the page-level recipes
-the Vercel dashboard composes in light DOM.
+the Vercel dashboard composes in light DOM. Import configuration helpers from `dist/cdn/configure.js` when using browser modules. The bootstrap, configuration helpers, definitions and optional artwork share one runtime graph.
+
+For a single self-contained file, `dist/bundle/design-system.standalone.min.js` includes the component library and tokens. Use that bundle on its own; use the shared CDN graph when adding optional icons or artwork.
 
 ## Install from npm
 
@@ -49,13 +51,30 @@ import "@acmelabs/design-system/styles/tokens.css";
 
 The unbundled build under `dist/` keeps Lit as a dependency, so one copy of Lit serves the whole
 app. Use `@acmelabs/design-system/define/<name>` to register an element and its owned dependencies.
-Use `@acmelabs/design-system/all` for full registration. Import classes from
+Use `@acmelabs/design-system/all` for component registration. Import classes from
 `@acmelabs/design-system/components/<name>` or the package root for explicit or scoped registration;
 these entries do not register elements or change the document.
 
 The package publishes its element API as `@acmelabs/design-system/custom-elements.json`.
 The build generates this standard manifest from the element declarations and templates. The
 website and Markdown reference read the same manifest.
+
+## SVG icons
+
+Import each icon definition explicitly. The component entry includes its required icons; the optional catalog stays separate.
+
+```ts
+import "@acmelabs/design-system/define/home-icon";
+import "@acmelabs/design-system/icons/artwork/sharp/filled/home";
+import { configureIcons } from "@acmelabs/design-system";
+configureIcons({ family: "sharp", filled: true });
+```
+
+Use `<acme-home-icon label="Home"></acme-home-icon>`. Omit `label` for decorative artwork inside a named control. Rounded, unfilled artwork is the default. Explicit `family` and `filled` properties override library defaults. Import another style before using it; missing artwork has an explicit marker and never starts a network request.
+
+Class-only imports use `@acmelabs/design-system/icons/home`. Browser definition entries use `dist/cdn/define/home-icon.js`; browser artwork entries use `dist/cdn/generated/icons/artwork/sharp/filled/home.js`. `icons/all` explicitly registers the entire catalog, and `icons/families/<family>/<filled|unfilled>` installs an entire style. These are larger, optional imports.
+
+The complete pinned catalog has 4,135 symbols and all six baseline family/fill combinations. `@acmelabs/design-system/icons/catalog` exposes its source revision, asset hashes and licensing facts. SVG size scales the fixed 24px artwork; it is not a variable-font axis.
 
 ## Numeric spacing and sizes
 
@@ -116,6 +135,7 @@ src/
   generated/
     css/                        canonical CSS inputs, compiled CSS and maps
     components/, shared/        generated Lit style modules
+    icons/                      per-icon classes and explicit artwork entries
     style-manifest.json         producer/input/output fingerprints
 site/                           authored documentation app and pages
 _site/                          generated local site (not committed)
@@ -136,6 +156,8 @@ Generated inputs under src/generated are committed. Package and site outputs are
 | `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | Numeric and theme catalogs through `scripts/numeric-tokens.ts` |
 | `src/generated/theme-properties.ts` | `split` | `scripts/theme-tokens.ts`, token sources and local palette styles |
 | `src/generated/responsive-styles.ts` | `split` | `scripts/responsive-styles.ts` and the common style schema |
+| `assets/material-symbols/` | `scripts/material-symbols.ts import` | the pinned upstream SVG checkout |
+| `src/generated/icons/`, `dist/icons.json` | `scripts/icon-entries.ts`, then `build` | the verified SVG catalog and shared icon renderer |
 | `src/define/`, `src/all.ts`, component exports in package.json | `scripts/entries.ts` | tag-map declarations and owned component markup |
 | `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css`, the generated theme and the numeric token catalog |
 | `dist/styles/dashboard.css` | `build` | compiled recipe inputs selected in `scripts/build.ts` |

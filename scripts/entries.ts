@@ -228,10 +228,17 @@ export function writeEntries(root = DEFAULT_ROOT): ComponentEntry[] {
       path.join(directory, `${entry.name}.ts`),
       HEADER +
         entry.dependencies.map((name) => `import "./${name}";\n`).join("") +
-        `import { ${entry.className} } from "${module.startsWith(".") ? module : `./${module}`}";\n\ncustomElements.define("${entry.tag}", ${entry.className});\n`,
+        `import "${module.startsWith(".") ? module : `./${module}`}";\nimport { ${entry.className} } from "${module.startsWith(".") ? module : `./${module}`}";\n\ncustomElements.define("${entry.tag}", ${entry.className});\n`,
     );
   }
-  outputs.set(path.join(root, "src/all.ts"), HEADER + entries.map((entry) => `import "./define/${entry.name}";\n`).join(""));
+  outputs.set(
+    path.join(root, "src/all.ts"),
+    HEADER +
+      entries
+        .filter((entry) => !entry.file.startsWith("src/generated/icons/classes/"))
+        .map((entry) => `import "./define/${entry.name}";\n`)
+        .join(""),
+  );
   for (const file of outputs.keys()) {
     if (fs.existsSync(file) && (fs.lstatSync(file).isSymbolicLink() || !fs.readFileSync(file, "utf8").startsWith(HEADER))) throw new Error(`Refusing to overwrite authored entry: ${file}`);
   }
@@ -253,12 +260,27 @@ export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_RO
   exports["./all"] = { types: "./dist/all.d.ts", import: "./dist/all.js", default: "./dist/all.js" };
   exports["./define/*"] = { types: "./dist/define/*.d.ts", import: "./dist/define/*.js", default: "./dist/define/*.js" };
   exports["./cdn/*"] = "./dist/cdn/*";
+  exports["./configure"] = { types: "./dist/configure.d.ts", import: "./dist/configure.js", default: "./dist/configure.js" };
+  exports["./icons/*"] = { types: "./dist/generated/icons/classes/*-icon.d.ts", import: "./dist/generated/icons/classes/*-icon.js", default: "./dist/generated/icons/classes/*-icon.js" };
+  exports["./icons/artwork/*"] = { types: "./dist/generated/icons/artwork/*.d.ts", import: "./dist/generated/icons/artwork/*.js", default: "./dist/generated/icons/artwork/*.js" };
+  exports["./icons/families/*"] = { types: "./dist/generated/icons/families/*.d.ts", import: "./dist/generated/icons/families/*.js", default: "./dist/generated/icons/families/*.js" };
+  exports["./icons/all"] = { types: "./dist/generated/icons/all.d.ts", import: "./dist/generated/icons/all.js", default: "./dist/generated/icons/all.js" };
+  exports["./icons/catalog"] = "./dist/icons.json";
   for (const entry of entries) {
     const module = "./" + entry.file.replace(/^src\//, "dist/").replace(/\.ts$/, "");
     exports["./components/" + entry.name] = { types: module + ".d.ts", import: module + ".js", default: module + ".js" };
   }
   pkg.exports = exports;
-  pkg.sideEffects = ["./dist/define/*.js", "./dist/all.js", "./dist/cdn/**", "./dist/bundle/**", "**/*.css"];
+  pkg.sideEffects = [
+    "./dist/define/*.js",
+    "./dist/all.js",
+    "./dist/generated/icons/artwork/**",
+    "./dist/generated/icons/families/**",
+    "./dist/generated/icons/all.js",
+    "./dist/cdn/**",
+    "./dist/bundle/**",
+    "**/*.css",
+  ];
   const content = JSON.stringify(pkg, null, 2) + "\n";
   if (content !== before) fs.writeFileSync(file, content);
 }

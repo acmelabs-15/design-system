@@ -2,6 +2,7 @@
 import "./input";
 import "./kbd";
 import "./spinner";
+import "../components/search/search";
 import { AcmeSearch } from "../components/search/search";
 
 customElements.define("acme-search", AcmeSearch);

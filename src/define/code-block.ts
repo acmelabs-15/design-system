@@ -6,6 +6,7 @@ import "./split-button";
 import "./split-button-item";
 import "./switch";
 import "./switch-control";
+import "../components/code-block/code-block";
 import { AcmeCodeBlock } from "../components/code-block/code-block";
 
 customElements.define("acme-code-block", AcmeCodeBlock);

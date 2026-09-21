@@ -185,3 +185,16 @@ test("an unbounded acme prefix still requires explicit dependencies", () => {
   const root = fixture({ "one.ts": component("One", "create(name:`acme-${string}`){return document.createElement(name);}") });
   expect(() => collectComponents(root)).toThrow(/Unresolved dynamic tag.*src\/one.ts:\d+/);
 });
+
+test("optional icon definitions stay selective while owned icon dependencies load", () => {
+  const root = fixture({
+    "generated/icons/classes/sample-icon.ts": component("SampleIcon").replaceAll("acme-sampleicon", "acme-sample-icon"),
+    "owner.ts": component("Owner", "render(){return html`<acme-sample-icon></acme-sample-icon>`;}", 'import {html} from "lit";'),
+  });
+  writeEntries(root);
+  expect(fs.readFileSync(path.join(root, "src/all.ts"), "utf8")).toContain('import "./define/owner";');
+  expect(fs.readFileSync(path.join(root, "src/all.ts"), "utf8")).not.toContain('import "./define/sample-icon";');
+  expect(fs.readFileSync(path.join(root, "src/define/owner.ts"), "utf8")).toContain('import "./sample-icon";');
+  expect(fs.readFileSync(path.join(root, "src/define/sample-icon.ts"), "utf8")).toContain('customElements.define("acme-sample-icon", SampleIcon);');
+  expect(fs.readFileSync(path.join(root, "src/define/sample-icon.ts"), "utf8")).toContain('import "../generated/icons/classes/sample-icon";');
+});

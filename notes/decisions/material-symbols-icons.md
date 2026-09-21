@@ -21,3 +21,13 @@ Under Peter's execution delegation, package the complete 4,135-symbol catalog fr
 Retain separate icon/style imports. The main artifact must not acquire the whole catalog merely because optional per-icon entries exist. The base renderer owns no network loader. Missing requested artwork is an explicit visible marker, a bounded diagnostic and a localized accessible description. An explicit artwork import can resolve an already mounted marker. Library defaults use canonical TanStack state; explicit icon properties remain independent. Named images expose one SVG image name; unnamed artwork is decorative.
 
 This is the catalog/base implementation checkpoint. Per-icon entry generation, package delivery, internal glyph migration and full M09 action acceptance are still in progress. [Implementation evidence](../alignment/evidence/m09-icon-foundation-2026-09-21.json).
+
+## Entry and configuration delivery — 2026-09-21
+
+Under the same delegation, keep icon classes in explicit icons/<symbol> entries and generate definitions and artwork imports from the full pinned catalog. The main component entry loads only owned icon dependencies. An explicit icons/all entry registers the complete optional catalog; whole-family imports are also explicit. The catalog remains searchable in the documentation and available as package metadata.
+
+Expose the shared configuration functions through a browser configure entry. A shared-graph standalone bootstrap installs tokens while remaining compatible with selective icon/artwork modules. Retain the self-contained single-file bundle as a separate delivery mode. Consumers use one graph per page. This supports the selected script-only static-artifact use case without duplicating the icon state or Theme context.
+
+Registration declarations retain their class module so a definition-only import carries the native tag-to-class types. The standard analyzer processes independent generated icon leaves with their real ancestors in bounded partitions; all public records are compared against the complete analyzer baseline. Private/protected controller details are omitted from the public manifest.
+
+[Delivery evidence](../alignment/evidence/m09-icon-delivery-2026-09-21.json) closes these prerequisites. Internal glyph replacement, Spinner, action controls and identity families remain M09 work. Split Button's Menu composition remains M13; Theme Switcher remains M10. No icon replacement is declared complete while its internal consumer still uses the earlier glyph implementation.

@@ -3,7 +3,7 @@
 // Icons, Typeface. The house Tokens page holds what the reference has no section for. Prose is
 // ours; structure, section names, class lists and values follow the reference pages read in full
 // (Markdown and rendered HTML) on Sep 9 2026. The type families are the one sanctioned difference.
-import { paths } from "../../src/base";
+export { icons } from "./icon-catalog";
 import { highlightHtml } from "../format";
 import type { Doc } from "../site";
 import { esc, ic, REPO, section, VERSION } from "../site";
@@ -298,30 +298,6 @@ export const materials: Doc = {
       "Test materials in both themes: shadow contrast on dark backgrounds is weaker than on light, so confirm the separation still reads.",
     ],
   },
-};
-
-/* ---------- Icons ---------- */
-export const icons: Doc = {
-  id: "icons",
-  title: "Icons",
-  lede: "The icons the elements draw themselves, and the sprite the docs examples use for prefix, suffix and icon slots.",
-  examples: [],
-  body: `${section(
-    "Built-in glyphs",
-    `<div class="row" style="gap:16px">${Object.keys(paths)
-      .map(
-        (n) =>
-          `<span class="vstack" style="gap:6px;align-items:center;width:72px"><svg class="ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px"><path d="${paths[n]}"></path></svg><span class="text-label-12-mono" style="color:var(--text-2)">${n}</span></span>`,
-      )
-      .join("")}</div>`,
-    "Elements render these from <code>glyph(name)</code> in <code>base.ts</code>, so a page needs no sprite for a component's own icons: the copy button's check, the menu's lock, the note's alert. 24-box strokes at 16px.",
-  )}${section(
-    "Slot icons",
-    `<p>Example markup passes icons into slots as inline SVG. Any 24-box stroke icon works; the docs use a sprite of symbols with <code>#i-&lt;name&gt;</code> ids, referenced as <code>&lt;svg class="ic"&gt;&lt;use href="#i-check"/&gt;&lt;/svg&gt;</code>. In an artifact, inline the paths you use.</p>${code(`<acme-button>
-  <svg class="ic" width="16" height="16" slot="start" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
-  Save
-</acme-button>`)}<div class="demo-box"><acme-button><svg class="ic" width="16" height="16" slot="start" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Save</acme-button><acme-badge variant="blue">${ic("rocket", ' slot="icon"')}Production</acme-badge></div>`,
-  )}`,
 };
 
 /* ---------- Typeface ---------- */

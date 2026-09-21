@@ -1,4 +1,5 @@
 import "../../src/all";
+import "../../src/generated/icons/all";
 import { expect, test } from "bun:test";
 import { create, ts } from "@custom-elements-manifest/analyzer";
 import type { ClassDeclaration, CustomElement } from "custom-elements-manifest/schema";
@@ -8,6 +9,7 @@ import path from "node:path";
 import { analyzeManifest, normalizeManifest } from "../manifest";
 import { LitElement } from "lit";
 import * as classes from "../../src/index";
+import * as iconClasses from "../../src/generated/icons/index";
 import { commonStyleInputSchema } from "../../src/shared/style-input-schema";
 
 test("store-backed public properties retain manifest defaults and inherited attribute metadata", async () => {
@@ -50,22 +52,22 @@ test("the manifest matches every registered Lit class and its runtime property a
   const elements = manifest.modules
     .flatMap((module) => module.declarations ?? [])
     .filter((declaration): declaration is ClassDeclaration & CustomElement => declaration.kind === "class" && "tagName" in declaration && !!declaration.tagName);
-  const registered = (Object.values(classes) as unknown[]).filter(
+  const registered = ([...Object.values(classes), ...Object.values(iconClasses)] as unknown[]).filter(
     (value): value is typeof LitElement => typeof value === "function" && value.prototype instanceof LitElement && !!customElements.getName(value as CustomElementConstructor),
   );
   expect(registered.length).toBeGreaterThan(0);
   expect(elements.map((element) => element.tagName!).sort()).toEqual(registered.map((ctor) => customElements.getName(ctor)!).sort());
-  const theme = elements.find(element => element.tagName === "acme-theme")!;
-  const appearance = theme.members!.find(member => member.name === "appearance") as { type: { text: string }; default: string };
-  const density = theme.members!.find(member => member.name === "density") as { type: { text: string }; default: string };
+  const theme = elements.find((element) => element.tagName === "acme-theme")!;
+  const appearance = theme.members!.find((member) => member.name === "appearance") as { type: { text: string }; default: string };
+  const density = theme.members!.find((member) => member.name === "density") as { type: { text: string }; default: string };
   expect(new Set(appearance.type.text.match(/"[^"]+"/g))).toEqual(new Set(['"auto"', '"light"', '"dark"']));
   expect(new Set(density.type.text.match(/"[^"]+"/g))).toEqual(new Set(['"normal"', '"compact"']));
   expect(appearance.default).toBe('"auto"');
   expect(density.default).toBe('"normal"');
-  const box = elements.find(element => element.tagName === "acme-box")!;
+  const box = elements.find((element) => element.tagName === "acme-box")!;
   for (const [name, schema] of Object.entries(commonStyleInputSchema)) {
-    expect(box.attributes?.find(attribute => attribute.name === schema.attribute)?.fieldName).toBe(name);
-    expect(box.members?.find(member => member.name === name && member.kind === "field")).toMatchObject({ attribute: schema.attribute });
+    expect(box.attributes?.find((attribute) => attribute.name === schema.attribute)?.fieldName).toBe(name);
+    expect(box.members?.find((member) => member.name === name && member.kind === "field")).toMatchObject({ attribute: schema.attribute });
   }
   for (const element of elements) {
     expect(element.events?.some((event) => event.name === "type") ?? false).toBe(false);
@@ -162,4 +164,39 @@ test("events dispatched by field callbacks and constructors remain public events
   const manifest = create({ modules: [ts.createSourceFile("events.ts", code, ts.ScriptTarget.Latest, true)] });
   const declaration = manifest.modules[0].declarations!.find((d) => d.name === "Probe")! as ClassDeclaration & CustomElement;
   expect(declaration.events!.map((e) => e.name).sort()).toEqual(["change", "ready"]);
+});
+
+test("partitioned icon analysis preserves real ancestry and authored descendants", async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-icon-manifest-"));
+  const write = (file: string, source: string) => {
+    const target = path.join(root, file);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, source);
+  };
+  try {
+    fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
+    write("package.json", '{"version":"0.0.0"}');
+    write(
+      "src/shared/icon-element.ts",
+      'import {LitElement} from "lit"; import {property} from "lit/decorators.js"; export class AcmeIconElement extends LitElement { @property() label=""; private secret="hidden"; }',
+    );
+    for (const name of ["A", "B"]) {
+      write(`src/generated/icons/classes/${name.toLowerCase()}-icon.ts`, `import {AcmeIconElement} from "../../../shared/icon-element"; export class ${name}Icon extends AcmeIconElement {}`);
+      write(
+        `src/define/${name.toLowerCase()}-icon.ts`,
+        `import {${name}Icon} from "../generated/icons/classes/${name.toLowerCase()}-icon"; customElements.define("acme-${name.toLowerCase()}-icon",${name}Icon);`,
+      );
+    }
+    write("src/derived.ts", 'import {AIcon} from "./generated/icons/classes/a-icon";export class Derived extends AIcon {} customElements.define("acme-derived",Derived);');
+    const { manifest, issues } = await analyzeManifest(root);
+    expect(issues).toEqual([]);
+    const elements = manifest.modules.flatMap((module) => module.declarations ?? []).filter((declaration) => "tagName" in declaration) as (ClassDeclaration & CustomElement)[];
+    expect(elements.map((element) => element.tagName).sort()).toEqual(["acme-a-icon", "acme-b-icon", "acme-derived"]);
+    for (const element of elements) {
+      expect(element.attributes?.find((attribute) => attribute.name === "label")).toMatchObject({ fieldName: "label", default: '""' });
+      expect(element.members?.some((member) => member.name === "secret")).toBe(false);
+    }
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });

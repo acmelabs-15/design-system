@@ -5,6 +5,7 @@ import { describe, expect, test } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
 import "../../src/all";
+import "../../src/define/home-icon";
 import { loadDocs } from "../pages/components/index";
 import * as foundations from "../pages/foundations";
 
@@ -22,7 +23,7 @@ describe("docs site", () => {
     const foundationPages = Object.values(foundations);
     expect(componentPages.length).toBeGreaterThan(0);
     expect(foundationPages.length).toBeGreaterThan(0);
-    const expected = [...foundationPages.map(page => page.id + ".html"), ...componentPages.map(page => "components/" + page.id + ".html")];
+    const expected = [...foundationPages.map((page) => page.id + ".html"), ...componentPages.map((page) => "components/" + page.id + ".html")];
     expect(new Set(expected).size).toBe(expected.length);
     expect([...fragments].sort()).toEqual(expected.sort());
     const index = fs.readFileSync(path.join(DOCS, "index.html"), "utf8");

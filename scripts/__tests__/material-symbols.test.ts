@@ -22,3 +22,9 @@ test("symbol identifiers produce deterministic class and tag names", () => {
   expect(symbolClassName("3d_rotation")).toBe("Acme3dRotationIcon");
   expect(() => symbolTag("../outside")).toThrow();
 });
+
+test("pinned source verification detects modified checkout content", async () => {
+  const { verifyGitBlob } = await import("../material-symbols");
+  expect(() => verifyGitBlob("", "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391")).not.toThrow();
+  expect(() => verifyGitBlob("modified", "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391")).toThrow("differs from the pinned Git object");
+});

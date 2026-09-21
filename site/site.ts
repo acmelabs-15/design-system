@@ -15,6 +15,8 @@ export type Doc = {
   lede: string;
   /** Elements the page documents; the API tables come from their source. */
   tags?: string[];
+  /** Catalogued elements that share the displayed API and have individual catalog entries. */
+  catalogTags?: string[];
   house?: boolean;
   examples: Example[];
   practices?: Record<string, string[]>;
@@ -210,12 +212,10 @@ const apiTables = (els: ElementApi[]) =>
 export const docPage = (d: Doc, api: ElementApi[]) =>
   `<article class="doc" id="${d.id}"><div class="doc-hero"><h1>${d.title}</h1><p>${d.lede}</p>${
     d.tags?.length ? `<div class="tags">${d.tags.map((t) => `<acme-badge variant="${d.house ? "purple" : "gray"}" contrast="low"><code>&lt;${t}&gt;</code></acme-badge>`).join("")}</div>` : ""
-  }</div>${
-    d.examples
-      .filter((e) => !e.census)
-      .map((e) => section(e.h, showcase(e), e.p))
-      .join("")
-  }${d.body ?? ""}${apiTables(api)}${practices(d.practices)}</article>`;
+  }</div>${d.examples
+    .filter((e) => !e.census)
+    .map((e) => section(e.h, showcase(e), e.p))
+    .join("")}${d.body ?? ""}${apiTables(api)}${practices(d.practices)}</article>`;
 
 /** The census page of an element: every example, the docs page's and the census-only ones, in the order the mirror renders them (page examples first, then sketches). */
 export const censusPage = (d: Doc) =>

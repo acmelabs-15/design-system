@@ -2,6 +2,7 @@
 // "Show code" toggle. Bundled by site/build.ts into _site/app.js.
 import { createToastQueue, registerTheme, toasts } from "../../dist/index";
 import "../../dist/all";
+import "../../dist/define/home-icon";
 import { AcmeDocsApp, DocsFormDemo, DocsSwatch, DocsTokens } from "./docs-app";
 
 customElements.define("docs-tokens", DocsTokens);

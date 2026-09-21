@@ -23,7 +23,7 @@ const api = readApi();
 const byTag = new Map(api.map((e) => [e.tag, e]));
 const components: Doc[] = (await loadDocs()).sort((a, b) => a.title.localeCompare(b.title));
 
-const documented = new Set(components.flatMap((d) => d.tags ?? []));
+const documented = new Set([...components, icons].flatMap((d) => [...(d.tags ?? []), ...(d.catalogTags ?? [])]));
 for (const t of documented) if (!byTag.has(t)) throw new Error(`docs name an unknown element: ${t}`);
 const undocumented = api.map((e) => e.tag).filter((t) => !documented.has(t));
 if (undocumented.length) console.warn("elements without a docs page:", undocumented.join(", "));
@@ -69,7 +69,13 @@ const md = (route: string, d: Doc) => {
   fs.writeFileSync(p, `${docToMarkdown(d, byTag).join("\n")}\n`);
 };
 for (const [d, file] of foundations) {
-  writeFragment(`${file}.html`, docPage(d, []));
+  writeFragment(
+    `${file}.html`,
+    docPage(
+      d,
+      (d.tags ?? []).map((tag) => byTag.get(tag)!),
+    ),
+  );
   md(file, d);
 }
 for (const d of components) {

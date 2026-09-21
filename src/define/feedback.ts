@@ -3,6 +3,7 @@ import "./button";
 import "./input";
 import "./select";
 import "./textarea";
+import "../components/feedback/feedback";
 import { AcmeFeedback } from "../components/feedback/feedback";
 
 customElements.define("acme-feedback", AcmeFeedback);

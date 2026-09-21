@@ -2,6 +2,7 @@
 import "./checkbox";
 import "./radio";
 import "./tooltip";
+import "../components/choicebox-item/choicebox-item";
 import { AcmeChoiceboxItem } from "../components/choicebox-item/choicebox-item";
 
 customElements.define("acme-choicebox-item", AcmeChoiceboxItem);
