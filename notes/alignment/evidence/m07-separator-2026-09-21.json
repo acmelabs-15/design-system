@@ -1,0 +1,282 @@
+{
+  "date": "2026-09-21",
+  "entry": "L-07 Separator",
+  "batch": "M07 in progress",
+  "results": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "horizontal width and thickness",
+            "ok": true
+          },
+          {
+            "name": "vertical definite height",
+            "ok": true
+          },
+          {
+            "name": "vertical intrinsic stretch",
+            "ok": true
+          },
+          {
+            "name": "decorative default hides the line semantics",
+            "ok": true
+          },
+          {
+            "name": "explicit semantic orientation",
+            "ok": true
+          },
+          {
+            "name": "generated hooks change the actual line",
+            "ok": true
+          },
+          {
+            "name": "property orientation updates host geometry",
+            "ok": true
+          },
+          {
+            "name": "real host boxes and no focus stops",
+            "ok": true
+          },
+          {
+            "name": "forced colors use native CanvasText",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "horizontal width and thickness",
+            "ok": true
+          },
+          {
+            "name": "vertical definite height",
+            "ok": true
+          },
+          {
+            "name": "vertical intrinsic stretch",
+            "ok": true
+          },
+          {
+            "name": "decorative default hides the line semantics",
+            "ok": true
+          },
+          {
+            "name": "explicit semantic orientation",
+            "ok": true
+          },
+          {
+            "name": "generated hooks change the actual line",
+            "ok": true
+          },
+          {
+            "name": "property orientation updates host geometry",
+            "ok": true
+          },
+          {
+            "name": "real host boxes and no focus stops",
+            "ok": true
+          },
+          {
+            "name": "forced colors use native CanvasText",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "horizontal width and thickness",
+            "ok": true
+          },
+          {
+            "name": "vertical definite height",
+            "ok": true
+          },
+          {
+            "name": "vertical intrinsic stretch",
+            "ok": true
+          },
+          {
+            "name": "decorative default hides the line semantics",
+            "ok": true
+          },
+          {
+            "name": "explicit semantic orientation",
+            "ok": true
+          },
+          {
+            "name": "generated hooks change the actual line",
+            "ok": true
+          },
+          {
+            "name": "property orientation updates host geometry",
+            "ok": true
+          },
+          {
+            "name": "real host boxes and no focus stops",
+            "ok": true
+          },
+          {
+            "name": "forced colors use native CanvasText",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "baselineFailure": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "horizontal width and thickness",
+            "ok": true
+          },
+          {
+            "name": "vertical definite height",
+            "ok": true
+          },
+          {
+            "name": "vertical intrinsic stretch",
+            "ok": false,
+            "actual": {
+              "width": 1,
+              "height": 0
+            }
+          },
+          {
+            "name": "decorative default hides the line semantics",
+            "ok": true
+          },
+          {
+            "name": "explicit semantic orientation",
+            "ok": true
+          },
+          {
+            "name": "generated hooks change the actual line",
+            "ok": true
+          },
+          {
+            "name": "property orientation updates host geometry",
+            "ok": true
+          },
+          {
+            "name": "real host boxes and no focus stops",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "horizontal width and thickness",
+            "ok": true
+          },
+          {
+            "name": "vertical definite height",
+            "ok": true
+          },
+          {
+            "name": "vertical intrinsic stretch",
+            "ok": false,
+            "actual": {
+              "width": 1,
+              "height": 0
+            }
+          },
+          {
+            "name": "decorative default hides the line semantics",
+            "ok": true
+          },
+          {
+            "name": "explicit semantic orientation",
+            "ok": true
+          },
+          {
+            "name": "generated hooks change the actual line",
+            "ok": true
+          },
+          {
+            "name": "property orientation updates host geometry",
+            "ok": true
+          },
+          {
+            "name": "real host boxes and no focus stops",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "horizontal width and thickness",
+            "ok": true
+          },
+          {
+            "name": "vertical definite height",
+            "ok": true
+          },
+          {
+            "name": "vertical intrinsic stretch",
+            "ok": false,
+            "actual": {
+              "width": 1,
+              "height": 0
+            }
+          },
+          {
+            "name": "decorative default hides the line semantics",
+            "ok": true
+          },
+          {
+            "name": "explicit semantic orientation",
+            "ok": true
+          },
+          {
+            "name": "generated hooks change the actual line",
+            "ok": true
+          },
+          {
+            "name": "property orientation updates host geometry",
+            "ok": true
+          },
+          {
+            "name": "real host boxes and no focus stops",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "probe": "import { AcmeSeparator } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/components/separator/separator.ts\";\ncustomElements.define(\"acme-separator\",AcmeSeparator);\nconst results: {name:string;ok:boolean;actual?:unknown}[]=[];\nconst check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\ntry {\n  document.documentElement.style.setProperty(\"--ds-gray-200\",\"rgb(230, 230, 230)\");\n  document.body.innerHTML='<div style=\"width:200px\"><acme-separator></acme-separator></div><div style=\"display:flex;height:40px\"><span>One</span><acme-separator orientation=\"vertical\" decorative=\"false\"></acme-separator><span>Two</span></div><div style=\"display:flex\"><span style=\"height:50px\">Intrinsic</span><acme-separator orientation=\"vertical\"></acme-separator></div>';\n  const elements=[...document.querySelectorAll(\"acme-separator\")] as AcmeSeparator[];\n  await Promise.all(elements.map(el=>el.updateComplete));\n  const line=(el:AcmeSeparator)=>el.shadowRoot!.querySelector('[part=\"root\"]') as HTMLElement;\n  const a=line(elements[0]).getBoundingClientRect(),b=line(elements[1]).getBoundingClientRect(),c=line(elements[2]).getBoundingClientRect();\n  check(\"horizontal width and thickness\",a.width===200&&a.height===1,{width:a.width,height:a.height});\n  check(\"vertical definite height\",b.width===1&&b.height===40,{width:b.width,height:b.height});\n  check(\"vertical intrinsic stretch\",c.width===1&&c.height===50,{width:c.width,height:c.height});\n  check(\"decorative default hides the line semantics\",line(elements[0]).getAttribute(\"aria-hidden\")===\"true\"&&!line(elements[0]).hasAttribute(\"role\"));\n  check(\"explicit semantic orientation\",line(elements[1]).getAttribute(\"role\")===\"separator\"&&line(elements[1]).getAttribute(\"aria-orientation\")===\"vertical\");\n  elements[0].style.setProperty(\"--acme-separator-width\",\"3px\");elements[0].style.setProperty(\"--acme-separator-color\",\"rgb(0, 100, 200)\");\n  check(\"generated hooks change the actual line\",line(elements[0]).getBoundingClientRect().height===3&&getComputedStyle(line(elements[0])).backgroundColor===\"rgb(0, 100, 200)\");\n  elements[1].orientation=\"horizontal\";await elements[1].updateComplete;\n  check(\"property orientation updates host geometry\",elements[1].getAttribute(\"orientation\")===\"horizontal\"&&getComputedStyle(elements[1]).display===\"block\");\n  check(\"real host boxes and no focus stops\",elements.every(el=>getComputedStyle(el).display!==\"contents\"&&el.tabIndex===-1&&line(el).tabIndex===-1));\n  (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error)}}\n",
+  "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m07-separator\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);await page.emulateMedia({forcedColors:\"active\"});const forced=await page.evaluate(()=>{const el=document.querySelector(\"acme-separator\").shadowRoot.querySelector(\"[part=root]\");const control=document.createElement(\"span\");control.style.backgroundColor=\"CanvasText\";document.body.append(control);const result=getComputedStyle(el).backgroundColor===getComputedStyle(control).backgroundColor;control.remove();return result});const data=await page.evaluate(()=>window.__results);data.results.push({name:\"forced colors use native CanvasText\",ok:forced});if(data.error){report.errors.push({engine,message:data.error,stack:data.stack});data.results.push({name:'fixture completes',ok:false,error:data.error});}report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+  "validation": {
+    "build": "$ bun scripts/build.ts\nmodules: 494 files, 98 with compiled templates\nmanifest: 110 elements\nbundle 2570.9 KB min 1238.6 KB tokens.css 153.1 KB dashboard.css 14.3 KB\n",
+    "docs": "$ bun site/build.ts\ndocs: 81 pages, 110 elements (0 undocumented), app.js 1312 KB\n",
+    "tests": "bun test v1.4.0 (34cbb9a40)\n\nscripts/__tests__/manifest.test.ts:\n(pass) store-backed public properties retain manifest defaults and inherited attribute metadata [469.23ms]\n(pass) the manifest matches every registered Lit class and its runtime property attributes [1687.40ms]\n(pass) manifest facts cover conditional events, event variables, slots and forwarded parts [277.28ms]\n(pass) unresolved local paths fail manifest normalization [0.31ms]\n(pass) the analyzer distinguishes package exports from relative exports with either quote style [0.23ms]\n(pass) Lit default attributes use lowercase names while explicit names stay intact [0.54ms]\n(pass) events dispatched by field callbacks and constructors remain public events [0.87ms]\n\nsrc/components/separator/__tests__/separator.test.ts:\n(pass) acme-separator > horizontal and decorative by default [12.96ms]\n(pass) acme-separator > vertical maps to the class and the orientation [1.21ms]\n(pass) acme-separator > property changes and attribute removal restore the canonical defaults [1.07ms]\n\n 10 pass\n 0 fail\n 4483 expect() calls\nRan 10 tests across 2 files. [2.85s]\n"
+  },
+  "scope": [
+    "Horizontal and vertical geometry, including intrinsic stretch",
+    "Decorative default and semantic opt-in",
+    "Canonical properties, defaults and attribute removal",
+    "Generated color/thickness hooks and forced colors",
+    "Root part and no new focus stops"
+  ],
+  "remaining": "Box/Flex/Stack/Grid/Simple Grid/Group remain M07 work; this does not close M07."
+}

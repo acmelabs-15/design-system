@@ -1,13 +1,15 @@
 import { separatorStructureCss } from "../../generated/components/separator/separator-structure.styles";
-import { html } from "lit";
+import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
+import { AcmeElement, boolish, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { separatorCss } from "../../generated/components/separator/separator.styles";
 
 /**
- * Separator: a 1px gray-200 line. Horizontal fills the width; vertical fills the height of the
- * row it sits in. The host renders as its contents, so the line itself is the flex or block
- * item, and a percentage height resolves against the row.
+ * A decorative line by default. Set decorative to false for a semantic separator.
+ * @csspart root - The line.
+ * @cssprop --acme-separator-color - Line color; defaults to the theme gray-200 color.
+ * @cssprop --acme-separator-width - Line thickness; defaults to 1px.
  */
 
 export class AcmeSeparator extends AcmeElement {
@@ -17,10 +19,14 @@ export class AcmeSeparator extends AcmeElement {
     separatorStructureCss,
   ];
   /** horizontal · vertical. */
-  @property() orientation: "horizontal" | "vertical" = "horizontal";
+  @atomState()
+  @property({ reflect: true, noAccessor: true, useDefault: true }) orientation: "horizontal" | "vertical" = "horizontal";
+  /** False exposes separator semantics. In HTML, use decorative="false". */
+  @atomState()
+  @property({ type: Boolean, converter: boolish, noAccessor: true, useDefault: true }) decorative = true;
   render() {
     const vertical = this.orientation === "vertical";
-    return html`<div class=${this.cls("separator", { vertical })} role="separator" aria-orientation=${vertical ? "vertical" : "horizontal"} part="separator"></div>`;
+    return html`<div class=${this.cls("separator", { vertical })} role=${this.decorative ? nothing : "separator"} aria-hidden=${this.decorative ? "true" : nothing} aria-orientation=${this.decorative ? nothing : vertical ? "vertical" : "horizontal"} part="root"></div>`;
   }
 }
 

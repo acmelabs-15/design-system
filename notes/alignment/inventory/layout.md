@@ -65,3 +65,7 @@ Proposed markup:
 ```
 
 Lit supplies .sizes and handles acme-change; React supplies sizes and the typed onChange mapping. Both save preferences in application code, never in the pane root. State/layout measurements remain the same Lit implementation. No example here is claimed to run in the current package.
+
+## Implementation checkpoint — 2026-09-21
+
+L-07 Separator is implemented. Its canonical properties, decorative default, semantic opt-in, root part and generated color/thickness hooks pass unit/manifest checks and nine native checks in each engine. Vertical lines stretch in both definite-height and intrinsic-height flex rows; the previous percentage-height approach fails the intrinsic case. Forced colors uses CanvasText. Static HTML uses decorative="false", following the [delegated default-true attribute clarification](../../decisions/execution-delegation.md#default-true-property-attributes--2026-09-21). [Evidence](../evidence/m07-separator-2026-09-21.json). Other M07 layout entries remain in progress.

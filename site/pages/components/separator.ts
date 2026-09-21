@@ -1,14 +1,15 @@
-// Docs page: Separator — mirrors https://vercel.com/geist/separator
-// Horizontal examples sit in block flow, spaced by the margins of the content around the line, as in
-// the reference; vertical examples sit in a row of fixed height.
 import type { Doc } from "../../site";
 
 export const doc: Doc = {
   id: "separator",
   title: "Separator",
-  lede: "A line that splits content into sections, horizontal or vertical.",
+  lede: 'A horizontal or vertical decorative line. Set decorative="false" when the line marks a meaningful section boundary.',
   tags: ["acme-separator"],
   examples: [
+    {
+      h: "Semantic separator",
+      html: `<p>Primary content</p><acme-separator decorative="false"></acme-separator><p>Related content</p>`,
+    },
     {
       h: "Horizontal",
       html: `<div><div style="margin-bottom:16px"><h3 class="text-label-16">Section 1</h3><p class="text-copy-14" style="color:var(--ds-gray-900)">This is the first section of content.</p></div><acme-separator></acme-separator><div style="margin-top:16px"><h3 class="text-label-16">Section 2</h3><p class="text-copy-14" style="color:var(--ds-gray-900)">This is the second section of content.</p></div></div>`,
