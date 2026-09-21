@@ -75,7 +75,7 @@ for (const f of files) {
   const rel = path.relative(SRC, f).replace(/\.ts$/, ".js");
   fs.mkdirSync(path.dirname(path.join(DIST, rel)), { recursive: true });
   fs.writeFileSync(path.join(DIST, rel), out.outputText);
-  if (out.outputText.includes("_$LH")) compiled++;
+  if (out.outputText.includes('["_$litType$"]')) compiled++;
 }
 console.log(`modules: ${files.length} files, ${compiled} with compiled templates`);
 

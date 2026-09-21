@@ -12,6 +12,7 @@ export type GeneratedResponsiveStyleRule = Readonly<{
 export type GeneratedResponsiveStyleDelivery = Readonly<{
   version: 1;
   rootDisplay: string;
+  layoutDisplay: Readonly<Record<"flex" | "grid", string>>;
   containerProbe: Readonly<{ property: string; baseline: string; found: string }>;
   rules: Readonly<Record<StyleInputKey, GeneratedResponsiveStyleRule>>;
 }>;
@@ -26,7 +27,9 @@ function validateRule(rule: GeneratedResponsiveStyleRule): void {
 export function responsiveStyleDelivery(): GeneratedResponsiveStyleDelivery {
   transform({
     filename: "responsive-bridges.css",
-    code: Buffer.from('[part~="root"]{display:inherit;}:host{--acme-responsive-container:0;}@container (width >= 0px){:host{--acme-responsive-container:1;}}'),
+    code: Buffer.from(
+      '[part~="root"]{display:inherit;}[part~="root"]{display:flex;}[part~="root"]{display:grid;}:host{--acme-responsive-container:0;}@container (width >= 0px){:host{--acme-responsive-container:1;}}',
+    ),
   });
   const rules = Object.fromEntries(
     Object.entries(styleInputSchema).map(([key, metadata]) => {
@@ -44,6 +47,7 @@ export function responsiveStyleDelivery(): GeneratedResponsiveStyleDelivery {
   return Object.freeze({
     version: 1 as const,
     rootDisplay: '[part~="root"]{display:inherit;}',
+    layoutDisplay: Object.freeze({ flex: '[part~="root"]{display:flex;}', grid: '[part~="root"]{display:grid;}' }),
     containerProbe: Object.freeze({ property: "--acme-responsive-container", baseline: ":host{--acme-responsive-container:0;}", found: ":host{--acme-responsive-container:1;}" }),
     rules: Object.freeze(rules),
   });
@@ -57,7 +61,7 @@ function moduleText(): string {
         `  ${JSON.stringify(key)}: Object.freeze({ property: ${JSON.stringify(rule.property)}, target: ${JSON.stringify(rule.target)}, selector: ${JSON.stringify(rule.selector)}, template: ${JSON.stringify(rule.template)} }),`,
     )
     .join("\n");
-  return `// Generated from the common style input schema. Edit src/shared/style-input-schema.ts.\nimport type { ResponsiveStyleDelivery } from "../shared/style-renderer";\n\nexport const responsiveStyleDelivery = Object.freeze({\n  version: 1,\n  rootDisplay: ${JSON.stringify(delivery.rootDisplay)},\n  containerProbe: Object.freeze(${JSON.stringify(delivery.containerProbe)}),\n  rules: Object.freeze({\n${rules}\n  }),\n}) satisfies ResponsiveStyleDelivery;\n`;
+  return `// Generated from the style input schemas. Edit src/shared/style-input-schema.ts.\nimport type { ResponsiveStyleDelivery } from "../shared/style-renderer";\n\nexport const responsiveStyleDelivery = Object.freeze({\n  version: 1,\n  rootDisplay: ${JSON.stringify(delivery.rootDisplay)},\n  layoutDisplay: Object.freeze(${JSON.stringify(delivery.layoutDisplay)}),\n  containerProbe: Object.freeze(${JSON.stringify(delivery.containerProbe)}),\n  rules: Object.freeze({\n${rules}\n  }),\n}) satisfies ResponsiveStyleDelivery;\n`;
 }
 
 function output(root: string): string {

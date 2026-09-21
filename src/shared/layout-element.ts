@@ -7,7 +7,7 @@ import { atomState } from "./atom-state";
 import type { ResponsiveInput } from "./responsive";
 import { AcmeSemanticElement } from "./semantic-element";
 import { StyleInputController } from "./style-input-controller";
-import { styleInputSchema, type StyleInputKey, type StyleScalar, type StyleDisplayMode } from "./style-input-schema";
+import { commonStyleInputSchema, styleInputSchema, type StyleInputKey, type StyleScalar, type StyleDisplayMode } from "./style-input-schema";
 import { ResponsiveStyleRenderer, type ResponsiveStyleTarget } from "./style-renderer";
 
 export type StructuralTag = "div" | "span" | "section" | "article" | "main" | "nav" | "aside" | "header" | "footer";
@@ -97,7 +97,8 @@ export type LayoutStyleValue<Key extends StyleInputKey> = ResponsiveInput<StyleS
  */
 export abstract class AcmeLayoutElement extends AcmeSemanticElement {
   static styles = [sharedCss, layoutStructureCss];
-  protected static styleKeys: readonly StyleInputKey[] = Object.freeze(Object.keys(styleInputSchema) as StyleInputKey[]);
+  protected static styleKeys: readonly StyleInputKey[] = Object.freeze(Object.keys(commonStyleInputSchema) as StyleInputKey[]);
+  protected static layout?: "flex" | "grid";
   protected static displayModes: readonly StyleDisplayMode[] = ["none", "inline", "inline-block", "block"];
   static get observedAttributes(): string[] {
     return [...new Set([...super.observedAttributes, ...this.styleKeys.map((key) => styleInputSchema[key].attribute)])];
@@ -127,6 +128,7 @@ export abstract class AcmeLayoutElement extends AcmeSemanticElement {
     root: () => (this.renderRoot?.nodeType === 11 ? (this.renderRoot as ShadowRoot) : undefined),
     state: () => ({ inputs: this.styleInputs.entries.get(), target: this.responsiveTarget, container: this.responsiveContainer }),
     displayModes: (this.constructor as typeof AcmeLayoutElement).displayModes,
+    layout: (this.constructor as typeof AcmeLayoutElement).layout,
     diagnostic: (diagnostic) => console.warn(this.localName, diagnostic),
   });
   attributeChangedCallback(name: string, previous: string | null, value: string | null): void {

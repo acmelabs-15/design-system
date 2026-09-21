@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, test } from "bun:test";
-import { isAuthoredStyleScalar, isStyleScalar, sizeTokenKeys, spacingTokenKeys, styleInputSchema, type StyleInputKey } from "../style-input-schema";
+import { commonStyleInputSchema, isAuthoredStyleScalar, isStyleScalar, sizeTokenKeys, spacingTokenKeys, styleInputSchema, type StyleInputKey } from "../style-input-schema";
 
 const inventoryPairs = `
 margin margin
@@ -100,7 +100,7 @@ describe("common style input schema", () => {
   });
   test("contains exactly the approved 77 property and attribute names with their targets", () => {
     expect(inventoryPairs).toHaveLength(77);
-    expect(Object.keys(styleInputSchema).sort()).toEqual(inventoryPairs.map(([property]) => property).sort());
+    expect(Object.keys(commonStyleInputSchema).sort()).toEqual(inventoryPairs.map(([property]) => property).sort());
     for (const [property, attribute] of inventoryPairs) {
       const metadata = styleInputSchema[property as StyleInputKey];
       expect(property).toBe(metadata.property);

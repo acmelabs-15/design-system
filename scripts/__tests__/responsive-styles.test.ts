@@ -34,7 +34,7 @@ test("the producer writes stable source and verification rejects stale delivery"
   fs.writeFileSync(path.join(root, "src/shared/style-renderer.ts"), "export type ResponsiveStyleDelivery = unknown;\n");
   const file = writeResponsiveStyleDelivery(root);
   const source = fs.readFileSync(file, "utf8");
-  expect(source).toContain("Generated from the common style input schema");
+  expect(source).toContain("Generated from the style input schemas");
   expect(source).toContain('property: "padding-inline"');
   expect(source).toContain("rootDisplay:");
   expect(writeResponsiveStyleDelivery(root)).toBe(file);

@@ -5556,6 +5556,28 @@
       "registrations": [],
       "exportName": "fileStructureCss"
     },
+    "components/flex/flex-structure": {
+      "key": "components/flex/flex-structure",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "2b1b27664b6e346c73f0bde1254a0b610e20ebf494acdd43c7fd43cce6888cec",
+        "scripts/styles.ts": "50dca44c09bfcc914b8c7bab7ef6973a64d93064aedc13fa0add3890ff5eeae6",
+        "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "8b8432960206b4489c0b6956119de59c7d131f8b5d71962545fe6a2e7a2ec469",
+        "styles/components/flex/flex-structure.css": "896808ea16525c9df212e7bfb02f4e48d8d44942daa848e8c98ec35ac5d96477"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/components/flex/flex-structure.source.css": "896808ea16525c9df212e7bfb02f4e48d8d44942daa848e8c98ec35ac5d96477",
+        "src/generated/css/components/flex/flex-structure.css": "2ca979689889960bd9b8f5419f548ede83aced27ec3af75ddb6ad2ee00659287",
+        "src/generated/css/components/flex/flex-structure.css.map": "906cb0a6389d449f051fc1997003d922ff8a3f6758f856c178b8b6d3c54e4b14",
+        "src/generated/components/flex/flex-structure.styles.ts": "e1e003bf375d868072b1a43b8e543bfc7b7b5e45c801819eba69ac0384fdb595"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "flexStructureCss"
+    },
     "components/folder/folder": {
       "key": "components/folder/folder",
       "producer": "mapped",
@@ -15061,7 +15083,7 @@
       "key": "document/dashboard",
       "producer": "document",
       "inputs": {
-        "scripts/build.ts": "1ea935cf5691bc19273c991491be994ba89e3cec3f91d26b69ebf2f634dcd398",
+        "scripts/build.ts": "e4d594d4ad45cae2d4bd54f0d72d4cf641f26b93483c73d5b380c666f3397614",
         "scripts/styles.ts": "50dca44c09bfcc914b8c7bab7ef6973a64d93064aedc13fa0add3890ff5eeae6",
         "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
         "src/generated/css/components/code/code.css": "b590dd764458e69311e6adf4fb8f58538e033bb0f117084cdadf6828028eb950",
@@ -15621,14 +15643,14 @@
         "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
         "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
         "src/shared/theme-tokens.ts": "8b8432960206b4489c0b6956119de59c7d131f8b5d71962545fe6a2e7a2ec469",
-        "styles/shared/layout-structure.css": "942a1c22367f23ad32bef43e99711578b17139953ac5a390fdb093211e50bb6e"
+        "styles/shared/layout-structure.css": "5d52f2494751385ff736d128cd8f8a12db32d55d6f43efa9e1f86c67e25056ae"
       },
       "externalInputs": {},
       "files": {
-        "src/generated/css/shared/layout-structure.source.css": "942a1c22367f23ad32bef43e99711578b17139953ac5a390fdb093211e50bb6e",
-        "src/generated/css/shared/layout-structure.css": "ad60bf858b7aee40978743d93399712bdc8fcbd52a93caaa43d29399f7a60aee",
-        "src/generated/css/shared/layout-structure.css.map": "f31bf4651760ea11f250ddcd9f48c557462c0e880d0bb82ba92181a852c69b54",
-        "src/generated/shared/layout-structure.styles.ts": "6856c99974ad89dd1da7929b519d60f3a843f0b709ec6ec5ed319af051a50788"
+        "src/generated/css/shared/layout-structure.source.css": "5d52f2494751385ff736d128cd8f8a12db32d55d6f43efa9e1f86c67e25056ae",
+        "src/generated/css/shared/layout-structure.css": "8547eb9ffdcc9c3034d7b78e13a7bfece9ee1dd791b52dd6cbc409c7131b3fa5",
+        "src/generated/css/shared/layout-structure.css.map": "a0986af16f0c458153a4f40ff61b863db05e441cc49111ffcedb2579e97e58fa",
+        "src/generated/shared/layout-structure.styles.ts": "cd9a8a22a26f7d48870da41e8aff11c9c6f71cb319d644c8d12e15cca2451571"
       },
       "properties": [],
       "registrations": [],

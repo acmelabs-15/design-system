@@ -5,7 +5,7 @@ export const layoutStructureCss = css`:host {
   display: block;
 }
 
-:host([as="span"]) {
+:host(:where([as="span"])) {
   display: inline;
 }
 

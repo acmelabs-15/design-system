@@ -49,6 +49,7 @@ export * from "./components/feedback/feedback";
 export * from "./components/fieldset/fieldset";
 export * from "./components/file/file";
 export * from "./components/file-tree/file-tree";
+export * from "./components/flex/flex";
 export * from "./components/folder/folder";
 export * from "./components/gauge/gauge";
 export * from "./components/grid/grid";

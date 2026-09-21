@@ -2,7 +2,7 @@
   display: block;
   box-sizing: border-box;
 }
-:host([as="span"]) {
+:host(:where([as="span"])) {
   display: inline;
 }
 [part~="root"] {

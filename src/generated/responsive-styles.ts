@@ -1,9 +1,10 @@
-// Generated from the common style input schema. Edit src/shared/style-input-schema.ts.
+// Generated from the style input schemas. Edit src/shared/style-input-schema.ts.
 import type { ResponsiveStyleDelivery } from "../shared/style-renderer";
 
 export const responsiveStyleDelivery = Object.freeze({
   version: 1,
   rootDisplay: "[part~=\"root\"]{display:inherit;}",
+  layoutDisplay: Object.freeze({"flex":"[part~=\"root\"]{display:flex;}","grid":"[part~=\"root\"]{display:grid;}"}),
   containerProbe: Object.freeze({"property":"--acme-responsive-container","baseline":":host{--acme-responsive-container:0;}","found":":host{--acme-responsive-container:1;}"}),
   rules: Object.freeze({
   "margin": Object.freeze({ property: "margin", target: "host", selector: ":host", template: ":host{margin:initial;}" }),
@@ -83,5 +84,13 @@ export const responsiveStyleDelivery = Object.freeze({
   "gridColumn": Object.freeze({ property: "grid-column", target: "host", selector: ":host", template: ":host{grid-column:initial;}" }),
   "gridRow": Object.freeze({ property: "grid-row", target: "host", selector: ":host", template: ":host{grid-row:initial;}" }),
   "display": Object.freeze({ property: "display", target: "host-and-root", selector: ":host", template: ":host{display:initial;}" }),
+  "flexDirection": Object.freeze({ property: "flex-direction", target: "host", selector: ":host", template: ":host{flex-direction:initial;}" }),
+  "flexWrap": Object.freeze({ property: "flex-wrap", target: "host", selector: ":host", template: ":host{flex-wrap:initial;}" }),
+  "alignItems": Object.freeze({ property: "align-items", target: "host", selector: ":host", template: ":host{align-items:initial;}" }),
+  "alignContent": Object.freeze({ property: "align-content", target: "host", selector: ":host", template: ":host{align-content:initial;}" }),
+  "justifyContent": Object.freeze({ property: "justify-content", target: "host", selector: ":host", template: ":host{justify-content:initial;}" }),
+  "gap": Object.freeze({ property: "gap", target: "host", selector: ":host", template: ":host{gap:initial;}" }),
+  "rowGap": Object.freeze({ property: "row-gap", target: "host", selector: ":host", template: ":host{row-gap:initial;}" }),
+  "columnGap": Object.freeze({ property: "column-gap", target: "host", selector: ":host", template: ":host{column-gap:initial;}" }),
   }),
 }) satisfies ResponsiveStyleDelivery;

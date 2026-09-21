@@ -14,6 +14,7 @@ export type ResponsiveStyleRule = Readonly<{
 export type ResponsiveStyleDelivery = Readonly<{
   version: 1;
   rootDisplay: string;
+  layoutDisplay: Readonly<Record<"flex" | "grid", string>>;
   containerProbe: Readonly<{ property: string; baseline: string; found: string }>;
   rules: Readonly<Record<StyleInputKey, ResponsiveStyleRule>>;
 }>;
@@ -29,6 +30,7 @@ type RendererOptions = Readonly<{
   root(): ShadowRoot | undefined;
   state(): ResponsiveStyleRendererState;
   displayModes?: readonly StyleDisplayMode[];
+  layout?: "flex" | "grid";
   diagnostic?: (diagnostic: ResponsiveStyleDiagnostic) => void;
   supports?: (document: Document, property: string, value: string) => boolean;
   breakpoints?: BreakpointSource;
@@ -80,7 +82,7 @@ function rulesByProperty(delivery: ResponsiveStyleDelivery): Map<string, Respons
 export function serializeResponsiveStylePlan(
   plan: readonly ResponsiveStyleBlock[],
   delivery: ResponsiveStyleDelivery,
-  options: Readonly<{ document: Document; target: ResponsiveStyleTarget; container?: string }>,
+  options: Readonly<{ document: Document; target: ResponsiveStyleTarget; container?: string; layout?: "flex" | "grid" }>,
 ): string {
   const templates = rulesByProperty(delivery);
   const container = options.target === "container" ? escapeContainerName(options.document, options.container) : undefined;
@@ -92,7 +94,9 @@ export function serializeResponsiveStylePlan(
       const template = templates.get(declaration.property);
       if (!template || template.target !== declaration.target) throw new TypeError(`Responsive style delivery does not match ${declaration.property}`);
       scratch.removeProperty(template.property);
-      scratch.setProperty(template.property, declaration.value);
+      const outerDisplay =
+        options.layout && declaration.property === "display" && declaration.value !== "none" ? (declaration.value.startsWith("inline-") ? "inline-block" : "block") : declaration.value;
+      scratch.setProperty(template.property, outerDisplay);
       const value = scratch.getPropertyValue(template.property);
       if (!value) continue;
       declarations += template.template.replace(/initial(?=;})/, () => value);
@@ -105,7 +109,7 @@ export function serializeResponsiveStylePlan(
     }
   }
   // The inner box follows the host's selected display; it must not query the host as a different container.
-  if (plan.some((block) => block.declarations.some((declaration) => declaration.target === "host-and-root"))) output += delivery.rootDisplay;
+  if (plan.some((block) => block.declarations.some((declaration) => declaration.target === "host-and-root"))) output += options.layout ? delivery.layoutDisplay[options.layout] : delivery.rootDisplay;
   if (options.target === "container" && plan.some((block) => !baseline(block.range)))
     output += delivery.containerProbe.baseline + `@container${container ? ` ${container}` : ""} (width >= 0px){${delivery.containerProbe.found}}`;
   return output;
@@ -234,7 +238,7 @@ export class ResponsiveStyleRenderer implements ReactiveController {
       this.lockedBreakpoints = this.breakpoints.use();
       if (this.lockedBreakpoints !== widths) plan = createResponsiveStylePlan(state.inputs, { supports, displayModes: this.displayModes, breakpoints: this.lockedBreakpoints });
     }
-    const text = serializeResponsiveStylePlan(plan, this.delivery, { document, target, container: state.container });
+    const text = serializeResponsiveStylePlan(plan, this.delivery, { document, target, container: state.container, layout: this.options.layout });
     applyStyle(this.applied, root, text);
 
     if (target === "container" && hasQueries && this.options.diagnostic) {

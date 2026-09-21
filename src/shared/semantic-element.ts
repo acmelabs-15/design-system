@@ -16,6 +16,8 @@ class SemanticAttributes implements ReactiveController {
   private readonly removing = new Set<string>();
   private target?: HTMLElement;
   private observer?: MutationObserver;
+  private watchedRoot?: Node;
+  private connected = false;
   constructor(private host: AcmeSemanticElement) {
     host.addController(this);
   }
@@ -27,6 +29,7 @@ class SemanticAttributes implements ReactiveController {
     const current = this.state.get()[name];
     if (current.text === text && !current.elements) return;
     this.state.set((previous) => Object.freeze({ ...previous, [name]: Object.freeze({ text }) }));
+    this.observe();
     this.paint();
     this.host.requestUpdate();
   }
@@ -42,6 +45,7 @@ class SemanticAttributes implements ReactiveController {
       }
     const reference: Reference = elements === null ? Object.freeze({ text: null }) : Object.freeze({ text: "", elements: Object.freeze([...elements]) });
     this.state.set((previous) => Object.freeze({ ...previous, [name]: reference }));
+    this.observe();
     this.paint();
     this.host.requestUpdate();
   }
@@ -91,11 +95,21 @@ class SemanticAttributes implements ReactiveController {
     }
   };
   private observe(): void {
+    if (!this.connected) return;
+    const state = this.state.get();
+    const needed = (["aria-labelledby", "aria-describedby"] as const).some((name) => !!state[name].text?.trim() && !state[name].elements);
+    const root = this.host.getRootNode();
+    if (needed && this.watchedRoot === root) return;
     this.observer?.disconnect();
+    this.observer = undefined;
+    this.watchedRoot = undefined;
+    if (!needed) return;
     this.observer = new MutationObserver(this.paint);
-    this.observer.observe(this.host.getRootNode(), { childList: true, subtree: true, attributes: true, attributeFilter: ["id"] });
+    this.observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["id"] });
+    this.watchedRoot = root;
   }
   hostConnected(): void {
+    this.connected = true;
     this.observe();
     this.host.requestUpdate();
   }
@@ -105,8 +119,10 @@ class SemanticAttributes implements ReactiveController {
     this.paint();
   }
   hostDisconnected(): void {
+    this.connected = false;
     this.observer?.disconnect();
     this.observer = undefined;
+    this.watchedRoot = undefined;
   }
   adopted(): void {
     if (this.host.isConnected) this.observe();

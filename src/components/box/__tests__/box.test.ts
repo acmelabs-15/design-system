@@ -1,8 +1,8 @@
 import { afterEach, expect, test } from "bun:test";
+import "../../../all";
 import { AcmeBox } from "../box";
-import { styleInputSchema } from "../../../shared/style-input-schema";
+import { commonStyleInputSchema } from "../../../shared/style-input-schema";
 import type { StructuralTag } from "../../../shared/layout-element";
-if (!customElements.get("acme-box")) customElements.define("acme-box", AcmeBox);
 afterEach(() => document.body.replaceChildren());
 async function mount(markup = "<acme-box>Content</acme-box>") {
   document.body.innerHTML = markup;
@@ -22,7 +22,7 @@ test("all structural tags keep one semantic root and the same author-owned conte
 });
 test("all common inputs have accessors and observed attributes outside Lit metadata", async () => {
   const box = await mount();
-  for (const [key, metadata] of Object.entries(styleInputSchema)) {
+  for (const [key, metadata] of Object.entries(commonStyleInputSchema)) {
     expect(key in box).toBe(true);
     expect(AcmeBox.observedAttributes).toContain(metadata.attribute);
     expect(AcmeBox.elementProperties.has(key)).toBe(false);

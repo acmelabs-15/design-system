@@ -22,7 +22,7 @@ function properties<const Names extends readonly string[], const Numeric extends
 }
 
 /** The shared layout surface; visual defaults belong to generated CSS. */
-export const styleInputSchema = Object.freeze({
+export const commonStyleInputSchema = Object.freeze({
   ...properties(
     [
       "margin",
@@ -102,6 +102,12 @@ export const styleInputSchema = Object.freeze({
   ),
   ...properties(["display"], "none", "host-and-root"),
 });
+
+export const flexStyleInputSchema = Object.freeze({
+  ...properties(["flexDirection", "flexWrap", "alignItems", "alignContent", "justifyContent"], "none", "host"),
+  ...properties(["gap", "rowGap", "columnGap"], "nonnegative-spacing", "host"),
+});
+export const styleInputSchema = Object.freeze({ ...commonStyleInputSchema, ...flexStyleInputSchema });
 
 export type StyleInputKey = keyof typeof styleInputSchema;
 export type StyleScalar<Property extends StyleInputKey> = (typeof styleInputSchema)[Property]["numeric"] extends "none" ? string : string | number;

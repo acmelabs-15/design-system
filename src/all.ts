@@ -41,6 +41,7 @@ import "./define/feedback";
 import "./define/fieldset";
 import "./define/file";
 import "./define/file-tree";
+import "./define/flex";
 import "./define/folder";
 import "./define/gauge";
 import "./define/grid";
