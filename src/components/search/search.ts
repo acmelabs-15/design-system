@@ -22,10 +22,13 @@ export class AcmeSearch extends AcmeClearableInput {
   protected get fieldLabel() {
     return "Search";
   }
+  protected get fieldBusy() {
+    return this.loading;
+  }
   /** The forwarded start slot: a slotted element, or its fallback, the glass or the spinner. */
   protected renderStart(): TemplateResult {
     return html`<slot name="start" slot="start"
-      >${this.loading ? html`<acme-spinner size="md"></acme-spinner>` : html`<acme-search-icon size="16px"></acme-search-icon>`}</slot
+      >${this.loading ? html`<acme-spinner size="medium"></acme-spinner>` : html`<acme-search-icon size="16px"></acme-search-icon>`}</slot
     >`;
   }
   protected renderEnd(): TemplateResult | typeof nothing {

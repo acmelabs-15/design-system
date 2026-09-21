@@ -1,42 +1,27 @@
-// Docs page: Spinner — mirrors https://vercel.com/geist/spinner
 import type { Doc } from "../../site";
-
-const colorRow = (label: string, color = "") => `<div class="row" style="gap:16px"><span style="width:96px">${label}</span><acme-spinner${color ? ` color="${color}"` : ""}></acme-spinner></div>`;
-
 export const doc: Doc = {
   id: "spinner",
   title: "Spinner",
-  lede: "Shows an action running in the background. Unlike Loading Dots, use it as feedback to something the user did: a button, a pagination step, a retry.",
   tags: ["acme-spinner"],
+  lede: "Indeterminate activity with a decorative or named status presentation.",
   examples: [
-    {
-      h: "Default size",
-      html: `<acme-spinner></acme-spinner>`,
-    },
+    { h: "Named status", html: '<acme-spinner label="Loading projects"></acme-spinner>' },
     {
       h: "Sizes",
-      html: `<div class="row" style="gap:16px;align-items:flex-end"><acme-spinner size="sm"></acme-spinner><acme-spinner size="md"></acme-spinner><acme-spinner size="lg"></acme-spinner><acme-spinner size="xl"></acme-spinner><acme-spinner size="2xl"></acme-spinner><acme-spinner size="3xl"></acme-spinner><acme-spinner size="4xl"></acme-spinner></div>`,
+      html: '<div class="row"><acme-spinner size="small"></acme-spinner><acme-spinner size="medium"></acme-spinner><acme-spinner size="large"></acme-spinner><acme-spinner size="extraLarge"></acme-spinner><acme-spinner size="extraExtraLarge"></acme-spinner></div>',
     },
-    {
-      h: "Colors",
-      html: `<div class="vstack" style="gap:16px">${colorRow("Default:")}${colorRow("Red:", "var(--ds-red-700)")}${colorRow("Green:", "var(--ds-green-700)")}${colorRow("Blue:", "var(--ds-blue-700)")}</div>`,
-    },
+    { h: "Color", html: '<acme-spinner label="Loading" style="color:var(--ds-blue-900)"></acme-spinner>' },
+    { h: "Surrounding status", html: '<span role="status">Loading projects <acme-spinner></acme-spinner></span>' },
   ],
   practices: {
-    "When to use": [
-      "Use a Spinner for a wait of about one to three seconds with no known end, tied to one action: a submit button, an inline icon refresh, a row-level retry.",
-      "On a submit button, set the Button <code>loading</code> attribute so the spinner, the size and the busy state stay in step. Do not place a Spinner inside a button by hand.",
-      "Use Skeleton when async data fills a known layout, Loading Dots for inline copy, and Progress when the total work is known.",
-    ],
-    Behavior: [
-      "Mount the Spinner only once the action starts. A spinner that is rendered early and toggled shows a partial rotation at idle and reads as jank.",
-      "Pair any wait over about a second with copy that names the work (<code>Verifying…</code>, <code>Deploying…</code>) so the user knows what blocks.",
-      "Match the Spinner size to the type or icon next to it, not to the parent container.",
-    ],
     Accessibility: [
-      'Set <code>aria-busy="true"</code> on the element that wraps the in-flight action so screen readers announce the change.',
-      "Keep the trigger focusable while it loads. Swapping it for a separate spinner element drops keyboard focus.",
-      "Honor <code>prefers-reduced-motion</code> and do not stack extra animation around the Spinner.",
+      "An empty label makes the Spinner decorative. Supply a translated label when it owns the status announcement.",
+      "Use one status owner. A loading Button owns its busy state and keeps its accessible name.",
+      "Reduced motion keeps a static activity indicator. It does not suggest completion.",
+    ],
+    Sizing: [
+      "small, medium, large, extraLarge and extraExtraLarge use 12, 16, 20, 24 and 32 CSS pixels at the default root font size.",
+      "Use CSS color for local customization. The component creates no input value or user-change event.",
     ],
   },
 };

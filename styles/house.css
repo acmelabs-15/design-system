@@ -1067,11 +1067,6 @@ a:hover {
   background: transparent;
   border-color: transparent;
 }
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 .iconbtn {
   border: 1px solid var(--border);
   background: var(--surface);
@@ -3251,92 +3246,6 @@ dialog::backdrop {
 @media (prefers-reduced-motion: reduce) {
   .skeleton::after {
     animation: none;
-  }
-}
-/* Spinner (Geist): fading blades around the centre, each rotated and pushed out 146% of its width;
-   sm 12 (8 blades 3×1.5) · md 16 (10, 4×1.5) · lg 20 (12, 5×2) · xl 24 (12, 6×2.5) · 2xl 32 (15, 8×2.5) · 3xl 40 (15, 10×3) · 4xl 56 (18, 14×3.5) */
-.spinner {
-  position: relative;
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  flex: none;
-  color: var(--ds-gray-700);
-  --dur: 1000ms;
-}
-.spinner i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 1.5px;
-  border-radius: 999px;
-  background: currentColor;
-  translate: -50% -50%;
-  transform-origin: center;
-  animation: spin-fade var(--dur) linear infinite;
-  animation-delay: var(--d, 0ms);
-  will-change: transform;
-}
-.spinner.sm {
-  width: 12px;
-  height: 12px;
-}
-.spinner.sm i {
-  width: 3px;
-  height: 1.5px;
-}
-.spinner.lg {
-  width: 20px;
-  height: 20px;
-  --dur: 1200ms;
-}
-.spinner.lg i {
-  width: 5px;
-  height: 2px;
-}
-.spinner.xl {
-  width: 24px;
-  height: 24px;
-  --dur: 1200ms;
-}
-.spinner.xl i {
-  width: 6px;
-  height: 2.5px;
-}
-.spinner.x2 {
-  width: 32px;
-  height: 32px;
-  --dur: 1200ms;
-}
-.spinner.x2 i {
-  width: 8px;
-  height: 2.5px;
-}
-.spinner.x3 {
-  width: 40px;
-  height: 40px;
-  --dur: 1200ms;
-}
-.spinner.x3 i {
-  width: 10px;
-  height: 3px;
-}
-.spinner.x4 {
-  width: 56px;
-  height: 56px;
-  --dur: 1300ms;
-}
-.spinner.x4 i {
-  width: 14px;
-  height: 3.5px;
-}
-@keyframes spin-fade {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.15;
   }
 }
 /* Progress (Geist): 10px, radius 6, gray track, gray-1000 value; success blue, error red, warning amber */

@@ -60,18 +60,21 @@ describe("acme-empty-state", () => {
 describe("acme-icon-tile", () => {
   const tile = (el: AcmeIconTile) => el.shadowRoot!.querySelector(".tile") as HTMLElement;
 
-  test("renders the tile, hidden from assistive technology, around the slotted icon", async () => {
+  test("renders a presentation tile without hiding the authored icon", async () => {
     const el = await mount<AcmeIconTile>(`<acme-icon-tile><svg></svg></acme-icon-tile>`);
     const t = tile(el);
-    expect(t.getAttribute("aria-hidden")).toBe("true");
+    expect(t.hasAttribute("aria-hidden")).toBe(false);
+    expect(t.getAttribute("part")).toBe("root");
     expect(t.hasAttribute("style")).toBe(false);
     expect(t.querySelector("slot")).not.toBeNull();
   });
 
-  test("size fixes the width and the height: a number in pixels, a length as given", async () => {
-    const px = await mount<AcmeIconTile>(`<acme-icon-tile size="54"><svg></svg></acme-icon-tile>`);
-    expect(tile(px).getAttribute("style")).toBe("width:54px;height:54px");
-    const rem = await mount<AcmeIconTile>(`<acme-icon-tile size="3rem"><svg></svg></acme-icon-tile>`);
-    expect(tile(rem).getAttribute("style")).toBe("width:3rem;height:3rem");
+  test("size accepts explicit CSS lengths and removal restores absence", async () => {
+    const element = await mount<AcmeIconTile>(`<acme-icon-tile size="54px"><svg></svg></acme-icon-tile>`);
+    expect(element.size).toBe("54px");
+    expect(tile(element).hasAttribute("style")).toBe(false);
+    element.removeAttribute("size");
+    await element.updateComplete;
+    expect(element.size).toBeUndefined();
   });
 });

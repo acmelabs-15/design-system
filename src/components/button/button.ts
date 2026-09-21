@@ -132,7 +132,7 @@ export class AcmeButton extends AcmeElement {
       ...customVars("-active", this.active),
       "--acme-icon-size:16px",
     ].join(";");
-    const spinnerSize = this.size === "large" ? "lg" : this.size === "medium" ? "md" : "sm";
+    const spinnerSize = this.size === "large" ? "large" : this.size === "medium" ? "medium" : "small";
     const startSlot = html`<slot
       name="start"
       @slotchange=${this.places.read}

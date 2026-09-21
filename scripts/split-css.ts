@@ -42,7 +42,6 @@ const MAP: [string, RegExp][] = [
   ["menu", /^\.menu/],
   ["tooltip", /^(\[data-tooltip\]|\.tooltip)/],
   ["skeleton", /^(\.skeleton|@keyframes shimmer)/],
-  ["spinner", /^(\.spinner|@keyframes spin)/],
   ["video", /^\.progress/], // the house bar rules: the video scrubber is their only user (acme-progress is generated)
   ["gauge", /^(\.gauge|\.ring\b|\.score-ring|@keyframes gauge-spin)/],
   ["load-more", /^\.load-more/],

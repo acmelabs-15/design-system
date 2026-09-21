@@ -29,6 +29,7 @@ describe("acme-search", () => {
     expect(cmdk.shadowRoot!.querySelectorAll(".cmdk acme-kbd").length).toBe(2);
     const start = loading.shadowRoot!.querySelector("slot[name=start][slot=start]") as HTMLSlotElement;
     expect(start.querySelector("acme-spinner")).not.toBeNull();
+    expect(field(loading).getAttribute("aria-busy")).toBe("true");
     expect(start.querySelector("acme-search-icon")).toBeNull();
     expect(field(disabled).disabled).toBe(true);
   });

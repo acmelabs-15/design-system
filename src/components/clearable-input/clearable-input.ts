@@ -88,6 +88,9 @@ export class AcmeClearableInput extends AcmeElement {
   protected get fieldLabel() {
     return this.ariaLabelText || this.label;
   }
+  protected get fieldBusy() {
+    return false;
+  }
   /** The keys or the clear button, inside the field at the end. */
   protected renderEnd(): TemplateResult | typeof nothing {
     const has = !!this.value;
@@ -112,6 +115,7 @@ export class AcmeClearableInput extends AcmeElement {
       width=${this.width || nothing}
       ?disabled=${this.disabled}
       aria-label=${this.fieldLabel || nothing}
+      aria-busy=${this.fieldBusy ? "true" : nothing}
       data-animate=${String(!!this.value)}
       @acme-input=${this.onInput}
       @acme-change=${this.onChange}

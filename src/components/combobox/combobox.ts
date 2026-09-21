@@ -632,7 +632,7 @@ export class AcmeCombobox extends AcmeElement {
       ? nothing
       : html`<div class="start" aria-hidden="true">${
           this.loading
-            ? html`<acme-spinner size="md"></acme-spinner>`
+            ? html`<acme-spinner size="medium"></acme-spinner>`
             : html`<slot name="start-icon" @slotchange=${this.readChildren}>${chosen?.startNode?.cloneNode(true) ?? html`<acme-search-icon size="16px" class="icon"></acme-search-icon>`}</slot>`
         }</div>`;
     const endNode = this.displaySelectedEnd ? chosen?.endNode?.cloneNode(true) : undefined;
@@ -660,6 +660,7 @@ export class AcmeCombobox extends AcmeElement {
     return html`<div
       class=${cls}
       role="combobox"
+      aria-busy=${this.loading ? "true" : nothing}
       tabindex="-1"
       aria-controls=${this.listId}
       aria-expanded=${String(this.open)}
