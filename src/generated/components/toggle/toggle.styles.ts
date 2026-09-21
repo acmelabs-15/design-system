@@ -17,13 +17,13 @@ export const toggleCss = /* @__PURE__ */ withStyleProperties(css`.toggle :where(
   touch-action: manipulation;
   align-items: center;
   gap: var(--acme-space-gap-half);
+  font-size: .75rem;
+  font-weight: var(--acme-font-weight-500);
   white-space: nowrap;
   color: var(--acme-secondary);
   -webkit-user-select: none;
   user-select: none;
   padding-block: 3px;
-  font-size: .75rem;
-  font-weight: 500;
   display: inline-flex;
   position: relative;
 }
@@ -215,7 +215,7 @@ export const toggleCss = /* @__PURE__ */ withStyleProperties(css`.toggle :where(
 }
 
 :where(:host([data-dark])) .toggle:where([data-checked]:not([data-disabled])) :where(.track) :where(.thumb) {
-  background-color: hsla(var(--ds-gray-1000-value),.84) !important;
+  background-color: rgb(from var(--ds-gray-1000) r g b / .84) !important;
 }
 
 :where(:host([data-dark])) .toggle:where(:not([data-checked])[data-disabled]) :where(.track) :where(.thumb) {
@@ -227,7 +227,7 @@ export const toggleCss = /* @__PURE__ */ withStyleProperties(css`.toggle :where(
 }
 
 :where(:host([data-dark])) .toggle:where(:not([data-checked]):not([data-disabled])) :where(.track) :where(.thumb) {
-  background-color: var(--thumb-unchecked-bg-color-override, hsla(var(--ds-gray-1000-value),.84));
+  background-color: var(--thumb-unchecked-bg-color-override, rgb(from var(--ds-gray-1000) r g b / .84));
 }
 
 :where(:host([data-dark])) .toggle:where([data-checked]:not(.colored)) :where(.track) :where(.thumb) :where(.icon) {

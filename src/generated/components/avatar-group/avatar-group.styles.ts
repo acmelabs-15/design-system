@@ -121,6 +121,9 @@ export const avatarGroupCss = css`.avatar-group :where(.member), .avatar-group :
   background-color: var(--ds-gray-100);
   width: 100%;
   height: 100%;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: var(--acme-font-weight-600);
   color: var(--ds-gray-1000);
   --ds-background-100: hsla(var(--ds-background-100-value), 1);
   --ds-background-200: hsla(var(--ds-background-200-value), 1);
@@ -365,9 +368,6 @@ export const avatarGroupCss = css`.avatar-group :where(.member), .avatar-group :
   border-radius: 2147483647px;
   justify-content: center;
   align-items: center;
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 12px;
   display: flex;
   position: absolute;
   inset: 0;

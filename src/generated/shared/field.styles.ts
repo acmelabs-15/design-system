@@ -9,12 +9,12 @@ export const fieldCss = css`.field {
 }
 
 .field label, .flabel, .form-label {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--text-2);
   text-transform: capitalize;
   margin-bottom: 6px;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 20px;
   display: block;
 }
 
@@ -245,11 +245,11 @@ export const fieldCss = css`.field {
 .kbd.sm, .search .kbd, .menu .kbd, .field .kbd {
   min-width: 20px;
   height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
   color: var(--text-2);
   padding: 0 4px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 20px;
 }
 
 .fieldset {

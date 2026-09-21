@@ -4,12 +4,12 @@ export const emptyStateCss = css`.empty-state :where(.text) :where(.description)
   text-align: center;
   max-width: 340px;
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   text-wrap: balance;
   color: var(--ds-gray-900);
   margin-inline: auto;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
 }
 
 .empty-state {
@@ -49,37 +49,37 @@ export const emptyStateCss = css`.empty-state :where(.text) :where(.description)
 
 .empty-state:where(:not(.secondary)) :where(.text) :where(.title) {
   font-family: var(--acme-font-sans);
-  letter-spacing: -.32px;
   font-size: 16px;
-  font-weight: 600;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-600);
+  letter-spacing: -.32px;
 }
 
 .empty-state:where(.secondary) :where(.text) :where(.title) {
   font-family: var(--acme-font-sans);
-  letter-spacing: -.28px;
   font-size: 14px;
-  font-weight: 600;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-600);
+  letter-spacing: -.28px;
 }
 
 .empty-state :where(.text) :where(.title) {
   text-align: center;
-  text-wrap: balance;
   max-width: 340px;
+  font-weight: var(--acme-font-weight-500);
+  text-wrap: balance;
   color: var(--ds-gray-1000);
   margin-inline: auto;
-  font-weight: 500;
 }
 
 .empty-state:where(:not(.secondary)) :where(.text) :where(.title) > strong {
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-900);
-  font-weight: 500;
 }
 
 .empty-state :where(.text) :where(.description) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .empty-state > slot::slotted(a), .empty-state > slot > a {

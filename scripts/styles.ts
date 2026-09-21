@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
-import { type CustomAtRules, Features, type Rule, transform, type Visitor } from "lightningcss";
+import { type CustomAtRules, Features, type Rule, type TokenOrValue, transform, type Visitor } from "lightningcss";
+import { fontWeightTokenDefinitions, themeTokenDefinitions } from "../src/shared/theme-tokens";
+import { documentThemeSelector } from "./theme-tokens";
 
 export type PropertyRegistration = { name: string; syntax: string; inherits: boolean; initialValue?: string };
 export type Registration = { name: string; definition: string };
@@ -32,6 +34,42 @@ const writeChanged = (file: string, text: string) => {
 };
 const propertyCss = (p: PropertyRegistration) =>
   "@property " + p.name + " { syntax: " + JSON.stringify(p.syntax) + "; inherits: " + p.inherits + ";" + (p.initialValue === undefined ? "" : " initial-value: " + p.initialValue + ";") + " }";
+const weightTokens = new Map(fontWeightTokenDefinitions.map((token) => [Number(token.defaultValue), token.cssProperty]));
+const fontFamilyTokens = new Set<string>(themeTokenDefinitions.filter((token) => token.category === "fonts").map((token) => token.cssProperty));
+const fontAliases: Record<string, string> = { "--sans": "--acme-font-sans", "--font-sans": "--acme-font-sans", "--mono": "--acme-font-mono", "--font-mono": "--acme-font-mono" };
+const colorTokens = new Set<string>(themeTokenDefinitions.filter((token) => token.category === "colors").map((token) => token.cssProperty));
+function fullColorTokens(tokens: TokenOrValue[], self?: string): TokenOrValue[] {
+  const ident = (value: string): TokenOrValue => ({ type: "token", value: { type: "ident", value } });
+  const space: TokenOrValue = { type: "token", value: { type: "white-space", value: " " } };
+  const output = tokens.map((token): TokenOrValue => {
+    if (token.type === "var" && token.value.fallback) {
+      const fallback = fullColorTokens(token.value.fallback, self);
+      return fallback === token.value.fallback ? token : { ...token, value: { ...token.value, fallback } };
+    }
+    if (token.type !== "function") return token;
+    const args = fullColorTokens(token.value.arguments, self);
+    const significant = args.filter((value) => value.type !== "token" || value.value.type !== "white-space");
+    const first = significant[0];
+    if (/^hsla?$/i.test(token.value.name) && first?.type === "var" && first.value.name.ident.endsWith("-value")) {
+      const name = first.value.name.ident.slice(0, -6);
+      if (name !== self && colorTokens.has(name)) {
+        const origin: TokenOrValue = { type: "var", value: { name: { ident: name } } };
+        if (significant.length === 1) return origin;
+        const separator = significant[1];
+        if (significant.length === 3 && separator.type === "token" && (separator.value.type === "comma" || (separator.value.type === "delim" && separator.value.value === "/")))
+          return {
+            type: "function",
+            value: {
+              name: "rgb",
+              arguments: [ident("from"), space, origin, space, ident("r"), space, ident("g"), space, ident("b"), space, { type: "token", value: { type: "delim", value: "/" } }, space, significant[2]],
+            },
+          };
+      }
+    }
+    return args === token.value.arguments ? token : { ...token, value: { ...token.value, arguments: args } };
+  });
+  return output.some((value, index) => value !== tokens[index]) ? output : tokens;
+}
 
 function transformCss(source: string, filename: string, visitor: Visitor<CustomAtRules> = {}, sourceMap = false) {
   // Keep constant line-height calculations out of numeric folding (upstream issue #949).
@@ -109,7 +147,25 @@ function transformCss(source: string, filename: string, visitor: Visitor<CustomA
     include: Features.Nesting,
     visitor: {
       ...visitor,
+      Selector: documentThemeSelector,
+      VariableExit(variable) {
+        const name = fontAliases[variable.name.ident];
+        if (name) return { type: "var", value: JSON.parse(JSON.stringify({ ...variable, name: { ...variable.name, ident: name } }), (_key, value) => (value === null ? undefined : value)) };
+      },
       DeclarationExit(declaration) {
+        if (declaration.property === "custom" && Object.hasOwn(fontAliases, declaration.value.name)) return [];
+        if (declaration.property === "font-weight" && declaration.value.type === "absolute" && declaration.value.value.type === "weight") {
+          const name = weightTokens.get(declaration.value.value.value);
+          if (name) return { property: "unparsed", value: { propertyId: { property: "font-weight" }, value: [{ type: "var", value: { name: { ident: name } } }] } };
+        }
+        if (declaration.property === "unparsed" && declaration.value.propertyId.property === "font-weight" && declaration.value.value.length === 1) {
+          const value = declaration.value.value[0];
+          if (value.type === "var" && fontFamilyTokens.has(value.value.name.ident)) return [];
+        }
+        if (declaration.property === "unparsed" || declaration.property === "custom") {
+          const value = fullColorTokens(declaration.value.value, declaration.property === "custom" ? declaration.value.name : undefined);
+          if (value !== declaration.value.value) return JSON.parse(JSON.stringify({ ...declaration, value: { ...declaration.value, value } }), (_key, item) => (item === null ? undefined : item));
+        }
         if (declaration.property === "custom" && declaration.value.name === marker) {
           const tokens = JSON.parse(JSON.stringify(declaration.value.value), (_, value) => (value === null ? undefined : value));
           return { property: "unparsed", value: { propertyId: { property: "line-height" }, value: tokens } };
@@ -226,7 +282,7 @@ export function writeStyle(
     const helper = slash(path.relative(path.dirname(moduleFile), "src/shared/style-properties"));
     files[moduleFile] = litStyleModule(exportName, css, properties, helper.startsWith(".") ? helper : "./" + helper);
   }
-  const inputs = [...new Set([...options.inputs, "scripts/styles.ts"])];
+  const inputs = [...new Set([...options.inputs, "scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])];
   const entry: StyleEntry = {
     key,
     producer: options.producer,

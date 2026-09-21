@@ -63,14 +63,14 @@ export const cardCss = css`.card .stat .foot.bar {
 }
 
 .card-foot .mono {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
 }
 
 .card-foot .link {
   font-size: var(--t-sm);
+  font-weight: var(--acme-font-weight-500);
   color: var(--text);
   margin-left: auto;
-  font-weight: 500;
 }
 
 .card .card-foot:last-child {

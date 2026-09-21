@@ -35,9 +35,9 @@ export const descriptionCss = css`.description {
 }
 
 .description :where(.content) {
-  color: var(--ds-gray-1000);
   font-size: .875rem;
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
+  color: var(--ds-gray-1000);
   line-height: 1rem !important;
 }
 

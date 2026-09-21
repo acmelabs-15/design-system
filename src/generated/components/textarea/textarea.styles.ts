@@ -18,7 +18,7 @@ export const textareaCss = css`.wrap :where(textarea) {
 .wrap {
   width: 100%;
   max-width: 100%;
-  font-weight: 400;
+  font-weight: var(--acme-font-weight-400);
   transition-property: all;
   transition-duration: .15s;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);

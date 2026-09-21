@@ -5,6 +5,7 @@ import { AcmeElement, boolish, sharedCss } from "../../base";
 
 import type { AvatarService } from "../avatar/avatar";
 import { avatarGroupCss } from "../../generated/components/avatar-group/avatar-group.styles";
+import { ThemePaletteController } from "../../shared/theme-palette";
 
 export type AvatarMember = { username?: string; src?: string; letter?: string; title?: string; git?: AvatarService };
 
@@ -16,6 +17,8 @@ export type AvatarMember = { username?: string; src?: string; letter?: string; t
  */
 
 export class AcmeAvatarGroup extends AcmeElement {
+  private readonly palette = new ThemePaletteController(this, "avatar-group", this.themeContext.scope.effective, () => this.refreshScopedStyles());
+  protected get scopedStyles() { return [...super.scopedStyles, ...(this.palette?.styles ?? [])]; }
   static styles = [
     sharedCss,
     avatarGroupCss,

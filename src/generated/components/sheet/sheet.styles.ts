@@ -77,12 +77,12 @@ dialog:where(.inset) :where(.header) {
 
 dialog :where(.body) {
   font-family: var(--acme-font-sans);
+  font-size: .875rem;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   padding-block: 1rem;
   padding-inline: 1.5rem;
-  font-size: .875rem;
-  font-weight: 400;
-  line-height: 20px;
 }
 
 dialog:where(:not(.inset)) :where(.header) {
@@ -92,8 +92,8 @@ dialog:where(:not(.inset)) :where(.header) {
 dialog :where(.header) :where(.title) {
   font-size: 1.125rem;
   line-height: calc(1.75 / 1.125);
+  font-weight: var(--acme-font-weight-600);
   color: var(--ds-gray-1000);
-  font-weight: 600;
 }
 
 @media (width >= 401px) {
@@ -123,7 +123,7 @@ dialog :where(.header) :where(.title) {
 
 dialog :where(.body) > slot::slotted(strong), dialog :where(.body) > slot > strong {
   color: var(--ds-gray-1000) !important;
-  font-weight: 550 !important;
+  font-weight: var(--acme-font-weight-550) !important;
 }
 
 dialog[data-focus] {

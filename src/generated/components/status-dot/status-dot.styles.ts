@@ -2,10 +2,10 @@
 import { css } from "lit";
 export const statusDotCss = css`.status-dot :where(.label) {
   font-family: var(--acme-font-sans);
-  margin-left: .5rem;
   font-size: 14px;
-  font-weight: 400;
   line-height: 16px;
+  font-weight: var(--acme-font-weight-400);
+  margin-left: .5rem;
 }
 
 .status-dot :where(.dot) {
@@ -37,7 +37,7 @@ export const statusDotCss = css`.status-dot :where(.label) {
 }
 
 .status-dot :where(.label) > strong {
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-1000);
-  font-weight: 500;
 }
 `;

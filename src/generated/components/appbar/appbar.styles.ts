@@ -36,17 +36,17 @@ export const appbarCss = css`.appbar {
 }
 
 .appbar .brand .name {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-600);
   letter-spacing: -.28px;
   white-space: nowrap;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
 }
 
 .appbar .brand .meta {
   font-size: var(--t-2xs);
   color: var(--text-2);
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   white-space: nowrap;
 }
 
@@ -84,7 +84,7 @@ export const appbarCss = css`.appbar {
 
 .appbar-nav a[aria-current="true"] {
   color: var(--text);
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .appbar .tools {
@@ -112,7 +112,7 @@ export const appbarCss = css`.appbar {
 
 .appbar .crumbs b {
   color: var(--text);
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .appbar .crumbs .sep {

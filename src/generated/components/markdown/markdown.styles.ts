@@ -12,34 +12,34 @@ export const markdownCss = css`.markdown {
 
 .markdown h1 {
   letter-spacing: -1.28px;
-  margin: 40px 0 16px;
   font-size: 32px;
-  font-weight: 600;
   line-height: 40px;
+  font-weight: var(--acme-font-weight-600);
+  margin: 40px 0 16px;
 }
 
 .markdown h2 {
   letter-spacing: -.96px;
-  margin: 40px 0 16px;
   font-size: 24px;
-  font-weight: 600;
   line-height: 32px;
+  font-weight: var(--acme-font-weight-600);
+  margin: 40px 0 16px;
 }
 
 .markdown h3 {
   letter-spacing: -.4px;
-  margin: 32px 0 12px;
   font-size: 20px;
-  font-weight: 600;
   line-height: 26px;
+  font-weight: var(--acme-font-weight-600);
+  margin: 32px 0 12px;
 }
 
 .markdown h4 {
   letter-spacing: -.32px;
-  margin: 24px 0 8px;
   font-size: 16px;
-  font-weight: 600;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-600);
+  margin: 24px 0 8px;
 }
 
 .markdown p, .markdown ul, .markdown ol, .markdown blockquote, .markdown table, .markdown pre {
@@ -61,11 +61,11 @@ export const markdownCss = css`.markdown {
 }
 
 .markdown strong {
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .markdown code {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   background: var(--ds-gray-100);
   border: 1px solid var(--ds-gray-alpha-400);
   border-radius: 4px;
@@ -77,7 +77,7 @@ export const markdownCss = css`.markdown {
 .markdown pre {
   background: var(--surface);
   border: 1px solid var(--ds-gray-alpha-400);
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   color: var(--text);
   border-radius: 8px;
   padding: 16px 0;
@@ -132,10 +132,10 @@ export const markdownCss = css`.markdown {
 .markdown th {
   text-align: left;
   height: 36px;
+  font-weight: var(--acme-font-weight-500);
   color: var(--text-2);
   border-bottom: 1px solid var(--border);
   padding: 0 8px;
-  font-weight: 500;
 }
 
 .markdown td {

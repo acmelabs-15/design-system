@@ -16,10 +16,10 @@ export const tableCss = css`.root {
   border-color: var(--ds-gray-400);
   text-align: left;
   vertical-align: middle;
+  font-weight: var(--acme-font-weight-500);
   white-space: nowrap;
   color: var(--ds-gray-900);
   padding-inline: .5rem;
-  font-weight: 500;
 }
 
 .root :where(table) {
@@ -34,7 +34,7 @@ export const tableCss = css`.root {
   border-top-style: solid;
   border-top-width: 1px;
   border-color: var(--ds-gray-400);
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .root :where(table) :where(.body) :where(tr) :where(td) {
@@ -46,11 +46,11 @@ export const tableCss = css`.root {
 
 .root :where(table) :where(tfoot) :where(tr) :where(td) {
   vertical-align: middle;
+  font-weight: var(--acme-font-weight-500);
   white-space: nowrap;
   color: var(--ds-gray-1000);
   padding-block: .625rem;
   padding-inline: .5rem;
-  font-weight: 500;
 }
 
 .root :where(table) :where(thead) :where(tr), .root :where(table) :where(.body) :where(tr), .root :where(table) :where(tfoot) :where(tr) {

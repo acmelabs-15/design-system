@@ -6,6 +6,8 @@ export const multiSelectCss = css`.trigger {
   background-color: var(--themed-bg, var(--ds-gray-1000));
   vertical-align: baseline;
   max-width: 100%;
+  font-size: 14px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--themed-fg, var(--ds-background-100));
   box-shadow: 0 0 0 1px var(--themed-border, transparent);
   -webkit-user-select: none;
@@ -23,8 +25,6 @@ export const multiSelectCss = css`.trigger {
   align-items: center;
   margin: 0;
   padding: 0;
-  font-size: 14px;
-  font-weight: 400;
   text-decoration-line: none;
   transition-duration: .15s;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);

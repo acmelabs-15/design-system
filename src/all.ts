@@ -100,6 +100,7 @@ import "./define/table";
 import "./define/tabs";
 import "./define/tag";
 import "./define/textarea";
+import "./define/theme";
 import "./define/theme-switcher";
 import "./define/toast";
 import "./define/toaster";

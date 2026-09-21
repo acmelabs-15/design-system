@@ -61,7 +61,7 @@ export const statCss = css`.stat {
 }
 
 .stat .head .label.title {
-  font-family: var(--sans);
+  font-family: var(--acme-font-sans);
   letter-spacing: -.32px;
   text-transform: none;
   color: var(--text);
@@ -71,7 +71,7 @@ export const statCss = css`.stat {
 }
 
 .stat .head .context.sub {
-  font-family: var(--sans);
+  font-family: var(--acme-font-sans);
   font-size: var(--t-sm);
   flex: 100%;
   order: 2;
@@ -83,15 +83,15 @@ export const statCss = css`.stat {
   text-transform: uppercase;
   letter-spacing: .09em;
   color: var(--text-2);
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
+  font-weight: var(--acme-font-weight-600);
   white-space: nowrap;
-  font-weight: 600;
   line-height: 16px;
 }
 
 .stat .context {
   min-width: 0;
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-xs);
   color: var(--text-2);
   overflow-wrap: anywhere;
@@ -104,8 +104,9 @@ export const statCss = css`.stat {
 }
 
 .stat .value {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-2xl);
+  font-weight: var(--acme-font-weight-600);
   letter-spacing: -.96px;
   color: var(--text);
   font-variant-numeric: tabular-nums;
@@ -114,16 +115,15 @@ export const statCss = css`.stat {
   gap: 6px;
   margin: 0;
   padding-top: 4px;
-  font-weight: 600;
   line-height: 32px;
   display: flex;
 }
 
 .stat .value .unit {
   font-size: var(--t-md);
+  font-weight: var(--acme-font-weight-500);
   color: var(--text-2);
   letter-spacing: 0;
-  font-weight: 500;
 }
 
 .stat .value .trend {
@@ -136,7 +136,7 @@ export const statCss = css`.stat {
 }
 
 .stat .delta {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-xs);
   color: var(--text-2);
   flex-wrap: wrap;
@@ -164,7 +164,7 @@ export const statCss = css`.stat {
 
 .stat .desc b {
   color: var(--text);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .stat .meta {
@@ -195,7 +195,7 @@ export const statCss = css`.stat {
 }
 
 .stat .meter .meter-label.lg {
-  font-family: var(--sans);
+  font-family: var(--acme-font-sans);
   font-size: var(--t-md);
   color: var(--text-2);
   line-height: 20px;
@@ -203,8 +203,8 @@ export const statCss = css`.stat {
 
 .stat .meter .meter-label.lg b {
   color: var(--text);
-  font-weight: 500;
-  font-family: var(--mono);
+  font-weight: var(--acme-font-weight-500);
+  font-family: var(--acme-font-mono);
 }
 
 .stat .spark {
@@ -264,7 +264,7 @@ export const statCss = css`.stat {
 }
 
 .stat .meter .meter-label {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-2xs);
   color: var(--text-2);
   justify-content: space-between;
@@ -274,7 +274,7 @@ export const statCss = css`.stat {
 }
 
 .stat .foot {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-2xs);
   color: var(--text-2);
   flex-wrap: wrap;
@@ -288,10 +288,10 @@ export const statCss = css`.stat {
 }
 
 .stat .foot a {
-  font-family: var(--sans);
+  font-family: var(--acme-font-sans);
   font-size: var(--t-sm);
+  font-weight: var(--acme-font-weight-500);
   color: var(--text);
-  font-weight: 500;
 }
 
 .stat .foot .link {

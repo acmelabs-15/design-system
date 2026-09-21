@@ -30,7 +30,7 @@ export const chartCss = css`.chart {
 }
 
 .chart .axis {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   fill: var(--text-2);
   font-size: 10px;
 }
@@ -94,8 +94,8 @@ export const chartCss = css`.chart {
 }
 
 .chart .tip .when {
+  font-weight: var(--acme-font-weight-600);
   color: var(--text);
-  font-weight: 600;
 }
 
 .chart .tip .row {
@@ -106,9 +106,9 @@ export const chartCss = css`.chart {
 }
 
 .chart .tip .row b {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
+  font-weight: var(--acme-font-weight-500);
   color: var(--text);
-  font-weight: 500;
 }
 
 .chart .cursor {

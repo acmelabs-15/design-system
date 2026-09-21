@@ -15,8 +15,8 @@ export const errorCss = css`.error:where(:not(.lg)) :where(.icon) {
 }
 
 .error :where(.text) :where(.label) {
+  font-weight: var(--acme-font-weight-500);
   margin-right: .5rem;
-  font-weight: 500;
 }
 
 .error {
@@ -31,12 +31,12 @@ export const errorCss = css`.error:where(:not(.lg)) :where(.icon) {
 
 .error :where(.text) :where(.action) :where(.link) {
   cursor: pointer;
+  font-weight: var(--acme-font-weight-500);
   color: inherit;
   outline-offset: 4px;
   outline-color: var(--ds-focus-color);
   align-items: center;
   gap: .125rem;
-  font-weight: 500;
   text-decoration-line: underline;
   transition-property: opacity;
   transition-duration: .1s;

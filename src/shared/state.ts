@@ -1,5 +1,4 @@
-// Application state on TanStack Store, which is signal-based underneath: the theme and the toast
-// queue live here, and elements read them with `StoreSelector`, re-rendering only when their selection changes.
+// Shared toast state and reactive store controllers.
 //
 // An element's OWN state is also a TanStack Store, created per instance, the way TanStack Form
 // creates one per form and per field. It lives in the element rather than here, because it is not
@@ -42,59 +41,6 @@ export class StoreEffect<T> implements ReactiveController {
     this.sub?.unsubscribe();
     this.sub = undefined;
   }
-}
-
-export type Theme = "auto" | "light" | "dark";
-const THEME_KEY = "theme-pref";
-const isTheme = (v: unknown): v is Theme => v === "auto" || v === "light" || v === "dark";
-/** The theme remembered from an earlier visit, else the one the page set on its root, else auto. */
-const initialTheme = (document: Document): Theme => {
-  try {
-    const saved = document.defaultView?.localStorage.getItem(THEME_KEY);
-    if (isTheme(saved)) return saved;
-  } catch {}
-  const set = document.documentElement.dataset.theme;
-  return isTheme(set) ? set : "auto";
-};
-/**
- * "auto" follows prefers-color-scheme; "light" and "dark" set data-theme on the root element.
- * Every change lands on the root as `data-theme` (none for auto) and is remembered for the next visit.
- */
-export const themeStore = createStore<Theme>("auto");
-const paintTheme = (document: Document, v: Theme) => {
-  const root = document.documentElement;
-  if (v === "auto") delete root.dataset.theme;
-  else root.dataset.theme = v;
-  try {
-    document.defaultView?.localStorage.setItem(THEME_KEY, v);
-  } catch {}
-};
-let themeInitialized = false;
-const themeDocuments = new WeakMap<Document, { users: number; unsubscribe(): void }>();
-
-/** Binds the shared theme to a document while it has an attached theme control. */
-export function connectTheme(document: Document): () => void {
-  let connection = themeDocuments.get(document);
-  if (!connection) {
-    if (!themeInitialized) {
-      themeStore.setState(() => initialTheme(document));
-      themeInitialized = true;
-    }
-    if (themeStore.state !== "auto") paintTheme(document, themeStore.state);
-    const subscription = themeStore.subscribe(() => paintTheme(document, themeStore.state));
-    connection = {users:0, unsubscribe:()=>subscription.unsubscribe()};
-    themeDocuments.set(document, connection);
-  }
-  connection.users++;
-  let connected = true;
-  return () => {
-    if (!connected) return;
-    connected = false;
-    if (--connection.users === 0) {
-      connection.unsubscribe();
-      themeDocuments.delete(document);
-    }
-  };
 }
 
 /** A toast's tone: the plain surface, or the filled success (blue), error (red) and warning (amber) boxes. */

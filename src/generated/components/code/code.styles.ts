@@ -13,7 +13,7 @@ export const codeCss = css`.code {
 }
 
 .code :where(.body) {
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   color: var(--ds-gray-1000);
   text-align: left;
   white-space: pre;
@@ -30,7 +30,7 @@ export const codeCss = css`.code {
   min-width: calc(40px + var(--padding));
   color: var(--ds-gray-600);
   font-size: 13px;
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   -webkit-user-select: none;
   user-select: none;
   text-align: right;
@@ -61,7 +61,7 @@ export const codeCss = css`.code {
 }
 
 .code :where(.body) code[class*="language-css"] {
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .code :where(.body) .token.namespace {
@@ -69,7 +69,7 @@ export const codeCss = css`.code {
 }
 
 .code :where(.body) .token.atrule {
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .code :where(.body) .token.keyword {
@@ -118,12 +118,12 @@ export const codeCss = css`.code {
 }
 
 .code :where(.body) .language-autohotkey .token.selector {
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .code :where(.body) .language-json .token.boolean {
+  font-weight: var(--acme-font-weight-600);
   color: var(--acme-success);
-  font-weight: 600;
 }
 
 .code :where(.body) .language-autohotkey .token.tag {
@@ -136,7 +136,7 @@ export const codeCss = css`.code {
 
 .code :where(.body) .language-markdown .token.code {
   color: var(--ds-blue-900);
-  font-weight: 400;
+  font-weight: var(--acme-font-weight-400);
 }
 
 .code :where(.body) .language-markdown .token.url {
@@ -161,7 +161,7 @@ export const codeCss = css`.code {
 }
 
 .code :where(.body) .token.important, .code :where(.body) .token.bold {
-  font-weight: 700;
+  font-weight: var(--acme-font-weight-700);
 }
 
 .code :where(.body) .token.property, .code :where(.body) .token.entity {

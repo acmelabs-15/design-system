@@ -43,13 +43,13 @@ export const relativeTimeCardCss = css`.content {
 }
 
 .content :where(.rows) :where(.row) :where(.place) :where(.chip) :where(.abbr) {
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   color: var(--ds-gray-900);
   font-size: 12px;
 }
 
 .content :where(.rows) :where(.row) :where(.clock) {
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   color: var(--ds-gray-900);
   font-variant-numeric: tabular-nums;
   font-size: 12px;

@@ -32,7 +32,7 @@ export const doc: Doc = {
     {
       h: "Sizes",
       p: "medium (the default) or small.",
-      html: `<div class="vstack" style="gap:48px;padding:48px 0"><div><p style="font-family:var(--mono);font-size:14px;line-height:20px;color:var(--ds-gray-900);margin-bottom:16px">small</p>${sizeRow(' size="small"')}</div><div><p style="font-family:var(--mono);font-size:14px;line-height:20px;color:var(--ds-gray-900);margin-bottom:16px">default / medium</p>${sizeRow("")}</div></div>`,
+      html: `<div class="vstack" style="gap:48px;padding:48px 0"><div><p style="font-family:var(--acme-font-mono);font-size:14px;line-height:20px;color:var(--ds-gray-900);margin-bottom:16px">small</p>${sizeRow(' size="small"')}</div><div><p style="font-family:var(--acme-font-mono);font-size:14px;line-height:20px;color:var(--ds-gray-900);margin-bottom:16px">default / medium</p>${sizeRow("")}</div></div>`,
       script: bounds,
     },
     {

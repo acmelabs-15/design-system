@@ -24,10 +24,10 @@
 
 .link :where(.label) {
   font-family: var(--acme-font-sans);
-  margin-bottom: .125rem;
   font-size: 13px;
-  font-weight: 400;
   line-height: 18px;
+  font-weight: var(--acme-font-weight-400);
+  margin-bottom: .125rem;
   transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --acme-gradient-from, --acme-gradient-via, --acme-gradient-to;
   transition-duration: .2s;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -54,13 +54,13 @@
 
 .link :where(.row) :where(.title) {
   font-size: 16px;
-  font-weight: 500;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .link :where(.label) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .link :where(.row) > span {

@@ -20,7 +20,7 @@ export const doc: Doc = {
     {
       h: "Embedded",
       p: "The tree flows with the text before and after it.",
-      html: `<div class="text-copy-13" style="white-space:pre-wrap;word-break:break-all;font-family:var(--mono)"><span>ClickHouse slow query detected queryStats: </span><acme-json-view default-expand-depth="1" data='{"read_rows":8866333,"read_bytes":1220624299,"elapsed_ms":10513774868,"result_rows":39,"chunks_queried":1,"total_chunks":1,"stopped_early":false}'></acme-json-view><span>, endpoint: 'GET /api/logs/request-logs'</span></div>`,
+      html: `<div class="text-copy-13" style="white-space:pre-wrap;word-break:break-all;font-family:var(--acme-font-mono)"><span>ClickHouse slow query detected queryStats: </span><acme-json-view default-expand-depth="1" data='{"read_rows":8866333,"read_bytes":1220624299,"elapsed_ms":10513774868,"result_rows":39,"chunks_queried":1,"total_chunks":1,"stopped_early":false}'></acme-json-view><span>, endpoint: 'GET /api/logs/request-logs'</span></div>`,
     },
     {
       h: "Wrapped",

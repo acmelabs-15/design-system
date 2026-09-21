@@ -22,13 +22,13 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
   margin: 0;
   min-width: 0;
   font-family: var(--acme-font-sans);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   align-items: center;
   gap: .5rem;
   margin-right: auto;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 16px;
   display: flex;
 }
 
@@ -86,7 +86,7 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
 
 .code-block :where(.content) :where(.pre) :where(.body) {
   text-align: left;
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   overflow-wrap: normal;
   word-break: normal;
   -webkit-hyphens: none;
@@ -152,8 +152,8 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
 }
 
 .code-block :where(.bar) :where(.name) > strong {
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-1000);
-  font-weight: 500;
 }
 
 .code-block :where(.bar) :where(.actions) :where(acme-copy-button) svg {
@@ -233,7 +233,7 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
   width: 16px;
   color: var(--ds-gray-600);
   font-size: 13px;
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   text-align: right;
   padding-right: var(--padding);
   cursor: pointer;
@@ -300,8 +300,8 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
   content: "+";
   color: var(--ds-green-900);
   pointer-events: none;
+  font-weight: var(--acme-font-weight-500);
   padding-left: 8px;
-  font-weight: 500;
   position: absolute;
   inset: 0;
 }
@@ -310,8 +310,8 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
   content: "-";
   color: var(--ds-red-900);
   pointer-events: none;
+  font-weight: var(--acme-font-weight-500);
   padding-left: 8px;
-  font-weight: 500;
   position: absolute;
   inset: 0;
 }
@@ -322,7 +322,7 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
 
 .code-block :where(.content) :where(.pre) .language-json .token.boolean {
   color: var(--acme-success);
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .code-block :where(.content) :where(.pre) .token.tag.attr-value {
@@ -374,7 +374,7 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
 }
 
 .code-block :where(.content) :where(.pre) .token.important, .code-block :where(.content) :where(.pre) .token.bold {
-  font-weight: 700;
+  font-weight: var(--acme-font-weight-700);
 }
 
 .code-block :where(.content) :where(.pre) .token.property, .code-block :where(.content) :where(.pre) .token.entity {
@@ -391,7 +391,7 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
 
 .code-block :where(.content) :where(.pre) .language-markdown .token.code, .code-block :where(.content) :where(.pre) .language-markdown-source .token.code {
   color: var(--ds-blue-900);
-  font-weight: 400;
+  font-weight: var(--acme-font-weight-400);
 }
 
 .code-block :where(.content) :where(.pre) .language-markdown .token.url, .code-block :where(.content) :where(.pre) .language-markdown-source .token.url {
@@ -415,7 +415,7 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
 }
 
 .code-block :where(.content) :where(.pre) .token.atrule, .code-block :where(.content) :where(.pre) .language-autohotkey .token.selector, .code-block :where(.content) :where(.pre) code[class*="language-css"] {
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .code-block :where(.content) :where(.pre) .token.url, .code-block :where(.content) :where(.pre) .token.symbol, .code-block :where(.content) :where(.pre) .token.boolean, .code-block :where(.content) :where(.pre) .token.variable, .code-block :where(.content) :where(.pre) .token.constant {

@@ -20,10 +20,10 @@ export const commandMenuListCss = css`.list {
 .list :where(.sizer) :where(.empty) :where(.empty-text) {
   text-align: center;
   font-family: var(--acme-font-sans);
-  color: var(--ds-gray-900);
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
+  color: var(--ds-gray-900);
 }
 
 .list :where(.sizer) :where(.empty) :where(.empty-text) :where(.query) {
@@ -39,7 +39,7 @@ export const commandMenuListCss = css`.list {
 
 .list :where(.sizer) :where(.empty) :where(.empty-text) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .list .sizer {

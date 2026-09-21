@@ -9,6 +9,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { partitionStyleSheet, writeStyle } from "./styles";
 import { numericTokenCss, writeTokenManifest } from "./numeric-tokens";
+import { generateThemeStyles, writeThemeStyleMetadata } from "./theme-tokens";
+import { writeResponsiveStyleDelivery } from "./responsive-styles";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = process.argv[2] ?? path.join(ROOT, "styles/house.css"); // the audited house sheet, the source of every element style
@@ -108,9 +110,13 @@ const theme = path.join(ROOT, "src/generated/theme.css");
 const themeCss = fs.readFileSync(theme, "utf8");
 const inputs = ["styles/house.css", "src/generated/theme.css", "scripts/split-css.ts"];
 writeTokenManifest(ROOT);
-writeStyle("document/tokens", global + "\n" + themeCss + "\n" + numericTokenCss(), {
+writeResponsiveStyleDelivery(ROOT);
+const scopedTheme = generateThemeStyles(ROOT);
+writeThemeStyleMetadata(ROOT);
+writeStyle("shared/theme", scopedTheme.css, { producer: "authored", inputs: scopedTheme.inputs });
+writeStyle("document/tokens", global + "\n" + themeCss + "\n" + numericTokenCss() + "\n" + scopedTheme.rootCss, {
   producer: "document",
-  inputs: [...inputs, "scripts/numeric-tokens.ts", "src/shared/numeric-tokens.ts"],
+  inputs: [...inputs, "scripts/numeric-tokens.ts", "src/shared/numeric-tokens.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts"],
   module: false,
 });
 // Families that are not an element: the shared field rules and the dashboard recipe layer.

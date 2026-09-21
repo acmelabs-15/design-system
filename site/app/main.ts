@@ -1,6 +1,6 @@
 // Entry for the docs app bundle: the design system (compiled), the router app, and the
 // "Show code" toggle. Bundled by site/build.ts into _site/app.js.
-import { createToastQueue, toasts } from "../../dist/index";
+import { createToastQueue, registerTheme, toasts } from "../../dist/index";
 import "../../dist/all";
 import { AcmeDocsApp, DocsFormDemo, DocsSwatch, DocsTokens } from "./docs-app";
 
@@ -15,6 +15,7 @@ declare global {
   }
 }
 window.acme = { toasts, createToastQueue };
+registerTheme("docs-ocean", { colors: { "ds-blue-700": "#0068d6" }, spacing: { 2: "0.75rem" } });
 
 document.addEventListener("click", (e) => {
   const sb = (e.target as HTMLElement).closest(".showbar");

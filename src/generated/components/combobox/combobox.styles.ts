@@ -136,13 +136,12 @@ export const comboboxCss = css`.combobox :where(.field) :where(.start) {
   white-space: nowrap;
   background-color: var(--ds-background-100);
   text-align: left;
-  width: 100%;
-  font-weight: var(--font-sans);
   background-clip: padding-box;
   border-style: solid;
   border-width: 0;
   border-radius: .375rem;
   outline-style: none;
+  width: 100%;
   margin: 0;
   padding-block: 0;
   transition-property: all;

@@ -75,6 +75,8 @@ Record fixtures/results and failures in existing analysis/evidence. A technical 
 
 ## Ordered implementation work packages
 
+M05 is complete at its shared-mechanism boundary on 2026-09-21. [Theme/package/website acceptance](evidence/m05-theme-integration-2026-09-21.json), [appearance comparison](evidence/m05-theme-comparisons-2026-09-21.json) and [responsive delivery](evidence/m05-responsive-renderer-2026-09-21.json) record the results and native-platform limits. M07 onward owns actual family adoption; M10 owns final Theme Switcher composition/localization. Continue with M06 shared form, content, interaction and overlay lifetimes.
+
 The table fixes dependency order and atomic replacement boundaries. Each work package is split into vertical commits by the named slice, normally 3–8 authored files plus tests/generated/site output. Mechanical path/registration batches can touch many files and are explicitly labelled. Counts below are planning ranges from the current tree, not measured final diffs. Each replacement removes the old interface and updates every internal consumer in that same slice; there are no compatibility exports or legacy modes.
 
 | ID | Slices and concrete outcome | Dependencies | Estimated authored files per slice; generation |

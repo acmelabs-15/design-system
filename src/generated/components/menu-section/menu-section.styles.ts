@@ -8,16 +8,16 @@ export const menuSectionCss = css`.section :where(.group) {
 
 .section :where(.heading) {
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-800);
   padding: .5rem;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
   display: block;
 }
 
 .section :where(.heading) > strong {
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-1000);
-  font-weight: 500;
 }
 `;

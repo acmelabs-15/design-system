@@ -105,6 +105,6 @@ a:hover {
 }
 
 .mono {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
 }
 `;

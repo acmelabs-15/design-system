@@ -1,9 +1,12 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
 export const pillCss = css`.pill {
+  height: 24px;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
   text-transform: capitalize;
   background: var(--ds-background-100);
-  height: 24px;
   color: var(--ds-gray-1000);
   box-shadow: var(--ds-shadow-border-inset);
   border: 0;
@@ -11,9 +14,6 @@ export const pillCss = css`.pill {
   align-items: center;
   gap: 5px;
   padding: 2px 12px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 20px;
   text-decoration: none;
   display: inline-flex;
 }
@@ -75,6 +75,6 @@ export const pillCss = css`.pill {
 }
 
 .pill.mono {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
 }
 `;

@@ -98,8 +98,8 @@ export const choiceboxItemCss = css`.tile {
 
 .tile :where(.body) :where(.option) :where(.text) :where(.title) {
   font-size: .875rem;
-  font-weight: 500;
   line-height: 1.25rem;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .tile :where(.body) :where(.option) :where(.text) :where(.description) {

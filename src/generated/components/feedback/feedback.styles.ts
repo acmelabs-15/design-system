@@ -58,14 +58,14 @@ export const feedbackCss = css`.panel:where(:not(.inline)) :where(.box) {
 
 .panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.hint) {
   font-family: var(--acme-font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   justify-content: flex-end;
   align-items: center;
   gap: .25rem;
   padding: 0;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 16px;
   display: flex;
 }
 
@@ -166,20 +166,20 @@ export const feedbackCss = css`.panel:where(:not(.inline)) :where(.box) {
 
 .panel :where(.box) :where(.done) :where(.received) {
   font-family: var(--acme-font-sans);
-  opacity: 0;
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
+  opacity: 0;
   animation: .5s .2s forwards feedbackAppear;
   translate: 0 .25rem;
 }
 
 .panel :where(.box) :where(.done) :where(.thanks) {
   font-family: var(--acme-font-sans);
-  opacity: 0;
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
+  opacity: 0;
   animation: .5s .4s forwards feedbackAppear;
   translate: 0 .25rem;
 }
@@ -190,19 +190,19 @@ export const feedbackCss = css`.panel:where(:not(.inline)) :where(.box) {
 
 .panel :where(.box) :where(.head) :where(.copy) {
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   white-space: nowrap;
   color: var(--ds-gray-900);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
 }
 
 .panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.error) :where(.error-inner) :where(p) {
   font-family: var(--acme-font-sans);
-  color: var(--ds-red-900);
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
+  color: var(--ds-red-900);
 }
 
 .panel :where(.box) :where(.phase) {
@@ -214,12 +214,12 @@ export const feedbackCss = css`.panel:where(:not(.inline)) :where(.box) {
 
 .panel :where(.box) :where(.head) :where(.copy) > strong, .panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.error) :where(.error-inner) :where(p) > strong, .panel :where(.box) :where(.done) :where(.received) > strong, .panel :where(.box) :where(.done) :where(.thanks) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .panel :where(.box) :where(.phase) :where(form) :where(.fields) :where(.hint) > strong {
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-1000);
-  font-weight: 500;
 }
 
 .panel :where(.box) :where(.phase) :where(form) :where(.foot) :where(acme-button) svg {

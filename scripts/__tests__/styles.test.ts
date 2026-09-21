@@ -5,6 +5,27 @@ import path from "node:path";
 import { compileStyle, litStyleModule, partitionStyleSheet, validateRegistrations, verifyStyleManifest, writeStyle } from "../styles";
 import { registerStyleProperties } from "../../src/shared/style-properties";
 
+test("channel consumers use full colors and fixed alpha without making palette definitions circular", () => {
+  const css = compileStyle(
+    ":root{--ds-red-900:hsl(var(--ds-red-900-value));--ring:0 0 1px hsla(var(--ds-red-900-value),.16)}.a{background:hsla(var(--ds-gray-1000-value),.84);color:hsl(var(--ds-red-900-value))}",
+    "color-roles.css",
+  ).css;
+  expect(css).toContain("--ds-red-900: hsl(var(--ds-red-900-value))");
+  expect(css).toContain("rgb(from var(--ds-red-900) r g b / .16)");
+  expect(css).toContain("rgb(from var(--ds-gray-1000) r g b / .84)");
+  expect(css).toContain("color: var(--ds-red-900)");
+});
+
+test("font consumers use canonical families and numeric weight tokens without family-as-weight declarations", () => {
+  const css = compileStyle(":root{--sans:serif;--mono:monospace}.a{font-family:var(--sans);font-weight:500}.b{font-family:var(--font-mono);font-weight:var(--font-sans)}", "fonts.css").css;
+  expect(css).toContain("font-family: var(--acme-font-sans)");
+  expect(css).toContain("font-family: var(--acme-font-mono)");
+  expect(css).toContain("font-weight: var(--acme-font-weight-500)");
+  expect(css).not.toContain("--sans:");
+  expect(css).not.toContain("--mono:");
+  expect(css).not.toContain("font-weight: var(--acme-font-sans)");
+});
+
 test("generated Lit styles attach defaults without registering them during import", async () => {
   const properties = [{ name: "--acme-module-test", syntax: "<length>", inherits: false, initialValue: "2px" }];
   const compiled = compileStyle(":host {width:var(--acme-module-test)}", "probe.css");
@@ -81,6 +102,8 @@ test("the manifest rejects changed inputs and tampered outputs, without requirin
   try {
     await mkdir(path.join(root, "scripts"));
     await Bun.write(path.join(root, "scripts/styles.ts"), await Bun.file(path.join(import.meta.dir, "../styles.ts")).text());
+    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+      await Bun.write(path.join(root, input), await Bun.file(path.join(import.meta.dir, "../..", input)).text());
     await Bun.write(path.join(root, "input.css"), ".x { color: red; }");
     await mkdir(path.join(root, "external"), { recursive: true });
     await Bun.write(path.join(root, "external/source.css"), "reference input");
@@ -115,6 +138,8 @@ test("invalid CSS and registration conflicts leave previous generated artifacts 
   try {
     await mkdir(path.join(root, "scripts"));
     await Bun.write(path.join(root, "scripts/styles.ts"), await Bun.file(path.join(import.meta.dir, "../styles.ts")).text());
+    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+      await Bun.write(path.join(root, input), await Bun.file(path.join(import.meta.dir, "../..", input)).text());
     const options = { root, producer: "mapped" as const, inputs: [], properties: [{ name: "--probe", syntax: "<length>", inherits: false, initialValue: "2px" }] };
     writeStyle("components/first/first", ".x { width: var(--probe); }", options);
     const file = path.join(root, "src/generated/style-manifest.json"),
@@ -167,6 +192,8 @@ test("an active output lock cannot overwrite the manifest", async () => {
   try {
     await mkdir(path.join(root, "scripts"));
     await Bun.write(path.join(root, "scripts/styles.ts"), await Bun.file(path.join(import.meta.dir, "../styles.ts")).text());
+    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+      await Bun.write(path.join(root, input), await Bun.file(path.join(import.meta.dir, "../..", input)).text());
     const options = { root, producer: "house" as const, inputs: [] };
     writeStyle("shared/first", ".x{}", options);
     const manifest = path.join(root, "src/generated/style-manifest.json");

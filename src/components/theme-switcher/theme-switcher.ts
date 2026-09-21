@@ -3,12 +3,14 @@ import { html, nothing, svg } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { connectTheme, StoreSelector, type Theme, themeStore } from "../../shared/state";
+import { atomState } from "../../shared/atom-state";
+import type { ThemeAppearance } from "../../shared/theme-scope";
+import { live } from "lit/directives/live.js";
 import { themeSwitcherCss } from "../../generated/components/theme-switcher/theme-switcher.styles";
 import { themeSwitcherOptionCss } from "../../generated/components/theme-switcher/theme-switcher-option.styles";
 
 /** The three options in order: the theme key each one sets, and its icon at the two sizes (16px glyphs, drawn smaller in a small control). */
-const OPTIONS: { key: "system" | "light" | "dark"; theme: Theme; icon: string; smallIcon: string }[] = [
+const OPTIONS: { key: "system" | "light" | "dark"; theme: ThemeAppearance; icon: string; smallIcon: string }[] = [
   {
     key: "system",
     theme: "auto",
@@ -33,55 +35,34 @@ const OPTIONS: { key: "system" | "light" | "dark"; theme: Theme; icon: string; s
 ];
 let seq = 0;
 
-/**
- * Theme switcher: three radios (system, light, dark) in a 32px pill, each a hidden radio under a
- * round label with an icon; `small` is the 24px pill with its own glyphs. The checked radio follows
- * the shared theme store, and choosing one writes the store, which sets `data-theme` on the root
- * element. Each option span keeps its radio's states as attributes (data-checked, data-disabled,
- * data-focus) beside the interaction states. `disabled` greys every option and blocks the change.
- */
-
+/** Requests an application-owned appearance preference. */
 export class AcmeThemeSwitcher extends AcmeElement {
-  static styles = [
-    sharedCss,
-    themeSwitcherCss,
-    themeSwitcherOptionCss,
-    themeSwitcherStructureCss,
-  ];
-  /** The 24px pill. */
-  @property({ type: Boolean }) small = false;
-  @property({ type: Boolean, reflect: true }) disabled = false;
+  static styles = [sharedCss, themeSwitcherCss, themeSwitcherOptionCss, themeSwitcherStructureCss];
+  @atomState()
+  @property({ noAccessor: true, useDefault: true })
+  value: ThemeAppearance = "auto";
+  @atomState()
+  @property({ noAccessor: true, useDefault: true })
+  size: "small" | "medium" | "large" = "small";
+  @atomState()
+  @property({ type: Boolean, noAccessor: true, reflect: true })
+  disabled = false;
   private uid = `theme-switch-${++seq}`;
-  private stopTheme?: () => void;
   private interactions = OPTIONS.map(() => new Interaction(this, { disabled: () => this.disabled }));
 
-  constructor() {
-    super();
-    // Re-renders whenever the shared theme changes, from this element or any other.
-    new StoreSelector(this, () => themeStore);
-  }
-  connectedCallback() {
-    this.stopTheme = connectTheme(this.ownerDocument);
-    super.connectedCallback();
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.stopTheme?.();
-    this.stopTheme = undefined;
-  }
   updated() {
     const options = this.renderRoot.querySelectorAll<HTMLElement>(".option");
     for (const [k, i] of this.interactions.entries()) i.attach(options[k]);
   }
-  private choose(theme: Theme) {
-    if (this.disabled) return;
-    themeStore.setState(() => theme);
-    this.dispatchEvent(new CustomEvent("acme-change", { detail: { theme }, bubbles: true, composed: true }));
+  private choose(value: ThemeAppearance) {
+    if (this.disabled || value === this.value) return;
+    this.dispatchEvent(new CustomEvent("acme-request", { detail: { action: "appearance" as const, value }, bubbles: true, composed: true, cancelable: true }));
+    this.requestUpdate();
   }
   render() {
-    const current = themeStore.state;
-    const small = this.small ? "" : nothing;
-    return html`<fieldset class="switcher" data-small=${small} part="switcher">
+    const current = this.value;
+    const small = this.size === "small" ? "" : nothing;
+    return html`<fieldset class="switcher" data-small=${small} data-size=${this.size} part="root">
       <legend class="legend">Select a display theme:</legend>
       ${OPTIONS.map(({ key, theme, icon, smallIcon }) => {
         const id = `${this.uid}-${key}`;
@@ -89,17 +70,19 @@ export class AcmeThemeSwitcher extends AcmeElement {
         return html`<span class="option" data-checked=${checked ? "" : nothing} data-disabled=${this.disabled ? "" : nothing}
           ><input
             type="radio"
+            name=${this.uid}
+            part="control"
             id=${id}
             value=${key}
             aria-label=${key}
-            .checked=${checked}
+            .checked=${live(checked)}
             ?disabled=${this.disabled}
             @change=${() => this.choose(theme)}
           /><label class="control" for=${id} data-small=${small}
             ><span class="sr">${key}</span
             ><span class="icon"
               ><svg viewBox="0 0 16 16" height="16" width="16" style="color:currentColor" aria-hidden="true">
-                ${svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d=${this.small ? smallIcon : icon}></path>`}
+                ${svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d=${this.size === "small" ? smallIcon : icon}></path>`}
               </svg></span
             ></label
           ></span

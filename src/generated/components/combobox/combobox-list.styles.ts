@@ -13,12 +13,12 @@ export const comboboxListCss = css`.list {
 .list :where(.options) :where(.empty) {
   text-align: center;
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   padding-top: .625rem;
   padding-bottom: .25rem;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
   display: block;
 }
 
@@ -31,7 +31,7 @@ export const comboboxListCss = css`.list {
 
 .list :where(.options) :where(.empty) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .list > ul {

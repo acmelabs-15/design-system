@@ -6,6 +6,10 @@ import { html, LitElement, nothing } from "lit";
 import { state } from "lit/decorators.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { bindField, setAssetsBase, TanStackFormController } from "../../dist/index";
+import { atomState } from "../../dist/shared/atom-state";
+import { StoreSelector } from "../../dist/shared/store-connection";
+import { ThemeContextController } from "../../dist/shared/theme-context";
+import type { ThemeAppearance } from "../../dist/shared/theme-scope";
 
 type NavItem = { title: string; href: string; house?: boolean };
 type Nav = { group: string; items: NavItem[] }[];
@@ -23,6 +27,15 @@ const ICON_CHART = html`<svg class="ic" width="16" height="16" slot="logo" aria-
 const cache = new Map<string, string>();
 
 export class AcmeDocsApp extends LitElement {
+  @atomState() private appearance: ThemeAppearance = "auto";
+  private onAppearance = (event: CustomEvent) => {
+    const value = event.detail?.value;
+    if (event.defaultPrevented || event.detail?.action !== "appearance" || !["auto", "light", "dark"].includes(value)) return;
+    this.appearance = value;
+    if (value === "auto") document.documentElement.removeAttribute("data-acme-appearance");
+    else document.documentElement.setAttribute("data-acme-appearance", value);
+    event.stopPropagation();
+  };
   private nav: Nav = window.__docsNav ?? [];
   private flat = this.nav.flatMap((g) => g.items);
   @state() private page = "";
@@ -124,7 +137,7 @@ export class AcmeDocsApp extends LitElement {
   render() {
     const cur = (href: string) => (this.page === href ? "page" : nothing);
     const section = this.page.startsWith("components/") ? "components" : ["colors", "typography", "materials"].includes(this.page) ? "foundations" : this.page === "index" ? "start" : "";
-    return html`<acme-appbar name="ACME Design System" href="${prefix}/">
+    return html`<acme-theme .appearance=${this.appearance} @acme-request=${this.onAppearance}><acme-appbar name="ACME Design System" href="${prefix}/">
         ${ICON_CHART}
         <a href="${prefix}/" aria-current=${section === "start" ? "true" : nothing}>Get Started</a>
         <a href="${prefix}/colors" aria-current=${section === "foundations" ? "true" : nothing}>Foundations</a>
@@ -138,29 +151,23 @@ export class AcmeDocsApp extends LitElement {
         </nav>
         ${this.router.outlet()}
       </div>
-      <acme-toaster></acme-toaster>`;
+      <acme-toaster></acme-toaster></acme-theme>`;
   }
 }
 
 /** The Colors page: rows reading the live value of each token, redrawn when the theme changes. */
 export class DocsTokens extends LitElement {
-  @state() private tick = 0;
   createRenderRoot() {
     return this;
   }
-  private redraw = () => setTimeout(() => this.tick++, 0);
-  connectedCallback() {
-    super.connectedCallback();
-    document.addEventListener("acme-change", this.redraw);
-    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this.redraw);
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    document.removeEventListener("acme-change", this.redraw);
+  private readonly themeContext = new ThemeContextController(this);
+  constructor() {
+    super();
+    new StoreSelector(this, () => this.themeContext.scope.effective);
   }
   render() {
     const tokens = (this.getAttribute("tokens") ?? "").split(/\s+/).filter(Boolean);
-    const s = getComputedStyle(document.documentElement);
+    const s = getComputedStyle(this);
     return html`${tokens.map((v) => html`<div class="def-row"><span class="d" style=${`background:var(${v})`}></span><b class="mono" style="font-size:13px">${v}</b><span class="mono" style="font-size:12px">${s.getPropertyValue(v).trim().slice(0, 48)}</span></div>`)}`;
   }
 }
@@ -173,7 +180,7 @@ export class DocsSwatch extends LitElement {
   private copy = (e: Event) => {
     e.preventDefault();
     const token = this.getAttribute("token") ?? "";
-    const value = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+    const value = getComputedStyle(this).getPropertyValue(token).trim();
     navigator.clipboard
       ?.writeText(value)
       .then(() => window.acme?.toasts.success(`Copied ${value}`))

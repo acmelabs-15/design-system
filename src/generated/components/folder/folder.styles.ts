@@ -22,7 +22,7 @@ export const folderCss = css`.folder :where(.toggle) :where(.icon) {
 }
 
 .folder :where(.toggle) :where(.name) {
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   text-overflow: ellipsis;
   display: block;
   overflow: hidden;

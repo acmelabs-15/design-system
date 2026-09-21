@@ -15,13 +15,13 @@ export const multiSelectRowCss = css`.row {
   min-width: 64px;
   font-size: .75rem;
   line-height: calc(1 / .75);
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   opacity: 0;
   border-radius: .25rem;
   margin-left: auto;
   padding-block: .125rem;
   padding-inline: .25rem;
-  font-weight: 400;
 }
 
 .row :where(.box) {
@@ -62,10 +62,10 @@ export const multiSelectRowCss = css`.row {
 .row :where(.action) :where(.body) :where(.name) {
   min-width: 0;
   font-family: var(--acme-font-sans);
-  color: var(--ds-gray-1000);
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
+  color: var(--ds-gray-1000);
 }
 
 .row :where(.action) :where(.body) :where(.leading) {
@@ -107,8 +107,8 @@ export const multiSelectRowCss = css`.row {
 }
 
 .row :where(.action) :where(.body) :where(.name) > strong {
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-1000);
-  font-weight: 500;
 }
 
 @media (hover: hover) {

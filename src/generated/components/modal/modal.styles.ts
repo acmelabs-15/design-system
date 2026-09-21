@@ -49,11 +49,11 @@ export const modalCss = css`.modal:where(.sheet) {
   border-top-left-radius: var(--modal-radius);
   border-top-right-radius: var(--modal-radius);
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   padding: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
   position: relative;
   overflow-x: hidden;
 }
@@ -79,12 +79,12 @@ export const modalCss = css`.modal:where(.sheet) {
 
 .modal :where(.body) :where(.content) :where(.header) :where(.subtitle) {
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   margin-top: .5rem;
   margin-bottom: .25rem;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
 }
 
 .modal:where(:not(.sheet)) {
@@ -136,11 +136,11 @@ export const modalCss = css`.modal:where(.sheet) {
 
 .modal :where(.body) :where(.content) :where(.header) :where(.title) {
   font-family: var(--acme-font-sans);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: var(--acme-font-weight-600);
   letter-spacing: -.4px;
   color: var(--ds-gray-1000);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 26px;
 }
 
 @media not all and (width >= 540px) {
@@ -164,13 +164,13 @@ export const modalCss = css`.modal:where(.sheet) {
 }
 
 .modal :where(.body) :where(.content) :where(.header) :where(.title) > strong {
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-900);
-  font-weight: 500;
 }
 
 .modal :where(.body) > strong, .modal :where(.body) :where(.content) :where(.header) :where(.subtitle) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .modal :where(.actions) > slot::slotted(div), .modal :where(.actions) > slot > div {

@@ -13,7 +13,7 @@ The [central handoff](README.md#where-we-are) owns current status. The [inventor
 | User-owned decision queue | Original five recommendations approved in [the register](proposal-questions.md); [explicit helper clearing](../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper) selected 2026-09-21; @lit/context selected under [delegated execution](../decisions/execution-delegation.md); remaining choices are agent-owned |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
 | Phase 5 | [Migration plan approved](../decisions/migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01–M04 complete; M05 shared state, numeric tokens and stylesheet adoption implemented; responsive declaration planning, input capture and explicit-clear helper pass review/browser checks; theme/renderer integration active; Firefox/polyfill define-after-adoption gate remains |
+| Phase 6 | M01–M05 complete; M06 shared mechanisms active. Family adoption and final browser/package acceptance remain. |
 
 These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The design contracts are approved; they are not implemented or verified components. Technical gates remain distinct from the recorded design review.
 

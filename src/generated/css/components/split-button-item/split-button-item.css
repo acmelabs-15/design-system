@@ -24,16 +24,16 @@
 
 .item :where(.body) :where(.desc) {
   font-family: var(--acme-font-sans);
-  color: var(--ds-gray-900);
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
+  color: var(--ds-gray-900);
 }
 
 .item :where(.body) :where(.row) :where(.title) {
   font-size: 14px;
-  font-weight: 500;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
 }
 
 @media not all and (width >= 601px) {
@@ -46,7 +46,7 @@
 
 .item :where(.body) :where(.desc) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .item:disabled, .item[aria-disabled="true"] {

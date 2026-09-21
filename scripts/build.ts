@@ -15,6 +15,8 @@ import { litStyleModule, verifyStyleManifest, writeStyle } from "./styles";
 import { writeManifest } from "./manifest";
 import { writeEntries, writePackageExports } from "./entries";
 import { verifyTokenManifest } from "./numeric-tokens";
+import { verifyResponsiveStyleDelivery } from "./responsive-styles";
+import { verifyThemeStyleMetadata } from "./theme-tokens";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = path.join(ROOT, "src"),
@@ -23,6 +25,8 @@ const components = writeEntries(ROOT);
 writePackageExports(components, ROOT);
 const styles = verifyStyleManifest(ROOT, ["document/dashboard"]);
 const tokenManifest = verifyTokenManifest(ROOT);
+verifyResponsiveStyleDelivery(ROOT);
+verifyThemeStyleMetadata(ROOT);
 const recipes = ["deploy", "plan", "usage-sum", "classes", "severity", "option", "info-ic", "rail", "code"];
 const recipeFiles = recipes.map((name) => {
   const key = styles.entries["shared/" + name] ? "shared/" + name : "components/" + name + "/" + name;
@@ -103,7 +107,7 @@ await writeManifest();
 // Selective browser entries share one runtime graph, including the explicit all entry.
 {
   const result = await Bun.build({
-    entrypoints: [path.join(DIST, "all.js"), ...components.map(component => path.join(DIST, "define", component.name + ".js"))],
+    entrypoints: [path.join(DIST, "all.js"), ...components.map((component) => path.join(DIST, "define", component.name + ".js"))],
     root: DIST,
     outdir: path.join(DIST, "cdn"),
     target: "browser",
@@ -111,11 +115,11 @@ await writeManifest();
     splitting: true,
     minify: true,
     sourcemap: "none",
-    naming: {entry:"[dir]/[name].[ext]",chunk:"chunks/[name]-[hash].[ext]",asset:"assets/[name]-[hash].[ext]"},
+    naming: { entry: "[dir]/[name].[ext]", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
     metafile: true,
   });
   if (!result.success) throw new AggregateError(result.logs, "Selective browser build failed");
-  fs.mkdirSync(path.join(ROOT, ".artifacts"), {recursive:true});
+  fs.mkdirSync(path.join(ROOT, ".artifacts"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, ".artifacts/cdn-metafile.json"), JSON.stringify(result.metafile, null, 2) + "\n");
 }
 
@@ -151,7 +155,12 @@ for (const [name, minify] of [
                 const map = fs.readFileSync(path.join(ROOT, "src/generated/css", key + ".css.map"), "utf8");
                 const debugCss = css + "\n/*# sourceURL=acme-styles://" + key + ".css */\n/*# sourceMappingURL=data:application/json;base64," + Buffer.from(map).toString("base64") + " */";
                 return {
-                  contents: litStyleModule(entry.exportName, debugCss, entry.properties, path.relative(path.dirname(args.path), path.join(DIST, "shared/style-properties.js")).split(path.sep).join("/")),
+                  contents: litStyleModule(
+                    entry.exportName,
+                    debugCss,
+                    entry.properties,
+                    path.relative(path.dirname(args.path), path.join(DIST, "shared/style-properties.js")).split(path.sep).join("/"),
+                  ),
                   loader: "js",
                   resolveDir: path.dirname(args.path),
                 };

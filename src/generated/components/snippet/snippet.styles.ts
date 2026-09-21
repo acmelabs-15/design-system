@@ -55,7 +55,7 @@ export const snippetCss = css`.snippet :where(.action) {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   text-align: left;
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   margin: 0;
   font-size: 13px;
   line-height: 20px;

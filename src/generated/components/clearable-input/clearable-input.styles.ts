@@ -63,15 +63,15 @@ export const clearableInputCss = css`.input :where(.cmdk) :where(.k-esc) :where(
 }
 
 .input :where(.cmdk) {
+  font-weight: var(--acme-font-weight-500);
   justify-content: center;
   gap: .25rem;
   padding-right: .625rem;
-  font-weight: 500;
   display: flex;
 }
 
 .input :where(.clear) :where(acme-kbd)::part(kbd) {
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-900) !important;
 }
 

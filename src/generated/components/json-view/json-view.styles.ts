@@ -129,10 +129,10 @@ export const jsonViewCss = css`.json :where(.tree) {
 }
 
 .json {
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   font-size: 13px;
-  font-weight: 400;
   line-height: 1.25rem;
+  font-weight: var(--acme-font-weight-400);
   display: inline;
 }
 
@@ -142,8 +142,8 @@ export const jsonViewCss = css`.json :where(.tree) {
 }
 
 .json :where(.tree) :where(.top) :where(.line) :where(.flat) :where(.pair) :where(.cell) :where(.key), .json :where(.tree) :where(.top) :where(.group) :where(.item) :where(.row) :where(.key), .json :where(.tree) :where(.top) :where(.group) :where(.item) :where(.line) :where(.toggle) :where(.key), .json :where(.tree) :where(.top) :where(.group) :where(.item) :where(.line) :where(.brace) :where(.key) {
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-pink-900);
-  font-weight: 400;
 }
 
 .json :where(.tree) :where(.top) :where(.line) :where(.flat) :where(.pair) :where(.cell) :where(.bool), .json :where(.tree) :where(.top) :where(.group) :where(.item) :where(.row) :where(.bool) {
@@ -164,7 +164,7 @@ export const jsonViewCss = css`.json :where(.tree) {
 
 .json > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .json :where(.tree) :where(.top) :where(.line) :where(.toggle) :where(.chev) svg, .json :where(.tree) :where(.top) :where(.group) :where(.item) :where(.line) :where(.toggle) :where(.chev) svg {

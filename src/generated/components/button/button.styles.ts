@@ -4,6 +4,7 @@ export const buttonCss = css`.btn:where(:not(.unstyled)) {
   cursor: pointer;
   vertical-align: baseline;
   max-width: 100%;
+  font-weight: var(--acme-font-weight-500);
   color: var(--themed-fg, var(--ds-background-100));
   -webkit-user-select: none;
   user-select: none;
@@ -14,7 +15,6 @@ export const buttonCss = css`.btn:where(:not(.unstyled)) {
   align-items: center;
   margin: 0;
   padding: 0;
-  font-weight: 500;
   text-decoration-line: none;
   transition-duration: .15s;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);

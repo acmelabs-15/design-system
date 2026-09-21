@@ -10,24 +10,20 @@ import { property, query } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { legendCss } from "../../generated/components/legend/legend.styles";
 import { chartCss } from "../../generated/components/chart/chart.styles";
+import { StoreSelector } from "../../shared/store-connection";
 
 type Row = Record<string, unknown>;
 type Host = { update(options: Record<string, unknown>): void; destroy(): void };
 
 /**
  * House chart frame on TanStack Charts. Pass `data` (rows), `x` and one or more `y` keys and the
- * element draws a line, bar or area chart in the house series colors, with Geist's grid, mono
+ * element draws a line, bar or area chart in the house series colors, with the house grid, mono
  * axes and the tooltip. Without `data`, the default slot takes a hand-drawn SVG as before.
  * Slots: head, default (custom plot), tip, legend.
  */
 
 export class AcmeChart extends AcmeElement {
-  static styles = [
-    sharedCss,
-    chartCss,
-    legendCss,
-    chartStructureCss,
-  ];
+  static styles = [sharedCss, chartCss, legendCss, chartStructureCss];
   @property({ type: Number }) height = 180;
   /** line, bar or area. */
   @property() type: "line" | "bar" | "area" = "line";
@@ -86,20 +82,15 @@ export class AcmeChart extends AcmeElement {
     else this.chart = mountChart(this.hostEl, this.options() as never) as unknown as Host;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    document.addEventListener("acme-change", this.onTheme);
+  constructor() {
+    super();
+    new StoreSelector(this, () => this.themeContext.scope.effective);
   }
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener("acme-change", this.onTheme);
     this.chart?.destroy();
     this.chart = undefined;
   }
-  /** The series colors are read from the tokens, so a theme change redraws. */
-  private onTheme = (e: Event) => {
-    if ((e as CustomEvent).detail?.theme !== undefined) this.requestUpdate();
-  };
 
   render() {
     return html`<div class="chart" part="chart"><slot name="head"></slot><div class="plot" style=${`min-height:${this.height}px;height:${this.height}px`}>${

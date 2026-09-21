@@ -19,12 +19,12 @@ export const itemCss = css`.item {
 }
 
 .item .title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
   color: var(--text);
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
   overflow: hidden;
 }
 
@@ -66,9 +66,9 @@ export const itemCss = css`.item {
 }
 
 .item .amount {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-variant-numeric: tabular-nums;
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
   font-size: var(--t-sm);
   color: var(--text);
   line-height: 18px;
@@ -86,11 +86,11 @@ export const itemCss = css`.item {
 }
 
 .item .title .mono {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-xs);
   color: var(--text-2);
+  font-weight: var(--acme-font-weight-400);
   margin-left: 6px;
-  font-weight: 400;
 }
 
 .item .amount.lg {
@@ -99,7 +99,7 @@ export const itemCss = css`.item {
 }
 
 .item .end small {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-xs);
   color: var(--text-2);
 }
@@ -111,7 +111,7 @@ export const itemCss = css`.item {
 
 .item .end .state {
   font-size: var(--t-xs);
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .item .chev {
@@ -185,11 +185,11 @@ export const itemCss = css`.item {
 }
 
 .accordion .item .title {
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .accordion .item .end .when {
-  font-family: var(--sans);
+  font-family: var(--acme-font-sans);
   color: var(--text-2);
   font-size: 14px;
 }
@@ -199,6 +199,8 @@ export const itemCss = css`.item {
   text-align: left;
   width: 100%;
   height: 48px;
+  font-size: 14px;
+  font-weight: var(--acme-font-weight-500);
   color: var(--text);
   cursor: pointer;
   background: none;
@@ -208,8 +210,6 @@ export const itemCss = css`.item {
   align-items: center;
   gap: 8px;
   padding: 0 16px;
-  font-size: 14px;
-  font-weight: 500;
   display: flex;
 }
 
@@ -239,8 +239,8 @@ export const itemCss = css`.item {
 .acc-body h3 {
   letter-spacing: -.28px;
   font-size: 14px;
-  font-weight: 500;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .select-list {

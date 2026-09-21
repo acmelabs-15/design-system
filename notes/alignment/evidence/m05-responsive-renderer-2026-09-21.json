@@ -1,0 +1,481 @@
+{
+  "date": "2026-09-21",
+  "scope": "Generator-owned responsive renderer",
+  "initial": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "host and inner root use the same ancestor query",
+            "actual": [
+              "block",
+              "none"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ],
+            "ok": false
+          },
+          {
+            "name": "native closed-root container applied",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "present closed-root container is not reported missing",
+            "actual": 1,
+            "expected": 0,
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "host and inner root use the same ancestor query",
+            "actual": [
+              "block",
+              "none"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ],
+            "ok": false
+          },
+          {
+            "name": "native closed-root container applied",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "present closed-root container is not reported missing",
+            "actual": 1,
+            "expected": 0,
+            "ok": false
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "host and inner root use the same ancestor query",
+            "actual": [
+              "block",
+              "none"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ],
+            "ok": false
+          },
+          {
+            "name": "native closed-root container applied",
+            "actual": "20px",
+            "expected": "60px",
+            "ok": false
+          },
+          {
+            "name": "present closed-root container is not reported missing",
+            "actual": 1,
+            "expected": 0,
+            "ok": false
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "current": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "host and inner root use the same ancestor query",
+            "actual": [
+              "block",
+              "block"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ],
+            "ok": true
+          },
+          {
+            "name": "native closed-root container applied",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "present closed-root container is not reported missing",
+            "actual": 0,
+            "expected": 0,
+            "ok": true
+          },
+          {
+            "name": "light DOM container works",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "named container uses generated native rule",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "container rem uses computed root font",
+            "actual": "20px",
+            "expected": "20px",
+            "ok": true
+          },
+          {
+            "name": "window rem keeps browser initial font",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "numeric values still use theme rem",
+            "actual": "10px",
+            "expected": "10px",
+            "ok": true
+          },
+          {
+            "name": "invalid CSS replaces prior declaration",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "missing variable remains native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "clear exposes stylesheet default",
+            "actual": "700px",
+            "expected": "700px",
+            "ok": true
+          },
+          {
+            "name": "missing named container retains baseline",
+            "actual": "20px",
+            "expected": "20px",
+            "ok": true
+          },
+          {
+            "name": "missing named container reports once",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "repeated missing state stays bounded",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "author style node retained",
+            "actual": true,
+            "expected": true,
+            "ok": true
+          },
+          {
+            "name": "adopted renderer keeps current width",
+            "actual": "50px",
+            "expected": "50px",
+            "ok": true
+          },
+          {
+            "name": "adoption preserves unrelated style",
+            "actual": true,
+            "expected": true,
+            "ok": true
+          }
+        ],
+        "nativeBaseline": {
+          "open": "60px",
+          "closed": "60px",
+          "lightDom": "60px"
+        }
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "host and inner root use the same ancestor query",
+            "actual": [
+              "block",
+              "block"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ],
+            "ok": true
+          },
+          {
+            "name": "native closed-root container applied",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "present closed-root container is not reported missing",
+            "actual": 0,
+            "expected": 0,
+            "ok": true
+          },
+          {
+            "name": "light DOM container works",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "named container uses generated native rule",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "container rem uses computed root font",
+            "actual": "20px",
+            "expected": "20px",
+            "ok": true
+          },
+          {
+            "name": "window rem keeps browser initial font",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "numeric values still use theme rem",
+            "actual": "10px",
+            "expected": "10px",
+            "ok": true
+          },
+          {
+            "name": "invalid CSS replaces prior declaration",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "missing variable remains native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "clear exposes stylesheet default",
+            "actual": "700px",
+            "expected": "700px",
+            "ok": true
+          },
+          {
+            "name": "missing named container retains baseline",
+            "actual": "20px",
+            "expected": "20px",
+            "ok": true
+          },
+          {
+            "name": "missing named container reports once",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "repeated missing state stays bounded",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "author style node retained",
+            "actual": true,
+            "expected": true,
+            "ok": true
+          },
+          {
+            "name": "adopted renderer keeps current width",
+            "actual": "50px",
+            "expected": "50px",
+            "ok": true
+          },
+          {
+            "name": "adoption preserves unrelated style",
+            "actual": true,
+            "expected": true,
+            "ok": true
+          }
+        ],
+        "nativeBaseline": {
+          "open": "60px",
+          "closed": "60px",
+          "lightDom": "60px"
+        }
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "host and inner root use the same ancestor query",
+            "actual": [
+              "block",
+              "block"
+            ],
+            "expected": [
+              "block",
+              "block"
+            ],
+            "ok": true
+          },
+          {
+            "name": "native closed-root container applied",
+            "actual": "20px",
+            "expected": "60px",
+            "ok": false
+          },
+          {
+            "name": "present closed-root container is not reported missing",
+            "actual": 1,
+            "expected": 0,
+            "ok": false
+          },
+          {
+            "name": "light DOM container works",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "named container uses generated native rule",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "container rem uses computed root font",
+            "actual": "20px",
+            "expected": "20px",
+            "ok": true
+          },
+          {
+            "name": "window rem keeps browser initial font",
+            "actual": "60px",
+            "expected": "60px",
+            "ok": true
+          },
+          {
+            "name": "numeric values still use theme rem",
+            "actual": "10px",
+            "expected": "10px",
+            "ok": true
+          },
+          {
+            "name": "invalid CSS replaces prior declaration",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "missing variable remains native",
+            "actual": "0px",
+            "expected": "0px",
+            "ok": true
+          },
+          {
+            "name": "clear exposes stylesheet default",
+            "actual": "700px",
+            "expected": "700px",
+            "ok": true
+          },
+          {
+            "name": "missing named container retains baseline",
+            "actual": "20px",
+            "expected": "20px",
+            "ok": true
+          },
+          {
+            "name": "missing named container reports once",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "repeated missing state stays bounded",
+            "actual": 1,
+            "expected": 1,
+            "ok": true
+          },
+          {
+            "name": "author style node retained",
+            "actual": true,
+            "expected": true,
+            "ok": true
+          },
+          {
+            "name": "adopted renderer keeps current width",
+            "actual": "50px",
+            "expected": "50px",
+            "ok": true
+          },
+          {
+            "name": "adoption preserves unrelated style",
+            "actual": true,
+            "expected": true,
+            "ok": true
+          }
+        ],
+        "nativeBaseline": {
+          "open": "20px",
+          "closed": "20px",
+          "lightDom": "60px"
+        }
+      }
+    ],
+    "errors": []
+  },
+  "reproduction": {
+    "probe": "\nimport {html,css} from \"/Users/peterkloss/Dev/ACMElabs/design-system/node_modules/lit/index.js\";\nimport {AcmeElement} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/base.ts\";\nimport {StyleInputController} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-controller.ts\";\nimport {ResponsiveStyleRenderer} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-renderer.ts\";\nimport {responsiveStyleDelivery} from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/responsive-styles.ts\";\nconst results=[];const check=(name,actual,expected)=>results.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nclass Probe extends AcmeElement {\n static styles=css`:host{display:block}[part=root]{display:block}`;\n inputs=new StyleInputController(this,[\"padding\",\"paddingInline\",\"width\",\"display\"],{supports:CSS.supports,displayModes:[\"block\",\"none\"]});\n target=\"container\";container=undefined;diagnostics=[];\n renderer=new ResponsiveStyleRenderer(this,responsiveStyleDelivery,{root:()=>this.renderRoot,state:()=>({inputs:this.inputs.entries.get(),target:this.target,container:this.container}),displayModes:[\"block\",\"none\"],diagnostic:d=>this.diagnostics.push(d)});\n render(){return html`<div part=\"root\">Content</div>`;}\n adoptedCallback(){super.adoptedCallback();this.renderer.adopted();}\n}\ncustomElements.define(\"responsive-probe\",Probe);\ntry{\n const parent=document.createElement(\"div\");parent.style.cssText=\"container-type:inline-size;width:400px\";document.body.append(parent);\n const host=document.createElement(\"responsive-probe\");host.style.cssText=\"container-type:inline-size;width:800px\";parent.append(host);host.inputs.set(\"display\",{compact:\"block\",medium:\"none\"});await host.updateComplete;\n check(\"host and inner root use the same ancestor query\",[getComputedStyle(host).display,getComputedStyle(host.shadowRoot.querySelector(\"[part=root]\")).display],[\"block\",\"block\"]);\n const closed=document.createElement(\"div\"),root=closed.attachShadow({mode:\"closed\"});root.innerHTML='<div style=\"container-type:inline-size;width:800px\"><slot></slot></div>';const leaf=document.createElement(\"responsive-probe\");leaf.inputs.set(\"width\",{compact:\"20px\",medium:\"60px\"});closed.append(leaf);document.body.append(closed);await leaf.updateComplete;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));\n check(\"native closed-root container applied\",getComputedStyle(leaf).width,\"60px\");\n check(\"present closed-root container is not reported missing\",leaf.diagnostics.length,0);\n\n class Bare extends HTMLElement {constructor(){super();this.attachShadow({mode:\"open\"}).innerHTML=\"<style>:host{display:block;width:20px}@container (width >= 600px){:host{width:60px}}</style><span>Bare</span>\";}}\n customElements.define(\"bare-container-probe\",Bare);\n const baseline={};\n for(const mode of [\"open\",\"closed\"]){const wrapper=document.createElement(\"div\");const shadow=wrapper.attachShadow({mode});shadow.innerHTML='<div style=\"container-type:inline-size;width:800px\"><slot></slot></div>';const bare=document.createElement(\"bare-container-probe\");wrapper.append(bare);document.body.append(wrapper);await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));baseline[mode]=getComputedStyle(bare).width;}\n const visible=document.createElement(\"div\");visible.style.cssText=\"container-type:inline-size;width:800px\";const bare=document.createElement(\"bare-container-probe\");visible.append(bare);document.body.append(visible);await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));baseline.lightDom=getComputedStyle(bare).width;\n check(\"light DOM container works\",baseline.lightDom,\"60px\");\n\n const named=document.createElement(\"div\");named.style.cssText=\"container-type:inline-size;container-name:content;width:700px\";const own=document.createElement(\"responsive-probe\");own.container=\"content\";document.body.append(named);named.append(own);await own.updateComplete;\n document.documentElement.style.setProperty(\"--acme-spacing-2\",\".5rem\");\n const oldWidth=getComputedStyle(own).width;own.inputs.set(\"width\",{compact:\"20px\",medium:\"60px\"});await own.updateComplete;check(\"named container uses generated native rule\",getComputedStyle(own).width,\"60px\");\n document.documentElement.style.fontSize=\"20px\";await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));check(\"container rem uses computed root font\",getComputedStyle(own).width,\"20px\");\n own.target=\"window\";own.requestUpdate();await own.updateComplete;check(\"window rem keeps browser initial font\",getComputedStyle(own).width,\"60px\");\n own.inputs.set(\"padding\",2);await own.updateComplete;check(\"numeric values still use theme rem\",getComputedStyle(own).paddingTop,\"10px\");\n own.inputs.set(\"padding\",\"nonsense\");await own.updateComplete;check(\"invalid CSS replaces prior declaration\",getComputedStyle(own).paddingTop,\"0px\");\n own.inputs.set(\"padding\",\"var(--missing)\");await own.updateComplete;check(\"missing variable remains native\",getComputedStyle(own).paddingTop,\"0px\");\n own.inputs.set(\"padding\",undefined);own.inputs.set(\"width\",undefined);await own.updateComplete;check(\"clear exposes stylesheet default\",getComputedStyle(own).width,oldWidth);\n own.target=\"container\";own.container=\"absent\";own.inputs.set(\"width\",{compact:\"20px\",medium:\"60px\"});own.requestUpdate();await own.updateComplete;check(\"missing named container retains baseline\",getComputedStyle(own).width,\"20px\");check(\"missing named container reports once\",own.diagnostics.filter(d=>d.container===\"absent\").length,1);own.renderer.update();check(\"repeated missing state stays bounded\",own.diagnostics.filter(d=>d.container===\"absent\").length,1);\n const style=document.createElement(\"style\");style.textContent=\":host{--unrelated:retained}\";own.shadowRoot.append(style);own.inputs.set(\"width\",\"50px\");await own.updateComplete;check(\"author style node retained\",style.parentNode===own.shadowRoot,true);\n const frame=document.createElement(\"iframe\");frame.srcdoc=\"<!doctype html><body></body>\";const loaded=new Promise(r=>frame.onload=r);document.body.append(frame);await loaded;frame.contentDocument.body.append(frame.contentDocument.adoptNode(own));await own.updateComplete;check(\"adopted renderer keeps current width\",frame.contentWindow.getComputedStyle(own).width,\"50px\");check(\"adoption preserves unrelated style\",style.parentNode===own.shadowRoot,true);\n window.__results={results,nativeBaseline:baseline};\n}catch(error){window.__results={results,error:String(error),stack:error.stack};}\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-renderer-native\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error){report.errors.push({engine,message:data.error,stack:data.stack});data.results.push({name:'fixture completes',ok:false,error:data.error});}report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "findings": [
+    "Host and inner-root display now use one host-selected query result through generated display inheritance.",
+    "Native CSS availability probes remove false missing-container reports across closed roots in Chromium and Firefox.",
+    "The WebKit nested-slot size-query failure also occurs on bare HTMLElement controls, with open and closed shadow roots. Light-DOM containers pass all engines.",
+    "The library preserves native CSS matching. The diagnostic now says unresolved rather than asserting physical container absence."
+  ],
+  "sourceReferences": [
+    "https://drafts.csswg.org/css-conditional-5/#query-container",
+    "https://bugs.webkit.org/show_bug.cgi?id=267793",
+    "https://bugs.webkit.org/show_bug.cgi?id=304555"
+  ],
+  "limits": [
+    "The WebKit baseline is an observed platform mismatch, not a passing assertion or a repaired browser.",
+    "House layout containers should be established on their hosts. Do not add a guessed global DOM/resize workaround across opaque roots.",
+    "Root display defaults must agree with host display; layout-family integration verifies this boundary."
+  ]
+}

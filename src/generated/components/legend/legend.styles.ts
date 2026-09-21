@@ -18,10 +18,10 @@ export const legendCss = css`.legend {
 }
 
 .legend .value {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   color: var(--text);
+  font-weight: var(--acme-font-weight-500);
   font-variant-numeric: tabular-nums;
-  font-weight: 500;
 }
 
 .legend.list {
@@ -49,17 +49,17 @@ export const legendCss = css`.legend {
 
 .chart-head .title {
   letter-spacing: -.28px;
-  margin: 0;
   font-size: 14px;
-  font-weight: 500;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
+  margin: 0;
 }
 
 .chart-head .value {
   font-size: 14px;
-  font-weight: 500;
   line-height: 20px;
-  font-family: var(--mono);
+  font-weight: var(--acme-font-weight-500);
+  font-family: var(--acme-font-mono);
   font-variant-numeric: tabular-nums;
   margin-top: 2px;
 }
@@ -101,9 +101,9 @@ export const legendCss = css`.legend {
 
 .stat-legend .v {
   font-size: 14px;
-  font-weight: 500;
   line-height: 20px;
-  font-family: var(--mono);
+  font-weight: var(--acme-font-weight-500);
+  font-family: var(--acme-font-mono);
   font-variant-numeric: tabular-nums;
   color: var(--text);
   align-items: center;

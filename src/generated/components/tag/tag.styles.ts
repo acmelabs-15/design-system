@@ -4,7 +4,7 @@ export const tagCss = css`.tag {
   background: var(--comp);
   height: 20px;
   color: var(--text-2);
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-2xs);
   white-space: nowrap;
   border-radius: 999px;

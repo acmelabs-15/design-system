@@ -42,10 +42,10 @@ export const severityCss = css`.severity {
 
 .issue .title {
   letter-spacing: -.32px;
-  margin: 0;
   font-size: 16px;
-  font-weight: 600;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-600);
+  margin: 0;
 }
 
 .issue .desc {

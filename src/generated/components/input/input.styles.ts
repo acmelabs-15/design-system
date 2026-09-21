@@ -19,7 +19,7 @@ export const inputCss = css`.wrap :where(input) {
 
 .wrap {
   max-width: 100%;
-  font-weight: 400;
+  font-weight: var(--acme-font-weight-400);
   transition-property: all;
   transition-duration: .15s;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);

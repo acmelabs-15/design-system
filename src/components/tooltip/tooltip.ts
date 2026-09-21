@@ -1,3 +1,4 @@
+import { ThemePaletteController } from "../../shared/theme-palette";
 import { tooltipStructureCss } from "../../generated/components/tooltip/tooltip-structure.styles";
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { html, nothing, svg } from "lit";
@@ -80,6 +81,8 @@ const arrowOffset = (bubbleWidth: number) => Math.min(20, Math.max(12, bubbleWid
  */
 
 export class AcmeTooltip extends AcmeElement {
+  private readonly palette = new ThemePaletteController(this, "tooltip", this.themeContext.scope.effective, () => this.refreshScopedStyles());
+  protected get scopedStyles() { return [...super.scopedStyles, ...(this.palette?.styles ?? [])]; }
   static styles = [
     sharedCss,
     tooltipTriggerCss,

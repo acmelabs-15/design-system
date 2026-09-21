@@ -15,9 +15,9 @@ export const noteCss = css`.note {
 }
 
 .note :where(.body) :where(.text) :where(.content) :where(.label) {
+  font-weight: var(--acme-font-weight-600);
   white-space: nowrap;
   margin-right: .25rem;
-  font-weight: 600;
 }
 
 .note :where(.body) {
@@ -53,19 +53,19 @@ export const noteCss = css`.note {
 .note:where(:not(.sm)) {
   min-height: var(--ds-size-medium);
   font-family: var(--acme-font-sans);
-  padding-inline: .75rem;
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
+  padding-inline: .75rem;
 }
 
 .note:where(.sm) {
   min-height: var(--ds-size-small);
   font-family: var(--acme-font-sans);
-  padding-inline: .5rem;
   font-size: 13px;
-  font-weight: 400;
   line-height: 18px;
+  font-weight: var(--acme-font-weight-400);
+  padding-inline: .5rem;
 }
 
 .note :where(.body) :where(.text) :where(.content) {
@@ -194,7 +194,7 @@ export const noteCss = css`.note {
 
 .note:where(.sm) > strong, .note:where(:not(.sm)) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .note:where(.warning) ::selection, .note:where(.warning)::selection {
@@ -309,8 +309,8 @@ export const noteCss = css`.note {
 }
 
 .note slot::slotted(a:not([data-acme-button])), .note slot > a:not([data-acme-button]) {
+  font-weight: var(--acme-font-weight-500) !important;
   text-underline-offset: 2px !important;
-  font-weight: 500 !important;
 }
 
 .note:where(.warning) slot::slotted(a:not([data-acme-button])), .note:where(.warning) slot > a:not([data-acme-button]) {

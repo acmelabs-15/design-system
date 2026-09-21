@@ -42,9 +42,9 @@ export const switchControlCss = css`.switch-control:where([data-disabled]) :wher
 }
 
 .switch-control:where(:not(.icon)) :where(.label) {
-  padding: 0 12px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
+  padding: 0 12px;
   text-decoration-line: none;
 }
 

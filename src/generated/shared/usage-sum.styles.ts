@@ -20,7 +20,7 @@ export const usageSumCss = css`.usage-sum {
 
 .usage-sum .row2 b {
   color: var(--text);
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
   display: block;
 }
 

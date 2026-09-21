@@ -6,12 +6,12 @@ const rows: { cls: string; label: string; value: string; style?: string }[] = [
   { cls: "text-label-14", label: "Branch", value: "feature/redesign-dashboard-navigation-with-sidebar-improvements" },
   { cls: "text-copy-14", label: "Preview URL", value: "platform-web-git-feature-redesign-dashboard-navigation-phamous.vercel.app" },
   { cls: "text-label-14", label: "Deployment ID", value: "dpl_8gmXTT1yJRP8UbGfXD7A3sp4RKhW" },
-  { cls: "text-label-14", label: "Env var key", value: "STRIPE_WEBHOOK_SIGNING_SECRET", style: "font-family:var(--mono)" },
+  { cls: "text-label-14", label: "Env var key", value: "STRIPE_WEBHOOK_SIGNING_SECRET", style: "font-family:var(--acme-font-mono)" },
   {
     cls: "text-label-14",
     label: "Monospace no ligatures",
     value: "STRIPE_WEBHOOK_SIGNING_SECRET",
-    style: "font-family:var(--mono);font-feature-settings:'liga' 0,'calt' 0;font-variant-ligatures:none",
+    style: "font-family:var(--acme-font-mono);font-feature-settings:'liga' 0,'calt' 0;font-variant-ligatures:none",
   },
   { cls: "text-copy-14", label: "Commit SHA", value: "2b0874e797d7c2a4092d0033ee0c2f0f9aef2869" },
   { cls: "text-copy-14", label: "File path", value: "apps/vercel-site/app/(dashboard)/[teamSlug]/[project]/settings/page.tsx" },
@@ -37,7 +37,7 @@ export const doc: Doc = {
     ${rows.map(row).join("\n    ")}
   </div>
   <aside class="vstack" style="gap:12px;align-items:flex-start">
-    <form class="row" style="gap:4px"><acme-label value="Width"><span class="row" style="gap:8px"><acme-slider min="0" max="${MAX}" value="${MAX}" style="width:240px"></acme-slider><span class="text-copy-13" style="font-family:var(--mono);color:var(--ds-gray-900)"><output>${MAX}px</output></span></span></acme-label></form>
+    <form class="row" style="gap:4px"><acme-label value="Width"><span class="row" style="gap:8px"><acme-slider min="0" max="${MAX}" value="${MAX}" style="width:240px"></acme-slider><span class="text-copy-13" style="font-family:var(--acme-font-mono);color:var(--ds-gray-900)"><output>${MAX}px</output></span></span></acme-label></form>
     <acme-toggle>Animate</acme-toggle>
   </aside>
 </div>`,

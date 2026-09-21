@@ -1,0 +1,1406 @@
+{
+  "date": "2026-09-21",
+  "scope": "M05 completed shared theme and responsive mechanisms; family adoption follows assigned batches",
+  "context": {
+    "date": "2026-09-21T11:53:29.127Z",
+    "implementation": "src/shared/theme-context.ts",
+    "api": [
+      "new ThemeContextController(host, {provide?})",
+      "controller.scope; controller.parentSource; controller.provide(); controller.adopted(); controller.refresh()",
+      "bindThemeContext(connectedOpener) -> {scope,parentSource,refresh,release}"
+    ],
+    "sourceHashes": {
+      "src/shared/theme-context.ts": "f327f8c384022c85ff905f5a958e321439a13c79b3ea039977e9fbda3dee0abf",
+      "src/shared/__tests__/theme-context.test.ts": "cf92447d146407d6f39172650eaecbf3f59384edd91e09c7e42e85f6447f20c4",
+      "src/shared/theme-scope.ts": "6a7f303d93a65d7b0fdd58880b6dc52d93d6a57d0133a2171fb8f933da8d1deb",
+      "src/shared/system-appearance.ts": "8bc6d510a359480f23ca50bc4834ac02741b29c6f19e5e8cc83136e872d630e0"
+    },
+    "unit": {
+      "tests": 7,
+      "assertions": 24,
+      "passed": true
+    },
+    "types": {
+      "strict": true,
+      "nonStrict": true,
+      "diagnostics": 0
+    },
+    "browser": [
+      {
+        "name": "chromium",
+        "version": "153.0.8010.48",
+        "passed": 15,
+        "total": 15,
+        "errors": [],
+        "measurement": {
+          "consumers": 250,
+          "mountMs": 15.900000005960464,
+          "invalidationMs": 17.30000001192093,
+          "observersCreated": 252,
+          "activeObservers": 252,
+          "documentObserversCreated": 1,
+          "maxPerRoot": 1
+        }
+      },
+      {
+        "name": "firefox",
+        "version": "155.0",
+        "passed": 15,
+        "total": 15,
+        "errors": [],
+        "measurement": {
+          "consumers": 250,
+          "mountMs": 20,
+          "invalidationMs": 5,
+          "observersCreated": 252,
+          "activeObservers": 252,
+          "documentObserversCreated": 1,
+          "maxPerRoot": 1
+        }
+      },
+      {
+        "name": "webkit",
+        "version": "26.6",
+        "passed": 15,
+        "total": 15,
+        "errors": [],
+        "measurement": {
+          "consumers": 250,
+          "mountMs": 16,
+          "invalidationMs": 17,
+          "observersCreated": 252,
+          "activeObservers": 252,
+          "documentObserversCreated": 1,
+          "maxPerRoot": 1
+        }
+      }
+    ],
+    "ownership": [
+      "Stable read-only TanStack effective atoms are transported through public @lit/context APIs; no copied writable theme snapshot.",
+      "One ThemeContextController/model per host; AcmeTheme calls provide() on the base controller.",
+      "parentSource supports scope CSS boundary changes even when effective appearance values match.",
+      "Document observer resources are shared, with per-binding ancestor/root records and reference counts. Initial discovery and observer installation are synchronous.",
+      "Topology/slot/name changes invalidate discovery in a microtask; provider data changes flow synchronously through TanStack.",
+      "Root resources and system appearance observation release with the last connected binding.",
+      "Native opener bindings follow connected moves/adoption. If still detached at the mutation checkpoint, the binding ends, releases live sources and retains an immutable final effective snapshot for exit. Reopening creates a new binding.",
+      "Consumer/controller reconnect obtains fresh parent and document-system sources."
+    ],
+    "verified": [
+      "Nested and late providers",
+      "Explicit fallback reset outside providers",
+      "Open and closed slot reassignment without refresh calls",
+      "Forwarded slots across closed roots",
+      "Manual slot.assign",
+      "Fallback slot hiding/restoration",
+      "Component and native opener adoption",
+      "Native opener disposal and detach/reopen",
+      "250-consumer observer sharing and cleanup"
+    ],
+    "measurementLimits": [
+      "Wall-clock measurements include RAF scheduling and browser/OS load; no throughput or universal latency threshold claim.",
+      "The initial observer-count failure came from Playwright InjectedScript._setupGlobalListenersRemovalDetection. The preserved diagnostic stack identifies it. Final runner initializes Playwright before instrumentation and counts the actual theme observers without hiding unknown observers."
+    ],
+    "resourcesStopped": true,
+    "repositoryFilesEdited": [
+      "src/shared/theme-context.ts",
+      "src/shared/__tests__/theme-context.test.ts"
+    ],
+    "rootBuildRun": false,
+    "newDependencyInstalledByThisTask": false
+  },
+  "integration": {
+    "initial": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "root dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "inherited dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "explicit light",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "button data-dark",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "nested dark background",
+              "actual": "rgb(255, 255, 255)",
+              "expected": "rgb(255, 255, 255)",
+              "ok": true
+            },
+            {
+              "name": "light boundary differs",
+              "actual": false,
+              "expected": true,
+              "ok": false
+            },
+            {
+              "name": "named color passes through appearance scope",
+              "actual": "rgb(10, 80, 170)",
+              "expected": "rgb(10, 80, 170)",
+              "ok": true
+            },
+            {
+              "name": "named font reaches plain content",
+              "actual": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+              "expected": "serif",
+              "ok": false
+            },
+            {
+              "name": "spacing independent",
+              "actual": "13px",
+              "expected": "13px",
+              "ok": true
+            },
+            {
+              "name": "sizes independent",
+              "actual": "21px",
+              "expected": "21px",
+              "ok": true
+            },
+            {
+              "name": "compact smallgap",
+              "actual": ".5rem",
+              "expected": "0.375rem",
+              "ok": false
+            },
+            {
+              "name": "explicit normal resetsdensity",
+              "actual": ".5rem",
+              "expected": "0.5rem",
+              "ok": false
+            },
+            {
+              "name": "clear resumescompact",
+              "actual": "compact",
+              "expected": "compact",
+              "ok": true
+            },
+            {
+              "name": "ordinary author override wins",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "omitted scope inherits local override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "removed appearance inherits",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "removed appearance clearsboundary",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "liveappearance reachesbutton",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "controlled request payload",
+              "actual": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "expected": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "ok": true
+            },
+            {
+              "name": "controlled request updatessection",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "control followsacceptedvalue",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "theme adopts intact",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "adopted font",
+              "actual": "\"Google Sans Flex\", -apple-system, \"system-ui\", \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+              "expected": "serif",
+              "ok": false
+            },
+            {
+              "name": "adopted override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "root dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "inherited dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "explicit light",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "button data-dark",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "nested dark background",
+              "actual": "rgb(255, 255, 255)",
+              "expected": "rgb(255, 255, 255)",
+              "ok": true
+            },
+            {
+              "name": "light boundary differs",
+              "actual": false,
+              "expected": true,
+              "ok": false
+            },
+            {
+              "name": "named color passes through appearance scope",
+              "actual": "rgb(10, 80, 170)",
+              "expected": "rgb(10, 80, 170)",
+              "ok": true
+            },
+            {
+              "name": "named font reaches plain content",
+              "actual": "\"Google Sans Flex\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+              "expected": "serif",
+              "ok": false
+            },
+            {
+              "name": "spacing independent",
+              "actual": "13px",
+              "expected": "13px",
+              "ok": true
+            },
+            {
+              "name": "sizes independent",
+              "actual": "21px",
+              "expected": "21px",
+              "ok": true
+            },
+            {
+              "name": "compact smallgap",
+              "actual": ".5rem",
+              "expected": "0.375rem",
+              "ok": false
+            },
+            {
+              "name": "explicit normal resetsdensity",
+              "actual": ".5rem",
+              "expected": "0.5rem",
+              "ok": false
+            },
+            {
+              "name": "clear resumescompact",
+              "actual": "compact",
+              "expected": "compact",
+              "ok": true
+            },
+            {
+              "name": "ordinary author override wins",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "omitted scope inherits local override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "removed appearance inherits",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "removed appearance clearsboundary",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "liveappearance reachesbutton",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "controlled request payload",
+              "actual": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "expected": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "ok": true
+            },
+            {
+              "name": "controlled request updatessection",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "control followsacceptedvalue",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "theme adopts intact",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "adopted font",
+              "actual": "\"Google Sans Flex\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+              "expected": "serif",
+              "ok": false
+            },
+            {
+              "name": "adopted override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "root dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "inherited dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "explicit light",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "button data-dark",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "nested dark background",
+              "actual": "rgb(255, 255, 255)",
+              "expected": "rgb(255, 255, 255)",
+              "ok": true
+            },
+            {
+              "name": "light boundary differs",
+              "actual": false,
+              "expected": true,
+              "ok": false
+            },
+            {
+              "name": "named color passes through appearance scope",
+              "actual": "rgb(10, 80, 170)",
+              "expected": "rgb(10, 80, 170)",
+              "ok": true
+            },
+            {
+              "name": "named font reaches plain content",
+              "actual": "Google Sans Flex, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
+              "expected": "serif",
+              "ok": false
+            },
+            {
+              "name": "spacing independent",
+              "actual": "13px",
+              "expected": "13px",
+              "ok": true
+            },
+            {
+              "name": "sizes independent",
+              "actual": "21px",
+              "expected": "21px",
+              "ok": true
+            },
+            {
+              "name": "compact smallgap",
+              "actual": ".5rem",
+              "expected": "0.375rem",
+              "ok": false
+            },
+            {
+              "name": "explicit normal resetsdensity",
+              "actual": ".5rem",
+              "expected": "0.5rem",
+              "ok": false
+            },
+            {
+              "name": "clear resumescompact",
+              "actual": "compact",
+              "expected": "compact",
+              "ok": true
+            },
+            {
+              "name": "ordinary author override wins",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "omitted scope inherits local override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "removed appearance inherits",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "removed appearance clearsboundary",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "liveappearance reachesbutton",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "controlled request payload",
+              "actual": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "expected": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "ok": true
+            },
+            {
+              "name": "controlled request updatessection",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "control followsacceptedvalue",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "theme adopts intact",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "adopted font",
+              "actual": "Google Sans Flex, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
+              "expected": "serif",
+              "ok": false
+            },
+            {
+              "name": "adopted override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "current": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "root dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "inherited dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "explicit light",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "button data-dark",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "nested dark background",
+              "actual": "rgb(10, 10, 10)",
+              "expected": "rgb(10, 10, 10)",
+              "ok": true
+            },
+            {
+              "name": "light boundary differs",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "named color passes through appearance scope",
+              "actual": "rgb(10, 80, 170)",
+              "expected": "rgb(10, 80, 170)",
+              "ok": true
+            },
+            {
+              "name": "named font reaches plain content",
+              "actual": "serif",
+              "expected": "serif",
+              "ok": true
+            },
+            {
+              "name": "spacing independent",
+              "actual": "13px",
+              "expected": "13px",
+              "ok": true
+            },
+            {
+              "name": "sizes independent",
+              "actual": "21px",
+              "expected": "21px",
+              "ok": true
+            },
+            {
+              "name": "compact smallgap",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "explicit normal resetsdensity",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "clear resumescompact",
+              "actual": "compact",
+              "expected": "compact",
+              "ok": true
+            },
+            {
+              "name": "ordinary author override wins",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "omitted scope inherits local override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "removed appearance inherits",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "removed appearance clearsboundary",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "liveappearance reachesbutton",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "controlled request payload",
+              "actual": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "expected": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "ok": true
+            },
+            {
+              "name": "controlled request updatessection",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "control followsacceptedvalue",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "theme adopts intact",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "adopted font",
+              "actual": "serif",
+              "expected": "serif",
+              "ok": true
+            },
+            {
+              "name": "adopted override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "named color reaches counter local palette",
+              "actual": "rgb(12, 180, 80)",
+              "expected": "rgb(12, 180, 80)",
+              "ok": true
+            },
+            {
+              "name": "named color reaches inverse tooltip palette",
+              "actual": "rgb(12, 180, 80)",
+              "expected": "rgb(12, 180, 80)",
+              "ok": true
+            },
+            {
+              "name": "counter keeps dark scheme",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "tooltip selects inverse scheme",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "invalid select ring uses full-color override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "toggle thumb uses full-color override",
+              "actual": "color(srgb 0.0470588 0.705882 0.313726 / 0.84)",
+              "expected": "color(srgb 0.0470588 0.705882 0.313726 / 0.84)",
+              "ok": true
+            },
+            {
+              "name": "tooltip inverse follows live parent",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing named palette restores counter default",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "a different partial theme resets parent font overrides",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "a different partial theme resets numeric spacing",
+              "actual": ".5rem",
+              "expected": ".5rem",
+              "ok": true
+            },
+            {
+              "name": "named density overrides survive explicit normal boundary",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "root dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "inherited dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "explicit light",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "button data-dark",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "nested dark background",
+              "actual": "rgb(10, 10, 10)",
+              "expected": "rgb(10, 10, 10)",
+              "ok": true
+            },
+            {
+              "name": "light boundary differs",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "named color passes through appearance scope",
+              "actual": "rgb(10, 80, 170)",
+              "expected": "rgb(10, 80, 170)",
+              "ok": true
+            },
+            {
+              "name": "named font reaches plain content",
+              "actual": "serif",
+              "expected": "serif",
+              "ok": true
+            },
+            {
+              "name": "spacing independent",
+              "actual": "13px",
+              "expected": "13px",
+              "ok": true
+            },
+            {
+              "name": "sizes independent",
+              "actual": "21px",
+              "expected": "21px",
+              "ok": true
+            },
+            {
+              "name": "compact smallgap",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "explicit normal resetsdensity",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "clear resumescompact",
+              "actual": "compact",
+              "expected": "compact",
+              "ok": true
+            },
+            {
+              "name": "ordinary author override wins",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "omitted scope inherits local override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "removed appearance inherits",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "removed appearance clearsboundary",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "liveappearance reachesbutton",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "controlled request payload",
+              "actual": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "expected": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "ok": true
+            },
+            {
+              "name": "controlled request updatessection",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "control followsacceptedvalue",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "theme adopts intact",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "adopted font",
+              "actual": "serif",
+              "expected": "serif",
+              "ok": true
+            },
+            {
+              "name": "adopted override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "named color reaches counter local palette",
+              "actual": "rgb(12, 180, 80)",
+              "expected": "rgb(12, 180, 80)",
+              "ok": true
+            },
+            {
+              "name": "named color reaches inverse tooltip palette",
+              "actual": "rgb(12, 180, 80)",
+              "expected": "rgb(12, 180, 80)",
+              "ok": true
+            },
+            {
+              "name": "counter keeps dark scheme",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "tooltip selects inverse scheme",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "invalid select ring uses full-color override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "toggle thumb uses full-color override",
+              "actual": "color(srgb 0.0470588 0.705882 0.313726 / 0.84)",
+              "expected": "color(srgb 0.0470588 0.705882 0.313726 / 0.84)",
+              "ok": true
+            },
+            {
+              "name": "tooltip inverse follows live parent",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing named palette restores counter default",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "a different partial theme resets parent font overrides",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "a different partial theme resets numeric spacing",
+              "actual": ".5rem",
+              "expected": ".5rem",
+              "ok": true
+            },
+            {
+              "name": "named density overrides survive explicit normal boundary",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "root dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "inherited dark",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "explicit light",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "button data-dark",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "nested dark background",
+              "actual": "rgb(10, 10, 10)",
+              "expected": "rgb(10, 10, 10)",
+              "ok": true
+            },
+            {
+              "name": "light boundary differs",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "named color passes through appearance scope",
+              "actual": "rgb(10, 80, 170)",
+              "expected": "rgb(10, 80, 170)",
+              "ok": true
+            },
+            {
+              "name": "named font reaches plain content",
+              "actual": "serif",
+              "expected": "serif",
+              "ok": true
+            },
+            {
+              "name": "spacing independent",
+              "actual": "13px",
+              "expected": "13px",
+              "ok": true
+            },
+            {
+              "name": "sizes independent",
+              "actual": "21px",
+              "expected": "21px",
+              "ok": true
+            },
+            {
+              "name": "compact smallgap",
+              "actual": "6px",
+              "expected": "6px",
+              "ok": true
+            },
+            {
+              "name": "explicit normal resetsdensity",
+              "actual": "8px",
+              "expected": "8px",
+              "ok": true
+            },
+            {
+              "name": "clear resumescompact",
+              "actual": "compact",
+              "expected": "compact",
+              "ok": true
+            },
+            {
+              "name": "ordinary author override wins",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "omitted scope inherits local override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "removed appearance inherits",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "removed appearance clearsboundary",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "liveappearance reachesbutton",
+              "actual": false,
+              "expected": false,
+              "ok": true
+            },
+            {
+              "name": "controlled request payload",
+              "actual": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "expected": {
+                "action": "appearance",
+                "value": "dark"
+              },
+              "ok": true
+            },
+            {
+              "name": "controlled request updatessection",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "control followsacceptedvalue",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "theme adopts intact",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "adopted font",
+              "actual": "serif",
+              "expected": "serif",
+              "ok": true
+            },
+            {
+              "name": "adopted override",
+              "actual": "rgb(90, 10, 120)",
+              "expected": "rgb(90, 10, 120)",
+              "ok": true
+            },
+            {
+              "name": "named color reaches counter local palette",
+              "actual": "rgb(12, 180, 80)",
+              "expected": "rgb(12, 180, 80)",
+              "ok": true
+            },
+            {
+              "name": "named color reaches inverse tooltip palette",
+              "actual": "rgb(12, 180, 80)",
+              "expected": "rgb(12, 180, 80)",
+              "ok": true
+            },
+            {
+              "name": "counter keeps dark scheme",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "tooltip selects inverse scheme",
+              "actual": "dark",
+              "expected": "dark",
+              "ok": true
+            },
+            {
+              "name": "invalid select ring uses full-color override",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "toggle thumb uses full-color override",
+              "actual": "color(srgb 0.047059 0.705882 0.313726 / 0.84)",
+              "expected": "color(srgb 0.047059 0.705882 0.313726 / 0.84)",
+              "ok": true
+            },
+            {
+              "name": "tooltip inverse follows live parent",
+              "actual": "light",
+              "expected": "light",
+              "ok": true
+            },
+            {
+              "name": "clearing named palette restores counter default",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "a different partial theme resets parent font overrides",
+              "actual": true,
+              "expected": true,
+              "ok": true
+            },
+            {
+              "name": "a different partial theme resets numeric spacing",
+              "actual": ".5rem",
+              "expected": ".5rem",
+              "ok": true
+            },
+            {
+              "name": "named density overrides survive explicit normal boundary",
+              "actual": "20px",
+              "expected": "20px",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "probe": "\nimport {registerTheme,AcmeTheme,AcmeButton,AcmeThemeSwitcher} from \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/index.js\";\nimport \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/define/theme.js\";\nimport \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/define/button.js\";\nimport \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/define/theme-switcher.js\";\nimport \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/define/avatar-group.js\";\nimport \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/define/tooltip.js\";\nimport \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/define/select.js\";\nimport \"/Users/peterkloss/Dev/ACMElabs/design-system/dist/define/toggle.js\";\nconst checks=[];const check=(name,actual,expected)=>checks.push({name,actual,expected,ok:JSON.stringify(actual)===JSON.stringify(expected)});\nconst settle=async()=>{await Promise.all([...document.querySelectorAll(\"*\")].map(e=>e.updateComplete));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));};\nconst length=(el,key)=>{const node=el.ownerDocument.createElement(\"span\");node.style.display=\"block\";node.style.width=\"var(\"+key+\")\";el.append(node);const value=el.ownerDocument.defaultView.getComputedStyle(node).width;node.remove();return value;};\nconst color=el=>getComputedStyle(el).color;const bg=el=>getComputedStyle(el).backgroundColor;const token=(el,key)=>getComputedStyle(el).getPropertyValue(key).trim();\ntry{\n registerTheme(\"brand\",{colors:{\"ds-blue-700\":\"rgb(10, 80, 170)\"},fonts:{\"acme-font-sans\":\"serif\"},spacing:{2:\"13px\"},sizes:{2:\"21px\"}});\n document.body.innerHTML='<acme-theme id=\"outer\" appearance=\"dark\" theme=\"brand\"><acme-button id=\"button\">Action</acme-button><acme-theme id=\"inherit\"><span id=\"label\">Label</span></acme-theme><acme-theme id=\"light\" appearance=\"light\"><span id=\"sample\" style=\"color:var(--ds-blue-700)\">Color</span></acme-theme></acme-theme>';\n await settle();\n const outer=document.querySelector(\"#outer\"),child=document.querySelector(\"#inherit\"),light=document.querySelector(\"#light\"),button=document.querySelector(\"#button\");\n check(\"root dark\",outer.getAttribute(\"data-acme-appearance\"),\"dark\");check(\"inherited dark\",child.appearance,\"dark\");check(\"explicit light\",light.appearance,\"light\");check(\"button data-dark\",button.hasAttribute(\"data-dark\"),true);\n check(\"nested dark background\",bg(child),bg(outer));check(\"light boundary differs\",bg(light)!==bg(outer),true);\n check(\"named color passes through appearance scope\",color(document.querySelector(\"#sample\")),\"rgb(10, 80, 170)\");\n check(\"named font reaches plain content\",getComputedStyle(document.querySelector(\"#label\")).fontFamily,\"serif\");\n check(\"spacing independent\",token(light,\"--acme-spacing-2\"),\"13px\");check(\"sizes independent\",token(light,\"--acme-size-2\"),\"21px\");\n outer.density=\"compact\";await settle();check(\"compact smallgap\",length(child,\"--acme-layout-gap-2\"),\"6px\");child.density=\"normal\";await settle();check(\"explicit normal resetsdensity\",length(child,\"--acme-layout-gap-2\"),\"8px\");child.removeAttribute(\"density\");child.density=undefined;await settle();check(\"clear resumescompact\",child.density,\"compact\");\n outer.style.setProperty(\"--ds-blue-700\",\"rgb(90, 10, 120)\");await settle();check(\"ordinary author override wins\",token(outer,\"--ds-blue-700\"),\"rgb(90, 10, 120)\");check(\"omitted scope inherits local override\",token(child,\"--ds-blue-700\"),\"rgb(90, 10, 120)\");\n light.removeAttribute(\"appearance\");await settle();check(\"removed appearance inherits\",light.appearance,\"dark\");check(\"removed appearance clearsboundary\",light.hasAttribute(\"data-acme-appearance-boundary\"),false);\n outer.appearance=\"light\";await settle();check(\"liveappearance reachesbutton\",button.hasAttribute(\"data-dark\"),false);\n const picker=document.createElement(\"acme-theme-switcher\");outer.append(picker);await settle();let request;picker.addEventListener(\"acme-request\",e=>{request=e.detail;picker.value=e.detail.value;outer.appearance=e.detail.value;});const dark=picker.shadowRoot.querySelectorAll(\"input\")[2];dark.click();await settle();check(\"controlled request payload\",request,{action:\"appearance\",value:\"dark\"});check(\"controlled request updatessection\",outer.appearance,\"dark\");check(\"control followsacceptedvalue\",picker.value,\"dark\");\n const frame=document.createElement(\"iframe\");frame.srcdoc='<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><body></body>';const loaded=new Promise(r=>frame.onload=r);document.body.append(frame);await loaded;frame.contentDocument.body.append(frame.contentDocument.adoptNode(outer));await settle();await outer.updateComplete;check(\"theme adopts intact\",outer.ownerDocument===frame.contentDocument,true);check(\"adopted font\",frame.contentWindow.getComputedStyle(child).fontFamily,\"serif\");check(\"adopted override\",frame.contentWindow.getComputedStyle(outer).getPropertyValue(\"--ds-blue-700\").trim(),\"rgb(90, 10, 120)\");\n\n const palette=document.createElement(\"acme-theme\");registerTheme(\"local-palettes\",{colors:{\"ds-gray-1000\":\"rgb(12, 180, 80)\",\"ds-red-900\":\"rgb(120, 20, 220)\"}});palette.theme=\"local-palettes\";palette.appearance=\"light\";document.body.append(palette);\n const avatars=document.createElement(\"acme-avatar-group\");avatars.members=[{letter:\"A\"},{letter:\"B\"},{letter:\"C\"}];avatars.limit=2;palette.append(avatars);\n const tip=document.createElement(\"acme-tooltip\");tip.text=\"Tooltip\";tip.shown=1;tip.delay=false;tip.innerHTML=\"<button>Help</button>\";palette.append(tip);\n const select=document.createElement(\"acme-select\");select.options=[\"One\"];select.error=\"Invalid\";palette.append(select);\n const toggle=document.createElement(\"acme-toggle\");toggle.label=\"Toggle\";palette.append(toggle);\n await settle();await Promise.all([avatars.updateComplete,tip.updateComplete,select.updateComplete,toggle.updateComplete]);await new Promise(r=>setTimeout(r,350));\n const count=avatars.shadowRoot.querySelector(\".count\"),bubble=tip.shadowRoot.querySelector(\".tip\");\n check(\"named color reaches counter local palette\",token(count,\"--ds-gray-1000\"),\"rgb(12, 180, 80)\");\n check(\"named color reaches inverse tooltip palette\",token(bubble,\"--ds-gray-1000\"),\"rgb(12, 180, 80)\");\n check(\"counter keeps dark scheme\",getComputedStyle(count).colorScheme,\"dark\");\n check(\"tooltip selects inverse scheme\",getComputedStyle(bubble).colorScheme,\"dark\");\n const oracle=document.createElement(\"span\");oracle.style.color=\"rgb(from rgb(120, 20, 220) r g b / .16)\";palette.append(oracle);\n check(\"invalid select ring uses full-color override\",getComputedStyle(select.shadowRoot.querySelector(\"select\")).boxShadow.includes(getComputedStyle(oracle).color),true);\n palette.appearance=\"dark\";await settle();await Promise.all([...toggle.shadowRoot.querySelectorAll(\"*\")].flatMap(node=>node.getAnimations()).filter(animation=>animation.effect?.getComputedTiming().endTime!==Infinity).map(animation=>animation.finished.catch(()=>{})));\n oracle.style.color=\"rgb(from rgb(12, 180, 80) r g b / .84)\";\n check(\"toggle thumb uses full-color override\",getComputedStyle(toggle.shadowRoot.querySelector(\".thumb\")).backgroundColor,getComputedStyle(oracle).color);\n palette.appearance=\"dark\";await settle();check(\"tooltip inverse follows live parent\",getComputedStyle(bubble).colorScheme,\"light\");\n palette.theme=undefined;await settle();check(\"clearing named palette restores counter default\",token(count,\"--ds-gray-1000\")!==\"rgb(12, 180, 80)\",true);\n\n registerTheme(\"house-copy\",{});const reset=document.createElement(\"acme-theme\");reset.theme=\"house-copy\";outer.append(reset);await reset.updateComplete;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));\n check(\"a different partial theme resets parent font overrides\",frame.contentWindow.getComputedStyle(reset).fontFamily.includes(\"Google Sans Flex\"),true);\n check(\"a different partial theme resets numeric spacing\",frame.contentWindow.getComputedStyle(reset).getPropertyValue(\"--acme-spacing-2\").trim(),\".5rem\");\n registerTheme(\"density-custom\",{spacing:{\"acme-layout-gap-2\":\"20px\"}});const custom=document.createElement(\"acme-theme\"),normal=document.createElement(\"acme-theme\");custom.theme=\"density-custom\";custom.density=\"compact\";normal.density=\"normal\";custom.append(normal);document.body.append(custom);await settle();check(\"named density overrides survive explicit normal boundary\",length(normal,\"--acme-layout-gap-2\"),\"20px\");\n window.__results={results:checks};\n}catch(error){window.__results={results:checks,error:String(error),stack:error.stack};}\n",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst root=\"/Users/peterkloss/Dev/ACMElabs/design-system\",directory=\"/tmp/acme-m05-theme-integration\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error){report.errors.push({engine,message:data.error,stack:data.stack});data.results.push({name:'fixture completes',ok:false,error:data.error});}report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+  },
+  "remaining": [
+    "M07 onward adopts the shared styling and theme mechanisms in its component families.",
+    "M10 replaces the retained ThemeSwitcher native option markup with the shared SegmentedControl and localization infrastructure.",
+    "Native browser limitations are separately recorded: Firefox polyfill definition-after-adoption and WebKit nested-slot container matching.",
+    "Final whole-package acceptance remains M26."
+  ],
+  "packedConsumer": {
+    "directory": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-m05-final-consumer-wLQxkx",
+    "results": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.48",
+          "results": [
+            {
+              "name": "class entry stays inert",
+              "ok": true
+            },
+            {
+              "name": "packed theme renders",
+              "ok": true
+            },
+            {
+              "name": "packed inherited appearance",
+              "ok": true
+            },
+            {
+              "name": "packed named color",
+              "ok": true
+            },
+            {
+              "name": "complete token manifest",
+              "ok": true,
+              "actual": 413
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "class entry stays inert",
+              "ok": true
+            },
+            {
+              "name": "packed theme renders",
+              "ok": true
+            },
+            {
+              "name": "packed inherited appearance",
+              "ok": true
+            },
+            {
+              "name": "packed named color",
+              "ok": true
+            },
+            {
+              "name": "complete token manifest",
+              "ok": true,
+              "actual": 413
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "class entry stays inert",
+              "ok": true
+            },
+            {
+              "name": "packed theme renders",
+              "ok": true
+            },
+            {
+              "name": "packed inherited appearance",
+              "ok": true
+            },
+            {
+              "name": "packed named color",
+              "ok": true
+            },
+            {
+              "name": "complete token manifest",
+              "ok": true,
+              "actual": 413
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "source": "import { registerTheme, type ThemeAppearance, type ThemeDefinition } from \"@acmelabs/design-system\";\nimport tokens from \"@acmelabs/design-system/tokens.json\";\nconst definition: ThemeDefinition = { colors: { \"ds-blue-700\": \"rgb(1, 80, 170)\" }, fonts: { \"acme-font-sans\": \"serif\" } };\nconst appearance: ThemeAppearance = \"dark\";\nconst results: {name:string;ok:boolean;actual?:unknown}[]=[];\nresults.push({name:\"class entry stays inert\",ok:customElements.get(\"acme-theme\")===undefined});\nregisterTheme(\"packed\",definition);\nawait import(\"@acmelabs/design-system/define/theme\");\nawait import(\"@acmelabs/design-system/define/button\");\nconst theme=document.createElement(\"acme-theme\");theme.theme=\"packed\";theme.appearance=appearance;\nconst button=document.createElement(\"acme-button\");button.textContent=\"Packed\";theme.append(button);document.body.append(theme);\nawait Promise.all([theme.updateComplete,button.updateComplete]);\nresults.push({name:\"packed theme renders\",ok:!!theme.shadowRoot?.querySelector('[part=\"root\"]')});\nresults.push({name:\"packed inherited appearance\",ok:button.hasAttribute(\"data-dark\")});\nresults.push({name:\"packed named color\",ok:getComputedStyle(theme).getPropertyValue(\"--ds-blue-700\").trim()===\"rgb(1, 80, 170)\"});\nresults.push({name:\"complete token manifest\",ok:tokens.tokens.length===413,actual:tokens.tokens.length});\n(window as Window & {__results?:unknown}).__results={results};",
+    "runner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-m05-final-consumer-wLQxkx\",root=directory+\"/node_modules/@acmelabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\"});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "strictTypecheck": "pass",
+    "packagesInstalled": 79
+  },
+  "website": {
+    "results": [
+      {
+        "engine": "chromium",
+        "errors": [],
+        "state": {
+          "appearance": "dark",
+          "control": "dark",
+          "background": "rgb(10, 10, 10)",
+          "checked": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "errors": [],
+        "state": {
+          "appearance": "dark",
+          "control": "dark",
+          "background": "rgb(10, 10, 10)",
+          "checked": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "errors": [],
+        "state": {
+          "appearance": "dark",
+          "control": "dark",
+          "background": "rgb(10, 10, 10)",
+          "checked": true
+        }
+      }
+    ],
+    "runner": "process.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");const results=[];\nfor(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on(\"pageerror\",error=>errors.push(error.message));await page.goto(\"http://localhost:4180/components/theme\");await page.waitForFunction(()=>document.querySelector(\"acme-docs-app\")?.querySelector(\"acme-appbar\")?.shadowRoot?.querySelector(\"acme-theme-switcher\")?.shadowRoot?.querySelector(\"input\"));await page.evaluate(()=>document.querySelector(\"acme-docs-app\").querySelector(\"acme-appbar\").shadowRoot.querySelector(\"acme-theme-switcher\").shadowRoot.querySelector('input[value=\"dark\"]').click());await page.waitForFunction(()=>document.documentElement.getAttribute(\"data-acme-appearance\")===\"dark\"&&document.querySelector(\"acme-docs-app > acme-theme\").appearance===\"dark\");const state=await page.evaluate(()=>{const scope=document.querySelector(\"acme-docs-app > acme-theme\"),picker=document.querySelector(\"acme-appbar\").shadowRoot.querySelector(\"acme-theme-switcher\");return {appearance:scope.appearance,control:picker.value,background:getComputedStyle(scope).backgroundColor,checked:picker.shadowRoot.querySelector('input[value=\"dark\"]').checked};});results.push({engine,errors,state});console.log({engine,errors,state});}finally{await browser.close();}}\nawait Bun.write(\"/tmp/acme-m05-docs-theme.json\",JSON.stringify(results,null,2));if(results.some(r=>r.errors.length||r.state.appearance!==\"dark\"||r.state.control!==\"dark\"||!r.state.checked))process.exitCode=1;"
+  },
+  "integratedVerification": {
+    "split": "pass",
+    "build": "pass",
+    "docs": "81 pages,110 elements,0 undocumented",
+    "unit": {
+      "passed": 821,
+      "failed": 0,
+      "assertions": 10620,
+      "files": 110
+    },
+    "manifest": "literal aliases and defaults verified",
+    "references": "35 theme cases per engine;5 packed-consumer cases per engine;document application preference flow per engine"
+  }
+}

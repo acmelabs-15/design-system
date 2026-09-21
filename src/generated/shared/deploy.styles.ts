@@ -32,7 +32,7 @@ export const deployCss = css`.deploy-list {
 }
 
 .deploy-row .mono {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: 13px;
 }
 
@@ -68,10 +68,10 @@ export const deployCss = css`.deploy-list {
   width: 40px;
   height: 40px;
   color: var(--on-contrast);
+  font-weight: var(--acme-font-weight-600);
   border-radius: 50%;
   flex: none;
   place-items: center;
-  font-weight: 600;
   display: grid;
 }
 
@@ -81,11 +81,11 @@ export const deployCss = css`.deploy-list {
 }
 
 .project-row .name {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
   overflow: hidden;
 }
 
@@ -163,9 +163,9 @@ export const deployCss = css`.deploy-list {
 }
 
 .bar-list .r .n {
+  font-weight: var(--acme-font-weight-600);
   font-variant-numeric: tabular-nums;
   margin-left: auto;
-  font-weight: 600;
 }
 
 .bar-list .r .fav {
@@ -181,13 +181,13 @@ export const deployCss = css`.deploy-list {
 }
 
 .bar-list .cols {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: var(--acme-font-weight-500);
   text-transform: uppercase;
   color: var(--text-2);
   justify-content: space-between;
   padding: 8px 8px 4px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
   display: flex;
 }
 `;

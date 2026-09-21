@@ -24,14 +24,14 @@ export const tabCss = css`.tab :where(.icon) {
 .tab.secondary {
   height: 2rem;
   font-family: var(--acme-font-sans);
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: var(--acme-font-weight-400);
   border-bottom-style: solid;
   border-bottom-width: 0;
   border-radius: .375rem;
   padding-block: 0;
   padding-inline: .75rem;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 16px;
 }
 
 .tab:disabled {
@@ -43,8 +43,8 @@ export const tabCss = css`.tab :where(.icon) {
 }
 
 .tab.secondary > strong {
+  font-weight: var(--acme-font-weight-500);
   color: var(--ds-gray-1000);
-  font-weight: 500;
 }
 
 @media (hover: hover) {

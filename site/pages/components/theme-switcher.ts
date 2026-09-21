@@ -1,24 +1,22 @@
-// Docs page: Theme Switcher — mirrors https://vercel.com/geist/theme-switcher
 import type { Doc } from "../../site";
-
+const script = `const scope = root.querySelector("acme-theme"); const picker = root.querySelector("acme-theme-switcher"); picker.addEventListener("acme-request", event => { event.stopPropagation(); picker.value = event.detail.value; scope.appearance = event.detail.value; });`;
 export const doc: Doc = {
   id: "theme-switcher",
   title: "Theme Switcher",
-  lede: "A control that switches between light and dark themes.",
+  lede: "Requests an appearance preference. The application updates its theme scope.",
   tags: ["acme-theme-switcher"],
   examples: [
-    { h: "Default", html: `<acme-theme-switcher></acme-theme-switcher>` },
-    { h: "Small", html: `<acme-theme-switcher small></acme-theme-switcher>` },
-    { h: "Disabled", html: `<acme-theme-switcher disabled></acme-theme-switcher>` },
+    { h: "Scoped appearance", html: "<acme-theme><acme-theme-switcher></acme-theme-switcher><p>This section follows the selected appearance.</p></acme-theme>", script },
+    { h: "Medium", html: '<acme-theme-switcher size="medium" value="light"></acme-theme-switcher>' },
+    { h: "Large", html: '<acme-theme-switcher size="large" value="dark"></acme-theme-switcher>' },
+    { h: "Disabled", html: "<acme-theme-switcher disabled></acme-theme-switcher>" },
   ],
   practices: {
-    "Best Practices": [
-      "Use the Theme Switcher for the canonical Light / System / Dark control. Place it once per app, in the footer or the settings, not on every page.",
-      "Pass <code>small</code> in dense chrome (footers, dropdowns); the default size belongs on a settings page with room around it.",
-      "Every instance reads and writes the shared theme store, which sets <code>data-theme</code> on the root element and remembers the choice; do not mirror its state elsewhere.",
-      "Set <code>disabled</code> only for a read-only preview of the control itself, or when the app forces one theme.",
-      "Do not rebuild a theme picker from a Switch or three icon buttons. The element already carries the icons, an <code>aria-label</code> per option and System detection.",
-      "The element composes its own option labels (System, Light, Dark); leave them alone so they stay consistent across surfaces.",
+    Usage: [
+      "Handle acme-request with action appearance, then update the switcher's value and the relevant Theme scope's appearance.",
+      "The application owns preference persistence. A switcher does not write page settings or browser storage.",
+      "Use small, medium or large sizes. Small is the default.",
+      "Keep auto available when the application permits following the system preference.",
     ],
   },
 };

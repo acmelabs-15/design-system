@@ -123,10 +123,10 @@ export const calendarCss = css`.calendar {
 }
 
 .cal-head .month {
-  flex: 1;
   font-size: 14px;
-  font-weight: 500;
   line-height: 21px;
+  font-weight: var(--acme-font-weight-500);
+  flex: 1;
 }
 
 .cal-head .iconbtn {
@@ -201,6 +201,9 @@ export const calendarCss = css`.calendar {
   -webkit-appearance: none;
   appearance: none;
   height: var(--form);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
   color: var(--text);
   background: var(--surface);
   cursor: pointer;
@@ -209,9 +212,6 @@ export const calendarCss = css`.calendar {
   background-repeat: no-repeat;
   background-size: 4px 4px;
   padding: 0 32px 0 12px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
 }
 
 .cal-period:hover {
@@ -238,13 +238,13 @@ export const calendarCss = css`.calendar {
 }
 
 .cal-grid th {
-  text-transform: uppercase;
   height: 18px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: var(--acme-font-weight-400);
+  text-transform: uppercase;
   color: var(--text-2);
   padding: 0 0 6px;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
 }
 
 .cal-grid td {

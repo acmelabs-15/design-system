@@ -27,7 +27,7 @@ export const fileCss = css`.file :where(.link) :where(.icon) {
 }
 
 .file :where(.link) :where(.name) {
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   text-overflow: ellipsis;
   display: block;
   overflow: hidden;
@@ -46,7 +46,7 @@ export const fileCss = css`.file :where(.link) :where(.icon) {
 }
 
 .file:where(.active) :where(.link) {
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .file:where(.active) :where(.link) :where(.icon) {

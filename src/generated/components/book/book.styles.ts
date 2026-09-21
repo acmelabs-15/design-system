@@ -45,12 +45,12 @@ export const bookCss = css`.book :where(.wrap) :where(.cover) {
 
 .book :where(.wrap) :where(.cover) :where(.body) :where(.content) :where(.title) {
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-600);
   letter-spacing: -.28px;
   text-wrap: balance;
   color: var(--book-text-color);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
 }
 
 .book {

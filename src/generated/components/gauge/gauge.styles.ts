@@ -35,10 +35,10 @@ export const gaugeCss = css`.gauge :where(.label), .gauge :where(.icon) {
 
 .gauge :where(.label) :where(.value) {
   font-family: var(--acme-font-sans);
-  color: inherit;
   font-size: 14px;
-  font-weight: 400;
   line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
+  color: inherit;
 }
 
 .gauge:where(.indeterminate) :where(.ring) :where(.secondary) {
@@ -47,7 +47,7 @@ export const gaugeCss = css`.gauge :where(.label), .gauge :where(.icon) {
 
 .gauge :where(.label) :where(.value) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .gauge:where(.indeterminate) circle {

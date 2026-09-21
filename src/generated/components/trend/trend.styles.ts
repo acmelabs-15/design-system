@@ -1,15 +1,15 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
 export const trendCss = css`.trend {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: var(--t-xs);
+  line-height: 16px;
+  font-weight: var(--acme-font-weight-500);
   color: var(--text-2);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
   align-items: center;
   gap: 3px;
-  font-weight: 500;
-  line-height: 16px;
   display: inline-flex;
 }
 
@@ -49,6 +49,6 @@ export const trendCss = css`.trend {
   font-size: var(--t-xs);
   color: var(--text-2);
   line-height: 16px;
-  font-family: var(--sans);
+  font-family: var(--acme-font-sans);
 }
 `;

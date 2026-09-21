@@ -81,11 +81,11 @@ export const browserCss = css`.frame :where(.header) {
   text-align: center;
   min-width: 0;
   font-family: var(--acme-font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-1000);
   flex: 1;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 18px;
   overflow: hidden;
 }
 
@@ -130,7 +130,7 @@ export const browserCss = css`.frame :where(.header) {
 
 .frame :where(.header) :where(.section) :where(.address) :where(.text) > strong {
   color: var(--ds-gray-1000);
-  font-weight: 550;
+  font-weight: var(--acme-font-weight-550);
 }
 
 .frame :where(.header) :where(.section) :where(.address) :where(acme-button) svg {

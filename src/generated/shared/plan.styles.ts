@@ -11,8 +11,8 @@ export const planCss = css`.plan-head {
 .plan-head .title {
   letter-spacing: -.96px;
   font-size: 24px;
-  font-weight: 600;
   line-height: 32px;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .plan-head .range {
@@ -56,10 +56,10 @@ export const planCss = css`.plan-head {
 }
 
 .icon-row .value {
-  font-variant-numeric: tabular-nums;
   font-size: 16px;
-  font-weight: 500;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-500);
+  font-variant-numeric: tabular-nums;
 }
 
 .icon-row .end {
@@ -95,10 +95,10 @@ export const planCss = css`.plan-head {
 
 .section-title {
   letter-spacing: -.32px;
-  margin: 24px 0 8px;
   font-size: 16px;
-  font-weight: 600;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-600);
+  margin: 24px 0 8px;
 }
 
 .section-title + .desc {

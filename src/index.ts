@@ -1,5 +1,8 @@
 // Component classes and shared authoring helpers.
 export * from "./base";
+export * from "./components/theme/theme";
+export { registerTheme, type ThemeDefinition } from "./shared/theme-registry";
+export type { ThemeAppearance, ThemeDensity } from "./shared/theme-scope";
 export * from "./components/appbar/appbar";
 export * from "./components/avatar/avatar";
 export * from "./components/avatar-group/avatar-group";

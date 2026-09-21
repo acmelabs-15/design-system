@@ -54,6 +54,13 @@ test("the manifest matches every registered Lit class and its runtime property a
   );
   expect(registered.length).toBeGreaterThan(0);
   expect(elements.map((element) => element.tagName!).sort()).toEqual(registered.map((ctor) => customElements.getName(ctor)!).sort());
+  const theme = elements.find(element => element.tagName === "acme-theme")!;
+  const appearance = theme.members!.find(member => member.name === "appearance") as { type: { text: string }; default: string };
+  const density = theme.members!.find(member => member.name === "density") as { type: { text: string }; default: string };
+  expect(new Set(appearance.type.text.match(/"[^"]+"/g))).toEqual(new Set(['"auto"', '"light"', '"dark"']));
+  expect(new Set(density.type.text.match(/"[^"]+"/g))).toEqual(new Set(['"normal"', '"compact"']));
+  expect(appearance.default).toBe('"auto"');
+  expect(density.default).toBe('"normal"');
   for (const element of elements) {
     expect(element.events?.some((event) => event.name === "type") ?? false).toBe(false);
     for (const member of element.members ?? []) {

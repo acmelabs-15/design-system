@@ -1,10 +1,12 @@
 // Shared base for every acme-* element: the shadow-root reset, the icon and screen-reader helpers,
 // and small helpers for class lists and icons.
-import { type CSSResultGroup, html, LitElement, type TemplateResult } from "lit";
+import { type CSSResultGroup, type CSSResultOrNative, html, LitElement, type TemplateResult } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { baseCss } from "./generated/shared/base.styles";
 import { applyStaticStyles } from "./shared/static-styles";
 import { registerStyleProperties } from "./shared/style-properties";
+import { ThemeContextController } from "./shared/theme-context";
+import { StoreEffect } from "./shared/state";
 
 /** Rules every shadow root needs: the reset the global sheet gives the page, plus .ic and .sr. The host takes the reset too: an element of ours slotted into another (a grid cell) then reads as a reset page element. */
 export const sharedCss = baseCss;
@@ -25,54 +27,36 @@ export const boolish = {
   toAttribute: (v: boolean) => String(v),
 };
 
-/**
- * The effective theme as a host attribute, so shadow styles keyed to the dark theme
- * rules can key off `:host([data-dark])`: dark when the root carries data-theme="dark", or when
- * it carries no explicit theme and the system prefers dark.
- */
-const darkHosts = new Set<HTMLElement>();
-let darkWatch: (() => void) | undefined;
-const isDark = () => {
-  const t = document.documentElement.dataset.theme;
-  if (t === "dark") return true;
-  if (t === "light") return false;
-  return typeof matchMedia !== "undefined" && matchMedia("(prefers-color-scheme: dark)").matches;
-};
-const paintDark = () => {
-  const dark = isDark();
-  for (const h of darkHosts) h.toggleAttribute("data-dark", dark);
-};
-const watchDark = (host: HTMLElement) => {
-  darkHosts.add(host);
-  host.toggleAttribute("data-dark", isDark());
-  if (darkWatch || typeof MutationObserver === "undefined") return;
-  const mo = new MutationObserver(paintDark);
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-  const mq = typeof matchMedia !== "undefined" ? matchMedia("(prefers-color-scheme: dark)") : undefined;
-  mq?.addEventListener("change", paintDark);
-  darkWatch = () => {
-    mo.disconnect();
-    mq?.removeEventListener("change", paintDark);
-  };
-};
-
 export class AcmeElement extends LitElement {
   static styles: CSSResultGroup = sharedCss;
+  protected readonly themeContext = new ThemeContextController(this);
+  private readonly themeAppearance = new StoreEffect(
+    this,
+    () => this.themeContext.scope.effective,
+    (scope) => this.toggleAttribute("data-dark", scope.resolvedAppearance === "dark"),
+  );
+  protected get scopedStyles(): readonly CSSResultOrNative[] {
+    return (this.constructor as typeof AcmeElement).elementStyles;
+  }
+  protected refreshScopedStyles(): void {
+    if (this.renderRoot?.nodeType === 11 && "host" in this.renderRoot) applyStaticStyles(this.renderRoot as ShadowRoot, this.scopedStyles);
+  }
   protected createRenderRoot(): HTMLElement | DocumentFragment {
     const componentClass = this.constructor as typeof AcmeElement;
     const root = this.shadowRoot ?? this.attachShadow(componentClass.shadowRootOptions);
-    const boundary = applyStaticStyles(root, componentClass.elementStyles);
+    const boundary = applyStaticStyles(root, this.scopedStyles);
     this.renderOptions.renderBefore ??= boundary;
     return root;
   }
   connectedCallback() {
     this.registerStyles();
     super.connectedCallback();
-    watchDark(this);
+    this.toggleAttribute("data-dark", this.themeContext.scope.effective.get().resolvedAppearance === "dark");
   }
   adoptedCallback() {
     this.registerStyles();
-    if (this.renderRoot?.nodeType === 11 && "host" in this.renderRoot) applyStaticStyles(this.renderRoot as ShadowRoot, (this.constructor as typeof AcmeElement).elementStyles);
+    this.themeContext.adopted();
+    if (this.renderRoot?.nodeType === 11 && "host" in this.renderRoot) applyStaticStyles(this.renderRoot as ShadowRoot, this.scopedStyles);
   }
   private registerStyles() {
     const view = this.ownerDocument.defaultView as (Window & { CSS?: typeof CSS }) | null;
@@ -80,7 +64,6 @@ export class AcmeElement extends LitElement {
   }
   disconnectedCallback() {
     super.disconnectedCallback();
-    darkHosts.delete(this);
   }
   /** Reflects a boolean/enum attribute into a class list on the inner element. */
   protected cls(base: string, extra: Record<string, boolean | undefined | null | string> = {}) {

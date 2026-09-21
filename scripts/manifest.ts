@@ -24,7 +24,7 @@ type Facts = {
   events: Map<string, EventFact>;
   dynamic: Set<string>;
   annotated: Set<string>;
-  members: Map<string, { type?: { text: string }; return?: { type: { text: string } } }>;
+  members: Map<string, { type?: { text: string }; literalType?: { text: string }; return?: { type: { text: string } } }>;
 };
 type Issue = { file: string; className: string; category: string };
 const key = (file: string, name: string) => file + "#" + name;
@@ -56,7 +56,14 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
           if (ts.isMethodDeclaration(member)) {
             const signature = checker.getSignatureFromDeclaration(member);
             if (signature) found.members.set(name, { return: { type: { text: checker.typeToString(checker.getReturnTypeOfSignature(signature), member, ts.TypeFormatFlags.NoTruncation) } } });
-          } else found.members.set(name, { type: { text: checker.typeToString(checker.getTypeAtLocation(member.name), member, ts.TypeFormatFlags.NoTruncation) } });
+          } else {
+            const type = checker.getTypeAtLocation(member.name);
+            const literal = type.aliasSymbol && type.isUnion() && type.types.length <= 32 && type.types.every(part => !!(part.flags & (ts.TypeFlags.StringLiteral | ts.TypeFlags.NumberLiteral | ts.TypeFlags.BooleanLiteral | ts.TypeFlags.Undefined | ts.TypeFlags.Null)));
+            found.members.set(name, {
+              type: { text: checker.typeToString(type, member, ts.TypeFormatFlags.NoTruncation) },
+              ...(literal ? { literalType: { text: checker.typeToString(type, member, ts.TypeFormatFlags.NoTruncation | ts.TypeFormatFlags.InTypeAlias) } } : {}),
+            });
+          }
         }
         if (member.name && ts.canHaveDecorators(member) && ts.getDecorators(member)?.some((d) => ts.isCallExpression(d.expression) && /^query/.test(d.expression.expression.getText(source))))
           found.queries.add(member.name.getText(source));
@@ -216,6 +223,7 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
         .map((member) => {
           const inferred = fact.members.get(member.name);
           if (member.kind === "field" && !member.type && inferred?.type) member.type = inferred.type;
+          if (member.kind === "field" && inferred?.literalType) member.type = inferred.literalType;
           if (member.kind === "method" && !member.return?.type && inferred?.return) member.return = { ...member.return, ...inferred.return };
           return fact.queries.has(member.name) ? { ...member, privacy: "private" } : member;
         });

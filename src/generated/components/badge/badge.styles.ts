@@ -9,6 +9,7 @@ export const badgeCss = css`.badge :where(.label) {
 }
 
 .badge {
+  font-weight: var(--acme-font-weight-500);
   white-space: nowrap;
   text-transform: capitalize;
   font-variant-numeric: tabular-nums;
@@ -17,7 +18,6 @@ export const badgeCss = css`.badge :where(.label) {
   justify-content: center;
   align-items: center;
   padding-block: .125rem;
-  font-weight: 500;
   display: inline-flex;
 }
 

@@ -75,7 +75,6 @@ export const breadcrumbCss = css`.item:where(:not(.menu)) {
 .item :where(.chip) {
   font-size: .75rem;
   line-height: calc(1 / .75);
-  font-weight: var(--font-sans);
   word-break: normal;
   overflow-wrap: normal;
   white-space: nowrap;

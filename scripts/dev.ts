@@ -22,8 +22,8 @@ let regenerateStyles = false;
 if (!process.argv.includes("--no-watch"))
   for (const d of ["styles", "src", "site"])
     fs.watch(path.join(ROOT, d), { recursive: true }, (_event, filename) => {
-      const numericCatalog = d === "src" && path.normalize(filename?.toString() ?? "") === path.join("shared", "numeric-tokens.ts");
-      regenerateStyles ||= d === "styles" || numericCatalog;
+      const catalog = d === "src" && ["numeric-tokens.ts", "theme-tokens.ts", "style-input-schema.ts"].some((name) => path.normalize(filename?.toString() ?? "") === path.join("shared", name));
+      regenerateStyles ||= d === "styles" || catalog;
       clearTimeout(timer);
       timer = setTimeout(() => {
         const split = regenerateStyles;

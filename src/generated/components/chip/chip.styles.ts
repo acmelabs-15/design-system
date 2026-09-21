@@ -5,10 +5,10 @@ export const chipCss = css`.chip {
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text-2);
+  font-weight: var(--acme-font-weight-450);
   transition: var(--dur) var(--ease);
   border-radius: 999px;
   padding: 7px 13px;
-  font-weight: 450;
 }
 
 .chip:hover {
@@ -20,7 +20,7 @@ export const chipCss = css`.chip {
   background: var(--text);
   border-color: var(--text);
   color: var(--on-contrast);
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .chip[disabled] {

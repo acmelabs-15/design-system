@@ -65,8 +65,41 @@ to its key multiplied by 0.25rem. For example, `--acme-spacing-4` is 1rem and
 
 Overriding a spacing variable does not change the matching size variable. Use
 `calc(var(--acme-spacing-2) * -1)` for a negative spacing value where CSS permits it.
-The `@acmelabs/design-system/tokens.json` export lists all 70 numeric tokens, their defaults
-and their source. Other theme categories are not yet included in this manifest.
+The `@acmelabs/design-system/tokens.json` export maps 413 theme keys across colors, fonts,
+font sizes, font weights, line heights, spacing, sizes, radii, shadows and motion. Numeric
+spacing and size entries include their independent defaults. Each entry identifies its CSS
+property, grammar and source role.
+
+## Theme scopes
+
+Use `acme-theme` around a page or section. Nested omitted settings inherit. Explicit
+`appearance="auto"` follows the system; explicit `density="normal"` overrides compact density.
+Native `lang` and `dir` remain native attributes. Applications own preference persistence.
+
+```html
+<acme-theme appearance="dark">
+  <acme-button>Dark section</acme-button>
+  <acme-theme appearance="light">Light section</acme-theme>
+</acme-theme>
+```
+
+Register a named definition before selecting it. With declarative named-theme markup, register
+before loading the definition entry; the class entry is inert:
+
+```js
+import { registerTheme } from "@acmelabs/design-system";
+registerTheme("brand", {
+  colors: { "ds-blue-700": "#0068d6" },
+  fonts: { "acme-font-sans": "serif" },
+  spacing: { 2: "0.75rem" },
+});
+await import("@acmelabs/design-system/define/theme");
+```
+
+A partial definition inherits house defaults. Repeating the same registration is harmless;
+changing an existing definition fails. Ordinary CSS custom properties supply local overrides.
+The Theme Switcher emits `acme-request` with `{ action: "appearance", value }`; handle it in
+the application and update the switcher's `value` and the relevant theme scope's `appearance`.
 
 ## Layout
 
@@ -100,7 +133,9 @@ Generated inputs under src/generated are committed. Package and site outputs are
 |---|---|---|
 | `src/generated/css/` and Lit style modules | `split` or the mapped generator | `styles/` or `tools/geist/maps/` |
 | `src/generated/style-manifest.json` | style producers | its recorded source inputs |
-| `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | `src/shared/numeric-tokens.ts` through `scripts/numeric-tokens.ts` |
+| `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | Numeric and theme catalogs through `scripts/numeric-tokens.ts` |
+| `src/generated/theme-properties.ts` | `split` | `scripts/theme-tokens.ts`, token sources and local palette styles |
+| `src/generated/responsive-styles.ts` | `split` | `scripts/responsive-styles.ts` and the common style schema |
 | `src/define/`, `src/all.ts`, component exports in package.json | `scripts/entries.ts` | tag-map declarations and owned component markup |
 | `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css`, the generated theme and the numeric token catalog |
 | `dist/styles/dashboard.css` | `build` | compiled recipe inputs selected in `scripts/build.ts` |
@@ -140,14 +175,13 @@ git push --follow-tags   # the tag starts the publish
 
 ## Conventions
 
-- Every element is `acme-*`. Properties reflect from attributes; array and object values take
-  JSON in the attribute. Events are `acme-change`, `acme-select`, `acme-toggle` and so on, and
-  they bubble and are composed.
+- Every element is `acme-*`. Use the generated element API for its properties, attributes and
+  explicitly supported JSON inputs. Public events bubble and are composed.
 - Values come from vercel.com/geist. Where Geist has the component, Geist's value is the value.
-- The type families never change: Google Sans Flex for text, Google Sans Code for numbers,
-  labels and code.
-- State is TanStack Store, which is signal-based underneath. State shared between elements (the theme,
-  the toast queue) lives in `src/shared/state.ts`; an element's own state is a store created per
+- The house type families are Google Sans Flex for text and Google Sans Code for numbers,
+  labels and code. Custom themes can replace those families.
+- State is TanStack Store. Theme scopes own their canonical settings and use Lit context to
+  deliver read-only sources; the toast queue lives in `src/shared/state.ts`. An element's own state is a store created per
   instance, the way TanStack Form creates one per form and per field. Virtualization is TanStack virtual, syntax highlighting
   TanStack highlight, markdown TanStack markdown, forms TanStack form, charts TanStack charts,
   hotkeys TanStack hotkeys, and rate limiting TanStack pacer.

@@ -31,6 +31,6 @@ export const appbarStructureCss = css`:host {
 
 ::slotted(a[aria-current="true"]) {
   color: var(--text);
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
 }
 `;

@@ -168,7 +168,7 @@ export const selectCss = css`.wrap :where(.start) {
 }
 
 .wrap :where(select)[aria-invalid="true"] {
-  box-shadow: 0 0 0 1px var(--themed-border), 0 0 0 4px hsla(var(--ds-red-900-value), .16);
+  box-shadow: 0 0 0 1px var(--themed-border), 0 0 0 4px rgb(from var(--ds-red-900) r g b / .16);
   outline-style: none;
 }
 

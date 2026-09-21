@@ -40,14 +40,14 @@ export const fieldsetCss = css`.fieldset {
 
 .fieldset :where(.content) :where(.title) {
   font-family: var(--acme-font-sans);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: var(--acme-font-weight-600);
   letter-spacing: -.4px;
   word-break: break-word;
   color: var(--acme-fieldset-title-color, var(--ds-gray-1000));
   align-items: center;
   scroll-margin-top: 1.5rem;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 26px;
   display: inline-flex;
 }
 
@@ -77,26 +77,26 @@ export const fieldsetCss = css`.fieldset {
   background-color: var(--ds-background-200);
   min-height: 3.5rem;
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   border-bottom-right-radius: .25rem;
   border-bottom-left-radius: .25rem;
   align-items: center;
   padding: .75rem .75rem .75rem 1.25rem;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
   display: flex;
   position: relative;
 }
 
 .fieldset :where(.content) :where(.subtitle) {
   font-family: var(--acme-font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-400);
   color: var(--ds-gray-900);
   padding-top: .5rem;
   padding-bottom: 1.25rem;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
 }
 
 .fieldset :where(.content) :where(.row) :where(.warning) {
@@ -144,13 +144,13 @@ export const fieldsetCss = css`.fieldset {
 }
 
 .fieldset :where(.content) :where(.title) > slot::slotted(strong), .fieldset :where(.content) :where(.title) > slot > strong {
+  font-weight: var(--acme-font-weight-500) !important;
   color: var(--ds-gray-900) !important;
-  font-weight: 500 !important;
 }
 
 .fieldset :where(.content) :where(.subtitle) > slot::slotted(strong), .fieldset :where(.content) :where(.subtitle) > slot > strong, .fieldset :where(.footer) > slot::slotted(strong), .fieldset :where(.footer) > slot > strong {
   color: var(--ds-gray-1000) !important;
-  font-weight: 550 !important;
+  font-weight: var(--acme-font-weight-550) !important;
 }
 
 .fieldset.error :where(.footer) {

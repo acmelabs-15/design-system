@@ -77,12 +77,12 @@ export const collapseCss = css`.collapse :where(.heading) :where(.trigger) {
 
 .collapse:where(.sm) :where(.heading) {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
 }
 
 .collapse:where(:not(.sm)) :where(.heading) {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .collapse :where(.panel) > div {

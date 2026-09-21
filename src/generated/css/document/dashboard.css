@@ -30,7 +30,7 @@
 }
 
 .deploy-row .mono {
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
   font-size: 13px;
 }
 
@@ -66,10 +66,10 @@
   width: 40px;
   height: 40px;
   color: var(--on-contrast);
+  font-weight: var(--acme-font-weight-600);
   border-radius: 50%;
   flex: none;
   place-items: center;
-  font-weight: 600;
   display: grid;
 }
 
@@ -79,11 +79,11 @@
 }
 
 .project-row .name {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
   overflow: hidden;
 }
 
@@ -161,9 +161,9 @@
 }
 
 .bar-list .r .n {
+  font-weight: var(--acme-font-weight-600);
   font-variant-numeric: tabular-nums;
   margin-left: auto;
-  font-weight: 600;
 }
 
 .bar-list .r .fav {
@@ -179,13 +179,13 @@
 }
 
 .bar-list .cols {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: var(--acme-font-weight-500);
   text-transform: uppercase;
   color: var(--text-2);
   justify-content: space-between;
   padding: 8px 8px 4px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
   display: flex;
 }
 
@@ -200,8 +200,8 @@
 .plan-head .title {
   letter-spacing: -.96px;
   font-size: 24px;
-  font-weight: 600;
   line-height: 32px;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .plan-head .range {
@@ -245,10 +245,10 @@
 }
 
 .icon-row .value {
-  font-variant-numeric: tabular-nums;
   font-size: 16px;
-  font-weight: 500;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-500);
+  font-variant-numeric: tabular-nums;
 }
 
 .icon-row .end {
@@ -284,10 +284,10 @@
 
 .section-title {
   letter-spacing: -.32px;
-  margin: 24px 0 8px;
   font-size: 16px;
-  font-weight: 600;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-600);
+  margin: 24px 0 8px;
 }
 
 .section-title + .desc {
@@ -321,7 +321,7 @@
 
 .usage-sum .row2 b {
   color: var(--text);
-  font-weight: 500;
+  font-weight: var(--acme-font-weight-500);
   display: block;
 }
 
@@ -351,19 +351,19 @@
 
 .classes .head {
   background: var(--surface-2);
+  height: 52px;
+  font-size: 14px;
+  font-weight: var(--acme-font-weight-500);
   align-items: center;
   gap: 8px;
-  height: 52px;
   padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 500;
   display: flex;
 }
 
 .classes .head .range {
   color: var(--text-2);
+  font-weight: var(--acme-font-weight-400);
   margin-left: auto;
-  font-weight: 400;
 }
 
 .classes .head.poor {
@@ -394,9 +394,9 @@
 }
 
 .classes .rowline b {
+  font-weight: var(--acme-font-weight-600);
   text-align: right;
   min-width: 28px;
-  font-weight: 600;
 }
 
 .severity {
@@ -441,10 +441,10 @@
 
 .issue .title {
   letter-spacing: -.32px;
-  margin: 0;
   font-size: 16px;
-  font-weight: 600;
   line-height: 24px;
+  font-weight: var(--acme-font-weight-600);
+  margin: 0;
 }
 
 .issue .desc {
@@ -515,12 +515,12 @@
 }
 
 .option .head {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
   display: flex;
 }
 
@@ -555,13 +555,13 @@
   width: 14px;
   height: 14px;
   color: var(--text-2);
-  font-family: var(--mono);
+  font-family: var(--acme-font-mono);
+  font-size: 9px;
+  font-weight: var(--acme-font-weight-700);
   vertical-align: middle;
   border-radius: 50%;
   place-items: center;
   margin-left: 4px;
-  font-size: 9px;
-  font-weight: 700;
   line-height: 1;
   display: inline-grid;
 }
@@ -634,7 +634,7 @@
 }
 
 .code :where(.body) {
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   color: var(--ds-gray-1000);
   text-align: left;
   white-space: pre;
@@ -651,7 +651,7 @@
   min-width: calc(40px + var(--padding));
   color: var(--ds-gray-600);
   font-size: 13px;
-  font-family: var(--font-mono);
+  font-family: var(--acme-font-mono);
   -webkit-user-select: none;
   user-select: none;
   text-align: right;
@@ -682,7 +682,7 @@
 }
 
 .code :where(.body) code[class*="language-css"] {
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .code :where(.body) .token.namespace {
@@ -690,7 +690,7 @@
 }
 
 .code :where(.body) .token.atrule {
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .code :where(.body) .token.keyword {
@@ -739,12 +739,12 @@
 }
 
 .code :where(.body) .language-autohotkey .token.selector {
-  font-weight: 600;
+  font-weight: var(--acme-font-weight-600);
 }
 
 .code :where(.body) .language-json .token.boolean {
+  font-weight: var(--acme-font-weight-600);
   color: var(--acme-success);
-  font-weight: 600;
 }
 
 .code :where(.body) .language-autohotkey .token.tag {
@@ -757,7 +757,7 @@
 
 .code :where(.body) .language-markdown .token.code {
   color: var(--ds-blue-900);
-  font-weight: 400;
+  font-weight: var(--acme-font-weight-400);
 }
 
 .code :where(.body) .language-markdown .token.url {
@@ -782,7 +782,7 @@
 }
 
 .code :where(.body) .token.important, .code :where(.body) .token.bold {
-  font-weight: 700;
+  font-weight: var(--acme-font-weight-700);
 }
 
 .code :where(.body) .token.property, .code :where(.body) .token.entity {

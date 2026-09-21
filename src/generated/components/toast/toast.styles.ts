@@ -160,10 +160,10 @@ export const toastCss = css`.toast :where(.body) :where(.message) :where(.sr) {
 
 .toast :where(.body) :where(.message) a {
   background-image: linear-gradient(var(--ds-gray-1000),var(--ds-gray-1000));
+  font-weight: var(--acme-font-weight-500);
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 100% 1px;
-  font-weight: 500;
 }
 
 .toast:where(:is(.success, .error)) :where(.body) :where(.message) :where(.controls) button {

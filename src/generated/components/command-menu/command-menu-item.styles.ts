@@ -40,16 +40,15 @@ export const commandMenuItemCss = css`.item :where(.keys) {
 .item :where(.keys) :where(.key) {
   background-color: var(--ds-background-100);
   text-align: center;
+  text-transform: capitalize;
   min-width: 1.25rem;
   height: 1.25rem;
-  font-size: .75rem;
-  line-height: 21px;
-  font-weight: var(--font-sans-fallback);
-  text-transform: capitalize;
   box-shadow: var(--ds-shadow-border);
   border-radius: .25rem;
   padding-block: 0;
   padding-inline: .25rem;
+  font-size: .75rem;
+  line-height: 21px;
 }
 
 @media (width >= 401px) {

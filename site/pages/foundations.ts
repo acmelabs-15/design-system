@@ -40,7 +40,7 @@ export const intro: Doc = {
     "/components/avatar",
     "Components",
     "Building blocks for any page.",
-    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("users", ' slot="start"')}Collaborate</acme-button><acme-button aria-label="Shield" shape="square" svg-only>${ic("shield")}</acme-button><acme-theme-switcher small></acme-theme-switcher><acme-input label="Label" placeholder="Label" aria-label="Not a real input"></acme-input></span>`,
+    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("users", ' slot="start"')}Collaborate</acme-button><acme-button aria-label="Shield" shape="square" svg-only>${ic("shield")}</acme-button><acme-theme-switcher size="small"></acme-theme-switcher><acme-input label="Label" placeholder="Label" aria-label="Not a real input"></acme-input></span>`,
   )}${tile(
     "/colors",
     "Colors",
@@ -338,7 +338,7 @@ export const typeface: Doc = {
     "One stylesheet link from Google Fonts.",
   )}${section(
     "Specimen",
-    `<div class="vstack" style="gap:16px"><span class="text-heading-48">Google Sans Flex</span><span class="text-copy-16">The quick brown fox jumps over the lazy dog. 0123456789</span><span class="text-heading-24" style="font-family:var(--mono)">Google Sans Code</span><span class="text-copy-14-mono">const deploy = await vercel.deploy("acme"); // 0123456789</span></div>`,
+    `<div class="vstack" style="gap:16px"><span class="text-heading-48">Google Sans Flex</span><span class="text-copy-16">The quick brown fox jumps over the lazy dog. 0123456789</span><span class="text-heading-24" style="font-family:var(--acme-font-mono)">Google Sans Code</span><span class="text-copy-14-mono">const deploy = await vercel.deploy("acme"); // 0123456789</span></div>`,
   )}`,
 };
 
@@ -376,7 +376,7 @@ ${section(
     .join("")}</tbody></table>`,
   "The material presets as tokens.",
 )}
-${section("Radii", `<div class="demo-box" style="margin-top:0">${[4, 6, 8, 10, 12, 16].map((r) => `<span style="width:100px;height:56px;border-radius:${r}px;background:var(--comp);border:1px solid var(--border);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--text-2)">${r}</span>`).join("")}<span style="width:100px;height:56px;border-radius:999px;background:var(--comp);border:1px solid var(--border);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--text-2)">full</span></div>`, "4 for kbd and chips, 6 for controls and cards, 8 for large inputs, 10 for chart panels, 12 for menus and modals, 16 for sheets, full for pills.")}
+${section("Radii", `<div class="demo-box" style="margin-top:0">${[4, 6, 8, 10, 12, 16].map((r) => `<span style="width:100px;height:56px;border-radius:${r}px;background:var(--comp);border:1px solid var(--border);display:grid;place-items:center;font-family:var(--acme-font-mono);font-size:12px;color:var(--text-2)">${r}</span>`).join("")}<span style="width:100px;height:56px;border-radius:999px;background:var(--comp);border:1px solid var(--border);display:grid;place-items:center;font-family:var(--acme-font-mono);font-size:12px;color:var(--text-2)">full</span></div>`, "4 for kbd and chips, 6 for controls and cards, 8 for large inputs, 10 for chart panels, 12 for menus and modals, 16 for sheets, full for pills.")}
 ${section("Focus", `<div class="demo-box" style="margin-top:0"><acme-button>Tab to me</acme-button><acme-input placeholder="Then to me" style="width:200px"></acme-input></div>`, "Two pixels of the ground, then four of the focus blue; on <code>:focus-visible</code> only. Press Tab to see it.")}
 ${section(
   "House type styles",

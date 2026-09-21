@@ -135,10 +135,10 @@ export const tooltipCss = /* @__PURE__ */ withStyleProperties(css`.tip {
 }
 
 .tip {
-  text-wrap: balance;
   font-size: 13px;
-  font-weight: 400;
   line-height: 1.3;
+  font-weight: var(--acme-font-weight-400);
+  text-wrap: balance;
 }
 
 .tip:where(:not(.nowrap)) {
