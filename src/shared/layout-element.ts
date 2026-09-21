@@ -138,26 +138,29 @@ export abstract class AcmeLayoutElement extends AcmeSemanticElement {
     super.adoptedCallback();
     this.renderer.adopted();
   }
+  protected renderContent() {
+    return html`<slot></slot>`;
+  }
   render() {
     switch (this.as) {
       case "span":
-        return html`<span part="root"><slot></slot></span>`;
+        return html`<span part="root">${this.renderContent()}</span>`;
       case "section":
-        return html`<section part="root"><slot></slot></section>`;
+        return html`<section part="root">${this.renderContent()}</section>`;
       case "article":
-        return html`<article part="root"><slot></slot></article>`;
+        return html`<article part="root">${this.renderContent()}</article>`;
       case "main":
-        return html`<main part="root"><slot></slot></main>`;
+        return html`<main part="root">${this.renderContent()}</main>`;
       case "nav":
-        return html`<nav part="root"><slot></slot></nav>`;
+        return html`<nav part="root">${this.renderContent()}</nav>`;
       case "aside":
-        return html`<aside part="root"><slot></slot></aside>`;
+        return html`<aside part="root">${this.renderContent()}</aside>`;
       case "header":
-        return html`<header part="root"><slot></slot></header>`;
+        return html`<header part="root">${this.renderContent()}</header>`;
       case "footer":
-        return html`<footer part="root"><slot></slot></footer>`;
+        return html`<footer part="root">${this.renderContent()}</footer>`;
       default:
-        return html`<div part="root"><slot></slot></div>`;
+        return html`<div part="root">${this.renderContent()}</div>`;
     }
   }
   get margin(): LayoutStyleValue<"margin"> {

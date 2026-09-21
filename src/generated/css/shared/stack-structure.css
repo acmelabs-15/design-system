@@ -1,0 +1,29 @@
+:host {
+  place-content: stretch flex-start;
+  align-items: stretch;
+  gap: var(--acme-layout-gap-2, var(--acme-spacing-2, .5rem));
+  flex-direction: column;
+}
+
+[data-stack-overlay] {
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  position: absolute;
+  overflow: visible;
+}
+
+[data-stack-measure] {
+  width: max(0px, var(--acme-stack-separator-width, 1px));
+  height: max(0px, var(--acme-stack-separator-inset, 0px));
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+}
+
+[data-stack-separator] {
+  pointer-events: none;
+  --acme-separator-color: var(--acme-stack-separator-color, var(--ds-gray-200));
+  --acme-separator-width: max(0px, var(--acme-stack-separator-width, 1px));
+  position: absolute;
+}

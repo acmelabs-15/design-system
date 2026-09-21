@@ -6425,6 +6425,28 @@
       "registrations": [],
       "exportName": "gridStructureCss"
     },
+    "components/h-stack/h-stack-structure": {
+      "key": "components/h-stack/h-stack-structure",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "2b1b27664b6e346c73f0bde1254a0b610e20ebf494acdd43c7fd43cce6888cec",
+        "scripts/styles.ts": "50dca44c09bfcc914b8c7bab7ef6973a64d93064aedc13fa0add3890ff5eeae6",
+        "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "8b8432960206b4489c0b6956119de59c7d131f8b5d71962545fe6a2e7a2ec469",
+        "styles/components/h-stack/h-stack-structure.css": "1dea875a479e3ca66971829af45b5e6bec99624df87476f98e1ddad1502a06e0"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/components/h-stack/h-stack-structure.source.css": "1dea875a479e3ca66971829af45b5e6bec99624df87476f98e1ddad1502a06e0",
+        "src/generated/css/components/h-stack/h-stack-structure.css": "732cbbdf1dc24f6ad99397d62240610ba200d2c368ea0e4f6a7ca88620dfa11c",
+        "src/generated/css/components/h-stack/h-stack-structure.css.map": "1a58101d62c8ade77f91ce1241810502cb37b13f7847b943f7c102b74209cbc5",
+        "src/generated/components/h-stack/h-stack-structure.styles.ts": "a0cbb46d1db7bd427046cde529c154c19f1d5885c605d2fab09d83071bbd1c02"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "hStackStructureCss"
+    },
     "components/icon-tile/icon-tile": {
       "key": "components/icon-tile/icon-tile",
       "producer": "mapped",
@@ -14845,6 +14867,28 @@
       "registrations": [],
       "exportName": "trendStructureCss"
     },
+    "components/v-stack/v-stack-structure": {
+      "key": "components/v-stack/v-stack-structure",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "2b1b27664b6e346c73f0bde1254a0b610e20ebf494acdd43c7fd43cce6888cec",
+        "scripts/styles.ts": "50dca44c09bfcc914b8c7bab7ef6973a64d93064aedc13fa0add3890ff5eeae6",
+        "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "8b8432960206b4489c0b6956119de59c7d131f8b5d71962545fe6a2e7a2ec469",
+        "styles/components/v-stack/v-stack-structure.css": "fadc53f5081aab91c0cd5785a155ffadf70609577064174b38cf2b96bb087d59"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/components/v-stack/v-stack-structure.source.css": "fadc53f5081aab91c0cd5785a155ffadf70609577064174b38cf2b96bb087d59",
+        "src/generated/css/components/v-stack/v-stack-structure.css": "d155e6aa47167423c7cb9ea2e8b35b5dfb8dec831f21efe5e52d38f9b3ec790b",
+        "src/generated/css/components/v-stack/v-stack-structure.css.map": "3e2b96e84827a2cc2f995adf1c60f66578f4b4fd5cf286067b46bf7741a75569",
+        "src/generated/components/v-stack/v-stack-structure.styles.ts": "54824da41022a7fb1d335c45807c868fe88b23b50b8d51616566aaaeeefabcdc"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "vStackStructureCss"
+    },
     "components/video/video": {
       "key": "components/video/video",
       "producer": "mapped",
@@ -15747,6 +15791,37 @@
       "properties": [],
       "registrations": [],
       "exportName": "severityCss"
+    },
+    "shared/stack-structure": {
+      "key": "shared/stack-structure",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "2b1b27664b6e346c73f0bde1254a0b610e20ebf494acdd43c7fd43cce6888cec",
+        "scripts/styles.ts": "50dca44c09bfcc914b8c7bab7ef6973a64d93064aedc13fa0add3890ff5eeae6",
+        "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "8b8432960206b4489c0b6956119de59c7d131f8b5d71962545fe6a2e7a2ec469",
+        "styles/shared/stack-structure.css": "2e028d27e5550b3bed1a6f3f42c741a5dd858f7117ed508ffe5f36a1dc29e00c"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/shared/stack-structure.source.css": "2e028d27e5550b3bed1a6f3f42c741a5dd858f7117ed508ffe5f36a1dc29e00c",
+        "src/generated/css/shared/stack-structure.css": "5fc796b50648bfc136506a576ec47c357a450dc1db0f87c5e646cfa54a01791d",
+        "src/generated/css/shared/stack-structure.css.map": "1a3f29414e0f4ebb27267cd4ba7808c9454b645cf8ab38db13da741a95ffd975",
+        "src/generated/shared/stack-structure.styles.ts": "ec2dd780c8f9b0a298f4691da135a1184633107815ae797d215e1a6d350c7bdb"
+      },
+      "properties": [],
+      "registrations": [
+        {
+          "name": "--acme-stack-separator-inset",
+          "definition": "{\"syntax\":{\"type\":\"components\",\"value\":[{\"kind\":{\"type\":\"length\"},\"multiplier\":{\"type\":\"none\"}}]},\"inherits\":true,\"initialValue\":{\"type\":\"length\",\"value\":{\"type\":\"value\",\"value\":{\"unit\":\"px\",\"value\":0}}}}"
+        },
+        {
+          "name": "--acme-stack-separator-width",
+          "definition": "{\"syntax\":{\"type\":\"components\",\"value\":[{\"kind\":{\"type\":\"length\"},\"multiplier\":{\"type\":\"none\"}}]},\"inherits\":true,\"initialValue\":{\"type\":\"length\",\"value\":{\"type\":\"value\",\"value\":{\"unit\":\"px\",\"value\":1}}}}"
+        }
+      ],
+      "exportName": "stackStructureCss"
     },
     "shared/theme": {
       "key": "shared/theme",
