@@ -8,6 +8,7 @@ import path from "node:path";
 import { analyzeManifest, normalizeManifest } from "../manifest";
 import { LitElement } from "lit";
 import * as classes from "../../src/index";
+import { styleInputSchema } from "../../src/shared/style-input-schema";
 
 test("store-backed public properties retain manifest defaults and inherited attribute metadata", async () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-public-state-manifest-"));
@@ -61,6 +62,11 @@ test("the manifest matches every registered Lit class and its runtime property a
   expect(new Set(density.type.text.match(/"[^"]+"/g))).toEqual(new Set(['"normal"', '"compact"']));
   expect(appearance.default).toBe('"auto"');
   expect(density.default).toBe('"normal"');
+  const box = elements.find(element => element.tagName === "acme-box")!;
+  for (const [name, schema] of Object.entries(styleInputSchema)) {
+    expect(box.attributes?.find(attribute => attribute.name === schema.attribute)?.fieldName).toBe(name);
+    expect(box.members?.find(member => member.name === name && member.kind === "field")).toMatchObject({ attribute: schema.attribute });
+  }
   for (const element of elements) {
     expect(element.events?.some((event) => event.name === "type") ?? false).toBe(false);
     for (const member of element.members ?? []) {

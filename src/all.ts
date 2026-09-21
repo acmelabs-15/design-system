@@ -5,6 +5,7 @@ import "./define/avatar-group";
 import "./define/badge";
 import "./define/banner";
 import "./define/book";
+import "./define/box";
 import "./define/breadcrumb";
 import "./define/breadcrumbs";
 import "./define/browser";

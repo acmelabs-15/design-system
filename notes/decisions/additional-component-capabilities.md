@@ -36,3 +36,9 @@ Decided 2026-09-20 by Peter: Flex, Stack/HStack/VStack, Grid, Simple Grid and Gr
 Changing the native tag supplies HTML meaning while preserving the component's flex/grid arrangement. For example, Stack as="article" retains its column layout; the reviewed Pro Lesson View uses that composition. Box keeps its separately selected tag-based default display. span requires suitable phrasing content, and arbitrary tag/component substitution or asChild remains excluded.
 
 Lit retains its real custom-element host and native inner element. This tag-set choice does not establish correct layout or accessibility through those boxes; geometry, attribute/reference forwarding and supported-browser checks remain before full entry approval. [Answer and limits](../alignment/evidence/layout-contract-selections-2026-09-20.json), [inventory](../alignment/inventory.md#semantics-state-events-and-lifecycle).
+
+## Structural semantic forwarding implementation — 2026-09-21
+
+Implemented under Peter's [execution delegation](execution-delegation.md), without a new preference vote. Keep one actual native semantic target. Canonical role/label inputs remain readable through the host's authoring API while their physical ARIA role/name live on the inner root. Resolve string label/description IDs in the author's tree scope and supply native element references to the inner target. Rebind on reference, scope and document changes. Do not replace native accessible-name computation with copied text solely because an automation query does not support the native reference API.
+
+[Implementation, plain-native comparison and limits](../alignment/evidence/m07-box-2026-09-21.json); [analysis](../analysis/lit-practice-review.md#m07-native-structural-semantics--2026-09-21). This establishes Box's mechanism and does not certify every future control or screen reader.

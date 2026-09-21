@@ -234,8 +234,15 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
   for (const module of analyzed.modules)
     for (const declaration of module.declarations ?? []) {
       if (declaration.kind !== "class" || !("attributes" in declaration)) continue;
-      const element = declaration as ClassDeclaration & { attributes?: { fieldName?: string; type?: { text: string }; default?: string }[] };
+      const element = declaration as ClassDeclaration & { attributes?: { name: string; fieldName?: string; type?: { text: string }; default?: string }[] };
       for (const attribute of element.attributes ?? []) {
+        if (!attribute.fieldName) {
+          const matching = element.members?.filter(member => member.kind === "field" && (!member.privacy || member.privacy === "public") && member.name.replace(/[A-Z]/g, character => "-" + character.toLowerCase()) === attribute.name);
+          if (matching?.length === 1 && matching[0].kind === "field") {
+            attribute.fieldName = matching[0].name;
+            matching[0].attribute ??= attribute.name;
+          }
+        }
         const member = element.members?.find((member) => member.kind === "field" && member.name === attribute.fieldName);
         if (member?.kind !== "field") continue;
         attribute.type = member.type;
