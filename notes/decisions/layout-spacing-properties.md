@@ -86,6 +86,14 @@ This follows the inspected styleMap update pattern, the existing form bind direc
 
 The future [inspector](design-system-devtools.md) must account for this controlled-input boundary if editing is selected. A direct edit to a managed component property can be temporary. This does not select inspector editing or an editing bridge; revisit it with the inspector's own interface.
 
+## Explicit clearing for the style helper
+
+Decided 2026-09-21 by Peter: keep styleInputs present and pass an empty object to clear its remaining owned settings. Peter chose option A, “Explicit clearing”, after the three-engine lifecycle comparison. Removing a key from a later helper input still clears that key. Unrelated settings remain intact, and direct writes remain effective until the next helper render.
+
+This replaces automatic expression-removal cleanup in the approved inventory. Removing the helper expression or temporarily disconnecting its component does not itself clear canonical styling state. Lit's public lifecycle cannot reliably distinguish permanent expression removal from temporary disconnection, including removal while already disconnected. Explicit styleInputs({}) supplies that missing intent without private Lit hooks or a timer. [Reproduction and alternatives](../alignment/evidence/m05-style-helper-lifecycle-2026-09-20.json).
+
+The cost is an explicit clearing step in author templates. Preserve supplied-key ownership and prevent an older helper from clearing values subsequently owned by another helper. Broader overlapping writers remain unsupported; this does not select a new state store, theme dependency or rendering engine.
+
 ## Shared styling across layout components
 
 Decided 2026-09-20 by Peter: Box, Flex, Stack/HStack/VStack, Grid, Simple Grid and Group share the focused styling set: spacing, dimensions, positioning, visibility, colors, borders, corners, shadows and placement within a parent layout. Peter chose “Share the set (Recommended)” over reserving surface styling for Box or ordinary CSS.
