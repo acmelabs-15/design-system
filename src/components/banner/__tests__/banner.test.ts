@@ -30,12 +30,12 @@ describe("acme-banner", () => {
     expect(action.shape).toBe("rounded");
     expect(action.shadow).toBe(true);
     expect(action.textContent?.trim()).toBe("Read more");
-    expect(action.querySelector("svg[slot=end]")).not.toBeNull();
+    expect(action.querySelector("acme-chevron-right-icon[slot=end]")).not.toBeNull();
     const mobile = btn(el, "mobile");
     expect(mobile.getAttribute("part")).toBe("mobile");
     expect(mobile.block).toBe(true);
     expect(mobile.href).toBe("#more");
-    expect(mobile.querySelector("svg[slot=end]")).not.toBeNull();
+    expect(mobile.querySelector("acme-chevron-right-icon[slot=end]")).not.toBeNull();
   });
 
   test("wide: the message and the prefix sit in the row; the mobile copy slot stays in the mobile button", async () => {

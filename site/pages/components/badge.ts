@@ -2,7 +2,7 @@
 import type { Doc } from "../../site";
 
 const hues = ["gray", "blue", "purple", "amber", "red", "pink", "green", "teal"];
-const shield = `<svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-shield"/></svg>`;
+const shield = `<acme-shield-icon class="ic" slot="icon" size="16px"></acme-shield-icon>`;
 const variantRows = hues.map((h) => `<div class="row" style="gap:4px"><acme-badge variant="${h}">${h}</acme-badge><acme-badge variant="${h}" contrast="low">${h}-subtle</acme-badge></div>`).join("");
 const iconRows = hues
   .map(
@@ -10,7 +10,7 @@ const iconRows = hues
       `<div class="row" style="gap:4px">${["lg", "md", "sm"].map((s) => `<acme-badge size="${s}" variant="${h}">${shield}${h}</acme-badge>`).join("")}${["sm", "md", "lg"].map((s) => `<acme-badge size="${s}" variant="${h}" contrast="low">${shield}${h}</acme-badge>`).join("")}</div>`,
   )
   .join("");
-const slack = `<svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-slack"/></svg>`;
+const slack = `<svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-slack"/></svg>`;
 
 export const doc: Doc = {
   id: "badge",

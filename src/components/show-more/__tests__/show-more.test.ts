@@ -25,7 +25,7 @@ describe("acme-show-more", () => {
     expect(b.getAttribute("shape")).toBe("rounded");
     expect(b.hasAttribute("loading")).toBe(false);
     expect(text(el)).toBe("Show More");
-    expect(root.querySelector(".text > .chev svg")).not.toBeNull();
+    expect(root.querySelector(".text > .chev acme-expand-more-icon")).not.toBeNull();
   });
 
   test("expanded reads Show Less and turns the chevron; loading only counts while expanded", async () => {

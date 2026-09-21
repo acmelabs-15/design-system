@@ -1,4 +1,4 @@
-import { html, nothing, svg } from "lit";
+import { html, nothing } from "lit";
 import { property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
@@ -18,9 +18,6 @@ const EXIT_MS = 160;
 const COLLAPSED = 50;
 /** Each toast behind the front one sits this much higher. */
 const STEP = 20;
-const CROSS = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="m12.47 13.53.53.53L14.06 13l-.53-.53L9.06 8l4.47-4.47.53-.53L13 1.94l-.53.53L8 6.94 3.53 2.47 3 1.94 1.94 3l.53.53L6.94 8l-4.47 4.47-.53.53L3 14.06l.53-.53L8 9.06z"></path>`;
-const UNDO = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M13.5 8c0-3.03-2.47-5.5-5.54-5.5a5.5 5.5 0 0 0-5.32 4H6V8H.75A.75.75 0 0 1 0 7.25V2h1.5v3.23A7.04 7.04 0 0 1 15 8a7.04 7.04 0 0 1-12.73 4.11l-.44-.6 1.2-.89.45.6A5.54 5.54 0 0 0 13.5 8"></path>`;
-const glyph = (paths: ReturnType<typeof svg>) => html`<span class="label"><svg height="16" width="16" viewBox="0 0 16 16" style="color:currentColor" aria-hidden="true">${paths}</svg></span>`;
 const sized = (v: unknown): v is { height: number; content: ToastText } => typeof v === "object" && v !== null && "content" in v;
 
 /**
@@ -172,10 +169,10 @@ export class AcmeToast extends AcmeElement {
                       t.onUndoAction?.();
                       this.hide();
                     },
-                    glyph(UNDO),
+                    html`<span class="label"><acme-undo-icon size="16px"></acme-undo-icon></span>`,
                   )
                 : nothing
-            }${this.button("btn sm tertiary square icon close", "Dismiss toast", () => this.hide(true), glyph(CROSS))}
+            }${this.button("btn sm tertiary square icon close", "Dismiss toast", () => this.hide(true), html`<span class="label"><acme-close-icon size="16px"></acme-close-icon></span>`)}
           </div>`;
     const act = () => {
       t.onAction?.();

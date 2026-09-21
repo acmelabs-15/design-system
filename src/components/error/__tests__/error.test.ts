@@ -17,7 +17,7 @@ describe("acme-error", () => {
     expect(r.getAttribute("role")).toBe("alert");
     expect(r.getAttribute("aria-atomic")).toBe("true");
     expect(r.className.trim()).toBe("error");
-    expect(r.querySelector(".icon[aria-hidden] > svg")).not.toBeNull();
+    expect(r.querySelector(".icon[aria-hidden] > acme-error-icon")).not.toBeNull();
     expect(r.querySelector(".text > slot")).not.toBeNull();
     expect(r.querySelector(".label")).toBeNull();
   });
@@ -43,6 +43,6 @@ describe("acme-error", () => {
     expect(a.getAttribute("target")).toBe("_blank");
     expect(a.getAttribute("rel")).toBe("noopener");
     expect(a.textContent).toContain("Contact Us");
-    expect(a.querySelector("svg")).not.toBeNull();
+    expect(a.querySelector("acme-open-in-new-icon")).not.toBeNull();
   });
 });

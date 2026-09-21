@@ -8,4 +8,12 @@ export const feedbackStructureCss = css`:host {
 :host([variant="inline"]) {
   display: block;
 }
+
+.success-icon {
+  color: var(--ds-green-900);
+}
+
+.hint acme-markdown-icon {
+  color: var(--ds-gray-700);
+}
 `;

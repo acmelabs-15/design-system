@@ -9,6 +9,7 @@ import { docToMarkdown } from "./markdown";
 import { loadDocs } from "./pages/components/index";
 import { colors, icons, intro, materials, tokens, typeface, typography } from "./pages/foundations";
 import { censusPage, type Doc, docPage, type Nav, OUT, shell, writeFragment } from "./site";
+import { writeDocumentationIconEntry } from "../scripts/docs-icons";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 if (!fs.existsSync(path.join(ROOT, "dist/index.js"))) throw new Error("dist/ is missing: run `bun run build` first");
@@ -96,8 +97,13 @@ fs.writeFileSync(path.join(OUT, "index.html"), html);
 fs.writeFileSync(path.join(OUT, "404.html"), html);
 for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new Function(m[1]); // every inline script parses
 
+const appEntry = writeDocumentationIconEntry(
+  ROOT,
+  OUT,
+  [...components, ...foundations.map(([doc]) => doc)].flatMap((doc) => doc.examples.map((example) => example.script ?? "")),
+);
 const r = await Bun.build({
-  entrypoints: [path.join(import.meta.dir, "app/main.ts")],
+  entrypoints: [appEntry],
   outdir: OUT,
   naming: "app.js",
   target: "browser",
@@ -105,6 +111,7 @@ const r = await Bun.build({
   minify: true,
   sourcemap: "linked",
 });
+fs.unlinkSync(appEntry);
 if (!r.success) {
   for (const l of r.logs) console.error(l);
   process.exit(1);

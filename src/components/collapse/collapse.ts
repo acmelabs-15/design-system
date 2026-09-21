@@ -1,7 +1,7 @@
 import { collapseStructureCss } from "../../generated/components/collapse/collapse-structure.styles";
 import { html, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeCollapseGroup } from "../collapse-group/collapse-group";
@@ -19,11 +19,7 @@ import { collapseCss } from "../../generated/components/collapse/collapse.styles
  */
 
 export class AcmeCollapse extends AcmeElement {
-  static styles = [
-    sharedCss,
-    collapseCss,
-    collapseStructureCss,
-  ];
+  static styles = [sharedCss, collapseCss, collapseStructureCss];
   /** The Title Case topic name in the trigger. */
   @property() title = "";
   /** Starts open. */
@@ -101,7 +97,7 @@ export class AcmeCollapse extends AcmeElement {
     return html`<div class=${this.cls("collapse", { sm: this.size === "small", expanded: this.open, grouped: !!this.group })} part="collapse">
       <h3 class="heading">
         <button class="trigger" type="button" id=${bid} aria-controls=${sid} aria-expanded=${this.open ? "true" : "false"} aria-disabled=${this.sticky ? "true" : nothing} @click=${this.onClick} part="trigger">
-          <span class="row">${this.title}<slot name="title"></slot><span class="chev">${glyphSized("chev")}</span></span>
+          <span class="row">${this.title}<slot name="title"></slot><span class="chev">${html`<acme-chevron-right-icon size="16px"></acme-chevron-right-icon>`}</span></span>
         </button>
       </h3>
       <div class="panel" role="region" id=${sid} aria-labelledby=${bid} style=${`height:${this.open ? this.height : 0}px`} ?inert=${!this.open} part="panel">

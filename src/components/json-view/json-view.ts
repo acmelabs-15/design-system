@@ -1,7 +1,7 @@
 import { jsonViewStructureCss } from "../../generated/components/json-view/json-view-structure.styles";
 import { html, nothing, type TemplateResult } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { jsonViewCss } from "../../generated/components/json-view/json-view.styles";
 
 type Entry = readonly [string, unknown];
@@ -45,11 +45,7 @@ export function makeJsonViewHighlightPattern(terms: string[]): RegExp | null {
  */
 
 export class AcmeJsonView extends AcmeElement {
-  static styles = [
-    sharedCss,
-    jsonViewCss,
-    jsonViewStructureCss,
-  ];
+  static styles = [sharedCss, jsonViewCss, jsonViewStructureCss];
   /** The object or array to render; JSON in the attribute. */
   @property({ type: Object }) data: unknown = {};
   /** Levels strictly below this depth start expanded: 1 opens the root only, 0 collapses it. */
@@ -243,7 +239,9 @@ export class AcmeJsonView extends AcmeElement {
     const single = entries && !arr && entries.length === 1 ? entries[0] : undefined;
     const pair = single && !isBranch(single[1]) ? single : undefined;
     const fits = !!pair && fitsOneLine(field, pair, last);
-    const chevron = empty ? nothing : html`<span class="chev" aria-hidden="true">${glyphSized(open ? "chev-d" : "chev")}</span>`;
+    const chevron = empty
+      ? nothing
+      : html`<span class="chev" aria-hidden="true">${open ? html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>` : html`<acme-chevron-right-icon size="16px"></acme-chevron-right-icon>`}</span>`;
     const toggle = html`<span class=${empty ? "brace" : "toggle"} data-toggle=${empty ? nothing : "true"} @click=${this.onToggleClick} @mousedown=${this.onToggleDown}>${chevron}${this.key(field)}${o}${open ? nothing : html`<span class="dots">…</span>`}${open ? nothing : c}${open || last ? nothing : ","}</span>`;
     const closing = html`${c}${last ? nothing : ","}`;
     const line = pair

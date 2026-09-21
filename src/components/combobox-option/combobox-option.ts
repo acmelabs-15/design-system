@@ -1,5 +1,5 @@
 import { comboboxOptionStructureCss } from "../../generated/components/combobox-option/combobox-option-structure.styles";
-import { html, nothing, svg } from "lit";
+import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
@@ -9,8 +9,6 @@ import { comboboxOptionCss } from "../../generated/components/combobox-option/co
 export type ComboboxOptionSize = "small" | "medium" | "large";
 
 let seq = 0;
-/** A 16-box check mark, drawn in the current colour. */
-const CHECK = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M13.53 4.53 6.5 11.56 2.47 7.53l1.06-1.06L6.5 9.44l5.97-5.97 1.06 1.06Z"></path>`;
 
 /**
  * One row of a combobox list: a 36px `option` (its content's own height with
@@ -28,11 +26,7 @@ const CHECK = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="eveno
  */
 
 export class AcmeComboboxOption extends AcmeElement {
-  static styles = [
-    sharedCss,
-    comboboxOptionCss,
-    comboboxOptionStructureCss,
-  ];
+  static styles = [sharedCss, comboboxOptionCss, comboboxOptionStructureCss];
   @property() value = "";
   /** The text the filter reads and the field shows once chosen; unset, the row's text, or its value when the content is not plain text. */
   @property() label = "";
@@ -142,7 +136,7 @@ export class AcmeComboboxOption extends AcmeElement {
     >${this.places.has("start") ? html`<span class="start">${startSlot}</span>` : startSlot}${
       this.rich ? content : html`<span class="label" title=${this.text}>${content}</span>`
     }${this.places.has("end") ? html`<span class="end">${endSlot}</span>` : endSlot}${
-      !this.places.has("end") && this.chosen ? html`<svg class="check" viewBox="0 0 16 16" width="16" height="16" fill="none" style="margin-left:auto" aria-hidden="true">${CHECK}</svg>` : nothing
+      !this.places.has("end") && this.chosen ? html`<acme-check-icon class="check" size="16px"></acme-check-icon>` : nothing
     }</li>`;
   }
 }

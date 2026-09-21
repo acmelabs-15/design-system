@@ -1,7 +1,7 @@
 import { fileStructureCss } from "../../generated/components/file/file-structure.styles";
 import { html, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, boolish, paths, sharedCss } from "../../base";
+import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { fileCss } from "../../generated/components/file/file.styles";
@@ -9,15 +9,12 @@ import { fileCss } from "../../generated/components/file/file.styles";
 /** The file kinds, each with its own 14px icon. */
 export type FileType = "file" | "lambda" | "edge-function" | "middleware";
 
-/** 24-box stroke glyphs per kind: the page, the lambda, the bolt of an edge function, the layers of a middleware. */
-const GLYPHS: Record<FileType, string> = {
-  file: paths.file,
-  lambda: "M6 4h2a2 2 0 0 1 1.8 1.1L18 20M12.5 11.5 8 20",
-  "edge-function": paths.bolt,
-  middleware: paths.layers,
+const fileIcons = {
+  file: html`<acme-description-icon size="14px"></acme-description-icon>`,
+  lambda: html`<acme-function-icon size="14px"></acme-function-icon>`,
+  "edge-function": html`<acme-bolt-icon size="14px"></acme-bolt-icon>`,
+  middleware: html`<acme-layers-icon size="14px"></acme-layers-icon>`,
 };
-const glyph = (d: string) =>
-  html`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d=${d}></path></svg>`;
 
 /**
  * File row of a file tree. A 28px line with one indent guide per folder level above and a
@@ -29,11 +26,7 @@ const glyph = (d: string) =>
  */
 
 export class AcmeFile extends AcmeElement {
-  static styles = [
-    sharedCss,
-    fileCss,
-    fileStructureCss,
-  ];
+  static styles = [sharedCss, fileCss, fileStructureCss];
   /** The file's name: its text and tooltip. */
   @property() name = "";
   /** Shown in place of `name` when set. */
@@ -64,7 +57,7 @@ export class AcmeFile extends AcmeElement {
 
   render() {
     const text = this.label || this.name;
-    return html`<li class=${this.cls("file", { active: this.active })} title=${text} part="file">${Array.from({ length: this.depth }, () => html`<span class="indent"></span>`)}<a class="link" href=${this.href || nothing} style="width:calc(100% + 8px)" part="link">${this.showIcon ? html`<span class="icon">${glyph(GLYPHS[this.type] ?? paths.file)}</span>` : nothing}<span class="name">${text}<slot name="label"></slot></span></a></li>`;
+    return html`<li class=${this.cls("file", { active: this.active })} title=${text} part="file">${Array.from({ length: this.depth }, () => html`<span class="indent"></span>`)}<a class="link" href=${this.href || nothing} style="width:calc(100% + 8px)" part="link">${this.showIcon ? html`<span class="icon">${Object.hasOwn(fileIcons, this.type) ? fileIcons[this.type] : fileIcons.file}</span>` : nothing}<span class="name">${text}<slot name="label"></slot></span></a></li>`;
   }
 }
 

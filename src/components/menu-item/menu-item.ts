@@ -1,7 +1,7 @@
 import { menuItemStructureCss } from "../../generated/components/menu-item/menu-item-structure.styles";
 import { html, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, paths, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { menuItemCss } from "../../generated/components/menu-item/menu-item.styles";
 
@@ -18,11 +18,7 @@ let seq = 0;
  */
 
 export class AcmeMenuItem extends AcmeElement {
-  static styles = [
-    sharedCss,
-    menuItemCss,
-    menuItemStructureCss,
-  ];
+  static styles = [sharedCss, menuItemCss, menuItemStructureCss];
   @property() href = "";
   /** Opens the link in a new tab. */
   @property({ type: Boolean }) external = false;
@@ -48,8 +44,7 @@ export class AcmeMenuItem extends AcmeElement {
     this.readSlots();
   }
 
-  private readSlots() {
-  }
+  private readSlots() {}
 
   /** Whether the row takes no selection. */
   get inert() {
@@ -83,7 +78,7 @@ export class AcmeMenuItem extends AcmeElement {
   render() {
     const inert = this.inert;
     const startSlot = html`<slot name="start" @slotchange=${this.places.read}></slot>`;
-    const endSlot = html`<slot name="end" @slotchange=${this.places.read}>${this.locked ? html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--ds-gray-700)"><path d=${paths.lock}></path></svg>` : nothing}</slot>`;
+    const endSlot = html`<slot name="end" @slotchange=${this.places.read}>${this.locked ? html`<acme-lock-icon size="16px"></acme-lock-icon>` : nothing}</slot>`;
     const inner = html`${this.places.has("start") ? html`<span class="start" aria-hidden="true">${startSlot}</span>` : startSlot}<span id=${this.uid}><slot></slot></span>${
       this.places.has("end") || this.locked ? html`<span class="end" aria-hidden="true">${endSlot}</span>` : endSlot
     }`;

@@ -1,6 +1,6 @@
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, paths, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 
 import { descriptionCss } from "../../generated/components/description/description.styles";
 
@@ -34,7 +34,7 @@ export class AcmeDescription extends AcmeElement {
   render() {
     // The tooltip element is the trigger inside the info wrapper; the icon takes keyboard focus.
     const info = this.tooltip
-      ? html`<span class="info"><acme-tooltip class="trigger" text=${this.tooltip}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" role="img" tabindex="0" aria-label=${this.tooltip}><path d=${paths.info}></path></svg></acme-tooltip></span>`
+      ? html`<span class="info"><acme-tooltip class="trigger" text=${this.tooltip}><span role="img" tabindex="0" aria-label=${this.tooltip}><acme-info-icon size="14px"></acme-info-icon></span></acme-tooltip></span>`
       : nothing;
     return html`<dl class=${this.cls("description", { right: this.right, ellipsis: this.ellipsis })} part="description">
       <dt class="title">${this.title}${info}</dt>

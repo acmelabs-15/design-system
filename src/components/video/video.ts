@@ -1,7 +1,7 @@
 import { videoStructureCss } from "../../generated/components/video/video-structure.styles";
 import { html, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, boolish, paths, sharedCss } from "../../base";
+import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { reduced } from "../../shared/overlay";
@@ -25,10 +25,6 @@ export const formatTime = (seconds: number) => {
   const pad = (n: number) => String(Number.isNaN(n) ? 0 : n).padStart(2, "0");
   return `${pad(Math.floor(seconds / 60))}:${pad(Math.floor(seconds % 60))}`;
 };
-/** A 16px solid glyph in gray-1000, for the play and pause button. */
-const glyph = (d: string) =>
-  html`<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-gray-1000)" aria-hidden="true"><path d=${d}></path></svg>`;
-
 /**
  * Video player. A figure (role region, "Video player") with `margin` above and below, holding a
  * centred box `width` wide (capped at 950px and at the container) whose frame keeps the
@@ -44,11 +40,7 @@ const glyph = (d: string) =>
  */
 
 export class AcmeVideo extends AcmeElement {
-  static styles = [
-    sharedCss,
-    videoCss,
-    videoStructureCss,
-  ];
+  static styles = [sharedCss, videoCss, videoStructureCss];
   /** The video URL. */
   @property() src = "";
   /** Intrinsic width in px: the box is this wide, capped at 950px and at the container. */
@@ -210,7 +202,7 @@ export class AcmeVideo extends AcmeElement {
     const bar =
       this.controls && this.loaded
         ? html`<div class="controls" part="controls">
-            <button class="play" type="button" aria-label=${this.playing ? "Pause" : "Play"} @click=${this.toggle}>${glyph(this.playing ? paths.pause : paths.play)}</button>
+            <button class="play" type="button" aria-label=${this.playing ? "Pause" : "Play"} @click=${this.toggle}>${this.playing ? html`<acme-pause-icon size="16px"></acme-pause-icon>` : html`<acme-play-arrow-icon size="16px"></acme-play-arrow-icon>`}</button>
             <div class="current">${formatTime(this.current)}</div>
             <div class="track">
               <div class="scrub" @pointerdown=${this.dragStart} @pointermove=${this.dragMove} @pointerup=${this.dragEnd} @pointercancel=${this.dragEnd}></div>

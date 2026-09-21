@@ -29,13 +29,14 @@ export type Nav = { group: string; items: { title: string; href: string; house?:
 
 const ROOT = path.resolve(import.meta.dir, "..");
 export const OUT = path.join(ROOT, "_site");
-const symbols = fs.readFileSync(path.join(import.meta.dir, "symbols.html"), "utf8");
+const brandMarks = fs.readFileSync(path.join(import.meta.dir, "brand-marks.html"), "utf8");
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, "package.json"), "utf8")) as { version: string; repository: { url: string } };
 export const VERSION = pkg.version;
 export const REPO = pkg.repository.url.replace(/^git\+/, "").replace(/\.git$/, "");
 
 export const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-export const ic = (n: string, extra = "") => `<svg class="ic" width="16" height="16"${extra} aria-hidden="true"><use href="#i-${n}"/></svg>`;
+export { iconMarkup as ic } from "./icon-markup";
+import { iconMarkup as ic } from "./icon-markup";
 
 /* ---------- page rules (tokens only) ---------- */
 export const pageCss = `
@@ -171,7 +172,7 @@ export const showcase = (e: Example) => {
   const code = (e.code ?? e.html) + (e.script ? `\n<script>\n${e.script.trim()}\n</script>` : "");
   const plain = formatHtml(code);
   const attr = e.script ? ` data-script="${esc(e.script).replace(/"/g, "&quot;")}"` : "";
-  return `<div class="showcase"${attr}><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chev")}Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
+  return `<div class="showcase"${attr}><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chevron-right")}Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
 };
 
 const practices = (p?: Record<string, string[]>) =>
@@ -242,7 +243,7 @@ export const shell = (nav: Nav) => `<!doctype html>
 <script>window.__docsNav = ${JSON.stringify(nav)};</script>
 </head>
 <body>
-${symbols}
+${brandMarks}
 <acme-docs-app></acme-docs-app>
 <noscript><p style="padding:24px;font-family:sans-serif">The docs need JavaScript: every page is rendered by the design system's own components.</p></noscript>
 <script>document.write('<script type="module" src="' + window.__docsPrefix + '/app.js"><\\/script>');</script>

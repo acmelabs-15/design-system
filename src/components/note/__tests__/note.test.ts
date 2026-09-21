@@ -16,7 +16,7 @@ describe("acme-note", () => {
     const n = root(el);
     expect(n.getAttribute("role")).toBe("note");
     expect(n.className.trim()).toBe("note");
-    expect(n.querySelector(".body > .icon > slot[name=icon] > svg")).not.toBeNull();
+    expect(n.querySelector(".body > .icon > slot[name=icon] > acme-info-icon")).not.toBeNull();
     expect(n.querySelector(".body > .text > .content > slot:not([name])")).not.toBeNull();
     expect(n.querySelector(".action")).toBeNull();
     expect(n.querySelector(".label")).toBeNull();

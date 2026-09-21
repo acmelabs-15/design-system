@@ -2,7 +2,7 @@ import { gaugeStructureCss } from "../../generated/components/gauge/gauge-struct
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
-import { AcmeElement, paths, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { gaugeCss } from "../../generated/components/gauge/gauge.styles";
 
 /** Either value thresholds to colors (`{"0": "...", "34": "...", "68": "..."}`) or `{ primary, secondary }`. */
@@ -26,11 +26,7 @@ const LABEL: Record<GaugeSize, { size: number; weight: number } | null> = { tiny
  */
 
 export class AcmeGauge extends AcmeElement {
-  static styles = [
-    sharedCss,
-    gaugeCss,
-    gaugeStructureCss,
-  ];
+  static styles = [sharedCss, gaugeCss, gaugeStructureCss];
   @property({ type: Number }) value = 0;
   @property() size: GaugeSize = "small";
   /** JSON: value thresholds to colors, or `{ "primary": "...", "secondary": "..." }`. */
@@ -85,7 +81,7 @@ export class AcmeGauge extends AcmeElement {
           ? html`<div class="label" aria-hidden="true">${label ? html`<p class="value" style=${styleMap({ fontSize: `${label.size}px`, fontWeight: String(label.weight) })}>${v}</p>` : nothing}</div>`
           : nothing
       }
-      ${this.indeterminate ? html`<svg class="icon" width=${ICON_PX[size]} height=${ICON_PX[size]} viewBox="0 0 24 24" style="color:var(--ds-gray-900)" aria-hidden="true"><path d=${paths.bolt} fill="currentColor"></path></svg>` : nothing}
+      ${this.indeterminate ? html`<acme-bolt-icon class="icon" size=${`${ICON_PX[size]}px`}></acme-bolt-icon>` : nothing}
     </div>`;
   }
 }

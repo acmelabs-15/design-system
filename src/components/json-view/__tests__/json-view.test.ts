@@ -38,7 +38,7 @@ describe("acme-json-view", () => {
     expect(first.getAttribute("aria-expanded")).toBe("false");
     const toggle = first.querySelector(".line > .toggle") as HTMLElement;
     expect(toggle.hasAttribute("data-toggle")).toBe(true);
-    expect(toggle.querySelector(".chev svg")).not.toBeNull();
+    expect(toggle.querySelector(".chev acme-chevron-right-icon")).not.toBeNull();
     expect(toggle.querySelector(".key")?.textContent).toBe("deployment: ");
     expect(toggle.querySelector(".dots")?.textContent).toBe("…");
     expect(toggle.textContent).toBe("deployment: {…},");

@@ -1,7 +1,7 @@
 import { errorStructureCss } from "../../generated/components/error/error-structure.styles";
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { errorCss } from "../../generated/components/error/error.styles";
 
 export type ErrorInfo = { message: string; action?: string; link?: string };
@@ -13,11 +13,7 @@ export type ErrorInfo = { message: string; action?: string; link?: string };
  */
 
 export class AcmeError extends AcmeElement {
-  static styles = [
-    sharedCss,
-    errorCss,
-    errorStructureCss,
-  ];
+  static styles = [sharedCss, errorCss, errorStructureCss];
   /** The bold prefix before the message; unset shows none (`"false"` is read as none too). */
   @property({ converter: { fromAttribute: (v: string | null) => (v === null || v === "false" ? "" : v), toAttribute: (v: string) => v || "false" } }) label = "";
   @property() size: "small" | "medium" | "large" = "medium";
@@ -27,10 +23,10 @@ export class AcmeError extends AcmeElement {
   render() {
     const c = this.cls("error", { sm: this.size === "small", lg: this.size === "large" });
     const action = this.error?.action
-      ? html` <span class="action"><a class="link" href=${this.error.link ?? "#"} target="_blank" rel="noopener">${this.error.action}${glyphSized("ext")}</a></span>`
+      ? html` <span class="action"><a class="link" href=${this.error.link ?? "#"} target="_blank" rel="noopener">${this.error.action}${html`<acme-open-in-new-icon size="16px"></acme-open-in-new-icon>`}</a></span>`
       : nothing;
     return html`<div class=${c} role="alert" aria-atomic="true" part="error">
-      <div class="icon" aria-hidden="true">${glyphSized("alert")}</div>
+      <div class="icon" aria-hidden="true">${html`<acme-error-icon size="16px"></acme-error-icon>`}</div>
       <div class="text">${this.label ? html`<b class="label">${this.label}:</b>` : nothing}<slot></slot>${this.error ? html`${this.error.message}${action}` : nothing}</div>
     </div>`;
   }

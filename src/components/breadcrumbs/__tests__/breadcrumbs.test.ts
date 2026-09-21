@@ -29,7 +29,7 @@ describe("acme-breadcrumbs", () => {
     const [home, dash, over] = crumbs.map(root);
     expect(home.tagName).toBe("LI");
     expect(home.className.trim()).toBe("item");
-    expect(home.querySelector("svg")).not.toBeNull();
+    expect(home.querySelector("acme-chevron-right-icon")).not.toBeNull();
     expect(home.querySelector("slot:not([name])")).not.toBeNull();
     expect(home.hasAttribute("aria-current")).toBe(false);
     expect(dash.className.trim()).toBe("item active");
@@ -50,7 +50,7 @@ describe("acme-breadcrumbs", () => {
     const chip = home.querySelector(":scope > div > button.chip") as HTMLButtonElement;
     expect(chip).not.toBeNull();
     expect(chip.disabled).toBe(false);
-    expect(home.querySelector("svg")).toBeNull();
+    expect(home.querySelector("acme-chevron-right-icon")).toBeNull();
     expect(dash.className.trim()).toBe("item menu active");
     expect(dash.hasAttribute("aria-current")).toBe(false);
     expect((over.querySelector("button.chip") as HTMLButtonElement).disabled).toBe(true);

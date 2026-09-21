@@ -1,7 +1,7 @@
 import { showMoreStructureCss } from "../../generated/components/show-more/show-more-structure.styles";
 import { html } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { showMoreCss } from "../../generated/components/show-more/show-more.styles";
 
 /**
@@ -12,11 +12,7 @@ import { showMoreCss } from "../../generated/components/show-more/show-more.styl
  */
 
 export class AcmeShowMore extends AcmeElement {
-  static styles = [
-    sharedCss,
-    showMoreCss,
-    showMoreStructureCss,
-  ];
+  static styles = [sharedCss, showMoreCss, showMoreStructureCss];
   @property({ type: Boolean, reflect: true }) expanded = false;
   /** The spinner, while expanded (the text reads "Show More" meanwhile). */
   @property({ type: Boolean }) loading = false;
@@ -30,7 +26,7 @@ export class AcmeShowMore extends AcmeElement {
         <acme-button variant="secondary" size="small" shape="rounded" ?loading=${this.expanded && this.loading} part="button"
           ><slot
             ><div class="text" style="display:flex;align-items:center">
-              Show ${this.expanded && !this.loading ? "Less" : "More"}<span class="chev">${glyphSized("chev-d")}</span>
+              Show ${this.expanded && !this.loading ? "Less" : "More"}<span class="chev">${html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</span>
             </div></slot
           ></acme-button
         >

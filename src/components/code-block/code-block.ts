@@ -1,7 +1,7 @@
 import { codeBlockStructureCss } from "../../generated/components/code-block/code-block-structure.styles";
 import { html, nothing, svg } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 
 import { sourceOf, tokenLines } from "../../shared/highlight";
@@ -20,7 +20,9 @@ const numbers = { fromAttribute: (v: string | null) => (v ? (JSON.parse(v) as nu
 const fileIcon = (filename: string, language: string) =>
   /\.[jt]sx$/.test(filename) || /^(jsx|tsx|next)$/.test(language)
     ? svg`<svg width="16" height="16" viewBox="-11.5 -10.23174 23 20.46348" style="shape-rendering:auto" aria-hidden="true"><circle cx="0" cy="0" r="2.05" fill="currentColor"></circle><g stroke="currentColor" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"></ellipse><ellipse rx="11" ry="4.2" transform="rotate(60)"></ellipse><ellipse rx="11" ry="4.2" transform="rotate(120)"></ellipse></g></svg>`
-    : glyphSized("file");
+    : html`<acme-description-icon size="16px"></acme-description-icon>`;
+
+const v0Mark = svg`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8l4.5 8 4.5-8M13 10a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2zM14 8.5l6 7"></path></svg>`;
 
 const V0 = "https://v0.app/chat?q=";
 const v0Prompt = (code: string) =>
@@ -167,9 +169,9 @@ export class AcmeCodeBlock extends AcmeElement {
               ${
                 this.v0 === "build"
                   ? html`<acme-split-button variant="secondary" size="small" menu-button-label="open in v0" @acme-click=${() => window.open(prompt, "_blank", "noopener")}
-                      ><div class="v0">${glyphSized("v0", 20)}<span class="sr">Open in v0</span></div><acme-split-button-item slot="items" @click=${() => window.open(prompt, "_blank", "noopener")}>Open in v0</acme-split-button-item></acme-split-button
+                      ><div class="v0">${v0Mark}<span class="sr">Open in v0</span></div><acme-split-button-item slot="items" @click=${() => window.open(prompt, "_blank", "noopener")}>Open in v0</acme-split-button-item></acme-split-button
                     >`
-                  : html`<acme-button href=${prompt} variant="secondary" size="small" part="v0"><div class="v0">${glyphSized("v0", 20)}<span class="sr">Open in v0</span></div></acme-button>`
+                  : html`<acme-button href=${prompt} variant="secondary" size="small" part="v0"><div class="v0">${v0Mark}<span class="sr">Open in v0</span></div></acme-button>`
               }
             </div>`
           : nothing

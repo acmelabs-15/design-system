@@ -4,8 +4,7 @@ import type { Doc } from "../../site";
 const three = `<option>Option 1</option><option>Option 2</option><option>Option 3</option>`;
 const fruit = `<option value="apple">Apple</option><option value="orange">Orange</option><option value="banana">Banana</option><option value="grape">Grape</option>`;
 // A bare sprite icon (no utility class): the cell takes it as it is, at its own 16px.
-const up = (slot: string) =>
-  `<svg slot="${slot}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true"><use href="#i-arrow-circle-up"/></svg>`;
+const up = (slot: string) => `<acme-arrow-circle-up-icon slot="${slot}" style="color:currentColor" size="16px"></acme-arrow-circle-up-icon>`;
 // Three fields side by side, each at the top of its own column, as wide as its content.
 const col = (inner: string) => `<div style="display:flex;flex-direction:column;align-items:flex-start;flex:1;min-width:1px;max-width:100%">${inner}</div>`;
 const row = (cols: string[]) => `<div class="row" style="flex-wrap:wrap;gap:0;align-items:stretch">${cols.map(col).join("")}</div>`;

@@ -1,7 +1,7 @@
 import { browserStructureCss } from "../../generated/components/browser/browser-structure.styles";
 import { html } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, glyphSized, paths, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { toasts } from "../../shared/state";
 import { browserCss } from "../../generated/components/browser/browser.styles";
 import { browserCopyCss } from "../../generated/components/browser/browser-copy.styles";
@@ -19,12 +19,6 @@ export const formatAddress = (address: string) =>
 
 /** The check stays in the copy button for this long after a copy. */
 const COPIED_MS = 1000;
-/** The reload control, a 24-box stroke path like the house glyphs. */
-const RELOAD = "M21 12a9 9 0 1 1-2.64-6.36M21 3v6h-6";
-/** A navigation control: a 14px glyph in gray-900. */
-const control = (d: string) =>
-  html`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-gray-900)" aria-hidden="true"><path d=${d}></path></svg>`;
-
 /**
  * Browser frame. A small-material box, rounded in proportion to its own width from the md
  * breakpoint, with a header over the slotted content. The header holds three sections: the
@@ -38,12 +32,7 @@ const control = (d: string) =>
  */
 
 export class AcmeBrowser extends AcmeElement {
-  static styles = [
-    sharedCss,
-    browserCss,
-    browserCopyCss,
-    browserStructureCss,
-  ];
+  static styles = [sharedCss, browserCss, browserCopyCss, browserStructureCss];
   /** The URL the address bar shows and the copy button copies. */
   @property() address = "";
   @atomState() private copied = false;
@@ -73,15 +62,15 @@ export class AcmeBrowser extends AcmeElement {
         <div class="header" part="header">
           <div class="section">
             <div class="dots"><div class="dot-close"></div><div class="dot-min"></div><div class="dot-zoom"></div></div>
-            <div class="controls">${control(paths.back)}${control(paths.arrow)}${control(RELOAD)}</div>
+            <div class="controls"><acme-arrow-back-icon size="14px"></acme-arrow-back-icon><acme-arrow-forward-icon size="14px"></acme-arrow-forward-icon><acme-refresh-icon size="14px"></acme-refresh-icon></div>
           </div>
           <div class="section">
             <div class="address" part="address">
               <div class="text">${formatAddress(this.address)}</div>
               <acme-button variant="tertiary" size="tiny" shape="square" svg-only aria-label=${this.copied ? "Copied" : "Copy"} @click=${this.copy} part="button">
                 <div class=${this.cls("stack", { copied: this.copied })}>
-                  <div class="check">${glyphSized("check", 12)}</div>
-                  <div class="copy">${glyphSized("copy", 12)}</div>
+                  <div class="check">${html`<acme-check-icon size="12px"></acme-check-icon>`}</div>
+                  <div class="copy">${html`<acme-content-copy-icon size="12px"></acme-content-copy-icon>`}</div>
                 </div>
               </acme-button>
             </div>

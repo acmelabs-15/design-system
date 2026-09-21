@@ -66,11 +66,11 @@ describe("acme-file-tree", () => {
     const [link, active, bare] = [...tree.querySelectorAll("acme-file")] as AcmeFile[];
     expect(shadow(link).querySelector("a.link")?.getAttribute("href")).toBe("/a");
     expect(shadow(link).querySelector("li.file")?.className.trim()).toBe("file");
-    expect(shadow(link).querySelector(".link .icon svg")).not.toBeNull();
+    expect(shadow(link).querySelector(".link .icon acme-description-icon")).not.toBeNull();
     expect(shadow(active).querySelector("a.link")?.hasAttribute("href")).toBe(false);
     expect(shadow(active).querySelector("li.file")?.className.trim()).toBe("file active");
     expect(active.hasAttribute("active")).toBe(true);
-    expect(shadow(active).querySelector(".link .icon svg path")?.getAttribute("d")).toContain("M6 4h2");
+    expect(shadow(active).querySelector(".link .icon acme-function-icon")?.getAttribute("size")).toBe("14px");
     expect(shadow(bare).querySelector(".icon")).toBeNull();
     expect(shadow(bare).querySelector(".link .name")?.textContent).toBe("c.ts");
   });

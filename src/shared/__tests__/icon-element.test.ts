@@ -48,3 +48,15 @@ test("explicit style overrides defaults and late artwork imports resolve missing
   await icon.updateComplete;
   expect(icon.shadowRoot!.querySelector(".missing")).not.toBeNull();
 });
+test("an explicit false fill attribute overrides the library default", async () => {
+  const icon = await mount();
+  configureIcons({ filled: true });
+  icon.setAttribute("filled", "false");
+  await icon.updateComplete;
+  expect(icon.filled).toBe(false);
+  expect(icon.shadowRoot!.querySelector("svg")).not.toBeNull();
+  icon.removeAttribute("filled");
+  await icon.updateComplete;
+  expect(icon.filled).toBeUndefined();
+  expect(icon.shadowRoot!.querySelector(".missing")).not.toBeNull();
+});

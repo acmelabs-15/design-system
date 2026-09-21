@@ -1,7 +1,7 @@
 import { paginationStructureCss } from "../../generated/components/pagination/pagination-structure.styles";
 import { html, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { paginationCss } from "../../generated/components/pagination/pagination.styles";
 import { paginationLinkCss } from "../../generated/components/pagination/pagination-link.styles";
@@ -15,12 +15,7 @@ import { paginationLinkCss } from "../../generated/components/pagination/paginat
  */
 
 export class AcmePagination extends AcmeElement {
-  static styles = [
-    sharedCss,
-    paginationCss,
-    paginationLinkCss,
-    paginationStructureCss,
-  ];
+  static styles = [sharedCss, paginationCss, paginationLinkCss, paginationStructureCss];
   /** Destination page name of the previous link; empty hides the link. */
   @property({ attribute: "prev-title" }) prevTitle = "";
   @property({ attribute: "prev-href" }) prevHref = "";
@@ -41,7 +36,7 @@ export class AcmePagination extends AcmeElement {
     const next = dir === "next";
     return html`<a class="link ${dir}" href=${href} aria-label=${`Go to ${next ? "next" : "previous"} page: ${title}`} part=${dir}
       ><span class="label">${next ? "Next" : "Previous"}</span>
-      <div class="row"><span class="title">${title}</span><span class="chev">${glyphSized(next ? "chev" : "chev-l", 20)}</span></div></a
+      <div class="row"><span class="title">${title}</span><span class="chev">${next ? html`<acme-chevron-right-icon size="20px"></acme-chevron-right-icon>` : html`<acme-chevron-left-icon size="20px"></acme-chevron-left-icon>`}</span></div></a
     >`;
   }
 

@@ -5,10 +5,9 @@ const start = (inner: string) => `<div class="vstack" style="align-items:flex-st
 const pair = (name: string, extra = "", ctl = "") =>
   `<acme-switch name="${name}"${extra}><acme-switch-control default-checked label="Source" value="source"${ctl}></acme-switch-control><acme-switch-control label="Output" value="output"${ctl}></acme-switch-control></acme-switch>`;
 // A bare sprite icon (no utility class): the control sizes it (16px, 20px in a large control).
-const icon = (n: string) =>
-  `<svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const icon = (name: string) => `<acme-${name}-icon slot="icon" size="16px"></acme-${name}-icon>`;
 const icons = (name: string, extra = "") =>
-  `<acme-switch name="${name}"${extra}><acme-switch-control default-checked label="Grid" value="source">${icon("grid")}</acme-switch-control><acme-switch-control label="List" value="output">${icon("list")}</acme-switch-control></acme-switch>`;
+  `<acme-switch name="${name}"${extra}><acme-switch-control default-checked label="Grid" value="source">${icon("grid-view")}</acme-switch-control><acme-switch-control label="List" value="output">${icon("view-list")}</acme-switch-control></acme-switch>`;
 const three = (a: string, b: string, c: string) => `<div class="row" style="align-items:flex-start;gap:24px">${a}${b}${c}</div>`;
 
 export const doc: Doc = {
@@ -46,7 +45,8 @@ export const doc: Doc = {
       html: three(icons("icons-small", ' size="small"'), icons("icons-default"), icons("icons-large", ' size="large"')),
     },
     {
-      h: "Hide border", census: true,
+      h: "Hide border",
+      census: true,
       html: start(pair("hide-border", " hide-border")),
     },
   ],

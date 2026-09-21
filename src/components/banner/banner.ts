@@ -11,7 +11,7 @@ import { atomState } from "../../shared/atom-state";
 const WIDE = "(min-width: 961px)";
 
 /** The arrow after the button's label: a 16-box filled chevron. */
-const arrow = html`<svg slot="end" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" style="color:currentColor"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="m6.75 3.94.53.53 2.82 2.82a1 1 0 0 1 0 1.42l-2.82 2.82-.53.53L5.69 11l.53-.53L8.69 8 6.22 5.53 5.69 5z"></path></svg>`;
+const arrow = html`<acme-chevron-right-icon slot="end" size="16px"></acme-chevron-right-icon>`;
 
 /**
  * Banner: a prominent message across the full width of its container, with one call to action.

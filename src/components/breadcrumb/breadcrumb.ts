@@ -1,7 +1,7 @@
 import { breadcrumbStructureCss } from "../../generated/components/breadcrumb/breadcrumb-structure.styles";
 import { html, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import { breadcrumbCss } from "../../generated/components/breadcrumb/breadcrumb.styles";
 
@@ -20,11 +20,7 @@ import { atomState } from "../../shared/atom-state";
 export class AcmeBreadcrumb extends AcmeElement {
   /** Focus on the host lands on the link or the chip. */
   static shadowRootOptions = { ...AcmeElement.shadowRootOptions, delegatesFocus: true };
-  static styles = [
-    sharedCss,
-    breadcrumbCss,
-    breadcrumbStructureCss,
-  ];
+  static styles = [sharedCss, breadcrumbCss, breadcrumbStructureCss];
   /** The current page. */
   @property({ type: Boolean, reflect: true }) active = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -66,7 +62,7 @@ export class AcmeBreadcrumb extends AcmeElement {
       >`;
     }
     const text = this.href ? html`<a class="link" href=${this.href} target=${this.target || nothing} rel=${this.rel || nothing}><slot></slot></a>` : html`<slot></slot>`;
-    return html`<li class=${c} aria-current=${this.active ? "true" : nothing} part="item">${text} ${glyphSized("chev", 16)}</li>`;
+    return html`<li class=${c} aria-current=${this.active ? "true" : nothing} part="item">${text} ${html`<acme-chevron-right-icon size="16px"></acme-chevron-right-icon>`}</li>`;
   }
 }
 

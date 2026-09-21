@@ -69,6 +69,6 @@ describe("acme-gauge", () => {
     const g = root(el);
     expect(g.classList.contains("indeterminate")).toBe(true);
     expect(g.hasAttribute("aria-valuenow")).toBe(false);
-    expect((g.querySelector("svg.icon") as SVGElement).getAttribute("width")).toBe("64");
+    expect(g.querySelector("acme-bolt-icon.icon")?.getAttribute("size")).toBe("64px");
   });
 });

@@ -18,6 +18,7 @@ export const iconCss = css`:host {
 
 svg {
   fill: currentColor;
+  stroke: none;
 }
 
 .missing {

@@ -28,7 +28,7 @@ describe("acme-split-button", () => {
     expect(trigger.getAttribute("aria-label")).toBe("Select save method");
     expect(trigger.getAttribute("aria-haspopup")).toBe("menu");
     expect(trigger.getAttribute("aria-expanded")).toBe("false");
-    expect(trigger.querySelector(".inner svg")).not.toBeNull();
+    expect(trigger.querySelector(".inner acme-expand-more-icon")).not.toBeNull();
     expect(sr(el).querySelector(".menu")).toBeNull();
     const p = await mount<AcmeSplitButton>(`<acme-split-button>Save</acme-split-button>`);
     expect(sr(p).querySelector(".split")!.className.trim()).toBe("split");

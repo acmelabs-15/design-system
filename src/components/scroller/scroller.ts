@@ -3,7 +3,7 @@ import { Debouncer } from "@tanstack/pacer";
 import { html, nothing, type PropertyValues } from "lit";
 import { property, query } from "lit/decorators.js";
 import { styleMap } from "lit/directives/style-map.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { scrollerCss } from "../../generated/components/scroller/scroller.styles";
 import { scrollerButtonsCss } from "../../generated/components/scroller/scroller-buttons.styles";
 
@@ -34,12 +34,7 @@ const NONE: Edges = { top: false, right: false, bottom: false, left: false };
  */
 
 export class AcmeScroller extends AcmeElement {
-  static styles = [
-    sharedCss,
-    scrollerCss,
-    scrollerButtonsCss,
-    scrollerStructureCss,
-  ];
+  static styles = [sharedCss, scrollerCss, scrollerButtonsCss, scrollerStructureCss];
   /** The viewport's width: a number in px, or any CSS length. */
   @property() width = "100%";
   /** The viewport's height: a number in px, or any CSS length. */
@@ -175,7 +170,7 @@ export class AcmeScroller extends AcmeElement {
               svg-only
               aria-label=${h ? "scroll left" : "scroll top"}
               @click=${this.prev}
-              >${glyphSized(h ? "chev-l" : "chev-u")}</acme-button
+              >${h ? html`<acme-chevron-left-icon size="16px"></acme-chevron-left-icon>` : html`<acme-expand-less-icon size="16px"></acme-expand-less-icon>`}</acme-button
             ><acme-button
               variant="secondary"
               size="small"
@@ -183,7 +178,7 @@ export class AcmeScroller extends AcmeElement {
               svg-only
               aria-label=${h ? "scroll right" : "scroll bottom"}
               @click=${this.next}
-              >${glyphSized(h ? "chev" : "chev-d")}</acme-button
+              >${h ? html`<acme-chevron-right-icon size="16px"></acme-chevron-right-icon>` : html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</acme-button
             ></div>`
         : nothing;
     const root = this.cls("scroller", {

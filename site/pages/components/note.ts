@@ -43,7 +43,7 @@ export const doc: Doc = {
     {
       h: "Custom icon",
       html: col(
-        `<acme-note><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" slot="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>A custom icon replaces the variant’s default.</acme-note><acme-note no-icon>Pass a null icon to render no icon at all.</acme-note>`,
+        `<acme-note><acme-auto-awesome-icon slot="icon" size="16px"></acme-auto-awesome-icon>A custom icon replaces the variant’s default.</acme-note><acme-note no-icon>Pass a null icon to render no icon at all.</acme-note>`,
       ),
     },
   ],

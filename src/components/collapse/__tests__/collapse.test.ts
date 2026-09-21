@@ -20,7 +20,7 @@ describe("acme-collapse", () => {
     const t = sr(el).querySelector("h3.heading > button.trigger")!;
     expect(t.getAttribute("type")).toBe("button");
     expect(t.querySelector(".row")!.textContent!.trim()).toBe("Question A");
-    expect(t.querySelector(".row > .chev svg")).not.toBeNull();
+    expect(t.querySelector(".row > .chev acme-chevron-right-icon")).not.toBeNull();
     expect(t.getAttribute("aria-expanded")).toBe("false");
     expect(el.hasAttribute("title")).toBe(false);
     const panel = sr(el).getElementById(t.getAttribute("aria-controls")!)!;

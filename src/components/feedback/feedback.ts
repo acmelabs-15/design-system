@@ -1,6 +1,6 @@
 import { feedbackStructureCss } from "../../generated/components/feedback/feedback-structure.styles";
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
-import { html, nothing, svg } from "lit";
+import { html, nothing } from "lit";
 import { property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
@@ -15,28 +15,11 @@ export type FeedbackButtonVariant = "default" | "secondary" | "tertiary";
 /** What a submission carries: the metadata, then the page, the note, the emotion code, the plan, the label, the topic and the client. */
 export type FeedbackPayload = Record<string, unknown> & { url: string; note: string; email: string; emotion: string; plan: string; label: string; topic: string; ua: string };
 
-/** The four emotions, worst first: the code sent, the name read to assistive tech, and the face (16px paths). */
-const FACES: { code: string; name: string; paths: ReturnType<typeof svg> }[] = [
-  {
-    code: "f62d",
-    name: "Hate it",
-    paths: svg`<path fill="var(--ds-blue-700)" fill-rule="evenodd" clip-rule="evenodd" d="M4 9v7h1.5V9zm8 0v7h-1.5V9z"/><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M1.5 8A6.5 6.5 0 1 1 13 12.15v2.1A7.99 7.99 0 0 0 8 0a8 8 0 0 0-5 14.25v-2.1A6.5 6.5 0 0 1 1.5 8M8 14.5q.78 0 1.5-.17v1.53a8 8 0 0 1-3 0v-1.53q.72.17 1.5.17M3.79 8.37a2.04 2.04 0 0 1 2.92 0L7.8 7.32a3.54 3.54 0 0 0-5.08 0zm6.96-.62c-.57 0-1.1.23-1.46.62L8.2 7.32a3.54 3.54 0 0 1 5.08 0L12.2 8.37a2 2 0 0 0-1.46-.62M6.25 12h3.5a1.75 1.75 0 1 0-3.5 0"/>`,
-  },
-  {
-    code: "f615",
-    name: "Not great",
-    paths: svg`<path fill="currentColor" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0m0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13m0 7.88c1.47 0 2.76.75 3.52 1.88l.35.52-1.04.7-.34-.52a3 3 0 0 0-4.97 0l-.35.51-1.04-.7.35-.51A4.2 4.2 0 0 1 8 9.38M5.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5m4.5 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5"/>`,
-  },
-  {
-    code: "f600",
-    name: "It's okay",
-    paths: svg`<path fill="currentColor" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0m0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13m3.87 8.83-.35.52a4.24 4.24 0 0 1-7.04 0l-.35-.51 1.04-.7.35.52a3 3 0 0 0 4.97 0l.34-.53zM5.75 5.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5m4.5 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5"/>`,
-  },
-  {
-    code: "f929",
-    name: "Love it!",
-    paths: svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M14.5 8a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-11.5.97h-.62v.63c0 1.87 1.93 3.26 4.12 3.26s4.13-1.38 4.13-3.26v-.63H4.5M8 11.61c-1.4 0-2.36-.66-2.72-1.38h5.44c-.36.72-1.31 1.38-2.72 1.38"/><path fill="var(--ds-amber-800)" fill-rule="evenodd" clip-rule="evenodd" d="M6.15 4.92 5.37 3.5 4.6 4.92l-1.6.3 1.12 1.17L3.9 8l1.47-.7 1.46.7-.2-1.6 1.11-1.18zm5.25 0-.78-1.42-.77 1.42-1.6.3 1.12 1.17L9.16 8l1.47-.7 1.46.7-.2-1.6L13 5.21z"/>`,
-  },
+const FACES = [
+  { code: "f62d", name: "Hate it", icon: html`<acme-sentiment-very-dissatisfied-icon size="16px"></acme-sentiment-very-dissatisfied-icon>` },
+  { code: "f615", name: "Not great", icon: html`<acme-sentiment-dissatisfied-icon size="16px"></acme-sentiment-dissatisfied-icon>` },
+  { code: "f600", name: "It's okay", icon: html`<acme-sentiment-satisfied-icon size="16px"></acme-sentiment-satisfied-icon>` },
+  { code: "f929", name: "Love it!", icon: html`<acme-sentiment-very-satisfied-icon size="16px"></acme-sentiment-very-satisfied-icon>` },
 ];
 /** The fixed list of topics behind `show-topics`. */
 const TOPICS = [
@@ -52,8 +35,6 @@ const TOPICS = [
   "Observability (Observability, Logs, Monitoring)",
   "Storage",
 ];
-const CHECK = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.47-1.47.53-.53L11 4.94l-.53.53L6.5 9.44l-.97-.97L5 7.94 3.94 9l.53.53 1.5 1.5c.3.3.77.3 1.06 0z"/>`;
-const MARKDOWN = svg`<path clip-rule="evenodd" fill-rule="evenodd" fill="var(--ds-gray-700)" d="M19.5 1.25H2.5C1.80964 1.25 1.25 1.80964 1.25 2.5V11.5C1.25 12.1904 1.80964 12.75 2.5 12.75H19.5C20.1904 12.75 20.75 12.1904 20.75 11.5V2.5C20.75 1.80964 20.1904 1.25 19.5 1.25ZM2.5 0C1.11929 0 0 1.11929 0 2.5V11.5C0 12.8807 1.11929 14 2.5 14H19.5C20.8807 14 22 12.8807 22 11.5V2.5C22 1.11929 20.8807 0 19.5 0H2.5ZM3 3.5H4H4.25H4.6899L4.98715 3.82428L7 6.02011L9.01285 3.82428L9.3101 3.5H9.75H10H11V4.5V10.5H9V6.79807L7.73715 8.17572L7 8.97989L6.26285 8.17572L5 6.79807V10.5H3V4.5V3.5ZM15 7V3.5H17V7H19.5L17 9.5L16 10.5L15 9.5L12.5 7H15Z"/>`;
 
 /** Space between the trigger and the card. */
 const CARD_GAP = 8;
@@ -87,11 +68,7 @@ type Phase = "entered" | "exiting" | null;
  */
 
 export class AcmeFeedback extends AcmeElement {
-  static styles = [
-    sharedCss,
-    feedbackCss,
-    feedbackStructureCss,
-  ];
+  static styles = [sharedCss, feedbackCss, feedbackStructureCss];
   /** The source the submission names. */
   @property() label = "";
   /** The trigger's text. */
@@ -172,8 +149,7 @@ export class AcmeFeedback extends AcmeElement {
     this.timers.clear();
   }
 
-  firstUpdated() {
-  }
+  firstUpdated() {}
 
   private later(fn: () => void, ms: number) {
     const t = setTimeout(() => {
@@ -408,8 +384,8 @@ export class AcmeFeedback extends AcmeElement {
 
   private faces() {
     return FACES.map(
-      ({ code, name, paths }) =>
-        html`<button class="emoji" type="button" role="radio" aria-checked=${String(this.emotion === code)} aria-label=${`Select ${name} emoji`} @click=${() => this.pick(code)}><svg viewBox="0 0 16 16" height="16" width="16" style="color:currentColor" aria-hidden="true">${paths}</svg></button>`,
+      ({ code, name, icon }) =>
+        html`<button class="emoji" type="button" role="radio" aria-checked=${String(this.emotion === code)} aria-label=${`Select ${name} emoji`} @click=${() => this.pick(code)}>${icon}</button>`,
     );
   }
 
@@ -435,7 +411,7 @@ export class AcmeFeedback extends AcmeElement {
         if (inline) this.open = true;
       }}></acme-textarea>
       ${this.errorPhase ? html`<div class="error" data-phase=${this.errorPhase} data-enter=${reduced() ? nothing : "animate"}><div class="error-inner"><p style=${inline ? "display:block" : "padding-top:4px;display:block"}>${this.lastMessage}</p></div></div>` : nothing}
-      <div class="hint"><svg fill="none" height="14" viewBox="0 0 22 14" width="22" aria-hidden="true">${MARKDOWN}</svg>supported.</div>
+      <div class="hint"><acme-markdown-icon size="16px"></acme-markdown-icon>supported.</div>
     </div>`;
     const send = html`<acme-button size="small" type="submit" ?loading=${this.sending}>Send</acme-button>`;
     return html`<div class="phase" data-phase=${this.formPhase ?? "exiting"} @keydown=${this.onCardKey}>
@@ -448,7 +424,7 @@ export class AcmeFeedback extends AcmeElement {
 
   private done(inline: boolean) {
     return html`<div class="done" style=${inline ? "height:75%;padding-top:48px" : nothing}>
-      <svg viewBox="0 0 16 16" height="32" width="32" style="color:var(--ds-green-900)" aria-hidden="true">${CHECK}</svg>
+      <acme-check-circle-icon class="success-icon" size="32px"></acme-check-circle-icon>
       <p class="received">Your feedback has been received!</p>
       <p class="thanks">Thank you for your help.</p>
     </div>`;

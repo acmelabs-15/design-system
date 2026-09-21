@@ -2,7 +2,7 @@
 import type { Doc } from "../../site";
 
 const row = (inner: string, gap = 16) => `<div class="row" style="gap:${gap}px;align-items:flex-start">${inner}</div>`;
-const up = `<svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-arrow-up"/></svg>`;
+const up = `<acme-arrow-upward-icon class="ic" size="16px"></acme-arrow-upward-icon>`;
 const variants = ["default", "error", "warning", "secondary", "tertiary"];
 const typeRow = (size: string) => `<div class="row">${variants.map((v) => `<acme-button${size ? ` size="${size}"` : ""} variant="${v}">Upload</acme-button>`).join("")}</div>`;
 
@@ -31,7 +31,7 @@ export const doc: Doc = {
     {
       h: "Prefix and suffix",
       html: row(
-        `<acme-button><svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#i-arrow-left"/></svg>Upload</acme-button><acme-button>Upload<svg class="ic" width="16" height="16" slot="end" aria-hidden="true"><use href="#i-arrow-right"/></svg></acme-button><acme-button><svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#i-arrow-left"/></svg>Upload<svg class="ic" width="16" height="16" slot="end" aria-hidden="true"><use href="#i-arrow-right"/></svg></acme-button>`,
+        `<acme-button><acme-arrow-back-icon class="ic" slot="start" size="16px"></acme-arrow-back-icon>Upload</acme-button><acme-button>Upload<acme-arrow-forward-icon class="ic" slot="end" size="16px"></acme-arrow-forward-icon></acme-button><acme-button><acme-arrow-back-icon class="ic" slot="start" size="16px"></acme-arrow-back-icon>Upload<acme-arrow-forward-icon class="ic" slot="end" size="16px"></acme-arrow-forward-icon></acme-button>`,
       ),
     },
     {

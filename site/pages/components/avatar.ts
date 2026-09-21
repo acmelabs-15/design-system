@@ -38,7 +38,7 @@ export const doc: Doc = {
     },
     {
       h: "With custom icon",
-      html: `<div class="row" style="gap:16px">${["arrow-circle-down", "check-circle-fill", "clock-dashed"].map((i) => `<acme-avatar size="32" icon-background><svg slot="icon" width="14" height="14" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ds-gray-900)" aria-hidden="true"><use href="#i-${i}" fill="none"/></svg></acme-avatar>`).join("")}</div>`,
+      html: `<div class="row" style="gap:16px">${["arrow-circle-down", "check-circle", "schedule"].map((i) => `<acme-avatar size="32" icon-background><acme-${i}-icon slot="icon" size="14px"${i === "check-circle" ? " filled" : ""}></acme-${i}-icon></acme-avatar>`).join("")}</div>`,
     },
     {
       h: "Letter",

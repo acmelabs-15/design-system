@@ -43,7 +43,7 @@ describe("acme-select", () => {
 
   test("the chevron is the end slot's fallback; end=false leaves the place empty", async () => {
     const el = await mount(`<acme-select placeholder="Default"></acme-select>`);
-    expect(wrap(el).querySelector(".end slot > svg.chevron")).not.toBeNull();
+    expect(wrap(el).querySelector(".end slot > acme-expand-more-icon.chevron")).not.toBeNull();
     expect(wrap(el).querySelector(".start")).toBeNull();
     const none = await mount(`<acme-select placeholder="Default" end="false"></acme-select>`);
     expect(wrap(none).querySelector(".end")).toBeNull();

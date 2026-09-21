@@ -4,8 +4,9 @@ import type { Doc } from "../../site";
 const SIZES = ["small", "medium", "large"] as const;
 const VARIANTS = ["primary", "secondary"] as const;
 const saveItems = `<acme-split-button-item slot="items" description="Save changes">Save</acme-split-button-item><acme-split-button-item slot="items" description="Save changes and create a new production deployment">Save + Redeploy</acme-split-button-item>`;
-const icon = (name: string) => `<svg class="ic" width="18" height="18" style="width:18px;height:18px" slot="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-const saveItemsWithIcons = `<acme-split-button-item slot="items" description="Save changes">${icon("floppy")}Save</acme-split-button-item><acme-split-button-item slot="items" description="Save changes and create a new production deployment">${icon("arrow-circle-up")}Save + Redeploy</acme-split-button-item>`;
+const icon = (name: string) => `<acme-${name}-icon slot="icon" size="18px"></acme-${name}-icon>`;
+const brand = (name: string) => `<svg class="ic" width="18" height="18" slot="icon" aria-hidden="true"><use href="#brand-${name}"/></svg>`;
+const saveItemsWithIcons = `<acme-split-button-item slot="items" description="Save changes">${icon("save")}Save</acme-split-button-item><acme-split-button-item slot="items" description="Save changes and create a new production deployment">${icon("arrow-circle-up")}Save + Redeploy</acme-split-button-item>`;
 const split = (variant: string, size: string, items: string) =>
   `<acme-split-button variant="${variant}"${size === "medium" ? "" : ` size="${size}"`} menu-button-label="Select save method" menu-width="264">Save${items}</acme-split-button>`;
 const grid = (items: string, rowGap: number) =>
@@ -34,7 +35,7 @@ export const doc: Doc = {
     },
     {
       h: "Icon",
-      html: `<acme-split-button variant="secondary" size="small" menu-button-label="Copy page" menu-width="240">Copy page<acme-split-button-item slot="items" description="Open this page in v0">${icon("v0")}Open in v0</acme-split-button-item><acme-split-button-item slot="items" description="Open this page in ChatGPT">${icon("openai")}Open in ChatGPT</acme-split-button-item></acme-split-button>`,
+      html: `<acme-split-button variant="secondary" size="small" menu-button-label="Copy page" menu-width="240">Copy page<acme-split-button-item slot="items" description="Open this page in v0">${brand("v0")}Open in v0</acme-split-button-item><acme-split-button-item slot="items" description="Open this page in ChatGPT">${brand("openai")}Open in ChatGPT</acme-split-button-item></acme-split-button>`,
       script: `const b = root.querySelector('acme-split-button');
 b.addEventListener('acme-click', () => console.log('Copy page'));
 b.addEventListener('acme-select', e => console.log(e.target.textContent.trim()));`,

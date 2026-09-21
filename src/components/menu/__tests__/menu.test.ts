@@ -191,7 +191,7 @@ describe("acme-menu-item", () => {
     const locked = await mount<AcmeMenuItem>(`<acme-menu-item locked>Delete</acme-menu-item>`);
     const row = locked.shadowRoot!.querySelector(".item")!;
     expect(row.getAttribute("aria-disabled")).toBe("true");
-    expect(locked.shadowRoot!.querySelector(".end svg")).not.toBeNull();
+    expect(locked.shadowRoot!.querySelector(".end acme-lock-icon")).not.toBeNull();
     expect(locked.inert).toBe(true);
     let fired = 0;
     locked.addEventListener("acme-select", () => fired++);
@@ -211,7 +211,7 @@ describe("acme-menu-button", () => {
     const el = await mount<AcmeMenuButton>(`<acme-menu-button show-chevron variant="secondary">Actions</acme-menu-button>`);
     const b = el.shadowRoot!.querySelector(".btn")!;
     expect(b.className.trim()).toBe("btn secondary chevron");
-    expect(b.querySelector(".label > .inner > .chev svg")).not.toBeNull();
+    expect(b.querySelector(".label > .inner > .chev acme-expand-more-icon")).not.toBeNull();
     expect(b.hasAttribute("aria-label")).toBe(false);
     el.open = true;
     await el.updateComplete;

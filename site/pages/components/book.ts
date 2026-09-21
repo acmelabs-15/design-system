@@ -31,7 +31,7 @@ export const doc: Doc = {
     {
       h: "Custom icon",
       html: row(
-        `<acme-book title="Vercel Platform Guide"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-vercel"/></svg></acme-book><acme-book title="Next.js Documentation"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-next"/></svg></acme-book><acme-book title="React Essentials"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-react"/></svg></acme-book>`,
+        `<acme-book title="Vercel Platform Guide"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-vercel"/></svg></acme-book><acme-book title="Next.js Documentation"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-next"/></svg></acme-book><acme-book title="React Essentials"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-react"/></svg></acme-book>`,
       ),
     },
     {

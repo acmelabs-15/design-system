@@ -1,13 +1,21 @@
 import { noteStructureCss } from "../../generated/components/note/note-structure.styles";
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { noteCss } from "../../generated/components/note/note.styles";
 
 export type NoteVariant = "" | "success" | "error" | "warning" | "secondary" | "violet" | "cyan";
 
-const ICON: Record<string, string> = { "": "info", success: "check", error: "alert", warning: "warn", secondary: "info", violet: "info", cyan: "info" };
+const noteIcons = {
+  "": html`<acme-info-icon size="14px"></acme-info-icon>`,
+  success: html`<acme-check-icon size="14px"></acme-check-icon>`,
+  error: html`<acme-error-icon size="14px"></acme-error-icon>`,
+  warning: html`<acme-warning-icon size="14px"></acme-warning-icon>`,
+  secondary: html`<acme-info-icon size="14px"></acme-info-icon>`,
+  violet: html`<acme-info-icon size="14px"></acme-info-icon>`,
+  cyan: html`<acme-info-icon size="14px"></acme-info-icon>`,
+};
 
 /**
  * Note: a short inline message beside the thing it describes. The root carries the variant, fill,
@@ -18,11 +26,7 @@ const ICON: Record<string, string> = { "": "info", success: "check", error: "ale
  */
 
 export class AcmeNote extends AcmeElement {
-  static styles = [
-    sharedCss,
-    noteCss,
-    noteStructureCss,
-  ];
+  static styles = [sharedCss, noteCss, noteStructureCss];
   /** Meaning: `error`, `warning`, `success`, `secondary`, `violet`, `cyan`; unset is the default info note. */
   @property() variant: NoteVariant = "";
   /** Tinted background with a lighter border. */
@@ -74,7 +78,7 @@ export class AcmeNote extends AcmeElement {
     const actionSlot = html`<slot name="action" @slotchange=${this.slotted("action")}></slot>`;
     return html`<div class=${c} role="note" data-disabled=${this.disabled ? "true" : nothing} part="note">
       <div class="body">
-        ${this.noIcon ? nothing : html`<span class="icon"><slot name="icon" @slotchange=${this.slotted("icon")}>${this.hasIcon ? nothing : glyphSized(ICON[this.variant], 14)}</slot></span>`}
+        ${this.noIcon ? nothing : html`<span class="icon"><slot name="icon" @slotchange=${this.slotted("icon")}>${this.hasIcon || !Object.hasOwn(noteIcons, this.variant) ? nothing : noteIcons[this.variant]}</slot></span>`}
         <div class="text">
           <div class="content">${this.hasLabel ? html`<span class="label">${labelSlot}</span>` : labelSlot}<slot></slot></div>
         </div>

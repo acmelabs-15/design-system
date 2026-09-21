@@ -11,7 +11,7 @@ for (const b of modal.querySelectorAll('acme-button[slot="actions"], [slot="acti
 const show = `root.querySelector("acme-modal").show();`;
 const actions = (primary: string) => `<acme-button slot="actions" variant="secondary">Cancel</acme-button><acme-button slot="actions">${primary}</acme-button>`;
 const subtitle = `<p slot="subtitle">Enter a unique name for your token to differentiate it from other tokens and then select the scope.</p>`;
-const stickyActions = `<div slot="actions"><acme-button variant="secondary">Cancel</acme-button><acme-button variant="secondary"><svg class="ic" width="16" height="16" slot="start"><use href="#i-back"/></svg>Previous</acme-button></div><acme-button slot="actions">Submit</acme-button>`;
+const stickyActions = `<div slot="actions"><acme-button variant="secondary">Cancel</acme-button><acme-button variant="secondary"><acme-arrow-back-icon class="ic" slot="start" size="16px"></acme-arrow-back-icon>Previous</acme-button></div><acme-button slot="actions">Submit</acme-button>`;
 const stickyBody = `${copy.repeat(50)}`;
 const stickyCode = `${copy}\n<!-- … 49 more paragraphs … -->\n${stickyActions}`;
 const sheetNote = "Under 600px the modal opens as a bottom sheet: resize the window below that width to see this state as the sheet.";
@@ -77,20 +77,23 @@ root.querySelector("#show-toast").addEventListener("click", () =>
   window.acme.toasts.message({ text: "Project link copied", action: "Undo", onAction: () => window.acme.toasts.message({ text: "Copy reverted" }) }));`,
     },
     {
-      h: "Open", census: true,
+      h: "Open",
+      census: true,
       p: "The modal open on load: the backdrop, the centred 540px panel with its 20px body, the header with title and subtitle, a paragraph, and the background-200 footer with two small actions.",
       html: `<acme-modal heading="Create Token">${subtitle}${copy}${actions("Submit")}</acme-modal>`,
       script: show,
     },
     {
-      h: "Open sticky", census: true,
+      h: "Open sticky",
+      census: true,
       p: "A sticky modal at scroll top: the header pinned above the scrolling body, the footer pinned below it with its shadow raised, as the body's end is out of view.",
       html: `<acme-modal heading="Create Token" sticky>${stickyBody}${stickyActions}</acme-modal>`,
       code: `<acme-modal heading="Create Token" sticky>${stickyCode}</acme-modal>`,
       script: show,
     },
     {
-      h: "Open sticky scrolled", census: true,
+      h: "Open sticky scrolled",
+      census: true,
       p: "The sticky modal scrolled into its body: the header's shadow shows below it, the footer's above it.",
       html: `<acme-modal heading="Create Token" sticky>${stickyBody}${stickyActions}</acme-modal>`,
       code: `<acme-modal heading="Create Token" sticky>${stickyCode}</acme-modal>`,
@@ -103,56 +106,65 @@ modal.updateComplete.then(() => {
 });`,
     },
     {
-      h: "Open single button", census: true,
+      h: "Open single button",
+      census: true,
       p: "A sticky modal with one full-width action (<code>block</code>): secondary unless it names a variant.",
       html: `<acme-modal heading="Create Token" sticky>${copy}<acme-button slot="actions" block>Cancel</acme-button></acme-modal>`,
       script: show,
     },
     {
-      h: "Open inset", census: true,
+      h: "Open inset",
+      census: true,
       p: "An inset inside the body: full-bleed through the body's padding, hairlines above and below, the tinted fill.",
       html: `<acme-modal heading="Modal"><p slot="subtitle">This is a modal.</p><acme-modal-inset><p class="text-copy-14">Content within the inset.</p></acme-modal-inset><div style="padding-top:20px"><p class="text-copy-14">Content outside the inset.</p></div>${actions("Submit")}</acme-modal>`,
       script: show,
     },
     {
-      h: "Open inset last", census: true,
+      h: "Open inset last",
+      census: true,
       p: "A last inset (<code>last</code>): it meets the footer, its bottom hairline and the body's bottom padding gone.",
       html: `<acme-modal heading="Create Database"><p slot="subtitle">Choose a region for your database. Reads and writes will take place in this region.</p><acme-modal-inset last><p class="text-copy-14">Content within the inset.</p></acme-modal-inset>${actions("Submit")}</acme-modal>`,
       script: show,
     },
     {
-      h: "Open unpadded", census: true,
+      h: "Open unpadded",
+      census: true,
       p: 'A body with <code>body-padding="0"</code>: no inner padding, the light theme\'s plain background.',
       html: `<acme-modal heading="Create Token" body-padding="0">${copy}${actions("Submit")}</acme-modal>`,
       script: show,
     },
     {
-      h: "Open allow overflow", census: true,
+      h: "Open allow overflow",
+      census: true,
       p: "<code>allow-overflow</code>: the panel lets content overflow (a menu opened from inside it).",
       html: `<acme-modal heading="Create Token" allow-overflow>${subtitle}${copy}${actions("Submit")}</acme-modal>`,
       script: show,
     },
     {
-      h: "Open centered", census: true,
+      h: "Open centered",
+      census: true,
       p: "A centred title (<code>center</code>).",
       html: `<acme-modal heading="Create Token" center>${subtitle}${copy}${actions("Submit")}</acme-modal>`,
       script: show,
     },
     {
-      h: "Sheet", census: true,
+      h: "Sheet",
+      census: true,
       p: `${sheetNote} A translucent backdrop, the panel pinned to the bottom edge, full width, rounded at the top, with a fade over its top edge.`,
       html: `<acme-modal id="sheet" heading="Create Token">${subtitle}${copy}${actions("Submit")}</acme-modal>`,
       script: show,
     },
     {
-      h: "Sheet sticky", census: true,
+      h: "Sheet sticky",
+      census: true,
       p: `${sheetNote} The sticky modal as a sheet: no fade over the top edge, the header and the footer pinned inside the scrolling panel.`,
       html: `<acme-modal id="sheet-sticky" heading="Create Token" sticky>${stickyBody}${stickyActions}</acme-modal>`,
       code: `<acme-modal id="sheet-sticky" heading="Create Token" sticky>${stickyCode}</acme-modal>`,
       script: show,
     },
     {
-      h: "Sheet no scroll", census: true,
+      h: "Sheet no scroll",
+      census: true,
       p: `${sheetNote} With <code>drawer-vertical-scroll="false"</code> the sheet clips its content instead of scrolling it.`,
       html: `<acme-modal id="sheet-noscroll" heading="Create Token" drawer-vertical-scroll="false">${subtitle}${copy}${actions("Submit")}</acme-modal>`,
       script: show,

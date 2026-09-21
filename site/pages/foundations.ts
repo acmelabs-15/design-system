@@ -18,9 +18,9 @@ const hue = (name: string, step: number, inner: string) => `<span style="color:v
 // The reference's page is a grid of six tiles, one per area, and no sections; its Markdown twin
 // adds the sections (Foundations, Assets, Components, Markdown for agents). Ours does the same.
 const iconRows = [
-  ["check", "search", "alert", "copy", "globe", "gear", "bell", "user"],
-  ["rocket", "branch", "cpu", "mem", "wifi", "clock", "cal", "file"],
-  ["shield", "lock", "github", "folder", "play", "image", "filter", "trophy"],
+  ["check", "search", "error", "content-copy", "language", "settings", "notifications", "person"],
+  ["rocket-launch", "fork-right", "developer-board", "memory", "wifi", "schedule", "calendar-month", "description"],
+  ["shield", "lock", "code", "folder", "play-arrow", "image", "filter-list", "emoji-events"],
 ];
 const install = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400..700&family=Google+Sans+Code:wght@400..700&display=swap">
 <link rel="stylesheet" href="${cdn}/dist/styles/tokens.css">
@@ -40,7 +40,7 @@ export const intro: Doc = {
     "/components/avatar",
     "Components",
     "Building blocks for any page.",
-    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("users", ' slot="start"')}Collaborate</acme-button><acme-button aria-label="Shield" shape="square" svg-only>${ic("shield")}</acme-button><acme-theme-switcher size="small"></acme-theme-switcher><acme-input label="Label" placeholder="Label" aria-label="Not a real input"></acme-input></span>`,
+    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("groups", ' slot="start"')}Collaborate</acme-button><acme-button aria-label="Shield" shape="square" svg-only>${ic("shield")}</acme-button><acme-theme-switcher size="small"></acme-theme-switcher><acme-input label="Label" placeholder="Label" aria-label="Not a real input"></acme-input></span>`,
   )}${tile(
     "/colors",
     "Colors",
@@ -50,7 +50,7 @@ export const intro: Doc = {
     "/components/grid",
     "Grid",
     "Native tracks and responsive placement.",
-    `<acme-grid grid-template-columns="repeat(3, minmax(0, 1fr))" gap="2" width="100%">${Array.from({length:6},()=>'<acme-box height="32px" background-color="var(--ds-gray-200)"></acme-box>').join("")}</acme-grid>`,
+    `<acme-grid grid-template-columns="repeat(3, minmax(0, 1fr))" gap="2" width="100%">${Array.from({ length: 6 }, () => '<acme-box height="32px" background-color="var(--ds-gray-200)"></acme-box>').join("")}</acme-grid>`,
   )}${tile(
     "/typeface",
     "Typeface",
@@ -122,7 +122,7 @@ const def = (rows: [string, string, string][]) =>
     )
     .join("");
 const logRow = (warn = false) =>
-  `<li${warn ? ' class="warn"' : ""}>${ic(warn ? "warn-tri" : "info")}<span class="text-copy-13-mono">APR 26 15:54:21.12</span><span class="vr"></span><span class="text-copy-13-mono">/dashboard/overview</span></li>`;
+  `<li${warn ? ' class="warn"' : ""}>${ic(warn ? "warning" : "info")}<span class="text-copy-13-mono">APR 26 15:54:21.12</span><span class="vr"></span><span class="text-copy-13-mono">/dashboard/overview</span></li>`;
 // The custom colors travel as JSON in single-quoted attributes, as on the Button page.
 const custom = (fg: string, bg: string, border: string) => JSON.stringify({ foreground: fg, background: bg, border });
 export const colors: Doc = {
@@ -165,7 +165,7 @@ export const colors: Doc = {
     `${def([
       ["Color 9", "--ds-gray-900", "Secondary text and icons"],
       ["Color 10", "--ds-gray-1000", "Primary text and icons"],
-    ])}<div class="ex-box col" style="margin-top:40px"><div class="vstack" style="gap:4px;max-width:420px;padding:48px 24px"><span class="text-heading-16">The house design system</span><span class="text-copy-14" style="color:var(--ds-gray-900)">Build consistent pages with one set of elements, tokens and rules.</span><a class="text-copy-14" href="/" style="display:inline-flex;align-items:center;gap:2px;margin-top:8px;color:var(--ds-blue-900);text-decoration:none">Learn More ${ic("chevron-down", ' style="transform:rotate(-90deg)"')}</a></div><div class="icons">${hue("blue", 900, ic("globe"))}${hue("red", 900, ic("alert"))}${hue("amber", 900, ic("warn-tri"))}${hue("green", 900, ic("check-circle"))}${hue("pink", 900, ic("bell"))}${hue("teal", 900, ic("check-circle-fill"))}</div></div>`,
+    ])}<div class="ex-box col" style="margin-top:40px"><div class="vstack" style="gap:4px;max-width:420px;padding:48px 24px"><span class="text-heading-16">The house design system</span><span class="text-copy-14" style="color:var(--ds-gray-900)">Build consistent pages with one set of elements, tokens and rules.</span><a class="text-copy-14" href="/" style="display:inline-flex;align-items:center;gap:2px;margin-top:8px;color:var(--ds-blue-900);text-decoration:none">Learn More ${ic("expand-more", ' style="transform:rotate(-90deg)"')}</a></div><div class="icons">${hue("blue", 900, ic("language"))}${hue("red", 900, ic("error"))}${hue("amber", 900, ic("warning"))}${hue("green", 900, ic("check-circle"))}${hue("pink", 900, ic("notifications"))}${hue("teal", 900, ic("check-circle", " filled"))}</div></div>`,
     "Two colors for accessible text and icons.",
   )}`,
 };

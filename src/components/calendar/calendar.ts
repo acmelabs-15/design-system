@@ -1,7 +1,7 @@
 import { calendarStructureCss } from "../../generated/components/calendar/calendar-structure.styles";
 import { html, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, glyph, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { fieldCss } from "../../generated/shared/field.styles";
 import { buttonCss } from "../../generated/components/button/button.styles";
@@ -298,7 +298,7 @@ export class AcmeCalendar extends AcmeElement {
     const joined = this.compact || this.stacked || (this.allowClear && !!this.value);
     const trigger = html`<button class=${this.cls("btn", { "cal-trigger": true, sm })} type="button" aria-haspopup="dialog" aria-expanded=${this.open} @click=${() => {
       this.open = !this.open;
-    }}>${glyph("calendar")}${this.label()}</button>`;
+    }}>${html`<acme-calendar-month-icon size="16px" class="ic"></acme-calendar-month-icon>`}${this.label()}</button>`;
     const period =
       this.compact || this.stacked
         ? html`<select class=${this.cls("cal-period", { sm })} aria-label="Period" .value=${this.presetKey} @change=${this.onPeriod}><option value="">Custom</option>${presets.map(
@@ -306,7 +306,9 @@ export class AcmeCalendar extends AcmeElement {
           )}</select>`
         : nothing;
     const clear =
-      this.allowClear && this.value ? html`<button class=${this.cls("btn", { "cal-clear": true, sm })} type="button" aria-label="Clear" @click=${this.clear}>${glyph("x")}</button>` : nothing;
+      this.allowClear && this.value
+        ? html`<button class=${this.cls("btn", { "cal-clear": true, sm })} type="button" aria-label="Clear" @click=${this.clear}>${html`<acme-close-icon size="16px" class="ic"></acme-close-icon>`}</button>`
+        : nothing;
     const head = joined ? html`<div class=${this.cls("cal-join", { stacked: this.stacked, sm })}>${period}${trigger}${clear}</div>` : trigger;
     const form = this.single
       ? nothing
@@ -350,9 +352,9 @@ export class AcmeCalendar extends AcmeElement {
         }
         <div class="cal-head"><h2 class="month" aria-live="polite">${this.view.toLocaleDateString("en-US", { month: "long", year: "numeric" })}</h2><button class="iconbtn" type="button" aria-label="Previous month" @click=${() => {
           this.view = new Date(y, m - 1, 1);
-        }}>${glyph("back")}</button><button class="iconbtn next" type="button" aria-label="Next month" @click=${() => {
+        }}>${html`<acme-arrow-back-icon size="16px" class="ic"></acme-arrow-back-icon>`}</button><button class="iconbtn next" type="button" aria-label="Next month" @click=${() => {
           this.view = new Date(y, m + 1, 1);
-        }}>${glyph("arrow")}</button></div>
+        }}>${html`<acme-arrow-forward-icon size="16px" class="ic"></acme-arrow-forward-icon>`}</button></div>
         <table class="cal-grid" role="grid" aria-multiselectable=${!this.single} @keydown=${this.onGridKey}><thead><tr>${DAYS.map((d) => html`<th abbr=${d} scope="col">${d[0]}</th>`)}</tr></thead><tbody>
           ${Array.from(
             { length: 6 },

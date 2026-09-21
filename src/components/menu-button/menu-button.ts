@@ -1,7 +1,7 @@
 import { menuButtonStructureCss } from "../../generated/components/menu-button/menu-button-structure.styles";
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { glyphSized } from "../../base";
+import {} from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { AcmeButton, type ButtonColors } from "../button/button";
 import { menuButtonCss } from "../../generated/components/menu-button/menu-button.styles";
@@ -25,11 +25,7 @@ const customVars = (suffix: string, c?: ButtonColors) =>
  */
 
 export class AcmeMenuButton extends AcmeButton {
-  static styles = [
-    ...AcmeButton.styles,
-    menuButtonCss,
-    menuButtonStructureCss,
-  ];
+  static styles = [...AcmeButton.styles, menuButtonCss, menuButtonStructureCss];
   /** A chevron at the end of the label that turns while the menu is open. */
   @property({ type: Boolean, attribute: "show-chevron" }) showChevron = false;
   /** Whether the menu is open: the menu keeps it in step. */
@@ -106,7 +102,7 @@ export class AcmeMenuButton extends AcmeButton {
         ? html`<span class="start">${startSlot}</span>`
         : startSlot;
     const end = this.places.has("end") ? html`<span class="end">${endSlot}</span>` : endSlot;
-    const chevron = this.showChevron ? html`<span class="chev" data-open=${String(this.open)}>${glyphSized("chev-d")}</span>` : nothing;
+    const chevron = this.showChevron ? html`<span class="chev" data-open=${String(this.open)}>${html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</span>` : nothing;
     const label = html`<span class="label"><span class="inner"><slot @slotchange=${this.content}></slot>${chevron}</span></span>`;
     return html`<button
       class=${c}

@@ -20,7 +20,7 @@ describe("acme-search", () => {
     expect(f.getAttribute("aria-label")).toBe("Search");
     expect(f.shadowRoot!.querySelector("input")!.placeholder).toBe("Enter some text...");
     const slot = el.shadowRoot!.querySelector("slot[name=start][slot=start]") as HTMLSlotElement;
-    expect(slot.querySelector("svg")).not.toBeNull();
+    expect(slot.querySelector("acme-search-icon")).not.toBeNull();
   });
   test("cmdk shows the keys, loading swaps the glass for a spinner, disabled reaches the field", async () => {
     document.body.innerHTML = `<acme-search cmdk></acme-search><acme-search loading value="Project A"></acme-search><acme-search disabled></acme-search>`;
@@ -29,7 +29,7 @@ describe("acme-search", () => {
     expect(cmdk.shadowRoot!.querySelectorAll(".cmdk acme-kbd").length).toBe(2);
     const start = loading.shadowRoot!.querySelector("slot[name=start][slot=start]") as HTMLSlotElement;
     expect(start.querySelector("acme-spinner")).not.toBeNull();
-    expect(start.querySelector("svg")).toBeNull();
+    expect(start.querySelector("acme-search-icon")).toBeNull();
     expect(field(disabled).disabled).toBe(true);
   });
   test("a value shows the Esc key and clear() empties it; clearable false drops both", async () => {

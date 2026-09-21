@@ -2,7 +2,7 @@ import { splitButtonStructureCss } from "../../generated/components/split-button
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
 import { html, nothing } from "lit";
 import { property, query, queryAssignedElements } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
 import type { AcmeSplitButtonItem } from "../split-button-item/split-button-item";
 import { splitButtonCss } from "../../generated/components/split-button/split-button.styles";
@@ -28,12 +28,7 @@ const MENU_GAP = 8;
  */
 
 export class AcmeSplitButton extends AcmeElement {
-  static styles = [
-    sharedCss,
-    splitButtonCss,
-    splitButtonMenuCss,
-    splitButtonStructureCss,
-  ];
+  static styles = [sharedCss, splitButtonCss, splitButtonMenuCss, splitButtonStructureCss];
   /** `default` (the primary look; `primary` is accepted) or `secondary`. */
   @property() variant: "default" | "primary" | "secondary" = "default";
   @property() size: "small" | "medium" | "large" = "medium";
@@ -182,7 +177,7 @@ export class AcmeSplitButton extends AcmeElement {
           @keydown=${this.onTriggerKey}
           part="menu-button"
           exportparts="label:trigger-label"
-          ><span class="inner">${glyphSized("chev-d")}</span></acme-button
+          ><span class="inner">${html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</span></acme-button
         >
       </div>
       ${

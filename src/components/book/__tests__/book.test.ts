@@ -23,7 +23,7 @@ describe("acme-book", () => {
     expect(b.querySelector(".cover > .band > .bind")).not.toBeNull();
     expect(b.querySelector(".cover > .body > .bind[aria-hidden]")).not.toBeNull();
     expect(b.querySelector(".body > .content > .title")?.textContent).toBe("The user experience of the Frontend Cloud");
-    expect(b.querySelector(".content > slot[name=icon] + svg")).not.toBeNull();
+    expect(b.querySelector(".content > slot[name=icon] + acme-layers-icon")).not.toBeNull();
     expect(b.querySelector(".wrap > .pages[aria-hidden]")).not.toBeNull();
     expect(b.querySelector(".wrap > .back[aria-hidden]")).not.toBeNull();
     expect(b.querySelector(".texture")).toBeNull();
@@ -78,7 +78,7 @@ describe("acme-book", () => {
     const el = await mount(`<acme-book title="T"><svg slot="icon" width="16" height="16"></svg></acme-book>`);
     await new Promise((r) => setTimeout(r, 0));
     await el.updateComplete;
-    expect(root(el).querySelector(".content > slot[name=icon] + svg")).toBeNull();
+    expect(root(el).querySelector(".content > slot[name=icon] + acme-layers-icon")).toBeNull();
   });
 
   test("the gesture is one store with one action, and the frames derive from it", async () => {

@@ -46,7 +46,7 @@ describe("acme-multi-select", () => {
     expect(t.getAttribute("aria-expanded")).toBe("false");
     expect(t.getAttribute("data-state")).toBe("closed");
     expect(t.querySelector(".label .text slot[name=trigger]")).not.toBeNull();
-    expect(t.querySelector(".end .chev svg")).not.toBeNull();
+    expect(t.querySelector(".end .chev acme-expand-more-icon")).not.toBeNull();
     expect(content(el)).toBeNull();
     expect(el.value).toEqual(["a", "b"]);
   });

@@ -1,6 +1,6 @@
 import { comboboxStructureCss } from "../../generated/components/combobox/combobox-structure.styles";
 import { autoUpdate, computePosition, flip, hide, offset, shift } from "@floating-ui/dom";
-import { html, LitElement, nothing, svg } from "lit";
+import { html, LitElement, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
@@ -26,11 +26,6 @@ const FOCUSABLE = "input:not([type=hidden]), select, button, textarea, a, acme-b
 /** Rows shown before the list scrolls. */
 const VISIBLE_ROWS = 5;
 let seq = 0;
-
-/** 16-box icons in the current colour: the glass, the cross, the chevron. */
-const GLASS = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M1.5 6.5a5 5 0 1 1 10 0 5 5 0 0 1-10 0M6.5 0a6.5 6.5 0 1 0 4.03 11.6l3.74 3.73 1.06-1.06-3.74-3.74A6.5 6.5 0 0 0 6.5 0"></path>`;
-const CROSS = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M12.53 4.53 9.06 8l3.47 3.47-1.06 1.06L8 9.06l-3.47 3.47-1.06-1.06L6.94 8 3.47 4.53l1.06-1.06L8 6.94l3.47-3.47 1.06 1.06Z"></path>`;
-const CHEVRON = svg`<path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M8 10.94 3.53 6.47l1.06-1.06L8 8.82l3.41-3.41 1.06 1.06L8 10.94Z"></path>`;
 
 /** Ranks the rows by their value and label. */
 const defaultFilter: ComboboxFilter = (rows, query) => matchSorter(rows, query, { keys: [(r) => r.value, (r) => r.text] });
@@ -62,12 +57,7 @@ const defaultFilter: ComboboxFilter = (rows, query) => matchSorter(rows, query, 
 export class AcmeCombobox extends AcmeElement {
   static formAssociated = true;
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
-  static styles = [
-    sharedCss,
-    comboboxCss,
-    comboboxListCss,
-    comboboxStructureCss,
-  ];
+  static styles = [sharedCss, comboboxCss, comboboxListCss, comboboxStructureCss];
   @property() placeholder = "";
   /** The chosen row's value; empty for none. */
   @property() value = "";
@@ -638,20 +628,21 @@ export class AcmeCombobox extends AcmeElement {
       open: this.open,
       keyboard: this.keyboard,
     });
-    const icon = (path: unknown) => html`<svg class="icon" viewBox="0 0 16 16" width="16" height="16" fill="none" style="color:currentColor" aria-hidden="true">${path}</svg>`;
     const start = this.noInputStart
       ? nothing
       : html`<div class="start" aria-hidden="true">${
-          this.loading ? html`<acme-spinner size="md"></acme-spinner>` : html`<slot name="start-icon" @slotchange=${this.readChildren}>${chosen?.startNode?.cloneNode(true) ?? icon(GLASS)}</slot>`
+          this.loading
+            ? html`<acme-spinner size="md"></acme-spinner>`
+            : html`<slot name="start-icon" @slotchange=${this.readChildren}>${chosen?.startNode?.cloneNode(true) ?? html`<acme-search-icon size="16px" class="icon"></acme-search-icon>`}</slot>`
         }</div>`;
     const endNode = this.displaySelectedEnd ? chosen?.endNode?.cloneNode(true) : undefined;
     const end = endNode ? html`<div class="end">${endNode}</div>` : nothing;
     const clear = this.clearable
-      ? html`<button class="clear" type="button" aria-label="Clear selected value" data-open=${String(this.open)} ?disabled=${this.disabled} style=${this.inputValue ? nothing : "display:none"} tabindex="0" @click=${this.onClear}>${icon(CROSS)}</button>`
+      ? html`<button class="clear" type="button" aria-label="Clear selected value" data-open=${String(this.open)} ?disabled=${this.disabled} style=${this.inputValue ? nothing : "display:none"} tabindex="0" @click=${this.onClear}>${html`<acme-close-icon size="16px" class="icon"></acme-close-icon>`}</button>`
       : nothing;
     const toggle =
       this.showMenuButton && !(this.clearable && this.inputValue)
-        ? html`<button class="toggle" type="button" aria-label=${this.open ? "Close menu" : "Open menu"} data-open=${String(this.open)} ?disabled=${this.disabled} tabindex="-1" @mousedown=${this.onToggle}>${icon(CHEVRON)}</button>`
+        ? html`<button class="toggle" type="button" aria-label=${this.open ? "Close menu" : "Open menu"} data-open=${String(this.open)} ?disabled=${this.disabled} tabindex="-1" @mousedown=${this.onToggle}>${html`<acme-expand-more-icon size="16px" class="icon"></acme-expand-more-icon>`}</button>`
         : nothing;
     const active = this.open ? rows[this.selectedIndex]?.rowId : undefined;
     const list = this.open

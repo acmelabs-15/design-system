@@ -1,9 +1,7 @@
 // Docs page: Toggle — mirrors https://vercel.com/geist/toggle
 import type { Doc } from "../../site";
 
-// Bare sprite icons (no utility class): the thumb sizes them.
-const icon = (n: string, slot: string) =>
-  `<svg slot="${slot}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const icon = (name: string, slot: string) => `<acme-${name}-icon slot="${slot}" size="16px"></acme-${name}-icon>`;
 const icons = icon("lock", "icon-checked") + icon("lock-open", "icon-unchecked");
 const shared = `for (const t of root.querySelectorAll("acme-toggle")) t.addEventListener("acme-change", (e) => { for (const o of root.querySelectorAll("acme-toggle")) o.checked = e.detail.checked; });`;
 const labeled = (extra = "", inner = "") =>

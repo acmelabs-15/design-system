@@ -2,8 +2,7 @@
 import type { Doc } from "../../site";
 
 // A bare sprite icon (no utility class): the place sizes it, and it takes the color of its surroundings, as an icon does.
-const up = (slot: string) =>
-  `<svg slot="${slot}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" style="color:currentColor" aria-hidden="true"><use href="#i-arrow-circle-up"/></svg>`;
+const up = (slot: string) => `<acme-arrow-circle-up-icon slot="${slot}" style="color:currentColor" size="16px"></acme-arrow-circle-up-icon>`;
 // Text in a place, which reads the same whether the place is attached to the field or inside it.
 const text = (slot: string, s: string) => `<span slot="${slot}">${s}</span>`;
 

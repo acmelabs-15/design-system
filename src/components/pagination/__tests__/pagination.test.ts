@@ -19,7 +19,7 @@ describe("acme-pagination", () => {
     expect(prev.getAttribute("aria-label")).toBe("Go to previous page: Home");
     expect(prev.querySelector(".label")!.textContent).toBe("Previous");
     expect(prev.querySelector(".row > .title")!.textContent).toBe("Home");
-    expect(prev.querySelector(".row > .chev svg")).not.toBeNull();
+    expect(prev.querySelector(".row > .chev acme-chevron-left-icon")).not.toBeNull();
     expect(next.getAttribute("aria-label")).toBe("Go to next page: Introduction");
     expect(next.getAttribute("href")).toBe("/intro");
     expect(next.querySelector(".label")!.textContent).toBe("Next");

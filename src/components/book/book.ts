@@ -2,7 +2,7 @@ import { bookStructureCss } from "../../generated/components/book/book-structure
 import { html, nothing, svg } from "lit";
 import { property, query } from "lit/decorators.js";
 import { AnimateController, animate } from "@lit-labs/motion";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { createStore, StoreEffect, StoreSelector } from "../../shared/state";
 import { Interaction } from "../../shared/interaction";
@@ -63,11 +63,7 @@ const defaultIllustration = svg`<svg width="36" height="56" viewBox="0 0 36 56" 
  */
 
 export class AcmeBook extends AcmeElement {
-  static styles = [
-    sharedCss,
-    bookCss,
-    bookStructureCss,
-  ];
+  static styles = [sharedCss, bookCss, bookStructureCss];
   /** The cover title. The attribute is read and removed, so the element shows no tooltip. */
   @property() override title = "";
   /** stripe (default): a band in `color` above the title and an icon below it · simple: the cover in `color`, an illustration below the title. */
@@ -112,7 +108,11 @@ export class AcmeBook extends AcmeElement {
    * markup needs. Held, not read — `TanStackStoreSelector` exposes no value, only the subscription;
    * the guard reads the store itself.
    */
-  private hovered = new StoreSelector(this, () => this.gesture, (g) => g.hovered);
+  private hovered = new StoreSelector(
+    this,
+    () => this.gesture,
+    (g) => g.hovered,
+  );
 
   // ── motion ─────────────────────────────────────────────────────────────────
 
@@ -130,7 +130,11 @@ export class AcmeBook extends AcmeElement {
    * advancing and the cover travels the way it was going. This runs inside `setState`, before Lit's
    * update, and `from` was measured before the write — the box is caught mid-flight, then released.
    */
-  private settle = new StoreEffect(this, () => this.gesture, () => this.motion.cancel());
+  private settle = new StoreEffect(
+    this,
+    () => this.gesture,
+    () => this.motion.cancel(),
+  );
 
   private interaction = new Interaction(this);
 
@@ -215,7 +219,7 @@ export class AcmeBook extends AcmeElement {
             <div class="bind" aria-hidden="true"></div>
             <div class="content">
               <span class="title">${this.title}</span>
-              ${stripe ? html`<slot name="icon" @slotchange=${this.iconSlotted}></slot>${this.hasIcon ? nothing : glyphSized("layers", 16)}` : illustration}
+              ${stripe ? html`<slot name="icon" @slotchange=${this.iconSlotted}></slot>${this.hasIcon ? nothing : html`<acme-layers-icon size="16px"></acme-layers-icon>`}` : illustration}
             </div>
           </div>
           ${this.textured ? html`<div class="texture" aria-hidden="true" style="transform:rotate(${textureFlipped(this.title) ? 180 : 0}deg)"></div>` : nothing}

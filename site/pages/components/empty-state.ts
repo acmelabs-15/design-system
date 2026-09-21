@@ -1,10 +1,10 @@
 // Docs page: Empty State — mirrors https://vercel.com/geist/empty-state
 import type { Doc } from "../../site";
 
-const icon = `<acme-icon-tile slot="icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-chart"/></svg></acme-icon-tile>`;
+const icon = `<acme-icon-tile slot="icon"><acme-bar-chart-icon size="32px"></acme-bar-chart-icon></acme-icon-tile>`;
 const blank = (attrs = "") => `<acme-empty-state title="Title" description="A message conveying the state of the product."${attrs}>${icon}</acme-empty-state>`;
 // The reference's secondary Link (gray-900, an inline row with a 2px gap and the external-link icon): a plain anchor here, styled inline.
-const learnMore = `<a href="/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:2px;color:var(--ds-gray-900)">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-ext"/></svg></a>`;
+const learnMore = `<a href="/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:2px;color:var(--ds-gray-900)">Learn more<acme-open-in-new-icon size="16px"></acme-open-in-new-icon></a>`;
 const list = `<ul style="font-size:16px;line-height:24px;color:var(--text-2);margin:16px 0 0;padding-left:20px;max-width:72ch">`;
 
 export const doc: Doc = {
@@ -29,12 +29,14 @@ export const doc: Doc = {
       html: `<acme-empty-state title="Title" description="This should detail the actions you can take on this screen, as well as why it’s valuable.">${icon}<acme-button variant="secondary">Primary Action</acme-button>${learnMore}</acme-empty-state>`,
     },
     {
-      h: "Secondary", census: true,
+      h: "Secondary",
+      census: true,
       p: "The background-200 form with the 14px title, for an empty state inside a tinted panel.",
       html: blank(" secondary"),
     },
     {
-      h: "No border", census: true,
+      h: "No border",
+      census: true,
       p: '<code>border="false"</code> keeps the border box and makes it transparent, for an empty state that sits in a bordered container of its own.',
       html: blank(' border="false"'),
     },

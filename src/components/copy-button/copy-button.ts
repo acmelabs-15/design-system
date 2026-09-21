@@ -1,7 +1,7 @@
 import { copyButtonStructureCss } from "../../generated/components/copy-button/copy-button-structure.styles";
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, glyphSized, sharedCss } from "../../base";
+import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { createStore, StoreSelector, toasts } from "../../shared/state";
 import type { ButtonColors, ButtonSize, ButtonVariant } from "../button/button";
@@ -27,11 +27,7 @@ import { copyButtonCss } from "../../generated/components/copy-button/copy-butto
  */
 
 export class AcmeCopyButton extends AcmeElement {
-  static styles = [
-    sharedCss,
-    copyButtonCss,
-    copyButtonStructureCss,
-  ];
+  static styles = [sharedCss, copyButtonCss, copyButtonStructureCss];
   /** The string that goes to the clipboard. */
   @property({ attribute: "text-to-copy" }) textToCopy = "";
   /** The accessible name: what is copied ("copy text"). */
@@ -116,9 +112,9 @@ export class AcmeCopyButton extends AcmeElement {
     >
       ${copied ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}
       <div class=${this.cls("stack", { copied })} part="stack">
-        <div class="check" part="check">${glyphSized("check")}</div>
+        <div class="check" part="check">${html`<acme-check-icon size="16px"></acme-check-icon>`}</div>
         <div class="copy" part="icon">
-          <slot name="icon" @slotchange=${this.readIconSlot}></slot>${this.hasIcon ? nothing : glyphSized("copy")}
+          <slot name="icon" @slotchange=${this.readIconSlot}></slot>${this.hasIcon ? nothing : html`<acme-content-copy-icon size="16px"></acme-content-copy-icon>`}
         </div>
       </div>
     </acme-button>`;

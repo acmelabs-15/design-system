@@ -2,16 +2,9 @@
 import type { Doc } from "../../site";
 
 const item = (text: string, attrs = "") => `<acme-menu-item slot="items"${attrs ? ` ${attrs}` : ""}>${text}</acme-menu-item>`;
-/** A 16px filled icon, sized by its attributes like the reference's icons: `accessibility` (a person in a ring) or `dots` (three dots). */
-const PATHS = {
-  accessibility:
-    "M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13ZM8 3a1.25 1.25 0 1 0 0 2.5A1.25 1.25 0 0 0 8 3ZM4.5 6.25a.75.75 0 0 0 0 1.5H6.5V9l-1.2 3a.75.75 0 1 0 1.4.55L8 9.5l1.3 3.05a.75.75 0 1 0 1.4-.55L9.5 9V7.75h2a.75.75 0 0 0 0-1.5h-7Z",
-  dots: "M3 6.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm5 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z",
-};
-const icon = (name: keyof typeof PATHS, slot = "") =>
-  `<svg viewBox="0 0 16 16" width="16" height="16"${slot ? ` slot="${slot}"` : ""} fill="currentColor" aria-hidden="true"><path d="${PATHS[name]}"/></svg>`;
+const icon = (name: "accessibility-new" | "more-horiz", slot = "") => `<acme-${name}-icon size="16px"${slot ? ` slot="${slot}"` : ""}></acme-${name}-icon>`;
 const trigger = (text: string, attrs = "") => `<acme-menu-button slot="trigger"${attrs ? ` ${attrs}` : ""}>${text}</acme-menu-button>`;
-const dotsTrigger = trigger(icon("dots"), 'aria-label="Menu" shape="square" size="small" svg-only variant="secondary"');
+const dotsTrigger = trigger(icon("more-horiz"), 'aria-label="Menu" shape="square" size="small" svg-only variant="secondary"');
 const box = (h: number, inner: string, extra = "") => `<div style="min-height:${h}px;position:relative${extra}">${inner}</div>`;
 /** Opens every menu in the example, so the page shows the state the reference reaches on a click. */
 const openAll = "for (const m of root.querySelectorAll('acme-menu')) m.open = true;";
@@ -28,7 +21,7 @@ const locked = (tooltip: boolean) =>
   }</acme-menu>`;
 const links = `<acme-menu width="200">${trigger("Links")}${item("One", 'href="/design/menu#custom-trigger"')}${item("Two", 'href="#"')}${item("Three", 'href="#"')}</acme-menu>`;
 const custom = `<acme-menu width="200">${trigger('<acme-avatar size="30" username="evilrabbit"></acme-avatar>', 'variant="unstyled"')}${item("One")}${item("Two")}${item("Three")}</acme-menu>`;
-const startEnd = `<div class="row" style="gap:24px;align-items:stretch;flex-wrap:nowrap"><acme-menu>${dotsTrigger}${item(`${icon("accessibility", "start")}Left`)}${item(`${icon("accessibility", "start")}Center`)}${item(`${icon("accessibility", "start")}Right`)}</acme-menu><acme-menu>${dotsTrigger}${item(`Left${icon("accessibility", "end")}`)}${item(`Center${icon("accessibility", "end")}`)}${item(`Right${icon("accessibility", "end")}`)}</acme-menu></div>`;
+const startEnd = `<div class="row" style="gap:24px;align-items:stretch;flex-wrap:nowrap"><acme-menu>${dotsTrigger}${item(`${icon("accessibility-new", "start")}Left`)}${item(`${icon("accessibility-new", "start")}Center`)}${item(`${icon("accessibility-new", "start")}Right`)}</acme-menu><acme-menu>${dotsTrigger}${item(`Left${icon("accessibility-new", "end")}`)}${item(`Center${icon("accessibility-new", "end")}`)}${item(`Right${icon("accessibility-new", "end")}`)}</acme-menu></div>`;
 const position = `<acme-menu position="left-start" width="200">${trigger("Left Start")}${item("One")}${item("Two")}</acme-menu>`;
 const section = `<acme-menu width="200">${trigger("Actions")}<acme-menu-section slot="items" title="Section"><acme-menu-item>One</acme-menu-item><acme-menu-item>Two</acme-menu-item></acme-menu-section>${item("Three")}${item("Locked", "locked")}<acme-menu-divider slot="items"></acme-menu-divider>${item("Delete", 'variant="error"')}</acme-menu>`;
 
@@ -55,14 +48,16 @@ export const doc: Doc = {
     { h: "Open custom trigger", census: true, p: "The unstyled avatar trigger open.", html: box(180, custom), script: openAll },
     { h: "Open start and end", census: true, p: "An icon trigger reads gray-400 while open; the list is the default 150 wide.", html: box(180, startEnd), script: openAll },
     {
-      h: "Open menu position", census: true,
+      h: "Open menu position",
+      census: true,
       p: "The left-start menu open: the list to the left of the trigger, their top edges level.",
       html: box(120, position, ";display:flex;justify-content:flex-end"),
       script: openAll,
     },
     { h: "Open with section", census: true, p: "A titled group, a locked item, a divider and an error item.", html: box(300, section), script: openAll },
     {
-      h: "Chevron on the default variant", census: true,
+      h: "Chevron on the default variant",
+      census: true,
       p: "The chevron on the default variant: the trigger keeps its own hover fill, and the chevron stays gray.",
       html: box(60, `<acme-menu width="200">${trigger("Actions", "show-chevron")}${item("One")}${item("Two")}</acme-menu>`),
     },

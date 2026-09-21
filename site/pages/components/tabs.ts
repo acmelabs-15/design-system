@@ -15,7 +15,7 @@ export const doc: Doc = {
     { h: "Disable specific tabs", html: fruit("", ' disabled tooltip="Mangos are not allowed"') },
     {
       h: "With icons",
-      html: `<acme-tabs value="github"><acme-tab value="github"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub</acme-tab><acme-tab value="gitlab"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#i-gitlab"/></svg>GitLab</acme-tab><acme-tab value="bitbucket"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true" style="color:#2684ff"><use href="#i-bitbucket"/></svg>Bitbucket</acme-tab></acme-tabs>`,
+      html: `<acme-tabs value="github"><acme-tab value="github"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-github"/></svg>GitHub</acme-tab><acme-tab value="gitlab"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-gitlab"/></svg>GitLab</acme-tab><acme-tab value="bitbucket"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true" style="color:#2684ff"><use href="#brand-bitbucket"/></svg>Bitbucket</acme-tab></acme-tabs>`,
     },
     {
       h: "Secondary",

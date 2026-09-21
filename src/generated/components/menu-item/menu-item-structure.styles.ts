@@ -7,4 +7,8 @@ export const menuItemStructureCss = css`:host {
 .link {
   list-style: none;
 }
+
+acme-lock-icon {
+  color: var(--ds-gray-700);
+}
 `;

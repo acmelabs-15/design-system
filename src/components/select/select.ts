@@ -1,7 +1,7 @@
 import { selectStructureCss } from "../../generated/components/select/select-structure.styles";
 import { html, nothing } from "lit";
 import { property, query } from "lit/decorators.js";
-import { AcmeElement, boolish, paths, sharedCss } from "../../base";
+import { AcmeElement, boolish, sharedCss } from "../../base";
 import { Places } from "../../shared/places";
 import { Interaction } from "../../shared/interaction";
 import { selectCss } from "../../generated/components/select/select.styles";
@@ -14,7 +14,7 @@ export type SelectSize = "tiny" | "small" | "medium" | "large";
 export type SelectOption = string | { value: string; label: string; disabled?: boolean };
 
 /** The end place's fallback: a chevron the place sizes to the control decoration size (14px). */
-const chevron = html`<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d=${paths["chev-d"]}></path></svg>`;
+const chevron = html`<acme-expand-more-icon class="chevron" size="16px"></acme-expand-more-icon>`;
 
 /**
  * A native select with a styled face. A relative flex wrapper holds the field (32 / 36 / 40px,
@@ -33,12 +33,7 @@ const chevron = html`<svg class="chevron" width="16" height="16" viewBox="0 0 24
 
 export class AcmeSelect extends AcmeElement {
   static formAssociated = true;
-  static styles = [
-    sharedCss,
-    selectCss,
-    selectLabelCss,
-    selectStructureCss,
-  ];
+  static styles = [sharedCss, selectCss, selectLabelCss, selectStructureCss];
   /** The text above the field. */
   @property() label = "";
   /** The disabled first option; its text is its value. */

@@ -20,7 +20,6 @@ const EXIT_MS = 200;
 let seq = 0;
 
 /** The 16-box chevron in the trigger's end place, drawn 14 wide in the current colour. */
-const CHEVRON = "m14.06 5.5-.53.53-4.82 4.82a1 1 0 0 1-1.42 0L2.47 6.03l-.53-.53L3 4.44l.53.53L8 9.44l4.47-4.47.53-.53z";
 
 /**
  * A trigger that opens a list of rows to check several of them: `acme-multi-select-row` children,
@@ -42,12 +41,7 @@ const CHEVRON = "m14.06 5.5-.53.53-4.82 4.82a1 1 0 0 1-1.42 0L2.47 6.03l-.53-.53
 
 export class AcmeMultiSelect extends AcmeElement implements MultiSelectOwner {
   static formAssociated = true;
-  static styles = [
-    sharedCss,
-    multiSelectCss,
-    multiSelectContentCss,
-    multiSelectStructureCss,
-  ];
+  static styles = [sharedCss, multiSelectCss, multiSelectContentCss, multiSelectStructureCss];
   @property({ type: Boolean, reflect: true }) open = false;
   @property({ reflect: true }) name = "";
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -345,7 +339,7 @@ export class AcmeMultiSelect extends AcmeElement implements MultiSelectOwner {
       >
         <span class="label"><span class="text"><slot name="trigger"></slot></span></span>
         <span class="end"
-          ><div class="chev"><svg viewBox="0 0 16 16" height="14" width="14" style="color:currentColor"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d=${CHEVRON}></path></svg></div></span
+          ><div class="chev"><acme-expand-more-icon size="14px"></acme-expand-more-icon></div></span
         >
       </button>
       ${

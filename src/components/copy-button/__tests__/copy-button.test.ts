@@ -82,7 +82,7 @@ describe("acme-copy-button", () => {
     // `assignedElements({ flatten: true })`, which resolves the forwarded slot to what it holds.
     const bare = await mount(`<acme-copy-button text-to-copy="x"></acme-copy-button>`);
     expect(bare.shadowRoot!.querySelector(".copy slot[name=icon]")).not.toBeNull();
-    expect(bare.shadowRoot!.querySelector(".copy > svg")).not.toBeNull();
+    expect(bare.shadowRoot!.querySelector(".copy > acme-content-copy-icon")).not.toBeNull();
 
     const withIcon = await mount(`<acme-copy-button text-to-copy="x"><svg slot="icon"></svg></acme-copy-button>`);
     const slot = withIcon.shadowRoot!.querySelector(".copy slot[name=icon]") as HTMLSlotElement;

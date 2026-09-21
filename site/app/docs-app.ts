@@ -23,7 +23,7 @@ declare global {
 export const prefix = location.hostname.endsWith("github.io") ? `/${location.pathname.split("/")[1]}` : "";
 // The docs serve the package's asset files themselves (the build copies `assets/` next to the pages).
 setAssetsBase(`${prefix}/assets/`);
-const ICON_CHART = html`<svg class="ic" width="16" height="16" slot="logo" aria-hidden="true"><use href="#i-chart"></use></svg>`;
+const ICON_CHART = html`<acme-bar-chart-icon class="ic" slot="logo" size="16px"></acme-bar-chart-icon>`;
 const cache = new Map<string, string>();
 
 export class AcmeDocsApp extends LitElement {

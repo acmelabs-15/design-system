@@ -26,11 +26,11 @@ describe("acme-description", () => {
     const el = await mount(`<acme-description title="T" content="c" tooltip="Additional context."></acme-description>`);
     const info = root(el).querySelector("dt.title > .info > acme-tooltip.trigger") as HTMLElement;
     expect(info.getAttribute("text")).toBe("Additional context.");
-    const icon = info.querySelector("svg") as SVGElement;
+    const icon = info.querySelector("[role=img]") as HTMLElement;
     expect(icon.getAttribute("tabindex")).toBe("0");
     expect(icon.getAttribute("role")).toBe("img");
     expect(icon.getAttribute("aria-label")).toBe("Additional context.");
-    expect(icon.getAttribute("width")).toBe("14");
+    expect(icon.querySelector("acme-info-icon")?.getAttribute("size")).toBe("14px");
   });
 
   test("right and ellipsis map to modifier classes", async () => {

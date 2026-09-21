@@ -1,0 +1,645 @@
+{
+  "date": "2026-09-21",
+  "batch": "M09 in progress",
+  "scope": "Shared glyph helpers and generic docs sprite retired; component consumers use named icons",
+  "renderer": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "native SVG geometry is drawable",
+            "ok": true
+          },
+          {
+            "name": "default decorative icon has no exposed image name",
+            "ok": true
+          },
+          {
+            "name": "named icon has one native image role",
+            "ok": true
+          },
+          {
+            "name": "size reaches the real host and SVG",
+            "ok": true
+          },
+          {
+            "name": "SVG paths inherit currentColor",
+            "ok": true
+          },
+          {
+            "name": "icon artwork suppresses ambient stroke styling",
+            "ok": true
+          },
+          {
+            "name": "unloaded artwork reports an accessible missing marker",
+            "ok": true
+          },
+          {
+            "name": "explicit artwork installation replaces the marker",
+            "ok": true
+          },
+          {
+            "name": "explicit family and false fill override defaults",
+            "ok": true
+          },
+          {
+            "name": "reconnection reads current configuration and assets",
+            "ok": true
+          },
+          {
+            "name": "adoption keeps the generated size and SVG geometry",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "native SVG geometry is drawable",
+            "ok": true
+          },
+          {
+            "name": "default decorative icon has no exposed image name",
+            "ok": true
+          },
+          {
+            "name": "named icon has one native image role",
+            "ok": true
+          },
+          {
+            "name": "size reaches the real host and SVG",
+            "ok": true
+          },
+          {
+            "name": "SVG paths inherit currentColor",
+            "ok": true
+          },
+          {
+            "name": "icon artwork suppresses ambient stroke styling",
+            "ok": true
+          },
+          {
+            "name": "unloaded artwork reports an accessible missing marker",
+            "ok": true
+          },
+          {
+            "name": "explicit artwork installation replaces the marker",
+            "ok": true
+          },
+          {
+            "name": "explicit family and false fill override defaults",
+            "ok": true
+          },
+          {
+            "name": "reconnection reads current configuration and assets",
+            "ok": true
+          },
+          {
+            "name": "adoption keeps the generated size and SVG geometry",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "native SVG geometry is drawable",
+            "ok": true
+          },
+          {
+            "name": "default decorative icon has no exposed image name",
+            "ok": true
+          },
+          {
+            "name": "named icon has one native image role",
+            "ok": true
+          },
+          {
+            "name": "size reaches the real host and SVG",
+            "ok": true
+          },
+          {
+            "name": "SVG paths inherit currentColor",
+            "ok": true
+          },
+          {
+            "name": "icon artwork suppresses ambient stroke styling",
+            "ok": true
+          },
+          {
+            "name": "unloaded artwork reports an accessible missing marker",
+            "ok": true
+          },
+          {
+            "name": "explicit artwork installation replaces the marker",
+            "ok": true
+          },
+          {
+            "name": "explicit family and false fill override defaults",
+            "ok": true
+          },
+          {
+            "name": "reconnection reads current configuration and assets",
+            "ok": true
+          },
+          {
+            "name": "adoption keeps the generated size and SVG geometry",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "composition": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "Copy Button owns named icon elements",
+            "ok": true
+          },
+          {
+            "name": "library defaults reach internal action icons",
+            "ok": true
+          },
+          {
+            "name": "late author icon replaces only the default copy artwork",
+            "ok": true
+          },
+          {
+            "name": "Browser controls keep their 14px geometry",
+            "ok": true
+          },
+          {
+            "name": "Browser controls retain their house foreground color",
+            "ok": true
+          },
+          {
+            "name": "help illustration keeps its keyboard focus and accessible name",
+            "ok": true
+          },
+          {
+            "name": "Enter on the focused illustration opens the visible tooltip",
+            "ok": true
+          },
+          {
+            "name": "file and folder composition use the declared symbols",
+            "ok": true
+          },
+          {
+            "name": "search composes the named search icon",
+            "ok": true
+          },
+          {
+            "name": "theme options use a complete three-icon set",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "Copy Button owns named icon elements",
+            "ok": true
+          },
+          {
+            "name": "library defaults reach internal action icons",
+            "ok": true
+          },
+          {
+            "name": "late author icon replaces only the default copy artwork",
+            "ok": true
+          },
+          {
+            "name": "Browser controls keep their 14px geometry",
+            "ok": true
+          },
+          {
+            "name": "Browser controls retain their house foreground color",
+            "ok": true
+          },
+          {
+            "name": "help illustration keeps its keyboard focus and accessible name",
+            "ok": true
+          },
+          {
+            "name": "Enter on the focused illustration opens the visible tooltip",
+            "ok": true
+          },
+          {
+            "name": "file and folder composition use the declared symbols",
+            "ok": true
+          },
+          {
+            "name": "search composes the named search icon",
+            "ok": true
+          },
+          {
+            "name": "theme options use a complete three-icon set",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "Copy Button owns named icon elements",
+            "ok": true
+          },
+          {
+            "name": "library defaults reach internal action icons",
+            "ok": true
+          },
+          {
+            "name": "late author icon replaces only the default copy artwork",
+            "ok": true
+          },
+          {
+            "name": "Browser controls keep their 14px geometry",
+            "ok": true
+          },
+          {
+            "name": "Browser controls retain their house foreground color",
+            "ok": true
+          },
+          {
+            "name": "help illustration keeps its keyboard focus and accessible name",
+            "ok": true
+          },
+          {
+            "name": "Enter on the focused illustration opens the visible tooltip",
+            "ok": true
+          },
+          {
+            "name": "file and folder composition use the declared symbols",
+            "ok": true
+          },
+          {
+            "name": "search composes the named search icon",
+            "ok": true
+          },
+          {
+            "name": "theme options use a complete three-icon set",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "documentation": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.48",
+        "results": [
+          {
+            "name": "docs bootstrap renders the routed icon page",
+            "ok": true
+          },
+          {
+            "name": "clicking the named icon opens the code example",
+            "ok": true
+          },
+          {
+            "name": "routed color examples have registered default and filled artwork",
+            "ok": true,
+            "states": [
+              {
+                "tag": "acme-language-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-error-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-warning-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-check-circle-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-notifications-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-check-circle-icon",
+                "svg": true,
+                "missing": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "docs bootstrap renders the routed icon page",
+            "ok": true
+          },
+          {
+            "name": "clicking the named icon opens the code example",
+            "ok": true
+          },
+          {
+            "name": "routed color examples have registered default and filled artwork",
+            "ok": true,
+            "states": [
+              {
+                "tag": "acme-language-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-error-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-warning-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-check-circle-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-notifications-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-check-circle-icon",
+                "svg": true,
+                "missing": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "docs bootstrap renders the routed icon page",
+            "ok": true
+          },
+          {
+            "name": "clicking the named icon opens the code example",
+            "ok": true
+          },
+          {
+            "name": "routed color examples have registered default and filled artwork",
+            "ok": true,
+            "states": [
+              {
+                "tag": "acme-language-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-error-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-warning-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-check-circle-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-notifications-icon",
+                "svg": true,
+                "missing": false
+              },
+              {
+                "tag": "acme-check-circle-icon",
+                "svg": true,
+                "missing": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "validation": {
+    "tests": 896,
+    "failures": 0,
+    "assertions": 119166,
+    "files": 132,
+    "docsPages": 93,
+    "manifestElements": 4254,
+    "undocumented": 0
+  },
+  "mapping": {
+    "names": {
+      "check": "check",
+      "x": "close",
+      "chev": "chevron-right",
+      "chev-d": "expand-more",
+      "chev-l": "chevron-left",
+      "chev-u": "expand-less",
+      "arrow-u": "arrow-upward",
+      "arrow-d": "arrow-downward",
+      "copy": "content-copy",
+      "search": "search",
+      "info": "info",
+      "alert": "error",
+      "warn": "warning",
+      "arrow": "arrow-forward",
+      "back": "arrow-back",
+      "up": "north-east",
+      "down": "south-west",
+      "sun": "light-mode",
+      "moon": "dark-mode",
+      "monitor": "desktop-windows",
+      "dots": "more-horiz",
+      "play": "play-arrow",
+      "pause": "pause",
+      "folder": "folder",
+      "file": "description",
+      "calendar": "calendar-month",
+      "globe": "language",
+      "lock": "lock",
+      "ext": "open-in-new",
+      "bolt": "bolt",
+      "layers": "layers"
+    },
+    "changed": [
+      {
+        "file": "src/components/error/error.ts",
+        "calls": 2
+      },
+      {
+        "file": "src/components/breadcrumb/breadcrumb.ts",
+        "calls": 1
+      },
+      {
+        "file": "src/components/book/book.ts",
+        "calls": 1
+      },
+      {
+        "file": "src/components/browser/browser.ts",
+        "calls": 2
+      },
+      {
+        "file": "src/components/menu-button/menu-button.ts",
+        "calls": 1
+      },
+      {
+        "file": "src/components/collapse/collapse.ts",
+        "calls": 1
+      },
+      {
+        "file": "src/components/copy-button/copy-button.ts",
+        "calls": 2
+      },
+      {
+        "file": "src/components/code-block/code-block.ts",
+        "calls": 1
+      },
+      {
+        "file": "src/components/calendar/calendar.ts",
+        "calls": 4
+      },
+      {
+        "file": "src/components/show-more/show-more.ts",
+        "calls": 1
+      },
+      {
+        "file": "src/components/split-button/split-button.ts",
+        "calls": 1
+      }
+    ]
+  },
+  "docsMapping": {
+    "up": "trending-up",
+    "arrow-circle-up": "arrow-circle-up",
+    "accessibility": "accessibility-new",
+    "chevron-down": "expand-more",
+    "down": "trending-down",
+    "cpu": "developer-board",
+    "mem": "memory",
+    "wifi": "wifi",
+    "dollar": "attach-money",
+    "users": "groups",
+    "target": "target",
+    "pig": "savings",
+    "chart": "bar-chart",
+    "card": "credit-card",
+    "cal": "calendar-month",
+    "clock": "schedule",
+    "info": "info",
+    "arrow": "arrow-forward",
+    "ext": "open-in-new",
+    "edit": "edit",
+    "trash": "delete",
+    "search": "search",
+    "bell": "notifications",
+    "gear": "settings",
+    "sun": "light-mode",
+    "moon": "dark-mode",
+    "mon": "desktop-windows",
+    "briefcase": "work",
+    "shield": "shield",
+    "swap": "swap-horiz",
+    "globe": "language",
+    "file": "description",
+    "check": "check",
+    "check-circle": "check-circle",
+    "alert": "error",
+    "rocket": "rocket-launch",
+    "branch": "fork-right",
+    "dots": "more-horiz",
+    "chev": "chevron-right",
+    "user": "person",
+    "plus": "add",
+    "trophy": "emoji-events",
+    "bell-off": "notifications-off",
+    "download": "download",
+    "copy": "content-copy",
+    "sparkles": "auto-awesome",
+    "floppy": "save",
+    "share": "share",
+    "rollback": "undo",
+    "commit": "commit",
+    "updown": "unfold-more",
+    "back": "arrow-back",
+    "fn": "function",
+    "grid": "grid-view",
+    "box": "inventory-2",
+    "list": "view-list",
+    "eye": "visibility",
+    "gauge": "speed",
+    "wall": "block",
+    "env": "data-object",
+    "domain": "language",
+    "store": "storefront",
+    "flag": "flag",
+    "image": "image",
+    "filter": "filter-list",
+    "funnel": "filter-alt",
+    "x": "close",
+    "expand": "open-in-full",
+    "credit": "credit-card",
+    "invoice": "receipt-long",
+    "warn-tri": "warning",
+    "arrow-up": "arrow-upward",
+    "arrow-left": "arrow-back",
+    "arrow-right": "arrow-forward",
+    "arrow-circle-down": "arrow-circle-down",
+    "check-circle-fill": "check-circle",
+    "clock-dashed": "schedule",
+    "folder": "folder",
+    "play": "play-arrow",
+    "pause": "pause",
+    "lock": "lock",
+    "lock-open": "lock-open"
+  },
+  "remaining": [
+    "Icon Tile, Spinner and M09 action/identity contracts",
+    "M10 checkbox indicator",
+    "M17 Tooltip focus contract",
+    "Later family replacements already assigned in the migration plan"
+  ],
+  "reproduction": {
+    "rendererProbe": "import {AcmeIconElement} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/icon-element';\nimport {IconArtwork,configureIcons} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/icon-artwork';\nimport data from './home.json';\nconst artwork=new IconArtwork('home',data['rounded:unfilled']);\nclass Home extends AcmeIconElement{protected get artwork(){return artwork;}}\ncustomElements.define('test-home-icon',Home);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\ntry{\n const icon=new Home();document.body.append(icon);await icon.updateComplete;\n const root=()=>icon.shadowRoot!.querySelector('[part=root]') as SVGSVGElement;\n check('native SVG geometry is drawable',root().namespaceURI==='http://www.w3.org/2000/svg'&&root().querySelector('path')!.getBBox().width>0);\n check('default decorative icon has no exposed image name',root().getAttribute('aria-hidden')==='true'&&!root().hasAttribute('aria-label'));\n icon.label='Home';await icon.updateComplete;check('named icon has one native image role',root().getAttribute('role')==='img'&&root().getAttribute('aria-label')==='Home'&&!icon.hasAttribute('role'));\n icon.size='32px';await icon.updateComplete;check('size reaches the real host and SVG',icon.getBoundingClientRect().width===32&&root().getBoundingClientRect().width===32);\n icon.style.color='rgb(20, 80, 170)';check('SVG paths inherit currentColor',getComputedStyle(root().querySelector('path')!).fill==='rgb(20, 80, 170)');\n icon.style.stroke=\"red\";check(\"icon artwork suppresses ambient stroke styling\",getComputedStyle(root().querySelector(\"path\")!).stroke===\"none\");\n configureIcons({family:'sharp',filled:true});await icon.updateComplete;check('unloaded artwork reports an accessible missing marker',root().localName==='span'&&root().getAttribute('aria-label')!.includes('Artwork unavailable'));\n artwork.add('sharp',true,data['sharp:filled']);await icon.updateComplete;check('explicit artwork installation replaces the marker',root().localName==='svg'&&root().querySelector('path')!.getAttribute('d')===data['sharp:filled'].paths[0].d);\n icon.family='rounded';icon.filled=false;await icon.updateComplete;check('explicit family and false fill override defaults',root().querySelector('path')!.getAttribute('d')===data['rounded:unfilled'].paths[0].d);\n icon.remove();icon.family=undefined;icon.filled=undefined;configureIcons({family:'outlined',filled:false});artwork.add('outlined',false,data['outlined:unfilled']);document.body.append(icon);await icon.updateComplete;check('reconnection reads current configuration and assets',root().querySelector('path')!.getAttribute('d')===data['outlined:unfilled'].paths[0].d);\n const frame=document.createElement('iframe');document.body.append(frame);frame.contentDocument!.body.append(icon);await icon.updateComplete;check('adoption keeps the generated size and SVG geometry',root().getBoundingClientRect().width===32&&root().querySelector('path')!.getBBox().height>0);\n (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+    "rendererRunner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-icons\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/dist/styles/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==11||r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "compositionProbe": "import '/Users/peterkloss/Dev/ACMElabs/design-system/dist/all';\nimport {configureIcons} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/shared/icon-artwork';\nimport '/Users/peterkloss/Dev/ACMElabs/design-system/dist/generated/icons/artwork/sharp/filled/content-copy';\nimport '/Users/peterkloss/Dev/ACMElabs/design-system/dist/generated/icons/artwork/sharp/filled/check';\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});\nconst settle=async()=>{await new Promise(resolve=>setTimeout(resolve,70));};\ntry{\n const copy=document.createElement('acme-copy-button');document.body.append(copy);await copy.updateComplete;await settle();\n const defaults=[...copy.shadowRoot!.querySelectorAll('acme-content-copy-icon,acme-check-icon')];check('Copy Button owns named icon elements',defaults.length===2&&defaults.every(icon=>!!icon.shadowRoot?.querySelector('svg')));\n configureIcons({family:'sharp',filled:true});await settle();check('library defaults reach internal action icons',defaults.every(icon=>!!icon.shadowRoot?.querySelector('svg')&&!icon.shadowRoot?.querySelector('.missing')));\n const custom=document.createElementNS('http://www.w3.org/2000/svg','svg');custom.setAttribute('slot','icon');copy.append(custom);await settle();check('late author icon replaces only the default copy artwork',!copy.shadowRoot!.querySelector('.copy > acme-content-copy-icon')&&(copy.shadowRoot!.querySelector('slot[name=icon]') as HTMLSlotElement).assignedElements()[0]===custom);\n copy.remove();configureIcons({family:'rounded',filled:false});\n const browser=document.createElement('acme-browser');browser.address='https://example.com';document.body.append(browser);await browser.updateComplete;await settle();const controls=[...browser.shadowRoot!.querySelectorAll('.controls > *')] as HTMLElement[];\n check('Browser controls keep their 14px geometry',controls.length===3&&controls.every(icon=>icon.getBoundingClientRect().width===14&&icon.getBoundingClientRect().height===14));\n const reference=document.createElement('span');reference.style.color='var(--ds-gray-900)';document.body.append(reference);check('Browser controls retain their house foreground color',controls.every(icon=>getComputedStyle(icon).color===getComputedStyle(reference).color));\n const description=document.createElement('acme-description');description.title='Details';description.tooltip='More context';document.body.append(description);await description.updateComplete;await settle();const trigger=description.shadowRoot!.querySelector('[role=img]') as HTMLElement;trigger.focus();await settle();check('help illustration keeps its keyboard focus and accessible name',description.shadowRoot!.activeElement===trigger&&trigger.getAttribute('aria-label')==='More context');\n const tooltip=description.shadowRoot!.querySelector(\"acme-tooltip\")!;\n (window as any).__readyForKey=true;await new Promise<void>(resolve=>(window as any).__continue=resolve);\n const visible=()=>{const tip=tooltip.shadowRoot?.querySelector(\"[role=tooltip]\") as HTMLElement|null;return !!tip&&tip.getBoundingClientRect().width>0&&Number(getComputedStyle(tip).opacity)>.9;};for(let i=0;i<30&&!visible();i++)await settle();check(\"Enter on the focused illustration opens the visible tooltip\",visible());\n const tree=document.createElement('acme-file-tree');tree.innerHTML='<acme-folder name=\"Source\" default-open><acme-file name=\"handler\" type=\"lambda\"></acme-file></acme-folder>';document.body.append(tree);await settle();const folder=tree.querySelector('acme-folder')!,file=tree.querySelector('acme-file')!;check('file and folder composition use the declared symbols',!!folder.shadowRoot!.querySelector('acme-folder-open-icon')?.shadowRoot?.querySelector('svg')&&!!file.shadowRoot!.querySelector('acme-function-icon')?.shadowRoot?.querySelector('svg'));\n const search=document.createElement('acme-search');document.body.append(search);await settle();check('search composes the named search icon',!!search.shadowRoot!.querySelector('acme-search-icon')?.shadowRoot?.querySelector('svg'));\n const theme=document.createElement('acme-theme-switcher');document.body.append(theme);await settle();check('theme options use a complete three-icon set',theme.shadowRoot!.querySelectorAll('acme-desktop-windows-icon,acme-light-mode-icon,acme-dark-mode-icon').length===3);\n (window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n",
+    "compositionRunner": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m09-composition\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__readyForKey||window.__results);if(await page.evaluate(()=>window.__readyForKey)){await page.keyboard.press(\"Enter\");await page.evaluate(()=>window.__continue());}await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==10||r.results.some(v=>!v.ok)))process.exitCode=1;\n",
+    "docsRunner": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst report:any={engines:[],errors:[]};\nfor(const engine of ['chromium','firefox','webkit']){\n const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});\n try{\n  const page=await browser.newPage();page.on('pageerror',error=>report.errors.push({engine,message:error.message}));\n  await page.goto('http://127.0.0.1:4180/icons');await page.locator('article#icons acme-home-icon').first().waitFor();\n  const results=[];results.push({name:'docs bootstrap renders the routed icon page',ok:await page.getByRole('heading',{name:'Icons',exact:true}).count()===1});\n  await page.locator('article#icons button.showbar acme-chevron-right-icon').first().click();\n  results.push({name:'clicking the named icon opens the code example',ok:await page.getByRole('button',{name:'Hide code',exact:true}).count()===1});\n  await page.getByRole('link',{name:'Colors',exact:true}).first().click();await page.locator('article#colors').waitFor();\n  const states=await page.evaluate(()=>[...document.querySelectorAll('article#colors .icons > *')].map(wrapper=>{const icon=wrapper.firstElementChild??wrapper;return {tag:icon.localName,svg:!!icon.shadowRoot?.querySelector('svg'),missing:!!icon.shadowRoot?.querySelector('.missing')};}));\n  results.push({name:'routed color examples have registered default and filled artwork',ok:states.length===6&&states.every(state=>state.svg&&!state.missing),states});\n  report.engines.push({engine,version:browser.version(),results});console.log({engine,results});\n }finally{await browser.close();}\n}\nawait Bun.write('/tmp/acme-m09-icons/docs-browser.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+  }
+}

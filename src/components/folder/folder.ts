@@ -6,12 +6,6 @@ import { atomState } from "../../shared/atom-state";
 import { Interaction } from "../../shared/interaction";
 import { folderCss } from "../../generated/components/folder/folder.styles";
 
-/** 24-box stroke glyphs: the closed folder and the open one, 16px. */
-const FOLDER_CLOSED = "M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z";
-const FOLDER_OPEN = "M6 14l1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2";
-const glyph = (d: string) =>
-  html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d=${d}></path></svg>`;
-
 /**
  * Folder row of a file tree. A 28px full-width toggle button holds one indent guide per folder
  * level above, the folder icon (open or closed) and the mono name; open, the folder renders its
@@ -22,11 +16,7 @@ const glyph = (d: string) =>
  */
 
 export class AcmeFolder extends AcmeElement {
-  static styles = [
-    sharedCss,
-    folderCss,
-    folderStructureCss,
-  ];
+  static styles = [sharedCss, folderCss, folderStructureCss];
   /** The folder's name: its text and tooltip. */
   @property() name = "";
   /** Shown in place of `name` when set. */
@@ -64,7 +54,7 @@ export class AcmeFolder extends AcmeElement {
     const text = this.label || this.name;
     return html`<li class=${this.cls("folder", { open: this.open })} title=${text} part="folder">
       <button class="toggle" type="button" style="width:calc(100% + 8px)" @click=${this.onClick} part="toggle">
-        ${Array.from({ length: this.depth }, () => html`<span class="indent"></span>`)}<span class="icon">${glyph(this.open ? FOLDER_OPEN : FOLDER_CLOSED)}</span><span class="name">${text}<slot name="label"></slot></span>
+        ${Array.from({ length: this.depth }, () => html`<span class="indent"></span>`)}<span class="icon">${this.open ? html`<acme-folder-open-icon size="16px"></acme-folder-open-icon>` : html`<acme-folder-icon size="16px"></acme-folder-icon>`}</span><span class="name">${text}<slot name="label"></slot></span>
       </button>
       ${this.open ? html`<ul class="group" part="group"><slot></slot></ul>` : nothing}
     </li>`;

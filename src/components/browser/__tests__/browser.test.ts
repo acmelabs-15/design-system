@@ -29,10 +29,10 @@ describe("acme-browser", () => {
     expect([...header.children].map((c) => c.className)).toEqual(["section", "section", "spacer"]);
     const dots = header.querySelector(".section .dots")!;
     expect([...dots.children].map((c) => c.className)).toEqual(["dot-close", "dot-min", "dot-zoom"]);
-    const controls = header.querySelectorAll(".section .controls svg");
+    const controls = header.querySelectorAll(".section .controls > *");
     expect(controls.length).toBe(3);
-    expect(controls[0].getAttribute("width")).toBe("14");
-    expect(controls[0].getAttribute("style")).toContain("--ds-gray-900");
+    expect(controls[0].getAttribute("size")).toBe("14px");
+    expect([...controls].map((element) => element.localName)).toEqual(["acme-arrow-back-icon", "acme-arrow-forward-icon", "acme-refresh-icon"]);
     expect(f.querySelector(":scope > slot")).not.toBeNull();
     expect(el.textContent).toContain("shot");
   });
@@ -50,7 +50,7 @@ describe("acme-browser", () => {
     expect(s.className.trim()).toBe("stack");
     expect(s.children[0].className).toBe("check");
     expect(s.children[1].className).toBe("copy");
-    expect(s.querySelectorAll("svg[width='12']").length).toBe(2);
+    expect(s.querySelectorAll("[size='12px']").length).toBe(2);
   });
 
   test("a click copies the full address, names the button Copied and shows the check for a second", async () => {
