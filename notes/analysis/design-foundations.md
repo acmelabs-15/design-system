@@ -445,3 +445,27 @@ The replacement removes 9 house definitions and updates 13 gap/margin uses. The 
 The split step emits src/generated/tokens.json from the same catalog as the CSS. Build verifies freshness, copies it to dist/tokens.json and the package exports tokens.json. The dev watcher regenerates styles before building when the catalog changes. The producer is deterministic across dates, and all 921 generated files remain byte-identical after repeated generation.
 
 Verification passes: 713 tests, build/docs, independent review, 210 token checks per browser engine, and 114 page comparisons with 92,136 node pairs and zero differences/errors at the default font size. The tests also verify 20px rem growth, independent category overrides, negative-value derivation and retained control heights. A fresh installed tarball consumer resolves all 70 manifest entries through the package export. [Full evidence and reproductions](../alignment/evidence/m05-numeric-tokens-2026-09-20.json). Other theme categories, nested scopes, density and layout rendering remain separate work; this does not certify all custom-theme support.
+
+## M05 theme state and system appearance, 2026-09-20
+
+The headless scope model now owns authored inputs in TanStack and derives immutable effective values. Omission inherits; explicit auto follows the supplied local system source and explicit normal overrides compact. An inherited appearance keeps the parent's resolution, so a future overlay can follow its opener. Parent and system sources can be replaced. The model leaves native language/direction and registered-name validation to their respective owners.
+
+The system preference resource observes its supplied document, shares a native media listener while bindings exist, and releases it when the final binding ends. It never reads a global document, writes preferences or changes the root. Unit checks and real browser checks cover sharing, cleanup, current-value reacquisition and adoption to another document.
+
+The first Firefox fixture failed because its light-phase wait watched only the main document. The next dark wait could accept the foreign document's stale earlier dark value. A native-only reduction and repeated comparison identify this test race; waiting for both documents fixes it without a delay or production workaround. The unchanged original fails seven of eight Firefox runs, while the corrected barrier passes all eight.
+
+The integrated build/docs and 732 tests pass. All 23 browser checks pass in Chromium, Firefox and WebKit. [Sources, full reproductions, controls and limits](../alignment/evidence/m05-theme-state-2026-09-20.json). These are implemented state/resources; no acme-theme or DOM scope transport is claimed.
+
+### Theme delivery integration obligations
+
+The existing base appearance watcher uses the global document/matchMedia and never invokes its saved cleanup. The current shared state and Theme Switcher still mutate root settings and storage. Replace those together with actual scope delivery; keep unrelated Toast and store helpers. Generated palette selectors currently target only the document root. Nested scope styles must preserve gamut/support conditions and redeclare semantic aliases where palette inputs change.
+
+The reference review supports CSS custom properties for visual tokens and a small reactive semantic configuration. Composed context requests can cross the actual slot/shadow event path; closest/assignedSlot traversal alone does not cover closed-root assignment. Lit's context package is neither installed nor selected. A theme-only bridge remains a candidate requiring real late-provider, slot, disconnect/reconnect and adoption checks. Do not silently install a package or present this source review as a verified DOM mechanism.
+
+### Complete theme-token source census
+
+The complete current token sources and all 220 consumed component/shared stylesheets are parsed, including keyframes. The candidate accounts for 499 rows: 407 category/key/property mappings, 84 private color-channel fields and eight roles outside the selected theme categories. All 2,343 consumer variable occurrences agree with independent AST counts. Defaults retain their source selectors, capability/gamut conditions and ordering. [Full mapping, hashes, references and reproduction](../alignment/evidence/m05-theme-token-mapping-2026-09-20.json). This is a source census and candidate naming table, not a claim of complete registered-theme support.
+
+The source exposes real integration work. Select and Toggle directly consume channel triplets; Avatar Group and Tooltip each rebuild 82 palette colors locally. Arbitrary full-color overrides must reach those paths before custom-color coverage is certified. Raw channel lists are not public CSS color values. Font-weight tokens do not yet exist, and font-size/line-height tokens cover only some declarations. Three font-family variables used as font-weight originate in the captured upstream CSS; the house generator preserves that mismatch. Exact rules, offsets, extracted nodes and mappings are saved. Do not guess a replacement weight from the variable name.
+
+The gradient, outline shorthand, opacity and five layer-order roles do not fit the selected categories. Keep these boundaries explicit rather than misclassify values to make a table appear complete. Existing nonnumeric basenames provide a one-to-one candidate mapping; final coverage and any necessary token consolidation remain implementation work.

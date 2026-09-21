@@ -65,6 +65,8 @@ Record fixtures/results and failures in existing analysis/evidence. A technical 
 
 - M05-05 delivers the full rem spacing/size catalog, removes both replaced numeric alias families, exports a freshness-checked token manifest and updates dev watching. Build/docs, 713 tests, 210 checks per engine, 114 page comparisons and a fresh packed consumer pass. [Evidence and migration map](evidence/m05-numeric-tokens-2026-09-20.json). Theme scope and remaining style integration stay active.
 
+- M05-06 adds canonical headless theme resolution and reference-counted per-document system-preference observation. Build/docs and 732 tests pass; all 23 browser checks pass per engine after correcting a documented fixture transition race. [Evidence](evidence/m05-theme-state-2026-09-20.json). DOM scope transport, scope CSS, registration and Theme Switcher replacement remain an atomic integration boundary.
+
 ## Ordered implementation work packages
 
 The table fixes dependency order and atomic replacement boundaries. Each work package is split into vertical commits by the named slice, normally 3–8 authored files plus tests/generated/site output. Mechanical path/registration batches can touch many files and are explicitly labelled. Counts below are planning ranges from the current tree, not measured final diffs. Each replacement removes the old interface and updates every internal consumer in that same slice; there are no compatibility exports or legacy modes.
