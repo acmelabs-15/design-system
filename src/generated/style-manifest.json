@@ -14731,6 +14731,28 @@
       "registrations": [],
       "exportName": "groupMemberCss"
     },
+    "shared/icon": {
+      "key": "shared/icon",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "5b5d9959518aee755d6e882e48801a888d931d02827323bf0c703c9d9aa6c01d",
+        "scripts/styles.ts": "50dca44c09bfcc914b8c7bab7ef6973a64d93064aedc13fa0add3890ff5eeae6",
+        "scripts/theme-tokens.ts": "857dfa13a1787880049bd023c9bf18e868fd8059a2bc370e802888f3f5ae9ebf",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "8b8432960206b4489c0b6956119de59c7d131f8b5d71962545fe6a2e7a2ec469",
+        "styles/shared/icon.css": "f4418069979e4a3562648ed33317ad032dda63dfac521b7bbed58e9e5638df72"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/shared/icon.source.css": "f4418069979e4a3562648ed33317ad032dda63dfac521b7bbed58e9e5638df72",
+        "src/generated/css/shared/icon.css": "0070087df2b44f1af090cb29c1d338396a34b2240f04f7b35c297c8075ccbd00",
+        "src/generated/css/shared/icon.css.map": "69223a98a87b589ba2828f6adf73c7c1543c0e5c7d4f471464199faddabe5de3",
+        "src/generated/shared/icon.styles.ts": "27c2592295f804ca5c87d8d3a5c68d58bc2241446791c42cca3494303ea44380"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "iconCss"
+    },
     "shared/info-ic": {
       "key": "shared/info-ic",
       "producer": "house",

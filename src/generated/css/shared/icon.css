@@ -1,0 +1,26 @@
+:host {
+  width: var(--acme-icon-size, 1rem);
+  height: var(--acme-icon-size, 1rem);
+  vertical-align: -.125em;
+  color: inherit;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-block;
+}
+
+[part="root"] {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+svg {
+  fill: currentColor;
+}
+
+.missing {
+  font: inherit;
+  border: 1px dashed;
+  place-items: center;
+  display: grid;
+}

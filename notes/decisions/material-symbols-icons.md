@@ -13,3 +13,11 @@ Peter first considered classic Material Icons plus selected newer Symbols and ho
 Google publishes the artwork under Apache-2.0; retain the required licence and notices. Replacements of existing glyphs are named visual deviations. Verify required artwork, size, visual weight, accessibility and both themes before implementation acceptance. The Home SVG files were inspected across all three families and both fill states; that sample does not establish complete catalog coverage or final bundle costs.
 
 Evidence: [icon investigation and SVG source links](../analysis/icon-library.md#material-svg-investigation-and-peters-selection), [Google's collection comparison](https://github.com/google/material-design-icons#material-symbols), and [Material Symbols guide](https://developers.google.com/fonts/docs/material_symbols). Source changes remain gated by Phase 5 approval.
+
+## Pinned baseline catalog — 2026-09-21
+
+Under Peter's execution delegation, package the complete 4,135-symbol catalog from Google revision 27e9ef1dbeedc13d682fece4a58e1eda4cb0961a at weight 400, grade 0 and optical size 24. All 24,810 baseline SVGs exist: three families multiplied by two fill states. The asset manifest records the source path and SHA-256 of every unmodified SVG; the Apache-2.0 license is retained. Fixed SVG sizes scale this artwork, without implying continuously variable font axes.
+
+Retain separate icon/style imports. The main artifact must not acquire the whole catalog merely because optional per-icon entries exist. The base renderer owns no network loader. Missing requested artwork is an explicit visible marker, a bounded diagnostic and a localized accessible description. An explicit artwork import can resolve an already mounted marker. Library defaults use canonical TanStack state; explicit icon properties remain independent. Named images expose one SVG image name; unnamed artwork is decorative.
+
+This is the catalog/base implementation checkpoint. Per-icon entry generation, package delivery, internal glyph migration and full M09 action acceptance are still in progress. [Implementation evidence](../alignment/evidence/m09-icon-foundation-2026-09-21.json).
