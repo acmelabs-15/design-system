@@ -21,8 +21,9 @@ let timer: ReturnType<typeof setTimeout> | undefined;
 let regenerateStyles = false;
 if (!process.argv.includes("--no-watch"))
   for (const d of ["styles", "src", "site"])
-    fs.watch(path.join(ROOT, d), { recursive: true }, () => {
-      regenerateStyles ||= d === "styles";
+    fs.watch(path.join(ROOT, d), { recursive: true }, (_event, filename) => {
+      const numericCatalog = d === "src" && path.normalize(filename?.toString() ?? "") === path.join("shared", "numeric-tokens.ts");
+      regenerateStyles ||= d === "styles" || numericCatalog;
       clearTimeout(timer);
       timer = setTimeout(() => {
         const split = regenerateStyles;

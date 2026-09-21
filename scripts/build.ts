@@ -14,6 +14,7 @@ import ts from "typescript";
 import { litStyleModule, verifyStyleManifest, writeStyle } from "./styles";
 import { writeManifest } from "./manifest";
 import { writeEntries, writePackageExports } from "./entries";
+import { verifyTokenManifest } from "./numeric-tokens";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = path.join(ROOT, "src"),
@@ -21,6 +22,7 @@ const SRC = path.join(ROOT, "src"),
 const components = writeEntries(ROOT);
 writePackageExports(components, ROOT);
 const styles = verifyStyleManifest(ROOT, ["document/dashboard"]);
+const tokenManifest = verifyTokenManifest(ROOT);
 const recipes = ["deploy", "plan", "usage-sum", "classes", "severity", "option", "info-ic", "rail", "code"];
 const recipeFiles = recipes.map((name) => {
   const key = styles.entries["shared/" + name] ? "shared/" + name : "components/" + name + "/" + name;
@@ -34,6 +36,7 @@ writeStyle("document/dashboard", recipeFiles.map((file) => fs.readFileSync(path.
 const manifest = verifyStyleManifest(ROOT);
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(path.join(DIST, "bundle"), { recursive: true });
+fs.copyFileSync(tokenManifest, path.join(DIST, "tokens.json"));
 for (const entry of Object.values(manifest.entries)) {
   if (entry.producer !== "document") continue;
   const target = entry.key.replace(/^document\//, "");

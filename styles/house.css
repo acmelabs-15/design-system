@@ -117,15 +117,6 @@
   --r-sm: 6px;
   --r: 8px;
   --r-lg: 12px;
-  --space: 4px;
-  --s-1: 4px;
-  --s-2: 8px;
-  --s-3: 12px;
-  --s-4: 16px;
-  --s-5: 20px;
-  --s-6: 24px;
-  --s-8: 32px;
-  --s-10: 40px;
   --gap: 24px;
   --page-width: 1200px;
   --form-sm: 32px;
@@ -499,11 +490,11 @@ a:hover {
 .vstack {
   display: flex;
   flex-direction: column;
-  gap: var(--s-4);
+  gap: var(--acme-spacing-4);
 }
 .row {
   display: flex;
-  gap: var(--s-2);
+  gap: var(--acme-spacing-2);
   align-items: center;
   flex-wrap: wrap;
 }
@@ -513,14 +504,14 @@ a:hover {
 .separator {
   border: 0;
   border-top: 1px solid var(--border);
-  margin: var(--s-4) 0;
+  margin: var(--acme-spacing-4) 0;
 }
 .separator.vertical {
   border: 0;
   border-left: 1px solid var(--border);
   width: 0;
   align-self: stretch;
-  margin: 0 var(--s-2);
+  margin: 0 var(--acme-spacing-2);
 }
 
 /* Cells (ours): one bordered container, hairlines between cells, no gaps. */
@@ -553,10 +544,10 @@ a:hover {
   grid-column: 1 / -1;
 }
 .cell .eyebrow {
-  margin-bottom: var(--s-2);
+  margin-bottom: var(--acme-spacing-2);
   display: flex;
   align-items: center;
-  gap: var(--s-2);
+  gap: var(--acme-spacing-2);
 }
 .cell .eyebrow .rt {
   margin-left: auto;
@@ -1959,10 +1950,10 @@ a:hover {
   box-shadow: var(--ds-shadow-border-medium);
 }
 .card > .eyebrow {
-  margin-bottom: var(--s-4);
+  margin-bottom: var(--acme-spacing-4);
   display: flex;
   align-items: center;
-  gap: var(--s-2);
+  gap: var(--acme-spacing-2);
 }
 .readout {
   padding: 15px 17px;
@@ -3887,7 +3878,7 @@ dialog::backdrop {
   z-index: 100;
   display: flex;
   align-items: center;
-  gap: var(--s-4);
+  gap: var(--acme-spacing-4);
   height: 52px;
   padding: 0 24px;
   background: color-mix(in srgb, var(--bg) 88%, transparent);
@@ -3963,7 +3954,7 @@ dialog::backdrop {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: var(--s-2);
+  gap: var(--acme-spacing-2);
   flex: none;
 }
 .appbar .crumbs {
@@ -4385,13 +4376,13 @@ html {
 .with-rail {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 300px;
-  gap: var(--s-4);
+  gap: var(--acme-spacing-4);
   align-items: start;
 }
 .rail {
   display: flex;
   flex-direction: column;
-  gap: var(--s-4);
+  gap: var(--acme-spacing-4);
   position: sticky;
   top: calc(var(--bar-h) + 16px);
 }
@@ -7975,7 +7966,7 @@ a.breadcrumb.menu:hover {
   }
   .appbar {
     padding: 0 14px;
-    gap: var(--s-2);
+    gap: var(--acme-spacing-2);
   }
   .appbar .brand .meta {
     display: none;

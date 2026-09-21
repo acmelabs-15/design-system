@@ -3,7 +3,7 @@ import { css } from "lit";
 export const appbarCss = css`.appbar {
   z-index: 100;
   align-items: center;
-  gap: var(--s-4);
+  gap: var(--acme-spacing-4);
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
@@ -89,7 +89,7 @@ export const appbarCss = css`.appbar {
 
 .appbar .tools {
   align-items: center;
-  gap: var(--s-2);
+  gap: var(--acme-spacing-2);
   flex: none;
   margin-left: auto;
   display: flex;
@@ -143,7 +143,7 @@ export const appbarCss = css`.appbar {
 
 @media (width <= 760px) {
   .appbar {
-    gap: var(--s-2);
+    gap: var(--acme-spacing-2);
     padding: 0 14px;
   }
 

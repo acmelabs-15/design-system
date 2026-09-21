@@ -1,3 +1,5 @@
+import { numericTokenKeys } from "./numeric-tokens";
+
 export type StyleNumericCategory = "signed-spacing" | "nonnegative-spacing" | "size" | "positive-ratio" | "integer" | "opacity" | "nonnegative" | "zero-only" | "none";
 type StyleTarget = "host" | "host-and-root";
 type StyleMetadata<Property extends string, Numeric extends StyleNumericCategory, Target extends StyleTarget> = Readonly<{
@@ -106,8 +108,8 @@ export type StyleScalar<Property extends StyleInputKey> = (typeof styleInputSche
 export type StyleDisplayMode = "none" | "inline" | "inline-block" | "block" | "flex" | "inline-flex" | "grid" | "inline-grid";
 export type StyleSupports = (property: string, value: string) => boolean;
 
-export const spacingTokenKeys = Object.freeze([0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96] as const);
-export const sizeTokenKeys = Object.freeze([...spacingTokenKeys]);
+export const spacingTokenKeys = Object.freeze([...numericTokenKeys] as const);
+export const sizeTokenKeys = Object.freeze([...numericTokenKeys] as const);
 
 /** Checks a scalar without committing state or resolving CSS variables/computed values. */
 export function isStyleScalar<Property extends StyleInputKey>(property: Property, value: unknown, supports: StyleSupports, displayModes?: readonly StyleDisplayMode[]): value is StyleScalar<Property> {

@@ -82,15 +82,6 @@
   --r-sm: 6px;
   --r: 8px;
   --r-lg: 12px;
-  --space: 4px;
-  --s-1: 4px;
-  --s-2: 8px;
-  --s-3: 12px;
-  --s-4: 16px;
-  --s-5: 20px;
-  --s-6: 24px;
-  --s-8: 32px;
-  --s-10: 40px;
   --gap: 24px;
   --page-width: 1200px;
   --form-sm: 32px;
@@ -483,13 +474,13 @@ a:hover {
 }
 
 .vstack {
-  gap: var(--s-4);
+  gap: var(--acme-spacing-4);
   flex-direction: column;
   display: flex;
 }
 
 .row {
-  gap: var(--s-2);
+  gap: var(--acme-spacing-2);
   flex-wrap: wrap;
   align-items: center;
   display: flex;
@@ -502,14 +493,14 @@ a:hover {
 .separator {
   border: 0;
   border-top: 1px solid var(--border);
-  margin: var(--s-4) 0;
+  margin: var(--acme-spacing-4) 0;
 }
 
 .separator.vertical {
   border: 0;
   border-left: 1px solid var(--border);
   width: 0;
-  margin: 0 var(--s-2);
+  margin: 0 var(--acme-spacing-2);
   align-self: stretch;
 }
 
@@ -548,9 +539,9 @@ a:hover {
 }
 
 .cell .eyebrow {
-  margin-bottom: var(--s-2);
+  margin-bottom: var(--acme-spacing-2);
   align-items: center;
-  gap: var(--s-2);
+  gap: var(--acme-spacing-2);
   display: flex;
 }
 
@@ -2265,44 +2256,23 @@ a.breadcrumb.menu:hover {
 }
 
 :root {
-  --acme-space: 4px;
-  --acme-space-2x: 8px;
-  --acme-space-3x: 12px;
-  --acme-space-4x: 16px;
-  --acme-space-6x: 24px;
-  --acme-space-8x: 32px;
-  --acme-space-10x: 40px;
-  --acme-space-16x: 64px;
-  --acme-space-24x: 96px;
-  --acme-space-32x: 128px;
-  --acme-space-48x: 192px;
-  --acme-space-64x: 256px;
   --acme-space-small: 32px;
   --acme-space-medium: 36px;
   --acme-space-large: 40px;
   --acme-space-gap: 24px;
   --acme-space-gap-half: 12px;
-  --acme-space-gap-quarter: var(--acme-space-2x);
+  --acme-space-gap-quarter: var(--acme-spacing-2);
   --acme-gap: var(--acme-space-gap);
   --acme-gap-half: var(--acme-space-gap-half);
   --acme-gap-quarter: var(--acme-space-gap-quarter);
   --acme-gap-double: var(--acme-space-large);
   --acme-gap-section: var(--acme-space-small);
-  --acme-space-negative: -4px;
-  --acme-space-2x-negative: -8px;
-  --acme-space-4x-negative: -16px;
-  --acme-space-8x-negative: -32px;
-  --acme-space-16x-negative: -64px;
-  --acme-space-24x-negative: -96px;
-  --acme-space-32x-negative: -128px;
-  --acme-space-48x-negative: -192px;
-  --acme-space-64x-negative: -256px;
   --acme-space-small-negative: -32px;
   --acme-space-medium-negative: -36px;
   --acme-space-large-negative: -40px;
   --acme-space-gap-negative: -24px;
   --acme-space-gap-half-negative: -12px;
-  --acme-space-gap-quarter-negative: var(--acme-space-2x-negative);
+  --acme-space-gap-quarter-negative: calc(var(--acme-spacing-2) * -1);
   --acme-gap-negative: var(--acme-space-gap-negative);
   --acme-gap-half-negative: var(--acme-space-gap-half-negative);
   --acme-gap-quarter-negative: var(--acme-space-gap-quarter-negative);
@@ -4170,4 +4140,77 @@ a.breadcrumb.menu:hover {
   syntax: "*";
   inherits: false;
   initial-value: "";
+}
+
+:root {
+  --acme-spacing-0: 0rem;
+  --acme-spacing-0-5: .125rem;
+  --acme-spacing-1: .25rem;
+  --acme-spacing-1-5: .375rem;
+  --acme-spacing-2: .5rem;
+  --acme-spacing-2-5: .625rem;
+  --acme-spacing-3: .75rem;
+  --acme-spacing-3-5: .875rem;
+  --acme-spacing-4: 1rem;
+  --acme-spacing-4-5: 1.125rem;
+  --acme-spacing-5: 1.25rem;
+  --acme-spacing-6: 1.5rem;
+  --acme-spacing-7: 1.75rem;
+  --acme-spacing-8: 2rem;
+  --acme-spacing-9: 2.25rem;
+  --acme-spacing-10: 2.5rem;
+  --acme-spacing-11: 2.75rem;
+  --acme-spacing-12: 3rem;
+  --acme-spacing-14: 3.5rem;
+  --acme-spacing-16: 4rem;
+  --acme-spacing-20: 5rem;
+  --acme-spacing-24: 6rem;
+  --acme-spacing-28: 7rem;
+  --acme-spacing-32: 8rem;
+  --acme-spacing-36: 9rem;
+  --acme-spacing-40: 10rem;
+  --acme-spacing-44: 11rem;
+  --acme-spacing-48: 12rem;
+  --acme-spacing-52: 13rem;
+  --acme-spacing-56: 14rem;
+  --acme-spacing-60: 15rem;
+  --acme-spacing-64: 16rem;
+  --acme-spacing-72: 18rem;
+  --acme-spacing-80: 20rem;
+  --acme-spacing-96: 24rem;
+  --acme-size-0: 0rem;
+  --acme-size-0-5: .125rem;
+  --acme-size-1: .25rem;
+  --acme-size-1-5: .375rem;
+  --acme-size-2: .5rem;
+  --acme-size-2-5: .625rem;
+  --acme-size-3: .75rem;
+  --acme-size-3-5: .875rem;
+  --acme-size-4: 1rem;
+  --acme-size-4-5: 1.125rem;
+  --acme-size-5: 1.25rem;
+  --acme-size-6: 1.5rem;
+  --acme-size-7: 1.75rem;
+  --acme-size-8: 2rem;
+  --acme-size-9: 2.25rem;
+  --acme-size-10: 2.5rem;
+  --acme-size-11: 2.75rem;
+  --acme-size-12: 3rem;
+  --acme-size-14: 3.5rem;
+  --acme-size-16: 4rem;
+  --acme-size-20: 5rem;
+  --acme-size-24: 6rem;
+  --acme-size-28: 7rem;
+  --acme-size-32: 8rem;
+  --acme-size-36: 9rem;
+  --acme-size-40: 10rem;
+  --acme-size-44: 11rem;
+  --acme-size-48: 12rem;
+  --acme-size-52: 13rem;
+  --acme-size-56: 14rem;
+  --acme-size-60: 15rem;
+  --acme-size-64: 16rem;
+  --acme-size-72: 18rem;
+  --acme-size-80: 20rem;
+  --acme-size-96: 24rem;
 }

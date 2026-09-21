@@ -57,6 +57,17 @@ The package publishes its element API as `@acmelabs/design-system/custom-element
 The build generates this standard manifest from the element declarations and templates. The
 website and Markdown reference read the same manifest.
 
+## Numeric spacing and sizes
+
+The token stylesheet supplies 35 spacing steps and 35 independent size steps. A step defaults
+to its key multiplied by 0.25rem. For example, `--acme-spacing-4` is 1rem and
+`--acme-size-8` is 2rem. Decimal keys use a hyphen: `--acme-spacing-0-5` is 0.125rem.
+
+Overriding a spacing variable does not change the matching size variable. Use
+`calc(var(--acme-spacing-2) * -1)` for a negative spacing value where CSS permits it.
+The `@acmelabs/design-system/tokens.json` export lists all 70 numeric tokens, their defaults
+and their source. Other theme categories are not yet included in this manifest.
+
 ## Layout
 
 ```
@@ -89,8 +100,9 @@ Generated inputs under src/generated are committed. Package and site outputs are
 |---|---|---|
 | `src/generated/css/` and Lit style modules | `split` or the mapped generator | `styles/` or `tools/geist/maps/` |
 | `src/generated/style-manifest.json` | style producers | its recorded source inputs |
+| `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | `src/shared/numeric-tokens.ts` through `scripts/numeric-tokens.ts` |
 | `src/define/`, `src/all.ts`, component exports in package.json | `scripts/entries.ts` | tag-map declarations and owned component markup |
-| `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css` and the generated theme |
+| `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css`, the generated theme and the numeric token catalog |
 | `dist/styles/dashboard.css` | `build` | compiled recipe inputs selected in `scripts/build.ts` |
 | `dist/custom-elements.json` | `build` or `bun run manifest` | element declarations, templates and documented dynamic slots |
 | `_site/` | `bun run docs` | `site/` |

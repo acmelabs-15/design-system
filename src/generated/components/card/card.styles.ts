@@ -30,9 +30,9 @@ export const cardCss = css`.card .stat .foot.bar {
 }
 
 .card > .eyebrow {
-  margin-bottom: var(--s-4);
+  margin-bottom: var(--acme-spacing-4);
   align-items: center;
-  gap: var(--s-2);
+  gap: var(--acme-spacing-2);
   display: flex;
 }
 

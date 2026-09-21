@@ -65,6 +65,7 @@ Several **generated files are committed**, in places that read as source. The sc
 | `src/generated/css/` | style producers | `styles/`, mappings and committed specs |
 | `src/generated/components/` and `src/generated/shared/` | `scripts/styles.ts` | compiled CSS under `src/generated/css/` |
 | `src/generated/style-manifest.json` | style producers | input/output fingerprints and registration definitions |
+| `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | `src/shared/numeric-tokens.ts` through `scripts/numeric-tokens.ts` |
 | `src/define/`, `src/all.ts` and component package exports | `scripts/entries.ts` | `HTMLElementTagNameMap` records and owned component markup |
 | `dist/custom-elements.json` | `scripts/manifest.ts` | component declarations, templates and annotations |
 | `dist/styles/` | `bun run build` | compiled document/token/recipe CSS and maps |

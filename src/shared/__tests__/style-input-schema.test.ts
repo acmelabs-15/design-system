@@ -204,7 +204,7 @@ describe("common style input schema", () => {
       ["borderBlockStyle", "solid dashed"],
       ["borderColor", "red blue"],
       ["marginInline", "auto"],
-      ["padding", "var(--space)"],
+      ["padding", "var(--custom-space)"],
       ["gridColumn", "[content-start]"],
     ] as const)
       expect(isStyleScalar(key, value, supports)).toBe(true);
@@ -216,7 +216,7 @@ describe("common style input schema", () => {
       ["border-block-style", "solid dashed"],
       ["border-color", "red blue"],
       ["margin-inline", "auto"],
-      ["padding", "var(--space)"],
+      ["padding", "var(--custom-space)"],
       ["grid-column", "[content-start]"],
       ["padding", "invalid"],
     ]);
