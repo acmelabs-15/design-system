@@ -132,3 +132,9 @@ The Pages workflow must build the site from the same package outputs being docum
 Package publication uses explicit files/exports, exact matched versions, third-party notices and the verified Bun authentication/provenance path. No release trigger is exercised during planning or by ordinary branch commits. Consumer skills/MCP contents must match the packed release, not an authoring checkout.
 
 Completion requires every approved source mapping accounted for, all final exports/examples working, no compatibility interfaces, all supported-browser/accessibility/visual/behavior checks complete, and the optional tools correctly isolated. The plan is approved; source changes depend on satisfying M00's technical prerequisites, not another permission round trip.
+
+## M07 foundation completion — 2026-09-21
+
+Separator, Box, Flex, Stack/HStack/VStack, Grid/Simple Grid and Group's layout/participation protocol are implemented. [Group boundary and package checks](evidence/m07-group-2026-09-21.json) link the final foundation validation. The current full suite passes 858 tests. The decorative Grid companions and ButtonGroup are removed.
+
+Remaining assigned integration edges are mandatory: M09 adds action participation and verifies the actual painted border model; M10 adds Radio/Checkbox Cards and single-selection indicator composition; M11 adds input/add-on participation. No production member-matrix pass is claimed from the protocol fixture. Continue with M08 typography/formatting, then these family integrations. The local port-4180 server is temporarily in no-watch mode to avoid concurrent generators; restore normal watching at the end of migration execution.

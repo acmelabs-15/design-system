@@ -10,7 +10,7 @@ export const doc: Doc = {
   id: "button",
   title: "Button",
   lede: "Starts an action or event, such as a form submit or a dialog.",
-  tags: ["acme-button", "acme-button-group"],
+  tags: ["acme-button"],
   examples: [
     {
       h: "Sizes",

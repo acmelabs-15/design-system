@@ -95,11 +95,6 @@
       "import": "./dist/components/button/button.js",
       "default": "./dist/components/button/button.js"
     },
-    "./components/button-group": {
-      "types": "./dist/components/button-group/button-group.d.ts",
-      "import": "./dist/components/button-group/button-group.js",
-      "default": "./dist/components/button-group/button-group.js"
-    },
     "./components/calendar": {
       "types": "./dist/components/calendar/calendar.d.ts",
       "import": "./dist/components/calendar/calendar.js",
@@ -269,6 +264,11 @@
       "types": "./dist/components/grid/grid.d.ts",
       "import": "./dist/components/grid/grid.js",
       "default": "./dist/components/grid/grid.js"
+    },
+    "./components/group": {
+      "types": "./dist/components/group/group.d.ts",
+      "import": "./dist/components/group/group.js",
+      "default": "./dist/components/group/group.js"
     },
     "./components/h-stack": {
       "types": "./dist/components/h-stack/h-stack.d.ts",

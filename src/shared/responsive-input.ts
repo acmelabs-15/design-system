@@ -21,6 +21,14 @@ export function copyResponsiveInput<Value extends ResponsiveScalar>(input: unkno
   return Object.freeze(Object.fromEntries(Object.entries(input!))) as ResponsiveInput<Value>;
 }
 
+/** Maps a validated current input without filling skipped positions or changing conditions. */
+export function mapResponsiveInput<Value extends ResponsiveScalar, Output extends ResponsiveScalar>(input: ResponsiveInput<Value>, convert: (value: Value) => Output): ResponsiveInput<Output> {
+  if (input === undefined) return undefined;
+  if (Array.isArray(input)) return Object.freeze(input.map((value) => (value === null || value === undefined ? value : convert(value))));
+  if (typeof input === "object") return Object.freeze(Object.fromEntries(Object.entries(input).map(([condition, value]) => [condition, convert(value as Value)])));
+  return convert(input as Value);
+}
+
 const numericText = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/;
 const invalid = (reason: ResponsiveAttributeDiagnostic["reason"]) => Object.freeze({ value: undefined, diagnostic: Object.freeze({ code: "invalid-responsive-attribute" as const, reason }) });
 

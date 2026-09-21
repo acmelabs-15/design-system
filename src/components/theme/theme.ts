@@ -10,8 +10,8 @@ import type { ThemeAppearance, ThemeDensity } from "../../shared/theme-scope";
 import { applyStaticStyles } from "../../shared/static-styles";
 import { densityTokenDefinitions, themeOverrideSelector } from "../../shared/theme-tokens";
 import { StoreEffect } from "../../shared/state";
+import { optionalString } from "../../shared/attributes";
 
-const optionalString = { fromAttribute: (value: string | null) => value ?? undefined };
 const appearanceProperties = new Set<string>(themeAppearanceProperties);
 const densityProperties = new Set<string>(densityTokenDefinitions.map((token) => token.cssProperty));
 

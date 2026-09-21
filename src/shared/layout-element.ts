@@ -4,6 +4,7 @@ import { sharedCss } from "../base";
 import { layoutStructureCss } from "../generated/shared/layout-structure.styles";
 import { responsiveStyleDelivery } from "../generated/responsive-styles";
 import { atomState } from "./atom-state";
+import { optionalString } from "./attributes";
 import type { ResponsiveInput } from "./responsive";
 import { AcmeSemanticElement } from "./semantic-element";
 import { StyleInputController } from "./style-input-controller";
@@ -111,7 +112,7 @@ export abstract class AcmeLayoutElement extends AcmeSemanticElement {
   @property({ attribute: "responsive-target", noAccessor: true, useDefault: true })
   responsiveTarget: ResponsiveStyleTarget = "window";
   @atomState()
-  @property({ attribute: "responsive-container", noAccessor: true })
+  @property({ attribute: "responsive-container", noAccessor: true, converter: optionalString })
   responsiveContainer?: string;
   protected readonly styleInputs = new StyleInputController(this, (this.constructor as typeof AcmeLayoutElement).styleKeys, {
     displayModes: (this.constructor as typeof AcmeLayoutElement).displayModes,

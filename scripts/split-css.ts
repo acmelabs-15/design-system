@@ -19,7 +19,7 @@ const css = fs.readFileSync(SRC, "utf8");
 /* ---------- which module a rule belongs to ---------- */
 // Order matters: the first matching entry wins. Each regex runs against every selector in the list.
 const MAP: [string, RegExp][] = [
-  ["button", /^(\.btn\b|\.iconbtn|\.btn-group)/],
+  ["button", /^(\.btn\b|\.iconbtn)/],
   ["split-button", /^\.split-menu/],
   ["split-button-item", /^\.split-item/],
   ["switch", /^(\.switch|\.seg\b)/],
