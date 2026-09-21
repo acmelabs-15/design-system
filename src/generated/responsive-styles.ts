@@ -92,5 +92,12 @@ export const responsiveStyleDelivery = Object.freeze({
   "gap": Object.freeze({ property: "gap", target: "host", selector: ":host", template: ":host{gap:initial;}" }),
   "rowGap": Object.freeze({ property: "row-gap", target: "host", selector: ":host", template: ":host{row-gap:initial;}" }),
   "columnGap": Object.freeze({ property: "column-gap", target: "host", selector: ":host", template: ":host{column-gap:initial;}" }),
+  "gridTemplateColumns": Object.freeze({ property: "grid-template-columns", target: "host", selector: ":host", template: ":host{grid-template-columns:initial;}" }),
+  "gridTemplateRows": Object.freeze({ property: "grid-template-rows", target: "host", selector: ":host", template: ":host{grid-template-rows:initial;}" }),
+  "gridTemplateAreas": Object.freeze({ property: "grid-template-areas", target: "host", selector: ":host", template: ":host{grid-template-areas:initial;}" }),
+  "gridAutoColumns": Object.freeze({ property: "grid-auto-columns", target: "host", selector: ":host", template: ":host{grid-auto-columns:initial;}" }),
+  "gridAutoRows": Object.freeze({ property: "grid-auto-rows", target: "host", selector: ":host", template: ":host{grid-auto-rows:initial;}" }),
+  "gridAutoFlow": Object.freeze({ property: "grid-auto-flow", target: "host", selector: ":host", template: ":host{grid-auto-flow:initial;}" }),
+  "justifyItems": Object.freeze({ property: "justify-items", target: "host", selector: ":host", template: ":host{justify-items:initial;}" }),
   }),
 }) satisfies ResponsiveStyleDelivery;

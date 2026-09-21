@@ -49,8 +49,8 @@ export const intro: Doc = {
   )}${tile(
     "/components/grid",
     "Grid",
-    "A core part of the house aesthetic.",
-    `<acme-grid-system guide-width="1" use-container min-width="200" style="width:100%"><acme-grid columns="6" rows="3" height="preserve-aspect-ratio"><acme-grid-cross column="2" row="1"></acme-grid-cross><acme-grid-cross column="5" row="3"></acme-grid-cross></acme-grid></acme-grid-system>`,
+    "Native tracks and responsive placement.",
+    `<acme-grid grid-template-columns="repeat(3, minmax(0, 1fr))" gap="2" width="100%">${Array.from({length:6},()=>'<acme-box height="32px" background-color="var(--ds-gray-200)"></acme-box>').join("")}</acme-grid>`,
   )}${tile(
     "/typeface",
     "Typeface",
@@ -63,7 +63,7 @@ export const intro: Doc = {
     "- **Colors** — A high contrast, accessible color system. See `/colors`.",
     "- **Typography** — Typeset with Google Sans Flex and Google Sans Code. See `/typography`.",
     "- **Materials** — Presets for radii, fills, strokes, and shadows. See `/materials`.",
-    "- **Grid** — A core part of the house aesthetic. See `/components/grid`.",
+    "- **Grid** — Native tracks and responsive placement. See `/components/grid`.",
     "",
     "## Assets",
     "",

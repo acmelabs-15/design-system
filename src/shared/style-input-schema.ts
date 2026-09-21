@@ -107,7 +107,15 @@ export const flexStyleInputSchema = Object.freeze({
   ...properties(["flexDirection", "flexWrap", "alignItems", "alignContent", "justifyContent"], "none", "host"),
   ...properties(["gap", "rowGap", "columnGap"], "nonnegative-spacing", "host"),
 });
-export const styleInputSchema = Object.freeze({ ...commonStyleInputSchema, ...flexStyleInputSchema });
+export const gridStyleInputSchema = Object.freeze({
+  ...properties(
+    ["gridTemplateColumns", "gridTemplateRows", "gridTemplateAreas", "gridAutoColumns", "gridAutoRows", "gridAutoFlow", "alignItems", "justifyItems", "alignContent", "justifyContent"],
+    "none",
+    "host",
+  ),
+  ...properties(["gap", "rowGap", "columnGap"], "nonnegative-spacing", "host"),
+});
+export const styleInputSchema = Object.freeze({ ...commonStyleInputSchema, ...flexStyleInputSchema, ...gridStyleInputSchema });
 
 export type StyleInputKey = keyof typeof styleInputSchema;
 export type StyleScalar<Property extends StyleInputKey> = (typeof styleInputSchema)[Property]["numeric"] extends "none" ? string : string | number;

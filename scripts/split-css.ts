@@ -90,7 +90,6 @@ const MAP: [string, RegExp][] = [
   ["drawer", /^(\.drawer|@keyframes drawer-up)/],
   ["feedback", /^\.feedback/],
   ["file-tree", /^\.tree/],
-  ["grid", /^\.gs\b|^\.gs-/],
   ["json-view", /^\.json/],
   ["multi-select", /^(\.multi-select|\.ms-row)/],
   ["relative-time", /^(\.time-card|\.reltime)/],

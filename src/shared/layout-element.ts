@@ -126,7 +126,7 @@ export abstract class AcmeLayoutElement extends AcmeSemanticElement {
   });
   private readonly renderer = new ResponsiveStyleRenderer(this, responsiveStyleDelivery, {
     root: () => (this.renderRoot?.nodeType === 11 ? (this.renderRoot as ShadowRoot) : undefined),
-    state: () => ({ inputs: this.styleInputs.entries.get(), target: this.responsiveTarget, container: this.responsiveContainer }),
+    state: () => ({ inputs: this.resolvedStyleInputs(), target: this.responsiveTarget, container: this.responsiveContainer }),
     displayModes: (this.constructor as typeof AcmeLayoutElement).displayModes,
     layout: (this.constructor as typeof AcmeLayoutElement).layout,
     diagnostic: (diagnostic) => console.warn(this.localName, diagnostic),
@@ -137,6 +137,9 @@ export abstract class AcmeLayoutElement extends AcmeSemanticElement {
   adoptedCallback(): void {
     super.adoptedCallback();
     this.renderer.adopted();
+  }
+  protected resolvedStyleInputs(): readonly (readonly [StyleInputKey, unknown])[] {
+    return this.styleInputs.entries.get();
   }
   protected renderContent() {
     return html`<slot></slot>`;

@@ -307,7 +307,7 @@ Remaining public names/defaults in the tables form a coherent contract, not sepa
 
 ## L-01: Box
 
-**Approved design; implementation remains gated.** Tag acme-box; React Box. Inclusion, the nine as tags, default tag/display, parent placement and token/CSS surface values are already selected. The [common contract](#common-box-properties) supplies every property/type/default/target, responsive input, native attribute, slot, part and lifecycle rule.
+**Implemented in M07.** [Evidence](evidence/m07-box-2026-09-21.json). Tag acme-box; React Box. Inclusion, the nine as tags, default tag/display, parent placement and token/CSS surface values are already selected. The [common contract](#common-box-properties) supplies every property/type/default/target, responsive input, native attribute, slot, part and lifecycle rule.
 
 Box supplies a semantic container and its own surface. It does not arrange children with flex/grid, substitute for Card's content contract, or own interaction.
 
@@ -323,7 +323,7 @@ No additional properties, named slots, events, methods or component states. part
 
 ## L-02: Stack family
 
-**Approved design; implementation remains gated.** Tags acme-stack, acme-h-stack, acme-v-stack; React Stack, HStack, VStack. All use the common contract. They arrange children with house spacing. Group retains attachment/default propagation; Stack owns no selection, form or keyboard state.
+**Implemented in M07.** [Evidence](evidence/m07-stack-2026-09-21.json). Tags acme-stack, acme-h-stack, acme-v-stack; React Stack, HStack, VStack. All use the common contract. They arrange children with house spacing. Group retains attachment/default propagation; Stack owns no selection, form or keyboard state.
 
 | Additional/restricted input | Type | Visual/component default |
 | --- | --- | --- |
@@ -355,7 +355,7 @@ Eligible automatic-divider members are direct assigned element children with ren
 
 ## L-03: Simple Grid
 
-**Approved design; implementation remains gated.** Tag acme-simple-grid; React SimpleGrid. Uses the common contract. Column counts, minimum child widths and minimum-width precedence are selected. It lays out content, without owning data processing, selection or keyboard navigation.
+**Implemented in M07.** [Evidence](evidence/m07-grid-2026-09-21.json). Tag acme-simple-grid; React SimpleGrid. Uses the common contract. Column counts, minimum child widths and minimum-width precedence are selected. It lays out content, without owning data processing, selection or keyboard navigation.
 
 | Additional/restricted input | Type | Visual/component default |
 | --- | --- | --- |
@@ -389,7 +389,7 @@ Public parts/slots/events are the shared root/default/none. **Acceptance:** both
 
 ## L-04: Flex
 
-**Approved design; implementation remains gated.** Tag acme-flex; React Flex. Uses the common contract. It is the direct flex-layout option without Stack separators/default gap or Group appearance behavior.
+**Implemented in M07.** [Evidence](evidence/m07-flex-2026-09-21.json). Tag acme-flex; React Flex. Uses the common contract. It is the direct flex-layout option without Stack separators/default gap or Group appearance behavior.
 
 | Additional/restricted input | Type | Visual/component default |
 | --- | --- | --- |
@@ -413,7 +413,7 @@ Shared root/default-slot/no-event contract applies. **Acceptance:** main/cross a
 
 ## L-05: Grid
 
-**Approved design; implementation remains gated.** Tag acme-grid; React Grid. Uses the common contract. It exposes native track and alignment concepts. The removed decorative Grid/Cell/Cross/System/Page family does not return.
+**Implemented in M07.** [Evidence](evidence/m07-grid-2026-09-21.json). Tag acme-grid; React Grid. Uses the common contract. It exposes native track and alignment concepts. The removed decorative Grid/Cell/Cross/System/Page family does not return.
 
 | Additional/restricted input | Type | Visual/component default |
 | --- | --- | --- |

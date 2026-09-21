@@ -13,7 +13,7 @@ const PAGES = path.join(DOCS, "pages");
 const fragments = fs.existsSync(PAGES) ? [...fs.readdirSync(PAGES).filter((f) => f.endsWith(".html")), ...fs.readdirSync(path.join(PAGES, "components")).map((f) => `components/${f}`)] : [];
 
 // Elements whose own shadow root is legitimately empty, plus the docs-only token rows the app defines.
-const LIGHT = new Set(["acme-toaster", "acme-menu-divider", "acme-grid-cross", "acme-switch-control", "acme-tab-panel", "docs-tokens"]);
+const LIGHT = new Set(["acme-toaster", "acme-menu-divider", "acme-switch-control", "acme-tab-panel", "docs-tokens"]);
 const settle = () => new Promise((r) => setTimeout(r, 20));
 
 describe("docs site", () => {

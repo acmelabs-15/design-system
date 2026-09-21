@@ -270,26 +270,6 @@
       "import": "./dist/components/grid/grid.js",
       "default": "./dist/components/grid/grid.js"
     },
-    "./components/grid-cell": {
-      "types": "./dist/components/grid-cell/grid-cell.d.ts",
-      "import": "./dist/components/grid-cell/grid-cell.js",
-      "default": "./dist/components/grid-cell/grid-cell.js"
-    },
-    "./components/grid-cross": {
-      "types": "./dist/components/grid-cross/grid-cross.d.ts",
-      "import": "./dist/components/grid-cross/grid-cross.js",
-      "default": "./dist/components/grid-cross/grid-cross.js"
-    },
-    "./components/grid-page": {
-      "types": "./dist/components/grid-page/grid-page.d.ts",
-      "import": "./dist/components/grid-page/grid-page.js",
-      "default": "./dist/components/grid-page/grid-page.js"
-    },
-    "./components/grid-system": {
-      "types": "./dist/components/grid-system/grid-system.d.ts",
-      "import": "./dist/components/grid-system/grid-system.js",
-      "default": "./dist/components/grid-system/grid-system.js"
-    },
     "./components/h-stack": {
       "types": "./dist/components/h-stack/h-stack.d.ts",
       "import": "./dist/components/h-stack/h-stack.js",
@@ -459,6 +439,11 @@
       "types": "./dist/components/show-more/show-more.d.ts",
       "import": "./dist/components/show-more/show-more.js",
       "default": "./dist/components/show-more/show-more.js"
+    },
+    "./components/simple-grid": {
+      "types": "./dist/components/simple-grid/simple-grid.d.ts",
+      "import": "./dist/components/simple-grid/simple-grid.js",
+      "default": "./dist/components/simple-grid/simple-grid.js"
     },
     "./components/skeleton": {
       "types": "./dist/components/skeleton/skeleton.d.ts",
