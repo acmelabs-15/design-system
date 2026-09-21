@@ -1,0 +1,2179 @@
+{
+  "date": "2026-09-21",
+  "phase": "Phase 6 M05",
+  "decision": "notes/decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper",
+  "status": "bounded helper implementation verified; generated renderer/family/root-export integration remains",
+  "implementation": {
+    "directive": "Plain Lit Directive with an owner token; no disconnect cleanup or registry promises.",
+    "connection": "Weak target-instance binding. Controller construction consumes the bounded pending map.",
+    "ownership": "Per-key ownership visible during publication; revision-guarded rollback on failed application.",
+    "pending": "At most one latest value or explicit clear marker per schema key, with no saved callback queue.",
+    "publicAvailability": "Internal module until family accessors, generated renderer and root exports are integrated."
+  },
+  "reentrant": {
+    "red": "bun test v1.4.0 (34cbb9a40)\n\n../../../../../private/tmp/acme-m05-style-helper-reentrancy/red.test.ts:\n35 |     if (!first) return;\n36 |     first = false;\n37 |     applyStyleInputBinding(target, owner, {});\n38 |   });\n39 |   applyStyleInputBinding(target, owner, { padding: 2 });\n40 |   expect(values.get(\"padding\")).toBeUndefined();\n                                     ^\nerror: expect(received).toBeUndefined()\n\nReceived: 2\n\n      at <anonymous> (/private/tmp/acme-m05-style-helper-reentrancy/red.test.ts:40:33)\n(fail) same-owner clearing during first publication sees its newly supplied keys [1.20ms]\n52 |     if (first) {\n53 |       first = false;\n54 |       applyStyleInputBinding(target, owner, { padding: 4 });\n55 |     }\n56 |   });\n57 |   expect(values.get(\"padding\")).toBe(4);\n                                     ^\nerror: expect(received).toBe(expected)\n\nExpected: 4\nReceived: 2\n\n      at <anonymous> (/private/tmp/acme-m05-style-helper-reentrancy/red.test.ts:57:33)\n(fail) writes triggered while attaching a controller are applied instead of lost [0.20ms]\n\n 0 pass\n 2 fail\n 2 expect() calls\nRan 2 tests across 1 file. [79.00ms]\n",
+    "green": "bun test v1.4.0 (34cbb9a40)\n\nsrc/shared/__tests__/style-input-binding.test.ts:\n(pass) same-owner clearing during first publication sees its newly supplied keys [0.93ms]\n(pass) writes triggered while attaching a controller are applied instead of lost [0.15ms]\n(pass) grouped updates keep supplied order, remove missing owned keys and preserve unrelated inputs [0.21ms]\n(pass) an older or unrelated owner cannot clear a newer owner's inputs [0.09ms]\n(pass) failed grouped validation rolls back ownership without committing earlier values or removals [0.34ms]\n(pass) pending clearing remains explicit and survives attachment validation failure [0.13ms]\n(pass) pending owners keep their latest order and an empty unrelated owner has no inherited claim [0.08ms]\n(pass) pending responsive values are snapshots, not retained caller objects [0.12ms]\n(pass) malformed helper data never invokes accessors or changes existing ownership [0.11ms]\n(pass) newer reentrant ownership survives an older invocation and its later clearing [0.10ms]\n\nsrc/shared/__tests__/style-input-controller.test.ts:\n(pass) style input capture > captures actual attribute order and composes ordinary observed attributes [1.10ms]\n(pass) style input capture > captures non-enumerable own data properties in their creation order before connection [0.17ms]\n(pass) style input capture > rejects own accessors without invoking them or deleting other inputs [0.07ms]\n(pass) style input capture > rejects non-configurable own inputs and conflicting Lit property metadata [0.22ms]\n(pass) style input capture > initial attribute replay does not replace early property values [0.16ms]\n(pass) style input capture > same-text writes and removal/re-addition before connection remain real changes [0.27ms]\n(pass) style input capture > reentrant attribute changes cannot discard other pending initial callbacks [0.14ms]\n(pass) style input capture > direct updates retain position; undefined removes it and re-addition appends [0.14ms]\n(pass) style input capture > invalid HTML clears its override and reports a diagnostic while unrelated values survive [0.27ms]\n(pass) style input capture > keeps responsive authored shape and owns copies rather than viewport results [0.15ms]\n(pass) style input capture > disconnected attributes and properties update canonical state and render on reconnect [2.02ms]\n\nsrc/shared/__tests__/style-inputs.test.ts:\n(pass) accepts only element expressions [0.90ms]\n(pass) reasserts the same object on every helper render and keeps unrelated settings [0.87ms]\n(pass) key removal and explicit empty input clear only the same helper's supplied keys [0.36ms]\n(pass) temporary detach and complete element removal do not clear authored inputs [0.41ms]\n(pass) a replacement helper on a retained element does not inherit a removed helper's claims [0.43ms]\n(pass) keeps grammar-invalid authored CSS for the native declaration planner [0.27ms]\n\n 27 pass\n 0 fail\n 81 expect() calls\nRan 27 tests across 3 files. [101.00ms]\n",
+    "reproduction": {
+      "before.ts": "import { isPlainRecord } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/plain-record\";\nimport type { ResponsiveInput, ResponsiveScalar } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive\";\nimport { copyResponsiveInput } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/responsive-input\";\nimport { type StyleInputKey, type StyleScalar, styleInputSchema } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-schema\";\n\nexport type StyleInputs = Readonly<{ [Key in StyleInputKey]?: ResponsiveInput<StyleScalar<Key>> }>;\ntype Patch = Readonly<Partial<Record<StyleInputKey, ResponsiveInput<ResponsiveScalar>>>>;\ntype Apply = (inputs: Patch, previousKeys: readonly StyleInputKey[]) => void;\ntype Ownership = { owner?: object; revision: number };\ntype Binding = {\n  apply?: Apply;\n  owners: Map<StyleInputKey, Ownership>;\n  pending: Map<StyleInputKey, ResponsiveInput<ResponsiveScalar>>;\n  revision: number;\n};\nconst targets = new WeakMap<Element, Binding>();\n\nfunction targetBinding(target: Element): Binding {\n  let binding = targets.get(target);\n  if (!binding) {\n    binding = { owners: new Map(), pending: new Map(), revision: 0 };\n    targets.set(target, binding);\n  }\n  return binding;\n}\n\nfunction snapshot(inputs: StyleInputs): Patch {\n  if (!isPlainRecord(inputs)) throw new TypeError(\"Style inputs must be a plain ordered object\");\n  const entries = Reflect.ownKeys(inputs).map((key) => {\n    if (typeof key !== \"string\" || !Object.hasOwn(styleInputSchema, key)) throw new TypeError(\"Unknown style input\");\n    const descriptor = Object.getOwnPropertyDescriptor(inputs, key)!;\n    if (!descriptor.enumerable || !Object.hasOwn(descriptor, \"value\")) throw new TypeError(\"Style inputs require enumerable data properties\");\n    const value = copyResponsiveInput(descriptor.value, (leaf): leaf is ResponsiveScalar => [\"string\", \"number\", \"boolean\"].includes(typeof leaf));\n    return [key, value] as const;\n  });\n  return Object.freeze(Object.fromEntries(entries));\n}\n\n\n// Preserved pre-fix transaction ordering for the two observed reentrant regressions.\nexport function attachStyleInputTarget(target: Element, apply: Apply): void {\n const binding=targetBinding(target);\n if(binding.apply)throw new TypeError('A style input controller is already attached to this target');\n if(binding.pending.size)apply(Object.fromEntries(binding.pending),[]);\n binding.apply=apply;\n binding.pending.clear();\n}\nexport function applyStyleInputBinding(target: Element, owner: object, inputs: StyleInputs): void {\n const patch=snapshot(inputs),keys=Object.keys(patch) as StyleInputKey[],binding=targetBinding(target);\n const previous=[...binding.owners].filter(([,value])=>value.owner===owner).map(([key])=>key);\n const revision=++binding.revision;\n if(binding.apply)binding.apply(patch,previous);\n else{\n  const pending=new Map(binding.pending);\n  for(const key of previous){pending.delete(key);pending.set(key,undefined);}\n  for(const key of keys){pending.delete(key);pending.set(key,patch[key]);}\n  binding.pending=pending;\n }\n for(const key of previous)if((binding.owners.get(key)?.revision??0)<=revision)binding.owners.set(key,{revision});\n for(const key of keys)if((binding.owners.get(key)?.revision??0)<=revision)binding.owners.set(key,{owner,revision});\n}\n",
+      "red.test.ts": "import { expect, test } from \"bun:test\";\nimport { createOrderedStyleInputs } from \"/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/ordered-style-inputs\";\nimport { applyStyleInputBinding, attachStyleInputTarget, type StyleInputs } from \"./before\";\n\nconst createValues = () =>\n  createOrderedStyleInputs({\n    padding: (value: unknown) => {\n      if (typeof value !== \"number\" || value < 0) throw new TypeError(\"Invalid padding\");\n      return value;\n    },\n    paddingInline: (value: unknown) => {\n      if (typeof value !== \"number\" || value < 0) throw new TypeError(\"Invalid padding inline\");\n      return value;\n    },\n    backgroundColor: (value: unknown) => {\n      if (typeof value !== \"string\") throw new TypeError(\"Invalid background\");\n      return value;\n    },\n  });\ntype Key = \"padding\" | \"paddingInline\" | \"backgroundColor\";\nconst setup = () => {\n  const target = document.createElement(\"div\");\n  const values = createValues();\n  attachStyleInputTarget(target, (inputs, previous) => {\n    values.apply(inputs, previous as readonly Key[]);\n  });\n  return { target, values };\n};\n\ntest(\"same-owner clearing during first publication sees its newly supplied keys\", () => {\n  const { target, values } = setup();\n  const owner = {};\n  let first = true;\n  const subscription = values.entries.subscribe(() => {\n    if (!first) return;\n    first = false;\n    applyStyleInputBinding(target, owner, {});\n  });\n  applyStyleInputBinding(target, owner, { padding: 2 });\n  expect(values.get(\"padding\")).toBeUndefined();\n  subscription.unsubscribe();\n});\n\ntest(\"writes triggered while attaching a controller are applied instead of lost\", () => {\n  const target = document.createElement(\"div\");\n  const owner = {};\n  const values = createValues();\n  applyStyleInputBinding(target, owner, { padding: 2 });\n  let first = true;\n  attachStyleInputTarget(target, (inputs, previous) => {\n    values.apply(inputs, previous as readonly Key[]);\n    if (first) {\n      first = false;\n      applyStyleInputBinding(target, owner, { padding: 4 });\n    }\n  });\n  expect(values.get(\"padding\")).toBe(4);\n});\n\n",
+      "save.ts": "const repo='/Users/peterkloss/Dev/ACMElabs/design-system',dir='/tmp/acme-m05-style-helper-reentrancy';\nlet source=await Bun.file(repo+'/src/shared/style-input-binding.ts').text();\nsource=source.slice(0,source.indexOf('/** Connects the actual target'))+`\n// Preserved pre-fix transaction ordering for the two observed reentrant regressions.\nexport function attachStyleInputTarget(target: Element, apply: Apply): void {\n const binding=targetBinding(target);\n if(binding.apply)throw new TypeError('A style input controller is already attached to this target');\n if(binding.pending.size)apply(Object.fromEntries(binding.pending),[]);\n binding.apply=apply;\n binding.pending.clear();\n}\nexport function applyStyleInputBinding(target: Element, owner: object, inputs: StyleInputs): void {\n const patch=snapshot(inputs),keys=Object.keys(patch) as StyleInputKey[],binding=targetBinding(target);\n const previous=[...binding.owners].filter(([,value])=>value.owner===owner).map(([key])=>key);\n const revision=++binding.revision;\n if(binding.apply)binding.apply(patch,previous);\n else{\n  const pending=new Map(binding.pending);\n  for(const key of previous){pending.delete(key);pending.set(key,undefined);}\n  for(const key of keys){pending.delete(key);pending.set(key,patch[key]);}\n  binding.pending=pending;\n }\n for(const key of previous)if((binding.owners.get(key)?.revision??0)<=revision)binding.owners.set(key,{revision});\n for(const key of keys)if((binding.owners.get(key)?.revision??0)<=revision)binding.owners.set(key,{owner,revision});\n}\n`;\nsource=source.replaceAll('from \"./',`from \"${repo}/src/shared/`);\nawait Bun.write(dir+'/before.ts',source);\nlet tests=await Bun.file(repo+'/src/shared/__tests__/style-input-binding.test.ts').text();tests=tests.slice(0,tests.indexOf('test(\"grouped updates'));\ntests=tests.replace('from \"../ordered-style-inputs\"',`from \"${repo}/src/shared/ordered-style-inputs\"`).replace('from \"../style-input-binding\"','from \"./before\"');await Bun.write(dir+'/red.test.ts',tests);\nconst red=Bun.spawnSync([process.execPath,'test',dir+'/red.test.ts'],{cwd:repo});await Bun.write(dir+'/red.log',new TextDecoder().decode(red.stdout)+new TextDecoder().decode(red.stderr));\nconst green=Bun.spawnSync([process.execPath,'test','src/shared/__tests__/style-input-binding.test.ts','src/shared/__tests__/style-inputs.test.ts','src/shared/__tests__/style-input-controller.test.ts'],{cwd:repo});await Bun.write(dir+'/green.log',new TextDecoder().decode(green.stdout)+new TextDecoder().decode(green.stderr));\nconsole.log(JSON.stringify({redExit:red.exitCode,greenExit:green.exitCode,redLog:dir+'/red.log',greenLog:dir+'/green.log'}));\n"
+    }
+  },
+  "verification": {
+    "review": "approved",
+    "focusedTests": 71,
+    "strictAndNonStrictDeclarations": "identical",
+    "split": "pass",
+    "build": "pass",
+    "docs": "pass",
+    "fullSuite": {
+      "passed": 780,
+      "failed": 0,
+      "assertions": 10304,
+      "files": 104
+    },
+    "formattedTestCheck": {
+      "passed": 16,
+      "failed": 0,
+      "assertions": 46
+    }
+  },
+  "limits": [
+    "No final generated responsive renderer or family migration is claimed.",
+    "A replacement helper does not acquire ownership of a removed helper's keys unless it explicitly supplies them.",
+    "Theme context dependency remains unselected.",
+    "Firefox with scoped-registry polyfill0.0.10 still fails first definition after adopting an undefined element to another document, including the bare no-Lit reduction. Both-document installation and explicit upgrade do not repair it. Track this as a registry-delivery gate."
+  ],
+  "browser": {
+    "summary": {
+      "date": "2026-09-21T09:02:13.861Z",
+      "scope": "Actual source styleInputs helper/controller/binding under installed production Lit template compiler; no repository edits",
+      "runtime": {
+        "bun": "1.4.0",
+        "typescript": "5.9.3",
+        "litCompiler": "1.1.2",
+        "scopedRegistryPolyfill": "0.0.10"
+      },
+      "fixtureActuallyCompiled": true,
+      "sourceHashes": [
+        {
+          "file": "src/shared/style-inputs.ts",
+          "captured": "4297b1f62dda6ea187fa6ef710c85f7d8b66df91dc366dac8acf20f09ae04d2b",
+          "current": "4297b1f62dda6ea187fa6ef710c85f7d8b66df91dc366dac8acf20f09ae04d2b",
+          "unchanged": true
+        },
+        {
+          "file": "src/shared/style-input-binding.ts",
+          "captured": "117a9cd04ebfdd858735b7cf78f01424bf5d2ca079ab1b421ddfb060ddcc025a",
+          "current": "117a9cd04ebfdd858735b7cf78f01424bf5d2ca079ab1b421ddfb060ddcc025a",
+          "unchanged": true
+        },
+        {
+          "file": "src/shared/style-input-controller.ts",
+          "captured": "477baed5020f77d660d0247dc88ad74b9ea133b6b5d9cb038f11ae4ba1a859a5",
+          "current": "477baed5020f77d660d0247dc88ad74b9ea133b6b5d9cb038f11ae4ba1a859a5",
+          "unchanged": true
+        },
+        {
+          "file": "src/shared/ordered-style-inputs.ts",
+          "captured": "15da52085774c674698bdf8ab14ed30ba1eb4a0ea9a16c1199556e771a07a0a8",
+          "current": "15da52085774c674698bdf8ab14ed30ba1eb4a0ea9a16c1199556e771a07a0a8",
+          "unchanged": true
+        },
+        {
+          "file": "src/shared/style-input-schema.ts",
+          "captured": "c947442d035bf3ddec2be8c33d212c7c47e0973dcc0dcc1712a98c1f5ac0e90a",
+          "current": "c947442d035bf3ddec2be8c33d212c7c47e0973dcc0dcc1712a98c1f5ac0e90a",
+          "unchanged": true
+        }
+      ],
+      "engines": [
+        {
+          "name": "chromium",
+          "version": "153.0.8010.48",
+          "registryMode": "native scoped registry",
+          "pass": 17,
+          "total": 17,
+          "pageErrors": [],
+          "platformReduction": {
+            "name": "first scoped definition after unknown-node adoption without house code",
+            "nativeRegistry": true,
+            "automatic": true,
+            "afterExplicitUpgrade": true,
+            "marker": true,
+            "sourceDocumentRetained": true
+          }
+        },
+        {
+          "name": "firefox",
+          "version": "155.0",
+          "registryMode": "scoped-registry polyfill",
+          "pass": 17,
+          "total": 17,
+          "pageErrors": [],
+          "platformReduction": {
+            "name": "first scoped definition after unknown-node adoption without house code",
+            "nativeRegistry": false,
+            "automatic": false,
+            "afterExplicitUpgrade": false,
+            "marker": null,
+            "sourceDocumentRetained": true,
+            "bothDocumentsPolyfilled": {
+              "automatic": false,
+              "targetUpgrade": false,
+              "rootUpgrade": false,
+              "marker": null
+            }
+          }
+        },
+        {
+          "name": "webkit",
+          "version": "26.6",
+          "registryMode": "native scoped registry",
+          "pass": 17,
+          "total": 17,
+          "pageErrors": [],
+          "platformReduction": {
+            "name": "first scoped definition after unknown-node adoption without house code",
+            "nativeRegistry": true,
+            "automatic": true,
+            "afterExplicitUpgrade": true,
+            "marker": true,
+            "sourceDocumentRetained": true
+          }
+        }
+      ],
+      "artifacts": [
+        "suite.ts",
+        "run.ts",
+        "source-capture.json",
+        "results.json",
+        "first-results.json",
+        "suite-define-after-adoption.ts",
+        "firefox-before-explicit-upgrade.json",
+        "firefox-explicit-upgrade-results.json",
+        "bootstrap-source.js",
+        "polyfill.js"
+      ],
+      "assets": {
+        "bootstrap-source.js": {
+          "original": "/tmp/acme-m00-scoped-registry-NSLMRE/bootstrap-style.js",
+          "sha256": "b0f46290dc295944adf2ffd25f12d5789433a7ecc1d85af9ef4206130cec6c75"
+        },
+        "polyfill.js": {
+          "original": "/tmp/acme-m00-scoped-registry-NSLMRE/build/polyfill.js",
+          "sha256": "e45ecb655d02737250e9088757874389c36055f7e0251093c9afea7baf887ab7"
+        }
+      },
+      "findings": [
+        "All17 bounded helper/compiled-template cases pass in Chromium153, Firefox155 and WebKit26.6. Firefox uses the selected scoped registry polyfill, not native scoped support.",
+        "Successful cases include canonical/order overlap, same-value reassertion, one complete transaction notification, invalid numeric rollback, explicit{}clear, expression removal/replacement ownership, disconnected root part writes, real Lit cache retention/restoration, actual helper reentrant same-owner clear, real scoped late upgrade, adoption after upgrade, and new scoped construction in the destination document.",
+        "A separate no-Lit/no-house bare HTMLElement reduction fails in Firefox when a still-undefined scoped element moves to another document before the first definition. Original scoped registry.upgrade(target) and upgrade(shadowRoot) do not repair it. Loading the polyfill in both documents does not repair it. Chromium/WebKit native scoped registries pass this reduction.",
+        "The polyfill source registers native stand-in classes through a captured native registry and delegates upgrade through that same registry. That source mechanism is consistent with the observed document-bound failure; no helper handshake/controller exists on the failing raw HTMLElement."
+      ],
+      "platformSource": {
+        "path": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-m00-toolchain-i9U5Xm/node_modules/@webcomponents/scoped-custom-element-registry/src/scoped-custom-element-registry.ts",
+        "lines": "190-272;336-455",
+        "sourceRead": "Relevant full implementation sections plus complete README"
+      },
+      "limits": [
+        "This is a bounded helper/controller fixture with three style properties, not the final77-property renderer or whole component acceptance.",
+        "Fixture serializes scalar values into inline styles solely to observe actual overlap. It is not proposed production CSS output.",
+        "Define-after-adoption remains an unresolved Firefox/polyfill integration defect; late-before-adoption success does not certify that combination.",
+        "No automatic registry workaround was added to the helper, no global monkeypatch added, no source changed by this task.",
+        "Compiled fixture source is transpiled with the same TypeScript/Lit transform settings used by scripts/build.ts; this task does not claim a new complete strict typecheck or declaration build."
+      ],
+      "resourcesStopped": true,
+      "repositoryEdits": false,
+      "projectDependencyChanges": false
+    },
+    "results": {
+      "date": "2026-09-21T09:00:32.778Z",
+      "runtime": "1.4.0",
+      "compiler": "1.1.2",
+      "typescript": "5.9.3",
+      "sources": {
+        "../../../../../private/tmp/acme-m05-compiled-helper-8ih0Wb/suite.ts": {
+          "sha256": "340d5250a4046750bf079b6016747eade737156a3a337ef550683eaa075e45e3",
+          "compiledTemplates": true
+        },
+        "src/shared/style-input-controller.ts": {
+          "sha256": "477baed5020f77d660d0247dc88ad74b9ea133b6b5d9cb038f11ae4ba1a859a5",
+          "compiledTemplates": false
+        },
+        "src/shared/style-inputs.ts": {
+          "sha256": "4297b1f62dda6ea187fa6ef710c85f7d8b66df91dc366dac8acf20f09ae04d2b",
+          "compiledTemplates": false
+        },
+        "src/base.ts": {
+          "sha256": "579d83f4c335e54d09b1157440d1bbc4f6c6f553d0741d5d7632bc56817a471e",
+          "compiledTemplates": true
+        },
+        "src/shared/style-input-binding.ts": {
+          "sha256": "117a9cd04ebfdd858735b7cf78f01424bf5d2ca079ab1b421ddfb060ddcc025a",
+          "compiledTemplates": false
+        },
+        "src/shared/responsive-input.ts": {
+          "sha256": "27d8a96534c3b654b1557beac752ca56fd2a67c3c9d0f0abd12a296035c49f8d",
+          "compiledTemplates": false
+        },
+        "src/shared/store-connection.ts": {
+          "sha256": "f4a06979256674ef45d320c7965c9682f4b73b708c08b52ed05e03a3877a6a02",
+          "compiledTemplates": false
+        },
+        "src/shared/ordered-style-inputs.ts": {
+          "sha256": "15da52085774c674698bdf8ab14ed30ba1eb4a0ea9a16c1199556e771a07a0a8",
+          "compiledTemplates": false
+        },
+        "src/shared/style-input-schema.ts": {
+          "sha256": "c947442d035bf3ddec2be8c33d212c7c47e0973dcc0dcc1712a98c1f5ac0e90a",
+          "compiledTemplates": false
+        },
+        "src/shared/static-styles.ts": {
+          "sha256": "c0183e0dc6ccaefbbf508dee538fbe82cb1073b2c64d20d180096d99c9a88de5",
+          "compiledTemplates": false
+        },
+        "src/generated/shared/base.styles.ts": {
+          "sha256": "00076cf7831247456e84da216213b629bef6a7e038d9a6d7ecea35a16af2f8be",
+          "compiledTemplates": false
+        },
+        "src/shared/responsive.ts": {
+          "sha256": "98d0a625eca582c4fe14db50a8bdf8681f68b8dc5ca268b9fff46b688ca59bd5",
+          "compiledTemplates": false
+        },
+        "src/shared/plain-record.ts": {
+          "sha256": "d4613f9dc70a0a77efd818abfedeec8f88013a838c781d1b541f18f541130054",
+          "compiledTemplates": false
+        },
+        "src/shared/style-properties.ts": {
+          "sha256": "3e045b65ab77f8bf6e12025d3cb1be3348696a7452d162a4dd0d7d3ccfb30a29",
+          "compiledTemplates": false
+        },
+        "src/shared/numeric-tokens.ts": {
+          "sha256": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+          "compiledTemplates": false
+        }
+      },
+      "engines": [
+        {
+          "name": "chromium",
+          "version": "153.0.8010.48",
+          "errors": [],
+          "mode": "native scoped registry",
+          "results": [
+            {
+              "name": "compiled helper applies canonical ordered inputs and actual CSS",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ]
+              }
+            },
+            {
+              "name": "same-value helper reorder changes computed overlap without replacing element",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "same helper input reasserts after direct canonical write",
+              "pass": true,
+              "observed": {
+                "padding": "16px",
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "one helper transaction publishes one complete canonical snapshot",
+              "pass": true,
+              "observed": {
+                "observed": [
+                  [
+                    [
+                      "backgroundColor",
+                      "red"
+                    ],
+                    [
+                      "padding",
+                      "20px"
+                    ],
+                    [
+                      "paddingInline",
+                      "3px"
+                    ]
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "failed numeric transaction leaves values order and ownership intact",
+              "pass": true,
+              "observed": {
+                "invalid": true,
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "20px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit empty input clears owned fields and keeps unrelated authored input",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ]
+                ],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "removing the helper expression retains canonical values",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "12px"
+                  ],
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "replacement helper clears only keys it acquired",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit disconnected-part render writes canonical inputs synchronously",
+              "pass": true,
+              "observed": {
+                "padding": "22px"
+              }
+            },
+            {
+              "name": "part reconnection retains canonical values and element identity",
+              "pass": true,
+              "observed": {
+                "edges": [
+                  "22px",
+                  "22px",
+                  "22px",
+                  "22px"
+                ]
+              }
+            },
+            {
+              "name": "cache removal retains state and restoration reuses the host",
+              "pass": true,
+              "observed": {
+                "disconnected": true,
+                "sameHost": true,
+                "padding": "15px"
+              }
+            },
+            {
+              "name": "empty input on the restored cache expression clears its owned value",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "reentrant same-helper clearing during first publication remains cleared",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "actual late scoped upgrade applies the latest helper values",
+              "pass": true,
+              "observed": {
+                "nativeRegistry": true,
+                "polyfill": false,
+                "constructorMatch": true,
+                "entries": [
+                  [
+                    "paddingInline",
+                    "7px"
+                  ],
+                  [
+                    "padding",
+                    "18px"
+                  ]
+                ],
+                "edges": [
+                  "18px",
+                  "18px",
+                  "18px",
+                  "18px"
+                ]
+              }
+            },
+            {
+              "name": "adopted scoped helper still updates current canonical state and styles",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "13px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ],
+                "edges": [
+                  "13px",
+                  "3px",
+                  "13px",
+                  "3px"
+                ]
+              }
+            },
+            {
+              "name": "scoped movement back preserves host and explicit clearing",
+              "pass": true,
+              "observed": {
+                "entries": [],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "fresh scoped construction in the adopted document retains the intended registry",
+              "pass": true,
+              "observed": {
+                "newHost": true,
+                "constructorMatch": true,
+                "edges": [
+                  "9px",
+                  "9px",
+                  "9px",
+                  "9px"
+                ]
+              }
+            }
+          ],
+          "platformReduction": {
+            "name": "first scoped definition after unknown-node adoption without house code",
+            "nativeRegistry": true,
+            "automatic": true,
+            "afterExplicitUpgrade": true,
+            "marker": true,
+            "sourceDocumentRetained": true
+          }
+        },
+        {
+          "name": "firefox",
+          "version": "155.0",
+          "errors": [],
+          "mode": "scoped-registry polyfill",
+          "results": [
+            {
+              "name": "compiled helper applies canonical ordered inputs and actual CSS",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ]
+              }
+            },
+            {
+              "name": "same-value helper reorder changes computed overlap without replacing element",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "same helper input reasserts after direct canonical write",
+              "pass": true,
+              "observed": {
+                "padding": "16px",
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "one helper transaction publishes one complete canonical snapshot",
+              "pass": true,
+              "observed": {
+                "observed": [
+                  [
+                    [
+                      "backgroundColor",
+                      "red"
+                    ],
+                    [
+                      "padding",
+                      "20px"
+                    ],
+                    [
+                      "paddingInline",
+                      "3px"
+                    ]
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "failed numeric transaction leaves values order and ownership intact",
+              "pass": true,
+              "observed": {
+                "invalid": true,
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "20px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit empty input clears owned fields and keeps unrelated authored input",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ]
+                ],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "removing the helper expression retains canonical values",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "12px"
+                  ],
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "replacement helper clears only keys it acquired",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit disconnected-part render writes canonical inputs synchronously",
+              "pass": true,
+              "observed": {
+                "padding": "22px"
+              }
+            },
+            {
+              "name": "part reconnection retains canonical values and element identity",
+              "pass": true,
+              "observed": {
+                "edges": [
+                  "22px",
+                  "22px",
+                  "22px",
+                  "22px"
+                ]
+              }
+            },
+            {
+              "name": "cache removal retains state and restoration reuses the host",
+              "pass": true,
+              "observed": {
+                "disconnected": true,
+                "sameHost": true,
+                "padding": "15px"
+              }
+            },
+            {
+              "name": "empty input on the restored cache expression clears its owned value",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "reentrant same-helper clearing during first publication remains cleared",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "actual late scoped upgrade applies the latest helper values",
+              "pass": true,
+              "observed": {
+                "nativeRegistry": false,
+                "polyfill": true,
+                "constructorMatch": true,
+                "entries": [
+                  [
+                    "paddingInline",
+                    "7px"
+                  ],
+                  [
+                    "padding",
+                    "18px"
+                  ]
+                ],
+                "edges": [
+                  "18px",
+                  "18px",
+                  "18px",
+                  "18px"
+                ]
+              }
+            },
+            {
+              "name": "adopted scoped helper still updates current canonical state and styles",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "13px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ],
+                "edges": [
+                  "13px",
+                  "3px",
+                  "13px",
+                  "3px"
+                ]
+              }
+            },
+            {
+              "name": "scoped movement back preserves host and explicit clearing",
+              "pass": true,
+              "observed": {
+                "entries": [],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "fresh scoped construction in the adopted document retains the intended registry",
+              "pass": true,
+              "observed": {
+                "newHost": true,
+                "constructorMatch": true,
+                "edges": [
+                  "9px",
+                  "9px",
+                  "9px",
+                  "9px"
+                ]
+              }
+            }
+          ],
+          "platformReduction": {
+            "name": "first scoped definition after unknown-node adoption without house code",
+            "nativeRegistry": false,
+            "automatic": false,
+            "afterExplicitUpgrade": false,
+            "marker": null,
+            "sourceDocumentRetained": true,
+            "bothDocumentsPolyfilled": {
+              "automatic": false,
+              "targetUpgrade": false,
+              "rootUpgrade": false,
+              "marker": null
+            }
+          }
+        },
+        {
+          "name": "webkit",
+          "version": "26.6",
+          "errors": [],
+          "mode": "native scoped registry",
+          "results": [
+            {
+              "name": "compiled helper applies canonical ordered inputs and actual CSS",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ]
+              }
+            },
+            {
+              "name": "same-value helper reorder changes computed overlap without replacing element",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "same helper input reasserts after direct canonical write",
+              "pass": true,
+              "observed": {
+                "padding": "16px",
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "one helper transaction publishes one complete canonical snapshot",
+              "pass": true,
+              "observed": {
+                "observed": [
+                  [
+                    [
+                      "backgroundColor",
+                      "red"
+                    ],
+                    [
+                      "padding",
+                      "20px"
+                    ],
+                    [
+                      "paddingInline",
+                      "3px"
+                    ]
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "failed numeric transaction leaves values order and ownership intact",
+              "pass": true,
+              "observed": {
+                "invalid": true,
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "20px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit empty input clears owned fields and keeps unrelated authored input",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ]
+                ],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "removing the helper expression retains canonical values",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "12px"
+                  ],
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "replacement helper clears only keys it acquired",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit disconnected-part render writes canonical inputs synchronously",
+              "pass": true,
+              "observed": {
+                "padding": "22px"
+              }
+            },
+            {
+              "name": "part reconnection retains canonical values and element identity",
+              "pass": true,
+              "observed": {
+                "edges": [
+                  "22px",
+                  "22px",
+                  "22px",
+                  "22px"
+                ]
+              }
+            },
+            {
+              "name": "cache removal retains state and restoration reuses the host",
+              "pass": true,
+              "observed": {
+                "disconnected": true,
+                "sameHost": true,
+                "padding": "15px"
+              }
+            },
+            {
+              "name": "empty input on the restored cache expression clears its owned value",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "reentrant same-helper clearing during first publication remains cleared",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "actual late scoped upgrade applies the latest helper values",
+              "pass": true,
+              "observed": {
+                "nativeRegistry": true,
+                "polyfill": false,
+                "constructorMatch": true,
+                "entries": [
+                  [
+                    "paddingInline",
+                    "7px"
+                  ],
+                  [
+                    "padding",
+                    "18px"
+                  ]
+                ],
+                "edges": [
+                  "18px",
+                  "18px",
+                  "18px",
+                  "18px"
+                ]
+              }
+            },
+            {
+              "name": "adopted scoped helper still updates current canonical state and styles",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "13px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ],
+                "edges": [
+                  "13px",
+                  "3px",
+                  "13px",
+                  "3px"
+                ]
+              }
+            },
+            {
+              "name": "scoped movement back preserves host and explicit clearing",
+              "pass": true,
+              "observed": {
+                "entries": [],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "fresh scoped construction in the adopted document retains the intended registry",
+              "pass": true,
+              "observed": {
+                "newHost": true,
+                "constructorMatch": true,
+                "edges": [
+                  "9px",
+                  "9px",
+                  "9px",
+                  "9px"
+                ]
+              }
+            }
+          ],
+          "platformReduction": {
+            "name": "first scoped definition after unknown-node adoption without house code",
+            "nativeRegistry": true,
+            "automatic": true,
+            "afterExplicitUpgrade": true,
+            "marker": true,
+            "sourceDocumentRetained": true
+          }
+        }
+      ]
+    },
+    "initial": {
+      "date": "2026-09-21T08:52:39.417Z",
+      "runtime": "1.4.0",
+      "compiler": "1.1.2",
+      "typescript": "5.9.3",
+      "sources": {
+        "../../../../../private/tmp/acme-m05-compiled-helper-8ih0Wb/suite.ts": {
+          "sha256": "01aa59880fb1e1863588ff589e1a213a01eaea2dff8bf4511b4de2e426f28cc9",
+          "compiledTemplates": true
+        },
+        "src/shared/style-inputs.ts": {
+          "sha256": "4297b1f62dda6ea187fa6ef710c85f7d8b66df91dc366dac8acf20f09ae04d2b",
+          "compiledTemplates": false
+        },
+        "src/shared/style-input-controller.ts": {
+          "sha256": "477baed5020f77d660d0247dc88ad74b9ea133b6b5d9cb038f11ae4ba1a859a5",
+          "compiledTemplates": false
+        },
+        "src/base.ts": {
+          "sha256": "579d83f4c335e54d09b1157440d1bbc4f6c6f553d0741d5d7632bc56817a471e",
+          "compiledTemplates": true
+        },
+        "src/shared/style-input-schema.ts": {
+          "sha256": "c947442d035bf3ddec2be8c33d212c7c47e0973dcc0dcc1712a98c1f5ac0e90a",
+          "compiledTemplates": false
+        },
+        "src/shared/style-input-binding.ts": {
+          "sha256": "117a9cd04ebfdd858735b7cf78f01424bf5d2ca079ab1b421ddfb060ddcc025a",
+          "compiledTemplates": false
+        },
+        "src/shared/responsive-input.ts": {
+          "sha256": "27d8a96534c3b654b1557beac752ca56fd2a67c3c9d0f0abd12a296035c49f8d",
+          "compiledTemplates": false
+        },
+        "src/shared/ordered-style-inputs.ts": {
+          "sha256": "15da52085774c674698bdf8ab14ed30ba1eb4a0ea9a16c1199556e771a07a0a8",
+          "compiledTemplates": false
+        },
+        "src/shared/store-connection.ts": {
+          "sha256": "f4a06979256674ef45d320c7965c9682f4b73b708c08b52ed05e03a3877a6a02",
+          "compiledTemplates": false
+        },
+        "src/shared/numeric-tokens.ts": {
+          "sha256": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+          "compiledTemplates": false
+        },
+        "src/shared/style-properties.ts": {
+          "sha256": "3e045b65ab77f8bf6e12025d3cb1be3348696a7452d162a4dd0d7d3ccfb30a29",
+          "compiledTemplates": false
+        },
+        "src/shared/static-styles.ts": {
+          "sha256": "c0183e0dc6ccaefbbf508dee538fbe82cb1073b2c64d20d180096d99c9a88de5",
+          "compiledTemplates": false
+        },
+        "src/shared/plain-record.ts": {
+          "sha256": "d4613f9dc70a0a77efd818abfedeec8f88013a838c781d1b541f18f541130054",
+          "compiledTemplates": false
+        },
+        "src/generated/shared/base.styles.ts": {
+          "sha256": "00076cf7831247456e84da216213b629bef6a7e038d9a6d7ecea35a16af2f8be",
+          "compiledTemplates": false
+        },
+        "src/shared/responsive.ts": {
+          "sha256": "98d0a625eca582c4fe14db50a8bdf8681f68b8dc5ca268b9fff46b688ca59bd5",
+          "compiledTemplates": false
+        }
+      },
+      "engines": [
+        {
+          "name": "chromium",
+          "version": "153.0.8010.48",
+          "errors": [],
+          "mode": "native scoped registry",
+          "results": [
+            {
+              "name": "compiled helper applies canonical ordered inputs and actual CSS",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ]
+              }
+            },
+            {
+              "name": "same-value helper reorder changes computed overlap without replacing element",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "same helper input reasserts after direct canonical write",
+              "pass": true,
+              "observed": {
+                "padding": "16px",
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "one helper transaction publishes one complete canonical snapshot",
+              "pass": true,
+              "observed": {
+                "observed": [
+                  [
+                    [
+                      "backgroundColor",
+                      "red"
+                    ],
+                    [
+                      "padding",
+                      "20px"
+                    ],
+                    [
+                      "paddingInline",
+                      "3px"
+                    ]
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "failed numeric transaction leaves values order and ownership intact",
+              "pass": true,
+              "observed": {
+                "invalid": true,
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "20px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit empty input clears owned fields and keeps unrelated authored input",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ]
+                ],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "removing the helper expression retains canonical values",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "12px"
+                  ],
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "replacement helper clears only keys it acquired",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit disconnected-part render writes canonical inputs synchronously",
+              "pass": true,
+              "observed": {
+                "padding": "22px"
+              }
+            },
+            {
+              "name": "part reconnection retains canonical values and element identity",
+              "pass": true,
+              "observed": {
+                "edges": [
+                  "22px",
+                  "22px",
+                  "22px",
+                  "22px"
+                ]
+              }
+            },
+            {
+              "name": "cache removal retains state and restoration reuses the host",
+              "pass": true,
+              "observed": {
+                "disconnected": true,
+                "sameHost": true,
+                "padding": "15px"
+              }
+            },
+            {
+              "name": "empty input on the restored cache expression clears its owned value",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "reentrant same-helper clearing during first publication remains cleared",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "late scoped upgrade after document adoption applies the latest helper values",
+              "pass": true,
+              "observed": {
+                "nativeRegistry": true,
+                "polyfill": false,
+                "constructorMatch": true,
+                "entries": [
+                  [
+                    "paddingInline",
+                    "7px"
+                  ],
+                  [
+                    "padding",
+                    "18px"
+                  ]
+                ],
+                "edges": [
+                  "18px",
+                  "18px",
+                  "18px",
+                  "18px"
+                ]
+              }
+            },
+            {
+              "name": "adopted scoped helper still updates current canonical state and styles",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "13px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ],
+                "edges": [
+                  "13px",
+                  "3px",
+                  "13px",
+                  "3px"
+                ]
+              }
+            },
+            {
+              "name": "scoped movement back preserves host and explicit clearing",
+              "pass": true,
+              "observed": {
+                "entries": [],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "fresh scoped construction in the adopted document retains the intended registry",
+              "pass": true,
+              "observed": {
+                "newHost": true,
+                "constructorMatch": true,
+                "edges": [
+                  "9px",
+                  "9px",
+                  "9px",
+                  "9px"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "firefox",
+          "version": "155.0",
+          "errors": [
+            "TypeError: can't access property \"entries\", el.controller is undefined"
+          ],
+          "error": "TimeoutError: waitForFunction: Timeout 15000ms exceeded.",
+          "bootstrap": {
+            "mode": "compat-style",
+            "capability": {
+              "supported": false,
+              "error": "TypeError: Illegal constructor."
+            },
+            "loadPolyfill": true,
+            "patches": {
+              "Registry": true,
+              "globalRegistry": true,
+              "attachShadow": true
+            }
+          }
+        },
+        {
+          "name": "webkit",
+          "version": "26.6",
+          "errors": [],
+          "mode": "native scoped registry",
+          "results": [
+            {
+              "name": "compiled helper applies canonical ordered inputs and actual CSS",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ]
+              }
+            },
+            {
+              "name": "same-value helper reorder changes computed overlap without replacing element",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "same helper input reasserts after direct canonical write",
+              "pass": true,
+              "observed": {
+                "padding": "16px",
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "one helper transaction publishes one complete canonical snapshot",
+              "pass": true,
+              "observed": {
+                "observed": [
+                  [
+                    [
+                      "backgroundColor",
+                      "red"
+                    ],
+                    [
+                      "padding",
+                      "20px"
+                    ],
+                    [
+                      "paddingInline",
+                      "3px"
+                    ]
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "failed numeric transaction leaves values order and ownership intact",
+              "pass": true,
+              "observed": {
+                "invalid": true,
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "20px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit empty input clears owned fields and keeps unrelated authored input",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ]
+                ],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "removing the helper expression retains canonical values",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "12px"
+                  ],
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "replacement helper clears only keys it acquired",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit disconnected-part render writes canonical inputs synchronously",
+              "pass": true,
+              "observed": {
+                "padding": "22px"
+              }
+            },
+            {
+              "name": "part reconnection retains canonical values and element identity",
+              "pass": true,
+              "observed": {
+                "edges": [
+                  "22px",
+                  "22px",
+                  "22px",
+                  "22px"
+                ]
+              }
+            },
+            {
+              "name": "cache removal retains state and restoration reuses the host",
+              "pass": true,
+              "observed": {
+                "disconnected": true,
+                "sameHost": true,
+                "padding": "15px"
+              }
+            },
+            {
+              "name": "empty input on the restored cache expression clears its owned value",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "reentrant same-helper clearing during first publication remains cleared",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "late scoped upgrade after document adoption applies the latest helper values",
+              "pass": true,
+              "observed": {
+                "nativeRegistry": true,
+                "polyfill": false,
+                "constructorMatch": true,
+                "entries": [
+                  [
+                    "paddingInline",
+                    "7px"
+                  ],
+                  [
+                    "padding",
+                    "18px"
+                  ]
+                ],
+                "edges": [
+                  "18px",
+                  "18px",
+                  "18px",
+                  "18px"
+                ]
+              }
+            },
+            {
+              "name": "adopted scoped helper still updates current canonical state and styles",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "13px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ],
+                "edges": [
+                  "13px",
+                  "3px",
+                  "13px",
+                  "3px"
+                ]
+              }
+            },
+            {
+              "name": "scoped movement back preserves host and explicit clearing",
+              "pass": true,
+              "observed": {
+                "entries": [],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "fresh scoped construction in the adopted document retains the intended registry",
+              "pass": true,
+              "observed": {
+                "newHost": true,
+                "constructorMatch": true,
+                "edges": [
+                  "9px",
+                  "9px",
+                  "9px",
+                  "9px"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "explicitUpgrade": {
+      "date": "2026-09-21T08:55:35.051Z",
+      "runtime": "1.4.0",
+      "compiler": "1.1.2",
+      "typescript": "5.9.3",
+      "sources": {
+        "../../../../../private/tmp/acme-m05-compiled-helper-8ih0Wb/suite.ts": {
+          "sha256": "98a6e05a5d0e5ca3a02917482288cb5a9f76747f302873a95b65a63b1573cef2",
+          "compiledTemplates": true
+        },
+        "src/shared/style-inputs.ts": {
+          "sha256": "4297b1f62dda6ea187fa6ef710c85f7d8b66df91dc366dac8acf20f09ae04d2b",
+          "compiledTemplates": false
+        },
+        "src/shared/style-input-controller.ts": {
+          "sha256": "477baed5020f77d660d0247dc88ad74b9ea133b6b5d9cb038f11ae4ba1a859a5",
+          "compiledTemplates": false
+        },
+        "src/base.ts": {
+          "sha256": "579d83f4c335e54d09b1157440d1bbc4f6c6f553d0741d5d7632bc56817a471e",
+          "compiledTemplates": true
+        },
+        "src/shared/style-input-schema.ts": {
+          "sha256": "c947442d035bf3ddec2be8c33d212c7c47e0973dcc0dcc1712a98c1f5ac0e90a",
+          "compiledTemplates": false
+        },
+        "src/shared/style-input-binding.ts": {
+          "sha256": "117a9cd04ebfdd858735b7cf78f01424bf5d2ca079ab1b421ddfb060ddcc025a",
+          "compiledTemplates": false
+        },
+        "src/shared/responsive-input.ts": {
+          "sha256": "27d8a96534c3b654b1557beac752ca56fd2a67c3c9d0f0abd12a296035c49f8d",
+          "compiledTemplates": false
+        },
+        "src/shared/ordered-style-inputs.ts": {
+          "sha256": "15da52085774c674698bdf8ab14ed30ba1eb4a0ea9a16c1199556e771a07a0a8",
+          "compiledTemplates": false
+        },
+        "src/shared/store-connection.ts": {
+          "sha256": "f4a06979256674ef45d320c7965c9682f4b73b708c08b52ed05e03a3877a6a02",
+          "compiledTemplates": false
+        },
+        "src/shared/static-styles.ts": {
+          "sha256": "c0183e0dc6ccaefbbf508dee538fbe82cb1073b2c64d20d180096d99c9a88de5",
+          "compiledTemplates": false
+        },
+        "src/generated/shared/base.styles.ts": {
+          "sha256": "00076cf7831247456e84da216213b629bef6a7e038d9a6d7ecea35a16af2f8be",
+          "compiledTemplates": false
+        },
+        "src/shared/numeric-tokens.ts": {
+          "sha256": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+          "compiledTemplates": false
+        },
+        "src/shared/plain-record.ts": {
+          "sha256": "d4613f9dc70a0a77efd818abfedeec8f88013a838c781d1b541f18f541130054",
+          "compiledTemplates": false
+        },
+        "src/shared/style-properties.ts": {
+          "sha256": "3e045b65ab77f8bf6e12025d3cb1be3348696a7452d162a4dd0d7d3ccfb30a29",
+          "compiledTemplates": false
+        },
+        "src/shared/responsive.ts": {
+          "sha256": "98d0a625eca582c4fe14db50a8bdf8681f68b8dc5ca268b9fff46b688ca59bd5",
+          "compiledTemplates": false
+        }
+      },
+      "engines": [
+        {
+          "name": "firefox",
+          "version": "155.0",
+          "errors": [
+            "TypeError: can't access property \"entries\", el.controller is undefined"
+          ],
+          "error": "TimeoutError: waitForFunction: Timeout 15000ms exceeded.",
+          "bootstrap": {
+            "mode": "compat-style",
+            "capability": {
+              "supported": false,
+              "error": "TypeError: Illegal constructor."
+            },
+            "loadPolyfill": true,
+            "patches": {
+              "Registry": true,
+              "globalRegistry": true,
+              "attachShadow": true
+            }
+          },
+          "progress": [
+            {
+              "name": "compiled helper applies canonical ordered inputs and actual CSS",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "8px",
+                  "16px",
+                  "8px"
+                ]
+              }
+            },
+            {
+              "name": "same-value helper reorder changes computed overlap without replacing element",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "paddingInline",
+                    "8px"
+                  ],
+                  [
+                    "padding",
+                    "16px"
+                  ]
+                ],
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "same helper input reasserts after direct canonical write",
+              "pass": true,
+              "observed": {
+                "padding": "16px",
+                "edges": [
+                  "16px",
+                  "16px",
+                  "16px",
+                  "16px"
+                ]
+              }
+            },
+            {
+              "name": "one helper transaction publishes one complete canonical snapshot",
+              "pass": true,
+              "observed": {
+                "observed": [
+                  [
+                    [
+                      "backgroundColor",
+                      "red"
+                    ],
+                    [
+                      "padding",
+                      "20px"
+                    ],
+                    [
+                      "paddingInline",
+                      "3px"
+                    ]
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "failed numeric transaction leaves values order and ownership intact",
+              "pass": true,
+              "observed": {
+                "invalid": true,
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ],
+                  [
+                    "padding",
+                    "20px"
+                  ],
+                  [
+                    "paddingInline",
+                    "3px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit empty input clears owned fields and keeps unrelated authored input",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "backgroundColor",
+                    "red"
+                  ]
+                ],
+                "edges": [
+                  "24px",
+                  "4px",
+                  "24px",
+                  "4px"
+                ]
+              }
+            },
+            {
+              "name": "removing the helper expression retains canonical values",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "padding",
+                    "12px"
+                  ],
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "replacement helper clears only keys it acquired",
+              "pass": true,
+              "observed": {
+                "entries": [
+                  [
+                    "paddingInline",
+                    "5px"
+                  ]
+                ]
+              }
+            },
+            {
+              "name": "explicit disconnected-part render writes canonical inputs synchronously",
+              "pass": true,
+              "observed": {
+                "padding": "22px"
+              }
+            },
+            {
+              "name": "part reconnection retains canonical values and element identity",
+              "pass": true,
+              "observed": {
+                "edges": [
+                  "22px",
+                  "22px",
+                  "22px",
+                  "22px"
+                ]
+              }
+            },
+            {
+              "name": "cache removal retains state and restoration reuses the host",
+              "pass": true,
+              "observed": {
+                "disconnected": true,
+                "sameHost": true,
+                "padding": "15px"
+              }
+            },
+            {
+              "name": "empty input on the restored cache expression clears its owned value",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "reentrant same-helper clearing during first publication remains cleared",
+              "pass": true,
+              "observed": {
+                "entries": []
+              }
+            },
+            {
+              "name": "polyfill automatic late upgrade after adoption",
+              "pass": false,
+              "observed": {
+                "constructorMatch": false,
+                "constructorName": "HTMLElement",
+                "hasController": false,
+                "registryMatches": true,
+                "upgradeMethod": "function",
+                "explicitUpgradeConstructed": false
+              }
+            }
+          ],
+          "lateInfo": {
+            "constructorMatch": false,
+            "constructorName": "HTMLElement",
+            "hasController": false,
+            "registryMatches": true,
+            "upgradeMethod": "function"
+          }
+        }
+      ]
+    },
+    "reproduction": {
+      "suite.ts": "import {css,html,render,nothing} from 'lit';\nimport {cache} from 'lit/directives/cache.js';\nimport {AcmeElement} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/base.ts';\nimport {StyleInputController} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-controller.ts';\nimport {styleInputs} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-inputs.ts';\nconst results=[];const record=(name,pass,observed={})=>results.push({name,pass,observed});\nwindow.progress=results;\nconst native=window.bootstrap.capability.supported;\nconst fields=['padding','paddingInline','backgroundColor'];\nclass Probe extends AcmeElement {\n static styles=css`:host{display:block}.content{padding:24px;padding-inline:4px;background-color:transparent}`;\n static get observedAttributes(){return [...super.observedAttributes,'padding','padding-inline','background-color'];}\n controller;\n constructor(){super();this.controller=new StyleInputController(this,fields,{supports:(property,value)=>this.ownerDocument.defaultView.CSS.supports(property,value)});}\n get padding(){return this.controller.get('padding');}set padding(value){this.controller.set('padding',value);}\n get paddingInline(){return this.controller.get('paddingInline');}set paddingInline(value){this.controller.set('paddingInline',value);}\n get backgroundColor(){return this.controller.get('backgroundColor');}set backgroundColor(value){this.controller.set('backgroundColor',value);}\n attributeChangedCallback(name,oldValue,value){if(!this.controller?.attributeChanged(name,oldValue,value))super.attributeChangedCallback(name,oldValue,value);}\n render(){const text=this.controller.entries.get().filter(([,value])=>typeof value==='string'||typeof value==='number').map(([key,value])=>key.replace(/[A-Z]/g,c=>'-'+c.toLowerCase())+':'+(typeof value==='number'?(value*.25)+'rem':value)).join(';');return html`<div class=\"content\" style=${text}>Probe</div>`;}\n}\ncustomElements.define('compiled-style-probe',Probe);\nconst settle=async el=>{await Promise.resolve();await el?.updateComplete;await Promise.resolve();};\nconst options=(container,registry=customElements)=>({creationScope:{importNode(node,deep){return native?container.ownerDocument.importNode(node,{selfOnly:!deep,customElementRegistry:registry}):container.ownerDocument.importNode(node,deep);}}});\nconst mount=()=>{const root=document.createElement('div');document.body.append(root);return root;};\nconst entries=el=>el.controller.entries.get();\nconst edges=el=>{const s=el.ownerDocument.defaultView.getComputedStyle(el.shadowRoot.querySelector('.content'));return [s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\nconst same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);\n\nconst root=mount();const opts=options(root);const draw=values=>render(html`<compiled-style-probe background-color=\"red\" ${styleInputs(values)}></compiled-style-probe>`,root,opts);\ndraw({padding:'16px',paddingInline:'8px'});const element=root.firstElementChild;await settle(element);\nrecord('compiled helper applies canonical ordered inputs and actual CSS',same(entries(element),[['backgroundColor','red'],['padding','16px'],['paddingInline','8px']])&&same(edges(element),['16px','8px','16px','8px']),{entries:entries(element),edges:edges(element)});\ndraw({paddingInline:'8px',padding:'16px'});await settle(element);record('same-value helper reorder changes computed overlap without replacing element',root.firstElementChild===element&&same(edges(element),['16px','16px','16px','16px']),{entries:entries(element),edges:edges(element)});\nelement.padding='32px';draw({paddingInline:'8px',padding:'16px'});await settle(element);record('same helper input reasserts after direct canonical write',element.padding==='16px'&&same(edges(element),['16px','16px','16px','16px']),{padding:element.padding,edges:edges(element)});\nconst observed=[];const subscription=element.controller.entries.subscribe(value=>observed.push(value));draw({padding:'20px',paddingInline:'3px'});await settle(element);subscription.unsubscribe();record('one helper transaction publishes one complete canonical snapshot',same(observed,[[['backgroundColor','red'],['padding','20px'],['paddingInline','3px']]]),{observed});\nconst before=entries(element);let invalid=false;try{draw({padding:'10px',paddingInline:-1});}catch{invalid=true;}record('failed numeric transaction leaves values order and ownership intact',invalid&&entries(element)===before,{invalid,entries:entries(element)});\ndraw({});await settle(element);record('explicit empty input clears owned fields and keeps unrelated authored input',element.padding===undefined&&element.paddingInline===undefined&&element.backgroundColor==='red'&&same(edges(element),['24px','4px','24px','4px']),{entries:entries(element),edges:edges(element)});\n\n// Directive removal/replacement retains values under the selected explicit-clear policy.\nconst replacementRoot=mount();const replacementOptions=options(replacementRoot);const drawExpression=expression=>render(html`<compiled-style-probe ${expression}></compiled-style-probe>`,replacementRoot,replacementOptions);\ndrawExpression(styleInputs({padding:'12px',paddingInline:'5px'}));const replaced=replacementRoot.firstElementChild;await settle(replaced);drawExpression(nothing);await settle(replaced);\nrecord('removing the helper expression retains canonical values',same(entries(replaced),[['padding','12px'],['paddingInline','5px']]),{entries:entries(replaced)});\ndrawExpression(styleInputs({padding:'18px'}));await settle(replaced);drawExpression(styleInputs({}));await settle(replaced);record('replacement helper clears only keys it acquired',replaced.padding===undefined&&replaced.paddingInline==='5px'&&replacementRoot.firstElementChild===replaced,{entries:entries(replaced)});\n\n// Explicit renders still update state while the root part is marked disconnected.\ndraw({padding:'14px'});const part=draw({padding:'14px'});part.setConnected(false);draw({padding:'22px'});record('explicit disconnected-part render writes canonical inputs synchronously',element.padding==='22px',{padding:element.padding});part.setConnected(true);await settle(element);record('part reconnection retains canonical values and element identity',root.firstElementChild===element&&same(edges(element),['22px','22px','22px','22px']),{edges:edges(element)});\n\n// Real Lit cache retains the host and directive instance across physical removal.\nconst cacheRoot=mount();const cacheOptions=options(cacheRoot);const drawCache=(show,values)=>render(html`${cache(show?html`<compiled-style-probe ${styleInputs(values)}></compiled-style-probe>`:html`<span>Hidden</span>`)}`,cacheRoot,cacheOptions);\ndrawCache(true,{padding:'10px'});const cached=cacheRoot.querySelector('compiled-style-probe');await settle(cached);drawCache(false,{});const disconnected=!cached.isConnected&&cached.padding==='10px';drawCache(true,{padding:'15px'});await settle(cached);record('cache removal retains state and restoration reuses the host',disconnected&&cacheRoot.querySelector('compiled-style-probe')===cached&&cached.padding==='15px',{disconnected,sameHost:cacheRoot.querySelector('compiled-style-probe')===cached,padding:cached.padding});drawCache(true,{});await settle(cached);record('empty input on the restored cache expression clears its owned value',cached.padding===undefined,{entries:entries(cached)});\n\n// The actual helper can clear during synchronous canonical publication.\nconst reentrantRoot=mount();const reentrantOptions=options(reentrantRoot);const drawReentrant=values=>render(html`<compiled-style-probe ${styleInputs(values)}></compiled-style-probe>`,reentrantRoot,reentrantOptions);drawReentrant({});const reentrant=reentrantRoot.firstElementChild;await settle(reentrant);let first=true;const reentrantSub=reentrant.controller.entries.subscribe(()=>{if(first){first=false;drawReentrant({});}});drawReentrant({padding:'16px'});await settle(reentrant);reentrantSub.unsubscribe();record('reentrant same-helper clearing during first publication remains cleared',reentrant.padding===undefined,{entries:entries(reentrant)});\n\n// Native scoped registry in Chromium/WebKit; selected polyfill in Firefox.\nconst scopedHost=document.createElement('div');document.body.append(scopedHost);const registry=new CustomElementRegistry();const scoped=scopedHost.attachShadow(native?{mode:'open',customElementRegistry:registry}:{mode:'open',customElements:registry});\nconst scopedOptions=native?options(scoped,registry):{creationScope:scoped};\nconst drawScoped=values=>render(html`<late-scoped-style padding-inline=\"2px\" ${styleInputs(values)}></late-scoped-style>`,scoped,scopedOptions);\ndrawScoped({padding:'12px',paddingInline:'6px'});const late=scoped.querySelector('late-scoped-style');drawScoped({paddingInline:'7px',padding:'18px'});\nconst frame=document.createElement('iframe');frame.srcdoc='<!doctype html><body></body>';const loaded=new Promise(resolve=>frame.onload=resolve);document.body.append(frame);await loaded;\nclass ScopedProbe extends Probe{}registry.define('late-scoped-style',ScopedProbe);await settle(late);\nrecord('actual late scoped upgrade applies the latest helper values',late instanceof ScopedProbe&&scoped.querySelector('late-scoped-style')===late&&same(entries(late),[['paddingInline','7px'],['padding','18px']])&&same(edges(late),['18px','18px','18px','18px']),{nativeRegistry:native,polyfill:window.bootstrap.loadPolyfill,constructorMatch:late instanceof ScopedProbe,entries:entries(late),edges:edges(late)});\nframe.contentDocument.body.append(frame.contentDocument.adoptNode(scopedHost));\ndrawScoped({padding:'13px',paddingInline:'3px'});await settle(late);record('adopted scoped helper still updates current canonical state and styles',same(edges(late),['13px','3px','13px','3px']),{entries:entries(late),edges:edges(late)});\ndocument.body.append(document.adoptNode(scopedHost));drawScoped({});await settle(late);record('scoped movement back preserves host and explicit clearing',scoped.querySelector('late-scoped-style')===late&&late.padding===undefined&&late.paddingInline===undefined&&same(edges(late),['24px','4px','24px','4px']),{entries:entries(late),edges:edges(late)});\n// Build a fresh scoped child after adoption, using the same explicit registry.\nframe.contentDocument.body.append(frame.contentDocument.adoptNode(scopedHost));render(nothing,scoped,scopedOptions);drawScoped({padding:'9px'});const fresh=scoped.querySelector('late-scoped-style');await settle(fresh);record('fresh scoped construction in the adopted document retains the intended registry',fresh!==late&&fresh instanceof ScopedProbe&&fresh.ownerDocument===frame.contentDocument&&fresh.padding==='9px'&&same(edges(fresh),['9px','9px','9px','9px']),{newHost:fresh!==late,constructorMatch:fresh instanceof ScopedProbe,edges:edges(fresh)});\n// Independent platform reduction: no Lit host, controller or style helper.\nconst bareHost=document.createElement('div');const bareRegistry=new CustomElementRegistry();const bareRoot=bareHost.attachShadow(native?{mode:'open',customElementRegistry:bareRegistry}:{mode:'open',customElements:bareRegistry});bareRoot.innerHTML='<bare-late-adopt></bare-late-adopt>';const bare=bareRoot.firstElementChild;document.body.append(bareHost);frame.contentDocument.body.append(frame.contentDocument.adoptNode(bareHost));class BareLate extends HTMLElement{marker=true;}bareRegistry.define('bare-late-adopt',BareLate);const automaticallyUpgraded=bare instanceof BareLate;bareRegistry.upgrade(bare);const platformReduction={name:'first scoped definition after unknown-node adoption without house code',nativeRegistry:native,automatic:automaticallyUpgraded,afterExplicitUpgrade:bare instanceof BareLate,marker:bare.marker??null,sourceDocumentRetained:bare.ownerDocument===frame.contentDocument};\nif(!native){await new Promise((resolve,reject)=>{const script=frame.contentDocument.createElement('script');script.type='module';script.src='/polyfill.js';script.onload=resolve;script.onerror=reject;frame.contentDocument.head.append(script);});const secondHost=document.createElement('div'),secondRegistry=new CustomElementRegistry(),secondRoot=secondHost.attachShadow({mode:'open',customElements:secondRegistry});secondRoot.innerHTML='<bare-second-realm></bare-second-realm>';const second=secondRoot.firstElementChild;document.body.append(secondHost);frame.contentDocument.body.append(frame.contentDocument.adoptNode(secondHost));class SecondLate extends HTMLElement{marker=true;}secondRegistry.define('bare-second-realm',SecondLate);const automatic=second instanceof SecondLate;secondRegistry.upgrade(second);const targetUpgrade=second instanceof SecondLate;secondRegistry.upgrade(secondRoot);platformReduction.bothDocumentsPolyfilled={automatic,targetUpgrade,rootUpgrade:second instanceof SecondLate,marker:second.marker??null};}\nwindow.output={mode:native?'native scoped registry':'scoped-registry polyfill',results,platformReduction};\n",
+      "suite-define-after-adoption.ts": "import {css,html,render,nothing} from 'lit';\nimport {cache} from 'lit/directives/cache.js';\nimport {AcmeElement} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/base.ts';\nimport {StyleInputController} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-controller.ts';\nimport {styleInputs} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-inputs.ts';\nconst results=[];const record=(name,pass,observed={})=>results.push({name,pass,observed});\nwindow.progress=results;\nconst native=window.bootstrap.capability.supported;\nconst fields=['padding','paddingInline','backgroundColor'];\nclass Probe extends AcmeElement {\n static styles=css`:host{display:block}.content{padding:24px;padding-inline:4px;background-color:transparent}`;\n static get observedAttributes(){return [...super.observedAttributes,'padding','padding-inline','background-color'];}\n controller;\n constructor(){super();this.controller=new StyleInputController(this,fields,{supports:(property,value)=>this.ownerDocument.defaultView.CSS.supports(property,value)});}\n get padding(){return this.controller.get('padding');}set padding(value){this.controller.set('padding',value);}\n get paddingInline(){return this.controller.get('paddingInline');}set paddingInline(value){this.controller.set('paddingInline',value);}\n get backgroundColor(){return this.controller.get('backgroundColor');}set backgroundColor(value){this.controller.set('backgroundColor',value);}\n attributeChangedCallback(name,oldValue,value){if(!this.controller?.attributeChanged(name,oldValue,value))super.attributeChangedCallback(name,oldValue,value);}\n render(){const text=this.controller.entries.get().filter(([,value])=>typeof value==='string'||typeof value==='number').map(([key,value])=>key.replace(/[A-Z]/g,c=>'-'+c.toLowerCase())+':'+(typeof value==='number'?(value*.25)+'rem':value)).join(';');return html`<div class=\"content\" style=${text}>Probe</div>`;}\n}\ncustomElements.define('compiled-style-probe',Probe);\nconst settle=async el=>{await Promise.resolve();await el?.updateComplete;await Promise.resolve();};\nconst options=(container,registry=customElements)=>({creationScope:{importNode(node,deep){return native?container.ownerDocument.importNode(node,{selfOnly:!deep,customElementRegistry:registry}):container.ownerDocument.importNode(node,deep);}}});\nconst mount=()=>{const root=document.createElement('div');document.body.append(root);return root;};\nconst entries=el=>el.controller.entries.get();\nconst edges=el=>{const s=el.ownerDocument.defaultView.getComputedStyle(el.shadowRoot.querySelector('.content'));return [s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\nconst same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);\n\nconst root=mount();const opts=options(root);const draw=values=>render(html`<compiled-style-probe background-color=\"red\" ${styleInputs(values)}></compiled-style-probe>`,root,opts);\ndraw({padding:'16px',paddingInline:'8px'});const element=root.firstElementChild;await settle(element);\nrecord('compiled helper applies canonical ordered inputs and actual CSS',same(entries(element),[['backgroundColor','red'],['padding','16px'],['paddingInline','8px']])&&same(edges(element),['16px','8px','16px','8px']),{entries:entries(element),edges:edges(element)});\ndraw({paddingInline:'8px',padding:'16px'});await settle(element);record('same-value helper reorder changes computed overlap without replacing element',root.firstElementChild===element&&same(edges(element),['16px','16px','16px','16px']),{entries:entries(element),edges:edges(element)});\nelement.padding='32px';draw({paddingInline:'8px',padding:'16px'});await settle(element);record('same helper input reasserts after direct canonical write',element.padding==='16px'&&same(edges(element),['16px','16px','16px','16px']),{padding:element.padding,edges:edges(element)});\nconst observed=[];const subscription=element.controller.entries.subscribe(value=>observed.push(value));draw({padding:'20px',paddingInline:'3px'});await settle(element);subscription.unsubscribe();record('one helper transaction publishes one complete canonical snapshot',same(observed,[[['backgroundColor','red'],['padding','20px'],['paddingInline','3px']]]),{observed});\nconst before=entries(element);let invalid=false;try{draw({padding:'10px',paddingInline:-1});}catch{invalid=true;}record('failed numeric transaction leaves values order and ownership intact',invalid&&entries(element)===before,{invalid,entries:entries(element)});\ndraw({});await settle(element);record('explicit empty input clears owned fields and keeps unrelated authored input',element.padding===undefined&&element.paddingInline===undefined&&element.backgroundColor==='red'&&same(edges(element),['24px','4px','24px','4px']),{entries:entries(element),edges:edges(element)});\n\n// Directive removal/replacement retains values under the selected explicit-clear policy.\nconst replacementRoot=mount();const replacementOptions=options(replacementRoot);const drawExpression=expression=>render(html`<compiled-style-probe ${expression}></compiled-style-probe>`,replacementRoot,replacementOptions);\ndrawExpression(styleInputs({padding:'12px',paddingInline:'5px'}));const replaced=replacementRoot.firstElementChild;await settle(replaced);drawExpression(nothing);await settle(replaced);\nrecord('removing the helper expression retains canonical values',same(entries(replaced),[['padding','12px'],['paddingInline','5px']]),{entries:entries(replaced)});\ndrawExpression(styleInputs({padding:'18px'}));await settle(replaced);drawExpression(styleInputs({}));await settle(replaced);record('replacement helper clears only keys it acquired',replaced.padding===undefined&&replaced.paddingInline==='5px'&&replacementRoot.firstElementChild===replaced,{entries:entries(replaced)});\n\n// Explicit renders still update state while the root part is marked disconnected.\ndraw({padding:'14px'});const part=draw({padding:'14px'});part.setConnected(false);draw({padding:'22px'});record('explicit disconnected-part render writes canonical inputs synchronously',element.padding==='22px',{padding:element.padding});part.setConnected(true);await settle(element);record('part reconnection retains canonical values and element identity',root.firstElementChild===element&&same(edges(element),['22px','22px','22px','22px']),{edges:edges(element)});\n\n// Real Lit cache retains the host and directive instance across physical removal.\nconst cacheRoot=mount();const cacheOptions=options(cacheRoot);const drawCache=(show,values)=>render(html`${cache(show?html`<compiled-style-probe ${styleInputs(values)}></compiled-style-probe>`:html`<span>Hidden</span>`)}`,cacheRoot,cacheOptions);\ndrawCache(true,{padding:'10px'});const cached=cacheRoot.querySelector('compiled-style-probe');await settle(cached);drawCache(false,{});const disconnected=!cached.isConnected&&cached.padding==='10px';drawCache(true,{padding:'15px'});await settle(cached);record('cache removal retains state and restoration reuses the host',disconnected&&cacheRoot.querySelector('compiled-style-probe')===cached&&cached.padding==='15px',{disconnected,sameHost:cacheRoot.querySelector('compiled-style-probe')===cached,padding:cached.padding});drawCache(true,{});await settle(cached);record('empty input on the restored cache expression clears its owned value',cached.padding===undefined,{entries:entries(cached)});\n\n// The actual helper can clear during synchronous canonical publication.\nconst reentrantRoot=mount();const reentrantOptions=options(reentrantRoot);const drawReentrant=values=>render(html`<compiled-style-probe ${styleInputs(values)}></compiled-style-probe>`,reentrantRoot,reentrantOptions);drawReentrant({});const reentrant=reentrantRoot.firstElementChild;await settle(reentrant);let first=true;const reentrantSub=reentrant.controller.entries.subscribe(()=>{if(first){first=false;drawReentrant({});}});drawReentrant({padding:'16px'});await settle(reentrant);reentrantSub.unsubscribe();record('reentrant same-helper clearing during first publication remains cleared',reentrant.padding===undefined,{entries:entries(reentrant)});\n\n// Native scoped registry in Chromium/WebKit; selected polyfill in Firefox.\nconst scopedHost=document.createElement('div');document.body.append(scopedHost);const registry=new CustomElementRegistry();const scoped=scopedHost.attachShadow(native?{mode:'open',customElementRegistry:registry}:{mode:'open',customElements:registry});\nconst scopedOptions=native?options(scoped,registry):{creationScope:scoped};\nconst drawScoped=values=>render(html`<late-scoped-style padding-inline=\"2px\" ${styleInputs(values)}></late-scoped-style>`,scoped,scopedOptions);\ndrawScoped({padding:'12px',paddingInline:'6px'});const late=scoped.querySelector('late-scoped-style');drawScoped({paddingInline:'7px',padding:'18px'});\nconst frame=document.createElement('iframe');frame.srcdoc='<!doctype html><body></body>';const loaded=new Promise(resolve=>frame.onload=resolve);document.body.append(frame);await loaded;frame.contentDocument.body.append(frame.contentDocument.adoptNode(scopedHost));\nclass ScopedProbe extends Probe{}registry.define('late-scoped-style',ScopedProbe);await settle(late);\nwindow.lateInfo={constructorMatch:late instanceof ScopedProbe,constructorName:late.constructor.name,hasController:!!late.controller,registryMatches:scoped.customElementRegistry===registry||scoped.customElements===registry,upgradeMethod:typeof registry.upgrade};\nif(!native){const automatic=!!late.controller;registry.upgrade(late);await settle(late);record('polyfill automatic late upgrade after adoption',automatic,{...window.lateInfo,explicitUpgradeConstructed:!!late.controller});}\nrecord('late scoped upgrade after document adoption applies the latest helper values',late instanceof ScopedProbe&&scoped.querySelector('late-scoped-style')===late&&same(entries(late),[['paddingInline','7px'],['padding','18px']])&&same(edges(late),['18px','18px','18px','18px']),{nativeRegistry:native,polyfill:window.bootstrap.loadPolyfill,constructorMatch:late instanceof ScopedProbe,entries:entries(late),edges:edges(late)});\ndrawScoped({padding:'13px',paddingInline:'3px'});await settle(late);record('adopted scoped helper still updates current canonical state and styles',same(edges(late),['13px','3px','13px','3px']),{entries:entries(late),edges:edges(late)});\ndocument.body.append(document.adoptNode(scopedHost));drawScoped({});await settle(late);record('scoped movement back preserves host and explicit clearing',scoped.querySelector('late-scoped-style')===late&&late.padding===undefined&&late.paddingInline===undefined&&same(edges(late),['24px','4px','24px','4px']),{entries:entries(late),edges:edges(late)});\n// Build a fresh scoped child after adoption, using the same explicit registry.\nframe.contentDocument.body.append(frame.contentDocument.adoptNode(scopedHost));render(nothing,scoped,scopedOptions);drawScoped({padding:'9px'});const fresh=scoped.querySelector('late-scoped-style');await settle(fresh);record('fresh scoped construction in the adopted document retains the intended registry',fresh!==late&&fresh instanceof ScopedProbe&&fresh.ownerDocument===frame.contentDocument&&fresh.padding==='9px'&&same(edges(fresh),['9px','9px','9px','9px']),{newHost:fresh!==late,constructorMatch:fresh instanceof ScopedProbe,edges:edges(fresh)});\nwindow.output={mode:native?'native scoped registry':'scoped-registry polyfill',results};\n",
+      "run.ts": "import {chromium,firefox,webkit} from '/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs';\nimport ts from 'typescript';\nimport {compileLitTemplates} from '@lit-labs/compiler';\nimport path from 'node:path';\nconst root=import.meta.dir,repo='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst old='/tmp/acme-m00-scoped-registry-NSLMRE';\nconst capture={};\nconst compiled=await Bun.build({entrypoints:[root+'/suite.ts'],outdir:root+'/build',target:'browser',format:'esm',plugins:[{name:'production-lit-compiler',setup(build){build.onLoad({filter:/\\.ts$/},async args=>{\n if(!args.path.startsWith(repo+'/src/')&&args.path!==root+'/suite.ts')return;\n const source=await Bun.file(args.path).text();const output=ts.transpileModule(source,{fileName:args.path,compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,experimentalDecorators:true,useDefineForClassFields:false,moduleResolution:ts.ModuleResolutionKind.Bundler},transformers:{before:[compileLitTemplates()]}});\n capture[path.relative(repo,args.path)]={sha256:new Bun.CryptoHasher('sha256').update(source).digest('hex'),bytes:Buffer.byteLength(source),compiledTemplates:output.outputText.includes('_$LH'),source};\n return {contents:output.outputText,loader:'js',resolveDir:path.dirname(args.path)};\n });}}]});\nif(!compiled.success)throw new Error(JSON.stringify(compiled.logs));\nawait Bun.write(root+'/source-capture.json',JSON.stringify(capture,null,2));\nconst bootstrap=(await Bun.file(old+'/bootstrap-style.js').text()).replace(\"await import('/suite-style.js');\",\"await import('/suite.js');\");\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const name=new URL(req.url).pathname;return name==='/suite.js'?new Response(Bun.file(root+'/build/suite.js'),{headers:{'content-type':'text/javascript'}}):name==='/polyfill.js'?new Response(Bun.file(old+'/build/polyfill.js'),{headers:{'content-type':'text/javascript'}}):name==='/bootstrap.js'?new Response(bootstrap,{headers:{'content-type':'text/javascript'}}):new Response('<!doctype html><body><script type=\"module\" src=\"/bootstrap.js\"></script>',{headers:{'content-type':'text/html'}})}});\nconst report={date:new Date().toISOString(),runtime:Bun.version,compiler:JSON.parse(await Bun.file(repo+'/node_modules/@lit-labs/compiler/package.json').text()).version,typescript:ts.version,sources:Object.fromEntries(Object.entries(capture).map(([name,v])=>[name,{sha256:v.sha256,compiledTemplates:v.compiledTemplates}])),engines:[]};\ntry{for(const [name,engine]of [['chromium',chromium],['firefox',firefox],['webkit',webkit]]as const){if(process.env.ACME_PROBE_ENGINE&&process.env.ACME_PROBE_ENGINE!==name)continue;const browser=await engine.launch({headless:true,...(name==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(String(e)));await page.goto(server.url.href+'?mode=compat-style');try{await page.waitForFunction(()=>window.output!==undefined,{},{timeout:15000});report.engines.push({name,version:browser.version(),errors,...await page.evaluate(()=>window.output)});}catch(error){report.engines.push({name,version:browser.version(),errors,error:String(error),bootstrap:await page.evaluate(()=>window.bootstrap),progress:await page.evaluate(()=>window.progress),lateInfo:await page.evaluate(()=>window.lateInfo)});}}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(root+'/results.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report.engines.map(e=>({name:e.name,mode:e.mode,errors:e.errors,error:e.error,passed:e.results?.filter(r=>r.pass).length,total:e.results?.length,failures:e.results?.filter(r=>!r.pass)})),null,2));\n",
+      "bootstrap-source.js": "const mode=new URL(location.href).searchParams.get('mode');\nconst before={Registry:window.CustomElementRegistry,registry:window.customElements,attachShadow:Element.prototype.attachShadow};\nconst capability={};\ntry {\n  const registry=new CustomElementRegistry();\n  class NativeProbe extends HTMLElement {connectedCallback(){this.textContent='native-ok';}}\n  registry.define('native-probe',NativeProbe);\n  const host=document.createElement('div');document.body.append(host);\n  const shadow=host.attachShadow({mode:'open',customElementRegistry:registry});\n  shadow.innerHTML='<native-probe></native-probe>';\n  const child=shadow.firstElementChild;\n  Object.assign(capability,{supported:child instanceof NativeProbe&&child.textContent==='native-ok',constructorMatch:child instanceof NativeProbe,text:child.textContent,registryMatch:shadow.customElementRegistry===registry,shadowImportNode:typeof shadow.importNode});\n  host.remove();\n}catch(error){Object.assign(capability,{supported:false,error:String(error)});}\nconst loadPolyfill=mode==='always'||!capability.supported;\nif(loadPolyfill)await import('/polyfill.js');\nwindow.bootstrap={mode,capability,loadPolyfill,patches:{Registry:before.Registry!==window.CustomElementRegistry,globalRegistry:before.registry!==window.customElements,attachShadow:before.attachShadow!==Element.prototype.attachShadow}};\nawait import('/suite-style.js');\n",
+      "polyfill.js": "// ../../../../../private/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-m00-toolchain-i9U5Xm/node_modules/@webcomponents/scoped-custom-element-registry/scoped-custom-element-registry.min.js\n(function() {\n  function k(a) {\n    var b = 0;\n    return function() {\n      return b < a.length ? { done: false, value: a[b++] } : { done: true };\n    };\n  }\n  var l = typeof Object.defineProperties == \"function\" ? Object.defineProperty : function(a, b, d) {\n    if (a == Array.prototype || a == Object.prototype)\n      return a;\n    a[b] = d.value;\n    return a;\n  };\n  function m(a) {\n    a = [typeof globalThis == \"object\" && globalThis, a, typeof window == \"object\" && window, typeof self == \"object\" && self, typeof global == \"object\" && global];\n    for (var b = 0;b < a.length; ++b) {\n      var d = a[b];\n      if (d && d.Math == Math)\n        return d;\n    }\n    throw Error(\"Cannot find global object\");\n  }\n  var n = m(this);\n  function p(a, b) {\n    if (b)\n      a: {\n        var d = n;\n        a = a.split(\".\");\n        for (var e = 0;e < a.length - 1; e++) {\n          var c = a[e];\n          if (!(c in d))\n            break a;\n          d = d[c];\n        }\n        a = a[a.length - 1];\n        e = d[a];\n        b = b(e);\n        b != e && b != null && l(d, a, { configurable: true, writable: true, value: b });\n      }\n  }\n  p(\"Symbol\", function(a) {\n    function b(c) {\n      if (this instanceof b)\n        throw new TypeError(\"Symbol is not a constructor\");\n      return new d(\"jscomp_symbol_\" + (c || \"\") + \"_\" + e++, c);\n    }\n    function d(c, f) {\n      this.l = c;\n      l(this, \"description\", { configurable: true, writable: true, value: f });\n    }\n    if (a)\n      return a;\n    d.prototype.toString = function() {\n      return this.l;\n    };\n    var e = 0;\n    return b;\n  });\n  p(\"Symbol.iterator\", function(a) {\n    if (a)\n      return a;\n    a = Symbol(\"Symbol.iterator\");\n    for (var b = \"Array Int8Array Uint8Array Uint8ClampedArray Int16Array Uint16Array Int32Array Uint32Array Float32Array Float64Array\".split(\" \"), d = 0;d < b.length; d++) {\n      var e = n[b[d]];\n      typeof e === \"function\" && typeof e.prototype[a] != \"function\" && l(e.prototype, a, { configurable: true, writable: true, value: function() {\n        return aa(k(this));\n      } });\n    }\n    return a;\n  });\n  function aa(a) {\n    a = { next: a };\n    a[Symbol.iterator] = function() {\n      return this;\n    };\n    return a;\n  }\n  function q(a) {\n    var b = typeof Symbol != \"undefined\" && Symbol.iterator && a[Symbol.iterator];\n    return b ? b.call(a) : { next: k(a) };\n  }\n  function r(a) {\n    if (!(a instanceof Array)) {\n      a = q(a);\n      for (var b, d = [];!(b = a.next()).done; )\n        d.push(b.value);\n      a = d;\n    }\n    return a;\n  }\n  var t = typeof Object.create == \"function\" ? Object.create : function(a) {\n    function b() {}\n    b.prototype = a;\n    return new b;\n  }, ba = function() {\n    function a() {\n      function d() {}\n      new d;\n      Reflect.construct(d, [], function() {});\n      return new d instanceof d;\n    }\n    if (typeof Reflect != \"undefined\" && Reflect.construct) {\n      if (a())\n        return Reflect.construct;\n      var b = Reflect.construct;\n      return function(d, e, c) {\n        d = b(d, e);\n        c && Reflect.setPrototypeOf(d, c.prototype);\n        return d;\n      };\n    }\n    return function(d, e, c) {\n      c === undefined && (c = d);\n      c = t(c.prototype || Object.prototype);\n      return Function.prototype.apply.call(d, c, e) || c;\n    };\n  }(), v;\n  if (typeof Object.setPrototypeOf == \"function\")\n    v = Object.setPrototypeOf;\n  else {\n    var w;\n    a: {\n      var ca = { a: true }, x = {};\n      try {\n        x.__proto__ = ca;\n        w = x.a;\n        break a;\n      } catch (a) {}\n      w = false;\n    }\n    v = w ? function(a, b) {\n      a.__proto__ = b;\n      if (a.__proto__ !== b)\n        throw new TypeError(a + \" is not extensible\");\n      return a;\n    } : null;\n  }\n  var y = v, z = window, A;\n  if (((A = z.CustomElementRegistryPolyfill) == null ? undefined : A.formAssociated) === undefined) {\n    var B = {};\n    z.CustomElementRegistryPolyfill = (B.formAssociated = new Set, B);\n  }\n  var C = window.HTMLElement, da = window.customElements.define, ea = window.customElements.get, D = window.customElements, E = new WeakMap, F = new WeakMap, G = new WeakMap, H = new WeakMap;\n  function fa() {\n    var a;\n    this.promise = new Promise(function(b) {\n      a = b;\n    });\n    this.resolve = a;\n  }\n  function I() {\n    this.h = new Map;\n    this.m = new Map;\n    this.j = new Map;\n    this.i = new Map;\n  }\n  I.prototype.define = function(a, b) {\n    a = a.toLowerCase();\n    if (this.h.get(a) !== undefined)\n      throw new DOMException(`Failed to execute 'define' on 'CustomElementRegistry': the name \"` + a + '\" has already been used with this registry');\n    if (this.m.get(b) !== undefined)\n      throw new DOMException(\"Failed to execute 'define' on 'CustomElementRegistry': this constructor has already been used with this registry\");\n    var d = b.prototype.attributeChangedCallback, e = new Set(b.observedAttributes || []);\n    ha(b, e, d);\n    var c = ea.call(D, a), f, g, h = (g = (f = c) == null ? undefined : f.s) != null ? g : b.formAssociated || z.CustomElementRegistryPolyfill.formAssociated.has(a);\n    h && z.CustomElementRegistryPolyfill.formAssociated.add(a);\n    if (h != b.formAssociated)\n      try {\n        b.formAssociated = h;\n      } catch (u) {}\n    d = {\n      tagName: a,\n      g: b,\n      connectedCallback: b.prototype.connectedCallback,\n      disconnectedCallback: b.prototype.disconnectedCallback,\n      adoptedCallback: b.prototype.adoptedCallback,\n      attributeChangedCallback: d,\n      formAssociated: h,\n      formAssociatedCallback: b.prototype.formAssociatedCallback,\n      formDisabledCallback: b.prototype.formDisabledCallback,\n      formResetCallback: b.prototype.formResetCallback,\n      formStateRestoreCallback: b.prototype.formStateRestoreCallback,\n      observedAttributes: e\n    };\n    this.h.set(a, d);\n    this.m.set(b, d);\n    c || (c = ia(a), da.call(D, a, c));\n    this === window.customElements && (G.set(b, d), d.o = c);\n    if (c = this.i.get(a))\n      for (this.i.delete(a), c = q(c), e = c.next();!e.done; e = c.next())\n        e = e.value, F.delete(e), J(e, d, true);\n    c = this.j.get(a);\n    c !== undefined && (c.resolve(b), this.j.delete(a));\n    return b;\n  };\n  I.prototype.upgrade = function(a) {\n    for (var b = [], d = 0;d < arguments.length; ++d)\n      b[d] = arguments[d];\n    K.push(this);\n    D.upgrade.apply(D, r(b));\n    K.pop();\n  };\n  I.prototype.get = function(a) {\n    var b;\n    return (b = this.h.get(a)) == null ? undefined : b.g;\n  };\n  I.prototype.whenDefined = function(a) {\n    var b = this.h.get(a);\n    if (b !== undefined)\n      return Promise.resolve(b.g);\n    b = this.j.get(a);\n    b === undefined && (b = new fa, this.j.set(a, b));\n    return b.promise;\n  };\n  function L(a, b, d, e) {\n    var c = a.i.get(d);\n    c || a.i.set(d, c = new Set);\n    e ? c.add(b) : c.delete(b);\n  }\n  var M;\n  window.HTMLElement = function() {\n    var a = M;\n    if (a)\n      return M = undefined, a;\n    var b = G.get(this.constructor);\n    if (!b)\n      throw new TypeError(\"Illegal constructor (custom element class must be registered with global customElements registry to be newable)\");\n    a = Reflect.construct(C, [], b.o);\n    Object.setPrototypeOf(a, this.constructor.prototype);\n    E.set(a, b);\n    return a;\n  };\n  window.HTMLElement.prototype = C.prototype;\n  function ia(a) {\n    function b() {\n      var d = Reflect.construct(C, [], this.constructor);\n      Object.setPrototypeOf(d, HTMLElement.prototype);\n      a: {\n        var e = d.getRootNode();\n        if (!(e === document || e instanceof ShadowRoot)) {\n          e = K[K.length - 1];\n          if (e instanceof CustomElementRegistry) {\n            var c = e;\n            break a;\n          }\n          e = e.getRootNode();\n          e === document || e instanceof ShadowRoot || (e = ((c = H.get(e)) == null ? undefined : c.getRootNode()) || document);\n        }\n        c = e.registry;\n      }\n      c = c || window.customElements;\n      (e = c.h.get(a)) ? J(d, e) : F.set(d, c);\n      return d;\n    }\n    n.Object.defineProperty(b, \"formAssociated\", { configurable: true, enumerable: true, get: function() {\n      return z.CustomElementRegistryPolyfill.formAssociated.has(a);\n    } });\n    b.prototype.connectedCallback = function(d) {\n      for (var e = [], c = 0;c < arguments.length; ++c)\n        e[c] = arguments[c];\n      N(this);\n      (c = E.get(this)) ? c.connectedCallback && c.connectedCallback.apply(this, e) : L(F.get(this), this, a, true);\n    };\n    b.prototype.disconnectedCallback = function(d) {\n      for (var e = [], c = 0;c < arguments.length; ++c)\n        e[c] = arguments[c];\n      (c = E.get(this)) ? c.disconnectedCallback && c.disconnectedCallback.apply(this, e) : L(F.get(this), this, a, false);\n    };\n    b.prototype.adoptedCallback = function(d) {\n      for (var e = [], c = 0;c < arguments.length; ++c)\n        e[c] = arguments[c];\n      var f, g;\n      (f = E.get(this)) == null || (g = f.adoptedCallback) == null || g.apply(this, e);\n    };\n    b.prototype.formAssociatedCallback = function(d) {\n      for (var e = [], c = 0;c < arguments.length; ++c)\n        e[c] = arguments[c];\n      c = E.get(this);\n      if (c == null ? 0 : c.formAssociated) {\n        var f;\n        c == null || (f = c.formAssociatedCallback) == null || f.apply(this, e);\n      }\n    };\n    b.prototype.formDisabledCallback = function(d) {\n      for (var e = [], c = 0;c < arguments.length; ++c)\n        e[c] = arguments[c];\n      c = E.get(this);\n      if (c == null ? 0 : c.formAssociated) {\n        var f;\n        c == null || (f = c.formDisabledCallback) == null || f.apply(this, e);\n      }\n    };\n    b.prototype.formResetCallback = function(d) {\n      for (var e = [], c = 0;c < arguments.length; ++c)\n        e[c] = arguments[c];\n      c = E.get(this);\n      if (c == null ? 0 : c.formAssociated) {\n        var f;\n        c == null || (f = c.formResetCallback) == null || f.apply(this, e);\n      }\n    };\n    b.prototype.formStateRestoreCallback = function(d) {\n      for (var e = [], c = 0;c < arguments.length; ++c)\n        e[c] = arguments[c];\n      c = E.get(this);\n      if (c == null ? 0 : c.formAssociated) {\n        var f;\n        c == null || (f = c.formStateRestoreCallback) == null || f.apply(this, e);\n      }\n    };\n    return b;\n  }\n  window.CustomElementRegistry = I;\n  function ha(a, b, d) {\n    if (b.size !== 0 && d !== undefined) {\n      var e = a.prototype.setAttribute;\n      e && (a.prototype.setAttribute = function(g, h) {\n        N(this);\n        g = g.toLowerCase();\n        if (b.has(g)) {\n          var u = this.getAttribute(g);\n          e.call(this, g, h);\n          d.call(this, g, u, h);\n        } else\n          e.call(this, g, h);\n      });\n      var c = a.prototype.removeAttribute;\n      c && (a.prototype.removeAttribute = function(g) {\n        N(this);\n        g = g.toLowerCase();\n        if (b.has(g)) {\n          var h = this.getAttribute(g);\n          c.call(this, g);\n          d.call(this, g, h, null);\n        } else\n          c.call(this, g);\n      });\n      var f = a.prototype.toggleAttribute;\n      f && (a.prototype.toggleAttribute = function(g, h) {\n        N(this);\n        g = g.toLowerCase();\n        if (b.has(g)) {\n          var u = this.getAttribute(g);\n          f.call(this, g, h);\n          h = this.getAttribute(g);\n          u !== h && d.call(this, g, u, h);\n        } else\n          f.call(this, g, h);\n      });\n    }\n  }\n  var O;\n  document.readyState === \"loading\" && (O = new Set, document.addEventListener(\"readystatechange\", function() {\n    O.forEach(function(a) {\n      return P(a, E.get(a));\n    });\n  }, { once: true }));\n  function N(a) {\n    var b;\n    (b = O) != null && b.has(a) && P(a, E.get(a));\n  }\n  function P(a, b) {\n    var d;\n    (d = O) == null || d.delete(a);\n    b.attributeChangedCallback && b.observedAttributes.forEach(function(e) {\n      a.hasAttribute(e) && b.attributeChangedCallback.call(a, e, null, a.getAttribute(e));\n    });\n  }\n  function Q(a) {\n    var b = Object.getPrototypeOf(a);\n    if (b !== window.HTMLElement)\n      return b === C ? Object.setPrototypeOf(a, window.HTMLElement) : Q(b);\n  }\n  function J(a, b, d) {\n    d = d === undefined ? false : d;\n    Object.setPrototypeOf(a, b.g.prototype);\n    E.set(a, b);\n    M = a;\n    try {\n      new b.g;\n    } catch (e) {\n      Q(b.g), new b.g;\n    }\n    b.attributeChangedCallback && (O === undefined || a.hasAttributes() ? P(a, b) : O.add(a));\n    d && b.connectedCallback && a.isConnected && b.connectedCallback.call(a);\n  }\n  var R = Element.prototype.attachShadow;\n  Element.prototype.attachShadow = function(a, b) {\n    for (var d = [], e = 1;e < arguments.length; ++e)\n      d[e - 1] = arguments[e];\n    var c = Object.assign({}, a);\n    e = a.customElements;\n    e = a.registry === undefined ? e : a.registry;\n    c = (delete c.customElements, delete c.registry, c);\n    d = R.call.apply(R, [this, c].concat(r(d)));\n    e !== undefined && (d.customElements = d.registry = e);\n    return d;\n  };\n  var K = [document];\n  function S(a, b, d) {\n    var e = (d ? Object.getPrototypeOf(d) : a.prototype)[b];\n    a.prototype[b] = function(c) {\n      for (var f = [], g = 0;g < arguments.length; ++g)\n        f[g] = arguments[g];\n      K.push(this);\n      f = e.apply(d || this, f);\n      f !== undefined && H.set(f, this);\n      K.pop();\n      return f;\n    };\n  }\n  S(ShadowRoot, \"createElement\", document);\n  S(ShadowRoot, \"createElementNS\", document);\n  S(ShadowRoot, \"importNode\", document);\n  S(Element, \"insertAdjacentHTML\");\n  function T(a) {\n    var b = Object.getOwnPropertyDescriptor(a.prototype, \"innerHTML\");\n    Object.defineProperty(a.prototype, \"innerHTML\", Object.assign({}, b, { set: function(d) {\n      K.push(this);\n      b.set.call(this, d);\n      K.pop();\n    } }));\n  }\n  T(Element);\n  T(ShadowRoot);\n  Object.defineProperty(window, \"customElements\", { value: new CustomElementRegistry, configurable: true, writable: true });\n  if (window.ElementInternals && window.ElementInternals.prototype.setFormValue) {\n    var U = new WeakMap, V = HTMLElement.prototype.attachInternals, methods = [\"setFormValue\", \"setValidity\", \"checkValidity\", \"reportValidity\"];\n    HTMLElement.prototype.attachInternals = function(a) {\n      for (var b = [], d = 0;d < arguments.length; ++d)\n        b[d] = arguments[d];\n      b = V.call.apply(V, [this].concat(r(b)));\n      U.set(b, this);\n      return b;\n    };\n    methods.forEach(function(a) {\n      var b = window.ElementInternals.prototype, d = b[a];\n      b[a] = function(e) {\n        for (var c = [], f = 0;f < arguments.length; ++f)\n          c[f] = arguments[f];\n        f = U.get(this);\n        if (E.get(f).formAssociated === true)\n          return d == null ? undefined : d.call.apply(d, [this].concat(r(c)));\n        throw new DOMException(\"Failed to execute \" + d + \" on 'ElementInternals': The target element is not a form-associated custom element.\");\n      };\n    });\n    var RadioNodeList = function(a) {\n      var b = ba(Array, [].concat(r(a)), this.constructor);\n      b.l = a;\n      return b;\n    }, W = RadioNodeList, X = Array;\n    W.prototype = t(X.prototype);\n    W.prototype.constructor = W;\n    if (y)\n      y(W, X);\n    else\n      for (var Y in X)\n        if (Y != \"prototype\")\n          if (Object.defineProperties) {\n            var Z = Object.getOwnPropertyDescriptor(X, Y);\n            Z && Object.defineProperty(W, Y, Z);\n          } else\n            W[Y] = X[Y];\n    W.u = X.prototype;\n    n.Object.defineProperty(RadioNodeList.prototype, \"value\", { configurable: true, enumerable: true, get: function() {\n      var a;\n      return ((a = this.l.find(function(b) {\n        return b.checked === true;\n      })) == null ? undefined : a.value) || \"\";\n    } });\n    var HTMLFormControlsCollection = function(a) {\n      var b = this, d = new Map;\n      a.forEach(function(e, c) {\n        var f = e.getAttribute(\"name\"), g = d.get(f) || [];\n        b[+c] = e;\n        g.push(e);\n        d.set(f, g);\n      });\n      this.length = a.length;\n      d.forEach(function(e, c) {\n        e && c !== \"length\" && c !== \"item\" && c !== \"namedItem\" && (b[c] = e.length === 1 ? e[0] : new RadioNodeList(e));\n      });\n    };\n    HTMLFormControlsCollection.prototype.item = function(a) {\n      var b;\n      return (b = this[a]) != null ? b : null;\n    };\n    HTMLFormControlsCollection.prototype[Symbol.iterator] = function() {\n      throw Error(\"Method not implemented.\");\n    };\n    HTMLFormControlsCollection.prototype.namedItem = function(a) {\n      var b;\n      return (b = this[a]) != null ? b : null;\n    };\n    var ja = Object.getOwnPropertyDescriptor(HTMLFormElement.prototype, \"elements\");\n    Object.defineProperty(HTMLFormElement.prototype, \"elements\", { get: function() {\n      var a = ja.get.call(this), b = [];\n      a = q(a);\n      for (var d = a.next();!d.done; d = a.next()) {\n        d = d.value;\n        var e = E.get(d);\n        e && e.formAssociated !== true || b.push(d);\n      }\n      return new HTMLFormControlsCollection(b);\n    } });\n  }\n}).call(typeof globalThis === \"object\" ? globalThis : window);\n"
+    },
+    "sourceCapture": {
+      "../../../../../private/tmp/acme-m05-compiled-helper-8ih0Wb/suite.ts": {
+        "sha256": "340d5250a4046750bf079b6016747eade737156a3a337ef550683eaa075e45e3",
+        "bytes": 12894,
+        "compiledTemplates": true,
+        "source": "import {css,html,render,nothing} from 'lit';\nimport {cache} from 'lit/directives/cache.js';\nimport {AcmeElement} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/base.ts';\nimport {StyleInputController} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-input-controller.ts';\nimport {styleInputs} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/shared/style-inputs.ts';\nconst results=[];const record=(name,pass,observed={})=>results.push({name,pass,observed});\nwindow.progress=results;\nconst native=window.bootstrap.capability.supported;\nconst fields=['padding','paddingInline','backgroundColor'];\nclass Probe extends AcmeElement {\n static styles=css`:host{display:block}.content{padding:24px;padding-inline:4px;background-color:transparent}`;\n static get observedAttributes(){return [...super.observedAttributes,'padding','padding-inline','background-color'];}\n controller;\n constructor(){super();this.controller=new StyleInputController(this,fields,{supports:(property,value)=>this.ownerDocument.defaultView.CSS.supports(property,value)});}\n get padding(){return this.controller.get('padding');}set padding(value){this.controller.set('padding',value);}\n get paddingInline(){return this.controller.get('paddingInline');}set paddingInline(value){this.controller.set('paddingInline',value);}\n get backgroundColor(){return this.controller.get('backgroundColor');}set backgroundColor(value){this.controller.set('backgroundColor',value);}\n attributeChangedCallback(name,oldValue,value){if(!this.controller?.attributeChanged(name,oldValue,value))super.attributeChangedCallback(name,oldValue,value);}\n render(){const text=this.controller.entries.get().filter(([,value])=>typeof value==='string'||typeof value==='number').map(([key,value])=>key.replace(/[A-Z]/g,c=>'-'+c.toLowerCase())+':'+(typeof value==='number'?(value*.25)+'rem':value)).join(';');return html`<div class=\"content\" style=${text}>Probe</div>`;}\n}\ncustomElements.define('compiled-style-probe',Probe);\nconst settle=async el=>{await Promise.resolve();await el?.updateComplete;await Promise.resolve();};\nconst options=(container,registry=customElements)=>({creationScope:{importNode(node,deep){return native?container.ownerDocument.importNode(node,{selfOnly:!deep,customElementRegistry:registry}):container.ownerDocument.importNode(node,deep);}}});\nconst mount=()=>{const root=document.createElement('div');document.body.append(root);return root;};\nconst entries=el=>el.controller.entries.get();\nconst edges=el=>{const s=el.ownerDocument.defaultView.getComputedStyle(el.shadowRoot.querySelector('.content'));return [s.paddingTop,s.paddingRight,s.paddingBottom,s.paddingLeft];};\nconst same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);\n\nconst root=mount();const opts=options(root);const draw=values=>render(html`<compiled-style-probe background-color=\"red\" ${styleInputs(values)}></compiled-style-probe>`,root,opts);\ndraw({padding:'16px',paddingInline:'8px'});const element=root.firstElementChild;await settle(element);\nrecord('compiled helper applies canonical ordered inputs and actual CSS',same(entries(element),[['backgroundColor','red'],['padding','16px'],['paddingInline','8px']])&&same(edges(element),['16px','8px','16px','8px']),{entries:entries(element),edges:edges(element)});\ndraw({paddingInline:'8px',padding:'16px'});await settle(element);record('same-value helper reorder changes computed overlap without replacing element',root.firstElementChild===element&&same(edges(element),['16px','16px','16px','16px']),{entries:entries(element),edges:edges(element)});\nelement.padding='32px';draw({paddingInline:'8px',padding:'16px'});await settle(element);record('same helper input reasserts after direct canonical write',element.padding==='16px'&&same(edges(element),['16px','16px','16px','16px']),{padding:element.padding,edges:edges(element)});\nconst observed=[];const subscription=element.controller.entries.subscribe(value=>observed.push(value));draw({padding:'20px',paddingInline:'3px'});await settle(element);subscription.unsubscribe();record('one helper transaction publishes one complete canonical snapshot',same(observed,[[['backgroundColor','red'],['padding','20px'],['paddingInline','3px']]]),{observed});\nconst before=entries(element);let invalid=false;try{draw({padding:'10px',paddingInline:-1});}catch{invalid=true;}record('failed numeric transaction leaves values order and ownership intact',invalid&&entries(element)===before,{invalid,entries:entries(element)});\ndraw({});await settle(element);record('explicit empty input clears owned fields and keeps unrelated authored input',element.padding===undefined&&element.paddingInline===undefined&&element.backgroundColor==='red'&&same(edges(element),['24px','4px','24px','4px']),{entries:entries(element),edges:edges(element)});\n\n// Directive removal/replacement retains values under the selected explicit-clear policy.\nconst replacementRoot=mount();const replacementOptions=options(replacementRoot);const drawExpression=expression=>render(html`<compiled-style-probe ${expression}></compiled-style-probe>`,replacementRoot,replacementOptions);\ndrawExpression(styleInputs({padding:'12px',paddingInline:'5px'}));const replaced=replacementRoot.firstElementChild;await settle(replaced);drawExpression(nothing);await settle(replaced);\nrecord('removing the helper expression retains canonical values',same(entries(replaced),[['padding','12px'],['paddingInline','5px']]),{entries:entries(replaced)});\ndrawExpression(styleInputs({padding:'18px'}));await settle(replaced);drawExpression(styleInputs({}));await settle(replaced);record('replacement helper clears only keys it acquired',replaced.padding===undefined&&replaced.paddingInline==='5px'&&replacementRoot.firstElementChild===replaced,{entries:entries(replaced)});\n\n// Explicit renders still update state while the root part is marked disconnected.\ndraw({padding:'14px'});const part=draw({padding:'14px'});part.setConnected(false);draw({padding:'22px'});record('explicit disconnected-part render writes canonical inputs synchronously',element.padding==='22px',{padding:element.padding});part.setConnected(true);await settle(element);record('part reconnection retains canonical values and element identity',root.firstElementChild===element&&same(edges(element),['22px','22px','22px','22px']),{edges:edges(element)});\n\n// Real Lit cache retains the host and directive instance across physical removal.\nconst cacheRoot=mount();const cacheOptions=options(cacheRoot);const drawCache=(show,values)=>render(html`${cache(show?html`<compiled-style-probe ${styleInputs(values)}></compiled-style-probe>`:html`<span>Hidden</span>`)}`,cacheRoot,cacheOptions);\ndrawCache(true,{padding:'10px'});const cached=cacheRoot.querySelector('compiled-style-probe');await settle(cached);drawCache(false,{});const disconnected=!cached.isConnected&&cached.padding==='10px';drawCache(true,{padding:'15px'});await settle(cached);record('cache removal retains state and restoration reuses the host',disconnected&&cacheRoot.querySelector('compiled-style-probe')===cached&&cached.padding==='15px',{disconnected,sameHost:cacheRoot.querySelector('compiled-style-probe')===cached,padding:cached.padding});drawCache(true,{});await settle(cached);record('empty input on the restored cache expression clears its owned value',cached.padding===undefined,{entries:entries(cached)});\n\n// The actual helper can clear during synchronous canonical publication.\nconst reentrantRoot=mount();const reentrantOptions=options(reentrantRoot);const drawReentrant=values=>render(html`<compiled-style-probe ${styleInputs(values)}></compiled-style-probe>`,reentrantRoot,reentrantOptions);drawReentrant({});const reentrant=reentrantRoot.firstElementChild;await settle(reentrant);let first=true;const reentrantSub=reentrant.controller.entries.subscribe(()=>{if(first){first=false;drawReentrant({});}});drawReentrant({padding:'16px'});await settle(reentrant);reentrantSub.unsubscribe();record('reentrant same-helper clearing during first publication remains cleared',reentrant.padding===undefined,{entries:entries(reentrant)});\n\n// Native scoped registry in Chromium/WebKit; selected polyfill in Firefox.\nconst scopedHost=document.createElement('div');document.body.append(scopedHost);const registry=new CustomElementRegistry();const scoped=scopedHost.attachShadow(native?{mode:'open',customElementRegistry:registry}:{mode:'open',customElements:registry});\nconst scopedOptions=native?options(scoped,registry):{creationScope:scoped};\nconst drawScoped=values=>render(html`<late-scoped-style padding-inline=\"2px\" ${styleInputs(values)}></late-scoped-style>`,scoped,scopedOptions);\ndrawScoped({padding:'12px',paddingInline:'6px'});const late=scoped.querySelector('late-scoped-style');drawScoped({paddingInline:'7px',padding:'18px'});\nconst frame=document.createElement('iframe');frame.srcdoc='<!doctype html><body></body>';const loaded=new Promise(resolve=>frame.onload=resolve);document.body.append(frame);await loaded;\nclass ScopedProbe extends Probe{}registry.define('late-scoped-style',ScopedProbe);await settle(late);\nrecord('actual late scoped upgrade applies the latest helper values',late instanceof ScopedProbe&&scoped.querySelector('late-scoped-style')===late&&same(entries(late),[['paddingInline','7px'],['padding','18px']])&&same(edges(late),['18px','18px','18px','18px']),{nativeRegistry:native,polyfill:window.bootstrap.loadPolyfill,constructorMatch:late instanceof ScopedProbe,entries:entries(late),edges:edges(late)});\nframe.contentDocument.body.append(frame.contentDocument.adoptNode(scopedHost));\ndrawScoped({padding:'13px',paddingInline:'3px'});await settle(late);record('adopted scoped helper still updates current canonical state and styles',same(edges(late),['13px','3px','13px','3px']),{entries:entries(late),edges:edges(late)});\ndocument.body.append(document.adoptNode(scopedHost));drawScoped({});await settle(late);record('scoped movement back preserves host and explicit clearing',scoped.querySelector('late-scoped-style')===late&&late.padding===undefined&&late.paddingInline===undefined&&same(edges(late),['24px','4px','24px','4px']),{entries:entries(late),edges:edges(late)});\n// Build a fresh scoped child after adoption, using the same explicit registry.\nframe.contentDocument.body.append(frame.contentDocument.adoptNode(scopedHost));render(nothing,scoped,scopedOptions);drawScoped({padding:'9px'});const fresh=scoped.querySelector('late-scoped-style');await settle(fresh);record('fresh scoped construction in the adopted document retains the intended registry',fresh!==late&&fresh instanceof ScopedProbe&&fresh.ownerDocument===frame.contentDocument&&fresh.padding==='9px'&&same(edges(fresh),['9px','9px','9px','9px']),{newHost:fresh!==late,constructorMatch:fresh instanceof ScopedProbe,edges:edges(fresh)});\n// Independent platform reduction: no Lit host, controller or style helper.\nconst bareHost=document.createElement('div');const bareRegistry=new CustomElementRegistry();const bareRoot=bareHost.attachShadow(native?{mode:'open',customElementRegistry:bareRegistry}:{mode:'open',customElements:bareRegistry});bareRoot.innerHTML='<bare-late-adopt></bare-late-adopt>';const bare=bareRoot.firstElementChild;document.body.append(bareHost);frame.contentDocument.body.append(frame.contentDocument.adoptNode(bareHost));class BareLate extends HTMLElement{marker=true;}bareRegistry.define('bare-late-adopt',BareLate);const automaticallyUpgraded=bare instanceof BareLate;bareRegistry.upgrade(bare);const platformReduction={name:'first scoped definition after unknown-node adoption without house code',nativeRegistry:native,automatic:automaticallyUpgraded,afterExplicitUpgrade:bare instanceof BareLate,marker:bare.marker??null,sourceDocumentRetained:bare.ownerDocument===frame.contentDocument};\nif(!native){await new Promise((resolve,reject)=>{const script=frame.contentDocument.createElement('script');script.type='module';script.src='/polyfill.js';script.onload=resolve;script.onerror=reject;frame.contentDocument.head.append(script);});const secondHost=document.createElement('div'),secondRegistry=new CustomElementRegistry(),secondRoot=secondHost.attachShadow({mode:'open',customElements:secondRegistry});secondRoot.innerHTML='<bare-second-realm></bare-second-realm>';const second=secondRoot.firstElementChild;document.body.append(secondHost);frame.contentDocument.body.append(frame.contentDocument.adoptNode(secondHost));class SecondLate extends HTMLElement{marker=true;}secondRegistry.define('bare-second-realm',SecondLate);const automatic=second instanceof SecondLate;secondRegistry.upgrade(second);const targetUpgrade=second instanceof SecondLate;secondRegistry.upgrade(secondRoot);platformReduction.bothDocumentsPolyfilled={automatic,targetUpgrade,rootUpgrade:second instanceof SecondLate,marker:second.marker??null};}\nwindow.output={mode:native?'native scoped registry':'scoped-registry polyfill',results,platformReduction};\n"
+      },
+      "src/shared/style-input-controller.ts": {
+        "sha256": "477baed5020f77d660d0247dc88ad74b9ea133b6b5d9cb038f11ae4ba1a859a5",
+        "bytes": 5734,
+        "compiledTemplates": false,
+        "source": "import type { ReadonlyAtom } from \"@tanstack/lit-store\";\nimport type { ReactiveElement } from \"lit\";\nimport { createOrderedStyleInputs } from \"./ordered-style-inputs\";\nimport type { ResponsiveInput } from \"./responsive\";\nimport { copyResponsiveInput, parseResponsiveAttribute, type ResponsiveAttributeDiagnostic } from \"./responsive-input\";\nimport { StoreSelector } from \"./store-connection\";\nimport { attachStyleInputTarget } from \"./style-input-binding\";\nimport { isAuthoredStyleScalar, isStyleScalar, type StyleDisplayMode, type StyleInputKey, type StyleScalar, type StyleSupports, styleInputSchema } from \"./style-input-schema\";\n\ntype Validators<Key extends StyleInputKey> = { [Property in Key]: (value: unknown) => ResponsiveInput<StyleScalar<Property>> };\ntype Entry<Key extends StyleInputKey> = { [Property in Key]: readonly [Property, Exclude<ResponsiveInput<StyleScalar<Property>>, undefined>] }[Key];\ntype Options<Key extends StyleInputKey> = Readonly<{\n  supports: StyleSupports;\n  displayModes?: readonly StyleDisplayMode[];\n  diagnostic?: (diagnostic: ResponsiveAttributeDiagnostic & Readonly<{ property: Key; attribute: string }>) => void;\n}>;\n\n/**\n * Construct once during host construction. Host accessors delegate to get/set; its composed\n * observedAttributes and attributeChangedCallback forward the schema's attribute names here.\n * Keep these accessors out of Lit property metadata so own-property order survives upgrade.\n * Property/attribute annotations for generated documentation belong to the host's declarations.\n */\nexport class StyleInputController<Key extends StyleInputKey> {\n  private readonly values: ReturnType<typeof createOrderedStyleInputs<Validators<Key>>>;\n  private readonly attributes = new Map<string, Key>();\n  private readonly initialAttributes = new Map<string, string>();\n  private readonly scalar: (key: Key) => (value: unknown) => value is StyleScalar<Key>;\n  private readonly diagnostic: Options<Key>[\"diagnostic\"];\n\n  constructor(host: ReactiveElement, properties: readonly Key[], options: Options<Key>) {\n    const hostClass = host.constructor as typeof ReactiveElement;\n    for (const property of properties) {\n      if (!Object.hasOwn(styleInputSchema, property)) throw new TypeError(\"Unknown style input: \" + property);\n      if (hostClass.elementProperties.has(property)) throw new TypeError(\"Style inputs must stay outside Lit property metadata: \" + property);\n      this.attributes.set(styleInputSchema[property].attribute, property);\n    }\n    const selected = new Set(properties);\n    const supports = options.supports;\n    const displayModes = options.displayModes && Object.freeze([...options.displayModes]);\n    this.scalar =\n      (key) =>\n      (value): value is StyleScalar<Key> =>\n        isStyleScalar(key, value, supports, displayModes);\n    this.diagnostic = options.diagnostic;\n    const validators = Object.fromEntries(\n      properties.map((key) => [key, (value: unknown) => copyResponsiveInput(value, (leaf): leaf is StyleScalar<Key> => isAuthoredStyleScalar(key, leaf, supports, displayModes))]),\n    ) as Validators<Key>;\n    this.values = createOrderedStyleInputs(validators);\n\n    const own = Reflect.ownKeys(host)\n      .filter((key): key is Key => typeof key === \"string\" && selected.has(key as Key))\n      .map((key) => {\n        const descriptor = Object.getOwnPropertyDescriptor(host, key)!;\n        if (!descriptor.configurable || !Object.hasOwn(descriptor, \"value\")) throw new TypeError(\"Pre-upgrade style inputs must be configurable data properties: \" + key);\n        return [key, descriptor.value] as const;\n      });\n    for (const attribute of host.attributes) {\n      if (!this.attributes.has(attribute.name)) continue;\n      this.initialAttributes.set(attribute.name, attribute.value);\n      this.readAttribute(attribute.name, attribute.value);\n    }\n    for (const [key, value] of own) this.values.set(key, value);\n    for (const [key] of own) Reflect.deleteProperty(host, key);\n    new StoreSelector(host, () => this.values.entries);\n    attachStyleInputTarget(host, (inputs, previousKeys) => this.apply(inputs, previousKeys as readonly Key[]));\n  }\n\n  get entries(): ReadonlyAtom<readonly Entry<Key>[]> {\n    return this.values.entries as unknown as ReadonlyAtom<readonly Entry<Key>[]>;\n  }\n\n  get<Property extends Key>(property: Property): ResponsiveInput<StyleScalar<Property>> {\n    return this.values.get(property) as ResponsiveInput<StyleScalar<Property>>;\n  }\n\n  set(property: Key, value: unknown): void {\n    this.values.set(property, value);\n  }\n\n  apply(inputs: Readonly<{ [Property in Key]?: unknown }>, previousKeys: readonly Key[] = []): readonly Key[] {\n    return this.values.apply(inputs, previousKeys);\n  }\n\n  /** Returns false for attributes that belong to another host behavior. */\n  attributeChanged(name: string, oldValue: string | null, value: string | null): boolean {\n    if (!this.attributes.has(name)) return false;\n    // Each queued upgrade callback consumes only its own captured value. Reentrant changes can\n    // arrive before other initial callbacks, or connect the host before an outer callback returns.\n    if (oldValue === null && this.initialAttributes.get(name) === value) {\n      this.initialAttributes.delete(name);\n      return true;\n    }\n    this.readAttribute(name, value);\n    return true;\n  }\n\n  private readAttribute(name: string, value: string | null): void {\n    const property = this.attributes.get(name)!;\n    const result = parseResponsiveAttribute(value, this.scalar(property), { numbers: styleInputSchema[property].numeric !== \"none\" });\n    this.values.set(property, result.value);\n    if (result.diagnostic) this.diagnostic?.({ ...result.diagnostic, property, attribute: name });\n  }\n}\n"
+      },
+      "src/shared/style-inputs.ts": {
+        "sha256": "4297b1f62dda6ea187fa6ef710c85f7d8b66df91dc366dac8acf20f09ae04d2b",
+        "bytes": 824,
+        "compiledTemplates": false,
+        "source": "import { noChange } from \"lit\";\nimport { Directive, directive, type ElementPart, type PartInfo, PartType } from \"lit/directive.js\";\nimport { applyStyleInputBinding, type StyleInputs } from \"./style-input-binding\";\n\nclass StyleInputsDirective extends Directive {\n  private readonly owner = {};\n  constructor(part: PartInfo) {\n    super(part);\n    if (part.type !== PartType.ELEMENT) throw new TypeError(\"styleInputs must be used in an element expression\");\n  }\n  render(_inputs: StyleInputs) {\n    return noChange;\n  }\n  update(part: ElementPart, [inputs]: [StyleInputs]) {\n    applyStyleInputBinding(part.element, this.owner, inputs);\n    return noChange;\n  }\n}\n\n/** Reapplies ordered inputs on each render. Keep the expression present and pass {} to clear it. */\nexport const styleInputs = directive(StyleInputsDirective);\n"
+      },
+      "src/base.ts": {
+        "sha256": "579d83f4c335e54d09b1157440d1bbc4f6c6f553d0741d5d7632bc56817a471e",
+        "bytes": 6920,
+        "compiledTemplates": true,
+        "source": "// Shared base for every acme-* element: the shadow-root reset, the icon and screen-reader helpers,\n// and small helpers for class lists and icons.\nimport { type CSSResultGroup, html, LitElement, type TemplateResult } from \"lit\";\nimport { classMap } from \"lit/directives/class-map.js\";\nimport { baseCss } from \"./generated/shared/base.styles\";\nimport { applyStaticStyles } from \"./shared/static-styles\";\nimport { registerStyleProperties } from \"./shared/style-properties\";\n\n/** Rules every shadow root needs: the reset the global sheet gives the page, plus .ic and .sr. The host takes the reset too: an element of ours slotted into another (a grid cell) then reads as a reset page element. */\nexport const sharedCss = baseCss;\n\n/**\n * Where the package's asset files (logos, textures) load from. The default is the published\n * package on the CDN; a page that serves the `assets/` directory itself sets its own base before\n * the elements render.\n */\nexport let assetsBase = \"https://cdn.jsdelivr.net/npm/@acmelabs/design-system/assets/\";\nexport const setAssetsBase = (url: string) => {\n  assetsBase = url.endsWith(\"/\") ? url : `${url}/`;\n};\n\n/** Converter for a boolean that defaults to true: `loop=\"false\"` turns it off (the React convention `loop={false}`); a bare or any other attribute value keeps it on. */\nexport const boolish = {\n  fromAttribute: (v: string | null) => v === null || v !== \"false\",\n  toAttribute: (v: boolean) => String(v),\n};\n\n/**\n * The effective theme as a host attribute, so shadow styles keyed to the dark theme\n * rules can key off `:host([data-dark])`: dark when the root carries data-theme=\"dark\", or when\n * it carries no explicit theme and the system prefers dark.\n */\nconst darkHosts = new Set<HTMLElement>();\nlet darkWatch: (() => void) | undefined;\nconst isDark = () => {\n  const t = document.documentElement.dataset.theme;\n  if (t === \"dark\") return true;\n  if (t === \"light\") return false;\n  return typeof matchMedia !== \"undefined\" && matchMedia(\"(prefers-color-scheme: dark)\").matches;\n};\nconst paintDark = () => {\n  const dark = isDark();\n  for (const h of darkHosts) h.toggleAttribute(\"data-dark\", dark);\n};\nconst watchDark = (host: HTMLElement) => {\n  darkHosts.add(host);\n  host.toggleAttribute(\"data-dark\", isDark());\n  if (darkWatch || typeof MutationObserver === \"undefined\") return;\n  const mo = new MutationObserver(paintDark);\n  mo.observe(document.documentElement, { attributes: true, attributeFilter: [\"data-theme\"] });\n  const mq = typeof matchMedia !== \"undefined\" ? matchMedia(\"(prefers-color-scheme: dark)\") : undefined;\n  mq?.addEventListener(\"change\", paintDark);\n  darkWatch = () => {\n    mo.disconnect();\n    mq?.removeEventListener(\"change\", paintDark);\n  };\n};\n\nexport class AcmeElement extends LitElement {\n  static styles: CSSResultGroup = sharedCss;\n  protected createRenderRoot(): HTMLElement | DocumentFragment {\n    const componentClass = this.constructor as typeof AcmeElement;\n    const root = this.shadowRoot ?? this.attachShadow(componentClass.shadowRootOptions);\n    const boundary = applyStaticStyles(root, componentClass.elementStyles);\n    this.renderOptions.renderBefore ??= boundary;\n    return root;\n  }\n  connectedCallback() {\n    this.registerStyles();\n    super.connectedCallback();\n    watchDark(this);\n  }\n  adoptedCallback() {\n    this.registerStyles();\n    if (this.renderRoot?.nodeType === 11 && \"host\" in this.renderRoot) applyStaticStyles(this.renderRoot as ShadowRoot, (this.constructor as typeof AcmeElement).elementStyles);\n  }\n  private registerStyles() {\n    const view = this.ownerDocument.defaultView as (Window & { CSS?: typeof CSS }) | null;\n    registerStyleProperties((this.constructor as typeof AcmeElement).styles, view?.CSS);\n  }\n  disconnectedCallback() {\n    super.disconnectedCallback();\n    darkHosts.delete(this);\n  }\n  /** Reflects a boolean/enum attribute into a class list on the inner element. */\n  protected cls(base: string, extra: Record<string, boolean | undefined | null | string> = {}) {\n    const map: Record<string, boolean> = {};\n    for (const [k, v] of Object.entries(extra)) if (v) map[k] = true;\n    return classMap({ [base]: true, ...map });\n  }\n}\n\n/** Inline icon from the page's symbol sprite (`<svg><symbol id=\"i-…\">`), or a raw path set. */\nexport const icon = (name: string, cls = \"ic\"): TemplateResult => html`<svg class=${cls} width=\"16\" height=\"16\" aria-hidden=\"true\"><use href=${`#i-${name}`}></use></svg>`;\n\n/** Icons the components draw themselves, so a page needs no sprite for them. 24-box strokes. */\nexport const paths: Record<string, string> = {\n  check: \"M20 6 9 17l-5-5\",\n  x: \"M18 6 6 18M6 6l12 12\",\n  chev: \"m9 18 6-6-6-6\",\n  \"chev-d\": \"m6 9 6 6 6-6\",\n  \"chev-l\": \"m15 18-6-6 6-6\",\n  \"chev-u\": \"m18 15-6-6-6 6\",\n  \"arrow-u\": \"M12 19V5M5 12l7-7 7 7\",\n  \"arrow-d\": \"M12 5v14M5 12l7 7 7-7\",\n  copy: \"M8 8h12v12H8zM16 8V4H4v12h4\",\n  search: \"M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.3-4.3\",\n  info: \"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 8h.01M11 12h1v4h1\",\n  alert: \"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 8v4M12 16h.01\",\n  warn: \"M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01\",\n  arrow: \"M5 12h14M12 5l7 7-7 7\",\n  back: \"M19 12H5M12 19l-7-7 7-7\",\n  up: \"M7 17 17 7M7 7h10v10\",\n  down: \"M7 7l10 10M17 7v10H7\",\n  sun: \"M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\",\n  moon: \"M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z\",\n  monitor: \"M3 4h18v12H3zM8 20h8M12 16v4\",\n  dots: \"M5 12h.01M12 12h.01M19 12h.01\",\n  play: \"M7 5v14l11-7z\",\n  pause: \"M8 5h3v14H8zM13 5h3v14h-3z\",\n  folder: \"M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\",\n  file: \"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6\",\n  calendar: \"M3 5h18v16H3zM3 10h18M8 3v4M16 3v4\",\n  globe: \"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20\",\n  lock: \"M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4\",\n  ext: \"M14 4h6v6M20 4l-9 9M18 13v6H5V6h6\",\n  bolt: \"M13 2 3 14h9l-1 8 10-12h-9z\",\n  layers: \"M12 2 2 7l10 5 10-5-10-5zM2 12l10 5 10-5M2 17l10 5 10-5\",\n  v0: \"M2.5 8l4.5 8 4.5-8M13 10a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2zM14 8.5l6 7\",\n};\nexport const glyph = (name: string, cls = \"ic\"): TemplateResult => html`<svg class=${cls} width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=${paths[name] ?? \"\"}></path></svg>`;\n/** A glyph sized by its width/height attributes alone, no class: for an element whose own rules size or align its icon. */\nexport const glyphSized = (name: string, size = 16): TemplateResult =>\n  html`<svg width=${size} height=${size} viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.85\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=${paths[name] ?? \"\"}></path></svg>`;\n"
+      },
+      "src/shared/style-input-binding.ts": {
+        "sha256": "117a9cd04ebfdd858735b7cf78f01424bf5d2ca079ab1b421ddfb060ddcc025a",
+        "bytes": 3938,
+        "compiledTemplates": false,
+        "source": "import { isPlainRecord } from \"./plain-record\";\nimport type { ResponsiveInput, ResponsiveScalar } from \"./responsive\";\nimport { copyResponsiveInput } from \"./responsive-input\";\nimport { type StyleInputKey, type StyleScalar, styleInputSchema } from \"./style-input-schema\";\n\nexport type StyleInputs = Readonly<{ [Key in StyleInputKey]?: ResponsiveInput<StyleScalar<Key>> }>;\ntype Patch = Readonly<Partial<Record<StyleInputKey, ResponsiveInput<ResponsiveScalar>>>>;\ntype Apply = (inputs: Patch, previousKeys: readonly StyleInputKey[]) => void;\ntype Ownership = { owner?: object; revision: number };\ntype Binding = {\n  apply?: Apply;\n  owners: Map<StyleInputKey, Ownership>;\n  pending: Map<StyleInputKey, ResponsiveInput<ResponsiveScalar>>;\n  revision: number;\n};\nconst targets = new WeakMap<Element, Binding>();\n\nfunction targetBinding(target: Element): Binding {\n  let binding = targets.get(target);\n  if (!binding) {\n    binding = { owners: new Map(), pending: new Map(), revision: 0 };\n    targets.set(target, binding);\n  }\n  return binding;\n}\n\nfunction snapshot(inputs: StyleInputs): Patch {\n  if (!isPlainRecord(inputs)) throw new TypeError(\"Style inputs must be a plain ordered object\");\n  const entries = Reflect.ownKeys(inputs).map((key) => {\n    if (typeof key !== \"string\" || !Object.hasOwn(styleInputSchema, key)) throw new TypeError(\"Unknown style input\");\n    const descriptor = Object.getOwnPropertyDescriptor(inputs, key)!;\n    if (!descriptor.enumerable || !Object.hasOwn(descriptor, \"value\")) throw new TypeError(\"Style inputs require enumerable data properties\");\n    const value = copyResponsiveInput(descriptor.value, (leaf): leaf is ResponsiveScalar => [\"string\", \"number\", \"boolean\"].includes(typeof leaf));\n    return [key, value] as const;\n  });\n  return Object.freeze(Object.fromEntries(entries));\n}\n\n/** Connects the actual target instance, independent of its registry or current document. */\nexport function attachStyleInputTarget(target: Element, apply: Apply): void {\n  const binding = targetBinding(target);\n  if (binding.apply) throw new TypeError(\"A style input controller is already attached to this target\");\n  binding.apply = apply;\n  try {\n    if (binding.pending.size) apply(Object.fromEntries(binding.pending), []);\n    binding.pending.clear();\n  } catch (error) {\n    binding.apply = undefined;\n    throw error;\n  }\n}\n\n/** Applies one helper owner's current inputs. An empty input clears only its still-owned keys. */\nexport function applyStyleInputBinding(target: Element, owner: object, inputs: StyleInputs): void {\n  const patch = snapshot(inputs);\n  const keys = Object.keys(patch) as StyleInputKey[];\n  const binding = targetBinding(target);\n  const previous = [...binding.owners].filter(([, value]) => value.owner === owner).map(([key]) => key);\n  const revision = ++binding.revision;\n  const touched = new Set([...previous, ...keys]);\n  const before = new Map([...touched].map((key) => [key, binding.owners.get(key)]));\n  // Ownership must be visible while canonical state synchronously notifies subscribers.\n  for (const key of previous) binding.owners.set(key, { revision });\n  for (const key of keys) binding.owners.set(key, { owner, revision });\n  try {\n    if (binding.apply) {\n      binding.apply(patch, previous);\n    } else {\n      // One latest value or clear marker per schema key; no registry promises or callback queues.\n      const pending = new Map(binding.pending);\n      for (const key of previous) {\n        pending.delete(key);\n        pending.set(key, undefined);\n      }\n      for (const key of keys) {\n        pending.delete(key);\n        pending.set(key, patch[key]);\n      }\n      binding.pending = pending;\n    }\n  } catch (error) {\n    for (const [key, ownership] of before) {\n      if (binding.owners.get(key)?.revision !== revision) continue;\n      if (ownership) binding.owners.set(key, ownership);\n      else binding.owners.delete(key);\n    }\n    throw error;\n  }\n}\n"
+      },
+      "src/shared/responsive-input.ts": {
+        "sha256": "27d8a96534c3b654b1557beac752ca56fd2a67c3c9d0f0abd12a296035c49f8d",
+        "bytes": 2689,
+        "compiledTemplates": false,
+        "source": "import { normalizeResponsive, type ResponsiveInput, type ResponsiveScalar } from \"./responsive\";\n\nexport type ResponsiveAttributeDiagnostic = Readonly<{ code: \"invalid-responsive-attribute\"; reason: \"syntax\" | \"value\" }>;\nexport type ResponsiveAttributeResult<Value extends ResponsiveScalar> = Readonly<{\n  value: ResponsiveInput<Value>;\n  diagnostic?: ResponsiveAttributeDiagnostic;\n}>;\n\n/** Validates a current input and owns its shape without replacing authored conditions with ranges. */\nexport function copyResponsiveInput<Value extends ResponsiveScalar>(input: unknown, scalar: (value: unknown) => value is Value): ResponsiveInput<Value> {\n  normalizeResponsive(input, scalar);\n  if (input === undefined || typeof input !== \"object\") return input as Value | undefined;\n  if (Array.isArray(input)) {\n    const copy = new Array<Value | null | undefined>(input.length);\n    for (let index = 0; index < input.length; index++) {\n      const descriptor = Object.getOwnPropertyDescriptor(input, index);\n      if (descriptor) copy[index] = descriptor.value;\n    }\n    return Object.freeze(copy);\n  }\n  return Object.freeze(Object.fromEntries(Object.entries(input!))) as ResponsiveInput<Value>;\n}\n\nconst numericText = /^[+-]?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][+-]?\\d+)?$/;\nconst invalid = (reason: ResponsiveAttributeDiagnostic[\"reason\"]) => Object.freeze({ value: undefined, diagnostic: Object.freeze({ code: \"invalid-responsive-attribute\" as const, reason }) });\n\n/** Recognizes valid scalars before JSON. An invalid HTML input has no current override. */\nexport function parseResponsiveAttribute<Value extends ResponsiveScalar>(\n  text: string | null,\n  scalar: (value: unknown) => value is Value,\n  options: { numbers?: boolean } = {},\n): ResponsiveAttributeResult<Value> {\n  if (text === null || text.trim() === \"\") return Object.freeze({ value: undefined });\n  const input = text.trim();\n  if (options.numbers && numericText.test(input)) {\n    const value = Number(input);\n    if (Number.isFinite(value) && scalar(value)) return Object.freeze({ value });\n    return invalid(\"value\");\n  }\n  if (input === \"true\" || input === \"false\") {\n    const value = input === \"true\";\n    if (scalar(value)) return Object.freeze({ value });\n  }\n  if (scalar(input)) return Object.freeze({ value: input });\n  if (!input.startsWith(\"[\") && !input.startsWith(\"{\")) return invalid(\"value\");\n  let decoded: unknown;\n  try {\n    decoded = JSON.parse(input);\n  } catch {\n    return invalid(\"syntax\");\n  }\n  if (decoded === null || typeof decoded !== \"object\") return invalid(\"value\");\n  try {\n    return Object.freeze({ value: copyResponsiveInput(decoded, scalar) });\n  } catch {\n    return invalid(\"value\");\n  }\n}\n"
+      },
+      "src/shared/store-connection.ts": {
+        "sha256": "f4a06979256674ef45d320c7965c9682f4b73b708c08b52ed05e03a3877a6a02",
+        "bytes": 837,
+        "compiledTemplates": false,
+        "source": "import { TanStackStoreSelector } from \"@tanstack/lit-store\";\nimport type { ReactiveControllerHost } from \"lit\";\n\nconst hostsWithStoreConnection = new WeakSet<ReactiveControllerHost>();\n\n/** Schedules the update in which TanStack restores a host's store subscriptions. */\nexport function connectStore(host: ReactiveControllerHost): void {\n  if (hostsWithStoreConnection.has(host)) return;\n  hostsWithStoreConnection.add(host);\n  host.addController({ hostConnected: () => host.requestUpdate() });\n}\n\n/** TanStack's selector with the shared host connection lifecycle. */\nexport class StoreSelector<TSource, TSelected = NoInfer<TSource>> extends TanStackStoreSelector<TSource, TSelected> {\n  constructor(...args: ConstructorParameters<typeof TanStackStoreSelector<TSource, TSelected>>) {\n    super(...args);\n    connectStore(args[0]);\n  }\n}\n"
+      },
+      "src/shared/ordered-style-inputs.ts": {
+        "sha256": "15da52085774c674698bdf8ab14ed30ba1eb4a0ea9a16c1199556e771a07a0a8",
+        "bytes": 4529,
+        "compiledTemplates": false,
+        "source": "import { createAtom, type ReadonlyAtom } from \"@tanstack/lit-store\";\nimport { isPlainRecord } from \"./plain-record\";\n\nexport type StyleInputValue = string | number | boolean | null | undefined | readonly StyleInputValue[] | { readonly [key: string]: StyleInputValue };\ntype StyleInputValidator = (value: unknown) => StyleInputValue;\ntype StyleInputValidators = Readonly<Record<string, StyleInputValidator>>;\ntype StyleInputKey<Validators extends StyleInputValidators> = keyof Validators & string;\ntype ReadonlyStyleInput<Value> = Value extends object ? { readonly [Key in keyof Value]: ReadonlyStyleInput<Value[Key]> } : Value;\ntype StyleInputEntry<Validators extends StyleInputValidators> = {\n  [Key in StyleInputKey<Validators>]: readonly [Key, ReadonlyStyleInput<Exclude<ReturnType<Validators[Key]>, undefined>>];\n}[StyleInputKey<Validators>];\ntype StyleInputPatch<Validators extends StyleInputValidators> = { readonly [Key in StyleInputKey<Validators>]?: unknown };\n\nfunction freezeValue<Value extends StyleInputValue>(value: Value, visited = new WeakSet<object>()): Value {\n  if (value !== null && typeof value === \"object\" && !visited.has(value)) {\n    visited.add(value);\n    for (const child of Object.values(value)) freezeValue(child, visited);\n    Object.freeze(value);\n  }\n  return value;\n}\n\n/**\n * Owns canonical style values in declaration order. Validators normalize and copy their inputs.\n * Callers supply previous helper-owned keys; this layer does not own directives or DOM attributes.\n */\nexport function createOrderedStyleInputs<Validators extends StyleInputValidators>(definitions: Validators) {\n  type Key = StyleInputKey<Validators>;\n  type Entry = StyleInputEntry<Validators>;\n  type StoredEntry = readonly [Key, Exclude<StyleInputValue, undefined>];\n  const validators = Object.freeze({ ...definitions });\n  const state = createAtom<readonly StoredEntry[]>(Object.freeze([]), {\n    compare: (previous, next) => previous.length === next.length && previous.every((entry, index) => entry[0] === next[index][0] && Object.is(entry[1], next[index][1])),\n  });\n  // Validators establish each key's value type; freezing gives the public view its readonly shape.\n  const entries = createAtom(() => state.get()) as unknown as ReadonlyAtom<readonly Entry[]>;\n  function checkKey(key: string): asserts key is Key {\n    if (!Object.hasOwn(validators, key)) throw new TypeError(\"Unknown style input: \" + key);\n  }\n  const normalize = (key: Key, value: unknown): StoredEntry | undefined => {\n    if (value === undefined) return undefined;\n    const normalized = validators[key](value);\n    return normalized === undefined ? undefined : Object.freeze([key, freezeValue(normalized)] as const);\n  };\n\n  return Object.freeze({\n    entries,\n    get<Key extends StyleInputKey<Validators>>(key: Key): ReadonlyStyleInput<ReturnType<Validators[Key]>> | undefined {\n      checkKey(key);\n      return state.get().find((entry) => entry[0] === key)?.[1] as ReadonlyStyleInput<ReturnType<Validators[Key]>> | undefined;\n    },\n    set(key: Key, value: unknown): void {\n      checkKey(key);\n      const entry = normalize(key, value);\n      const current = state.get();\n      const index = current.findIndex((item) => item[0] === key);\n      if (entry === undefined) state.set(Object.freeze(current.filter((item) => item[0] !== key)));\n      else if (index === -1) state.set(Object.freeze([...current, entry]));\n      else state.set(Object.freeze(current.map((item, position) => (position === index ? entry : item))));\n    },\n    apply(inputs: StyleInputPatch<Validators>, previousKeys: readonly Key[] = []): readonly Key[] {\n      if (!isPlainRecord(inputs)) {\n        throw new TypeError(\"Style inputs must be a plain ordered object\");\n      }\n      for (const key of previousKeys) checkKey(key);\n      const keys: Key[] = [];\n      for (const key of Reflect.ownKeys(inputs)) {\n        if (typeof key !== \"string\" || !Object.prototype.propertyIsEnumerable.call(inputs, key)) throw new TypeError(\"Style inputs require enumerable string keys\");\n        checkKey(key);\n        keys.push(key);\n      }\n      const supplied: StoredEntry[] = [];\n      for (const key of keys) {\n        const entry = normalize(key, inputs[key]);\n        if (entry !== undefined) supplied.push(entry);\n      }\n      const touched = new Set([...previousKeys, ...keys]);\n      const unmanaged = state.get().filter((entry) => !touched.has(entry[0]));\n      state.set(Object.freeze([...unmanaged, ...supplied]));\n      return Object.freeze(keys);\n    },\n  });\n}\n"
+      },
+      "src/shared/style-input-schema.ts": {
+        "sha256": "c947442d035bf3ddec2be8c33d212c7c47e0973dcc0dcc1712a98c1f5ac0e90a",
+        "bytes": 5916,
+        "compiledTemplates": false,
+        "source": "import { numericTokenKeys } from \"./numeric-tokens\";\n\nexport type StyleNumericCategory = \"signed-spacing\" | \"nonnegative-spacing\" | \"size\" | \"positive-ratio\" | \"integer\" | \"opacity\" | \"nonnegative\" | \"zero-only\" | \"none\";\ntype StyleTarget = \"host\" | \"host-and-root\";\ntype StyleMetadata<Property extends string, Numeric extends StyleNumericCategory, Target extends StyleTarget> = Readonly<{\n  property: Property;\n  attribute: string;\n  cssProperty: string;\n  numeric: Numeric;\n  target: Target;\n}>;\n\nfunction properties<const Names extends readonly string[], const Numeric extends StyleNumericCategory, const Target extends StyleTarget>(names: Names, numeric: Numeric, target: Target) {\n  return Object.freeze(\n    Object.fromEntries(\n      names.map((property) => {\n        const cssProperty = property.replace(/[A-Z]/g, (character) => \"-\" + character.toLowerCase());\n        return [property, Object.freeze({ property, attribute: cssProperty, cssProperty, numeric, target })];\n      }),\n    ),\n  ) as { readonly [Property in Names[number]]: StyleMetadata<Property, Numeric, Target> };\n}\n\n/** The shared layout surface; visual defaults belong to generated CSS. */\nexport const styleInputSchema = Object.freeze({\n  ...properties(\n    [\n      \"margin\",\n      \"marginInline\",\n      \"marginBlock\",\n      \"marginInlineStart\",\n      \"marginInlineEnd\",\n      \"marginBlockStart\",\n      \"marginBlockEnd\",\n      \"inset\",\n      \"insetInline\",\n      \"insetBlock\",\n      \"insetInlineStart\",\n      \"insetInlineEnd\",\n      \"insetBlockStart\",\n      \"insetBlockEnd\",\n    ],\n    \"signed-spacing\",\n    \"host\",\n  ),\n  ...properties([\"padding\", \"paddingInline\", \"paddingBlock\", \"paddingInlineStart\", \"paddingInlineEnd\", \"paddingBlockStart\", \"paddingBlockEnd\"], \"nonnegative-spacing\", \"host\"),\n  ...properties([\"width\", \"minWidth\", \"maxWidth\", \"height\", \"minHeight\", \"maxHeight\", \"flexBasis\"], \"size\", \"host\"),\n  ...properties([\"aspectRatio\"], \"positive-ratio\", \"host\"),\n  ...properties([\"zIndex\", \"gridColumnStart\", \"gridColumnEnd\", \"gridRowStart\", \"gridRowEnd\"], \"integer\", \"host\"),\n  ...properties([\"opacity\"], \"opacity\", \"host\"),\n  ...properties([\"flexGrow\", \"flexShrink\"], \"nonnegative\", \"host\"),\n  ...properties(\n    [\n      \"borderWidth\",\n      \"borderInlineWidth\",\n      \"borderBlockWidth\",\n      \"borderInlineStartWidth\",\n      \"borderInlineEndWidth\",\n      \"borderBlockStartWidth\",\n      \"borderBlockEndWidth\",\n      \"borderRadius\",\n      \"borderStartStartRadius\",\n      \"borderStartEndRadius\",\n      \"borderEndStartRadius\",\n      \"borderEndEndRadius\",\n    ],\n    \"zero-only\",\n    \"host\",\n  ),\n  ...properties(\n    [\n      \"position\",\n      \"visibility\",\n      \"overflow\",\n      \"overflowX\",\n      \"overflowY\",\n      \"color\",\n      \"backgroundColor\",\n      \"boxShadow\",\n      \"borderStyle\",\n      \"borderInlineStyle\",\n      \"borderBlockStyle\",\n      \"borderInlineStartStyle\",\n      \"borderInlineEndStyle\",\n      \"borderBlockStartStyle\",\n      \"borderBlockEndStyle\",\n      \"borderColor\",\n      \"borderInlineColor\",\n      \"borderBlockColor\",\n      \"borderInlineStartColor\",\n      \"borderInlineEndColor\",\n      \"borderBlockStartColor\",\n      \"borderBlockEndColor\",\n      \"alignSelf\",\n      \"justifySelf\",\n      \"gridArea\",\n      \"gridColumn\",\n      \"gridRow\",\n    ],\n    \"none\",\n    \"host\",\n  ),\n  ...properties([\"display\"], \"none\", \"host-and-root\"),\n});\n\nexport type StyleInputKey = keyof typeof styleInputSchema;\nexport type StyleScalar<Property extends StyleInputKey> = (typeof styleInputSchema)[Property][\"numeric\"] extends \"none\" ? string : string | number;\nexport type StyleDisplayMode = \"none\" | \"inline\" | \"inline-block\" | \"block\" | \"flex\" | \"inline-flex\" | \"grid\" | \"inline-grid\";\nexport type StyleSupports = (property: string, value: string) => boolean;\n\nexport const spacingTokenKeys = Object.freeze([...numericTokenKeys] as const);\nexport const sizeTokenKeys = Object.freeze([...numericTokenKeys] as const);\n\n/** Checks a scalar without committing state or resolving CSS variables/computed values. */\nexport function isStyleScalar<Property extends StyleInputKey>(property: Property, value: unknown, supports: StyleSupports, displayModes?: readonly StyleDisplayMode[]): value is StyleScalar<Property> {\n  if (!Object.hasOwn(styleInputSchema, property)) return false;\n  const metadata = styleInputSchema[property];\n  if (typeof value === \"string\") {\n    const trimmed = value.trim();\n    if (!trimmed) return false;\n    if (property === \"display\") {\n      const mode = trimmed.toLowerCase();\n      if (mode === \"contents\" || !displayModes?.some((allowed) => allowed === mode)) return false;\n    }\n    return supports(metadata.cssProperty, value);\n  }\n  if (typeof value !== \"number\" || !Number.isFinite(value)) return false;\n  switch (metadata.numeric) {\n    case \"signed-spacing\":\n      return (spacingTokenKeys as readonly number[]).includes(Math.abs(value));\n    case \"nonnegative-spacing\":\n      return (spacingTokenKeys as readonly number[]).includes(value);\n    case \"size\":\n      return (sizeTokenKeys as readonly number[]).includes(value);\n    case \"positive-ratio\":\n      return value > 0;\n    case \"integer\":\n      return Number.isInteger(value) && supports(metadata.cssProperty, String(value));\n    case \"opacity\":\n      return value >= 0 && value <= 1;\n    case \"nonnegative\":\n      return value >= 0;\n    case \"zero-only\":\n      return value === 0;\n    case \"none\":\n      return false;\n  }\n}\n\n/** Authored CSS strings remain current inputs; rendering applies the browser's grammar. */\nexport function isAuthoredStyleScalar<Property extends StyleInputKey>(\n  property: Property,\n  value: unknown,\n  supports: StyleSupports,\n  displayModes?: readonly StyleDisplayMode[],\n): value is StyleScalar<Property> {\n  if (!Object.hasOwn(styleInputSchema, property)) return false;\n  if (typeof value === \"string\" && property !== \"display\") return true;\n  return isStyleScalar(property, value, supports, displayModes);\n}\n"
+      },
+      "src/shared/static-styles.ts": {
+        "sha256": "c0183e0dc6ccaefbbf508dee538fbe82cb1073b2c64d20d180096d99c9a88de5",
+        "bytes": 4694,
+        "compiledTemplates": false,
+        "source": "import type { CSSResultOrNative } from \"lit\";\n\ntype CachedSheet = { sheet: CSSStyleSheet; text?: string };\ntype AppliedStyles = { boundary: Comment; sheets: readonly CSSStyleSheet[]; nodes: HTMLStyleElement[] };\nconst documents = new WeakMap<Document, WeakMap<CSSResultOrNative, CachedSheet>>();\nconst roots = new WeakMap<ShadowRoot, AppliedStyles>();\n\nconst styleText = (style: CSSResultOrNative): string => (\"cssText\" in style ? style.cssText : Array.from(style.cssRules, (rule) => rule.cssText).join(\"\\n\"));\n\nfunction documentSheet(document: Document, Sheet: typeof CSSStyleSheet, source: CSSResultOrNative): CSSStyleSheet {\n  let cache = documents.get(document);\n  if (!cache) {\n    cache = new WeakMap();\n    documents.set(document, cache);\n  }\n  let cached = cache.get(source);\n  if (!cached && !(\"cssText\" in source) && source instanceof Sheet) {\n    // The platform checks the constructor document, including documents from the same realm.\n    const probe = document.createElement(\"div\").attachShadow({ mode: \"open\" });\n    try {\n      probe.adoptedStyleSheets = [source];\n      cached = { sheet: source };\n    } catch (error) {\n      if (!error || typeof error !== \"object\" || !(\"name\" in error) || error.name !== \"NotAllowedError\") throw error;\n    }\n  }\n  if (cached?.sheet === source) {\n    cache.set(source, cached);\n    return source;\n  }\n  const text = styleText(source);\n  if (!cached) cached = { sheet: new Sheet() };\n  if (cached.text !== text) {\n    cached.sheet.replaceSync(text);\n    cached.text = text;\n  }\n  if (!(\"cssText\" in source)) {\n    if (cached.sheet.media.mediaText !== source.media.mediaText) cached.sheet.media.mediaText = source.media.mediaText;\n    if (cached.sheet.disabled !== source.disabled) cached.sheet.disabled = source.disabled;\n  }\n  cache.set(source, cached);\n  return cached.sheet;\n}\n\nfunction replaceOwnedSheets(root: ShadowRoot, previous: readonly CSSStyleSheet[], next: readonly CSSStyleSheet[]): void {\n  if (!(\"adoptedStyleSheets\" in root)) return;\n  const owned = new Set(previous);\n  const current = [...root.adoptedStyleSheets];\n  const present = current.filter((sheet) => owned.has(sheet));\n  if (present.length === next.length && present.every((sheet, index) => sheet === next[index])) return;\n  const firstOwned = current.findIndex((sheet) => owned.has(sheet));\n  const retained = current.filter((sheet) => !owned.has(sheet));\n  retained.splice(firstOwned < 0 ? 0 : firstOwned, 0, ...next);\n  if (current.length !== retained.length || current.some((sheet, index) => sheet !== retained[index])) root.adoptedStyleSheets = retained;\n}\n\n/** Applies finalized generated styles in the root's document, returning a stable Lit boundary. */\nexport function applyStaticStyles(root: ShadowRoot, styles: readonly CSSResultOrNative[]): Comment {\n  const document = root.ownerDocument;\n  let applied = roots.get(root);\n  if (!applied) {\n    const boundary = document.createComment(\"acme-static-styles\");\n    root.insertBefore(boundary, root.firstChild);\n    applied = { boundary, sheets: [], nodes: [] };\n    roots.set(root, applied);\n  }\n  const view = document.defaultView as (Window & { CSSStyleSheet?: typeof CSSStyleSheet; ShadyCSS?: { nativeShadow?: boolean }; litNonce?: string }) | null;\n  const Sheet = view?.CSSStyleSheet;\n  const nativeShadow = view?.ShadyCSS === undefined || view.ShadyCSS.nativeShadow;\n  if (nativeShadow && Sheet && typeof Sheet.prototype.replaceSync === \"function\" && \"adoptedStyleSheets\" in root) {\n    const sheets = styles.map((style) => documentSheet(document, Sheet, style));\n    replaceOwnedSheets(root, applied.sheets, sheets);\n    for (const node of applied.nodes) node.remove();\n    applied.nodes = [];\n    applied.sheets = sheets;\n  } else {\n    const texts = styles.map(styleText);\n    replaceOwnedSheets(root, applied.sheets, []);\n    applied.sheets = [];\n    for (const [index, text] of texts.entries()) {\n      let node = applied.nodes[index];\n      if (!node) {\n        node = document.createElement(\"style\");\n        applied.nodes.push(node);\n        root.append(node);\n      }\n      if (view?.litNonce !== undefined) {\n        if (node.nonce !== view.litNonce) node.nonce = view.litNonce;\n      } else node.removeAttribute(\"nonce\");\n      if (node.textContent !== text) node.textContent = text;\n      const source = styles[index];\n      const media = \"cssText\" in source ? \"\" : source.media.mediaText;\n      const disabled = \"cssText\" in source ? false : source.disabled;\n      if (node.media !== media) node.media = media;\n      if (node.disabled !== disabled) node.disabled = disabled;\n    }\n    for (const node of applied.nodes.splice(texts.length)) node.remove();\n  }\n  return applied.boundary;\n}\n"
+      },
+      "src/generated/shared/base.styles.ts": {
+        "sha256": "00076cf7831247456e84da216213b629bef6a7e038d9a6d7ecea35a16af2f8be",
+        "bytes": 1784,
+        "compiledTemplates": false,
+        "source": "// Generated from compiled CSS. Edit its generator input.\nimport { css } from \"lit\";\nexport const baseCss = css`:host, *, :before, :after {\n  box-sizing: border-box;\n  border: 0 solid;\n  border-color: var(--color-gray-200, currentcolor);\n  margin: 0;\n  padding: 0;\n}\n\n:host {\n  tab-size: 4;\n  display: block;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\nslot {\n  background-color: inherit;\n}\n\nimg, svg, video, canvas, audio, iframe, embed, object {\n  vertical-align: middle;\n  display: block;\n}\n\nimg, video {\n  max-width: 100%;\n  height: auto;\n}\n\n::slotted(img), ::slotted(svg), ::slotted(video), ::slotted(canvas), ::slotted(audio), ::slotted(iframe), ::slotted(embed), ::slotted(object) {\n  vertical-align: middle;\n  display: block;\n}\n\n::slotted(img), ::slotted(video) {\n  max-width: 100%;\n  height: auto;\n}\n\nbutton, input, select, optgroup, textarea {\n  font: inherit;\n  font-feature-settings: inherit;\n  font-variation-settings: inherit;\n  letter-spacing: inherit;\n  color: inherit;\n  opacity: 1;\n  background-color: #0000;\n  border-radius: 0;\n  padding: 0;\n}\n\nbutton {\n  cursor: pointer;\n}\n\ntable {\n  text-indent: 0;\n  border-color: inherit;\n  border-collapse: collapse;\n}\n\nh1, h2, h3, h4, p, dl, dd {\n  margin: 0;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\n\na {\n  color: var(--accent-ink);\n  text-decoration: none;\n}\n\na:hover {\n  text-decoration: underline;\n}\n\n.sr {\n  clip: rect(0 0 0 0);\n  white-space: nowrap;\n  border: 0;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  position: absolute;\n  overflow: hidden;\n}\n\n.ic {\n  stroke: currentColor;\n  fill: none;\n  stroke-width: 1.85px;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  flex: none;\n  width: 16px;\n  height: 16px;\n}\n\n.mono {\n  font-family: var(--mono);\n}\n`;\n"
+      },
+      "src/shared/responsive.ts": {
+        "sha256": "98d0a625eca582c4fe14db50a8bdf8681f68b8dc5ca268b9fff46b688ca59bd5",
+        "bytes": 6852,
+        "compiledTemplates": false,
+        "source": "import { isPlainRecord } from \"./plain-record\";\n\nexport const responsiveBands = Object.freeze([\"compact\", \"medium\", \"expanded\", \"large\", \"extraLarge\"] as const);\nexport type ResponsiveBand = (typeof responsiveBands)[number];\ntype Between<Bands extends readonly string[]> = Bands extends readonly [infer Lower extends string, ...infer Upper extends string[]]\n  ? `${Lower}To${Capitalize<Upper[number]>}` | Between<Upper>\n  : never;\nexport type ResponsiveCondition = ResponsiveBand | `${ResponsiveBand}Only` | `${Exclude<ResponsiveBand, \"compact\">}Down` | Between<typeof responsiveBands>;\nexport type ResponsiveScalar = string | number | boolean;\nexport type ResponsiveInput<T extends ResponsiveScalar> = T | readonly (T | null | undefined)[] | Readonly<Partial<Record<ResponsiveCondition, T>>> | undefined;\nexport type ResponsiveBreakpoints = Readonly<Record<Exclude<ResponsiveBand, \"compact\">, number>>;\n\n/** Bounds are rem values. Minimum is inclusive; maximum is exclusive; an absent maximum is unbounded. */\nexport type ResponsiveRange = Readonly<{ min: number; max?: number }>;\nexport type ResponsiveEntry<T extends ResponsiveScalar> = ResponsiveRange & Readonly<{ value: T }>;\n\nexport const defaultBreakpoints: ResponsiveBreakpoints = Object.freeze({ medium: 37.5, expanded: 52.5, large: 75, extraLarge: 100 });\n\nfunction ownValues(value: object): [string, unknown][] {\n  return Reflect.ownKeys(value).map((key) => {\n    const descriptor = Object.getOwnPropertyDescriptor(value, key)!;\n    if (typeof key !== \"string\" || !(\"value\" in descriptor) || !descriptor.enumerable) throw new TypeError(\"Responsive inputs require enumerable data properties\");\n    return [key, descriptor.value];\n  });\n}\n\n/** Fill omitted transitions from the defaults and validate a complete immutable rem table. */\nexport function resolveBreakpoints(overrides?: Partial<ResponsiveBreakpoints>): ResponsiveBreakpoints {\n  const widths = { ...defaultBreakpoints };\n  if (overrides !== undefined) {\n    if (!isPlainRecord(overrides)) throw new TypeError(\"Breakpoints must be a plain object\");\n    for (const [key, value] of ownValues(overrides)) {\n      if (!Object.hasOwn(defaultBreakpoints, key) || typeof value !== \"number\") throw new TypeError(`Invalid breakpoint: ${key}`);\n      widths[key as keyof typeof widths] = value;\n    }\n  }\n  const starts = [0, ...responsiveBands.slice(1).map((name) => widths[name as keyof typeof widths])];\n  for (let index = 1; index < starts.length; index++) {\n    if (!Number.isFinite(starts[index]) || starts[index] <= starts[index - 1]) throw new RangeError(\"Breakpoints must be finite, positive and strictly increasing\");\n  }\n  return Object.freeze(widths);\n}\n\nfunction conditions(overrides?: Partial<ResponsiveBreakpoints>): Map<string, ResponsiveRange> {\n  const widths = resolveBreakpoints(overrides);\n  const starts = [0, ...responsiveBands.slice(1).map((name) => widths[name as keyof typeof widths])];\n  const result = new Map<string, ResponsiveRange>();\n  for (const [index, name] of responsiveBands.entries()) {\n    result.set(name, { min: starts[index] });\n    result.set(`${name}Only`, index + 1 < starts.length ? { min: starts[index], max: starts[index + 1] } : { min: starts[index] });\n    if (index) result.set(`${name}Down`, { min: 0, max: starts[index] });\n    for (let end = index + 1; end < starts.length; end++) {\n      const upper = responsiveBands[end];\n      result.set(`${name}To${upper[0].toUpperCase()}${upper.slice(1)}`, { min: starts[index], max: starts[end] });\n    }\n  }\n  return result;\n}\n\nconst defaultConditions = conditions();\nconst baseline = (interval: ResponsiveRange) => interval.min === 0 && interval.max === undefined;\n\n/** A comparison key only: consumers emit native inclusive-minimum/exclusive-maximum ranges. */\nfunction comparisonKey(interval: ResponsiveRange): string {\n  return [\"@media screen\", ...(interval.min > 0 ? [`(min-width: ${interval.min}rem)`] : []), ...(interval.max !== undefined ? [`(max-width: ${interval.max}rem)`] : [])].join(\" and \");\n}\n\n// Query categories, numeric ordering and localeCompare ties follow Chakra's pinned comparator:\n// chakra-ui/chakra-ui@1ff9873754e9913fc3d849d23c0844a628f5f20d,\n// packages/react/src/styled-system/sort-at-params.ts:69-93. Bounds stay numeric here; no query regex or fractional subtraction.\nexport function compareResponsiveRanges(a: ResponsiveRange, b: ResponsiveRange): number {\n  if (baseline(a) || baseline(b)) return baseline(a) ? (baseline(b) ? 0 : -1) : 1;\n  const minimumA = a.min > 0;\n  const minimumB = b.min > 0;\n  if (minimumA !== minimumB) return minimumA ? -1 : 1;\n  const distance = minimumA ? a.min - b.min : b.max! - a.max!;\n  return distance || comparisonKey(a).localeCompare(comparisonKey(b));\n}\n\n/** Validate one current input without retaining prior values or resolving a viewport/container. */\nexport function normalizeResponsive<T extends ResponsiveScalar>(\n  input: unknown,\n  leafValidator: (value: unknown) => value is T,\n  breakpoints?: Partial<ResponsiveBreakpoints>,\n): readonly ResponsiveEntry<T>[] {\n  const known = breakpoints === undefined ? defaultConditions : conditions(breakpoints);\n  const normalized = new Map<string, ResponsiveEntry<T>>();\n  const append = (condition: string, value: unknown) => {\n    const interval = known.get(condition);\n    if (!interval) throw new TypeError(`Unknown responsive condition: ${condition}`);\n    if (![\"string\", \"number\", \"boolean\"].includes(typeof value) || !leafValidator(value)) throw new TypeError(`Invalid responsive value for ${condition}`);\n    const key = `${interval.min}:${interval.max ?? \"unbounded\"}`;\n    const existing = normalized.get(key);\n    if (existing) {\n      if (existing.value !== value) throw new TypeError(`Conflicting responsive values for equivalent interval: ${condition}`);\n      return;\n    }\n    normalized.set(key, Object.freeze({ ...interval, value }));\n  };\n\n  if (input === undefined) return Object.freeze([]);\n  if (Array.isArray(input)) {\n    if (input.length > responsiveBands.length) throw new RangeError(\"Responsive arrays have at most five positions\");\n    for (const key of Reflect.ownKeys(input)) {\n      if (key === \"length\") continue;\n      if (typeof key !== \"string\" || !/^[0-4]$/.test(key)) throw new TypeError(\"Responsive arrays contain only band positions\");\n      const descriptor = Object.getOwnPropertyDescriptor(input, key)!;\n      if (!(\"value\" in descriptor)) throw new TypeError(\"Responsive arrays require data properties\");\n      if (descriptor.value !== null && descriptor.value !== undefined) append(responsiveBands[Number(key)], descriptor.value);\n    }\n  } else if (isPlainRecord(input)) {\n    for (const [condition, value] of ownValues(input)) append(condition, value);\n  } else {\n    append(\"compact\", input);\n  }\n  return Object.freeze([...normalized.values()].sort(compareResponsiveRanges));\n}\n"
+      },
+      "src/shared/plain-record.ts": {
+        "sha256": "d4613f9dc70a0a77efd818abfedeec8f88013a838c781d1b541f18f541130054",
+        "bytes": 656,
+        "compiledTemplates": false,
+        "source": "const objectConstructor = Function.prototype.toString.call(Object);\n\n/** Recognizes plain data records, including ones supplied by another document. */\nexport function isPlainRecord(value: unknown): value is Record<string, unknown> {\n  if (value === null || typeof value !== \"object\") return false;\n  const prototype = Object.getPrototypeOf(value);\n  if (prototype === null) return true;\n  if (Object.getPrototypeOf(prototype) !== null) return false;\n  const constructor = Object.getOwnPropertyDescriptor(prototype, \"constructor\")?.value;\n  return typeof constructor === \"function\" && Function.prototype.toString.call(constructor) === objectConstructor;\n}\n"
+      },
+      "src/shared/style-properties.ts": {
+        "sha256": "3e045b65ab77f8bf6e12025d3cb1be3348696a7452d162a4dd0d7d3ccfb30a29",
+        "bytes": 2190,
+        "compiledTemplates": false,
+        "source": "import type { CSSResult, CSSResultGroup } from \"lit\";\n\ntype StyleProperty = { name: string; syntax: string; inherits: boolean; initialValue?: string };\ntype PropertyRegistry = { registerProperty(property: StyleProperty): void };\nconst definitions = new WeakMap<CSSResult, readonly StyleProperty[]>();\nconst registered = new WeakMap<PropertyRegistry, Map<string, string>>();\nconst signature = (property: StyleProperty) => JSON.stringify([property.syntax, property.inherits, property.initialValue]);\n\n/** Associates generated defaults with a stylesheet without changing a document. */\nexport function withStyleProperties(style: CSSResult, properties: readonly StyleProperty[]): CSSResult {\n  definitions.set(\n    style,\n    properties.map((property) => ({ ...property })),\n  );\n  return style;\n}\n\n/** Installs the defaults used by these styles in the component's document registry. */\nexport function registerStyleProperties(styles: CSSResultGroup | undefined, registry: PropertyRegistry | undefined): void {\n  if (!registry || typeof registry.registerProperty !== \"function\") return;\n  const known = registered.get(registry) ?? new Map<string, string>();\n  const pending = new Map<string, StyleProperty>();\n  const collect = (group: CSSResultGroup | undefined): void => {\n    if (!group) return;\n    if (Array.isArray(group)) {\n      for (const style of group) collect(style);\n      return;\n    }\n    for (const property of definitions.get(group as CSSResult) ?? []) {\n      const previous = pending.get(property.name);\n      const expected = previous ? signature(previous) : known.get(property.name);\n      if (expected !== undefined && expected !== signature(property)) throw new Error(\"Conflicting CSS registration: \" + property.name);\n      if (!known.has(property.name)) pending.set(property.name, property);\n    }\n  };\n  collect(styles);\n  for (const property of pending.values()) {\n    try {\n      registry.registerProperty(property);\n    } catch (error) {\n      if (!error || typeof error !== \"object\" || !(\"name\" in error) || error.name !== \"InvalidModificationError\") throw error;\n    }\n    known.set(property.name, signature(property));\n    registered.set(registry, known);\n  }\n}\n"
+      },
+      "src/shared/numeric-tokens.ts": {
+        "sha256": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "bytes": 2177,
+        "compiledTemplates": false,
+        "source": "export const numericTokenKeys = Object.freeze([0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96] as const);\nexport type NumericTokenKey = (typeof numericTokenKeys)[number];\nexport type NumericTokenCategory = \"spacing\" | \"sizes\";\nexport type NumericTokenDefinition = Readonly<{\n  category: NumericTokenCategory;\n  key: NumericTokenKey;\n  cssProperty: string;\n  defaultValue: `${number}rem`;\n}>;\n\nfunction checkCategory(category: NumericTokenCategory): void {\n  if (category !== \"spacing\" && category !== \"sizes\") throw new TypeError(\"Unknown numeric token category: \" + category);\n}\n\nfunction checkKey(key: number): asserts key is NumericTokenKey {\n  if (typeof key !== \"number\" || !(numericTokenKeys as readonly number[]).includes(key)) throw new TypeError(\"Unknown numeric token key: \" + key);\n}\n\n/** Positive token properties are independent for spacing and dimensions. */\nexport function numericTokenProperty(category: NumericTokenCategory, key: NumericTokenKey): string {\n  checkCategory(category);\n  checkKey(key);\n  return `--acme-${category === \"spacing\" ? \"spacing\" : \"size\"}-${String(key).replace(\".\", \"-\")}`;\n}\n\n/** Signed spacing follows its positive theme token; size tokens remain nonnegative. */\nexport function numericTokenValue(category: NumericTokenCategory, key: number): string {\n  checkCategory(category);\n  if (typeof key !== \"number\") throw new TypeError(\"Numeric token keys must be numbers\");\n  if (category === \"sizes\" && key < 0) throw new TypeError(\"Size tokens cannot be negative\");\n  const positive = Math.abs(key);\n  checkKey(positive);\n  const value = `var(${numericTokenProperty(category, positive)})`;\n  return key < 0 ? `calc(${value} * -1)` : value;\n}\n\n/** Shared generator and manifest input; negative spacing has no separate declaration. */\nexport const numericTokenDefinitions: readonly NumericTokenDefinition[] = Object.freeze(\n  ([\"spacing\", \"sizes\"] as const).flatMap((category) =>\n    numericTokenKeys.map((key) => Object.freeze({ category, key, cssProperty: numericTokenProperty(category, key), defaultValue: `${key * 0.25}rem` as const })),\n  ),\n);\n"
+      }
+    }
+  }
+}

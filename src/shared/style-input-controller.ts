@@ -4,7 +4,8 @@ import { createOrderedStyleInputs } from "./ordered-style-inputs";
 import type { ResponsiveInput } from "./responsive";
 import { copyResponsiveInput, parseResponsiveAttribute, type ResponsiveAttributeDiagnostic } from "./responsive-input";
 import { StoreSelector } from "./store-connection";
-import { isStyleScalar, type StyleDisplayMode, type StyleInputKey, type StyleScalar, type StyleSupports, styleInputSchema } from "./style-input-schema";
+import { attachStyleInputTarget } from "./style-input-binding";
+import { isAuthoredStyleScalar, isStyleScalar, type StyleDisplayMode, type StyleInputKey, type StyleScalar, type StyleSupports, styleInputSchema } from "./style-input-schema";
 
 type Validators<Key extends StyleInputKey> = { [Property in Key]: (value: unknown) => ResponsiveInput<StyleScalar<Property>> };
 type Entry<Key extends StyleInputKey> = { [Property in Key]: readonly [Property, Exclude<ResponsiveInput<StyleScalar<Property>>, undefined>] }[Key];
@@ -42,7 +43,9 @@ export class StyleInputController<Key extends StyleInputKey> {
       (value): value is StyleScalar<Key> =>
         isStyleScalar(key, value, supports, displayModes);
     this.diagnostic = options.diagnostic;
-    const validators = Object.fromEntries(properties.map((key) => [key, (value: unknown) => copyResponsiveInput(value, this.scalar(key))])) as Validators<Key>;
+    const validators = Object.fromEntries(
+      properties.map((key) => [key, (value: unknown) => copyResponsiveInput(value, (leaf): leaf is StyleScalar<Key> => isAuthoredStyleScalar(key, leaf, supports, displayModes))]),
+    ) as Validators<Key>;
     this.values = createOrderedStyleInputs(validators);
 
     const own = Reflect.ownKeys(host)
@@ -60,6 +63,7 @@ export class StyleInputController<Key extends StyleInputKey> {
     for (const [key, value] of own) this.values.set(key, value);
     for (const [key] of own) Reflect.deleteProperty(host, key);
     new StoreSelector(host, () => this.values.entries);
+    attachStyleInputTarget(host, (inputs, previousKeys) => this.apply(inputs, previousKeys as readonly Key[]));
   }
 
   get entries(): ReadonlyAtom<readonly Entry<Key>[]> {
@@ -72,6 +76,10 @@ export class StyleInputController<Key extends StyleInputKey> {
 
   set(property: Key, value: unknown): void {
     this.values.set(property, value);
+  }
+
+  apply(inputs: Readonly<{ [Property in Key]?: unknown }>, previousKeys: readonly Key[] = []): readonly Key[] {
+    return this.values.apply(inputs, previousKeys);
   }
 
   /** Returns false for attributes that belong to another host behavior. */

@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, test } from "bun:test";
-import { isStyleScalar, sizeTokenKeys, spacingTokenKeys, styleInputSchema, type StyleInputKey } from "../style-input-schema";
+import { isAuthoredStyleScalar, isStyleScalar, sizeTokenKeys, spacingTokenKeys, styleInputSchema, type StyleInputKey } from "../style-input-schema";
 
 const inventoryPairs = `
 margin margin
@@ -86,6 +86,18 @@ gridRowEnd grid-row-end
 const supportsAll = () => true;
 
 describe("common style input schema", () => {
+  test("keeps authored CSS strings current while retaining numeric and display domain checks", () => {
+    for (const value of ["invalid", "", " ", "var(--missing)"]) {
+      expect(isAuthoredStyleScalar("padding", value, () => false)).toBe(true);
+      expect(isStyleScalar("padding", value, () => false)).toBe(false);
+    }
+    expect(isAuthoredStyleScalar("padding", -1, supportsAll)).toBe(false);
+    expect(isAuthoredStyleScalar("width", 13, supportsAll)).toBe(false);
+    expect(isAuthoredStyleScalar("color", 2, supportsAll)).toBe(false);
+    expect(isAuthoredStyleScalar("display", "contents", supportsAll, ["block", "none"])).toBe(false);
+    expect(isAuthoredStyleScalar("display", "grid", supportsAll, ["block", "none"])).toBe(false);
+    expect(isAuthoredStyleScalar("display", "none", supportsAll, ["block", "none"])).toBe(true);
+  });
   test("contains exactly the approved 77 property and attribute names with their targets", () => {
     expect(inventoryPairs).toHaveLength(77);
     expect(Object.keys(styleInputSchema).sort()).toEqual(inventoryPairs.map(([property]) => property).sort());

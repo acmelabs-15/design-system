@@ -146,3 +146,15 @@ export function isStyleScalar<Property extends StyleInputKey>(property: Property
       return false;
   }
 }
+
+/** Authored CSS strings remain current inputs; rendering applies the browser's grammar. */
+export function isAuthoredStyleScalar<Property extends StyleInputKey>(
+  property: Property,
+  value: unknown,
+  supports: StyleSupports,
+  displayModes?: readonly StyleDisplayMode[],
+): value is StyleScalar<Property> {
+  if (!Object.hasOwn(styleInputSchema, property)) return false;
+  if (typeof value === "string" && property !== "display") return true;
+  return isStyleScalar(property, value, supports, displayModes);
+}

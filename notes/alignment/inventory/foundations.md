@@ -87,6 +87,8 @@ styleInputs remains the proposed Lit helper name. Its supplied-key ownership and
 
 **M05 resolution, 2026-09-21:** Peter selected [explicit clearing with styleInputs({})](../../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper), resolving the [helper-removal conflict](../evidence/m05-style-helper-lifecycle-2026-09-20.json). Expression removal and temporary disconnection preserve canonical values. Supplied-key ownership and next-render reassertion remain selected.
 
+The implemented JavaScript path retains current authored CSS strings and lets native grammar/cascade determine their rendered effect. A grammar-invalid leaf does not keep its former valid declaration or discard valid sibling settings. Numeric/domain constraints and responsive structure validation remain distinct from CSS string processing. HTML keeps the selected strict scalar/JSON converter. [Current-input evidence](../evidence/m05-current-css-inputs-2026-09-21.json). Keep the same helper expression present while sending {}; a new helper does not inherit a removed helper's ownership.
+
 ## Motion, shapes and indicators
 
 Use Lit Motion. Standard and Expressive Material roles are selected per context, not one universal scheme. Utility motion uses Standard; prominent demonstrative examples may use Expressive. Spatial/effect roles remain distinct. Reduced motion preserves state/focus outcomes with immediate or non-spatial transitions as applicable.

@@ -97,8 +97,25 @@ test("a fresh empty input plan removes all prior declarations, without a saved l
   const original = createResponsiveStylePlan([["width", 4]], { supports });
   expect(createResponsiveStylePlan([["width", undefined]], { supports })).toEqual([]);
   expect(createResponsiveStylePlan([], { supports })).toEqual([]);
-  expect(() => createResponsiveStylePlan([["width", "invalid"]], { supports })).toThrow();
+  expect(createResponsiveStylePlan([["width", "invalid"]], { supports })).toEqual([]);
   expect(original[0].declarations[0].value).toBe("var(--acme-size-4)");
+});
+
+test("invalid CSS leaves do not retain previous values or discard valid sibling conditions", () => {
+  const plan = createResponsiveStylePlan(
+    [
+      ["padding", { compact: 2, medium: "invalid", large: 4 }],
+      ["color", "red"],
+      ["width", ""],
+    ],
+    { supports: (property, value) => supports(property, value) && value !== "" },
+  );
+  expect(plan.map(({ range }) => range)).toEqual([{ min: 0 }, { min: 75 }]);
+  expect(plan[0].declarations.map(({ property, value }) => [property, value])).toEqual([
+    ["padding", "var(--acme-spacing-2)"],
+    ["color", "red"],
+  ]);
+  expect(plan[1].declarations[0].value).toBe("var(--acme-spacing-4)");
 });
 
 test("validates whole inputs and duplicate fields before returning a plan", () => {

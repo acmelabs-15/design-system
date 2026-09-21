@@ -1,6 +1,6 @@
 import { numericTokenValue } from "./numeric-tokens";
 import { compareResponsiveRanges, normalizeResponsive, type ResponsiveBreakpoints, type ResponsiveRange } from "./responsive";
-import { isStyleScalar, type StyleDisplayMode, type StyleInputKey, type StyleSupports, styleInputSchema } from "./style-input-schema";
+import { isAuthoredStyleScalar, isStyleScalar, type StyleDisplayMode, type StyleInputKey, type StyleSupports, styleInputSchema } from "./style-input-schema";
 
 export type ResponsiveStyleDeclaration = Readonly<{
   property: string;
@@ -26,8 +26,9 @@ export function createResponsiveStylePlan(inputs: readonly (readonly [StyleInput
     if (supplied.has(key)) throw new TypeError("Duplicate style input: " + key);
     supplied.add(key);
     const metadata = styleInputSchema[key];
-    const entries = normalizeResponsive(input, (value): value is string | number => isStyleScalar(key, value, options.supports, options.displayModes), options.breakpoints);
+    const entries = normalizeResponsive(input, (value): value is string | number => isAuthoredStyleScalar(key, value, options.supports, options.displayModes), options.breakpoints);
     for (const { min, max, value } of entries) {
+      if (!isStyleScalar(key, value, options.supports, options.displayModes)) continue;
       const rangeKey = `${min}:${max ?? "unbounded"}`;
       let block = blocks.get(rangeKey);
       if (!block) {
