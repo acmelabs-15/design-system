@@ -13322,6 +13322,21 @@
       "import": "./dist/generated/icons/classes/notifications-unread-icon.js",
       "default": "./dist/generated/icons/classes/notifications-unread-icon.js"
     },
+    "./components/number-input": {
+      "types": "./dist/components/number-input/number-input.d.ts",
+      "import": "./dist/components/number-input/number-input.js",
+      "default": "./dist/components/number-input/number-input.js"
+    },
+    "./components/number-input-decrement": {
+      "types": "./dist/components/number-input-decrement/number-input-decrement.d.ts",
+      "import": "./dist/components/number-input-decrement/number-input-decrement.js",
+      "default": "./dist/components/number-input-decrement/number-input-decrement.js"
+    },
+    "./components/number-input-increment": {
+      "types": "./dist/components/number-input-increment/number-input-increment.d.ts",
+      "import": "./dist/components/number-input-increment/number-input-increment.js",
+      "default": "./dist/components/number-input-increment/number-input-increment.js"
+    },
     "./components/numbers-icon": {
       "types": "./dist/generated/icons/classes/numbers-icon.d.ts",
       "import": "./dist/generated/icons/classes/numbers-icon.js",
@@ -21380,6 +21395,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1",
     "@internationalized/date": "^3.12.4",
+    "@internationalized/number": "3.6.8",
     "@lit-labs/motion": "^1.1.0",
     "@lit-labs/router": "^0.1.4",
     "@lit/context": "1.1.6",

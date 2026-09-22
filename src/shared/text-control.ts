@@ -1,7 +1,7 @@
 import { createAtom } from "@tanstack/lit-store";
 import { property } from "lit/decorators.js";
 import { AcmeReadOnlyFormElement, nativeValidation } from "./native-form-element";
-import { NativeFormController } from "./native-form";
+import { NativeFormController, type NativeFormValidation } from "./native-form";
 import { atomState } from "./atom-state";
 import { createInheritedAppearance } from "./inherited-appearance";
 import { StoreSelector } from "./store-connection";
@@ -139,7 +139,7 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
         else if (this.control.getAttribute(attribute) !== String(value)) this.control.setAttribute(attribute, String(value));
       }
     },
-    validate: () => nativeValidation(this.control),
+    validate: () => this.validateValue(),
   });
   private readonly display = createAtom(() => ({ disabled: this.nativeForm.effectiveDisabled, invalid: this.effectiveInvalid, readOnly: this.readOnly }));
   private readonly displayUpdates = new StoreSelector(this, () => this.display);
@@ -163,21 +163,26 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
   protected serializeValue(value: string): string {
     return value;
   }
+  protected validateValue(): NativeFormValidation {
+    return nativeValidation(this.control);
+  }
   protected edited(): void {}
+  protected onNativeInput(_event: InputEvent): void {
+    if (this.nativeForm.effectiveDisabled || this.readOnly) return;
+    this.nativeForm.setValue(this.control.value, "user");
+    this.edited();
+    this.emitValue("acme-input");
+  }
+  protected onNativeChange(): void {
+    if (this.nativeForm.effectiveDisabled || this.readOnly) return;
+    this.nativeForm.setValue(this.control.value, "user");
+    this.emitValue("acme-change");
+  }
   constructor() {
     super();
     this.control.className = "native";
-    this.control.addEventListener("input", () => {
-      if (this.nativeForm.effectiveDisabled || this.readOnly) return;
-      this.nativeForm.setValue(this.control.value, "user");
-      this.edited();
-      this.emitValue("acme-input");
-    });
-    this.control.addEventListener("change", () => {
-      if (this.nativeForm.effectiveDisabled || this.readOnly) return;
-      this.nativeForm.setValue(this.control.value, "user");
-      this.emitValue("acme-change");
-    });
+    this.control.addEventListener("input", (event) => this.onNativeInput(event as InputEvent));
+    this.control.addEventListener("change", () => this.onNativeChange());
     this.addEventListener("click", (event) => {
       if (event.composedPath()[0] === this) this.focus();
     });

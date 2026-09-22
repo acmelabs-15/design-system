@@ -239,3 +239,8 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 Input, Search, Password Input and Textarea use the shared native string owner, Field semantics and Group attachment. Clearable Input and control-owned label/error interfaces are removed; examples use Field and the clearable Input action. Slider's retained numeric entry uses the new text Input with decimal input mode; M13 replaces its composition with Number Input as assigned. Managed forms use a typed field-store binding with subscription cleanup and separate Field error presentation. [Final text/managed-form acceptance](evidence/m11-text-controls-2026-09-22.json) closes M11: strict package build, site and all 896 tests pass; every engine passes 38 source/compiled text checks, ten source/compiled managed-form checks and seven live documentation flows. Continue M12.
 
 The build now enforces strict TypeScript. The final audit found widened getter types and cyclic controller inference in M10/M11; explicit types correct them. The six M10 files produce identical JavaScript before and after these type corrections. No old interface is restored.
+
+
+### M12 Number Input acceptance — 2026-09-22
+
+[Number Input acceptance](evidence/m12-number-input-2026-09-22.json) completes the number family: strict build, site, 906 tests, 44 source/compiled checks per engine and five live documentation flows. Native/managed form contracts, standard locale formats, decimal-safe steps, optional action parts and hold cleanup are implemented. The source-derived decimal loop and binary modifier-step drift are replaced with bounded decimal operations. Continue Pin Input to close M12.

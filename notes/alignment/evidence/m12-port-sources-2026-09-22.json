@@ -82,6 +82,40 @@
   ],
   "limits": [
     "No Number/Pin implementation or runtime acceptance yet",
-    "Source test files require renewed port-specific review before acceptance"
-  ]
+    "Both complete upstream test files have been read; their scenarios still require house adaptation and runtime acceptance."
+  ],
+  "sourceTests": {
+    "revision": "53327acb58fedbd12b1a5702f7c51baf4aa3c6b0",
+    "files": [
+      {
+        "path": "e2e/number-input.e2e.ts",
+        "url": "https://raw.githubusercontent.com/chakra-ui/zag/53327acb58fedbd12b1a5702f7c51baf4aa3c6b0/e2e/number-input.e2e.ts",
+        "output": "/tmp/acme-m12-number/number-input.e2e.ts",
+        "lines": 574,
+        "sha256": "64060aaee73a7b45f9c5e9fab2474c709f2e733de750640bc9cd92d9d423c6b7",
+        "read": "complete"
+      },
+      {
+        "path": "e2e/pin-input.e2e.ts",
+        "url": "https://raw.githubusercontent.com/chakra-ui/zag/53327acb58fedbd12b1a5702f7c51baf4aa3c6b0/e2e/pin-input.e2e.ts",
+        "output": "/tmp/acme-m12-number/pin-input.e2e.ts",
+        "lines": 464,
+        "sha256": "a1fe3be57cb5900d1983db8933c88d60c460278720bf37b173182522e3cd4098",
+        "read": "complete"
+      },
+      {
+        "path": "LICENSE",
+        "url": "https://raw.githubusercontent.com/chakra-ui/zag/53327acb58fedbd12b1a5702f7c51baf4aa3c6b0/LICENSE",
+        "output": "/tmp/acme-m12-number/LICENSE",
+        "lines": 22,
+        "sha256": "2e9d3d03c7f5bd727f8e53dda3795edc0873e6479d0cb32225b9390c1db72433",
+        "read": "complete"
+      }
+    ]
+  },
+  "utility": {
+    "package": "@internationalized/number",
+    "version": "3.6.8",
+    "installed": true
+  }
 }

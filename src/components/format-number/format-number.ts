@@ -2,20 +2,7 @@ import { html } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeFormattingElement, numberAttribute } from "../../shared/formatting-element";
 import { atomState } from "../../shared/atom-state";
-import { isPlainRecord } from "../../shared/plain-record";
-
-function optionsSnapshot(value: Intl.NumberFormatOptions | undefined): Readonly<Intl.NumberFormatOptions> {
-  if (value === undefined) return Object.freeze({});
-  if (!isPlainRecord(value)) throw new TypeError("Number options must be a plain data record");
-  const entries: [string, unknown][] = [];
-  for (const key of Reflect.ownKeys(value)) {
-    const descriptor = Object.getOwnPropertyDescriptor(value, key)!;
-    if (typeof key !== "string" || !descriptor.enumerable || !("value" in descriptor) || (descriptor.value !== undefined && !["string", "number", "boolean"].includes(typeof descriptor.value)))
-      throw new TypeError("Number options require scalar data properties");
-    entries.push([key, descriptor.value]);
-  }
-  return Object.freeze(Object.fromEntries(entries)) as Readonly<Intl.NumberFormatOptions>;
-}
+import { numberOptionsSnapshot } from "../../shared/number-options";
 
 /** Formats a numeric value with native Intl options. Child text is not a data source.
  * @csspart root - The formatted text.
@@ -32,7 +19,7 @@ export class AcmeFormatNumber extends AcmeFormattingElement {
     return this.configuration.options;
   }
   set options(value: Intl.NumberFormatOptions | undefined) {
-    const options = optionsSnapshot(value),
+    const options = numberOptionsSnapshot(value),
       previous = this.options;
     this.configuration = Object.freeze({ options, invalid: false });
     this.requestUpdate("options", previous);

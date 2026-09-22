@@ -1,6 +1,7 @@
 import { html, nothing, type TemplateResult } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeTextControl, type TextNativeControl } from "./text-control";
+import { Places, PLACES } from "./places";
 import { atomState } from "./atom-state";
 import { StoreSelector } from "./store-connection";
 import { message, messageCatalogs } from "./messages";
@@ -38,7 +39,10 @@ export abstract class AcmeSingleLineControl extends AcmeTextControl {
     } else input.removeAttribute("pattern");
   }
   @atomState() @property({ noAccessor: true, type: Boolean }) clearable = false;
-  @atomState() private occupied: Readonly<Record<string, boolean>> = {};
+  protected get trackedPlaces(): readonly string[] {
+    return PLACES;
+  }
+  protected readonly places = new Places(this, { places: this.trackedPlaces });
   private readonly messages = new StoreSelector(this, () => messageCatalogs);
   private readonly localeUpdates = new StoreSelector(this, () => this.themeContext.scope.effective);
   protected text(key: string, fallback: string) {
@@ -53,11 +57,7 @@ export abstract class AcmeSingleLineControl extends AcmeTextControl {
   protected get busy() {
     return false;
   }
-  private slotChanged = (event: Event) => {
-    const slot = event.target as HTMLSlotElement;
-    const filled = slot.assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || !!n.textContent?.trim());
-    if (this.occupied[slot.name] !== filled) this.occupied = { ...this.occupied, [slot.name]: filled };
-  };
+
   /** Clears an editable value and returns focus to the input. */
   clear() {
     if (this.nativeForm.effectiveDisabled || this.readOnly) return;
@@ -77,18 +77,20 @@ export abstract class AcmeSingleLineControl extends AcmeTextControl {
   protected renderActions() {
     return html`${this.trailing()}${this.clearable ? html`<acme-icon-button part="clear" variant="tertiary" size=${this.size === "small" ? "tiny" : "small"} aria-label=${this.text("input.clear", "Clear input")} ?hidden=${!this.value || this.readOnly || this.nativeForm.effectiveDisabled} @click=${() => this.clear()}><acme-close-icon></acme-close-icon></acme-icon-button>` : nothing}`;
   }
+  protected prepareSubmission(): void {}
   private submit = (event: Event) => {
     event.preventDefault();
     event.stopPropagation();
+    this.prepareSubmission();
     const form = this.form;
     if (form && !this.nativeForm.effectiveDisabled) submitImplicitly(form);
   };
   render() {
     const disabled = this.nativeForm.effectiveDisabled;
     return html`<div class="root" part="root" data-size=${this.size} ?data-disabled=${disabled} ?data-invalid=${this.effectiveInvalid}>
- <span class="addon start-addon" part="start-addon" ?hidden=${!this.occupied["start-addon"]}><slot name="start-addon" @slotchange=${this.slotChanged}></slot></span>
- <form class="entry" novalidate @submit=${this.submit}><span class="affix" part="start" ?hidden=${!this.occupied.start && this.leading() === nothing}><slot name="start" @slotchange=${this.slotChanged}>${this.leading()}</slot></span>${this.control}<span class="affix" part="end" ?hidden=${!this.occupied.end}><slot name="end" @slotchange=${this.slotChanged}></slot></span>${this.renderActions()}</form>
- <span class="addon end-addon" part="end-addon" ?hidden=${!this.occupied["end-addon"]}><slot name="end-addon" @slotchange=${this.slotChanged}></slot></span></div>`;
+ <span class="addon start-addon" part="start-addon" ?hidden=${!this.places.has("start-addon")}><slot name="start-addon" @slotchange=${this.places.read}></slot></span>
+ <form class="entry" novalidate @submit=${this.submit}><span class="affix" part="start" ?hidden=${!this.places.has("start") && this.leading() === nothing}><slot name="start" @slotchange=${this.places.read}>${this.leading()}</slot></span>${this.control}<span class="affix" part="end" ?hidden=${!this.places.has("end")}><slot name="end" @slotchange=${this.places.read}></slot></span>${this.renderActions()}</form>
+ <span class="addon end-addon" part="end-addon" ?hidden=${!this.places.has("end-addon")}><slot name="end-addon" @slotchange=${this.places.read}></slot></span></div>`;
   }
   protected updated() {
     super.updated();

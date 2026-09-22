@@ -1,3 +1,4 @@
+import { createAtom } from "@tanstack/lit-store";
 import { html, nothing, type PropertyValues } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeSemanticElement } from "./semantic-element";
@@ -29,12 +30,21 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
   static shadowRootOptions = { ...AcmeSemanticElement.shadowRootOptions, delegatesFocus: true };
   static styles = [sharedCss, actionCss, groupMemberStyles];
   @atomState() private presentation: Presentation = initial;
-  protected readonly appearance = createInheritedAppearance({
-    size: { supported: ["tiny", "small", "medium", "large"] as const, defaultValue: "medium" },
-    variant: { supported: ["default", "secondary", "tertiary", "error", "warning", "unstyled"] as const, defaultValue: "default" },
-  });
+  protected get fallbackAppearance(): Readonly<{ size?: string; variant?: string }> {
+    return {};
+  }
+  protected readonly appearance = createInheritedAppearance(
+    {
+      size: { supported: ["tiny", "small", "medium", "large"] as const, defaultValue: "medium" },
+      variant: { supported: ["default", "secondary", "tertiary", "error", "warning", "unstyled"] as const, defaultValue: "default" },
+    },
+    createAtom(() => this.fallbackAppearance),
+  );
   private readonly appearanceChanges = new StoreSelector(this, () => this.appearance.effective);
-  protected readonly places = new Places(this, { places: ["start", "end"] });
+  protected get trackedPlaces(): readonly string[] {
+    return ["start", "end"];
+  }
+  protected readonly places = new Places(this, { places: this.trackedPlaces });
   protected readonly nativeAction = new ActionSubmitter(
     this,
     () => this.submission,

@@ -1,0 +1,1756 @@
+{
+  "date": "2026-09-22",
+  "batch": "M12 Number Input",
+  "status": "complete at assigned native and Lit boundary; Pin Input remains",
+  "components": [
+    "acme-number-input",
+    "acme-number-input-increment",
+    "acme-number-input-decrement"
+  ],
+  "stack": [
+    "existing NativeFormController, Field, semantic, Group and action primitives",
+    "TanStack canonical state and explicit updater clearing",
+    "Lit context for nearest owner transport",
+    "@internationalized/number 3.6.8 parser",
+    "native Intl formatting, bounded decimal arithmetic and scaling",
+    "generated shared text/action styles"
+  ],
+  "checks": {
+    "strictPackageBuild": true,
+    "focusedStrictSourceFiles": 887,
+    "focusedStrictErrors": 0,
+    "unitTests": 906,
+    "unitFailures": 0,
+    "site": {
+      "pages": 95,
+      "elements": 4260,
+      "undocumented": 0
+    },
+    "source": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "native target has spinbutton role",
+              "ok": true
+            },
+            {
+              "name": "decimal increment and native form agree",
+              "ok": true
+            },
+            {
+              "name": "partial input stays editable and invalid without fabricated number",
+              "ok": true
+            },
+            {
+              "name": "empty value stays empty",
+              "ok": true
+            },
+            {
+              "name": "stepping from empty clamps to minimum",
+              "ok": true
+            },
+            {
+              "name": "range validation is immediate",
+              "ok": true
+            },
+            {
+              "name": "native reset preserves initial string default",
+              "ok": true
+            },
+            {
+              "name": "German parsing and native canonical submission",
+              "ok": true
+            },
+            {
+              "name": "German stepping preserves numeric value",
+              "ok": true
+            },
+            {
+              "name": "percent has adaptive default step",
+              "ok": true
+            },
+            {
+              "name": "arrow modifiers use custom step sizes",
+              "ok": true
+            },
+            {
+              "name": "Home moves to minimum",
+              "ok": true
+            },
+            {
+              "name": "End moves to maximum",
+              "ok": true
+            },
+            {
+              "name": "blur clamps by default",
+              "ok": true
+            },
+            {
+              "name": "explicit unclamped blur preserves out-of-range text",
+              "ok": true
+            },
+            {
+              "name": "invalid characters preserve a replacement selection",
+              "ok": true
+            },
+            {
+              "name": "Enter formats and commits exactly once",
+              "ok": true
+            },
+            {
+              "name": "pointer hold repeats and commits once",
+              "ok": true
+            },
+            {
+              "name": "release stops repetition",
+              "ok": true
+            },
+            {
+              "name": "spinOnPress false keeps one pointer step",
+              "ok": true
+            },
+            {
+              "name": "disabled during hold prevents later steps",
+              "ok": true
+            },
+            {
+              "name": "disconnect cancels repeat lifetime",
+              "ok": true
+            },
+            {
+              "name": "explicit locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "format options are owned immutable snapshots",
+              "ok": true
+            },
+            {
+              "name": "custom increment part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "custom decrement part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "moving a part transfers ownership without editing the old control",
+              "ok": true
+            },
+            {
+              "name": "orphaned action parts are disabled",
+              "ok": true
+            },
+            {
+              "name": "inherited locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "nonstandard notation is rejected before state changes",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in en-US",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in de-DE",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in ar-EG",
+              "ok": true
+            },
+            {
+              "name": "initial attribute order does not reinterpret localized values",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects existing action parts",
+              "ok": true
+            },
+            {
+              "name": "native required and disabled fieldset semantics are preserved",
+              "ok": true
+            },
+            {
+              "name": "wheel changes are off by default",
+              "ok": true
+            },
+            {
+              "name": "focused wheel opt-in steps the value",
+              "ok": true
+            },
+            {
+              "name": "canceled Enter does not format or commit",
+              "ok": true
+            },
+            {
+              "name": "programmatic invalid characters remain invalid",
+              "ok": true
+            },
+            {
+              "name": "modifier defaults avoid binary scaling drift",
+              "ok": true
+            },
+            {
+              "name": "zoom-modified wheel is not consumed",
+              "ok": true
+            },
+            {
+              "name": "disabling the active part stops its hold",
+              "ok": true
+            },
+            {
+              "name": "formatting whitespace preserves default actions and icons",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "native target has spinbutton role",
+              "ok": true
+            },
+            {
+              "name": "decimal increment and native form agree",
+              "ok": true
+            },
+            {
+              "name": "partial input stays editable and invalid without fabricated number",
+              "ok": true
+            },
+            {
+              "name": "empty value stays empty",
+              "ok": true
+            },
+            {
+              "name": "stepping from empty clamps to minimum",
+              "ok": true
+            },
+            {
+              "name": "range validation is immediate",
+              "ok": true
+            },
+            {
+              "name": "native reset preserves initial string default",
+              "ok": true
+            },
+            {
+              "name": "German parsing and native canonical submission",
+              "ok": true
+            },
+            {
+              "name": "German stepping preserves numeric value",
+              "ok": true
+            },
+            {
+              "name": "percent has adaptive default step",
+              "ok": true
+            },
+            {
+              "name": "arrow modifiers use custom step sizes",
+              "ok": true
+            },
+            {
+              "name": "Home moves to minimum",
+              "ok": true
+            },
+            {
+              "name": "End moves to maximum",
+              "ok": true
+            },
+            {
+              "name": "blur clamps by default",
+              "ok": true
+            },
+            {
+              "name": "explicit unclamped blur preserves out-of-range text",
+              "ok": true
+            },
+            {
+              "name": "invalid characters preserve a replacement selection",
+              "ok": true
+            },
+            {
+              "name": "Enter formats and commits exactly once",
+              "ok": true
+            },
+            {
+              "name": "pointer hold repeats and commits once",
+              "ok": true
+            },
+            {
+              "name": "release stops repetition",
+              "ok": true
+            },
+            {
+              "name": "spinOnPress false keeps one pointer step",
+              "ok": true
+            },
+            {
+              "name": "disabled during hold prevents later steps",
+              "ok": true
+            },
+            {
+              "name": "disconnect cancels repeat lifetime",
+              "ok": true
+            },
+            {
+              "name": "explicit locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "format options are owned immutable snapshots",
+              "ok": true
+            },
+            {
+              "name": "custom increment part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "custom decrement part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "moving a part transfers ownership without editing the old control",
+              "ok": true
+            },
+            {
+              "name": "orphaned action parts are disabled",
+              "ok": true
+            },
+            {
+              "name": "inherited locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "nonstandard notation is rejected before state changes",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in en-US",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in de-DE",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in ar-EG",
+              "ok": true
+            },
+            {
+              "name": "initial attribute order does not reinterpret localized values",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects existing action parts",
+              "ok": true
+            },
+            {
+              "name": "native required and disabled fieldset semantics are preserved",
+              "ok": true
+            },
+            {
+              "name": "wheel changes are off by default",
+              "ok": true
+            },
+            {
+              "name": "focused wheel opt-in steps the value",
+              "ok": true
+            },
+            {
+              "name": "canceled Enter does not format or commit",
+              "ok": true
+            },
+            {
+              "name": "programmatic invalid characters remain invalid",
+              "ok": true
+            },
+            {
+              "name": "modifier defaults avoid binary scaling drift",
+              "ok": true
+            },
+            {
+              "name": "zoom-modified wheel is not consumed",
+              "ok": true
+            },
+            {
+              "name": "disabling the active part stops its hold",
+              "ok": true
+            },
+            {
+              "name": "formatting whitespace preserves default actions and icons",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "native target has spinbutton role",
+              "ok": true
+            },
+            {
+              "name": "decimal increment and native form agree",
+              "ok": true
+            },
+            {
+              "name": "partial input stays editable and invalid without fabricated number",
+              "ok": true
+            },
+            {
+              "name": "empty value stays empty",
+              "ok": true
+            },
+            {
+              "name": "stepping from empty clamps to minimum",
+              "ok": true
+            },
+            {
+              "name": "range validation is immediate",
+              "ok": true
+            },
+            {
+              "name": "native reset preserves initial string default",
+              "ok": true
+            },
+            {
+              "name": "German parsing and native canonical submission",
+              "ok": true
+            },
+            {
+              "name": "German stepping preserves numeric value",
+              "ok": true
+            },
+            {
+              "name": "percent has adaptive default step",
+              "ok": true
+            },
+            {
+              "name": "arrow modifiers use custom step sizes",
+              "ok": true
+            },
+            {
+              "name": "Home moves to minimum",
+              "ok": true
+            },
+            {
+              "name": "End moves to maximum",
+              "ok": true
+            },
+            {
+              "name": "blur clamps by default",
+              "ok": true
+            },
+            {
+              "name": "explicit unclamped blur preserves out-of-range text",
+              "ok": true
+            },
+            {
+              "name": "invalid characters preserve a replacement selection",
+              "ok": true
+            },
+            {
+              "name": "Enter formats and commits exactly once",
+              "ok": true
+            },
+            {
+              "name": "pointer hold repeats and commits once",
+              "ok": true
+            },
+            {
+              "name": "release stops repetition",
+              "ok": true
+            },
+            {
+              "name": "spinOnPress false keeps one pointer step",
+              "ok": true
+            },
+            {
+              "name": "disabled during hold prevents later steps",
+              "ok": true
+            },
+            {
+              "name": "disconnect cancels repeat lifetime",
+              "ok": true
+            },
+            {
+              "name": "explicit locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "format options are owned immutable snapshots",
+              "ok": true
+            },
+            {
+              "name": "custom increment part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "custom decrement part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "moving a part transfers ownership without editing the old control",
+              "ok": true
+            },
+            {
+              "name": "orphaned action parts are disabled",
+              "ok": true
+            },
+            {
+              "name": "inherited locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "nonstandard notation is rejected before state changes",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in en-US",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in de-DE",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in ar-EG",
+              "ok": true
+            },
+            {
+              "name": "initial attribute order does not reinterpret localized values",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects existing action parts",
+              "ok": true
+            },
+            {
+              "name": "native required and disabled fieldset semantics are preserved",
+              "ok": true
+            },
+            {
+              "name": "wheel changes are off by default",
+              "ok": true
+            },
+            {
+              "name": "focused wheel opt-in steps the value",
+              "ok": true
+            },
+            {
+              "name": "canceled Enter does not format or commit",
+              "ok": true
+            },
+            {
+              "name": "programmatic invalid characters remain invalid",
+              "ok": true
+            },
+            {
+              "name": "modifier defaults avoid binary scaling drift",
+              "ok": true
+            },
+            {
+              "name": "zoom-modified wheel is not consumed",
+              "ok": true
+            },
+            {
+              "name": "disabling the active part stops its hold",
+              "ok": true
+            },
+            {
+              "name": "formatting whitespace preserves default actions and icons",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "compiled": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "native target has spinbutton role",
+              "ok": true
+            },
+            {
+              "name": "decimal increment and native form agree",
+              "ok": true
+            },
+            {
+              "name": "partial input stays editable and invalid without fabricated number",
+              "ok": true
+            },
+            {
+              "name": "empty value stays empty",
+              "ok": true
+            },
+            {
+              "name": "stepping from empty clamps to minimum",
+              "ok": true
+            },
+            {
+              "name": "range validation is immediate",
+              "ok": true
+            },
+            {
+              "name": "native reset preserves initial string default",
+              "ok": true
+            },
+            {
+              "name": "German parsing and native canonical submission",
+              "ok": true
+            },
+            {
+              "name": "German stepping preserves numeric value",
+              "ok": true
+            },
+            {
+              "name": "percent has adaptive default step",
+              "ok": true
+            },
+            {
+              "name": "arrow modifiers use custom step sizes",
+              "ok": true
+            },
+            {
+              "name": "Home moves to minimum",
+              "ok": true
+            },
+            {
+              "name": "End moves to maximum",
+              "ok": true
+            },
+            {
+              "name": "blur clamps by default",
+              "ok": true
+            },
+            {
+              "name": "explicit unclamped blur preserves out-of-range text",
+              "ok": true
+            },
+            {
+              "name": "invalid characters preserve a replacement selection",
+              "ok": true
+            },
+            {
+              "name": "Enter formats and commits exactly once",
+              "ok": true
+            },
+            {
+              "name": "pointer hold repeats and commits once",
+              "ok": true
+            },
+            {
+              "name": "release stops repetition",
+              "ok": true
+            },
+            {
+              "name": "spinOnPress false keeps one pointer step",
+              "ok": true
+            },
+            {
+              "name": "disabled during hold prevents later steps",
+              "ok": true
+            },
+            {
+              "name": "disconnect cancels repeat lifetime",
+              "ok": true
+            },
+            {
+              "name": "explicit locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "format options are owned immutable snapshots",
+              "ok": true
+            },
+            {
+              "name": "custom increment part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "custom decrement part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "moving a part transfers ownership without editing the old control",
+              "ok": true
+            },
+            {
+              "name": "orphaned action parts are disabled",
+              "ok": true
+            },
+            {
+              "name": "inherited locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "nonstandard notation is rejected before state changes",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in en-US",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in de-DE",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in ar-EG",
+              "ok": true
+            },
+            {
+              "name": "initial attribute order does not reinterpret localized values",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects existing action parts",
+              "ok": true
+            },
+            {
+              "name": "native required and disabled fieldset semantics are preserved",
+              "ok": true
+            },
+            {
+              "name": "wheel changes are off by default",
+              "ok": true
+            },
+            {
+              "name": "focused wheel opt-in steps the value",
+              "ok": true
+            },
+            {
+              "name": "canceled Enter does not format or commit",
+              "ok": true
+            },
+            {
+              "name": "programmatic invalid characters remain invalid",
+              "ok": true
+            },
+            {
+              "name": "modifier defaults avoid binary scaling drift",
+              "ok": true
+            },
+            {
+              "name": "zoom-modified wheel is not consumed",
+              "ok": true
+            },
+            {
+              "name": "disabling the active part stops its hold",
+              "ok": true
+            },
+            {
+              "name": "formatting whitespace preserves default actions and icons",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "native target has spinbutton role",
+              "ok": true
+            },
+            {
+              "name": "decimal increment and native form agree",
+              "ok": true
+            },
+            {
+              "name": "partial input stays editable and invalid without fabricated number",
+              "ok": true
+            },
+            {
+              "name": "empty value stays empty",
+              "ok": true
+            },
+            {
+              "name": "stepping from empty clamps to minimum",
+              "ok": true
+            },
+            {
+              "name": "range validation is immediate",
+              "ok": true
+            },
+            {
+              "name": "native reset preserves initial string default",
+              "ok": true
+            },
+            {
+              "name": "German parsing and native canonical submission",
+              "ok": true
+            },
+            {
+              "name": "German stepping preserves numeric value",
+              "ok": true
+            },
+            {
+              "name": "percent has adaptive default step",
+              "ok": true
+            },
+            {
+              "name": "arrow modifiers use custom step sizes",
+              "ok": true
+            },
+            {
+              "name": "Home moves to minimum",
+              "ok": true
+            },
+            {
+              "name": "End moves to maximum",
+              "ok": true
+            },
+            {
+              "name": "blur clamps by default",
+              "ok": true
+            },
+            {
+              "name": "explicit unclamped blur preserves out-of-range text",
+              "ok": true
+            },
+            {
+              "name": "invalid characters preserve a replacement selection",
+              "ok": true
+            },
+            {
+              "name": "Enter formats and commits exactly once",
+              "ok": true
+            },
+            {
+              "name": "pointer hold repeats and commits once",
+              "ok": true
+            },
+            {
+              "name": "release stops repetition",
+              "ok": true
+            },
+            {
+              "name": "spinOnPress false keeps one pointer step",
+              "ok": true
+            },
+            {
+              "name": "disabled during hold prevents later steps",
+              "ok": true
+            },
+            {
+              "name": "disconnect cancels repeat lifetime",
+              "ok": true
+            },
+            {
+              "name": "explicit locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "format options are owned immutable snapshots",
+              "ok": true
+            },
+            {
+              "name": "custom increment part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "custom decrement part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "moving a part transfers ownership without editing the old control",
+              "ok": true
+            },
+            {
+              "name": "orphaned action parts are disabled",
+              "ok": true
+            },
+            {
+              "name": "inherited locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "nonstandard notation is rejected before state changes",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in en-US",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in de-DE",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in ar-EG",
+              "ok": true
+            },
+            {
+              "name": "initial attribute order does not reinterpret localized values",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects existing action parts",
+              "ok": true
+            },
+            {
+              "name": "native required and disabled fieldset semantics are preserved",
+              "ok": true
+            },
+            {
+              "name": "wheel changes are off by default",
+              "ok": true
+            },
+            {
+              "name": "focused wheel opt-in steps the value",
+              "ok": true
+            },
+            {
+              "name": "canceled Enter does not format or commit",
+              "ok": true
+            },
+            {
+              "name": "programmatic invalid characters remain invalid",
+              "ok": true
+            },
+            {
+              "name": "modifier defaults avoid binary scaling drift",
+              "ok": true
+            },
+            {
+              "name": "zoom-modified wheel is not consumed",
+              "ok": true
+            },
+            {
+              "name": "disabling the active part stops its hold",
+              "ok": true
+            },
+            {
+              "name": "formatting whitespace preserves default actions and icons",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "native target has spinbutton role",
+              "ok": true
+            },
+            {
+              "name": "decimal increment and native form agree",
+              "ok": true
+            },
+            {
+              "name": "partial input stays editable and invalid without fabricated number",
+              "ok": true
+            },
+            {
+              "name": "empty value stays empty",
+              "ok": true
+            },
+            {
+              "name": "stepping from empty clamps to minimum",
+              "ok": true
+            },
+            {
+              "name": "range validation is immediate",
+              "ok": true
+            },
+            {
+              "name": "native reset preserves initial string default",
+              "ok": true
+            },
+            {
+              "name": "German parsing and native canonical submission",
+              "ok": true
+            },
+            {
+              "name": "German stepping preserves numeric value",
+              "ok": true
+            },
+            {
+              "name": "percent has adaptive default step",
+              "ok": true
+            },
+            {
+              "name": "arrow modifiers use custom step sizes",
+              "ok": true
+            },
+            {
+              "name": "Home moves to minimum",
+              "ok": true
+            },
+            {
+              "name": "End moves to maximum",
+              "ok": true
+            },
+            {
+              "name": "blur clamps by default",
+              "ok": true
+            },
+            {
+              "name": "explicit unclamped blur preserves out-of-range text",
+              "ok": true
+            },
+            {
+              "name": "invalid characters preserve a replacement selection",
+              "ok": true
+            },
+            {
+              "name": "Enter formats and commits exactly once",
+              "ok": true
+            },
+            {
+              "name": "pointer hold repeats and commits once",
+              "ok": true
+            },
+            {
+              "name": "release stops repetition",
+              "ok": true
+            },
+            {
+              "name": "spinOnPress false keeps one pointer step",
+              "ok": true
+            },
+            {
+              "name": "disabled during hold prevents later steps",
+              "ok": true
+            },
+            {
+              "name": "disconnect cancels repeat lifetime",
+              "ok": true
+            },
+            {
+              "name": "explicit locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "format options are owned immutable snapshots",
+              "ok": true
+            },
+            {
+              "name": "custom increment part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "custom decrement part uses the same owner",
+              "ok": true
+            },
+            {
+              "name": "moving a part transfers ownership without editing the old control",
+              "ok": true
+            },
+            {
+              "name": "orphaned action parts are disabled",
+              "ok": true
+            },
+            {
+              "name": "inherited locale changes preserve numeric amount",
+              "ok": true
+            },
+            {
+              "name": "nonstandard notation is rejected before state changes",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in en-US",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in de-DE",
+              "ok": true
+            },
+            {
+              "name": "tiny step remains representable in ar-EG",
+              "ok": true
+            },
+            {
+              "name": "initial attribute order does not reinterpret localized values",
+              "ok": true
+            },
+            {
+              "name": "late owner upgrade connects existing action parts",
+              "ok": true
+            },
+            {
+              "name": "native required and disabled fieldset semantics are preserved",
+              "ok": true
+            },
+            {
+              "name": "wheel changes are off by default",
+              "ok": true
+            },
+            {
+              "name": "focused wheel opt-in steps the value",
+              "ok": true
+            },
+            {
+              "name": "canceled Enter does not format or commit",
+              "ok": true
+            },
+            {
+              "name": "programmatic invalid characters remain invalid",
+              "ok": true
+            },
+            {
+              "name": "modifier defaults avoid binary scaling drift",
+              "ok": true
+            },
+            {
+              "name": "zoom-modified wheel is not consumed",
+              "ok": true
+            },
+            {
+              "name": "disabling the active part stops its hold",
+              "ok": true
+            },
+            {
+              "name": "formatting whitespace preserves default actions and icons",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "liveDocs": [
+      {
+        "engine": "chromium",
+        "results": [
+          {
+            "name": "default increment action works on live page",
+            "ok": true
+          },
+          {
+            "name": "native example submits through Enter",
+            "ok": true
+          },
+          {
+            "name": "native example resets its default",
+            "ok": true
+          },
+          {
+            "name": "custom action parts work on live page",
+            "ok": true
+          },
+          {
+            "name": "localized stepping works on live page",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "results": [
+          {
+            "name": "default increment action works on live page",
+            "ok": true
+          },
+          {
+            "name": "native example submits through Enter",
+            "ok": true
+          },
+          {
+            "name": "native example resets its default",
+            "ok": true
+          },
+          {
+            "name": "custom action parts work on live page",
+            "ok": true
+          },
+          {
+            "name": "localized stepping works on live page",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "results": [
+          {
+            "name": "default increment action works on live page",
+            "ok": true
+          },
+          {
+            "name": "native example submits through Enter",
+            "ok": true
+          },
+          {
+            "name": "native example resets its default",
+            "ok": true
+          },
+          {
+            "name": "custom action parts work on live page",
+            "ok": true
+          },
+          {
+            "name": "localized stepping works on live page",
+            "ok": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "textRegression": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "email keeps raw default and native sanitized current",
+              "ok": true
+            },
+            {
+              "name": "immediate native submission",
+              "ok": true
+            },
+            {
+              "name": "native reset",
+              "ok": true
+            },
+            {
+              "name": "required validity",
+              "ok": true
+            },
+            {
+              "name": "native readonly validation",
+              "ok": true
+            },
+            {
+              "name": "Field names actual input",
+              "ok": true
+            },
+            {
+              "name": "search fixed native type and default clear",
+              "ok": true
+            },
+            {
+              "name": "password native type",
+              "ok": true
+            },
+            {
+              "name": "reveal retains selection and value",
+              "ok": true
+            },
+            {
+              "name": "textarea native rows and value",
+              "ok": true
+            },
+            {
+              "name": "clear emits exactly one live and committed sequence",
+              "ok": true
+            },
+            {
+              "name": "readonly cannot clear",
+              "ok": true
+            },
+            {
+              "name": "size small",
+              "ok": true
+            },
+            {
+              "name": "size medium",
+              "ok": true
+            },
+            {
+              "name": "size large",
+              "ok": true
+            },
+            {
+              "name": "auto resize grows and shrinks",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates state and native projection",
+              "ok": true
+            },
+            {
+              "name": "Field disables native interaction and submission",
+              "ok": true
+            },
+            {
+              "name": "Field release preserves own disabled and value",
+              "ok": true
+            },
+            {
+              "name": "pattern validation is native and immediate",
+              "ok": true
+            },
+            {
+              "name": "Input participates in actual Group attachment",
+              "ok": true
+            },
+            {
+              "name": "all four affixes are visible together",
+              "ok": true
+            },
+            {
+              "name": "native editing publishes separate live and committed notifications",
+              "ok": true
+            },
+            {
+              "name": "Enter submits the surrounding native form",
+              "ok": true
+            },
+            {
+              "name": "actual reveal action preserves selection and emits only visibility",
+              "ok": true
+            },
+            {
+              "name": "actual clear action updates native value and retains input focus",
+              "ok": true
+            },
+            {
+              "name": "hard wrap serialization matches the actual native textarea",
+              "ok": true
+            },
+            {
+              "name": "visible field boundary contrast: light",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(255, 255, 255)",
+              "ratio": 3.2339802043350576
+            },
+            {
+              "name": "visible field boundary contrast: dark",
+              "ok": true,
+              "border": "rgb(143, 143, 143)",
+              "background": "rgb(10, 10, 10)",
+              "ratio": 6.121913079117171
+            },
+            {
+              "name": "native implicit submission comparison: submitter",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: disabled-first",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-one",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: no-button-two",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: invalid",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-key",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: cancel-click",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: house-button",
+              "ok": true
+            },
+            {
+              "name": "native implicit submission comparison: external-button",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "focusedTests": 18
+  },
+  "corrections": [
+    "raw atom clearing uses updater returning undefined",
+    "modifier defaults use decimal scaling instead of binary multiplication/division",
+    "parts transfer their owner and orphaned parts are disabled",
+    "beforeinput filtering preserves replacement selection",
+    "native private-form submission respects canceled Enter",
+    "all formatting whitespace preserves defaults and real custom content removes inactive defaults",
+    "locale changes preserve numeric amounts, including after reconnect",
+    "standard notation enforced before options mutate state"
+  ],
+  "notationProbe": [
+    {
+      "notation": "compact",
+      "text": "-1.2K",
+      "expectedFromFormattedText": -1200,
+      "parsed": -1.2,
+      "partialAccepted": false
+    },
+    {
+      "notation": "scientific",
+      "text": "-1.235E3",
+      "expectedFromFormattedText": -1235,
+      "parsed": 0.353,
+      "partialAccepted": true
+    },
+    {
+      "notation": "engineering",
+      "text": "-1.235E3",
+      "expectedFromFormattedText": -1235,
+      "parsed": 1.25,
+      "partialAccepted": true
+    }
+  ],
+  "references": [
+    "https://react-spectrum.adobe.com/v3/NumberField.html#number-formatting",
+    "m12-port-sources-2026-09-22.json"
+  ],
+  "reproductions": [
+    "/tmp/acme-m12-number",
+    "/tmp/acme-m12-number-compiled"
+  ],
+  "limits": [
+    "Actual OS IME, autofill/history, speech input and actual Safari remain M26 platform gates.",
+    "Generated React integration remains M22.",
+    "Independent review workers remain unavailable; local review and native browser comparisons were used."
+  ]
+}
