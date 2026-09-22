@@ -12,11 +12,10 @@ type Coordination = { sessions: Session[]; dispose(): void };
 const documents = new WeakMap<Document, Coordination>();
 
 function composedContains(parent: HTMLElement, node: Node): boolean {
-  let current: Node | undefined = node;
+  let current: Node | null = node;
   while (current) {
-    if (parent.contains(current)) return true;
-    const root = current.getRootNode();
-    current = "host" in root ? (root as ShadowRoot).host : undefined;
+    if (current === parent) return true;
+    current = (current.nodeType === 1 ? (current as Element).assignedSlot : null) ?? current.parentNode ?? (current.nodeType === 11 && "host" in current ? (current as ShadowRoot).host : null);
   }
   return false;
 }

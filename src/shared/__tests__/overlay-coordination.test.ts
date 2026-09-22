@@ -60,3 +60,23 @@ test("a gesture cannot fall through to the surface below a released session", ()
   document.body.dispatchEvent(pointer("pointerup"));
   expect(f.closed).toEqual([]);
 });
+
+test("releasing a parent also releases a child anchored through its slot", () => {
+  const host = document.createElement("div"),
+    surface = document.createElement("div"),
+    anchor = document.createElement("button"),
+    child = document.createElement("div");
+  host.attachShadow({ mode: "open" }).append(surface);
+  const slot = document.createElement("slot");
+  surface.append(slot);
+  // The test DOM omits assignedSlot; real-engine checks cover native assignment.
+  Object.defineProperty(anchor, "assignedSlot", { get: () => slot });
+  host.append(anchor);
+  document.body.append(host, child);
+  let closed = 0;
+  const parent = coordinateOverlay({ surface, closeOnEscape: () => true, closeOnOutside: () => true, dismiss: () => {} }),
+    releaseChild = coordinateOverlay({ surface: child, anchor, closeOnEscape: () => true, closeOnOutside: () => true, dismiss: () => {}, ownerRemoved: () => closed++ });
+  cleanup.push(parent, releaseChild);
+  parent();
+  expect(closed).toBe(1);
+});
