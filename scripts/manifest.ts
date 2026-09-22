@@ -189,10 +189,12 @@ export function normalizeManifest(manifest: Package, root = ROOT): Package {
     return resolved.resolvedFileName;
   };
   const normalized = structuredClone(manifest);
+  const visited = new WeakSet<object>();
   for (const module of normalized.modules) {
     const from = module.path;
     const walk = (value: unknown) => {
-      if (!value || typeof value !== "object") return;
+      if (!value || typeof value !== "object" || visited.has(value)) return;
+      visited.add(value);
       if (Array.isArray(value)) {
         value.forEach(walk);
         return;

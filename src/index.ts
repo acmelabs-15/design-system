@@ -67,6 +67,8 @@ export * from "./components/number-input/number-input";
 export * from "./components/number-input-increment/number-input-increment";
 export * from "./components/number-input-decrement/number-input-decrement";
 export * from "./components/password-input/password-input";
+export * from "./components/pin-input/pin-input";
+export * from "./components/pin-input-field/pin-input-field";
 export * from "./components/item/item";
 export * from "./components/json-view/json-view";
 export * from "./components/kbd/kbd";

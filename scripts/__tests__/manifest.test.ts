@@ -265,3 +265,25 @@ test("native renderer-container metadata survives standard analysis", async () =
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
+
+test("manifest normalization rewrites shared reference objects once", () => {
+  const shared = { name: "AcmeReadOnlyFormElement", module: "src/shared/native-form-element.ts" };
+  const source = {
+    schemaVersion: "1.0.0",
+    modules: [
+      {
+        kind: "javascript-module" as const,
+        path: "src/components/pin-input/pin-input.ts",
+        declarations: [{ kind: "class" as const, name: "First", superclass: shared, members: [{ kind: "field" as const, name: "value", inheritedFrom: shared }] }],
+      },
+      { kind: "javascript-module" as const, path: "src/components/input/input.ts", declarations: [{ kind: "class" as const, name: "Second", superclass: shared }] },
+    ],
+  };
+  const result = normalizeManifest(source);
+  const first = result.modules[0]!.declarations![0] as ClassDeclaration,
+    second = result.modules[1]!.declarations![0] as ClassDeclaration;
+  expect(first.superclass?.module).toBe("dist/shared/native-form-element.js");
+  expect(first.members?.[0]?.inheritedFrom?.module).toBe("dist/shared/native-form-element.js");
+  expect(second.superclass?.module).toBe("dist/shared/native-form-element.js");
+  expect(shared.module).toBe("src/shared/native-form-element.ts");
+});

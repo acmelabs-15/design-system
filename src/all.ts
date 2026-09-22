@@ -77,6 +77,8 @@ import "./define/number-input-increment";
 import "./define/pagination";
 import "./define/password-input";
 import "./define/pill";
+import "./define/pin-input";
+import "./define/pin-input-field";
 import "./define/progress";
 import "./define/quote";
 import "./define/radio";

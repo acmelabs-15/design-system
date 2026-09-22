@@ -244,3 +244,8 @@ The build now enforces strict TypeScript. The final audit found widened getter t
 ### M12 Number Input acceptance — 2026-09-22
 
 [Number Input acceptance](evidence/m12-number-input-2026-09-22.json) completes the number family: strict build, site, 906 tests, 44 source/compiled checks per engine and five live documentation flows. Native/managed form contracts, standard locale formats, decimal-safe steps, optional action parts and hold cleanup are implemented. The source-derived decimal loop and binary modifier-step drift are replaced with bounded decimal operations. Continue Pin Input to close M12.
+
+
+### M12 complete — 2026-09-22
+
+[Pin Input acceptance](evidence/m12-pin-input-2026-09-22.json) closes M12 alongside Number Input: strict package build/site and 916 tests pass. Each engine passes 32 source/compiled Pin checks, four source/compiled managed-form checks and five live examples. Shared manifest reference identity is now normalized once. Continue M13 with the verified slotted-overlay coordination correction.

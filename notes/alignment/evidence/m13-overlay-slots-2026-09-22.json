@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-22",
+  "status": "open prerequisite before M13 nested menu adoption",
+  "finding": "Closing a parent fails to close a child when the child anchor is assigned through the parent surface slot. A direct DOM descendant closes correctly.",
+  "source": "src/shared/overlay-coordination.ts composedContains",
+  "engines": [
+    {
+      "engine": "chromium",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 0
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 0
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "results": [
+        {
+          "slotted": false,
+          "assignedSlot": false,
+          "childClosed": 1
+        },
+        {
+          "slotted": true,
+          "assignedSlot": true,
+          "childClosed": 0
+        }
+      ]
+    }
+  ],
+  "reproduction": "/tmp/acme-m13-overlay/run.ts",
+  "next": "Update composed ancestry to include assigned slots, retain direct/shadow cases, and rerun before Menu integration."
+}
