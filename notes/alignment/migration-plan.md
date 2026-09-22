@@ -209,3 +209,11 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 ### M10 Theme Switcher — 2026-09-21
 
 [Acceptance](evidence/m10-theme-switcher-2026-09-21.json) completes the application-owned appearance picker through actual Segmented Control/Group/indicator composition. Build/site, 900 tests, 18 Chromium and 17 Firefox/WebKit source/compiled checks, three live scoped examples and the application header pass. Tabs is the final M10 family; continue M11–M26 afterward.
+
+### M10 Tabs implementation and M22 return point — 2026-09-21
+
+[Tabs acceptance in progress](evidence/m10-tabs-2026-09-21.json) includes native relationship scope, controlled templates and scrolling. Finish the named gates before closing M10. M22 must provide framework-owned React mounting/reconciliation using the same canonical panel activation state; it must not clone/reparent ordinary React children or use a second selection store. Lit/HTML renderer acceptance alone does not close that adapter gate.
+
+### M10 completion — 2026-09-22
+
+[Tabs acceptance](evidence/m10-tabs-2026-09-21.json) closes the final M10 family. Build/site, 897 tests, source and compiled three-engine checks, actual documentation interactions and both appearance contrast checks pass. All M10 controls, selection owners/cards, the private indicator, Segmented Control, binary Switch, Tabs and Theme Switcher are complete at their assigned boundaries. Continue M11 with Field/Fieldset/Label and the text-control family. Preserve the named M14/M22/M26 integration gates; completion of this batch does not close them.

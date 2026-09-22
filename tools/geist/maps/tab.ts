@@ -5,6 +5,7 @@
 import { type GeistMap, has } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "tabs",
   component: "Tabs",
   element: "tab",

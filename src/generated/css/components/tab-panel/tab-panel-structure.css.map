@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":null,"mappings":"AAAA;;;;AAGM","sources":["tab-panel-structure.source.css"],"sourcesContent":[":host {\n        display: block;\n      }\n      :host([hidden]) {\n        display: none;\n      }\n"],"names":[]}
+{"version":3,"sourceRoot":null,"mappings":"AAAA;;;;;AACA;;;;;AACA","sources":["tab-panel-structure.source.css"],"sourcesContent":[":host{display:block;min-inline-size:0;}\n:host(:focus-visible){outline:2px solid var(--ds-blue-700);outline-offset:2px;}\n[part=panel]{min-inline-size:0;}\n"],"names":[]}

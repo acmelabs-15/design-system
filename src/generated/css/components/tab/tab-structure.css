@@ -1,8 +1,99 @@
 :host {
+  flex: none;
+  min-inline-size: 0;
+  display: inline-flex;
+  position: relative;
+}
+
+.tab {
+  block-size: 50px;
+  min-inline-size: 28px;
+  color: var(--ds-gray-900);
+  cursor: pointer;
+  --acme-icon-size: 20px;
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 2px;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  position: relative;
+}
+
+[part="label"] {
+  pointer-events: none;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   display: inline-flex;
 }
 
-.icon ::slotted(svg) {
-  vertical-align: middle;
-  display: block;
+.tab[data-selected] {
+  color: var(--ds-blue-900);
+}
+
+.tab[data-orientation="vertical"] {
+  justify-content: flex-start;
+  padding-inline: 12px;
+}
+
+.tab[data-variant="inset"] {
+  border-radius: 6px;
+  block-size: 28px;
+  padding-inline: 12px;
+}
+
+.tab[data-variant="inset"][data-selected] {
+  color: var(--ds-gray-1000);
+}
+
+.tab:disabled {
+  color: var(--ds-gray-700);
+  cursor: not-allowed;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--ds-blue-700);
+  outline-offset: -2px;
+}
+
+@media (hover: hover) {
+  .tab:not(:disabled):hover {
+    background: var(--ds-gray-100);
+  }
+
+  .tab[data-selected][data-variant="inset"]:hover {
+    background: none;
+  }
+}
+
+.tab:not(:disabled):active {
+  background: var(--ds-gray-200);
+}
+
+.tab[data-selected][data-variant="inset"]:active {
+  background: none;
+}
+
+@media (forced-colors: active) {
+  .tab {
+    color: buttontext;
+  }
+
+  .tab:disabled {
+    color: graytext;
+  }
+
+  .tab[data-selected][data-variant="inset"] {
+    color: highlighttext;
+    forced-color-adjust: none;
+  }
+
+  .tab:focus-visible {
+    outline-color: highlight;
+  }
 }

@@ -638,3 +638,13 @@ A second source normalization regression showed the standard analyzer interpreti
 ## M10 tab-panel relationship prerequisite — 2026-09-21
 
 [Paired native controls](../alignment/evidence/m10-tabs-material-review-2026-09-21.json) compare panel ElementInternals label references to a native button in a sibling shadow root and to the public Tab host. Chromium/Firefox retain the direct button reference; WebKit filters it. A public-host label reference is retained in all three. Chromium computes the correct icon-only button name through that host and exposes the controls/labelled-by relationships. Build the house relationship through supported public host boundaries, then verify the actual family. The bare control is not screen-reader certification.
+
+## M10 Tabs implementation — 2026-09-21
+
+[Current source checks](../alignment/evidence/m10-tabs-2026-09-21.json) cover value/panel state, actual controls references, native keyboard activation, explicit clearing, nesting, reconnection and both indicator axes/treatments. Mount-controlled content is rendered into an owned light-DOM container, not the panel shadow root, so native inputs retain an enclosing form. One inert template supplies HTML-only content; renderContent supplies a pure Lit template. Ordinary authored children are retained rather than cloned. The final React mount/reconciliation implementation stays with M22.
+
+Overflow testing found the indicator canvas clipped to the viewport width even though the tab content scrolled beyond it. Intrinsic list width now owns the complete canvas. WebKit also left a 0.65625px trailing edge after fractional scrolling; outward integer deltas pass the expanded native and compiled checks. Startup indicator painting also now invalidates the root when a native target first appears. These are actual family checks beyond the shared indicator fixture. Final build/site, 897 tests, 34 Chromium/33 Firefox-WebKit checks, six live documentation actions per engine and light/dark contrast pass on 2026-09-22.
+
+## M11 Fieldset native boundary prerequisite — 2026-09-21
+
+[All three native engines](../alignment/evidence/m11-fieldset-boundary-2026-09-21.json) distinguish projected slots from a real fieldset ancestor. A disabled fieldset in a wrapper shadow root leaves slotted native/custom inputs enabled and successful. Placing the same nodes under an actual native fieldset excludes them while preserving the first legend. This is a concrete M11 implementation gate. No production Fieldset architecture is selected merely from the failed shadow-slot candidate; preserve author nodes/framework ownership and each control's own disabled state while resolving it.

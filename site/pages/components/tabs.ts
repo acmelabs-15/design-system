@@ -1,47 +1,47 @@
-// Docs page: Tabs — mirrors https://vercel.com/geist/tabs
 import type { Doc } from "../../site";
-
-const fruit = (extra = "", mango = "") =>
-  `<acme-tabs value="apple"${extra}><acme-tab value="apple">Apple</acme-tab><acme-tab value="orange">Orange</acme-tab><acme-tab value="mango"${mango}>Mango</acme-tab></acme-tabs>`;
-
+const content =
+  '<acme-tab value="overview">Overview</acme-tab><acme-tab value="settings">Settings</acme-tab><acme-tab-panel value="overview" slot="panels"><p>Overview content.</p></acme-tab-panel><acme-tab-panel value="settings" slot="panels"><p>Settings content.</p></acme-tab-panel>';
 export const doc: Doc = {
   id: "tabs",
   title: "Tabs",
-  lede: "Display tab content.",
   tags: ["acme-tabs", "acme-tab", "acme-tab-panel"],
+  lede: "Switch between related content panels with one selected value.",
   examples: [
-    { h: "Default", html: fruit() },
-    { h: "Disabled", html: fruit(" disabled") },
-    { h: "Disable specific tabs", html: fruit("", ' disabled tooltip="Mangos are not allowed"') },
+    { h: "Automatic", html: '<acme-tabs id="tabs-auto" aria-label="Account">' + content + "</acme-tabs>" },
+    { h: "Manual activation", html: '<acme-tabs id="tabs-manual" aria-label="Account" activation="manual">' + content + "</acme-tabs>" },
     {
-      h: "With icons",
-      html: `<acme-tabs value="github"><acme-tab value="github"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-github"/></svg>GitHub</acme-tab><acme-tab value="gitlab"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-gitlab"/></svg>GitLab</acme-tab><acme-tab value="bitbucket"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true" style="color:#2684ff"><use href="#brand-bitbucket"/></svg>Bitbucket</acme-tab></acme-tabs>`,
+      h: "Inset",
+      html: '<acme-tabs id="tabs-inset" variant="inset" aria-label="Preview"><acme-tab value="source">Source</acme-tab><acme-tab value="output">Output</acme-tab><acme-tab-panel slot="panels" value="source"><code>const greeting = "Hello";</code></acme-tab-panel><acme-tab-panel slot="panels" value="output">Hello</acme-tab-panel></acme-tabs>',
+    },
+    { h: "Vertical", html: '<acme-tabs id="tabs-vertical" orientation="vertical" aria-label="Account">' + content + "</acme-tabs>" },
+    {
+      h: "Icons",
+      html: '<acme-tabs aria-label="Media"><acme-tab value="photos" aria-label="Photos"><acme-photo-icon></acme-photo-icon></acme-tab><acme-tab value="videos" aria-label="Videos"><acme-videocam-icon></acme-videocam-icon></acme-tab><acme-tab-panel slot="panels" value="photos">Photo content.</acme-tab-panel><acme-tab-panel slot="panels" value="videos">Video content.</acme-tab-panel></acme-tabs>',
     },
     {
-      h: "Secondary",
-      html: `<acme-tabs variant="secondary" value="github"><acme-tab value="github">GitHub</acme-tab><acme-tab value="gitlab">GitLab</acme-tab><acme-tab value="bitbucket" disabled>Bitbucket</acme-tab></acme-tabs>`,
+      h: "Disabled option",
+      html: '<acme-tabs aria-label="Account"><acme-tab value="overview">Overview</acme-tab><acme-tab value="admin" disabled>Administration</acme-tab><acme-tab-panel slot="panels" value="overview">Available content.</acme-tab-panel><acme-tab-panel slot="panels" value="admin">Restricted content.</acme-tab-panel></acme-tabs>',
+    },
+    {
+      h: "Lazy content",
+      html: '<acme-tabs id="tabs-lazy" aria-label="Editor" lazy-mount unmount-on-exit><acme-tab value="first">First</acme-tab><acme-tab value="second">Second</acme-tab><acme-tab-panel slot="panels" value="first"><template><label>Draft <input value="Fresh draft"></label></template></acme-tab-panel><acme-tab-panel slot="panels" value="second"><template><p>This content is created when selected.</p></template></acme-tab-panel></acme-tabs>',
     },
   ],
   practices: {
-    "When to use": [
-      "Use Tabs to move between sibling views inside one page: Overview, Logs, Settings.",
-      "Navigation between unrelated pages is a sub-menu, not Tabs. Tabs say the views share scope, URL parent and data.",
-      "Cap a row at 5–7 tabs on desktop and 3–4 on mobile. Past that, merge views or move secondary ones into a Menu.",
+    Selection: [
+      "Omitted value selects the first enabled tab once. A later undefined value clears selection; a temporarily missing tab does not silently replace the selected value.",
+      "Supply unique nonempty values and a matching panel in the panels slot. The root owns selection and emits acme-change with value for user changes.",
+      "Use primary for the underline treatment and inset for the outlined filled treatment. Both support horizontal and vertical orientation.",
     ],
-    Behavior: [
-      "Selecting a tab is instant; no network confirmation and no toast on change.",
-      "Reflect the active tab in the URL (query param or path) so deep links and refresh restore it.",
-      "Disable a single tab only for permission or empty-state reasons, and give it a <code>tooltip</code> that names the constraint.",
+    Keyboard: [
+      "Automatic activation selects on focus. Manual activation moves focus with arrows, then selects with Space or Enter. Use manual activation when content takes time to display.",
+      "Home and End move to the first and last available tab. Disabled tabs are skipped, horizontal keys follow reading direction, and Tab leaves the tablist.",
+      "Give the tablist and icon-only tabs accessible names. Use start/end slots for accompanying content and compose Tooltip separately.",
     ],
     Content: [
-      "A tab title is Title Case, 1–2 words, and names the destination noun (Overview, Logs, Settings). Verbs belong on buttons; View Logs is wrong on a tab.",
-      "A tab tooltip is sentence case and explains the constraint (Only visible to project owners.), not the tab's purpose.",
-      "No counts in the title (Logs (12)); use a badge and drop it at zero.",
-    ],
-    Accessibility: [
-      "Left and Right arrows move focus across tabs; Enter and Space activate. Do not override them with global shortcuts.",
-      'Label the tablist with <code>aria-label</code> when no visible heading sits above it (aria-label="Sections").',
-      "Keep a visible focus ring on the active tab; never remove focus styles for polish.",
+      "Ordinary panel children remain mounted while inactive panels are hidden and inert. Their form values and node identity are preserved.",
+      "lazy-mount and unmount-on-exit apply to one inert template per panel or a Lit renderContent callback. Ordinary author-owned children are never moved or cloned to simulate unmounting.",
+      "An unmounted template is created again on entry. Keep durable data in application state when choosing unmount-on-exit. Renderer-owned content stays in the light DOM so native form ownership is preserved.",
     ],
   },
 };

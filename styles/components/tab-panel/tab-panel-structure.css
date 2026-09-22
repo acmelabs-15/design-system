@@ -1,6 +1,3 @@
-:host {
-        display: block;
-      }
-      :host([hidden]) {
-        display: none;
-      }
+:host{display:block;min-inline-size:0;}
+:host(:focus-visible){outline:2px solid var(--ds-blue-700);outline-offset:2px;}
+[part=panel]{min-inline-size:0;}

@@ -25,7 +25,7 @@ export interface SelectionMember {
 const members = new WeakMap<Element, SelectionMember>();
 const boundaries = new WeakSet<Element>();
 const guarded = new WeakSet<Element>();
-function guardChanges(host: ReactiveElement): void {
+export function guardSelectionChanges(host: ReactiveElement): void {
   if (guarded.has(host)) return;
   guarded.add(host);
   host.addEventListener("acme-change", (event) => {
@@ -44,7 +44,7 @@ export class SelectionConnection implements ReactiveController {
   ) {
     if (members.has(host)) throw new Error("One selection participant per control");
     members.set(host, member);
-    guardChanges(host);
+    guardSelectionChanges(host);
     host.addController(this);
   }
   get owner() {
@@ -93,7 +93,7 @@ export class SelectionRegistry implements ReactiveController {
     private owner: SelectionOwner,
   ) {
     boundaries.add(host);
-    guardChanges(host);
+    guardSelectionChanges(host);
     host.addController(this);
   }
   private add(member: SelectionMember) {

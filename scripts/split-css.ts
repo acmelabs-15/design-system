@@ -23,7 +23,6 @@ const MAP: [string, RegExp][] = [
   ["button", /^(\.btn\b|\.iconbtn)/],
   ["split-button", /^\.split-menu/],
   ["split-button-item", /^\.split-item/],
-  ["tabs", /^\.tabs/],
   ["checkbox", /^\.checkbox/],
   ["radio", /^\.radio/],
   ["badge", /^\.badge/],

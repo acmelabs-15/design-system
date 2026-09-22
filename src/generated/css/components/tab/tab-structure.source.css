@@ -1,8 +1,13 @@
-:host {
-        display: inline-flex;
-      }
-      /* The shadow reset's svg rule, for the slotted icon (the reference's page reset blocks every svg). */
-      .icon ::slotted(svg) {
-        display: block;
-        vertical-align: middle;
-      }
+:host{display:inline-flex;position:relative;flex:none;min-inline-size:0;}
+.tab{position:relative;display:flex;align-items:center;justify-content:center;min-inline-size:28px;block-size:50px;padding-inline:2px;border:0;border-radius:4px;font-size:14px;line-height:20px;color:var(--ds-gray-900);background:transparent;cursor:pointer;outline:none;--acme-icon-size:20px;}
+[part=label]{display:inline-flex;align-items:center;justify-content:center;gap:8px;pointer-events:none;}
+.tab[data-selected]{color:var(--ds-blue-900);}
+.tab[data-orientation=vertical]{padding-inline:12px;justify-content:flex-start;}
+.tab[data-variant=inset]{block-size:28px;padding-inline:12px;border-radius:6px;}
+.tab[data-variant=inset][data-selected]{color:var(--ds-gray-1000);}
+.tab:disabled{color:var(--ds-gray-700);cursor:not-allowed;}
+.tab:focus-visible{outline:2px solid var(--ds-blue-700);outline-offset:-2px;}
+@media(hover:hover){.tab:not(:disabled):hover{background:var(--ds-gray-100);}.tab[data-selected][data-variant=inset]:hover{background:transparent;}}
+.tab:not(:disabled):active{background:var(--ds-gray-200);}
+.tab[data-selected][data-variant=inset]:active{background:transparent;}
+@media(forced-colors:active){.tab{color:ButtonText;}.tab:disabled{color:GrayText;}.tab[data-selected][data-variant=inset]{color:HighlightText;forced-color-adjust:none;}.tab:focus-visible{outline-color:Highlight;}}

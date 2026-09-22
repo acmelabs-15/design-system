@@ -7,7 +7,7 @@ type Attribute = (typeof attributes)[number];
 type ReferenceAttribute = "aria-labelledby" | "aria-describedby" | "aria-controls";
 type Reference = Readonly<{ text: string | null; elements?: readonly Element[] }>;
 type State = Readonly<Record<Attribute, Reference>>;
-export type SemanticDefaults = Readonly<{ role?: string; label?: string; labelledByElements?: readonly Element[]; describedByElements?: readonly Element[] }>;
+export type SemanticDefaults = Readonly<{ role?: string; label?: string; labelledByElements?: readonly Element[]; describedByElements?: readonly Element[]; controlsElements?: readonly Element[] }>;
 const empty: State = Object.freeze(Object.fromEntries(attributes.map((name) => [name, Object.freeze({ text: null })])) as Record<Attribute, Reference>);
 const isAttribute = (name: string): name is Attribute => (attributes as readonly string[]).includes(name);
 
@@ -103,7 +103,14 @@ class SemanticAttributes implements ReactiveController {
       const reference = state[name];
       const authored = reference.text === null && !reference.elements ? null : [...this.resolve(reference)];
       if (name === "aria-describedby" && defaults.describedByElements?.length) this.target[property] = [...new Set([...(authored ?? []), ...defaults.describedByElements])];
-      else this.target[property] = authored ?? (name === "aria-labelledby" && state["aria-label"].text === null && defaults.labelledByElements?.length ? [...defaults.labelledByElements] : null);
+      else
+        this.target[property] =
+          authored ??
+          (name === "aria-controls"
+            ? (defaults.controlsElements ?? null)
+            : name === "aria-labelledby" && state["aria-label"].text === null && defaults.labelledByElements?.length
+              ? [...defaults.labelledByElements]
+              : null);
     }
   };
   private observe(): void {
