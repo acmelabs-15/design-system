@@ -7,8 +7,8 @@ export const doc: Doc = {
   tags: ["acme-theme-switcher"],
   examples: [
     { h: "Scoped appearance", html: "<acme-theme><acme-theme-switcher></acme-theme-switcher><p>This section follows the selected appearance.</p></acme-theme>", script },
-    { h: "Medium", html: '<acme-theme-switcher size="medium" value="light"></acme-theme-switcher>' },
-    { h: "Large", html: '<acme-theme-switcher size="large" value="dark"></acme-theme-switcher>' },
+    { h: "Medium", html: '<acme-theme appearance="light"><acme-theme-switcher size="medium" value="light"></acme-theme-switcher></acme-theme>', script },
+    { h: "Large", html: '<acme-theme appearance="dark"><acme-theme-switcher size="large" value="dark"></acme-theme-switcher></acme-theme>', script },
     { h: "Disabled", html: "<acme-theme-switcher disabled></acme-theme-switcher>" },
   ],
   practices: {
@@ -17,6 +17,8 @@ export const doc: Doc = {
       "The application owns preference persistence. A switcher does not write page settings or browser storage.",
       "Use small, medium or large sizes. Small is the default.",
       "Keep auto available when the application permits following the system preference.",
+      "Translate themeSwitcher.label, themeSwitcher.auto, themeSwitcher.light and themeSwitcher.dark through configureMessages. The current Theme locale selects the messages.",
+      "Without an application update, the control retains its previous selection. A canceled request does not save a preference.",
     ],
   },
 };

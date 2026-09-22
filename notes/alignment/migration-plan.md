@@ -205,3 +205,7 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 ### M10 Segmented Control and Switch — 2026-09-21
 
 [Combined acceptance](evidence/m10-segmented-switch-2026-09-21.json) records Segmented Control/Item and binary Switch, migrated Code Block/forms/docs callers, native/compiled checks and the retained Radio/Checkbox/Group/action regressions. Final selected-outline build, source/compiled and light/dark contrast checks pass. Implement Tabs and Theme Switcher to close M10. The parent reset and barred-control validity fixes are shared mechanisms verified through real consumers. Preserve the inset indicator's selected-state contrast in Tabs.
+
+### M10 Theme Switcher — 2026-09-21
+
+[Acceptance](evidence/m10-theme-switcher-2026-09-21.json) completes the application-owned appearance picker through actual Segmented Control/Group/indicator composition. Build/site, 900 tests, 18 Chromium and 17 Firefox/WebKit source/compiled checks, three live scoped examples and the application header pass. Tabs is the final M10 family; continue M11–M26 afterward.

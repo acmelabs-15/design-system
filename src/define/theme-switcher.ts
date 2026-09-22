@@ -2,6 +2,8 @@
 import "./dark-mode-icon";
 import "./desktop-windows-icon";
 import "./light-mode-icon";
+import "./segmented-control";
+import "./segmented-control-item";
 import "../components/theme-switcher/theme-switcher";
 import { AcmeThemeSwitcher } from "../components/theme-switcher/theme-switcher";
 

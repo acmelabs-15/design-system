@@ -74,7 +74,6 @@ const MAP: [string, RegExp][] = [
   ["middle-truncate", /^\.truncate-mid/],
   ["scroller", /^\.scroller/],
   ["slider", /^\.slider/],
-  ["theme-switcher", /^\.theme-switch/],
   ["book", /^\.book/],
   ["browser", /^\.browser/],
   ["calendar", /^(\.calendar|\.cal-)/],

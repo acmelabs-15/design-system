@@ -4,6 +4,7 @@
 import type { GeistMap, SpecNode } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "theme-switcher",
   component: "ThemeSwitcher",
   root: (n: SpecNode) => n.tag === "fieldset",

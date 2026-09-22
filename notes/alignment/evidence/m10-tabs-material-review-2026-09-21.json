@@ -247,5 +247,75 @@
     "Material containers are 48dp text-only and 64dp stacked icon plus label; these do not silently replace house spacing/density.",
     "The accessibility guidance distinguishes focus navigation and activation and warns against continuously looping a scroll surface. House automatic/manual activation follows the approved APG-style contract.",
     "Badge content, panels, app-bar placement and swipe interactions remain separate composition responsibilities. No automatic swipe gesture is added by this review."
-  ]
+  ],
+  "implementationSources": [
+    {
+      "url": "https://raw.githubusercontent.com/material-components/material-web/main/tabs/internal/tab.ts",
+      "sha256": "16fd0970f3a3e6e62e4270de65fae5c9a9b15adb3ceeae496ae6108c7371332e",
+      "lines": 214
+    },
+    {
+      "url": "https://raw.githubusercontent.com/material-components/material-web/main/tabs/internal/tabs.ts",
+      "sha256": "f117bd66694b20ace41086fc02e852fdcb8dbedba933f2d7abe6f1b5bf614c96",
+      "lines": 319
+    },
+    {
+      "url": "https://raw.githubusercontent.com/material-components/material-web/main/docs/components/tabs.md",
+      "sha256": "a467a4d710246d894509fb1df01e4ab735e61cc254df8729085622958d3e1c1b",
+      "lines": 443
+    }
+  ],
+  "behaviorReference": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+  "implementationFindings": [
+    "Material Web uses ElementInternals roles on the tab/list hosts and presentation divs; it is not a native-button implementation.",
+    "Its autoActivate defaults false and its slot-change handler chooses a replacement when active is missing. House automatic default and one-time initial selection remain the approved contract.",
+    "Its per-tab indicator uses a timed 250ms animation. House motion stays in the shared spring indicator.",
+    "Material Web documents external panels with aria-controls and aria-labelledby; house registration must establish these relationships across its chosen shadow boundaries."
+  ],
+  "relationshipProbe": {
+    "directPrivateTarget": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "controls": true,
+        "labelledBy": true,
+        "accessibility": true
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "controls": true,
+        "labelledBy": true
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "controls": true,
+        "labelledBy": false
+      }
+    ],
+    "publicHostTarget": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "controls": true,
+        "labelledBy": true,
+        "accessibility": true
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "controls": true,
+        "labelledBy": true
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "controls": true,
+        "labelledBy": true
+      }
+    ],
+    "finding": "A panel default label reference directly into its sibling Tab shadow root is retained by Chromium/Firefox but filtered by WebKit. Referencing the public Tab host passes all three engines; Chromium also computes the icon-only native button name through that host and exposes controls/label relationships.",
+    "limits": "These bare-element checks are a mechanism prerequisite. Actual family integration and actual speech output remain to verify."
+  }
 }
