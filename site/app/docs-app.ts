@@ -220,10 +220,10 @@ export class DocsFormDemo extends LitElement {
         this.form.api.handleSubmit();
       }}
     >
-      ${this.form.field({ name: "name", validators: { onChange: ({ value }) => (value.length < 2 ? "Name needs two characters." : undefined) } }, (f) => html`<acme-input label="Name" placeholder="Ada Lovelace" ${bindField(f)}></acme-input>`)}
-      ${this.form.field({ name: "email", validators: { onChange: ({ value }) => (/@/.test(value) ? undefined : "Enter an email address.") } }, (f) => html`<acme-input label="Email" type="email" placeholder="ada@acme.dev" ${bindField(f)}></acme-input>`)}
+      ${this.form.field({ name: "name", validators: { onChange: ({ value }) => (value.length < 2 ? "Name needs two characters." : undefined) } }, (f) => html`<acme-field .invalid=${f.state.meta.isTouched && !f.state.meta.isValid}><span slot="label">Name</span><acme-input name="name" placeholder="Ada Lovelace" ${bindField(f)}></acme-input><span slot="error">${f.state.meta.errors.join(" ")}</span></acme-field>`)}
+      ${this.form.field({ name: "email", validators: { onChange: ({ value }) => (/@/.test(value) ? undefined : "Enter an email address.") } }, (f) => html`<acme-field .invalid=${f.state.meta.isTouched && !f.state.meta.isValid}><span slot="label">Email</span><acme-input name="email" type="email" placeholder="ada@acme.dev" ${bindField(f)}></acme-input><span slot="error">${f.state.meta.errors.join(" ")}</span></acme-field>`)}
       ${this.form.field({ name: "plan" }, (f) => html`<acme-select label="Plan" options='["hobby","pro","enterprise"]' ${bindField(f)}></acme-select>`)}
-      ${this.form.field({ name: "updates" }, (f) => html`<acme-switch aria-label="Product updates" ${bindField(f)}></acme-switch>`)}
+      ${this.form.field({ name: "updates" }, (f) => html`<acme-switch name="updates" aria-label="Product updates" ${bindField(f)}></acme-switch>`)}
       <div><acme-button type="submit" variant="default" ?disabled=${!this.form.api.state.canSubmit}>Create Account</acme-button></div>
     </form>`;
   }

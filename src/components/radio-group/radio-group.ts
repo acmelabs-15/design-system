@@ -14,7 +14,7 @@ export class AcmeRadioGroup extends AcmeSingleSelectionGroup {
   static styles = [...AcmeSingleSelectionGroup.styles, radioGroupStructureCss];
   @atomState() private direction: "horizontal" | "vertical" = "vertical";
   /** @default "vertical" */
-  @property({ noAccessor: true, converter: optionalString }) get orientation() {
+  @property({ noAccessor: true, converter: optionalString }) get orientation(): "horizontal" | "vertical" {
     return this.direction;
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {

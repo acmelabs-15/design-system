@@ -8,6 +8,7 @@
 import { type GeistMap, type SpecNode } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "search-input",
   element: "search",
   component: "SearchInput",

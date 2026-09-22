@@ -55,12 +55,12 @@ export const doc: Doc = {
     },
     {
       h: "Focus an input on open",
-      html: `${open}<acme-modal heading="Invite Member" initial-focus="#invite-name"><p slot="subtitle">On both desktop and the mobile bottom sheet, the Name field receives focus when the Modal opens so the user can start typing immediately.</p><div class="vstack" style="gap:12px"><acme-input id="invite-name" label="Name" placeholder="Jane Doe"></acme-input></div>${actions("Send Invite")}</acme-modal>`,
+      html: `${open}<acme-modal heading="Invite Member" initial-focus="#invite-name"><p slot="subtitle">On both desktop and the mobile bottom sheet, the Name field receives focus when the Modal opens so the user can start typing immediately.</p><div class="vstack" style="gap:12px"><acme-field><span slot="label">Name</span><acme-input id="invite-name" placeholder="Jane Doe"></acme-input></acme-field></div>${actions("Send Invite")}</acme-modal>`,
       script: wire,
     },
     {
       h: "Mobile sheet with inputs",
-      html: `${open}<acme-modal heading="Invite Member"><p slot="subtitle">On a mobile viewport this opens as a bottom sheet. Verify that both inputs receive focus and accept keyboard input.</p><div class="vstack" style="gap:12px"><acme-input label="Name" placeholder="Jane Doe"></acme-input><acme-input label="Email" placeholder="jane@example.com"></acme-input></div>${actions("Send Invite")}</acme-modal>`,
+      html: `${open}<acme-modal heading="Invite Member"><p slot="subtitle">On a mobile viewport this opens as a bottom sheet. Verify that both inputs receive focus and accept keyboard input.</p><div class="vstack" style="gap:12px"><acme-field><span slot="label">Name</span><acme-input placeholder="Jane Doe"></acme-input></acme-field><acme-field><span slot="label">Email</span><acme-input placeholder="jane@example.com"></acme-input></acme-field></div>${actions("Send Invite")}</acme-modal>`,
       script: wire,
     },
     {

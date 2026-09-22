@@ -48,7 +48,7 @@ export abstract class AcmeSingleSelectionGroup extends AcmeFormElement<string | 
   private readonly registry = new SelectionRegistry(this, this.owner);
   protected readonly requiredState = createAtom(() => this.required || this.members.some((member) => member.required()));
   private readonly requiredChanges = new StoreSelector(this, () => this.requiredState);
-  protected readonly nativeForm = new NativeFormController<string | undefined, Members>(this, {
+  protected readonly nativeForm: NativeFormController<string | undefined, Members> = new NativeFormController<string | undefined, Members>(this, {
     initialValue: undefined,
     normalize: valueOf,
     valueAttribute: "value",
@@ -97,7 +97,7 @@ export abstract class AcmeSingleSelectionGroup extends AcmeFormElement<string | 
       return result.flags.valueMissing ? { flags: result.flags, message: message(this.themeContext.scope.effective.get().locale, "radioGroup.required", "Select an option.") } : result;
     },
   });
-  private readonly navigation = new RadioNavigation(this, {
+  private readonly navigation: RadioNavigation = new RadioNavigation(this, {
     members: () => this.members,
     value: () => this.value,
     disabled: () => this.nativeForm.effectiveDisabled,

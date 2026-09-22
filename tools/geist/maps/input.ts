@@ -21,6 +21,7 @@ import { type GeistMap, has, type SpecNode } from "../gen";
 const flag = (cls: string, yes = "true", no = "false") => (n: SpecNode) => (has(cls)(n) ? yes : no);
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "input",
   component: ["Input", "SearchInput"],
   root: "data-geist-input-wrapper",

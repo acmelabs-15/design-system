@@ -1,31 +1,15 @@
-// Docs page: Search Input — mirrors https://vercel.com/geist/search-input
 import type { Doc } from "../../site";
-
 export const doc: Doc = {
   id: "search-input",
-  title: "Search Input",
-  lede: "A ready-made search field with a magnifying glass and a clear button.",
+  title: "Search",
+  lede: "A native search field with a search icon and a clear action.",
   tags: ["acme-search"],
   examples: [
-    {
-      h: "Default",
-      html: `<acme-search aria-label="Search" placeholder="Enter some text..."></acme-search>`,
-    },
-    {
-      h: "With Cmdk",
-      html: `<acme-search aria-label="Search" cmdk placeholder="Enter some text..."></acme-search>`,
-    },
-    {
-      h: "Disabled",
-      html: `<acme-search aria-label="Search" cmdk disabled placeholder="Enter some text..."></acme-search>`,
-    },
-    {
-      h: "Loading",
-      html: `<acme-search aria-label="Search" loading placeholder="Enter some text..." value="Project A"></acme-search>`,
-    },
-    {
-      h: "Custom Prefix",
-      html: `<acme-search aria-label="Search" placeholder="Enter some text..."><acme-auto-awesome-icon slot="start" style="color:currentColor" size="16px"></acme-auto-awesome-icon></acme-search>`,
-    },
+    { h: "Default", html: '<acme-search aria-label="Search projects" placeholder="Project name"></acme-search>' },
+    { h: "Value", html: '<acme-search aria-label="Search projects" value="Project A"></acme-search>' },
+    { h: "Disabled", html: '<acme-search disabled aria-label="Search projects" placeholder="Project name"></acme-search>' },
+    { h: "Loading", html: '<acme-search loading aria-label="Search projects" value="Project A"></acme-search>' },
+    { h: "Custom start", html: '<acme-search aria-label="Search favorites"><acme-star-icon slot="start"></acme-star-icon></acme-search>' },
+    { h: "Without clear", html: '<acme-search clearable="false" aria-label="Search projects" value="Project A"></acme-search>' },
   ],
 };

@@ -1,8 +1,0 @@
-/* A flex column: the wrapper is its flex item, as it is in the stacks the field usually sits in, and fills the host width. */
-      :host {
-        display: flex;
-        flex-direction: column;
-      }
-      .field {
-        display: block;
-      }

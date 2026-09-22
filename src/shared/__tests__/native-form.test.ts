@@ -172,3 +172,16 @@ test("Field context masks participation without overwriting authored disability 
   expect(f.form.value).toBe("edited");
   expect(f.submitted).toBe("edited");
 });
+
+test("native text normalization retains the raw reset default", () => {
+  const f = fixture({ normalize: (value) => String(value).trim(), normalizeDefault: String });
+  f.form.attributeChanged("value", null, "  reset  ");
+  expect(f.form.defaultValue).toBe("  reset  ");
+  expect(f.form.value).toBe("reset");
+  f.form.setValue("  edited  ");
+  expect(f.form.value).toBe("edited");
+  expect(f.form.defaultValue).toBe("  reset  ");
+  f.form.formResetCallback();
+  expect(f.form.value).toBe("reset");
+  expect(f.form.defaultValue).toBe("  reset  ");
+});

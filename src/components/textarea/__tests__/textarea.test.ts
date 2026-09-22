@@ -1,48 +1,55 @@
-import { describe, expect, test } from "bun:test";
+import { expect, test } from "bun:test";
 import "../../../all";
-import type { AcmeTextarea } from "../textarea";
-
-const mount = async (markup: string) => {
-  document.body.innerHTML = markup;
-  const el = document.body.querySelector("acme-textarea") as AcmeTextarea;
+test("Textarea carries multiline constraints and separate reset state", async () => {
+  const el = document.createElement("acme-textarea");
+  el.setAttribute("value", "first");
+  document.body.append(el);
   await el.updateComplete;
-  return el;
-};
+  const native = el.shadowRoot!.querySelector("textarea")!;
+  expect(native.getAttribute("rows")).toBe("3");
+  el.rows = 5;
+  el.wrap = "hard";
+  expect(native.getAttribute("rows")).toBe("5");
+  expect(native.wrap).toBe("hard");
+  el.value = "second";
+  expect(native.value).toBe("second");
+  expect(el.defaultValue).toBe("first");
+  el.formResetCallback();
+  expect(el.value).toBe("first");
+  expect(() => {
+    el.rows = 0;
+  }).toThrow();
+  el.remove();
+});
+test("Textarea editing and disabled state use the canonical native contract", async () => {
+  const el = document.createElement("acme-textarea");
+  document.body.append(el);
+  await el.updateComplete;
+  let edits = 0;
+  el.addEventListener("acme-input", () => edits++);
+  const native = el.shadowRoot!.querySelector("textarea")!;
+  native.value = "edit";
+  native.dispatchEvent(new Event("input"));
+  expect(el.value).toBe("edit");
+  expect(edits).toBe(1);
+  el.disabled = true;
+  native.value = "ignored";
+  native.dispatchEvent(new Event("input"));
+  expect(el.value).toBe("edit");
+  expect(edits).toBe(1);
+  el.remove();
+});
 
-describe("acme-textarea", () => {
-  test("renders a label root around the wrapper and the textarea; aria-label, placeholder, value and min-height reach it", async () => {
-    const el = await mount(`<acme-textarea aria-label="Default" placeholder="Write" value="Lorem" min-height="100"></acme-textarea>`);
-    const sr = el.shadowRoot!;
-    expect(sr.querySelector("label.field > .wrap > textarea")).not.toBeNull();
-    const ta = sr.querySelector("textarea") as HTMLTextAreaElement;
-    expect(ta.getAttribute("aria-label")).toBe("Default");
-    expect(ta.placeholder).toBe("Write");
-    expect(ta.value).toBe("Lorem");
-    expect(ta.getAttribute("style")).toBe("min-height:100px");
-    expect(sr.querySelector(".wrap")!.className.trim()).toBe("wrap");
-  });
-  test("error paints aria-invalid, the message under the wrapper and the size class", async () => {
-    const el = await mount(`<acme-textarea error="There has been an error." size="large"></acme-textarea>`);
-    const sr = el.shadowRoot!;
-    expect(sr.querySelector("textarea")!.getAttribute("aria-invalid")).toBe("true");
-    expect(sr.querySelector(".wrap")!.className.trim()).toBe("wrap lg error");
-    const err = sr.querySelector(".field > acme-error") as HTMLElement;
-    expect(err.textContent).toBe("There has been an error.");
-    expect(err.getAttribute("size")).toBe("large");
-  });
-  test("disabled, readonly and rows reach the textarea; input events carry the value", async () => {
-    const el = await mount(`<acme-textarea disabled readonly rows="5"></acme-textarea>`);
-    const ta = el.shadowRoot!.querySelector("textarea") as HTMLTextAreaElement;
-    expect(ta.disabled).toBe(true);
-    expect(ta.readOnly).toBe(true);
-    expect(ta.getAttribute("rows")).toBe("5");
-    let got = "";
-    el.addEventListener("acme-input", (e) => {
-      got = (e as CustomEvent).detail.value;
-    });
-    ta.value = "x";
-    ta.dispatchEvent(new Event("input", { bubbles: true }));
-    expect(got).toBe("x");
-    expect(el.value).toBe("x");
-  });
+test("removing configuration attributes restores defaults", async () => {
+  const el = document.createElement("acme-textarea");
+  el.setAttribute("rows", "7");
+  el.setAttribute("wrap", "hard");
+  el.setAttribute("resize", "both");
+  document.body.append(el);
+  await el.updateComplete;
+  for (const attr of ["rows", "wrap", "resize"]) el.removeAttribute(attr);
+  expect(el.rows).toBe(3);
+  expect(el.wrap).toBe("soft");
+  expect(el.resize).toBe("vertical");
+  el.remove();
 });

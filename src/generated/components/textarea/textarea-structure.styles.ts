@@ -1,6 +1,29 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-export const textareaStructureCss = css`:host, .field {
+export const textareaStructureCss = css`.root {
+  align-items: stretch;
+}
+
+.native {
+  resize: vertical;
+  border-radius: inherit;
+  block-size: var(--acme-textarea-height, auto);
+  min-block-size: var(--acme-textarea-min, calc(var(--acme-control-line) * var(--acme-textarea-rows, 3) + 20px));
+  max-block-size: var(--acme-textarea-max, none);
+  padding-block: 10px;
   display: block;
+  overflow: auto;
+}
+
+.root[data-resize="none"] .native {
+  resize: none;
+}
+
+.root[data-resize="horizontal"] .native {
+  resize: horizontal;
+}
+
+.root[data-resize="both"] .native {
+  resize: both;
 }
 `;

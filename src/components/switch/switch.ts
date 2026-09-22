@@ -24,7 +24,7 @@ export class AcmeSwitch extends AcmeSelectionControl {
     return "small" as const;
   }
   /** @default "small" */
-  @property({ noAccessor: true, converter: optionalString }) get size() {
+  @property({ noAccessor: true, converter: optionalString }) get size(): "small" | "medium" | "large" {
     return super.size;
   }
   set size(value: "small" | "medium" | "large" | undefined) {
@@ -32,7 +32,7 @@ export class AcmeSwitch extends AcmeSelectionControl {
   }
   @atomState() private position: "start" | "end" = "start";
   /** @default "start" */
-  @property({ noAccessor: true, attribute: "label-position", converter: optionalString }) get labelPosition() {
+  @property({ noAccessor: true, attribute: "label-position", converter: optionalString }) get labelPosition(): "start" | "end" {
     return this.position;
   }
   set labelPosition(value: "start" | "end" | undefined) {

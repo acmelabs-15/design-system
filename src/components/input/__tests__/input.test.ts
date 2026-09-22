@@ -1,91 +1,87 @@
-import { describe, expect, test } from "bun:test";
+import { expect, test } from "bun:test";
 import "../../../all";
-import type { AcmeInput } from "../input";
-
 const mount = async (markup: string) => {
   document.body.innerHTML = markup;
-  const el = document.body.querySelector("acme-input") as AcmeInput;
+  const el = document.querySelector("acme-input")!;
   await el.updateComplete;
   return el;
 };
-const wrap = (el: AcmeInput) => el.shadowRoot!.querySelector(".wrap") as HTMLElement;
-// The class list as a sorted set: the order classMap writes them follows the render that added each, which carries no meaning.
-const classes = (el: HTMLElement) => Array.from(el.classList).sort().join(" ");
+test("Input carries canonical value, constraints and Field presentation to one native target", async () => {
+  const el = await mount('<acme-input aria-label="Email" type="email" required invalid size="large" placeholder="Address" value="first"></acme-input>');
+  const input = el.shadowRoot!.querySelector("input")!;
+  expect(input.type).toBe("email");
+  expect(input.required).toBe(true);
+  expect(input.placeholder).toBe("Address");
+  expect(input.getAttribute("aria-label")).toBe("Email");
+  expect(input.getAttribute("aria-invalid")).toBe("true");
+  el.value = "next";
+  expect(input.value).toBe("next");
+  expect(el.defaultValue).toBe("first");
+  el.formResetCallback();
+  expect(el.value).toBe("first");
+});
+test("all four affix positions retain independent author content", async () => {
+  const el = await mount('<acme-input><span slot="start">Inside</span><button slot="start-addon">Outside</button><span slot="end">End</span><button slot="end-addon">Action</button></acme-input>');
+  for (const name of ["start", "start-addon", "end", "end-addon"]) expect(el.shadowRoot!.querySelector(`slot[name="${name}"]`)).not.toBeNull();
+  expect(el.querySelectorAll("button")).toHaveLength(2);
+  expect(el.shadowRoot!.querySelector("[aria-hidden]")).toBeNull();
+});
+test("user input and commit have distinct events, programmatic writes stay silent", async () => {
+  const el = await mount("<acme-input clearable></acme-input>");
+  const seen: unknown[] = [];
+  for (const event of ["acme-input", "acme-change"]) el.addEventListener(event, (e) => seen.push([event, (e as CustomEvent).detail.value]));
+  el.value = "silent";
+  expect(seen).toEqual([]);
+  const input = el.shadowRoot!.querySelector("input")!;
+  input.value = "edit";
+  input.dispatchEvent(new Event("input"));
+  expect(seen).toEqual([["acme-input", "edit"]]);
+  input.dispatchEvent(new Event("change"));
+  expect(seen).toEqual([
+    ["acme-input", "edit"],
+    ["acme-change", "edit"],
+  ]);
+  seen.length = 0;
+  el.clear();
+  expect(seen).toEqual([
+    ["acme-input", ""],
+    ["acme-change", ""],
+  ]);
+  el.clear();
+  expect(seen).toHaveLength(2);
+});
+test("disabled and readonly block clear without overwriting current state", async () => {
+  const el = await mount('<acme-input value="keep" disabled></acme-input>');
+  el.clear();
+  expect(el.value).toBe("keep");
+  el.disabled = false;
+  el.readOnly = true;
+  el.clear();
+  expect(el.value).toBe("keep");
+  el.readOnly = false;
+  el.clear();
+  expect(el.value).toBe("");
+});
+test("type and string constraints reject unsupported API values", async () => {
+  const el = await mount("<acme-input></acme-input>");
+  expect(() => {
+    el.type = "number" as never;
+  }).toThrow();
+  expect(() => {
+    el.minLength = -2;
+  }).toThrow();
+  expect(() => {
+    el.maxLength = 1.5;
+  }).toThrow();
+  el.pattern = "[A-Z]+";
+  expect(el.shadowRoot!.querySelector("input")!.pattern).toBe("[A-Z]+");
+  el.pattern = "";
+  expect(el.shadowRoot!.querySelector("input")!.hasAttribute("pattern")).toBe(false);
+});
 
-describe("acme-input", () => {
-  test("renders the wrapper with the field first; size, label, error and disabled reach the DOM", async () => {
-    const el = await mount(`<acme-input size="small" label="Label" error="An error message." disabled placeholder="Email"></acme-input>`);
-    const w = wrap(el);
-    expect(classes(w)).toBe("error sm wrap");
-    expect(w.firstElementChild!.tagName).toBe("INPUT");
-    const input = w.querySelector("input") as HTMLInputElement;
-    expect(input.disabled).toBe(true);
-    expect(input.getAttribute("aria-invalid")).toBe("true");
-    expect(input.placeholder).toBe("Email");
-    const field = el.shadowRoot!.querySelector("label.field") as HTMLLabelElement;
-    expect(field.querySelector(".text")!.textContent).toBe("Label");
-    expect(field.getAttribute("for")).toBe(input.id);
-    const err = el.shadowRoot!.querySelector("acme-error") as HTMLElement;
-    expect(err.textContent).toBe("An error message.");
-    expect(err.getAttribute("size")).toBe("small");
-  });
-  test("each side renders one cell, whichever of its two places is occupied", async () => {
-    const el = await mount(`<acme-input rounded><span slot="start-addon">www.</span><span slot="end-addon">.com</span></acme-input>`);
-    const w = wrap(el);
-    expect(classes(w)).toBe("has-end has-start rounded wrap");
-    const kids = Array.from(w.children);
-    expect(kids.map((k) => k.tagName)).toEqual(["INPUT", "LABEL", "LABEL"]);
-    expect(kids[1].className).toBe("start");
-    expect(kids[2].className).toBe("end");
-    expect(kids[2].getAttribute("aria-hidden")).toBe("true");
-    expect(w.querySelector(".start > slot[name=start-addon]")).not.toBeNull();
-    expect(w.querySelector(".end > slot[name=end-addon]")).not.toBeNull();
-  });
-  test("an in-field place uses the same cell and marks the side inside", async () => {
-    const el = await mount(`<acme-input><svg slot="start"></svg><svg slot="end"></svg></acme-input>`);
-    const w = wrap(el);
-    // The cell is the same box either way; `start-inside` and `end-inside` carry the ground and the hairline.
-    expect(classes(w)).toBe("end-inside has-end has-start start-inside wrap");
-    expect(w.querySelector(".start > slot[name=start]")).not.toBeNull();
-    expect(w.querySelector(".end > slot[name=end]")).not.toBeNull();
-  });
-  test("the sides are independent: an add-on at the start, an in-field place at the end", async () => {
-    const el = await mount(`<acme-input><span slot="start-addon">vercel/</span><svg slot="end"></svg></acme-input>`);
-    const w = wrap(el);
-    expect(classes(w)).toBe("end-inside has-end has-start wrap");
-    expect(w.querySelector(".start > slot[name=start-addon]")).not.toBeNull();
-    expect(w.querySelector(".end > slot[name=end]")).not.toBeNull();
-  });
-  test("an add-on wins its side, so the two places never render together", async () => {
-    const el = await mount(`<acme-input><span slot="end-addon">.com</span><svg slot="end"></svg></acme-input>`);
-    const w = wrap(el);
-    expect(classes(w)).toBe("has-end wrap");
-    expect(Array.from(w.children).map((k) => k.tagName)).toEqual(["INPUT", "LABEL"]);
-    expect(w.querySelector(".end > slot[name=end-addon]")).not.toBeNull();
-    expect(w.querySelector("slot[name=end]")).toBeNull();
-  });
-  test("a side with nothing in it renders no cell at all", async () => {
-    const el = await mount(`<acme-input><svg slot="end"></svg></acme-input>`);
-    const w = wrap(el);
-    expect(classes(w)).toBe("end-inside has-end wrap");
-    expect(Array.from(w.children).map((k) => k.tagName)).toEqual(["INPUT", "LABEL"]);
-    expect(w.querySelector(".start")).toBeNull();
-  });
-  test("input events carry the value; width and the large icon size land on the wrapper", async () => {
-    const el = await mount(`<acme-input size="large" width="221px"></acme-input>`);
-    expect(wrap(el).getAttribute("style")).toContain("--acme-icon-size:24px");
-    expect(wrap(el).getAttribute("style")).toContain("width:221px");
-    const seen: string[] = [];
-    el.addEventListener("acme-input", (e) => seen.push((e as CustomEvent).detail.value));
-    const input = wrap(el).querySelector("input") as HTMLInputElement;
-    input.value = "hi";
-    input.dispatchEvent(new Event("input", { bubbles: true }));
-    expect(el.value).toBe("hi");
-    expect(seen).toEqual(["hi"]);
-  });
-  test("hover lands on the wrapper as data-hover", async () => {
-    const el = await mount(`<acme-input></acme-input>`);
-    wrap(el).dispatchEvent(new PointerEvent("pointerenter", { pointerType: "mouse" }));
-    expect(wrap(el).getAttribute("data-hover")).toBe("true");
-  });
+test("removing type restores native text behavior", async () => {
+  const el = await mount('<acme-input type="email"></acme-input>');
+  el.removeAttribute("type");
+  expect(el.type).toBe("text");
+  expect(el.shadowRoot!.querySelector("input")!.type).toBe("text");
 });

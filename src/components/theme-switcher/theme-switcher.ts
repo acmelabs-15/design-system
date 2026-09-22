@@ -17,7 +17,7 @@ export class AcmeThemeSwitcher extends AcmeSemanticElement {
   static styles = [sharedCss, themeSwitcherStructureCss];
   @atomState() private preference: ThemeAppearance = "auto";
   /** @default "auto" */
-  @property({ noAccessor: true, converter: optionalString }) get value() {
+  @property({ noAccessor: true, converter: optionalString }) get value(): ThemeAppearance {
     return this.preference;
   }
   set value(value: ThemeAppearance | undefined) {
@@ -29,7 +29,7 @@ export class AcmeThemeSwitcher extends AcmeSemanticElement {
   }
   @atomState() private controlSize: "small" | "medium" | "large" = "small";
   /** @default "small" */
-  @property({ noAccessor: true, converter: optionalString }) get size() {
+  @property({ noAccessor: true, converter: optionalString }) get size(): "small" | "medium" | "large" {
     return this.controlSize;
   }
   set size(value: "small" | "medium" | "large" | undefined) {

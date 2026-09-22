@@ -3,6 +3,7 @@
 import { type GeistMap, type SpecNode } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "textarea",
   component: "Textarea",
   root: "data-geist-textarea-wrapper",

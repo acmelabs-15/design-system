@@ -94,13 +94,13 @@ test("the manifest matches every registered Lit class and its runtime property a
       expect(element.attributes?.find((attribute) => attribute.fieldName === name)?.name ?? false).toBe(expected);
     }
   }
-  for (const tag of ["acme-clearable-input", "acme-search"])
+  for (const tag of ["acme-input", "acme-search", "acme-textarea"])
     expect(
       elements
         .find((element) => element.tagName === tag)!
         .events!.map((event) => event.name)
         .sort(),
-    ).toEqual(["acme-change", "acme-clear", "acme-input"]);
+    ).toEqual(["acme-change", "acme-input"]);
 }, 30000);
 
 test("manifest facts cover conditional events, event variables, slots and forwarded parts", async () => {

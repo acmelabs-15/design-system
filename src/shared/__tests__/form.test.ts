@@ -17,22 +17,22 @@ customElements.define("test-form", TestForm);
 const tick = () => new Promise((r) => setTimeout(r, 0));
 
 describe("bindField", () => {
-  test("pushes input events into the field and errors back into the element", async () => {
+  test("pushes input events into the field and invalid presentation back into the control", async () => {
     document.body.innerHTML = "<test-form></test-form>";
     const host = document.body.firstElementChild as TestForm;
     await host.updateComplete;
-    const input = host.shadowRoot!.querySelector("acme-input") as HTMLElement & { value: string; error: string };
+    const input = host.shadowRoot!.querySelector("acme-input") as HTMLElement & { value: string; invalid: boolean };
     expect(input.value).toBe("");
     input.dispatchEvent(new CustomEvent("acme-input", { detail: { value: "A" }, bubbles: true }));
-    input.dispatchEvent(new Event("blur"));
+    input.dispatchEvent(new FocusEvent("focusout"));
     await tick();
     await host.updateComplete;
     expect(host.form.api.getFieldValue("name")).toBe("A");
-    expect(input.error).toBe("Too short.");
+    expect(input.invalid).toBe(true);
     input.dispatchEvent(new CustomEvent("acme-input", { detail: { value: "Ada" }, bubbles: true }));
     await tick();
     await host.updateComplete;
-    expect(input.error).toBe("");
+    expect(input.invalid).toBe(false);
   });
 
   test("binds booleans to checked", async () => {
@@ -45,4 +45,24 @@ describe("bindField", () => {
     await tick();
     expect(host.form.api.getFieldValue("agree")).toBe(true);
   });
+});
+
+test("binding observes field updates, releases on disconnect and resubscribes", async () => {
+  document.body.innerHTML = "<test-form></test-form>";
+  const host = document.body.firstElementChild as TestForm;
+  await host.updateComplete;
+  await tick();
+  const input = host.shadowRoot!.querySelector("acme-input")!;
+  host.form.api.setFieldValue("name", "Direct");
+  expect(input.value).toBe("Direct");
+  host.remove();
+  host.form.api.setFieldValue("name", "Detached");
+  expect(input.value).toBe("Direct");
+  document.body.append(host);
+  await tick();
+  await host.updateComplete;
+  expect(host.shadowRoot!.querySelector("acme-input")!.value).toBe("Detached");
+  host.form.api.reset();
+  expect(host.shadowRoot!.querySelector("acme-input")!.value).toBe("");
+  host.remove();
 });

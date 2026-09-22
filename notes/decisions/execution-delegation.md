@@ -85,3 +85,9 @@ Renderer adapters provide the stable native child before connection, so React ow
 Keep Field required/optional as the approved label presentation and keep native required on the value control. Field invalid supplies presentation and active error association; native validity stays with the control. One Field can name one registered logical value owner, including a composite root or a native input/select/textarea. Explicit control naming and native labels remain authoritative. Help/errors supplement existing descriptions.
 
 Use public element references where their scope is valid and retain scoped text mirrors for the remaining boundary. Transfer registry ownership before re-associating a moved control. Field disabled supplies a reversible context without replacing the control's own state. [Implementation evidence](../alignment/evidence/m11-field-2026-09-22.json).
+
+## Text control implementation details — 2026-09-22
+
+Under the delegated execution authority, retain raw string reset defaults separately from browser-sanitized current values. Preserve native event meanings and native textarea hard-wrap serialization. Bridge the native input's implicit submit action to the outer form using its default submitter, including cancellation and disabled-default behavior.
+
+Expose all four approved affix slots together rather than discarding inside content when an outside add-on is present. This replaces the earlier one-cell precedence implementation in input-affix-api.md. Each outside action retains its own focus; Group still owns sibling attachment. The visible control boundary uses gray-700, following the selection-family contrast correction; final rendered contrast is checked before acceptance. Search and Password Input reuse the single-line implementation with fixed native types. Clearable Input is removed; Input owns clearable behavior. [Implementation analysis](../analysis/lit-practice-review.md#m11-text-control-implementation--2026-09-22).

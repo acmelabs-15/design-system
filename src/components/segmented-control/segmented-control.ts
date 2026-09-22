@@ -16,7 +16,7 @@ export class AcmeSegmentedControl extends AcmeSingleSelectionGroup {
   static styles = [...AcmeSingleSelectionGroup.styles, segmentedControlStructureCss];
   @atomState() private direction: "horizontal" | "vertical" = "horizontal";
   /** @default "horizontal" */
-  @property({ noAccessor: true, converter: optionalString }) get orientation() {
+  @property({ noAccessor: true, converter: optionalString }) get orientation(): "horizontal" | "vertical" {
     return this.direction;
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {
@@ -28,7 +28,7 @@ export class AcmeSegmentedControl extends AcmeSingleSelectionGroup {
   }
   @atomState() private controlSize: "small" | "medium" | "large" = "medium";
   /** @default "medium" */
-  @property({ noAccessor: true, converter: optionalString }) get size() {
+  @property({ noAccessor: true, converter: optionalString }) get size(): "small" | "medium" | "large" {
     return this.controlSize;
   }
   set size(value: "small" | "medium" | "large" | undefined) {

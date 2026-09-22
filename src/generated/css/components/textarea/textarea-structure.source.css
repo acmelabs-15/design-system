@@ -1,6 +1,5 @@
-:host {
-        display: block;
-      }
-      .field {
-        display: block;
-      }
+.root{align-items:stretch;}
+.native{display:block;padding-block:10px;resize:vertical;border-radius:inherit;block-size:var(--acme-textarea-height,auto);min-block-size:var(--acme-textarea-min,calc(var(--acme-control-line) * var(--acme-textarea-rows,3) + 20px));max-block-size:var(--acme-textarea-max,none);overflow:auto;}
+.root[data-resize=none] .native{resize:none;}
+.root[data-resize=horizontal] .native{resize:horizontal;}
+.root[data-resize=both] .native{resize:both;}

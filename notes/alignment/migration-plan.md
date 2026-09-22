@@ -233,3 +233,9 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 ### M11 Field acceptance — 2026-09-22
 
 [Field acceptance](evidence/m11-field-2026-09-22.json) passes build/site, 901 tests, native/compiled checks and live form actions. It reuses the registry/association and canonical NativeFormController. Continue the text-control family, Clearable Input removal and the managed-form adapter. New text controls must register through this Field path rather than own duplicate label/help/error presentation.
+
+### M11 text and managed-form acceptance — 2026-09-22
+
+Input, Search, Password Input and Textarea use the shared native string owner, Field semantics and Group attachment. Clearable Input and control-owned label/error interfaces are removed; examples use Field and the clearable Input action. Slider's retained numeric entry uses the new text Input with decimal input mode; M13 replaces its composition with Number Input as assigned. Managed forms use a typed field-store binding with subscription cleanup and separate Field error presentation. [Final text/managed-form acceptance](evidence/m11-text-controls-2026-09-22.json) closes M11: strict package build, site and all 896 tests pass; every engine passes 38 source/compiled text checks, ten source/compiled managed-form checks and seven live documentation flows. Continue M12.
+
+The build now enforces strict TypeScript. The final audit found widened getter types and cyclic controller inference in M10/M11; explicit types correct them. The six M10 files produce identical JavaScript before and after these type corrections. No old interface is restored.

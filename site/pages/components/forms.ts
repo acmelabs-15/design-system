@@ -1,56 +1,31 @@
-// Docs page: Forms (house guidance on TanStack Form with the acme inputs)
 import type { Doc } from "../../site";
-
 export const doc: Doc = {
   id: "forms",
   title: "Forms",
-  lede: "How a Lit app binds the acme inputs to TanStack Form. The package exports TanStackFormController and a bindField directive that wires value, error, input and blur in one call. A house page; Geist has no page for it.",
-  tags: [],
   house: true,
+  tags: [],
+  lede: "Use native forms directly, or connect canonical control values to TanStack Form with bindField.",
   examples: [
     {
-      h: "A form with validation",
-      p: "Validation runs on change with a debounced async check; the error text lands in the input's error attribute. Submit is disabled while the form cannot submit.",
-      html: `<docs-form-demo></docs-form-demo>`,
-      code: `import { LitElement, html } from "lit";
-import { customElement } from "lit/decorators.js";
-import { TanStackFormController, bindField } from "@acmelabs/design-system";
-import "@acmelabs/design-system/define/input";
-import "@acmelabs/design-system/define/select";
-import "@acmelabs/design-system/define/toggle";
-import "@acmelabs/design-system/define/button";
-
-@customElement("signup-form")
-export class SignupForm extends LitElement {
-  form = new TanStackFormController(this, {
-    defaultValues: { name: "", email: "", plan: "hobby", updates: true },
-    onSubmit: ({ value }) => console.log(value),
-  });
-
-  render() {
-    return html\`<form @submit=\${(e: Event) => { e.preventDefault(); this.form.api.handleSubmit(); }}>
-      \${this.form.field({ name: "name", validators: { onChange: ({ value }) => (value.length < 2 ? "Name needs two characters." : undefined) } },
-        (f) => html\`<acme-input label="Name" placeholder="Ada Lovelace" \${bindField(f)}></acme-input>\`)}
-      \${this.form.field({ name: "email", validators: { onChange: ({ value }) => (/@/.test(value) ? undefined : "Enter an email address.") } },
-        (f) => html\`<acme-input label="Email" type="email" placeholder="ada@acme.dev" \${bindField(f)}></acme-input>\`)}
-      \${this.form.field({ name: "plan" },
-        (f) => html\`<acme-select label="Plan" options='["hobby","pro","enterprise"]' \${bindField(f)}></acme-select>\`)}
-      \${this.form.field({ name: "updates" },
-        (f) => html\`<acme-switch aria-label="Product updates" \${bindField(f)}></acme-switch>\`)}
-      <acme-button type="submit" variant="default" ?disabled=\${!this.form.api.state.canSubmit}>Create Account</acme-button>
-    </form>\`;
-  }
-}`,
+      h: "Managed form",
+      p: "The application renders label and error content in Field. bindField keeps value or checked and invalid presentation in sync with the typed field state.",
+      html: "<docs-form-demo></docs-form-demo>",
+      code: 'import {html} from "lit";\nimport {TanStackFormController, bindField} from "@acmelabs/design-system";\nimport "@acmelabs/design-system/define/field";\nimport "@acmelabs/design-system/define/input";\n\n// In a Lit element:\nform = new TanStackFormController(this, {\n  defaultValues: {profile: {name: ""}},\n  onSubmit: ({value}) => saveProfile(value),\n});\n\nrender() {\n  return html`<form @submit=${(event) => {\n    event.preventDefault();\n    this.form.api.handleSubmit();\n  }}>\n    ${this.form.field({\n      name: "profile.name",\n      validators: {onChange: ({value}) =>\n        value.length < 2 ? "Use at least two letters." : undefined},\n    }, field => html`\n      <acme-field .invalid=${field.state.meta.isTouched && !field.state.meta.isValid}>\n        <span slot="label">Name</span>\n        <acme-input name="profile.name" ${bindField(field)}></acme-input>\n        <span slot="error">${field.state.meta.errors.join(" ")}</span>\n      </acme-field>\n    `)}\n    <button type="submit">Save</button>\n  </form>`;\n}',
+    },
+    {
+      h: "Native form",
+      p: "The control owns native submission and validity. No managed form library is required.",
+      html: '<form><acme-field required><span slot="label">Email</span><acme-input type="email" name="email" required></acme-input></acme-field><acme-button type="submit">Save</acme-button><acme-button type="reset" variant="secondary">Reset</acme-button><output></output></form>',
+      script: "root.querySelector('form').addEventListener('submit',event=>{event.preventDefault();root.querySelector('output').textContent='Saved: '+new FormData(event.target).get('email');});",
     },
   ],
   practices: {
-    "When to use": [
-      "TanStack Form fits the acme inputs because it is headless: the controller owns state and validation, the template owns the elements. bindField covers acme-input, acme-textarea, acme-select, acme-checkbox, acme-switch and acme-radio.",
-      "Validate on change for format, on blur for expensive checks, and name the field and the constraint in the message; the input shows it in red below the control.",
-    ],
     Behavior: [
-      "The controller re-renders the host on every form state change, so disabled states and errors follow without extra wiring.",
-      "For a plain HTML form with one or two inputs, native validation is enough; reach for the controller when values are cross-checked or submitted as one object.",
+      "bindField updates value for text, arrays and selected values; boolean fields update checked.",
+      "Live edits and commits share the same field state. An unchanged commit does not repeat handleChange.",
+      "Leaving the control calls handleBlur. Store updates and managed reset update the native control. Disconnection releases the binding subscription.",
+      "Keep name on the control when native FormData is needed. Nested and array field names remain application-owned paths.",
+      "Field error text, disabled/loading state, submission and server responses stay with the application. invalid is presentation and does not replace native validity.",
     ],
   },
 };

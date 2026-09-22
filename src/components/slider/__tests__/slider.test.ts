@@ -67,7 +67,8 @@ describe("acme-slider", () => {
     expect(start.getAttribute("size")).toBe("small");
     expect(start.getAttribute("type")).toBe("text");
     expect(start.getAttribute("aria-label")).toBe("Starting range value");
-    expect(end.getAttribute("type")).toBe("number");
+    expect(end.getAttribute("type")).toBe("text");
+    expect(end.getAttribute("inputmode")).toBe("decimal");
     expect(end.getAttribute("aria-label")).toBe("Ending range value");
     expect((start as HTMLInputElement).value).toBe("50");
     expect((end as HTMLInputElement).value).toBe("75");

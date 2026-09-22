@@ -23,6 +23,7 @@ export type NativeFormOptions<Value, Extra> = Readonly<{
   fromAttribute?(value: string | null): Value;
   toAttribute?(value: Value): string | null;
   normalize(value: Value): Value;
+  normalizeDefault?(value: Value): Value;
   extra?(): Extra;
   serialize(state: NativeFormState<Value>, extra: Extra): NativeFormValue;
   participates?(state: NativeFormState<Value>, extra: Extra): boolean;
@@ -52,7 +53,17 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     this.internals = host.attachInternals();
     const initial = options.normalize(options.initialValue);
     this.current = createAtom<NativeFormState<Value>>(
-      Object.freeze({ value: initial, defaultValue: initial, dirty: false, name: "", disabled: false, required: false, readOnly: false, platformDisabled: false, customValidity: "" }),
+      Object.freeze({
+        value: initial,
+        defaultValue: options.normalizeDefault?.(options.initialValue) ?? initial,
+        dirty: false,
+        name: "",
+        disabled: false,
+        required: false,
+        readOnly: false,
+        platformDisabled: false,
+        customValidity: "",
+      }),
     );
     this.state = createAtom(() => this.current.get());
     this.tracked = createAtom(() => ({ state: this.state.get(), extra: this.options.extra?.() as Extra, context: this.context.get() }));
@@ -115,8 +126,14 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     const normalized = this.options.normalize(value);
     this.change({ value: normalized, dirty: true }, reason, this.options.valueProperty ?? "value");
   }
+  refreshValue(): void {
+    const previous = this.value,
+      next = this.options.normalize(previous);
+    if (Object.is(previous, next)) this.sync();
+    else this.change({ value: next }, "constraints", this.options.valueProperty ?? "value");
+  }
   setDefaultValue(value: Value): void {
-    const normalized = this.options.normalize(value);
+    const normalized = this.options.normalizeDefault ? this.options.normalizeDefault(value) : this.options.normalize(value);
     const attribute = this.options.valueAttribute;
     if (attribute && this.options.toAttribute) {
       const text = this.options.toAttribute(normalized);
@@ -124,14 +141,15 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     } else this.applyDefault(normalized);
   }
   private applyDefault(value: Value): void {
-    this.change({ defaultValue: value, ...(!this.current.get().dirty ? { value } : {}) }, "default");
+    this.change({ defaultValue: value, ...(!this.current.get().dirty ? { value: this.options.normalizeDefault ? this.options.normalize(value) : value } : {}) }, "default");
   }
   setAttributeValue(name: "name" | "disabled" | "required" | "readonly", value: string | boolean): void {
     batch(() => (typeof value === "boolean" ? this.host.toggleAttribute(name, value) : this.host.setAttribute(name, value)));
   }
   attributeChanged(name: string, _oldValue: string | null, value: string | null): boolean {
     if (name === this.options.valueAttribute && this.options.fromAttribute) {
-      this.applyDefault(this.options.normalize(this.options.fromAttribute(value)));
+      const parsed = this.options.fromAttribute(value);
+      this.applyDefault(this.options.normalizeDefault ? this.options.normalizeDefault(parsed) : this.options.normalize(parsed));
       return true;
     }
     if (name === "name") this.change({ name: value ?? "" });

@@ -351,7 +351,7 @@ export class AcmeSlider extends AcmeElement {
       class=${`${kind}-input`}
       id=${kind === "start" ? `${this.uid}-start` : `${this.uid}-end`}
       size="small"
-      type=${kind === "start" ? "text" : "number"}
+      type="text" inputmode="decimal"
       aria-label=${kind === "start" ? "Starting range value" : "Ending range value"}
       ?disabled=${this.disabled}
       .value=${v === undefined ? "" : String(v)}

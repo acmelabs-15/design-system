@@ -66,6 +66,7 @@ const walk = (d: string): string[] =>
     ); // .geist.ts mappings feed tools/geist/gen.ts, not the package
 const files = walk(SRC);
 const compilerOptions: ts.CompilerOptions = {
+  strict: true,
   target: ts.ScriptTarget.ES2022,
   module: ts.ModuleKind.ESNext,
   experimentalDecorators: true,

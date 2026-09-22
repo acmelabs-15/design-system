@@ -34,7 +34,7 @@ export class AcmeTabs extends AcmeSemanticElement {
   }
   @atomState() private direction: "horizontal" | "vertical" = "horizontal";
   /** @default "horizontal" */
-  @property({ noAccessor: true, converter: optionalString }) get orientation() {
+  @property({ noAccessor: true, converter: optionalString }) get orientation(): "horizontal" | "vertical" {
     return this.direction;
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {
@@ -46,7 +46,7 @@ export class AcmeTabs extends AcmeSemanticElement {
   }
   @atomState() private mode: "automatic" | "manual" = "automatic";
   /** @default "automatic" */
-  @property({ noAccessor: true, converter: optionalString }) get activation() {
+  @property({ noAccessor: true, converter: optionalString }) get activation(): "automatic" | "manual" {
     return this.mode;
   }
   set activation(value: "automatic" | "manual" | undefined) {
@@ -57,7 +57,7 @@ export class AcmeTabs extends AcmeSemanticElement {
   }
   @atomState() private treatment: "primary" | "inset" = "primary";
   /** @default "primary" */
-  @property({ noAccessor: true, converter: optionalString }) get variant() {
+  @property({ noAccessor: true, converter: optionalString }) get variant(): "primary" | "inset" {
     return this.treatment;
   }
   set variant(value: "primary" | "inset" | undefined) {

@@ -7,6 +7,7 @@ import { type GeistMap, has, type SpecNode } from "../gen";
 const kbd = (ours: string, index: number, children?: GeistMap["children"]) => ({ ours, pick: (c: SpecNode, i: number) => c.tag === "kbd" && i === index, extends: "kbd", part: "root", children });
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "clearable-input",
   component: "ClearableInput",
   root: "data-geist-input-wrapper",
