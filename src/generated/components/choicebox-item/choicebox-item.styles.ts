@@ -92,7 +92,7 @@ export const choiceboxItemCss = css`.tile {
   border-color: var(--ds-blue-600);
 }
 
-.tile :where(.body) :where(.option) :where(acme-checkbox)::part(box) {
+.tile :where(.body) :where(.option) :where(acme-checkbox)::part(indicator) {
   border-color: var(--ds-gray-500);
 }
 
@@ -136,7 +136,7 @@ export const choiceboxItemCss = css`.tile {
   color: var(--ds-blue-900);
 }
 
-.tile:not([data-checked])[data-disabled] :where(.body) :where(.option) :where(acme-checkbox)::part(box) {
+.tile:not([data-checked])[data-disabled] :where(.body) :where(.option) :where(acme-checkbox)::part(indicator) {
   border-color: var(--ds-gray-500);
 }
 
@@ -168,7 +168,7 @@ export const choiceboxItemCss = css`.tile {
   }
 }
 
-.tile[data-checked]:not([data-indeterminate]) :where(.body) :where(.option) :where(acme-checkbox)::part(box) {
+.tile[data-checked]:not([data-indeterminate]) :where(.body) :where(.option) :where(acme-checkbox)::part(indicator) {
   border-color: var(--ds-blue-900);
   background-color: var(--ds-blue-900);
 }
@@ -183,13 +183,13 @@ export const choiceboxItemCss = css`.tile {
     --radio-color: var(--ds-gray-900);
   }
 
-  .tile:not([data-disabled]):not([data-checked])[data-hover] :where(.body) :where(.option) :where(acme-checkbox)::part(box) {
+  .tile:not([data-disabled]):not([data-checked])[data-hover] :where(.body) :where(.option) :where(acme-checkbox)::part(indicator) {
     border-color: var(--ds-gray-700);
     background-color: var(--ds-background-100);
   }
 }
 
-.tile:not([data-checked]):not([data-disabled])[data-focus] :where(.body) :where(.option) :where(acme-checkbox)::part(box) {
+.tile:not([data-checked]):not([data-disabled])[data-focus] :where(.body) :where(.option) :where(acme-checkbox)::part(indicator) {
   background-color: var(--ds-gray-200);
 }
 
@@ -203,7 +203,7 @@ export const choiceboxItemCss = css`.tile {
   }
 }
 
-.tile[data-disabled][data-checked]:not([data-indeterminate]) :where(.body) :where(.option) :where(acme-checkbox)::part(box) {
+.tile[data-disabled][data-checked]:not([data-indeterminate]) :where(.body) :where(.option) :where(acme-checkbox)::part(indicator) {
   border-color: var(--ds-gray-600);
   background-color: var(--ds-gray-600);
 }

@@ -37,7 +37,7 @@ export const multiSelectRowCss = css`.row {
   width: 2rem;
 }
 
-.row :where(.box) :where(acme-checkbox)::part(checkbox) {
+.row :where(.box) :where(acme-checkbox)::part(root) {
   border-radius: .25rem;
   justify-content: center;
   width: 1.75rem;
@@ -78,7 +78,7 @@ export const multiSelectRowCss = css`.row {
   opacity: .6;
 }
 
-.row:where(.checkbox-hovered) :where(.box) :where(acme-checkbox)::part(checkbox), .row:where(.hovered) :where(.action) {
+.row:where(.checkbox-hovered) :where(.box) :where(acme-checkbox)::part(root), .row:where(.hovered) :where(.action) {
   background-color: var(--ds-gray-100);
 }
 
@@ -126,7 +126,7 @@ export const multiSelectRowCss = css`.row {
     opacity: 1;
   }
 
-  .row :where(.box) :where(acme-checkbox)[data-hover]::part(checkbox), .row :where(.action)[data-hover] {
+  .row :where(.box) :where(acme-checkbox)[data-hover]::part(root), .row :where(.action)[data-hover] {
     background-color: var(--ds-gray-100);
   }
 
@@ -139,7 +139,7 @@ export const multiSelectRowCss = css`.row {
   background-color: var(--ds-gray-100);
 }
 
-.row :where(.box) :where(acme-checkbox)[data-active]::part(checkbox), .row :where(.action)[data-active] {
+.row :where(.box) :where(acme-checkbox)[data-active]::part(root), .row :where(.action)[data-active] {
   background-color: var(--ds-gray-200);
 }
 

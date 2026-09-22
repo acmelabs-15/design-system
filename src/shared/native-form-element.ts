@@ -1,43 +1,48 @@
-import { AcmeElement } from "../base";
+import { AcmeSemanticElement } from "./semantic-element";
+import type { PropertyDeclarations } from "lit";
 import type { NativeFormController, NativeFormValidation } from "./native-form";
 
-/** Bridges platform callbacks and reflected form attributes to one canonical controller. */
-export abstract class AcmeFormElement<Value, Extra = undefined> extends AcmeElement {
+/** Bridges platform callbacks and reflected form attributes to one canonical controller.
+ * @attr {string} form - ID of the associated form in the author's tree.
+ */
+export abstract class AcmeFormElement<Value, Extra = undefined> extends AcmeSemanticElement {
   static formAssociated = true;
-  static properties = {
+  static properties: PropertyDeclarations = {
     name: { type: String, noAccessor: true },
     disabled: { type: Boolean, noAccessor: true },
     required: { type: Boolean, noAccessor: true },
-    readOnly: { type: Boolean, attribute: "readonly", noAccessor: true },
   };
   static get observedAttributes(): string[] {
     return [...new Set([...super.observedAttributes, "form"])];
   }
   protected abstract readonly nativeForm: NativeFormController<Value, Extra>;
+  protected get semanticTarget(): HTMLElement | undefined {
+    return this.nativeForm?.target;
+  }
+  protected get semanticDefaults() {
+    return { labelledByElements: Array.from(this.nativeForm?.labels ?? []).filter((label) => (label as HTMLLabelElement).control === this) as Element[] };
+  }
 
+  /** @default "" */
   get name(): string {
     return this.nativeForm.state.get().name;
   }
   set name(value: string) {
     this.nativeForm.setAttributeValue("name", String(value));
   }
+  /** @default false */
   get disabled(): boolean {
     return this.nativeForm.state.get().disabled;
   }
   set disabled(value: boolean) {
     this.nativeForm.setAttributeValue("disabled", Boolean(value));
   }
+  /** @default false */
   get required(): boolean {
     return this.nativeForm.state.get().required;
   }
   set required(value: boolean) {
     this.nativeForm.setAttributeValue("required", Boolean(value));
-  }
-  get readOnly(): boolean {
-    return this.nativeForm.state.get().readOnly;
-  }
-  set readOnly(value: boolean) {
-    this.nativeForm.setAttributeValue("readonly", Boolean(value));
   }
   get form(): HTMLFormElement | null {
     return this.nativeForm.form;
@@ -80,6 +85,18 @@ export abstract class AcmeFormElement<Value, Extra = undefined> extends AcmeElem
   }
   formStateRestoreCallback(value: string | File | FormData, mode: "restore" | "autocomplete"): void {
     this.nativeForm.formStateRestoreCallback(value, mode);
+  }
+}
+
+/** Form controls whose native input supports readonly semantics. */
+export abstract class AcmeReadOnlyFormElement<Value, Extra = undefined> extends AcmeFormElement<Value, Extra> {
+  static properties: PropertyDeclarations = { readOnly: { type: Boolean, attribute: "readonly", noAccessor: true } };
+  /** @default false */
+  get readOnly(): boolean {
+    return this.nativeForm.state.get().readOnly;
+  }
+  set readOnly(value: boolean) {
+    this.nativeForm.setAttributeValue("readonly", Boolean(value));
   }
 }
 

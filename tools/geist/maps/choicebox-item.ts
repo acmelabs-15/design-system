@@ -87,7 +87,7 @@ export const geist: GeistMap = {
                   pick: 0,
                   children: [
                     { ours: "", pick: (c: SpecNode) => c.tag === "input", leaf: true },
-                    { ours: "", part: "box", pick: (c: SpecNode) => c.tag === "span", extends: "checkbox/.control/.box", leaf: true },
+                    { ours: "", part: "indicator", pick: (c: SpecNode) => c.tag === "span", extends: "checkbox/.control/.box", leaf: true },
                   ],
                 },
               ],

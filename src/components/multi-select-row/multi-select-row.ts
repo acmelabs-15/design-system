@@ -33,11 +33,7 @@ let seq = 0;
  */
 
 export class AcmeMultiSelectRow extends AcmeElement {
-  static styles = [
-    sharedCss,
-    multiSelectRowCss,
-    multiSelectRowStructureCss,
-  ];
+  static styles = [sharedCss, multiSelectRowCss, multiSelectRowStructureCss];
   /** The row's name: the button's accessible name, the checkbox's label, and the text when the default slot is empty. */
   @property() name = "";
   /** The value the form takes while the row is checked; the name when unset. */
@@ -208,7 +204,7 @@ export class AcmeMultiSelectRow extends AcmeElement {
     return html`<div class=${cls} @mouseenter=${this.onEnter} @mouseleave=${this.onLeave} part="row">
       <div class="box" @mouseenter=${this.onBoxEnter} @mouseleave=${this.onBoxLeave} part="box">
         <acme-checkbox
-          ?checked=${this.checked}
+          .checked=${this.checked}
           ?disabled=${this.disabled}
           ?indeterminate=${this.indeterminate}
           name=${this.checkboxName || this.name}

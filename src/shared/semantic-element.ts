@@ -1,5 +1,5 @@
 import { createAtom } from "@tanstack/lit-store";
-import type { ReactiveController } from "lit";
+import type { PropertyDeclarations, ReactiveController } from "lit";
 import { AcmeElement } from "../base";
 
 const attributes = ["role", "aria-label", "aria-labelledby", "aria-describedby", "aria-haspopup", "aria-expanded", "aria-controls"] as const;
@@ -7,6 +7,7 @@ type Attribute = (typeof attributes)[number];
 type ReferenceAttribute = "aria-labelledby" | "aria-describedby" | "aria-controls";
 type Reference = Readonly<{ text: string | null; elements?: readonly Element[] }>;
 type State = Readonly<Record<Attribute, Reference>>;
+export type SemanticDefaults = Readonly<{ role?: string; label?: string; labelledByElements?: readonly Element[]; describedByElements?: readonly Element[] }>;
 const empty: State = Object.freeze(Object.fromEntries(attributes.map((name) => [name, Object.freeze({ text: null })])) as Record<Attribute, Reference>);
 const isAttribute = (name: string): name is Attribute => (attributes as readonly string[]).includes(name);
 
@@ -20,7 +21,8 @@ class SemanticAttributes implements ReactiveController {
   private connected = false;
   constructor(
     private host: AcmeSemanticElement,
-    private defaults: () => Readonly<{ role?: string; label?: string }>,
+    private defaults: () => SemanticDefaults,
+    private targetElement: () => HTMLElement | undefined,
   ) {
     host.addController(this);
   }
@@ -99,13 +101,18 @@ class SemanticAttributes implements ReactiveController {
       ["aria-controls", "ariaControlsElements"],
     ] as const) {
       const reference = state[name];
-      this.target[property] = reference.text === null && !reference.elements ? null : [...this.resolve(reference)];
+      const authored = reference.text === null && !reference.elements ? null : [...this.resolve(reference)];
+      if (name === "aria-describedby" && defaults.describedByElements?.length) this.target[property] = [...new Set([...(authored ?? []), ...defaults.describedByElements])];
+      else this.target[property] = authored ?? (name === "aria-labelledby" && state["aria-label"].text === null && defaults.labelledByElements?.length ? [...defaults.labelledByElements] : null);
     }
   };
   private observe(): void {
     if (!this.connected) return;
     const state = this.state.get();
-    const needed = (["aria-labelledby", "aria-describedby", "aria-controls"] as const).some((name) => !!state[name].text?.trim() && !state[name].elements);
+    const needed =
+      this.defaults().labelledByElements !== undefined ||
+      this.defaults().describedByElements !== undefined ||
+      (["aria-labelledby", "aria-describedby", "aria-controls"] as const).some((name) => !!state[name].text?.trim() && !state[name].elements);
     const root = this.host.getRootNode();
     if (needed && this.watchedRoot === root) return;
     this.observer?.disconnect();
@@ -113,7 +120,7 @@ class SemanticAttributes implements ReactiveController {
     this.watchedRoot = undefined;
     if (!needed) return;
     this.observer = new MutationObserver(this.paint);
-    this.observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["id"] });
+    this.observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["id", "for"] });
     this.watchedRoot = root;
   }
   hostConnected(): void {
@@ -127,7 +134,7 @@ class SemanticAttributes implements ReactiveController {
     this.host.requestUpdate();
   }
   hostUpdated(): void {
-    const target = this.host.renderRoot.querySelector('[part~="root"]') as HTMLElement | null;
+    const target = this.targetElement();
     if (this.target !== target) this.target = target ?? undefined;
     this.paint();
   }
@@ -150,7 +157,7 @@ class SemanticAttributes implements ReactiveController {
  * @attr {string} aria-controls - IDs in the author's tree scope controlled by the native root.
  */
 export abstract class AcmeSemanticElement extends AcmeElement {
-  static properties = {
+  static properties: PropertyDeclarations = {
     role: { attribute: "role", noAccessor: true },
     ariaLabel: { attribute: "aria-label", noAccessor: true },
     ariaHasPopup: { attribute: "aria-haspopup", noAccessor: true },
@@ -162,10 +169,17 @@ export abstract class AcmeSemanticElement extends AcmeElement {
   static get observedAttributes(): string[] {
     return [...new Set([...super.observedAttributes, ...attributes])];
   }
-  protected get semanticDefaults(): Readonly<{ role?: string; label?: string }> {
+  protected get semanticDefaults(): SemanticDefaults {
     return {};
   }
-  private readonly semantic = new SemanticAttributes(this, () => this.semanticDefaults);
+  protected get semanticTarget(): HTMLElement | undefined {
+    return this.renderRoot?.querySelector<HTMLElement>('[part~="root"]') ?? undefined;
+  }
+  private readonly semantic = new SemanticAttributes(
+    this,
+    () => this.semanticDefaults,
+    () => this.semanticTarget,
+  );
   get role(): string | null {
     return this.semantic.get("role");
   }

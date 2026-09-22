@@ -97,3 +97,12 @@ test("keyboard release must match the held activation key and window blur cancel
   window.dispatchEvent(new Event("blur"));
   expect(element.hasAttribute("data-active")).toBe(false);
 });
+
+test("focus transfer during a pointer press retains the pointer gesture until release", () => {
+  const { element } = fixture();
+  element.dispatchEvent(pointer("pointerdown"));
+  element.dispatchEvent(new FocusEvent("focusout", { bubbles: true }));
+  expect(element.hasAttribute("data-active")).toBe(true);
+  window.dispatchEvent(pointer("pointerup"));
+  expect(element.hasAttribute("data-active")).toBe(false);
+});

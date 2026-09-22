@@ -22,7 +22,7 @@ describe("acme-multi-select-row", () => {
     expect(c.getAttribute("aria-label")).toBe("Design System");
     expect(c.getAttribute("name")).toBe("Design System");
     expect(c.getAttribute("value")).toBe("design");
-    expect(c.hasAttribute("checked")).toBe(true);
+    expect(c.checked).toBe(true);
     const b = button(el);
     expect(b.getAttribute("type")).toBe("button");
     expect(b.getAttribute("tabindex")).toBe("-1");

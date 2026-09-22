@@ -141,9 +141,11 @@ export class Interaction implements ReactiveController {
       this.set({ focus: own && (this.options.anyFocus || focused.matches(":focus-visible")) === true, within: true });
     });
     on("focusout", () => {
-      this.options.onCancel?.();
-      this.set({ focus: false, within: false });
-      this.endPress();
+      this.set({ focus: false, within: false, space: false, enter: false });
+      if (this.state.get().pointer === undefined) {
+        this.options.onCancel?.();
+        this.releaseListeners();
+      }
     });
   }
   private unbind(): void {

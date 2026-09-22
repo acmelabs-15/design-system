@@ -156,3 +156,15 @@ The complete pinned icon catalog and explicit per-icon/family modules are verifi
 ### M09 completion — 2026-09-21
 
 [Identity acceptance](evidence/m09-identity-2026-09-21.json) completes Avatar/Avatar Group/Badge/Pill/Tag. Combined with the preceding icon, Spinner and action records, all M09 entries are complete at their assigned boundaries. The final build/site and 894 tests pass. Each engine passes 24 source and compiled identity checks, with live documentation overflow/removal actions. Native image lifetimes, count limits, immutable keyed members, RTL marker order and real Pill hit geometry are verified. Old service/username/avatar-size and Badge/Pill alias interfaces are removed. Reference-only style producers now retire their own recorded outputs safely. Continue M10 with the [failing Checkbox baseline](evidence/m10-checkbox-baseline-2026-09-21.json). Final whole-library appearance, accessibility, React/package acceptance and the two preserved platform limits remain M22/M26.
+
+### M10/M11 integration return points — 2026-09-21
+
+Checkbox now consumes NativeFormController and the shared semantic owner, which targets the actual input. Complete its current verification gate before building Checkbox Group/cards and the other selection families.
+
+- Before adding Switch thumb motion, keep ripple cancellation scoped to the ripple. The current Ripple controller owns the only animation on an action/Checkbox host; its AnimateController.cancel must not cancel an independent thumb transition on that same host. Verify the combined case when Switch lands.
+- M11 Field integration must supply names/descriptions through the semantic owner's defaults/reference inputs. The M06 FieldAssociation helper currently writes DOM references directly; do not let it compete with the new semantic controller on one native control. Adapt the existing helper and retain its lifecycle/ownership tests.
+- Readonly belongs to AcmeReadOnlyFormElement for native text-like controls. Checkbox consumes AcmeFormElement and exposes no meaningless readOnly property.
+
+### M10 standalone Checkbox slice — 2026-09-21
+
+[Verified Checkbox behavior](evidence/m10-checkbox-progress-2026-09-21.json) replaces the old per-component form handling and handwritten check/dash artwork. Build/site and 897 tests pass. Native and compiled checks pass in all engines, including actual Chromium accessibility naming, unchanged Button/ripple regressions and live form examples. The new unchecked border is a measured accessibility deviation using existing gray-700. Continue Checkbox Group/Card integration and the remaining M10 families; this slice does not close M10. The Firefox native label-collection behavior is recorded with a bare-element reproduction and a validated naming guard.

@@ -39,7 +39,7 @@ export const geist: GeistMap = {
     {
       ours: ".box",
       pick: has("peer"),
-      children: [{ ours: "acme-checkbox", pick: (c) => c.tag === "label", extends: "checkbox", part: "checkbox", leaf: true }],
+      children: [{ ours: "acme-checkbox", pick: (c) => c.tag === "label", extends: "checkbox", part: "root", leaf: true }],
     },
     {
       ours: ".action",

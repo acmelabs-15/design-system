@@ -1,0 +1,2254 @@
+{
+  "date": "2026-09-21",
+  "status": "Standalone Checkbox slice implemented and verified; owner-group/card integration and remaining M10 families pending",
+  "baseline": "m10-checkbox-baseline-2026-09-21.json",
+  "native": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": true
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          },
+          {
+            "name": "Checkbox opt-in press creates a ripple",
+            "ok": true
+          },
+          {
+            "name": "turning ripple off cancels its active presentation",
+            "ok": true
+          },
+          {
+            "name": "native accessibility tree exposes the actual checkbox name",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": true
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          },
+          {
+            "name": "Checkbox opt-in press creates a ripple",
+            "ok": true
+          },
+          {
+            "name": "turning ripple off cancels its active presentation",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": true
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          },
+          {
+            "name": "Checkbox opt-in press creates a ripple",
+            "ok": true
+          },
+          {
+            "name": "turning ripple off cancels its active presentation",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "nativeLabelControl": [
+    {
+      "engine": "chromium",
+      "first": [
+        {
+          "id": "first",
+          "for": "target",
+          "control": "target"
+        }
+      ],
+      "changed": [],
+      "added": [
+        {
+          "id": "second",
+          "for": "target",
+          "control": "target"
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "first": [
+        {
+          "id": "first",
+          "for": "target",
+          "control": "target"
+        }
+      ],
+      "changed": [
+        {
+          "id": "first",
+          "for": "other"
+        }
+      ],
+      "added": [
+        {
+          "id": "second",
+          "for": "target",
+          "control": "target"
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "first": [
+        {
+          "id": "first",
+          "for": "target",
+          "control": "target"
+        }
+      ],
+      "changed": [],
+      "added": [
+        {
+          "id": "second",
+          "for": "target",
+          "control": "target"
+        }
+      ]
+    }
+  ],
+  "contrastBefore": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": true
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": false,
+            "actual": {
+              "ratio": 1.6559465996211002,
+              "color": "rgba(0, 0, 0, 0.21)",
+              "background": "rgb(255, 255, 255)",
+              "candidates": [
+                {
+                  "token": "--ds-gray-alpha-600",
+                  "color": "rgba(0, 0, 0, 0.34)",
+                  "ratio": 2.377865589247898
+                },
+                {
+                  "token": "--ds-gray-alpha-700",
+                  "color": "rgba(0, 0, 0, 0.44)",
+                  "ratio": 3.2339802043350576
+                },
+                {
+                  "token": "--ds-gray-700",
+                  "color": "rgb(143, 143, 143)",
+                  "ratio": 3.2339802043350576
+                },
+                {
+                  "token": "--ds-gray-800",
+                  "color": "rgb(125, 125, 125)",
+                  "ratio": 4.116376044741373
+                }
+              ]
+            }
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": false,
+            "actual": {
+              "ratio": 2.0327120145795803,
+              "color": "rgba(255, 255, 255, 0.24)",
+              "background": "rgb(10, 10, 10)",
+              "candidates": [
+                {
+                  "token": "--ds-gray-alpha-600",
+                  "color": "rgba(255, 255, 255, 0.51)",
+                  "ratio": 5.4378449418068335
+                },
+                {
+                  "token": "--ds-gray-alpha-700",
+                  "color": "rgba(255, 255, 255, 0.54)",
+                  "ratio": 6.04310663464572
+                },
+                {
+                  "token": "--ds-gray-700",
+                  "color": "rgb(143, 143, 143)",
+                  "ratio": 6.121913079117171
+                },
+                {
+                  "token": "--ds-gray-800",
+                  "color": "rgb(125, 125, 125)",
+                  "ratio": 4.809605705440039
+                }
+              ]
+            }
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          },
+          {
+            "name": "native accessibility tree exposes the actual checkbox name",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": false,
+            "actual": {
+              "labels": [
+                {
+                  "for": "elsewhere"
+                }
+              ],
+              "refs": [
+                {
+                  "for": "elsewhere"
+                }
+              ],
+              "labelledby": ""
+            }
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": false,
+            "actual": {
+              "ratio": 1.6559465996211002,
+              "color": "rgba(0, 0, 0, 0.21)",
+              "background": "rgb(255, 255, 255)",
+              "candidates": [
+                {
+                  "token": "--ds-gray-alpha-600",
+                  "color": "rgba(0, 0, 0, 0.34)",
+                  "ratio": 2.377865589247898
+                },
+                {
+                  "token": "--ds-gray-alpha-700",
+                  "color": "rgba(0, 0, 0, 0.44)",
+                  "ratio": 3.2339802043350576
+                },
+                {
+                  "token": "--ds-gray-700",
+                  "color": "rgb(143, 143, 143)",
+                  "ratio": 3.2339802043350576
+                },
+                {
+                  "token": "--ds-gray-800",
+                  "color": "rgb(125, 125, 125)",
+                  "ratio": 4.116376044741373
+                }
+              ]
+            }
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": false,
+            "actual": {
+              "ratio": 2.0327120145795803,
+              "color": "rgba(255, 255, 255, 0.24)",
+              "background": "rgb(10, 10, 10)",
+              "candidates": [
+                {
+                  "token": "--ds-gray-alpha-600",
+                  "color": "rgba(255, 255, 255, 0.51)",
+                  "ratio": 5.4378449418068335
+                },
+                {
+                  "token": "--ds-gray-alpha-700",
+                  "color": "rgba(255, 255, 255, 0.54)",
+                  "ratio": 6.04310663464572
+                },
+                {
+                  "token": "--ds-gray-700",
+                  "color": "rgb(143, 143, 143)",
+                  "ratio": 6.121913079117171
+                },
+                {
+                  "token": "--ds-gray-800",
+                  "color": "rgb(125, 125, 125)",
+                  "ratio": 4.809605705440039
+                }
+              ]
+            }
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": true
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": false,
+            "actual": {
+              "ratio": 1.6559465996211002,
+              "color": "rgba(0, 0, 0, 0.21)",
+              "background": "rgb(255, 255, 255)",
+              "candidates": [
+                {
+                  "token": "--ds-gray-alpha-600",
+                  "color": "rgba(0, 0, 0, 0.34)",
+                  "ratio": 2.377865589247898
+                },
+                {
+                  "token": "--ds-gray-alpha-700",
+                  "color": "rgba(0, 0, 0, 0.44)",
+                  "ratio": 3.2339802043350576
+                },
+                {
+                  "token": "--ds-gray-700",
+                  "color": "rgb(143, 143, 143)",
+                  "ratio": 3.2339802043350576
+                },
+                {
+                  "token": "--ds-gray-800",
+                  "color": "rgb(125, 125, 125)",
+                  "ratio": 4.116376044741373
+                }
+              ]
+            }
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": false,
+            "actual": {
+              "ratio": 2.0648756667530352,
+              "color": "rgba(255, 255, 255, 0.24)",
+              "background": "rgb(10, 10, 10)",
+              "candidates": [
+                {
+                  "token": "--ds-gray-alpha-600",
+                  "color": "rgba(255, 255, 255, 0.51)",
+                  "ratio": 5.511070715246476
+                },
+                {
+                  "token": "--ds-gray-alpha-700",
+                  "color": "rgba(255, 255, 255, 0.54)",
+                  "ratio": 6.121913079117171
+                },
+                {
+                  "token": "--ds-gray-700",
+                  "color": "rgb(143, 143, 143)",
+                  "ratio": 6.121913079117171
+                },
+                {
+                  "token": "--ds-gray-800",
+                  "color": "rgb(125, 125, 125)",
+                  "ratio": 4.809605705440039
+                }
+              ]
+            }
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "sources": [
+    {
+      "file": "src/components/checkbox/checkbox.ts",
+      "sha256": "d8a1bb1aa41805c2aee2e104e57bb509c55df2fa63936bf979343feb94e8c6cd"
+    },
+    {
+      "file": "src/shared/native-form.ts",
+      "sha256": "732cca90d41ee0d6b8b2f15941e4cb613b3e80ce915b1c9bc9c79de0a3bb690d"
+    },
+    {
+      "file": "src/shared/native-form-element.ts",
+      "sha256": "e3970e8a9b9f4f72c8ccc202968121be37d21304e851a0fea21d39487fabeaee"
+    },
+    {
+      "file": "src/shared/semantic-element.ts",
+      "sha256": "600f9cd4a22baadbc36e96d9c2a2c00f1df9a0cf73a29ede468730271279529d"
+    },
+    {
+      "file": "src/shared/interaction.ts",
+      "sha256": "fd46ff4c6514fc1651bdb5f37bc16add6bd0eefaab002697e19ac78eee57d83b"
+    },
+    {
+      "file": "scripts/test-internals.ts",
+      "sha256": "d0eb7d3779c7fa9731fea31d9cf1715928ee1acc2ce8d9ac28b0183f82902fe6"
+    },
+    {
+      "file": "styles/components/checkbox/checkbox-structure.css",
+      "sha256": "71c48f5157990d3e53b5868082050f4ca54d5337e25228a6268b1085c25780f0"
+    }
+  ],
+  "fixtures": [
+    {
+      "origin": "/tmp/acme-m10-checkbox/probe.ts",
+      "source": "import {AcmeCheckbox} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/checkbox/checkbox';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/theme/theme';\nimport {AcmeCheckIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/check-icon';\nimport {AcmeRemoveIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/generated/icons/classes/remove-icon';\ncustomElements.define('acme-checkbox',AcmeCheckbox);customElements.define('acme-theme',AcmeTheme);customElements.define('acme-check-icon',AcmeCheckIcon);customElements.define('acme-remove-icon',AcmeRemoveIcon);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,30));\ntry{\nconst form=document.createElement('form');const checkbox=new AcmeCheckbox();checkbox.name='updates';checkbox.value='yes';checkbox.textContent='Product updates';form.append(checkbox);document.body.append(form);await checkbox.updateComplete;\ncheckbox.checked=true;check('checked submits before the next render',new FormData(form).get('updates')==='yes');await checkbox.updateComplete;checkbox.value='changed';check('submission value changes synchronously',new FormData(form).get('updates')==='changed');await checkbox.updateComplete;\nform.reset();await checkbox.updateComplete;check('reset restores the original unchecked default',!checkbox.checked&&new FormData(form).get('updates')===null);\ncheckbox.checked=false;checkbox.setAttribute('required','');await checkbox.updateComplete;check('required native validity reaches the form',!form.checkValidity());checkbox.removeAttribute('required');\nconst fieldset=document.createElement('fieldset');form.append(fieldset);fieldset.append(checkbox);fieldset.disabled=true;await wait();const input=()=>checkbox.shadowRoot!.querySelector('input')!;check('fieldset disability reaches the native focus target',input().disabled);\nfieldset.disabled=false;checkbox.indeterminate=true;await checkbox.updateComplete;let events:any[]=[];checkbox.addEventListener('acme-change',event=>events.push((event as CustomEvent).detail));input().click();await checkbox.updateComplete;check('native action clears real indeterminate state and reports one canonical change',checkbox.checked&&!checkbox.indeterminate&&!input().indeterminate&&events.length===1&&events[0].checked===true&&events[0].indeterminate===false,{events,checked:checkbox.checked,indeterminate:checkbox.indeterminate});\ncheckbox.checked=false;checkbox.defaultChecked=true;check('changing a dirty reset target preserves current state',checkbox.checked===false);form.reset();await checkbox.updateComplete;check('explicit defaultChecked supplies the reset target',checkbox.checked===true);\n\nconst external=document.createElement('form');external.id='external';document.body.append(external);checkbox.setAttribute('form','external');check('external association moves the one successful entry',new FormData(form).get('updates')===null&&new FormData(external).getAll('updates').length===1);checkbox.removeAttribute('form');\ncheckbox.setCustomValidity('Choose another option');check('custom validity reaches the form immediately',!form.checkValidity()&&checkbox.validationMessage==='Choose another option');checkbox.setCustomValidity('');check('clearing custom validity restores native validity',form.checkValidity());\nconst label=document.createElement('label');label.htmlFor='external-choice';label.textContent='External choice';const named=new AcmeCheckbox();named.id='external-choice';document.body.append(label,named);await named.updateComplete;await wait();const native=named.shadowRoot!.querySelector('input')!;check('external label names the actual input through native references',native.ariaLabelledByElements?.includes(label));\nlabel.htmlFor='elsewhere';await wait();check('changed label association clears the old reference',!native.ariaLabelledByElements?.includes(label),{labels:[...named.labels].map(el=>({for:el.htmlFor,control:el.control?.id})),refs:native.ariaLabelledByElements?.map(el=>({for:el.htmlFor,control:el.control?.id})),labelledby:native.getAttribute('aria-labelledby')});label.htmlFor='external-choice';await wait();\nconst explicit=document.createElement('span');explicit.id='explicit-label';explicit.textContent='Explicit choice';const help=document.createElement('span');help.id='external-help';help.textContent='External help';document.body.append(explicit,help);named.setAttribute('aria-labelledby','explicit-label');named.setAttribute('aria-describedby','external-help');named.innerHTML='<span slot=\"description\">Local help</span>';await named.updateComplete;await wait();check('explicit label references override inferred native labels',native.ariaLabelledByElements?.length===1&&native.ariaLabelledByElements[0]===explicit);check('local and authored help both reach the actual input',native.ariaDescribedByElements?.includes(help)&&native.ariaDescribedByElements.some(el=>el.getAttribute('part')==='description'));\nnamed.removeAttribute('aria-labelledby');named.removeAttribute('aria-describedby');named.replaceChildren();await wait();\nfor(const size of ['small','medium','large'] as const){named.size=size;await named.updateComplete;const box=named.shadowRoot!.querySelector('[part=root]')!.getBoundingClientRect();check(size+' Checkbox preserves at least a 24px hit surface',box.width>=24&&box.height>=24,{width:box.width,height:box.height});}\nnamed.size='medium';let trusted=0;named.addEventListener('acme-change',()=>trusted++);\nconst canvas=document.createElement('canvas');canvas.width=canvas.height=1;const context=canvas.getContext('2d',{willReadFrequently:true})!;const color=(value:string,background='white')=>{context.fillStyle=background;context.fillRect(0,0,1,1);context.fillStyle=value;context.fillRect(0,0,1,1);return [...context.getImageData(0,0,1,1).data];};const luminance=(rgb:number[])=>rgb.slice(0,3).map(channel=>{const value=channel/255;return value<=.04045?value/12.92:((value+.055)/1.055)**2.4;}).reduce((sum,value,index)=>sum+value*[.2126,.7152,.0722][index],0);const ratio=(a:number[],b:number[])=>{const x=luminance(a),y=luminance(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05);};\nfor(const appearance of ['light','dark'] as const){const theme=new AcmeTheme();theme.appearance=appearance;document.body.append(theme);const target=new AcmeCheckbox();target.textContent='Contrast';theme.append(target);await target.updateComplete;await wait();const indicator=target.shadowRoot!.querySelector('[part=indicator]')!;let style=getComputedStyle(indicator);const border=ratio(color(style.borderTopColor,style.backgroundColor),color(style.backgroundColor));check(appearance+' unchecked boundary contrast',border>=3,{ratio:border,color:style.borderTopColor,background:style.backgroundColor});target.checked=true;await target.updateComplete;style=getComputedStyle(indicator);const mark=ratio(color(style.color),color(style.backgroundColor));check(appearance+' checked mark contrast',mark>=3,{ratio:mark});theme.remove();}\n(window as any).__test={named,events:()=>trusted};(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-checkbox/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m10-checkbox\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){await page.locator('label[for=\"external-choice\"]').click();data.results.push({name:'trusted external label activates once',ok:await page.evaluate(()=>window.__test.named.checked&&window.__test.events()===1)});await page.locator('#external-choice').press('Space');data.results.push({name:'trusted Space changes the native checked state once',ok:await page.evaluate(()=>!window.__test.named.checked&&window.__test.events()===2)});await page.evaluate(()=>window.__test.named.ripple=true);const box=await page.locator('#external-choice').boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.waitForTimeout(20);data.results.push({name:'Checkbox opt-in press creates a ripple',ok:await page.evaluate(()=>!!window.__test.named.shadowRoot.querySelector('.ripple'))});await page.evaluate(async()=>{window.__test.named.ripple=false;await window.__test.named.updateComplete;});data.results.push({name:'turning ripple off cancels its active presentation',ok:await page.evaluate(()=>!window.__test.named.shadowRoot.querySelector('.ripple'))});await page.mouse.up();if(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'native accessibility tree exposes the actual checkbox name',ok:tree.nodes.some(node=>node.role?.value==='checkbox'&&node.name?.value==='External choice')});await page.screenshot({path:directory+'/checkbox.png',fullPage:true});}}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==(r.engine==='chromium'?27:26)||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-checkbox/native-labels.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});try{const page=await browser.newPage();const data=await page.evaluate(async()=>{class NativeProbe extends HTMLElement{static formAssociated=true;internals=this.attachInternals();}customElements.define('native-label-probe',NativeProbe);const host=document.createElement('native-label-probe') as NativeProbe;host.id='target';const label=document.createElement('label');label.id='first';label.htmlFor='target';document.body.append(label,host);const read=()=>[...host.internals.labels].map(label=>({id:label.id,for:(label as HTMLLabelElement).htmlFor,control:(label as HTMLLabelElement).control?.id}));const first=read();label.htmlFor='other';await new Promise(r=>setTimeout(r,0));const changed=read();const second=document.createElement('label');second.id='second';second.htmlFor='target';document.body.append(second);await new Promise(r=>setTimeout(r,0));return{first,changed,added:read()};});results.push({engine,...data});}finally{await browser.close();}}console.log(JSON.stringify(results,null,2));await Bun.write('/tmp/acme-m10-checkbox/native-label-results.json',JSON.stringify(results,null,2)+'\\n');\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-checkbox-compiled/probe.ts",
+      "source": "import {AcmeCheckbox} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/checkbox/checkbox.js';\nimport {AcmeTheme} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/components/theme/theme.js';\nimport {AcmeCheckIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/generated/icons/classes/check-icon.js';\nimport {AcmeRemoveIcon} from '/Users/peterkloss/Dev/ACMElabs/design-system/dist/generated/icons/classes/remove-icon.js';\ncustomElements.define('acme-checkbox',AcmeCheckbox);customElements.define('acme-theme',AcmeTheme);customElements.define('acme-check-icon',AcmeCheckIcon);customElements.define('acme-remove-icon',AcmeRemoveIcon);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,30));\ntry{\nconst form=document.createElement('form');const checkbox=new AcmeCheckbox();checkbox.name='updates';checkbox.value='yes';checkbox.textContent='Product updates';form.append(checkbox);document.body.append(form);await checkbox.updateComplete;\ncheckbox.checked=true;check('checked submits before the next render',new FormData(form).get('updates')==='yes');await checkbox.updateComplete;checkbox.value='changed';check('submission value changes synchronously',new FormData(form).get('updates')==='changed');await checkbox.updateComplete;\nform.reset();await checkbox.updateComplete;check('reset restores the original unchecked default',!checkbox.checked&&new FormData(form).get('updates')===null);\ncheckbox.checked=false;checkbox.setAttribute('required','');await checkbox.updateComplete;check('required native validity reaches the form',!form.checkValidity());checkbox.removeAttribute('required');\nconst fieldset=document.createElement('fieldset');form.append(fieldset);fieldset.append(checkbox);fieldset.disabled=true;await wait();const input=()=>checkbox.shadowRoot!.querySelector('input')!;check('fieldset disability reaches the native focus target',input().disabled);\nfieldset.disabled=false;checkbox.indeterminate=true;await checkbox.updateComplete;let events:any[]=[];checkbox.addEventListener('acme-change',event=>events.push((event as CustomEvent).detail));input().click();await checkbox.updateComplete;check('native action clears real indeterminate state and reports one canonical change',checkbox.checked&&!checkbox.indeterminate&&!input().indeterminate&&events.length===1&&events[0].checked===true&&events[0].indeterminate===false,{events,checked:checkbox.checked,indeterminate:checkbox.indeterminate});\ncheckbox.checked=false;checkbox.defaultChecked=true;check('changing a dirty reset target preserves current state',checkbox.checked===false);form.reset();await checkbox.updateComplete;check('explicit defaultChecked supplies the reset target',checkbox.checked===true);\n\nconst external=document.createElement('form');external.id='external';document.body.append(external);checkbox.setAttribute('form','external');check('external association moves the one successful entry',new FormData(form).get('updates')===null&&new FormData(external).getAll('updates').length===1);checkbox.removeAttribute('form');\ncheckbox.setCustomValidity('Choose another option');check('custom validity reaches the form immediately',!form.checkValidity()&&checkbox.validationMessage==='Choose another option');checkbox.setCustomValidity('');check('clearing custom validity restores native validity',form.checkValidity());\nconst label=document.createElement('label');label.htmlFor='external-choice';label.textContent='External choice';const named=new AcmeCheckbox();named.id='external-choice';document.body.append(label,named);await named.updateComplete;await wait();const native=named.shadowRoot!.querySelector('input')!;check('external label names the actual input through native references',native.ariaLabelledByElements?.includes(label));\nlabel.htmlFor='elsewhere';await wait();check('changed label association clears the old reference',!native.ariaLabelledByElements?.includes(label),{labels:[...named.labels].map(el=>({for:el.htmlFor,control:el.control?.id})),refs:native.ariaLabelledByElements?.map(el=>({for:el.htmlFor,control:el.control?.id})),labelledby:native.getAttribute('aria-labelledby')});label.htmlFor='external-choice';await wait();\nconst explicit=document.createElement('span');explicit.id='explicit-label';explicit.textContent='Explicit choice';const help=document.createElement('span');help.id='external-help';help.textContent='External help';document.body.append(explicit,help);named.setAttribute('aria-labelledby','explicit-label');named.setAttribute('aria-describedby','external-help');named.innerHTML='<span slot=\"description\">Local help</span>';await named.updateComplete;await wait();check('explicit label references override inferred native labels',native.ariaLabelledByElements?.length===1&&native.ariaLabelledByElements[0]===explicit);check('local and authored help both reach the actual input',native.ariaDescribedByElements?.includes(help)&&native.ariaDescribedByElements.some(el=>el.getAttribute('part')==='description'));\nnamed.removeAttribute('aria-labelledby');named.removeAttribute('aria-describedby');named.replaceChildren();await wait();\nfor(const size of ['small','medium','large'] as const){named.size=size;await named.updateComplete;const box=named.shadowRoot!.querySelector('[part=root]')!.getBoundingClientRect();check(size+' Checkbox preserves at least a 24px hit surface',box.width>=24&&box.height>=24,{width:box.width,height:box.height});}\nnamed.size='medium';let trusted=0;named.addEventListener('acme-change',()=>trusted++);\nconst canvas=document.createElement('canvas');canvas.width=canvas.height=1;const context=canvas.getContext('2d',{willReadFrequently:true})!;const color=(value:string,background='white')=>{context.fillStyle=background;context.fillRect(0,0,1,1);context.fillStyle=value;context.fillRect(0,0,1,1);return [...context.getImageData(0,0,1,1).data];};const luminance=(rgb:number[])=>rgb.slice(0,3).map(channel=>{const value=channel/255;return value<=.04045?value/12.92:((value+.055)/1.055)**2.4;}).reduce((sum,value,index)=>sum+value*[.2126,.7152,.0722][index],0);const ratio=(a:number[],b:number[])=>{const x=luminance(a),y=luminance(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05);};\nfor(const appearance of ['light','dark'] as const){const theme=new AcmeTheme();theme.appearance=appearance;document.body.append(theme);const target=new AcmeCheckbox();target.textContent='Contrast';theme.append(target);await target.updateComplete;await wait();const indicator=target.shadowRoot!.querySelector('[part=indicator]')!;let style=getComputedStyle(indicator);const border=ratio(color(style.borderTopColor,style.backgroundColor),color(style.backgroundColor));check(appearance+' unchecked boundary contrast',border>=3,{ratio:border,color:style.borderTopColor,background:style.backgroundColor});target.checked=true;await target.updateComplete;style=getComputedStyle(indicator);const mark=ratio(color(style.color),color(style.backgroundColor));check(appearance+' checked mark contrast',mark>=3,{ratio:mark});theme.remove();}\n(window as any).__test={named,events:()=>trusted};(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-checkbox-compiled/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m10-checkbox-compiled\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(!data.error){await page.locator('label[for=\"external-choice\"]').click();data.results.push({name:'trusted external label activates once',ok:await page.evaluate(()=>window.__test.named.checked&&window.__test.events()===1)});await page.locator('#external-choice').press('Space');data.results.push({name:'trusted Space changes the native checked state once',ok:await page.evaluate(()=>!window.__test.named.checked&&window.__test.events()===2)});await page.evaluate(()=>window.__test.named.ripple=true);const box=await page.locator('#external-choice').boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.waitForTimeout(20);data.results.push({name:'Checkbox opt-in press creates a ripple',ok:await page.evaluate(()=>!!window.__test.named.shadowRoot.querySelector('.ripple'))});await page.evaluate(async()=>{window.__test.named.ripple=false;await window.__test.named.updateComplete;});data.results.push({name:'turning ripple off cancels its active presentation',ok:await page.evaluate(()=>!window.__test.named.shadowRoot.querySelector('.ripple'))});await page.mouse.up();if(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'native accessibility tree exposes the actual checkbox name',ok:tree.nodes.some(node=>node.role?.value==='checkbox'&&node.name?.value==='External choice')});await page.screenshot({path:directory+'/checkbox.png',fullPage:true});}}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==(r.engine==='chromium'?27:26)||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-checkbox/docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4180/components/checkbox');const form=page.locator('#checkbox-form-example');await form.locator('acme-button[type=submit]').click();const blocked=await form.evaluate(el=>!el.checkValidity()&&el.querySelector('output').textContent==='');await form.locator('acme-checkbox').click();await form.locator('acme-button[type=submit]').click();await page.waitForFunction(()=>document.querySelector('#checkbox-form-example output')?.textContent==='accepted');await form.locator('acme-button[type=reset]').click();const reset=await form.evaluate(el=>!el.querySelector('acme-checkbox').checked&&el.querySelector('output').textContent==='');results.push({engine,requiredBlocked:blocked,submit:true,reset,errors});console.log(results.at(-1));}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m10-checkbox/docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>!r.requiredBlocked||!r.reset||r.errors.length))process.exitCode=1;\n"
+    }
+  ],
+  "limits": [
+    "Happy DOM has no ElementInternals; the test-only adapter is not evidence of native form behavior. Native browser fixtures are authoritative.",
+    "Native Firefox ElementInternals.labels retains a stale label after its for changes, reproduced without Lit or house code. Name delegation filters candidates using native label.control. Public labels still exposes the platform collection.",
+    "Browser history/autofill restoration remains a real-browser final gate; explicit callback checks do not establish it.",
+    "Checkbox Group/cards, Radio/groups/cards, Switch, Segmented Control, Tabs, shared indicator and Theme Switcher remain M10."
+  ],
+  "compiled": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": true
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          },
+          {
+            "name": "Checkbox opt-in press creates a ripple",
+            "ok": true
+          },
+          {
+            "name": "turning ripple off cancels its active presentation",
+            "ok": true
+          },
+          {
+            "name": "native accessibility tree exposes the actual checkbox name",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": true
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          },
+          {
+            "name": "Checkbox opt-in press creates a ripple",
+            "ok": true
+          },
+          {
+            "name": "turning ripple off cancels its active presentation",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": true
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": true
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": true
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": true
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": true
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": true
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          },
+          {
+            "name": "external association moves the one successful entry",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the form immediately",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity restores native validity",
+            "ok": true
+          },
+          {
+            "name": "external label names the actual input through native references",
+            "ok": true
+          },
+          {
+            "name": "changed label association clears the old reference",
+            "ok": true
+          },
+          {
+            "name": "explicit label references override inferred native labels",
+            "ok": true
+          },
+          {
+            "name": "local and authored help both reach the actual input",
+            "ok": true
+          },
+          {
+            "name": "small Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "medium Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "large Checkbox preserves at least a 24px hit surface",
+            "ok": true
+          },
+          {
+            "name": "light unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "light checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "dark unchecked boundary contrast",
+            "ok": true
+          },
+          {
+            "name": "dark checked mark contrast",
+            "ok": true
+          },
+          {
+            "name": "trusted external label activates once",
+            "ok": true
+          },
+          {
+            "name": "trusted Space changes the native checked state once",
+            "ok": true
+          },
+          {
+            "name": "Checkbox opt-in press creates a ripple",
+            "ok": true
+          },
+          {
+            "name": "turning ripple off cancels its active presentation",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "requiredBlocked": true,
+      "submit": true,
+      "reset": true,
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "requiredBlocked": true,
+      "submit": true,
+      "reset": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "requiredBlocked": true,
+      "submit": true,
+      "reset": true,
+      "errors": []
+    }
+  ],
+  "manifest": {
+    "kind": "class",
+    "description": "A native checkbox with one canonical checked state and an independent reset target.",
+    "name": "AcmeCheckbox",
+    "cssParts": [
+      {
+        "description": "The label hit surface.",
+        "name": "root"
+      },
+      {
+        "description": "The native checkbox.",
+        "name": "control"
+      },
+      {
+        "description": "The checked or mixed mark.",
+        "name": "indicator"
+      },
+      {
+        "description": "The visible label.",
+        "name": "label"
+      },
+      {
+        "description": "Supporting text.",
+        "name": "description"
+      }
+    ],
+    "slots": [
+      {
+        "description": "The visible label.",
+        "name": ""
+      },
+      {
+        "description": "Supporting text.",
+        "name": "description"
+      }
+    ],
+    "members": [
+      {
+        "kind": "field",
+        "name": "shadowRootOptions",
+        "type": {
+          "text": "object"
+        },
+        "static": true,
+        "default": "{ ...AcmeFormElement.shadowRootOptions, delegatesFocus: true }"
+      },
+      {
+        "kind": "field",
+        "name": "size",
+        "type": {
+          "text": "\"small\" | \"medium\" | \"large\""
+        },
+        "default": "\"medium\"",
+        "attribute": "size"
+      },
+      {
+        "kind": "field",
+        "name": "invalid",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "attribute": "invalid"
+      },
+      {
+        "kind": "field",
+        "name": "ripple",
+        "default": "false",
+        "attribute": "ripple",
+        "type": {
+          "text": "boolean"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "checked",
+        "default": "false",
+        "attribute": "checked",
+        "type": {
+          "text": "boolean"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "defaultChecked",
+        "default": "false",
+        "type": {
+          "text": "boolean"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "value",
+        "default": "\"on\"",
+        "attribute": "value",
+        "type": {
+          "text": "string"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "indeterminate",
+        "default": "false",
+        "attribute": "indeterminate",
+        "type": {
+          "text": "boolean"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "click",
+        "return": {
+          "type": {
+            "text": "void"
+          }
+        }
+      },
+      {
+        "kind": "field",
+        "name": "className",
+        "type": {
+          "text": "string"
+        },
+        "default": "\"native\""
+      },
+      {
+        "kind": "field",
+        "name": "formAssociated",
+        "type": {
+          "text": "boolean"
+        },
+        "static": true,
+        "default": "true",
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "name",
+        "privacy": "public",
+        "type": {
+          "text": "string"
+        },
+        "default": "\"\"",
+        "attribute": "name",
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "disabled",
+        "privacy": "public",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "attribute": "disabled",
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "required",
+        "privacy": "public",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "attribute": "required",
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "form",
+        "type": {
+          "text": "HTMLFormElement | null"
+        },
+        "readonly": true,
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        },
+        "attribute": "form"
+      },
+      {
+        "kind": "field",
+        "name": "labels",
+        "type": {
+          "text": "NodeList"
+        },
+        "readonly": true,
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "validity",
+        "type": {
+          "text": "ValidityState"
+        },
+        "readonly": true,
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "validationMessage",
+        "type": {
+          "text": "string"
+        },
+        "readonly": true,
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "willValidate",
+        "type": {
+          "text": "boolean"
+        },
+        "readonly": true,
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "checkValidity",
+        "return": {
+          "type": {
+            "text": "boolean"
+          }
+        },
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "reportValidity",
+        "return": {
+          "type": {
+            "text": "boolean"
+          }
+        },
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "setCustomValidity",
+        "return": {
+          "type": {
+            "text": "void"
+          }
+        },
+        "parameters": [
+          {
+            "name": "message",
+            "type": {
+              "text": "string"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "focus",
+        "return": {
+          "type": {
+            "text": "void"
+          }
+        },
+        "parameters": [
+          {
+            "name": "options",
+            "optional": true,
+            "type": {
+              "text": "FocusOptions"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "role",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "role",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaLabel",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "aria-label",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaHasPopup",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "aria-haspopup",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaExpanded",
+        "privacy": "public",
+        "type": {
+          "text": "string | null"
+        },
+        "attribute": "aria-expanded",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaControlsElements",
+        "privacy": "public",
+        "type": {
+          "text": "Element[] | null"
+        },
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaLabelledByElements",
+        "privacy": "public",
+        "type": {
+          "text": "Element[] | null"
+        },
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "field",
+        "name": "ariaDescribedByElements",
+        "privacy": "public",
+        "type": {
+          "text": "Element[] | null"
+        },
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "getAttribute",
+        "return": {
+          "type": {
+            "text": "string | null"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "type": {
+              "text": "string"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "hasAttribute",
+        "return": {
+          "type": {
+            "text": "boolean"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "type": {
+              "text": "string"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "removeAttribute",
+        "return": {
+          "type": {
+            "text": "void"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "type": {
+              "text": "string"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "kind": "method",
+        "name": "toggleAttribute",
+        "return": {
+          "type": {
+            "text": "boolean"
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "type": {
+              "text": "string"
+            }
+          },
+          {
+            "name": "force",
+            "optional": true,
+            "type": {
+              "text": "boolean"
+            }
+          }
+        ],
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      }
+    ],
+    "events": [
+      {
+        "name": "acme-change",
+        "type": {
+          "text": "CustomEvent<{ checked: boolean; indeterminate: boolean; }>"
+        },
+        "x-acme-options": {
+          "bubbles": true,
+          "composed": true,
+          "cancelable": false
+        },
+        "description": "A user changes the checked state."
+      }
+    ],
+    "attributes": [
+      {
+        "name": "size",
+        "type": {
+          "text": "\"small\" | \"medium\" | \"large\""
+        },
+        "default": "\"medium\"",
+        "fieldName": "size"
+      },
+      {
+        "name": "invalid",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "fieldName": "invalid"
+      },
+      {
+        "name": "ripple",
+        "default": "false",
+        "fieldName": "ripple",
+        "type": {
+          "text": "boolean"
+        }
+      },
+      {
+        "name": "checked",
+        "default": "false",
+        "fieldName": "checked",
+        "type": {
+          "text": "boolean"
+        }
+      },
+      {
+        "name": "value",
+        "default": "\"on\"",
+        "fieldName": "value",
+        "type": {
+          "text": "string"
+        }
+      },
+      {
+        "name": "indeterminate",
+        "default": "false",
+        "fieldName": "indeterminate",
+        "type": {
+          "text": "boolean"
+        }
+      },
+      {
+        "type": {
+          "text": "HTMLFormElement | null"
+        },
+        "description": "ID of the associated form in the author's tree.",
+        "name": "form",
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        },
+        "fieldName": "form"
+      },
+      {
+        "name": "name",
+        "type": {
+          "text": "string"
+        },
+        "default": "\"\"",
+        "fieldName": "name",
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "name": "disabled",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "fieldName": "disabled",
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "name": "required",
+        "type": {
+          "text": "boolean"
+        },
+        "default": "false",
+        "fieldName": "required",
+        "inheritedFrom": {
+          "name": "AcmeFormElement",
+          "module": "dist/shared/native-form-element.js"
+        }
+      },
+      {
+        "type": {
+          "text": "string"
+        },
+        "description": "IDs in the author's tree scope that label the native root.",
+        "name": "aria-labelledby",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "type": {
+          "text": "string"
+        },
+        "description": "IDs in the author's tree scope that describe the native root.",
+        "name": "aria-describedby",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "type": {
+          "text": "string"
+        },
+        "description": "IDs in the author's tree scope controlled by the native root.",
+        "name": "aria-controls",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "role",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "role",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "aria-label",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "ariaLabel",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "aria-haspopup",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "ariaHasPopup",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      },
+      {
+        "name": "aria-expanded",
+        "type": {
+          "text": "string | null"
+        },
+        "fieldName": "ariaExpanded",
+        "inheritedFrom": {
+          "name": "AcmeSemanticElement",
+          "module": "dist/shared/semantic-element.js"
+        }
+      }
+    ],
+    "superclass": {
+      "name": "AcmeFormElement",
+      "module": "dist/shared/native-form-element.js"
+    },
+    "tagName": "acme-checkbox",
+    "customElement": true
+  },
+  "actionRegression": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "Button defaults to a real non-submitting native control",
+            "ok": true
+          },
+          {
+            "name": "default geometry retains the 36px baseline",
+            "ok": true
+          },
+          {
+            "name": "Icon Button is a named square",
+            "ok": true
+          },
+          {
+            "name": "loading retains focus while suppressing native action",
+            "ok": true
+          },
+          {
+            "name": "Group supplies named appearance without authoring a child override",
+            "ok": true
+          },
+          {
+            "name": "explicit child size overrides Group and clearing resumes inheritance",
+            "ok": true
+          },
+          {
+            "name": "cleared child size reads the provider again",
+            "ok": true
+          },
+          {
+            "name": "Group owns the actual button surfaces",
+            "ok": true
+          },
+          {
+            "name": "same-task form values use a native persistent submitter",
+            "ok": true
+          },
+          {
+            "name": "click cancellation prevents submission",
+            "ok": true
+          },
+          {
+            "name": "Fieldset blocks action before repaint",
+            "ok": true
+          },
+          {
+            "name": "Fieldset disabled state reaches the visible control",
+            "ok": true
+          },
+          {
+            "name": "first legend restores native activation",
+            "ok": true
+          },
+          {
+            "name": "Group frame masks the real resting button border",
+            "ok": true
+          },
+          {
+            "name": "opt-in pointer press starts one owned ripple",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "completed ripple releases its element",
+            "ok": true,
+            "actual": null
+          },
+          {
+            "name": "reduced motion suppresses ripple",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "Button defaults to a real non-submitting native control",
+            "ok": true
+          },
+          {
+            "name": "default geometry retains the 36px baseline",
+            "ok": true
+          },
+          {
+            "name": "Icon Button is a named square",
+            "ok": true
+          },
+          {
+            "name": "loading retains focus while suppressing native action",
+            "ok": true
+          },
+          {
+            "name": "Group supplies named appearance without authoring a child override",
+            "ok": true
+          },
+          {
+            "name": "explicit child size overrides Group and clearing resumes inheritance",
+            "ok": true
+          },
+          {
+            "name": "cleared child size reads the provider again",
+            "ok": true
+          },
+          {
+            "name": "Group owns the actual button surfaces",
+            "ok": true
+          },
+          {
+            "name": "same-task form values use a native persistent submitter",
+            "ok": true
+          },
+          {
+            "name": "click cancellation prevents submission",
+            "ok": true
+          },
+          {
+            "name": "Fieldset blocks action before repaint",
+            "ok": true
+          },
+          {
+            "name": "Fieldset disabled state reaches the visible control",
+            "ok": true
+          },
+          {
+            "name": "first legend restores native activation",
+            "ok": true
+          },
+          {
+            "name": "Group frame masks the real resting button border",
+            "ok": true
+          },
+          {
+            "name": "opt-in pointer press starts one owned ripple",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "completed ripple releases its element",
+            "ok": true,
+            "actual": null
+          },
+          {
+            "name": "reduced motion suppresses ripple",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "Button defaults to a real non-submitting native control",
+            "ok": true
+          },
+          {
+            "name": "default geometry retains the 36px baseline",
+            "ok": true
+          },
+          {
+            "name": "Icon Button is a named square",
+            "ok": true
+          },
+          {
+            "name": "loading retains focus while suppressing native action",
+            "ok": true
+          },
+          {
+            "name": "Group supplies named appearance without authoring a child override",
+            "ok": true
+          },
+          {
+            "name": "explicit child size overrides Group and clearing resumes inheritance",
+            "ok": true
+          },
+          {
+            "name": "cleared child size reads the provider again",
+            "ok": true
+          },
+          {
+            "name": "Group owns the actual button surfaces",
+            "ok": true
+          },
+          {
+            "name": "same-task form values use a native persistent submitter",
+            "ok": true
+          },
+          {
+            "name": "click cancellation prevents submission",
+            "ok": true
+          },
+          {
+            "name": "Fieldset blocks action before repaint",
+            "ok": true
+          },
+          {
+            "name": "Fieldset disabled state reaches the visible control",
+            "ok": true
+          },
+          {
+            "name": "first legend restores native activation",
+            "ok": true
+          },
+          {
+            "name": "Group frame masks the real resting button border",
+            "ok": true
+          },
+          {
+            "name": "opt-in pointer press starts one owned ripple",
+            "ok": true,
+            "actual": 1
+          },
+          {
+            "name": "completed ripple releases its element",
+            "ok": true,
+            "actual": null
+          },
+          {
+            "name": "reduced motion suppresses ripple",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "validation": {
+    "build": "pass",
+    "docs": "93 pages; 4,255 elements; zero undocumented",
+    "fullSuite": {
+      "passed": 897,
+      "failed": 0,
+      "assertions": 119960,
+      "files": 134
+    },
+    "publicTypes": {
+      "files": 866,
+      "errors": 0
+    },
+    "diffCheck": "pass",
+    "review": "Local review covers current/reset state, form synchronization, label ownership, native validation, disabled focus, public interface removal, private input lifetime and owned gesture cleanup."
+  }
+}

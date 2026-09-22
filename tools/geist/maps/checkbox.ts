@@ -4,6 +4,7 @@ import { type GeistMap, type SpecNode } from "../gen";
 const tag = (t: string) => (c: SpecNode) => c.tag === t;
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "checkbox",
   component: "Checkbox",
   // The rendered root is the label tied to the hidden checkbox.

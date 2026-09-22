@@ -72,6 +72,9 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
   get labels(): NodeList {
     return this.internals.labels;
   }
+  get target(): HTMLElement | undefined {
+    return this.options.target?.();
+  }
   get validity(): ValidityState {
     this.sync();
     return this.internals.validity;
