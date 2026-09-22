@@ -4,6 +4,7 @@ import type { GeistMap, SpecNode } from "../gen";
 const avatar = (c: SpecNode) => "data-geist-avatar" in c.attrs;
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "avatar",
   component: "AvatarGroup",
   root: (n) => n.tag === "div" && /--avatar-overlap/.test(n.attrs.style ?? ""),

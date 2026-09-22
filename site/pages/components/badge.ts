@@ -2,15 +2,15 @@
 import type { Doc } from "../../site";
 
 const hues = ["gray", "blue", "purple", "amber", "red", "pink", "green", "teal"];
-const shield = `<acme-shield-icon class="ic" slot="icon" size="16px"></acme-shield-icon>`;
+const shield = `<acme-shield-icon class="ic" slot="start" size="16px"></acme-shield-icon>`;
 const variantRows = hues.map((h) => `<div class="row" style="gap:4px"><acme-badge variant="${h}">${h}</acme-badge><acme-badge variant="${h}" contrast="low">${h}-subtle</acme-badge></div>`).join("");
 const iconRows = hues
   .map(
     (h) =>
-      `<div class="row" style="gap:4px">${["lg", "md", "sm"].map((s) => `<acme-badge size="${s}" variant="${h}">${shield}${h}</acme-badge>`).join("")}${["sm", "md", "lg"].map((s) => `<acme-badge size="${s}" variant="${h}" contrast="low">${shield}${h}</acme-badge>`).join("")}</div>`,
+      `<div class="row" style="gap:4px">${["large", "medium", "small"].map((s) => `<acme-badge size="${s}" variant="${h}">${shield}${h}</acme-badge>`).join("")}${["small", "medium", "large"].map((s) => `<acme-badge size="${s}" variant="${h}" contrast="low">${shield}${h}</acme-badge>`).join("")}</div>`,
   )
   .join("");
-const slack = `<svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-slack"/></svg>`;
+const slack = `<svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#brand-slack"/></svg>`;
 
 export const doc: Doc = {
   id: "badge",
@@ -24,16 +24,16 @@ export const doc: Doc = {
     },
     {
       h: "Sizes",
-      html: `<div class="row" style="gap:8px"><acme-badge size="sm">Small</acme-badge><acme-badge size="md">Medium</acme-badge><acme-badge size="lg">Large</acme-badge></div>`,
+      html: `<div class="row" style="gap:8px"><acme-badge size="small">Small</acme-badge><acme-badge size="medium">Medium</acme-badge><acme-badge size="large">Large</acme-badge></div>`,
     },
     {
       h: "With icons",
-      html: `<div class="vstack" style="gap:8px">${iconRows}<div class="row" style="gap:4px"><acme-badge size="lg" variant="inverted">${shield}inverted</acme-badge><acme-badge size="md" variant="inverted">${shield}inverted</acme-badge><acme-badge size="sm" variant="inverted">${shield}inverted</acme-badge></div></div>`,
+      html: `<div class="vstack" style="gap:8px">${iconRows}<div class="row" style="gap:4px"><acme-badge size="large" variant="inverted">${shield}inverted</acme-badge><acme-badge size="medium" variant="inverted">${shield}inverted</acme-badge><acme-badge size="small" variant="inverted">${shield}inverted</acme-badge></div></div>`,
     },
     {
       h: "Pill",
       p: "A special link. It is less prominent than a button and takes the badge shape.",
-      html: `<div class="vstack" style="gap:16px"><div class="row" style="gap:8px"><acme-pill href="#badge#pill" size="sm">Label</acme-pill><acme-pill href="#badge#pill" size="md">Label</acme-pill><acme-pill href="#badge#pill" size="lg">Label</acme-pill></div><div class="row" style="gap:8px"><acme-pill href="#badge#pill" size="sm">${slack}Label</acme-pill><acme-pill href="#badge#pill" size="md">${slack}Label</acme-pill><acme-pill href="#badge#pill" size="lg">${slack}Label</acme-pill></div></div>`,
+      html: `<div class="vstack" style="gap:16px"><div class="row" style="gap:8px"><acme-pill href="#badge#pill" size="small">Label</acme-pill><acme-pill href="#badge#pill" size="medium">Label</acme-pill><acme-pill href="#badge#pill" size="large">Label</acme-pill></div><div class="row" style="gap:8px"><acme-pill href="#badge#pill" size="small">${slack}Label</acme-pill><acme-pill href="#badge#pill" size="medium">${slack}Label</acme-pill><acme-pill href="#badge#pill" size="large">${slack}Label</acme-pill></div></div>`,
     },
   ],
   practices: {

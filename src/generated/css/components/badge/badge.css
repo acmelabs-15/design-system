@@ -212,29 +212,25 @@
   inset: 0;
 }
 
-.badge:where(:not(.sm, .lg)):has([data-glyph="circular"]) {
-  padding-right: .625rem;
-}
-
-.badge:where(.sm) slot::slotted([slot="icon"]), .badge:where(.sm) slot > [slot="icon"] {
+.badge:where(.sm) slot::slotted([slot="start"]), .badge:where(.sm) slot > [slot="start"] {
   width: .75rem !important;
   height: .75rem !important;
   margin-left: -.125rem !important;
 }
 
-.badge:where(:not(.sm, .lg)) slot::slotted([slot="icon"]), .badge:where(:not(.sm, .lg)) slot > [slot="icon"] {
+.badge:where(:not(.sm, .lg)) slot::slotted([slot="start"]), .badge:where(:not(.sm, .lg)) slot > [slot="start"] {
   width: .875rem !important;
   height: .875rem !important;
   margin-left: -.25rem !important;
 }
 
-.badge slot::slotted([slot="icon"]), .badge slot > [slot="icon"] {
+.badge slot::slotted([slot="start"]), .badge slot > [slot="start"] {
   flex-shrink: 0 !important;
   display: block !important;
   -webkit-transform: translate(0) !important;
 }
 
-.badge:where(.lg) slot::slotted([slot="icon"]), .badge:where(.lg) slot > [slot="icon"] {
+.badge:where(.lg) slot::slotted([slot="start"]), .badge:where(.lg) slot > [slot="start"] {
   width: 1rem !important;
   height: 1rem !important;
 }
@@ -284,18 +280,10 @@
   mix-blend-mode: screen;
 }
 
-.badge:where(:is(.sm, .lg)) slot::slotted([slot="icon"]:has([data-glyph="circular"])), .badge:where(:is(.sm, .lg)) slot > [slot="icon"]:has([data-glyph="circular"]) {
+.badge:where(:is(.sm, .lg)) slot::slotted([slot="start"][data-glyph="circular"]), .badge:where(:is(.sm, .lg)) slot > [slot="start"][data-glyph="circular"] {
   margin-left: -.25rem !important;
 }
 
-.badge:where(:not(.sm, .lg)) slot::slotted([slot="icon"]:has([data-glyph="circular"])), .badge:where(:not(.sm, .lg)) slot > [slot="icon"]:has([data-glyph="circular"]) {
-  margin-left: -.4375rem !important;
-}
-
-.badge:where(:is(.sm, .lg)) slot::slotted([slot="icon"][data-glyph="circular"]), .badge:where(:is(.sm, .lg)) slot > [slot="icon"][data-glyph="circular"] {
-  margin-left: -.25rem !important;
-}
-
-.badge:where(:not(.sm, .lg)) slot::slotted([slot="icon"][data-glyph="circular"]), .badge:where(:not(.sm, .lg)) slot > [slot="icon"][data-glyph="circular"] {
+.badge:where(:not(.sm, .lg)) slot::slotted([slot="start"][data-glyph="circular"]), .badge:where(:not(.sm, .lg)) slot > [slot="start"][data-glyph="circular"] {
   margin-left: -.4375rem !important;
 }

@@ -1,24 +1,35 @@
-import { html } from "lit";
+import { pillStructureCss } from "../../generated/components/pill/pill-structure.styles";
+import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
+import { sharedCss } from "../../base";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
+import { atomState } from "../../shared/atom-state";
 import { pillCss } from "../../generated/components/pill/pill.styles";
-
-/** Geist Pill: the badge shape as a link, white with an inset ring, sm 20 · md 24 · lg 32; a logo may lead in the `icon` slot. */
-
-export class AcmePill extends AcmeElement {
-  static styles = [sharedCss, pillCss];
-  /** sm · md · lg (small · medium · large also work). */
-  @property() size: "sm" | "md" | "lg" | "small" | "medium" | "large" = "md";
-  @property({ type: Boolean }) solid = false;
-  @property({ type: Boolean }) count = false;
-  @property() href = "";
+/** A compact passive label or native link.
+ * @slot - Label content.
+ * @slot start - Leading content.
+ * @slot end - Trailing content.
+ * @csspart root - The label or link surface.
+ */
+export class AcmePill extends AcmeSemanticElement {
+  static styles = [sharedCss, pillCss, pillStructureCss];
+  @atomState() @property({ noAccessor: true, useDefault: true }) size: "small" | "medium" | "large" = "medium";
+  @atomState() @property({ noAccessor: true, useDefault: true }) variant: "outline" | "solid" = "outline";
+  @atomState() @property({ noAccessor: true, type: Boolean }) count = false;
+  @atomState() @property({ noAccessor: true, useDefault: true }) href = "";
+  @atomState() @property({ noAccessor: true, useDefault: true }) target = "";
+  @atomState() @property({ noAccessor: true, useDefault: true }) rel = "";
+  focus(options?: FocusOptions) {
+    this.renderRoot?.querySelector<HTMLAnchorElement>("a")?.focus(options);
+  }
   render() {
-    const c = this.cls("pill", { sm: this.size === "sm" || this.size === "small", lg: this.size === "lg" || this.size === "large", solid: this.solid, count: this.count });
-    const inner = html`<slot name="icon"></slot><slot></slot>`;
-    return this.href ? html`<a class=${c} href=${this.href} part="pill">${inner}</a>` : html`<span class=${c} part="pill">${inner}</span>`;
+    const classes = this.cls("pill", { sm: this.size === "small", lg: this.size === "large", solid: this.variant === "solid", count: this.count });
+    const content = html`<slot name="start"></slot><slot></slot><slot name="end"></slot>`;
+    return this.href
+      ? html`<a class=${classes} part="root" href=${this.href} target=${this.target || nothing} rel=${this.rel || nothing}>${content}</a>`
+      : html`<span class=${classes} part="root">${content}</span>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-pill": AcmePill;

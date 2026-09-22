@@ -15,5 +15,6 @@ export const geist: GeistMap = {
     contrast: { low: ".subtle" },
   },
   children: [{ ours: ".label", pick: has("min-w-0") }],
-  slotted: { "[data-slot=icon]": "[slot=icon]" },
+  ignore: ["has-[[data-glyph=circular]]:pr-2.5", "**:data-[slot=icon]:has-[[data-glyph=circular]]:-ml-1.75", "**:data-[slot=icon]:has-[[data-glyph=circular]]:-ml-1"],
+  slotted: { "[data-slot=icon]": "[slot=start]" },
 };

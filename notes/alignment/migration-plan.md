@@ -152,3 +152,7 @@ The complete pinned icon catalog and explicit per-icon/family modules are verifi
 ### M09 action acceptance — 2026-09-21
 
 [Button, Icon Button, Toggle Button and Copy Button](evidence/m09-actions-2026-09-21.json) are implemented. Chip and old action aliases are removed with their callers. Native submitter ownership, canonical current values, attached Group surfaces, loading focus, clipboard lifetimes and optional ripple pass three-engine acceptance. Build/site and all 895 tests pass. Avatar/Avatar Group/Badge/Pill/Tag remain in M09. Split Button/Menu stays M13, Theme Switcher M10 and generated React wrapper reconciliation M22.
+
+### M09 completion — 2026-09-21
+
+[Identity acceptance](evidence/m09-identity-2026-09-21.json) completes Avatar/Avatar Group/Badge/Pill/Tag. Combined with the preceding icon, Spinner and action records, all M09 entries are complete at their assigned boundaries. The final build/site and 894 tests pass. Each engine passes 24 source and compiled identity checks, with live documentation overflow/removal actions. Native image lifetimes, count limits, immutable keyed members, RTL marker order and real Pill hit geometry are verified. Old service/username/avatar-size and Badge/Pill alias interfaces are removed. Reference-only style producers now retire their own recorded outputs safely. Continue M10 with the [failing Checkbox baseline](evidence/m10-checkbox-baseline-2026-09-21.json). Final whole-library appearance, accessibility, React/package acceptance and the two preserved platform limits remain M22/M26.

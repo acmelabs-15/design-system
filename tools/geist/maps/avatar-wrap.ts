@@ -3,6 +3,7 @@
 import { type GeistMap, has } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "avatar",
   element: "avatar",
   component: ["AvatarWithIcon", "GitHubAvatar", "GitLabAvatar", "BitbucketAvatar"],

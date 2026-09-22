@@ -45,7 +45,7 @@ export const doc: Doc = {
       h: "Components",
       html: rowOf([
         `<acme-tooltip position="bottom" text="${TEXT}"><acme-button size="small">Bottom</acme-button></acme-tooltip>`,
-        `<acme-tooltip position="left" text="${TEXT}"><acme-badge size="sm">LEFT</acme-badge></acme-tooltip>`,
+        `<acme-tooltip position="left" text="${TEXT}"><acme-badge size="small">LEFT</acme-badge></acme-tooltip>`,
         `<acme-tooltip position="right" text="${TEXT}"><acme-spinner></acme-spinner></acme-tooltip>`,
         `<acme-tooltip text="Search"><acme-kbd slot="content">/</acme-kbd><span>Shortcut</span></acme-tooltip>`,
       ]),
@@ -54,9 +54,15 @@ export const doc: Doc = {
       h: "Other",
       html: rowOf([`<acme-tooltip text="${TEXT}" tip="false">No tip indicator</acme-tooltip>`, `<acme-tooltip center="false" text="${TEXT} multiple times.">No center text</acme-tooltip>`]),
     },
-    { h: "Open", census: true, p: "The bubble open on each side, through <code>shown</code>: 13px inverted-theme text 10px from the trigger, the arrow centred on the facing edge.", html: sides(OPEN) },
     {
-      h: "Open aligned", census: true,
+      h: "Open",
+      census: true,
+      p: "The bubble open on each side, through <code>shown</code>: 13px inverted-theme text 10px from the trigger, the arrow centred on the facing edge.",
+      html: sides(OPEN),
+    },
+    {
+      h: "Open aligned",
+      census: true,
       p: "The bubble aligned to the trigger's start or end above and below it: the arrow sits at the arrow offset from the bubble's edge, over the trigger's centre.",
       html: rowOf([
         tip("Top/Left", `${OPEN} box-align="left" text="${TEXT}"`),
@@ -67,19 +73,22 @@ export const doc: Doc = {
     },
     { h: "Open no delay", census: true, p: "Without the entry delay the fade-in starts at once.", html: sides(`${OPEN} delay="false"`) },
     {
-      h: "Open lower delay", census: true,
+      h: "Open lower delay",
+      census: true,
       p: 'The shorter entry delay (<code>lower-delay</code>), and a bubble a touch opened (<code>shown="4"</code>, both with <code>disable-triggers</code> so a scroll does not close them): the faster fade-in, over a backdrop that catches the next tap.',
       html: rowOf([tip("Lower delay", `${OPEN} lower-delay text="${TEXT}"`), tip("Touch", `${TOUCH} text="${TEXT}"`)]),
     },
     { h: "Open custom type", census: true, p: "A type sets the themed colour variables of that tooltip variant on the bubble.", html: typed(OPEN) },
     { h: "Open custom type unfilled", census: true, p: 'With <code>fill="false"</code> the plain variant\'s variables apply instead of the filled tooltip ones.', html: typed(`${OPEN} fill="false"`) },
     {
-      h: "Open shortcut", census: true,
+      h: "Open shortcut",
+      census: true,
       p: "A key in the content: the bubble becomes an inline flex row with a 4px gap, and the key draws small and flat on the gray-400 fill.",
       html: rowOf([`<acme-tooltip${OPEN} text="Search"><acme-kbd slot="content">/</acme-kbd><span>Shortcut</span></acme-tooltip>`]),
     },
     {
-      h: "Open other", census: true,
+      h: "Open other",
+      census: true,
       p: "Without the arrow, without centred text, without wrapping, and without the inverted theme.",
       html: rowOf([
         tip("No tip", `${OPEN} text="${TEXT}" tip="false"`),

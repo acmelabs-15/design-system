@@ -2,7 +2,7 @@ import { expect, test } from "bun:test";
 import { mkdir, mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { compileStyle, litStyleModule, partitionStyleSheet, validateRegistrations, verifyStyleManifest, writeStyle } from "../styles";
+import { compileStyle, loadStyleManifest, removeStyle, litStyleModule, partitionStyleSheet, validateRegistrations, verifyStyleManifest, writeStyle } from "../styles";
 import { registerStyleProperties } from "../../src/shared/style-properties";
 
 test("channel consumers use full colors and fixed alpha without making palette definitions circular", () => {
@@ -202,6 +202,31 @@ test("an active output lock cannot overwrite the manifest", async () => {
     expect(() => writeStyle("shared/second", ".y{}", options)).toThrow("Style output is locked");
     expect(await Bun.file(manifest).text()).toBe(before);
     expect(await Bun.file(path.join(root, "src/generated/shared/second.styles.ts")).exists()).toBe(false);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("retiring a style removes only its recorded files and protects unrecorded changes", async () => {
+  const root = await mkdtemp(path.join(tmpdir(), "acme-retired-style-"));
+  try {
+    for (const input of ["scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+      await Bun.write(path.join(root, input), await Bun.file(path.join(import.meta.dir, "../..", input)).text());
+    const options = { root, producer: "mapped" as const, inputs: [] };
+    const retired = writeStyle("shared/retired", ".old{color:red}", options);
+    const retained = writeStyle("shared/retained", ".new{color:blue}", options);
+    const module = path.join(root, "src/generated/shared/retired.styles.ts");
+    const original = await Bun.file(module).text();
+    await Bun.write(module, "unrecorded content");
+    expect(() => removeStyle("shared/retired", root)).toThrow("unrecorded changes");
+    expect(loadStyleManifest(root).entries["shared/retired"]).toBeDefined();
+    await Bun.write(module, original);
+    removeStyle("shared/retired", root);
+    for (const file of Object.keys(retired.files)) expect(await Bun.file(path.join(root, file)).exists()).toBe(false);
+    for (const file of Object.keys(retained.files)) expect(await Bun.file(path.join(root, file)).exists()).toBe(true);
+    expect(Object.keys(verifyStyleManifest(root).entries)).toEqual(["shared/retained"]);
+    expect(() => removeStyle("shared/retired", root)).not.toThrow();
+    expect(() => removeStyle("../outside", root)).toThrow("Invalid generated style key");
   } finally {
     await rm(root, { recursive: true, force: true });
   }

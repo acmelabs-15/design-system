@@ -20,7 +20,7 @@ const locked = (tooltip: boolean) =>
       : item("Delete", "locked")
   }</acme-menu>`;
 const links = `<acme-menu width="200">${trigger("Links")}${item("One", 'href="/design/menu#custom-trigger"')}${item("Two", 'href="#"')}${item("Three", 'href="#"')}</acme-menu>`;
-const custom = `<acme-menu width="200">${trigger('<acme-avatar size="30" username="evilrabbit"></acme-avatar>', 'variant="unstyled"')}${item("One")}${item("Two")}${item("Three")}</acme-menu>`;
+const custom = `<acme-menu width="200">${trigger('<acme-avatar width="30px" initials="ER" label="Evil Rabbit"></acme-avatar>', 'variant="unstyled"')}${item("One")}${item("Two")}${item("Three")}</acme-menu>`;
 const startEnd = `<div class="row" style="gap:24px;align-items:stretch;flex-wrap:nowrap"><acme-menu>${dotsTrigger}${item(`${icon("accessibility-new", "start")}Left`)}${item(`${icon("accessibility-new", "start")}Center`)}${item(`${icon("accessibility-new", "start")}Right`)}</acme-menu><acme-menu>${dotsTrigger}${item(`Left${icon("accessibility-new", "end")}`)}${item(`Center${icon("accessibility-new", "end")}`)}${item(`Right${icon("accessibility-new", "end")}`)}</acme-menu></div>`;
 const position = `<acme-menu position="left-start" width="200">${trigger("Left Start")}${item("One")}${item("Two")}</acme-menu>`;
 const section = `<acme-menu width="200">${trigger("Actions")}<acme-menu-section slot="items" title="Section"><acme-menu-item>One</acme-menu-item><acme-menu-item>Two</acme-menu-item></acme-menu-section>${item("Three")}${item("Locked", "locked")}<acme-menu-divider slot="items"></acme-menu-divider>${item("Delete", 'variant="error"')}</acme-menu>`;

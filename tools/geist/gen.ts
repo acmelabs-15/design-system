@@ -8,7 +8,7 @@
 // Run: bun tools/geist/gen.ts [name ...]   (default: every mapping in tools/geist/maps)
 import fs from "node:fs";
 import path from "node:path";
-import { writeStyle, type PropertyRegistration } from "../../scripts/styles";
+import { removeStyle, writeStyle, type PropertyRegistration } from "../../scripts/styles";
 import { atoms, type Decl, loadReference, parseDecls, serialize, simplify, twProperty } from "./simplify";
 import { allRules, keyframesOf, resolve } from "./tw";
 
@@ -1865,7 +1865,7 @@ if (import.meta.main) {
         .map((f) => f.replace(/\.ts$/, ""));
   for (const n of all) {
     const { geist } = (await import(path.join(import.meta.dir, "maps", `${n}.ts`))) as { geist: GeistMap };
-    if (geist.referenceOnly) { console.log(`${n}: reference baseline`); continue; }
+    if (geist.referenceOnly) { removeStyle("components/"+(geist.element ?? n)+"/"+n); console.log(`${n}: reference baseline`); continue; }
     const { report } = await writeStyles(n);
     console.log(`${n}: ${report.length ? `\n  - ${report.join("\n  - ")}` : "clean"}`);
   }

@@ -41,15 +41,14 @@
 .badge:where(.red.subtle):before{content:"";background-color:oklch(from var(--ds-red-200) .94 calc(c * 1.3) h)}
 .badge:where(.teal.subtle):before{content:"";background-color:oklch(from var(--ds-teal-300) .94 calc(c * 1.3) h)}
 .badge:where(.subtle):before{content:"";pointer-events:none;position:absolute;inset:0;border-radius:2147483647px;mix-blend-mode:multiply}
-.badge:where(:not(.sm,.lg)):has([data-glyph=circular]){padding-right:.625rem}
-.badge:where(.sm) slot::slotted([slot=icon]),
-.badge:where(.sm) slot > [slot=icon]{margin-left:-.125rem !important;width:.75rem !important;height:.75rem !important}
-.badge:where(:not(.sm,.lg)) slot::slotted([slot=icon]),
-.badge:where(:not(.sm,.lg)) slot > [slot=icon]{margin-left:-.25rem !important;width:.875rem !important;height:.875rem !important}
-.badge slot::slotted([slot=icon]),
-.badge slot > [slot=icon]{display:block !important;flex-shrink:0 !important;-webkit-transform:translate(0) !important}
-.badge:where(.lg) slot::slotted([slot=icon]),
-.badge:where(.lg) slot > [slot=icon]{width:1rem !important;height:1rem !important}
+.badge:where(.sm) slot::slotted([slot=start]),
+.badge:where(.sm) slot > [slot=start]{margin-left:-.125rem !important;width:.75rem !important;height:.75rem !important}
+.badge:where(:not(.sm,.lg)) slot::slotted([slot=start]),
+.badge:where(:not(.sm,.lg)) slot > [slot=start]{margin-left:-.25rem !important;width:.875rem !important;height:.875rem !important}
+.badge slot::slotted([slot=start]),
+.badge slot > [slot=start]{display:block !important;flex-shrink:0 !important;-webkit-transform:translate(0) !important}
+.badge:where(.lg) slot::slotted([slot=start]),
+.badge:where(.lg) slot > [slot=start]{width:1rem !important;height:1rem !important}
 :where(:host([data-dark])) .badge:where(.amber.subtle):before{content:"";background-color:oklch(from var(--ds-amber-200) .27 calc(c * 1.3) h)}
 :where(:host([data-dark])) .badge:where(.blue.subtle):before{content:"";background-color:oklch(from var(--ds-blue-200) .27 calc(c * 1.3) h)}
 :where(:host([data-dark])) .badge:where(:not(.blue,.purple,.amber,.red,.pink,.green,.teal).subtle):before{content:"";background-color:oklch(from var(--ds-gray-200) .27 c h)}
@@ -59,11 +58,7 @@
 :where(:host([data-dark])) .badge:where(.red.subtle):before{content:"";background-color:oklch(from var(--ds-red-200) .27 calc(c * 1.3) h)}
 :where(:host([data-dark])) .badge:where(.teal.subtle):before{content:"";background-color:oklch(from var(--ds-teal-300) .27 calc(c * 1.3) h)}
 :where(:host([data-dark])) .badge:where(.subtle):before{content:"";mix-blend-mode:screen}
-.badge:where(:is(.sm,.lg)) slot::slotted([slot=icon]:has([data-glyph=circular])),
-.badge:where(:is(.sm,.lg)) slot > [slot=icon]:has([data-glyph=circular]){margin-left:-.25rem !important}
-.badge:where(:not(.sm,.lg)) slot::slotted([slot=icon]:has([data-glyph=circular])),
-.badge:where(:not(.sm,.lg)) slot > [slot=icon]:has([data-glyph=circular]){margin-left:-.4375rem !important}
-.badge:where(:is(.sm,.lg)) slot::slotted([slot=icon][data-glyph=circular]),
-.badge:where(:is(.sm,.lg)) slot > [slot=icon][data-glyph=circular]{margin-left:-.25rem !important}
-.badge:where(:not(.sm,.lg)) slot::slotted([slot=icon][data-glyph=circular]),
-.badge:where(:not(.sm,.lg)) slot > [slot=icon][data-glyph=circular]{margin-left:-.4375rem !important}
+.badge:where(:is(.sm,.lg)) slot::slotted([slot=start][data-glyph=circular]),
+.badge:where(:is(.sm,.lg)) slot > [slot=start][data-glyph=circular]{margin-left:-.25rem !important}
+.badge:where(:not(.sm,.lg)) slot::slotted([slot=start][data-glyph=circular]),
+.badge:where(:not(.sm,.lg)) slot > [slot=start][data-glyph=circular]{margin-left:-.4375rem !important}

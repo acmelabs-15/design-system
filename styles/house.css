@@ -1736,7 +1736,7 @@ a:hover {
   border: 0;
   text-decoration: none;
 }
-.pill:hover {
+.pill:is(a):hover {
   background: var(--comp);
   text-decoration: none;
 }
@@ -1767,8 +1767,8 @@ a:hover {
   height: 16px;
 }
 .pill.solid {
-  background: var(--ds-blue-700);
-  color: #fff;
+  background:var(--accent);
+  color:var(--on-accent);
   box-shadow: none;
 }
 .pill.count {
@@ -4160,6 +4160,7 @@ html {
   font-size: var(--t-2xs);
   line-height: 16px;
   white-space: nowrap;
+  gap:4px;
 }
 
 /* ---------- Card foot and rail layout ---------- */
@@ -7913,3 +7914,7 @@ a.breadcrumb.menu:hover {
 .markdown .th-type {
   color: var(--ds-green-900);
 }
+
+.tag.small { height:16px; padding-inline:6px; font-size:10px; }
+.tag.large { height:24px; padding-inline:10px; font-size:12px; }
+.pill:is(a):focus-visible { outline:none; box-shadow:var(--ds-focus-ring); }

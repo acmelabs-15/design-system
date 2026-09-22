@@ -14,7 +14,7 @@ export const doc: Doc = {
     },
     {
       h: "With crumbs and tools",
-      html: `<acme-appbar name="ACME" no-theme style="margin:-24px;position:static"><acme-bar-chart-icon class="ic" slot="logo" size="16px"></acme-bar-chart-icon><acme-breadcrumbs slot="crumbs" variant="menu"><a href="#">acme-labs</a><span aria-current="page">design-system</span></acme-breadcrumbs><acme-button slot="tools" size="small">Feedback</acme-button><acme-avatar slot="tools" size="24" letter="PK"></acme-avatar></acme-appbar>`,
+      html: `<acme-appbar name="ACME" no-theme style="margin:-24px;position:static"><acme-bar-chart-icon class="ic" slot="logo" size="16px"></acme-bar-chart-icon><acme-breadcrumbs slot="crumbs" variant="menu"><a href="#">acme-labs</a><span aria-current="page">design-system</span></acme-breadcrumbs><acme-button slot="tools" size="small">Feedback</acme-button><acme-avatar slot="tools" size="small" initials="PK" label="Peter Kloss"></acme-avatar></acme-appbar>`,
     },
   ],
 };

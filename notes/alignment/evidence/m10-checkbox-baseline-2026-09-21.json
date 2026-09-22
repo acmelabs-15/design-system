@@ -1,0 +1,160 @@
+{
+  "date": "2026-09-21",
+  "status": "pre-implementation baseline",
+  "results": {
+    "engines": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": false
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": false
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": false
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": false
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": false
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": false,
+            "actual": {
+              "events": [
+                {
+                  "checked": true
+                }
+              ],
+              "checked": true,
+              "indeterminate": false
+            }
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": false
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": false
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": false
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": false
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": false
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": false,
+            "actual": {
+              "events": [
+                {
+                  "checked": true
+                }
+              ],
+              "checked": true,
+              "indeterminate": false
+            }
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "checked submits before the next render",
+            "ok": false
+          },
+          {
+            "name": "submission value changes synchronously",
+            "ok": false
+          },
+          {
+            "name": "reset restores the original unchecked default",
+            "ok": false
+          },
+          {
+            "name": "required native validity reaches the form",
+            "ok": false
+          },
+          {
+            "name": "fieldset disability reaches the native focus target",
+            "ok": false
+          },
+          {
+            "name": "native action clears real indeterminate state and reports one canonical change",
+            "ok": false,
+            "actual": {
+              "events": [
+                {
+                  "checked": true
+                }
+              ],
+              "checked": true,
+              "indeterminate": false
+            }
+          },
+          {
+            "name": "changing a dirty reset target preserves current state",
+            "ok": true
+          },
+          {
+            "name": "explicit defaultChecked supplies the reset target",
+            "ok": true
+          }
+        ]
+      }
+    ],
+    "errors": []
+  },
+  "fixtures": [
+    {
+      "origin": "/tmp/acme-m10-checkbox/probe.ts",
+      "source": "import {AcmeCheckbox} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/checkbox/checkbox';\ncustomElements.define('acme-checkbox',AcmeCheckbox);\nconst results:any[]=[];const check=(name:string,ok:boolean,actual?:unknown)=>results.push({name,ok,...(!ok?{actual}:{})});const wait=()=>new Promise(r=>setTimeout(r,30));\ntry{\nconst form=document.createElement('form');const checkbox=new AcmeCheckbox();checkbox.name='updates';checkbox.value='yes';checkbox.textContent='Product updates';form.append(checkbox);document.body.append(form);await checkbox.updateComplete;\ncheckbox.checked=true;check('checked submits before the next render',new FormData(form).get('updates')==='yes');await checkbox.updateComplete;checkbox.value='changed';check('submission value changes synchronously',new FormData(form).get('updates')==='changed');await checkbox.updateComplete;\nform.reset();await checkbox.updateComplete;check('reset restores the original unchecked default',!checkbox.checked&&new FormData(form).get('updates')===null);\ncheckbox.checked=false;checkbox.setAttribute('required','');await checkbox.updateComplete;check('required native validity reaches the form',!form.checkValidity());checkbox.removeAttribute('required');\nconst fieldset=document.createElement('fieldset');form.append(fieldset);fieldset.append(checkbox);fieldset.disabled=true;await wait();const input=()=>checkbox.shadowRoot!.querySelector('input')!;check('fieldset disability reaches the native focus target',input().disabled);\nfieldset.disabled=false;checkbox.indeterminate=true;await checkbox.updateComplete;let events:any[]=[];checkbox.addEventListener('acme-change',event=>events.push((event as CustomEvent).detail));input().click();await checkbox.updateComplete;check('native action clears real indeterminate state and reports one canonical change',checkbox.checked&&!checkbox.indeterminate&&!input().indeterminate&&events.length===1&&events[0].checked===true&&events[0].indeterminate===false,{events,checked:checkbox.checked,indeterminate:checkbox.indeterminate});\ncheckbox.checked=false;checkbox.defaultChecked=true;check('changing a dirty reset target preserves current state',checkbox.checked===false);form.reset();await checkbox.updateComplete;check('explicit defaultChecked supplies the reset target',checkbox.checked===true);\n(window as any).__results={results};\n}catch(error){(window as any).__results={results,error:String(error),stack:(error as Error).stack}}\n"
+    },
+    {
+      "origin": "/tmp/acme-m10-checkbox/run.ts",
+      "source": "import fs from \"node:fs\";import path from \"node:path\";\nconst directory=\"/tmp/acme-m10-checkbox\",root=\"/Users/peterkloss/Dev/ACMElabs/design-system\";fs.mkdirSync(directory,{recursive:true});\nconst result=await Bun.build({entrypoints:[directory+\"/probe.ts\"],outdir:directory+\"/bundle\",target:\"browser\",format:\"esm\",splitting:true});if(!result.success)throw new AggregateError(result.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH=\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers\";\nconst pw=await import(\"/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs\");\nconst server=Bun.serve({port:0,hostname:\"127.0.0.1\",fetch(req){const url=new URL(req.url);if(url.pathname===\"/tokens.css\")return new Response(Bun.file(root+\"/src/generated/css/document/tokens.css\"),{headers:{\"Content-Type\":\"text/css\"}});if(url.pathname.endsWith(\".js\")&&url.pathname!==\"/probe.js\")return new Response(Bun.file(directory+\"/bundle\"+url.pathname),{headers:{\"Content-Type\":\"text/javascript\"}});if(url.pathname===\"/probe.js\")return new Response(Bun.file(directory+\"/bundle/probe.js\"),{headers:{\"Content-Type\":\"text/javascript\"}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{\"Content-Type\":\"text/html\"}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of [\"chromium\",\"firefox\",\"webkit\"]){const browser=await pw[engine].launch(engine===\"chromium\"?{headless:true,executablePath:\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}:{headless:true});try{const page=await browser.newPage();page.on(\"pageerror\",error=>report.errors.push({engine,message:error.message}));await page.goto(server.url.href);await page.waitForFunction(()=>window.__results);const data=await page.evaluate(()=>window.__results);if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(v=>v.ok).length,total:data.results.length,failed:data.results.filter(v=>!v.ok)});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+\"/results.json\",JSON.stringify(report,null,2)+\"\\n\");\nif(report.errors.length||report.engines.some(r=>r.results.length!==8||r.results.some(v=>!v.ok)))process.exitCode=1;\n"
+    }
+  ]
+}

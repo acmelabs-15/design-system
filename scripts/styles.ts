@@ -317,6 +317,30 @@ export function writeStyle(
   }
 }
 
+/** Removes a retired producer's recorded outputs without touching other style families. */
+export function removeStyle(key: string, root = ROOT): void {
+  if (!/^(components\/[a-z0-9-]+\/[a-z0-9-]+|shared\/[a-z0-9-]+|document\/[a-z0-9-]+)$/.test(key)) throw new Error("Invalid generated style key: " + key);
+  const lockFile = path.join(root, ".style-write.lock");
+  const lock = fs.openSync(lockFile, "wx");
+  try {
+    fs.writeFileSync(lock, String(process.pid));
+    const manifest = loadStyleManifest(root),
+      entry = manifest.entries[key];
+    if (!entry) return;
+    for (const [file, expected] of Object.entries(entry.files)) {
+      const resolved = path.resolve(root, file);
+      if (!resolved.startsWith(path.resolve(root, "src/generated") + path.sep)) throw new Error("Invalid generated output path");
+      if (fs.existsSync(resolved) && sha(read(root, file)) !== expected) throw new Error("Retired style output has unrecorded changes: " + file);
+    }
+    for (const file of Object.keys(entry.files)) fs.rmSync(path.join(root, file), { force: true });
+    delete manifest.entries[key];
+    writeChanged(path.join(root, MANIFEST), JSON.stringify(manifest, null, 2) + "\n");
+  } finally {
+    fs.closeSync(lock);
+    fs.unlinkSync(lockFile);
+  }
+}
+
 export function verifyStyleManifest(root = ROOT, exclude: string[] = []): StyleManifest {
   const manifest = loadStyleManifest(root);
   if (manifest.version !== 1 || manifest.compiler !== COMPILER || !Object.keys(manifest.entries).length) throw new Error("Generate styles before building");

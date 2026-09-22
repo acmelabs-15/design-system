@@ -1,3 +1,10 @@
-:host {
-        display: inline-flex;
-      }
+:host { --avatar-size:32px; display:inline-flex; position:relative; inline-size:var(--avatar-size); aspect-ratio:1; flex-shrink:0; vertical-align:middle; }
+:host([data-avatar-size="tiny"]) { --avatar-size:16px; }
+:host([data-avatar-size="small"]) { --avatar-size:24px; }
+:host([data-avatar-size="large"]) { --avatar-size:48px; }
+.avatar { display:grid; place-items:center; inline-size:100%; aspect-ratio:1; border-radius:50%; overflow:hidden; position:relative; background:var(--ds-gray-200); color:var(--ds-gray-1000); box-shadow:inset 0 0 0 1px var(--ds-gray-alpha-400); font-family:var(--acme-font-sans); font-size:calc(var(--avatar-size)*.4); font-weight:var(--acme-font-weight-500); line-height:1; }
+.avatar[data-shape="square"] { border-radius:var(--r-sm,6px); }
+img { display:block; inline-size:100%; block-size:100%; object-fit:cover; }
+.fallback { display:flex; align-items:center; justify-content:center; inline-size:100%; block-size:100%; --acme-icon-size:calc(var(--avatar-size)*.65); }
+[hidden] { display:none; }
+.badge { display:flex; position:absolute; inset-inline-start:-3px; inset-block-end:-5px; border-radius:50%; }

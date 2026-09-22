@@ -1,59 +1,60 @@
-import { describe, expect, test } from "bun:test";
+import { afterEach, expect, test } from "bun:test";
 import "../../../all";
-import type { AcmeBadge } from "../badge";
-
-const mount = async (markup: string) => {
-  document.body.innerHTML = markup;
-  const el = document.body.firstElementChild as AcmeBadge;
+afterEach(() => document.body.replaceChildren());
+async function mount(tag: "acme-badge" | "acme-pill" | "acme-tag") {
+  const el = document.createElement(tag);
+  document.body.append(el);
   await el.updateComplete;
   return el;
-};
-const root = (el: AcmeBadge) => el.shadowRoot!.querySelector(".badge") as HTMLElement;
-
-describe("acme-badge", () => {
-  test("defaults render the bare root with the icon slot and the label span", async () => {
-    const el = await mount(`<acme-badge>gray</acme-badge>`);
-    const b = root(el);
-    expect(b.className.trim()).toBe("badge");
-    expect(b.querySelector('slot[name="icon"]')).not.toBeNull();
-    expect(b.querySelector(".label > slot:not([name])")).not.toBeNull();
-  });
-
-  test("variant, contrast and size map to modifier classes", async () => {
-    const el = await mount(`<acme-badge variant="blue" contrast="low" size="sm">blue</acme-badge>`);
-    expect(root(el).className.trim()).toBe("badge blue subtle sm");
-    el.size = "lg";
-    el.contrast = "high";
-    await el.updateComplete;
-    expect(root(el).className.trim()).toBe("badge blue lg");
-  });
-
-  test("inverted, trial and turbo are variants", async () => {
-    for (const v of ["inverted", "trial", "turbo"]) {
-      const el = await mount(`<acme-badge variant="${v}">x</acme-badge>`);
-      expect(root(el).className.trim()).toBe(`badge ${v}`);
-    }
-  });
-
-  test("a slotted icon lands in the icon slot; a circular glyph is mirrored onto the slot", async () => {
-    const el = await mount(`<acme-badge><svg slot="icon"></svg>gray</acme-badge>`);
-    const slot = root(el).querySelector('slot[name="icon"]') as HTMLSlotElement;
-    expect(slot.assignedElements().length).toBe(1);
-    slot.dispatchEvent(new Event("slotchange"));
-    expect(slot.hasAttribute("data-glyph")).toBe(false);
-    el.querySelector("svg")!.setAttribute("data-glyph", "circular");
-    slot.dispatchEvent(new Event("slotchange"));
-    expect(slot.getAttribute("data-glyph")).toBe("circular");
-  });
+}
+test("Badge keeps every source variant with canonical sizes and affixes", async () => {
+  const badge = (await mount("acme-badge")) as HTMLElementTagNameMap["acme-badge"];
+  expect(badge.size).toBe("medium");
+  for (const variant of ["gray", "blue", "purple", "amber", "red", "pink", "green", "teal", "inverted", "trial", "turbo"] as const) {
+    badge.variant = variant;
+    badge.contrast = "low";
+    badge.size = "small";
+    await badge.updateComplete;
+    const root = badge.shadowRoot!.querySelector("[part=root]")!;
+    expect(root.classList.contains("subtle")).toBe(true);
+    expect(root.classList.contains("sm")).toBe(true);
+    if (variant !== "gray") expect(root.classList.contains(variant)).toBe(true);
+    expect(root.querySelector("slot[name=start]")).not.toBeNull();
+    expect(root.querySelector("slot[name=end]")).not.toBeNull();
+  }
+  badge.size = "large";
+  await badge.updateComplete;
+  expect(badge.shadowRoot!.querySelector("[part=root]")!.classList.contains("lg")).toBe(true);
 });
-
-describe("acme-pill", () => {
-  test("renders a link in the three sizes", async () => {
-    document.body.innerHTML = `<acme-pill href="#x" size="lg">Label</acme-pill>`;
-    const el = document.body.firstElementChild as HTMLElement & { updateComplete: Promise<boolean> };
-    await el.updateComplete;
-    const a = el.shadowRoot!.querySelector("a.pill") as HTMLAnchorElement;
-    expect(a.getAttribute("href")).toBe("#x");
-    expect(a.className).toContain("lg");
-  });
+test("Pill switches between passive content and a real named link", async () => {
+  const pill = (await mount("acme-pill")) as HTMLElementTagNameMap["acme-pill"];
+  expect(pill.shadowRoot!.querySelector("[part=root]")!.localName).toBe("span");
+  expect("solid" in pill).toBe(false);
+  pill.href = "#target";
+  pill.target = "_blank";
+  pill.rel = "noreferrer";
+  pill.variant = "solid";
+  pill.ariaLabel = "Open category";
+  await pill.updateComplete;
+  const link = pill.shadowRoot!.querySelector("a")!;
+  expect(link.getAttribute("href")).toBe("#target");
+  expect(link.getAttribute("rel")).toBe("noreferrer");
+  expect(link.getAttribute("target")).toBe("_blank");
+  expect(link.getAttribute("aria-label")).toBe("Open category");
+  expect(link.classList.contains("solid")).toBe(true);
+  pill.href = "";
+  await pill.updateComplete;
+  expect(pill.shadowRoot!.querySelector("a")).toBeNull();
+});
+test("Tag remains passive at every named size and preserves start/end composition", async () => {
+  const tag = (await mount("acme-tag")) as HTMLElementTagNameMap["acme-tag"];
+  for (const size of ["small", "medium", "large"] as const) {
+    tag.size = size;
+    await tag.updateComplete;
+    const root = tag.shadowRoot!.querySelector("[part=root]")!;
+    expect(root.localName).toBe("span");
+    expect(root.getAttribute("tabindex")).toBeNull();
+    expect(root.querySelector("slot[name=start]")).not.toBeNull();
+    expect(root.querySelector("slot[name=end]")).not.toBeNull();
+  }
 });

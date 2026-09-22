@@ -2,6 +2,7 @@
 import type { GeistMap } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "avatar",
   component: "Avatar",
   root: "data-geist-avatar",

@@ -239,10 +239,7 @@ export function generateThemeStyles(root = ROOT, selected: Partial<ThemeStyleSel
     hooks: {
       compactTargetMinimumPx: 24,
       normalDensitySurfaces: ["menu", "dialog", "toast"],
-      localPaletteTargets: [
-        { component: "avatar-group", target: ".count", appearance: "dark" },
-        { component: "tooltip", target: ".tip:not(.noinvert)", appearance: "inverse" },
-      ],
+      localPaletteTargets: [{ component: "tooltip", target: ".tip:not(.noinvert)", appearance: "inverse" }],
     },
   };
 }
@@ -250,10 +247,7 @@ export function generateThemeStyles(root = ROOT, selected: Partial<ThemeStyleSel
 function metadataText(root: string): string {
   const known = new Set<string>(themeTokenDefinitions.map((token) => token.cssProperty));
   const palettes: Record<string, { selector: string; light: string; dark: string; properties: string[] }> = {};
-  for (const [component, selector, className, scheme] of [
-    ["avatar-group", ".count", "count", "dark"],
-    ["tooltip", ".tip:not(.noinvert)", "tip", "inverse"],
-  ] as const) {
+  for (const [component, selector, className, scheme] of [["tooltip", ".tip:not(.noinvert)", "tip", "inverse"]] as const) {
     const file = path.join(root, `src/generated/css/components/${component}/${component}.css`);
     const properties = new Set<string>();
     const hasClass = (value: unknown): boolean =>

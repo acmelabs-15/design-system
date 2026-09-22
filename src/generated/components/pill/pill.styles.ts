@@ -18,7 +18,7 @@ export const pillCss = css`.pill {
   display: inline-flex;
 }
 
-.pill:hover {
+.pill:is(a):hover {
   background: var(--comp);
   text-decoration: none;
 }
@@ -55,8 +55,8 @@ export const pillCss = css`.pill {
 }
 
 .pill.solid {
-  background: var(--ds-blue-700);
-  color: #fff;
+  background: var(--accent);
+  color: var(--on-accent);
   box-shadow: none;
 }
 
@@ -76,5 +76,10 @@ export const pillCss = css`.pill {
 
 .pill.mono {
   font-family: var(--acme-font-mono);
+}
+
+.pill:is(a):focus-visible {
+  box-shadow: var(--ds-focus-ring);
+  outline: none;
 }
 `;

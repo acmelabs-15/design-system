@@ -15,7 +15,7 @@ export const doc: Doc = {
     },
     {
       h: "Delta, icon, foot",
-      html: `<div class="cells" style="--cols:2"><acme-stat class="cell" label="Revenue" context="MTD"><acme-attach-money-icon class="ic" slot="icon" size="16px"></acme-attach-money-icon>$62,450<acme-stat-delta slot="delta" tone="good"><acme-trend pill direction="up" note="vs last month">+6.03%</acme-trend></acme-stat-delta></acme-stat><acme-stat class="cell" label="Errors" title-label>14<acme-badge slot="end" hue="red" subtle size="small">Alert</acme-badge><acme-stat-foot slot="foot" bar>3 new since yesterday</acme-stat-foot></acme-stat></div>`,
+      html: `<div class="cells" style="--cols:2"><acme-stat class="cell" label="Revenue" context="MTD"><acme-attach-money-icon class="ic" slot="icon" size="16px"></acme-attach-money-icon>$62,450<acme-stat-delta slot="delta" tone="good"><acme-trend pill direction="up" note="vs last month">+6.03%</acme-trend></acme-stat-delta></acme-stat><acme-stat class="cell" label="Errors" title-label>14<acme-badge slot="end" variant="red" contrast="low" size="small">Alert</acme-badge><acme-stat-foot slot="foot" bar>3 new since yesterday</acme-stat-foot></acme-stat></div>`,
     },
     {
       h: "Meter warning",

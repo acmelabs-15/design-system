@@ -1,3 +1,44 @@
 :host {
+  vertical-align: middle;
   display: inline-flex;
+}
+
+.avatar-group {
+  inline-size: max-content;
+}
+
+.member {
+  box-shadow: 0 0 0 1px var(--ds-background-100);
+  border-radius: 50%;
+  display: inline-flex;
+  position: relative;
+}
+
+.member + .member {
+  margin-inline-start: calc(-1 * var(--avatar-group-overlap));
+}
+
+.overflow {
+  min-inline-size: var(--avatar-group-size);
+  block-size: var(--avatar-group-size);
+  background: var(--ds-black);
+  color: var(--ds-white);
+  font-size: calc(var(--avatar-group-size)*.4);
+  font-family: var(--acme-font-sans);
+  font-weight: var(--acme-font-weight-500);
+  justify-content: center;
+  align-items: center;
+}
+
+.count {
+  padding-inline: 2px;
+}
+
+.sr {
+  clip-path: inset(50%);
+  white-space: nowrap;
+  block-size: 1px;
+  inline-size: 1px;
+  position: absolute;
+  overflow: hidden;
 }

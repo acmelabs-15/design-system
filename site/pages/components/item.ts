@@ -14,7 +14,7 @@ export const doc: Doc = {
     },
     {
       h: "Large amount",
-      html: `<acme-item large amount="$62,450"><acme-avatar slot="lead" letter="PK"></acme-avatar>Cash today<span slot="meta">Across 3 accounts</span><acme-badge slot="title-extra" variant="green" contrast="low">Healthy</acme-badge></acme-item>`,
+      html: `<acme-item large amount="$62,450"><acme-avatar slot="lead" initials="PK" label="Peter Kloss"></acme-avatar>Cash today<span slot="meta">Across 3 accounts</span><acme-badge slot="title-extra" variant="green" contrast="low">Healthy</acme-badge></acme-item>`,
     },
   ],
 };
