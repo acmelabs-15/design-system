@@ -1,7 +1,7 @@
 // Docs page: Note — mirrors https://vercel.com/geist/note
 import type { Doc } from "../../site";
 
-const upgrade = `<acme-button slot="action" size="small" variant="primary">Upgrade</acme-button>`;
+const upgrade = `<acme-button slot="action" size="small" variant="default">Upgrade</acme-button>`;
 const link = `Check <a href="#">the documentation</a> to learn more.`;
 const col = (inner: string) => `<div class="vstack" style="gap:24px">${inner}</div>`;
 // The six-note set every hue section shows: plain, with action, with link and action, then the same three filled.

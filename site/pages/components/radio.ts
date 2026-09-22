@@ -13,7 +13,7 @@ export const doc: Doc = {
     { h: "Radio disabled", html: `<acme-radio-group disabled label="Disabled Radio Example" value="one">${options()}</acme-radio-group>` },
     {
       h: "Radio required",
-      html: `<form class="vstack" style="gap:24px;align-items:flex-start"><acme-radio-group label="Required Radio Example" required>${options(16)}</acme-radio-group><acme-button size="small" variant="primary">Submit</acme-button></form>`,
+      html: `<form class="vstack" style="gap:24px;align-items:flex-start"><acme-radio-group label="Required Radio Example" required>${options(16)}</acme-radio-group><acme-button size="small" variant="default">Submit</acme-button></form>`,
       script: `const form = root.querySelector("form");
 form.addEventListener("submit", (e) => e.preventDefault());
 root.querySelector("acme-button").addEventListener("click", () => form.requestSubmit());`,

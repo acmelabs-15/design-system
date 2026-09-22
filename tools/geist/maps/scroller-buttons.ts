@@ -14,5 +14,5 @@ export const geist: GeistMap = {
   skip: ["Vertical", "Horizontal", "Free", "Vertical at rest", "Horizontal at rest", "Free at rest", "Vertical scrolled to the end", "Horizontal scrolled to the end", "Free scrolled", "Mobile grid"],
   // The row after a horizontal root starts at the left: the root compound stands for the row's own axis class.
   context: { ".aGa9CG_overlayContainer.aGa9CG_isHorizontal": ":where(.x)" },
-  children: [{ ours: "acme-button", pick: (c) => c.tag === "button", all: true, extends: "button", part: "button", leaf: true }],
+  children: [{ ours: "acme-icon-button", pick: (c) => c.tag === "button", all: true, extends: "button", part: "root", leaf: true }],
 };

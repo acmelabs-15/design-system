@@ -55,7 +55,7 @@ describe("acme-menu", () => {
     expect(menu.getAttribute("style")).toBe("width:200px");
     expect(button.open).toBe(true);
     expect(button.getAttribute("aria-expanded")).toBe("true");
-    expect(button.shadowRoot!.querySelector("button")!.getAttribute("data-is-open")).toBe("true");
+    expect(button.shadowRoot!.querySelector("button")!.getAttribute("aria-expanded")).toBe("true");
     expect(selected(el)).toEqual([false, false, false]);
     button.shadowRoot!.querySelector("button")!.click();
     await settle(el);
@@ -209,24 +209,24 @@ describe("acme-menu-item", () => {
 describe("acme-menu-button", () => {
   test("a text trigger is a plain button; show-chevron adds the turning chevron; open marks the root", async () => {
     const el = await mount<AcmeMenuButton>(`<acme-menu-button show-chevron variant="secondary">Actions</acme-menu-button>`);
-    const b = el.shadowRoot!.querySelector(".btn")!;
-    expect(b.className.trim()).toBe("btn secondary chevron");
-    expect(b.querySelector(".label > .inner > .chev acme-expand-more-icon")).not.toBeNull();
+    const b = el.shadowRoot!.querySelector("[part=root]")!;
+    expect(b.getAttribute("data-variant")).toBe("secondary");
+    expect(b.querySelector(".end acme-expand-more-icon")).not.toBeNull();
     expect(b.hasAttribute("aria-label")).toBe(false);
     el.open = true;
     await el.updateComplete;
-    expect(b.className).toContain("open");
-    expect(b.querySelector(".chev")!.getAttribute("data-open")).toBe("true");
+    expect(el.open).toBe(true);
+    expect(b.querySelector("acme-expand-more-icon")!.getAttribute("data-open")).toBe("true");
   });
 
-  test("an element child makes an icon-only trigger named Menu; unstyled takes none of the button's root classes", async () => {
-    const el = await mount<AcmeMenuButton>(`<acme-menu-button shape="square" size="small" variant="secondary"><svg></svg></acme-menu-button>`);
-    const b = el.shadowRoot!.querySelector(".btn")!;
-    expect(b.className.trim()).toBe("btn secondary sm square icon icon-only");
+  test("author naming and unstyled presentation reach the actual control", async () => {
+    const el = await mount<AcmeMenuButton>(`<acme-menu-button aria-label="Menu" shape="square" size="small" variant="secondary"><svg></svg></acme-menu-button>`);
+    const b = el.shadowRoot!.querySelector("[part=root]")!;
+    expect(b.getAttribute("data-shape")).toBe("square");
     expect(b.getAttribute("aria-label")).toBe("Menu");
-    const bare = await mount<AcmeMenuButton>(`<acme-menu-button type="unstyled"><span>av</span></acme-menu-button>`);
-    const r = bare.shadowRoot!.querySelector(".btn")!;
-    expect(r.className.trim()).toBe("btn unstyled icon-only");
+    const bare = await mount<AcmeMenuButton>(`<acme-menu-button variant="unstyled"><span>av</span></acme-menu-button>`);
+    const r = bare.shadowRoot!.querySelector("[part=root]")!;
+    expect(r.getAttribute("data-variant")).toBe("unstyled");
     expect(r.getAttribute("type")).toBe("button");
   });
 });

@@ -148,3 +148,7 @@ M16 owns final TOC use of the explicit heading-target protocol; M21 owns native 
 ### M09 icon-delivery checkpoint — 2026-09-21
 
 The complete pinned icon catalog and explicit per-icon/family modules are verified, with shared configuration and token-bootstrap entries. [Delivery evidence](evidence/m09-icon-delivery-2026-09-21.json) records complete asset geometry, source clipping comparisons, unchanged public manifest facts, fresh package/CDN acceptance and 893 passing tests. Internal glyph replacement, Spinner, Button/Icon Button/Copy/Toggle and the R04 identity entries (Avatar/Avatar Group/Badge/Pill/Tag) remain in M09. Split Button's Menu composition belongs to M13 and Theme Switcher to M10. These explicit return points prevent R04 entries falling between the short batch headings.
+
+### M09 action acceptance — 2026-09-21
+
+[Button, Icon Button, Toggle Button and Copy Button](evidence/m09-actions-2026-09-21.json) are implemented. Chip and old action aliases are removed with their callers. Native submitter ownership, canonical current values, attached Group surfaces, loading focus, clipboard lifetimes and optional ripple pass three-engine acceptance. Build/site and all 895 tests pass. Avatar/Avatar Group/Badge/Pill/Tag remain in M09. Split Button/Menu stays M13, Theme Switcher M10 and generated React wrapper reconciliation M22.

@@ -86,3 +86,28 @@ describe("Places", () => {
     expect(updates).toBe(0);
   });
 });
+
+@customElement("places-default-probe")
+class DefaultPlacesProbe extends LitElement {
+  places = new Places(this, { places: [""] });
+  render() {
+    return html`<slot></slot>`;
+  }
+}
+test("default content tracks text edits and excludes private named children", async () => {
+  const host = document.createElement("places-default-probe") as DefaultPlacesProbe;
+  const privateChild = document.createElement("button");
+  privateChild.slot = "acme-form-submitter";
+  host.append(privateChild);
+  document.body.append(host);
+  await host.updateComplete;
+  expect(host.places.has("")).toBe(false);
+  const label = document.createTextNode("Copy");
+  host.append(label);
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  expect(host.places.has("")).toBe(true);
+  label.data = "   ";
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  expect(host.places.has("")).toBe(false);
+  host.remove();
+});

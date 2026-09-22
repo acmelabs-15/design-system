@@ -1,6 +1,6 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-export const scrollerButtonsCss = css`.buttons :where(acme-button) svg {
+export const scrollerButtonsCss = css`.buttons :where(acme-icon-button) svg {
   flex-shrink: 0;
 }
 

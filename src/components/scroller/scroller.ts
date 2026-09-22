@@ -163,23 +163,19 @@ export class AcmeScroller extends AcmeElement {
     const { horizontal: h, vertical: v, edges: e } = this;
     const buttons =
       this.withButtons && !(h && v)
-        ? html`<div class=${this.cls("buttons", { x: h, y: v })} part="buttons"><acme-button
+        ? html`<div class=${this.cls("buttons", { x: h, y: v })} part="buttons"><acme-icon-button
               variant="secondary"
               size="small"
               shape="circle"
-              svg-only
               aria-label=${h ? "scroll left" : "scroll top"}
               @click=${this.prev}
-              >${h ? html`<acme-chevron-left-icon size="16px"></acme-chevron-left-icon>` : html`<acme-expand-less-icon size="16px"></acme-expand-less-icon>`}</acme-button
-            ><acme-button
+              >${h ? html`<acme-chevron-left-icon size="16px"></acme-chevron-left-icon>` : html`<acme-expand-less-icon size="16px"></acme-expand-less-icon>`}</acme-icon-button><acme-icon-button
               variant="secondary"
               size="small"
               shape="circle"
-              svg-only
               aria-label=${h ? "scroll right" : "scroll bottom"}
               @click=${this.next}
-              >${h ? html`<acme-chevron-right-icon size="16px"></acme-chevron-right-icon>` : html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</acme-button
-            ></div>`
+              >${h ? html`<acme-chevron-right-icon size="16px"></acme-chevron-right-icon>` : html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</acme-icon-button></div>`
         : nothing;
     const root = this.cls("scroller", {
       x: this.overflow === "x",

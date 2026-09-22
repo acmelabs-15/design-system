@@ -1,126 +1,120 @@
-import { copyButtonStructureCss } from "../../generated/components/copy-button/copy-button-structure.styles";
-import { html, nothing } from "lit";
+import { html } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
+import { AcmeActionElement } from "../../shared/action-element";
+import { actionContent } from "../../shared/action-content";
 import { atomState } from "../../shared/atom-state";
-import { createStore, StoreSelector, toasts } from "../../shared/state";
-import type { ButtonColors, ButtonSize, ButtonVariant } from "../button/button";
-import { copyButtonCss } from "../../generated/components/copy-button/copy-button.styles";
-
-/**
- * Copy button. An icon-only button (secondary, square, medium by default) that writes
- * `text-to-copy` to the clipboard. Its icon is a stack of two layers, the check and the copy
- * glyph, that swap for one second after a successful copy (or while `copied` is set), with an
- * assertive status line for screen readers. A failed copy raises an error toast. Fires
- * `acme-copy` on success and `acme-copy-error` on failure; a slotted `icon` replaces the copy glyph.
- *
- * The button inside is an `acme-button`, and its `button` and `label` parts are forwarded with
- * `exportparts`, so an element that composes this one reaches the real button with
- * `acme-copy-button::part(button)` and its label wrapper with `::part(label)`, rather than landing on
- * the host in between. The icon stack is exposed the same way — `stack`, `check` and `icon` — because
- * a composing element styles the glyph, which lives in this element's tree and no selector of theirs
- * can otherwise reach.
- *
- * `label` and `icon` are different boxes and a composing element must not confuse them: `label` wraps
- * the whole stack and takes the button's own inline padding; `icon` is one absolutely-positioned layer
- * inside a 16px stack, so padding on it overflows the stack instead of widening the button.
+import { Places } from "../../shared/places";
+import { StoreSelector } from "../../shared/store-connection";
+import { message, messageCatalogs } from "../../shared/messages";
+/** Copies an exact string and reports completion after the clipboard operation.
+ * @slot - Optional action label.
+ * @slot start - Leading content.
+ * @slot end - Trailing content.
+ * @csspart root - The native button.
+ * @csspart icon - The current copy feedback icon.
+ * @fires {CustomEvent<Record<string,never>>} acme-copy - Clipboard writing succeeded.
+ * @fires {CustomEvent<{code:"clipboard";message:string}>} acme-error - Clipboard writing failed.
  */
-
-export class AcmeCopyButton extends AcmeElement {
-  static styles = [sharedCss, copyButtonCss, copyButtonStructureCss];
-  /** The string that goes to the clipboard. */
-  @property({ attribute: "text-to-copy" }) textToCopy = "";
-  /** The accessible name: what is copied ("copy text"). */
-  @property() label = "";
-  /** The native tooltip. */
-  @property() title = "";
-  @property() variant: ButtonVariant = "secondary";
-  @property() shape: "square" | "circle" | "rounded" = "square";
-  @property() size: ButtonSize = "medium";
-  /** The HTML button type. */
-  @property() type: "button" | "submit" | "reset" = "button";
-  @property({ type: Boolean, reflect: true }) disabled = false;
-  /** Shows the check instead of the copy glyph (controlled; the button also sets it for a second after a copy). */
-  @property({ type: Boolean }) copied = false;
-  /** Custom colors at rest; any of `normal`, `hover`, `active` switches the button to the custom variant. */
-  @property({ type: Object }) normal?: ButtonColors;
-  @property({ type: Object }) hover?: ButtonColors;
-  @property({ type: Object }) active?: ButtonColors;
-  /** The check shown for a second after a copy. */
-  @atomState() private done = false;
-  /**
-   * Whether anything is slotted for the icon. A composing element forwards a slot of its own into
-   * this one, and a forwarded slot counts as assigned content even when empty, so the native
-   * fallback would never show. `flatten` resolves the forwarded slot to what it actually holds, and
-   * the glyph is rendered beside the slot rather than inside it.
-   */
-  @atomState() private hasIcon = false;
-  /** `copied` is either controlled from outside or set by our own copy, so it is derived from both.
-   *  A derived store recomputes only when what it reads changes, which is what a store gives that a
-   *  plain field does not. */
-  private showsCheck = createStore(() => this.copied || this.done);
-  /** Held, not read: constructing a StoreSelector registers it as a reactive controller, which is
-   *  what subscribes this element to the derived store. The linter reads it as unused; deleting it
-   *  stops the check swap from re-rendering. */
-  private checkSelector = new StoreSelector(this, () => this.showsCheck);
-  private timer?: ReturnType<typeof setTimeout>;
-
-  private readIconSlot = (e: Event) => {
-    this.hasIcon = (e.target as HTMLSlotElement).assignedElements({ flatten: true }).length > 0;
-  };
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    clearTimeout(this.timer);
+export class AcmeCopyButton extends AcmeActionElement {
+  @atomState() private copyValue = "";
+  /** @default "" */
+  @property({ noAccessor: true }) get value() {
+    return this.copyValue;
   }
-
-  /** Writes `text-to-copy` to the clipboard, shows the check for a second, and fires `acme-copy`.
-   *  Public because an element that composes this one exposes its own `copy()` and delegates here. */
-  copy = async () => {
-    const text = this.textToCopy;
-    clearTimeout(this.timer);
-    try {
-      await navigator.clipboard.writeText(text);
-      this.done = true;
-      this.timer = setTimeout(() => {
-        this.done = false;
-      }, 1000);
-      this.dispatchEvent(new CustomEvent("acme-copy", { detail: { text }, bubbles: true, composed: true }));
-    } catch {
-      toasts.error("Failed to copy to clipboard");
-      this.dispatchEvent(new CustomEvent("acme-copy-error", { detail: { text }, bubbles: true, composed: true }));
+  set value(value: string) {
+    const previous = this.copyValue;
+    this.copyValue = value ?? "";
+    if (previous !== this.copyValue) {
+      this.generation++;
+      this.stopTimer();
+      this.done = false;
     }
-  };
-
-  render() {
-    const copied = this.showsCheck.get();
-    const custom = !!(this.normal || this.hover || this.active);
-    return html`<acme-button
-      variant=${custom ? "custom" : this.variant}
-      shape=${this.shape}
-      size=${this.size}
-      type=${this.type}
-      svg-only
-      ?disabled=${this.disabled}
-      aria-label=${this.label || nothing}
-      title=${this.title || nothing}
-      .normal=${this.normal}
-      .hover=${this.hover}
-      .active=${this.active}
-      @click=${this.copy}
-      exportparts="button,label"
-    >
-      ${copied ? html`<div class="sr" role="status" aria-live="assertive">Copied!</div>` : nothing}
-      <div class=${this.cls("stack", { copied })} part="stack">
-        <div class="check" part="check">${html`<acme-check-icon size="16px"></acme-check-icon>`}</div>
-        <div class="copy" part="icon">
-          <slot name="icon" @slotchange=${this.readIconSlot}></slot>${this.hasIcon ? nothing : html`<acme-content-copy-icon size="16px"></acme-content-copy-icon>`}
-        </div>
-      </div>
-    </acme-button>`;
+    this.requestUpdate("value", previous);
+  }
+  @atomState() private duration = 1000;
+  /** @default 1000 */
+  @property({ type: Number, noAccessor: true, attribute: "copied-duration", converter: { fromAttribute: (value: string | null) => (value === null ? 1000 : Number(value)) } }) get copiedDuration() {
+    return this.duration;
+  }
+  set copiedDuration(value: number) {
+    if (!Number.isFinite(value) || value < 0) throw new RangeError("copiedDuration must be nonnegative");
+    this.duration = value;
+  }
+  @atomState() private done = false;
+  private readonly content = new Places(this, { places: [""] });
+  private readonly labels = new StoreSelector(this, () => messageCatalogs);
+  private readonly localeChanges = new StoreSelector(this, () => this.themeContext.scope.effective);
+  private timer?: { view: Window; id: number };
+  private generation = 0;
+  get copied(): boolean {
+    return this.done;
+  }
+  protected get iconOnly() {
+    return !this.content.has("") && !this.places.has("end");
+  }
+  protected get resolvedShape() {
+    return this.shape ?? (this.iconOnly ? "square" : undefined);
+  }
+  protected get semanticDefaults() {
+    return !this.content.has("") ? { label: message(this.themeContext.scope.effective.get().locale, "copy.copy", "Copy") } : {};
+  }
+  private stopTimer() {
+    if (this.timer) this.timer.view.clearTimeout(this.timer.id);
+    this.timer = undefined;
+  }
+  async copy(): Promise<void> {
+    const generation = ++this.generation;
+    this.stopTimer();
+    try {
+      if (this.effectiveDisabled) throw new DOMException("The copy action is unavailable", "InvalidStateError");
+      const clipboard = this.ownerDocument.defaultView?.navigator.clipboard;
+      if (!clipboard?.writeText) throw new DOMException("Clipboard writing is unavailable", "NotSupportedError");
+      await clipboard.writeText(this.value);
+      if (!this.isConnected || generation !== this.generation) return;
+      this.done = true;
+      this.dispatchEvent(new CustomEvent<Record<string, never>>("acme-copy", { detail: {}, bubbles: true, composed: true }));
+      const view = this.ownerDocument.defaultView;
+      if (view)
+        this.timer = {
+          view,
+          id: view.setTimeout(() => {
+            this.timer = undefined;
+            this.done = false;
+          }, this.copiedDuration),
+        };
+    } catch (error) {
+      if (this.isConnected && generation === this.generation) {
+        this.done = false;
+        this.dispatchEvent(
+          new CustomEvent("acme-error", {
+            detail: { code: "clipboard" as const, message: message(this.themeContext.scope.effective.get().locale, "copy.error", "Could not copy text") },
+            bubbles: true,
+            composed: true,
+          }),
+        );
+      }
+      throw error;
+    }
+  }
+  protected activate() {
+    void this.copy().catch(() => {});
+  }
+  disconnectedCallback() {
+    this.generation++;
+    this.stopTimer();
+    this.done = false;
+    super.disconnectedCallback();
+  }
+  protected renderContent() {
+    const icon = this.copied ? html`<acme-check-icon part="icon" size="16px"></acme-check-icon>` : html`<acme-content-copy-icon part="icon" size="16px"></acme-content-copy-icon>`;
+    if (this.iconOnly)
+      return html`<slot name="start" ?hidden=${this.copied || this.loading}></slot>${this.loading ? html`<acme-spinner size=${this.size === "large" ? "large" : this.size === "medium" ? "medium" : "small"}></acme-spinner>` : this.copied || !this.places.has("start") ? icon : undefined}<slot></slot><slot name="end"></slot>`;
+    return actionContent({ loading: this.loading, size: this.size, start: this.places.has("start"), end: this.places.has("end"), leading: icon, replaceStart: this.copied, exposeParts: false });
+  }
+  protected renderFeedback() {
+    return html`<span class="sr" role="status" aria-atomic="true">${this.copied ? message(this.themeContext.scope.effective.get().locale, "copy.copied", "Copied") : ""}</span>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-copy-button": AcmeCopyButton;

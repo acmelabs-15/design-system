@@ -45,13 +45,7 @@ export const doc: Doc = {
       script: `const copyText = root.querySelector('[slot=content]').textContent;
 const trigger = root.querySelector('[role=button]');
 const snippet = root.querySelector('acme-snippet');
-let timer;
-const copy = () => {
-  navigator.clipboard.writeText(copyText);
-  snippet.copied = true;
-  clearTimeout(timer);
-  timer = setTimeout(() => { snippet.copied = false }, 1000);
-};
+const copy = () => { snippet.copyText = copyText; void snippet.copy().catch(() => {}); };
 trigger.addEventListener('click', copy);
 trigger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy() } })`,
     },

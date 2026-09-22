@@ -1,5 +1,5 @@
-acme-button.mobile::part(button){z-index:1;margin-inline:auto !important;width:fit-content !important}
+acme-button.mobile::part(root){z-index:1;margin-inline:auto !important;width:fit-content !important}
 @media (min-width:961px){
-acme-button.mobile::part(button){display:none !important}
+acme-button.mobile::part(root){display:none !important}
 }
 acme-button.mobile svg{flex-shrink:0}

@@ -35,8 +35,16 @@ test("compact density changes only the approved role values", () => {
     ["1rem", "0.75rem"],
     ["0.625rem", "0.3125rem"],
     ["0.5rem", "0.5rem"],
+    ["2rem", "1.75rem"],
+    ["2.25rem", "2rem"],
+    ["2.5rem", "2.25rem"],
+    [".75rem", ".5rem"],
   ]);
-  expect(densityTokenDefinitions.every((token) => token.category === "spacing")).toBe(true);
+  expect(densityTokenDefinitions.filter((token) => token.category === "sizes").map((token) => token.key)).toEqual([
+    "acme-button-small-height",
+    "acme-button-medium-height",
+    "acme-button-large-height",
+  ]);
 });
 
 test("the public definition type accepts CSS strings under exact category keys", () => {

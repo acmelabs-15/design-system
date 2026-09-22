@@ -22,8 +22,8 @@ describe("acme-code-block", () => {
     // The button is acme-copy-button, composed rather than rebuilt: this asserts what the code
     // block asks of it, and the button's own tests cover its icon stack and clipboard behaviour.
     const copy = r.querySelector(".bar > .actions > acme-copy-button")!;
-    expect(copy.getAttribute("label")).toBe("Copy to clipboard");
-    expect(copy.getAttribute("text-to-copy")).toBe(src.trim());
+    expect(copy.shadowRoot!.querySelector("[part=root]")!.getAttribute("aria-label")).toBe("Copy to clipboard");
+    expect(copy.getAttribute("value")).toBe(src.trim());
     expect(r.querySelector("acme-copy-button.floating")).toBeNull();
     const lines = r.querySelectorAll(".content > pre.pre > code.body > .line");
     expect(lines.length).toBe(3);
@@ -76,7 +76,7 @@ describe("acme-code-block", () => {
     const sw = root(el).querySelector(".actions > acme-select.switcher") as HTMLElement & { options: unknown[]; value: string };
     expect(sw.options.length).toBe(2);
     expect(sw.value).toBe("js");
-    const seen: string[] = [];
+    const seen: unknown[] = [];
     el.addEventListener("acme-change", (e) => seen.push((e as CustomEvent).detail.value));
     // The composed select reports the new language the way it reports it to anyone.
     sw.dispatchEvent(new CustomEvent("acme-change", { detail: { value: "lua" }, bubbles: true, composed: true }));
@@ -112,13 +112,13 @@ describe("acme-code-block", () => {
     const written: string[] = [];
     Object.defineProperty(navigator, "clipboard", { value: { writeText: async (t: string) => void written.push(t) }, configurable: true });
     const el = await mount(`<acme-code-block filename="a.js" language="js" code="let x = 1">ignored</acme-code-block>`);
-    const seen: string[] = [];
-    el.addEventListener("acme-copy", (e) => seen.push((e as CustomEvent).detail.text));
+    const seen: unknown[] = [];
+    el.addEventListener("acme-copy", (e) => seen.push((e as CustomEvent).detail));
     // acme-copy is composed, so the button's event bubbles through the code block.
     el.copy();
     await new Promise((r) => setTimeout(r, 0));
     await el.updateComplete;
     expect(written).toEqual(["let x = 1"]);
-    expect(seen).toEqual(["let x = 1"]);
+    expect(seen).toEqual([{}]);
   });
 });

@@ -37,7 +37,7 @@ export class SignupForm extends LitElement {
         (f) => html\`<acme-select label="Plan" options='["hobby","pro","enterprise"]' \${bindField(f)}></acme-select>\`)}
       \${this.form.field({ name: "updates" },
         (f) => html\`<acme-toggle label="Product updates" \${bindField(f)}></acme-toggle>\`)}
-      <acme-button type="submit" variant="primary" ?disabled=\${!this.form.api.state.canSubmit}>Create Account</acme-button>
+      <acme-button type="submit" variant="default" ?disabled=\${!this.form.api.state.canSubmit}>Create Account</acme-button>
     </form>\`;
   }
 }`,

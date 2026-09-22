@@ -22,10 +22,10 @@ export const geist: GeistMap = {
       ours: ".action",
       pick: has("size-8"),
       states: { ":hover": "[data-hover]" },
-      // The snippet composes acme-copy-button, which composes acme-button, so the reference's button
+      // The snippet composes acme-copy-button, which owns one native button, so the reference's button
       // sits two elements down on ours. The classes the snippet adds land on the copy button's own
       // `button` part, which it forwards from the acme-button inside it; its hover stays the part's.
-      children: [{ ours: "acme-copy-button", pick: (c) => "data-geist-button" in c.attrs, extends: "button", part: "button", leaf: true, states: {} }],
+      children: [{ ours: "acme-copy-button", pick: (c) => "data-geist-button" in c.attrs, extends: "button", part: "root", leaf: true, states: {} }],
     },
   ],
 };

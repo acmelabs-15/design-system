@@ -46,20 +46,20 @@ export const geist: GeistMap = {
             // transparent native select, and their h-8 sized OUR host, leaving a 32px box around a
             // 24px field. Same rule as the switch above — where we choose a different control from
             // theirs, its size is ours to set (notes/decisions/compose-the-language-switcher.md).
-            // The block composes acme-copy-button, which composes acme-button, so the reference's
+            // The block composes acme-copy-button, which owns one native button, so the reference's
             // button sits two elements down on ours. The classes the block adds land on the copy
             // button's own `button` part, which it forwards with exportparts.
             // The reference's span is the button's label wrapper, which takes the button's inline
             // padding. Ours is the `label` part acme-button exposes and acme-copy-button forwards.
             // It is NOT the `icon` part: that is one absolutely-positioned layer inside a 16px stack,
             // and padding on it overflows the stack past the block's clipped edge.
-            { ours: "acme-copy-button", pick: button, extends: "button", part: "button", states: {}, children: [{ ours: "", part: "label", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
+            { ours: "acme-copy-button", pick: button, extends: "button", part: "root", states: {}, children: [{ ours: "", part: "icon", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
           ],
         },
       ],
     },
     // Without a filename bar the copy button floats over the code and shows on the block's hover.
-    { ours: "acme-copy-button.floating", pick: button, extends: "button", part: "button", states: { ":hover": "[data-hover]" }, children: [{ ours: "", part: "label", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
+    { ours: "acme-copy-button.floating", pick: button, extends: "button", part: "root", states: { ":hover": "[data-hover]" }, children: [{ ours: "", part: "icon", pick: (c: SpecNode) => c.tag === "span", leaf: true }] },
     {
       ours: ".content",
       pick: section("content"),
@@ -78,7 +78,7 @@ export const geist: GeistMap = {
       ours: ".foot",
       pick: has("justify-end"),
       children: [
-        { ours: "acme-button", pick: (c) => c.tag === "a", extends: "button", part: "button", leaf: true, states: {} },
+        { ours: "acme-button", pick: (c) => c.tag === "a", extends: "button", part: "root", leaf: true, states: {} },
         // The build action is an acme-split-button in ours, styled by its own map.
         { ours: "acme-split-button", pick: (c) => /--divider-color/.test(c.attrs.style ?? ""), extends: "split-button", leaf: true },
       ],

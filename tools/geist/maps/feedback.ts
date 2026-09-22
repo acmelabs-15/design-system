@@ -36,7 +36,7 @@ const body: ChildMap[] = [
           {
             ours: ".foot",
             pick: has("border-t"),
-            children: [emojis, { ours: "acme-button", pick: (c) => "data-geist-button" in c.attrs, extends: "button", part: "button", leaf: true, states: {} }],
+            children: [emojis, { ours: "acme-button", pick: (c) => "data-geist-button" in c.attrs, extends: "button", part: "root", leaf: true, states: {} }],
           },
         ],
       },

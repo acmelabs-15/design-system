@@ -462,10 +462,9 @@ export class AcmeFeedback extends AcmeElement {
           this.open = !this.open;
         }}
         part="trigger"
-        >${this.places.has("start") ? html`<slot name="start" slot="start"></slot>` : nothing}${this.buttonText}${this.places.has("end") ? html`<slot name="end" slot="end"></slot>` : nothing}</acme-button
-      >${
-        this.card
-          ? html`<div class=${this.cls("panel", { sent: this.sent })} style="position:fixed;left:0;top:0;min-width:max-content;z-index:101" part="panel">
+        >${this.places.has("start") ? html`<slot name="start" slot="start"></slot>` : nothing}${this.buttonText}${this.places.has("end") ? html`<slot name="end" slot="end"></slot>` : nothing}</acme-button>${
+          this.card
+            ? html`<div class=${this.cls("panel", { sent: this.sent })} style="position:fixed;left:0;top:0;min-width:max-content;z-index:101" part="panel">
               <div
                 class="box"
                 role="dialog"
@@ -483,8 +482,8 @@ export class AcmeFeedback extends AcmeElement {
                 ${body(false)}
               </div>
             </div>`
-          : nothing
-      }`;
+            : nothing
+        }`;
   }
 }
 

@@ -22,7 +22,7 @@ describe("acme-show-more", () => {
     const b = root.querySelector(".pill > acme-button")!;
     expect(b.getAttribute("variant")).toBe("secondary");
     expect(b.getAttribute("size")).toBe("small");
-    expect(b.getAttribute("shape")).toBe("rounded");
+    expect(b.getAttribute("shape")).toBe("pill");
     expect(b.hasAttribute("loading")).toBe(false);
     expect(text(el)).toBe("Show More");
     expect(root.querySelector(".text > .chev acme-expand-more-icon")).not.toBeNull();

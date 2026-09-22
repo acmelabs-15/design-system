@@ -2,9 +2,9 @@ import { createAtom } from "@tanstack/lit-store";
 import type { ReactiveController } from "lit";
 import { AcmeElement } from "../base";
 
-const attributes = ["role", "aria-label", "aria-labelledby", "aria-describedby"] as const;
+const attributes = ["role", "aria-label", "aria-labelledby", "aria-describedby", "aria-haspopup", "aria-expanded", "aria-controls"] as const;
 type Attribute = (typeof attributes)[number];
-type ReferenceAttribute = "aria-labelledby" | "aria-describedby";
+type ReferenceAttribute = "aria-labelledby" | "aria-describedby" | "aria-controls";
 type Reference = Readonly<{ text: string | null; elements?: readonly Element[] }>;
 type State = Readonly<Record<Attribute, Reference>>;
 const empty: State = Object.freeze(Object.fromEntries(attributes.map((name) => [name, Object.freeze({ text: null })])) as Record<Attribute, Reference>);
@@ -13,7 +13,7 @@ const isAttribute = (name: string): name is Attribute => (attributes as readonly
 /** Canonical accessible inputs delegated to the component's native semantic root. */
 class SemanticAttributes implements ReactiveController {
   private readonly state = createAtom<State>(empty);
-  private readonly removing = new Set<string>();
+  private readonly removals = new Map<string, number>();
   private target?: HTMLElement;
   private observer?: MutationObserver;
   private watchedRoot?: Node;
@@ -54,14 +54,17 @@ class SemanticAttributes implements ReactiveController {
   }
   attributeChanged(name: string, value: string | null): boolean {
     if (!isAttribute(name)) return false;
-    if (this.removing.has(name)) return true;
+    const pending = this.removals.get(name) ?? 0;
+    if (value === null && pending) {
+      if (pending === 1) this.removals.delete(name);
+      else this.removals.set(name, pending - 1);
+      return true;
+    }
     this.set(name, value);
-    if (value !== null) {
-      this.removing.add(name);
-      try {
+    if (value !== null && this.connected) {
+      if (Element.prototype.hasAttribute.call(this.host, name)) {
+        this.removals.set(name, (this.removals.get(name) ?? 0) + 1);
         Element.prototype.removeAttribute.call(this.host, name);
-      } finally {
-        this.removing.delete(name);
       }
     }
     return true;
@@ -85,14 +88,15 @@ class SemanticAttributes implements ReactiveController {
     if (!this.target) return;
     const state = this.state.get();
     const defaults = this.defaults();
-    for (const name of ["role", "aria-label"] as const) {
-      const value = state[name].text ?? (name === "role" ? defaults.role : defaults.label) ?? null;
+    for (const name of ["role", "aria-label", "aria-haspopup", "aria-expanded"] as const) {
+      const value = state[name].text ?? (name === "role" ? defaults.role : name === "aria-label" ? defaults.label : undefined) ?? null;
       if (value === null) this.target.removeAttribute(name);
       else this.target.setAttribute(name, value);
     }
     for (const [name, property] of [
       ["aria-labelledby", "ariaLabelledByElements"],
       ["aria-describedby", "ariaDescribedByElements"],
+      ["aria-controls", "ariaControlsElements"],
     ] as const) {
       const reference = state[name];
       this.target[property] = reference.text === null && !reference.elements ? null : [...this.resolve(reference)];
@@ -101,7 +105,7 @@ class SemanticAttributes implements ReactiveController {
   private observe(): void {
     if (!this.connected) return;
     const state = this.state.get();
-    const needed = (["aria-labelledby", "aria-describedby"] as const).some((name) => !!state[name].text?.trim() && !state[name].elements);
+    const needed = (["aria-labelledby", "aria-describedby", "aria-controls"] as const).some((name) => !!state[name].text?.trim() && !state[name].elements);
     const root = this.host.getRootNode();
     if (needed && this.watchedRoot === root) return;
     this.observer?.disconnect();
@@ -114,6 +118,11 @@ class SemanticAttributes implements ReactiveController {
   }
   hostConnected(): void {
     this.connected = true;
+    for (const name of attributes) {
+      if (!Element.prototype.hasAttribute.call(this.host, name)) continue;
+      this.removals.set(name, (this.removals.get(name) ?? 0) + 1);
+      Element.prototype.removeAttribute.call(this.host, name);
+    }
     this.observe();
     this.host.requestUpdate();
   }
@@ -138,11 +147,15 @@ class SemanticAttributes implements ReactiveController {
  * Structural components keep native meaning on one inner root and preserve author-owned children.
  * @attr {string} aria-labelledby - IDs in the author's tree scope that label the native root.
  * @attr {string} aria-describedby - IDs in the author's tree scope that describe the native root.
+ * @attr {string} aria-controls - IDs in the author's tree scope controlled by the native root.
  */
 export abstract class AcmeSemanticElement extends AcmeElement {
   static properties = {
     role: { attribute: "role", noAccessor: true },
     ariaLabel: { attribute: "aria-label", noAccessor: true },
+    ariaHasPopup: { attribute: "aria-haspopup", noAccessor: true },
+    ariaExpanded: { attribute: "aria-expanded", noAccessor: true },
+    ariaControlsElements: { attribute: false, noAccessor: true },
     ariaLabelledByElements: { attribute: false, noAccessor: true },
     ariaDescribedByElements: { attribute: false, noAccessor: true },
   };
@@ -164,6 +177,24 @@ export abstract class AcmeSemanticElement extends AcmeElement {
   }
   set ariaLabel(value: string | null) {
     this.semantic.set("aria-label", value);
+  }
+  get ariaHasPopup(): string | null {
+    return this.semantic.get("aria-haspopup");
+  }
+  set ariaHasPopup(value: string | null) {
+    this.semantic.set("aria-haspopup", value);
+  }
+  get ariaExpanded(): string | null {
+    return this.semantic.get("aria-expanded");
+  }
+  set ariaExpanded(value: string | null) {
+    this.semantic.set("aria-expanded", value);
+  }
+  get ariaControlsElements(): Element[] | null {
+    return this.semantic.getElements("aria-controls");
+  }
+  set ariaControlsElements(value: Element[] | null) {
+    this.semantic.setElements("aria-controls", value);
   }
   get ariaLabelledByElements(): Element[] | null {
     return this.semantic.getElements("aria-labelledby");

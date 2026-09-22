@@ -72,13 +72,13 @@ export class AcmeBanner extends AcmeElement {
     const start = (inButton: boolean) => html`<slot name="start" slot=${inButton ? "start" : nothing} @slotchange=${this.places.read}></slot>`;
     const startInButton = !this.wide && this.places.has("start");
     const messageInButton = !this.wide && !this.hasMobile;
-    return html`<acme-button class="mobile" part="mobile" block href=${this.href} variant="secondary" size="small" shape="rounded" shadow>
+    return html`<acme-button class="mobile" part="mobile" full-width href=${this.href} variant="secondary" size="small" shape="pill">
         ${startInButton ? start(true) : nothing}${mobileCopy}${messageInButton ? message : nothing}${arrow}
       </acme-button>
       <div class="banner" part="banner">
         ${startInButton ? nothing : start(false)}
         <p class="text">${messageInButton ? nothing : message}</p>
-        <acme-button class="action" href=${this.href} variant="secondary" size="small" shape="rounded" shadow>${this.button}${arrow}</acme-button>
+        <acme-button class="action" href=${this.href} variant="secondary" size="small" shape="pill">${this.button}${arrow}</acme-button>
       </div>`;
   }
 }

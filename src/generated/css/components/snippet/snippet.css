@@ -39,7 +39,7 @@
   color: var(--ds-gray-100) !important;
 }
 
-.snippet :where(.action) :where(acme-copy-button)::part(button) {
+.snippet :where(.action) :where(acme-copy-button)::part(root) {
   color: inherit;
   box-shadow: none !important;
   background-color: #0000 !important;
@@ -76,16 +76,16 @@
     opacity: .8;
   }
 
-  .snippet :where(.action) :where(acme-copy-button)::part(button):hover {
+  .snippet :where(.action) :where(acme-copy-button)::part(root):hover {
     box-shadow: 0 0 0 1px var(--themed-border) !important;
   }
 }
 
-.snippet :where(.action) :where(acme-copy-button)::part(button):disabled, .snippet :where(.action) :where(acme-copy-button)[aria-disabled="true"]::part(button) {
+.snippet :where(.action) :where(acme-copy-button)::part(root):disabled, .snippet :where(.action) :where(acme-copy-button)[aria-disabled="true"]::part(root) {
   color: var(--ds-gray-700);
 }
 
-.snippet :where(.action) :where(acme-copy-button)[data-hover]::part(button) {
+.snippet :where(.action) :where(acme-copy-button)[data-hover]::part(root) {
   color: var(--themed-fg);
 }
 

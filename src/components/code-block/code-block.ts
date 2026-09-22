@@ -7,7 +7,6 @@ import { Interaction } from "../../shared/interaction";
 import { sourceOf, tokenLines } from "../../shared/highlight";
 import type { AcmeCopyButton } from "../copy-button/copy-button";
 
-import { copyButtonCss } from "../../generated/components/copy-button/copy-button.styles";
 import { codeBlockCss } from "../../generated/components/code-block/code-block.styles";
 
 export type CodeBlockOption = { label: string; value: string };
@@ -41,7 +40,7 @@ const v0Prompt = (code: string) =>
  */
 
 export class AcmeCodeBlock extends AcmeElement {
-  static styles = [sharedCss, codeBlockCss, copyButtonCss, codeBlockStructureCss];
+  static styles = [sharedCss, codeBlockCss, codeBlockStructureCss];
   /** The paste destination shown in the bar; empty hides the bar. */
   @property() filename = "";
   /** The language for highlighting (`jsx`, `tsx`, `json`, `bash`, `diff`, …). */
@@ -87,9 +86,9 @@ export class AcmeCodeBlock extends AcmeElement {
   }
 
   /** Copies the source, as clicking the button does. The button owns the clipboard write, the
-   *  one-second check and the failure toast. */
-  copy(): void {
-    this.button?.copy();
+   *  one-second check and the error notification. */
+  copy(): Promise<void> {
+    return this.button ? this.button.copy() : Promise.reject(new Error("The copy action is not available"));
   }
 
   private reference(n: number) {
@@ -119,10 +118,10 @@ export class AcmeCodeBlock extends AcmeElement {
       variant=${floating ? "secondary" : "tertiary"}
       shape="square"
       size="small"
-      label="Copy to clipboard"
-      text-to-copy=${this.source}
+      aria-label="Copy to clipboard"
+      value=${this.source}
       part="copy"
-      ><slot name="icon" slot="icon"></slot
+      ><slot name="icon" slot="start"></slot
     ></acme-copy-button>`;
     const switcher = this.opts(this.switcher);
     const tabs = this.opts(this.tabs);

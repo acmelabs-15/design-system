@@ -60,7 +60,7 @@ const SHEET_EXIT_MS = 400;
  * backdrop fades in while the 540px panel (`width`) scales up; on close both fade out and the modal
  * leaves after the exit, focus back on the opener. The panel holds the body (padding 20, or 0 with
  * `body-padding="0"`) with its header (`heading` or the `heading` slot, the `subtitle` slot) and
- * the default slot, then the footer with the `actions` slot: small buttons, one with `block` for a
+ * the default slot, then the footer with the `actions` slot: small buttons, one with `full-width` for a
  * lone full-width action, or a div of several. `sticky` pins the header and footer while the body
  * scrolls, each with a shadow once the body's end behind it is out of view. Under 600px it opens as
  * a bottom sheet (`drawer="false"` keeps the panel; `drawer-height` and `drawer-vertical-scroll`
@@ -188,7 +188,7 @@ export class AcmeModal extends AcmeElement {
       for (const b of it.matches("acme-button") ? [it] : Array.from(it.querySelectorAll("acme-button"))) {
         const btn = b as HTMLElement & { size: string; variant: string };
         if (!b.hasAttribute("size")) btn.size = "small";
-        if (b.hasAttribute("block") && !b.hasAttribute("variant")) btn.variant = "secondary";
+        if (b.hasAttribute("full-width") && !b.hasAttribute("variant")) btn.variant = "secondary";
       }
     this.measure();
   };

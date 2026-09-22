@@ -25,7 +25,7 @@
 .frame{border-radius:1.5cqw}
 }
 .frame :where(.header) :where(.section) :where(.address) :where(.text)>strong{color:var(--ds-gray-1000);font-weight:550}
-.frame :where(.header) :where(.section) :where(.address) :where(acme-button) svg{width:.75rem;height:.75rem;flex-shrink:0}
+.frame :where(.header) :where(.section) :where(.address) :where(acme-icon-button) svg{width:.75rem;height:.75rem;flex-shrink:0}
 .frame :where(.header) :where(.section):first-child{justify-content:flex-start}
 .frame :where(.header) :where(.spacer):first-child{justify-content:flex-start}
 .frame :where(.header) :where(.section):last-child{justify-content:flex-end}

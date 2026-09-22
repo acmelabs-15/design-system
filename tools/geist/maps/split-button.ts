@@ -20,18 +20,18 @@ export const geist: GeistMap = {
   },
   props: { size: { small: ".sm", large: ".lg" }, variant: { secondary: ".secondary" } },
   children: [
-    { ours: "acme-button.main", pick: 0, extends: "button", part: "button", leaf: true },
+    { ours: "acme-button.main", pick: 0, extends: "button", part: "root", leaf: true },
     // The reference's trigger wraps its glyph in a centring flex span; its main button uses a plain
     // inline-block one. That span is acme-button's own label wrapper, which lives inside the
     // button's shadow root, so it is reached through the `label` part the button exposes and the
     // split button forwards as `trigger-label`. Naming the child without a part left its four
     // rules (display, align-items, justify-content, flex-shrink) with nothing to land on.
     {
-      ours: "acme-button.trigger",
+      ours: "acme-icon-button.trigger",
       pick: 1,
       extends: "button",
-      part: "button",
-      children: [{ ours: "", part: "trigger-label", pick: 0, children: [{ ours: ".inner", pick: 0 }] }],
+      part: "root",
+      children: [{ ours: "", part: "icon", pick: 0, children: [{ ours: ".inner", pick: 0 }] }],
     },
   ],
 };

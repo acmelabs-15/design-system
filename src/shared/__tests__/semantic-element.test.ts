@@ -1,5 +1,5 @@
 import { afterEach, expect, test } from "bun:test";
-import { html } from "lit";
+import { html, render } from "lit";
 import { AcmeSemanticElement } from "../semantic-element";
 
 class SemanticProbe extends AcmeSemanticElement {
@@ -9,6 +9,21 @@ class SemanticProbe extends AcmeSemanticElement {
 }
 customElements.define("semantic-probe", SemanticProbe);
 afterEach(() => document.body.replaceChildren());
+test("cloned static templates preserve names and popup semantics on every instance", async () => {
+  const view = () => html`<semantic-probe aria-label="Actions" aria-haspopup="menu" aria-expanded="false"></semantic-probe>`;
+  for (let index = 0; index < 2; index++) {
+    const container = document.createElement("div");
+    document.body.append(container);
+    render(view(), container);
+    const host = container.firstElementChild as SemanticProbe;
+    await host.updateComplete;
+    expect(host.ariaLabel).toBe("Actions");
+    expect(root(host).getAttribute("aria-label")).toBe("Actions");
+    expect(root(host).getAttribute("aria-haspopup")).toBe("menu");
+    expect(root(host).getAttribute("aria-expanded")).toBe("false");
+    expect(Element.prototype.hasAttribute.call(host, "aria-label")).toBe(false);
+  }
+});
 const root = (host: SemanticProbe) => host.shadowRoot!.querySelector("section")!;
 async function mount(attributes = "") {
   document.body.innerHTML = `<semantic-probe ${attributes}>Content</semantic-probe>`;

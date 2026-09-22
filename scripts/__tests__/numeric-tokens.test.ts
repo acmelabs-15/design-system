@@ -28,8 +28,8 @@ test("the generated manifest links every public key to its one property, default
   const text = fs.readFileSync(file, "utf8");
   const manifest = JSON.parse(text);
   expect(manifest.schemaVersion).toBe(1);
-  expect(manifest.tokens).toHaveLength(413);
-  expect(new Set(manifest.tokens.map((token: { cssProperty: string }) => token.cssProperty)).size).toBe(413);
+  expect(manifest.tokens).toHaveLength(419);
+  expect(new Set(manifest.tokens.map((token: { cssProperty: string }) => token.cssProperty)).size).toBe(419);
   expect(new Set(manifest.tokens.map((token: { category: string }) => token.category)).size).toBe(10);
   expect(manifest.tokens.find((token: { category: string; key: number }) => token.category === "spacing" && token.key === 2)).toMatchObject({
     category: "spacing",

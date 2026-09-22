@@ -11,6 +11,10 @@ export const themeCss = css`:root {
   --acme-layout-gap-4: 1rem;
   --acme-table-padding-block: .625rem;
   --acme-table-padding-inline: .5rem;
+  --acme-button-small-height: 2rem;
+  --acme-button-medium-height: 2.25rem;
+  --acme-button-large-height: 2.5rem;
+  --acme-button-padding-inline: .75rem;
 }
 
 :where([data-acme-theme-reset]), :host(:where([data-acme-theme-reset])) {
@@ -53,8 +57,10 @@ export const themeCss = css`:root {
   --text-2: var(--ds-gray-900);
   --muted: var(--ds-gray-900);
   --faint: var(--ds-gray-900);
-  --accent: var(--ds-blue-700);
-  --accent-hover: var(--ds-blue-800);
+  --accent: #0062d1;
+  --accent-hover: #0068d6;
+  --accent-active: #0058bd;
+  --on-accent: #fff;
   --accent-ink: var(--ds-blue-900);
   --accent-weak: var(--ds-blue-100);
   --accent-border: var(--ds-blue-400);
@@ -65,7 +71,7 @@ export const themeCss = css`:root {
   --warn: var(--ds-red-700);
   --warn-hover: var(--ds-red-800);
   --warn-solid: var(--ds-red-800);
-  --warn-solid-hover: var(--ds-red-900);
+  --warn-solid-hover: color-mix(in srgb, var(--warn-solid), var(--ds-black) 8%);
   --warn-ink: var(--ds-red-900);
   --warn-weak: var(--ds-red-100);
   --warn-border: var(--ds-red-400);
@@ -1476,6 +1482,10 @@ export const themeCss = css`:root {
   --acme-layout-gap-4: 1rem;
   --acme-table-padding-block: .625rem;
   --acme-table-padding-inline: .5rem;
+  --acme-button-small-height: 2rem;
+  --acme-button-medium-height: 2.25rem;
+  --acme-button-large-height: 2.5rem;
+  --acme-button-padding-inline: .75rem;
 }
 
 :where([data-acme-appearance-boundary]), :host(:where([data-acme-appearance-boundary])) {
@@ -1500,8 +1510,6 @@ export const themeCss = css`:root {
   --text-2: var(--ds-gray-900);
   --muted: var(--ds-gray-900);
   --faint: var(--ds-gray-900);
-  --accent: var(--ds-blue-700);
-  --accent-hover: var(--ds-blue-800);
   --accent-ink: var(--ds-blue-900);
   --accent-weak: var(--ds-blue-100);
   --accent-border: var(--ds-blue-400);
@@ -1512,7 +1520,7 @@ export const themeCss = css`:root {
   --warn: var(--ds-red-700);
   --warn-hover: var(--ds-red-800);
   --warn-solid: var(--ds-red-800);
-  --warn-solid-hover: var(--ds-red-900);
+  --warn-solid-hover: color-mix(in srgb, var(--warn-solid), var(--ds-black) 8%);
   --warn-ink: var(--ds-red-900);
   --warn-weak: var(--ds-red-100);
   --warn-border: var(--ds-red-400);
@@ -2779,6 +2787,10 @@ export const themeCss = css`:root {
   --acme-layout-gap-4: 1rem;
   --acme-table-padding-block: .625rem;
   --acme-table-padding-inline: .5rem;
+  --acme-button-small-height: 2rem;
+  --acme-button-medium-height: 2.25rem;
+  --acme-button-large-height: 2.5rem;
+  --acme-button-padding-inline: .75rem;
 }
 
 :where([data-acme-density-boundary][data-acme-density="compact"]), :host(:where([data-acme-density-boundary][data-acme-density="compact"])), :where([data-acme-theme-reset][data-acme-density="compact"]), :host(:where([data-acme-theme-reset][data-acme-density="compact"])) {
@@ -2786,5 +2798,9 @@ export const themeCss = css`:root {
   --acme-layout-gap-4: .75rem;
   --acme-table-padding-block: .3125rem;
   --acme-table-padding-inline: .5rem;
+  --acme-button-small-height: 1.75rem;
+  --acme-button-medium-height: 2rem;
+  --acme-button-large-height: 2.25rem;
+  --acme-button-padding-inline: .5rem;
 }
 `;

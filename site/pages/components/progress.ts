@@ -14,7 +14,7 @@ export const doc: Doc = {
     {
       h: "Dynamic colors",
       html: col(
-        `<acme-progress value="0" colors='{"0":"var(--acme-foreground)","25":"var(--acme-error)","50":"var(--acme-warning)","75":"var(--acme-highlight-pink)","100":"var(--acme-success)"}'></acme-progress><div class="row" style="gap:16px;align-items:stretch"><acme-button size="small" variant="primary">Increase</acme-button><acme-button size="small">Decrease</acme-button></div>`,
+        `<acme-progress value="0" colors='{"0":"var(--acme-foreground)","25":"var(--acme-error)","50":"var(--acme-warning)","75":"var(--acme-highlight-pink)","100":"var(--acme-success)"}'></acme-progress><div class="row" style="gap:16px;align-items:stretch"><acme-button size="small" variant="default">Increase</acme-button><acme-button size="small">Decrease</acme-button></div>`,
         ";align-items:flex-start",
       ),
       script: `const bar = root.querySelector("acme-progress");

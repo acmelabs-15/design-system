@@ -1,6 +1,6 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::part(button) {
+export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::part(root) {
   z-index: 1;
   background-color: var(--ds-background-200);
   opacity: 0;
@@ -109,7 +109,7 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
   overflow: hidden;
 }
 
-.code-block :where(.bar) :where(.actions) :where(acme-copy-button)::part(label), .code-block :where(acme-copy-button.floating)::part(label) {
+.code-block :where(.bar) :where(.actions) :where(acme-copy-button)::part(icon), .code-block :where(acme-copy-button.floating)::part(icon) {
   text-overflow: ellipsis;
   white-space: nowrap;
   flex-shrink: 0;
@@ -120,7 +120,7 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
   overflow: hidden;
 }
 
-.code-block :where(.bar) :where(.actions) :where(acme-copy-button)::part(button) {
+.code-block :where(.bar) :where(.actions) :where(acme-copy-button)::part(root) {
   width: 1.75rem;
   height: 1.75rem;
   color: var(--ds-gray-900) !important;
@@ -180,24 +180,24 @@ export const codeBlockCss = css`.code-block :where(acme-copy-button.floating)::p
 }
 
 @media (hover: hover) {
-  .code-block[data-hover] :where(acme-copy-button.floating)::part(button) {
+  .code-block[data-hover] :where(acme-copy-button.floating)::part(root) {
     opacity: 1;
   }
 }
 
-.code-block :where(acme-copy-button.floating)::part(button):focus {
+.code-block :where(acme-copy-button.floating)::part(root):focus {
   opacity: 1;
 }
 
-.code-block :where(acme-copy-button.floating)::part(button):disabled, .code-block :where(acme-copy-button.floating)[aria-disabled="true"]::part(button), .code-block :where(acme-copy-button.floating)[data-hover]::part(button) {
+.code-block :where(acme-copy-button.floating)::part(root):disabled, .code-block :where(acme-copy-button.floating)[aria-disabled="true"]::part(root), .code-block :where(acme-copy-button.floating)[data-hover]::part(root) {
   background-color: var(--ds-gray-100);
 }
 
-:where(:host([data-dark])) .code-block :where(acme-copy-button.floating)[data-hover]::part(button) {
+:where(:host([data-dark])) .code-block :where(acme-copy-button.floating)[data-hover]::part(root) {
   background-color: var(--ds-gray-200);
 }
 
-.code-block :where(acme-copy-button.floating)[data-hover]::part(button):disabled {
+.code-block :where(acme-copy-button.floating)[data-hover]::part(root):disabled {
   background-color: var(--ds-gray-100);
 }
 

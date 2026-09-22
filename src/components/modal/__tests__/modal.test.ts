@@ -74,15 +74,15 @@ describe("acme-modal", () => {
     expect(panel(bare).hasAttribute("aria-labelledby")).toBe(false);
   });
 
-  test("actions become small buttons; a block action defaults to secondary", async () => {
-    const el = await mount(`<acme-modal open heading="X"><acme-button slot="actions" block>Cancel</acme-button><acme-button slot="actions" variant="primary">Go</acme-button></acme-modal>`);
+  test("actions become small buttons; a full-width action defaults to secondary", async () => {
+    const el = await mount(`<acme-modal open heading="X"><acme-button slot="actions" full-width>Cancel</acme-button><acme-button slot="actions" variant="default">Go</acme-button></acme-modal>`);
     await settle();
     await el.updateComplete;
     const [cancel, go] = Array.from(document.querySelectorAll("acme-button")) as (HTMLElement & { size: string; variant: string })[];
     expect(cancel.size).toBe("small");
     expect(cancel.variant).toBe("secondary");
     expect(go.size).toBe("small");
-    expect(go.variant).toBe("primary");
+    expect(go.variant).toBe("default");
   });
 
   test("focus lands on the initial-focus target, else on the first tabbable that is not an action, else on the wrapper; and returns to the opener after the exit", async () => {

@@ -90,7 +90,7 @@ export const doc: Doc = {
     ],
     Accessibility: [
       "A label attribute needs an id on the element so the label and the control stay associated for screen readers.",
-      "An icon-only affordance in a row of inputs is a circle svg-only Button with an aria-label, never a bare icon.",
+      "An icon-only affordance in a row of inputs is a circle Button with an aria-label, never a bare icon.",
       "A Search Input placeholder names the scope (Search projects) so the role is clear without sight.",
     ],
   },

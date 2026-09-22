@@ -89,6 +89,18 @@ export const densityTokenDefinitions = Object.freeze(
         defaultValue: "0.5rem",
         compactValue: "0.5rem",
       },
+      { category: "sizes", key: "acme-button-small-height", cssProperty: "--acme-button-small-height", syntax: "width", role: "small action height", defaultValue: "2rem", compactValue: "1.75rem" },
+      { category: "sizes", key: "acme-button-medium-height", cssProperty: "--acme-button-medium-height", syntax: "width", role: "medium action height", defaultValue: "2.25rem", compactValue: "2rem" },
+      { category: "sizes", key: "acme-button-large-height", cssProperty: "--acme-button-large-height", syntax: "width", role: "large action height", defaultValue: "2.5rem", compactValue: "2.25rem" },
+      {
+        category: "spacing",
+        key: "acme-button-padding-inline",
+        cssProperty: "--acme-button-padding-inline",
+        syntax: "padding-inline",
+        role: "action inline padding",
+        defaultValue: ".75rem",
+        compactValue: ".5rem",
+      },
     ] as const
   ).map((token) => Object.freeze(token)),
 );
@@ -100,6 +112,8 @@ export const themeTokenDefinitions = Object.freeze([
       "accent",
       "accent-border",
       "accent-hover",
+      "accent-active",
+      "on-accent",
       "accent-ink",
       "accent-weak",
       "accents-1",

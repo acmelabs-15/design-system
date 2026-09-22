@@ -35,7 +35,7 @@ export const doc: Doc = {
     },
     {
       h: "Single button",
-      html: `${open}<acme-modal heading="Create Token" sticky>${copy}<acme-button slot="actions" block>Cancel</acme-button></acme-modal>`,
+      html: `${open}<acme-modal heading="Create Token" sticky>${copy}<acme-button slot="actions" full-width>Cancel</acme-button></acme-modal>`,
       script: wire,
     },
     {
@@ -109,7 +109,7 @@ modal.updateComplete.then(() => {
       h: "Open single button",
       census: true,
       p: "A sticky modal with one full-width action (<code>block</code>): secondary unless it names a variant.",
-      html: `<acme-modal heading="Create Token" sticky>${copy}<acme-button slot="actions" block>Cancel</acme-button></acme-modal>`,
+      html: `<acme-modal heading="Create Token" sticky>${copy}<acme-button slot="actions" full-width>Cancel</acme-button></acme-modal>`,
       script: show,
     },
     {

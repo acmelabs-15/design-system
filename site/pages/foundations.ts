@@ -40,7 +40,7 @@ export const intro: Doc = {
     "/components/avatar",
     "Components",
     "Building blocks for any page.",
-    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("groups", ' slot="start"')}Collaborate</acme-button><acme-button aria-label="Shield" shape="square" svg-only>${ic("shield")}</acme-button><acme-theme-switcher size="small"></acme-theme-switcher><acme-input label="Label" placeholder="Label" aria-label="Not a real input"></acme-input></span>`,
+    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("groups", ' slot="start"')}Collaborate</acme-button><acme-icon-button aria-label="Shield" shape="square">${ic("shield")}</acme-icon-button><acme-theme-switcher size="small"></acme-theme-switcher><acme-input label="Label" placeholder="Label" aria-label="Not a real input"></acme-input></span>`,
   )}${tile(
     "/colors",
     "Colors",
@@ -123,8 +123,6 @@ const def = (rows: [string, string, string][]) =>
     .join("");
 const logRow = (warn = false) =>
   `<li${warn ? ' class="warn"' : ""}>${ic(warn ? "warning" : "info")}<span class="text-copy-13-mono">APR 26 15:54:21.12</span><span class="vr"></span><span class="text-copy-13-mono">/dashboard/overview</span></li>`;
-// The custom colors travel as JSON in single-quoted attributes, as on the Button page.
-const custom = (fg: string, bg: string, border: string) => JSON.stringify({ foreground: fg, background: bg, border });
 export const colors: Doc = {
   id: "colors",
   title: "Colors",
@@ -158,7 +156,7 @@ export const colors: Doc = {
     `${def([
       ["Color 7", "--ds-gray-700", "High contrast background"],
       ["Color 8", "--ds-gray-800", "Hover high contrast background"],
-    ])}<div class="ex-box" style="margin-top:40px;gap:48px"><span class="row" style="gap:20px"><acme-gauge size="medium" value="90" show-value></acme-gauge><acme-gauge size="medium" value="55" show-value></acme-gauge><acme-gauge size="medium" value="20" show-value></acme-gauge></span><acme-button variant="custom" normal='${custom("#fff", "var(--ds-blue-700)", "var(--ds-blue-700)")}' hover='${custom("#fff", "#0B7BFE", "var(--ds-blue-700)")}' active='${custom("#fff", "var(--ds-blue-700)", "var(--ds-blue-700)")}' width="160">Upgrade to Pro</acme-button></div>`,
+    ])}<div class="ex-box" style="margin-top:40px;gap:48px"><span class="row" style="gap:20px"><acme-gauge size="medium" value="90" show-value></acme-gauge><acme-gauge size="medium" value="55" show-value></acme-gauge><acme-gauge size="medium" value="20" show-value></acme-gauge></span><acme-button width="160px">Upgrade to Pro</acme-button></div>`,
     "Two colors for high contrast component backgrounds.",
   )}${section(
     "Colors 9-10: Text and Icons",

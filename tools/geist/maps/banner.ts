@@ -15,7 +15,7 @@ export const geist: GeistMap = {
   ignore: ["p-4"],
   children: [
     { ours: ".text", pick: (c) => c.tag === "p" },
-    { ours: "acme-button.action", pick: (c) => "data-geist-button" in c.attrs, extends: "button", part: "button", leaf: true },
+    { ours: "acme-button.action", pick: (c) => "data-geist-button" in c.attrs, extends: "button", part: "root", leaf: true },
   ],
   slotted: ["b", "strong"],
 };

@@ -5,6 +5,8 @@ export type InteractionOptions = {
   disabled?: () => boolean;
   anyFocus?: boolean;
   ownFocus?: boolean;
+  onPress?: (event: PointerEvent | KeyboardEvent) => void;
+  onCancel?: () => void;
 };
 type State = Readonly<{ hover: boolean; focus: boolean; within: boolean; pointer: number | undefined; space: boolean; enter: boolean }>;
 const empty: State = Object.freeze({ hover: false, focus: false, within: false, pointer: undefined, space: false, enter: false });
@@ -73,9 +75,13 @@ export class Interaction implements ReactiveController {
       const pointer = this.state.get().pointer;
       if (pointer === undefined || (event as PointerEvent).pointerId !== pointer) return;
       this.set({ pointer: undefined });
+      if (event.type === "pointercancel") this.options.onCancel?.();
       if (!this.pressed()) this.releaseListeners();
     };
-    const blurred = () => this.endPress();
+    const blurred = () => {
+      this.endPress();
+      this.options.onCancel?.();
+    };
     for (const [type, handler] of [
       ["pointerup", released],
       ["pointercancel", released],
@@ -98,23 +104,29 @@ export class Interaction implements ReactiveController {
       if ((event.pointerType === "mouse" || event.pointerType === "pen") && !this.disabled()) this.set({ hover: true });
     });
     on("pointerleave", () => {
+      this.options.onCancel?.();
       this.set({ hover: false, pointer: undefined });
       if (!this.pressed()) this.releaseListeners();
     });
     on("pointerdown", (event) => {
       if (this.disabled() || event.button !== 0 || !event.isPrimary) return;
+      const pressed = this.pressed();
       this.set({ pointer: event.pointerId });
+      if (!pressed) this.options.onPress?.(event);
       this.listenForRelease();
     });
     on("lostpointercapture", (event) => {
       if (this.state.get().pointer === event.pointerId) {
+        this.options.onCancel?.();
         this.set({ pointer: undefined });
         if (!this.pressed()) this.releaseListeners();
       }
     });
     on("keydown", (event) => {
       if (this.disabled() || (event.key !== " " && event.key !== "Enter")) return;
+      const pressed = this.pressed();
       this.set(event.key === " " ? { space: true } : { enter: true });
+      if (!pressed) this.options.onPress?.(event);
       this.listenForRelease();
     });
     on("keyup", (event) => {
@@ -129,11 +141,13 @@ export class Interaction implements ReactiveController {
       this.set({ focus: own && (this.options.anyFocus || focused.matches(":focus-visible")) === true, within: true });
     });
     on("focusout", () => {
+      this.options.onCancel?.();
       this.set({ focus: false, within: false });
       this.endPress();
     });
   }
   private unbind(): void {
+    this.options.onCancel?.();
     this.releaseListeners();
     for (const remove of this.cleanup.splice(0)) remove();
     this.state.set(empty);
@@ -154,6 +168,7 @@ export class Interaction implements ReactiveController {
   }
   hostUpdated(): void {
     if (!this.connected || !this.target || !this.disabled()) return;
+    this.options.onCancel?.();
     this.releaseListeners();
     this.state.set(empty);
   }

@@ -172,7 +172,7 @@ export const showcase = (e: Example) => {
   const code = (e.code ?? e.html) + (e.script ? `\n<script>\n${e.script.trim()}\n</script>` : "");
   const plain = formatHtml(code);
   const attr = e.script ? ` data-script="${esc(e.script).replace(/"/g, "&quot;")}"` : "";
-  return `<div class="showcase"${attr}><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chevron-right")}Show code</button><div class="code"><acme-copy-button label="Copy code" text-to-copy="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
+  return `<div class="showcase"${attr}><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chevron-right")}Show code</button><div class="code"><acme-copy-button aria-label="Copy code" value="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
 };
 
 const practices = (p?: Record<string, string[]>) =>

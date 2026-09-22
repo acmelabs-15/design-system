@@ -37,7 +37,7 @@ export const geist: GeistMap = {
               pick: has("w-full"),
               children: [
                 { ours: ".text", pick: has("truncate") },
-                { ours: "acme-button", pick: (c) => c.tag === "button", extends: "button", part: "button", children: [{ ours: "", pick: 0, children: [{ ours: "", pick: 0, leaf: true }] }] },
+                { ours: "acme-icon-button", pick: (c) => c.tag === "button", extends: "button", part: "root", children: [{ ours: "", pick: 0, children: [{ ours: "", pick: 0, leaf: true }] }] },
               ],
             },
           ],

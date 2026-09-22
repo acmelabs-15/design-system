@@ -23,13 +23,12 @@ export class AcmeShowMore extends AcmeElement {
     return html`<div class=${this.cls("show-more", { expanded: this.expanded, "no-border": this.noBorder })}>
       ${line}
       <div class="pill">
-        <acme-button variant="secondary" size="small" shape="rounded" ?loading=${this.expanded && this.loading} part="button"
+        <acme-button variant="secondary" size="small" shape="pill" ?loading=${this.expanded && this.loading} part="button"
           ><slot
             ><div class="text" style="display:flex;align-items:center">
               Show ${this.expanded && !this.loading ? "Less" : "More"}<span class="chev">${html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</span>
             </div></slot
-          ></acme-button
-        >
+          ></acme-button>
       </div>
       ${line}
     </div>`;

@@ -4,7 +4,7 @@ import type { Doc } from "../../site";
 const item = (text: string, attrs = "") => `<acme-menu-item slot="items"${attrs ? ` ${attrs}` : ""}>${text}</acme-menu-item>`;
 const icon = (name: "accessibility-new" | "more-horiz", slot = "") => `<acme-${name}-icon size="16px"${slot ? ` slot="${slot}"` : ""}></acme-${name}-icon>`;
 const trigger = (text: string, attrs = "") => `<acme-menu-button slot="trigger"${attrs ? ` ${attrs}` : ""}>${text}</acme-menu-button>`;
-const dotsTrigger = trigger(icon("more-horiz"), 'aria-label="Menu" shape="square" size="small" svg-only variant="secondary"');
+const dotsTrigger = trigger(icon("more-horiz"), 'aria-label="Menu" shape="square" size="small" variant="secondary"');
 const box = (h: number, inner: string, extra = "") => `<div style="min-height:${h}px;position:relative${extra}">${inner}</div>`;
 /** Opens every menu in the example, so the page shows the state the reference reaches on a click. */
 const openAll = "for (const m of root.querySelectorAll('acme-menu')) m.open = true;";

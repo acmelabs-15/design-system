@@ -14,8 +14,7 @@ const narrow = async (el: AcmeBanner) => {
   await el.updateComplete;
 };
 const sr = (el: AcmeBanner) => el.shadowRoot as ShadowRoot;
-const btn = (el: AcmeBanner, cls: string) =>
-  sr(el).querySelector(`acme-button.${cls}`) as HTMLElement & { href: string; variant: string; size: string; shape: string; shadow: boolean; block: boolean };
+const btn = (el: AcmeBanner, cls: string) => sr(el).querySelector(`acme-button.${cls}`) as HTMLElement & { href: string; variant: string; size: string; shape: string; fullWidth: boolean };
 
 describe("acme-banner", () => {
   test("renders the mobile button and the wide row with the message and the action link", async () => {
@@ -27,13 +26,13 @@ describe("acme-banner", () => {
     expect(action.href).toBe("#more");
     expect(action.variant).toBe("secondary");
     expect(action.size).toBe("small");
-    expect(action.shape).toBe("rounded");
-    expect(action.shadow).toBe(true);
+    expect(action.shape).toBe("pill");
+    expect("shadow" in action).toBe(false);
     expect(action.textContent?.trim()).toBe("Read more");
     expect(action.querySelector("acme-chevron-right-icon[slot=end]")).not.toBeNull();
     const mobile = btn(el, "mobile");
     expect(mobile.getAttribute("part")).toBe("mobile");
-    expect(mobile.block).toBe(true);
+    expect(mobile.fullWidth).toBe(true);
     expect(mobile.href).toBe("#more");
     expect(mobile.querySelector("acme-chevron-right-icon[slot=end]")).not.toBeNull();
   });

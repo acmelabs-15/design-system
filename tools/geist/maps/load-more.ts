@@ -8,7 +8,7 @@ export const geist: GeistMap = {
   component: "LoadMoreButton",
   root: "data-geist-button",
   ours: "acme-button",
-  part: "button",
+  part: "root",
   extends: "button",
   skip: ["Placeholder", "Placeholder without gap"],
   defaults: { noGap: "false", noBorderRadius: "false", loading: "false" },

@@ -14,26 +14,28 @@ function hasContent(node: Node): boolean {
 
 /** Tracks content assigned to this host's declared places, including forwarded slots. */
 export class Places implements ReactiveController {
-  private readonly filled = createAtom<ReadonlySet<Place>>(new Set<Place>());
+  private readonly filled = createAtom<ReadonlySet<string>>(new Set<string>());
   private watch?: MutationObserver;
   private root?: HTMLElement | DocumentFragment;
-  private readonly names: readonly Place[];
+  private readonly names: readonly string[];
   constructor(
     private host: Host,
-    options: { places?: readonly Place[] } = {},
+    options: { places?: readonly string[] } = {},
   ) {
     this.names = options.places ?? PLACES;
     host.addController(this);
   }
-  has(name: Place): boolean {
+  has(name: string): boolean {
     return this.filled.get().has(name);
   }
   read = (): void => {
-    const now = new Set<Place>();
+    const now = new Set<string>();
     for (const name of this.names) {
       // Direct light children are also available before a conditional slot's first render.
       const slot = [...(this.host.renderRoot?.querySelectorAll("slot") ?? [])].find((slot) => slot.name === name);
-      const nodes = slot ? slot.assignedNodes({ flatten: true }) : [...this.host.children].filter((child) => child.getAttribute("slot") === name);
+      const nodes = slot
+        ? slot.assignedNodes({ flatten: true })
+        : [...this.host.childNodes].filter((child) => (child.nodeType === 3 ? name === "" : child.nodeType === 1 && ((child as Element).getAttribute("slot") ?? "") === name));
       if (nodes.some(hasContent)) now.add(name);
     }
     const before = this.filled.get();

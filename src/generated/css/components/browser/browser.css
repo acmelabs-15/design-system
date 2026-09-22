@@ -131,7 +131,7 @@
   font-weight: var(--acme-font-weight-550);
 }
 
-.frame :where(.header) :where(.section) :where(.address) :where(acme-button) svg {
+.frame :where(.header) :where(.section) :where(.address) :where(acme-icon-button) svg {
   flex-shrink: 0;
   width: .75rem;
   height: .75rem;

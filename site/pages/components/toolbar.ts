@@ -10,7 +10,7 @@ export const doc: Doc = {
   examples: [
     {
       h: "Default",
-      html: `<acme-toolbar><acme-search placeholder="Search deployments" style="width:260px"></acme-search><acme-select options='["All branches","main"]' aria-label="Branch"></acme-select><acme-button slot="end">Export</acme-button><acme-button slot="end" variant="primary">Deploy</acme-button></acme-toolbar>`,
+      html: `<acme-toolbar><acme-search placeholder="Search deployments" style="width:260px"></acme-search><acme-select options='["All branches","main"]' aria-label="Branch"></acme-select><acme-button slot="end">Export</acme-button><acme-button slot="end" variant="default">Deploy</acme-button></acme-toolbar>`,
     },
   ],
 };

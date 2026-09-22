@@ -67,12 +67,12 @@ export class AcmeBrowser extends AcmeElement {
           <div class="section">
             <div class="address" part="address">
               <div class="text">${formatAddress(this.address)}</div>
-              <acme-button variant="tertiary" size="tiny" shape="square" svg-only aria-label=${this.copied ? "Copied" : "Copy"} @click=${this.copy} part="button">
+              <acme-icon-button variant="tertiary" size="tiny" shape="square" aria-label=${this.copied ? "Copied" : "Copy"} @click=${this.copy} part="button">
                 <div class=${this.cls("stack", { copied: this.copied })}>
                   <div class="check">${html`<acme-check-icon size="12px"></acme-check-icon>`}</div>
                   <div class="copy">${html`<acme-content-copy-icon size="12px"></acme-content-copy-icon>`}</div>
                 </div>
-              </acme-button>
+              </acme-icon-button>
             </div>
           </div>
           <div class="spacer"></div>

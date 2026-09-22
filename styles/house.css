@@ -69,8 +69,10 @@
   --text-2: var(--ds-gray-900);
   --muted: var(--ds-gray-900);
   --faint: var(--ds-gray-900);
-  --accent: var(--ds-blue-700);
-  --accent-hover: var(--ds-blue-800);
+  --accent: #0062d1;
+  --accent-hover: #0068d6;
+  --accent-active: #0058bd;
+  --on-accent: #ffffff;
   --accent-ink: var(--ds-blue-900);
   --accent-weak: var(--ds-blue-100);
   --accent-border: var(--ds-blue-400);
@@ -81,7 +83,7 @@
   --warn: var(--ds-red-700);
   --warn-hover: var(--ds-red-800);
   --warn-solid: var(--ds-red-800);
-  --warn-solid-hover: var(--ds-red-900);
+  --warn-solid-hover: color-mix(in srgb, var(--warn-solid), var(--ds-black) 8%);
   --warn-ink: var(--ds-red-900);
   --warn-weak: var(--ds-red-100);
   --warn-border: var(--ds-red-400);
@@ -1784,31 +1786,6 @@ a:hover {
 .pill.mono {
   font-family: var(--mono);
 }
-.chip {
-  font-size: var(--t-sm);
-  padding: 7px 13px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-2);
-  font-weight: 450;
-  transition: var(--dur) var(--ease);
-}
-.chip:hover {
-  border-color: var(--border-hover);
-  color: var(--text);
-}
-.chip[aria-pressed="true"] {
-  background: var(--text);
-  border-color: var(--text);
-  color: var(--on-contrast);
-  font-weight: 500;
-}
-.chip[disabled] {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
 /* ---------- Status dot (Geist): deployment lifecycle only ---------- */
 .status-dot {
   display: inline-flex;

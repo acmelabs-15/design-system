@@ -14,12 +14,7 @@ import { loadMorePlaceholderCss } from "../../generated/components/load-more/loa
  */
 
 export class AcmeLoadMore extends AcmeElement {
-  static styles = [
-    sharedCss,
-    loadMoreCss,
-    loadMorePlaceholderCss,
-    loadMoreStructureCss,
-  ];
+  static styles = [sharedCss, loadMoreCss, loadMorePlaceholderCss, loadMoreStructureCss];
   @property({ type: Boolean }) loading = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: Boolean, attribute: "no-gap" }) noGap = false;
@@ -35,8 +30,7 @@ export class AcmeLoadMore extends AcmeElement {
       ?loading=${this.loading}
       ?disabled=${this.disabled}
       part="button"
-      ><slot>Load More</slot></acme-button
-    >`;
+      ><slot>Load More</slot></acme-button>`;
   }
 }
 

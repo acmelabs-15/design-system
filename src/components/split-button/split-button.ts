@@ -29,8 +29,8 @@ const MENU_GAP = 8;
 
 export class AcmeSplitButton extends AcmeElement {
   static styles = [sharedCss, splitButtonCss, splitButtonMenuCss, splitButtonStructureCss];
-  /** `default` (the primary look; `primary` is accepted) or `secondary`. */
-  @property() variant: "default" | "primary" | "secondary" = "default";
+  /** The default or secondary action presentation. */
+  @property() variant: "default" | "secondary" = "default";
   @property() size: "small" | "medium" | "large" = "medium";
   /** The primary button's HTML type. */
   @property() type: "button" | "submit" | "reset" = "button";
@@ -45,7 +45,7 @@ export class AcmeSplitButton extends AcmeElement {
   /** The menu's presence: mounted and shown, fading out, or gone. */
   @atomState() private phase: "entered" | "exiting" | null = null;
   @query("acme-button.main") private main!: HTMLElement;
-  @query("acme-button.trigger") private trigger!: HTMLElement;
+  @query("acme-icon-button.trigger") private trigger!: HTMLElement;
   @query(".popover") private floating?: HTMLElement;
   @query(".menu") private menu?: HTMLElement;
   @queryAssignedElements({ slot: "items", selector: "acme-split-button-item" }) items!: AcmeSplitButtonItem[];
@@ -154,13 +154,13 @@ export class AcmeSplitButton extends AcmeElement {
   }
 
   render() {
-    const variant = this.variant === "primary" ? "default" : this.variant;
+    const variant = this.variant;
     const secondary = variant === "secondary";
     const c = this.cls("split", { sm: this.size === "small", lg: this.size === "large", secondary });
     const style = `--divider-color:${secondary ? "var(--ds-gray-300)" : "var(--ds-gray-alpha-900)"}`;
     return html`<div class=${c} style=${style} part="split">
         <acme-button class="main" variant=${variant} size=${this.size} type=${this.type} ?disabled=${this.disabled} @click=${() => this.dispatchEvent(new CustomEvent("acme-click", { bubbles: true, composed: true }))} part="button"><slot></slot></acme-button>
-        <acme-button
+        <acme-icon-button
           class="trigger"
           variant=${variant}
           size=${this.size}
@@ -176,9 +176,8 @@ export class AcmeSplitButton extends AcmeElement {
           }}
           @keydown=${this.onTriggerKey}
           part="menu-button"
-          exportparts="label:trigger-label"
-          ><span class="inner">${html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</span></acme-button
-        >
+          exportparts="icon:trigger-label"
+          ><span class="inner">${html`<acme-expand-more-icon size="16px"></acme-expand-more-icon>`}</span></acme-icon-button>
       </div>
       ${
         this.phase

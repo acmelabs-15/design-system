@@ -2,7 +2,7 @@
 import type { Doc } from "../../site";
 
 const SIZES = ["small", "medium", "large"] as const;
-const VARIANTS = ["primary", "secondary"] as const;
+const VARIANTS = ["default", "secondary"] as const;
 const saveItems = `<acme-split-button-item slot="items" description="Save changes">Save</acme-split-button-item><acme-split-button-item slot="items" description="Save changes and create a new production deployment">Save + Redeploy</acme-split-button-item>`;
 const icon = (name: string) => `<acme-${name}-icon slot="icon" size="18px"></acme-${name}-icon>`;
 const brand = (name: string) => `<svg class="ic" width="18" height="18" slot="icon" aria-hidden="true"><use href="#brand-${name}"/></svg>`;
@@ -30,7 +30,7 @@ export const doc: Doc = {
     },
     {
       h: "Menu Alignment",
-      html: `<div class="row" style="gap:32px;align-items:flex-start">${split("primary", "medium", saveItems)}<acme-split-button menu-alignment="bottom-end" menu-button-label="Select save method" menu-width="264">Save${saveItems}</acme-split-button></div>`,
+      html: `<div class="row" style="gap:32px;align-items:flex-start">${split("default", "medium", saveItems)}<acme-split-button menu-alignment="bottom-end" menu-button-label="Select save method" menu-width="264">Save${saveItems}</acme-split-button></div>`,
       script: alerts,
     },
     {

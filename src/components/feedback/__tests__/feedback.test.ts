@@ -17,7 +17,7 @@ describe("acme-feedback", () => {
     const t = q(el, "acme-button.trigger")!;
     expect(t.getAttribute("size")).toBe("small");
     expect(t.getAttribute("variant")).toBe("secondary");
-    expect(t.getAttribute("aria-haspopup")).toBe("dialog");
+    expect(t.shadowRoot!.querySelector("[part=root]")!.getAttribute("aria-haspopup")).toBe("dialog");
     expect(t.getAttribute("aria-expanded")).toBe("false");
     expect(t.getAttribute("data-state")).toBe("closed");
     expect(t.textContent).toContain("Feedback");

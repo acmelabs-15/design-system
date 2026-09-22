@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.split :where(acme-button.main)::part(button) {
+.split :where(acme-button.main)::part(root) {
   z-index: 1;
   border-style: solid !important;
   border-width: 1px 0 1px 1px !important;
@@ -13,7 +13,7 @@
   border-bottom-right-radius: 0 !important;
 }
 
-.split :where(acme-button.trigger)::part(button) {
+.split :where(acme-icon-button.trigger)::part(root) {
   z-index: 1;
   border-style: solid !important;
   border-width: 1px 1px 1px 0 !important;
@@ -23,7 +23,7 @@
   border-bottom-left-radius: 0 !important;
 }
 
-.split :where(acme-button.trigger)::part(trigger-label) {
+.split :where(acme-icon-button.trigger)::part(icon) {
   text-overflow: ellipsis;
   white-space: nowrap;
   flex-shrink: 0;
@@ -34,7 +34,7 @@
   overflow: hidden;
 }
 
-.split :where(acme-button.trigger) :where(.inner) {
+.split :where(acme-icon-button.trigger) :where(.inner) {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
@@ -43,16 +43,16 @@
   display: flex;
 }
 
-.split :where(acme-button.main) svg, .split :where(acme-button.trigger) svg {
+.split :where(acme-button.main) svg, .split :where(acme-icon-button.trigger) svg {
   flex-shrink: 0;
 }
 
-.split:where(.secondary) :where(acme-button.trigger)::part(button):before {
+.split:where(.secondary) :where(acme-icon-button.trigger)::part(root):before {
   content: "";
   background-color: var(--divider-color);
 }
 
-.split :where(acme-button.trigger)::part(button):before {
+.split :where(acme-icon-button.trigger)::part(root):before {
   content: "";
   width: 1px;
   height: 100%;
@@ -61,69 +61,69 @@
   left: -1px;
 }
 
-:host(:not([data-dark])) .split:where(:not(.secondary)) :where(acme-button.trigger)::part(button):before {
+:host(:not([data-dark])) .split:where(:not(.secondary)) :where(acme-icon-button.trigger)::part(root):before {
   content: "";
   background-color: #404040;
 }
 
-.split :where(acme-button.main)::part(button):focus, .split :where(acme-button.trigger)::part(button):focus {
+.split :where(acme-button.main)::part(root):focus, .split :where(acme-icon-button.trigger)::part(root):focus {
   z-index: 2;
   box-shadow: var(--ds-focus-ring);
 }
 
-.split :where(acme-button.trigger)::part(button):disabled {
+.split :where(acme-icon-button.trigger)::part(root):disabled {
   background-color: var(--ds-gray-100);
   box-shadow: 0 0 0 1px var(--themed-border, transparent);
 }
 
-.split :where(acme-button.main)::part(button):disabled {
+.split :where(acme-button.main)::part(root):disabled {
   box-shadow: 0 0 0 1px var(--themed-border, transparent);
 }
 
-.split :where(acme-button.trigger)[aria-disabled="true"]::part(button) {
+.split :where(acme-icon-button.trigger)[aria-disabled="true"]::part(root) {
   background-color: var(--ds-gray-100);
   box-shadow: 0 0 0 1px var(--themed-border, transparent);
 }
 
-.split :where(acme-button.main)[aria-disabled="true"]::part(button) {
+.split :where(acme-button.main)[aria-disabled="true"]::part(root) {
   box-shadow: 0 0 0 1px var(--themed-border, transparent);
 }
 
-.split:where(.secondary) :where(acme-button.trigger)[data-hover]::part(button) {
+.split:where(.secondary) :where(acme-icon-button.trigger)[data-hover]::part(root) {
   box-shadow: 0 0 0 1px var(--ds-gray-alpha-500);
   background-color: var(--ds-background-100) !important;
 }
 
-.split:where(:not(.secondary)) :where(acme-button.trigger)[data-hover]::part(button) {
+.split:where(:not(.secondary)) :where(acme-icon-button.trigger)[data-hover]::part(root) {
   background-color: var(--themed-hover-bg, #383838);
 }
 
-.split:where(.secondary) :where(acme-button.main)[data-focus]::part(button), .split:where(.secondary) :where(acme-button.trigger)[data-focus]::part(button) {
+.split:where(.secondary) :where(acme-button.main)[data-focus]::part(root), .split:where(.secondary) :where(acme-icon-button.trigger)[data-focus]::part(root) {
   box-shadow: 0 0 0 1px var(--themed-border, transparent), 0 0 0 2px var(--ds-background-100), 0 0 0 4px var(--ds-focus-color);
 }
 
-.split :where(acme-button.main)[data-focus]::part(button), .split :where(acme-button.trigger)[data-focus]::part(button) {
+.split :where(acme-button.main)[data-focus]::part(root), .split :where(acme-icon-button.trigger)[data-focus]::part(root) {
   box-shadow: var(--ds-focus-ring);
 }
 
-:where(:host([data-dark])) .split:where(:not(.secondary)) :where(acme-button.trigger)::part(button):before {
+:where(:host([data-dark])) .split:where(:not(.secondary)) :where(acme-icon-button.trigger)::part(root):before {
   content: "";
   background-color: #cdcdcd;
 }
 
-:where(:host([data-dark])) .split:where(.secondary) :where(acme-button.trigger)[data-hover]::part(button) {
+:where(:host([data-dark])) .split:where(.secondary) :where(acme-icon-button.trigger)[data-hover]::part(root) {
   background-color: var(--ds-gray-200);
 }
 
-:where(:host([data-dark])) .split:where(:not(.secondary)) :where(acme-button.trigger)[data-hover]::part(button) {
+:where(:host([data-dark])) .split:where(:not(.secondary)) :where(acme-icon-button.trigger)[data-hover]::part(root) {
   background-color: var(--themed-hover-bg, #ccc);
 }
 
-.split :where(acme-button.trigger)::part(button):disabled:before {
+.split :where(acme-icon-button.trigger)::part(root):disabled:before {
   content: "";
   opacity: .1;
 }
 
-.split :where(acme-button.trigger)[data-hover]::part(button):disabled {
+.split :where(acme-icon-button.trigger)[data-hover]::part(root):disabled {
   background-color: var(--ds-gray-100);
 }

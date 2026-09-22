@@ -1,18 +1,18 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-export const loadMoreCss = css`acme-button:where(.no-gap)::part(button) {
+export const loadMoreCss = css`acme-button:where(.no-gap)::part(root) {
   margin-top: 0;
 }
 
-acme-button:where(:not(.no-gap))::part(button) {
+acme-button:where(:not(.no-gap))::part(root) {
   margin-top: 1rem;
 }
 
-acme-button::part(button) {
+acme-button::part(root) {
   width: 100%;
 }
 
-acme-button:where(.no-radius)::part(button) {
+acme-button:where(.no-radius)::part(root) {
   border-radius: 0;
 }
 

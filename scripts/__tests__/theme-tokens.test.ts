@@ -99,7 +99,7 @@ test("conditional source order is preserved rather than flattened", () => {
   expect(css).toContain(":host");
 });
 
-test("compact density emits only four role overrides with a normal reset path", () => {
+test("compact density emits layout, table and action roles with a normal reset path", () => {
   const output = generateThemeStyles(fixture());
   expect(output.compactCss).toContain('data-acme-density="normal"');
   expect(output.compactCss).toContain('data-acme-density="compact"');
@@ -107,6 +107,8 @@ test("compact density emits only four role overrides with a normal reset path", 
     expect(output.compactCss).toContain(value);
   expect(output.compactCss).not.toContain("--acme-spacing-");
   expect(output.compactCss).not.toContain("font-size");
+  for (const value of ["--acme-button-small-height: 1.75rem", "--acme-button-medium-height: 2rem", "--acme-button-large-height: 2.25rem", "--acme-button-padding-inline: .5rem"])
+    expect(output.compactCss).toContain(value);
   expect(output.hooks.compactTargetMinimumPx).toBe(24);
   expect(output.hooks.normalDensitySurfaces).toEqual(["menu", "dialog", "toast"]);
 });

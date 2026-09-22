@@ -11,6 +11,6 @@ export const geist: GeistMap = {
   component: "Banner",
   root: (n) => n.tag === "a" && has("lg:!hidden")(n),
   ours: "acme-button.mobile",
-  part: "button",
+  part: "root",
   extends: "button",
 };

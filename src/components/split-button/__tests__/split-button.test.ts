@@ -18,7 +18,7 @@ describe("acme-split-button", () => {
     const split = sr(el).querySelector(".split")!;
     expect(split.className.trim()).toBe("split sm secondary");
     expect(split.getAttribute("style")).toBe("--divider-color:var(--ds-gray-300)");
-    const [main, trigger] = split.querySelectorAll("acme-button");
+    const [main, trigger] = split.querySelectorAll("acme-button, acme-icon-button");
     expect(main.className).toBe("main");
     expect(main.getAttribute("variant")).toBe("secondary");
     expect(main.getAttribute("size")).toBe("small");
@@ -26,8 +26,8 @@ describe("acme-split-button", () => {
     expect(main.querySelector("slot:not([name])")).not.toBeNull();
     expect(trigger.className).toBe("trigger");
     expect(trigger.getAttribute("aria-label")).toBe("Select save method");
-    expect(trigger.getAttribute("aria-haspopup")).toBe("menu");
-    expect(trigger.getAttribute("aria-expanded")).toBe("false");
+    expect(trigger.shadowRoot!.querySelector("[part=root]")!.getAttribute("aria-haspopup")).toBe("menu");
+    expect(trigger.shadowRoot!.querySelector("[part=root]")!.getAttribute("aria-expanded")).toBe("false");
     expect(trigger.querySelector(".inner acme-expand-more-icon")).not.toBeNull();
     expect(sr(el).querySelector(".menu")).toBeNull();
     const p = await mount<AcmeSplitButton>(`<acme-split-button>Save</acme-split-button>`);
@@ -38,7 +38,7 @@ describe("acme-split-button", () => {
 
   test("the chevron opens a role=menu list of the given width and alignment; Escape starts the fade and closes", async () => {
     const el = await mount<AcmeSplitButton>(`<acme-split-button menu-alignment="bottom-end" menu-width="264">Save${items}</acme-split-button>`);
-    sr(el).querySelector<HTMLElement>("acme-button.trigger")!.click();
+    sr(el).querySelector<HTMLElement>("acme-icon-button.trigger")!.click();
     await el.updateComplete;
     await el.updateComplete;
     const menu = sr(el).querySelector(".popover > .menu")!;
@@ -47,7 +47,7 @@ describe("acme-split-button", () => {
     const list = menu.querySelector("ul.list")!;
     expect(list.getAttribute("role")).toBe("menu");
     expect(list.getAttribute("style")).toBe("width:264px");
-    expect(list.id).toBe(sr(el).querySelector("acme-button.trigger")!.getAttribute("aria-controls") ?? "");
+    expect(list.id).toBe(sr(el).querySelector("acme-icon-button.trigger")!.getAttribute("aria-controls") ?? "");
     expect(list.querySelector("slot[name=items]")).not.toBeNull();
     list.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
     await el.updateComplete;

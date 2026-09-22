@@ -29,7 +29,6 @@ const MAP: [string, RegExp][] = [
   ["radio", /^\.radio/],
   ["badge", /^\.badge/],
   ["pill", /^\.pill/],
-  ["chip", /^\.chip/],
   ["tag", /^\.tag\b/],
   ["status-dot", /^(\.status-dot|\.dot\b|@keyframes pulse)/],
   ["card", /^(\.card\b|\.readout|\.card-foot)/],

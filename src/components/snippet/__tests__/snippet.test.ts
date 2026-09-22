@@ -23,8 +23,8 @@ describe("acme-snippet", () => {
     expect(b.getAttribute("variant")).toBe("secondary");
     expect(b.getAttribute("shape")).toBe("square");
     expect(b.getAttribute("size")).toBe("small");
-    expect(b.getAttribute("label")).toBe("Copy to clipboard");
-    expect(b.getAttribute("text-to-copy")).toBe("npm init next-app");
+    expect(b.shadowRoot!.querySelector("[part=root]")!.getAttribute("aria-label")).toBe("Copy to clipboard");
+    expect(b.getAttribute("value")).toBe("npm init next-app");
     expect(b.hasAttribute("copied")).toBe(false);
   });
 
@@ -53,31 +53,28 @@ describe("acme-snippet", () => {
     expect(root(off).querySelector("acme-copy-button")!.hasAttribute("disabled")).toBe(true);
   });
 
-  test("copied passes through to the button, which shows the check", async () => {
-    const el = await mount(`<acme-snippet text="Copy install prompt" prompt="false"></acme-snippet>`);
-    const b = root(el).querySelector("acme-copy-button")!;
-    expect(b.hasAttribute("copied")).toBe(false);
-    el.copied = true;
-    await el.updateComplete;
-    expect(b.hasAttribute("copied")).toBe(true);
+  test("copy feedback belongs to the composed action", async () => {
+    const el = await mount('<acme-snippet text="Install"></acme-snippet>');
+    expect("copied" in el).toBe(false);
+    const action = root(el).querySelector("acme-copy-button")!;
+    expect(Object.getOwnPropertyDescriptor(Object.getPrototypeOf(action), "copied")?.set).toBeUndefined();
   });
-
   test("copy-text wins over text, and copy() delegates to the button", async () => {
     const written: string[] = [];
     Object.defineProperty(navigator, "clipboard", { value: { writeText: async (t: string) => void written.push(t) }, configurable: true });
     const el = await mount(`<acme-snippet text='["a", "b"]' copy-text="c"></acme-snippet>`);
-    expect(root(el).querySelector("acme-copy-button")!.getAttribute("text-to-copy")).toBe("c");
+    expect(root(el).querySelector("acme-copy-button")!.getAttribute("value")).toBe("c");
     // acme-copy is composed, so the button's event bubbles through the snippet.
-    const events: string[] = [];
-    el.addEventListener("acme-copy", (e) => events.push((e as CustomEvent).detail.text));
+    const events: unknown[] = [];
+    el.addEventListener("acme-copy", (e) => events.push((e as CustomEvent).detail));
     el.copy();
     await new Promise((r) => setTimeout(r, 0));
     expect(written).toEqual(["c"]);
-    expect(events).toEqual(["c"]);
+    expect(events).toEqual([{}]);
   });
 
   test("without copy-text the lines are joined for the clipboard", async () => {
     const el = await mount(`<acme-snippet text='["cd project", "now"]'></acme-snippet>`);
-    expect(root(el).querySelector("acme-copy-button")!.getAttribute("text-to-copy")).toBe("cd project\nnow");
+    expect(root(el).querySelector("acme-copy-button")!.getAttribute("value")).toBe("cd project\nnow");
   });
 });

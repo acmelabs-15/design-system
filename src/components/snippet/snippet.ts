@@ -12,19 +12,15 @@ const text = { fromAttribute: (v: string | null): string | string[] => (v?.trim(
 /**
  * Snippet: one copyable command in 13/20 mono inside a 6px-radius bordered box, with a `$ `
  * prompt before each line and a 32px square copy button at the right, whose icon stack swaps to
- * a check for one second after a copy (or while `copied` is set). `text` takes a string or a
+ * a check for one second after a copy. `text` takes a string or a
  * JSON array of lines; `copy-text` is copied instead when set. `dark` inverts the box; `variant`
  * tints it success, error or warning, `fill` fills it; `placeholder` shows in an empty snippet at
  * half opacity; `compact` is the 36px one-line box; `icon="false"` drops the button and
- * `not-focusable` disables it. Fires `acme-copy` after a copy; a failed copy raises an error toast.
+ * `not-focusable` disables it. Fires `acme-copy` after a copy; a failed copy reports acme-error.
  */
 
 export class AcmeSnippet extends AcmeElement {
-  static styles = [
-    sharedCss,
-    snippetCss,
-    snippetStructureCss,
-  ];
+  static styles = [sharedCss, snippetCss, snippetStructureCss];
   @property({ converter: text }) text: string | string[] = "";
   /** Goes to the clipboard instead of `text`. */
   @property({ attribute: "copy-text" }) copyText = "";
@@ -44,8 +40,6 @@ export class AcmeSnippet extends AcmeElement {
   @property({ type: Boolean, attribute: "not-focusable" }) notFocusable = false;
   /** CSS width of the box, e.g. `300px` or `100%`. */
   @property() width = "";
-  /** Shows the check whatever the button did (controlled). */
-  @property({ type: Boolean }) copied = false;
   @query(".action") private action!: HTMLElement | null;
   @query("acme-copy-button") private button?: AcmeCopyButton;
   private interaction = new Interaction(this);
@@ -66,8 +60,8 @@ export class AcmeSnippet extends AcmeElement {
 
   /** Copies the snippet, as clicking its button does. The button owns the clipboard write, the
    *  one-second check and the `acme-copy` event, which bubbles through this element. */
-  copy(): void {
-    this.button?.copy();
+  copy(): Promise<void> {
+    return this.button ? this.button.copy() : Promise.reject(new Error("The copy action is not available"));
   }
 
   render() {
@@ -93,11 +87,10 @@ export class AcmeSnippet extends AcmeElement {
                 shape="square"
                 size="small"
                 ?disabled=${this.notFocusable}
-                label="Copy to clipboard"
-                text-to-copy=${this.clipboardText}
-                ?copied=${this.copied}
+                aria-label="Copy to clipboard"
+                value=${this.clipboardText}
                 part="button"
-                ><slot name="icon" slot="icon"></slot
+                ><slot name="icon" slot="start"></slot
               ></acme-copy-button>
             </div>`
           : nothing

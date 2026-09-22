@@ -1,7 +1,7 @@
 .snippet :where(.action){position:absolute;top:50%;right:.25rem;display:flex;width:2rem;height:2rem;translate:0 calc(calc(1 / 2 * 100%) * -1);cursor:pointer;align-items:center;border-radius:var(--acme-radius) var(--acme-radius);color:inherit;transition-property:opacity;transition-timing-function:cubic-bezier(.4, 0, .2, 1);transition-duration:.15s;outline-style:none;animation-duration:.15s;animation-timing-function:cubic-bezier(.4,0,.2,1)}
 .snippet{position:relative;width:fit-content;max-width:100%;border-radius:6px;border-style:solid;border-width:1px;border-color:var(--themed-border, var(--ds-gray-alpha-400));background-color:var(--themed-bg, var(--ds-background-100));padding-block:.625rem;padding-right:3rem;padding-left:.75rem;color:var(--themed-fg);--themed-fg:var(--ds-gray-1000)}
 .snippet:where(.dark){background-color:var(--ds-gray-1000) !important;color:var(--ds-gray-100) !important}
-.snippet :where(.action) :where(acme-copy-button)::part(button){background-color:#0000 !important;color:inherit;box-shadow:none !important}
+.snippet :where(.action) :where(acme-copy-button)::part(root){background-color:#0000 !important;color:inherit;box-shadow:none !important}
 .snippet:where(.placeholder){opacity:.5}
 .snippet pre{margin:0;scrollbar-width:none;-webkit-overflow-scrolling:touch;text-align:left;font-family:var(--font-mono);font-size:13px;line-height:20px}
 .snippet :where(.action) :where(acme-copy-button) svg{flex-shrink:0}
@@ -10,11 +10,11 @@
 .snippet pre::selection{background-color:var(--acme-selection)}
 @media (hover:hover){
 .snippet :where(.action)[data-hover]{opacity:.8}
-.snippet :where(.action) :where(acme-copy-button)::part(button):hover{box-shadow:0 0 0 1px var(--themed-border) !important}
+.snippet :where(.action) :where(acme-copy-button)::part(root):hover{box-shadow:0 0 0 1px var(--themed-border) !important}
 }
-.snippet :where(.action) :where(acme-copy-button)::part(button):disabled{color:var(--ds-gray-700)}
-.snippet :where(.action) :where(acme-copy-button)[aria-disabled=true]::part(button){color:var(--ds-gray-700)}
-.snippet :where(.action) :where(acme-copy-button)[data-hover]::part(button){color:var(--themed-fg)}
+.snippet :where(.action) :where(acme-copy-button)::part(root):disabled{color:var(--ds-gray-700)}
+.snippet :where(.action) :where(acme-copy-button)[aria-disabled=true]::part(root){color:var(--ds-gray-700)}
+.snippet :where(.action) :where(acme-copy-button)[data-hover]::part(root){color:var(--themed-fg)}
 .snippet:where(:not(.no-prompt)) pre:before{content:"$ ";-webkit-user-select:none;user-select:none}
 .snippet :where(pre){-webkit-overflow-scrolling:touch;overflow-y:auto}
 .snippet:where(.success){--themed-fg:var(--ds-blue-900);--themed-bg:var(--ds-blue-100);--themed-border:var(--ds-blue-400)}

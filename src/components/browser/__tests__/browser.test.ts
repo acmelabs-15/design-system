@@ -10,7 +10,7 @@ const mount = async (markup: string) => {
   return el;
 };
 const frame = (el: AcmeBrowser) => el.shadowRoot!.querySelector(".frame") as HTMLElement;
-const button = (el: AcmeBrowser) => frame(el).querySelector("acme-button")!;
+const button = (el: AcmeBrowser) => frame(el).querySelector("acme-icon-button")!;
 const stack = (el: AcmeBrowser) => frame(el).querySelector(".stack") as HTMLElement;
 const clipboard = (writeText: (t: string) => Promise<void>) => Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
 
@@ -44,7 +44,7 @@ describe("acme-browser", () => {
     expect(b.getAttribute("variant")).toBe("tertiary");
     expect(b.getAttribute("size")).toBe("tiny");
     expect(b.getAttribute("shape")).toBe("square");
-    expect(b.hasAttribute("svg-only")).toBe(true);
+    expect(b.hasAttribute("svg-only")).toBe(false);
     expect(b.getAttribute("aria-label")).toBe("Copy");
     const s = stack(el);
     expect(s.className.trim()).toBe("stack");
