@@ -1,0 +1,3482 @@
+{
+  "date": "2026-09-21",
+  "batch": "M10 Segmented Control and Switch",
+  "status": "complete at assigned Segmented Control and Switch boundaries; Tabs and Theme Switcher remain in M10",
+  "native": {
+    "segmented": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "nested Group retains its own outline and inset padding",
+              "ok": true
+            },
+            {
+              "name": "no implicit first selection and native required validation",
+              "ok": true
+            },
+            {
+              "name": "initial keyboard entry is the first enabled item",
+              "ok": true
+            },
+            {
+              "name": "user selection updates form, visual indicator and native checked state",
+              "ok": true
+            },
+            {
+              "name": "selected outline has three-to-one contrast with fill and background",
+              "ok": true
+            },
+            {
+              "name": "one owner emits one scalar change",
+              "ok": true
+            },
+            {
+              "name": "owned items submit no duplicate form entries",
+              "ok": true
+            },
+            {
+              "name": "programmatic value is silent and updates the same indicator",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the omitted selection",
+              "ok": true
+            },
+            {
+              "name": "defaultValue updates the reset baseline",
+              "ok": true
+            },
+            {
+              "name": "disabled collection disables every native item and form entry",
+              "ok": true
+            },
+            {
+              "name": "disabled item cannot select",
+              "ok": true
+            },
+            {
+              "name": "vertical orientation uses a vertical Group and shared moving indicator",
+              "ok": true
+            },
+            {
+              "name": "RTL group layout retains indicator alignment",
+              "ok": true
+            },
+            {
+              "name": "Group size reaches every item without a public item size property",
+              "ok": true
+            },
+            {
+              "name": "removed selected member retains canonical value but contributes no form data",
+              "ok": true
+            },
+            {
+              "name": "reinserted selected member restores its form and visual state",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values fail native validity",
+              "ok": true
+            },
+            {
+              "name": "removing duplicate restores validity",
+              "ok": true
+            },
+            {
+              "name": "explicit empty selection clears indicator without selecting a replacement",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled segment",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap past disabled options",
+              "ok": true
+            },
+            {
+              "name": "keyboard direction follows live RTL",
+              "ok": true
+            },
+            {
+              "name": "Space selects the focused native radio",
+              "ok": true
+            },
+            {
+              "name": "accessibility exposes one named radiogroup and real radio labels",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "nested Group retains its own outline and inset padding",
+              "ok": true
+            },
+            {
+              "name": "no implicit first selection and native required validation",
+              "ok": true
+            },
+            {
+              "name": "initial keyboard entry is the first enabled item",
+              "ok": true
+            },
+            {
+              "name": "user selection updates form, visual indicator and native checked state",
+              "ok": true
+            },
+            {
+              "name": "selected outline has three-to-one contrast with fill and background",
+              "ok": true
+            },
+            {
+              "name": "one owner emits one scalar change",
+              "ok": true
+            },
+            {
+              "name": "owned items submit no duplicate form entries",
+              "ok": true
+            },
+            {
+              "name": "programmatic value is silent and updates the same indicator",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the omitted selection",
+              "ok": true
+            },
+            {
+              "name": "defaultValue updates the reset baseline",
+              "ok": true
+            },
+            {
+              "name": "disabled collection disables every native item and form entry",
+              "ok": true
+            },
+            {
+              "name": "disabled item cannot select",
+              "ok": true
+            },
+            {
+              "name": "vertical orientation uses a vertical Group and shared moving indicator",
+              "ok": true
+            },
+            {
+              "name": "RTL group layout retains indicator alignment",
+              "ok": true
+            },
+            {
+              "name": "Group size reaches every item without a public item size property",
+              "ok": true
+            },
+            {
+              "name": "removed selected member retains canonical value but contributes no form data",
+              "ok": true
+            },
+            {
+              "name": "reinserted selected member restores its form and visual state",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values fail native validity",
+              "ok": true
+            },
+            {
+              "name": "removing duplicate restores validity",
+              "ok": true
+            },
+            {
+              "name": "explicit empty selection clears indicator without selecting a replacement",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled segment",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap past disabled options",
+              "ok": true
+            },
+            {
+              "name": "keyboard direction follows live RTL",
+              "ok": true
+            },
+            {
+              "name": "Space selects the focused native radio",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "nested Group retains its own outline and inset padding",
+              "ok": true
+            },
+            {
+              "name": "no implicit first selection and native required validation",
+              "ok": true
+            },
+            {
+              "name": "initial keyboard entry is the first enabled item",
+              "ok": true
+            },
+            {
+              "name": "user selection updates form, visual indicator and native checked state",
+              "ok": true
+            },
+            {
+              "name": "selected outline has three-to-one contrast with fill and background",
+              "ok": true
+            },
+            {
+              "name": "one owner emits one scalar change",
+              "ok": true
+            },
+            {
+              "name": "owned items submit no duplicate form entries",
+              "ok": true
+            },
+            {
+              "name": "programmatic value is silent and updates the same indicator",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the omitted selection",
+              "ok": true
+            },
+            {
+              "name": "defaultValue updates the reset baseline",
+              "ok": true
+            },
+            {
+              "name": "disabled collection disables every native item and form entry",
+              "ok": true
+            },
+            {
+              "name": "disabled item cannot select",
+              "ok": true
+            },
+            {
+              "name": "vertical orientation uses a vertical Group and shared moving indicator",
+              "ok": true
+            },
+            {
+              "name": "RTL group layout retains indicator alignment",
+              "ok": true
+            },
+            {
+              "name": "Group size reaches every item without a public item size property",
+              "ok": true
+            },
+            {
+              "name": "removed selected member retains canonical value but contributes no form data",
+              "ok": true
+            },
+            {
+              "name": "reinserted selected member restores its form and visual state",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values fail native validity",
+              "ok": true
+            },
+            {
+              "name": "removing duplicate restores validity",
+              "ok": true
+            },
+            {
+              "name": "explicit empty selection clears indicator without selecting a replacement",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled segment",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap past disabled options",
+              "ok": true
+            },
+            {
+              "name": "keyboard direction follows live RTL",
+              "ok": true
+            },
+            {
+              "name": "Space selects the focused native radio",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "switch": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "initial unchecked native switch is named and required",
+              "ok": true
+            },
+            {
+              "name": "small default retains 28 by 14 track and a 24px hit height",
+              "ok": true
+            },
+            {
+              "name": "programmatic state synchronizes native form before rendering",
+              "ok": true
+            },
+            {
+              "name": "thumb animates independently of optional ripple",
+              "ok": true
+            },
+            {
+              "name": "checked thumb reaches its exact endpoint",
+              "ok": true
+            },
+            {
+              "name": "user activation emits one checked payload after native form synchronization",
+              "ok": true
+            },
+            {
+              "name": "unchecked thumb returns to its start",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the canonical default immediately",
+              "ok": true
+            },
+            {
+              "name": "submission value changes immediately without a render barrier",
+              "ok": true
+            },
+            {
+              "name": "disabled state suppresses form participation and native focus",
+              "ok": true
+            },
+            {
+              "name": "disabled host click is inert",
+              "ok": true
+            },
+            {
+              "name": "medium track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "large track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "label end places the native control before text",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors the checked thumb endpoint",
+              "ok": true
+            },
+            {
+              "name": "reversal preserves the current thumb position",
+              "ok": true
+            },
+            {
+              "name": "reversed RTL thumb reaches the selected endpoint",
+              "ok": true
+            },
+            {
+              "name": "reconnection restores checked native state and thumb",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates canonical checked state",
+              "ok": true
+            },
+            {
+              "name": "barred native constraint flags can coexist with an empty validation message",
+              "ok": true
+            },
+            {
+              "name": "native Fieldset disability reaches the actual input",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles the native switch",
+              "ok": true
+            },
+            {
+              "name": "reduced motion snaps the thumb",
+              "ok": true
+            },
+            {
+              "name": "live reduced motion ends an active thumb transition",
+              "ok": true
+            },
+            {
+              "name": "accessibility exposes one named checked switch",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "initial unchecked native switch is named and required",
+              "ok": true
+            },
+            {
+              "name": "small default retains 28 by 14 track and a 24px hit height",
+              "ok": true
+            },
+            {
+              "name": "programmatic state synchronizes native form before rendering",
+              "ok": true
+            },
+            {
+              "name": "thumb animates independently of optional ripple",
+              "ok": true
+            },
+            {
+              "name": "checked thumb reaches its exact endpoint",
+              "ok": true
+            },
+            {
+              "name": "user activation emits one checked payload after native form synchronization",
+              "ok": true
+            },
+            {
+              "name": "unchecked thumb returns to its start",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the canonical default immediately",
+              "ok": true
+            },
+            {
+              "name": "submission value changes immediately without a render barrier",
+              "ok": true
+            },
+            {
+              "name": "disabled state suppresses form participation and native focus",
+              "ok": true
+            },
+            {
+              "name": "disabled host click is inert",
+              "ok": true
+            },
+            {
+              "name": "medium track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "large track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "label end places the native control before text",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors the checked thumb endpoint",
+              "ok": true
+            },
+            {
+              "name": "reversal preserves the current thumb position",
+              "ok": true
+            },
+            {
+              "name": "reversed RTL thumb reaches the selected endpoint",
+              "ok": true
+            },
+            {
+              "name": "reconnection restores checked native state and thumb",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates canonical checked state",
+              "ok": true
+            },
+            {
+              "name": "barred native constraint flags can coexist with an empty validation message",
+              "ok": true
+            },
+            {
+              "name": "native Fieldset disability reaches the actual input",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles the native switch",
+              "ok": true
+            },
+            {
+              "name": "reduced motion snaps the thumb",
+              "ok": true
+            },
+            {
+              "name": "live reduced motion ends an active thumb transition",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "initial unchecked native switch is named and required",
+              "ok": true
+            },
+            {
+              "name": "small default retains 28 by 14 track and a 24px hit height",
+              "ok": true
+            },
+            {
+              "name": "programmatic state synchronizes native form before rendering",
+              "ok": true
+            },
+            {
+              "name": "thumb animates independently of optional ripple",
+              "ok": true
+            },
+            {
+              "name": "checked thumb reaches its exact endpoint",
+              "ok": true
+            },
+            {
+              "name": "user activation emits one checked payload after native form synchronization",
+              "ok": true
+            },
+            {
+              "name": "unchecked thumb returns to its start",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the canonical default immediately",
+              "ok": true
+            },
+            {
+              "name": "submission value changes immediately without a render barrier",
+              "ok": true
+            },
+            {
+              "name": "disabled state suppresses form participation and native focus",
+              "ok": true
+            },
+            {
+              "name": "disabled host click is inert",
+              "ok": true
+            },
+            {
+              "name": "medium track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "large track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "label end places the native control before text",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors the checked thumb endpoint",
+              "ok": true
+            },
+            {
+              "name": "reversal preserves the current thumb position",
+              "ok": true
+            },
+            {
+              "name": "reversed RTL thumb reaches the selected endpoint",
+              "ok": true
+            },
+            {
+              "name": "reconnection restores checked native state and thumb",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates canonical checked state",
+              "ok": true
+            },
+            {
+              "name": "barred native constraint flags can coexist with an empty validation message",
+              "ok": true
+            },
+            {
+              "name": "native Fieldset disability reaches the actual input",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles the native switch",
+              "ok": true
+            },
+            {
+              "name": "reduced motion snaps the thumb",
+              "ok": true
+            },
+            {
+              "name": "live reduced motion ends an active thumb transition",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "compiled": {
+    "segmented": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "nested Group retains its own outline and inset padding",
+              "ok": true
+            },
+            {
+              "name": "no implicit first selection and native required validation",
+              "ok": true
+            },
+            {
+              "name": "initial keyboard entry is the first enabled item",
+              "ok": true
+            },
+            {
+              "name": "user selection updates form, visual indicator and native checked state",
+              "ok": true
+            },
+            {
+              "name": "selected outline has three-to-one contrast with fill and background",
+              "ok": true
+            },
+            {
+              "name": "one owner emits one scalar change",
+              "ok": true
+            },
+            {
+              "name": "owned items submit no duplicate form entries",
+              "ok": true
+            },
+            {
+              "name": "programmatic value is silent and updates the same indicator",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the omitted selection",
+              "ok": true
+            },
+            {
+              "name": "defaultValue updates the reset baseline",
+              "ok": true
+            },
+            {
+              "name": "disabled collection disables every native item and form entry",
+              "ok": true
+            },
+            {
+              "name": "disabled item cannot select",
+              "ok": true
+            },
+            {
+              "name": "vertical orientation uses a vertical Group and shared moving indicator",
+              "ok": true
+            },
+            {
+              "name": "RTL group layout retains indicator alignment",
+              "ok": true
+            },
+            {
+              "name": "Group size reaches every item without a public item size property",
+              "ok": true
+            },
+            {
+              "name": "removed selected member retains canonical value but contributes no form data",
+              "ok": true
+            },
+            {
+              "name": "reinserted selected member restores its form and visual state",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values fail native validity",
+              "ok": true
+            },
+            {
+              "name": "removing duplicate restores validity",
+              "ok": true
+            },
+            {
+              "name": "explicit empty selection clears indicator without selecting a replacement",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled segment",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap past disabled options",
+              "ok": true
+            },
+            {
+              "name": "keyboard direction follows live RTL",
+              "ok": true
+            },
+            {
+              "name": "Space selects the focused native radio",
+              "ok": true
+            },
+            {
+              "name": "accessibility exposes one named radiogroup and real radio labels",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "nested Group retains its own outline and inset padding",
+              "ok": true
+            },
+            {
+              "name": "no implicit first selection and native required validation",
+              "ok": true
+            },
+            {
+              "name": "initial keyboard entry is the first enabled item",
+              "ok": true
+            },
+            {
+              "name": "user selection updates form, visual indicator and native checked state",
+              "ok": true
+            },
+            {
+              "name": "selected outline has three-to-one contrast with fill and background",
+              "ok": true
+            },
+            {
+              "name": "one owner emits one scalar change",
+              "ok": true
+            },
+            {
+              "name": "owned items submit no duplicate form entries",
+              "ok": true
+            },
+            {
+              "name": "programmatic value is silent and updates the same indicator",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the omitted selection",
+              "ok": true
+            },
+            {
+              "name": "defaultValue updates the reset baseline",
+              "ok": true
+            },
+            {
+              "name": "disabled collection disables every native item and form entry",
+              "ok": true
+            },
+            {
+              "name": "disabled item cannot select",
+              "ok": true
+            },
+            {
+              "name": "vertical orientation uses a vertical Group and shared moving indicator",
+              "ok": true
+            },
+            {
+              "name": "RTL group layout retains indicator alignment",
+              "ok": true
+            },
+            {
+              "name": "Group size reaches every item without a public item size property",
+              "ok": true
+            },
+            {
+              "name": "removed selected member retains canonical value but contributes no form data",
+              "ok": true
+            },
+            {
+              "name": "reinserted selected member restores its form and visual state",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values fail native validity",
+              "ok": true
+            },
+            {
+              "name": "removing duplicate restores validity",
+              "ok": true
+            },
+            {
+              "name": "explicit empty selection clears indicator without selecting a replacement",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled segment",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap past disabled options",
+              "ok": true
+            },
+            {
+              "name": "keyboard direction follows live RTL",
+              "ok": true
+            },
+            {
+              "name": "Space selects the focused native radio",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "nested Group retains its own outline and inset padding",
+              "ok": true
+            },
+            {
+              "name": "no implicit first selection and native required validation",
+              "ok": true
+            },
+            {
+              "name": "initial keyboard entry is the first enabled item",
+              "ok": true
+            },
+            {
+              "name": "user selection updates form, visual indicator and native checked state",
+              "ok": true
+            },
+            {
+              "name": "selected outline has three-to-one contrast with fill and background",
+              "ok": true
+            },
+            {
+              "name": "one owner emits one scalar change",
+              "ok": true
+            },
+            {
+              "name": "owned items submit no duplicate form entries",
+              "ok": true
+            },
+            {
+              "name": "programmatic value is silent and updates the same indicator",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the omitted selection",
+              "ok": true
+            },
+            {
+              "name": "defaultValue updates the reset baseline",
+              "ok": true
+            },
+            {
+              "name": "disabled collection disables every native item and form entry",
+              "ok": true
+            },
+            {
+              "name": "disabled item cannot select",
+              "ok": true
+            },
+            {
+              "name": "vertical orientation uses a vertical Group and shared moving indicator",
+              "ok": true
+            },
+            {
+              "name": "RTL group layout retains indicator alignment",
+              "ok": true
+            },
+            {
+              "name": "Group size reaches every item without a public item size property",
+              "ok": true
+            },
+            {
+              "name": "removed selected member retains canonical value but contributes no form data",
+              "ok": true
+            },
+            {
+              "name": "reinserted selected member restores its form and visual state",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values fail native validity",
+              "ok": true
+            },
+            {
+              "name": "removing duplicate restores validity",
+              "ok": true
+            },
+            {
+              "name": "explicit empty selection clears indicator without selecting a replacement",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled segment",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap past disabled options",
+              "ok": true
+            },
+            {
+              "name": "keyboard direction follows live RTL",
+              "ok": true
+            },
+            {
+              "name": "Space selects the focused native radio",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "switch": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "initial unchecked native switch is named and required",
+              "ok": true
+            },
+            {
+              "name": "small default retains 28 by 14 track and a 24px hit height",
+              "ok": true
+            },
+            {
+              "name": "programmatic state synchronizes native form before rendering",
+              "ok": true
+            },
+            {
+              "name": "thumb animates independently of optional ripple",
+              "ok": true
+            },
+            {
+              "name": "checked thumb reaches its exact endpoint",
+              "ok": true
+            },
+            {
+              "name": "user activation emits one checked payload after native form synchronization",
+              "ok": true
+            },
+            {
+              "name": "unchecked thumb returns to its start",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the canonical default immediately",
+              "ok": true
+            },
+            {
+              "name": "submission value changes immediately without a render barrier",
+              "ok": true
+            },
+            {
+              "name": "disabled state suppresses form participation and native focus",
+              "ok": true
+            },
+            {
+              "name": "disabled host click is inert",
+              "ok": true
+            },
+            {
+              "name": "medium track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "large track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "label end places the native control before text",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors the checked thumb endpoint",
+              "ok": true
+            },
+            {
+              "name": "reversal preserves the current thumb position",
+              "ok": true
+            },
+            {
+              "name": "reversed RTL thumb reaches the selected endpoint",
+              "ok": true
+            },
+            {
+              "name": "reconnection restores checked native state and thumb",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates canonical checked state",
+              "ok": true
+            },
+            {
+              "name": "barred native constraint flags can coexist with an empty validation message",
+              "ok": true
+            },
+            {
+              "name": "native Fieldset disability reaches the actual input",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles the native switch",
+              "ok": true
+            },
+            {
+              "name": "reduced motion snaps the thumb",
+              "ok": true
+            },
+            {
+              "name": "live reduced motion ends an active thumb transition",
+              "ok": true
+            },
+            {
+              "name": "accessibility exposes one named checked switch",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "initial unchecked native switch is named and required",
+              "ok": true
+            },
+            {
+              "name": "small default retains 28 by 14 track and a 24px hit height",
+              "ok": true
+            },
+            {
+              "name": "programmatic state synchronizes native form before rendering",
+              "ok": true
+            },
+            {
+              "name": "thumb animates independently of optional ripple",
+              "ok": true
+            },
+            {
+              "name": "checked thumb reaches its exact endpoint",
+              "ok": true
+            },
+            {
+              "name": "user activation emits one checked payload after native form synchronization",
+              "ok": true
+            },
+            {
+              "name": "unchecked thumb returns to its start",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the canonical default immediately",
+              "ok": true
+            },
+            {
+              "name": "submission value changes immediately without a render barrier",
+              "ok": true
+            },
+            {
+              "name": "disabled state suppresses form participation and native focus",
+              "ok": true
+            },
+            {
+              "name": "disabled host click is inert",
+              "ok": true
+            },
+            {
+              "name": "medium track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "large track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "label end places the native control before text",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors the checked thumb endpoint",
+              "ok": true
+            },
+            {
+              "name": "reversal preserves the current thumb position",
+              "ok": true
+            },
+            {
+              "name": "reversed RTL thumb reaches the selected endpoint",
+              "ok": true
+            },
+            {
+              "name": "reconnection restores checked native state and thumb",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates canonical checked state",
+              "ok": true
+            },
+            {
+              "name": "barred native constraint flags can coexist with an empty validation message",
+              "ok": true
+            },
+            {
+              "name": "native Fieldset disability reaches the actual input",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles the native switch",
+              "ok": true
+            },
+            {
+              "name": "reduced motion snaps the thumb",
+              "ok": true
+            },
+            {
+              "name": "live reduced motion ends an active thumb transition",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "initial unchecked native switch is named and required",
+              "ok": true
+            },
+            {
+              "name": "small default retains 28 by 14 track and a 24px hit height",
+              "ok": true
+            },
+            {
+              "name": "programmatic state synchronizes native form before rendering",
+              "ok": true
+            },
+            {
+              "name": "thumb animates independently of optional ripple",
+              "ok": true
+            },
+            {
+              "name": "checked thumb reaches its exact endpoint",
+              "ok": true
+            },
+            {
+              "name": "user activation emits one checked payload after native form synchronization",
+              "ok": true
+            },
+            {
+              "name": "unchecked thumb returns to its start",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the canonical default immediately",
+              "ok": true
+            },
+            {
+              "name": "submission value changes immediately without a render barrier",
+              "ok": true
+            },
+            {
+              "name": "disabled state suppresses form participation and native focus",
+              "ok": true
+            },
+            {
+              "name": "disabled host click is inert",
+              "ok": true
+            },
+            {
+              "name": "medium track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "large track preserves the source geometry",
+              "ok": true
+            },
+            {
+              "name": "label end places the native control before text",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors the checked thumb endpoint",
+              "ok": true
+            },
+            {
+              "name": "reversal preserves the current thumb position",
+              "ok": true
+            },
+            {
+              "name": "reversed RTL thumb reaches the selected endpoint",
+              "ok": true
+            },
+            {
+              "name": "reconnection restores checked native state and thumb",
+              "ok": true
+            },
+            {
+              "name": "platform restoration updates canonical checked state",
+              "ok": true
+            },
+            {
+              "name": "barred native constraint flags can coexist with an empty validation message",
+              "ok": true
+            },
+            {
+              "name": "native Fieldset disability reaches the actual input",
+              "ok": true
+            },
+            {
+              "name": "trusted Space toggles the native switch",
+              "ok": true
+            },
+            {
+              "name": "reduced motion snaps the thumb",
+              "ok": true
+            },
+            {
+              "name": "live reduced motion ends an active thumb transition",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "metadata": {
+    "checks": [
+      {
+        "name": "removed public selection tags have no metadata",
+        "ok": true
+      },
+      {
+        "name": "segmented item has only its own control properties",
+        "ok": true
+      },
+      {
+        "name": "Switch declares small as its default size",
+        "ok": true
+      },
+      {
+        "name": "Segmented Control declares horizontal as its default orientation",
+        "ok": true
+      }
+    ],
+    "props": [
+      {
+        "name": "size",
+        "default": "\"small\"",
+        "attribute": "size"
+      },
+      {
+        "name": "labelPosition",
+        "default": "\"start\"",
+        "attribute": "label-position"
+      },
+      {
+        "name": "shadowRootOptions",
+        "default": "{ ...AcmeFormElement.shadowRootOptions, delegatesFocus: true }"
+      },
+      {
+        "name": "ripple",
+        "default": "false",
+        "attribute": "ripple"
+      },
+      {
+        "name": "checked",
+        "default": "false",
+        "attribute": "checked"
+      },
+      {
+        "name": "defaultChecked",
+        "default": "false"
+      },
+      {
+        "name": "value",
+        "default": "\"on\"",
+        "attribute": "value"
+      },
+      {
+        "name": "formAssociated",
+        "default": "true"
+      },
+      {
+        "name": "name",
+        "default": "\"\"",
+        "attribute": "name"
+      },
+      {
+        "name": "disabled",
+        "default": "false",
+        "attribute": "disabled"
+      },
+      {
+        "name": "required",
+        "default": "false",
+        "attribute": "required"
+      },
+      {
+        "name": "form",
+        "attribute": "form"
+      },
+      {
+        "name": "labels"
+      },
+      {
+        "name": "validity"
+      },
+      {
+        "name": "validationMessage"
+      },
+      {
+        "name": "willValidate"
+      },
+      {
+        "name": "role",
+        "attribute": "role"
+      },
+      {
+        "name": "ariaLabel",
+        "attribute": "aria-label"
+      },
+      {
+        "name": "ariaHasPopup",
+        "attribute": "aria-haspopup"
+      },
+      {
+        "name": "ariaExpanded",
+        "attribute": "aria-expanded"
+      },
+      {
+        "name": "ariaControlsElements"
+      },
+      {
+        "name": "ariaLabelledByElements"
+      },
+      {
+        "name": "ariaDescribedByElements"
+      }
+    ]
+  },
+  "docs": [
+    {
+      "engine": "chromium",
+      "path": "segmented-control",
+      "required": true,
+      "submitted": true,
+      "reset": true
+    },
+    {
+      "engine": "chromium",
+      "path": "switch",
+      "required": true,
+      "submitted": true,
+      "reset": true
+    },
+    {
+      "engine": "chromium",
+      "path": "code-block",
+      "composed": true
+    },
+    {
+      "engine": "chromium",
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "path": "segmented-control",
+      "required": true,
+      "submitted": true,
+      "reset": true
+    },
+    {
+      "engine": "firefox",
+      "path": "switch",
+      "required": true,
+      "submitted": true,
+      "reset": true
+    },
+    {
+      "engine": "firefox",
+      "path": "code-block",
+      "composed": true
+    },
+    {
+      "engine": "firefox",
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "path": "segmented-control",
+      "required": true,
+      "submitted": true,
+      "reset": true
+    },
+    {
+      "engine": "webkit",
+      "path": "switch",
+      "required": true,
+      "submitted": true,
+      "reset": true
+    },
+    {
+      "engine": "webkit",
+      "path": "code-block",
+      "composed": true
+    },
+    {
+      "engine": "webkit",
+      "errors": []
+    }
+  ],
+  "regressions": {
+    "radio": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "Radio Group starts with no implicit choice",
+              "ok": true
+            },
+            {
+              "name": "one enabled member starts in the tab sequence",
+              "ok": true
+            },
+            {
+              "name": "one group owner submits synchronously",
+              "ok": true
+            },
+            {
+              "name": "native and painted selection follow the owner",
+              "ok": true
+            },
+            {
+              "name": "one user selection emits only the root value event",
+              "ok": true
+            },
+            {
+              "name": "activating the selected member emits no change",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the separate default selection",
+              "ok": true
+            },
+            {
+              "name": "required group is invalid until a choice is supplied",
+              "ok": true
+            },
+            {
+              "name": "selection satisfies aggregate native validity",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches inputs without overwriting own disabled values",
+              "ok": true
+            },
+            {
+              "name": "disabled selected value follows native omission and required semantics",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one group value",
+              "ok": true
+            },
+            {
+              "name": "standalone names group within one form and preserve other forms",
+              "ok": true
+            },
+            {
+              "name": "standalone required state covers all same-name peers",
+              "ok": true
+            },
+            {
+              "name": "a peer selection satisfies the native radio requirement",
+              "ok": true
+            },
+            {
+              "name": "standalone grouping respects tree scope",
+              "ok": true
+            },
+            {
+              "name": "Radio Card actions do not select",
+              "ok": true
+            },
+            {
+              "name": "whole-card activation keeps one scalar owner",
+              "ok": true
+            },
+            {
+              "name": "Radio Card exposes no checkbox-only state",
+              "ok": true
+            },
+            {
+              "name": "unknown values do not invent a selected member or successful entry",
+              "ok": true
+            },
+            {
+              "name": "duplicate values invalidate without duplicating submission",
+              "ok": true
+            },
+            {
+              "name": "a hidden selected member does not remove the visible tab entry",
+              "ok": true
+            },
+            {
+              "name": "showing a changed hidden group restores one tab entry",
+              "ok": true
+            },
+            {
+              "name": "indicator styling can move the marker before card content",
+              "ok": true
+            },
+            {
+              "name": "hiding the indicator preserves a real focusable control",
+              "ok": true
+            },
+            {
+              "name": "automatic peer unchecking preserves native pristine/default behavior",
+              "ok": true
+            },
+            {
+              "name": "medium radio retains the 16px ring and 8px dot",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled radio",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap and skip disabled members",
+              "ok": true
+            },
+            {
+              "name": "horizontal radio keys follow live RTL direction",
+              "ok": true
+            },
+            {
+              "name": "loop=false stops at the enabled edge",
+              "ok": true
+            },
+            {
+              "name": "Toolbar receives the key without a radio selection change",
+              "ok": true
+            },
+            {
+              "name": "indicator-free Radio Card still selects from the keyboard",
+              "ok": true
+            },
+            {
+              "name": "native accessibility exposes one named radio group and its checked choice",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "Radio Group starts with no implicit choice",
+              "ok": true
+            },
+            {
+              "name": "one enabled member starts in the tab sequence",
+              "ok": true
+            },
+            {
+              "name": "one group owner submits synchronously",
+              "ok": true
+            },
+            {
+              "name": "native and painted selection follow the owner",
+              "ok": true
+            },
+            {
+              "name": "one user selection emits only the root value event",
+              "ok": true
+            },
+            {
+              "name": "activating the selected member emits no change",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the separate default selection",
+              "ok": true
+            },
+            {
+              "name": "required group is invalid until a choice is supplied",
+              "ok": true
+            },
+            {
+              "name": "selection satisfies aggregate native validity",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches inputs without overwriting own disabled values",
+              "ok": true
+            },
+            {
+              "name": "disabled selected value follows native omission and required semantics",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one group value",
+              "ok": true
+            },
+            {
+              "name": "standalone names group within one form and preserve other forms",
+              "ok": true
+            },
+            {
+              "name": "standalone required state covers all same-name peers",
+              "ok": true
+            },
+            {
+              "name": "a peer selection satisfies the native radio requirement",
+              "ok": true
+            },
+            {
+              "name": "standalone grouping respects tree scope",
+              "ok": true
+            },
+            {
+              "name": "Radio Card actions do not select",
+              "ok": true
+            },
+            {
+              "name": "whole-card activation keeps one scalar owner",
+              "ok": true
+            },
+            {
+              "name": "Radio Card exposes no checkbox-only state",
+              "ok": true
+            },
+            {
+              "name": "unknown values do not invent a selected member or successful entry",
+              "ok": true
+            },
+            {
+              "name": "duplicate values invalidate without duplicating submission",
+              "ok": true
+            },
+            {
+              "name": "a hidden selected member does not remove the visible tab entry",
+              "ok": true
+            },
+            {
+              "name": "showing a changed hidden group restores one tab entry",
+              "ok": true
+            },
+            {
+              "name": "indicator styling can move the marker before card content",
+              "ok": true
+            },
+            {
+              "name": "hiding the indicator preserves a real focusable control",
+              "ok": true
+            },
+            {
+              "name": "automatic peer unchecking preserves native pristine/default behavior",
+              "ok": true
+            },
+            {
+              "name": "medium radio retains the 16px ring and 8px dot",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled radio",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap and skip disabled members",
+              "ok": true
+            },
+            {
+              "name": "horizontal radio keys follow live RTL direction",
+              "ok": true
+            },
+            {
+              "name": "loop=false stops at the enabled edge",
+              "ok": true
+            },
+            {
+              "name": "Toolbar receives the key without a radio selection change",
+              "ok": true
+            },
+            {
+              "name": "indicator-free Radio Card still selects from the keyboard",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "Radio Group starts with no implicit choice",
+              "ok": true
+            },
+            {
+              "name": "one enabled member starts in the tab sequence",
+              "ok": true
+            },
+            {
+              "name": "one group owner submits synchronously",
+              "ok": true
+            },
+            {
+              "name": "native and painted selection follow the owner",
+              "ok": true
+            },
+            {
+              "name": "one user selection emits only the root value event",
+              "ok": true
+            },
+            {
+              "name": "activating the selected member emits no change",
+              "ok": true
+            },
+            {
+              "name": "native reset restores the separate default selection",
+              "ok": true
+            },
+            {
+              "name": "required group is invalid until a choice is supplied",
+              "ok": true
+            },
+            {
+              "name": "selection satisfies aggregate native validity",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches inputs without overwriting own disabled values",
+              "ok": true
+            },
+            {
+              "name": "disabled selected value follows native omission and required semantics",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one group value",
+              "ok": true
+            },
+            {
+              "name": "standalone names group within one form and preserve other forms",
+              "ok": true
+            },
+            {
+              "name": "standalone required state covers all same-name peers",
+              "ok": true
+            },
+            {
+              "name": "a peer selection satisfies the native radio requirement",
+              "ok": true
+            },
+            {
+              "name": "standalone grouping respects tree scope",
+              "ok": true
+            },
+            {
+              "name": "Radio Card actions do not select",
+              "ok": true
+            },
+            {
+              "name": "whole-card activation keeps one scalar owner",
+              "ok": true
+            },
+            {
+              "name": "Radio Card exposes no checkbox-only state",
+              "ok": true
+            },
+            {
+              "name": "unknown values do not invent a selected member or successful entry",
+              "ok": true
+            },
+            {
+              "name": "duplicate values invalidate without duplicating submission",
+              "ok": true
+            },
+            {
+              "name": "a hidden selected member does not remove the visible tab entry",
+              "ok": true
+            },
+            {
+              "name": "showing a changed hidden group restores one tab entry",
+              "ok": true
+            },
+            {
+              "name": "indicator styling can move the marker before card content",
+              "ok": true
+            },
+            {
+              "name": "hiding the indicator preserves a real focusable control",
+              "ok": true
+            },
+            {
+              "name": "automatic peer unchecking preserves native pristine/default behavior",
+              "ok": true
+            },
+            {
+              "name": "medium radio retains the 16px ring and 8px dot",
+              "ok": true
+            },
+            {
+              "name": "trusted arrow selects the next enabled radio",
+              "ok": true
+            },
+            {
+              "name": "arrows wrap and skip disabled members",
+              "ok": true
+            },
+            {
+              "name": "horizontal radio keys follow live RTL direction",
+              "ok": true
+            },
+            {
+              "name": "loop=false stops at the enabled edge",
+              "ok": true
+            },
+            {
+              "name": "Toolbar receives the key without a radio selection change",
+              "ok": true
+            },
+            {
+              "name": "indicator-free Radio Card still selects from the keyboard",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "checkbox": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "checked submits before the next render",
+              "ok": true
+            },
+            {
+              "name": "submission value changes synchronously",
+              "ok": true
+            },
+            {
+              "name": "reset restores the original unchecked default",
+              "ok": true
+            },
+            {
+              "name": "required native validity reaches the form",
+              "ok": true
+            },
+            {
+              "name": "fieldset disability reaches the native focus target",
+              "ok": true
+            },
+            {
+              "name": "native action clears real indeterminate state and reports one canonical change",
+              "ok": true
+            },
+            {
+              "name": "changing a dirty reset target preserves current state",
+              "ok": true
+            },
+            {
+              "name": "explicit defaultChecked supplies the reset target",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one successful entry",
+              "ok": true
+            },
+            {
+              "name": "custom validity reaches the form immediately",
+              "ok": true
+            },
+            {
+              "name": "clearing custom validity restores native validity",
+              "ok": true
+            },
+            {
+              "name": "external label names the actual input through native references",
+              "ok": true
+            },
+            {
+              "name": "changed label association clears the old reference",
+              "ok": true
+            },
+            {
+              "name": "explicit label references override inferred native labels",
+              "ok": true
+            },
+            {
+              "name": "local and authored help both reach the actual input",
+              "ok": true
+            },
+            {
+              "name": "small Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "medium Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "large Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "light unchecked boundary contrast",
+              "ok": true
+            },
+            {
+              "name": "light checked mark contrast",
+              "ok": true
+            },
+            {
+              "name": "dark unchecked boundary contrast",
+              "ok": true
+            },
+            {
+              "name": "dark checked mark contrast",
+              "ok": true
+            },
+            {
+              "name": "trusted external label activates once",
+              "ok": true
+            },
+            {
+              "name": "trusted Space changes the native checked state once",
+              "ok": true
+            },
+            {
+              "name": "Checkbox opt-in press creates a ripple",
+              "ok": true
+            },
+            {
+              "name": "turning ripple off cancels its active presentation",
+              "ok": true
+            },
+            {
+              "name": "native accessibility tree exposes the actual checkbox name",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "checked submits before the next render",
+              "ok": true
+            },
+            {
+              "name": "submission value changes synchronously",
+              "ok": true
+            },
+            {
+              "name": "reset restores the original unchecked default",
+              "ok": true
+            },
+            {
+              "name": "required native validity reaches the form",
+              "ok": true
+            },
+            {
+              "name": "fieldset disability reaches the native focus target",
+              "ok": true
+            },
+            {
+              "name": "native action clears real indeterminate state and reports one canonical change",
+              "ok": true
+            },
+            {
+              "name": "changing a dirty reset target preserves current state",
+              "ok": true
+            },
+            {
+              "name": "explicit defaultChecked supplies the reset target",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one successful entry",
+              "ok": true
+            },
+            {
+              "name": "custom validity reaches the form immediately",
+              "ok": true
+            },
+            {
+              "name": "clearing custom validity restores native validity",
+              "ok": true
+            },
+            {
+              "name": "external label names the actual input through native references",
+              "ok": true
+            },
+            {
+              "name": "changed label association clears the old reference",
+              "ok": true
+            },
+            {
+              "name": "explicit label references override inferred native labels",
+              "ok": true
+            },
+            {
+              "name": "local and authored help both reach the actual input",
+              "ok": true
+            },
+            {
+              "name": "small Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "medium Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "large Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "light unchecked boundary contrast",
+              "ok": true
+            },
+            {
+              "name": "light checked mark contrast",
+              "ok": true
+            },
+            {
+              "name": "dark unchecked boundary contrast",
+              "ok": true
+            },
+            {
+              "name": "dark checked mark contrast",
+              "ok": true
+            },
+            {
+              "name": "trusted external label activates once",
+              "ok": true
+            },
+            {
+              "name": "trusted Space changes the native checked state once",
+              "ok": true
+            },
+            {
+              "name": "Checkbox opt-in press creates a ripple",
+              "ok": true
+            },
+            {
+              "name": "turning ripple off cancels its active presentation",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "checked submits before the next render",
+              "ok": true
+            },
+            {
+              "name": "submission value changes synchronously",
+              "ok": true
+            },
+            {
+              "name": "reset restores the original unchecked default",
+              "ok": true
+            },
+            {
+              "name": "required native validity reaches the form",
+              "ok": true
+            },
+            {
+              "name": "fieldset disability reaches the native focus target",
+              "ok": true
+            },
+            {
+              "name": "native action clears real indeterminate state and reports one canonical change",
+              "ok": true
+            },
+            {
+              "name": "changing a dirty reset target preserves current state",
+              "ok": true
+            },
+            {
+              "name": "explicit defaultChecked supplies the reset target",
+              "ok": true
+            },
+            {
+              "name": "external association moves the one successful entry",
+              "ok": true
+            },
+            {
+              "name": "custom validity reaches the form immediately",
+              "ok": true
+            },
+            {
+              "name": "clearing custom validity restores native validity",
+              "ok": true
+            },
+            {
+              "name": "external label names the actual input through native references",
+              "ok": true
+            },
+            {
+              "name": "changed label association clears the old reference",
+              "ok": true
+            },
+            {
+              "name": "explicit label references override inferred native labels",
+              "ok": true
+            },
+            {
+              "name": "local and authored help both reach the actual input",
+              "ok": true
+            },
+            {
+              "name": "small Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "medium Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "large Checkbox preserves at least a 24px hit surface",
+              "ok": true
+            },
+            {
+              "name": "light unchecked boundary contrast",
+              "ok": true
+            },
+            {
+              "name": "light checked mark contrast",
+              "ok": true
+            },
+            {
+              "name": "dark unchecked boundary contrast",
+              "ok": true
+            },
+            {
+              "name": "dark checked mark contrast",
+              "ok": true
+            },
+            {
+              "name": "trusted external label activates once",
+              "ok": true
+            },
+            {
+              "name": "trusted Space changes the native checked state once",
+              "ok": true
+            },
+            {
+              "name": "Checkbox opt-in press creates a ripple",
+              "ok": true
+            },
+            {
+              "name": "turning ripple off cancels its active presentation",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "checkboxGroup": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "empty group has no implicit selected member",
+              "ok": true
+            },
+            {
+              "name": "one owner submits each selected member once before render",
+              "ok": true
+            },
+            {
+              "name": "group values project native and painted checked state",
+              "ok": true
+            },
+            {
+              "name": "contained user action becomes one root change",
+              "ok": true
+            },
+            {
+              "name": "member property writes update the same owner without user events",
+              "ok": true
+            },
+            {
+              "name": "native reset restores root defaults and current member projection",
+              "ok": true
+            },
+            {
+              "name": "aggregate required means one choice rather than every checkbox",
+              "ok": true
+            },
+            {
+              "name": "any enabled member satisfies the aggregate requirement",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches native targets without changing child inputs",
+              "ok": true
+            },
+            {
+              "name": "re-enabling restores the canonical selection",
+              "ok": true
+            },
+            {
+              "name": "disabled member values are omitted and do not satisfy required",
+              "ok": true
+            },
+            {
+              "name": "group supplies default member size through the shared appearance model",
+              "ok": true
+            },
+            {
+              "name": "authored member size stays independent of group defaults",
+              "ok": true
+            },
+            {
+              "name": "clearing a member override resumes group size",
+              "ok": true
+            },
+            {
+              "name": "changing a member value updates native entries immediately",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values invalidate the group without duplicate data",
+              "ok": true
+            },
+            {
+              "name": "form entries follow current member order",
+              "ok": true
+            },
+            {
+              "name": "removed members stop submitting while their explicit root value remains",
+              "ok": true
+            },
+            {
+              "name": "leaving a group transfers the visible state to standalone ownership",
+              "ok": true
+            },
+            {
+              "name": "external form owns only the group entries",
+              "ok": true
+            },
+            {
+              "name": "nested selection owners do not steal each other members or events",
+              "ok": true
+            },
+            {
+              "name": "canonical values and form entries are current for native input observers",
+              "ok": true
+            },
+            {
+              "name": "attached Checkbox Cards share Group appearance over collection defaults",
+              "ok": true
+            },
+            {
+              "name": "Group joins the actual card border surfaces",
+              "ok": true
+            },
+            {
+              "name": "card heading and description name the native control",
+              "ok": true
+            },
+            {
+              "name": "independent action does not select the card",
+              "ok": true
+            },
+            {
+              "name": "whole-card native label selects once through its collection",
+              "ok": true
+            },
+            {
+              "name": "selected card retains its emphasized border in the outer frame",
+              "ok": true
+            },
+            {
+              "name": "multiple selection has no travelling indicator",
+              "ok": true
+            },
+            {
+              "name": "small cards retain their label type size",
+              "ok": true
+            },
+            {
+              "name": "group focus skips hidden members",
+              "ok": true
+            },
+            {
+              "name": "late forwarded slot acquires its logical selection owner",
+              "ok": true
+            },
+            {
+              "name": "removing a projected owner releases the still-connected member",
+              "ok": true
+            },
+            {
+              "name": "independent action-region controls keep their own state",
+              "ok": true
+            },
+            {
+              "name": "independent action notifications do not masquerade as selection changes",
+              "ok": true
+            },
+            {
+              "name": "default card content names the control without repeating its description",
+              "ok": true
+            },
+            {
+              "name": "requested stretch joins cards with equal actual surface heights",
+              "ok": true
+            },
+            {
+              "name": "trusted independent action leaves selection unchanged",
+              "ok": true
+            },
+            {
+              "name": "trusted whole-card click selects its value",
+              "ok": true
+            },
+            {
+              "name": "trusted keyboard activation preserves one selection owner",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "empty group has no implicit selected member",
+              "ok": true
+            },
+            {
+              "name": "one owner submits each selected member once before render",
+              "ok": true
+            },
+            {
+              "name": "group values project native and painted checked state",
+              "ok": true
+            },
+            {
+              "name": "contained user action becomes one root change",
+              "ok": true
+            },
+            {
+              "name": "member property writes update the same owner without user events",
+              "ok": true
+            },
+            {
+              "name": "native reset restores root defaults and current member projection",
+              "ok": true
+            },
+            {
+              "name": "aggregate required means one choice rather than every checkbox",
+              "ok": true
+            },
+            {
+              "name": "any enabled member satisfies the aggregate requirement",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches native targets without changing child inputs",
+              "ok": true
+            },
+            {
+              "name": "re-enabling restores the canonical selection",
+              "ok": true
+            },
+            {
+              "name": "disabled member values are omitted and do not satisfy required",
+              "ok": true
+            },
+            {
+              "name": "group supplies default member size through the shared appearance model",
+              "ok": true
+            },
+            {
+              "name": "authored member size stays independent of group defaults",
+              "ok": true
+            },
+            {
+              "name": "clearing a member override resumes group size",
+              "ok": true
+            },
+            {
+              "name": "changing a member value updates native entries immediately",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values invalidate the group without duplicate data",
+              "ok": true
+            },
+            {
+              "name": "form entries follow current member order",
+              "ok": true
+            },
+            {
+              "name": "removed members stop submitting while their explicit root value remains",
+              "ok": true
+            },
+            {
+              "name": "leaving a group transfers the visible state to standalone ownership",
+              "ok": true
+            },
+            {
+              "name": "external form owns only the group entries",
+              "ok": true
+            },
+            {
+              "name": "nested selection owners do not steal each other members or events",
+              "ok": true
+            },
+            {
+              "name": "canonical values and form entries are current for native input observers",
+              "ok": true
+            },
+            {
+              "name": "attached Checkbox Cards share Group appearance over collection defaults",
+              "ok": true
+            },
+            {
+              "name": "Group joins the actual card border surfaces",
+              "ok": true
+            },
+            {
+              "name": "card heading and description name the native control",
+              "ok": true
+            },
+            {
+              "name": "independent action does not select the card",
+              "ok": true
+            },
+            {
+              "name": "whole-card native label selects once through its collection",
+              "ok": true
+            },
+            {
+              "name": "selected card retains its emphasized border in the outer frame",
+              "ok": true
+            },
+            {
+              "name": "multiple selection has no travelling indicator",
+              "ok": true
+            },
+            {
+              "name": "small cards retain their label type size",
+              "ok": true
+            },
+            {
+              "name": "group focus skips hidden members",
+              "ok": true
+            },
+            {
+              "name": "late forwarded slot acquires its logical selection owner",
+              "ok": true
+            },
+            {
+              "name": "removing a projected owner releases the still-connected member",
+              "ok": true
+            },
+            {
+              "name": "independent action-region controls keep their own state",
+              "ok": true
+            },
+            {
+              "name": "independent action notifications do not masquerade as selection changes",
+              "ok": true
+            },
+            {
+              "name": "default card content names the control without repeating its description",
+              "ok": true
+            },
+            {
+              "name": "requested stretch joins cards with equal actual surface heights",
+              "ok": true
+            },
+            {
+              "name": "trusted independent action leaves selection unchanged",
+              "ok": true
+            },
+            {
+              "name": "trusted whole-card click selects its value",
+              "ok": true
+            },
+            {
+              "name": "trusted keyboard activation preserves one selection owner",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "empty group has no implicit selected member",
+              "ok": true
+            },
+            {
+              "name": "one owner submits each selected member once before render",
+              "ok": true
+            },
+            {
+              "name": "group values project native and painted checked state",
+              "ok": true
+            },
+            {
+              "name": "contained user action becomes one root change",
+              "ok": true
+            },
+            {
+              "name": "member property writes update the same owner without user events",
+              "ok": true
+            },
+            {
+              "name": "native reset restores root defaults and current member projection",
+              "ok": true
+            },
+            {
+              "name": "aggregate required means one choice rather than every checkbox",
+              "ok": true
+            },
+            {
+              "name": "any enabled member satisfies the aggregate requirement",
+              "ok": true
+            },
+            {
+              "name": "group disability reaches native targets without changing child inputs",
+              "ok": true
+            },
+            {
+              "name": "re-enabling restores the canonical selection",
+              "ok": true
+            },
+            {
+              "name": "disabled member values are omitted and do not satisfy required",
+              "ok": true
+            },
+            {
+              "name": "group supplies default member size through the shared appearance model",
+              "ok": true
+            },
+            {
+              "name": "authored member size stays independent of group defaults",
+              "ok": true
+            },
+            {
+              "name": "clearing a member override resumes group size",
+              "ok": true
+            },
+            {
+              "name": "changing a member value updates native entries immediately",
+              "ok": true
+            },
+            {
+              "name": "duplicate member values invalidate the group without duplicate data",
+              "ok": true
+            },
+            {
+              "name": "form entries follow current member order",
+              "ok": true
+            },
+            {
+              "name": "removed members stop submitting while their explicit root value remains",
+              "ok": true
+            },
+            {
+              "name": "leaving a group transfers the visible state to standalone ownership",
+              "ok": true
+            },
+            {
+              "name": "external form owns only the group entries",
+              "ok": true
+            },
+            {
+              "name": "nested selection owners do not steal each other members or events",
+              "ok": true
+            },
+            {
+              "name": "canonical values and form entries are current for native input observers",
+              "ok": true
+            },
+            {
+              "name": "attached Checkbox Cards share Group appearance over collection defaults",
+              "ok": true
+            },
+            {
+              "name": "Group joins the actual card border surfaces",
+              "ok": true
+            },
+            {
+              "name": "card heading and description name the native control",
+              "ok": true
+            },
+            {
+              "name": "independent action does not select the card",
+              "ok": true
+            },
+            {
+              "name": "whole-card native label selects once through its collection",
+              "ok": true
+            },
+            {
+              "name": "selected card retains its emphasized border in the outer frame",
+              "ok": true
+            },
+            {
+              "name": "multiple selection has no travelling indicator",
+              "ok": true
+            },
+            {
+              "name": "small cards retain their label type size",
+              "ok": true
+            },
+            {
+              "name": "group focus skips hidden members",
+              "ok": true
+            },
+            {
+              "name": "late forwarded slot acquires its logical selection owner",
+              "ok": true
+            },
+            {
+              "name": "removing a projected owner releases the still-connected member",
+              "ok": true
+            },
+            {
+              "name": "independent action-region controls keep their own state",
+              "ok": true
+            },
+            {
+              "name": "independent action notifications do not masquerade as selection changes",
+              "ok": true
+            },
+            {
+              "name": "default card content names the control without repeating its description",
+              "ok": true
+            },
+            {
+              "name": "requested stretch joins cards with equal actual surface heights",
+              "ok": true
+            },
+            {
+              "name": "trusted independent action leaves selection unchanged",
+              "ok": true
+            },
+            {
+              "name": "trusted whole-card click selects its value",
+              "ok": true
+            },
+            {
+              "name": "trusted keyboard activation preserves one selection owner",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "group": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "default arrangement and no behavior ownership",
+              "ok": true
+            },
+            {
+              "name": "compatible defaults are inherited without rewriting child attributes",
+              "ok": true
+            },
+            {
+              "name": "explicit child appearance wins",
+              "ok": true
+            },
+            {
+              "name": "clearing an explicit value restores inheritance",
+              "ok": true
+            },
+            {
+              "name": "unsupported defaults preserve child defaults with diagnostics",
+              "ok": true
+            },
+            {
+              "name": "attachment uses the measured resting border overlap",
+              "ok": true
+            },
+            {
+              "name": "joined endpoints preserve outer corners",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors physical joined corners",
+              "ok": true
+            },
+            {
+              "name": "vertical joins use block edges",
+              "ok": true
+            },
+            {
+              "name": "outline suppresses only touching resting perimeter borders",
+              "ok": true
+            },
+            {
+              "name": "owner-supplied emphasis stays above resting seams",
+              "ok": true
+            },
+            {
+              "name": "focus rises above resting seams and restores its indication",
+              "ok": true
+            },
+            {
+              "name": "inset surfaces retain their own borders",
+              "ok": true
+            },
+            {
+              "name": "explicit border width overrides the outline default",
+              "ok": true
+            },
+            {
+              "name": "detaching restores radii and authored gaps",
+              "ok": true
+            },
+            {
+              "name": "unregistered native controls break attached runs",
+              "ok": true
+            },
+            {
+              "name": "hidden content leaves the visual sequence",
+              "ok": true
+            },
+            {
+              "name": "DOM reordering updates endpoints",
+              "ok": true
+            },
+            {
+              "name": "growth shares available space",
+              "ok": true
+            },
+            {
+              "name": "growth preserves explicit minimum size",
+              "ok": true
+            },
+            {
+              "name": "nested groups reset appearance defaults",
+              "ok": true
+            },
+            {
+              "name": "moving ownership is synchronous",
+              "ok": true
+            },
+            {
+              "name": "stale previous owner cleanup cannot clear the new provider",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases inherited appearance and presentation",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current ownership",
+              "ok": true
+            },
+            {
+              "name": "removing optional defaults restores absence",
+              "ok": true
+            },
+            {
+              "name": "wrapping retains DOM-order corners without per-row correction",
+              "ok": true
+            },
+            {
+              "name": "responsive orientation reaches arrangement and joining",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "default arrangement and no behavior ownership",
+              "ok": true
+            },
+            {
+              "name": "compatible defaults are inherited without rewriting child attributes",
+              "ok": true
+            },
+            {
+              "name": "explicit child appearance wins",
+              "ok": true
+            },
+            {
+              "name": "clearing an explicit value restores inheritance",
+              "ok": true
+            },
+            {
+              "name": "unsupported defaults preserve child defaults with diagnostics",
+              "ok": true
+            },
+            {
+              "name": "attachment uses the measured resting border overlap",
+              "ok": true
+            },
+            {
+              "name": "joined endpoints preserve outer corners",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors physical joined corners",
+              "ok": true
+            },
+            {
+              "name": "vertical joins use block edges",
+              "ok": true
+            },
+            {
+              "name": "outline suppresses only touching resting perimeter borders",
+              "ok": true
+            },
+            {
+              "name": "owner-supplied emphasis stays above resting seams",
+              "ok": true
+            },
+            {
+              "name": "focus rises above resting seams and restores its indication",
+              "ok": true
+            },
+            {
+              "name": "inset surfaces retain their own borders",
+              "ok": true
+            },
+            {
+              "name": "explicit border width overrides the outline default",
+              "ok": true
+            },
+            {
+              "name": "detaching restores radii and authored gaps",
+              "ok": true
+            },
+            {
+              "name": "unregistered native controls break attached runs",
+              "ok": true
+            },
+            {
+              "name": "hidden content leaves the visual sequence",
+              "ok": true
+            },
+            {
+              "name": "DOM reordering updates endpoints",
+              "ok": true
+            },
+            {
+              "name": "growth shares available space",
+              "ok": true
+            },
+            {
+              "name": "growth preserves explicit minimum size",
+              "ok": true
+            },
+            {
+              "name": "nested groups reset appearance defaults",
+              "ok": true
+            },
+            {
+              "name": "moving ownership is synchronous",
+              "ok": true
+            },
+            {
+              "name": "stale previous owner cleanup cannot clear the new provider",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases inherited appearance and presentation",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current ownership",
+              "ok": true
+            },
+            {
+              "name": "removing optional defaults restores absence",
+              "ok": true
+            },
+            {
+              "name": "wrapping retains DOM-order corners without per-row correction",
+              "ok": true
+            },
+            {
+              "name": "responsive orientation reaches arrangement and joining",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "default arrangement and no behavior ownership",
+              "ok": true
+            },
+            {
+              "name": "compatible defaults are inherited without rewriting child attributes",
+              "ok": true
+            },
+            {
+              "name": "explicit child appearance wins",
+              "ok": true
+            },
+            {
+              "name": "clearing an explicit value restores inheritance",
+              "ok": true
+            },
+            {
+              "name": "unsupported defaults preserve child defaults with diagnostics",
+              "ok": true
+            },
+            {
+              "name": "attachment uses the measured resting border overlap",
+              "ok": true
+            },
+            {
+              "name": "joined endpoints preserve outer corners",
+              "ok": true
+            },
+            {
+              "name": "RTL mirrors physical joined corners",
+              "ok": true
+            },
+            {
+              "name": "vertical joins use block edges",
+              "ok": true
+            },
+            {
+              "name": "outline suppresses only touching resting perimeter borders",
+              "ok": true
+            },
+            {
+              "name": "owner-supplied emphasis stays above resting seams",
+              "ok": true
+            },
+            {
+              "name": "focus rises above resting seams and restores its indication",
+              "ok": true
+            },
+            {
+              "name": "inset surfaces retain their own borders",
+              "ok": true
+            },
+            {
+              "name": "explicit border width overrides the outline default",
+              "ok": true
+            },
+            {
+              "name": "detaching restores radii and authored gaps",
+              "ok": true
+            },
+            {
+              "name": "unregistered native controls break attached runs",
+              "ok": true
+            },
+            {
+              "name": "hidden content leaves the visual sequence",
+              "ok": true
+            },
+            {
+              "name": "DOM reordering updates endpoints",
+              "ok": true
+            },
+            {
+              "name": "growth shares available space",
+              "ok": true
+            },
+            {
+              "name": "growth preserves explicit minimum size",
+              "ok": true
+            },
+            {
+              "name": "nested groups reset appearance defaults",
+              "ok": true
+            },
+            {
+              "name": "moving ownership is synchronous",
+              "ok": true
+            },
+            {
+              "name": "stale previous owner cleanup cannot clear the new provider",
+              "ok": true
+            },
+            {
+              "name": "disconnect releases inherited appearance and presentation",
+              "ok": true
+            },
+            {
+              "name": "reconnect restores current ownership",
+              "ok": true
+            },
+            {
+              "name": "removing optional defaults restores absence",
+              "ok": true
+            },
+            {
+              "name": "wrapping retains DOM-order corners without per-row correction",
+              "ok": true
+            },
+            {
+              "name": "responsive orientation reaches arrangement and joining",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "actions": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "Button defaults to a real non-submitting native control",
+              "ok": true
+            },
+            {
+              "name": "default geometry retains the 36px baseline",
+              "ok": true
+            },
+            {
+              "name": "Icon Button is a named square",
+              "ok": true
+            },
+            {
+              "name": "loading retains focus while suppressing native action",
+              "ok": true
+            },
+            {
+              "name": "Group supplies named appearance without authoring a child override",
+              "ok": true
+            },
+            {
+              "name": "explicit child size overrides Group and clearing resumes inheritance",
+              "ok": true
+            },
+            {
+              "name": "cleared child size reads the provider again",
+              "ok": true
+            },
+            {
+              "name": "Group owns the actual button surfaces",
+              "ok": true
+            },
+            {
+              "name": "same-task form values use a native persistent submitter",
+              "ok": true
+            },
+            {
+              "name": "click cancellation prevents submission",
+              "ok": true
+            },
+            {
+              "name": "Fieldset blocks action before repaint",
+              "ok": true
+            },
+            {
+              "name": "Fieldset disabled state reaches the visible control",
+              "ok": true
+            },
+            {
+              "name": "first legend restores native activation",
+              "ok": true
+            },
+            {
+              "name": "Group frame masks the real resting button border",
+              "ok": true
+            },
+            {
+              "name": "opt-in pointer press starts one owned ripple",
+              "ok": true,
+              "actual": 1
+            },
+            {
+              "name": "completed ripple releases its element",
+              "ok": true,
+              "actual": null
+            },
+            {
+              "name": "reduced motion suppresses ripple",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "Button defaults to a real non-submitting native control",
+              "ok": true
+            },
+            {
+              "name": "default geometry retains the 36px baseline",
+              "ok": true
+            },
+            {
+              "name": "Icon Button is a named square",
+              "ok": true
+            },
+            {
+              "name": "loading retains focus while suppressing native action",
+              "ok": true
+            },
+            {
+              "name": "Group supplies named appearance without authoring a child override",
+              "ok": true
+            },
+            {
+              "name": "explicit child size overrides Group and clearing resumes inheritance",
+              "ok": true
+            },
+            {
+              "name": "cleared child size reads the provider again",
+              "ok": true
+            },
+            {
+              "name": "Group owns the actual button surfaces",
+              "ok": true
+            },
+            {
+              "name": "same-task form values use a native persistent submitter",
+              "ok": true
+            },
+            {
+              "name": "click cancellation prevents submission",
+              "ok": true
+            },
+            {
+              "name": "Fieldset blocks action before repaint",
+              "ok": true
+            },
+            {
+              "name": "Fieldset disabled state reaches the visible control",
+              "ok": true
+            },
+            {
+              "name": "first legend restores native activation",
+              "ok": true
+            },
+            {
+              "name": "Group frame masks the real resting button border",
+              "ok": true
+            },
+            {
+              "name": "opt-in pointer press starts one owned ripple",
+              "ok": true,
+              "actual": 1
+            },
+            {
+              "name": "completed ripple releases its element",
+              "ok": true,
+              "actual": null
+            },
+            {
+              "name": "reduced motion suppresses ripple",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "Button defaults to a real non-submitting native control",
+              "ok": true
+            },
+            {
+              "name": "default geometry retains the 36px baseline",
+              "ok": true
+            },
+            {
+              "name": "Icon Button is a named square",
+              "ok": true
+            },
+            {
+              "name": "loading retains focus while suppressing native action",
+              "ok": true
+            },
+            {
+              "name": "Group supplies named appearance without authoring a child override",
+              "ok": true
+            },
+            {
+              "name": "explicit child size overrides Group and clearing resumes inheritance",
+              "ok": true
+            },
+            {
+              "name": "cleared child size reads the provider again",
+              "ok": true
+            },
+            {
+              "name": "Group owns the actual button surfaces",
+              "ok": true
+            },
+            {
+              "name": "same-task form values use a native persistent submitter",
+              "ok": true
+            },
+            {
+              "name": "click cancellation prevents submission",
+              "ok": true
+            },
+            {
+              "name": "Fieldset blocks action before repaint",
+              "ok": true
+            },
+            {
+              "name": "Fieldset disabled state reaches the visible control",
+              "ok": true
+            },
+            {
+              "name": "first legend restores native activation",
+              "ok": true
+            },
+            {
+              "name": "Group frame masks the real resting button border",
+              "ok": true
+            },
+            {
+              "name": "opt-in pointer press starts one owned ripple",
+              "ok": true,
+              "actual": 1
+            },
+            {
+              "name": "completed ripple releases its element",
+              "ok": true,
+              "actual": null
+            },
+            {
+              "name": "reduced motion suppresses ripple",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  },
+  "verification": {
+    "unit": "900 pass, zero fail across 137 files; subsequent outline-only CSS passes a fresh build and compiled tests",
+    "build": "37,773 files, 119 compiled templates, 4,256 public elements",
+    "docs": "92 pages, zero undocumented elements",
+    "typecheck": "875 files, zero errors",
+    "outline": "25 Chromium and 24 Firefox/WebKit source and compiled checks include >=3:1 selected outline; light/dark and system forced-color checks pass separately"
+  },
+  "changes": [
+    "Segmented Control reuses the extracted single-selection owner and RadioNavigation; real Group owns presentation and the private indicator owns motion. Items expose value/disabled plus semantic inputs, with no second form owner or checked state.",
+    "Switch replaces Toggle, retains the 28x14/36x20/40x24 track tiers, adopts canonical native forms and uses a Lit Motion scalar spring for its thumb.",
+    "All segmented Switch/Switch Control consumers move to the new family, including Code Block. Old Toggle and Switch Control classes/definitions/exports/styles/docs are removed.",
+    "A parent reset previously erased a nested Group host border/padding. House elements identify their own reset boundary and the zero-specificity parent reset leaves their host styles intact.",
+    "Native barred controls can retain valueMissing=true with an empty validationMessage. nativeValidation now excludes barred controls and re-evaluates when participation resumes.",
+    "The standard analyzer treated this.input.className and this.input.name assignments as host fields/defaults. Source facts now remove nested-assignment phantom fields and preserve actual initialized host defaults.",
+    "The light selected fill measures 1.192:1 against white. A one-pixel gray-800 inner outline retains the requested gray fill and provides a three-to-one selected-state boundary."
+  ],
+  "limits": [
+    "Tabs and Theme Switcher remain in M10.",
+    "Actual Toolbar collection integration remains M14, managed-form adapter completion M11/M22, actual speech output and complete library/package appearance acceptance M26.",
+    "Local review and native oracles are used while independent review workers are unavailable."
+  ],
+  "sources": [
+    {
+      "file": "src/shared/single-selection-group.ts",
+      "sha256": "59d9d2fc97da0b2e054b4f9246a5783812d5b16da73f13e393d06a13ae36779e"
+    },
+    {
+      "file": "src/components/segmented-control/segmented-control.ts",
+      "sha256": "026c87d009868cfe9c93565512e0eb10dfec8d9971e9ec763fcb56925b29b0df"
+    },
+    {
+      "file": "src/components/segmented-control-item/segmented-control-item.ts",
+      "sha256": "f700232a94cec2f4e975040faacfb8725613096d624c5f978f452f295d6b30e4"
+    },
+    {
+      "file": "src/components/switch/switch.ts",
+      "sha256": "d36e69d3255e3105be403d544447e038b9f69bdc55984bea73e13ef62f78e336"
+    },
+    {
+      "file": "src/shared/spring-value.ts",
+      "sha256": "320204ec160280e83dd8cde33265b8ecd09b7fa4ede4dc281870929e83c96c01"
+    },
+    {
+      "file": "src/shared/native-form-element.ts",
+      "sha256": "94ee22bfe6247e50981be7ff05b22df9bda52a11a2fe427ae2b6044fe7f0ae6d"
+    },
+    {
+      "file": "src/base.ts",
+      "sha256": "c840aab03032e572b19e9ccc6f39eb6fdd6a918870fdc5f6712a80ab38972343"
+    },
+    {
+      "file": "styles/shared/base.css",
+      "sha256": "fce2344991e16a695fcf834327f87b2c40c6f851600947bcbc1ba510b812b00d"
+    },
+    {
+      "file": "scripts/manifest.ts",
+      "sha256": "5a2265c4c1ffe0574e63148a2b4fe851123d97f9d93b4e39962a8900d74ea423"
+    }
+  ],
+  "fixtures": [
+    {
+      "family": "switch",
+      "file": "probe.ts",
+      "source": "import {AcmeSwitch} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/switch/switch';\ncustomElements.define('acme-switch',AcmeSwitch);\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});const wait=async(n=3)=>{while(n--)await new Promise(r=>requestAnimationFrame(r));};\nconst form=document.createElement('form');form.innerHTML='<acme-switch id=\"setting\" name=\"setting\" required>Product updates</acme-switch>';document.body.append(form);const control=form.querySelector('acme-switch')!;\nconst input=()=>control.shadowRoot!.querySelector('input')!;const track=()=>control.shadowRoot!.querySelector<HTMLElement>('.track')!;const thumb=()=>control.shadowRoot!.querySelector<HTMLElement>('[part=thumb]')!;\nconst position=()=>{const a=thumb().getBoundingClientRect(),b=track().getBoundingClientRect();return {start:a.left-b.left,end:b.right-a.right};};\nconst settle=async()=>{await wait(50);};let events:any[]=[];control.addEventListener('acme-change',e=>events.push((e as CustomEvent).detail));\ntry{\nawait wait();check('initial unchecked native switch is named and required',control.checked===false&&!form.checkValidity()&&input().getAttribute('role')==='switch'&&input().ariaLabelledByElements?.[0]===control.shadowRoot!.querySelector('[part=label]'));check('small default retains 28 by 14 track and a 24px hit height',track().getBoundingClientRect().width===28&&track().getBoundingClientRect().height===14&&control.getBoundingClientRect().height>=24);\ncontrol.checked=true;check('programmatic state synchronizes native form before rendering',new FormData(form).get('setting')==='on'&&input().checked&&form.checkValidity());await wait(3);check('thumb animates independently of optional ripple',position().start>1.5&&position().end>1.5);await settle();check('checked thumb reaches its exact endpoint',Math.abs(position().end-1.5)<.1&&events.length===0);\ncontrol.click();await wait();check('user activation emits one checked payload after native form synchronization',events.length===1&&events[0].checked===false&&!new FormData(form).has('setting'));await settle();check('unchecked thumb returns to its start',Math.abs(position().start-1.5)<.1);\ncontrol.defaultChecked=true;form.reset();check('native reset restores the canonical default immediately',control.checked&&new FormData(form).get('setting')==='on');await settle();\ncontrol.value='yes';check('submission value changes immediately without a render barrier',new FormData(form).get('setting')==='yes');control.disabled=true;check('disabled state suppresses form participation and native focus',!new FormData(form).has('setting')&&input().disabled);control.click();check('disabled host click is inert',events.length===1);control.disabled=false;\nfor(const [size,width,height] of [['medium',36,20],['large',40,24]] as const){control.size=size;await wait();check(size+' track preserves the source geometry',track().getBoundingClientRect().width===width&&track().getBoundingClientRect().height===height);}\ncontrol.labelPosition='end';await wait();check('label end places the native control before text',input().getBoundingClientRect().left<control.shadowRoot!.querySelector('[part=label]')!.getBoundingClientRect().left);\ncontrol.dir='rtl';await wait();check('RTL mirrors the checked thumb endpoint',Math.abs(position().start-1.5)<.1);\ncontrol.checked=false;await wait(3);const before=position().start;control.checked=true;await wait(1);check('reversal preserves the current thumb position',Math.abs(position().start-before)<8);await settle();check('reversed RTL thumb reaches the selected endpoint',Math.abs(position().start-1.5)<.1);\ncontrol.remove();form.append(control);await wait();check('reconnection restores checked native state and thumb',input().checked&&new FormData(form).get('setting')==='yes'&&Math.abs(position().start-1.5)<.1);\ncontrol.formStateRestoreCallback('unchecked','restore');check('platform restoration updates canonical checked state',!control.checked&&!input().checked);await settle();\nconst fieldset=document.createElement('fieldset');form.append(fieldset);fieldset.append(control);fieldset.disabled=true;await wait();const native=document.createElement('input');native.type='checkbox';native.required=true;fieldset.append(native);check('barred native constraint flags can coexist with an empty validation message',!native.willValidate&&native.validity.valueMissing&&native.validationMessage==='');check('native Fieldset disability reaches the actual input',input().disabled&&!new FormData(form).has('setting'));fieldset.disabled=false;await wait();\ncontrol.dir='ltr';control.size='medium';control.labelPosition='start';control.checked=false;await settle();(window as any).__test={control,input,position,wait,settle,events};\n}catch(e){(window as any).__error=String(e);}\n(window as any).__results={results,error:(window as any).__error};\n"
+    },
+    {
+      "family": "switch",
+      "file": "run.ts",
+      "source": "import fs from 'node:fs';\nconst directory='/tmp/acme-m10-switch',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst built=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm',splitting:true});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const url=new URL(req.url);if(url.pathname==='/tokens.css')return new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}});if(url.pathname.endsWith('.js'))return new Response(Bun.file(directory+'/bundle'+url.pathname),{headers:{'Content-Type':'text/javascript'}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>{console.log('PAGEERROR',e.stack);report.errors.push({engine,message:e.message});});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results,{},{timeout:60000});const data=await page.evaluate(()=>window.__results);if(!data.error){\nawait page.locator('#setting').press('Space');await page.evaluate(()=>window.__test.settle());data.results.push({name:'trusted Space toggles the native switch',ok:await page.evaluate(()=>window.__test.control.checked)});\nawait page.emulateMedia({reducedMotion:'reduce'});await page.evaluate(async()=>{const t=window.__test;t.control.checked=false;await t.wait(4);});data.results.push({name:'reduced motion snaps the thumb',ok:await page.evaluate(()=>Math.abs(window.__test.position().start-1.5)<.1)});\nawait page.emulateMedia({reducedMotion:'no-preference'});await page.evaluate(async()=>{const t=window.__test;t.control.checked=true;await t.wait(3);});await page.emulateMedia({reducedMotion:'reduce'});await page.evaluate(()=>window.__test.wait(4));data.results.push({name:'live reduced motion ends an active thumb transition',ok:await page.evaluate(()=>Math.abs(window.__test.position().end-1.5)<.1)});\nif(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'accessibility exposes one named checked switch',ok:tree.nodes.filter(n=>n.role?.value==='switch'&&n.name?.value==='Product updates'&&n.properties?.some(p=>p.name==='checked'&&p.value.value==='true')).length===1});await page.screenshot({path:directory+'/switch.png'});}\n}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failed:data.results.filter(r=>!r.ok),error:data.error});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+'/results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.length!==(e.engine==='chromium'?25:24)||e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+    },
+    {
+      "family": "segmented",
+      "file": "probe.ts",
+      "source": "import {AcmeSegmentedControl} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/segmented-control/segmented-control';\nimport {AcmeSegmentedControlItem} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/segmented-control-item/segmented-control-item';\nimport {AcmeSelectionIndicator} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/internal/selection-indicator/selection-indicator';\nimport {AcmeGroup} from '/Users/peterkloss/Dev/ACMElabs/design-system/src/components/group/group';\ncustomElements.define('acme-group',AcmeGroup);customElements.define('acme-selection-indicator',AcmeSelectionIndicator);customElements.define('acme-segmented-control',AcmeSegmentedControl);customElements.define('acme-segmented-control-item',AcmeSegmentedControlItem);\nconst results:any[]=[];const check=(name:string,ok:boolean)=>results.push({name,ok});const wait=async(n=3)=>{while(n--)await new Promise(r=>requestAnimationFrame(r));};\nconst form=document.createElement('form');form.innerHTML='<acme-segmented-control id=\"view\" name=\"view\" required aria-label=\"View\"><acme-segmented-control-item id=\"grid\" value=\"grid\">Grid</acme-segmented-control-item><acme-segmented-control-item id=\"list\" value=\"list\">Long list</acme-segmented-control-item><acme-segmented-control-item value=\"board\" disabled>Board</acme-segmented-control-item></acme-segmented-control>';\nconst group=form.querySelector('acme-segmented-control')!;const [grid,list,board]=[...form.querySelectorAll('acme-segmented-control-item')];let events:any[]=[];group.addEventListener('acme-change',e=>events.push((e as CustomEvent).detail));document.body.append(form);\nconst input=(item:AcmeSegmentedControlItem)=>item.shadowRoot!.querySelector('input')!;\nconst indicator=()=>group.shadowRoot!.querySelector('acme-selection-indicator')!;\nconst settle=async()=>{await wait();for(let n=0;n<240&&indicator().isAnimating;n++)await wait(1);await wait();};\nconst aligned=()=>{const a=indicator().shadowRoot!.querySelector('[part=paint]')!.getBoundingClientRect(),b=input(group.value==='grid'?grid:list).getBoundingClientRect();return Math.abs(a.x-b.x)<.6&&Math.abs(a.y-b.y)<.6&&Math.abs(a.width-b.width)<.6&&Math.abs(a.height-b.height)<.6;};\ntry{\nawait wait();const frame=group.shadowRoot!.querySelector('acme-group')!;check('nested Group retains its own outline and inset padding',getComputedStyle(frame).borderTopWidth==='1px'&&getComputedStyle(frame).paddingTop==='4px');check('no implicit first selection and native required validation',group.value===undefined&&!form.checkValidity()&&!input(grid).checked&&!input(list).checked);check('initial keyboard entry is the first enabled item',input(grid).tabIndex===0&&input(list).tabIndex===-1&&input(board).disabled);\ngrid.click();await settle();check('user selection updates form, visual indicator and native checked state',group.value==='grid'&&new FormData(form).get('view')==='grid'&&input(grid).checked&&aligned());const paint=indicator().shadowRoot!.querySelector('[part=paint]')!;const paintStyle=getComputedStyle(paint);const context=document.createElement('canvas').getContext('2d')!;const luminance=(color:string)=>{context.clearRect(0,0,1,1);context.fillStyle=color;context.fillRect(0,0,1,1);const rgba=context.getImageData(0,0,1,1).data;const rgb=[rgba[0],rgba[1],rgba[2]].map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;};const contrast=(a:string,b:string)=>{const values=[luminance(a),luminance(b)].sort((a,b)=>b-a);return (values[0]+.05)/(values[1]+.05);};const outline=paintStyle.boxShadow.match(/rgba?\\([^)]+\\)/)?.[0]??'transparent';check('selected outline has three-to-one contrast with fill and background',contrast(outline,paintStyle.backgroundColor)>=3&&contrast(outline,getComputedStyle(document.body).backgroundColor)>=3);\ncheck('one owner emits one scalar change',events.length===1&&events[0].value==='grid');check('owned items submit no duplicate form entries',new FormData(form).getAll('view').length===1);\ngroup.value='list';await settle();check('programmatic value is silent and updates the same indicator',events.length===1&&input(list).checked&&!input(grid).checked&&aligned());\nform.reset();await wait();check('native reset restores the omitted selection',group.value===undefined&&!input(list).checked&&!form.checkValidity());group.defaultValue='grid';form.reset();await settle();check('defaultValue updates the reset baseline',group.value==='grid'&&aligned());\ngroup.disabled=true;await wait();check('disabled collection disables every native item and form entry',input(grid).disabled&&input(list).disabled&&!new FormData(form).has('view'));group.disabled=false;await wait();\nlist.disabled=true;list.click();await wait();check('disabled item cannot select',group.value==='grid');list.disabled=false;await wait();\ngroup.orientation='vertical';await settle();group.value='list';await settle();check('vertical orientation uses a vertical Group and shared moving indicator',input(list).getBoundingClientRect().y>input(grid).getBoundingClientRect().y&&aligned());\ngroup.orientation='horizontal';group.dir='rtl';await settle();check('RTL group layout retains indicator alignment',input(grid).getBoundingClientRect().x>input(list).getBoundingClientRect().x&&aligned());\ngroup.size='large';await settle();check('Group size reaches every item without a public item size property',input(grid).getBoundingClientRect().height===32&&!('size' in grid));\nlist.remove();await wait();check('removed selected member retains canonical value but contributes no form data',group.value==='list'&&!new FormData(form).has('view'));group.append(list);await settle();check('reinserted selected member restores its form and visual state',new FormData(form).get('view')==='list'&&aligned());\nconst duplicate=document.createElement('acme-segmented-control-item');duplicate.value='list';duplicate.textContent='Duplicate';group.append(duplicate);await wait();check('duplicate member values fail native validity',!group.checkValidity());duplicate.remove();await wait();check('removing duplicate restores validity',group.checkValidity());\ngroup.value=undefined;await wait();check('explicit empty selection clears indicator without selecting a replacement',!new FormData(form).has('view')&&indicator().shadowRoot!.querySelector<HTMLElement>('[part=paint]')!.hidden);\ngroup.value='grid';group.dir='ltr';group.size='medium';await settle();(window as any).__test={group,grid,list,board,input,events,wait,settle,aligned};\n}catch(e){(window as any).__error=String(e);}\n(window as any).__results={results,error:(window as any).__error};\n"
+    },
+    {
+      "family": "segmented",
+      "file": "run.ts",
+      "source": "import fs from 'node:fs';\nconst directory='/tmp/acme-m10-segmented',root='/Users/peterkloss/Dev/ACMElabs/design-system';\nconst built=await Bun.build({entrypoints:[directory+'/probe.ts'],outdir:directory+'/bundle',target:'browser',format:'esm',splitting:true});if(!built.success)throw new AggregateError(built.logs);\nprocess.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';\nconst pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');\nconst server=Bun.serve({port:0,hostname:'127.0.0.1',fetch(req){const url=new URL(req.url);if(url.pathname==='/tokens.css')return new Response(Bun.file(root+'/src/generated/css/document/tokens.css'),{headers:{'Content-Type':'text/css'}});if(url.pathname.endsWith('.js'))return new Response(Bun.file(directory+'/bundle'+url.pathname),{headers:{'Content-Type':'text/javascript'}});return new Response('<!doctype html><link rel=\"stylesheet\" href=\"/tokens.css\"><script type=\"module\" src=\"/probe.js\"></script>',{headers:{'Content-Type':'text/html'}});}});\nconst report={engines:[],errors:[]};\ntry{for(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();page.on('pageerror',e=>{console.log('PAGEERROR',e.stack);report.errors.push({engine,message:e.message});});await page.goto(server.url.href);await page.waitForFunction(()=>window.__results,{},{timeout:60000});const data=await page.evaluate(()=>window.__results);if(!data.error){\nawait page.locator('#grid').press('ArrowRight');await page.evaluate(()=>window.__test.settle());data.results.push({name:'trusted arrow selects the next enabled segment',ok:await page.evaluate(()=>window.__test.group.value==='list'&&window.__test.aligned())});\nawait page.locator('#list').press('ArrowRight');data.results.push({name:'arrows wrap past disabled options',ok:await page.evaluate(()=>window.__test.group.value==='grid')});\nawait page.evaluate(()=>window.__test.group.dir='rtl');await page.locator('#grid').press('ArrowLeft');data.results.push({name:'keyboard direction follows live RTL',ok:await page.evaluate(()=>window.__test.group.value==='list')});\nawait page.evaluate(()=>{window.__test.group.value=undefined;});await page.locator('#grid').press('Space');data.results.push({name:'Space selects the focused native radio',ok:await page.evaluate(()=>window.__test.group.value==='grid')});\nif(engine==='chromium'){const session=await page.context().newCDPSession(page);const tree=await session.send('Accessibility.getFullAXTree');data.results.push({name:'accessibility exposes one named radiogroup and real radio labels',ok:tree.nodes.some(n=>n.role?.value==='radiogroup'&&n.name?.value==='View')&&tree.nodes.some(n=>n.role?.value==='radio'&&n.name?.value==='Grid')});await page.evaluate(()=>window.__test.settle());await page.screenshot({path:directory+'/segmented.png'});}\n}if(data.error)report.errors.push({engine,message:data.error});report.engines.push({engine,version:browser.version(),...data});console.log({engine,passed:data.results.filter(r=>r.ok).length,total:data.results.length,failed:data.results.filter(r=>!r.ok),error:data.error});}finally{await browser.close();}}}finally{server.stop(true);}\nawait Bun.write(directory+'/results.json',JSON.stringify(report,null,2)+'\\n');if(report.errors.length||report.engines.some(e=>e.results.length!==(e.engine==='chromium'?25:24)||e.results.some(r=>!r.ok)))process.exitCode=1;\n"
+    },
+    {
+      "family": "segmented",
+      "file": "theme-contrast.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{headless:true});try{const page=await browser.newPage();for(const scheme of ['light','dark']){await page.emulateMedia({colorScheme:scheme});await page.goto('http://127.0.0.1:4180/components/segmented-control');const root=page.locator('acme-segmented-control').first();await root.waitFor();const measure=await root.evaluate(root=>{const paint=root.shadowRoot.querySelector('acme-selection-indicator').shadowRoot.querySelector('[part=paint]'),style=getComputedStyle(paint);const c=document.createElement('canvas').getContext('2d');const lum=color=>{c.clearRect(0,0,1,1);c.fillStyle=color;c.fillRect(0,0,1,1);const data=c.getImageData(0,0,1,1).data,a=[data[0],data[1],data[2]].map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);return a[0]*.2126+a[1]*.7152+a[2]*.0722;};const contrast=(a,b)=>{const v=[lum(a),lum(b)].sort((a,b)=>b-a);return (v[0]+.05)/(v[1]+.05);};const outline=style.boxShadow.match(/rgba?\\([^)]+\\)/)?.[0],fill=style.backgroundColor,background=getComputedStyle(document.body).backgroundColor;return {outline,fill,background,fillContrast:outline?contrast(outline,fill):0,backgroundContrast:outline?contrast(outline,background):0};});results.push({engine,scheme,...measure});}await page.emulateMedia({forcedColors:'active'});await page.goto('http://127.0.0.1:4180/components/segmented-control');const root=page.locator('acme-segmented-control').first();await root.waitFor();const forced=await root.evaluate(root=>{const indicator=root.shadowRoot.querySelector('acme-selection-indicator'),paint=indicator.shadowRoot.querySelector('[part=paint]'),item=root.querySelector('[value=source]'),label=item.shadowRoot.querySelector('label');return {background:getComputedStyle(paint).backgroundColor,text:getComputedStyle(label).color};});results.push({engine,forced:true,distinct:forced.background!==forced.text,...forced});console.log(results.filter(r=>r.engine===engine));}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m10-segmented/theme-contrast-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>r.forced?!r.distinct:r.fillContrast<3||r.backgroundContrast<3))process.exitCode=1;\n"
+    },
+    {
+      "family": "segmented",
+      "file": "docs-check.ts",
+      "source": "process.env.PLAYWRIGHT_BROWSERS_PATH='/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/browsers';const pw=await import('/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-style-engines-fHTyxk/package/index.mjs');const results=[];\nfor(const engine of ['chromium','firefox','webkit']){const browser=await pw[engine].launch(engine==='chromium'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true}:{headless:true});try{const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));for(const [path,id,selector,value] of [['segmented-control','segment-form','acme-segmented-control-item[value=output]','output'],['switch','switch-form','acme-switch','yes']]){await page.goto('http://127.0.0.1:4180/components/'+path);const form=page.locator('#'+id);await form.locator('acme-button[type=submit]').click();const required=await form.evaluate(el=>!el.checkValidity()&&el.querySelector('output').textContent==='');await form.locator(selector).click();await form.locator('acme-button[type=submit]').click();await page.waitForFunction(([id,value])=>document.querySelector('#'+id+' output')?.textContent===value,[id,value]);await form.locator('acme-button[type=reset]').click();const reset=await form.evaluate(el=>!el.checkValidity()&&el.querySelector('output').textContent==='');results.push({engine,path,required,submitted:true,reset});if(engine==='chromium')await page.screenshot({path:'/tmp/acme-m10-segmented/docs-'+path+'.png',fullPage:true});}await page.goto('http://127.0.0.1:4180/components/code-block');const groups=page.locator('acme-code-block acme-segmented-control');const count=await groups.count();if(count){const group=groups.first();const items=group.locator('acme-segmented-control-item');await items.last().click();const composed=await group.evaluate(el=>el.value===el.querySelector('acme-segmented-control-item:last-child').value);results.push({engine,path:'code-block',composed});}else results.push({engine,path:'code-block',composed:false});results.push({engine,errors});console.log(results.filter(r=>r.engine===engine));}finally{await browser.close();}}\nawait Bun.write('/tmp/acme-m10-segmented/docs-results.json',JSON.stringify(results,null,2)+'\\n');if(results.some(r=>r.required===false||r.reset===false||r.composed===false||r.errors?.length))process.exitCode=1;\n"
+    }
+  ],
+  "themeContrast": [
+    {
+      "engine": "chromium",
+      "scheme": "light",
+      "outline": "rgb(125, 125, 125)",
+      "fill": "rgb(235, 235, 235)",
+      "background": "rgb(255, 255, 255)",
+      "fillContrast": 3.452933353985713,
+      "backgroundContrast": 4.116376044741373
+    },
+    {
+      "engine": "chromium",
+      "scheme": "dark",
+      "outline": "rgb(125, 125, 125)",
+      "fill": "rgb(31, 31, 31)",
+      "background": "rgb(10, 10, 10)",
+      "fillContrast": 4.004244825101832,
+      "backgroundContrast": 4.809605705440039
+    },
+    {
+      "engine": "chromium",
+      "forced": true,
+      "distinct": true,
+      "background": "rgba(26, 235, 255, 0.8)",
+      "text": "rgb(0, 0, 0)"
+    },
+    {
+      "engine": "firefox",
+      "scheme": "light",
+      "outline": "rgb(125, 125, 125)",
+      "fill": "rgb(235, 235, 235)",
+      "background": "rgb(255, 255, 255)",
+      "fillContrast": 3.452933353985713,
+      "backgroundContrast": 4.116376044741373
+    },
+    {
+      "engine": "firefox",
+      "scheme": "dark",
+      "outline": "rgb(125, 125, 125)",
+      "fill": "rgb(31, 31, 31)",
+      "background": "rgb(10, 10, 10)",
+      "fillContrast": 4.004244825101832,
+      "backgroundContrast": 4.809605705440039
+    },
+    {
+      "engine": "firefox",
+      "forced": true,
+      "distinct": true,
+      "background": "rgb(51, 153, 255)",
+      "text": "rgb(255, 255, 255)"
+    },
+    {
+      "engine": "webkit",
+      "scheme": "light",
+      "outline": "rgb(125, 125, 125)",
+      "fill": "rgb(235, 235, 235)",
+      "background": "rgb(255, 255, 255)",
+      "fillContrast": 3.452933353985713,
+      "backgroundContrast": 4.116376044741373
+    },
+    {
+      "engine": "webkit",
+      "scheme": "dark",
+      "outline": "rgb(125, 125, 125)",
+      "fill": "rgb(31, 31, 31)",
+      "background": "rgb(10, 10, 10)",
+      "fillContrast": 4.004244825101832,
+      "backgroundContrast": 4.809605705440039
+    },
+    {
+      "engine": "webkit",
+      "forced": true,
+      "distinct": true,
+      "background": "rgba(63, 99, 139, 0.8)",
+      "text": "rgb(255, 255, 255)"
+    }
+  ]
+}

@@ -223,7 +223,7 @@ export class DocsFormDemo extends LitElement {
       ${this.form.field({ name: "name", validators: { onChange: ({ value }) => (value.length < 2 ? "Name needs two characters." : undefined) } }, (f) => html`<acme-input label="Name" placeholder="Ada Lovelace" ${bindField(f)}></acme-input>`)}
       ${this.form.field({ name: "email", validators: { onChange: ({ value }) => (/@/.test(value) ? undefined : "Enter an email address.") } }, (f) => html`<acme-input label="Email" type="email" placeholder="ada@acme.dev" ${bindField(f)}></acme-input>`)}
       ${this.form.field({ name: "plan" }, (f) => html`<acme-select label="Plan" options='["hobby","pro","enterprise"]' ${bindField(f)}></acme-select>`)}
-      ${this.form.field({ name: "updates" }, (f) => html`<acme-toggle label="Product updates" ${bindField(f)}></acme-toggle>`)}
+      ${this.form.field({ name: "updates" }, (f) => html`<acme-switch aria-label="Product updates" ${bindField(f)}></acme-switch>`)}
       <div><acme-button type="submit" variant="default" ?disabled=${!this.form.api.state.canSubmit}>Create Account</acme-button></div>
     </form>`;
   }

@@ -19,11 +19,7 @@ export const geist: GeistMap = {
   // The root is the copy button's hover group; its hover is the root's.
   states: { ":hover": "[data-hover]", ":focus-within": "[data-focus-within]" },
   children: [
-    // The language strip above the bar. The reference puts a scrolling tab list here; we chose
-    // acme-switch instead, a bordered segmented control (notes/decisions/compose-the-language-switcher.md).
-    // The switch is NOT mapped to their tabs node: their strip rules are written for underlined tabs and
-    // clip the switch's ring, because a box-shadow paints outside the border box and the strip scrolls.
-    // acme-switch carries its own generated styles from its own map.
+    // Segmented Control supplies its own compiled styles inside the language strip.
     { ours: ".strip", pick: has("overflow-x-auto") },
     {
       ours: ".bar",

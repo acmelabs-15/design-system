@@ -61,3 +61,9 @@ For selection members, resolve size as explicit member input, then the nearest g
 Under Peter's execution delegation, keep acme-selection-indicator under src/internal with @internal and a generated private definition. Public owning families register it transitively. Consumer exports, manifest/API pages and standalone CDN entries expose public families only. This implements S-07's approved internal boundary.
 
 Map the selected Standard/Expressive roles through Lit Motion's public SpringController using unit mass and physical damping derived from the source damping ratio. Standard/default spatial serves the recurring selection indicator; no global scheme is chosen. The theme catalog exposes all 24 numeric role parameters. [Source and implementation evidence](../alignment/evidence/m10-selection-indicator-2026-09-21.json) records provenance, tested behavior and remaining integration gates.
+
+## Segmented and binary selection details — 2026-09-21
+
+Under the delegated implementation authority, Segmented Control composes one shared scalar selection owner, native radio items, Group presentation and the internal indicator. Root size is the default for its parts; items do not inherit unrelated standalone Radio properties. The outlined treatment uses four-pixel padding, a one-pixel frame and 24/28/32px item hit heights (34/38/42px overall). The selected gray fill gains a gray-800 inner outline to meet 3:1 state-boundary contrast while retaining the requested light fill.
+
+Binary Switch retains its source track geometry and adopts the approved canonical checked/form contract. Its Standard/fast thumb spring is independent from optional ripple. Replacements remove old Toggle and segmented Switch Control exports and migrate their actual callers. [Acceptance and discoveries](../alignment/evidence/m10-segmented-switch-2026-09-21.json).

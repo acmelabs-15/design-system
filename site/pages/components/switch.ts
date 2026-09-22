@@ -1,66 +1,34 @@
-// Docs page: Switch — mirrors https://vercel.com/geist/switch
 import type { Doc } from "../../site";
-
-const start = (inner: string) => `<div class="vstack" style="align-items:flex-start">${inner}</div>`;
-const pair = (name: string, extra = "", ctl = "") =>
-  `<acme-switch name="${name}"${extra}><acme-switch-control default-checked label="Source" value="source"${ctl}></acme-switch-control><acme-switch-control label="Output" value="output"${ctl}></acme-switch-control></acme-switch>`;
-// A bare sprite icon (no utility class): the control sizes it (16px, 20px in a large control).
-const icon = (name: string) => `<acme-${name}-icon slot="icon" size="16px"></acme-${name}-icon>`;
-const icons = (name: string, extra = "") =>
-  `<acme-switch name="${name}"${extra}><acme-switch-control default-checked label="Grid" value="source">${icon("grid-view")}</acme-switch-control><acme-switch-control label="List" value="output">${icon("view-list")}</acme-switch-control></acme-switch>`;
-const three = (a: string, b: string, c: string) => `<div class="row" style="align-items:flex-start;gap:24px">${a}${b}${c}</div>`;
-
 export const doc: Doc = {
   id: "switch",
   title: "Switch",
-  lede: "Choose between a set of options.",
-  tags: ["acme-switch", "acme-switch-control"],
+  tags: ["acme-switch"],
+  lede: "Turn one setting on or off.",
   examples: [
-    {
-      h: "Default",
-      p: "Give every control enough width so the group does not jump when the active option changes.",
-      html: start(pair("default")),
-    },
-    {
-      h: "Disabled",
-      html: start(pair("view-mode", "", " disabled")),
-    },
+    { h: "Default", html: '<acme-h-stack gap="4"><acme-switch>Notifications</acme-switch><acme-switch checked>Product updates</acme-switch></acme-h-stack>' },
     {
       h: "Sizes",
-      html: three(pair("sizes-small", ' size="small"'), pair("sizes-default"), pair("sizes-large", ' size="large"')),
+      html: '<acme-h-stack gap="4"><acme-switch size="small">Small</acme-switch><acme-switch size="medium">Medium</acme-switch><acme-switch size="large">Large</acme-switch></acme-h-stack>',
     },
+    { h: "Label position", html: '<acme-v-stack gap="2"><acme-switch label-position="start">Label first</acme-switch><acme-switch label-position="end">Control first</acme-switch></acme-v-stack>' },
+    { h: "Disabled", html: '<acme-h-stack gap="4"><acme-switch disabled>Unavailable</acme-switch><acme-switch disabled checked>Enabled elsewhere</acme-switch></acme-h-stack>' },
     {
-      h: "Full width",
-      p: "A control directly inside the group takes the group's size; its own size applies only when another element wraps it.",
-      html: pair("full-width", ' style="width:100%"', ' size="large"'),
+      h: "Native form",
+      html: '<form id="switch-form"><acme-switch name="updates" required value="yes">Product updates</acme-switch><acme-h-stack gap="2"><acme-button type="submit">Save setting</acme-button><acme-button type="reset" variant="secondary">Reset setting</acme-button></acme-h-stack><output></output></form>',
+      script:
+        'const form=document.querySelector("#switch-form");form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=new FormData(form).get("updates")??"Off";});form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
     },
-    {
-      h: "Tooltip",
-      html: start(
-        `<acme-switch name="view-mode"><acme-tooltip desktop-only text="View Source"><acme-switch-control default-checked label="Source" name="tooltip" size="large" value="source"></acme-switch-control></acme-tooltip><acme-tooltip desktop-only text="View Output"><acme-switch-control label="Output" name="tooltip" size="large" value="output"></acme-switch-control></acme-tooltip></acme-switch>`,
-      ),
-    },
-    {
-      h: "Icon",
-      html: three(icons("icons-small", ' size="small"'), icons("icons-default"), icons("icons-large", ' size="large"')),
-    },
-    {
-      h: "Hide border",
-      census: true,
-      html: start(pair("hide-border", " hide-border")),
-    },
+    { h: "Optional ripple", html: "<acme-switch ripple>Enable animation previews</acme-switch>" },
   ],
   practices: {
-    "Best Practices": [
-      "A Switch is a segmented selector for two or three mutually exclusive views of the same surface, such as Source and Output.",
-      "A boolean on/off setting is a Toggle. A Switch has radio semantics, so its options exclude each other instead of reading as checkboxes.",
-      "Past three options, or when a label grows past a couple of words, move to Tabs or a Select.",
-      "Pass a <code>name</code> so the radios form one group; without it more than one option can look selected.",
-      "Set <code>default-checked</code> (or the group's <code>value</code>) on exactly one control so the group starts in a defined state.",
-      "Pad each control so the widest label fits without the active pill resizing on selection. Test with the longest label in the set.",
-      "Title Case each label. Keep labels to one or two words and parallel: Source / Output, not Source / Show output.",
-      "Give every control a <code>label</code>, even when an icon carries the meaning; the element reads it to screen readers and hides it visually for icon-only controls.",
-      "Pair an icon-only Switch with a Tooltip on each control so sighted users get the same label assistive tech receives.",
+    State: [
+      "checked is the current Boolean value. defaultChecked supplies the native reset value. The application owns persistence.",
+      "Programmatic assignments stay silent. User actions emit acme-change with checked after the native form state is synchronized.",
+      "An unchecked or disabled Switch contributes no form entry. Required uses native checkbox validation.",
+    ],
+    Access: [
+      "Supply visible label text or aria-label. Keep the same label in both states.",
+      "Space toggles the native control. The thumb respects live reduced-motion preferences; optional ripple does not own its movement.",
     ],
   },
 };

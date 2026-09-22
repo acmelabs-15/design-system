@@ -1,0 +1,5 @@
+:host{display:inline-block;vertical-align:middle;}
+.segmented{position:relative;display:inline-block;outline:none;isolation:isolate;}
+acme-group{--acme-group-outline-padding:4px;--acme-group-outline-radius:8px;--acme-group-outline-color:var(--ds-gray-300);position:relative;gap:0;}
+acme-selection-indicator{--acme-indicator-color:var(--ds-gray-200);--acme-indicator-radius:6px;--acme-indicator-shadow:inset 0 0 0 1px var(--ds-gray-800);z-index:-1;}
+@media(forced-colors:active){acme-group{--acme-group-outline-color:ButtonText;}acme-selection-indicator{--acme-indicator-color:Highlight;forced-color-adjust:none;}}

@@ -19,6 +19,7 @@ export const selectionIndicatorCss = css`:host {
   opacity: var(--acme-indicator-opacity, 1);
   pointer-events: none;
   will-change: transform;
+  box-shadow: var(--acme-indicator-shadow, none);
   position: absolute;
   top: 0;
   left: 0;

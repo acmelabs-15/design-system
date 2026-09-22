@@ -5,7 +5,7 @@
 //   ${this.form.field({ name: "email" }, (f) => html`<acme-input label="Email" ${bind(f)}></acme-input>`)}
 //
 // The directive sets `value` and `error` on the element and listens for `acme-input` /
-// `acme-change` and `blur`. Booleans (acme-checkbox, acme-toggle) bind `checked`.
+// `acme-change` and `blur`. Booleans (acme-checkbox, acme-switch) bind `checked`.
 import type { FieldApi } from "@tanstack/lit-form";
 import { noChange } from "lit";
 import { AsyncDirective, directive, type ElementPart, type PartInfo, PartType } from "lit/async-directive.js";

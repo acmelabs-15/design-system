@@ -38,14 +38,14 @@ export const doc: Doc = {
   </div>
   <aside class="vstack" style="gap:12px;align-items:flex-start">
     <form class="row" style="gap:4px"><acme-label value="Width"><span class="row" style="gap:8px"><acme-slider min="0" max="${MAX}" value="${MAX}" style="width:240px"></acme-slider><span class="text-copy-13" style="font-family:var(--acme-font-mono);color:var(--ds-gray-900)"><output>${MAX}px</output></span></span></acme-label></form>
-    <acme-toggle>Animate</acme-toggle>
+    <acme-switch>Animate</acme-switch>
   </aside>
 </div>`,
       script: `const MAX = ${MAX};
 const boxes = root.querySelectorAll('[data-width]');
 const slider = root.querySelector('acme-slider');
 const out = root.querySelector('output');
-const toggle = root.querySelector('acme-toggle');
+const toggle = root.querySelector('acme-switch');
 const set = (w) => { for (const b of boxes) b.style.maxWidth = w + 'px'; out.textContent = w + 'px'; slider.value = [w]; };
 slider.addEventListener('acme-change', (e) => set(e.detail.value[0]));
 let raf = 0, start = null;

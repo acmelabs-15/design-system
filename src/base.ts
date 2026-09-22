@@ -49,6 +49,7 @@ export class AcmeElement extends LitElement {
     return root;
   }
   connectedCallback() {
+    this.setAttribute("data-acme-element", "");
     this.registerStyles();
     super.connectedCallback();
     this.toggleAttribute("data-dark", this.themeContext.scope.effective.get().resolvedAppearance === "dark");

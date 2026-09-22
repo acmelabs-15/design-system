@@ -104,6 +104,7 @@ const validityKeys = ["badInput", "customError", "patternMismatch", "rangeOverfl
 
 /** Copies browser-calculated constraints without a second validation implementation. */
 export function nativeValidation(control: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): NativeFormValidation {
+  if (!control.willValidate) return { flags: {}, message: "" };
   const flags: ValidityStateFlags = {};
   for (const key of validityKeys) if (control.validity[key]) flags[key] = true;
   return { flags, message: control.validationMessage };

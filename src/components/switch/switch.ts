@@ -1,101 +1,69 @@
-import { switchStructureCss } from "../../generated/components/switch/switch-structure.styles";
 import { html } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import type { AcmeSwitchControl } from "../switch-control/switch-control";
-import { switchCss } from "../../generated/components/switch/switch.styles";
-
-export type SwitchSize = "small" | "medium" | "large";
-
-/**
- * Segmented selector for two or three mutually exclusive views, with radio semantics. Children:
- * acme-switch-control with `value` and `label`. The group owns the selection: it hands every
- * direct control its `name`, `size` and `checked-color` (a control wrapped in another element,
- * such as a tooltip, keeps its own size), keeps one control checked, moves the selection with
- * the arrow keys, and reports the value to its form. Sizes small 32 / medium 36 / large 40.
+import { AcmeSelectionControl } from "../../shared/selection-control";
+import { atomState } from "../../shared/atom-state";
+import { optionalString } from "../../shared/attributes";
+import { SpringValue } from "../../shared/spring-value";
+import { readMotionSpring } from "../../shared/motion-spring";
+import { motionCss } from "../../generated/shared/motion.styles";
+import { switchStructureCss } from "../../generated/components/switch/switch-structure.styles";
+/** A binary setting with native checkbox form behavior and switch semantics.
+ * @slot - The visible label.
+ * @csspart root - The label hit surface.
+ * @csspart control - The native checkbox.
+ * @csspart thumb - The moving thumb.
+ * @csspart label - The visible label.
+ * @fires {CustomEvent<{checked:boolean}>} acme-change - The user changed the setting.
  */
-
-export class AcmeSwitch extends AcmeElement {
-  static formAssociated = true;
-  static styles = [
-    sharedCss,
-    switchCss,
-    switchStructureCss,
-  ];
-  /** The checked control's value. */
-  @property() value = "";
-  /** Groups the radios; the form value is submitted under this name. */
-  @property() name = "";
-  @property() size: SwitchSize = "medium";
-  /** Drops the hairline ring around the group. */
-  @property({ type: Boolean, attribute: "hide-border" }) hideBorder = false;
-  /** Background of the checked control (default gray-100), handed to every control. */
-  @property({ attribute: "checked-color" }) checkedColor = "";
-  private internals?: ElementInternals;
-  private initial = "";
-  constructor() {
-    super();
-    try {
-      this.internals = this.attachInternals();
-    } catch {}
-    // On the host, so a control slotted through a wrapper (a tooltip) still reaches the group.
-    this.addEventListener("acme-switch-select", (e) => {
-      e.stopPropagation();
-      this.select((e as CustomEvent).detail as AcmeSwitchControl);
-    });
-    this.addEventListener("keydown", this.onKey);
+export class AcmeSwitch extends AcmeSelectionControl {
+  static styles = [...AcmeSelectionControl.styles, motionCss, switchStructureCss];
+  protected get selectionKind() {
+    return "switch" as const;
   }
-  private get controls() {
-    return Array.from(this.querySelectorAll("acme-switch-control")) as AcmeSwitchControl[];
+  protected get defaultSize() {
+    return "small" as const;
   }
-  private sync() {
-    const cs = this.controls;
-    if (!this.value) this.value = cs.find((c) => c.checked)?.value ?? "";
-    for (const c of cs) {
-      c.groupSize = this.size;
-      c.groupName = this.name;
-      c.groupCheckedColor = this.checkedColor;
-      c.checked = !!this.value && c.value === this.value;
-    }
-    this.internals?.setFormValue?.(this.value || null);
+  /** @default "small" */
+  @property({ noAccessor: true, converter: optionalString }) get size() {
+    return super.size;
   }
-  connectedCallback() {
-    super.connectedCallback();
-    this.initial = this.value;
+  set size(value: "small" | "medium" | "large" | undefined) {
+    super.size = value;
   }
-  formResetCallback() {
-    this.value = this.initial;
-    for (const c of this.controls) c.checked = c.defaultChecked;
-    if (!this.value) this.sync();
+  @atomState() private position: "start" | "end" = "start";
+  /** @default "start" */
+  @property({ noAccessor: true, attribute: "label-position", converter: optionalString }) get labelPosition() {
+    return this.position;
   }
-  firstUpdated() {
-    this.sync();
+  set labelPosition(value: "start" | "end" | undefined) {
+    const next = value ?? "start";
+    if (!["start", "end"].includes(next)) throw new TypeError("Invalid label position");
+    const old = this.position;
+    this.position = next;
+    this.requestUpdate("labelPosition", old);
   }
-  updated(ch: Map<string, unknown>) {
-    if (ch.has("value") || ch.has("size") || ch.has("name") || ch.has("checkedColor")) this.sync();
+  private readonly thumbMotion = new SpringValue(
+    this,
+    () => (this.checked ? 1 : 0),
+    () => readMotionSpring(this, "standard", "spatial", "fast"),
+  );
+  private declarations = this.ownerDocument.createElement("span").style;
+  protected emitUserChange() {
+    this.dispatchEvent(new CustomEvent<{ checked: boolean }>("acme-change", { detail: { checked: this.checked }, bubbles: true, composed: true }));
   }
-  private select(c?: AcmeSwitchControl) {
-    if (!c || c.disabled) return;
-    const changed = this.value !== c.value;
-    this.value = c.value;
-    this.sync();
-    c.focus();
-    if (changed) this.dispatchEvent(new CustomEvent("acme-change", { detail: { value: c.value }, bubbles: true, composed: true }));
+  protected updated() {
+    super.updated();
+    this.thumbMotion.update();
   }
-  private onKey = (e: KeyboardEvent) => {
-    const list = this.controls.filter((c) => !c.disabled);
-    if (!list.length) return;
-    const i = list.findIndex((c) => c.value === this.value);
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") this.select(list[(i + 1) % list.length]);
-    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") this.select(list[(i - 1 + list.length) % list.length]);
-    else return;
-    e.preventDefault();
-  };
+  adoptedCallback() {
+    super.adoptedCallback();
+    this.declarations = this.ownerDocument.createElement("span").style;
+  }
   render() {
-    return html`<div class=${this.cls("switch", { sm: this.size === "small", lg: this.size === "large", "no-border": this.hideBorder })} part="switch"><slot @slotchange=${this.sync}></slot></div>`;
+    this.declarations.setProperty("--switch-progress", String(this.thumbMotion.value));
+    return html`<label class="selection-label switch" part="root" data-size=${this.size} data-label-position=${this.labelPosition} ?data-checked=${this.checked} ?data-disabled=${this.effectiveDisabled} style=${this.declarations.cssText}><span class="switch-control">${this.input}<span class="track" aria-hidden="true"><span class="thumb" part="thumb"></span></span></span><span part="label" ?hidden=${!this.places.has("")}><slot></slot></span>${this.pressEffect.render()}</label>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-switch": AcmeSwitch;

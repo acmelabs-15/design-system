@@ -34,7 +34,7 @@ const v0Prompt = (code: string) =>
  * grid of lines, each with a line-number button that marks the line as referenced (amber);
  * `highlighted-lines-numbers` marks lines blue, `added-lines-numbers` green with a `+`,
  * `removed-lines-numbers` red with a `-`; `hide-line-numbers` hides the numbers. `switcher`
- * renders an acme-select, `tabs` an acme-switch above the bar (`switcher-value` is the current
+ * renders an acme-select, `tabs` an acme-segmented-control above the bar (`switcher-value` is the current
  * language; a change fires `acme-change`). `v0="ask"` adds an Open in v0 link in a foot,
  * `v0="build"` a split button. Copies fire `acme-copy`.
  */
@@ -97,7 +97,7 @@ export class AcmeCodeBlock extends AcmeElement {
     this.dispatchEvent(new CustomEvent("acme-reference", { detail: { line: this.referencedLine }, bubbles: true, composed: true }));
   }
 
-  /** The composed acme-select and acme-switch fire `acme-change` of their own, which would reach a
+  /** The composed acme-select and acme-segmented-control fire `acme-change` of their own, which would reach a
    *  listener on this element beside ours. Theirs stops here; ours carries the block's own value. */
   private switched(e: CustomEvent) {
     e.stopPropagation();
@@ -130,8 +130,8 @@ export class AcmeCodeBlock extends AcmeElement {
       ${
         tabs.length
           ? html`<div class="strip" style="scrollbar-width:none;-ms-overflow-style:none">
-              <acme-switch size="small" value=${this.value} aria-label="Language" @acme-change=${this.switched}
-                >${tabs.map((o) => html`<acme-switch-control value=${o.value} label=${o.label}></acme-switch-control>`)}</acme-switch
+              <acme-segmented-control size="small" value=${this.value || nothing} aria-label="Language" @acme-change=${this.switched}
+                >${tabs.map((o) => html`<acme-segmented-control-item value=${o.value}>${o.label}</acme-segmented-control-item>`)}</acme-segmented-control
               >
             </div>`
           : nothing

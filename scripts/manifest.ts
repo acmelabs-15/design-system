@@ -18,13 +18,15 @@ const CALLBACKS = new Set([
 ]);
 type EventFact = ManifestEvent & { "x-acme-options": Record<string, boolean | undefined> };
 type Facts = {
+  nestedAssignments: Set<string>;
+  directAssignments: Set<string>;
   slots: Set<string>;
   parts: Set<string>;
   queries: Set<string>;
   events: Map<string, EventFact>;
   dynamic: Set<string>;
   annotated: Set<string>;
-  members: Map<string, { type?: { text: string }; literalType?: { text: string }; return?: { type: { text: string } } }>;
+  members: Map<string, { default?: string; type?: { text: string }; literalType?: { text: string }; return?: { type: { text: string } } }>;
 };
 type Issue = { file: string; className: string; category: string };
 const key = (file: string, name: string) => file + "#" + name;
@@ -45,6 +47,8 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
     for (const declaration of source.statements) {
       if (!ts.isClassDeclaration(declaration) || !declaration.name) continue;
       const found: Facts = {
+        nestedAssignments: new Set(),
+        directAssignments: new Set(),
         slots: new Set(),
         parts: new Set(),
         queries: new Set(),
@@ -72,6 +76,7 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
               type.types.length <= 32 &&
               type.types.every((part) => !!(part.flags & (ts.TypeFlags.StringLiteral | ts.TypeFlags.NumberLiteral | ts.TypeFlags.BooleanLiteral | ts.TypeFlags.Undefined | ts.TypeFlags.Null)));
             found.members.set(name, {
+              ...(ts.isPropertyDeclaration(member) && member.initializer ? { default: member.initializer.getText(source) } : {}),
               type: { text: checker.typeToString(type, member, ts.TypeFormatFlags.NoTruncation) },
               ...(literal ? { literalType: { text: checker.typeToString(type, member, ts.TypeFormatFlags.NoTruncation | ts.TypeFormatFlags.InTypeAlias) } } : {}),
             });
@@ -81,6 +86,10 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
           found.queries.add(member.name.getText(source));
       }
       const visit = (node: ts.Node) => {
+        if (ts.isBinaryExpression(node) && node.operatorToken.kind === ts.SyntaxKind.EqualsToken && ts.isPropertyAccessExpression(node.left)) {
+          if (node.left.expression.kind === ts.SyntaxKind.ThisKeyword) found.directAssignments.add(node.left.name.text);
+          else if (ts.isPropertyAccessExpression(node.left.expression)) found.nestedAssignments.add(node.left.name.text);
+        }
         if (ts.isTaggedTemplateExpression(node) && ["html", "svg"].includes(node.tag.getText(source))) {
           let templates: string[];
           if (ts.isNoSubstitutionTemplateLiteral(node.template)) templates = [node.template.text];
@@ -239,8 +248,10 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
       for (const event of fact.events.values()) if (!element.events.some((item) => item.name === event.name)) element.events.push(event);
       declaration.members = declaration.members
         ?.filter((member) => !CALLBACKS.has(member.name))
+        .filter((member) => !fact.nestedAssignments.has(member.name) || fact.members.has(member.name) || fact.directAssignments.has(member.name))
         .map((member) => {
           const inferred = fact.members.get(member.name);
+          if (member.kind === "field" && fact.nestedAssignments.has(member.name) && !fact.directAssignments.has(member.name) && inferred?.default !== undefined) member.default = inferred.default;
           if (member.kind === "field" && !member.type && inferred?.type) member.type = inferred.type;
           if (member.kind === "field" && inferred?.literalType) member.type = inferred.literalType;
           if (member.kind === "method" && !member.return?.type && inferred?.return) member.return = { ...member.return, ...inferred.return };

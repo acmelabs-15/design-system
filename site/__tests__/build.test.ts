@@ -16,7 +16,7 @@ const fragments = fs.existsSync(PAGES) ? [...fs.readdirSync(PAGES).filter((f) =>
 for (const entry of documentationIconEntries(fragments.map((file) => fs.readFileSync(path.join(PAGES, file), "utf8")))) await import(path.resolve(import.meta.dir, "../../src", entry + ".ts"));
 
 // Elements whose own shadow root is legitimately empty, plus the docs-only token rows the app defines.
-const LIGHT = new Set(["acme-toaster", "acme-menu-divider", "acme-switch-control", "acme-tab-panel", "docs-tokens"]);
+const LIGHT = new Set(["acme-toaster", "acme-menu-divider", "acme-tab-panel", "docs-tokens"]);
 const settle = () => new Promise((r) => setTimeout(r, 20));
 
 describe("docs site", () => {

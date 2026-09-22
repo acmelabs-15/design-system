@@ -56,12 +56,15 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
   };
   protected readonly selection = new SelectionConnection(this, this.selectionMember);
   private readonly ownerAppearance = createAtom(() => ({ size: this.selection.owner?.state.get().size }));
+  protected get defaultSize(): "small" | "medium" | "large" {
+    return "medium";
+  }
   protected get appearanceVariants(): readonly ("default" | "secondary")[] | undefined {
     return undefined;
   }
   protected readonly appearance = createInheritedAppearance(
     {
-      size: { supported: ["small", "medium", "large"] as const, defaultValue: "medium" },
+      size: { supported: ["small", "medium", "large"] as const, defaultValue: this.defaultSize },
       variant: this.appearanceVariants ? { supported: this.appearanceVariants, defaultValue: "default" as const } : undefined,
     },
     this.ownerAppearance,

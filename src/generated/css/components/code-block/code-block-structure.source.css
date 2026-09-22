@@ -17,12 +17,7 @@
         display: block;
         height: 0;
       }
-      /* The strip carries the reference's scrolling tab-strip rule, which is right for their
-         underlined tabs. Our acme-switch is a bordered segmented control, and its ring is a
-         box-shadow, which paints outside the border box and so is clipped by that scrolling.
-         One pixel of padding on each side gives the ring its room. The margin is the reference's
-         own mb-3 (0.75rem) between its strip and the frame, which we lost when the switch stopped being
-         mapped to their tab list. */
+      /* Space between the language selector and the code frame. */
       .strip {
         padding: 1px;
         margin-bottom: 0.75rem;

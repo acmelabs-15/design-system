@@ -201,3 +201,7 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 ### M10 shared indicator checkpoint — 2026-09-21
 
 [Private delivery and spring indicator](evidence/m10-selection-indicator-2026-09-21.json) pass source and compiled acceptance in all three engines, build/site and all 906 tests. Private definitions register through public owners; the standard analyzer's internal-class omission is preserved and private modules are excluded from consumer metadata. Both Material motion schemes have numeric role tokens and a verified Lit Motion parameter mapping. Integrate Segmented Control, binary Switch, Tabs and Theme Switcher. This does not close M10.
+
+### M10 Segmented Control and Switch — 2026-09-21
+
+[Combined acceptance](evidence/m10-segmented-switch-2026-09-21.json) records Segmented Control/Item and binary Switch, migrated Code Block/forms/docs callers, native/compiled checks and the retained Radio/Checkbox/Group/action regressions. Final selected-outline build, source/compiled and light/dark contrast checks pass. Implement Tabs and Theme Switcher to close M10. The parent reset and barred-control validity fixes are shared mechanisms verified through real consumers. Preserve the inset indicator's selected-state contrast in Tabs.

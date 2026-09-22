@@ -1,6 +1,6 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-export const baseCss = css`:host, *, :before, :after {
+export const baseCss = css`:host, :where(:not([data-acme-element])), :where(:not([data-acme-element])):before, :where(:not([data-acme-element])):after {
   box-sizing: border-box;
   border: 0 solid;
   border-color: var(--color-gray-200, currentcolor);

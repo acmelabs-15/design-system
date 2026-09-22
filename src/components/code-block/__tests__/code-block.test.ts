@@ -85,16 +85,16 @@ describe("acme-code-block", () => {
     expect(sw.value).toBe("lua");
   });
 
-  test("tabs render a strip with an acme-switch above the bar; the reference form with options and value is read too", async () => {
+  test("tabs render a strip with an acme-segmented-control above the bar; the reference form with options and value is read too", async () => {
     const el = await mount(
       `<acme-code-block filename="a.js" language="js" tabs='{"options":[{"label":"JavaScript","value":"js"},{"label":"Lua","value":"lua"}],"value":"lua"}'>${src}</acme-code-block>`,
     );
     const strip = root(el).querySelector(":scope > .strip")!;
-    const group = strip.querySelector("acme-switch")!;
+    const group = strip.querySelector("acme-segmented-control")!;
     expect(group.getAttribute("value")).toBe("lua");
-    const controls = group.querySelectorAll("acme-switch-control");
+    const controls = group.querySelectorAll("acme-segmented-control-item");
     expect(controls.length).toBe(2);
-    expect(controls[0].getAttribute("label")).toBe("JavaScript");
+    expect(controls[0].textContent).toBe("JavaScript");
     expect(root(el).querySelector(".switcher")).toBeNull();
   });
 

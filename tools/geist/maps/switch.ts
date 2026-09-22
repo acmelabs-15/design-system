@@ -3,6 +3,7 @@
 import { type GeistMap, has, type SpecNode } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "switch",
   component: "Switch",
   // The rendered root carries no marker attribute: it is the padded, rounded, flex group.

@@ -226,3 +226,23 @@ test("internal definitions stay out of consumer metadata and API pages", async (
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
+
+test("assignments to owned native elements do not become host properties", async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-nested-assignment-"));
+  try {
+    fs.mkdirSync(path.join(root, "src"), { recursive: true });
+    fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
+    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    fs.writeFileSync(
+      path.join(root, "src/probe.ts"),
+      'import {LitElement} from "lit";export class Probe extends LitElement {private input=document.createElement("input");name="host";constructor(){super();this.input.className="native";this.input.name="child";} }customElements.define("acme-probe",Probe);',
+    );
+    const { manifest, issues } = await analyzeManifest(root);
+    expect(issues).toEqual([]);
+    const declaration = manifest.modules.flatMap((module) => module.declarations ?? []).find((declaration) => declaration.name === "Probe") as ClassDeclaration;
+    expect(declaration.members?.some((member) => member.name === "className")).toBe(false);
+    expect(declaration.members?.find((member) => member.name === "name")).toMatchObject({ default: '"host"' });
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});

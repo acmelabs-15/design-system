@@ -8,7 +8,7 @@ class TestForm extends LitElement {
   render() {
     return html`${this.form.field({ name: "name", validators: { onChange: ({ value }) => (value.length < 2 ? "Too short." : undefined) } }, (f) => html`<acme-input ${bindField(f)}></acme-input>`)}${this.form.field(
       { name: "agree" },
-      (f) => html`<acme-toggle ${bindField(f)}></acme-toggle>`,
+      (f) => html`<acme-switch ${bindField(f)}></acme-switch>`,
     )}`;
   }
 }
@@ -39,7 +39,7 @@ describe("bindField", () => {
     document.body.innerHTML = "<test-form></test-form>";
     const host = document.body.firstElementChild as TestForm;
     await host.updateComplete;
-    const toggle = host.shadowRoot!.querySelector("acme-toggle") as HTMLElement & { checked: boolean };
+    const toggle = host.shadowRoot!.querySelector("acme-switch") as HTMLElement & { checked: boolean };
     expect(toggle.checked).toBe(false);
     toggle.dispatchEvent(new CustomEvent("acme-change", { detail: { checked: true }, bubbles: true }));
     await tick();
