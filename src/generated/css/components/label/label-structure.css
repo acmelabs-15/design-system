@@ -1,3 +1,8 @@
 :host {
-  display: block;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+[part="root"] {
+  display: inline-block;
 }

@@ -3,7 +3,6 @@ import { html, nothing } from "lit";
 import { property, query, queryAll } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { Interaction } from "../../shared/interaction";
-import { labelCss } from "../../generated/components/label/label.styles";
 import { sliderCss } from "../../generated/components/slider/slider.styles";
 
 import { atomState } from "../../shared/atom-state";
@@ -89,12 +88,7 @@ const HIDDEN = "clip-path:inset(50%);overflow:hidden;white-space:nowrap;border:0
 
 export class AcmeSlider extends AcmeElement {
   static formAssociated = true;
-  static styles = [
-    sharedCss,
-    labelCss,
-    sliderCss,
-    sliderStructureCss,
-  ];
+  static styles = [sharedCss, sliderCss, sliderStructureCss];
   /** One value (`[50]` or `50`) or a range (`[50, 75]`). Defaults to `min`. */
   @property({ converter: values }) value: number[] = [];
   @property({ type: Number }) min = 0;

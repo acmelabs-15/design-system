@@ -1,0 +1,14 @@
+[data-acme-native-root="label"] {
+  font-family: var(--acme-font-sans);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: var(--acme-font-weight-500);
+  color: var(--ds-gray-900);
+  align-items: center;
+  gap: 4px;
+  display: inline-flex;
+}
+
+[data-acme-native-root="label"][hidden] {
+  display: none !important;
+}

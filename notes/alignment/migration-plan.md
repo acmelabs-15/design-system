@@ -196,7 +196,7 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 
 ### M10 Radio family slice — 2026-09-21
 
-[Radio acceptance](evidence/m10-radio-2026-09-21.json) closes Radio, Radio Group and Radio Card at their assigned boundary. Build/site and 900 tests pass. Source/compiled native checks, paired native-radio controls, forced colors, metadata, live forms/cards and the Checkbox Group/Card regression all pass. Choicebox is removed. Continue the shared internal indicator and Segmented Control before reusing acme-switch for binary Switch; then Tabs and Theme Switcher. Actual Toolbar integration remains M14 as stated above.
+[Radio acceptance](evidence/m10-radio-2026-09-21.json) closes Radio, Radio Group and Radio Card at their assigned boundary. Build/site and 900 tests pass. Source/compiled native checks, paired native-radio controls, forced colors, metadata, live forms/cards and the Checkbox Group/Card regression all pass. Choicebox is removed. Continue the shared internal indicator and Segmented Control before reusing acme-switch for binary Switch; then Tabs and Theme Switcher. Actual Toolbar integration remains M15 as stated above.
 
 ### M10 shared indicator checkpoint — 2026-09-21
 
@@ -225,3 +225,7 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 ### M11 Fieldset acceptance — 2026-09-22
 
 [Fieldset acceptance](evidence/m11-fieldset-2026-09-22.json) passes build/site, 898 tests, native and compiled checks in all engines, real React parent ownership and live form/first-legend actions. Continue Label/Field, then text controls and the optional managed-form adapter. The M22 native-root renderer contract remains mandatory. The current Disabled Wall gets its separate documentation page; its C-05 behavior rebuild belongs to the M14 surface batch. Toolbar belongs to M15, as the batch table specifies; earlier integration-return-point references have been corrected.
+
+### M11 Label acceptance — 2026-09-22
+
+[Label acceptance](evidence/m11-label-2026-09-22.json) completes the native label, exact/implicit association and actual-control focus bridge. Build/site, 897 tests, source/compiled three-engine checks and live activation examples pass. Slider owns its retained label stylesheet until M13; it no longer imports the removed Label styles. Continue Field, then the text controls and managed-form adapter.

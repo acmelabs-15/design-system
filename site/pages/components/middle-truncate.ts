@@ -37,7 +37,7 @@ export const doc: Doc = {
     ${rows.map(row).join("\n    ")}
   </div>
   <aside class="vstack" style="gap:12px;align-items:flex-start">
-    <form class="row" style="gap:4px"><acme-label value="Width"><span class="row" style="gap:8px"><acme-slider min="0" max="${MAX}" value="${MAX}" style="width:240px"></acme-slider><span class="text-copy-13" style="font-family:var(--acme-font-mono);color:var(--ds-gray-900)"><output>${MAX}px</output></span></span></acme-label></form>
+    <form class="row" style="gap:4px"><acme-label>Width <span class="row" style="gap:8px"><acme-slider min="0" max="${MAX}" value="${MAX}" style="width:240px"></acme-slider><span class="text-copy-13" style="font-family:var(--acme-font-mono);color:var(--ds-gray-900)"><output>${MAX}px</output></span></span></acme-label></form>
     <acme-switch>Animate</acme-switch>
   </aside>
 </div>`,
