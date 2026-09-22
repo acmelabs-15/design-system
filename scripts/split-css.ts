@@ -62,7 +62,6 @@ const MAP: [string, RegExp][] = [
   ["usage-sum", /^\.usage-sum/],
   ["classes", /^\.classes/],
   ["severity", /^(\.severity|\.issue)/],
-  ["choicebox", /^\.choicebox/],
   ["option", /^\.options?\b/],
   ["plan", /^(\.plan-head|\.icon-rows?|\.section-title)/],
   ["deploy", /^(\.deploy-|\.project-row|\.bar-list)/],

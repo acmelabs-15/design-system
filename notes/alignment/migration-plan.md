@@ -172,3 +172,28 @@ Checkbox now consumes NativeFormController and the shared semantic owner, which 
 ### M10 Checkbox Group/Card slice — 2026-09-21
 
 [Group/Card acceptance](evidence/m10-checkbox-group-card-2026-09-21.json) completes Checkbox ownership and card integration. Build/site and 907 tests pass. Each engine passes 40 source and compiled checks, plus five live documentation interactions. Conditional forwarded slots, owner removal, independent stateful actions, native input observer timing, current/default semantics, actual joined surfaces and name/description separation have explicit regressions. Continue Radio/Radio Group/Radio Card, then remove coupled Choicebox consumers. The registered-member mechanism and shared appearance fallback are reusable; no Radio, Switch, Tabs or indicator completion is implied.
+
+### Radio / Toolbar integration return point — 2026-09-21
+
+M10 introduces explicit keyboard-collection and Toolbar-delegation helpers. A radio collection inside a Toolbar yields arrow ownership and does not change selection. M14 must register its actual Toolbar root, expand registered collection targets, own the sole tab-entry model and consume delegated arrows even when native radio defaults were prevented. The bare-Toolbar protocol fixture is a prerequisite, not completion of the actual Toolbar integration. Include independent actions, editing controls, RTL/vertical direction, edges and nested collections in that M14 gate.
+
+The M10 internal selection indicator needs explicit private definition delivery. Keep it available to its owning families without advertising it as another public selection component or an undocumented consumer tag. Verify the generator/manifest boundary when that internal element is added; the current delivery pipeline has only public component records.
+
+### Exact-parity census scope for rebuilt controls — 2026-09-21
+
+Under the approved systematization goal, these rebuilt interfaces leave the old one-to-one page sweep. Historical census files and diff rules remain historical evidence; no old-template mismatch is reclassified as a passing comparison. The listed acceptance records replace that page-shape oracle. M26 still owns the complete integrated appearance review.
+
+| Elements | Named differences and retained baseline | Current verification |
+| --- | --- | --- |
+| Button, Icon Button, Toggle Button, Copy Button | House blue state roles; current parts/slots; native action ownership; separate toggle semantics; private clipboard feedback. Source action tier geometry remains. | M09 action geometry, contrast, native forms, source/compiled fixtures and live docs |
+| Avatar, Avatar Group, Badge, Pill, Tag | Explicit image sources and immutable members; current size/slot names; accurate overflow; house label roles. Avatar and Badge/Pill tier geometry and Badge palettes remain source baselines. | M09 identity image/lifetime/count/geometry fixtures and generated metadata |
+| Spinner, Icon Tile | Current sizes/parts; Lit Motion lifetime; named/decorative status ownership. Source blade geometry remains. | M09 Spinner/Tile and complete icon delivery records |
+| Checkbox, Checkbox Group/Card | House blue mark and measured gray-700 control boundary; one current/reset owner; native naming and a 24px label hit surface in this family; separate card actions. Card structure/spacing references Chakra with house tokens. | M10 Checkbox and Group/Card native/compiled/forced-colors checks |
+| Radio, Radio Group/Card | House blue state roles; native form/tree name scopes; one scalar owner; APG/RTL navigation; separate card actions. The 16px/8px medium mark baseline remains. | M10 Radio and paired native-platform fixtures |
+| Choicebox, Choicebox Item | Removed outright. | Retired tags/exports/styles absent; replacement collection/card tests |
+
+These are explicit per-element sweep dispositions, not exemptions from the approved behavior, accessibility, geometry or final visual gates. The 24px hit surface is a control-family implementation choice; it does not impose a new library-wide normal-density policy.
+
+### M10 Radio family slice — 2026-09-21
+
+[Radio acceptance](evidence/m10-radio-2026-09-21.json) closes Radio, Radio Group and Radio Card at their assigned boundary. Build/site and 900 tests pass. Source/compiled native checks, paired native-radio controls, forced colors, metadata, live forms/cards and the Checkbox Group/Card regression all pass. Choicebox is removed. Continue the shared internal indicator and Segmented Control before reusing acme-switch for binary Switch; then Tabs and Theme Switcher. Actual Toolbar integration remains M14 as stated above.

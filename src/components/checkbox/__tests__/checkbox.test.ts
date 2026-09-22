@@ -8,7 +8,7 @@ const mount = async (markup: string) => {
   await el.updateComplete;
   return el;
 };
-const root = (el: AcmeCheckbox) => el.shadowRoot!.querySelector(".checkbox") as HTMLElement;
+const root = (el: AcmeCheckbox) => el.shadowRoot!.querySelector("[part=root]") as HTMLElement;
 
 describe("acme-checkbox", () => {
   test("renders one native checkbox with named indicator, label and description parts", async () => {

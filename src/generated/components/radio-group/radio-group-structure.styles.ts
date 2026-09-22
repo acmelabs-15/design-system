@@ -3,4 +3,16 @@ import { css } from "lit";
 export const radioGroupStructureCss = css`:host {
   display: block;
 }
+
+.radio-group {
+  gap: var(--acme-layout-gap-2, .5rem);
+  outline: none;
+  flex-direction: column;
+  min-inline-size: 0;
+  display: flex;
+}
+
+.radio-group[data-orientation="horizontal"] {
+  flex-flow: wrap;
+}
 `;

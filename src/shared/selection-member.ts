@@ -12,10 +12,11 @@ export interface SelectionOwner {
 }
 export interface SelectionMember {
   host: ReactiveElement;
-  kind: "checkbox" | "radio";
+  kind: "checkbox" | "radio" | "switch";
   owner(): SelectionOwner | undefined;
   value(): string;
   disabled(): boolean;
+  required(): boolean;
   target(): HTMLInputElement;
   validation(): Readonly<{ flags: ValidityStateFlags; message: string }>;
   synchronize(): void;

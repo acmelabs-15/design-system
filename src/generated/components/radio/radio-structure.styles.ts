@@ -1,6 +1,70 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
-export const radioStructureCss = css`:host {
-  display: inline-flex;
+export const radioStructureCss = css`.indicator {
+  border-radius: 50%;
+}
+
+.indicator:before {
+  content: "";
+  background: none;
+  border-radius: 50%;
+  block-size: 8px;
+  inline-size: 8px;
+}
+
+.selection-label[data-checked] .indicator {
+  border-color: var(--accent);
+}
+
+.selection-label[data-checked] .indicator:before {
+  background: var(--accent);
+}
+
+.selection-label[data-checked][data-hover] .indicator:before {
+  background: var(--accent-hover);
+}
+
+.selection-label[data-checked][data-active] .indicator:before {
+  background: var(--accent-active);
+}
+
+.selection-label[data-disabled][data-checked] .indicator {
+  border-color: var(--border);
+}
+
+.selection-label[data-disabled][data-checked] .indicator:before {
+  background: var(--ds-gray-700);
+}
+
+@media (forced-colors: active) {
+  .selection-label[data-checked] .indicator {
+    background: canvas;
+    border-color: highlight;
+  }
+
+  .selection-label[data-checked] .indicator:before {
+    background: highlight;
+  }
+}
+
+.selection-label[data-size="small"] .indicator:before {
+  block-size: 6px;
+  inline-size: 6px;
+}
+
+.selection-label[data-size="large"] .indicator:before {
+  block-size: 10px;
+  inline-size: 10px;
+}
+
+@media (forced-colors: active) {
+  .selection-label[data-disabled] .indicator, .selection-label[data-disabled][data-checked] .indicator {
+    background: canvas;
+    border-color: graytext;
+  }
+
+  .selection-label[data-disabled][data-checked] .indicator:before {
+    background: graytext;
+  }
 }
 `;

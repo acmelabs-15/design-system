@@ -1,56 +1,59 @@
-import { describe, expect, test } from "bun:test";
+import { afterEach, expect, test } from "bun:test";
 import "../../../all";
-
-const mount = async (markup: string) => {
-  document.body.innerHTML = markup;
-  const g = document.body.querySelector("acme-radio-group") as any;
-  await g.updateComplete;
-  for (const r of g.radios) await r.updateComplete;
-  await g.updateComplete;
-  for (const r of g.radios) await r.updateComplete;
-  return g;
-};
-const two = `<acme-radio value="one">Option 1</acme-radio><acme-radio value="two">Option 2</acme-radio>`;
-
-describe("acme-radio-group", () => {
-  test("renders the hidden group label, shares a name and checks the radio matching value", async () => {
-    const g = await mount(`<acme-radio-group label="Default Radio Example" value="one">${two}</acme-radio-group>`);
-    expect(g.shadowRoot.querySelector(".radio-group[role=radiogroup] .sr").textContent).toBe("Default Radio Example");
-    expect(g.shadowRoot.querySelector(".radio-group").getAttribute("aria-labelledby")).toBe(g.shadowRoot.querySelector(".sr").id);
-    const [a, b] = g.radios;
-    expect(a.name).toBe(g.name);
-    expect(b.name).toBe(g.name);
-    expect(a.checked).toBe(true);
-    expect(b.checked).toBe(false);
-    expect(a.skipTab).toBe(false);
-    expect(b.skipTab).toBe(true);
-  });
-  test("a radio change updates the value and dispatches acme-change from the group", async () => {
-    const g = await mount(`<acme-radio-group value="one">${two}</acme-radio-group>`);
-    const seen: string[] = [];
-    g.addEventListener("acme-change", (e: any) => seen.push(`${e.target.localName}:${e.detail.value}`));
-    g.radios[1].select();
-    await g.updateComplete;
-    expect(g.value).toBe("two");
-    expect(seen).toEqual(["acme-radio-group:two"]);
-  });
-  test("arrow keys move the selection and skip disabled radios", async () => {
-    const g = await mount(`<acme-radio-group value="one">${two}<acme-radio value="three" disabled>Option 3</acme-radio></acme-radio-group>`);
-    const [a, b] = g.radios;
-    a.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }));
-    await g.updateComplete;
-    expect(g.value).toBe("two");
-    b.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }));
-    await g.updateComplete;
-    expect(g.value).toBe("one");
-  });
-  test("disabled and required reach every radio; aria-label names a group with no label", async () => {
-    const g = await mount(`<acme-radio-group disabled required aria-label="Options">${two}</acme-radio-group>`);
-    expect(g.shadowRoot.querySelector(".sr")).toBeNull();
-    expect(g.shadowRoot.querySelector(".radio-group").getAttribute("aria-label")).toBe("Options");
-    for (const r of g.radios) {
-      expect(r.groupDisabled).toBe(true);
-      expect(r.required).toBe(true);
-    }
-  });
+afterEach(() => document.body.replaceChildren());
+async function mount() {
+  const group = document.createElement("acme-radio-group"),
+    a = document.createElement("acme-radio"),
+    b = document.createElement("acme-radio");
+  a.value = "a";
+  b.value = "b";
+  a.textContent = "Alpha";
+  b.textContent = "Beta";
+  group.ariaLabel = "Plan";
+  group.append(a, b);
+  document.body.append(group);
+  await group.updateComplete;
+  await a.updateComplete;
+  await b.updateComplete;
+  return { group, a, b };
+}
+test("an explicit radio owner begins empty and emits one scalar change", async () => {
+  const { group, a, b } = await mount();
+  expect(group.value).toBeUndefined();
+  expect(!a.checked && !b.checked).toBe(true);
+  const events: unknown[] = [];
+  group.addEventListener("acme-change", (event) => events.push((event as CustomEvent).detail));
+  b.click();
+  expect(group.value).toBe("b");
+  expect(events).toEqual([{ value: "b" }]);
+  a.checked = true;
+  expect(group.value).toBe("a");
+  expect(events).toHaveLength(1);
+  expect(group.shadowRoot!.querySelector("[part=root]")!.getAttribute("aria-label")).toBe("Plan");
+});
+test("default values, native reset and attribute removal follow the scalar contract", async () => {
+  const { group, a, b } = await mount();
+  group.defaultValue = "a";
+  expect(a.checked).toBe(true);
+  group.value = "b";
+  group.formResetCallback();
+  expect(a.checked && !b.checked).toBe(true);
+  group.removeAttribute("value");
+  expect(group.value).toBeUndefined();
+  expect(() => {
+    group.value = "";
+  }).toThrow();
+  expect("label" in group).toBe(false);
+});
+test("orientation and false-string loop options preserve their defaults", async () => {
+  const { group } = await mount();
+  expect(group.orientation).toBe("vertical");
+  expect(group.loop).toBe(true);
+  group.setAttribute("loop", "false");
+  expect(group.loop).toBe(false);
+  group.removeAttribute("loop");
+  expect(group.loop).toBe(true);
+  group.orientation = "horizontal";
+  await group.updateComplete;
+  expect(group.shadowRoot!.querySelector("[part=root]")!.getAttribute("aria-orientation")).toBe("horizontal");
 });

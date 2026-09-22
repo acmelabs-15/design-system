@@ -1,11 +1,11 @@
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeCheckbox } from "../checkbox/checkbox";
+import { AcmeRadio } from "../radio/radio";
 import { Places } from "../../shared/places";
 import { optionalString } from "../../shared/attributes";
 import { GroupMemberController, groupMemberStyles } from "../../shared/group-member";
 import { selectionCardCss } from "../../generated/shared/selection-card.styles";
-/** Rich checkbox content with a separate region for independent actions.
+/** Rich radio content with a separate region for independent actions.
  * @slot - Selectable card content.
  * @slot heading - The primary label.
  * @slot description - Supporting text.
@@ -14,8 +14,8 @@ import { selectionCardCss } from "../../generated/shared/selection-card.styles";
  * @slot actions - Independent controls outside the selection label.
  * @csspart content - The selectable content column.
  */
-export class AcmeCheckboxCard extends AcmeCheckbox {
-  static styles = [...AcmeCheckbox.styles, selectionCardCss, groupMemberStyles];
+export class AcmeRadioCard extends AcmeRadio {
+  static styles = [...AcmeRadio.styles, selectionCardCss, groupMemberStyles];
   protected get appearanceVariants() {
     return ["default", "secondary"] as const;
   }
@@ -23,14 +23,14 @@ export class AcmeCheckboxCard extends AcmeCheckbox {
   private readonly groupMember = new GroupMemberController(this, {
     surface: () => this.renderRoot?.querySelector<HTMLElement>("[part=root]") ?? undefined,
     appearance: this.appearance,
-    emphasized: () => this.checked || this.indeterminate || this.effectiveInvalid,
+    emphasized: () => this.checked || this.effectiveInvalid,
   });
   /** @default "default" */
   @property({ noAccessor: true, converter: optionalString }) get variant(): "default" | "secondary" {
     return this.appearance.effective.get().variant!;
   }
   set variant(value: "default" | "secondary" | undefined) {
-    if (value !== undefined && value !== "default" && value !== "secondary") throw new TypeError("Invalid Checkbox Card variant");
+    if (value !== undefined && value !== "default" && value !== "secondary") throw new TypeError("Invalid Radio Card variant");
     const previous = this.variant;
     this.appearance.setAuthored({ variant: value });
     this.requestUpdate("variant", previous);
@@ -52,8 +52,8 @@ export class AcmeCheckboxCard extends AcmeCheckbox {
     return html`${this.input}<span class="indicator" part="indicator" aria-hidden="true">${this.renderIndicator()}</span>`;
   }
   render() {
-    return html`<div class="card" part="root" data-size=${this.size} data-variant=${this.variant} ?data-checked=${this.checked} ?data-indeterminate=${this.indeterminate} ?data-disabled=${this.effectiveDisabled} ?data-invalid=${this.effectiveInvalid}>
-  <label class="selection-label activation" data-size=${this.size} ?data-checked=${this.checked} ?data-indeterminate=${this.indeterminate} ?data-disabled=${this.effectiveDisabled}>
+    return html`<div class="card" part="root" data-size=${this.size} data-variant=${this.variant} ?data-checked=${this.checked} ?data-disabled=${this.effectiveDisabled} ?data-invalid=${this.effectiveInvalid}>
+  <label class="selection-label activation" data-size=${this.size} ?data-checked=${this.checked} ?data-disabled=${this.effectiveDisabled}>
    <span class="affix" ?hidden=${!this.content.has("start")}><slot name="start"></slot></span>
    <span class="content" part="content"><span class="heading" part="label" ?hidden=${!this.content.has("heading")}><slot name="heading"></slot></span><span class="body" part=${this.content.has("heading") ? nothing : "label"} ?hidden=${!this.content.has("")}><slot></slot></span><span part="description" ?hidden=${!this.content.has("description")}><slot name="description"></slot></span></span>
    <span class="affix" ?hidden=${!this.content.has("end")}><slot name="end"></slot></span>${this.renderControl()}${this.pressEffect.render()}
@@ -63,6 +63,6 @@ export class AcmeCheckboxCard extends AcmeCheckbox {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    "acme-checkbox-card": AcmeCheckboxCard;
+    "acme-radio-card": AcmeRadioCard;
   }
 }

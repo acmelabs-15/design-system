@@ -1,4 +1,4 @@
-import { AcmeSemanticElement } from "./semantic-element";
+import { AcmeSemanticElement, type SemanticDefaults } from "./semantic-element";
 import type { PropertyDeclarations } from "lit";
 import type { NativeFormController, NativeFormValidation } from "./native-form";
 
@@ -19,7 +19,7 @@ export abstract class AcmeFormElement<Value, Extra = undefined> extends AcmeSema
   protected get semanticTarget(): HTMLElement | undefined {
     return this.nativeForm?.target;
   }
-  protected get semanticDefaults() {
+  protected get semanticDefaults(): SemanticDefaults {
     return { labelledByElements: Array.from(this.nativeForm?.labels ?? []).filter((label) => (label as HTMLLabelElement).control === this) as Element[] };
   }
 
