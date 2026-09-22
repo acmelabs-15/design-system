@@ -1,0 +1,87 @@
+{
+  "date": "2026-09-22",
+  "status": "source preparation, implementation pending",
+  "sources": [
+    {
+      "package": "@zag-js/number-input",
+      "version": "1.44.0",
+      "file": "number-input.machine.mjs",
+      "lines": 444,
+      "sha256": "b3ed9d291a74a4696681c0b08b05780f3fef88c55bf66b1b30c0bdcb6533e794",
+      "read": "complete"
+    },
+    {
+      "package": "@zag-js/number-input",
+      "version": "1.44.0",
+      "file": "number-input.connect.mjs",
+      "lines": 289,
+      "sha256": "8d1e8f492e7fc2d9c5b949c82935d6eae32c15b5439163550391ab18b67c08b1",
+      "read": "complete"
+    },
+    {
+      "package": "@zag-js/number-input",
+      "version": "1.44.0",
+      "file": "number-input.utils.mjs",
+      "lines": 34,
+      "sha256": "2275af77602bb7189bf3849186ccb6ededf8f4484cfd81c2389945e545a63b2d",
+      "read": "complete"
+    },
+    {
+      "package": "@zag-js/pin-input",
+      "version": "1.44.0",
+      "file": "pin-input.machine.mjs",
+      "lines": 310,
+      "sha256": "7a711d2d7b6027bb3ad3db05c28c49aec8ddd0f2286a849a70af98482d1bda00",
+      "read": "complete"
+    },
+    {
+      "package": "@zag-js/pin-input",
+      "version": "1.44.0",
+      "file": "pin-input.connect.mjs",
+      "lines": 238,
+      "sha256": "60658e411ae294bbde39f2d3a0c5c8d46ee1c8343d704ab39f62172466dc7f98",
+      "read": "complete"
+    },
+    {
+      "package": "@zag-js/pin-input",
+      "version": "1.44.0",
+      "file": "pin-input.utils.mjs",
+      "lines": 19,
+      "sha256": "6152710de2d2d5ce2ef8b81c80e659af85d9de809af60530618a857d4974f515",
+      "read": "complete"
+    }
+  ],
+  "additionalCompleteReads": [
+    "@zag-js/number-input/dist/cursor.mjs",
+    "@zag-js/number-input/dist/number-input.translations.mjs",
+    "@zag-js/utils/dist/number.mjs"
+  ],
+  "upstreamDecimalProbe": [
+    {
+      "value": 0.1,
+      "step": 0.2,
+      "timedOut": false,
+      "exitCode": 0,
+      "output": "0.3\n"
+    },
+    {
+      "value": 0,
+      "step": 5e-324,
+      "timedOut": true,
+      "exitCode": 143,
+      "output": ""
+    }
+  ],
+  "reproduction": "/tmp/acme-m12-number/upstream-decimal.ts",
+  "decisions": [
+    "No Zag runtime or interpreter",
+    "Use the selected independent Adobe number parser",
+    "Use bounded decimal arithmetic and test exponent steps",
+    "Keep partial input, range errors and empty values distinct",
+    "Preserve Pin Input no-hole deletion and whole-code versus partial paste semantics"
+  ],
+  "limits": [
+    "No Number/Pin implementation or runtime acceptance yet",
+    "Source test files require renewed port-specific review before acceptance"
+  ]
+}
