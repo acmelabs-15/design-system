@@ -23,6 +23,8 @@ export * from "./components/calendar/calendar";
 export * from "./components/card/card";
 export * from "./components/chart/chart";
 export * from "./components/checkbox/checkbox";
+export * from "./components/checkbox-group/checkbox-group";
+export * from "./components/checkbox-card/checkbox-card";
 export * from "./components/choicebox/choicebox";
 export * from "./components/choicebox-item/choicebox-item";
 export * from "./components/clearable-input/clearable-input";

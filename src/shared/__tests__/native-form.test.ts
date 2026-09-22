@@ -135,3 +135,26 @@ test("a constraint callback cannot leave native submission behind the canonical 
   expect(f.submitted).toBe("normalized");
   f.form.hostDisconnected();
 });
+
+test("an owned part suppresses native participation without discarding its standalone state", () => {
+  let owned = true;
+  const f = fixture({ participates: () => !owned });
+  expect(f.submitted).toBeNull();
+  f.form.setValue("retained");
+  f.form.setCustomValidity("Member error");
+  expect(f.flags).toEqual({});
+  owned = false;
+  f.form.sync();
+  expect(f.submitted).toBe("retained");
+  expect(f.flags).toEqual({ customError: true });
+  f.form.hostDisconnected();
+});
+test("owner synchronization runs after the local native projection inside the same write", () => {
+  const observed: unknown[] = [];
+  let current: ReturnType<typeof fixture> | undefined;
+  const f = fixture({ changed: () => observed.push(current?.submitted) });
+  current = f;
+  f.form.setValue("now");
+  expect(observed).toEqual(["now"]);
+  f.form.hostDisconnected();
+});

@@ -1,3 +1,8 @@
+import { createAtom } from "@tanstack/lit-store";
+import { SelectionConnection, type SelectionOwner, type SelectionMember } from "../../shared/selection-member";
+import { createInheritedAppearance } from "../../shared/inherited-appearance";
+import { StoreSelector } from "../../shared/store-connection";
+import { optionalString } from "../../shared/attributes";
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { sharedCss } from "../../base";
@@ -8,6 +13,7 @@ import { Interaction } from "../../shared/interaction";
 import { Places } from "../../shared/places";
 import { Ripple } from "../../shared/ripple";
 import { checkboxStructureCss } from "../../generated/components/checkbox/checkbox-structure.styles";
+type CheckContext = { value: string; indeterminate: boolean; owner?: SelectionOwner; checked?: boolean; disabled: boolean };
 /** A native checkbox with one canonical checked state and an independent reset target.
  * @slot - The visible label.
  * @slot description - Supporting text.
@@ -18,12 +24,48 @@ import { checkboxStructureCss } from "../../generated/components/checkbox/checkb
  * @csspart description - Supporting text.
  * @fires {CustomEvent<{checked:boolean;indeterminate:false}>} acme-change - A user changes the checked state.
  */
-export class AcmeCheckbox extends AcmeFormElement<boolean, { value: string; indeterminate: boolean }> {
+export class AcmeCheckbox extends AcmeFormElement<boolean, CheckContext> {
   static styles = [sharedCss, checkboxStructureCss];
   static shadowRootOptions = { ...AcmeFormElement.shadowRootOptions, delegatesFocus: true };
   @atomState() private submissionValue = "on";
   @atomState() private mixed = false;
-  @atomState() @property({ noAccessor: true, useDefault: true }) size: "small" | "medium" | "large" = "medium";
+  protected readonly selectionMember: SelectionMember = {
+    host: this,
+    kind: "checkbox",
+    owner: () => this.selection.owner,
+    value: () => this.value,
+    disabled: () => this.nativeForm.effectiveDisabled,
+    target: () => this.input,
+    validation: () => {
+      const error = this.nativeForm.state.get().customValidity;
+      return error ? { flags: { customError: true }, message: error } : nativeValidation(this.input);
+    },
+    synchronize: () => this.nativeForm.sync(),
+    connect: (owner) => this.connectSelection(owner),
+  };
+  protected readonly selection = new SelectionConnection(this, this.selectionMember);
+  private readonly ownerAppearance = createAtom(() => ({ size: this.selection.owner?.state.get().size }));
+  protected get appearanceVariants(): readonly ("default" | "secondary")[] | undefined {
+    return undefined;
+  }
+  protected readonly appearance = createInheritedAppearance(
+    {
+      size: { supported: ["small", "medium", "large"] as const, defaultValue: "medium" },
+      variant: this.appearanceVariants ? { supported: this.appearanceVariants, defaultValue: "default" as const } : undefined,
+    },
+    this.ownerAppearance,
+  );
+  private readonly appearanceUpdates = new StoreSelector(this, () => this.appearance.effective);
+  /** @default "medium" */
+  @property({ noAccessor: true, converter: optionalString }) get size(): "small" | "medium" | "large" {
+    return this.appearance.effective.get().size!;
+  }
+  set size(value: "small" | "medium" | "large" | undefined) {
+    if (value !== undefined && !["small", "medium", "large"].includes(value)) throw new TypeError("Invalid Checkbox size");
+    const previous = this.size;
+    this.appearance.setAuthored({ size: value });
+    this.requestUpdate("size", previous);
+  }
   @atomState() @property({ noAccessor: true, type: Boolean }) invalid = false;
   @atomState() private rippleEnabled = false;
   /** @default false */
@@ -37,49 +79,72 @@ export class AcmeCheckbox extends AcmeFormElement<boolean, { value: string; inde
     this.requestUpdate("ripple", previous);
   }
   protected readonly input = this.ownerDocument.createElement("input");
-  protected readonly nativeForm = new NativeFormController<boolean, { value: string; indeterminate: boolean }>(this, {
+  protected readonly nativeForm = new NativeFormController<boolean, CheckContext>(this, {
     initialValue: false,
     normalize: Boolean,
     valueAttribute: "checked",
     valueProperty: "checked",
     fromAttribute: (value) => value !== null,
     toAttribute: (value) => (value ? "" : null),
-    extra: () => ({ value: this.submissionValue, indeterminate: this.mixed }),
+    extra: () => {
+      const owner = this.selection.owner;
+      return { value: this.submissionValue, indeterminate: this.mixed, owner, checked: owner?.checked(this.selectionMember), disabled: owner?.state.get().disabled ?? false };
+    },
+    participates: (_state, extra) => !extra.owner,
+    changed: () => this.selection?.owner?.synchronize(),
     serialize: (state, extra) => (state.value ? extra.value : null),
     restoration: (state) => (state.value ? "checked" : "unchecked"),
     restore: (value) => value === "checked",
     target: () => (this.input.isConnected ? this.input : undefined),
     synchronize: (state, extra) => {
       this.input.type = "checkbox";
-      this.input.checked = state.value;
+      this.input.checked = extra.checked ?? state.value;
       this.input.defaultChecked = state.defaultValue;
       this.input.indeterminate = extra.indeterminate;
       this.input.value = extra.value;
       this.input.required = state.required;
-      this.input.disabled = state.disabled || state.platformDisabled;
+      this.input.disabled = state.disabled || state.platformDisabled || extra.disabled;
     },
     validate: () => nativeValidation(this.input),
   });
+  private readonly displayState = createAtom(() => ({ checked: this.checked, disabled: this.effectiveDisabled, invalid: this.effectiveInvalid }), {
+    compare: (a, b) => a.checked === b.checked && a.disabled === b.disabled && a.invalid === b.invalid,
+  });
+  private readonly displayUpdates = new StoreSelector(this, () => this.displayState);
   private readonly places = new Places(this, { places: ["", "description"] });
-  private readonly pressEffect = new Ripple(
+  protected readonly pressEffect = new Ripple(
     this,
     () => this.surface,
-    () => this.ripple && !this.nativeForm.effectiveDisabled,
+    () => this.ripple && !this.effectiveDisabled,
   );
   private readonly interaction = new Interaction(this, {
-    disabled: () => this.nativeForm.effectiveDisabled,
+    disabled: () => this.effectiveDisabled,
     onPress: (event) => this.pressEffect.start(event),
     onCancel: () => this.pressEffect.cancel(),
   });
-  private get surface() {
+  protected get effectiveDisabled() {
+    return this.nativeForm.effectiveDisabled || (this.selection.owner?.state.get().disabled ?? false);
+  }
+  protected get effectiveInvalid() {
+    return this.invalid || (this.selection.owner?.state.get().invalid ?? false);
+  }
+  protected connectSelection(owner: SelectionOwner | undefined) {
+    const current = this.checked;
+    this.selection.setOwner(owner);
+    if (!owner) this.nativeForm.setValue(current);
+    this.nativeForm.sync();
+    this.requestUpdate();
+  }
+  protected get surface() {
     return this.renderRoot?.querySelector<HTMLElement>("[part=root]") ?? undefined;
   }
   /** @default false */
   @property({ noAccessor: true, type: Boolean }) get checked() {
-    return this.nativeForm.value;
+    return this.selection.owner?.checked(this.selectionMember) ?? this.nativeForm.value;
   }
   set checked(value: boolean) {
-    this.nativeForm.setValue(value);
+    if (this.selection.owner) this.selection.owner.change(this.selectionMember, Boolean(value), "programmatic");
+    else this.nativeForm.setValue(value);
   }
   /** @default false */
   @property({ noAccessor: true, attribute: false }) get defaultChecked() {
@@ -97,6 +162,7 @@ export class AcmeCheckbox extends AcmeFormElement<boolean, { value: string; inde
     this.submissionValue = value ?? "on";
     this.nativeForm?.sync();
     this.requestUpdate("value", previous);
+    this.selection?.notify();
   }
   /** @default false */
   @property({ noAccessor: true, type: Boolean }) get indeterminate() {
@@ -121,6 +187,7 @@ export class AcmeCheckbox extends AcmeFormElement<boolean, { value: string; inde
     super();
     this.input.setAttribute("part", "control");
     this.input.className = "native";
+    this.input.addEventListener("input", this.change);
     this.input.addEventListener("change", this.change);
     this.addEventListener("click", (event) => {
       if (event.composedPath()[0] === this && !this.nativeForm.effectiveDisabled) this.input.click();
@@ -130,19 +197,26 @@ export class AcmeCheckbox extends AcmeFormElement<boolean, { value: string; inde
     if (!this.nativeForm.effectiveDisabled) this.input.click();
   }
   private change = () => {
-    if (this.nativeForm.effectiveDisabled) return;
+    if (this.effectiveDisabled) return;
     const checked = this.input.checked;
+    if (checked === this.checked && !this.indeterminate) return;
     this.mixed = false;
-    this.nativeForm.setValue(checked, "user");
-    this.dispatchEvent(new CustomEvent("acme-change", { detail: { checked: this.checked, indeterminate: false }, bubbles: true, composed: true }));
+    if (this.selection.owner) this.selection.owner.change(this.selectionMember, checked, "user");
+    else {
+      this.nativeForm.setValue(checked, "user");
+      this.dispatchEvent(new CustomEvent<{ checked: boolean; indeterminate: false }>("acme-change", { detail: { checked: this.checked, indeterminate: false }, bubbles: true, composed: true }));
+    }
   };
   protected updated() {
     this.nativeForm.sync();
     this.interaction.attach(this.surface);
-    this.input.setAttribute("aria-invalid", String(this.invalid));
+    this.input.setAttribute("aria-invalid", String(this.effectiveInvalid));
+  }
+  protected renderControl() {
+    return html`<span class="control">${this.input}<span class="indicator" part="indicator" aria-hidden="true">${this.indeterminate ? html`<acme-remove-icon></acme-remove-icon>` : this.checked ? html`<acme-check-icon></acme-check-icon>` : nothing}</span></span>`;
   }
   render() {
-    return html`<label class="checkbox" part="root" data-size=${this.size} ?data-checked=${this.checked} ?data-indeterminate=${this.indeterminate} ?data-disabled=${this.nativeForm.effectiveDisabled} ?data-invalid=${this.invalid}><span class="control">${this.input}<span class="indicator" part="indicator" aria-hidden="true">${this.indeterminate ? html`<acme-remove-icon></acme-remove-icon>` : this.checked ? html`<acme-check-icon></acme-check-icon>` : nothing}</span></span><span class="content"><span part="label" ?hidden=${!this.places.has("")}><slot></slot></span><span id="description" part="description" ?hidden=${!this.places.has("description")}><slot name="description"></slot></span></span>${this.pressEffect.render()}</label>`;
+    return html`<label class="checkbox" part="root" data-size=${this.size} ?data-checked=${this.checked} ?data-indeterminate=${this.indeterminate} ?data-disabled=${this.effectiveDisabled} ?data-invalid=${this.effectiveInvalid}>${this.renderControl()}<span class="content"><span part="label" ?hidden=${!this.places.has("")}><slot></slot></span><span id="description" part="description" ?hidden=${!this.places.has("description")}><slot name="description"></slot></span></span>${this.pressEffect.render()}</label>`;
   }
 }
 declare global {

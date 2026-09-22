@@ -25,6 +25,8 @@ export type NativeFormOptions<Value, Extra> = Readonly<{
   normalize(value: Value): Value;
   extra?(): Extra;
   serialize(state: NativeFormState<Value>, extra: Extra): NativeFormValue;
+  participates?(state: NativeFormState<Value>, extra: Extra): boolean;
+  changed?(reason: FormUpdateReason): void;
   restoration?(state: NativeFormState<Value>, extra: Extra): NativeFormValue;
   restore?(value: string | File | FormData, mode: "restore" | "autocomplete"): Value;
   validate?(state: NativeFormState<Value>, extra: Extra): NativeFormValidation;
@@ -94,6 +96,7 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     batch(() => {
       this.current.set(Object.freeze({ ...previous, ...patch }));
       this.sync(reason);
+      this.options.changed?.(reason);
     });
     this.host.requestUpdate(property, property ? previous.value : undefined);
   }
@@ -141,10 +144,15 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
         const { state, extra } = this.tracked.get();
         this.options.synchronize?.(state, extra, reason);
         if (this.pendingSync) continue;
+        if (this.options.participates?.(state, extra) === false) {
+          this.internals.setFormValue(null);
+          this.internals.setValidity({});
+          continue;
+        }
         const value = this.options.serialize(state, extra);
         this.internals.setFormValue(value, this.options.restoration ? this.options.restoration(state, extra) : value);
         const validation = state.customValidity ? { flags: { customError: true }, message: state.customValidity } : (this.options.validate?.(state, extra) ?? { flags: {}, message: "" });
-        this.internals.setValidity(validation.flags, validation.message, this.options.target?.());
+        this.internals.setValidity(validation.flags, validation.message, Object.values(validation.flags).some(Boolean) ? this.options.target?.() : undefined);
       } while (this.pendingSync);
     } finally {
       this.syncing = false;

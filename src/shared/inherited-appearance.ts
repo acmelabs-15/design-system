@@ -28,10 +28,13 @@ function ownDefinition<Value extends string>(definition: AppearanceDefinition<Va
  * The consumer validates child enum values and supplies the nearest participating provider.
  * Subscriptions belong to consumers; this module owns no DOM lookup or connection effects.
  */
-export function createInheritedAppearance<Size extends string = never, Variant extends string = never>(definitions: {
-  size?: AppearanceDefinition<Size>;
-  variant?: AppearanceDefinition<Variant>;
-}): InheritedAppearance<Size, Variant> {
+export function createInheritedAppearance<Size extends string = never, Variant extends string = never>(
+  definitions: {
+    size?: AppearanceDefinition<Size>;
+    variant?: AppearanceDefinition<Variant>;
+  },
+  fallback?: ReadonlyAtom<AppearanceDefaults>,
+): InheritedAppearance<Size, Variant> {
   const size = ownDefinition(definitions.size);
   const variant = ownDefinition(definitions.variant);
   const authoredState = createAtom<AuthoredAppearance<Size, Variant>>(Object.freeze({}));
@@ -45,7 +48,7 @@ export function createInheritedAppearance<Size extends string = never, Variant e
     const resolve = <Value extends string>(property: "size" | "variant", definition: AppearanceDefinition<Value> | undefined, input: Value | undefined): Value | undefined => {
       if (!definition) return undefined;
       if (input !== undefined) return input;
-      const value = inherited?.[property];
+      const value = inherited?.[property] ?? fallback?.get()[property];
       if (value === undefined) return definition.defaultValue;
       const supported = definition.supported.find((candidate) => candidate === value);
       if (supported !== undefined) return supported;

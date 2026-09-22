@@ -43,3 +43,15 @@ Avatar uses native image loading with a separate loaded/error state and source-g
 Avatar Group shows all real members when they fit, reserves one bounded slot for overflow when needed, and renders extra-only one as +1. limit=0 shows all supplied members. Count messages use avatarGroup.more plus the locale's plural category (for example avatarGroup.more.one and avatarGroup.more.other), with {count} substitution. Keyed immutable records preserve identity. Count surfaces retain dark black/white contrast through the corresponding theme tokens without resetting every color in the subtree.
 
 Tag's existing 20px treatment is medium; small/large use 16/24px passive-label geometry with 6/10px inline padding. Badge/Pill retain 20/24/32px tiers. These passive sizes do not set the target size for action controls; removable Tag examples compose an explicitly named Icon Button. [Implementation analysis](../analysis/codebase-systematization.md#m09-identity-implementation-review--2026-09-21).
+
+## Selection card action region — 2026-09-21
+
+Expose an actions slot on Checkbox Card and Radio Card for the approved independent secondary-action region. Render it as a sibling of the native label activation surface. This makes the approved behavior concrete without nesting interactive actions inside a label. Heading/description/start/end/default remain selectable card content. General Group joins the outer card surface; the control and its logical selection group still own checked state and submission. Checkbox Cards retain individual marks and never use the travelling single-selection indicator.
+
+## Selection notification boundaries — 2026-09-21
+
+Selection controls and collections expose their own acme-change notifications. An independent action in a card keeps its own direct handler; its notification stops at the containing selection boundary rather than reaching ordinary Card/Group change handlers with the wrong payload. Native click/input/focus events keep normal platform propagation. Capturing instrumentation can still observe descendant events. This matches the approved separation of selection and independent actions and the source hook's owner-specific onValueChange callback. A real Toggle Button in actions reproduced the payload leak in all three engines before the guard.
+
+## Logical collection appearance defaults — 2026-09-21
+
+For selection members, resolve size as explicit member input, then the nearest general Group input, then the owning collection's size when that collection supports it, then the component default. This gives Checkbox Group's approved size property a useful defaulting role without overwriting an authored child size or taking appearance ownership away from a nearer general Group. Variant stays with the member and general Group; Checkbox Group supplies no variant. The existing appearance helper gains an optional readonly fallback source; behavior is unchanged for components without that source.

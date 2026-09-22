@@ -14,6 +14,8 @@ import "./define/calendar";
 import "./define/card";
 import "./define/chart";
 import "./define/checkbox";
+import "./define/checkbox-card";
+import "./define/checkbox-group";
 import "./define/choicebox";
 import "./define/choicebox-item";
 import "./define/clearable-input";

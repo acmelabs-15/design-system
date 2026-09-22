@@ -168,3 +168,7 @@ Checkbox now consumes NativeFormController and the shared semantic owner, which 
 ### M10 standalone Checkbox slice — 2026-09-21
 
 [Verified Checkbox behavior](evidence/m10-checkbox-progress-2026-09-21.json) replaces the old per-component form handling and handwritten check/dash artwork. Build/site and 897 tests pass. Native and compiled checks pass in all engines, including actual Chromium accessibility naming, unchanged Button/ripple regressions and live form examples. The new unchecked border is a measured accessibility deviation using existing gray-700. Continue Checkbox Group/Card integration and the remaining M10 families; this slice does not close M10. The Firefox native label-collection behavior is recorded with a bare-element reproduction and a validated naming guard.
+
+### M10 Checkbox Group/Card slice — 2026-09-21
+
+[Group/Card acceptance](evidence/m10-checkbox-group-card-2026-09-21.json) completes Checkbox ownership and card integration. Build/site and 907 tests pass. Each engine passes 40 source and compiled checks, plus five live documentation interactions. Conditional forwarded slots, owner removal, independent stateful actions, native input observer timing, current/default semantics, actual joined surfaces and name/description separation have explicit regressions. Continue Radio/Radio Group/Radio Card, then remove coupled Choicebox consumers. The registered-member mechanism and shared appearance fallback are reusable; no Radio, Switch, Tabs or indicator completion is implied.
