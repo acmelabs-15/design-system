@@ -30,7 +30,7 @@ export class AcmeRadioGroup extends AcmeSingleSelectionGroup {
     return this.loop;
   }
   render() {
-    return html`<div class="radio-group" part="root" tabindex="-1" data-orientation=${this.orientation} aria-orientation=${this.orientation} aria-required=${this.requiredState.get() ? "true" : nothing} aria-disabled=${this.nativeForm.effectiveDisabled ? "true" : nothing}><slot></slot></div>`;
+    return html`<div class="radio-group" part="root" tabindex="-1" data-orientation=${this.orientation} aria-orientation=${this.orientation} aria-invalid=${this.field.description.get()?.invalid ? "true" : nothing} aria-required=${this.requiredState.get() ? "true" : nothing} aria-disabled=${this.nativeForm.effectiveDisabled ? "true" : nothing}><slot></slot></div>`;
   }
 }
 declare global {

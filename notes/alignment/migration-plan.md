@@ -229,3 +229,7 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 ### M11 Label acceptance — 2026-09-22
 
 [Label acceptance](evidence/m11-label-2026-09-22.json) completes the native label, exact/implicit association and actual-control focus bridge. Build/site, 897 tests, source/compiled three-engine checks and live activation examples pass. Slider owns its retained label stylesheet until M13; it no longer imports the removed Label styles. Continue Field, then the text controls and managed-form adapter.
+
+### M11 Field acceptance — 2026-09-22
+
+[Field acceptance](evidence/m11-field-2026-09-22.json) passes build/site, 901 tests, native/compiled checks and live form actions. It reuses the registry/association and canonical NativeFormController. Continue the text-control family, Clearable Input removal and the managed-form adapter. New text controls must register through this Field path rather than own duplicate label/help/error presentation.

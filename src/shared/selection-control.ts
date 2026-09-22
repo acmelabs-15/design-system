@@ -29,7 +29,7 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
     return false;
   }
   protected get invalidState(): boolean {
-    return false;
+    return this.field.description.get()?.invalid ?? false;
   }
   protected clearMixedState(): void {}
   protected stateChanged(): void {}
@@ -37,6 +37,10 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
   protected controlSynchronized(): void {}
   protected validateControl() {
     return nativeValidation(this.input);
+  }
+  protected activateField() {
+    this.focus();
+    this.click();
   }
   protected abstract emitUserChange(): void;
   protected readonly selectionMember: SelectionMember = {
@@ -143,7 +147,7 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
     return this.nativeForm.effectiveDisabled || (this.selection.owner?.state.get().disabled ?? false);
   }
   protected get effectiveInvalid() {
-    return this.invalidState || (this.selection.owner?.state.get().invalid ?? false);
+    return this.invalidState || (this.field.description.get()?.invalid ?? false) || (this.selection.owner?.state.get().invalid ?? false);
   }
   protected connectSelection(owner: SelectionOwner | undefined) {
     const current = this.checked;
@@ -190,7 +194,7 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
     return {
       role: this.selectionKind === "switch" ? "switch" : undefined,
       labelledByElements: native.labelledByElements?.length ? native.labelledByElements : this.places?.has("") && local ? [local] : [],
-      describedByElements: this.places?.has("description") && description ? [description] : [],
+      describedByElements: [...(native.describedByElements ?? []), ...(this.places?.has("description") && description ? [description] : [])],
     };
   }
   constructor() {

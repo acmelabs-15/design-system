@@ -1,3 +1,4 @@
+import { FieldControl } from "./field-control";
 import { AcmeSemanticElement, type SemanticDefaults } from "./semantic-element";
 import type { PropertyDeclarations } from "lit";
 import type { NativeFormController, NativeFormValidation } from "./native-form";
@@ -15,12 +16,23 @@ export abstract class AcmeFormElement<Value, Extra = undefined> extends AcmeSema
   static get observedAttributes(): string[] {
     return [...new Set([...super.observedAttributes, "form"])];
   }
+  protected readonly field = new FieldControl(this, {
+    target: () => this.semanticTarget,
+    eligible: () => this.nativeForm?.ownsValue ?? true,
+    activate: () => this.activateField(),
+    changed: (description) => this.nativeForm?.setContextDisabled(description?.disabled ?? false),
+  });
+  protected activateField(): void {
+    this.focus();
+  }
   protected abstract readonly nativeForm: NativeFormController<Value, Extra>;
   protected get semanticTarget(): HTMLElement | undefined {
     return this.nativeForm?.target;
   }
   protected get semanticDefaults(): SemanticDefaults {
-    return { labelledByElements: Array.from(this.nativeForm?.labels ?? []).filter((label) => (label as HTMLLabelElement).control === this) as Element[] };
+    const labels = Array.from(this.nativeForm?.labels ?? []).filter((label) => (label as HTMLLabelElement).control === this) as Element[];
+    const field = this.field?.association.defaults;
+    return { labelledByElements: labels.length ? labels : (field?.labelledByElements ?? []), describedByElements: field?.describedByElements ?? [] };
   }
 
   /** @default "" */

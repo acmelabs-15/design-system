@@ -147,7 +147,7 @@ export class AcmeCheckboxGroup extends AcmeFormElement<readonly string[], Member
     if (reason === "user") this.dispatchEvent(new CustomEvent<{ value: readonly string[] }>("acme-change", { detail: { value: this.value }, bubbles: true, composed: true }));
   }
   render() {
-    return html`<div part="root" class="group" tabindex="-1" aria-disabled=${this.nativeForm.effectiveDisabled ? "true" : nothing} aria-invalid=${this.invalid ? "true" : nothing}><slot></slot><span class="sr" id="requirement" ?hidden=${!this.required}>${this.required ? this.requiredMessage() : ""}</span></div>`;
+    return html`<div part="root" class="group" tabindex="-1" aria-disabled=${this.nativeForm.effectiveDisabled ? "true" : nothing} aria-invalid=${this.invalid || this.field.description.get()?.invalid ? "true" : nothing}><slot></slot><span class="sr" id="requirement" ?hidden=${!this.required}>${this.required ? this.requiredMessage() : ""}</span></div>`;
   }
 }
 declare global {

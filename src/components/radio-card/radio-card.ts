@@ -43,10 +43,11 @@ export class AcmeRadioCard extends AcmeRadio {
     const label = this.renderRoot?.querySelector(this.content?.has("heading") ? ".heading" : ".body");
     const body = this.renderRoot?.querySelector(".body");
     const description = this.renderRoot?.querySelector("[part=description]");
-    const descriptions: Element[] = [];
+    const field = this.field.association.defaults;
+    const descriptions: Element[] = [...(field.describedByElements ?? [])];
     if (this.content?.has("heading") && this.content.has("") && body) descriptions.push(body);
     if (this.content?.has("description") && description) descriptions.push(description);
-    return { labelledByElements: external.length ? external : label ? [label] : [], describedByElements: descriptions };
+    return { labelledByElements: external.length ? external : field.labelledByElements?.length ? field.labelledByElements : label ? [label] : [], describedByElements: descriptions };
   }
   protected renderControl() {
     return html`${this.input}<span class="indicator" part="indicator" aria-hidden="true">${this.renderIndicator()}</span>`;

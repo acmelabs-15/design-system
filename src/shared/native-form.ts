@@ -43,6 +43,7 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
   private subscription?: { unsubscribe(): void };
   private syncing = false;
   private pendingSync = false;
+  private readonly context = createAtom({ disabled: false });
 
   constructor(
     private host: Host,
@@ -54,7 +55,7 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
       Object.freeze({ value: initial, defaultValue: initial, dirty: false, name: "", disabled: false, required: false, readOnly: false, platformDisabled: false, customValidity: "" }),
     );
     this.state = createAtom(() => this.current.get());
-    this.tracked = createAtom(() => ({ state: this.state.get(), extra: this.options.extra?.() as Extra }));
+    this.tracked = createAtom(() => ({ state: this.state.get(), extra: this.options.extra?.() as Extra, context: this.context.get() }));
     host.addController(this);
   }
 
@@ -66,7 +67,17 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
   }
   get effectiveDisabled(): boolean {
     const state = this.state.get();
-    return state.disabled || state.platformDisabled;
+    return state.disabled || state.platformDisabled || this.context.get().disabled;
+  }
+  get ownsValue(): boolean {
+    const { state, extra } = this.tracked.get();
+    return this.options.participates?.(state, extra) !== false;
+  }
+  setContextDisabled(disabled: boolean): void {
+    if (this.context.get().disabled === disabled) return;
+    this.context.set({ disabled });
+    this.sync();
+    this.host.requestUpdate();
   }
   get form(): HTMLFormElement | null {
     return this.internals.form;
@@ -87,7 +98,7 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
   }
   get willValidate(): boolean {
     this.sync();
-    return this.internals.willValidate;
+    return !this.context.get().disabled && this.internals.willValidate;
   }
 
   private change(patch: Partial<NativeFormState<Value>>, reason: FormUpdateReason = "constraints", property?: string): void {
@@ -141,10 +152,10 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     try {
       do {
         this.pendingSync = false;
-        const { state, extra } = this.tracked.get();
-        this.options.synchronize?.(state, extra, reason);
+        const { state, extra, context } = this.tracked.get();
+        this.options.synchronize?.(context.disabled ? { ...state, disabled: true } : state, extra, reason);
         if (this.pendingSync) continue;
-        if (this.options.participates?.(state, extra) === false) {
+        if (context.disabled || this.options.participates?.(state, extra) === false) {
           this.internals.setFormValue(null);
           this.internals.setValidity({});
           continue;

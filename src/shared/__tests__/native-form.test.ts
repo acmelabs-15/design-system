@@ -158,3 +158,17 @@ test("owner synchronization runs after the local native projection inside the sa
   expect(observed).toEqual(["now"]);
   f.form.hostDisconnected();
 });
+
+test("Field context masks participation without overwriting authored disability or value", () => {
+  const f = fixture();
+  f.form.setContextDisabled(true);
+  expect(f.form.state.get().disabled).toBe(false);
+  expect(f.form.effectiveDisabled).toBe(true);
+  expect(f.form.willValidate).toBe(false);
+  expect(f.submitted).toBeNull();
+  f.form.setValue("edited");
+  expect(f.submitted).toBeNull();
+  f.form.setContextDisabled(false);
+  expect(f.form.value).toBe("edited");
+  expect(f.submitted).toBe("edited");
+});

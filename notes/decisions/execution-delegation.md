@@ -79,3 +79,9 @@ Keep the source 50px primary tab control, 24px inter-tab gap and 12px panel sepa
 Under Peter's delegation, retain the approved Fieldset capability using a real native fieldset in the component's light DOM. A shadow fieldset does not disable projected controls. Move complete author node ranges without cloning them; require a native legend for native first-legend behavior. Structural reconciliation has a completion boundary; existing disabled-property changes remain synchronous.
 
 Renderer adapters provide the stable native child before connection, so React owns the correct DOM parent. Record this as x-acme-native-root metadata and implement it in M22. Generated scoped styles apply in the host's actual tree root. [Browser, Lit, React and source evidence](../alignment/evidence/m11-fieldset-2026-09-22.json) supports this boundary. This retains native and house form controls without creating a second group-disabled state engine.
+
+## Field association details — 2026-09-22
+
+Keep Field required/optional as the approved label presentation and keep native required on the value control. Field invalid supplies presentation and active error association; native validity stays with the control. One Field can name one registered logical value owner, including a composite root or a native input/select/textarea. Explicit control naming and native labels remain authoritative. Help/errors supplement existing descriptions.
+
+Use public element references where their scope is valid and retain scoped text mirrors for the remaining boundary. Transfer registry ownership before re-associating a moved control. Field disabled supplies a reversible context without replacing the control's own state. [Implementation evidence](../alignment/evidence/m11-field-2026-09-22.json).

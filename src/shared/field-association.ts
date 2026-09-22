@@ -7,11 +7,18 @@ export type FieldDescription = Readonly<{
   invalid: boolean;
   required: boolean;
   disabled: boolean;
+  labelElements?: readonly Element[];
+  helpElements?: readonly Element[];
+  errorElements?: readonly Element[];
 }>;
 export interface FieldParticipant {
   associate(field: FieldDescription | undefined): void;
   activate(): void;
 }
+
+const registrations = new WeakMap<FieldParticipant, { registry: FieldRegistry; release(): void }>();
+
+export const releaseFieldParticipant = (participant: FieldParticipant) => registrations.get(participant)?.release();
 
 /** One Field labels one logical control. Composite controls register their root once. */
 export class FieldRegistry {
@@ -20,17 +27,35 @@ export class FieldRegistry {
   readonly state: ReadonlyAtom<FieldDescription | undefined> = createAtom(() => this.description.get().value);
   constructor(private diagnostic: (message: string) => void = (message) => console.warn(message)) {}
   set(description: FieldDescription): void {
-    this.description.set({ value: Object.freeze({ ...description }) });
+    const previous = this.description.get().value;
+    if (
+      previous &&
+      [...new Set([...Object.keys(previous), ...Object.keys(description)])].every((key) => {
+        const a = previous[key as keyof FieldDescription],
+          b = description[key as keyof FieldDescription];
+        return Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((item, index) => item === b[index]) : a === b;
+      })
+    )
+      return;
+    this.description.set({
+      value: Object.freeze({
+        ...description,
+        ...(description.labelElements ? { labelElements: Object.freeze([...description.labelElements]) } : {}),
+        ...(description.helpElements ? { helpElements: Object.freeze([...description.helpElements]) } : {}),
+        ...(description.errorElements ? { errorElements: Object.freeze([...description.errorElements]) } : {}),
+      }),
+    });
     this.publish();
   }
   register(participant: FieldParticipant): () => void {
     if (this.members.has(participant)) throw new Error("The control is already registered with this Field");
+    registrations.get(participant)?.release();
     const registration = Symbol();
     this.members.set(participant, registration);
     if (this.members.size === 2) this.diagnostic("A Field requires one logical control. Use separate Fields or a Fieldset for multiple controls.");
     this.publish();
     let active = true;
-    return () => {
+    const release = () => {
       if (!active) return;
       active = false;
       if (this.members.get(participant) !== registration) return;
@@ -38,6 +63,11 @@ export class FieldRegistry {
       participant.associate(undefined);
       this.publish();
     };
+    registrations.set(participant, { registry: this, release });
+    return release;
+  }
+  has(participant: FieldParticipant): boolean {
+    return this.members.has(participant);
   }
   activate(): void {
     if (this.members.size !== 1 || this.description.get().value?.disabled) return;
@@ -48,13 +78,16 @@ export class FieldRegistry {
     for (const participant of this.members.keys()) participant.associate(description);
   }
   clear(): void {
-    for (const participant of this.members.keys()) participant.associate(undefined);
+    for (const participant of [...this.members.keys()]) {
+      const entry = registrations.get(participant);
+      if (entry?.registry === this) entry.release();
+    }
     this.members.clear();
   }
 }
 
 let nextId = 0;
-/** Mirrors Field text into the control's own root so native ID references resolve. */
+/** Owns Field text mirrors and exposes references to the semantic owner. */
 export class FieldAssociation {
   private target?: HTMLElement;
   private mirrors?: { label: HTMLSpanElement; help: HTMLSpanElement; error: HTMLSpanElement };
@@ -83,13 +116,15 @@ export class FieldAssociation {
     this.description = description;
     this.paint();
   }
-  private reference(attribute: string, id: string, included: boolean): void {
-    if (!this.target) return;
-    const values = new Set((this.target.getAttribute(attribute) ?? "").split(/\s+/).filter(Boolean));
-    if (included) values.add(id);
-    else values.delete(id);
-    if (values.size) this.target.setAttribute(attribute, [...values].join(" "));
-    else this.target.removeAttribute(attribute);
+  get defaults() {
+    if (!this.mirrors) return {};
+    const roots = new Set<Node>();
+    for (let root: Node | undefined = this.target?.getRootNode(); root; root = "host" in root ? (root as ShadowRoot).host.getRootNode() : undefined) roots.add(root);
+    const references = (name: "label" | "help" | "error") => {
+      const elements = this.description?.[(name + "Elements") as "labelElements" | "helpElements" | "errorElements"];
+      return elements?.length && elements.every((element) => roots.has(element.getRootNode())) ? [...elements] : this.description?.[name] ? [this.mirrors![name]] : [];
+    };
+    return { labelledByElements: references("label"), describedByElements: [...references("help"), ...(this.description?.invalid ? references("error") : [])] };
   }
   private paint(): void {
     if (!this.mirrors) return;
@@ -97,13 +132,11 @@ export class FieldAssociation {
       const text = name === "error" && !this.description?.invalid ? "" : (this.description?.[name] ?? "");
       const mirror = this.mirrors[name];
       mirror.textContent = text;
-      this.reference(name === "label" ? "aria-labelledby" : "aria-describedby", mirror.id, !!text);
     }
   }
   detach(): void {
     if (this.mirrors)
       for (const name of ["label", "help", "error"] as const) {
-        this.reference(name === "label" ? "aria-labelledby" : "aria-describedby", this.mirrors[name].id, false);
         this.mirrors[name].remove();
       }
     this.mirrors = undefined;

@@ -36,6 +36,7 @@ import "./define/drawer";
 import "./define/empty-state";
 import "./define/error";
 import "./define/feedback";
+import "./define/field";
 import "./define/fieldset";
 import "./define/file";
 import "./define/file-tree";

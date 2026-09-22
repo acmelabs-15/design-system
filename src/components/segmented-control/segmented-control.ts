@@ -44,7 +44,7 @@ export class AcmeSegmentedControl extends AcmeSingleSelectionGroup {
   private readonly selectedTarget = createAtom(() => this.members.find((member) => member.value() === this.value)?.target());
   private readonly selectedUpdates = new StoreSelector(this, () => this.selectedTarget);
   render() {
-    return html`<div class="segmented" part="root" tabindex="-1" aria-orientation=${this.orientation} aria-required=${this.requiredState.get() ? "true" : nothing} aria-disabled=${this.nativeForm.effectiveDisabled ? "true" : nothing}><acme-group attached outline .size=${this.size} .orientation=${this.orientation}><slot></slot></acme-group><acme-selection-indicator exportparts="paint:indicator" .target=${this.selectedTarget.get()} .orientation=${this.orientation}></acme-selection-indicator></div>`;
+    return html`<div class="segmented" part="root" tabindex="-1" aria-orientation=${this.orientation} aria-invalid=${this.field.description.get()?.invalid ? "true" : nothing} aria-required=${this.requiredState.get() ? "true" : nothing} aria-disabled=${this.nativeForm.effectiveDisabled ? "true" : nothing}><acme-group attached outline .size=${this.size} .orientation=${this.orientation}><slot></slot></acme-group><acme-selection-indicator exportparts="paint:indicator" .target=${this.selectedTarget.get()} .orientation=${this.orientation}></acme-selection-indicator></div>`;
   }
 }
 declare global {
