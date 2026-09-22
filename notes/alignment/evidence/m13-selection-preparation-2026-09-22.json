@@ -1,0 +1,242 @@
+{
+  "date": "2026-09-22",
+  "status": "preparation only; selection controls remain unchanged",
+  "localSources": [
+    {
+      "path": "src/components/select/select.ts",
+      "sha256": "0c528d03a23ac9b45d06b52cef280992758ca6cab66c3f41d2d71b6a488dab4c",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/components/combobox/combobox.ts",
+      "sha256": "f926e711b28e2586e97cc9e06811a7d6ff6f23c893f7a73fedcc41ea9f4843c6",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/components/combobox-option/combobox-option.ts",
+      "sha256": "2a48ce92c08dd6bdb90d273d23c86a615108e7a17ef7ba9c355b9018da860773",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/components/multi-select/multi-select.ts",
+      "sha256": "3229fb949fdab83d0166bf2be3f40cee43c81434e948476cb4d71c720a8b69dd",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/components/multi-select-row/multi-select-row.ts",
+      "sha256": "5e4aadeaf97a7c4af61f173cbf8349827a4c39f598a04ad0bcad42b45ae848eb",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/shared/native-form.ts",
+      "sha256": "61efd83b99c8bd9918dacd0a064af996a6361a967cb6e236bff54ff300b26031",
+      "coverage": "Read completely"
+    },
+    {
+      "path": "src/shared/native-form-element.ts",
+      "sha256": "9a23600fe4dfc13102d5b9e6aa003874c839adbf086aae6ca583e286058762b1",
+      "coverage": "Read completely"
+    }
+  ],
+  "docs": [
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/",
+      "coverage": "Full article"
+    },
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/",
+      "coverage": "Full article"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/combobox",
+      "coverage": "Full rendered documentation, guides, props and anatomy; individual example Code tabs not opened"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/select",
+      "coverage": "Full rendered documentation, guides, props and anatomy; individual example Code tabs not opened"
+    },
+    {
+      "url": "https://www.radix-ui.com/primitives/docs/components/select",
+      "coverage": "Complete 745-line official Markdown document"
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaActiveDescendantElement",
+      "coverage": "Property description, reference scope and example"
+    }
+  ],
+  "pro": {
+    "selectEntries": 15,
+    "comboboxEntries": 0,
+    "coverage": "All matching prior full-review findings consulted; not a fresh reread of licensed source"
+  },
+  "relationProbe": {
+    "fixture": "/tmp/acme-m13-selection/relations.ts",
+    "results": [
+      {
+        "engine": "chromium",
+        "refs": {
+          "supported": true,
+          "active": true,
+          "controls": true,
+          "focus": true
+        },
+        "ax": [
+          {
+            "role": "combobox",
+            "name": "Choice",
+            "properties": [
+              {
+                "name": "invalid",
+                "value": {
+                  "type": "token",
+                  "value": "false"
+                }
+              },
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "focused",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "plaintext"
+                }
+              },
+              {
+                "name": "settable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "hasPopup",
+                "value": {
+                  "type": "token",
+                  "value": "listbox"
+                }
+              },
+              {
+                "name": "required",
+                "value": {
+                  "type": "boolean",
+                  "value": false
+                }
+              },
+              {
+                "name": "expanded",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "activedescendant",
+                "value": {
+                  "type": "idref",
+                  "relatedNodes": [
+                    {
+                      "backendDOMNodeId": 7,
+                      "idref": "option"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "controls",
+                "value": {
+                  "type": "idrefList",
+                  "value": "",
+                  "relatedNodes": [
+                    {
+                      "backendDOMNodeId": 8
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "role": "listbox",
+            "name": "Choices",
+            "properties": [
+              {
+                "name": "multiselectable",
+                "value": {
+                  "type": "boolean",
+                  "value": false
+                }
+              },
+              {
+                "name": "orientation",
+                "value": {
+                  "type": "token",
+                  "value": "vertical"
+                }
+              },
+              {
+                "name": "required",
+                "value": {
+                  "type": "boolean",
+                  "value": false
+                }
+              }
+            ]
+          },
+          {
+            "role": "option",
+            "name": "First",
+            "properties": [
+              {
+                "name": "selected",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "refs": {
+          "supported": true,
+          "active": true,
+          "controls": true,
+          "focus": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "refs": {
+          "supported": true,
+          "active": true,
+          "controls": true,
+          "focus": true
+        }
+      }
+    ],
+    "scope": "Minimal native shadow/slot candidate, not a completed Lit Select. Input references a public role=option host and native listbox through element-reference properties. Actual focus stays on the input. Chromium AX tree exposes the named combobox, listbox, option and active-descendant relationship.",
+    "limits": [
+      "Firefox/WebKit property and focus checks only; Chromium provides the native accessibility-tree inspection.",
+      "No collection, forms, filtering, IME or selected-value implementation acceptance claimed."
+    ]
+  },
+  "remainingBeforeAcceptance": [
+    "Actual Material Web Select implementation comparison",
+    "Complete shared-option/native-form/collection replacement",
+    "All source/compiled/browser/form/documentation gates from F-06"
+  ]
+}

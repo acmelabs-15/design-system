@@ -348,3 +348,15 @@
 @media (prefers-reduced-motion: reduce) {
 
 }
+
+@supports (color: color-mix(in oklab,white,black)) {
+
+}
+
+@supports (color: color(display-p3 0 0 0)) {
+  @media (color-gamut: p3) {
+    @supports (color: color-mix(in oklab,white,black)) {
+
+    }
+  }
+}

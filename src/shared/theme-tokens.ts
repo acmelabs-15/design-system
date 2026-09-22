@@ -382,6 +382,7 @@ export const themeTokenDefinitions = Object.freeze([
     "palette entry",
   ),
   ...named("shadows", ["ds-focus-border", "ds-focus-ring", "ring"] as const, "box-shadow", "focus treatment"),
+  ...named("shadows", ["acme-shadow-4", "acme-shadow-5", "acme-shadow-6"] as const, "box-shadow", "floating surface elevation"),
   ...named("motion", ["ds-motion-overlay-duration", "ds-motion-popover-duration", "dur"] as const, "transition-duration", "transition duration"),
   ...named("motion", ["ds-motion-overlay-scale"] as const, "scale-factor", "overlay entry scale"),
   ...named("motion", ["ds-motion-overlay-timing", "ds-motion-popover-timing", "ds-motion-timing-swift", "ease"] as const, "transition-timing-function", "transition easing"),

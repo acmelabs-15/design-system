@@ -167,8 +167,10 @@ export class AcmeCodeBlock extends AcmeElement {
           ? html`<div class="foot">
               ${
                 this.v0 === "build"
-                  ? html`<acme-split-button variant="secondary" size="small" menu-button-label="open in v0" @acme-click=${() => window.open(prompt, "_blank", "noopener")}
-                      ><div class="v0">${v0Mark}<span class="sr">Open in v0</span></div><acme-split-button-item slot="items" @click=${() => window.open(prompt, "_blank", "noopener")}>Open in v0</acme-split-button-item></acme-split-button
+                  ? html`<acme-split-button variant="secondary" size="small" menu-label="Open in v0" @acme-request=${(event: CustomEvent<{ action: string }>) => {
+                      if (event.detail.action === "primary" || event.detail.action === "select") window.open(prompt, "_blank", "noopener");
+                    }}
+                      ><div class="v0">${v0Mark}<span class="sr">Open in v0</span></div><acme-split-button-item slot="items" value="open">Open in v0</acme-split-button-item></acme-split-button
                     >`
                   : html`<acme-button href=${prompt} variant="secondary" size="small" part="v0"><div class="v0">${v0Mark}<span class="sr">Open in v0</span></div></acme-button>`
               }

@@ -93,3 +93,7 @@ acme-show when=false, preserveState=false; content and fallback are explicit tem
 acme-show-more expanded=false, loading=false; default slot label with localized More/Less fallback; native Button activation requests/toggles expanded and emits acme-expanded-change. It is the reusable control, not an implicit owner of unrelated content. acme-load-more loading=false, disabled=false; default action content; acme-request { action:"load-more" }; application owns loading/results/end-of-data. Source noGap/noBorderRadius/placeholder booleans become ordinary styling and explicit content, not new semantic modes.
 
 Acceptance: real conditional mount/unmount, child cleanup, form state preservation only when requested, fallback focus, repeated load requests during loading, disabled actions and exactly-once events.
+
+### M13 Menu engineering resolution — 2026-09-22
+
+Under execution delegation, Menu Content is the manual-popover surface. Menu Item supports native href/target/rel for action links, textValue for an explicit typeahead label, and a submenu slot containing a nested Menu. A submenu uses its containing item as opener. Section exposes heading without consuming the native title attribute. Use the reviewed disabled-focus policy: arrow/typeahead can discover disabled items, while all activation and navigation remain blocked. [Resolution and evidence](../../decisions/execution-delegation.md#menu-composition-and-completion--2026-09-22).

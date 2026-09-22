@@ -5,6 +5,7 @@ import { CLOSED } from "./menu";
 import { type GeistMap, has } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "menu",
   component: ["MenuItem", "MenuLink", "MenuItemLocked"],
   root: (n) => "data-geist-menu-item" in n.attrs && n.attrs.role === "menuitem",

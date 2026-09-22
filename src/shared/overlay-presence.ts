@@ -3,6 +3,7 @@ import { preventBodyScroll } from "@zag-js/remove-scroll";
 import type { ReactiveController, ReactiveControllerHost } from "lit";
 import { bindThemeContext, type ThemeContextBinding } from "./theme-context";
 import { coordinateOverlay, type OverlayDismissReason } from "./overlay-coordination";
+import { deepActiveElement } from "./composed-tree";
 
 export type OverlayPhase = "closed" | "open" | "closing";
 export type OverlayPresenceOptions = {
@@ -10,14 +11,9 @@ export type OverlayPresenceOptions = {
   mode(): "modal" | "dialog" | "popover";
   closeOnEscape(): boolean;
   closeOnOutside(): boolean;
-  dismiss(reason: OverlayDismissReason): void;
+  dismiss(reason: OverlayDismissReason, event?: Event): void;
   after(phase: "open" | "closed"): void;
 };
-function activeElement(document: Document): Element | null {
-  let element = document.activeElement;
-  while (element?.shadowRoot?.activeElement) element = element.shadowRoot.activeElement;
-  return element;
-}
 
 /** Keeps native modality and resources alive through only the exit animations it owns. */
 export class OverlayPresence implements ReactiveController {
@@ -54,7 +50,7 @@ export class OverlayPresence implements ReactiveController {
       mode = this.options.mode();
     if (!surface.isConnected) throw new Error("An overlay surface must be connected before opening");
     if (mode !== "popover" && surface.localName !== "dialog") throw new Error("Dialog presence requires a native dialog surface");
-    const focused = activeElement(document);
+    const focused = deepActiveElement(document);
     this.opener = opener ?? (focused && focused !== document.body && focused !== document.documentElement && "focus" in focused ? (focused as HTMLElement) : undefined);
     this.surface = surface;
     const cleanups: (() => void)[] = [];

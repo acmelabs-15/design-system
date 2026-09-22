@@ -77,3 +77,7 @@ Do not merge these distinct source presentations merely to reduce names. Their a
 General Group can supply size and variant to declared participants. Button/Icon Button/Toggle Button/Split/Copy accept the common Button variants; Radio/Checkbox Cards accept only their listed intersection. A value unsupported by a child does not silently map to another appearance. size uses each family's supported named subset. Explicit child values override; nested Group resets provider defaults. This is a concrete proposal for the complete review, not proof of rendered attached borders.
 
 Example: `<acme-group size="small" variant="secondary" attached>` contains Button/Icon Button actions. Simple wrapping tags use HStack. A disabled collection of form controls uses Fieldset, not Group.
+
+### M13 Split Button engineering resolution — 2026-09-22
+
+Split Button Item inherits the complete Menu Item contract, including description content, checked choices and native action links. This is one shared implementation with the approved Split Button family tag, not a retained old interface. Group owns attachment; Menu owns the popup and collection. An absent required menuLabel disables the secondary trigger. [Implementation resolution](../../decisions/execution-delegation.md#menu-composition-and-completion--2026-09-22).

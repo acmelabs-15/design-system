@@ -4,7 +4,10 @@ export const menuSectionStructureCss = css`:host {
   display: block;
 }
 
-.section {
-  list-style: none;
+.heading {
+  color: var(--ds-gray-900);
+  font-size: 12px;
+  font-weight: var(--acme-font-weight-600);
+  padding: 8px;
 }
 `;

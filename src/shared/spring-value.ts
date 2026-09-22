@@ -16,6 +16,9 @@ export class SpringValue implements ReactiveController {
   get value() {
     return this.spring?.currentValue ?? this.target ?? this.endpoint();
   }
+  get settled(): boolean {
+    return !this.spring || this.spring.isAtRest;
+  }
   private stop() {
     if (this.spring) {
       this.spring.hostDisconnected();

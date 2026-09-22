@@ -4,6 +4,7 @@
 import { type GeistMap, has } from "../gen";
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "split-button",
   component: "SplitButton",
   element: "split-button",

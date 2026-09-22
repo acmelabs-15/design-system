@@ -1,8 +1,0 @@
-acme-menu::part(menu){margin:0;list-style-type:none;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;background-color:var(--ds-background-100);box-shadow:var(--ds-shadow-menu);border-radius:12px;padding:var(--ds-popover-padding);font-size:.875rem;line-height:calc(1.25 / .875);outline-style:none}
-acme-menu :where(.separator){margin-inline:-.375rem;margin-block:.375rem;height:1px;background-color:var(--ds-gray-alpha-400)}
-@media (forced-colors:active){
-acme-menu::part(menu){outline-offset:2px;outline:2px solid #0000}
-}
-@media not all and (min-width:401px){
-acme-menu::part(menu){width:100% !important}
-}

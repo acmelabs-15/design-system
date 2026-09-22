@@ -1,24 +1,16 @@
+import { composedContains } from "./composed-tree";
 export type OverlayDismissReason = "escape" | "outside";
 export type OverlayRegistration = Readonly<{
   surface: HTMLElement;
   anchor?: HTMLElement;
   closeOnEscape(): boolean;
   closeOnOutside(): boolean;
-  dismiss(reason: OverlayDismissReason): void;
+  dismiss(reason: OverlayDismissReason, event?: Event): void;
   ownerRemoved?(): void;
 }>;
 type Session = { registration: OverlayRegistration; inside: WeakSet<Event>; parent?: Session; release(): void };
 type Coordination = { sessions: Session[]; dispose(): void };
 const documents = new WeakMap<Document, Coordination>();
-
-function composedContains(parent: HTMLElement, node: Node): boolean {
-  let current: Node | null = node;
-  while (current) {
-    if (current === parent) return true;
-    current = (current.nodeType === 1 ? (current as Element).assignedSlot : null) ?? current.parentNode ?? (current.nodeType === 11 && "host" in current ? (current as ShadowRoot).host : null);
-  }
-  return false;
-}
 
 function contains(registration: OverlayRegistration, event: Event): boolean {
   const path = event.composedPath();
@@ -39,7 +31,7 @@ function createCoordination(document: Document): Coordination {
     if (!session || event.key !== "Escape" || event.defaultPrevented || event.isComposing) return;
     // Keep native dialog cancellation from also dismissing the surface below this one.
     event.preventDefault();
-    if (session.registration.closeOnEscape()) session.registration.dismiss("escape");
+    if (session.registration.closeOnEscape()) session.registration.dismiss("escape", event);
   };
   const pointerdown = (event: PointerEvent) => {
     const session = top();
@@ -49,7 +41,7 @@ function createCoordination(document: Document): Coordination {
     const start = press;
     if (!start || event.pointerId !== start.pointerId) return;
     press = undefined;
-    if (top() === start.session && !isInside(start.session, event) && start.session.registration.closeOnOutside()) start.session.registration.dismiss("outside");
+    if (top() === start.session && !isInside(start.session, event) && start.session.registration.closeOnOutside()) start.session.registration.dismiss("outside", event);
   };
   const pointercancel = () => {
     press = undefined;

@@ -1,89 +1,52 @@
-// Docs page: Menu — mirrors https://vercel.com/geist/menu
 import type { Doc } from "../../site";
-
-const item = (text: string, attrs = "") => `<acme-menu-item slot="items"${attrs ? ` ${attrs}` : ""}>${text}</acme-menu-item>`;
-const icon = (name: "accessibility-new" | "more-horiz", slot = "") => `<acme-${name}-icon size="16px"${slot ? ` slot="${slot}"` : ""}></acme-${name}-icon>`;
-const trigger = (text: string, attrs = "") => `<acme-menu-button slot="trigger"${attrs ? ` ${attrs}` : ""}>${text}</acme-menu-button>`;
-const dotsTrigger = trigger(icon("more-horiz"), 'aria-label="Menu" shape="square" size="small" variant="secondary"');
-const box = (h: number, inner: string, extra = "") => `<div style="min-height:${h}px;position:relative${extra}">${inner}</div>`;
-/** Opens every menu in the example, so the page shows the state the reference reaches on a click. */
-const openAll = "for (const m of root.querySelectorAll('acme-menu')) m.open = true;";
-
-const five = `${item("One")}${item("Two")}${item("Three")}${item("Test for Link", 'href="https://vercel.com"')}${item("Delete", 'variant="error"')}`;
-const standard = `<acme-menu width="200">${trigger("Actions")}${five}</acme-menu>`;
-const chevron = `<acme-menu width="200">${trigger("Actions", 'show-chevron variant="secondary"')}${five}</acme-menu>`;
-const disabled = `<acme-menu width="200">${trigger("Actions")}${item("One")}${item("Two")}${item("Three", "disabled")}${item("Delete", 'variant="error"')}${item("Delete Forever", 'disabled variant="error"')}</acme-menu>`;
-const locked = (tooltip: boolean) =>
-  `<acme-menu width="200">${trigger("Actions")}${item("View Details")}${item("Edit")}${
-    tooltip
-      ? `<acme-tooltip slot="items" text="You do not have the permissions to delete." style="display:flex;width:100%"><acme-menu-item locked>Delete</acme-menu-item></acme-tooltip>`
-      : item("Delete", "locked")
-  }</acme-menu>`;
-const links = `<acme-menu width="200">${trigger("Links")}${item("One", 'href="/design/menu#custom-trigger"')}${item("Two", 'href="#"')}${item("Three", 'href="#"')}</acme-menu>`;
-const custom = `<acme-menu width="200">${trigger('<acme-avatar width="30px" initials="ER" label="Evil Rabbit"></acme-avatar>', 'variant="unstyled"')}${item("One")}${item("Two")}${item("Three")}</acme-menu>`;
-const startEnd = `<div class="row" style="gap:24px;align-items:stretch;flex-wrap:nowrap"><acme-menu>${dotsTrigger}${item(`${icon("accessibility-new", "start")}Left`)}${item(`${icon("accessibility-new", "start")}Center`)}${item(`${icon("accessibility-new", "start")}Right`)}</acme-menu><acme-menu>${dotsTrigger}${item(`Left${icon("accessibility-new", "end")}`)}${item(`Center${icon("accessibility-new", "end")}`)}${item(`Right${icon("accessibility-new", "end")}`)}</acme-menu></div>`;
-const position = `<acme-menu position="left-start" width="200">${trigger("Left Start")}${item("One")}${item("Two")}</acme-menu>`;
-const section = `<acme-menu width="200">${trigger("Actions")}<acme-menu-section slot="items" title="Section"><acme-menu-item>One</acme-menu-item><acme-menu-item>Two</acme-menu-item></acme-menu-section>${item("Three")}${item("Locked", "locked")}<acme-menu-divider slot="items"></acme-menu-divider>${item("Delete", 'variant="error"')}</acme-menu>`;
-
+const menu = (content: string, attributes = "") =>
+  `<acme-menu ${attributes}><acme-menu-trigger slot="trigger">Actions</acme-menu-trigger><acme-menu-content aria-label="Actions">${content}</acme-menu-content></acme-menu>`;
+const items = '<acme-menu-item value="save">Save</acme-menu-item><acme-menu-item value="duplicate">Duplicate</acme-menu-item><acme-menu-item value="archive" disabled>Archive</acme-menu-item>';
 export const doc: Doc = {
   id: "menu",
   title: "Menu",
-  lede: "A dropdown menu opened from a button, with typeahead and keyboard navigation.",
-  tags: ["acme-menu", "acme-menu-button", "acme-menu-item", "acme-menu-section", "acme-menu-divider"],
+  house: true,
+  lede: "Actions and checked choices in a keyboard-accessible popup.",
+  tags: ["acme-menu", "acme-menu-trigger", "acme-menu-content", "acme-menu-item", "acme-menu-section", "acme-menu-separator"],
   examples: [
-    { h: "Default", p: "The trigger is an acme-menu-button, a Button, in the trigger slot.", html: box(60, standard) },
-    { h: "With chevron", html: box(60, chevron) },
-    { h: "Disabled items", html: box(60, disabled) },
-    { h: "Locked items", p: "locked marks an action that needs more permissions: the item renders disabled with a lock suffix.", html: box(60, locked(true)) },
-    { h: "Link items", html: box(60, links) },
-    { h: "Custom trigger", p: 'variant="unstyled" wraps the trigger content in a bare button.', html: box(60, custom) },
-    { h: "Start and end", p: "The start and end slots of an item take an icon.", html: box(60, startEnd) },
-    { h: "Menu position", p: "position sets the side and the alignment; the menu flips when the window bounds would clip it.", html: box(60, position, ";display:flex;justify-content:flex-end") },
-    { h: "With section", html: box(60, section) },
-    { h: "Open", census: true, p: "The default menu open: the trigger pressed, the list 200 wide under it, a link item and an error item.", html: box(250, standard), script: openAll },
-    { h: "Open with chevron", census: true, p: "The secondary chevron trigger open: the chevron turned, the list under it.", html: box(250, chevron), script: openAll },
-    { h: "Open disabled items", census: true, p: "A disabled item and a disabled error item read gray-700.", html: box(250, disabled), script: openAll },
-    { h: "Open locked items", census: true, p: "The locked item is a disabled item with a gray-700 lock suffix.", html: box(180, locked(false)), script: openAll },
-    { h: "Open link items", census: true, p: "Every row is an anchor inside a presentational list item.", html: box(180, links), script: openAll },
-    { h: "Open custom trigger", census: true, p: "The unstyled avatar trigger open.", html: box(180, custom), script: openAll },
-    { h: "Open start and end", census: true, p: "An icon trigger reads gray-400 while open; the list is the default 150 wide.", html: box(180, startEnd), script: openAll },
     {
-      h: "Open menu position",
-      census: true,
-      p: "The left-start menu open: the list to the left of the trigger, their top edges level.",
-      html: box(120, position, ";display:flex;justify-content:flex-end"),
-      script: openAll,
+      h: "Default",
+      html: menu(items) + "<output></output>",
+      script: "root.addEventListener('acme-request',event=>{if(event.detail.action==='select')root.querySelector('output').textContent=event.detail.value;});",
     },
-    { h: "Open with section", census: true, p: "A titled group, a locked item, a divider and an error item.", html: box(300, section), script: openAll },
     {
-      h: "Chevron on the default variant",
-      census: true,
-      p: "The chevron on the default variant: the trigger keeps its own hover fill, and the chevron stays gray.",
-      html: box(60, `<acme-menu width="200">${trigger("Actions", "show-chevron")}${item("One")}${item("Two")}</acme-menu>`),
+      h: "Checked choices",
+      p: "Keep the menu open while changing several options.",
+      html: menu(
+        '<acme-menu-item type="checkbox" value="status" checked>Status bar</acme-menu-item><acme-menu-separator></acme-menu-separator><acme-menu-section heading="Sort order"><acme-menu-item type="radio" name="sort" value="name" checked>Name</acme-menu-item><acme-menu-item type="radio" name="sort" value="date">Date</acme-menu-item></acme-menu-section>',
+        'close-on-select="false"',
+      ),
     },
+    {
+      h: "Nested menu",
+      html: menu(
+        '<acme-menu-item value="export">Export<acme-menu slot="submenu"><acme-menu-content aria-label="Export format"><acme-menu-item value="csv">CSV</acme-menu-item><acme-menu-item value="json">JSON</acme-menu-item></acme-menu-content></acme-menu></acme-menu-item>' +
+          items,
+      ),
+    },
+    {
+      h: "Descriptions and icons",
+      html: menu(
+        '<acme-menu-item value="settings"><acme-settings-icon slot="start" size="18px"></acme-settings-icon>Settings<span slot="description">Manage project preferences.</span></acme-menu-item><acme-menu-item value="docs" href="https://developer.mozilla.org/" target="_blank">Documentation<span slot="end">↗</span></acme-menu-item>',
+      ),
+    },
+    { h: "Placement", html: menu(items, 'placement="top-start"') },
   ],
   practices: {
-    "When to use": [
-      "Menu is a visible trigger that opens a list of actions on one resource: a dots menu on a row, a dropdown on a primary entity.",
-      "Right-click or long-press on a row is Context Menu. Global commands behind ⌘K are Command Menu. Two related primary actions are a split button, not a buried secondary action.",
-      "Cap a Menu at about 10 items. Past that, group with a section or move secondary actions to a settings page.",
-    ],
     Behavior: [
-      "Open on click, not on hover; hover-open menus collide with screen readers and trackpad scrolls.",
-      "The position flips at the window bounds; do not hardcode a side that clips on a narrow viewport.",
-      "Close on item activation, Escape and an outside click. Never close on hover-out.",
-      "Use locked for a permission-gated action, so the lock icon and the disabled state explain why the row is inert.",
-    ],
-    Content: [
-      "Items are Title Case Verb + Noun (Rename Project, Duplicate Deployment). A bare Rename or Edit is wrong outside an obvious single-object context.",
-      "End an item with … only when it opens a follow-up dialog (Rename…, Transfer to Team…).",
-      "Destructive items go last, after a divider, and keep the Verb + Noun form (Delete Project, never a bare Delete).",
-      "Section titles are Title Case, one or two words (Workspace, Recent Projects).",
+      "Every item has a stable value. Action requests contain action and value; checked changes contain value and checked.",
+      "Arrow keys, Home, End and typeahead move focus. Disabled items remain discoverable and cannot activate.",
+      "Escape closes the current menu. Tab leaves the menu. A submenu occupies the submenu slot of its owning item.",
+      "Use show(), hide() or open for programmatic visibility. User changes emit acme-open-change; completed transitions emit acme-after-open and acme-after-close.",
     ],
     Accessibility: [
-      "Up and Down move the highlight through the items, Home and End jump to the first and last, Enter or Space activates.",
-      "Typeahead jumps to the first item whose label starts with the typed characters; keep the visible label first so typeahead matches what the reader sees.",
-      "Focus returns to the trigger on close, so a keyboard user keeps their place in the row.",
+      "Name each Menu Content and Menu Trigger. Keep each item one action; decorative slots do not hold independent controls.",
+      "Use ordinary links for navigation lists. Use menu semantics for an action collection.",
     ],
   },
 };

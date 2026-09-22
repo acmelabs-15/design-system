@@ -4,16 +4,7 @@ export const menuStructureCss = css`:host {
   display: inline-block;
 }
 
-.floating {
-  width: max-content;
-  height: auto;
-  color: inherit;
-  background: none;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  inset: auto;
-  overflow: visible;
+:host([slot="submenu"]) {
+  display: block;
 }
 `;

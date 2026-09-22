@@ -8249,3 +8249,71 @@ a.breadcrumb.menu:hover {
   box-shadow: var(--ds-focus-ring);
   outline: none;
 }
+
+/* Floating surface elevation; source provenance is recorded in notes. */
+:root{
+--acme-shadow-4:0 0 0 1px #0000000f,0 8px 40px rgba(0,0,0,0.05),0 12px 32px -16px #0000000f;
+--acme-shadow-5:0 0 0 1px #0000000f,0 12px 60px rgba(0,0,0,0.15),0 12px 32px -16px #0000001f;
+--acme-shadow-6:0 0 0 1px #0000000f,0 12px 60px rgba(0,0,0,0.15),0 16px 64px #00000006,0 16px 36px -20px #00000031;
+}
+:root[data-theme="light"]{
+--acme-shadow-4:0 0 0 1px #0000000f,0 8px 40px rgba(0,0,0,0.05),0 12px 32px -16px #0000000f;
+--acme-shadow-5:0 0 0 1px #0000000f,0 12px 60px rgba(0,0,0,0.15),0 12px 32px -16px #0000001f;
+--acme-shadow-6:0 0 0 1px #0000000f,0 12px 60px rgba(0,0,0,0.15),0 16px 64px #00000006,0 16px 36px -20px #00000031;
+}
+:root[data-theme="dark"]{
+--acme-shadow-4:0 0 0 1px #ffffff2c,0 8px 40px rgba(0,0,0,0.15),0 12px 32px -16px rgba(0,0,0,0.3);
+--acme-shadow-5:0 0 0 1px #ffffff2c,0 12px 60px rgba(0,0,0,0.3),0 12px 32px -16px rgba(0,0,0,0.5);
+--acme-shadow-6:0 0 0 1px #ffffff2c,0 12px 60px rgba(0,0,0,0.2),0 16px 64px rgba(0,0,0,0.4),0 16px 36px -20px rgba(0,0,0,0.9);
+}
+@supports(color:color-mix(in oklab,white,black)){
+:root{
+--acme-shadow-4:0 0 0 1px color-mix(in oklab, #0000000f, #f0f0f0 25%),0 8px 40px rgba(0,0,0,0.05),0 12px 32px -16px #0000000f;
+--acme-shadow-5:0 0 0 1px color-mix(in oklab, #0000000f, #f0f0f0 25%),0 12px 60px rgba(0,0,0,0.15),0 12px 32px -16px #0000001f;
+--acme-shadow-6:0 0 0 1px color-mix(in oklab, #0000000f, #f0f0f0 25%),0 12px 60px rgba(0,0,0,0.15),0 16px 64px #00000006,0 16px 36px -20px #00000031;
+}
+:root[data-theme="light"]{
+--acme-shadow-4:0 0 0 1px color-mix(in oklab, #0000000f, #f0f0f0 25%),0 8px 40px rgba(0,0,0,0.05),0 12px 32px -16px #0000000f;
+--acme-shadow-5:0 0 0 1px color-mix(in oklab, #0000000f, #f0f0f0 25%),0 12px 60px rgba(0,0,0,0.15),0 12px 32px -16px #0000001f;
+--acme-shadow-6:0 0 0 1px color-mix(in oklab, #0000000f, #f0f0f0 25%),0 12px 60px rgba(0,0,0,0.15),0 16px 64px #00000006,0 16px 36px -20px #00000031;
+}
+:root[data-theme="dark"]{
+--acme-shadow-4:0 0 0 1px color-mix(in oklab, #ffffff2c, #3a3a3a 25%),0 8px 40px rgba(0,0,0,0.15),0 12px 32px -16px rgba(0,0,0,0.3);
+--acme-shadow-5:0 0 0 1px color-mix(in oklab, #ffffff2c, #3a3a3a 25%),0 12px 60px rgba(0,0,0,0.3),0 12px 32px -16px rgba(0,0,0,0.5);
+--acme-shadow-6:0 0 0 1px color-mix(in oklab, #ffffff2c, #3a3a3a 25%),0 12px 60px rgba(0,0,0,0.2),0 16px 64px rgba(0,0,0,0.4),0 16px 36px -20px rgba(0,0,0,0.9);
+}
+}
+@supports(color:color(display-p3 0 0 0)){@media(color-gamut:p3){
+:root{
+--acme-shadow-4:0 0 0 1px color(display-p3 0 0 0 / 0.063),0 8px 40px color(display-p3 0 0 0 / 0.05),0 12px 32px -16px color(display-p3 0 0 0 / 0.063);
+--acme-shadow-5:0 0 0 1px color(display-p3 0 0 0 / 0.063),0 12px 60px color(display-p3 0 0 0 / 0.15),0 12px 32px -16px color(display-p3 0 0 0 / 0.122);
+--acme-shadow-6:0 0 0 1px color(display-p3 0 0 0 / 0.063),0 12px 60px color(display-p3 0 0 0 / 0.15),0 16px 64px color(display-p3 0 0 0 / 0.024),0 16px 36px -20px color(display-p3 0 0 0 / 0.192);
+}
+:root[data-theme="light"]{
+--acme-shadow-4:0 0 0 1px color(display-p3 0 0 0 / 0.063),0 8px 40px color(display-p3 0 0 0 / 0.05),0 12px 32px -16px color(display-p3 0 0 0 / 0.063);
+--acme-shadow-5:0 0 0 1px color(display-p3 0 0 0 / 0.063),0 12px 60px color(display-p3 0 0 0 / 0.15),0 12px 32px -16px color(display-p3 0 0 0 / 0.122);
+--acme-shadow-6:0 0 0 1px color(display-p3 0 0 0 / 0.063),0 12px 60px color(display-p3 0 0 0 / 0.15),0 16px 64px color(display-p3 0 0 0 / 0.024),0 16px 36px -20px color(display-p3 0 0 0 / 0.192);
+}
+:root[data-theme="dark"]{
+--acme-shadow-4:0 0 0 1px color(display-p3 1 1 1 / 0.172),0 8px 40px color(display-p3 0 0 0 / 0.15),0 12px 32px -16px color(display-p3 0 0 0 / 0.3);
+--acme-shadow-5:0 0 0 1px color(display-p3 1 1 1 / 0.172),0 12px 60px color(display-p3 0 0 0 / 0.3),0 12px 32px -16px color(display-p3 0 0 0 / 0.5);
+--acme-shadow-6:0 0 0 1px color(display-p3 1 1 1 / 0.172),0 12px 60px color(display-p3 0 0 0 / 0.2),0 16px 64px color(display-p3 0 0 0 / 0.4),0 16px 36px -20px color(display-p3 0 0 0 / 0.9);
+}
+@supports(color:color-mix(in oklab,white,black)){
+:root{
+--acme-shadow-4:0 0 0 1px color-mix(in oklab, color(display-p3 0 0 0 / 0.063), color(display-p3 0.939 0.939 0.939) 25%),0 8px 40px color(display-p3 0 0 0 / 0.05),0 12px 32px -16px color(display-p3 0 0 0 / 0.063);
+--acme-shadow-5:0 0 0 1px color-mix(in oklab, color(display-p3 0 0 0 / 0.063), color(display-p3 0.939 0.939 0.939) 25%),0 12px 60px color(display-p3 0 0 0 / 0.15),0 12px 32px -16px color(display-p3 0 0 0 / 0.122);
+--acme-shadow-6:0 0 0 1px color-mix(in oklab, color(display-p3 0 0 0 / 0.063), color(display-p3 0.939 0.939 0.939) 25%),0 12px 60px color(display-p3 0 0 0 / 0.15),0 16px 64px color(display-p3 0 0 0 / 0.024),0 16px 36px -20px color(display-p3 0 0 0 / 0.192);
+}
+:root[data-theme="light"]{
+--acme-shadow-4:0 0 0 1px color-mix(in oklab, color(display-p3 0 0 0 / 0.063), color(display-p3 0.939 0.939 0.939) 25%),0 8px 40px color(display-p3 0 0 0 / 0.05),0 12px 32px -16px color(display-p3 0 0 0 / 0.063);
+--acme-shadow-5:0 0 0 1px color-mix(in oklab, color(display-p3 0 0 0 / 0.063), color(display-p3 0.939 0.939 0.939) 25%),0 12px 60px color(display-p3 0 0 0 / 0.15),0 12px 32px -16px color(display-p3 0 0 0 / 0.122);
+--acme-shadow-6:0 0 0 1px color-mix(in oklab, color(display-p3 0 0 0 / 0.063), color(display-p3 0.939 0.939 0.939) 25%),0 12px 60px color(display-p3 0 0 0 / 0.15),0 16px 64px color(display-p3 0 0 0 / 0.024),0 16px 36px -20px color(display-p3 0 0 0 / 0.192);
+}
+:root[data-theme="dark"]{
+--acme-shadow-4:0 0 0 1px color-mix(in oklab, color(display-p3 1 1 1 / 0.172), color(display-p3 0.228 0.228 0.228) 25%),0 8px 40px color(display-p3 0 0 0 / 0.15),0 12px 32px -16px color(display-p3 0 0 0 / 0.3);
+--acme-shadow-5:0 0 0 1px color-mix(in oklab, color(display-p3 1 1 1 / 0.172), color(display-p3 0.228 0.228 0.228) 25%),0 12px 60px color(display-p3 0 0 0 / 0.3),0 12px 32px -16px color(display-p3 0 0 0 / 0.5);
+--acme-shadow-6:0 0 0 1px color-mix(in oklab, color(display-p3 1 1 1 / 0.172), color(display-p3 0.228 0.228 0.228) 25%),0 12px 60px color(display-p3 0 0 0 / 0.2),0 16px 64px color(display-p3 0 0 0 / 0.4),0 16px 36px -20px color(display-p3 0 0 0 / 0.9);
+}
+}
+}}

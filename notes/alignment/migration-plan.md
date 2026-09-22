@@ -249,3 +249,9 @@ The build now enforces strict TypeScript. The final audit found widened getter t
 ### M12 complete — 2026-09-22
 
 [Pin Input acceptance](evidence/m12-pin-input-2026-09-22.json) closes M12 alongside Number Input: strict package build/site and 916 tests pass. Each engine passes 32 source/compiled Pin checks, four source/compiled managed-form checks and five live examples. Shared manifest reference identity is now normalized once. Continue M13 with the verified slotted-overlay coordination correction.
+
+## M13 Menu family and Split Button complete — 2026-09-22
+
+[Menu / Context Menu / Split Button acceptance](evidence/m13-menu-2026-09-22.json) closes these assigned family entries: strict package build, site and all 905 tests pass. Each engine passes 30 source/compiled Menu checks, four source/compiled Split Button checks and six live documentation flows. Native shadow comparisons cover the three selected tiers in light/dark. Menu Button/Divider and the old Split Button interfaces are removed; Code Block and the authored examples use the replacements.
+
+M13 remains active for shared Option, Select/ComboBox/Multi Select, Slider and Calendar. [Selection preparation](evidence/m13-selection-preparation-2026-09-22.json) records complete current source/docs review and a three-engine reference-scope candidate; it does not claim component acceptance. Material Web Select source comparison is underway in /tmp/acme-m13-selection. Continue without questions under execution delegation.

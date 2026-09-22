@@ -1,0 +1,545 @@
+{
+  "date": "2026-09-22",
+  "batch": "M13 Menu / Context Menu / Split Button",
+  "status": "complete at assigned native and Lit boundary; M13 remains active for selection controls, Slider and Calendar",
+  "components": [
+    "acme-menu",
+    "acme-menu-trigger",
+    "acme-menu-content",
+    "acme-menu-item",
+    "acme-menu-section",
+    "acme-menu-separator",
+    "acme-context-menu",
+    "acme-split-button",
+    "acme-split-button-item"
+  ],
+  "removed": [
+    "acme-menu-button",
+    "acme-menu-divider",
+    "old Menu / Context Menu / Split Button properties and events"
+  ],
+  "implementation": [
+    "Scoped Lit context registration with a private owner interface and canonical TanStack public state",
+    "Native popover, shared presence/placement/coordination and owned Lit Motion spring completion",
+    "Action, checkbox and radio menu items; disabled discovery; typeahead; keyboard/hover submenus; RTL",
+    "Native semantic name/description references, cancellation, focus return and application dialog handoff",
+    "Context region keyboard/native context gestures and cancelable synthetic long-press behavior",
+    "Split Button composes existing Button/Group and the Menu family; Code Block and authored examples migrated",
+    "Generated neutral-gray Radix shadow tiers 4/5/6; tier 5 only on the menu surface"
+  ],
+  "verification": {
+    "strictPackageBuild": true,
+    "focusedStrict": {
+      "files": 891,
+      "errors": 0
+    },
+    "unit": {
+      "pass": 905,
+      "fail": 0,
+      "files": 146,
+      "assertions": 121500
+    },
+    "site": {
+      "pages": 96,
+      "elements": 4263,
+      "undocumented": 0
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "passed": [
+          "pointer opening focuses first action",
+          "disabled discovery suppresses activation",
+          "checkbox updates checked state and closes",
+          "Escape returns focus and retains user reason",
+          "typeahead focuses matching item",
+          "parent collection excludes nested items",
+          "submenu forward arrow and topmost Escape",
+          "Tab leaves menu for next page control",
+          "Shift Tab leaves menu for prior page control",
+          "outside pointer dismissal retains destination focus",
+          "cancelable close request preserves menu",
+          "close reopen cancels stale completion",
+          "context gesture opens at point and restores trigger",
+          "disabled context menu preserves native event",
+          "radio actions have one checked member and owned payload",
+          "nested selection closes the menu chain once",
+          "outside dismissal closes the entire menu chain",
+          "RTL submenu arrows open and return",
+          "selection preserves focus transferred to a dialog",
+          "programmatic open and close remain silent",
+          "removing the trigger immediately closes owned surfaces",
+          "disconnect and reconnect transfers registrations",
+          "reduced motion completes exit without a timer",
+          "context keyboard gesture and disabled transition",
+          "touch hold opens and canceled movement stays closed",
+          "hover opens its submenu",
+          "programmatic focus departure closes without stealing focus",
+          "non-looping collection stops at its last member",
+          "trigger semantics and selected icon presence",
+          "description and label retain separate semantic references"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "passed": [
+          "pointer opening focuses first action",
+          "disabled discovery suppresses activation",
+          "checkbox updates checked state and closes",
+          "Escape returns focus and retains user reason",
+          "typeahead focuses matching item",
+          "parent collection excludes nested items",
+          "submenu forward arrow and topmost Escape",
+          "Tab leaves menu for next page control",
+          "Shift Tab leaves menu for prior page control",
+          "outside pointer dismissal retains destination focus",
+          "cancelable close request preserves menu",
+          "close reopen cancels stale completion",
+          "context gesture opens at point and restores trigger",
+          "disabled context menu preserves native event",
+          "radio actions have one checked member and owned payload",
+          "nested selection closes the menu chain once",
+          "outside dismissal closes the entire menu chain",
+          "RTL submenu arrows open and return",
+          "selection preserves focus transferred to a dialog",
+          "programmatic open and close remain silent",
+          "removing the trigger immediately closes owned surfaces",
+          "disconnect and reconnect transfers registrations",
+          "reduced motion completes exit without a timer",
+          "context keyboard gesture and disabled transition",
+          "touch hold opens and canceled movement stays closed",
+          "hover opens its submenu",
+          "programmatic focus departure closes without stealing focus",
+          "non-looping collection stops at its last member",
+          "trigger semantics and selected icon presence",
+          "description and label retain separate semantic references"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "passed": [
+          "pointer opening focuses first action",
+          "disabled discovery suppresses activation",
+          "checkbox updates checked state and closes",
+          "Escape returns focus and retains user reason",
+          "typeahead focuses matching item",
+          "parent collection excludes nested items",
+          "submenu forward arrow and topmost Escape",
+          "Tab leaves menu for next page control",
+          "Shift Tab leaves menu for prior page control",
+          "outside pointer dismissal retains destination focus",
+          "cancelable close request preserves menu",
+          "close reopen cancels stale completion",
+          "context gesture opens at point and restores trigger",
+          "disabled context menu preserves native event",
+          "radio actions have one checked member and owned payload",
+          "nested selection closes the menu chain once",
+          "outside dismissal closes the entire menu chain",
+          "RTL submenu arrows open and return",
+          "selection preserves focus transferred to a dialog",
+          "programmatic open and close remain silent",
+          "removing the trigger immediately closes owned surfaces",
+          "disconnect and reconnect transfers registrations",
+          "reduced motion completes exit without a timer",
+          "context keyboard gesture and disabled transition",
+          "touch hold opens and canceled movement stays closed",
+          "hover opens its submenu",
+          "programmatic focus departure closes without stealing focus",
+          "non-looping collection stops at its last member",
+          "trigger semantics and selected icon presence",
+          "description and label retain separate semantic references"
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "passed": [
+          "pointer opening focuses first action",
+          "disabled discovery suppresses activation",
+          "checkbox updates checked state and closes",
+          "Escape returns focus and retains user reason",
+          "typeahead focuses matching item",
+          "parent collection excludes nested items",
+          "submenu forward arrow and topmost Escape",
+          "Tab leaves menu for next page control",
+          "Shift Tab leaves menu for prior page control",
+          "outside pointer dismissal retains destination focus",
+          "cancelable close request preserves menu",
+          "close reopen cancels stale completion",
+          "context gesture opens at point and restores trigger",
+          "disabled context menu preserves native event",
+          "radio actions have one checked member and owned payload",
+          "nested selection closes the menu chain once",
+          "outside dismissal closes the entire menu chain",
+          "RTL submenu arrows open and return",
+          "selection preserves focus transferred to a dialog",
+          "programmatic open and close remain silent",
+          "removing the trigger immediately closes owned surfaces",
+          "disconnect and reconnect transfers registrations",
+          "reduced motion completes exit without a timer",
+          "context keyboard gesture and disabled transition",
+          "touch hold opens and canceled movement stays closed",
+          "hover opens its submenu",
+          "programmatic focus departure closes without stealing focus",
+          "non-looping collection stops at its last member",
+          "trigger semantics and selected icon presence",
+          "description and label retain separate semantic references"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "passed": [
+          "pointer opening focuses first action",
+          "disabled discovery suppresses activation",
+          "checkbox updates checked state and closes",
+          "Escape returns focus and retains user reason",
+          "typeahead focuses matching item",
+          "parent collection excludes nested items",
+          "submenu forward arrow and topmost Escape",
+          "Tab leaves menu for next page control",
+          "Shift Tab leaves menu for prior page control",
+          "outside pointer dismissal retains destination focus",
+          "cancelable close request preserves menu",
+          "close reopen cancels stale completion",
+          "context gesture opens at point and restores trigger",
+          "disabled context menu preserves native event",
+          "radio actions have one checked member and owned payload",
+          "nested selection closes the menu chain once",
+          "outside dismissal closes the entire menu chain",
+          "RTL submenu arrows open and return",
+          "selection preserves focus transferred to a dialog",
+          "programmatic open and close remain silent",
+          "removing the trigger immediately closes owned surfaces",
+          "disconnect and reconnect transfers registrations",
+          "reduced motion completes exit without a timer",
+          "context keyboard gesture and disabled transition",
+          "touch hold opens and canceled movement stays closed",
+          "hover opens its submenu",
+          "programmatic focus departure closes without stealing focus",
+          "non-looping collection stops at its last member",
+          "trigger semantics and selected icon presence",
+          "description and label retain separate semantic references"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "passed": [
+          "pointer opening focuses first action",
+          "disabled discovery suppresses activation",
+          "checkbox updates checked state and closes",
+          "Escape returns focus and retains user reason",
+          "typeahead focuses matching item",
+          "parent collection excludes nested items",
+          "submenu forward arrow and topmost Escape",
+          "Tab leaves menu for next page control",
+          "Shift Tab leaves menu for prior page control",
+          "outside pointer dismissal retains destination focus",
+          "cancelable close request preserves menu",
+          "close reopen cancels stale completion",
+          "context gesture opens at point and restores trigger",
+          "disabled context menu preserves native event",
+          "radio actions have one checked member and owned payload",
+          "nested selection closes the menu chain once",
+          "outside dismissal closes the entire menu chain",
+          "RTL submenu arrows open and return",
+          "selection preserves focus transferred to a dialog",
+          "programmatic open and close remain silent",
+          "removing the trigger immediately closes owned surfaces",
+          "disconnect and reconnect transfers registrations",
+          "reduced motion completes exit without a timer",
+          "context keyboard gesture and disabled transition",
+          "touch hold opens and canceled movement stays closed",
+          "hover opens its submenu",
+          "programmatic focus departure closes without stealing focus",
+          "non-looping collection stops at its last member",
+          "trigger semantics and selected icon presence",
+          "description and label retain separate semantic references"
+        ],
+        "errors": []
+      }
+    ],
+    "splitSource": [
+      {
+        "engine": "chromium",
+        "passed": [
+          "primary request occurs once",
+          "secondary items use the shared menu owner",
+          "loading suppresses both native actions",
+          "Group joins actual adjacent surfaces"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "passed": [
+          "primary request occurs once",
+          "secondary items use the shared menu owner",
+          "loading suppresses both native actions",
+          "Group joins actual adjacent surfaces"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "passed": [
+          "primary request occurs once",
+          "secondary items use the shared menu owner",
+          "loading suppresses both native actions",
+          "Group joins actual adjacent surfaces"
+        ],
+        "errors": []
+      }
+    ],
+    "splitCompiled": [
+      {
+        "engine": "chromium",
+        "passed": [
+          "primary request occurs once",
+          "secondary items use the shared menu owner",
+          "loading suppresses both native actions",
+          "Group joins actual adjacent surfaces"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "passed": [
+          "primary request occurs once",
+          "secondary items use the shared menu owner",
+          "loading suppresses both native actions",
+          "Group joins actual adjacent surfaces"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "passed": [
+          "primary request occurs once",
+          "secondary items use the shared menu owner",
+          "loading suppresses both native actions",
+          "Group joins actual adjacent surfaces"
+        ],
+        "errors": []
+      }
+    ],
+    "liveDocumentation": [
+      {
+        "engine": "chromium",
+        "passed": [
+          "live menu action updates its output",
+          "live radio selection retains the open menu",
+          "live submenu completes an action",
+          "live context gesture reaches application output",
+          "live primary action completes",
+          "live secondary action completes"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "passed": [
+          "live menu action updates its output",
+          "live radio selection retains the open menu",
+          "live submenu completes an action",
+          "live context gesture reaches application output",
+          "live primary action completes",
+          "live secondary action completes"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "passed": [
+          "live menu action updates its output",
+          "live radio selection retains the open menu",
+          "live submenu completes an action",
+          "live context gesture reaches application output",
+          "live primary action completes",
+          "live secondary action completes"
+        ],
+        "errors": []
+      }
+    ],
+    "shadows": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "mode": "light",
+            "tier": 4,
+            "computed": "oklab(0.811869 -8.94070e-8 5.96046e-8 / 0.294118) 0px 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 8px 40px 0px, rgba(0, 0, 0, 0.06) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 5,
+            "computed": "oklab(0.811869 -8.94070e-8 5.96046e-8 / 0.294118) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 12px 60px 0px, rgba(0, 0, 0, 0.12) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 6,
+            "computed": "oklab(0.811869 -8.94070e-8 5.96046e-8 / 0.294118) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 12px 60px 0px, rgba(0, 0, 0, 0.024) 0px 16px 64px 0px, rgba(0, 0, 0, 0.192) 0px 16px 36px -20px"
+          },
+          {
+            "mode": "dark",
+            "tier": 4,
+            "computed": "oklab(0.570691 9.81860e-9 2.03303e-8 / 0.379412) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 40px 0px, rgba(0, 0, 0, 0.3) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 5,
+            "computed": "oklab(0.570691 9.81860e-9 2.03303e-8 / 0.379412) 0px 0px 0px 1px, rgba(0, 0, 0, 0.3) 0px 12px 60px 0px, rgba(0, 0, 0, 0.5) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 6,
+            "computed": "oklab(0.570691 9.81860e-9 2.03303e-8 / 0.379412) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 12px 60px 0px, rgba(0, 0, 0, 0.4) 0px 16px 64px 0px, rgba(0, 0, 0, 0.9) 0px 16px 36px -20px"
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "mode": "light",
+            "tier": 4,
+            "computed": "oklab(0.811869 -8.9407e-8 5.96046e-8 / 0.294) 0px 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 8px 40px 0px, rgba(0, 0, 0, 0.06) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 5,
+            "computed": "oklab(0.811869 -8.9407e-8 5.96046e-8 / 0.294) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 12px 60px 0px, rgba(0, 0, 0, 0.12) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 6,
+            "computed": "oklab(0.811869 -8.9407e-8 5.96046e-8 / 0.294) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 12px 60px 0px, rgba(0, 0, 0, 0.024) 0px 16px 64px 0px, rgba(0, 0, 0, 0.192) 0px 16px 36px -20px"
+          },
+          {
+            "mode": "dark",
+            "tier": 4,
+            "computed": "oklab(0.570691 9.8186e-9 2.03303e-8 / 0.38) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 40px 0px, rgba(0, 0, 0, 0.3) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 5,
+            "computed": "oklab(0.570691 9.8186e-9 2.03303e-8 / 0.38) 0px 0px 0px 1px, rgba(0, 0, 0, 0.3) 0px 12px 60px 0px, rgba(0, 0, 0, 0.5) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 6,
+            "computed": "oklab(0.570691 9.8186e-9 2.03303e-8 / 0.38) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 12px 60px 0px, rgba(0, 0, 0, 0.4) 0px 16px 64px 0px, rgba(0, 0, 0, 0.9) 0px 16px 36px -20px"
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "mode": "light",
+            "tier": 4,
+            "computed": "oklab(0.801909 0 0 / 0.29725) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.05) 0px 8px 40px 0px, color(display-p3 0 0 0 / 0.063) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 5,
+            "computed": "oklab(0.801909 0 0 / 0.29725) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.15) 0px 12px 60px 0px, color(display-p3 0 0 0 / 0.122) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "light",
+            "tier": 6,
+            "computed": "oklab(0.801909 0 0 / 0.29725) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.15) 0px 12px 60px 0px, color(display-p3 0 0 0 / 0.024) 0px 16px 64px 0px, color(display-p3 0 0 0 / 0.192) 0px 16px 36px -20px"
+          },
+          {
+            "mode": "dark",
+            "tier": 4,
+            "computed": "oklab(0.570581 0 0 / 0.379) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.15) 0px 8px 40px 0px, color(display-p3 0 0 0 / 0.3) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 5,
+            "computed": "oklab(0.570581 0 0 / 0.379) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.3) 0px 12px 60px 0px, color(display-p3 0 0 0 / 0.5) 0px 12px 32px -16px"
+          },
+          {
+            "mode": "dark",
+            "tier": 6,
+            "computed": "oklab(0.570581 0 0 / 0.379) 0px 0px 0px 1px, color(display-p3 0 0 0 / 0.2) 0px 12px 60px 0px, color(display-p3 0 0 0 / 0.4) 0px 16px 64px 0px, color(display-p3 0 0 0 / 0.9) 0px 16px 36px -20px"
+          }
+        ]
+      }
+    ]
+  },
+  "findings": [
+    "CSS focus-within loses some nested top-layer ancestry; composed-tree ownership fixes premature parent dismissal.",
+    "Closing focus moves before the surface becomes inert. Existing application dialog focus is retained.",
+    "The shared semantic controller owns item label/description references; direct rendered attributes were cleared. Chromium AX verifies separate name and description.",
+    "Clear the current item when fully closed so reopening on the same item restores its visible highlight.",
+    "WebKit plain native buttons reproduce the platform Tab preference; native text fields prove menu Tab departure.",
+    "The token-count assertion rises from 443 to 446 for the three actual shadow keys; key uniqueness and source checks remain."
+  ],
+  "review": {
+    "method": "Local correctness, interface, accessibility, lifecycle, security and performance review plus native/compiled probes",
+    "independentReviewer": "Unavailable due worker account usage limit; no independent-review approval claimed"
+  },
+  "limits": [
+    "Synthetic touch PointerEvents prove hold/cancellation logic; real device long-press, OS input, actual Safari and assistive-technology session acceptance remain M22/M26.",
+    "Renderer/React reconciliation and final whole-library package/release gates remain assigned to M22/M26.",
+    "Shadow tests compare native geometry and 8-bit rendered colors; no exhaustive P3 raster or old-browser fallback claim."
+  ],
+  "references": [
+    "m13-menu-reference-review-2026-09-22.json",
+    "m13-shadow-sources-2026-09-22.json",
+    "m13-overlay-slots-2026-09-22.json"
+  ],
+  "fixtures": [
+    {
+      "path": "/tmp/acme-m13-menu/probe.ts",
+      "sha256": "21b1e4a5da88e7a1437889b10677c6fbda6396ec0980d9635a06595cabd8b30f"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/acceptance.ts",
+      "sha256": "cb1644fd2497f384bd7b40e3fa1d7730e19d05b9e8048dfdb1d1d795c7f11a25"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/compiled-probe.ts",
+      "sha256": "8d345149fd6d55cc11f73c6364935370c1bbc80c28cf8aea0750b13149caedca"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/compiled-acceptance.ts",
+      "sha256": "af301fdf256f63c1b318dc3a6a534ed809fb9214f52e675772aa6c95e0022d03"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/split-probe.ts",
+      "sha256": "d0ba3e4d7cb08c2708aca54f5d3c173b30355a3db743ad9dcb4c6b5d204c6282"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/split-run.ts",
+      "sha256": "669645376701288e509777c760d1a3199535a1da2766dbf0eb73d10f4f6b9ed8"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/compiled-split-probe.ts",
+      "sha256": "30d8b43ac0b55307c7f0194d56cae8501125ea1dd806b019c1ea8e559ebaaa04"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/compiled-split-run.ts",
+      "sha256": "38905221c545f13d6ba8a8ed419d14cf2a65737d54a8f6186f5908a7774169b7"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/docs-check.ts",
+      "sha256": "ac9715191e97f79277f1c4fc61d80761c01f677cdeeb75da178c1f9abdeee32e"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/shadow-check.ts",
+      "sha256": "9ead6e153788890776fe30ac13a3af1d1a8c59b3fcb79b062d1b1d8dd117f387"
+    },
+    {
+      "path": "/tmp/acme-m13-menu/tab-oracle.ts",
+      "sha256": "20a18545250aa40da21e341df04db6a01377cd54368b498d7aaf95f75560b070"
+    }
+  ]
+}

@@ -1,17 +1,2 @@
-:host {
-        display: inline-flex;
-        position: relative;
-      }
-      /* The menu rises to the top layer as a manual popover: the browser's popover box (fixed, inset, bordered, padded, scrolling, on a canvas fill) gives way to a bare wrapper the script places. */
-      .popover {
-        position: fixed;
-        inset: auto;
-        margin: 0;
-        border: 0;
-        padding: 0;
-        width: max-content;
-        height: auto;
-        overflow: visible;
-        background: transparent;
-        color: inherit;
-      }
+:host{display:inline-block;}
+acme-group{flex-wrap:nowrap;}

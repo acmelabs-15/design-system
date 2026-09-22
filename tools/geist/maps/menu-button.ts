@@ -14,6 +14,7 @@ const elementChild = (n: { children: { children: { text?: string; children: unkn
   return !!inner && inner.children.length > 0 && !inner.text;
 };
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "menu",
   component: "MenuButton",
   root: "data-geist-menu-button",

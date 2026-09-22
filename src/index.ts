@@ -78,8 +78,6 @@ export * from "./components/legend-item/legend-item";
 export * from "./components/load-more/load-more";
 export * from "./components/markdown/markdown";
 export * from "./components/menu/menu";
-export * from "./components/menu-button/menu-button";
-export * from "./components/menu-divider/menu-divider";
 export * from "./components/menu-item/menu-item";
 export * from "./components/menu-section/menu-section";
 export * from "./components/middle-truncate/middle-truncate";
@@ -137,3 +135,7 @@ export * from "./components/toggle-button/toggle-button";
 export * from "./components/segmented-control/segmented-control";
 export * from "./components/segmented-control-item/segmented-control-item";
 export * from "./components/field/field";
+
+export * from "./components/menu-trigger/menu-trigger";
+export * from "./components/menu-content/menu-content";
+export * from "./components/menu-separator/menu-separator";

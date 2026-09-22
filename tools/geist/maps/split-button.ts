@@ -6,6 +6,7 @@ import { type GeistMap, has } from "../gen";
 
 const SKIP = ["Open", "Open end"];
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "split-button",
   component: "SplitButton",
   root: (n) => n.tag === "div" && has("relative")(n) && has("flex")(n) && !!n.attrs.style?.includes("--divider-color"),
