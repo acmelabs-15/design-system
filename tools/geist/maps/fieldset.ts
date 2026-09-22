@@ -11,6 +11,7 @@ import { type GeistMap, has, type SpecNode } from "../gen";
 const marked = (attr: string) => (c: SpecNode) => attr in c.attrs;
 
 export const geist: GeistMap = {
+  referenceOnly: true,
   page: "fieldset",
   component: "Fieldset",
   root: "data-geist-fieldset",

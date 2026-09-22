@@ -242,14 +242,6 @@ export const fieldCss = css`.field {
   display: grid;
 }
 
-.fieldset {
-  background: var(--surface);
-  border-radius: var(--r-sm);
-  box-shadow: var(--ds-shadow-border);
-  min-width: 0;
-  position: relative;
-}
-
 @media (width <= 760px) {
   .grid2 {
     grid-template-columns: 1fr;

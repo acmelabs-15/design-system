@@ -96,7 +96,7 @@ The table fixes dependency order and atomic replacement boundaries. Each work pa
 | M11 | Field/Fieldset/Label; Input/Search/Password/Textarea; native form/reset/managed-form examples | M06/M09–M10 | 4–8 per control/family slice; remove Clearable Input/Check Row consumers atomically |
 | M12 | Number Input and Pin Input native behavior ports using the selected independent utilities | M06/M11 | 4–8 per port slice; all-engine input/hold/paste/form tests |
 | M13 | Menu/Context Menu and shared collection behavior; non-native Select/ComboBox/Multi Select; Slider/Calendar | M06/M09–M12 as used | 4–8 per family slice; approved scorer/date/number stack |
-| M14 | Scroll Area; Resizable panes; native-content List/Data List; Card/Inset/Item compositions | M06–M13 as used | 4–8 per family slice; document CSS and replacement recipes |
+| M14 | Scroll Area; Resizable panes; native-content List/Data List; Card/Inset/Item/Disabled Wall compositions | M06–M13 as used | 4–8 per family slice; document CSS and replacement recipes |
 | M15 | Accordion/Collapsible/Show; Steps/Timeline; Toolbar/App Bar/Breadcrumbs/Command Menu | M06–M14 | 4–8 per family slice; replace coupled action/disclosure consumers together |
 | M16 | Sidebar/TOC/core Tree; author-ID discovery and file-tree recipe; no advanced Tree engine | M08/M13–M15 | 4–8 per family slice; focus/resize/fragment/RTL |
 | M17 | Dialog/Alert Dialog/Drawer public families; Tooltip/Hover Card/Toggle Tip and typed-confirmation recipe | M06/M09/M11–M13 | 4–8 per family slice; named shadow/deviation and lifetime checks |
@@ -175,7 +175,7 @@ Checkbox now consumes NativeFormController and the shared semantic owner, which 
 
 ### Radio / Toolbar integration return point — 2026-09-21
 
-M10 introduces explicit keyboard-collection and Toolbar-delegation helpers. A radio collection inside a Toolbar yields arrow ownership and does not change selection. M14 must register its actual Toolbar root, expand registered collection targets, own the sole tab-entry model and consume delegated arrows even when native radio defaults were prevented. The bare-Toolbar protocol fixture is a prerequisite, not completion of the actual Toolbar integration. Include independent actions, editing controls, RTL/vertical direction, edges and nested collections in that M14 gate.
+M10 introduces explicit keyboard-collection and Toolbar-delegation helpers. A radio collection inside a Toolbar yields arrow ownership and does not change selection. M15 must register its actual Toolbar root, expand registered collection targets, own the sole tab-entry model and consume delegated arrows even when native radio defaults were prevented. The bare-Toolbar protocol fixture is a prerequisite, not completion of the actual Toolbar integration. Include independent actions, editing controls, RTL/vertical direction, edges and nested collections in that M15 gate.
 
 The M10 internal selection indicator needs explicit private definition delivery. Keep it available to its owning families without advertising it as another public selection component or an undocumented consumer tag. Verify the generator/manifest boundary when that internal element is added; the current delivery pipeline has only public component records.
 
@@ -217,3 +217,11 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 ### M10 completion — 2026-09-22
 
 [Tabs acceptance](evidence/m10-tabs-2026-09-21.json) closes the final M10 family. Build/site, 897 tests, source and compiled three-engine checks, actual documentation interactions and both appearance contrast checks pass. All M10 controls, selection owners/cards, the private indicator, Segmented Control, binary Switch, Tabs and Theme Switcher are complete at their assigned boundaries. Continue M11 with Field/Fieldset/Label and the text-control family. Preserve the named M14/M22/M26 integration gates; completion of this batch does not close them.
+
+### M11 Fieldset native container and M22 return point — 2026-09-22
+
+[Implementation evidence](evidence/m11-fieldset-2026-09-22.json) selects the actual native light-DOM ancestor. Finish compiled/site/full-suite acceptance. M22 must use x-acme-native-root to render one stable native child before the custom host connects; React's child reconciliation then retains its own DOM parent. Ordinary HTML/Lit ranges are preserved without cloning. Structural reconciliation remains distinct from synchronous disabled-property effects.
+
+### M11 Fieldset acceptance — 2026-09-22
+
+[Fieldset acceptance](evidence/m11-fieldset-2026-09-22.json) passes build/site, 898 tests, native and compiled checks in all engines, real React parent ownership and live form/first-legend actions. Continue Label/Field, then text controls and the optional managed-form adapter. The M22 native-root renderer contract remains mandatory. The current Disabled Wall gets its separate documentation page; its C-05 behavior rebuild belongs to the M14 surface batch. Toolbar belongs to M15, as the batch table specifies; earlier integration-return-point references have been corrected.

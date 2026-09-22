@@ -246,3 +246,22 @@ test("assignments to owned native elements do not become host properties", async
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
+
+test("native renderer-container metadata survives standard analysis", async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-native-root-manifest-"));
+  try {
+    fs.mkdirSync(path.join(root, "src"), { recursive: true });
+    fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
+    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    fs.writeFileSync(
+      path.join(root, "src/probe.ts"),
+      'import {LitElement} from "lit";\n/** @acmeNativeRoot fieldset */\nexport class Probe extends LitElement {} customElements.define("acme-probe",Probe);',
+    );
+    const { manifest, issues } = await analyzeManifest(root);
+    expect(issues).toEqual([]);
+    const declaration = manifest.modules.flatMap((module) => module.declarations ?? []).find((declaration) => declaration.name === "Probe") as ClassDeclaration & { "x-acme-native-root"?: string };
+    expect(declaration["x-acme-native-root"]).toBe("fieldset");
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});

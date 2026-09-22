@@ -1,3 +1,4 @@
-:host {
+:host, [part="root"] {
+  min-inline-size: 0;
   display: block;
 }

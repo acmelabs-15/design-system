@@ -6,16 +6,11 @@ import { disabledWallCss } from "../../generated/components/disabled-wall/disabl
 
 /**
  * Disabled wall: an empty overlay that covers its positioned container, shows the not-allowed
- * cursor and blocks text selection. Place it last inside a `position: relative` box; disabled
- * fieldset content renders one of its own.
+ * cursor and blocks text selection. Place it last inside a `position: relative` box.
  */
 
 export class AcmeDisabledWall extends AcmeElement {
-  static styles = [
-    sharedCss,
-    disabledWallCss,
-    disabledWallStructureCss,
-  ];
+  static styles = [sharedCss, disabledWallCss, disabledWallStructureCss];
   render() {
     return html`<div class="wall" aria-hidden="true" part="wall"></div>`;
   }

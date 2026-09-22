@@ -18,6 +18,7 @@ const CALLBACKS = new Set([
 ]);
 type EventFact = ManifestEvent & { "x-acme-options": Record<string, boolean | undefined> };
 type Facts = {
+  nativeRoot?: string;
   nestedAssignments: Set<string>;
   directAssignments: Set<string>;
   slots: Set<string>;
@@ -58,6 +59,7 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
         members: new Map(),
       };
       for (const tag of ts.getJSDocTags(declaration)) {
+        if (tag.tagName.text === "acmeNativeRoot" && typeof tag.comment === "string") found.nativeRoot = tag.comment.trim();
         if (["fires", "event", "emits"].includes(tag.tagName.text)) found.annotated.add("events");
         if (tag.tagName.text === "slot") found.annotated.add("slots");
         if (tag.tagName.text === "csspart") found.annotated.add("parts");
@@ -238,6 +240,7 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
       const declaration = moduleDoc.declarations?.find((d) => d.kind === "class" && d.name === node.name!.text) as ClassDeclaration | undefined;
       const fact = facts.get(key(moduleDoc.path, node.name.text));
       if (!declaration || !fact) return;
+      if (fact.nativeRoot) (declaration as ClassDeclaration & { "x-acme-native-root"?: string })["x-acme-native-root"] = fact.nativeRoot;
       const element = declaration as ClassDeclaration & { slots?: { name: string }[]; cssParts?: { name: string }[]; events?: ManifestEvent[] };
       for (const category of fact.dynamic) {
         if (!fact.annotated.has(category)) issues.push({ file: moduleDoc.path, className: node.name.text, category });

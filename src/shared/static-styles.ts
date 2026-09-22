@@ -98,3 +98,9 @@ export function applyStaticStyles(root: ShadowRoot, styles: readonly CSSResultOr
   }
   return applied.boundary;
 }
+
+/** Returns a constructed sheet in the target document when that platform supports it. */
+export function constructedStyleSheet(document: Document, style: CSSResultOrNative): CSSStyleSheet | undefined {
+  const Sheet = document.defaultView?.CSSStyleSheet;
+  return Sheet && typeof Sheet.prototype.replaceSync === "function" ? documentSheet(document, Sheet, style) : undefined;
+}
