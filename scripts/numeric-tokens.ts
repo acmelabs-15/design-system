@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { numericTokenDefinitions } from "../src/shared/numeric-tokens";
 import { themeTokenDefinitions } from "../src/shared/theme-tokens";
+import { motionTokenDefinitions } from "../src/shared/motion-tokens";
 
 export function numericTokenCss(): string {
   return ":root {\n" + numericTokenDefinitions.map(({ cssProperty, defaultValue }) => `  ${cssProperty}: ${defaultValue};`).join("\n") + "\n}\n";
@@ -10,7 +11,15 @@ export function numericTokenCss(): string {
 function manifestText(): string {
   const tokens = themeTokenDefinitions.map((definition) => {
     const numeric = numericTokenDefinitions.find((token) => token.cssProperty === definition.cssProperty);
-    return { ...definition, ...(numeric ?? {}), source: numeric ? "src/shared/numeric-tokens.ts" : "src/shared/theme-tokens.ts" };
+    return {
+      ...definition,
+      ...(numeric ?? {}),
+      source: numeric
+        ? "src/shared/numeric-tokens.ts"
+        : motionTokenDefinitions.some((token) => token.cssProperty === definition.cssProperty)
+          ? "src/shared/motion-tokens.ts"
+          : "src/shared/theme-tokens.ts",
+    };
   });
   return JSON.stringify({ schemaVersion: 1, tokens }, null, 2) + "\n";
 }

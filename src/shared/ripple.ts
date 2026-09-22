@@ -1,7 +1,7 @@
 import { createAtom } from "@tanstack/lit-store";
 import { html, nothing, type ReactiveController, type ReactiveElement } from "lit";
 import { keyed } from "lit/directives/keyed.js";
-import { AnimateController, animate, type Animate } from "@lit-labs/motion";
+import { animate, type Animate } from "@lit-labs/motion";
 import { StoreSelector } from "./store-connection";
 type Wave = Readonly<{ id: number; frames: Keyframe[]; duration: number; easing: string }>;
 const emptyWave: Readonly<{ value?: Wave }> = Object.freeze({});
@@ -18,7 +18,6 @@ const firstEasing = (value: string) => {
 export class Ripple implements ReactiveController {
   private readonly wave = createAtom(emptyWave);
   private readonly updates: StoreSelector<{ value?: Wave }>;
-  private readonly motion: AnimateController;
   private readonly directives = new Set<Animate>();
   private sequence = 0;
   private media?: MediaQueryList;
@@ -28,7 +27,6 @@ export class Ripple implements ReactiveController {
     private enabled: () => boolean,
   ) {
     this.updates = new StoreSelector(host, () => this.wave);
-    this.motion = new AnimateController(host, {});
     host.addController(this);
   }
   private preference = () => {
@@ -45,8 +43,10 @@ export class Ripple implements ReactiveController {
   }
   cancel() {
     this.sequence++;
-    this.motion.cancel();
-    for (const directive of this.directives) this.host.removeController(directive);
+    for (const directive of this.directives) {
+      directive.webAnimation?.cancel();
+      this.host.removeController(directive);
+    }
     this.directives.clear();
     this.wave.set(emptyWave);
   }

@@ -102,7 +102,7 @@ test("the manifest rejects changed inputs and tampered outputs, without requirin
   try {
     await mkdir(path.join(root, "scripts"));
     await Bun.write(path.join(root, "scripts/styles.ts"), await Bun.file(path.join(import.meta.dir, "../styles.ts")).text());
-    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "src/shared/motion-tokens.ts"])
       await Bun.write(path.join(root, input), await Bun.file(path.join(import.meta.dir, "../..", input)).text());
     await Bun.write(path.join(root, "input.css"), ".x { color: red; }");
     await mkdir(path.join(root, "external"), { recursive: true });
@@ -138,7 +138,7 @@ test("invalid CSS and registration conflicts leave previous generated artifacts 
   try {
     await mkdir(path.join(root, "scripts"));
     await Bun.write(path.join(root, "scripts/styles.ts"), await Bun.file(path.join(import.meta.dir, "../styles.ts")).text());
-    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "src/shared/motion-tokens.ts"])
       await Bun.write(path.join(root, input), await Bun.file(path.join(import.meta.dir, "../..", input)).text());
     const options = { root, producer: "mapped" as const, inputs: [], properties: [{ name: "--probe", syntax: "<length>", inherits: false, initialValue: "2px" }] };
     writeStyle("components/first/first", ".x { width: var(--probe); }", options);
@@ -192,7 +192,7 @@ test("an active output lock cannot overwrite the manifest", async () => {
   try {
     await mkdir(path.join(root, "scripts"));
     await Bun.write(path.join(root, "scripts/styles.ts"), await Bun.file(path.join(import.meta.dir, "../styles.ts")).text());
-    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+    for (const input of ["scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "src/shared/motion-tokens.ts"])
       await Bun.write(path.join(root, input), await Bun.file(path.join(import.meta.dir, "../..", input)).text());
     const options = { root, producer: "house" as const, inputs: [] };
     writeStyle("shared/first", ".x{}", options);
@@ -210,7 +210,7 @@ test("an active output lock cannot overwrite the manifest", async () => {
 test("retiring a style removes only its recorded files and protects unrecorded changes", async () => {
   const root = await mkdtemp(path.join(tmpdir(), "acme-retired-style-"));
   try {
-    for (const input of ["scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+    for (const input of ["scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "src/shared/motion-tokens.ts"])
       await Bun.write(path.join(root, input), await Bun.file(path.join(import.meta.dir, "../..", input)).text());
     const options = { root, producer: "mapped" as const, inputs: [] };
     const retired = writeStyle("shared/retired", ".old{color:red}", options);

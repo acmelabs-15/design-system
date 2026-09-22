@@ -44,7 +44,15 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
     const source = program.getSourceFile(path.join(root, file))!;
     for (const declaration of source.statements) {
       if (!ts.isClassDeclaration(declaration) || !declaration.name) continue;
-      const found: Facts = { slots: new Set(), parts: new Set(), queries: new Set(), events: new Map(), dynamic: new Set(), annotated: new Set(), members: new Map() };
+      const found: Facts = {
+        slots: new Set(),
+        parts: new Set(),
+        queries: new Set(),
+        events: new Map(),
+        dynamic: new Set(),
+        annotated: new Set(),
+        members: new Map(),
+      };
       for (const tag of ts.getJSDocTags(declaration)) {
         if (["fires", "event", "emits"].includes(tag.tagName.text)) found.annotated.add("events");
         if (tag.tagName.text === "slot") found.annotated.add("slots");
@@ -289,7 +297,7 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
       output.set(module.path, module);
     }
   }
-  analyzed.modules = [...output.values()].sort((a, b) => a.path.localeCompare(b.path, "en"));
+  analyzed.modules = [...output.values()].filter((module) => !module.path.startsWith("src/internal/")).sort((a, b) => a.path.localeCompare(b.path, "en"));
   profile("analyzed modules");
   for (const module of analyzed.modules)
     for (const declaration of module.declarations ?? []) {

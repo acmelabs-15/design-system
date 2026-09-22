@@ -197,3 +197,7 @@ These are explicit per-element sweep dispositions, not exemptions from the appro
 ### M10 Radio family slice — 2026-09-21
 
 [Radio acceptance](evidence/m10-radio-2026-09-21.json) closes Radio, Radio Group and Radio Card at their assigned boundary. Build/site and 900 tests pass. Source/compiled native checks, paired native-radio controls, forced colors, metadata, live forms/cards and the Checkbox Group/Card regression all pass. Choicebox is removed. Continue the shared internal indicator and Segmented Control before reusing acme-switch for binary Switch; then Tabs and Theme Switcher. Actual Toolbar integration remains M14 as stated above.
+
+### M10 shared indicator checkpoint — 2026-09-21
+
+[Private delivery and spring indicator](evidence/m10-selection-indicator-2026-09-21.json) pass source and compiled acceptance in all three engines, build/site and all 906 tests. Private definitions register through public owners; the standard analyzer's internal-class omission is preserved and private modules are excluded from consumer metadata. Both Material motion schemes have numeric role tokens and a verified Lit Motion parameter mapping. Integrate Segmented Control, binary Switch, Tabs and Theme Switcher. This does not close M10.

@@ -74,3 +74,14 @@ test("names are exact Map keys and unknown names cannot silently select the hous
   expect(() => registry.get("missing")).toThrow("before use");
   for (const name of ["", " ", " brand", "brand "]) expect(() => registry.register(name, {})).toThrow();
 });
+
+test("motion spring tokens accept positive numeric CSS and reject nonpositive literals", () => {
+  const calls: string[][] = [];
+  const registry = createThemeRegistry((property, value) => {
+    calls.push([property, value]);
+    return true;
+  });
+  registry.register("spring", { motion: { "acme-motion-standard-spatial-default-stiffness": "calc(350 * 2)" } });
+  expect(calls).toContainEqual(["animation-iteration-count", "calc(350 * 2)"]);
+  for (const value of ["0", "-1", "infinite"]) expect(() => registry.register("bad-spring", { motion: { "acme-motion-standard-spatial-default-stiffness": value } })).toThrow();
+});

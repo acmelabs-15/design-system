@@ -1,3 +1,4 @@
+import { motionTokenDefinitions } from "../src/shared/motion-tokens";
 // Splits the audited house sheet (the single source of every Geist value) into
 //   tokens.css              the global layer a page loads once: scales, semantic tokens, reset,
 //                           type classes, layout utilities, hue and series classes
@@ -104,6 +105,11 @@ const theme = path.join(ROOT, "src/generated/theme.css");
 const themeCss = fs.readFileSync(theme, "utf8");
 const inputs = ["styles/house.css", "src/generated/theme.css", "scripts/split-css.ts"];
 writeTokenManifest(ROOT);
+writeStyle("shared/motion", "", {
+  producer: "authored",
+  inputs: ["src/shared/motion-tokens.ts", "scripts/split-css.ts"],
+  properties: motionTokenDefinitions.map((token) => ({ name: token.cssProperty, syntax: "<number>", inherits: true, initialValue: token.defaultValue })),
+});
 writeResponsiveStyleDelivery(ROOT);
 const scopedTheme = generateThemeStyles(ROOT);
 writeThemeStyleMetadata(ROOT);

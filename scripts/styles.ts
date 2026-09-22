@@ -282,7 +282,7 @@ export function writeStyle(
     const helper = slash(path.relative(path.dirname(moduleFile), "src/shared/style-properties"));
     files[moduleFile] = litStyleModule(exportName, css, properties, helper.startsWith(".") ? helper : "./" + helper);
   }
-  const inputs = [...new Set([...options.inputs, "scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])];
+  const inputs = [...new Set([...options.inputs, "scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "src/shared/motion-tokens.ts"])];
   const entry: StyleEntry = {
     key,
     producer: options.producer,

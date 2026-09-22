@@ -123,7 +123,7 @@ fs.writeFileSync(
       path.join(DIST, "all.js"),
       path.join(DIST, "configure.js"),
       standaloneEntry,
-      ...components.map((component) => path.join(DIST, "define", component.name + ".js")),
+      ...components.filter((component) => !component.internal).map((component) => path.join(DIST, "define", component.name + ".js")),
       ...[...new Bun.Glob("generated/icons/{artwork,families}/**/*.js").scanSync({ cwd: DIST })].map((file) => path.join(DIST, file)),
       path.join(DIST, "generated/icons/all.js"),
     ],

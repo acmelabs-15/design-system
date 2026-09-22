@@ -37,7 +37,12 @@ export function createThemeRegistry(supports: Supports) {
           if (raw === undefined) continue;
           if (typeof raw !== "string" || !raw.trim()) throw new TypeError("Theme token values must be nonempty CSS strings");
           const value = raw.trim();
-          const valid = token.syntax === "scale-factor" ? supports("transform", `scale(${value})`) : supports(token.syntax, value);
+          const valid =
+            token.syntax === "positive-number"
+              ? value !== "infinite" && supports("animation-iteration-count", value) && (!Number.isFinite(Number(value)) || Number(value) > 0)
+              : token.syntax === "scale-factor"
+                ? supports("transform", `scale(${value})`)
+                : supports(token.syntax, value);
           if (!valid) throw new TypeError("Invalid CSS for theme token: " + category + "." + key);
           entries.push([key, value]);
           properties[token.cssProperty] = value;

@@ -15,7 +15,7 @@ test("composed descendant rules reach the terminal part through its ancestor hos
     await mkdir(path.join(scratch, "scripts"));
     for (const file of ["gen.ts", "tw.ts", "simplify.ts"]) await copyFile(path.join(import.meta.dir, "..", file), path.join(generator, file));
     await mkdir(path.join(scratch, "src/shared"), { recursive: true });
-    for (const file of ["scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts"])
+    for (const file of ["scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "src/shared/motion-tokens.ts"])
       await copyFile(path.join(import.meta.dir, "../../..", file), path.join(scratch, file));
     await symlink(path.join(import.meta.dir, "../../../node_modules"), path.join(scratch, "node_modules"));
     await writeFile(path.join(generator, "corpus/html/fixture.html"), '<link rel="stylesheet" href="/fixture.css">');

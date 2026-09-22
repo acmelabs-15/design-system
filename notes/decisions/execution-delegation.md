@@ -55,3 +55,9 @@ Selection controls and collections expose their own acme-change notifications. A
 ## Logical collection appearance defaults — 2026-09-21
 
 For selection members, resolve size as explicit member input, then the nearest general Group input, then the owning collection's size when that collection supports it, then the component default. This gives Checkbox Group's approved size property a useful defaulting role without overwriting an authored child size or taking appearance ownership away from a nearer general Group. Variant stays with the member and general Group; Checkbox Group supplies no variant. The existing appearance helper gains an optional readonly fallback source; behavior is unchanged for components without that source.
+
+## Private indicator delivery and spring mapping — 2026-09-21
+
+Under Peter's execution delegation, keep acme-selection-indicator under src/internal with @internal and a generated private definition. Public owning families register it transitively. Consumer exports, manifest/API pages and standalone CDN entries expose public families only. This implements S-07's approved internal boundary.
+
+Map the selected Standard/Expressive roles through Lit Motion's public SpringController using unit mass and physical damping derived from the source damping ratio. Standard/default spatial serves the recurring selection indicator; no global scheme is chosen. The theme catalog exposes all 24 numeric role parameters. [Source and implementation evidence](../alignment/evidence/m10-selection-indicator-2026-09-21.json) records provenance, tested behavior and remaining integration gates.

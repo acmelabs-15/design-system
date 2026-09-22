@@ -198,3 +198,26 @@ test("optional icon definitions stay selective while owned icon dependencies loa
   expect(fs.readFileSync(path.join(root, "src/define/sample-icon.ts"), "utf8")).toContain('customElements.define("acme-sample-icon", SampleIcon);');
   expect(fs.readFileSync(path.join(root, "src/define/sample-icon.ts"), "utf8")).toContain('import "../generated/icons/classes/sample-icon";');
 });
+
+test("internal components register through their owner without public entries or exports", () => {
+  const root = fixture({
+    "internal/inner.ts": "/** @internal */\n" + component("Inner"),
+    "owner.ts": component("Owner", "render(){return html`<acme-inner></acme-inner>`;}", 'import {html} from "lit";'),
+  });
+  fs.writeFileSync(path.join(root, "package.json"), '{"name":"fixture"}');
+  const entries = writeEntries(root);
+  writePackageExports(entries, root);
+  expect(entries.find((entry) => entry.name === "inner")?.internal).toBe(true);
+  expect(fs.existsSync(path.join(root, "src/internal/define/inner.ts"))).toBe(true);
+  expect(fs.existsSync(path.join(root, "src/define/inner.ts"))).toBe(false);
+  expect(fs.readFileSync(path.join(root, "src/define/owner.ts"), "utf8")).toContain('import "../internal/define/inner"');
+  expect(fs.readFileSync(path.join(root, "src/all.ts"), "utf8")).not.toContain("inner");
+  const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+  expect(pkg.exports["./components/inner"]).toBeUndefined();
+  expect(pkg.exports["./components/owner"]).toBeDefined();
+  expect(pkg.sideEffects).toContain("./dist/internal/define/*.js");
+});
+test("private delivery requires both an internal location and annotation", () => {
+  expect(() => collectComponents(fixture({ "internal/inner.ts": component("Inner") }))).toThrow("must agree");
+  expect(() => collectComponents(fixture({ "inner.ts": "/** @internal */\n" + component("Inner") }))).toThrow("must agree");
+});

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { transform, type Declaration, type Rule, type Selector } from "lightningcss";
 import { numericTokenDefinitions } from "../src/shared/numeric-tokens";
+import { motionTokenDefinitions } from "../src/shared/motion-tokens";
 import { densityTokenDefinitions, fontWeightTokenDefinitions, themeTokenDefinitions } from "../src/shared/theme-tokens";
 
 const ROOT = path.resolve(import.meta.dir, "..");
@@ -215,11 +216,11 @@ function declarations(tokens: readonly { cssProperty: string; defaultValue: stri
 export function generateThemeStyles(root = ROOT, selected: Partial<ThemeStyleSelectors> = {}) {
   const selectors = { ...defaultThemeStyleSelectors, ...selected };
   for (const attribute of [selectors.appearanceAttribute, selectors.densityAttribute]) if (!/^[a-z][a-z0-9-]*$/.test(attribute)) throw new Error("Invalid theme state attribute");
-  const inputs = ["styles/house.css", "src/generated/theme.css", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "scripts/theme-tokens.ts"];
+  const inputs = ["styles/house.css", "src/generated/theme.css", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "scripts/theme-tokens.ts", "src/shared/motion-tokens.ts"];
   const sources = inputs.slice(0, 2).map((file) => ({ file, css: fs.readFileSync(path.join(root, file), "utf8") }));
   const facts = collectFacts(sources);
   const appearance = appearanceClosure(facts);
-  const ownedDefaults = [...fontWeightTokenDefinitions, ...densityTokenDefinitions];
+  const ownedDefaults = [...fontWeightTokenDefinitions, ...densityTokenDefinitions, ...motionTokenDefinitions];
   const rootCss = `:root {\n${declarations(ownedDefaults)}\n}\n`;
   const fullResetCss =
     sources.map((source) => scopeSource(source, selectors.reset, selectors.appearanceAttribute)).join("\n") + scopeRule(selectors.reset, declarations([...numericTokenDefinitions, ...ownedDefaults]));

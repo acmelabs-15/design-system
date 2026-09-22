@@ -66,7 +66,7 @@ Several **generated files are committed**, in places that read as source. The sc
 | `src/generated/components/` and `src/generated/shared/` | `scripts/styles.ts` | compiled CSS under `src/generated/css/` |
 | `src/generated/style-manifest.json` | style producers | input/output fingerprints and registration definitions |
 | `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | `src/shared/numeric-tokens.ts` through `scripts/numeric-tokens.ts` |
-| `src/define/`, `src/all.ts` and component package exports | `scripts/entries.ts` | `HTMLElementTagNameMap` records and owned component markup |
+| `src/define/`, `src/internal/define/`, `src/all.ts` and component package exports | `scripts/entries.ts` | `HTMLElementTagNameMap` records, explicit internal annotations and owned component markup |
 | `dist/custom-elements.json` | `scripts/manifest.ts` | component declarations, templates and annotations |
 | `dist/styles/` | `bun run build` | compiled document/token/recipe CSS and maps |
 | `dist/cdn/` | `bun run build` | selective definitions and one shared browser module graph |
@@ -76,7 +76,7 @@ Several **generated files are committed**, in places that read as source. The sc
 
 The tracked `docs/` tree is the published snapshot while Pages still serves main/docs. Its removal and the workflow deployment switch remain assigned to the publishing migration; it is not the local build output.
 
-Hand-written: `styles/`, `src/` except `src/generated/`, `src/define/` and `src/all.ts`; `site/`, `scripts/`, `packages/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
+Hand-written: `styles/`, `src/` except `src/generated/`, `src/define/`, `src/internal/define/` and `src/all.ts`; `site/`, `scripts/`, `packages/`, `tools/geist/` except `corpus/`, `notes/`, `.agents/`, `README.md`, `PLAN.md`, this file.
 
 `CLAUDE.md` is a symlink to this file. Edit `AGENTS.md`; the link follows.
 

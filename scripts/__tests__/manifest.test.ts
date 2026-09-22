@@ -6,6 +6,8 @@ import type { ClassDeclaration, CustomElement } from "custom-elements-manifest/s
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { writeEntries } from "../entries";
+import { apiFromManifest } from "../../site/api";
 import { analyzeManifest, normalizeManifest } from "../manifest";
 import { LitElement } from "lit";
 import * as classes from "../../src/index";
@@ -196,6 +198,30 @@ test("partitioned icon analysis preserves real ancestry and authored descendants
       expect(element.attributes?.find((attribute) => attribute.name === "label")).toMatchObject({ fieldName: "label", default: '""' });
       expect(element.members?.some((member) => member.name === "secret")).toBe(false);
     }
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("internal definitions stay out of consumer metadata and API pages", async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-internal-manifest-"));
+  try {
+    fs.mkdirSync(path.join(root, "src/internal"), { recursive: true });
+    fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
+    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    fs.writeFileSync(
+      path.join(root, "src/internal/inner.ts"),
+      'import {LitElement,html} from "lit";\n/** @internal */\nexport class Inner extends LitElement {render(){return html`<span></span>`;}}declare global{interface HTMLElementTagNameMap{"acme-inner":Inner;}}',
+    );
+    fs.writeFileSync(
+      path.join(root, "src/owner.ts"),
+      'import {LitElement,html} from "lit";export class Owner extends LitElement {render(){return html`<acme-inner></acme-inner>`;}}declare global{interface HTMLElementTagNameMap{"acme-owner":Owner;}}',
+    );
+    writeEntries(root);
+    const { manifest, issues } = await analyzeManifest(root);
+    expect(issues).toEqual([]);
+    expect(manifest.modules.some((module) => module.path.startsWith("dist/internal/"))).toBe(false);
+    expect(apiFromManifest(manifest).map((element) => element.tag)).toEqual(["acme-owner"]);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

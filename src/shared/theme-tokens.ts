@@ -1,4 +1,5 @@
 import { numericTokenKeys, numericTokenProperty, type NumericTokenCategory, type NumericTokenKey } from "./numeric-tokens";
+import { motionTokenDefinitions } from "./motion-tokens";
 
 export const themeTokenCategories = Object.freeze(["colors", "fonts", "fontSizes", "fontWeights", "lineHeights", "spacing", "sizes", "radii", "shadows", "motion"] as const);
 export type ThemeTokenCategory = (typeof themeTokenCategories)[number];
@@ -16,6 +17,7 @@ export type ThemeTokenSyntax =
   | "transition-duration"
   | "transition-timing-function"
   | "scale-factor"
+  | "positive-number"
   | "gap"
   | "padding-block"
   | "padding-inline";
@@ -431,6 +433,7 @@ export const themeTokenDefinitions = Object.freeze([
   ...numeric("sizes"),
   ...fontWeightTokenDefinitions,
   ...densityTokenDefinitions,
+  ...motionTokenDefinitions,
 ]);
 export type ThemeTokenDefinition = (typeof themeTokenDefinitions)[number];
 export type ThemeTokenKey<Category extends ThemeTokenCategory> = Extract<ThemeTokenDefinition, { category: Category }>["key"];

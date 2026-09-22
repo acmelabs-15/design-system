@@ -13,6 +13,30 @@
   --acme-button-medium-height: 2.25rem;
   --acme-button-large-height: 2.5rem;
   --acme-button-padding-inline: .75rem;
+  --acme-motion-standard-spatial-fast-stiffness: 1400;
+  --acme-motion-standard-spatial-fast-damping-ratio: .9;
+  --acme-motion-standard-spatial-default-stiffness: 700;
+  --acme-motion-standard-spatial-default-damping-ratio: .9;
+  --acme-motion-standard-spatial-slow-stiffness: 300;
+  --acme-motion-standard-spatial-slow-damping-ratio: .9;
+  --acme-motion-standard-effects-fast-stiffness: 3800;
+  --acme-motion-standard-effects-fast-damping-ratio: 1;
+  --acme-motion-standard-effects-default-stiffness: 1600;
+  --acme-motion-standard-effects-default-damping-ratio: 1;
+  --acme-motion-standard-effects-slow-stiffness: 800;
+  --acme-motion-standard-effects-slow-damping-ratio: 1;
+  --acme-motion-expressive-spatial-fast-stiffness: 800;
+  --acme-motion-expressive-spatial-fast-damping-ratio: .6;
+  --acme-motion-expressive-spatial-default-stiffness: 380;
+  --acme-motion-expressive-spatial-default-damping-ratio: .8;
+  --acme-motion-expressive-spatial-slow-stiffness: 200;
+  --acme-motion-expressive-spatial-slow-damping-ratio: .8;
+  --acme-motion-expressive-effects-fast-stiffness: 3800;
+  --acme-motion-expressive-effects-fast-damping-ratio: 1;
+  --acme-motion-expressive-effects-default-stiffness: 1600;
+  --acme-motion-expressive-effects-default-damping-ratio: 1;
+  --acme-motion-expressive-effects-slow-stiffness: 800;
+  --acme-motion-expressive-effects-slow-damping-ratio: 1;
 }
 
 :where([data-acme-theme-reset]), :host(:where([data-acme-theme-reset])) {
@@ -1484,6 +1508,30 @@
   --acme-button-medium-height: 2.25rem;
   --acme-button-large-height: 2.5rem;
   --acme-button-padding-inline: .75rem;
+  --acme-motion-standard-spatial-fast-stiffness: 1400;
+  --acme-motion-standard-spatial-fast-damping-ratio: .9;
+  --acme-motion-standard-spatial-default-stiffness: 700;
+  --acme-motion-standard-spatial-default-damping-ratio: .9;
+  --acme-motion-standard-spatial-slow-stiffness: 300;
+  --acme-motion-standard-spatial-slow-damping-ratio: .9;
+  --acme-motion-standard-effects-fast-stiffness: 3800;
+  --acme-motion-standard-effects-fast-damping-ratio: 1;
+  --acme-motion-standard-effects-default-stiffness: 1600;
+  --acme-motion-standard-effects-default-damping-ratio: 1;
+  --acme-motion-standard-effects-slow-stiffness: 800;
+  --acme-motion-standard-effects-slow-damping-ratio: 1;
+  --acme-motion-expressive-spatial-fast-stiffness: 800;
+  --acme-motion-expressive-spatial-fast-damping-ratio: .6;
+  --acme-motion-expressive-spatial-default-stiffness: 380;
+  --acme-motion-expressive-spatial-default-damping-ratio: .8;
+  --acme-motion-expressive-spatial-slow-stiffness: 200;
+  --acme-motion-expressive-spatial-slow-damping-ratio: .8;
+  --acme-motion-expressive-effects-fast-stiffness: 3800;
+  --acme-motion-expressive-effects-fast-damping-ratio: 1;
+  --acme-motion-expressive-effects-default-stiffness: 1600;
+  --acme-motion-expressive-effects-default-damping-ratio: 1;
+  --acme-motion-expressive-effects-slow-stiffness: 800;
+  --acme-motion-expressive-effects-slow-damping-ratio: 1;
 }
 
 :where([data-acme-appearance-boundary]), :host(:where([data-acme-appearance-boundary])) {
