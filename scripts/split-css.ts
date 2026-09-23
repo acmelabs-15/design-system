@@ -40,9 +40,7 @@ const MAP: [string, RegExp][] = [
   ["skeleton", /^(\.skeleton|@keyframes shimmer)/],
   ["video", /^\.progress/], // the house bar rules: the video scrubber is their only user (acme-progress is generated)
   ["gauge", /^(\.gauge|\.ring\b|\.score-ring|@keyframes gauge-spin)/],
-  ["load-more", /^\.load-more/],
   ["avatar", /^\.avatar/],
-  ["collapse", /^\.collapse/],
   ["toast", /^\.toast/],
   ["appbar", /^(\.appbar|\.subbar|:root:has\(\.subbar\))/],
   ["trend", /^\.trend/],
@@ -64,7 +62,6 @@ const MAP: [string, RegExp][] = [
   ["breadcrumbs", /^\.breadcrumbs?\b/],
   ["banner", /^\.site-banner/],
   ["error", /^\.error-text/],
-  ["show-more", /^\.show-more/],
   ["pagination", /^\.pagination/],
   ["middle-truncate", /^\.truncate-mid/],
   ["book", /^\.book/],

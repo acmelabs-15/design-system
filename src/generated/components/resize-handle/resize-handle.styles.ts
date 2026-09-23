@@ -36,11 +36,11 @@ export const resizeHandleCss = css`:host {
 }
 
 [part~="handle"]:hover [part="indicator"], [part~="handle"]:focus-visible [part="indicator"] {
-  background: var(--acme-accent);
+  background: var(--ds-focus-color);
 }
 
 [part~="handle"]:focus-visible {
-  outline: 2px solid var(--acme-accent);
+  outline: 2px solid var(--ds-focus-color);
   outline-offset: -2px;
   z-index: 1;
 }

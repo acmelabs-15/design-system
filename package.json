@@ -437,6 +437,26 @@
       "import": "./dist/generated/icons/classes/accessible-menu-icon.js",
       "default": "./dist/generated/icons/classes/accessible-menu-icon.js"
     },
+    "./components/accordion": {
+      "types": "./dist/components/accordion/accordion.d.ts",
+      "import": "./dist/components/accordion/accordion.js",
+      "default": "./dist/components/accordion/accordion.js"
+    },
+    "./components/accordion-content": {
+      "types": "./dist/components/accordion-content/accordion-content.d.ts",
+      "import": "./dist/components/accordion-content/accordion-content.js",
+      "default": "./dist/components/accordion-content/accordion-content.js"
+    },
+    "./components/accordion-item": {
+      "types": "./dist/components/accordion-item/accordion-item.d.ts",
+      "import": "./dist/components/accordion-item/accordion-item.js",
+      "default": "./dist/components/accordion-item/accordion-item.js"
+    },
+    "./components/accordion-trigger": {
+      "types": "./dist/components/accordion-trigger/accordion-trigger.d.ts",
+      "import": "./dist/components/accordion-trigger/accordion-trigger.js",
+      "default": "./dist/components/accordion-trigger/accordion-trigger.js"
+    },
     "./components/account-balance-icon": {
       "types": "./dist/generated/icons/classes/account-balance-icon.d.ts",
       "import": "./dist/generated/icons/classes/account-balance-icon.js",
@@ -4477,11 +4497,6 @@
       "import": "./dist/generated/icons/classes/cognition-icon.js",
       "default": "./dist/generated/icons/classes/cognition-icon.js"
     },
-    "./components/collapse": {
-      "types": "./dist/components/collapse/collapse.d.ts",
-      "import": "./dist/components/collapse/collapse.js",
-      "default": "./dist/components/collapse/collapse.js"
-    },
     "./components/collapse-all-icon": {
       "types": "./dist/generated/icons/classes/collapse-all-icon.d.ts",
       "import": "./dist/generated/icons/classes/collapse-all-icon.js",
@@ -4492,10 +4507,20 @@
       "import": "./dist/generated/icons/classes/collapse-content-icon.js",
       "default": "./dist/generated/icons/classes/collapse-content-icon.js"
     },
-    "./components/collapse-group": {
-      "types": "./dist/components/collapse-group/collapse-group.d.ts",
-      "import": "./dist/components/collapse-group/collapse-group.js",
-      "default": "./dist/components/collapse-group/collapse-group.js"
+    "./components/collapsible": {
+      "types": "./dist/components/collapsible/collapsible.d.ts",
+      "import": "./dist/components/collapsible/collapsible.js",
+      "default": "./dist/components/collapsible/collapsible.js"
+    },
+    "./components/collapsible-content": {
+      "types": "./dist/components/collapsible-content/collapsible-content.d.ts",
+      "import": "./dist/components/collapsible-content/collapsible-content.js",
+      "default": "./dist/components/collapsible-content/collapsible-content.js"
+    },
+    "./components/collapsible-trigger": {
+      "types": "./dist/components/collapsible-trigger/collapsible-trigger.d.ts",
+      "import": "./dist/components/collapsible-trigger/collapsible-trigger.js",
+      "default": "./dist/components/collapsible-trigger/collapsible-trigger.js"
     },
     "./components/collections-bookmark-icon": {
       "types": "./dist/generated/icons/classes/collections-bookmark-icon.d.ts",
@@ -16917,6 +16942,11 @@
       "import": "./dist/generated/icons/classes/short-text-icon.js",
       "default": "./dist/generated/icons/classes/short-text-icon.js"
     },
+    "./components/show": {
+      "types": "./dist/components/show/show.d.ts",
+      "import": "./dist/components/show/show.js",
+      "default": "./dist/components/show/show.js"
+    },
     "./components/show-chart-icon": {
       "types": "./dist/generated/icons/classes/show-chart-icon.d.ts",
       "import": "./dist/generated/icons/classes/show-chart-icon.js",
@@ -21516,6 +21546,7 @@
     "focus-trap": "8.2.2",
     "lit": "^3.3.3",
     "match-sorter": "8.3.0",
+    "tabbable": "6.5.0",
     "urlpattern-polyfill": "^10.0.0"
   },
   "devDependencies": {

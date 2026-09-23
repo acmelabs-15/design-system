@@ -26,7 +26,7 @@ export const disabledWallStructureCss = css`:host {
 }
 
 [part="explanation"]:focus-visible {
-  outline: 2px solid var(--acme-accent);
+  outline: 2px solid var(--ds-focus-color);
   outline-offset: 2px;
   border-radius: 4px;
 }

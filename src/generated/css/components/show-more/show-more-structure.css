@@ -1,3 +1,4 @@
-:host, acme-button {
-  display: block;
+.chevron {
+  transform: rotate(var(--_show-more-rotation, 0deg));
+  display: inline-flex;
 }

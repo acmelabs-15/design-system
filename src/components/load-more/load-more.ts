@@ -1,39 +1,33 @@
-import { loadMoreStructureCss } from "../../generated/components/load-more/load-more-structure.styles";
 import { html } from "lit";
-import { property } from "lit/decorators.js";
-import { classMap } from "lit/directives/class-map.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { loadMoreCss } from "../../generated/components/load-more/load-more.styles";
-import { loadMorePlaceholderCss } from "../../generated/components/load-more/load-more-placeholder.styles";
-
-/**
- * Load more button. A full-width secondary submit button that appends more items to a list,
- * 16px below it; the slot is the text, "Load More" by default. `loading` shows the spinner and
- * disables it; `no-gap` removes the space above; `no-border-radius` squares the corners so it
- * sits flush with the list; `placeholder` renders an empty block of the same height instead.
+import { AcmeActionElement } from "../../shared/action-element";
+import { actionContent } from "../../shared/action-content";
+import { message, messageCatalogs } from "../../shared/messages";
+import { StoreSelector } from "../../shared/store-connection";
+/** Requests more results. The application owns loading and the result collection.
+ * @slot - Action label, with a localized Load More fallback.
+ * @slot start - Leading content.
+ * @slot end - Trailing content.
+ * @fires {CustomEvent<{action:"load-more"}>} acme-request - A user requests more results.
  */
-
-export class AcmeLoadMore extends AcmeElement {
-  static styles = [sharedCss, loadMoreCss, loadMorePlaceholderCss, loadMoreStructureCss];
-  @property({ type: Boolean }) loading = false;
-  @property({ type: Boolean, reflect: true }) disabled = false;
-  @property({ type: Boolean, attribute: "no-gap" }) noGap = false;
-  @property({ type: Boolean, attribute: "no-border-radius" }) noBorderRadius = false;
-  /** An empty block of the button's height, while the list loads. */
-  @property({ type: Boolean }) placeholder = false;
-  render() {
-    if (this.placeholder) return html`<div class=${classMap({ placeholder: true, "no-gap": this.noGap })}></div>`;
-    return html`<acme-button
-      class=${classMap({ "no-gap": this.noGap, "no-radius": this.noBorderRadius })}
-      variant="secondary"
-      type="submit"
-      ?loading=${this.loading}
-      ?disabled=${this.disabled}
-      part="button"
-      ><slot>Load More</slot></acme-button>`;
+export class AcmeLoadMore extends AcmeActionElement {
+  private readonly localeUpdates = new StoreSelector(this, () => this.themeContext.scope.effective);
+  private readonly messageUpdates = new StoreSelector(this, () => messageCatalogs);
+  protected get fallbackAppearance() {
+    return { variant: "secondary" };
+  }
+  protected activate() {
+    this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "load-more" }), bubbles: true, composed: true }));
+  }
+  protected renderContent() {
+    return actionContent({
+      loading: this.loading,
+      size: this.size,
+      start: this.places.has("start"),
+      end: this.places.has("end"),
+      label: html`<slot>${message(this.themeContext.scope.effective.get().locale, "loadMore.label", "Load More")}</slot>`,
+    });
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-load-more": AcmeLoadMore;

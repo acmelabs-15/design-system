@@ -1,36 +1,25 @@
-// Docs page: Show more — mirrors https://vercel.com/geist/show-more
 import type { Doc } from "../../site";
-
 export const doc: Doc = {
   id: "show-more",
-  title: "Show more",
-  lede: "A styled control that shows content as expanded or collapsed.",
+  title: "Show More",
+  lede: "A button that changes expansion while the application owns the content.",
   tags: ["acme-show-more"],
   examples: [
     {
-      h: "Default",
-      p: "The element is controlled: the owner flips expanded on click.",
-      html: `<acme-show-more></acme-show-more>`,
-      script: `const el = root.querySelector("acme-show-more");
-el.addEventListener("click", () => { el.expanded = !el.expanded; });`,
+      h: "Reveal content",
+      html: "<acme-show-more></acme-show-more><acme-show><template><p>Additional delivery information.</p></template></acme-show>",
+      script:
+        'const control=root.querySelector("acme-show-more"), content=root.querySelector("acme-show");control.ariaControlsElements=[content];control.addEventListener("acme-expanded-change",e=>content.when=e.detail.expanded);',
     },
-    {
-      h: "Expanded",
-      html: `<acme-show-more expanded></acme-show-more>`,
-    },
-    {
-      h: "No border",
-      html: `<acme-show-more no-border></acme-show-more>`,
-    },
+    { h: "Expanded", html: "<acme-show-more expanded></acme-show-more>" },
+    { h: "Loading", html: "<acme-show-more loading></acme-show-more>" },
+    { h: "Custom label", html: "<acme-show-more>More delivery options</acme-show-more>" },
   ],
   practices: {
-    "Best Practices": [
-      "Use Show More to reveal the rest of one long list or block: recent activity, repo branches, attached resources. Use Pagination for sibling pages of one data set and Collapse for optional sections.",
-      "Show enough rows to convey the shape of the list before you truncate; five to ten is typical. A cut at two rows feels performative.",
-      "Put the hidden count on the trigger so the cost of expanding is clear (<code>Show 12 More</code>, then <code>Show Less</code> once open). Both labels are Title Case.",
-      "Do not flip between Show More and Show Less on the same data mid-flow. Collapsing rows the user opened scrolls them away from where they read.",
-      "Render hidden rows in the DOM when the count is small so find-in-page works. Lazy-load only when the data set is large enough to slow the first render.",
-      "The trigger is a <code>button</code> with <code>aria-expanded</code> and <code>aria-controls</code> pointing at the list. After expanding, move focus to the first revealed row.",
+    Behavior: [
+      "User activation updates expanded and emits one acme-expanded-change event. Programmatic writes stay silent.",
+      "Connect aria-controls or ariaControlsElements to the content you reveal. The control does not own or fetch unrelated content.",
+      "Loading blocks repeated activation and retains a focusable action. Use the shared button size, variant and shape properties for presentation.",
     ],
   },
 };

@@ -3427,70 +3427,6 @@ dialog::backdrop {
   font-weight: var(--acme-font-weight-500);
 }
 
-.collapse {
-  border-bottom: 1px solid var(--ds-gray-alpha-400);
-}
-
-.collapse-t {
-  text-align: left;
-  width: 100%;
-  font-size: 24px;
-  line-height: 36px;
-  font-weight: var(--acme-font-weight-600);
-  letter-spacing: -.96px;
-  color: var(--text);
-  cursor: pointer;
-  background: none;
-  border: 0;
-  align-items: center;
-  gap: 8px;
-  padding: 24px 0;
-  display: flex;
-}
-
-.collapse.sm .collapse-t {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: var(--acme-font-weight-500);
-  letter-spacing: 0;
-  padding: 12px 0;
-}
-
-.collapse-t:after {
-  content: "";
-  border-right: 1.5px solid var(--text-2);
-  border-bottom: 1.5px solid var(--text-2);
-  width: 8px;
-  height: 8px;
-  transition: transform var(--dur) var(--ease);
-  flex: none;
-  margin-left: auto;
-  transform: rotate(45deg);
-}
-
-.collapse-t[aria-expanded="true"]:after {
-  transform: rotate(-135deg);
-}
-
-.collapse-p {
-  overflow: hidden;
-}
-
-.collapse-b {
-  color: var(--text);
-  padding: 0 0 24px;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.collapse.sm .collapse-b {
-  padding-bottom: 12px;
-}
-
-.collapse-group {
-  border-top: 1px solid var(--ds-gray-alpha-400);
-}
-
 .toast {
   right: 24px;
   bottom: calc(24px + env(safe-area-inset-bottom));
@@ -5736,56 +5672,6 @@ a.breadcrumb.menu:hover {
 
 .btn.block.loading {
   justify-content: center;
-}
-
-.load-more {
-  padding-top: 24px;
-}
-
-.load-more.no-gap {
-  padding-top: 0;
-}
-
-.load-more.no-radius .btn {
-  border-radius: 0;
-}
-
-.show-more {
-  justify-content: center;
-  align-items: center;
-  min-height: 32px;
-  display: flex;
-  position: relative;
-}
-
-.show-more:before {
-  content: "";
-  background: var(--ds-gray-alpha-200);
-  height: 1px;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-}
-
-.show-more.no-border:before {
-  display: none;
-}
-
-.show-more .btn {
-  border-radius: 999px;
-  gap: 6px;
-  height: 32px;
-  padding: 0 12px;
-  position: relative;
-}
-
-.show-more .btn .ic {
-  transition: transform var(--dur) var(--ease);
-}
-
-.show-more.expanded .btn .ic {
-  transform: rotate(180deg);
 }
 
 .pagination {

@@ -10,7 +10,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Completed:** M01–M14 are complete at their assigned boundaries. [Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes M13 with the strict build, site, 900 tests and all-engine native/compiled/documentation/overlay checks. Final React-wrapper, actual platform and whole-library gates remain M22/M26.
 
-**Current work:** M14 is complete at its assigned boundaries. [Resizable acceptance](evidence/m14-resizable-2026-09-23.json) closes the last family with build/site, 926 tests, 23 source/compiled checks per engine, native accessibility inspection and forty passing WebKit fresh mounts. The reduced-motion producer defect is corrected. **M15 is next:** Accordion/Collapsible and Show/Show More/Load More; Steps/Timeline; Toolbar/App Bar/Breadcrumbs; Command Menu. R08 contracts, existing Collapse/Collapse Group and disclosure decisions are read. No M15 source is implemented yet. Command Menu requires the public Dialog family: bring that M17 slice forward before Command Menu, then leave the rest of M17 in its assigned batch.
+**Current work:** M15 is active. [Accordion/Collapsible and Show/Show More/Load More acceptance](evidence/m15-disclosure-2026-09-23.json) passes build/site, 926 tests, 23 source/compiled checks per engine, five documentation flows per engine and four M14 focus-style regressions per engine. Collapse/Collapse Group are removed. Continue Steps/Timeline, then Toolbar/App Bar/Breadcrumbs. Bring the public Dialog/Alert Dialog slice forward from M17 before Command Menu; do not create a duplicate dialog engine. Steps/Timeline official docs, pinned upstream Steps source and relevant Pro examples are read; implementation is next.
 
 **Next batches:** continue M15–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
 
@@ -20,7 +20,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Local preview:** port 4180 now runs bun scripts/dev.ts --no-build --no-watch (exec session 53597). A second watch process was found and stopped after it triggered concurrent builds. Use explicit generation/builds; restore normal watch mode after migration completion. Keep heavy package builds sequential.
 
-**Local commits:** 2ec047be1 (Calendar/M13), 6e431cf16 (native lists/Disabled Wall), c84f73cee (Card/Inset/Item), 39bdc98c0 (Scroll Area), 335546ad0 (style whitespace). Resizable/M14 closure is the current verified commit slice. No push, publication or Pages change occurred.
+**Local commits:** 2ec047be1 (Calendar/M13), 6e431cf16 (native lists/Disabled Wall), c84f73cee (Card/Inset/Item), 39bdc98c0 (Scroll Area), 335546ad0 (style whitespace). fbed13a4f closes Resizable/M14. No push, publication or Pages change occurred.
 
 **Remaining cross-batch checks:** actual OS IME/voice/autofill/history/Safari and assistive-technology interaction; generated React wrappers; scoped-registry/adoption and native-content cases; the specific saved single-bundle import-initialization reproduction; complete appearance/removal/package acceptance. Preserve their existing M22/M26 owners and source-linked limits.
 

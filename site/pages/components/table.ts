@@ -32,14 +32,13 @@ export const doc: Doc = {
     },
     {
       h: "Virtualized table",
-      html: `<div style="position:relative"><acme-table interactive striped virtualize ${cols4} rows="[]"></acme-table><div data-fade style="position:absolute;left:0;bottom:0;width:100%;height:30%;border-radius:6px;background:linear-gradient(to top,var(--ds-background-100),transparent);opacity:.8;pointer-events:none"></div></div><acme-show-more no-border style="margin-top:16px"></acme-show-more>`,
+      html: `<div style="position:relative"><acme-table interactive striped virtualize ${cols4} rows="[]"></acme-table><div data-fade style="position:absolute;left:0;bottom:0;width:100%;height:30%;border-radius:6px;background:linear-gradient(to top,var(--ds-background-100),transparent);opacity:.8;pointer-events:none"></div></div><acme-show-more style="margin-top:16px"></acme-show-more>`,
       script: `const items = ${JSON.stringify(items)};
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "usd", maximumFractionDigits: 2 });
 const all = Array.from({ length: 5000 }, (_, i) => ({ ...items[i % items.length], charge: money.format(items[i % items.length].charge) }));
 const table = root.querySelector("acme-table"), more = root.querySelector("acme-show-more"), fade = root.querySelector("[data-fade]");
 const apply = () => { table.rows = more.expanded ? all : all.slice(0, 9); fade.hidden = more.expanded; };
-// Show More is controlled, as the reference's is: it bubbles a click and the owner sets expanded.
-more.addEventListener("click", () => { more.expanded = !more.expanded; apply(); });
+more.addEventListener("acme-expanded-change", apply);
 apply();`,
     },
   ],

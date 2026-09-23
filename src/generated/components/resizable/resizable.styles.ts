@@ -28,7 +28,7 @@ export const resizableCss = css`:host {
 }
 
 [part="root"]:focus-visible {
-  outline: 2px solid var(--acme-accent);
+  outline: 2px solid var(--ds-focus-color);
   outline-offset: 2px;
 }
 `;

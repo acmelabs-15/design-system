@@ -1,5 +1,6 @@
+import { OwnedContent } from "../../shared/owned-content";
 import { createAtom } from "@tanstack/lit-store";
-import { html, nothing, render, type TemplateResult } from "lit";
+import { html, nothing, type TemplateResult } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
@@ -36,12 +37,9 @@ export class AcmeTabPanel extends AcmeElement {
     this.contentRenderer = value;
     this.requestUpdate("renderContent", old);
   }
-  @atomState() private mounted = true;
+  @atomState() private mounted = false;
   @atomState() private visited = false;
-  private template?: HTMLTemplateElement;
-  private fragment?: DocumentFragment;
-  private readonly contentRoot = this.ownerDocument.createElement("div");
-  private warned = false;
+  private readonly owned = new OwnedContent(this, { marker: "data-acme-panel-content", diagnostic: "panel-mounting-needs-template" });
   private readonly internals = this.attachInternals();
   private readonly member: TabPart = {
     host: this,
@@ -62,7 +60,6 @@ export class AcmeTabPanel extends AcmeElement {
   private readonly connection = new TabConnection(this, this.member);
   private readonly display = createAtom(() => ({ owner: this.connection.owner, state: this.connection.owner?.state.get(), selected: this.connection.owner?.selected(this.member) ?? false }));
   private readonly updates = new StoreSelector(this, () => this.display);
-  private observer?: MutationObserver;
   private synchronize() {
     const owner = this.connection?.owner,
       active = owner?.selected(this.member) ?? false;
@@ -76,56 +73,19 @@ export class AcmeTabPanel extends AcmeElement {
       const mounted = active || (!state.unmountOnExit && (!state.lazyMount || this.visited));
       if (this.mounted !== mounted) this.mounted = mounted;
     }
-    if (!this.mounted) this.fragment = undefined;
   }
   connectedCallback() {
     super.connectedCallback();
     if (!this.hasAttribute("tabindex")) this.tabIndex = 0;
-    this.observer = new MutationObserver(() => this.requestUpdate());
-    this.observer.observe(this, { childList: true });
     this.synchronize();
-  }
-  disconnectedCallback() {
-    this.observer?.disconnect();
-    this.observer = undefined;
-    super.disconnectedCallback();
   }
   protected updated() {
     this.synchronize();
     this.renderOwnedContent();
   }
   private renderOwnedContent() {
-    const nodes = [...this.childNodes].filter((node) => node !== this.contentRoot && (node.nodeType === 1 || (node.nodeType === 3 && !!node.textContent?.trim())));
-    const template = nodes.length === 1 && nodes[0].nodeType === 1 && (nodes[0] as Element).localName === "template" ? (nodes[0] as HTMLTemplateElement) : undefined;
-    if (template !== this.template) {
-      this.template = template;
-      this.fragment = undefined;
-    }
-    const managed = !!template || (nodes.length === 0 && !!this.renderContent);
-    if (managed) {
-      if (this.contentRoot.parentNode !== this) {
-        this.contentRoot.setAttribute("data-acme-panel-content", "");
-        this.append(this.contentRoot);
-      }
-      let content: TemplateResult | DocumentFragment | typeof nothing = nothing;
-      if (this.mounted) {
-        if (template) {
-          this.fragment ??= template.content.cloneNode(true) as DocumentFragment;
-          content = this.fragment;
-        } else content = this.renderContent!();
-      }
-      render(content, this.contentRoot, { host: this, creationScope: this.ownerDocument });
-    } else {
-      if (this.contentRoot.parentNode === this) {
-        render(nothing, this.contentRoot);
-        this.contentRoot.remove();
-      }
-      const state = this.connection.owner?.state.get();
-      if (nodes.length && (state?.lazyMount || state?.unmountOnExit) && !this.warned) {
-        this.warned = true;
-        console.warn(this.localName, { code: "panel-mounting-needs-template" });
-      }
-    }
+    const state = this.connection.owner?.state.get();
+    this.owned.render(this.mounted, this.renderContent, !!(state?.lazyMount || state?.unmountOnExit));
   }
   render() {
     return html`<div part="panel"><slot></slot></div>`;

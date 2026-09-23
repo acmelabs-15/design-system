@@ -290,3 +290,7 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ## M14 complete — 2026-09-23
 
 [Resizable acceptance](evidence/m14-resizable-2026-09-23.json) closes L09 and M14 at their assigned boundaries. Build/site, 926 tests, 23 source/compiled checks per engine, actual documentation and Chromium accessibility inspection pass. Forty repeated WebKit mounts pass after correcting the global reduced-motion rule; the unsuccessful styling experiments are removed. Continue M15. Include all N12 controls, not just Show. N08 Command Menu depends on the public Dialog family, so implement that M17 slice before Command Menu and record its completion there; do not create another dialog engine.
+
+### M15 disclosure slice complete — 2026-09-23
+
+[Disclosure acceptance](evidence/m15-disclosure-2026-09-23.json) closes N09 and N12 at their assigned boundaries. Accordion/Collapsible replace Collapse/Collapse Group; Show controls explicit content lifetimes; Show More and Load More share native action behavior. Tab Panel reuses the same owned-content helper. The newly reproduced focus-token defect in M14 controls is corrected in the authored producer. Build/site, 926 tests and all-engine source/compiled/documentation checks pass. Continue Steps/Timeline and the remaining M15 navigation families.
