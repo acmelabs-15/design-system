@@ -279,12 +279,32 @@
         "/tmp/acme-m13-calendar/instant-diagram-3.png",
         "/tmp/acme-m13-calendar/instant-diagram-4.png"
       ],
-      "incomplete": [
-        "Docked main calendar measurement image",
-        "Modal day-selection measurement image",
-        "Modal date-input measurement image"
-      ],
-      "reason": "These three remained 40-pixel lazy placeholders after retries; one navigation and one image-ready wait timed out. No precise measurements inferred from unreadable placeholders."
+      "incomplete": [],
+      "reason": "The lazy-page placeholders are resolved by full-resolution asset inspection.",
+      "resolved": {
+        "date": "2026-09-22",
+        "method": "Read full-resolution Google image assets in the in-app browser, verified titles/dimensions and complete screenshots",
+        "images": [
+          {
+            "url": "https://lh3.googleusercontent.com/PTixdykCflNGubuMrHJpl5MMA4Gg3W9U8LDFn2SjrMoswSQ2F_uJAVkm8NtkjoxRvJbQsyUev55lyKIPDhTcgFQlGsMlruJKGYNfdOH9Lu0e1Q=s0",
+            "subject": "Diagram of padding, size, and layout measurements."
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/Qe-iPyRhBKhCxHScEGB4S8BssYvRdETO_pEbYIPRrGLewt2ObrK4fEJXcRN7DnsWZeAWSlL0J1fXPjVuBSfxUt3ZgeFKXuRIojAVlEClcuw=s0",
+            "subject": "Diagram of size and padding measurements in day selection view."
+          },
+          {
+            "url": "https://lh3.googleusercontent.com/M_rfbkLJHuLrKAZGQQmuEVaZMyte_u_3ybmULmG8aiNvTnIcB9OmLtKv9dswOeVNC0NML5TtfQVSUop_Q9vz5pLqrwp9Xchth7vF4cumQCuN=s0",
+            "subject": "Diagram of the padding and size measurements of a modal date input."
+          }
+        ],
+        "observations": [
+          "Docked figure: 360 width, 460 height, 40 date indicator/box measurements, 24 navigation/weekday rows, 36 actions; individual insets/gaps shown and read",
+          "Modal day figure: 360 by 524, 48 target boxes around 40 date indicators, 40 actions; header and edge measurements read",
+          "Modal date-input figure: 24 horizontal insets, 16 top, 36 label region, 24 icon, 40 actions and 12 bottom; no unshown total dimensions inferred"
+        ],
+        "adoption": "Reference measurements only; no automatic dp-to-CSS conversion or component density change"
+      }
     },
     "findings": [
       "Docked entry supports text entry plus date grid; modal and range forms are separately described. Manual input should remain possible and formatting should not rewrite text mid-entry.",
@@ -292,7 +312,7 @@
       "Reference tokens use dp/pt (for example docked 360dp width and 48dp date containers); these are not CSS pixel mandates. House shadow5, fonts, blue accent and density decisions remain authoritative.",
       "Material keyboard prose has ambiguous Home/End wording; use WAI week-boundary behavior where Geist does not specify it. Preserve the explicit Geist Shift+arrow week capability."
     ],
-    "limitations": "Complete tab text and expanded light token coverage does not equal complete visual/interactive Material review. Resolve the three unreadable diagrams before claiming full visual review or adopting their measurements. Video interactions were not executed. Time picker component tabs were not reviewed: this proposal keeps native time editing and does not adopt the Material clock-face picker."
+    "limitations": "All four tab texts, expanded light tokens and six measurement diagrams are read. Dark token branch, token hover explanations and video interactions remain uninspected; their values/behavior are not adopted. Time-picker clock-face UI is not adopted."
   },
   "proReview": {
     "collection": "/Users/peterkloss/Documents/ACMElabs/design-system-references/chakra-ui-pro/2026-09-19",

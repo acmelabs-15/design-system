@@ -1,4 +1,4 @@
-import { parseAbsolute, parseDate } from "@internationalized/date";
+import { parseAbsolute, parseDate } from "./date";
 
 export type RelativeDate = string | number | Date;
 /** ISO date-only values mean UTC midnight; timestamp strings require an explicit offset. */

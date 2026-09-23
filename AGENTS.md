@@ -69,6 +69,7 @@ Several **generated files are committed**, in places that read as source. The sc
 | `src/generated/style-manifest.json` | style producers | input/output fingerprints and registration definitions |
 | `src/generated/tokens.json` and `dist/tokens.json` | `split`, then `build` | `src/shared/numeric-tokens.ts` through `scripts/numeric-tokens.ts` |
 | `src/define/`, `src/internal/define/`, `src/all.ts` and component package exports | `scripts/entries.ts` | `HTMLElementTagNameMap` records, explicit internal annotations and owned component markup |
+| `dist/shared/date.js` and `dist/licenses/` | `scripts/date-runtime.ts` during build | exact patched date dependency and `src/shared/date.ts` |
 | `dist/custom-elements.json` | `scripts/manifest.ts` | component declarations, templates and annotations |
 | `dist/styles/` | `bun run build` | compiled document/token/recipe CSS and maps |
 | `dist/cdn/` | `bun run build` | selective definitions and one shared browser module graph |

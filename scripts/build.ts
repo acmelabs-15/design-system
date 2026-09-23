@@ -8,6 +8,7 @@
 // Pure Bun: no Node runtime, no Python.
 
 import fs from "node:fs";
+import { writeDateRuntime } from "./date-runtime";
 import path from "node:path";
 import { compileLitTemplates } from "@lit-labs/compiler";
 import ts from "typescript";
@@ -84,6 +85,8 @@ for (const f of files) {
   if (out.outputText.includes('["_$litType$"]')) compiled++;
 }
 console.log(`modules: ${files.length} files, ${compiled} with compiled templates`);
+
+await writeDateRuntime(ROOT, DIST);
 
 // 2. Declarations with maps.
 const program = ts.createProgram(files, {

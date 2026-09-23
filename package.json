@@ -21404,7 +21404,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1",
-    "@internationalized/date": "^3.12.4",
+    "@internationalized/date": "3.12.4",
     "@internationalized/number": "3.6.8",
     "@lit-labs/motion": "^1.1.0",
     "@lit-labs/router": "^0.1.4",
@@ -21437,7 +21437,8 @@
     "typescript-lit-html-plugin": "^0.9.1"
   },
   "patchedDependencies": {
-    "@custom-elements-manifest/analyzer@0.11.0": "patches/@custom-elements-manifest%2Fanalyzer@0.11.0.patch"
+    "@custom-elements-manifest/analyzer@0.11.0": "patches/@custom-elements-manifest%2Fanalyzer@0.11.0.patch",
+    "@internationalized/date@3.12.4": "patches/@internationalized%2Fdate@3.12.4.patch"
   },
   "customElements": "./dist/custom-elements.json",
   "workspaces": [

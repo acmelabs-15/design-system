@@ -158,6 +158,7 @@ Generated inputs under src/generated are committed. Package and site outputs are
 | `src/define/`, `src/all.ts`, component exports in package.json | `scripts/entries.ts` | tag-map declarations and owned component markup |
 | `dist/styles/tokens.css` | `split`, then `build` | `styles/house.css`, the generated theme and the numeric token catalog |
 | `dist/styles/dashboard.css` | `build` | compiled recipe inputs selected in `scripts/build.ts` |
+| `dist/shared/date.js` and `dist/licenses/` | `scripts/date-runtime.ts` during build | exact patched date dependency and `src/shared/date.ts` |
 | `dist/custom-elements.json` | `build` or `bun run manifest` | element declarations, templates and documented dynamic slots |
 | `_site/` | `bun run docs` | `site/` |
 | `dist/` | `bun run build` | `src/` and generated inputs |
