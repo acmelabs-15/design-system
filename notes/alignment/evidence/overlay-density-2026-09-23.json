@@ -1,0 +1,339 @@
+{
+  "date": "2026-09-23",
+  "status": "accepted",
+  "scope": [
+    "Dialog",
+    "Drawer",
+    "Menu Content",
+    "Toggle Tip",
+    "OverlayTheme"
+  ],
+  "decision": "notes/decisions/density.md",
+  "reproduction": "Under a compact parent, contained default actions measured 32px instead of the required normal 36px. The same native root selector demonstrates correction.",
+  "fix": "OverlayTheme with an explicitly authored density excludes inherited density tokens from its CSS copy. Overlay families supply normal; named theme tokens, direct control overrides and explicit descendant compact scopes remain supported.",
+  "native": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.53",
+      "checks": [
+        {
+          "name": "dialog retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "drawer retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "Menu retains normal layout density",
+          "pass": true
+        },
+        {
+          "name": "Toggle Tip retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "named theme density tokens and direct control overrides remain explicit",
+          "pass": true
+        },
+        {
+          "name": "an explicitly compact child scope inside a dialog remains compact",
+          "pass": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "checks": [
+        {
+          "name": "dialog retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "drawer retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "Menu retains normal layout density",
+          "pass": true
+        },
+        {
+          "name": "Toggle Tip retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "named theme density tokens and direct control overrides remain explicit",
+          "pass": true
+        },
+        {
+          "name": "an explicitly compact child scope inside a dialog remains compact",
+          "pass": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "checks": [
+        {
+          "name": "dialog retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "drawer retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "Menu retains normal layout density",
+          "pass": true
+        },
+        {
+          "name": "Toggle Tip retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "named theme density tokens and direct control overrides remain explicit",
+          "pass": true
+        },
+        {
+          "name": "an explicitly compact child scope inside a dialog remains compact",
+          "pass": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "compiled": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.53",
+      "checks": [
+        {
+          "name": "dialog retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "drawer retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "Menu retains normal layout density",
+          "pass": true
+        },
+        {
+          "name": "Toggle Tip retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "named theme density tokens and direct control overrides remain explicit",
+          "pass": true
+        },
+        {
+          "name": "an explicitly compact child scope inside a dialog remains compact",
+          "pass": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "checks": [
+        {
+          "name": "dialog retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "drawer retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "Menu retains normal layout density",
+          "pass": true
+        },
+        {
+          "name": "Toggle Tip retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "named theme density tokens and direct control overrides remain explicit",
+          "pass": true
+        },
+        {
+          "name": "an explicitly compact child scope inside a dialog remains compact",
+          "pass": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "version": "26.6",
+      "checks": [
+        {
+          "name": "dialog retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "drawer retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "Menu retains normal layout density",
+          "pass": true
+        },
+        {
+          "name": "Toggle Tip retains normal action density",
+          "pass": true
+        },
+        {
+          "name": "named theme density tokens and direct control overrides remain explicit",
+          "pass": true
+        },
+        {
+          "name": "an explicitly compact child scope inside a dialog remains compact",
+          "pass": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "menuRegression": [
+    {
+      "engine": "chromium",
+      "passed": [
+        "pointer opening focuses first action",
+        "disabled discovery suppresses activation",
+        "checkbox updates checked state and closes",
+        "Escape returns focus and retains user reason",
+        "typeahead focuses matching item",
+        "parent collection excludes nested items",
+        "submenu forward arrow and topmost Escape",
+        "Tab leaves menu for next page control",
+        "Shift Tab leaves menu for prior page control",
+        "outside pointer dismissal retains destination focus",
+        "cancelable close request preserves menu",
+        "close reopen cancels stale completion",
+        "context gesture opens at point and restores trigger",
+        "disabled context menu preserves native event",
+        "radio actions have one checked member and owned payload",
+        "nested selection closes the menu chain once",
+        "outside dismissal closes the entire menu chain",
+        "RTL submenu arrows open and return",
+        "selection preserves focus transferred to a dialog",
+        "programmatic open and close remain silent",
+        "removing the trigger immediately closes owned surfaces",
+        "disconnect and reconnect transfers registrations",
+        "reduced motion completes exit without a timer",
+        "context keyboard gesture and disabled transition",
+        "touch hold opens and canceled movement stays closed",
+        "hover opens its submenu",
+        "programmatic focus departure closes without stealing focus",
+        "non-looping collection stops at its last member",
+        "trigger semantics and selected icon presence",
+        "description and label retain separate semantic references"
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "passed": [
+        "pointer opening focuses first action",
+        "disabled discovery suppresses activation",
+        "checkbox updates checked state and closes",
+        "Escape returns focus and retains user reason",
+        "typeahead focuses matching item",
+        "parent collection excludes nested items",
+        "submenu forward arrow and topmost Escape",
+        "Tab leaves menu for next page control",
+        "Shift Tab leaves menu for prior page control",
+        "outside pointer dismissal retains destination focus",
+        "cancelable close request preserves menu",
+        "close reopen cancels stale completion",
+        "context gesture opens at point and restores trigger",
+        "disabled context menu preserves native event",
+        "radio actions have one checked member and owned payload",
+        "nested selection closes the menu chain once",
+        "outside dismissal closes the entire menu chain",
+        "RTL submenu arrows open and return",
+        "selection preserves focus transferred to a dialog",
+        "programmatic open and close remain silent",
+        "removing the trigger immediately closes owned surfaces",
+        "disconnect and reconnect transfers registrations",
+        "reduced motion completes exit without a timer",
+        "context keyboard gesture and disabled transition",
+        "touch hold opens and canceled movement stays closed",
+        "hover opens its submenu",
+        "programmatic focus departure closes without stealing focus",
+        "non-looping collection stops at its last member",
+        "trigger semantics and selected icon presence",
+        "description and label retain separate semantic references"
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "passed": [
+        "pointer opening focuses first action",
+        "disabled discovery suppresses activation",
+        "checkbox updates checked state and closes",
+        "Escape returns focus and retains user reason",
+        "typeahead focuses matching item",
+        "parent collection excludes nested items",
+        "submenu forward arrow and topmost Escape",
+        "Tab leaves menu for next page control",
+        "Shift Tab leaves menu for prior page control",
+        "outside pointer dismissal retains destination focus",
+        "cancelable close request preserves menu",
+        "close reopen cancels stale completion",
+        "context gesture opens at point and restores trigger",
+        "disabled context menu preserves native event",
+        "radio actions have one checked member and owned payload",
+        "nested selection closes the menu chain once",
+        "outside dismissal closes the entire menu chain",
+        "RTL submenu arrows open and return",
+        "selection preserves focus transferred to a dialog",
+        "programmatic open and close remain silent",
+        "removing the trigger immediately closes owned surfaces",
+        "disconnect and reconnect transfers registrations",
+        "reduced motion completes exit without a timer",
+        "context keyboard gesture and disabled transition",
+        "touch hold opens and canceled movement stays closed",
+        "hover opens its submenu",
+        "programmatic focus departure closes without stealing focus",
+        "non-looping collection stops at its last member",
+        "trigger semantics and selected icon presence",
+        "description and label retain separate semantic references"
+      ],
+      "errors": []
+    }
+  ],
+  "helpRegression": {
+    "casesPerEngine": 23,
+    "engines": [
+      "Chromium",
+      "Firefox",
+      "WebKit"
+    ],
+    "passed": true
+  },
+  "validation": {
+    "strictBuild": true,
+    "site": {
+      "pages": 106,
+      "elements": 4312,
+      "undocumented": 0
+    },
+    "suite": {
+      "pass": 891,
+      "fail": 0,
+      "note": "Includes six Toast model tests present in the working tree; does not certify unfinished Toast UI."
+    }
+  },
+  "limitations": [
+    "Actual Safari and assistive-technology interaction remain M22/M26."
+  ]
+}

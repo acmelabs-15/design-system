@@ -138,7 +138,7 @@ export class AcmeToggleTip extends AcmeSemanticElement {
     super.disconnectedCallback();
   }
   render() {
-    return html`<acme-button part="trigger" variant="secondary" .ariaLabel=${this.ariaLabel} @click=${this.toggle} @focusout=${this.focusOut}><slot name="trigger" @slotchange=${() => this.requestUpdate()}></slot></acme-button><acme-overlay-theme .source=${this.lifetime.theme} .reference=${this.lifetime.active ? this.lifetime.reference : undefined}><div part="content" data-kind="toggle-tip" popover="manual" role="dialog" tabindex="-1" @focusout=${this.focusOut}><span part="arrow" aria-hidden="true"></span><div class="preview"><slot></slot></div><acme-button part="close" size="small" variant="secondary" @click=${() => this.userOpen(false, "close-control")}>${message(this.themeContext.scope.effective.get().locale, "help.close", "Close")}</acme-button></div></acme-overlay-theme>`;
+    return html`<acme-button part="trigger" variant="secondary" .ariaLabel=${this.ariaLabel} @click=${this.toggle} @focusout=${this.focusOut}><slot name="trigger" @slotchange=${() => this.requestUpdate()}></slot></acme-button><acme-overlay-theme density="normal" .source=${this.lifetime.theme} .reference=${this.lifetime.active ? this.lifetime.reference : undefined}><div part="content" data-kind="toggle-tip" popover="manual" role="dialog" tabindex="-1" @focusout=${this.focusOut}><span part="arrow" aria-hidden="true"></span><div class="preview"><slot></slot></div><acme-button part="close" size="small" variant="secondary" @click=${() => this.userOpen(false, "close-control")}>${message(this.themeContext.scope.effective.get().locale, "help.close", "Close")}</acme-button></div></acme-overlay-theme>`;
   }
 }
 declare global {

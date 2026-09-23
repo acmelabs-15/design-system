@@ -3,16 +3,16 @@ import { createAtom } from "@tanstack/lit-store";
 import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { boolish, sharedCss } from "../../base";
-import { AcmeSemanticElement } from "../../shared/semantic-element";
-import { atomState } from "../../shared/atom-state";
-import { Places } from "../../shared/places";
-import { StoreSelector } from "../../shared/store-connection";
-import { ComposedParticipants } from "../../shared/composed-participants";
-import { DialogLifetime } from "../../shared/dialog-lifetime";
-import { dialogContext, dialogPartFor, isDialogBoundary, registerDialogBoundary, type DialogReason, type DialogPart, type DialogOwner, type DialogFocusTarget } from "../../shared/dialog-context";
-import { optionalString } from "../../shared/attributes";
 import { dialogCss } from "../../generated/components/dialog/dialog.styles";
 import { drawerStructureCss } from "../../generated/components/drawer/drawer-structure.styles";
+import { atomState } from "../../shared/atom-state";
+import { optionalString } from "../../shared/attributes";
+import { ComposedParticipants } from "../../shared/composed-participants";
+import { type DialogFocusTarget, type DialogOwner, type DialogPart, type DialogReason, dialogContext, dialogPartFor, isDialogBoundary, registerDialogBoundary } from "../../shared/dialog-context";
+import { DialogLifetime } from "../../shared/dialog-lifetime";
+import { Places } from "../../shared/places";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
+import { StoreSelector } from "../../shared/store-connection";
 /** A named edge panel with shared native dialog lifetime and directional motion.
  * @slot trigger - Explicit Drawer Trigger controls.
  * @slot heading - Accessible heading content.
@@ -221,7 +221,7 @@ export class AcmeDrawer extends AcmeSemanticElement {
   }
   render() {
     const theme = this.lifetime.theme?.effective;
-    return html`<div part="root" aria-label=${this.ariaLabel ?? nothing}><slot name="trigger"></slot><acme-overlay-theme .source=${theme} .reference=${this.open || this.lifetime.active ? (this.lifetime.themeReference ?? this) : undefined}><dialog part="surface" data-placement=${this.placement} aria-modal=${String(this.modal)} @cancel=${this.lifetime.cancel} @close=${this.lifetime.nativeClose}><div class="frame"><header part="header" ?hidden=${!this.places.has("heading") && !this.places.has("description") && !this.places.has("header")}><div part="heading" tabindex="-1" ?hidden=${!this.places.has("heading")}><slot name="heading"></slot></div><div part="description" ?hidden=${!this.places.has("description")}><slot name="description"></slot></div><slot name="header"></slot></header><div part="body"><slot></slot></div><footer part="footer" ?hidden=${!this.places.has("footer")}><slot name="footer"></slot></footer></div></dialog></acme-overlay-theme></div>`;
+    return html`<div part="root" aria-label=${this.ariaLabel ?? nothing}><slot name="trigger"></slot><acme-overlay-theme density="normal" .source=${theme} .reference=${this.open || this.lifetime.active ? (this.lifetime.themeReference ?? this) : undefined}><dialog part="surface" data-placement=${this.placement} aria-modal=${String(this.modal)} @cancel=${this.lifetime.cancel} @close=${this.lifetime.nativeClose}><div class="frame"><header part="header" ?hidden=${!this.places.has("heading") && !this.places.has("description") && !this.places.has("header")}><div part="heading" tabindex="-1" ?hidden=${!this.places.has("heading")}><slot name="heading"></slot></div><div part="description" ?hidden=${!this.places.has("description")}><slot name="description"></slot></div><slot name="header"></slot></header><div part="body"><slot></slot></div><footer part="footer" ?hidden=${!this.places.has("footer")}><slot name="footer"></slot></footer></div></dialog></acme-overlay-theme></div>`;
   }
 }
 declare global {

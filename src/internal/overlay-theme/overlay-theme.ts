@@ -2,9 +2,9 @@ import { type CSSResult, unsafeCSS } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeTheme } from "../../components/theme/theme";
 import { atomState } from "../../shared/atom-state";
-import type { ThemeSource } from "../../shared/theme-context";
-import { themeTokenDefinitions, themeOverrideSelector } from "../../shared/theme-tokens";
 import { composedParent } from "../../shared/composed-tree";
+import type { ThemeSource } from "../../shared/theme-context";
+import { densityTokenDefinitions, themeOverrideSelector, themeTokenDefinitions } from "../../shared/theme-tokens";
 /** Carries a complete scope and its public CSS tokens into an owned overlay.
  * @internal
  */
@@ -80,7 +80,10 @@ export class AcmeOverlayTheme extends AcmeTheme {
       const view = reference.ownerDocument.defaultView;
       if (!view) return;
       const computed = view.getComputedStyle(reference);
+      const densityProperties = new Set<string>(densityTokenDefinitions.map((token) => token.cssProperty));
+      const ownDensity = this.themeContext.scope.authored.get().density !== undefined;
       for (const token of themeTokenDefinitions) {
+        if (ownDensity && densityProperties.has(token.cssProperty)) continue;
         const value = computed.getPropertyValue(token.cssProperty);
         if (value.trim()) buffer.setProperty(token.cssProperty, value);
       }
