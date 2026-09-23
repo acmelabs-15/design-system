@@ -274,3 +274,7 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ## M13 complete — 2026-09-23
 
 [Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes the final M13 family. The strict package build, 96-page site and all 900 tests pass. Each engine passes 28 source and compiled checks, six visible documentation flows and fifteen shared-overlay regressions. The corrected date runtime, generated styles, native form model, modal focus containment and frame-scheduled placement are integrated. M13 is complete at its assigned boundaries; M22/M26 retain actual platform, React and final release gates. Continue M14 with Disabled Wall, native List/Data List, Card/Inset/Item, Scroll Area and Resizable.
+
+## M14 native-content and Disabled Wall slice — 2026-09-23
+
+[Acceptance](evidence/m14-native-content-2026-09-23.json) closes C03–C05 at their native/Lit boundaries. Build/site, 902 tests, seven source/compiled checks per engine and all three documentation pages pass. Description is removed. Continue Card/Inset/Item, then Scroll Area and Resizable; M14 is not yet complete.

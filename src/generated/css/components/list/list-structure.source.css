@@ -1,0 +1,3 @@
+:host{display:block;min-inline-size:0;row-gap:var(--acme-list-spacing,var(--acme-spacing-2));}
+[part=root],slot{row-gap:inherit;}
+::slotted(ul),::slotted(ol){row-gap:inherit;}
