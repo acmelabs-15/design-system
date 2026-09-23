@@ -193,7 +193,7 @@ export class SelectionRegistry implements ReactiveController {
   }
 }
 /** Orders explicit members across their known shadow boundaries without inspecting private trees. */
-export function selectionOrder(a: SelectionMember, b: SelectionMember): number {
+export function selectionOrder(a: { host: Node }, b: { host: Node }): number {
   const left = ancestry(a.host),
     right = ancestry(b.host);
   let i = 0;

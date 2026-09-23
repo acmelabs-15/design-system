@@ -44,7 +44,7 @@ Port source focus movement, deletion and paste carefully; preserve the distincti
 
 ## F-06 Select, ComboBox and Multi Select
 
-Shared option model: acme-option has value: required string, label?: accessible/search text (default derived text content), disabled=false. Default slot can contain rich noninteractive text/icons; start/end/description slots; parts root/indicator/content. Collection owner registers only its own options, including nested sections, and preserves value identity during reorder. Child selection state is derived, not an independent public source.
+Shared option model: acme-option has value: required string, label?: accessible/search text (default derived text content), disabled=false. Default slot can contain rich noninteractive text/icons; start/end/description slots; parts root/indicator/content. Collection owner registers only its own options and preserves value identity during reorder. Select and Multi Select accept nested sections. Ranked ComboBox requires direct Option children; optional section text renders labelled contiguous result groups without changing ranked order. Nested wrappers around ComboBox options are diagnosed. Child selection state is derived, not an independent public source.
 
 | Root | Props/defaults beyond shared form contract | Ownership/events |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ Shared option model: acme-option has value: required string, label?: accessible/
 | acme-combobox | value?: string; inputValue=""; open=false; clearable=true; loading=false; filter: built-in match-sorter or supplied function | Editable search text separate from selected option; acme-input { value: inputValue }; acme-change { value }; application may supply async options/loading |
 | acme-multi-select | value: readonly string[]=[]; open=false; placeholder=""; clearable=false | One collection owns multiple choices; repeated form values; acme-change { value }; selection need not close the list |
 
-All roots use default/options content plus trigger, start/end, empty and footer slots where relevant; parts root/trigger/input/value/content/list/option/clear. Select/Multi Select can provide a built-in trigger; a supplied trigger must implement the documented native-button/focus contract. No arbitrary focusable child cloning.
+All roots use default/options content plus trigger, start/end, empty and footer slots where relevant; parts root/trigger/input/value/content/list/option/clear. Select/Multi Select own the native trigger button. The trigger slot customizes its noninteractive content; appearance is available through the trigger part. Native-button ownership keeps the trigger and popup in a valid accessible reference scope. No arbitrary focusable child cloning. This replaces the external supplied-button proposal after the M13 native accessibility-tree finding (execution-delegation.md).
 
 Placement side: top|bottom|left|right=bottom; align: start|center|end=start; sideOffset=4 proposed house token mapping; collision avoidance=true. Shared overlay coordinator/placement handles scroll/resize/detach/theme. Lists use Radix shadow5. Native HTML select remains usable directly with Field; it is not a second acme-select mode with browser-dependent semantics.
 
@@ -62,7 +62,7 @@ Acceptance: labels/descriptions, long/multiline text, empty/loading/error result
 
 ## F-07 Slider
 
-acme-slider props value: readonly number[] (default [0]); min=0, max=100, step=1, largeStep=10, minStepsBetweenValues=0; orientation=horizontal; disabled=false; name=""; labels: readonly string[]=[]; formatValue?: function. One value per thumb; one/thumb array shape, no separate Range Slider family. Slot start/end for composed numeric inputs; parts root/track/range/thumb/label.
+acme-slider props value: readonly number[] (default [0]); min=0, max=100, step=1, largeStep=10, minStepsBetweenValues=0; orientation=horizontal; disabled=false; name=""; thumbLabels: readonly string[]=[]; formatValue?: function. One value per thumb; one/thumb array shape, no separate Range Slider family. Slot start/end for composed numeric inputs; parts root/track/range/thumb/label.
 
 acme-input { value } during pointer/key edits; acme-change { value } on commit. Values obey order/gap constraints and step arithmetic. Native form sends repeated values; individual thumbs have slider semantics and distinct names. Optional Number Inputs are a recipe, not another state copy. Verify pointer cancel, captured drag, keyboard/Home/End/Page steps, RTL/vertical direction, multiple thumbs, bounds/gaps, focus and immediate forms.
 

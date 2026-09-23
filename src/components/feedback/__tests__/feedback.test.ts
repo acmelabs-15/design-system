@@ -64,9 +64,10 @@ describe("acme-feedback", () => {
     expect(q(el, ".box[role=dialog]")).not.toBeNull();
     const fields = [...sr(el).querySelectorAll(".fields > *")].map((n) => n.tagName.toLowerCase());
     expect(fields).toEqual(["acme-select", "acme-input", "acme-textarea", "div"]);
-    const select = q<HTMLSelectElement>(el, "acme-select")!;
+    const select = sr(el).querySelector("acme-select")!;
     expect(select.getAttribute("placeholder")).toBe("Select a topic...");
-    expect((select as unknown as { options: string[] }).options.length).toBe(11);
+    expect(select.querySelectorAll("acme-option").length).toBe(11);
+    expect(select.value).toBeUndefined();
     expect(q(el, "acme-input")!.getAttribute("type")).toBe("email");
   });
 

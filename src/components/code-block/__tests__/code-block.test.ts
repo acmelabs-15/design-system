@@ -73,8 +73,8 @@ describe("acme-code-block", () => {
     const el = await mount(
       `<acme-code-block filename="a.js" language="js" switcher='[{"label":"JavaScript","value":"js"},{"label":"Lua","value":"lua"}]' switcher-value="js">${src}</acme-code-block>`,
     );
-    const sw = root(el).querySelector(".actions > acme-select.switcher") as HTMLElement & { options: unknown[]; value: string };
-    expect(sw.options.length).toBe(2);
+    const sw = root(el).querySelector(".actions > acme-select.switcher") as HTMLElement & { value: string };
+    expect(sw.querySelectorAll("acme-option").length).toBe(2);
     expect(sw.value).toBe("js");
     const seen: unknown[] = [];
     el.addEventListener("acme-change", (e) => seen.push((e as CustomEvent).detail.value));

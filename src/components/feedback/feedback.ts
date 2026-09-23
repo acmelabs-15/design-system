@@ -184,8 +184,7 @@ export class AcmeFeedback extends AcmeElement {
   /** Focuses the first field: the topic select, the email field, then the textarea. */
   private focusField() {
     const root = this.shadowRoot!;
-    const select = root.querySelector("acme-select")?.shadowRoot?.querySelector("select") as HTMLElement | null;
-    const target = select ?? (root.querySelector("acme-input, acme-textarea") as HTMLElement | null);
+    const target = root.querySelector<HTMLElement>("acme-select, acme-input, acme-textarea");
     target?.focus();
   }
 
@@ -393,9 +392,9 @@ export class AcmeFeedback extends AcmeElement {
     const fields = html`<div class="fields">
       ${
         this.showTopics
-          ? html`<acme-select aria-label="Product topic selection" placeholder="Select a topic..." .options=${TOPICS} .value=${this.topic} @acme-change=${(e: CustomEvent<{ value: string }>) => {
-              this.topic = e.detail.value;
-            }}></acme-select>`
+          ? html`<acme-select aria-label="Product topic selection" placeholder="Select a topic..." .value=${this.topic || undefined} @acme-change=${(e: CustomEvent<{ value: string | undefined }>) => {
+              this.topic = e.detail.value ?? "";
+            }}>${TOPICS.map((topic) => html`<acme-option value=${topic}>${topic}</acme-option>`)}</acme-select>`
           : nothing
       }
       ${

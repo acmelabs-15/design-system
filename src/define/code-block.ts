@@ -2,6 +2,7 @@
 import "./button";
 import "./copy-button";
 import "./description-icon";
+import "./option";
 import "./segmented-control";
 import "./segmented-control-item";
 import "./select";

@@ -77,14 +77,12 @@ const MAP: [string, RegExp][] = [
   ["browser", /^\.browser/],
   ["calendar", /^(\.calendar|\.cal-)/],
   ["clearable-input", /^\.clearable/],
-  ["combobox", /^\.combobox/],
   ["command-menu", /^\.cmdk/],
   ["context-card", /^(\.context-card|\.context-target)/],
   ["drawer", /^(\.drawer|@keyframes drawer-up)/],
   ["feedback", /^\.feedback/],
   ["file-tree", /^\.tree/],
   ["json-view", /^\.json/],
-  ["multi-select", /^(\.multi-select|\.ms-row)/],
   ["video", /^\.video/],
 ];
 const moduleOf = (sel: string): string | null => {

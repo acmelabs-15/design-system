@@ -254,4 +254,14 @@ The build now enforces strict TypeScript. The final audit found widened getter t
 
 [Menu / Context Menu / Split Button acceptance](evidence/m13-menu-2026-09-22.json) closes these assigned family entries: strict package build, site and all 905 tests pass. Each engine passes 30 source/compiled Menu checks, four source/compiled Split Button checks and six live documentation flows. Native shadow comparisons cover the three selected tiers in light/dark. Menu Button/Divider and the old Split Button interfaces are removed; Code Block and the authored examples use the replacements.
 
-M13 remains active for shared Option, Select/ComboBox/Multi Select, Slider and Calendar. [Selection preparation](evidence/m13-selection-preparation-2026-09-22.json) records complete current source/docs review and a three-engine reference-scope candidate; it does not claim component acceptance. Material Web Select source comparison is underway in /tmp/acme-m13-selection. Continue without questions under execution delegation.
+M13 remains active for shared Option, Select/ComboBox/Multi Select, Slider and Calendar. [Selection preparation](evidence/m13-selection-preparation-2026-09-22.json) records current source/docs review and three-engine native input/button reference candidates; it does not claim component acceptance. The complete pinned Material Web Select comparison is recorded; fixtures remain under /tmp/acme-m13-selection. Continue without questions under execution delegation.
+
+
+## M13 selection replacement in verification — 2026-09-22
+
+Select, ComboBox and Multi Select now share Option, native form ownership, popup placement/presence, keyboard/typeahead and generated field/list styling. Code Block uses Option children. ComboBox uses the published match-sorter package and manual slot projection; its authored node order remains stable through ranking and Lit keyed updates. Root-owned trigger content preserves native accessible relationships. The evidence-driven contract corrections are in execution-delegation.md and F-06. The old ComboBox Option, Multi Select Row, local scorer and old selection maps/styles are removed. Source browser checks pass; package/site/compiled verification is running. Number/Pin/Menu also share the tested slot-owner transfer helper. Do not mark this slice or M13 complete until final acceptance is recorded.
+
+
+## M13 selection family complete — 2026-09-22
+
+[Acceptance](evidence/m13-selection-2026-09-22.json) closes Option, Select, ComboBox and Multi Select at the assigned native/Lit boundary. Strict package build, 96-page site and all 881 tests pass. Source and compiled native checks cover forms, keyboard, projection, lifecycle, custom trigger content and caller migration. Actual Lit/React keyed child identity and Chromium accessibility order are verified. Code Block and Feedback now use Option children; renderer comments do not contaminate derived labels. Number/Pin/Menu slot ownership fixes pass native regressions. Slider and Calendar remain active in isolated worktrees; M13 is not complete.

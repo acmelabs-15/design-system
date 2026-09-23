@@ -7134,129 +7134,22 @@ a.breadcrumb.menu:hover {
   background: var(--ds-gray-alpha-100);
 }
 
-.combobox {
-  min-width: 0;
-  position: relative;
-}
 
-.combobox > input {
-  width: 100%;
-  height: var(--form);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  background: var(--surface);
-  padding: 0 36px 0 40px;
-  font-size: 14px;
-  line-height: 20px;
-}
 
-.combobox > input:focus {
-  border-color: var(--border-active);
-  box-shadow: var(--ds-shadow-border-small);
-  outline: none;
-}
 
-.combobox > input[disabled] {
-  background: var(--comp);
-  color: var(--ds-gray-700);
-}
 
-.combobox > input[aria-invalid="true"], .combobox.errored > input {
-  border-color: var(--ds-red-900);
-}
 
-.combobox > input::placeholder {
-  color: var(--ds-gray-700);
-}
 
-.combobox > .ic {
-  color: var(--text-2);
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-}
 
-.combobox > .x, .combobox > .open {
-  width: 36px;
-  height: 100%;
-  color: var(--text-2);
-  cursor: pointer;
-  border-radius: 0 var(--r-sm) var(--r-sm) 0;
-  background: none;
-  border: 0;
-  place-items: center;
-  display: inline-grid;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 
-.combobox.sm > input {
-  height: var(--form-sm);
-}
 
-.combobox.lg > input {
-  height: var(--form-lg);
-  border-radius: var(--r);
-  font-size: 16px;
-}
 
-.combobox-list {
-  width: 100%;
-  max-height: 300px;
-  margin-top: 10px;
-  padding: 6px;
-  list-style: none;
-  display: block;
-  position: static;
-  overflow: auto;
-}
 
-.combobox-option {
-  border-radius: var(--r-sm);
-  height: 36px;
-  color: var(--text);
-  cursor: pointer;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-  padding: 0 8px;
-  font-size: 14px;
-  line-height: 20px;
-  display: flex;
-}
 
-.combobox-option .label {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-}
 
-.combobox-option.auto {
-  height: auto;
-}
 
-.combobox-option.auto .label {
-  white-space: normal;
-  overflow: visible;
-}
 
-.combobox-option:hover, .combobox-option[aria-selected="true"], .combobox-option.active {
-  background: var(--ds-gray-alpha-100);
-}
 
-.combobox-list .empty {
-  height: 36px;
-  color: var(--text-2);
-  align-items: center;
-  padding: 0 8px;
-  font-size: 14px;
-  display: flex;
-}
 
 .cmdk {
   background: var(--surface);
@@ -7801,72 +7694,14 @@ a.breadcrumb.menu:hover {
   border-radius: 2px;
 }
 
-.multi-select {
-  background: var(--surface);
-  border-radius: var(--r-lg);
-  width: 212px;
-  box-shadow: var(--ds-shadow-menu);
-  flex-direction: column;
-  gap: 0;
-  padding: 8px;
-  display: flex;
-}
 
-.ms-row {
-  align-items: center;
-  gap: 8px;
-  height: 28px;
-  display: flex;
-}
 
-.ms-row .checkbox, .ms-row .checkbox input {
-  margin: 0;
-}
 
-.ms-row button {
-  height: 28px;
-  color: var(--text);
-  text-align: left;
-  cursor: pointer;
-  background: none;
-  border: 0;
-  border-radius: 4px;
-  flex: 1;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-  padding: 4px;
-  font-size: 14px;
-  line-height: 20px;
-  display: flex;
-}
 
-.ms-row button:hover, .ms-row button:focus-visible {
-  background: var(--comp);
-}
 
-.ms-row button .action, .ms-row button .count {
-  color: var(--text-2);
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  border-radius: 4px;
-  padding: 2px 4px;
-  font-size: 12px;
-  line-height: 16px;
-}
 
-.ms-row button .action {
-  display: none;
-}
 
-.ms-row button:hover .action, .ms-row button:focus-visible .action, .ms-row:hover .action {
-  display: inline;
-}
 
-.ms-row button:hover .count, .ms-row button:focus-visible .count, .ms-row:hover .count {
-  display: none;
-}
 
 .video {
   border-radius: var(--r);

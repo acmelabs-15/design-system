@@ -3,6 +3,7 @@ import "./button";
 import "./check-circle-icon";
 import "./input";
 import "./markdown-icon";
+import "./option";
 import "./select";
 import "./sentiment-dissatisfied-icon";
 import "./sentiment-satisfied-icon";

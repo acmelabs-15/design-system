@@ -1,7 +1,7 @@
 {
   "name": "@acmelabs/design-system",
   "version": "0.2.0",
-  "description": "The house design system as Lit web components: vercel.com/geist foundations and every Geist component at Geist's values, set in Google Sans Flex and Google Sans Code, plus the house parts.",
+  "description": "Lit web components and shared design tokens for consistent interfaces.",
   "license": "MIT",
   "homepage": "https://acmelabs-15.github.io/design-system/",
   "type": "module",
@@ -4506,11 +4506,6 @@
       "types": "./dist/components/combobox/combobox.d.ts",
       "import": "./dist/components/combobox/combobox.js",
       "default": "./dist/components/combobox/combobox.js"
-    },
-    "./components/combobox-option": {
-      "types": "./dist/components/combobox-option/combobox-option.d.ts",
-      "import": "./dist/components/combobox-option/combobox-option.js",
-      "default": "./dist/components/combobox-option/combobox-option.js"
     },
     "./components/comedy-mask-icon": {
       "types": "./dist/generated/icons/classes/comedy-mask-icon.d.ts",
@@ -12492,11 +12487,6 @@
       "import": "./dist/components/multi-select/multi-select.js",
       "default": "./dist/components/multi-select/multi-select.js"
     },
-    "./components/multi-select-row": {
-      "types": "./dist/components/multi-select-row/multi-select-row.d.ts",
-      "import": "./dist/components/multi-select-row/multi-select-row.js",
-      "default": "./dist/components/multi-select-row/multi-select-row.js"
-    },
     "./components/multicooker-icon": {
       "types": "./dist/generated/icons/classes/multicooker-icon.d.ts",
       "import": "./dist/generated/icons/classes/multicooker-icon.js",
@@ -13471,6 +13461,11 @@
       "types": "./dist/generated/icons/classes/ophthalmology-icon.d.ts",
       "import": "./dist/generated/icons/classes/ophthalmology-icon.js",
       "default": "./dist/generated/icons/classes/ophthalmology-icon.js"
+    },
+    "./components/option": {
+      "types": "./dist/components/option/option.d.ts",
+      "import": "./dist/components/option/option.js",
+      "default": "./dist/components/option/option.js"
     },
     "./components/oral-disease-icon": {
       "types": "./dist/generated/icons/classes/oral-disease-icon.d.ts",
@@ -21424,6 +21419,7 @@
     "@tanstack/pacer": "^0.22.0",
     "@zag-js/remove-scroll": "^1.43.3",
     "lit": "^3.3.3",
+    "match-sorter": "8.3.0",
     "urlpattern-polyfill": "^10.0.0"
   },
   "devDependencies": {

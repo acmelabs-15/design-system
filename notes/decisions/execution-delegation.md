@@ -109,3 +109,25 @@ Use Menu Content as the native manual-popover surface. Each Trigger, Content and
 Public show(), hide() and open writes are programmatic and silent for user-change notifications. A completed owned transition still reports its completion. A focused closing menu returns focus before its content becomes inert. If application selection has already focused a dialog, the menu preserves that focus. Lit Motion's public spring state determines completion; there is no copied fixed exit timer. Composed-tree ownership, rather than CSS focus-within, checks focus across nested top-layer popovers: native probes showed CSS focus-within dropping the parent relationship.
 
 Split Button composes Button, Group, Menu Trigger and Menu Content. Split Button Item reuses the full Menu Item contract, including descriptions and optional checked choices, rather than maintaining a second item implementation. Root menuLabel is required; an unnamed secondary trigger is disabled. The former Split Button presentation/event names and independent popup/navigation code are removed together with their callers.
+
+
+## Selection trigger ownership — 2026-09-22
+
+Under Peter’s instruction to complete the work using supported recommendations, Select and Multi Select retain ownership of their native trigger button. The trigger slot accepts noninteractive content inside that button. Styling uses its CSS part. The previous proposal for an arbitrary supplied native button is replaced. A Chromium native accessibility-tree probe shows that an external light-DOM button cannot expose its controls relationship to the internal shadow listbox; property readback is empty. Moving focus into a listbox could work for Multi Select, but WAI marks the equivalent single-select button/listbox example deprecated. Keeping the modern select-only combobox relationship, one consistent trigger model and author node identity is preferred. No content cloning or external button adoption is introduced. The source fixture and AX output are captured in the M13 selection preparation evidence.
+
+
+## Ranked option projection — 2026-09-22
+
+Under the same delegated authority, ComboBox options are direct children and optional section text supplies native labelled result groups. Rich noninteractive children inside each Option remain supported. The root projects the exact ranked subset with manual slots and never moves author nodes. Each contiguous section run creates one group, so a section label can repeat when rankings interleave sections. Empty built-in queries retain author order; custom-filter order wins. Select and Multi Select keep their ordinary nested-section projection. Arbitrary wrappers around ComboBox options receive an authoring diagnostic.
+
+Evidence changes the earlier arbitrary-nested-section proposal for ranked ComboBox: moving keyed Lit child elements leaves deleted results visible in Chromium, Firefox and WebKit; direct-child manual projection works in all three engines, while nested descendants cannot be assigned. Chromium also lacks the tested aria-owns element-reference APIs, so CSS ordering with those properties cannot certify accessibility order. A data/callback renderer would replace the authored-option interface and require additional renderer adapters. Direct Option projection retains HTML/Lit/React node ownership with the smallest coherent contract. Grouped projection and renderer-update acceptance remain required before completion.
+
+
+## Slider native label contract — 2026-09-22
+
+Under delegated execution, the per-thumb accessible-name array is thumbLabels. The inherited labels property remains the native NodeList of associated label elements. The proposed labels array conflicts with AcmeFormElement and the platform-facing form contract; a specific thumbLabels name preserves both meanings without a type cast or a second form bridge. F-07 is updated. The Slider source/reference review records this finding and the remaining implementation checks.
+
+
+## Calendar date runtime correction — 2026-09-22
+
+Under delegated execution, correct the verified @internationalized/date 3.12.4 parser defects at their upstream implementation and ship one private generated runtime containing that exact correction. A local dependency patch alone does not reach fresh split-ESM consumers. All house runtime date imports use the private artifact; consumers do not need postinstall mutations, patch configuration or a registry fork. Retain the upstream types, exact-version/hash provenance and required Apache notices. RelativeTime and Calendar public regressions plus fresh package/CDN/bundle checks must pass before acceptance. This is a selected implementation direction, not a claim that the correction has shipped.

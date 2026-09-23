@@ -145,12 +145,11 @@ export class AcmeCodeBlock extends AcmeElement {
                   switcher.length
                     ? html`<acme-select
                         class="switcher"
-                        size="tiny"
-                        .options=${switcher}
-                        .value=${this.value}
+                        size="small"
+                        .value=${this.value || undefined}
                         aria-label="Language"
                         @acme-change=${this.switched}
-                      ></acme-select>`
+                      >${switcher.map((option) => html`<acme-option value=${option.value}>${option.label}</acme-option>`)}</acme-select>`
                     : nothing
                 }
                 ${copyButton(false)}
