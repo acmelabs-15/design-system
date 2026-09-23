@@ -794,3 +794,8 @@ The final style audit also removes all 21 unused accordion/select-list arrangeme
 ### M16 TOC implementation — 2026-09-23
 
 The [accepted TOC slice](../alignment/evidence/m16-toc-2026-09-23.json) reuses HeadingTargets, keeps authored IDs, and gives explicit items precedence. Pro TOC examples supplied visual evidence; native links and a complete ordered target scan replace their click-only anchors and partial observer bookkeeping. Browser reproductions exposed bordered-scroll offsets and malformed fragments; both are fixed. Documentation integration exposed a separate capture-phase hash handler that bypassed component navigation. That handler now leaves shadow-component links to their owner. No new component category or selection semantics is introduced.
+
+
+### M16 Sidebar implementation — 2026-09-23
+
+[Sidebar acceptance](../alignment/evidence/m16-sidebar-2026-09-23.json) uses the approved Drawer and configured media thresholds. Unlike the saved Pro example, it preserves one authored content tree rather than duplicating desktop/mobile content. The optional collapsed slot supplies intentionally compact content. A browser reproduction found that changing collapsible policy could move focus unnecessarily or hide the focused control; focus now follows actual visibility, with a temporary named region until the trigger becomes enabled. Core Tree remains open.

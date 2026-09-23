@@ -319,3 +319,8 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M16 TOC acceptance — 2026-09-23
 
 [TOC evidence](evidence/m16-toc-2026-09-23.json) closes N04 at its native/Lit boundary. Explicit entries, registered Heading discovery, native fragments/focus and configurable scrolling pass source and compiled checks in all engines. The site fragment handler now preserves component navigation. Sidebar and core Tree remain M16 work; actual platform/React/final acceptance remains M22/M26.
+
+
+### M16 Sidebar acceptance — 2026-09-23
+
+[Sidebar evidence](evidence/m16-sidebar-2026-09-23.json) closes N03 at its native/Lit boundary. The shared Drawer, separate desktop/mobile state, explicit compact content and node-preserving slot projection pass all-engine source, compiled and documentation checks. Core Tree remains M16 work.

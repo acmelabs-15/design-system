@@ -1,0 +1,411 @@
+{
+  "date": "2026-09-23",
+  "status": "Sidebar complete at assigned native/Lit boundary; M16 Tree View remains",
+  "implementation": [
+    "Sidebar/Trigger/Content compose the shared Drawer with separate expanded and mobileOpen state",
+    "Viewport media queries use configured rem breakpoints; medium defaults to 37.5rem with an exclusive boundary",
+    "Author nodes remain in their original light DOM through mode changes; compact content is an explicit collapsed slot",
+    "Open mobile surfaces finish shared Drawer cleanup before desktop projection changes",
+    "Named native complementary/dialog regions, logical placement and configurable full/rail widths",
+    "Collapse and policy changes recover focus without moving it when content remains visible"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 105,
+      "elements": 4308,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 921,
+      "failed": 0,
+      "assertions": 151405,
+      "files": 165
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "desktop starts expanded with a named complementary region",
+            "pass": true
+          },
+          {
+            "name": "desktop collapse changes only desktop state and exposes authored compact content",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focused content to the trigger and preserves input identity and value",
+            "pass": true
+          },
+          {
+            "name": "mobile uses one named native modal Drawer and restores focus on Escape",
+            "pass": true
+          },
+          {
+            "name": "mode changes retain a single author node and independent desktop collapse",
+            "pass": true
+          },
+          {
+            "name": "desktop to closed mobile transfers focus before hiding the content",
+            "pass": true
+          },
+          {
+            "name": "non-collapsible desktop disables its trigger while mobile remains available",
+            "pass": true
+          },
+          {
+            "name": "the shared medium threshold is 37.5rem with an exclusive upper boundary",
+            "pass": true
+          },
+          {
+            "name": "close controls and reconnected ownership produce one mobile change event",
+            "pass": true
+          },
+          {
+            "name": "logical placements follow direction and custom width",
+            "pass": true
+          },
+          {
+            "name": "collapsible policy changes preserve focus when content stays visible and recover it when hidden",
+            "pass": true
+          },
+          {
+            "name": "rapid viewport reversals keep one modal and complete the final desktop transition",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "desktop starts expanded with a named complementary region",
+            "pass": true
+          },
+          {
+            "name": "desktop collapse changes only desktop state and exposes authored compact content",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focused content to the trigger and preserves input identity and value",
+            "pass": true
+          },
+          {
+            "name": "mobile uses one named native modal Drawer and restores focus on Escape",
+            "pass": true
+          },
+          {
+            "name": "mode changes retain a single author node and independent desktop collapse",
+            "pass": true
+          },
+          {
+            "name": "desktop to closed mobile transfers focus before hiding the content",
+            "pass": true
+          },
+          {
+            "name": "non-collapsible desktop disables its trigger while mobile remains available",
+            "pass": true
+          },
+          {
+            "name": "the shared medium threshold is 37.5rem with an exclusive upper boundary",
+            "pass": true
+          },
+          {
+            "name": "close controls and reconnected ownership produce one mobile change event",
+            "pass": true
+          },
+          {
+            "name": "logical placements follow direction and custom width",
+            "pass": true
+          },
+          {
+            "name": "collapsible policy changes preserve focus when content stays visible and recover it when hidden",
+            "pass": true
+          },
+          {
+            "name": "rapid viewport reversals keep one modal and complete the final desktop transition",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "desktop starts expanded with a named complementary region",
+            "pass": true
+          },
+          {
+            "name": "desktop collapse changes only desktop state and exposes authored compact content",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focused content to the trigger and preserves input identity and value",
+            "pass": true
+          },
+          {
+            "name": "mobile uses one named native modal Drawer and restores focus on Escape",
+            "pass": true
+          },
+          {
+            "name": "mode changes retain a single author node and independent desktop collapse",
+            "pass": true
+          },
+          {
+            "name": "desktop to closed mobile transfers focus before hiding the content",
+            "pass": true
+          },
+          {
+            "name": "non-collapsible desktop disables its trigger while mobile remains available",
+            "pass": true
+          },
+          {
+            "name": "the shared medium threshold is 37.5rem with an exclusive upper boundary",
+            "pass": true
+          },
+          {
+            "name": "close controls and reconnected ownership produce one mobile change event",
+            "pass": true
+          },
+          {
+            "name": "logical placements follow direction and custom width",
+            "pass": true
+          },
+          {
+            "name": "collapsible policy changes preserve focus when content stays visible and recover it when hidden",
+            "pass": true
+          },
+          {
+            "name": "rapid viewport reversals keep one modal and complete the final desktop transition",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "desktop starts expanded with a named complementary region",
+            "pass": true
+          },
+          {
+            "name": "desktop collapse changes only desktop state and exposes authored compact content",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focused content to the trigger and preserves input identity and value",
+            "pass": true
+          },
+          {
+            "name": "mobile uses one named native modal Drawer and restores focus on Escape",
+            "pass": true
+          },
+          {
+            "name": "mode changes retain a single author node and independent desktop collapse",
+            "pass": true
+          },
+          {
+            "name": "desktop to closed mobile transfers focus before hiding the content",
+            "pass": true
+          },
+          {
+            "name": "non-collapsible desktop disables its trigger while mobile remains available",
+            "pass": true
+          },
+          {
+            "name": "the shared medium threshold is 37.5rem with an exclusive upper boundary",
+            "pass": true
+          },
+          {
+            "name": "close controls and reconnected ownership produce one mobile change event",
+            "pass": true
+          },
+          {
+            "name": "logical placements follow direction and custom width",
+            "pass": true
+          },
+          {
+            "name": "collapsible policy changes preserve focus when content stays visible and recover it when hidden",
+            "pass": true
+          },
+          {
+            "name": "rapid viewport reversals keep one modal and complete the final desktop transition",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "desktop starts expanded with a named complementary region",
+            "pass": true
+          },
+          {
+            "name": "desktop collapse changes only desktop state and exposes authored compact content",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focused content to the trigger and preserves input identity and value",
+            "pass": true
+          },
+          {
+            "name": "mobile uses one named native modal Drawer and restores focus on Escape",
+            "pass": true
+          },
+          {
+            "name": "mode changes retain a single author node and independent desktop collapse",
+            "pass": true
+          },
+          {
+            "name": "desktop to closed mobile transfers focus before hiding the content",
+            "pass": true
+          },
+          {
+            "name": "non-collapsible desktop disables its trigger while mobile remains available",
+            "pass": true
+          },
+          {
+            "name": "the shared medium threshold is 37.5rem with an exclusive upper boundary",
+            "pass": true
+          },
+          {
+            "name": "close controls and reconnected ownership produce one mobile change event",
+            "pass": true
+          },
+          {
+            "name": "logical placements follow direction and custom width",
+            "pass": true
+          },
+          {
+            "name": "collapsible policy changes preserve focus when content stays visible and recover it when hidden",
+            "pass": true
+          },
+          {
+            "name": "rapid viewport reversals keep one modal and complete the final desktop transition",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "desktop starts expanded with a named complementary region",
+            "pass": true
+          },
+          {
+            "name": "desktop collapse changes only desktop state and exposes authored compact content",
+            "pass": true
+          },
+          {
+            "name": "collapse recovers focused content to the trigger and preserves input identity and value",
+            "pass": true
+          },
+          {
+            "name": "mobile uses one named native modal Drawer and restores focus on Escape",
+            "pass": true
+          },
+          {
+            "name": "mode changes retain a single author node and independent desktop collapse",
+            "pass": true
+          },
+          {
+            "name": "desktop to closed mobile transfers focus before hiding the content",
+            "pass": true
+          },
+          {
+            "name": "non-collapsible desktop disables its trigger while mobile remains available",
+            "pass": true
+          },
+          {
+            "name": "the shared medium threshold is 37.5rem with an exclusive upper boundary",
+            "pass": true
+          },
+          {
+            "name": "close controls and reconnected ownership produce one mobile change event",
+            "pass": true
+          },
+          {
+            "name": "logical placements follow direction and custom width",
+            "pass": true
+          },
+          {
+            "name": "collapsible policy changes preserve focus when content stays visible and recover it when hidden",
+            "pass": true
+          },
+          {
+            "name": "rapid viewport reversals keep one modal and complete the final desktop transition",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "desktop collapse and expansion",
+          "mobile Drawer naming and close",
+          "retained input through both modes"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "desktop collapse and expansion",
+          "mobile Drawer naming and close",
+          "retained input through both modes"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "desktop collapse and expansion",
+          "mobile Drawer naming and close",
+          "retained input through both modes"
+        ],
+        "errors": []
+      }
+    ],
+    "visual": "Chromium RTL Drawer screenshot inspected",
+    "lint": "No errors; four existing controller-registration/member warnings remain"
+  },
+  "references": [
+    "notes/decisions/responsive-sidebar.md",
+    "notes/alignment/inventory/navigation-disclosure.md#n-03-sidebar",
+    "Saved Chakra Pro sidebar-001/block.tsx and mobile-drawer.tsx, read in full",
+    "notes/alignment/evidence/material-navigation-specs-2026-09-19.json"
+  ],
+  "engineering": [
+    "The explicit collapsed content slot avoids silently clipping full navigation into a narrow rail",
+    "The Pro example duplicates desktop/mobile content; this implementation keeps one author node so form state survives",
+    "A failing all-engine test caught focus movement when collapsible=false and lost focus when collapsible becomes true with expanded=false; recovery now follows actual visibility"
+  ],
+  "reproduce": {
+    "fixture": "src/components/sidebar/__tests__/sidebar.browser.ts",
+    "runner": "/tmp/acme-m16-navigation/sidebar/run.ts",
+    "compiled": "/tmp/acme-m16-navigation/sidebar/run-compiled.ts",
+    "documentation": "/tmp/acme-m16-navigation/sidebar/docs-check.ts"
+  },
+  "limits": [
+    "Actual Safari/assistive technology, React wrappers and whole-library acceptance remain M22/M26"
+  ]
+}

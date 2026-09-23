@@ -1,0 +1,12 @@
+:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+[part="root"], [part="content"], [part="collapsed"] {
+  min-inline-size: 0;
+}
+
+[hidden] {
+  display: none;
+}

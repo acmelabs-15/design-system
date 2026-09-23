@@ -184,3 +184,7 @@ export * from "./components/alert-dialog-cancel/alert-dialog-cancel";
 export * from "./components/drawer-trigger/drawer-trigger";
 export * from "./components/drawer-close/drawer-close";
 export type { DialogReason, DialogFocusTarget } from "./shared/dialog-context";
+
+export * from "./components/sidebar/sidebar";
+export * from "./components/sidebar-trigger/sidebar-trigger";
+export * from "./components/sidebar-content/sidebar-content";

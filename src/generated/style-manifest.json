@@ -4801,6 +4801,52 @@
       "registrations": [],
       "exportName": "showCss"
     },
+    "components/sidebar-content/sidebar-content": {
+      "key": "components/sidebar-content/sidebar-content",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "536557a74b969009d885b07a0a45f840064ac0b40a8af5e7ca52b0d54eab1c20",
+        "scripts/styles.ts": "44a962ee4a9a0c1b1a3d660b0eb3332a33fff59a1c5871de5364ea615c131970",
+        "scripts/theme-tokens.ts": "e065190e8d66835fcc612013dbb0049316742205c08f0f6748f79423d05f2cfc",
+        "src/shared/motion-tokens.ts": "2fbb00c0e7407366d57342e50a659008da389d75f4eb673ebcc52e24afffd5c8",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "e92fd230d6c3aaf95c2386da99476b5a7dc30848653a8ae91050db433220fe93",
+        "styles/components/sidebar-content/sidebar-content.css": "1f0a2872d328a34af810da37bbfa92cae3e01fd25fdf0e9c872d7f56d51328fb"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/components/sidebar-content/sidebar-content.source.css": "1f0a2872d328a34af810da37bbfa92cae3e01fd25fdf0e9c872d7f56d51328fb",
+        "src/generated/css/components/sidebar-content/sidebar-content.css": "173331f6c2e5f78d870b09402044e3f902d3d3d0b90ce15f5291895349cfde08",
+        "src/generated/css/components/sidebar-content/sidebar-content.css.map": "ee09b9dfb529b999fcdaaeb79a5e849affc16438e0ffd11d5709fc0284f71aeb",
+        "src/generated/components/sidebar-content/sidebar-content.styles.ts": "1e7b036d6697a18d0c3187e64e6224ce8f88a1b28e3562f7f120fc359b0551e2"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "sidebarContentCss"
+    },
+    "components/sidebar/sidebar": {
+      "key": "components/sidebar/sidebar",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "536557a74b969009d885b07a0a45f840064ac0b40a8af5e7ca52b0d54eab1c20",
+        "scripts/styles.ts": "44a962ee4a9a0c1b1a3d660b0eb3332a33fff59a1c5871de5364ea615c131970",
+        "scripts/theme-tokens.ts": "e065190e8d66835fcc612013dbb0049316742205c08f0f6748f79423d05f2cfc",
+        "src/shared/motion-tokens.ts": "2fbb00c0e7407366d57342e50a659008da389d75f4eb673ebcc52e24afffd5c8",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "e92fd230d6c3aaf95c2386da99476b5a7dc30848653a8ae91050db433220fe93",
+        "styles/components/sidebar/sidebar.css": "52727200d49fc33973e747dd41c4ff60397a9f1cf4c5cb9f3495bfed8a4897b4"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/components/sidebar/sidebar.source.css": "52727200d49fc33973e747dd41c4ff60397a9f1cf4c5cb9f3495bfed8a4897b4",
+        "src/generated/css/components/sidebar/sidebar.css": "156ad08373476a2afd738618d4d4c8f2c274bb2fec69be2a40f277292477400d",
+        "src/generated/css/components/sidebar/sidebar.css.map": "27ac07c664b55c41b314e38e5996c3ea16d2473b6b75d3485b9a313de5267ddf",
+        "src/generated/components/sidebar/sidebar.styles.ts": "068e7e1cbd5d80f199b47854f2d8e87939f8f57e5a7a2fe5452c98cd47dcc832"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "sidebarCss"
+    },
     "components/skeleton/skeleton": {
       "key": "components/skeleton/skeleton",
       "producer": "mapped",
