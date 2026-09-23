@@ -615,6 +615,276 @@
         "children": [],
         "ignored": false
       }
+    ],
+    "fieldInputNativeAccessibility": [
+      {
+        "name": "Name",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 353,
+                  "idref": "acme-field-content-1-label-0",
+                  "text": "Name"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Name",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 552,
+                  "idref": "acme-field-content-2-label-0",
+                  "text": "Name"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Name",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 751,
+                  "idref": "acme-field-content-3-label-0",
+                  "text": "Name"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Name",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 952,
+                  "idref": "acme-field-content-4-label-0",
+                  "text": "Name"
+                }
+              ]
+            }
+          }
+        ]
+      }
     ]
   },
   "sources": [
@@ -627,7 +897,8 @@
     "Guard identical hidden/inert writes so context change observation cannot cause a repeated update cycle.",
     "Use explicit previous/next constructor input instead of accessing an abstract property during construction.",
     "WebKit pointer clicks follow its bare native button focus behavior. Keyboard completion focus passes in all engines; no pointer-focus workaround is added.",
-    "Run site generation before the full suite; an earlier run failed only because its two new pages were not generated yet."
+    "Run site generation before the full suite; an earlier run failed only because its two new pages were not generated yet.",
+    "The Field/Input documentation change initially reused the prior plain-input result in the acceptance record before its new check completed. The new Playwright name query timed out because it did not resolve ARIA element-reference naming. Actual Chromium accessibility exposes Name on all four textboxes. The corrected checks verify those element references and real validation/editing in all engines; this record now contains the corrected run."
   ],
   "fixtures": [
     "src/components/steps/__tests__/steps.browser.ts",
