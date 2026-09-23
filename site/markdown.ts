@@ -34,7 +34,7 @@ const bodyToMarkdown = (body: string) => {
 
 export function docToMarkdown(d: Doc, api: Map<string, ElementApi>, opts: { level?: number } = {}): string[] {
   const h = "#".repeat(opts.level ?? 1);
-  const lines: string[] = [`${h} ${d.title}`, "", `${strip(d.lede)}${d.house ? " House component; Geist has no page for it." : ""}`, ""];
+  const lines: string[] = [`${h} ${d.title}`, "", strip(d.lede), ""];
   for (const e of d.examples) {
     if (e.census) continue;
     lines.push(`${h}# ${e.h}`, "");

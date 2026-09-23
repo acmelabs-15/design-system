@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "pin-input",
   title: "Pin Input",
-  house: true,
   lede: "One code value with separate character fields, focus movement and full-code paste.",
   tags: ["acme-pin-input", "acme-pin-input-field"],
   examples: [

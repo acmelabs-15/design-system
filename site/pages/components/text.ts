@@ -2,11 +2,10 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "text",
   title: "Text",
-  house: true,
   tags: ["acme-text"],
   lede: "Body text with native paragraph, inline or block semantics and responsive typography.",
   examples: [
-    { h: "Paragraph", html: "<acme-text>A paragraph uses the house body role and keeps author-owned inline content.</acme-text>" },
+    { h: "Paragraph", html: "<acme-text>A paragraph uses the body role and keeps author-owned inline content.</acme-text>" },
     { h: "Inline", html: '<p>Text can include <acme-text as="span" weight="600">an important phrase</acme-text> without changing the surrounding flow.</p>' },
     { h: "Responsive size", html: '<acme-text size=\'{"compact":"14px","expanded":"20px"}\'>The visual size follows the selected query.</acme-text>' },
     {

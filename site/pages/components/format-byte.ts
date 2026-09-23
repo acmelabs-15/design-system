@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "format-byte",
   title: "Format Byte",
-  house: true,
   tags: ["acme-format-byte"],
   lede: "Format a numeric byte or bit amount with decimal or binary scaling and three significant digits.",
   examples: [

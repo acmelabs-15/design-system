@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "forms",
   title: "Forms",
-  house: true,
   tags: [],
   lede: "Use native forms directly, or connect canonical control values to TanStack Form with bindField.",
   examples: [

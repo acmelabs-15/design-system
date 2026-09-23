@@ -4,7 +4,6 @@ const content =
 export const doc: Doc = {
   id: "context-menu",
   title: "Context Menu",
-  house: true,
   lede: "The Menu family opened from a contextual gesture.",
   tags: ["acme-context-menu"],
   examples: [

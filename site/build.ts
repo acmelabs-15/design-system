@@ -29,9 +29,6 @@ for (const t of documented) if (!byTag.has(t)) throw new Error(`docs name an unk
 const undocumented = api.map((e) => e.tag).filter((t) => !documented.has(t));
 if (undocumented.length) console.warn("elements without a docs page:", undocumented.join(", "));
 
-const grid = components.find((d) => d.id === "grid");
-const geist = components.filter((d) => !d.house && d.id !== "grid");
-const houseDocs = [tokens, ...components.filter((d) => d.house)];
 const nav: Nav = [
   {
     group: "Foundations",
@@ -40,7 +37,7 @@ const nav: Nav = [
       { title: "Colors", href: "colors" },
       { title: "Typography", href: "typography" },
       { title: "Materials", href: "materials" },
-      ...(grid ? [{ title: "Grid", href: "components/grid" }] : []),
+      { title: "Tokens", href: "tokens" },
     ],
   },
   {
@@ -50,8 +47,7 @@ const nav: Nav = [
       { title: "Typeface", href: "typeface" },
     ],
   },
-  { group: "Components", items: geist.map((d) => ({ title: d.title, href: `components/${d.id}` })) },
-  { group: "House", items: houseDocs.map((d) => ({ title: d.title, href: d.id === "tokens" ? "tokens" : `components/${d.id}`, house: true })) },
+  { group: "Components", items: components.map((d) => ({ title: d.title, href: `components/${d.id}` })) },
 ];
 
 const foundations: [Doc, string][] = [

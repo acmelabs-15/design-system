@@ -21,7 +21,7 @@ Status legend: `[x]` done · `[~]` running · `[ ]` queued · `[?]` needs Peter
 
 ## 1. What we are building
 
-`@acmelabs/design-system` is Peter's house design system, built as Lit web components with the
+`@acmelabs/design-system` is Peter's design system, built as Lit web components with the
 `acme-` prefix. Repo `~/dev/ACMElabs/design-system`. Pure Bun: no Node runtime, no Python.
 Docs on GitHub Pages, package on npm (0.1.1 published).
 
@@ -97,7 +97,7 @@ Phase 1 additions selected 2026-09-19, for implementation only after Phase 5 app
 
 - [Native Lit behaviour ports](notes/decisions/zag-behaviour-ports.md) for Pin Input, Number Input, Scroll Area, Steps and resizable panes. This supersedes the earlier actual Zag component dependency/adapter selection. Use TanStack Store, Lit Motion, generated styling and every other applicable house package/convention. Zag is a source reference; do not use its createMachine/interpreter, vanilla runtime or state store. Ports may create new components, rebuild existing ones or replace them outright. The selected capabilities and Phase 5 gate stand.
 - Published `match-sorter` for ComboBox ranking, replacing the local copy after [compatibility verification](notes/decisions/match-sorter.md). Command Menu's separate scorer stays unchanged.
-- [@internationalized/number](notes/decisions/number-utilities.md) as an independent Number Input utility, retaining the full house implementation. It is selected but not installed; 3.6.8 was researched, not pinned for the eventual migration.
+- [@internationalized/number](notes/decisions/number-utilities.md) as an independent Number Input utility, retaining the complete component implementation. It is selected but not installed; 3.6.8 was researched, not pinned for the eventual migration.
 - A [separate React integration package](notes/decisions/react-integration.md) and [native forms with optional TanStack Form](notes/decisions/native-and-managed-forms.md). Exact exports and integration versions remain for the later reviews.
 - Development tooling: [Oxlint + Oxfmt with Ultracite and Stylelint](notes/decisions/lint-toolchain.md), replacing Biome through a coordinated future migration. Current project configuration remains Biome.
 

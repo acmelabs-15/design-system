@@ -1,4 +1,4 @@
-// Docs page: Card (house component)
+// Docs page: Card
 import type { Doc } from "../../site";
 
 export const doc: Doc = {
@@ -6,7 +6,6 @@ export const doc: Doc = {
   title: "Card",
   lede: "The block that must read as its own object: a bordered surface with a 6px radius.",
   tags: ["acme-card"],
-  house: true,
   examples: [
     {
       h: "Variants",

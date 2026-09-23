@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "grid",
   title: "Grid",
-  house: true,
   tags: ["acme-grid"],
   lede: "Use native grid tracks, named areas and placement. Use Simple Grid for equal columns or automatic fitting.",
   examples: [

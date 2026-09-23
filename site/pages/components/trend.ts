@@ -1,12 +1,11 @@
-// Docs page: Trend (house component)
+// Docs page: Trend
 import type { Doc } from "../../site";
 
 export const doc: Doc = {
   id: "trend",
   title: "Trend",
-  lede: "A signed change with its direction: the arrow, the sign and the percent. A house component; Geist has no page for it.",
+  lede: "A signed change with its direction: the arrow, the sign and the percent.",
   tags: ["acme-trend"],
-  house: true,
   examples: [
     {
       h: "Default",

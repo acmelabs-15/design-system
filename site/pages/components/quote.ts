@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "quote",
   title: "Quote",
-  house: true,
   tags: ["acme-quote"],
   lede: "Use native inline or block quotation semantics with optional citation metadata.",
   examples: [

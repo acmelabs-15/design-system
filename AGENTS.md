@@ -1,6 +1,6 @@
 # Working in this repository
 
-This is `@acmelabs/design-system`: Peter's house design system, Lit web components with the `acme-` prefix, built so AI-generated artifacts have a real design language to render. The Geist port is closed. The current work is the **systematization pass**: fewer elements, one name per concept, one shape per kind of interface, a small set of primitives the rest compose.
+This is `@acmelabs/design-system`: Peter's design system, Lit web components with the `acme-` prefix, built so AI-generated artifacts have a real design language to render. The Geist port is closed. The current work is the **systematization pass**: fewer elements, one name per concept, one shape per kind of interface, a small set of primitives the rest compose.
 
 Your global `AGENTS.md` carries how Peter works everywhere. This file carries what is specific here.
 
@@ -17,6 +17,8 @@ Read these in order, in full.
 Then tell Peter where we are and what the next step is, in your own words, and wait.
 
 ## Rules this repo adds
+
+- **Use component names directly.** Every component belongs to this design system. Describe a component, its behavior and its reference sources without a separate “house” version or category.
 
 - **Best, not fastest.** Every decision is the best decision for what we are building. Where the best path and the quick path differ, name both and take the best one.
 - **Investigate first.** Every item Peter lists, and everything you find, gets analysis before a recommendation: what the code does (file and line), what the community does (a source you read), what a reference system does (its docs or rendered output). Unsure means ask.
@@ -82,4 +84,4 @@ Hand-written: `styles/`, `src/` except `src/generated/`, `src/define/`, `src/int
 
 Build order: `bun run split && bun run build && bun run docs && bun test`. `docs` needs `dist/` from `build`.
 
-Mapped-source changes use `bun tools/geist/gen.ts <name>`; `split` regenerates house and authored styles. Build rejects stale generated inputs and refreshes registration entries, exports and API metadata. `bun run pack` stages production metadata; development patch settings stay in the authoring package.
+Mapped-source changes use `bun tools/geist/gen.ts <name>`; `split` regenerates base and component styles. Build rejects stale generated inputs and refreshes registration entries, exports and API metadata. `bun run pack` stages production metadata; development patch settings stay in the authoring package.

@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "number-input",
   title: "Number Input",
-  house: true,
   lede: "Edit localized numbers with decimal steps, limits and optional press-and-hold actions.",
   tags: ["acme-number-input", "acme-number-input-increment", "acme-number-input-decrement"],
   examples: [

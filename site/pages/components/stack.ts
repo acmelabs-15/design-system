@@ -3,13 +3,12 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "stack",
   title: "Stack",
-  house: true,
-  lede: "Arrange a row or column with house spacing. Optional separators follow visible lines when content wraps.",
+  lede: "Arrange a row or column with spacing. Optional separators follow visible lines when content wraps.",
   tags: ["acme-stack", "acme-h-stack", "acme-v-stack"],
   examples: [
     {
       h: "Column",
-      p: "Stack defaults to a column with stretched cross-axis alignment. Its default gap uses the house spacing role for step 2.",
+      p: "Stack defaults to a column with stretched cross-axis alignment. Its default gap uses the spacing role for step 2.",
       html: `<acme-stack><acme-box padding="4" background-color="var(--ds-gray-100)">First section</acme-box><acme-box padding="4" background-color="var(--ds-gray-100)">Second section</acme-box></acme-stack>`,
     },
     {

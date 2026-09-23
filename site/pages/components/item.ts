@@ -1,4 +1,4 @@
-// Docs page: Item (house component)
+// Docs page: Item
 import type { Doc } from "../../site";
 
 export const doc: Doc = {
@@ -6,7 +6,6 @@ export const doc: Doc = {
   title: "Item",
   lede: "The list row: a lead, a title and meta, an amount and tags, actions.",
   tags: ["acme-item"],
-  house: true,
   examples: [
     {
       h: "Rows",

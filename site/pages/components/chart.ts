@@ -1,4 +1,4 @@
-// Docs page: Chart (house component)
+// Docs page: Chart
 import type { Doc } from "../../site";
 
 const rows = `[{"month":"Jan","edge":42,"serverless":18},{"month":"Feb","edge":58,"serverless":21},{"month":"Mar","edge":76,"serverless":30},{"month":"Apr","edge":64,"serverless":27},{"month":"May","edge":81,"serverless":35},{"month":"Jun","edge":94,"serverless":38}]`;
@@ -6,9 +6,8 @@ const rows = `[{"month":"Jan","edge":42,"serverless":18},{"month":"Feb","edge":5
 export const doc: Doc = {
   id: "chart",
   title: "Chart",
-  lede: "A chart frame on TanStack Charts: pass rows and keys and it draws a line, bar or area chart in the house series colors with Geist's grid, mono axes and tooltip. A hand-drawn SVG still fits the default slot.",
+  lede: "A chart frame on TanStack Charts: pass rows and keys and it draws a line, bar or area chart in the series colors with Geist's grid, mono axes and tooltip. A hand-drawn SVG still fits the default slot.",
   tags: ["acme-chart", "acme-legend", "acme-legend-item"],
-  house: true,
   examples: [
     {
       h: "Line chart",

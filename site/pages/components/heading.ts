@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "heading",
   title: "Heading",
-  house: true,
   tags: ["acme-heading"],
   lede: "A native heading level with an independent visual size. The host ID remains the document fragment target.",
   examples: [

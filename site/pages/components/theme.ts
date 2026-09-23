@@ -20,7 +20,7 @@ export const doc: Doc = {
   ],
   practices: {
     Usage: [
-      "Register named definitions before selecting them. A partial definition starts from the house theme.",
+      "Register named definitions before selecting them. A partial definition starts from the theme.",
       "Omitted nested settings inherit. Removing an appearance, density or locale attribute restores inheritance.",
       "Explicit auto follows the system appearance. Explicit normal density overrides an inherited compact setting.",
       "Use ordinary CSS custom properties for local overrides. Native lang and dir remain native attributes.",

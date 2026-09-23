@@ -1,4 +1,4 @@
-// Docs page: App Bar (house component)
+// Docs page: App Bar
 import type { Doc } from "../../site";
 
 export const doc: Doc = {
@@ -6,7 +6,6 @@ export const doc: Doc = {
   title: "App Bar",
   lede: "The sticky top bar: brand left, section links middle, tools right, with the theme switcher built in.",
   tags: ["acme-appbar"],
-  house: true,
   examples: [
     {
       h: "Default",

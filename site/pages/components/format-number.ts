@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "format-number",
   title: "Format Number",
-  house: true,
   tags: ["acme-format-number"],
   lede: "Format a numeric value with native locale-aware number options. Missing values stay empty.",
   examples: [

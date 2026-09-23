@@ -10,7 +10,7 @@ export const doc: Doc = {
       html: '<acme-v-stack gap="2"><acme-label id="label-native-example" for="label-native-input">Email address</acme-label><input id="label-native-input" type="email" autocomplete="email"></acme-v-stack>',
     },
     {
-      h: "House control",
+      h: "Component control",
       html: '<acme-h-stack gap="2"><acme-checkbox id="label-checkbox-example" name="notifications"></acme-checkbox><acme-label id="label-checkbox-label" for="label-checkbox-example">Notifications</acme-label></acme-h-stack>',
     },
     {
@@ -21,7 +21,7 @@ export const doc: Doc = {
   practices: {
     Association: [
       "Set for to the control ID in the same tree scope. Native labels keep exact ID matching, including punctuation.",
-      "A house control receives naming through its native form association. Label activation focuses the actual control or group entry.",
+      "A component control receives naming through its native form association. Label activation focuses the actual control or group entry.",
       "Use Field when label, helper text, error text and required/optional presentation belong together.",
     ],
     Content: [

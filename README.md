@@ -1,9 +1,6 @@
 # @acmelabs/design-system
 
-The house design system as web components. Geist foundations and every Geist component at
-Geist's values, set in Google Sans Flex and Google Sans Code, plus the house parts the Vercel
-dashboard adds. Built with [Lit](https://lit.dev), one directory per element, shadow DOM with a
-shared global stylesheet.
+Lit web components and shared design tokens for consistent interfaces. Built with [Lit](https://lit.dev), using Google Sans Flex and Google Sans Code, one directory per element, shadow DOM and a shared global stylesheet.
 
 Docs: <https://acmelabs-15.github.io/design-system/>
 
@@ -115,7 +112,7 @@ registerTheme("brand", {
 await import("@acmelabs/design-system/define/theme");
 ```
 
-A partial definition inherits house defaults. Repeating the same registration is harmless;
+A partial definition inherits default values. Repeating the same registration is harmless;
 changing an existing definition fails. Ordinary CSS custom properties supply local overrides.
 The Theme Switcher emits `acme-request` with `{ action: "appearance", value }`; handle it in
 the application and update the switcher's `value` and the relevant theme scope's `appearance`.
@@ -123,7 +120,7 @@ the application and update the switcher's `value` and the relevant theme scope's
 ## Layout
 
 ```
-styles/                         authored house, component and shared CSS inputs
+styles/                         authored base, component and shared CSS inputs
 src/
   base.ts                       AcmeElement and shared helpers
   index.ts                      exports classes and authoring helpers
@@ -180,7 +177,7 @@ Start with `AGENTS.md`. It gives the reading order, the rules, and the current w
 | `bun run dev` | Rebuilds on change and serves the docs at <http://localhost:4180> |
 | `bun test` | Unit tests plus a render test of every docs page |
 | `bun run lint` | Biome |
-| `bun run split` | Compiles house/authored CSS into committed CSS, maps and Lit modules |
+| `bun run split` | Compiles base/component CSS into committed CSS, maps and Lit modules |
 | `bun run manifest` | Generates the standard element API manifest used by documentation |
 | `bun run entries` | Generates selective and full registration entries |
 | `bun run pack` | Packs built outputs with production metadata into `.artifacts/packages/`; keeps development patch/configuration private |
@@ -200,7 +197,7 @@ git push --follow-tags   # the tag starts the publish
 - Every element is `acme-*`. Use the generated element API for its properties, attributes and
   explicitly supported JSON inputs. Public events bubble and are composed.
 - Values come from vercel.com/geist. Where Geist has the component, Geist's value is the value.
-- The house type families are Google Sans Flex for text and Google Sans Code for numbers,
+- The type families are Google Sans Flex for text and Google Sans Code for numbers,
   labels and code. Custom themes can replace those families.
 - State is TanStack Store. Theme scopes own their canonical settings and use Lit context to
   deliver read-only sources; the toast queue lives in `src/shared/state.ts`. An element's own state is a store created per

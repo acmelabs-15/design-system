@@ -17,7 +17,6 @@ export type Doc = {
   tags?: string[];
   /** Catalogued elements that share the displayed API and have individual catalog entries. */
   catalogTags?: string[];
-  house?: boolean;
   examples: Example[];
   practices?: Record<string, string[]>;
   /** Raw sections rendered after the examples (foundations pages). */
@@ -25,7 +24,7 @@ export type Doc = {
   /** Markdown lines appended to the page's .md twin only: sections the reference's Markdown carries that its page does not render. */
   md?: string[];
 };
-export type Nav = { group: string; items: { title: string; href: string; house?: boolean }[] }[];
+export type Nav = { group: string; items: { title: string; href: string }[] }[];
 
 const ROOT = path.resolve(import.meta.dir, "..");
 export const OUT = path.join(ROOT, "_site");
@@ -46,7 +45,6 @@ export const pageCss = `
 .docs-side a{display:flex;align-items:center;height:36px;padding:0 8px;border-radius:var(--r-sm);font-size:14px;line-height:20px;color:var(--text-2);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .docs-side a:hover{color:var(--text);background:var(--comp);text-decoration:none}
 .docs-side a[aria-current="page"]{color:var(--text);background:var(--ds-gray-200)}
-.docs-side a .house{margin-left:auto;font-family:var(--acme-font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ds-gray-700)}
 .docs-main{min-width:0;padding:0 48px 96px}
 .doc{max-width:960px;margin:0 auto}
 .doc-hero{padding:48px 0 32px}
@@ -212,7 +210,7 @@ const apiTables = (els: ElementApi[]) =>
 
 export const docPage = (d: Doc, api: ElementApi[]) =>
   `<article class="doc" id="${d.id}"><div class="doc-hero"><h1>${d.title}</h1><p>${d.lede}</p>${
-    d.tags?.length ? `<div class="tags">${d.tags.map((t) => `<acme-badge variant="${d.house ? "purple" : "gray"}" contrast="low"><code>&lt;${t}&gt;</code></acme-badge>`).join("")}</div>` : ""
+    d.tags?.length ? `<div class="tags">${d.tags.map((t) => `<acme-badge variant="gray" contrast="low"><code>&lt;${t}&gt;</code></acme-badge>`).join("")}</div>` : ""
   }</div>${d.examples
     .filter((e) => !e.census)
     .map((e) => section(e.h, showcase(e), e.p))

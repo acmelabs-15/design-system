@@ -4,7 +4,6 @@ const items =
 export const doc: Doc = {
   id: "split-button",
   title: "Split Button",
-  house: true,
   lede: "A primary action attached to a menu of related actions.",
   tags: ["acme-split-button", "acme-split-button-item"],
   examples: [

@@ -131,3 +131,8 @@ On 2026-09-20 Peter said “I approve all proposals.” The [approval record](..
 The authored site now lives under site; local generation writes _site. It copies only document styles/maps from dist/styles and continues to build 104 pages documenting 150 current elements. The source move and compiler changes pass the existing rendering suite. [Evidence](../alignment/evidence/m02-css-pipeline-2026-09-20.json).
 
 GitHub Pages still serves main/docs, verified through the repository API on 2026-09-20. The tracked docs tree remains an untouched published snapshot while local development uses _site. Switching the workflow and removing that snapshot remains the publishing migration. No site deployment or repository setting was changed.
+
+
+## Component naming — 2026-09-22
+
+Peter requires component names to stand on their own. The documentation previously separated one subset into a House navigation group, used different badge colors and appended a component-category sentence in Markdown/skill references. Those distinctions are removed. All components share the Components navigation group and badge treatment; Tokens belongs in Foundations. The unused metadata flag is removed from page and navigation types. Current guidance and glossary wording follow the [component-language decision](../decisions/component-language.md). The site rebuild reports 96 pages and 4262 documented elements; 99 documentation tests pass.

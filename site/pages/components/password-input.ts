@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "password-input",
   title: "Password Input",
-  house: true,
   lede: "A native password field with a labelled visibility action.",
   tags: ["acme-password-input"],
   examples: [

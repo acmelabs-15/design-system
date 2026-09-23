@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "link",
   title: "Link",
-  house: true,
   tags: ["acme-link"],
   lede: "Native navigation with text styling and optional start/end content.",
   examples: [

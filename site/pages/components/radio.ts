@@ -35,7 +35,7 @@ export const doc: Doc = {
     Selection: [
       "Supply a nonempty value for each option. Radio Group starts empty until value is supplied; it does not select the first item automatically.",
       "Use value/defaultValue on the group. A standalone Radio has checked/defaultChecked. Programmatic changes stay silent; user changes emit acme-change with value.",
-      "Standalone house radios coordinate only with other house radios sharing their name, native form and tree scope. Use Radio Group for an explicit collection.",
+      "Standalone Radio components coordinate only with other Radio components sharing their name, native form and tree scope. Use Radio Group for an explicit collection.",
     ],
     Keyboard: [
       "Tab enters the selected enabled option, or the first enabled option. Arrows select the next option and skip disabled members. Horizontal keys follow the current reading direction.",

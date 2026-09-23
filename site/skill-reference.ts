@@ -30,7 +30,7 @@ const lines: string[] = [
   "",
   "## Index",
   "",
-  ...docs.map((d) => `- [${d.title}](#${d.id})${d.house ? " (house)" : ""}: ${(d.tags ?? []).map((t) => `\`<${t}>\``).join(", ")}`),
+  ...docs.map((d) => `- [${d.title}](#${d.id}): ${(d.tags ?? []).map((t) => `\`<${t}>\``).join(", ")}`),
   "",
 ];
 for (const d of docs) lines.push(...docToMarkdown(d, byTag, { level: 2 }).map((l, i) => (i === 0 ? `${l}\n\n<a id="${d.id}"></a>` : l)));

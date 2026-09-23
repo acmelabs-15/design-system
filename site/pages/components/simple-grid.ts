@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "simple-grid",
   title: "Simple Grid",
-  house: true,
   tags: ["acme-simple-grid"],
   lede: "Create equal columns or fit as many minimum-width columns as the available space allows.",
   examples: [

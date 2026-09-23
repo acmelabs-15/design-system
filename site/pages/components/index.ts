@@ -1,5 +1,5 @@
 // Loads every component docs page in this directory: one file per page, each exporting `doc`.
-// Geist pages mirror https://vercel.com/geist/<id>; house pages carry `house: true`.
+// Component pages document the current interfaces and their examples.
 import fs from "node:fs";
 import path from "node:path";
 import type { Doc } from "../../site";

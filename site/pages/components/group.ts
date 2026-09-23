@@ -2,7 +2,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "group",
   title: "Group",
-  house: true,
   tags: ["acme-group"],
   lede: "Arrange content with an optional outer outline. Explicit participants can share appearance defaults and attached edges.",
   examples: [

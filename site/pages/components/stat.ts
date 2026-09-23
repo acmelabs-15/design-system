@@ -1,4 +1,4 @@
-// Docs page: Stat (house component)
+// Docs page: Stat
 import type { Doc } from "../../site";
 
 export const doc: Doc = {
@@ -6,7 +6,6 @@ export const doc: Doc = {
   title: "Stat",
   lede: "The one component for a headline figure: label and context, the value with its unit and trend, then a delta, a description, a meter, a spark or a foot.",
   tags: ["acme-stat", "acme-stat-delta", "acme-stat-desc", "acme-stat-foot", "acme-spark"],
-  house: true,
   examples: [
     {
       h: "Cells",

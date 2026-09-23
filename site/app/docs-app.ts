@@ -11,7 +11,7 @@ import { StoreSelector } from "../../dist/shared/store-connection";
 import { ThemeContextController } from "../../dist/shared/theme-context";
 import type { ThemeAppearance } from "../../dist/shared/theme-scope";
 
-type NavItem = { title: string; href: string; house?: boolean };
+type NavItem = { title: string; href: string };
 type Nav = { group: string; items: NavItem[] }[];
 declare global {
   interface Window {

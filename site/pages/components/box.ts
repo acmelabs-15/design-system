@@ -3,7 +3,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "box",
   title: "Box",
-  house: true,
   lede: "A semantic container with responsive spacing, sizing and surface styles. Use ordinary CSS for rules outside its focused property set.",
   tags: ["acme-box"],
   examples: [

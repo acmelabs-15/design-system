@@ -14,3 +14,5 @@ The following linked sections are the normative definitions; this entry point do
 - [Before/after examples and measured current adoption](alignment/inventory/foundations.md#convention-audit-and-beforeafter-examples).
 
 Family entries define their exact extensions. Original proposal wording in those records now describes the approved design, except alternatives explicitly declined by the [closed question register](alignment/proposal-questions.md). Engineering gates are not claimed passed by approval. The consumer README is updated with the implemented interface during migration, preserving accurate documentation for the current package until then.
+
+Component names identify every component directly. All components belong to this design system; there is no separate “house” category or version. Reference-system names identify evidence sources, not a second class of components. [Wording decision](decisions/component-language.md).

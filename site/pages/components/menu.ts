@@ -5,7 +5,6 @@ const items = '<acme-menu-item value="save">Save</acme-menu-item><acme-menu-item
 export const doc: Doc = {
   id: "menu",
   title: "Menu",
-  house: true,
   lede: "Actions and checked choices in a keyboard-accessible popup.",
   tags: ["acme-menu", "acme-menu-trigger", "acme-menu-content", "acme-menu-item", "acme-menu-section", "acme-menu-separator"],
   examples: [

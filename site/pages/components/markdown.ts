@@ -1,12 +1,11 @@
-// Docs page: Markdown (house component)
+// Docs page: Markdown
 import type { Doc } from "../../site";
 
 export const doc: Doc = {
   id: "markdown",
   title: "Markdown",
-  lede: "Renders Markdown with TanStack Markdown in the Geist type scale; code fences are highlighted by TanStack Highlight. A house component; Geist has no page for it.",
+  lede: "Renders Markdown with TanStack Markdown in the Geist type scale; code fences are highlighted by TanStack Highlight.",
   tags: ["acme-markdown"],
-  house: true,
   examples: [
     {
       h: "Default",

@@ -3,7 +3,6 @@ import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "flex",
   title: "Flex",
-  house: true,
   lede: "Arrange content with native flex layout. Direction, alignment, wrapping and gaps support responsive values.",
   tags: ["acme-flex"],
   examples: [

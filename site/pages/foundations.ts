@@ -1,6 +1,6 @@
 // Foundations and assets, in the section structure of the reference's docs (vercel.com/geist):
 // Introduction, Colors, Typography, Materials (Grid is a component page listed under Foundations),
-// Icons, Typeface. The house Tokens page holds what the reference has no section for. Prose is
+// Icons, Typeface. The Tokens page holds what the reference has no section for. Prose is
 // ours; structure, section names, class lists and values follow the reference pages read in full
 // (Markdown and rendered HTML) on Sep 9 2026. The type families are the one sanctioned difference.
 export { icons } from "./icon-catalog";
@@ -34,7 +34,7 @@ const install = `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?
 export const intro: Doc = {
   id: "index",
   title: "ACME Design System",
-  lede: "The house design system for building consistent web experiences.",
+  lede: "The design system for building consistent web experiences.",
   examples: [],
   body: `<div class="link-grid">${tile("/icons", "Icons", "An icon set for developer tools.", `<span class="tile-icons">${iconRows.map((r) => `<span>${r.map((n) => ic(n)).join("")}</span>`).join("")}</span>`)}${tile(
     "/components/avatar",
@@ -163,7 +163,7 @@ export const colors: Doc = {
     `${def([
       ["Color 9", "--ds-gray-900", "Secondary text and icons"],
       ["Color 10", "--ds-gray-1000", "Primary text and icons"],
-    ])}<div class="ex-box col" style="margin-top:40px"><div class="vstack" style="gap:4px;max-width:420px;padding:48px 24px"><span class="text-heading-16">The house design system</span><span class="text-copy-14" style="color:var(--ds-gray-900)">Build consistent pages with one set of elements, tokens and rules.</span><a class="text-copy-14" href="/" style="display:inline-flex;align-items:center;gap:2px;margin-top:8px;color:var(--ds-blue-900);text-decoration:none">Learn More ${ic("expand-more", ' style="transform:rotate(-90deg)"')}</a></div><div class="icons">${hue("blue", 900, ic("language"))}${hue("red", 900, ic("error"))}${hue("amber", 900, ic("warning"))}${hue("green", 900, ic("check-circle"))}${hue("pink", 900, ic("notifications"))}${hue("teal", 900, ic("check-circle", " filled"))}</div></div>`,
+    ])}<div class="ex-box col" style="margin-top:40px"><div class="vstack" style="gap:4px;max-width:420px;padding:48px 24px"><span class="text-heading-16">The design system</span><span class="text-copy-14" style="color:var(--ds-gray-900)">Build consistent pages with one set of elements, tokens and rules.</span><a class="text-copy-14" href="/" style="display:inline-flex;align-items:center;gap:2px;margin-top:8px;color:var(--ds-blue-900);text-decoration:none">Learn More ${ic("expand-more", ' style="transform:rotate(-90deg)"')}</a></div><div class="icons">${hue("blue", 900, ic("language"))}${hue("red", 900, ic("error"))}${hue("amber", 900, ic("warning"))}${hue("green", 900, ic("check-circle"))}${hue("pink", 900, ic("notifications"))}${hue("teal", 900, ic("check-circle", " filled"))}</div></div>`,
     "Two colors for accessible text and icons.",
   )}`,
 };
@@ -316,12 +316,11 @@ export const typeface: Doc = {
   )}`,
 };
 
-/* ---------- Tokens (house) ---------- */
+/* ---------- Tokens ---------- */
 export const tokens: Doc = {
   id: "tokens",
   title: "Tokens",
-  lede: "The semantic layer page rules use on top of Geist's scales, the deployment and chart colors, the radii and the focus ring. A house page; Geist has no section for these.",
-  house: true,
+  lede: "The semantic layer page rules use on top of Geist's scales, the deployment and chart colors, the radii and the focus ring.",
   examples: [],
   body: `${section("Semantic tokens", `<docs-tokens tokens="--bg --surface --surface-2 --comp --comp-hover --comp-active --border --border-hover --border-active --hair --text --text-2 --accent --accent-ink --accent-weak --success --success-ink --success-weak --warn --warn-ink --warn-weak --caution --caution-bg --caution-weak --contrast --contrast-strong --on-contrast --track --ds-focus-color --highlight --scrim-dark"></docs-tokens>`, "What page rules use. Each maps onto a scale step, so the theme switch carries every rule.")}
 ${section("Status and chart series", `<docs-tokens tokens="--st-ready --st-error --st-building --st-queued --st-online --chart-1 --chart-2 --chart-3 --chart-4 --chart-5"></docs-tokens>`, "The deployment status colors and the chart series, as the Vercel dashboard draws them; the same in both themes.")}
@@ -353,7 +352,7 @@ ${section(
 ${section("Radii", `<div class="demo-box" style="margin-top:0">${[4, 6, 8, 10, 12, 16].map((r) => `<span style="width:100px;height:56px;border-radius:${r}px;background:var(--comp);border:1px solid var(--border);display:grid;place-items:center;font-family:var(--acme-font-mono);font-size:12px;color:var(--text-2)">${r}</span>`).join("")}<span style="width:100px;height:56px;border-radius:999px;background:var(--comp);border:1px solid var(--border);display:grid;place-items:center;font-family:var(--acme-font-mono);font-size:12px;color:var(--text-2)">full</span></div>`, "4 for kbd and chips, 6 for controls and cards, 8 for large inputs, 10 for chart panels, 12 for menus and modals, 16 for sheets, full for pills.")}
 ${section("Focus", `<div class="demo-box" style="margin-top:0"><acme-button>Tab to me</acme-button><acme-input placeholder="Then to me" style="width:200px"></acme-input></div>`, "Two pixels of the ground, then four of the focus blue; on <code>:focus-visible</code> only. Press Tab to see it.")}
 ${section(
-  "House type styles",
+  "Type styles",
   ttable(
     trow(`<span class="eyebrow">Eyebrow label</span>`, ".eyebrow · 11 mono caps .09em", "Cell and card labels") +
       trow(`<span class="mono" style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.96px">$62,450</span>`, "acme-stat value · 24/32 mono 600", "The one headline figure") +

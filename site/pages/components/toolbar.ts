@@ -1,4 +1,4 @@
-// Docs page: Toolbar (house component)
+// Docs page: Toolbar
 import type { Doc } from "../../site";
 
 export const doc: Doc = {
@@ -6,7 +6,6 @@ export const doc: Doc = {
   title: "Toolbar",
   lede: "A row of controls above a list, with an end group pushed right.",
   tags: ["acme-toolbar"],
-  house: true,
   examples: [
     {
       h: "Default",

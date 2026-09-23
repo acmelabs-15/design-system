@@ -36,7 +36,7 @@ export const doc: Doc = {
       "The native container retains author node identity. Let a structural child update settle before reading its final form associations.",
     ],
     State: [
-      "disabled uses the native fieldset ancestor. It excludes contained native and house controls from submission and keyboard interaction without changing their own disabled settings.",
+      "disabled uses the native fieldset ancestor. It excludes contained native and component controls from submission and keyboard interaction without changing their own disabled settings.",
       "invalid describes the group and displays its error slot. It does not mark individual fields invalid or change native validity.",
       "Keep help and error text separate. Active group descriptions supplement authored aria-describedby references.",
     ],
