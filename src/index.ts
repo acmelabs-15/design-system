@@ -75,7 +75,7 @@ export * from "./components/menu-item/menu-item";
 export * from "./components/menu-section/menu-section";
 export * from "./components/middle-truncate/middle-truncate";
 export * from "./components/multi-select/multi-select";
-export * from "./components/note/note";
+export * from "./components/alert/alert";
 export * from "./components/pagination/pagination";
 export * from "./components/pill/pill";
 export * from "./components/progress/progress";

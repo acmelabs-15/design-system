@@ -1,5 +1,7 @@
 import { AcmeMessageElement } from "../../shared/message-element";
-/** A supplied page or application message with application-owned placement.
+
+export type { MessageSize, MessageVariant } from "../../shared/message-element";
+/** A supplied section or form message; live urgency is explicitly authored.
  * @slot - Message content.
  * @slot heading - Authored heading content instead of heading text.
  * @slot start - Leading content instead of the decorative status icon.
@@ -14,13 +16,13 @@ import { AcmeMessageElement } from "../../shared/message-element";
  * @csspart close - Explicit dismiss control.
  * @fires {CustomEvent<{action:"dismiss"}>} acme-request - Cancelable dismissal request; the application owns removal.
  */
-export class AcmeBanner extends AcmeMessageElement {
+export class AcmeAlert extends AcmeMessageElement {
   protected get kind() {
-    return "banner" as const;
+    return "alert" as const;
   }
 }
 declare global {
   interface HTMLElementTagNameMap {
-    "acme-banner": AcmeBanner;
+    "acme-alert": AcmeAlert;
   }
 }

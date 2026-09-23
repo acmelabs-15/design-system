@@ -902,6 +902,11 @@
       "import": "./dist/generated/icons/classes/album-icon.js",
       "default": "./dist/generated/icons/classes/album-icon.js"
     },
+    "./components/alert": {
+      "types": "./dist/components/alert/alert.d.ts",
+      "import": "./dist/components/alert/alert.js",
+      "default": "./dist/components/alert/alert.js"
+    },
     "./components/alert-dialog": {
       "types": "./dist/components/alert-dialog/alert-dialog.d.ts",
       "import": "./dist/components/alert-dialog/alert-dialog.js",
@@ -13336,11 +13341,6 @@
       "types": "./dist/generated/icons/classes/not-started-icon.d.ts",
       "import": "./dist/generated/icons/classes/not-started-icon.js",
       "default": "./dist/generated/icons/classes/not-started-icon.js"
-    },
-    "./components/note": {
-      "types": "./dist/components/note/note.d.ts",
-      "import": "./dist/components/note/note.js",
-      "default": "./dist/components/note/note.js"
     },
     "./components/note-add-icon": {
       "types": "./dist/generated/icons/classes/note-add-icon.d.ts",

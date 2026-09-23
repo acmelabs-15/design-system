@@ -5,7 +5,7 @@ import "./error-icon";
 import "./icon-button";
 import "./info-icon";
 import "./warning-icon";
-import "../components/banner/banner";
-import { AcmeBanner } from "../components/banner/banner";
+import "../components/alert/alert";
+import { AcmeAlert } from "../components/alert/alert";
 
-customElements.define("acme-banner", AcmeBanner);
+customElements.define("acme-alert", AcmeAlert);

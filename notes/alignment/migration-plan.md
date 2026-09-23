@@ -334,3 +334,8 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M17 complete — 2026-09-23
 
 [Help acceptance](evidence/m17-help-2026-09-23.json) closes O04/O05/O06; the earlier native-dialog acceptance closes O01/O02/O03. Shared native presence, anchored geometry, motion, descriptions, focus and explicit interactive help pass source/compiled checks in all engines. Context Card and all legacy Tooltip producers are removed. Continue M18; actual platform/React/final package gates remain M22/M26.
+
+
+### M18 message surfaces — 2026-09-23
+
+[Alert/Banner acceptance](evidence/m18-messages-2026-09-23.json) closes M-01. Shared inputs, explicit live semantics, native actions and application-owned dismissal pass all engines. Note and old Banner producers are removed. M18 display families, scoped Toast and Feedback remain.
