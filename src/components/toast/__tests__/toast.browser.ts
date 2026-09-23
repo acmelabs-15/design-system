@@ -1,0 +1,16 @@
+import {AcmeToast} from '../toast';customElements.define('acme-toast',AcmeToast);
+import {AcmeToastViewport} from '../../toast-viewport/toast-viewport';customElements.define('acme-toast-viewport',AcmeToastViewport);
+import {AcmeAlert} from '../../alert/alert';customElements.define('acme-alert',AcmeAlert);
+import {AcmeButton} from '../../button/button';customElements.define('acme-button',AcmeButton);
+import {AcmeIconButton} from '../../icon-button/icon-button';customElements.define('acme-icon-button',AcmeIconButton);
+import {AcmeSpinner} from '../../spinner/spinner';customElements.define('acme-spinner',AcmeSpinner);
+import {AcmeToggleTip} from '../../toggle-tip/toggle-tip';customElements.define('acme-toggle-tip',AcmeToggleTip);
+import {AcmeTheme} from '../../theme/theme';customElements.define('acme-theme',AcmeTheme);
+import {AcmeOverlayTheme} from '../../../internal/overlay-theme/overlay-theme';customElements.define('acme-overlay-theme',AcmeOverlayTheme);
+import {createToastStore} from '../../../shared/toast-store';
+import {AcmeInfoIcon} from '../../../generated/icons/classes/info-icon';customElements.define('acme-info-icon',AcmeInfoIcon);
+import {AcmeErrorIcon} from '../../../generated/icons/classes/error-icon';customElements.define('acme-error-icon',AcmeErrorIcon);
+import {AcmeWarningIcon} from '../../../generated/icons/classes/warning-icon';customElements.define('acme-warning-icon',AcmeWarningIcon);
+import {AcmeCheckIcon} from '../../../generated/icons/classes/check-icon';customElements.define('acme-check-icon',AcmeCheckIcon);
+import {AcmeCloseIcon} from '../../../generated/icons/classes/close-icon';customElements.define('acme-close-icon',AcmeCloseIcon);
+document.body.innerHTML='<button id="before">Before notifications</button><button id="add">Add notification</button><acme-toast-viewport id="viewport"></acme-toast-viewport><button id="after">After notifications</button>';const store=createToastStore();document.querySelector('#viewport').store=store;document.querySelector('#add').addEventListener('click',()=>store.add({description:'Saved changes',duration:0}));Object.assign(window,{store,createToastStore});

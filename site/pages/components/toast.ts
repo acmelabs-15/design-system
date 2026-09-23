@@ -1,84 +1,71 @@
-// Docs page: Toast — mirrors https://vercel.com/geist/toast
 import type { Doc } from "../../site";
 
-const button = `<acme-button>Show Toast</acme-button>`;
-const show = (call: string) => `root.querySelector("acme-button").addEventListener("click", () => window.acme.toasts.${call});`;
-/** A message with markup: a node the toast takes as its text. */
-const markup = (inner: string) => `Object.assign(document.createElement("span"), { innerHTML: '${inner}' })`;
-const one = "The Evil Rabbit jumped over the fence.";
-const twice = "The Evil Rabbit jumped over the fence. The Evil Rabbit jumped over the fence again.";
-
-// Census: every state the reference draws on the client, one viewport per example on a queue of its own; the census run fills them.
-const viewport = `<acme-toaster></acme-toaster>`;
-const own = `root.querySelector("acme-toaster").queue = window.acme.createToastQueue();`;
-
+const viewport = "<acme-toast-viewport></acme-toast-viewport>";
+const setup = 'const viewport=root.querySelector("acme-toast-viewport"); const store=window.acme.createToastStore(); viewport.store=store;';
 export const doc: Doc = {
   id: "toast",
   title: "Toast",
-  lede: "A succinct message that is displayed temporarily.",
-  tags: ["acme-toast", "acme-toaster"],
+  lede: "Scoped notifications with application-owned actions, a limited stack and polite announcements.",
+  tags: ["acme-toast", "acme-toast-viewport"],
   examples: [
-    { h: "Default", html: button, script: show(`message({ text: "${one}" })`) },
     {
-      h: "Multi-line",
-      html: button,
-      script: show(`message({ text: "The Evil Rabbit jumped over the fence. The Evil Rabbit jumped over the fence. The Evil Rabbit jumped over the fence. The Evil Rabbit jumped over the fence." })`),
+      h: "Default",
+      html: "<acme-button>Save changes</acme-button>" + viewport,
+      script: setup + 'root.querySelector("acme-button").addEventListener("click",()=>store.add({description:"Changes saved",variant:"success"}));',
     },
     {
-      h: "With jsx",
-      html: button,
-      script: show(`message({ text: ${markup('<span style="font-weight:600;letter-spacing:-.28px">The Evil Rabbit</span> jumped over the fence.')}, preserve: true })`),
+      h: "Treatments",
+      html:
+        '<acme-h-stack><acme-button data-variant="default">Notice</acme-button><acme-button data-variant="success">Success</acme-button><acme-button data-variant="warning">Warning</acme-button><acme-button data-variant="error">Error</acme-button></acme-h-stack>' +
+        viewport,
+      script:
+        setup +
+        'root.querySelectorAll("acme-button").forEach(button=>button.addEventListener("click",()=>store.add({description:button.dataset.variant==="error"?"Could not save changes. Try again.":button.dataset.variant==="warning"?"Some changes need review":"Changes saved",variant:button.dataset.variant})));',
     },
     {
-      h: "With a link",
-      html: button,
-      script: show(`message({ text: ${markup('The Evil Rabbit jumped over the fence. The Evil Rabbit jumped over the <a href="/geist">fence again</a>.')}, preserve: true })`),
+      h: "Application action",
+      p: "The action reports its identifier. The application completes the work and decides when to dismiss.",
+      html: "<acme-button>Archive project</acme-button>" + viewport,
+      script:
+        setup +
+        'root.querySelector("acme-button").addEventListener("click",()=>store.add({id:"archive",heading:"Project archived",description:"You can undo this change",duration:0,action:{id:"undo",label:"Undo"}})); viewport.addEventListener("acme-request",event=>{if(event.detail.action==="toast-action"&&event.detail.actionId==="undo")store.update(event.detail.id,{description:"Project restored",heading:undefined,action:undefined,duration:5000});});',
     },
-    { h: "Preserve", html: button, script: show(`message({ text: "${one}", preserve: true })`) },
-    { h: "Action", html: button, script: show(`message({ text: "${twice}", action: "Undo" })`) },
-    { h: "Undo", html: button, script: show(`message({ text: "${twice}", onUndoAction: () => 0 })`) },
-    { h: "Success", html: button, script: show(`success("${one}")`) },
-    { h: "Warning", html: button, script: show(`warning("${one}")`) },
-    { h: "Error", html: button, script: show(`error("${one}")`) },
-    { h: "Single", census: true, p: "One default toast at rest.", html: viewport, script: own },
-    { h: "Success toast", census: true, p: "The success toast: a blue fill with the contrast foreground.", html: viewport, script: own },
-    { h: "Warning toast", census: true, p: "The warning toast: an amber fill with the gray-1000 foreground.", html: viewport, script: own },
-    { h: "Error toast", census: true, p: "The error toast: a red fill with the contrast foreground.", html: viewport, script: own },
-    { h: "Action and cancel", census: true, p: "A toast with an action and a named cancel action: the row of two small buttons replaces the dismiss control.", html: viewport, script: own },
-    { h: "Error action", census: true, p: "The action row on an error toast.", html: viewport, script: own },
-    { h: "Warning action", census: true, p: "The action row on a warning toast.", html: viewport, script: own },
-    { h: "Undo control", census: true, p: "An undo handler adds a square tertiary undo button before the dismiss control.", html: viewport, script: own },
-    { h: "Without close", census: true, p: "hideX drops the dismiss control and the message spans the row.", html: viewport, script: own },
-    { h: "Visual", census: true, p: "A visual block above the message; the toast clips its content.", html: viewport, script: own },
-    { h: "Full bleed visual", census: true, p: "fullBleed drops the padding.", html: viewport, script: own },
-    { h: "Centered", census: true, p: "The centered viewport.", html: `<acme-toaster center></acme-toaster>`, script: own },
-    { h: "Stack", census: true, p: "Three toasts: the newest in front, the others collapsed behind it.", html: viewport, script: own },
-    { h: "Stack expanded", census: true, p: "The pointer over the area expands the stack.", html: viewport, script: own },
-    { h: "Entering", census: true, p: "A toast just mounted, before its entry transition.", html: viewport, script: own },
-    { h: "Leaving", census: true, p: "A toast on its way out.", html: viewport, script: own },
+    {
+      h: "Visible limit and expansion",
+      p: "Three messages are visible. Focus or hover expands the stack. Older hidden records remain in the store until dismissed.",
+      html: "<acme-button>Add five messages</acme-button>" + viewport,
+      script: setup + 'root.querySelector("acme-button").addEventListener("click",()=>{for(let i=1;i<=5;i++)store.add({description:"Saved change "+i,duration:0});});',
+    },
+    {
+      h: "Authored content",
+      p: "A direct Toast child keeps its content nodes. The record supplies plain announcement text.",
+      html: '<acme-button>Show custom content</acme-button><acme-toast-viewport placement="top-end"><acme-toast toast-id="custom"><acme-strong>Export ready.</acme-strong> The report includes all selected projects.</acme-toast></acme-toast-viewport>',
+      script: setup + 'root.querySelector("acme-button").addEventListener("click",()=>store.add({id:"custom",description:"Export ready. The report includes all selected projects.",duration:0}));',
+    },
+    {
+      h: "Keyboard access",
+      p: "Use the viewport focus method from an application-owned control or shortcut. Escape dismisses the focused message when dismissal is enabled.",
+      html: "<acme-h-stack><acme-button data-add>Add notification</acme-button><acme-button data-focus>Focus notifications</acme-button></acme-h-stack>" + viewport,
+      script:
+        setup +
+        'root.querySelector("[data-add]").addEventListener("click",()=>store.add({description:"Ready for review",duration:0}));root.querySelector("[data-focus]").addEventListener("click",()=>viewport.focus());',
+    },
   ],
   practices: {
-    "When to use": [
-      "A toast is a non-blocking acknowledgment of an action the user started: Domain added, Project archived, Deployment canceled.",
-      "A billing failure, a permission denial or a build failure the user must triage needs more than a toast: pair a toast of six words or fewer (Build failed) with a persistent row that carries the recovery step and a stable identifier.",
-      "Field validation belongs on the Input, not in a toast. A persistent configuration warning belongs in a Note or a Banner.",
-      'Pick the method by how the user experienced the event, not by HTTP status. A user-canceled deploy is <code>toasts.message("Deployment canceled")</code>, not success; a partial deploy with skipped routes is <code>toasts.warning(...)</code>.',
+    Scope: [
+      "Create a store explicitly and assign it to a viewport. Separate application scopes can use separate stores. Importing an unrelated component creates no notification queue.",
+      "Records contain plain text and serializable action identifiers. Supply rich content as authored Toast children.",
     ],
     Behavior: [
-      "Toasts auto-dismiss by default; pass <code>preserve</code> only when the user must read or act on the message first.",
-      "An undo snackbar stays 5–10 seconds and pairs the past-tense message with a single Undo button.",
-      "Do not narrate one async flow with a stack of toasts; emit the success or error toast at the last step.",
-    ],
-    Content: [
-      "One sentence, sentence case, no trailing period when the toast is a single sentence.",
-      "A completion toast reads {Noun} {past participle}: Blob deleted, Domain added, Environment variable saved. Never successfully; the verb implies it.",
-      "An error toast is two sentences with periods and ends with a recovery step: Couldn’t verify domain. Try again. Use Couldn’t for user-state errors and Failed to for system errors, and keep one form through a flow.",
-      "Match the toast verb to the destructive button verb (Delete Project, then Project deleted; never Project removed).",
-      "An undo snackbar uses the literal label Undo, never Restore, Bring Back or Cancel, and only when the rollback is safe.",
+      "The default duration is 5000 milliseconds. Set duration to 0 for a persistent notification.",
+      "Timers preserve their remaining duration while hovered, focused, in a background document or without a connected presentation.",
+      "Swipe horizontally toward the viewport edge to dismiss. Vertical scrolling remains available.",
+      "Use update(id, patch), dismiss(id) and clear() for application-owned changes. A canceled action does not dismiss its message.",
     ],
     Accessibility: [
-      'The toast region announces with <code>aria-live="polite"</code>; keep assertive for blocking errors that interrupt a flow.',
-      "No primary navigation inside a toast; a transient surface is gone before a keyboard user reaches it.",
+      "New and changed visible messages are announced politely. Hidden records do not receive focus or announcements.",
+      "Use Field errors for invalid form controls and persistent Alert or Banner content for conditions that need a lasting explanation.",
+      "Keyboard access belongs to the application. Provide a visible notifications control when messages contain important actions.",
     ],
   },
 };

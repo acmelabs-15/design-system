@@ -1,10 +1,9 @@
-import { browserStructureCss } from "../../generated/components/browser/browser-structure.styles";
 import { html } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { toasts } from "../../shared/state";
 import { browserCss } from "../../generated/components/browser/browser.styles";
 import { browserCopyCss } from "../../generated/components/browser/browser-copy.styles";
+import { browserStructureCss } from "../../generated/components/browser/browser-structure.styles";
 
 import { atomState } from "../../shared/atom-state";
 
@@ -25,8 +24,7 @@ const COPIED_MS = 1000;
  * traffic-light dots with the back, forward and reload controls (the controls hide below md); the
  * address bar, a pill that shows `address` without its scheme, `www.` and trailing slash, with a
  * copy button (a tertiary, tiny, square icon button) that writes the full address to the
- * clipboard, is named "Copied" and shows a check for one second after a copy, and raises an error
- * toast when the copy fails; and an empty spacer that appears from lg. The chrome takes the page
+ * clipboard, is named "Copied" and shows a check for one second after a copy, and reports acme-error when the copy fails; and an empty spacer that appears from lg. The chrome takes the page
  * theme. The frame is decorative: set `aria-hidden="true"` on the element and describe the
  * screenshot inside it.
  */
@@ -52,7 +50,7 @@ export class AcmeBrowser extends AcmeElement {
         this.copied = false;
       }, COPIED_MS);
     } catch {
-      toasts.error("Failed to copy to clipboard");
+      this.dispatchEvent(new CustomEvent("acme-error", { detail: { code: "clipboard", message: "Could not copy address" }, bubbles: true, composed: true }));
     }
   };
 

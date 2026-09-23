@@ -201,7 +201,7 @@ git push --follow-tags   # the tag starts the publish
 - The type families are Google Sans Flex for text and Google Sans Code for numbers,
   labels and code. Custom themes can replace those families.
 - State is TanStack Store. Theme scopes own their canonical settings and use Lit context to
-  deliver read-only sources; the toast queue lives in `src/shared/state.ts`. An element's own state is a store created per
+  deliver read-only sources; `createToastStore()` creates an explicit notification scope. An element's own state is a store created per
   instance, the way TanStack Form creates one per form and per field. Virtualization is TanStack virtual, syntax highlighting
   TanStack highlight, markdown TanStack markdown, forms TanStack form, charts TanStack charts,
   hotkeys TanStack hotkeys, and rate limiting TanStack pacer.

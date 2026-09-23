@@ -1,210 +1,308 @@
-import { html, nothing } from "lit";
-import { property, query, queryAll } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { Interaction } from "../../shared/interaction";
-import type { ToastItem, ToastQueue, ToastText } from "../../shared/state";
-import { buttonCss } from "../../generated/components/button/button.styles";
-import { toastCss } from "../../generated/components/toast/toast.styles";
+import { html, nothing, type PropertyValues } from "lit";
+import { property } from "lit/decorators.js";
+import { sharedCss } from "../../base";
+import { toastSurfaceCss } from "../../generated/components/toast/toast-surface.styles";
+import { atomState } from "../../shared/atom-state";
+import { composedContains, deepActiveElement } from "../../shared/composed-tree";
+import { message, messageCatalogs } from "../../shared/messages";
+import { readMotionSpring } from "../../shared/motion-spring";
+import { hasOwnedOverlay } from "../../shared/overlay-coordination";
+import { Places } from "../../shared/places";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
+import { SpringValue } from "../../shared/spring-value";
+import { StoreSelector } from "../../shared/store-connection";
+import { ToastBinding, type ToastGeometry } from "../../shared/toast-context";
+import { type ToastDismissReason, type ToastRuntime, type ToastStore, toastRuntime } from "../../shared/toast-store";
 
-export type { ToastItem, ToastOptions, ToastQueue, ToastText, ToastType, ToastVisual } from "../../shared/state";
-
-/** A toast hides itself this long after it shows, unless it is preserved or carries an action. */
-const HIDE_AFTER = 3500;
-/** A toast marked to hide does so this long after. */
-const SHOULD_HIDE_AFTER = 300;
-/** A hiding toast leaves the queue once its exit transition has run. */
-const EXIT_MS = 160;
-/** A toast behind the front one collapses to this height. */
-const COLLAPSED = 50;
-/** Each toast behind the front one sits this much higher. */
-const STEP = 20;
-const sized = (v: unknown): v is { height: number; content: ToastText } => typeof v === "object" && v !== null && "content" in v;
-
-/**
- * One toast, drawn by `acme-toaster` from its queue: a 420px box (at most the viewport less two
- * gaps) with a 12px radius, the menu shadow and 16px padding, filled blue, red or amber for the
- * success, error and warning types. The message row holds the text and the dismiss control (an
- * undo control before it with `onUndoAction`; none with `hideX` or an action); an action adds a
- * row of two small buttons, cancel (Dismiss) and the action, and makes the toast an alert dialog.
- * A visual block sits above the message. The toast enters translated down and transparent over
- * 350ms, hides itself after 3500ms (`timeout`) unless preserved or carrying an action, and leaves
- * scaled to 0.98 over 160ms. Behind the front toast it collapses to 50px, rises 20px per step and
- * scales down 5% per step; while the pointer is over the viewport (`hovering`) every toast expands
- * to its own height and the timers pause. The fourth toast from the front is hidden, the third on
- * a viewport of 400px or less.
+export type { ToastDismissReason, ToastInput, ToastPatch, ToastRecord, ToastStore, ToastVariant } from "../../shared/toast-store";
+export { createToastStore } from "../../shared/toast-store";
+/** One notification bound to its store record.
+ * @slot - Framework-owned content instead of generated description text.
+ * @csspart root - Named nonmodal notification surface.
+ * @csspart content - Message presentation.
+ * @csspart action - Application action button.
+ * @fires {CustomEvent<{action:"toast-action",id:string,actionId:string}>} acme-request - Application-owned action.
+ * @fires {CustomEvent<{id:string,reason:ToastDismissReason}>} acme-dismiss - Record dismissal, emitted once by its presentation.
  */
-
-export class AcmeToast extends AcmeElement {
-  static styles = [sharedCss, buttonCss, toastCss];
-  /** The toast shown. */
-  @property({ attribute: false }) item!: ToastItem;
-  /** The queue the toast belongs to: it takes the measured height and the removal. */
-  @property({ attribute: false }) queue?: ToastQueue;
-  /** The toast's place counted from the front: 0 is the newest. */
-  @property({ type: Number }) position = 0;
-  /** Every toast's measured height, the front first. */
-  @property({ attribute: false }) heights: (number | undefined)[] = [];
-  /** The pointer is over the viewport: the stack expands and the timers pause. */
-  @property({ type: Boolean }) hovering = false;
-  /** The toast has entered: its box is drawn in place. */
-  @property({ type: Boolean }) visible = false;
-  /** The toast is on its way out. */
-  @property({ type: Boolean }) hiding = false;
-  @query(".toast") private root?: HTMLElement;
-  @query(".actions button, .actions a") private actionButton?: HTMLElement;
-  @queryAll(".btn") private buttons!: NodeListOf<HTMLElement>;
-  /** One controller per button: its hover, focus and press land as attributes on the button. */
-  private interactions = [0, 1, 2].map(() => new Interaction(this));
-  private hider?: ReturnType<typeof setTimeout>;
-  private exit?: ReturnType<typeof setTimeout>;
-  private hideScheduled = false;
-
+export class AcmeToast extends AcmeSemanticElement {
+  static styles = [sharedCss, toastSurfaceCss];
+  @atomState() @property({ noAccessor: true, useDefault: true, attribute: "toast-id" }) toastId = "";
+  @atomState() private supplied?: ToastStore;
+  @property({ noAccessor: true, attribute: false }) get store(): ToastStore | undefined {
+    return this.supplied;
+  }
+  set store(value: ToastStore | undefined) {
+    if (value !== undefined) toastRuntime(value);
+    const previous = this.supplied;
+    this.supplied = value;
+    this.requestUpdate("store", previous);
+  }
+  private readonly binding = new ToastBinding(
+    this,
+    () => this.toastId,
+    () => this.surface,
+  );
+  private get effectiveStore() {
+    return this.store ?? this.binding.current?.view.get().store;
+  }
+  private get runtime() {
+    return this.effectiveStore ? toastRuntime(this.effectiveStore) : undefined;
+  }
+  private get entry() {
+    return this.runtime?.entries.get().find((entry) => entry.record.id === this.toastId);
+  }
+  get status() {
+    return this.entry?.status;
+  }
+  get position() {
+    return this.geometry.index;
+  }
+  get expanded() {
+    return this.binding.current?.view.get().expanded ?? true;
+  }
+  private get geometry(): ToastGeometry {
+    if (this.status === "closing") return this.exitGeometry;
+    return this.binding.current?.view.get().geometry.get(this.toastId) ?? { index: 0, y: 0, height: this.naturalHeight, scale: 1, visible: !this.binding.current, behind: false };
+  }
+  private get visible() {
+    return !!this.entry && this.geometry.visible && (this.binding.current?.view.get().active ?? true);
+  }
+  private readonly entriesSource = new StoreSelector(this, () => this.runtime?.entries);
+  private readonly messages = new StoreSelector(this, () => messageCatalogs);
+  private readonly places = new Places(this, { places: [""] });
+  @atomState() private ready = false;
+  @atomState() private naturalHeight = 0;
+  @atomState() private dragX = 0;
+  @atomState() private dragging = false;
+  @atomState() private swiped = 0;
+  private lastGeometry: ToastGeometry = { index: 0, y: 0, height: 0, scale: 1, visible: false, behind: false };
+  private exitGeometry = this.lastGeometry;
+  private lastStatus?: string;
+  private version = 0;
+  private boundStore?: ToastStore;
+  private releasePresentation?: () => void;
+  private releaseDismiss?: () => void;
+  private observed?: HTMLElement;
+  private resize?: ResizeObserver;
+  private previousFocus?: Element | null;
+  private readonly opacity = new SpringValue(
+    this,
+    () => (this.visible && this.status === "open" && this.ready ? 1 : 0),
+    () => readMotionSpring(this, "standard", "effects", "fast"),
+  );
+  private readonly vertical = new SpringValue(
+    this,
+    () => (this.status === "closing" ? this.exitGeometry.y : this.geometry.y),
+    () => readMotionSpring(this, "standard", "spatial", "fast"),
+  );
+  private readonly scale = new SpringValue(
+    this,
+    () => (this.status === "closing" ? this.exitGeometry.scale * 0.96 : this.geometry.scale),
+    () => readMotionSpring(this, "standard", "spatial", "fast"),
+  );
+  private readonly horizontal = new SpringValue(
+    this,
+    () => this.swiped || this.dragX,
+    () => readMotionSpring(this, "standard", "spatial", "fast"),
+  );
+  private pointer?: { id: number; startX: number; startY: number; direction: number; peak: number; cancelled: boolean; firstTouch: boolean };
+  private suppressClick = false;
+  private suppressionTimer?: ReturnType<typeof setTimeout>;
+  constructor() {
+    super();
+    this.addEventListener(
+      "click",
+      (event) => {
+        if (this.suppressClick) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      },
+      { capture: true },
+    );
+  }
+  private get surface() {
+    return this.renderRoot?.querySelector<HTMLElement>("[part=root]") ?? undefined;
+  }
+  private bind() {
+    if (!this.isConnected) return;
+    const store = this.effectiveStore;
+    if (store === this.boundStore) return;
+    this.releasePresentation?.();
+    this.releaseDismiss?.();
+    this.boundStore = store;
+    this.releasePresentation = store ? toastRuntime(store).attachToast(this) : undefined;
+    this.releaseDismiss = store
+      ? toastRuntime(store).subscribeDismiss((detail) => {
+          if (detail.id === this.toastId && !this.binding.current) this.dispatchEvent(new CustomEvent("acme-dismiss", { detail, bubbles: true, composed: true }));
+        })
+      : undefined;
+  }
+  private dismiss(reason: ToastDismissReason) {
+    if (this.entry?.record.dismissible) this.runtime?.dismiss(this.toastId, reason);
+  }
+  private action = () => {
+    const record = this.entry?.record;
+    if (record?.action && this.status === "open")
+      this.dispatchEvent(
+        new CustomEvent("acme-request", { detail: Object.freeze({ action: "toast-action", id: record.id, actionId: record.action.id }), bubbles: true, composed: true, cancelable: true }),
+      );
+  };
+  private closeRequest = (event: CustomEvent) => {
+    if (event.detail?.action !== "dismiss") return;
+    event.stopPropagation();
+    this.dismiss("close");
+  };
+  protected get semanticDefaults() {
+    return { role: "dialog", label: this.entry?.record.heading || message(this.themeContext.scope.effective.get().locale, "toast.notification", "Notification") };
+  }
+  protected willUpdate(_changes: PropertyValues) {
+    this.bind();
+    const entry = this.entry;
+    if (entry && entry.version !== this.version) {
+      this.version = entry.version;
+      this.ready = false;
+      this.swiped = 0;
+      this.dragX = 0;
+      this.lastStatus = undefined;
+    }
+    if (this.status === "closing" && this.lastStatus !== "closing") this.exitGeometry = { ...this.lastGeometry, y: this.vertical.value, scale: this.scale.value };
+    if (this.status === "open") this.lastGeometry = this.geometry;
+    this.lastStatus = this.status;
+    this.previousFocus = deepActiveElement(this.ownerDocument);
+    if (this.previousFocus && !composedContains(this, this.previousFocus)) this.previousFocus = undefined;
+    this.opacity.update();
+    this.vertical.update();
+    this.scale.update();
+    if (this.dragging) this.horizontal.jump();
+    else this.horizontal.update();
+  }
+  private measure = () => {
+    const content = this.renderRoot?.querySelector<HTMLElement>("[part=content]");
+    if (!content || !this.visible || this.status !== "open") return;
+    const height = content.offsetHeight;
+    if (height > 0) {
+      if (Math.abs(height - this.naturalHeight) > 0.1) {
+        this.naturalHeight = height;
+        this.binding.current?.measure(this.toastId, height);
+      }
+      if (!this.ready) this.ready = true;
+    }
+  };
+  protected updated() {
+    const surface = this.surface;
+    this.toggleAttribute("data-toast-hidden", !this.visible);
+    this.setAttribute("data-toast-placement", this.binding.current?.view.get().placement ?? "bottom-end");
+    if (!surface) return;
+    surface.inert = !this.visible || this.status === "closing";
+    surface.style.setProperty("--_toast-opacity", String(Math.max(0, Math.min(1, this.opacity.value))));
+    surface.style.setProperty("--_toast-y", `${this.vertical.value}px`);
+    surface.style.setProperty("--_toast-x", `${this.horizontal.value}px`);
+    surface.style.setProperty("--_toast-scale", String(this.scale.value));
+    surface.style.setProperty("--_toast-height", `${Math.max(0, this.status === "closing" ? this.exitGeometry.height : this.geometry.height || this.naturalHeight)}px`);
+    this.style.zIndex = String(1000 - this.position);
+    const content = this.renderRoot.querySelector<HTMLElement>("[part=content]");
+    if (content && content !== this.observed) {
+      this.resize?.disconnect();
+      this.observed = content;
+      this.resize = new ResizeObserver(this.measure);
+      this.resize.observe(content);
+    }
+    this.measure();
+    if (this.previousFocus && !this.previousFocus.isConnected && deepActiveElement(this.ownerDocument) === this.ownerDocument.body && this.visible && this.status === "open")
+      surface.focus({ preventScroll: true });
+    this.previousFocus = undefined;
+    if (this.status === "closing" && (!this.visible || (this.opacity.settled && this.horizontal.settled))) {
+      const entry = this.entry;
+      if (entry) this.runtime?.finish(this.toastId, entry.version);
+    }
+  }
+  focus(options?: FocusOptions) {
+    this.surface?.focus(options);
+  }
+  private down = (event: PointerEvent) => {
+    if (event.button !== 0 || !event.isPrimary || !this.entry?.record.dismissible || !this.visible || this.status !== "open") return;
+    const interactive = event
+      .composedPath()
+      .some((node) => node !== this.surface && (node as Node).nodeType === 1 && (node as Element).matches("button,a[href],input,textarea,select,[contenteditable],[data-acme-swipe-ignore]"));
+    if (interactive) return;
+    const placement = this.binding.current?.view.get().placement ?? "bottom-end",
+      rtl = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl";
+    const end = placement.endsWith("end");
+    this.pointer = { id: event.pointerId, startX: event.clientX, startY: event.clientY, direction: end !== rtl ? 1 : -1, peak: 0, cancelled: false, firstTouch: event.pointerType === "touch" };
+    this.surface?.setPointerCapture(event.pointerId);
+  };
+  private move = (event: PointerEvent) => {
+    const pointer = this.pointer;
+    if (!pointer || pointer.id !== event.pointerId) return;
+    if (pointer.firstTouch) {
+      pointer.startX = event.clientX;
+      pointer.startY = event.clientY;
+      pointer.firstTouch = false;
+      return;
+    }
+    const x = event.clientX - pointer.startX,
+      y = event.clientY - pointer.startY;
+    if (!this.dragging && Math.abs(y) > Math.abs(x)) {
+      this.end(event, true);
+      return;
+    }
+    if (Math.abs(x) < 1 && !this.dragging) return;
+    event.preventDefault();
+    this.dragging = true;
+    const distance = x * pointer.direction;
+    pointer.peak = Math.max(pointer.peak, distance);
+    if (distance > 40) pointer.cancelled = false;
+    else if (pointer.peak - distance >= 10) pointer.cancelled = true;
+    this.dragX = distance >= 0 ? x : Math.sign(x) * Math.sqrt(Math.abs(x));
+  };
+  private end = (event: PointerEvent, cancel = false) => {
+    const pointer = this.pointer;
+    if (!pointer || pointer.id !== event.pointerId) return;
+    this.pointer = undefined;
+    if (this.surface?.hasPointerCapture(pointer.id)) this.surface.releasePointerCapture(pointer.id);
+    if (this.dragging) {
+      this.suppressClick = true;
+      clearTimeout(this.suppressionTimer);
+      this.suppressionTimer = setTimeout(() => {
+        this.suppressClick = false;
+      }, 0);
+    }
+    const dismiss = !cancel && event.type !== "pointercancel" && !pointer.cancelled && this.dragX * pointer.direction > 40;
+    this.dragging = false;
+    if (dismiss) {
+      this.swiped = pointer.direction * (this.surface?.getBoundingClientRect().width ?? 420) * 1.2;
+      this.dismiss("swipe");
+    } else this.dragX = 0;
+  };
   disconnectedCallback() {
+    this.resize?.disconnect();
+    this.resize = undefined;
+    this.observed = undefined;
+    this.releasePresentation?.();
+    this.releasePresentation = undefined;
+    this.releaseDismiss?.();
+    this.releaseDismiss = undefined;
+    this.boundStore = undefined;
+    this.pointer = undefined;
+    clearTimeout(this.suppressionTimer);
     super.disconnectedCallback();
-    clearTimeout(this.hider);
-    clearTimeout(this.exit);
   }
-
-  /** The toast keeps its timer unless it is preserved or carries an action (`preserve: false` restores it). */
-  private get timed() {
-    const t = this.item;
-    return !(t.preserve || (t.action !== undefined && t.preserve !== false));
-  }
-
-  private startTimer() {
-    clearTimeout(this.hider);
-    this.hider = setTimeout(() => this.hide(), this.item.timeout ?? HIDE_AFTER);
-  }
-
-  /** Starts the exit: the box fades and scales down, then the toast leaves the queue; `dismissed` names the dismiss control. */
-  hide(dismissed = false) {
-    if (this.hiding) return;
-    this.hiding = true;
-    this.exit = setTimeout(() => {
-      this.item.onRemove?.(dismissed);
-      this.queue?.removeToastByKey(this.item.key);
-    }, EXIT_MS);
-  }
-
-  firstUpdated() {
-    // The height is measured before the entry: the measure lays the box out in its starting state, so the transition to the shown one plays.
-    const height = this.root?.getBoundingClientRect().height ?? 0;
-    this.queue?.setHeight(this.item.key, height);
-    this.visible = true;
-    if (this.timed) this.startTimer();
-  }
-
-  updated(ch: Map<string, unknown>) {
-    const t = this.item;
-    if (ch.has("visible") && this.visible && (t.cancelAction || t.action !== undefined) && t.autoFocus) this.actionButton?.focus();
-    if (t.shouldHide && !this.hideScheduled) {
-      this.hideScheduled = true;
-      setTimeout(() => this.hide(), SHOULD_HIDE_AFTER);
-    }
-    if (ch.has("hovering") && this.timed) {
-      if (this.hovering) clearTimeout(this.hider);
-      else if (ch.get("hovering") === true) this.startTimer();
-    }
-    const buttons = this.buttons;
-    this.interactions.forEach((it, i) => {
-      it.attach(buttons[i]);
-    });
-  }
-
-  /** The inline geometry once shown: the own height as the greatest, and behind the front toast the collapsed height and the stacked transform. */
-  private geometry() {
-    if (!this.visible) return nothing;
-    const p = this.position;
-    const own = this.heights[p];
-    const front = this.heights[0];
-    const above =
-      p === 0
-        ? 0
-        : this.heights
-            .slice(0, p)
-            .filter(Boolean)
-            .reduce<number>((a, h) => (a && h ? a + h : a), STEP * p);
-    const parts: string[] = [];
-    if (own !== undefined) parts.push(`max-height:${own}px`);
-    if (p !== 0) {
-      parts.push(`max-height:${COLLAPSED}px`);
-      if (front !== undefined) parts.push(`transform:translate3d(0, calc(-${front}px + 100% + ${-STEP * p}px), -${p}px) scale(${1 - (p / 100) * 5})`);
-    }
-    parts.push(`--y:${-1 * (above || 0)}px`, `--z:-${p}px`);
-    if (own !== undefined) parts.push(`--max-height:${own}px`);
-    return parts.join(";");
-  }
-
-  private button(cls: string, label: string | undefined, onClick: () => void, content: unknown) {
-    return html`<button class=${cls} type="button" tabindex="0" aria-label=${label ?? nothing} style="--acme-icon-size:16px" @click=${onClick}>${content}</button>`;
-  }
-
   render() {
-    const t = this.item;
-    const type = t.type ?? "";
-    const hasAction = t.action !== undefined;
-    const dialog = !!t.cancelAction || hasAction;
-    const cls = this.cls("toast", {
-      shown: this.visible,
-      hiding: this.hiding,
-      success: type === "success",
-      error: type === "error",
-      warning: type === "warning",
-      bleed: !!t.fullBleed,
-      clip: !!t.overflowHidden || t.visual !== undefined,
-      wide: !!t.hideX || !!t.fullWidth,
-    });
-    const v = t.visual;
-    const visual = v === undefined ? nothing : html`<div class="visual" style=${sized(v) ? `height:${v.height}px` : nothing}>${sized(v) ? v.content : v}</div>`;
-    const controls =
-      hasAction || t.hideX
-        ? nothing
-        : html`<div class="controls">
-            ${
-              t.onUndoAction
-                ? this.button(
-                    "btn sm tertiary square icon undo",
-                    "Undo",
-                    () => {
-                      t.onUndoAction?.();
-                      this.hide();
-                    },
-                    html`<span class="label"><acme-undo-icon size="16px"></acme-undo-icon></span>`,
-                  )
-                : nothing
-            }${this.button("btn sm tertiary square icon close", "Dismiss toast", () => this.hide(true), html`<span class="label"><acme-close-icon size="16px"></acme-close-icon></span>`)}
-          </div>`;
-    const act = () => {
-      t.onAction?.();
-      this.hide();
-    };
-    const actions = hasAction
-      ? html`<div class="actions">
-          ${this.button(
-            "btn sm tertiary cancel",
-            undefined,
-            () => {
-              this.hide();
-              t.onCancelAction?.();
-            },
-            html`<span class="label">${t.cancelAction || "Dismiss"}</span>`,
-          )}${
-            t.actionHref
-              ? html`<a class="btn sm link action" href=${t.actionHref} role="link" tabindex="0" style="--acme-icon-size:16px" @click=${act}><span class="label">${t.action}</span></a>`
-              : this.button("btn sm action", undefined, act, html`<span class="label">${t.action}</span>`)
-          }
-        </div>`
-      : nothing;
-    return html`<div class=${cls} role=${dialog ? "alertdialog" : "status"} aria-atomic="true" aria-labelledby=${dialog ? "toast-message" : ""} ?data-expanded=${this.hovering} style=${this.geometry()} part="toast">
-      <div class="body">
-        ${visual}
-        <div class="message" id="toast-message">${type === "success" || type === "error" ? html`<span class="sr">${type}: </span>` : nothing}<span class="text">${t.text}</span>${controls}</div>
-        ${actions}
-      </div>
-    </div>`;
+    const entry = this.entry,
+      record = entry?.record;
+    if (!record) return html``;
+    return html`<div part="root" tabindex="0" aria-modal="false" aria-description=${record.description} data-placement=${this.binding.current?.view.get().placement ?? "bottom-end"} @pointerdown=${this.down} @pointermove=${this.move} @pointerup=${(event: PointerEvent) => this.end(event)} @pointercancel=${(event: PointerEvent) => this.end(event, true)} @keydown=${(
+      event: KeyboardEvent,
+    ) => {
+      if (event.key === "Escape" && !event.defaultPrevented && record.dismissible && !hasOwnedOverlay(this)) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.dismiss("escape");
+      }
+    }}><div part="content" ?inert=${this.geometry.behind} aria-hidden=${String(this.geometry.behind)}><acme-alert .heading=${record.heading ?? ""} .variant=${record.variant} .dismissible=${record.dismissible} @acme-request=${this.closeRequest}><slot>${record.description}</slot>${record.action ? html`<acme-button part="action" slot="actions" size="small" variant="secondary" @click=${this.action}>${record.action.label}</acme-button>` : nothing}</acme-alert></div></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-toast": AcmeToast;

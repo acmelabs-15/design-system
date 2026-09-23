@@ -10,6 +10,7 @@ import { atomState } from "../../dist/shared/atom-state";
 import { StoreSelector } from "../../dist/shared/store-connection";
 import { ThemeContextController } from "../../dist/shared/theme-context";
 import type { ThemeAppearance } from "../../dist/shared/theme-scope";
+import { notifications } from "./notifications";
 
 type NavItem = { title: string; href: string };
 type Nav = { group: string; items: NavItem[] }[];
@@ -154,7 +155,7 @@ export class AcmeDocsApp extends LitElement {
         </nav>
         ${this.router.outlet()}
       </div>
-      <acme-toaster></acme-toaster></acme-theme>`;
+      <acme-toast-viewport .store=${notifications}></acme-toast-viewport></acme-theme>`;
   }
 }
 
@@ -186,8 +187,8 @@ export class DocsSwatch extends LitElement {
     const value = getComputedStyle(this).getPropertyValue(token).trim();
     navigator.clipboard
       ?.writeText(value)
-      .then(() => window.acme?.toasts.success(`Copied ${value}`))
-      .catch(() => window.acme?.toasts.error(`Could not copy ${token}`));
+      .then(() => notifications.add({ description: `Copied ${value}`, variant: "success" }))
+      .catch(() => notifications.add({ description: `Could not copy ${token}`, variant: "error" }));
   };
   render() {
     const token = this.getAttribute("token") ?? "";
@@ -208,7 +209,7 @@ export class DocsFormDemo extends LitElement {
   private form = new TanStackFormController(this, {
     defaultValues: { name: "", email: "", plan: "hobby", updates: true },
     onSubmit: ({ value }) => {
-      window.acme?.toasts.success(`Account for ${value.name} created`);
+      notifications.add({ description: `Account for ${value.name} created`, variant: "success" });
     },
   });
   createRenderRoot() {

@@ -1,5 +1,5 @@
 // Maps acme-textarea (src/components/textarea) to Geist Textarea: the generator derives textarea.styles.ts from this.
-// The wrapper is the Input's wrapper around a textarea; the error under it is an acme-error.
+// The wrapper is the Input's wrapper around a textarea; Field supplies the error description.
 import { type GeistMap, type SpecNode } from "../gen";
 
 export const geist: GeistMap = {

@@ -1,0 +1,656 @@
+{
+  "date": "2026-09-23",
+  "status": "accepted at native/Lit boundary",
+  "scope": [
+    "M-02 Toast",
+    "Toast Viewport",
+    "createToastStore",
+    "standalone Error removal"
+  ],
+  "sources": [
+    {
+      "url": "https://base-ui.com/react/components/toast",
+      "read": "full documentation and provider, viewport, root and store source",
+      "files": [
+        "ToastProvider.tsx (109 lines)",
+        "ToastViewport.tsx (295 lines)",
+        "ToastRoot.tsx (562 lines)",
+        "store.ts (527 lines)"
+      ]
+    }
+  ],
+  "implementation": [
+    "Explicit immutable TanStack notification store; no global queue allocation",
+    "Owned monotonic timers preserve remaining time and independent pause reasons",
+    "Native top-layer viewport, limited newest stack, measured geometry and shared Lit Motion springs",
+    "Alert/Button composition, serializable application-owned actions, cancelable requests",
+    "Author nodes remain owned by their framework; descriptions remain safe text",
+    "Shared announcement ownership prevents duplicate announcements on viewport handoff"
+  ],
+  "adaptations": [
+    "Horizontal outward swipe preserves vertical scrolling; 40px dismissal and 10px reversal thresholds follow the reviewed source.",
+    "Applications own keyboard shortcuts and can call viewport.focus(); no implicit global F6 handler.",
+    "Alert status treatments compose the message surfaces instead of maintaining a second message renderer."
+  ],
+  "corrections": [
+    "Closing geometry remains available until its exit animation settles",
+    "Disconnected pending updates cannot reattach timer presentations",
+    "Visible-limit arrivals transfer focus before hiding the focused record",
+    "Updated announcements replace previous content and hidden records leave the announcer",
+    "Generated identities skip explicitly reserved IDs"
+  ],
+  "removed": [
+    "AcmeToaster/acme-toaster and createToastQueue/toasts",
+    "Standalone AcmeError/acme-error; Alert and Field own message contexts",
+    "All retired style mappings, splitter producers and raw CSS rules",
+    "Legacy Toast methods and callback/HTML records"
+  ],
+  "verification": {
+    "strictBuild": true,
+    "site": {
+      "pages": 105,
+      "elements": 4311,
+      "undocumented": 0
+    },
+    "unitSuite": {
+      "pass": 873,
+      "fail": 0
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "explicit store shows a native top-layer notification and one live announcement",
+            "pass": true
+          },
+          {
+            "name": "newest records are visible and older records beyond the limit cannot receive focus",
+            "pass": true
+          },
+          {
+            "name": "focus expands the stack and dismissal preserves a remaining focus destination",
+            "pass": true
+          },
+          {
+            "name": "application action emits one serializable request and does not dismiss automatically",
+            "pass": true
+          },
+          {
+            "name": "user dismissal reports one reason without duplicate wrapper notification",
+            "pass": true
+          },
+          {
+            "name": "timers pause for pointer interaction and resume their remaining duration",
+            "pass": true
+          },
+          {
+            "name": "custom content keeps its node identity through updates and stack changes",
+            "pass": true
+          },
+          {
+            "name": "normal-motion dismissal retains the closing surface until its own exit settles",
+            "pass": true
+          },
+          {
+            "name": "updates replace announcement content and lowering the visible limit removes hidden messages",
+            "pass": true
+          },
+          {
+            "name": "a new visible-limit arrival transfers focus before hiding the focused record",
+            "pass": true
+          },
+          {
+            "name": "a disconnected presentation pauses the remaining duration until reconnect",
+            "pass": true
+          },
+          {
+            "name": "two independent stores and a same-store viewport handoff keep one presentation per store",
+            "pass": true
+          },
+          {
+            "name": "dismiss and immediate same-id replacement retain the new lifetime",
+            "pass": true
+          },
+          {
+            "name": "outward drag dismisses once while reverse and short drags preserve the record",
+            "pass": true
+          },
+          {
+            "name": "RTL end placement dismisses toward the left",
+            "pass": true
+          },
+          {
+            "name": "persistent non-dismissible records ignore Escape and expose no close action",
+            "pass": true
+          },
+          {
+            "name": "viewport handoff does not announce an unchanged record twice",
+            "pass": true
+          },
+          {
+            "name": "long content can be scrolled in the expanded viewport without horizontal overflow",
+            "pass": true
+          },
+          {
+            "name": "touch expansion and pointer cancellation retain the record",
+            "pass": true
+          },
+          {
+            "name": "Escape closes a nested help surface before its notification",
+            "pass": true
+          },
+          {
+            "name": "visibility-event integration preserves remaining time under an injected hidden state",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "explicit store shows a native top-layer notification and one live announcement",
+            "pass": true
+          },
+          {
+            "name": "newest records are visible and older records beyond the limit cannot receive focus",
+            "pass": true
+          },
+          {
+            "name": "focus expands the stack and dismissal preserves a remaining focus destination",
+            "pass": true
+          },
+          {
+            "name": "application action emits one serializable request and does not dismiss automatically",
+            "pass": true
+          },
+          {
+            "name": "user dismissal reports one reason without duplicate wrapper notification",
+            "pass": true
+          },
+          {
+            "name": "timers pause for pointer interaction and resume their remaining duration",
+            "pass": true
+          },
+          {
+            "name": "custom content keeps its node identity through updates and stack changes",
+            "pass": true
+          },
+          {
+            "name": "normal-motion dismissal retains the closing surface until its own exit settles",
+            "pass": true
+          },
+          {
+            "name": "updates replace announcement content and lowering the visible limit removes hidden messages",
+            "pass": true
+          },
+          {
+            "name": "a new visible-limit arrival transfers focus before hiding the focused record",
+            "pass": true
+          },
+          {
+            "name": "a disconnected presentation pauses the remaining duration until reconnect",
+            "pass": true
+          },
+          {
+            "name": "two independent stores and a same-store viewport handoff keep one presentation per store",
+            "pass": true
+          },
+          {
+            "name": "dismiss and immediate same-id replacement retain the new lifetime",
+            "pass": true
+          },
+          {
+            "name": "outward drag dismisses once while reverse and short drags preserve the record",
+            "pass": true
+          },
+          {
+            "name": "RTL end placement dismisses toward the left",
+            "pass": true
+          },
+          {
+            "name": "persistent non-dismissible records ignore Escape and expose no close action",
+            "pass": true
+          },
+          {
+            "name": "viewport handoff does not announce an unchanged record twice",
+            "pass": true
+          },
+          {
+            "name": "long content can be scrolled in the expanded viewport without horizontal overflow",
+            "pass": true
+          },
+          {
+            "name": "touch expansion and pointer cancellation retain the record",
+            "pass": true
+          },
+          {
+            "name": "Escape closes a nested help surface before its notification",
+            "pass": true
+          },
+          {
+            "name": "visibility-event integration preserves remaining time under an injected hidden state",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "explicit store shows a native top-layer notification and one live announcement",
+            "pass": true
+          },
+          {
+            "name": "newest records are visible and older records beyond the limit cannot receive focus",
+            "pass": true
+          },
+          {
+            "name": "focus expands the stack and dismissal preserves a remaining focus destination",
+            "pass": true
+          },
+          {
+            "name": "application action emits one serializable request and does not dismiss automatically",
+            "pass": true
+          },
+          {
+            "name": "user dismissal reports one reason without duplicate wrapper notification",
+            "pass": true
+          },
+          {
+            "name": "timers pause for pointer interaction and resume their remaining duration",
+            "pass": true
+          },
+          {
+            "name": "custom content keeps its node identity through updates and stack changes",
+            "pass": true
+          },
+          {
+            "name": "normal-motion dismissal retains the closing surface until its own exit settles",
+            "pass": true
+          },
+          {
+            "name": "updates replace announcement content and lowering the visible limit removes hidden messages",
+            "pass": true
+          },
+          {
+            "name": "a new visible-limit arrival transfers focus before hiding the focused record",
+            "pass": true
+          },
+          {
+            "name": "a disconnected presentation pauses the remaining duration until reconnect",
+            "pass": true
+          },
+          {
+            "name": "two independent stores and a same-store viewport handoff keep one presentation per store",
+            "pass": true
+          },
+          {
+            "name": "dismiss and immediate same-id replacement retain the new lifetime",
+            "pass": true
+          },
+          {
+            "name": "outward drag dismisses once while reverse and short drags preserve the record",
+            "pass": true
+          },
+          {
+            "name": "RTL end placement dismisses toward the left",
+            "pass": true
+          },
+          {
+            "name": "persistent non-dismissible records ignore Escape and expose no close action",
+            "pass": true
+          },
+          {
+            "name": "viewport handoff does not announce an unchanged record twice",
+            "pass": true
+          },
+          {
+            "name": "long content can be scrolled in the expanded viewport without horizontal overflow",
+            "pass": true
+          },
+          {
+            "name": "touch expansion and pointer cancellation retain the record",
+            "pass": true
+          },
+          {
+            "name": "Escape closes a nested help surface before its notification",
+            "pass": true
+          },
+          {
+            "name": "visibility-event integration preserves remaining time under an injected hidden state",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "explicit store shows a native top-layer notification and one live announcement",
+            "pass": true
+          },
+          {
+            "name": "newest records are visible and older records beyond the limit cannot receive focus",
+            "pass": true
+          },
+          {
+            "name": "focus expands the stack and dismissal preserves a remaining focus destination",
+            "pass": true
+          },
+          {
+            "name": "application action emits one serializable request and does not dismiss automatically",
+            "pass": true
+          },
+          {
+            "name": "user dismissal reports one reason without duplicate wrapper notification",
+            "pass": true
+          },
+          {
+            "name": "timers pause for pointer interaction and resume their remaining duration",
+            "pass": true
+          },
+          {
+            "name": "custom content keeps its node identity through updates and stack changes",
+            "pass": true
+          },
+          {
+            "name": "normal-motion dismissal retains the closing surface until its own exit settles",
+            "pass": true
+          },
+          {
+            "name": "updates replace announcement content and lowering the visible limit removes hidden messages",
+            "pass": true
+          },
+          {
+            "name": "a new visible-limit arrival transfers focus before hiding the focused record",
+            "pass": true
+          },
+          {
+            "name": "a disconnected presentation pauses the remaining duration until reconnect",
+            "pass": true
+          },
+          {
+            "name": "two independent stores and a same-store viewport handoff keep one presentation per store",
+            "pass": true
+          },
+          {
+            "name": "dismiss and immediate same-id replacement retain the new lifetime",
+            "pass": true
+          },
+          {
+            "name": "outward drag dismisses once while reverse and short drags preserve the record",
+            "pass": true
+          },
+          {
+            "name": "RTL end placement dismisses toward the left",
+            "pass": true
+          },
+          {
+            "name": "persistent non-dismissible records ignore Escape and expose no close action",
+            "pass": true
+          },
+          {
+            "name": "viewport handoff does not announce an unchanged record twice",
+            "pass": true
+          },
+          {
+            "name": "long content can be scrolled in the expanded viewport without horizontal overflow",
+            "pass": true
+          },
+          {
+            "name": "touch expansion and pointer cancellation retain the record",
+            "pass": true
+          },
+          {
+            "name": "Escape closes a nested help surface before its notification",
+            "pass": true
+          },
+          {
+            "name": "visibility-event integration preserves remaining time under an injected hidden state",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "explicit store shows a native top-layer notification and one live announcement",
+            "pass": true
+          },
+          {
+            "name": "newest records are visible and older records beyond the limit cannot receive focus",
+            "pass": true
+          },
+          {
+            "name": "focus expands the stack and dismissal preserves a remaining focus destination",
+            "pass": true
+          },
+          {
+            "name": "application action emits one serializable request and does not dismiss automatically",
+            "pass": true
+          },
+          {
+            "name": "user dismissal reports one reason without duplicate wrapper notification",
+            "pass": true
+          },
+          {
+            "name": "timers pause for pointer interaction and resume their remaining duration",
+            "pass": true
+          },
+          {
+            "name": "custom content keeps its node identity through updates and stack changes",
+            "pass": true
+          },
+          {
+            "name": "normal-motion dismissal retains the closing surface until its own exit settles",
+            "pass": true
+          },
+          {
+            "name": "updates replace announcement content and lowering the visible limit removes hidden messages",
+            "pass": true
+          },
+          {
+            "name": "a new visible-limit arrival transfers focus before hiding the focused record",
+            "pass": true
+          },
+          {
+            "name": "a disconnected presentation pauses the remaining duration until reconnect",
+            "pass": true
+          },
+          {
+            "name": "two independent stores and a same-store viewport handoff keep one presentation per store",
+            "pass": true
+          },
+          {
+            "name": "dismiss and immediate same-id replacement retain the new lifetime",
+            "pass": true
+          },
+          {
+            "name": "outward drag dismisses once while reverse and short drags preserve the record",
+            "pass": true
+          },
+          {
+            "name": "RTL end placement dismisses toward the left",
+            "pass": true
+          },
+          {
+            "name": "persistent non-dismissible records ignore Escape and expose no close action",
+            "pass": true
+          },
+          {
+            "name": "viewport handoff does not announce an unchanged record twice",
+            "pass": true
+          },
+          {
+            "name": "long content can be scrolled in the expanded viewport without horizontal overflow",
+            "pass": true
+          },
+          {
+            "name": "touch expansion and pointer cancellation retain the record",
+            "pass": true
+          },
+          {
+            "name": "Escape closes a nested help surface before its notification",
+            "pass": true
+          },
+          {
+            "name": "visibility-event integration preserves remaining time under an injected hidden state",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "explicit store shows a native top-layer notification and one live announcement",
+            "pass": true
+          },
+          {
+            "name": "newest records are visible and older records beyond the limit cannot receive focus",
+            "pass": true
+          },
+          {
+            "name": "focus expands the stack and dismissal preserves a remaining focus destination",
+            "pass": true
+          },
+          {
+            "name": "application action emits one serializable request and does not dismiss automatically",
+            "pass": true
+          },
+          {
+            "name": "user dismissal reports one reason without duplicate wrapper notification",
+            "pass": true
+          },
+          {
+            "name": "timers pause for pointer interaction and resume their remaining duration",
+            "pass": true
+          },
+          {
+            "name": "custom content keeps its node identity through updates and stack changes",
+            "pass": true
+          },
+          {
+            "name": "normal-motion dismissal retains the closing surface until its own exit settles",
+            "pass": true
+          },
+          {
+            "name": "updates replace announcement content and lowering the visible limit removes hidden messages",
+            "pass": true
+          },
+          {
+            "name": "a new visible-limit arrival transfers focus before hiding the focused record",
+            "pass": true
+          },
+          {
+            "name": "a disconnected presentation pauses the remaining duration until reconnect",
+            "pass": true
+          },
+          {
+            "name": "two independent stores and a same-store viewport handoff keep one presentation per store",
+            "pass": true
+          },
+          {
+            "name": "dismiss and immediate same-id replacement retain the new lifetime",
+            "pass": true
+          },
+          {
+            "name": "outward drag dismisses once while reverse and short drags preserve the record",
+            "pass": true
+          },
+          {
+            "name": "RTL end placement dismisses toward the left",
+            "pass": true
+          },
+          {
+            "name": "persistent non-dismissible records ignore Escape and expose no close action",
+            "pass": true
+          },
+          {
+            "name": "viewport handoff does not announce an unchanged record twice",
+            "pass": true
+          },
+          {
+            "name": "long content can be scrolled in the expanded viewport without horizontal overflow",
+            "pass": true
+          },
+          {
+            "name": "touch expansion and pointer cancellation retain the record",
+            "pass": true
+          },
+          {
+            "name": "Escape closes a nested help surface before its notification",
+            "pass": true
+          },
+          {
+            "name": "visibility-event integration preserves remaining time under an injected hidden state",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "scoped save and dismiss",
+          "application action and update",
+          "newest three messages",
+          "authored content",
+          "narrow layout"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "scoped save and dismiss",
+          "application action and update",
+          "newest three messages",
+          "authored content",
+          "narrow layout"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "scoped save and dismiss",
+          "application action and update",
+          "newest three messages",
+          "authored content",
+          "narrow layout"
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "reproduction": {
+    "fixture": "src/components/toast/__tests__/toast.browser.ts",
+    "browserCases": "await check('explicit store shows a native top-layer notification and one live announcement',async()=>{await page.getByRole('button',{name:'Add notification'}).click();await page.getByRole('button',{name:'Dismiss message'}).waitFor();assert.equal(await page.locator('#viewport [part=viewport]').evaluate(el=>el.matches(':popover-open')),true);assert.equal(await page.locator('#viewport [part=announcer]').textContent(),'Saved changes');});\nawait check('newest records are visible and older records beyond the limit cannot receive focus',async()=>{await page.evaluate(()=>{for(let i=0;i<5;i++)window.store.add({id:'notice-'+i,description:'Notice '+i,duration:0})});await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelectorAll('acme-toast').length===5);const result=await page.locator('acme-toast').evaluateAll(nodes=>nodes.map(el=>({id:el.toastId,hidden:el.hasAttribute('data-toast-hidden')})));assert.deepEqual(result.filter(item=>!item.hidden).map(item=>item.id),['notice-4','notice-3','notice-2']);assert.equal(await page.locator('#viewport [part=announcer]').textContent(),'Notice 4Notice 3Notice 2');});\nawait check('focus expands the stack and dismissal preserves a remaining focus destination',async()=>{await page.evaluate(()=>{window.store.add({id:'first',description:'First',duration:0});window.store.add({id:'second',description:'Second',duration:0});document.querySelector('#viewport').focus()});await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelector('[part=viewport]').dataset.expanded==='true');await page.locator('acme-toast').first().getByRole('button',{name:'Dismiss message'}).click();await page.waitForFunction(()=>window.store.state.get().length===1);assert.equal(await page.locator('acme-toast').first().evaluate(el=>el.toastId),'first');});\nawait check('application action emits one serializable request and does not dismiss automatically',async()=>{await page.evaluate(()=>{window.requests=[];document.querySelector('#viewport').addEventListener('acme-request',e=>window.requests.push(e.detail));window.store.add({id:'undo',heading:'Saved',description:'Undo is available',duration:0,action:{id:'undo-save',label:'Undo'}})});await page.getByRole('button',{name:'Undo',exact:true}).click();assert.deepEqual(await page.evaluate(()=>window.requests),[{action:'toast-action',id:'undo',actionId:'undo-save'}]);assert.equal(await page.evaluate(()=>window.store.state.get().length),1);});\nawait check('user dismissal reports one reason without duplicate wrapper notification',async()=>{await page.evaluate(()=>{window.dismissals=[];document.querySelector('#viewport').addEventListener('acme-dismiss',e=>window.dismissals.push(e.detail));window.store.add({id:'notice',description:'Dismiss me',duration:0})});await page.getByRole('button',{name:'Dismiss message'}).click();await page.waitForFunction(()=>window.store.state.get().length===0);assert.deepEqual(await page.evaluate(()=>window.dismissals),[{id:'notice',reason:'close'}]);});\nawait check('timers pause for pointer interaction and resume their remaining duration',async()=>{await page.evaluate(()=>window.store.add({id:'timed',description:'Timed notice',duration:500}));await page.locator('acme-toast').waitFor();await page.locator('acme-toast [part=root]').first().hover();await page.waitForTimeout(600);assert.equal(await page.evaluate(()=>window.store.state.get().length),1);await page.mouse.move(0,0);await page.waitForFunction(()=>window.store.state.get().length===0);});\nawait check('custom content keeps its node identity through updates and stack changes',async()=>{await page.locator('#viewport').evaluate(el=>{const toast=document.createElement('acme-toast');toast.toastId='custom';toast.innerHTML='<label>Draft <input id=\"draft\" value=\"Original\"></label>';el.append(toast);window.input=toast.querySelector('input');window.store.add({id:'custom',description:'Custom draft',duration:0})});await page.getByLabel('Draft',{exact:true}).fill('Changed');await page.evaluate(()=>window.store.update('custom',{heading:'Updated'}));assert.equal(await page.getByLabel('Draft',{exact:true}).inputValue(),'Changed');assert.equal(await page.evaluate(()=>window.input===document.querySelector('#draft')),true);});\nawait check('normal-motion dismissal retains the closing surface until its own exit settles',async()=>{await page.emulateMedia({reducedMotion:'no-preference'});await page.evaluate(()=>window.store.add({id:'exit',description:'Closing notice',duration:0}));await page.waitForFunction(()=>Number(getComputedStyle(document.querySelector('#viewport').shadowRoot.querySelector('acme-toast').shadowRoot.querySelector('[part=root]')).opacity)>.99);await page.evaluate(()=>window.store.dismiss('exit'));assert.equal(await page.locator('acme-toast').count(),1);await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelectorAll('acme-toast').length===0);await page.emulateMedia({reducedMotion:'reduce'});});\nawait check('updates replace announcement content and lowering the visible limit removes hidden messages',async()=>{await page.evaluate(()=>{window.store.add({id:'one',description:'First',duration:0});window.store.add({id:'two',description:'Second',duration:0})});await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelector('[part=announcer]').textContent.includes('First'));await page.evaluate(()=>window.store.update('one',{description:'Changed first'}));await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelector('[part=announcer]').textContent.includes('Changed first'));assert.equal(await page.locator('#viewport [part=announcer] > div').count(),2);await page.locator('#viewport').evaluate(el=>el.limit=1);await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelector('[part=announcer]').textContent==='Second');});\nawait check('a new visible-limit arrival transfers focus before hiding the focused record',async()=>{await page.evaluate(()=>{const v=document.querySelector('#viewport');v.limit=1;window.store.add({id:'old',description:'Old notice',duration:0});v.focus()});await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelector('acme-toast')?.shadowRoot.activeElement!==null);await page.evaluate(()=>window.store.add({id:'new',description:'New notice',duration:0}));await page.waitForFunction(()=>{const v=document.querySelector('#viewport');const t=[...v.shadowRoot.querySelectorAll('acme-toast')].find(t=>t.toastId==='new');return t?.shadowRoot.activeElement?.getAttribute('part')==='root'});});\nawait check('a disconnected presentation pauses the remaining duration until reconnect',async()=>{await page.evaluate(()=>{window.store.add({id:'resume',description:'Resume later',duration:500});window.v=document.querySelector('#viewport')});await page.locator('acme-toast').waitFor();await page.evaluate(()=>window.v.remove());await page.waitForTimeout(650);assert.equal(await page.evaluate(()=>window.store.state.get().length),1);await page.evaluate(()=>document.body.append(window.v));await page.waitForFunction(()=>window.store.state.get().length===0);});\nawait check('two independent stores and a same-store viewport handoff keep one presentation per store',async()=>{await page.evaluate(()=>{window.store.add({id:'a',description:'Scope A',duration:0});window.other=window.createToastStore();window.other.add({id:'b',description:'Scope B',duration:0});const b=document.createElement('acme-toast-viewport');b.id='other';b.store=window.other;b.placement='top-start';const successor=document.createElement('acme-toast-viewport');successor.id='successor';successor.store=window.store;document.body.append(b,successor)});await page.waitForFunction(()=>document.querySelector('#other').shadowRoot.querySelector('acme-toast'));assert.equal(await page.locator('acme-toast').count(),2);await page.locator('#viewport').evaluate(el=>el.remove());await page.waitForFunction(()=>document.querySelector('#successor').shadowRoot.querySelector('acme-toast'));assert.equal(await page.locator('acme-toast').count(),2);await page.evaluate(()=>window.other.clear());assert.equal(await page.evaluate(()=>window.store.state.get().length),1);});\nawait check('dismiss and immediate same-id replacement retain the new lifetime',async()=>{await page.emulateMedia({reducedMotion:'no-preference'});await page.evaluate(()=>window.store.add({id:'replace',description:'Old',duration:0}));await page.locator('acme-toast').waitFor();await page.evaluate(()=>{window.store.dismiss('replace');window.store.add({id:'replace',description:'Replacement',duration:0})});await page.waitForTimeout(500);assert.equal(await page.evaluate(()=>window.store.state.get()[0]?.description),'Replacement');assert.equal(await page.locator('acme-toast').count(),1);await page.emulateMedia({reducedMotion:'reduce'});});\nawait check('outward drag dismisses once while reverse and short drags preserve the record',async()=>{await page.evaluate(()=>{window.dismissals=[];document.querySelector('#viewport').addEventListener('acme-dismiss',e=>window.dismissals.push(e.detail));window.store.add({id:'drag',description:'Swipe this notice',duration:0})});const surface=page.locator('acme-toast [part=root]').first();await surface.waitFor();let box=await surface.boundingBox();const x=box.x+box.width/2,y=box.y+box.height/2;await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+25,y,{steps:5});await page.mouse.up();assert.equal(await page.evaluate(()=>window.store.state.get().length),1);await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+80,y,{steps:5});await page.mouse.move(x+20,y,{steps:5});await page.mouse.up();assert.equal(await page.evaluate(()=>window.store.state.get().length),1);await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+80,y,{steps:8});await page.mouse.up();await page.waitForFunction(()=>window.store.state.get().length===0);assert.deepEqual(await page.evaluate(()=>window.dismissals),[{id:'drag',reason:'swipe'}]);});\nawait check('RTL end placement dismisses toward the left',async()=>{await page.evaluate(()=>{document.documentElement.dir='rtl';window.store.add({id:'rtl',description:'RTL notice',duration:0})});const surface=page.locator('acme-toast [part=root]').first();await surface.waitFor();const box=await surface.boundingBox();const x=box.x+box.width/2,y=box.y+box.height/2;await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x-80,y,{steps:8});await page.mouse.up();await page.waitForFunction(()=>window.store.state.get().length===0);});\nawait check('persistent non-dismissible records ignore Escape and expose no close action',async()=>{await page.evaluate(()=>{window.store.add({id:'fixed',description:'Persistent',duration:0,dismissible:false});document.querySelector('#viewport').focus()});await page.locator('acme-toast').waitFor();await page.keyboard.press('Escape');assert.equal(await page.getByRole('button',{name:'Dismiss message'}).count(),0);assert.equal(await page.evaluate(()=>window.store.state.get().length),1);});\nawait check('viewport handoff does not announce an unchanged record twice',async()=>{await page.evaluate(()=>{window.store.add({id:'same',description:'Announce once',duration:0});const next=document.createElement('acme-toast-viewport');next.id='next';next.store=window.store;document.body.append(next)});await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelector('[part=announcer]').textContent==='Announce once');await page.locator('#viewport').evaluate(el=>el.remove());await page.waitForFunction(()=>document.querySelector('#next').shadowRoot.querySelector('acme-toast'));assert.equal(await page.locator('#next [part=announcer]').textContent(),'');await page.evaluate(()=>window.store.update('same',{description:'Changed notice'}));await page.waitForFunction(()=>document.querySelector('#next').shadowRoot.querySelector('[part=announcer]').textContent==='Changed notice');});\nawait check('long content can be scrolled in the expanded viewport without horizontal overflow',async()=>{await page.setViewportSize({width:360,height:450});await page.evaluate(()=>{window.store.add({id:'long',description:'A long message. '.repeat(150),duration:0});document.querySelector('#viewport').focus()});await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelector('[part=viewport]').scrollHeight>400);const box=await page.locator('#viewport [part=viewport]').boundingBox();assert.ok(box.width<=360&&box.x>=0&&box.y>=0);assert.equal(await page.locator('#viewport [part=viewport]').evaluate(el=>{el.scrollTop=el.scrollHeight;return el.scrollTop>0}),true);});\nawait check('touch expansion and pointer cancellation retain the record',async()=>{await page.evaluate(()=>window.store.add({id:'touch',description:'Touch notice',duration:0}));await page.locator('acme-toast').waitFor();await page.locator('#viewport [part=viewport]').evaluate(root=>root.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,composed:true,pointerType:'touch',isPrimary:true,pointerId:10,button:0})));await page.waitForFunction(()=>document.querySelector('#viewport').shadowRoot.querySelector('[part=viewport]').dataset.expanded==='true');const surface=page.locator('acme-toast [part=root]').first();await surface.evaluate(root=>root.addEventListener('pointerdown',e=>window.actualPointer=e.pointerId,{once:true}));const box=await surface.boundingBox();await page.mouse.move(box.x+100,box.y+20);await page.mouse.down();await page.mouse.move(box.x+160,box.y+20,{steps:5});await surface.evaluate(root=>root.dispatchEvent(new PointerEvent('pointercancel',{pointerId:window.actualPointer,bubbles:true,composed:true})));await page.mouse.up();assert.equal(await page.evaluate(()=>window.store.state.get().length),1);});\nawait check('Escape closes a nested help surface before its notification',async()=>{await page.locator('#viewport').evaluate(el=>{const toast=document.createElement('acme-toast');toast.toastId='help';toast.innerHTML='<acme-toggle-tip><span slot=\"trigger\">Details</span><a href=\"#details\">Read details</a></acme-toggle-tip>';el.append(toast);window.store.add({id:'help',description:'Help is available',duration:0})});await page.getByRole('button',{name:'Details',exact:true}).focus();await page.keyboard.press('Enter');await page.getByRole('link',{name:'Read details'}).waitFor();await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('acme-toggle-tip').open);assert.equal(await page.evaluate(()=>window.store.state.get().length),1);await page.keyboard.press('Escape');await page.waitForFunction(()=>window.store.state.get().length===0);});\nawait check('visibility-event integration preserves remaining time under an injected hidden state',async()=>{await page.evaluate(()=>window.store.add({id:'background',description:'Background notice',duration:700}));await page.locator('acme-toast').waitFor();await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,value:true});document.dispatchEvent(new Event('visibilitychange'))});await page.waitForTimeout(850);assert.equal(await page.evaluate(()=>window.store.state.get().length),1);await page.evaluate(()=>{delete document.hidden;document.dispatchEvent(new Event('visibilitychange'))});await page.waitForFunction(()=>window.store.state.get().length===0);});\n",
+    "timers": "src/shared/__tests__/toast-timers.test.ts",
+    "store": "src/shared/__tests__/toast-store.test.ts"
+  },
+  "limits": [
+    "Real Safari/assistive-technology and React acceptance remain M22/M26.",
+    "Background visibility handler is tested with an explicitly injected hidden state. Separate headless pages did not reproduce an OS window background transition; actual platform background behavior remains M22/M26."
+  ],
+  "scratch": "/tmp/acme-m18-toast"
+}

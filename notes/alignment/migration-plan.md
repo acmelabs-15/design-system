@@ -354,3 +354,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M18 Stat family — 2026-09-23
 
 [Stat acceptance](evidence/m18-stat-2026-09-23.json) closes M-07 at its native/Lit boundary. Native terms/definitions, explicit direction/sentiment, formatting, loading ownership and selection composition pass the assigned checks. Trend and the abbreviated Stat helpers are removed. M18 scoped Toast and Feedback remain.
+
+### M18 scoped Toast — 2026-09-23
+
+[Toast acceptance](evidence/m18-toast-2026-09-23.json) closes M-02 at its native/Lit boundary. Explicit stores, timer lifecycle, announcements, gestures, focus and author-owned content pass the recorded gates. Toaster/global queue and standalone Error are removed with their producers and consumers. Feedback is the remaining M18 entry.

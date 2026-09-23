@@ -33,8 +33,10 @@ export const doc: Doc = {
 
   \`\`\`ts
   import "@acmelabs/design-system/define/toaster";
-  import { toasts } from "@acmelabs/design-system";
-  toasts.success("Domain added");
+  import { createToastStore } from "@acmelabs/design-system";
+  const notifications = createToastStore();
+  viewport.store = notifications;
+  notifications.add({ description: "Domain added", variant: "success" });
   \`\`\`
 </acme-markdown>`,
     },

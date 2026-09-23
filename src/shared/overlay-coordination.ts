@@ -134,3 +134,11 @@ export function coordinateOverlay(registration: OverlayRegistration): () => void
   };
   return session.release;
 }
+
+/** Lets an enclosing local control defer Escape to an already coordinated child surface. */
+export function hasOwnedOverlay(owner: HTMLElement): boolean {
+  return (
+    documents.get(owner.ownerDocument)?.sessions.some(({ registration }) => composedContains(owner, registration.surface) || (!!registration.anchor && composedContains(owner, registration.anchor))) ??
+    false
+  );
+}
