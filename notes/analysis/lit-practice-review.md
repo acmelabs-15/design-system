@@ -748,3 +748,10 @@ The replacement uses canonical immutable numeric arrays, NativeFormController, F
 ### M13 selection acceptance — 2026-09-22
 
 [Final selection evidence](../alignment/evidence/m13-selection-2026-09-22.json) records the strict build, site and all 881 tests passing. The full suite found Feedback’s remaining option-array caller; it now renders Option children, uses undefined for absent Select value and focuses the public control. A native follow-up caught Lit marker comments entering derived labels; Option now reads text/element nodes only, with a unit regression and three-engine Feedback proof. Long selected labels stay inside the single-line trigger; popup geometry follows the full field; forced colors retain a system-color active outline. Source/compiled and actual documentation checks pass. Full wrapper, actual OS IME and final package/platform gates remain M22/M26.
+
+
+### M13 Slider acceptance — 2026-09-22
+
+[Final Slider evidence](../alignment/evidence/m13-slider-2026-09-22.json) records the completed implementation and its limits. Fresh review reproduced coincident-thumb direction, focus-transfer cancellation and custom-validity announcement defects in all engines; all are fixed. Follow-up checks corrected the native-edit atom reset and late accessible references. The shared semantic controller now offers a protected notification after references resolve; Slider synchronizes its additional native targets there. Chromium native accessibility output confirms the delayed label; Playwright’s role-name matcher does not recognize the same modern element-reference path.
+
+The 8px track and 6×14px handle dimensions retain the previous generated geometry. Semantic accent colors and rounded handle treatment support current customization; Material Expressive size sets are not copied. All 883 tests pass, including the migrated Middle Truncate caller; source/compiled native checks and actual documentation flows pass. Calendar implementation and its dependency correction remain open.

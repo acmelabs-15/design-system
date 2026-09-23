@@ -265,3 +265,8 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ## M13 selection family complete — 2026-09-22
 
 [Acceptance](evidence/m13-selection-2026-09-22.json) closes Option, Select, ComboBox and Multi Select at the assigned native/Lit boundary. Strict package build, 96-page site and all 881 tests pass. Source and compiled native checks cover forms, keyboard, projection, lifecycle, custom trigger content and caller migration. Actual Lit/React keyed child identity and Chromium accessibility order are verified. Code Block and Feedback now use Option children; renderer comments do not contaminate derived labels. Number/Pin/Menu slot ownership fixes pass native regressions. Slider and Calendar remain active in isolated worktrees; M13 is not complete.
+
+
+## M13 Slider complete — 2026-09-22
+
+[Slider acceptance](evidence/m13-slider-2026-09-22.json) records the strict build/site and all 883 tests, 44 source/compiled native checks per engine, six documentation flows and resolved independent review findings. Middle Truncate consumes the array value and live event. Calendar and date-runtime correction remain; continue locally from the isolated Calendar worktree.

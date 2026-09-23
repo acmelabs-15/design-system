@@ -131,3 +131,8 @@ Under delegated execution, the per-thumb accessible-name array is thumbLabels. T
 ## Calendar date runtime correction — 2026-09-22
 
 Under delegated execution, correct the verified @internationalized/date 3.12.4 parser defects at their upstream implementation and ship one private generated runtime containing that exact correction. A local dependency patch alone does not reach fresh split-ESM consumers. All house runtime date imports use the private artifact; consumers do not need postinstall mutations, patch configuration or a registry fork. Retain the upstream types, exact-version/hash provenance and required Apache notices. RelativeTime and Calendar public regressions plus fresh package/CDN/bundle checks must pass before acceptance. This is a selected implementation direction, not a claim that the correction has shipped.
+
+
+## Slider value and completion behavior — 2026-09-22
+
+Preserve finite ordered programmatic values in the canonical store and native FormData. Bounds/grid/gap errors participate in validity; native thumbs use a constrained display projection. This follows Number Input and permits value-first or min/max attribute ordering without losing supplied values. User edits snap/clamp to legal neighboring bounds without pushing other valid thumbs. Pointer cancellation, focus transfer, disable and disconnect retain the last live edit and emit no completion. Overlapping thumbs choose the movable outer thumb from the initial drag direction, then retain its index. thumbLabels supports validated JSON in HTML as data-only accessible names, alongside property arrays in Lit/React. These details are resolved under delegated execution and require final integrated acceptance.

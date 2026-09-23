@@ -31,3 +31,29 @@ export function scaleDecimal(value: number, power: number): number {
   const parts = decimal(value);
   return number(parts.coefficient, parts.scale - power);
 }
+
+/** Multiplies decimal representations without a binary intermediate. */
+export function multiplyDecimal(value: number, factor: number): number {
+  const a = decimal(value),
+    b = decimal(factor);
+  return number(a.coefficient * b.coefficient, a.scale + b.scale);
+}
+/** Rounds to the decimal step grid anchored at minimum; ties round upward. */
+export function snapDecimal(value: number, step: number, minimum = 0, mode: "nearest" | "floor" | "ceil" = "nearest"): number {
+  if (!(step > 0)) throw new RangeError("Decimal step must be positive");
+  const a = decimal(value),
+    b = decimal(step),
+    c = decimal(minimum);
+  const scale = Math.max(0, a.scale, b.scale, c.scale);
+  const unit = b.coefficient * 10n ** BigInt(scale - b.scale),
+    origin = c.coefficient * 10n ** BigInt(scale - c.scale);
+  const offset = a.coefficient * 10n ** BigInt(scale - a.scale) - origin;
+  let quotient = offset / unit,
+    remainder = offset % unit;
+  if (remainder < 0n) {
+    quotient--;
+    remainder += unit;
+  }
+  if ((mode === "nearest" && remainder * 2n >= unit) || (mode === "ceil" && remainder > 0n)) quotient++;
+  return number(origin + quotient * unit, scale);
+}

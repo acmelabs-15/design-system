@@ -20,3 +20,12 @@ test("nonfinite inputs are rejected and overflow is explicit", () => {
   expect(() => addDecimal(1, NaN)).toThrow();
   expect(addDecimal(Number.MAX_VALUE, Number.MAX_VALUE)).toBe(Infinity);
 });
+
+test("decimal grid snapping keeps fractional origins and negative rounding exact", async () => {
+  const { snapDecimal, multiplyDecimal } = await import("../decimal-step");
+  expect(multiplyDecimal(0.1, 3)).toBe(0.3);
+  expect(snapDecimal(-0.26, 0.1, -0.05)).toBe(-0.25);
+  expect(snapDecimal(-0.26, 0.1, -0.05, "floor")).toBe(-0.35);
+  expect(snapDecimal(-0.26, 0.1, -0.05, "ceil")).toBe(-0.25);
+  expect(snapDecimal(Number.MIN_VALUE, Number.MIN_VALUE)).toBe(Number.MIN_VALUE);
+});

@@ -37,7 +37,7 @@ export const doc: Doc = {
     ${rows.map(row).join("\n    ")}
   </div>
   <aside class="vstack" style="gap:12px;align-items:flex-start">
-    <form class="row" style="gap:4px"><acme-label>Width <span class="row" style="gap:8px"><acme-slider min="0" max="${MAX}" value="${MAX}" style="width:240px"></acme-slider><span class="text-copy-13" style="font-family:var(--acme-font-mono);color:var(--ds-gray-900)"><output>${MAX}px</output></span></span></acme-label></form>
+    <form class="row" style="gap:4px"><acme-label>Width <span class="row" style="gap:8px"><acme-slider min="0" max="${MAX}" value="[${MAX}]" style="width:240px"></acme-slider><span class="text-copy-13" style="font-family:var(--acme-font-mono);color:var(--ds-gray-900)"><output>${MAX}px</output></span></span></acme-label></form>
     <acme-switch>Animate</acme-switch>
   </aside>
 </div>`,
@@ -47,7 +47,7 @@ const slider = root.querySelector('acme-slider');
 const out = root.querySelector('output');
 const toggle = root.querySelector('acme-switch');
 const set = (w) => { for (const b of boxes) b.style.maxWidth = w + 'px'; out.textContent = w + 'px'; slider.value = [w]; };
-slider.addEventListener('acme-change', (e) => set(e.detail.value[0]));
+slider.addEventListener('acme-input', (e) => set(e.detail.value[0]));
 let raf = 0, start = null;
 const step = (t) => { if (start === null) start = t; const p = ((t - start) % 4000) / 4000; const k = p < 0.5 ? p * 2 : 2 - p * 2; set(Math.round(k * MAX)); raf = requestAnimationFrame(step); };
 toggle.addEventListener('acme-change', (e) => { slider.disabled = e.detail.checked; if (e.detail.checked) { start = null; raf = requestAnimationFrame(step); } else cancelAnimationFrame(raf); });`,

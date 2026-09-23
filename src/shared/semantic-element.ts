@@ -23,6 +23,7 @@ class SemanticAttributes implements ReactiveController {
     private host: AcmeSemanticElement,
     private defaults: () => SemanticDefaults,
     private targetElement: () => HTMLElement | undefined,
+    private changed: () => void,
   ) {
     host.addController(this);
   }
@@ -112,6 +113,7 @@ class SemanticAttributes implements ReactiveController {
               ? [...defaults.labelledByElements]
               : null);
     }
+    this.changed();
   };
   private observe(): void {
     if (!this.connected) return;
@@ -182,10 +184,13 @@ export abstract class AcmeSemanticElement extends AcmeElement {
   protected get semanticTarget(): HTMLElement | undefined {
     return this.renderRoot?.querySelector<HTMLElement>('[part~="root"]') ?? undefined;
   }
+  /** Synchronizes additional native targets after accessible references resolve. */
+  protected semanticUpdated(): void {}
   private readonly semantic = new SemanticAttributes(
     this,
     () => this.semanticDefaults,
     () => this.semanticTarget,
+    () => this.semanticUpdated(),
   );
   get role(): string | null {
     return this.semantic.get("role");

@@ -72,7 +72,6 @@ const MAP: [string, RegExp][] = [
   ["pagination", /^\.pagination/],
   ["middle-truncate", /^\.truncate-mid/],
   ["scroller", /^\.scroller/],
-  ["slider", /^\.slider/],
   ["book", /^\.book/],
   ["browser", /^\.browser/],
   ["calendar", /^(\.calendar|\.cal-)/],

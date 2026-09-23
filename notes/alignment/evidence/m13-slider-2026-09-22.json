@@ -1,0 +1,1214 @@
+{
+  "date": "2026-09-22",
+  "status": "Complete at assigned native/Lit Slider boundary; Calendar remains in M13",
+  "implementation": [
+    "Immutable ordered numeric array in NativeFormController; repeated native form values",
+    "Native range thumbs with index-stable names, decimal grid arithmetic and neighbor clamps",
+    "Horizontal/vertical and RTL input, one pointer lifetime, separate live and completed events",
+    "Programmatic values remain exact; invalid supplied values have native validity and constrained thumb projection",
+    "thumbLabels avoids collision with native labels NodeList and supports validated HTML JSON",
+    "Start/end slots support separately named Number Input composition; no duplicate built-in value controller"
+  ],
+  "review": {
+    "independent": "Partial fresh review found three reproduced issues before the worker hit its usage limit",
+    "resolved": [
+      "Initial movement chooses the movable edge of coincident thumbs, then keeps its index",
+      "Focus transfer cancels dragging without completion",
+      "Custom validity updates native thumb aria-invalid",
+      "Native edit baseline is explicitly cleared",
+      "Late accessible references synchronize native thumbs through the shared semantic lifecycle hook",
+      "Removing thumb-labels restores default names",
+      "Slider consumes the semantic accent token"
+    ],
+    "proof": {
+      "red": "/tmp/slider-review/red.log",
+      "green": "/tmp/slider-review/green.log",
+      "lateLabels": "/tmp/slider-review/ax.log",
+      "lateLabelsLimit": "Chromium native accessibility tree names the Slider Late name. Firefox/WebKit native element references update. Playwright role-name matching does not recognize this reference path."
+    }
+  },
+  "verification": {
+    "build": "Strict full package build passes",
+    "site": {
+      "pages": 96,
+      "elements": 4262,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 883,
+      "failed": 0,
+      "assertions": 121244,
+      "files": 146
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "native associated labels retain NodeList",
+            "ok": true
+          },
+          {
+            "name": "immediate repeated FormData",
+            "ok": true
+          },
+          {
+            "name": "immutable value snapshot",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "key emits one live and one completion",
+            "ok": true
+          },
+          {
+            "name": "native form reset default",
+            "ok": true
+          },
+          {
+            "name": "restoration",
+            "ok": true
+          },
+          {
+            "name": "supplied invalid values retained and invalid",
+            "ok": true
+          },
+          {
+            "name": "native displayed and announced values project into bounds",
+            "ok": true
+          },
+          {
+            "name": "transient impossible config is invalid",
+            "ok": true
+          },
+          {
+            "name": "staged properties recover exact value and submission",
+            "ok": true
+          },
+          {
+            "name": "projected thumb recovers",
+            "ok": true
+          },
+          {
+            "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+            "ok": true
+          },
+          {
+            "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+            "ok": true
+          },
+          {
+            "name": "Lit value-first bindings recover",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the native slider",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity updates the native slider",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "native completion clears its edit baseline",
+            "ok": true
+          },
+          {
+            "name": "fieldset immediate omission",
+            "ok": true
+          },
+          {
+            "name": "fieldset native disabled",
+            "ok": true
+          },
+          {
+            "name": "fieldset reenables",
+            "ok": true
+          },
+          {
+            "name": "three distinct native thumbs",
+            "ok": true
+          },
+          {
+            "name": "gap native bounds",
+            "ok": true
+          },
+          {
+            "name": "distinct authored names",
+            "ok": true
+          },
+          {
+            "name": "formatted accessible value",
+            "ok": true
+          },
+          {
+            "name": "real track click and captured drag",
+            "ok": true
+          },
+          {
+            "name": "cancel keeps live value without commit or later movement",
+            "ok": true
+          },
+          {
+            "name": "competing pointer ignored",
+            "ok": true
+          },
+          {
+            "name": "disable cancels without commit",
+            "ok": true
+          },
+          {
+            "name": "RTL right decrements",
+            "ok": true
+          },
+          {
+            "name": "Home reaches minimum",
+            "ok": true
+          },
+          {
+            "name": "PageUp largeStep",
+            "ok": true
+          },
+          {
+            "name": "Tab exits slider",
+            "ok": true
+          },
+          {
+            "name": "vertical pointer increases upward",
+            "ok": true
+          },
+          {
+            "name": "RTL pointer reverses physical position",
+            "ok": true
+          },
+          {
+            "name": "tiny decimal keys and spoken value stay exact",
+            "ok": true
+          },
+          {
+            "name": "lost capture cancels completion",
+            "ok": true
+          },
+          {
+            "name": "programmatic replacement cancels old gesture",
+            "ok": true
+          },
+          {
+            "name": "disconnect clears gesture lifetime",
+            "ok": true
+          },
+          {
+            "name": "reconnected native control is usable",
+            "ok": true
+          },
+          {
+            "name": "accessible slider naming",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "native associated labels retain NodeList",
+            "ok": true
+          },
+          {
+            "name": "immediate repeated FormData",
+            "ok": true
+          },
+          {
+            "name": "immutable value snapshot",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "key emits one live and one completion",
+            "ok": true
+          },
+          {
+            "name": "native form reset default",
+            "ok": true
+          },
+          {
+            "name": "restoration",
+            "ok": true
+          },
+          {
+            "name": "supplied invalid values retained and invalid",
+            "ok": true
+          },
+          {
+            "name": "native displayed and announced values project into bounds",
+            "ok": true
+          },
+          {
+            "name": "transient impossible config is invalid",
+            "ok": true
+          },
+          {
+            "name": "staged properties recover exact value and submission",
+            "ok": true
+          },
+          {
+            "name": "projected thumb recovers",
+            "ok": true
+          },
+          {
+            "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+            "ok": true
+          },
+          {
+            "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+            "ok": true
+          },
+          {
+            "name": "Lit value-first bindings recover",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the native slider",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity updates the native slider",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "native completion clears its edit baseline",
+            "ok": true
+          },
+          {
+            "name": "fieldset immediate omission",
+            "ok": true
+          },
+          {
+            "name": "fieldset native disabled",
+            "ok": true
+          },
+          {
+            "name": "fieldset reenables",
+            "ok": true
+          },
+          {
+            "name": "three distinct native thumbs",
+            "ok": true
+          },
+          {
+            "name": "gap native bounds",
+            "ok": true
+          },
+          {
+            "name": "distinct authored names",
+            "ok": true
+          },
+          {
+            "name": "formatted accessible value",
+            "ok": true
+          },
+          {
+            "name": "real track click and captured drag",
+            "ok": true
+          },
+          {
+            "name": "cancel keeps live value without commit or later movement",
+            "ok": true
+          },
+          {
+            "name": "competing pointer ignored",
+            "ok": true
+          },
+          {
+            "name": "disable cancels without commit",
+            "ok": true
+          },
+          {
+            "name": "RTL right decrements",
+            "ok": true
+          },
+          {
+            "name": "Home reaches minimum",
+            "ok": true
+          },
+          {
+            "name": "PageUp largeStep",
+            "ok": true
+          },
+          {
+            "name": "Tab exits slider",
+            "ok": true
+          },
+          {
+            "name": "vertical pointer increases upward",
+            "ok": true
+          },
+          {
+            "name": "RTL pointer reverses physical position",
+            "ok": true
+          },
+          {
+            "name": "tiny decimal keys and spoken value stay exact",
+            "ok": true
+          },
+          {
+            "name": "lost capture cancels completion",
+            "ok": true
+          },
+          {
+            "name": "programmatic replacement cancels old gesture",
+            "ok": true
+          },
+          {
+            "name": "disconnect clears gesture lifetime",
+            "ok": true
+          },
+          {
+            "name": "reconnected native control is usable",
+            "ok": true
+          },
+          {
+            "name": "accessible slider naming",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "native associated labels retain NodeList",
+            "ok": true
+          },
+          {
+            "name": "immediate repeated FormData",
+            "ok": true
+          },
+          {
+            "name": "immutable value snapshot",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "key emits one live and one completion",
+            "ok": true
+          },
+          {
+            "name": "native form reset default",
+            "ok": true
+          },
+          {
+            "name": "restoration",
+            "ok": true
+          },
+          {
+            "name": "supplied invalid values retained and invalid",
+            "ok": true
+          },
+          {
+            "name": "native displayed and announced values project into bounds",
+            "ok": true
+          },
+          {
+            "name": "transient impossible config is invalid",
+            "ok": true
+          },
+          {
+            "name": "staged properties recover exact value and submission",
+            "ok": true
+          },
+          {
+            "name": "projected thumb recovers",
+            "ok": true
+          },
+          {
+            "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+            "ok": true
+          },
+          {
+            "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+            "ok": true
+          },
+          {
+            "name": "Lit value-first bindings recover",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the native slider",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity updates the native slider",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "native completion clears its edit baseline",
+            "ok": true
+          },
+          {
+            "name": "fieldset immediate omission",
+            "ok": true
+          },
+          {
+            "name": "fieldset native disabled",
+            "ok": true
+          },
+          {
+            "name": "fieldset reenables",
+            "ok": true
+          },
+          {
+            "name": "three distinct native thumbs",
+            "ok": true
+          },
+          {
+            "name": "gap native bounds",
+            "ok": true
+          },
+          {
+            "name": "distinct authored names",
+            "ok": true
+          },
+          {
+            "name": "formatted accessible value",
+            "ok": true
+          },
+          {
+            "name": "real track click and captured drag",
+            "ok": true
+          },
+          {
+            "name": "cancel keeps live value without commit or later movement",
+            "ok": true
+          },
+          {
+            "name": "competing pointer ignored",
+            "ok": true
+          },
+          {
+            "name": "disable cancels without commit",
+            "ok": true
+          },
+          {
+            "name": "RTL right decrements",
+            "ok": true
+          },
+          {
+            "name": "Home reaches minimum",
+            "ok": true
+          },
+          {
+            "name": "PageUp largeStep",
+            "ok": true
+          },
+          {
+            "name": "Tab exits slider",
+            "ok": true
+          },
+          {
+            "name": "vertical pointer increases upward",
+            "ok": true
+          },
+          {
+            "name": "RTL pointer reverses physical position",
+            "ok": true
+          },
+          {
+            "name": "tiny decimal keys and spoken value stay exact",
+            "ok": true
+          },
+          {
+            "name": "lost capture cancels completion",
+            "ok": true
+          },
+          {
+            "name": "programmatic replacement cancels old gesture",
+            "ok": true
+          },
+          {
+            "name": "disconnect clears gesture lifetime",
+            "ok": true
+          },
+          {
+            "name": "reconnected native control is usable",
+            "ok": true
+          },
+          {
+            "name": "accessible slider naming",
+            "ok": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "results": [
+          {
+            "name": "native associated labels retain NodeList",
+            "ok": true
+          },
+          {
+            "name": "immediate repeated FormData",
+            "ok": true
+          },
+          {
+            "name": "immutable value snapshot",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "key emits one live and one completion",
+            "ok": true
+          },
+          {
+            "name": "native form reset default",
+            "ok": true
+          },
+          {
+            "name": "restoration",
+            "ok": true
+          },
+          {
+            "name": "supplied invalid values retained and invalid",
+            "ok": true
+          },
+          {
+            "name": "native displayed and announced values project into bounds",
+            "ok": true
+          },
+          {
+            "name": "transient impossible config is invalid",
+            "ok": true
+          },
+          {
+            "name": "staged properties recover exact value and submission",
+            "ok": true
+          },
+          {
+            "name": "projected thumb recovers",
+            "ok": true
+          },
+          {
+            "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+            "ok": true
+          },
+          {
+            "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+            "ok": true
+          },
+          {
+            "name": "Lit value-first bindings recover",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the native slider",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity updates the native slider",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "native completion clears its edit baseline",
+            "ok": true
+          },
+          {
+            "name": "fieldset immediate omission",
+            "ok": true
+          },
+          {
+            "name": "fieldset native disabled",
+            "ok": true
+          },
+          {
+            "name": "fieldset reenables",
+            "ok": true
+          },
+          {
+            "name": "three distinct native thumbs",
+            "ok": true
+          },
+          {
+            "name": "gap native bounds",
+            "ok": true
+          },
+          {
+            "name": "distinct authored names",
+            "ok": true
+          },
+          {
+            "name": "formatted accessible value",
+            "ok": true
+          },
+          {
+            "name": "real track click and captured drag",
+            "ok": true
+          },
+          {
+            "name": "cancel keeps live value without commit or later movement",
+            "ok": true
+          },
+          {
+            "name": "competing pointer ignored",
+            "ok": true
+          },
+          {
+            "name": "disable cancels without commit",
+            "ok": true
+          },
+          {
+            "name": "RTL right decrements",
+            "ok": true
+          },
+          {
+            "name": "Home reaches minimum",
+            "ok": true
+          },
+          {
+            "name": "PageUp largeStep",
+            "ok": true
+          },
+          {
+            "name": "Tab exits slider",
+            "ok": true
+          },
+          {
+            "name": "vertical pointer increases upward",
+            "ok": true
+          },
+          {
+            "name": "RTL pointer reverses physical position",
+            "ok": true
+          },
+          {
+            "name": "tiny decimal keys and spoken value stay exact",
+            "ok": true
+          },
+          {
+            "name": "lost capture cancels completion",
+            "ok": true
+          },
+          {
+            "name": "programmatic replacement cancels old gesture",
+            "ok": true
+          },
+          {
+            "name": "disconnect clears gesture lifetime",
+            "ok": true
+          },
+          {
+            "name": "reconnected native control is usable",
+            "ok": true
+          },
+          {
+            "name": "accessible slider naming",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "results": [
+          {
+            "name": "native associated labels retain NodeList",
+            "ok": true
+          },
+          {
+            "name": "immediate repeated FormData",
+            "ok": true
+          },
+          {
+            "name": "immutable value snapshot",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "key emits one live and one completion",
+            "ok": true
+          },
+          {
+            "name": "native form reset default",
+            "ok": true
+          },
+          {
+            "name": "restoration",
+            "ok": true
+          },
+          {
+            "name": "supplied invalid values retained and invalid",
+            "ok": true
+          },
+          {
+            "name": "native displayed and announced values project into bounds",
+            "ok": true
+          },
+          {
+            "name": "transient impossible config is invalid",
+            "ok": true
+          },
+          {
+            "name": "staged properties recover exact value and submission",
+            "ok": true
+          },
+          {
+            "name": "projected thumb recovers",
+            "ok": true
+          },
+          {
+            "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+            "ok": true
+          },
+          {
+            "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+            "ok": true
+          },
+          {
+            "name": "Lit value-first bindings recover",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the native slider",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity updates the native slider",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "native completion clears its edit baseline",
+            "ok": true
+          },
+          {
+            "name": "fieldset immediate omission",
+            "ok": true
+          },
+          {
+            "name": "fieldset native disabled",
+            "ok": true
+          },
+          {
+            "name": "fieldset reenables",
+            "ok": true
+          },
+          {
+            "name": "three distinct native thumbs",
+            "ok": true
+          },
+          {
+            "name": "gap native bounds",
+            "ok": true
+          },
+          {
+            "name": "distinct authored names",
+            "ok": true
+          },
+          {
+            "name": "formatted accessible value",
+            "ok": true
+          },
+          {
+            "name": "real track click and captured drag",
+            "ok": true
+          },
+          {
+            "name": "cancel keeps live value without commit or later movement",
+            "ok": true
+          },
+          {
+            "name": "competing pointer ignored",
+            "ok": true
+          },
+          {
+            "name": "disable cancels without commit",
+            "ok": true
+          },
+          {
+            "name": "RTL right decrements",
+            "ok": true
+          },
+          {
+            "name": "Home reaches minimum",
+            "ok": true
+          },
+          {
+            "name": "PageUp largeStep",
+            "ok": true
+          },
+          {
+            "name": "Tab exits slider",
+            "ok": true
+          },
+          {
+            "name": "vertical pointer increases upward",
+            "ok": true
+          },
+          {
+            "name": "RTL pointer reverses physical position",
+            "ok": true
+          },
+          {
+            "name": "tiny decimal keys and spoken value stay exact",
+            "ok": true
+          },
+          {
+            "name": "lost capture cancels completion",
+            "ok": true
+          },
+          {
+            "name": "programmatic replacement cancels old gesture",
+            "ok": true
+          },
+          {
+            "name": "disconnect clears gesture lifetime",
+            "ok": true
+          },
+          {
+            "name": "reconnected native control is usable",
+            "ok": true
+          },
+          {
+            "name": "accessible slider naming",
+            "ok": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "results": [
+          {
+            "name": "native associated labels retain NodeList",
+            "ok": true
+          },
+          {
+            "name": "immediate repeated FormData",
+            "ok": true
+          },
+          {
+            "name": "immutable value snapshot",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "key emits one live and one completion",
+            "ok": true
+          },
+          {
+            "name": "native form reset default",
+            "ok": true
+          },
+          {
+            "name": "restoration",
+            "ok": true
+          },
+          {
+            "name": "supplied invalid values retained and invalid",
+            "ok": true
+          },
+          {
+            "name": "native displayed and announced values project into bounds",
+            "ok": true
+          },
+          {
+            "name": "transient impossible config is invalid",
+            "ok": true
+          },
+          {
+            "name": "staged properties recover exact value and submission",
+            "ok": true
+          },
+          {
+            "name": "projected thumb recovers",
+            "ok": true
+          },
+          {
+            "name": "attribute order value=\"[300]\" min=\"200\" max=\"400\"",
+            "ok": true
+          },
+          {
+            "name": "attribute order max=\"400\" min=\"200\" value=\"[300]\"",
+            "ok": true
+          },
+          {
+            "name": "Lit value-first bindings recover",
+            "ok": true
+          },
+          {
+            "name": "custom validity reaches the native slider",
+            "ok": true
+          },
+          {
+            "name": "clearing custom validity updates the native slider",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-input",
+            "ok": true
+          },
+          {
+            "name": "form current inside acme-change",
+            "ok": true
+          },
+          {
+            "name": "native completion clears its edit baseline",
+            "ok": true
+          },
+          {
+            "name": "fieldset immediate omission",
+            "ok": true
+          },
+          {
+            "name": "fieldset native disabled",
+            "ok": true
+          },
+          {
+            "name": "fieldset reenables",
+            "ok": true
+          },
+          {
+            "name": "three distinct native thumbs",
+            "ok": true
+          },
+          {
+            "name": "gap native bounds",
+            "ok": true
+          },
+          {
+            "name": "distinct authored names",
+            "ok": true
+          },
+          {
+            "name": "formatted accessible value",
+            "ok": true
+          },
+          {
+            "name": "real track click and captured drag",
+            "ok": true
+          },
+          {
+            "name": "cancel keeps live value without commit or later movement",
+            "ok": true
+          },
+          {
+            "name": "competing pointer ignored",
+            "ok": true
+          },
+          {
+            "name": "disable cancels without commit",
+            "ok": true
+          },
+          {
+            "name": "RTL right decrements",
+            "ok": true
+          },
+          {
+            "name": "Home reaches minimum",
+            "ok": true
+          },
+          {
+            "name": "PageUp largeStep",
+            "ok": true
+          },
+          {
+            "name": "Tab exits slider",
+            "ok": true
+          },
+          {
+            "name": "vertical pointer increases upward",
+            "ok": true
+          },
+          {
+            "name": "RTL pointer reverses physical position",
+            "ok": true
+          },
+          {
+            "name": "tiny decimal keys and spoken value stay exact",
+            "ok": true
+          },
+          {
+            "name": "lost capture cancels completion",
+            "ok": true
+          },
+          {
+            "name": "programmatic replacement cancels old gesture",
+            "ok": true
+          },
+          {
+            "name": "disconnect clears gesture lifetime",
+            "ok": true
+          },
+          {
+            "name": "reconnected native control is usable",
+            "ok": true
+          },
+          {
+            "name": "accessible slider naming",
+            "ok": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "single Slider native arrow edit",
+          "range stops at its minimum gap",
+          "vertical Slider exposes orientation and increases upward",
+          "Number Input and Slider share application value",
+          "native form submits repeated values",
+          "Middle Truncate uses live Slider values"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "single Slider native arrow edit",
+          "range stops at its minimum gap",
+          "vertical Slider exposes orientation and increases upward",
+          "Number Input and Slider share application value",
+          "native form submits repeated values",
+          "Middle Truncate uses live Slider values"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "single Slider native arrow edit",
+          "range stops at its minimum gap",
+          "vertical Slider exposes orientation and increases upward",
+          "Number Input and Slider share application value",
+          "native form submits repeated values",
+          "Middle Truncate uses live Slider values"
+        ],
+        "errors": []
+      }
+    ],
+    "accent": {
+      "expected": "rgb(180, 30, 90)",
+      "observed": {
+        "chromium": "rgb(180, 30, 90)",
+        "firefox": "rgb(180, 30, 90)",
+        "webkit": "rgb(180, 30, 90)"
+      }
+    }
+  },
+  "appearance": {
+    "geometry": "Retains the previous generated 8px track and 6×14px handle dimensions. The handle rotates for vertical orientation.",
+    "adaptation": "The filled track and handle use the semantic accent, a rounded handle and background separator; the unfilled track uses a transparent neutral token. This keeps accent customization and contrast across surfaces. Material Expressive sizes are not adopted."
+  },
+  "references": "m13-slider-reference-review-2026-09-22.json",
+  "removals": [
+    "scalar value attribute parser",
+    "built-in numeric inputs and label layout",
+    "old Slider map and generated stylesheet",
+    "25 old base-sheet rule blocks"
+  ],
+  "reproductions": {
+    "source": "/tmp/slider-review/main-native-run.ts",
+    "compiled": "/tmp/slider-review/compiled-run.ts",
+    "docs": "/tmp/slider-review/docs-run.ts",
+    "fixture": "src/components/slider/__tests__/slider.browser.ts"
+  },
+  "limits": [
+    "Actual assistive-technology touch/voice and actual Safari remain final platform gates. Browser automation does not certify these.",
+    "Final React wrapper and cross-family composition audit remain M22/M26.",
+    "Material measurement conflicts and Web/Expressive differences remain explicit in the reference review."
+  ]
+}

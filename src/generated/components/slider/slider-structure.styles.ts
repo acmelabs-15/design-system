@@ -1,19 +1,194 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
 export const sliderStructureCss = css`:host {
+  min-inline-size: 120px;
   display: block;
 }
 
-.label :where(.text) {
-  cursor: text;
-  max-width: 100%;
-  color: var(--ds-gray-900);
-  margin-bottom: .5rem;
-  font-size: 13px;
-  display: block;
+.root {
+  align-items: center;
+  gap: 12px;
+  min-inline-size: 0;
+  display: flex;
 }
 
-.label:where(:not(.plain)) :where(.text) {
-  text-transform: capitalize;
+.control {
+  touch-action: none;
+  user-select: none;
+  cursor: pointer;
+  flex: 1;
+  align-items: center;
+  block-size: 36px;
+  min-inline-size: 80px;
+  display: flex;
+  position: relative;
+}
+
+.track {
+  background: var(--ds-gray-alpha-400);
+  border-radius: 4px;
+  block-size: 8px;
+  inline-size: 100%;
+  position: relative;
+}
+
+.range {
+  background: var(--accent);
+  border-radius: inherit;
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: var(--slider-start);
+  inset-inline-end: var(--slider-end);
+}
+
+.thumb {
+  justify-content: center;
+  align-items: center;
+  block-size: 32px;
+  inline-size: 24px;
+  display: flex;
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: var(--slider-position);
+  translate: -50% -50%;
+}
+
+:host(:dir(rtl)) .thumb {
+  translate: 50% -50%;
+}
+
+.handle {
+  background: var(--accent);
+  block-size: 14px;
+  inline-size: 6px;
+  box-shadow: 0 0 0 2px var(--ds-background-100);
+  border-radius: 3px;
+}
+
+.thumb[data-current] {
+  z-index: 1;
+}
+
+.thumb[data-focus="true"] .handle {
+  box-shadow: var(--ds-focus-ring);
+}
+
+.native {
+  opacity: 0;
+  block-size: 100%;
+  inline-size: 100%;
+  cursor: inherit;
+  margin: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.label {
+  white-space: nowrap;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  background: var(--ds-background-100);
+  color: var(--ds-gray-1000);
+  border: 1px solid var(--ds-gray-alpha-400);
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 4px;
+  padding-inline: 6px;
+  font-size: 12px;
+  line-height: 20px;
+  position: absolute;
+  inset-block-end: calc(100% + 2px);
+  inset-inline-start: 50%;
+  translate: -50%;
+}
+
+.thumb[data-current] .label {
+  opacity: var(--slider-label-opacity, 1);
+}
+
+.root[data-disabled] {
+  opacity: .5;
+}
+
+.root[data-disabled] .control {
+  cursor: default;
+}
+
+.root[data-orientation="vertical"] {
+  flex-direction: column;
+}
+
+.root[data-orientation="vertical"] .control {
+  flex: none;
+  justify-content: center;
+  block-size: 160px;
+  min-block-size: 80px;
+  inline-size: 36px;
+  min-inline-size: 36px;
+}
+
+.root[data-orientation="vertical"] .track {
+  block-size: 100%;
+  inline-size: 8px;
+}
+
+.root[data-orientation="vertical"] .range {
+  inset-block-start: var(--slider-end);
+  inset-block-end: var(--slider-start);
+  inset-inline: 0;
+}
+
+.root[data-orientation="vertical"] .thumb {
+  block-size: 24px;
+  inline-size: 32px;
+  inset-block-start: auto;
+  inset-block-end: var(--slider-position);
+  inset-inline-start: 50%;
+  translate: -50% 50%;
+}
+
+:host(:dir(rtl)) .root[data-orientation="vertical"] .thumb {
+  translate: 50% 50%;
+}
+
+.root[data-orientation="vertical"] .handle {
+  block-size: 6px;
+  inline-size: 14px;
+}
+
+.root[data-orientation="vertical"] .label {
+  inset-block: 50% auto;
+  inset-inline-start: calc(100% + 4px);
+  translate: 0 -50%;
+}
+
+@media (forced-colors: active) {
+  .track {
+    background: canvas;
+    border: 1px solid canvastext;
+  }
+
+  .range, .handle {
+    forced-color-adjust: none;
+    background: highlight;
+  }
+
+  .handle {
+    box-shadow: 0 0 0 2px canvas;
+  }
+
+  .thumb[data-focus="true"] .handle {
+    outline-offset: 4px;
+    outline: 2px solid highlight;
+  }
+
+  .root[data-disabled] {
+    opacity: 1;
+    color: graytext;
+  }
+
+  .root[data-disabled] .handle, .root[data-disabled] .range {
+    background: graytext;
+  }
 }
 `;
