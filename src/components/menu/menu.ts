@@ -1,11 +1,12 @@
-import { ContextConsumer, ContextProvider } from "@lit/context";
+import { ContextProvider } from "@lit/context";
 import { createAtom, batch } from "@tanstack/lit-store";
 import { flip, offset, shift, size, type Placement, type ReferenceElement } from "@floating-ui/dom";
 import { html } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, boolish, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
-import { menuContext, registerMenuOwner, type MenuEntry, type MenuOwner, type MenuReason } from "../../shared/menu-context";
+import { menuContext, registerMenuOwner, menuPartFor, menuOwnerFor, MenuConnection, type MenuPartKind, type MenuEntry, type MenuOwner, type MenuReason } from "../../shared/menu-context";
+import { ComposedParticipants } from "../../shared/composed-participants";
 import { OverlayPresence } from "../../shared/overlay-presence";
 import { OverlayPlacement } from "../../shared/overlay-placement";
 import { RovingTabindex } from "../../shared/roving-tabindex";
@@ -34,6 +35,7 @@ export class AcmeMenu extends AcmeElement {
     const previous = this.visibility;
     if (previous === Boolean(value)) return;
     this.visibility = Boolean(value);
+    this.restoreFocus = true;
     this.reason = "programmatic";
     this.requestUpdate("open", previous);
   }
@@ -44,13 +46,20 @@ export class AcmeMenu extends AcmeElement {
   private readonly state = createAtom(() => ({ open: this.open }));
   private readonly owner = this.createOwner();
   private readonly provider = new ContextProvider(this, { context: menuContext, initialValue: this.owner });
-  private parent?: AcmeMenu;
-  private readonly parentContext = new ContextConsumer(this, {
-    context: menuContext,
-    subscribe: true,
-    callback: (owner) => {
-      this.parent = owner.host instanceof AcmeMenu ? owner.host : undefined;
-    },
+  private readonly parentConnection = new MenuConnection(this, "root");
+  private get parent(): AcmeMenu | undefined {
+    const host = this.parentConnection.owner?.host;
+    return host instanceof AcmeMenu ? host : undefined;
+  }
+  private readonly participants = new Set<MenuConnection>();
+  private readonly scopes = new ComposedParticipants(this, {
+    owner: this.owner,
+    parts: () => [...this.participants],
+    find: menuPartFor,
+    boundary: (element) => !!menuOwnerFor(element as HTMLElement),
+    slots: () => Array.from(this.renderRoot?.querySelectorAll<HTMLSlotElement>("slot") ?? []),
+    descend: (part) => part.kind === "content" || part.kind === "item",
+    changed: () => this.requestUpdate(),
   });
   private readonly entries = new Set<MenuEntry>();
   private triggerPart?: HTMLElement;
@@ -173,15 +182,18 @@ export class AcmeMenu extends AcmeElement {
   private get items(): MenuEntry[] {
     return [...this.entries].filter((item) => item.isConnected && item.getClientRects().length > 0).sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1));
   }
-  private register(part: HTMLElement, kind: "item" | "trigger" | "content") {
+  private register(part: HTMLElement, kind: MenuPartKind) {
+    const participant = menuPartFor(part);
+    if (participant) this.participants.add(participant);
     if (kind === "item") this.entries.add(part as MenuEntry);
     else if (kind === "trigger") this.triggerPart = part;
-    else {
+    else if (kind === "content") {
       if (this.content && this.content !== part) throw new Error("Menu accepts one Content");
       this.content = part;
     }
     this.requestUpdate();
     return () => {
+      if (participant) this.participants.delete(participant);
       if (kind === "item") {
         this.entries.delete(part as MenuEntry);
         if (this.current === part) {
@@ -367,7 +379,6 @@ export class AcmeMenu extends AcmeElement {
     this.pendingFocus = undefined;
     this.openingAnchor = undefined;
     this.reference = undefined;
-    this.parent = undefined;
     super.disconnectedCallback();
   }
   render() {

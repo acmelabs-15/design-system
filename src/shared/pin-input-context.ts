@@ -4,6 +4,8 @@ export interface PinFieldPart {
   readonly host: HTMLElement;
   readonly control: HTMLInputElement;
   index(): number | undefined;
+  currentOwner(): PinInputOwner | undefined;
+  reconnect(): void;
 }
 export type PinPresentation = Readonly<{
   count: number;
@@ -23,3 +25,14 @@ export interface PinInputOwner {
   submit(): void;
 }
 export const pinInputContext = createContext<PinInputOwner>(Symbol("acme-pin-input-owner"));
+
+const parts = new WeakMap<Element, PinFieldPart>();
+const boundaries = new WeakSet<Element>();
+export const registerPinFieldPart = (part: PinFieldPart): void => {
+  parts.set(part.host, part);
+};
+export const pinFieldPartFor = (element: Element): PinFieldPart | undefined => parts.get(element);
+export const registerPinInputBoundary = (element: Element): void => {
+  boundaries.add(element);
+};
+export const isPinInputBoundary = (element: Element): boolean => boundaries.has(element);

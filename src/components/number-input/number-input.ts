@@ -3,7 +3,16 @@ import { boolish } from "../../base";
 import { StoreEffect } from "../../shared/state";
 import { createAtom, batch } from "@tanstack/lit-store";
 import { ContextProvider } from "@lit/context";
-import { numberInputContext, type NumberActionState } from "../../shared/number-input-context";
+import {
+  numberInputContext,
+  numberInputPartFor,
+  registerNumberInputBoundary,
+  isNumberInputBoundary,
+  type NumberInputPart,
+  type NumberInputOwner,
+  type NumberActionState,
+} from "../../shared/number-input-context";
+import { ComposedParticipants } from "../../shared/composed-participants";
 import { PressRepeat } from "../../shared/press-repeat";
 import { numberOptionsSnapshot } from "../../shared/number-options";
 import { NumberParser } from "@internationalized/number";
@@ -275,6 +284,7 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
   }
   constructor() {
     super();
+    registerNumberInputBoundary(this);
     this.control.addEventListener("beforeinput", (raw) => {
       const event = raw as InputEvent;
       if (event.defaultPrevented || event.isComposing || event.inputType.startsWith("delete") || event.data === null) return;
@@ -334,14 +344,24 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
       decrementLabel: this.text("numberInput.decrement", "Decrease value"),
     };
   });
-  private readonly numberContext = new ContextProvider(this, {
-    context: numberInputContext,
-    initialValue: {
-      state: this.actionState,
-      step: (direction) => this.stepBy(direction),
-      press: (event, direction) => this.repeat.start(event, direction),
-      release: (target) => this.repeat.stop(target),
+  private readonly participants = createAtom<readonly NumberInputPart[]>([]);
+  private readonly numberOwner: NumberInputOwner = {
+    state: this.actionState,
+    register: (part) => {
+      if (!this.participants.get().includes(part)) this.participants.set([...this.participants.get(), part]);
     },
+    unregister: (part) => this.participants.set(this.participants.get().filter((item) => item !== part)),
+    step: (direction) => this.stepBy(direction),
+    press: (event, direction) => this.repeat.start(event, direction),
+    release: (target) => this.repeat.stop(target),
+  };
+  private readonly numberContext = new ContextProvider(this, { context: numberInputContext, initialValue: this.numberOwner });
+  private readonly scopes = new ComposedParticipants(this, {
+    owner: this.numberOwner,
+    parts: () => this.participants.get(),
+    find: numberInputPartFor,
+    boundary: isNumberInputBoundary,
+    slots: () => Array.from(this.renderRoot?.querySelectorAll<HTMLSlotElement>(".number-control slot") ?? []),
   });
   protected get trackedPlaces() {
     return [...super.trackedPlaces, ""];

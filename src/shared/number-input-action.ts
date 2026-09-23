@@ -2,18 +2,24 @@ import { ContextConsumer } from "@lit/context";
 import { createAtom } from "@tanstack/lit-store";
 import { property } from "lit/decorators.js";
 import { AcmeActionElement, type ButtonSize, type ButtonVariant } from "./action-element";
-import { numberInputContext, type NumberInputOwner } from "./number-input-context";
+import { numberInputContext, registerNumberInputPart, type NumberInputOwner, type NumberInputPart } from "./number-input-context";
 import { StoreSelector } from "./store-connection";
 import { optionalString } from "./attributes";
 /** An action owned by its nearest Number Input. */
 export abstract class AcmeNumberInputAction extends AcmeActionElement {
   protected abstract get direction(): 1 | -1;
   private readonly ownerState = createAtom<{ owner?: NumberInputOwner }>({});
+  private readonly registration: NumberInputPart = { host: this, currentOwner: () => this.owner, reconnect: () => this.reconnectOwner() };
   private readonly context = new ContextConsumer(this, {
     context: numberInputContext,
     subscribe: true,
     callback: (owner) => {
-      this.ownerState.set({ owner });
+      if (this.owner !== owner) {
+        this.owner?.release(this);
+        this.owner?.unregister(this.registration);
+        this.ownerState.set({ owner });
+        owner.register(this.registration);
+      }
       this.requestUpdate();
     },
   });
@@ -70,13 +76,25 @@ export abstract class AcmeNumberInputAction extends AcmeActionElement {
   }
   constructor() {
     super();
+    registerNumberInputPart(this.registration);
     this.addEventListener("pointerdown", (event) => {
       if (!this.effectiveDisabled) this.owner?.press(event, this.direction);
     });
   }
+  private reconnectOwner(): void {
+    this.owner?.release(this);
+    this.owner?.unregister(this.registration);
+    this.ownerState.set({});
+    this.context.hostDisconnected();
+    this.context.value = undefined;
+    if (this.isConnected) this.context.hostConnected();
+    this.requestUpdate();
+  }
   disconnectedCallback() {
     this.owner?.release(this);
+    this.owner?.unregister(this.registration);
     this.ownerState.set({});
+    this.context.value = undefined;
     super.disconnectedCallback();
   }
 }

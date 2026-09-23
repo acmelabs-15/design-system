@@ -70,3 +70,35 @@ test("derived modifier steps retain decimal precision", async () => {
   expect(c.smallStep).toBe(0.07);
   c.remove();
 });
+
+test("Number Input actions transfer ownership on DOM moves and reconnect", async () => {
+  const app = document.createElement("div");
+  app.innerHTML = '<acme-number-input id="left" value="1"></acme-number-input><acme-number-input id="right" value="10"></acme-number-input>';
+  const parts = document.createElement("div");
+  parts.innerHTML = "<acme-number-input-increment></acme-number-input-increment><acme-number-input-decrement></acme-number-input-decrement>";
+  app.querySelector("acme-number-input")!.append(...parts.children);
+  const settle = async () => {
+    for (let i = 0; i < 3; i++) await new Promise((resolve) => setTimeout(resolve, 0));
+  };
+  document.body.append(app);
+  try {
+    await settle();
+    const left = app.querySelectorAll("acme-number-input")[0]!;
+    const right = app.querySelectorAll("acme-number-input")[1]!;
+    const increment = app.querySelector("acme-number-input-increment")!;
+    const decrement = app.querySelector("acme-number-input-decrement")!;
+    increment.removeAttribute("slot");
+    decrement.removeAttribute("slot");
+    right.append(increment, decrement);
+    await settle();
+    increment.click();
+    expect([left.value, right.value]).toEqual(["1", "11"]);
+    decrement.click();
+    expect([left.value, right.value]).toEqual(["1", "10"]);
+    app.append(increment, decrement);
+    await settle();
+    for (const part of [increment, decrement]) expect(part.shadowRoot!.querySelector("button")!.disabled).toBe(true);
+  } finally {
+    app.remove();
+  }
+});

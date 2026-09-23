@@ -8,7 +8,7 @@ import { atomState } from "../../shared/atom-state";
 import { StoreSelector } from "../../shared/store-connection";
 import { createInheritedAppearance } from "../../shared/inherited-appearance";
 import { GroupMemberController, groupMemberStyles } from "../../shared/group-member";
-import { pinInputContext, type PinFieldPart, type PinInputOwner } from "../../shared/pin-input-context";
+import { pinInputContext, registerPinFieldPart, type PinFieldPart, type PinInputOwner } from "../../shared/pin-input-context";
 import { textControlCss } from "../../generated/shared/text-control.styles";
 import { pinInputFieldStructureCss } from "../../generated/components/pin-input-field/pin-input-field-structure.styles";
 /** One indexed character field owned by the nearest Pin Input.
@@ -45,7 +45,7 @@ export class AcmePinInputField extends AcmeSemanticElement {
     this.owner?.synchronize();
     this.requestUpdate("index");
   }
-  private readonly registration: PinFieldPart = { host: this, control: this.control, index: () => this.index };
+  private readonly registration: PinFieldPart = { host: this, control: this.control, index: () => this.index, currentOwner: () => this.owner, reconnect: () => this.reconnectOwner() };
   private readonly context = new ContextConsumer(this, {
     context: pinInputContext,
     subscribe: true,
@@ -60,6 +60,7 @@ export class AcmePinInputField extends AcmeSemanticElement {
   });
   constructor() {
     super();
+    registerPinFieldPart(this.registration);
     this.control.className = "native";
     this.control.setAttribute("part", "input");
     this.control.disabled = true;
@@ -77,11 +78,22 @@ export class AcmePinInputField extends AcmeSemanticElement {
   focus(options?: FocusOptions) {
     this.control.focus(options);
   }
+  private reconnectOwner(): void {
+    this.owner?.unregister(this.registration);
+    this.ownerState.set({});
+    this.control.disabled = true;
+    this.control.value = "";
+    this.context.hostDisconnected();
+    this.context.value = undefined;
+    if (this.isConnected) this.context.hostConnected();
+    this.requestUpdate();
+  }
   disconnectedCallback() {
     this.owner?.unregister(this.registration);
     this.ownerState.set({});
     this.control.disabled = true;
     this.control.value = "";
+    this.context.value = undefined;
     super.disconnectedCallback();
   }
   protected updated() {

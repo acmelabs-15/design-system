@@ -1,6 +1,7 @@
 import { ContextProvider } from "@lit/context";
+import { ComposedParticipants } from "../../shared/composed-participants";
 import { Places } from "../../shared/places";
-import { pinInputContext, type PinFieldPart, type PinPresentation } from "../../shared/pin-input-context";
+import { pinInputContext, pinFieldPartFor, registerPinInputBoundary, isPinInputBoundary, type PinInputOwner, type PinFieldPart, type PinPresentation } from "../../shared/pin-input-context";
 import { sharedCss } from "../../base";
 import { optionalString } from "../../shared/attributes";
 import { message, messageCatalogs } from "../../shared/messages";
@@ -135,15 +136,20 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     locale: this.themeContext.scope.effective.get().locale,
     labelTemplate: this.text("pinInput.character", "Character {index} of {count}"),
   }));
-  private readonly provider = new ContextProvider(this, {
-    context: pinInputContext,
-    initialValue: {
-      state: this.presentation,
-      register: (part) => this.register(part),
-      unregister: (part) => this.unregister(part),
-      synchronize: () => this.nativeForm.sync(),
-      submit: () => this.submit(),
-    },
+  private readonly pinOwner: PinInputOwner = {
+    state: this.presentation,
+    register: (part) => this.register(part),
+    unregister: (part) => this.unregister(part),
+    synchronize: () => this.nativeForm.sync(),
+    submit: () => this.submit(),
+  };
+  private readonly provider = new ContextProvider(this, { context: pinInputContext, initialValue: this.pinOwner });
+  private readonly scopes = new ComposedParticipants(this, {
+    owner: this.pinOwner,
+    parts: () => this.registered.get(),
+    find: pinFieldPartFor,
+    boundary: isPinInputBoundary,
+    slots: () => Array.from(this.renderRoot?.querySelectorAll<HTMLSlotElement>(".pin-root > slot") ?? []),
   });
   private readonly constraint = this.ownerDocument.createElement("input");
   private readonly committed = createAtom<{ value?: string }>({});
@@ -261,6 +267,7 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
   }
   constructor() {
     super();
+    registerPinInputBoundary(this);
     registerTextControl(this);
   }
   private emit(type: "acme-input" | "acme-change" | "acme-complete") {

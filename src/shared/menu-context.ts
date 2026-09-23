@@ -3,6 +3,7 @@ import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveController, ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
 export type MenuReason = "trigger" | "escape" | "outside" | "close-control" | "selection" | "programmatic";
+export type MenuPartKind = "item" | "trigger" | "content" | "root";
 export interface MenuEntry extends HTMLElement {
   value: string;
   type: "action" | "checkbox" | "radio";
@@ -17,7 +18,7 @@ export interface MenuOwner {
   readonly state: ReadonlyAtom<{ open: boolean }>;
   readonly contentElement: HTMLElement | undefined;
   readonly triggerElement: HTMLElement | undefined;
-  register(part: HTMLElement, kind: "item" | "trigger" | "content"): () => void;
+  register(part: HTMLElement, kind: MenuPartKind): () => void;
   toggle(): void;
   openFromTrigger(edge?: "first" | "last"): void;
   select(item: MenuEntry): void;
@@ -28,6 +29,8 @@ export interface MenuOwner {
 }
 export const menuContext = createContext<MenuOwner>(Symbol("acme-menu-owner"));
 const owners = new WeakMap<HTMLElement, MenuOwner>();
+const parts = new WeakMap<Element, MenuConnection>();
+export const menuPartFor = (element: Element): MenuConnection | undefined => parts.get(element);
 export const registerMenuOwner = (element: HTMLElement, owner: MenuOwner): void => {
   owners.set(element, owner);
 };
@@ -40,9 +43,10 @@ export class MenuConnection implements ReactiveController {
   private readonly presentation = createAtom(() => ({ owner: this.binding.get().owner, open: this.binding.get().owner?.state.get().open }));
   private readonly updates: StoreSelector<{ owner?: MenuOwner; open?: boolean }>;
   constructor(
-    private host: ReactiveElement,
-    kind: "item" | "trigger" | "content",
+    readonly host: ReactiveElement,
+    readonly kind: MenuPartKind,
   ) {
+    parts.set(host, this);
     this.consumer = new ContextConsumer(host, {
       context: menuContext,
       subscribe: true,
@@ -60,9 +64,18 @@ export class MenuConnection implements ReactiveController {
   get owner() {
     return this.binding.get().owner;
   }
+  currentOwner(): MenuOwner | undefined {
+    return this.owner;
+  }
+  reconnect(): void {
+    this.hostDisconnected();
+    this.consumer.hostDisconnected();
+    if (this.host.isConnected) this.consumer.hostConnected();
+  }
   hostDisconnected() {
     this.cleanup?.();
     this.cleanup = undefined;
     this.binding.set({});
+    this.consumer.value = undefined;
   }
 }
