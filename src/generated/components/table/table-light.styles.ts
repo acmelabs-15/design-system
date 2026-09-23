@@ -1,0 +1,200 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const tableLightCss = css`acme-table > table {
+  border-collapse: separate;
+  border-spacing: 0;
+  inline-size: 100%;
+  color: var(--ds-gray-900);
+  text-align: start;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-size: .875rem;
+  line-height: 1.42857;
+}
+
+acme-table > table > caption {
+  color: var(--ds-gray-900);
+  text-align: start;
+  padding-block: var(--acme-spacing-3);
+  font-weight: var(--acme-font-weight-500);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr {
+  block-size: var(--acme-table-row-height, auto);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > :is(th, td) {
+  box-sizing: border-box;
+  inline-size: var(--acme-table-column-width, auto);
+  padding-block: var(--acme-table-padding-block);
+  padding-inline: var(--acme-table-padding-inline);
+  text-align: inherit;
+  vertical-align: middle;
+  background: var(--_acme-table-row-background, var(--ds-background-100));
+}
+
+acme-table > table > thead > tr > th {
+  font-weight: var(--acme-font-weight-500);
+  border-block-end: 1px solid var(--ds-gray-400);
+}
+
+acme-table > table > tbody > tr > th {
+  font-weight: var(--acme-font-weight-500);
+}
+
+acme-table > table > tfoot > tr > :is(th, td) {
+  font-weight: var(--acme-font-weight-500);
+  border-block-start: 1px solid var(--ds-gray-400);
+  color: var(--ds-gray-1000);
+}
+
+acme-table[variant="striped"] > table > tbody > tr:nth-child(odd) {
+  --_acme-table-row-background: var(--ds-background-200);
+}
+
+acme-table[variant="bordered"] > table > tbody > tr:not(:last-child) > :is(th, td) {
+  border-block-end: 1px solid var(--ds-gray-400);
+}
+
+acme-table[size="small"] > table {
+  font-size: .875rem;
+}
+
+acme-table[size="small"] > table > :is(thead, tbody, tfoot) > tr > :is(th, td) {
+  padding-block: max(0px,calc(var(--acme-table-padding-block) - var(--acme-spacing-1)));
+}
+
+acme-table[size="large"] > table {
+  font-size: 1rem;
+}
+
+acme-table[size="large"] > table > :is(thead, tbody, tfoot) > tr > :is(th, td) {
+  padding-inline: calc(var(--acme-table-padding-inline) + var(--acme-spacing-1));
+}
+
+acme-table[sticky-header] > table > thead {
+  z-index: 3;
+  position: sticky;
+  inset-block-start: var(--acme-table-sticky-block-start, 0px);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > [data-pinned="start"] {
+  z-index: 2;
+  position: sticky;
+  inset-inline-start: var(--acme-table-sticky-inline-start, 0px);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > [data-pinned="end"] {
+  z-index: 2;
+  position: sticky;
+  inset-inline-end: var(--acme-table-sticky-inline-end, 0px);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr[data-pinned="top"] {
+  z-index: 2;
+  position: sticky;
+  inset-block-start: var(--acme-table-sticky-block-start, 0px);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr[data-pinned="bottom"] {
+  z-index: 2;
+  position: sticky;
+  inset-block-end: var(--acme-table-sticky-block-end, 0px);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr[aria-selected="true"] {
+  --_acme-table-row-background: var(--accent-weak);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > :is(th, td)[aria-selected="true"] {
+  background: var(--accent-weak);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > :is(th, td):focus-visible {
+  outline: 2px solid var(--ds-focus-color);
+  outline-offset: -2px;
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > [data-range-start] {
+  --_table-range-start: inset 2px 0 0 var(--ds-focus-color);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > [data-range-end] {
+  --_table-range-end: inset -2px 0 0 var(--ds-focus-color);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > [data-range-top] {
+  --_table-range-top: inset 0 2px 0 var(--ds-focus-color);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > [data-range-bottom] {
+  --_table-range-bottom: inset 0 -2px 0 var(--ds-focus-color);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr[data-acme-table-part="spacer"] {
+  block-size: var(--acme-table-spacer-height, 0px);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr[data-acme-table-part="spacer"] > td {
+  block-size: var(--acme-table-spacer-height, 0px);
+  border: 0;
+  padding: 0;
+}
+
+acme-table > table > colgroup > col {
+  inline-size: var(--acme-table-column-width, auto);
+}
+
+@media (forced-colors: active) {
+  acme-table > table > :is(thead, tbody, tfoot) > tr[aria-selected="true"] > :is(th, td), acme-table > table > :is(thead, tbody, tfoot) > tr > :is(th, td)[aria-selected="true"] {
+    outline: 1px solid highlight;
+  }
+}
+
+acme-table > table > thead > tr > th {
+  block-size: var(--ds-size-medium);
+  padding-block: 0;
+}
+
+acme-table[size="small"] > table > thead > tr > th {
+  block-size: var(--ds-size-small);
+  padding-block: 0;
+}
+
+acme-table[size="large"] > table > thead > tr > th {
+  block-size: var(--ds-size-large);
+  padding-block: 0;
+}
+
+acme-table[variant="striped"] > table > tbody > tr > :is(th, td):first-child {
+  border-start-start-radius: .375rem;
+  border-end-start-radius: .375rem;
+}
+
+acme-table[variant="striped"] > table > tbody > tr > :is(th, td):last-child {
+  border-start-end-radius: .375rem;
+  border-end-end-radius: .375rem;
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > :is(th, td) {
+  box-shadow: var(--_table-range-start, inset 0 0 #0000),var(--_table-range-end, inset 0 0 #0000),var(--_table-range-top, inset 0 0 #0000),var(--_table-range-bottom, inset 0 0 #0000);
+}
+
+acme-table:dir(rtl) > table > :is(thead, tbody, tfoot) > tr > [data-range-start] {
+  --_table-range-start: inset -2px 0 0 var(--ds-focus-color);
+}
+
+acme-table:dir(rtl) > table > :is(thead, tbody, tfoot) > tr > [data-range-end] {
+  --_table-range-end: inset 2px 0 0 var(--ds-focus-color);
+}
+
+acme-table > table {
+  --_acme-table-row-background: var(--ds-background-100);
+}
+
+acme-table > table > :is(thead, tbody, tfoot) > tr > :is(th, td) {
+  --_table-range-start: inset 0 0 #0000;
+  --_table-range-end: inset 0 0 #0000;
+  --_table-range-top: inset 0 0 #0000;
+  --_table-range-bottom: inset 0 0 #0000;
+}
+`;

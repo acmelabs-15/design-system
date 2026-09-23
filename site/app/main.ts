@@ -1,6 +1,11 @@
+import { createElement } from "react";
+import { createRoot, type Root } from "react-dom/client";
 // Entry for the docs app bundle: the design system (compiled), the router app, and the
 // "Show code" toggle. Bundled by site/build.ts into _site/app.js.
 import { createToastStore, registerTheme } from "../../dist/index";
+import { DeliveryTableLit } from "../../examples/table/lit";
+import { DeliveryTableReact } from "../../examples/table/react";
+import { VirtualDeliveryLit } from "../../examples/table/virtual-lit";
 import "../../dist/all";
 import { AcmeDocsApp, DocsFormDemo, DocsSwatch, DocsTokens } from "./docs-app";
 
@@ -10,7 +15,22 @@ declare global {
   }
 }
 
+class DocsReactTable extends HTMLElement {
+  private root?: Root;
+  connectedCallback() {
+    this.root ??= createRoot(this);
+    this.root.render(createElement(DeliveryTableReact, { ready: () => {} }));
+  }
+  disconnectedCallback() {
+    this.root?.unmount();
+    this.root = undefined;
+  }
+}
+
 export function startDocs(): void {
+  customElements.define("docs-table-lit", DeliveryTableLit);
+  customElements.define("docs-table-react", DocsReactTable);
+  customElements.define("docs-table-virtual", VirtualDeliveryLit);
   customElements.define("docs-tokens", DocsTokens);
   customElements.define("docs-swatch", DocsSwatch);
   customElements.define("docs-form-demo", DocsFormDemo);

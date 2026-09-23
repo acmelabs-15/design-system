@@ -130,7 +130,7 @@ export class AcmeDocsApp extends LitElement {
     const next = i >= 0 && i < this.flat.length - 1 ? this.flat[i + 1] : undefined;
     return html`<main class="docs-main">
       ${this.missing ? html`<article class="doc"><div class="doc-hero"><h1>Not found</h1><p>No page at this address. <a href="${prefix}/">Start over</a>.</p></div></article>` : unsafeHTML(this.body)}
-      ${prev || next ? html`<acme-pagination prev-title=${prev?.title ?? ""} prev-href=${prev ? `${prefix}/${prev.href}` : ""} next-title=${next?.title ?? ""} next-href=${next ? `${prefix}/${next.href}` : ""}></acme-pagination>` : nothing}
+      ${prev || next ? html`<nav aria-label="Documentation pages"><acme-h-stack justify-content="space-between" flex-wrap="wrap">${prev ? html`<acme-link href=${`${prefix}/${prev.href}`}>Previous: ${prev.title}</acme-link>` : nothing}${next ? html`<acme-link href=${`${prefix}/${next.href}`}>Next: ${next.title}</acme-link>` : nothing}</acme-h-stack></nav>` : nothing}
       <p class="foot">ACME Design System · Foundations and components after vercel.com/geist, read in full · Google Sans Flex and Google Sans Code · Built with Lit.</p>
     </main>`;
   }

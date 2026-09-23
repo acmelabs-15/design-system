@@ -554,10 +554,6 @@ a:hover {
   margin-left: auto;
 }
 
-@media (width <= 560px) {
-
-}
-
 .ic {
   stroke: currentColor;
   fill: none;
@@ -605,6 +601,11 @@ html {
 
 .hue-gray {
   color: var(--ds-gray-900);
+}
+
+.table td[class*="hue-"] {
+  font-family: var(--acme-font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 @media (width <= 560px) {

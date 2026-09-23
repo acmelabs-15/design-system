@@ -13,7 +13,7 @@ The [central handoff](README.md#where-we-are) owns current status. The [inventor
 | User-owned decision queue | Original five recommendations approved in [the register](proposal-questions.md); [explicit helper clearing](../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper) selected 2026-09-21; @lit/context selected under [delegated execution](../decisions/execution-delegation.md); remaining choices are agent-owned |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
 | Phase 5 | [Migration plan approved](../decisions/migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01–M18 complete at assigned native/Lit boundaries. M19–M26 and the named cross-batch acceptance gates remain. |
+| Phase 6 | M01–M19 complete at assigned boundaries. M20–M26 and the named cross-batch acceptance gates remain. |
 
 These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The design contracts are approved; they are not implemented or verified components. Technical gates remain distinct from the recorded design review.
 
@@ -92,3 +92,7 @@ Replacing the Empty State page temporarily removed Icon Tile's only documentatio
 ### M22/M25/M26 durable browser and platform acceptance — 2026-09-23
 
 M25 must consolidate the saved browser acceptance cases and colocated fixtures into the durable CI harness, rather than depending on temporary runner paths. M18 evidence embeds Toast and Feedback case bodies; earlier evidence retains named scripts and fixture files. M22/M26 must verify actual OS background-window pause/resume for Toast: headless-tab switching did not reproduce the required document visibility/focus state. Injected visibility-event integration and independent timer tests pass.
+
+### M25 dependency and consumer gates — 2026-09-23
+
+Retain the combined custom-feature/experimental-worker type regression when changing Table dependencies. The dev-only 9.2.4 declaration patch is verified in a fresh packed consumer; runtime JavaScript is unchanged. The design-system package has no Table engine dependency. Audit the now-unused library runtime @tanstack/lit-virtual dependency during the planned dependency cleanup; virtualization lives in explicit consumer examples.

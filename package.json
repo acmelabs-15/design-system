@@ -13792,6 +13792,36 @@
       "import": "./dist/components/pagination/pagination.js",
       "default": "./dist/components/pagination/pagination.js"
     },
+    "./components/pagination-ellipsis": {
+      "types": "./dist/components/pagination-ellipsis/pagination-ellipsis.d.ts",
+      "import": "./dist/components/pagination-ellipsis/pagination-ellipsis.js",
+      "default": "./dist/components/pagination-ellipsis/pagination-ellipsis.js"
+    },
+    "./components/pagination-item": {
+      "types": "./dist/components/pagination-item/pagination-item.d.ts",
+      "import": "./dist/components/pagination-item/pagination-item.js",
+      "default": "./dist/components/pagination-item/pagination-item.js"
+    },
+    "./components/pagination-next": {
+      "types": "./dist/components/pagination-next/pagination-next.d.ts",
+      "import": "./dist/components/pagination-next/pagination-next.js",
+      "default": "./dist/components/pagination-next/pagination-next.js"
+    },
+    "./components/pagination-page-size": {
+      "types": "./dist/components/pagination-page-size/pagination-page-size.d.ts",
+      "import": "./dist/components/pagination-page-size/pagination-page-size.js",
+      "default": "./dist/components/pagination-page-size/pagination-page-size.js"
+    },
+    "./components/pagination-position": {
+      "types": "./dist/components/pagination-position/pagination-position.d.ts",
+      "import": "./dist/components/pagination-position/pagination-position.js",
+      "default": "./dist/components/pagination-position/pagination-position.js"
+    },
+    "./components/pagination-previous": {
+      "types": "./dist/components/pagination-previous/pagination-previous.d.ts",
+      "import": "./dist/components/pagination-previous/pagination-previous.js",
+      "default": "./dist/components/pagination-previous/pagination-previous.js"
+    },
     "./components/paid-icon": {
       "types": "./dist/generated/icons/classes/paid-icon.d.ts",
       "import": "./dist/generated/icons/classes/paid-icon.js",
@@ -21674,18 +21704,28 @@
     "@custom-elements-manifest/analyzer": "0.11.0",
     "@happy-dom/global-registrator": "^20.14.0",
     "@lit-labs/compiler": "^1.1.2",
+    "@tanstack/lit-table": "9.2.4",
+    "@tanstack/react-store": "0.11.1",
+    "@tanstack/react-table": "9.2.4",
+    "@tanstack/react-virtual": "3.14.0",
+    "@tanstack/table-core": "9.2.4",
     "@types/bun": "^1.4.2",
     "@types/node": "^26.5.0",
+    "@types/react": "19",
+    "@types/react-dom": "19",
     "cldr-units-full": "48.2.0",
     "happy-dom": "^15.11.0",
     "lightningcss": "1.33.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "ts-lit-plugin": "^2.0.2",
     "typescript": "~5.9.0",
     "typescript-lit-html-plugin": "^0.9.1"
   },
   "patchedDependencies": {
     "@custom-elements-manifest/analyzer@0.11.0": "patches/@custom-elements-manifest%2Fanalyzer@0.11.0.patch",
-    "@internationalized/date@3.12.4": "patches/@internationalized%2Fdate@3.12.4.patch"
+    "@internationalized/date@3.12.4": "patches/@internationalized%2Fdate@3.12.4.patch",
+    "@tanstack/table-core@9.2.4": "patches/@tanstack%2Ftable-core@9.2.4.patch"
   },
   "customElements": "./dist/custom-elements.json",
   "workspaces": [

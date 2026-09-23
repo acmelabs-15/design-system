@@ -8,13 +8,13 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
-**Completed:** M01–M18 are complete at their assigned boundaries. [Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes M13 with the strict build, site, 900 tests and all-engine native/compiled/documentation/overlay checks. Final React-wrapper, actual platform and whole-library gates remain M22/M26.
+**Completed:** M01–M19 are complete at their assigned boundaries. [Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes M13 with the strict build, site, 900 tests and all-engine native/compiled/documentation/overlay checks. Final React-wrapper, actual platform and whole-library gates remain M22/M26.
 
-**Current work:** M18 is complete at its assigned native/Lit boundary: [Toast](evidence/m18-toast-2026-09-23.json), [Feedback](evidence/m18-feedback-2026-09-23.json) and the preceding display/message records close all eight entries. **Next: M19** — native author-owned Table, coordinated results Pagination and consumer-owned TanStack Table/Virtual examples. R11 and both Table/Pagination decisions are read. The old Table and Pagination sources are read in full. Current Chakra Table/Pagination, Radix Table, TanStack Table/Virtual and APG sources are under review; finish the source reads and record findings before implementation. No M19 source changes yet. M19–M26 remain.
+**Current work:** [M19 Table/Pagination](evidence/m19-table-pagination-2026-09-23.json) is complete at its assigned boundaries, including both consumer frameworks, virtualization and real experimental workers. **Next: M20** — Chart, Sparkline, Legend and ELK Flow Diagram. R11 is read. All existing Chart (106 lines), Spark (32), Legend (25) and Legend Item (26) source files, the Flow Diagram decision and the installed Charts 0.16.2 README are read in full. Continue with the installed Charts documentation/skills and the recorded ELK scope before implementation. No M20 source changes yet. M20–M26 remain. M19 scratch/evidence is /tmp/acme-m19.
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
-**Next batches:** continue M19–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
+**Next batches:** continue M20–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
 
 **Working copies and workers:** parallel workers stopped at an account usage limit. Their work is saved in /tmp/acme-m13-slider-worktree and /tmp/acme-m13-calendar-worktree, both based on 924ad0bd9. Slider and the date-runtime correction are already integrated and committed; main Calendar now contains the later fixes. Continue locally. Do not overwrite main files with older worktree copies.
 

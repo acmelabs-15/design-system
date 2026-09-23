@@ -1,63 +1,58 @@
-// Docs page: Table — mirrors https://vercel.com/geist/table
 import type { Doc } from "../../site";
 
-const cols3 = `columns='[{"key":"c1","label":"Col 1"},{"key":"c2","label":"Col 2"},{"key":"c3","label":"Col 3"}]'`;
-const rows3 = `rows='[{"c1":"Value 1.1","c2":"Value 1.2","c3":"Value 1.3"},{"c1":"Value 2.1","c2":"Value 2.2","c3":"Value 2.3"},{"c1":"Value 3.1","c2":"Value 3.2","c3":"Value 3.3"}]'`;
-const cols4 = `columns='[{"key":"product","label":"Product","width":"44%"},{"key":"usage","label":"Usage","width":"22%"},{"key":"price","label":"Price","width":"22%"},{"key":"charge","label":"Charge","width":"11%"}]'`;
-const items = [
-  { product: "Brake Pads Set", usage: "100 sets", price: "$50 per set", charge: 5000 },
-  { product: "Oil Filters", usage: "200 filters", price: "$10 per filter", charge: 2000 },
-  { product: "Car Batteries", usage: "50 batteries", price: "$100 per battery", charge: 5000 },
-  { product: "Headlight Bulbs", usage: "300 bulbs", price: "$15 per bulb", charge: 4500 },
-  { product: "Windshield Wipers", usage: "250 pairs", price: "$20 per pair", charge: 5000 },
-  { product: "Spark Plugs", usage: "500 sets", price: "$5 per set", charge: 2500 },
-];
-const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "usd", maximumFractionDigits: 2 });
-const rows6 = `rows='${JSON.stringify(items.map((i) => ({ ...i, charge: money.format(i.charge) })))}'`;
-const subtotal = money.format(items.reduce((s, i) => s + i.charge, 0));
-
+const rows =
+  '<tr><th scope="row">Order created</th><td><acme-status value="delivered" variant="success">Delivered</acme-status></td><td>12</td></tr><tr><th scope="row">Invoice updated</th><td><acme-status value="retrying" variant="warning">Retrying</acme-status></td><td>3</td></tr>';
+const table = `<table><caption>Webhook deliveries</caption><thead><tr><th scope="col">Event</th><th scope="col">Status</th><th scope="col">Attempts</th></tr></thead><tbody>${rows}</tbody></table>`;
 export const doc: Doc = {
   id: "table",
   title: "Table",
-  lede: "A semantic HTML table component.",
+  lede: "A styled native table with application-owned content, interactions and data.",
   tags: ["acme-table"],
   examples: [
-    { h: "Basic table", html: `<acme-table ${cols3} ${rows3}></acme-table>` },
-    { h: "Striped table", html: `<acme-table striped ${cols3} ${rows3}></acme-table>` },
-    { h: "Bordered table", html: `<acme-table bordered ${cols3} ${rows3}></acme-table>` },
-    { h: "Interactive table", html: `<acme-table interactive ${cols3} ${rows3}></acme-table>` },
     {
-      h: "Full featured table",
-      html: `<acme-table interactive striped ${cols4} ${rows6} footer='[{"text":"Subtotal","colspan":3},{"text":"${subtotal}"}]'></acme-table>`,
+      h: "TanStack Table in Lit",
+      p: "The application owns sorting, grouping, selection, column state and result pagination. Arrow keys move between cells; Enter opens a cell action and F2 enters its editor.",
+      html: '<docs-table-lit style="display:block"></docs-table-lit>',
+    },
+    { h: "TanStack Table in React", p: "React renders and retains its own cells inside the same Table component.", html: '<docs-table-react style="display:block"></docs-table-react>' },
+    {
+      h: "TanStack Virtual",
+      p: "This consumer uses TanStack Virtual for both axes. Horizontal mode demonstrates native merged cells. Vertical and combined modes demonstrate independently measured rows and expanded content.",
+      html: '<acme-h-stack flex-wrap="wrap"><acme-button data-mode="vertical" variant="secondary">Virtual rows</acme-button><acme-button data-mode="horizontal" variant="secondary">Virtual columns</acme-button><acme-button data-mode="both" variant="secondary">Both axes</acme-button></acme-h-stack><docs-table-virtual style="display:block"></docs-table-virtual>',
+      script: 'root.querySelectorAll("[data-mode]").forEach(button=>button.addEventListener("click",()=>root.querySelector("docs-table-virtual").setMode(button.dataset.mode)));',
+    },
+    { h: "Native content", html: `<acme-table aria-label="Webhook deliveries">${table}</acme-table>` },
+    { h: "Striped and bordered", html: `<acme-v-stack><acme-table variant="striped">${table}</acme-table><acme-table variant="bordered">${table}</acme-table></acme-v-stack>` },
+    { h: "Compact density", html: `<acme-theme density="compact"><acme-table>${table}</acme-table></acme-theme>` },
+    {
+      h: "Application actions",
+      html: '<acme-table><table><caption>Delivery actions</caption><thead><tr><th scope="col">Event</th><th scope="col">Action</th></tr></thead><tbody><tr><th scope="row">Invoice updated</th><td><acme-button data-retry size="small">Retry delivery</acme-button></td></tr></tbody></table></acme-table><output aria-live="polite"></output>',
+      script: 'root.querySelector("[data-retry]").addEventListener("click",()=>root.querySelector("output").textContent="Retry requested by the application");',
     },
     {
-      h: "Virtualized table",
-      html: `<div style="position:relative"><acme-table interactive striped virtualize ${cols4} rows="[]"></acme-table><div data-fade style="position:absolute;left:0;bottom:0;width:100%;height:30%;border-radius:6px;background:linear-gradient(to top,var(--ds-background-100),transparent);opacity:.8;pointer-events:none"></div></div><acme-show-more style="margin-top:16px"></acme-show-more>`,
-      script: `const items = ${JSON.stringify(items)};
-const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "usd", maximumFractionDigits: 2 });
-const all = Array.from({ length: 5000 }, (_, i) => ({ ...items[i % items.length], charge: money.format(items[i % items.length].charge) }));
-const table = root.querySelector("acme-table"), more = root.querySelector("acme-show-more"), fade = root.querySelector("[data-fade]");
-const apply = () => { table.rows = more.expanded ? all : all.slice(0, 9); fade.hidden = more.expanded; };
-more.addEventListener("acme-expanded-change", apply);
-apply();`,
+      h: "Grouped headers and spans",
+      html: '<acme-table variant="bordered"><table><caption>Delivery summary</caption><thead><tr><th colspan="2" scope="colgroup">Delivery</th><th rowspan="2" scope="col">Attempts</th></tr><tr><th scope="col">Event</th><th scope="col">Endpoint</th></tr></thead><tbody><tr><th scope="row">Order created</th><td>/orders</td><td>1</td></tr><tr><td colspan="3">Application-owned expanded details</td></tr></tbody><tfoot><tr><th colspan="2" scope="row">Total attempts</th><td>1</td></tr></tfoot></table></acme-table>',
+    },
+    {
+      h: "Sticky header and column",
+      html: `<acme-table sticky-header aria-label="Scrollable deliveries" style="height:240px"><table style="min-width:800px;table-layout:fixed"><caption>Scrollable delivery history</caption><thead><tr><th scope="col" data-pinned="start" style="width:180px">Event</th><th scope="col">Endpoint</th><th scope="col">Attempts</th></tr></thead><tbody>${Array.from({ length: 20 }, (_, i) => `<tr><th scope="row" data-pinned="start">Delivery ${i + 1}</th><td>/events/${i + 1}</td><td>1</td></tr>`).join("")}</tbody></table></acme-table>`,
     },
   ],
   practices: {
-    "When to use": [
-      "Use a Table for rows that share one shape, where at least one column can be sorted or compared across rows.",
-      "A row of descriptive content with a single action (a member, an integration) is an Entity.",
-      "A key/value block on a detail page is a Description, not a two-column table.",
-    ],
-    Behavior: [
-      "When the list is empty (filter cleared, nothing created yet), show an Empty State outside the table instead of an empty body.",
-      "Render — in a cell whose value is unknown or does not apply. Never N/A, null or an empty string.",
-      "A sortable header is a button. Its label stays Title Case; the arrow is decorative and the button announces the next sort state.",
-      "Give numeric columns tabular numerals (or the mono face) so digits line up for comparison.",
-    ],
     Content: [
-      "Column headers are Title Case nouns or noun phrases: Last Used, Requests (7d), Created, Status. Never sentences.",
-      "Cells use the short relative time (2m ago, 5h ago) and switch to Mar 14, 2026 past seven days. See Relative Time Card.",
-      "Pagination labels are Previous and Next. Page copy reads Page 2 of 7 or 21–40 of 142, with an en dash inside the range.",
+      "Supply one native table with its caption, sections, rows and cells. Lit or React retains ownership of those nodes.",
+      "getTableElement() returns that table. getScrollElement() returns the stable native viewport for application scrolling and virtualization.",
+      "Use native span attributes, aria-sort, headers, scope, row/column counts and indices where appropriate. Sorting and interactive grid keyboard behavior belong to the application.",
+    ],
+    Styling: [
+      "variant is default, striped or bordered. size is small, medium or large. Theme density controls the dedicated Table padding tokens.",
+      "Native cells can use data-pinned=start/end with logical sticky offset CSS properties. Pinned rows use data-pinned=top/bottom.",
+      "Use aria-selected for selected row/cell presentation, data-range-start/end/top/bottom for range borders and data-acme-table-part=spacer with --acme-table-spacer-height for virtual spacers.",
+      "No custom row or cell wrapper is needed. Generated light-DOM styles are installed in the table host’s actual document or shadow root.",
+    ],
+    Ownership: [
+      "The application creates its TanStack Table and TanStack Virtual instances, renders their final row/column models and retains refs for measurement and focus.",
+      "loading changes aria-busy only. Supply application-owned loading, empty, error and recovery content.",
     ],
   },
 };

@@ -34,7 +34,9 @@ export class Places implements ReactiveController {
       // Direct light children are also available before a conditional slot's first render.
       const slot = [...(this.host.renderRoot?.querySelectorAll("slot") ?? [])].find((slot) => slot.name === name);
       const nodes = slot
-        ? slot.assignedNodes({ flatten: true })
+        ? slot.assignedNodes().length
+          ? slot.assignedNodes({ flatten: true })
+          : []
         : [...this.host.childNodes].filter((child) => (child.nodeType === 3 ? name === "" : child.nodeType === 1 && ((child as Element).getAttribute("slot") ?? "") === name));
       if (nodes.some(hasContent)) now.add(name);
     }

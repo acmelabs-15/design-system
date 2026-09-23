@@ -152,10 +152,6 @@
 
 }
 
-@media (width <= 560px) {
-
-}
-
 @media (width <= 900px) {
 
 }
@@ -1689,10 +1685,6 @@
 :where([data-acme-appearance-boundary][data-acme-appearance="dark"]), :host(:where([data-acme-appearance-boundary][data-acme-appearance="dark"])) {
   color-scheme: dark;
   --scrim: #0a0a0acc;
-}
-
-@media (width <= 560px) {
-
 }
 
 @media (width <= 560px) {

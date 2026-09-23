@@ -111,3 +111,21 @@ test("default content tracks text edits and excludes private named children", as
   expect(host.places.has("")).toBe(false);
   host.remove();
 });
+@customElement("places-fallback-probe")
+class FallbackPlacesProbe extends LitElement {
+  places = new Places(this, { places: [""] });
+  render() {
+    return html`<slot><span>Default content</span></slot>`;
+  }
+}
+test("a component fallback does not count as author-assigned content", async () => {
+  const host = document.createElement("places-fallback-probe") as FallbackPlacesProbe;
+  document.body.append(host);
+  await host.updateComplete;
+  host.places.read();
+  expect(host.places.has("")).toBe(false);
+  host.append(document.createElement("span"));
+  host.places.read();
+  expect(host.places.has("")).toBe(true);
+  host.remove();
+});

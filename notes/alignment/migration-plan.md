@@ -362,3 +362,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M18 completion — 2026-09-23
 
 [Feedback acceptance](evidence/m18-feedback-2026-09-23.json) closes M-03 and M18. All eight message/statistics entries are implemented and verified at their assigned native/Lit boundaries. The old Feedback network/popup interface and style producers are removed. Continue M19: native author-owned Table, coordinated results Pagination and complete consumer-owned TanStack Table/Virtual examples.
+
+### M19 completion — 2026-09-23
+
+[Table/Pagination acceptance](evidence/m19-table-pagination-2026-09-23.json) closes M19 at its assigned boundaries. Native content, generated scoped CSS, coordinated result controls and both framework-owned consumer renderers pass source/compiled/fresh-package checks. The required feature combinations, 10,000-row virtualization and real experimental-worker lifecycle are recorded with their limits. Old data-driven Table and documentation-link Pagination interfaces and producers are removed. Continue M20: Chart, Sparkline, Legend and Flow Diagram.

@@ -1,0 +1,19 @@
+diff --git a/dist/worker/createTableWorker.d.ts b/dist/worker/createTableWorker.d.ts
+index 0efdde0ef7ce7daf7584ccab83b60c8f536735ba..d1e76f4a2bf9c4ed42ceb84b7074ba3c2a5195dc 100644
+--- a/dist/worker/createTableWorker.d.ts
++++ b/dist/worker/createTableWorker.d.ts
+@@ -3,12 +3,12 @@ import { Table } from "../types/Table.js";
+ import { TableFeature } from "../types/TableFeatures.js";
+ import { TableWorkerDataPayload } from "./rebuildRowModel.js";
+ //#region src/worker/createTableWorker.d.ts
+-declare module '../types/TableFeatures' {
++declare module '../index.js' {
+   interface Plugins {
+     workerRowModelsFeature: TableFeature;
+   }
+ }
+-declare module '../types/TableState' {
++declare module '../index.js' {
+   interface TableState_FeatureMap {
+     workerRowModelsFeature: TableState_WorkerRowModels;
+   }

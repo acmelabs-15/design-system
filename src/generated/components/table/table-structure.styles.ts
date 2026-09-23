@@ -1,10 +1,30 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
 export const tableStructureCss = css`:host {
+  min-block-size: 0;
+  min-inline-size: 0;
   display: block;
 }
 
-.num {
-  font-variant-numeric: tabular-nums;
+[part="root"] {
+  block-size: 100%;
+  min-block-size: 0;
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+[part="viewport"] {
+  block-size: 100%;
+  inline-size: 100%;
+  max-block-size: var(--acme-table-max-height, none);
+  min-block-size: 0;
+  min-inline-size: 0;
+  position: relative;
+  overflow: auto;
+}
+
+[part="viewport"]:focus-visible {
+  outline: 2px solid var(--ds-focus-color);
+  outline-offset: 2px;
 }
 `;

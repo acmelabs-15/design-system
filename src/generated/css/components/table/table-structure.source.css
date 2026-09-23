@@ -1,6 +1,4 @@
-:host {
-        display: block;
-      }
-      .num {
-        font-variant-numeric: tabular-nums;
-      }
+:host{display:block;min-inline-size:0;min-block-size:0;}
+[part=root]{inline-size:100%;block-size:100%;min-inline-size:0;min-block-size:0;}
+[part=viewport]{position:relative;overflow:auto;inline-size:100%;block-size:100%;max-block-size:var(--acme-table-max-height,none);min-inline-size:0;min-block-size:0;}
+[part=viewport]:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:2px;}
