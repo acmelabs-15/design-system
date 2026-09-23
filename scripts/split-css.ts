@@ -51,7 +51,6 @@ const MAP: [string, RegExp][] = [
   ["book", /^\.book/],
   ["browser", /^\.browser/],
   ["clearable-input", /^\.clearable/],
-  ["feedback", /^\.feedback/],
   ["json-view", /^\.json/],
   ["video", /^\.video/],
 ];

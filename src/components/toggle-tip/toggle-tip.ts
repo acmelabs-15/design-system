@@ -60,6 +60,7 @@ export class AcmeToggleTip extends AcmeSemanticElement {
   @atomState() @property({ noAccessor: true, converter: boolish, useDefault: true, attribute: "close-on-outside" }) closeOnOutside = true;
   private focusOnOpen = false;
   private readonly lifetime = new AnchoredHelp(this, {
+    constrainHeight: true,
     open: () => this.open,
     anchor: () => this.trigger(),
     surface: () => this.surface(),
@@ -100,9 +101,22 @@ export class AcmeToggleTip extends AcmeSemanticElement {
     this.focusOnOpen = event.detail === 0 && !this.open;
     this.userOpen(!this.open, "trigger");
   };
+  private pointerInside = false;
+  private pointerDown = (event: PointerEvent) => {
+    this.pointerInside = event.composedPath().includes(this);
+  };
+  private pointerEnd = () => {
+    queueMicrotask(() => {
+      this.pointerInside = false;
+    });
+  };
+  private keyboard = () => {
+    this.pointerInside = false;
+  };
   private focusOut = () => {
     queueMicrotask(() => {
       const active = deepActiveElement(this.ownerDocument);
+      if (active === this.ownerDocument.body && this.pointerInside) return;
       if (this.open && this.closeOnOutside && active && !composedContains(this, active)) this.userOpen(false, "focus-outside");
     });
   };
@@ -114,6 +128,10 @@ export class AcmeToggleTip extends AcmeSemanticElement {
     super.connectedCallback();
     this.focusDocument = this.ownerDocument;
     this.focusDocument.addEventListener("focusin", this.documentFocus);
+    this.focusDocument.addEventListener("pointerdown", this.pointerDown, true);
+    this.focusDocument.addEventListener("pointerup", this.pointerEnd, true);
+    this.focusDocument.addEventListener("pointercancel", this.pointerEnd, true);
+    this.focusDocument.addEventListener("keydown", this.keyboard, true);
   }
   protected get semanticTarget() {
     return this.surface();
@@ -132,6 +150,11 @@ export class AcmeToggleTip extends AcmeSemanticElement {
   }
   disconnectedCallback() {
     this.focusDocument?.removeEventListener("focusin", this.documentFocus);
+    this.focusDocument?.removeEventListener("pointerdown", this.pointerDown, true);
+    this.focusDocument?.removeEventListener("pointerup", this.pointerEnd, true);
+    this.focusDocument?.removeEventListener("pointercancel", this.pointerEnd, true);
+    this.focusDocument?.removeEventListener("keydown", this.keyboard, true);
+    this.pointerInside = false;
     this.focusDocument = undefined;
     this.open = false;
     this.focusOnOpen = false;

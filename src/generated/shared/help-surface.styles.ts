@@ -93,4 +93,22 @@ export const helpSurfaceCss = css`:host {
     display: none;
   }
 }
+
+[part="content"][data-kind="toggle-tip"] {
+  gap: var(--acme-spacing-2);
+  max-block-size: min(calc(100dvh - 16px),var(--_help-available-height, 100dvh));
+  flex-direction: column;
+  display: flex;
+}
+
+[data-kind="toggle-tip"] > .preview {
+  overscroll-behavior: contain;
+  min-block-size: 0;
+  overflow: auto;
+}
+
+[data-kind="toggle-tip"] > [part="close"] {
+  flex: none;
+  align-self: flex-end;
+}
 `;

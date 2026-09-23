@@ -1,4 +1,4 @@
-import { arrow, flip, offset, type Placement, shift } from "@floating-ui/dom";
+import { arrow, flip, offset, type Placement, shift, size } from "@floating-ui/dom";
 import type { ReactiveController, ReactiveElement } from "lit";
 import { composedContains, deepActiveElement } from "./composed-tree";
 import { readMotionSpring } from "./motion-spring";
@@ -20,6 +20,7 @@ type Options = {
   closed(): void;
   opened(): void;
   restoreFocus(): boolean;
+  constrainHeight?: boolean;
 };
 /** Owns native anchored presence, current geometry and one effects spring. */
 export class AnchoredHelp implements ReactiveController {
@@ -63,7 +64,23 @@ export class AnchoredHelp implements ReactiveController {
         return {
           strategy: "fixed",
           placement: (side + (align === "center" ? "" : "-" + align)) as Placement,
-          middleware: [offset(sideOffset), flip({ boundary: [] }), shift({ padding: 8, boundary: [] }), ...(options.arrow() ? [arrow({ element: options.arrow()!, padding: 8 })] : [])],
+          middleware: [
+            offset(sideOffset),
+            flip({ padding: 8, boundary: [] }),
+            shift({ padding: 8, boundary: [] }),
+            ...(options.constrainHeight
+              ? [
+                  size({
+                    padding: 8,
+                    boundary: [],
+                    apply({ availableHeight, elements }) {
+                      elements.floating.style.setProperty("--_help-available-height", `${Math.max(0, availableHeight)}px`);
+                    },
+                  }),
+                ]
+              : []),
+            ...(options.arrow() ? [arrow({ element: options.arrow()!, padding: 8 })] : []),
+          ],
         };
       },
       apply: (result) => {

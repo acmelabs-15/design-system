@@ -13,7 +13,7 @@ The [central handoff](README.md#where-we-are) owns current status. The [inventor
 | User-owned decision queue | Original five recommendations approved in [the register](proposal-questions.md); [explicit helper clearing](../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper) selected 2026-09-21; @lit/context selected under [delegated execution](../decisions/execution-delegation.md); remaining choices are agent-owned |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
 | Phase 5 | [Migration plan approved](../decisions/migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01–M05 complete; M06 shared mechanisms active. Family adoption and final browser/package acceptance remain. |
+| Phase 6 | M01–M18 complete at assigned native/Lit boundaries. M19–M26 and the named cross-batch acceptance gates remain. |
 
 These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The design contracts are approved; they are not implemented or verified components. Technical gates remain distinct from the recorded design review.
 
@@ -88,3 +88,7 @@ A failing M18 reproduction found that removing a nonnullable string attribute pr
 ### M25 documentation coverage gate — 2026-09-23
 
 Replacing the Empty State page temporarily removed Icon Tile's only documentation tag. The site build warned but still exited successfully. Icon Tile now has its own page and coverage is back to zero missing entries. M25 must make missing public documentation a failing release/CI check, while preserving any deliberate preview workflow. Use the existing manifest and page/catalog tag coverage, not a second manually maintained list.
+
+### M22/M25/M26 durable browser and platform acceptance — 2026-09-23
+
+M25 must consolidate the saved browser acceptance cases and colocated fixtures into the durable CI harness, rather than depending on temporary runner paths. M18 evidence embeds Toast and Feedback case bodies; earlier evidence retains named scripts and fixture files. M22/M26 must verify actual OS background-window pause/resume for Toast: headless-tab switching did not reproduce the required document visibility/focus state. Injected visibility-event integration and independent timer tests pass.

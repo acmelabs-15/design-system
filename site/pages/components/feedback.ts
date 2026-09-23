@@ -1,118 +1,64 @@
-// Docs page: Feedback — mirrors https://vercel.com/geist/feedback
 import type { Doc } from "../../site";
 
-const centered = (inner: string) => `<div class="row" style="justify-content:center;align-items:flex-start;min-height:300px">${inner}</div>`;
-/** Sends the form as soon as the element has rendered (a dry run thanks at once; otherwise the checks answer). */
-const send = `const el = root.querySelector('acme-feedback');
-el.updateComplete.then(() => el.shadowRoot.querySelector('form').requestSubmit());`;
-/** Picks the last face, which opens the inline card. */
-const pick = `const el = root.querySelector('acme-feedback');
-el.updateComplete.then(() => el.shadowRoot.querySelectorAll('.emoji')[3].click());`;
-
+const submit =
+  'const form=root.querySelector("acme-feedback");form.addEventListener("acme-request",event=>{if(event.detail.action!=="submit")return;event.preventDefault();root.querySelector("output").textContent="Recorded locally: "+event.detail.value.message;form.reset();});';
 export const doc: Doc = {
   id: "feedback",
   title: "Feedback",
-  lede: "Collects written feedback together with an emotion.",
+  lede: "A composed form for a rating, written message and optional contact information. Your application sends the data.",
   tags: ["acme-feedback"],
   examples: [
     {
-      h: "Default",
-      p: "For desktop only.",
-      html: centered(`<acme-feedback label="vercel" dry-run></acme-feedback>`),
-    },
-    {
       h: "Inline",
-      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel" variant="inline"></acme-feedback></div>`,
+      p: "This example records the submitted message locally. It does not send a network request.",
+      html: '<acme-feedback></acme-feedback><output aria-live="polite"></output>',
+      script: submit,
     },
     {
-      h: "Feedback with Select",
-      p: "Feedback with a fixed list of topics.",
-      html: centered(`<acme-feedback label="vercel" show-topics dry-run></acme-feedback>`),
+      h: "Email and topics",
+      html: `<acme-feedback collect-email topics='[{"value":"documentation","label":"Documentation"},{"value":"product","label":"Product"}]'></acme-feedback><output aria-live="polite"></output>`,
+      script: submit,
     },
     {
-      h: "Feedback with metadata",
-      p: "Feedback with any key-value metadata attached to the submission.",
-      html: centered(`<acme-feedback label="vercel" dry-run metadata='{"userId":"user_12345","location":"post-checkout","orderId":"order_123456"}'></acme-feedback>`),
+      h: "Failure and retry",
+      p: "The application supplies the pending and failure states. The draft stays available after a failure.",
+      html: '<acme-feedback></acme-feedback><output aria-live="polite"></output>',
+      script:
+        'const form=root.querySelector("acme-feedback");let attempts=0;form.addEventListener("acme-request",event=>{if(event.detail.action!=="submit")return;form.error="";form.submitting=true;queueMicrotask(()=>{form.submitting=false;if(attempts++===0)form.error="Could not send feedback. Try again.";else{root.querySelector("output").textContent="Feedback received";form.reset();}});});',
     },
     {
-      h: "Feedback with prefix",
-      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel"><acme-flag-icon class="ic" slot="start" size="16px"></acme-flag-icon></acme-feedback></div>`,
+      h: "Toggle Tip composition",
+      p: "Toggle Tip owns opening, placement, dismissal and focus. Feedback owns only the form.",
+      html: '<acme-toggle-tip><span slot="trigger">Give feedback</span><acme-feedback></acme-feedback><output aria-live="polite"></output></acme-toggle-tip>',
+      script: submit,
     },
     {
-      h: "Feedback with suffix",
-      html: `<div style="min-height:300px"><acme-feedback dry-run label="vercel"><acme-flag-icon class="ic" slot="end" size="16px"></acme-flag-icon></acme-feedback></div>`,
+      h: "Dialog composition",
+      html: '<acme-dialog><acme-dialog-trigger slot="trigger">Open feedback dialog</acme-dialog-trigger><acme-heading slot="heading" as="h2">Product feedback</acme-heading><acme-feedback></acme-feedback><output aria-live="polite"></output></acme-dialog>',
+      script: submit,
     },
     {
-      h: "Open",
-      census: true,
-      p: "The card, 340px wide and 8px under the trigger: the textarea, the markdown hint, and a footer with the four emotion radios and Send. Escape or a click outside closes it.",
-      html: centered(`<acme-feedback label="vercel" dry-run open></acme-feedback>`),
-    },
-    {
-      h: "Open with Select and email",
-      census: true,
-      p: "The topic select and the email field sit above the textarea.",
-      html: centered(`<acme-feedback label="vercel" show-topics show-email dry-run open></acme-feedback>`),
-    },
-    {
-      h: "Open with error",
-      census: true,
-      p: "Send checks the topic, the email, the note and the emotion, in that order, and unfolds the message under the textarea.",
-      html: centered(`<acme-feedback label="vercel" open></acme-feedback>`),
-      script: send,
-    },
-    {
-      h: "Sent",
-      census: true,
-      p: "After a submission the card takes a fixed height and shows the check and the two lines, then closes after four seconds (later while the pointer rests on it).",
-      html: centered(`<acme-feedback label="vercel" dry-run open></acme-feedback>`),
-      script: send,
-    },
-    {
-      h: "Inline open",
-      census: true,
-      p: "A face grows the pill into a 336px card in place; the same face closes it. With a message the card is 28px taller.",
-      html: `<div style="min-height:420px"><acme-feedback label="vercel" variant="inline" show-topics show-email></acme-feedback></div>`,
-      script: `${pick}
-el.updateComplete.then(() => el.shadowRoot.querySelector('form').requestSubmit());`,
-    },
-    {
-      h: "Inline sent",
-      census: true,
-      p: "The thank-you view fills the card, which keeps its height until it closes.",
-      html: `<div style="min-height:300px"><acme-feedback label="vercel" variant="inline" dry-run></acme-feedback></div>`,
-      script: `${pick}
-el.updateComplete.then(() => el.shadowRoot.querySelector('form').requestSubmit());`,
-    },
-    {
-      h: "Inline upwards",
-      census: true,
-      p: "The row keeps its 48px and the open card shifts up by 200px (100px with a message), for a pill at the foot of a page.",
-      html: `<div style="padding-top:220px"><acme-feedback label="vercel" variant="inline" upwards dry-run></acme-feedback></div>`,
-      script: pick,
-    },
-    {
-      h: "Inline full width",
-      census: true,
-      p: "The pill fills its row.",
-      html: `<div style="width:504px"><acme-feedback label="vercel" variant="inline" full-width dry-run></acme-feedback></div>`,
+      h: "Custom content and actions",
+      p: "A custom action can call requestSubmit(). Reset restores the value supplied at the first render.",
+      html: '<acme-feedback value=\'{"message":"Feedback about the search page"}\'><acme-heading slot="heading" as="h3">How can search improve?</acme-heading><p slot="description">Include the search terms you used.</p><acme-button slot="actions" data-reset variant="secondary">Reset draft</acme-button><acme-button slot="actions" data-send>Send search feedback</acme-button></acme-feedback><output aria-live="polite"></output>',
+      script: submit + 'root.querySelector("[data-reset]").addEventListener("click",()=>form.reset());root.querySelector("[data-send]").addEventListener("click",()=>form.requestSubmit());',
     },
   ],
   practices: {
-    "When to use": [
-      "Place Feedback at the end of a page, doc or finished flow, where the user has formed an opinion. Do not put it at the top of a surface the user has only just opened.",
-      "Use the topic select when feedback maps to categories the team triages (Bug, Pricing, Documentation); skip it when the open textarea is enough.",
-      "Feedback is not a support form, a bug-report intake or NPS sampling. Those have their own surfaces.",
+    Data: [
+      "value contains message and optional rating, email and topic strings. The form owns an immutable current snapshot.",
+      "Ratings use very-dissatisfied, dissatisfied, satisfied and very-satisfied. The message is required by default. Email and topic are optional.",
+      "Only displayed email and topic fields are included in the submit request. Hidden optional values remain in the draft.",
     ],
-    Behavior: [
-      "The panel stays closed until the user clicks the trigger; opening it on its own derails the work that prompted the feedback.",
-      "Pair the metadata variant with context that holds no personal data (route, build ID, plan, viewport) so the team can reproduce the report without a second round-trip.",
-      "Submit closes the panel and returns focus to the trigger. No acknowledgment toast: the close is the acknowledgment.",
+    Submission: [
+      'Listen for acme-request with action="submit". Your application sends the request and sets submitting and error.',
+      "An accepted request blocks repeated submission until submitting returns to false, an error is supplied, the value changes or reset() is called. Prevent the request when the application declines it.",
+      "acme-input reports live edits. acme-change reports committed edits. Both carry the complete value. Public value assignments are silent.",
     ],
-    Content: [
-      "label is Title Case and short. The default Feedback is fine; change it only to scope a flow: Feedback on Imports, Report a Bug. No question mark at the end.",
-      "copy replaces the prompt beside the emoji row, in sentence case (How did the import go?). Cut please and we’re sorry.",
-      "The textarea placeholder (Your feedback...) is fixed; do not replace it with rich content.",
+    Composition: [
+      "Use Feedback inline, in Toggle Tip or in Dialog. Each overlay retains its own keyboard, focus and motion behavior.",
+      "Heading, description and actions can be supplied as authored content. Keep visible field labels and a clear submit action.",
+      "Use configureMessages for translated labels and prompts. Browser-native validation follows the browser locale.",
     ],
   },
 };

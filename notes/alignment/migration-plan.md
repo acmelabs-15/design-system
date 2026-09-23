@@ -358,3 +358,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M18 scoped Toast — 2026-09-23
 
 [Toast acceptance](evidence/m18-toast-2026-09-23.json) closes M-02 at its native/Lit boundary. Explicit stores, timer lifecycle, announcements, gestures, focus and author-owned content pass the recorded gates. Toaster/global queue and standalone Error are removed with their producers and consumers. Feedback is the remaining M18 entry.
+
+### M18 completion — 2026-09-23
+
+[Feedback acceptance](evidence/m18-feedback-2026-09-23.json) closes M-03 and M18. All eight message/statistics entries are implemented and verified at their assigned native/Lit boundaries. The old Feedback network/popup interface and style producers are removed. Continue M19: native author-owned Table, coordinated results Pagination and complete consumer-owned TanStack Table/Virtual examples.
