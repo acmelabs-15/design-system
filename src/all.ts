@@ -162,6 +162,7 @@ import "./define/timeline";
 import "./define/timeline-item";
 import "./define/toast";
 import "./define/toaster";
+import "./define/toc";
 import "./define/toggle-button";
 import "./define/toolbar";
 import "./define/tooltip";

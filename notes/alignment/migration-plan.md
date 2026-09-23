@@ -314,3 +314,8 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M15 complete — 2026-09-23
 
 [Command Menu acceptance](evidence/m15-command-menu-2026-09-23.json) closes N08 and M15. Strict build/site, 915 tests, sixteen source/compiled checks per engine, real documentation and ComboBox regressions pass. The earlier slices close N01/N02/N05/N09/N10/N11/N12. Continue M16 with the already verified Drawer dependency.
+
+
+### M16 TOC acceptance — 2026-09-23
+
+[TOC evidence](evidence/m16-toc-2026-09-23.json) closes N04 at its native/Lit boundary. Explicit entries, registered Heading discovery, native fragments/focus and configurable scrolling pass source and compiled checks in all engines. The site fragment handler now preserves component navigation. Sidebar and core Tree remain M16 work; actual platform/React/final acceptance remains M22/M26.

@@ -6133,6 +6133,29 @@
       "registrations": [],
       "exportName": "toasterStructureCss"
     },
+    "components/toc/toc": {
+      "key": "components/toc/toc",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "536557a74b969009d885b07a0a45f840064ac0b40a8af5e7ca52b0d54eab1c20",
+        "scripts/styles.ts": "44a962ee4a9a0c1b1a3d660b0eb3332a33fff59a1c5871de5364ea615c131970",
+        "scripts/theme-tokens.ts": "e065190e8d66835fcc612013dbb0049316742205c08f0f6748f79423d05f2cfc",
+        "src/shared/motion-tokens.ts": "2fbb00c0e7407366d57342e50a659008da389d75f4eb673ebcc52e24afffd5c8",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "e92fd230d6c3aaf95c2386da99476b5a7dc30848653a8ae91050db433220fe93",
+        "styles/components/toc/toc.css": "623494156e53d1b280a56d70c140e0a140de2fbfab750d15339f6e7ae523149e"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/components/toc/toc.source.css": "623494156e53d1b280a56d70c140e0a140de2fbfab750d15339f6e7ae523149e",
+        "src/generated/css/components/toc/toc.css": "c0ef14e1f57c2e15e2100a51414495de080a70a0683994615523e8b45326ad4e",
+        "src/generated/css/components/toc/toc.css.map": "79b2397c259996e3e736de09c0b762f774c499abec4e85684c22ce00456dc487",
+        "src/generated/components/toc/toc.styles.ts": "9a6b424e851155730e122357347b8c5596de94526fdd4e69051827da07db6965"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "tocCss"
+    },
     "components/toolbar/toolbar-structure": {
       "key": "components/toolbar/toolbar-structure",
       "producer": "authored",

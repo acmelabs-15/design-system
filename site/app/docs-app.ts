@@ -70,11 +70,11 @@ export class AcmeDocsApp extends LitElement {
   private onHash = (e: MouseEvent) => {
     const a = e.composedPath().find((n) => (n as HTMLElement).tagName === "A") as HTMLAnchorElement | undefined;
     const href = a?.getAttribute("href");
-    if (!a || !href?.startsWith("#")) return;
+    if (e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey || !a || a.getRootNode() !== document || !href?.startsWith("#")) return;
     e.preventDefault();
     if (href.length > 1) {
       document.getElementById(href.slice(1))?.scrollIntoView({ block: "start" });
-      history.replaceState({}, "", href);
+      history.replaceState(history.state, "", href);
     }
   };
 

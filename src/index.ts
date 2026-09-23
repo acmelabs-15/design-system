@@ -167,6 +167,7 @@ export * from "./components/step-trigger/step-trigger";
 export * from "./components/step-content/step-content";
 export * from "./components/steps-previous/steps-previous";
 export * from "./components/steps-next/steps-next";
+export * from "./components/toc/toc";
 export * from "./components/timeline/timeline";
 export * from "./components/timeline-item/timeline-item";
 export * from "./components/app-bar/app-bar";
