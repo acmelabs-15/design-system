@@ -75,3 +75,8 @@ Source changes now proceed under the approved migration; the old protected-file 
 ## Progress reporting
 
 Report proposal coverage, actual approvals, the bounded question register and engineering gates. Static source/link checks support the record but are not phase completion. The full set is now reviewable; do not revert to delivering one tiny proposal followed by another permission round trip.
+
+## Added verification return points — 2026-09-23
+
+- M25/E03: extend mapped-style fingerprints to transitive local imports. tools/geist/maps/command-menu-input.ts imports CLOSED from command-menu.ts, but writeStyles currently records only its explicit map/extends inputs. Add a regression that changes an imported helper and requires stale-output detection. M26 release acceptance must verify closure. Current mapped outputs were fully regenerated; no current visual mismatch is claimed.
+- M22/M26: verify the native date/time Tab boundary and modal focus with actual Safari and assistive technology. Paired native controls plus source/compiled Chromium/Firefox/WebKit cases pass; these are not actual-platform certification.

@@ -145,3 +145,30 @@ test("opener detachment ends its binding and retains the final appearance for ex
   binding.release();
   parent.remove();
 });
+
+test("a supplied complete scope resets inherited names and can resume DOM inheritance", async () => {
+  const parent = provider(),
+    child = consumer(),
+    source = consumer();
+  parent.theme.scope.setAuthored({ theme: "brand", appearance: "dark", locale: "fr-CA" });
+  parent.append(child);
+  document.body.append(parent, source);
+  await settle();
+  child.theme.setSource(source.theme.scope.effective);
+  await settle();
+  expect(child.theme.scope.effective.get().theme).toBeUndefined();
+  expect(child.theme.scope.effective.get().locale).toBeUndefined();
+  expect(child.theme.parentSource.get()).toBeUndefined();
+  parent.theme.scope.setAuthored({ theme: "different-brand" });
+  parent.theme.refresh();
+  await settle();
+  expect(child.theme.scope.effective.get().theme).toBeUndefined();
+  source.theme.scope.setAuthored({ locale: "de-DE" });
+  expect(child.theme.scope.effective.get().locale).toBe("de-DE");
+  child.theme.setSource(undefined);
+  await settle();
+  expect(child.theme.scope.effective.get().theme).toBe("different-brand");
+  expect(child.theme.scope.effective.get().locale).toBe("fr-CA");
+  parent.remove();
+  source.remove();
+});

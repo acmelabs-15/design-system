@@ -1,0 +1,65 @@
+dialog {
+  max-block-size: 100dvh;
+  max-inline-size: 100vw;
+  inline-size: min(var(--_drawer-size, var(--acme-drawer-size, 24rem)),100vw);
+  border-radius: 0;
+  block-size: 100dvh;
+  margin: 0;
+}
+
+dialog[data-placement="start"] {
+  transform: translateX(calc((var(--_dialog-spatial, 0) - 1) * 100%));
+  inset-block: 0;
+  inset-inline: 0 auto;
+}
+
+dialog[data-placement="end"] {
+  transform: translateX(calc((1 - var(--_dialog-spatial, 0)) * 100%));
+  inset-block: 0;
+  inset-inline: auto 0;
+}
+
+dialog[data-placement="start"]:dir(rtl) {
+  transform: translateX(calc((1 - var(--_dialog-spatial, 0)) * 100%));
+}
+
+dialog[data-placement="end"]:dir(rtl) {
+  transform: translateX(calc((var(--_dialog-spatial, 0) - 1) * 100%));
+}
+
+dialog[data-placement="top"] {
+  inline-size: 100vw;
+  block-size: min(var(--_drawer-size, var(--acme-drawer-size, 24rem)),100dvh);
+  transform: translateY(calc((var(--_dialog-spatial, 0) - 1) * 100%));
+  inset-block: 0 auto;
+  inset-inline: 0;
+}
+
+dialog[data-placement="bottom"] {
+  inline-size: 100vw;
+  block-size: min(var(--_drawer-size, var(--acme-drawer-size, 24rem)),100dvh);
+  transform: translateY(calc((1 - var(--_dialog-spatial, 0)) * 100%));
+  inset-block: auto 0;
+  inset-inline: 0;
+}
+
+.frame {
+  min-block-size: 100%;
+}
+
+[part="body"] {
+  flex: 1;
+}
+
+[part="header"], [part="body"], [part="footer"] {
+  padding-left: max(var(--acme-spacing-5),env(safe-area-inset-left));
+  padding-right: max(var(--acme-spacing-5),env(safe-area-inset-right));
+}
+
+[part="header"] {
+  padding-top: max(var(--acme-spacing-5),env(safe-area-inset-top));
+}
+
+[part="footer"] {
+  padding-bottom: max(var(--acme-spacing-5),env(safe-area-inset-bottom));
+}

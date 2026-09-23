@@ -1,0 +1,1585 @@
+{
+  "date": "2026-09-23",
+  "status": "O01/O02/O03 native-dialog families complete at assigned native/Lit boundary; brought forward from M17",
+  "implementation": [
+    "Dialog, Alert Dialog and Drawer share existing native presence, coordination, focus and Lit Motion controllers",
+    "Explicit trigger/close/action/cancel parts; application-owned success, failure and typed confirmation",
+    "Modal and nonmodal native sessions, cancelable dismissal, owned entrance/exit completion and interruption",
+    "Separate spatial and opacity springs; unrelated child animations cannot retain modality",
+    "Complete opener theme and public CSS-token transport, including default reset, local overrides and live changes",
+    "Logical Drawer edges, CSS dimension size, 24rem theme default and safe-area padding",
+    "Modal, Modal Inset and Sheet removed; old Drawer API and shared legacy helpers removed"
+  ],
+  "verification": {
+    "build": "Strict final package build passes",
+    "site": {
+      "pages": 103,
+      "elements": 4304,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 919,
+      "failed": 0,
+      "assertions": 150264,
+      "files": 161
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Dialog opens with native modality, name references and editing focus",
+            "pass": true
+          },
+          {
+            "name": "Escape closes once and returns to the opener",
+            "pass": true
+          },
+          {
+            "name": "canceling close preserves the native session",
+            "pass": true
+          },
+          {
+            "name": "Alert Dialog focuses Cancel without transient destructive focus",
+            "pass": true
+          },
+          {
+            "name": "nonmodal mode permits background interaction and explicit focus targets",
+            "pass": true
+          },
+          {
+            "name": "a removed opener does not close an independent Dialog",
+            "pass": true
+          },
+          {
+            "name": "Menu escape does not dismiss its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "a Dialog opened by a menu survives that menu closing",
+            "pass": true
+          },
+          {
+            "name": "reopening during exit restores interaction without dropping native modality",
+            "pass": true
+          },
+          {
+            "name": "changing native mode after opener removal preserves the dialog",
+            "pass": true
+          },
+          {
+            "name": "the after-close callback runs after focus restoration",
+            "pass": true
+          },
+          {
+            "name": "Dialog follows the opener theme and live appearance changes",
+            "pass": true
+          },
+          {
+            "name": "an external default-theme opener resets a differently themed Dialog",
+            "pass": true
+          },
+          {
+            "name": "Drawer supports every logical edge and keeps author input state",
+            "pass": true
+          },
+          {
+            "name": "Drawer reverses logical edges in RTL and remains bounded after resize",
+            "pass": true
+          },
+          {
+            "name": "Drawer default size responds to a registered theme token",
+            "pass": true
+          },
+          {
+            "name": "Drawer preserves live local CSS theme overrides",
+            "pass": true
+          },
+          {
+            "name": "modal Tab traversal contains all slotted controls",
+            "pass": true
+          },
+          {
+            "name": "native modality blocks background activation through the owned exit",
+            "pass": true
+          },
+          {
+            "name": "unrelated infinite child animation cannot hold the native session open",
+            "pass": true
+          },
+          {
+            "name": "removing an open owner releases modality and scroll resources",
+            "pass": true
+          },
+          {
+            "name": "nested Dialog closes before its parent and parent cleanup closes descendants",
+            "pass": true
+          },
+          {
+            "name": "same-task open and close do not create a ghost session",
+            "pass": true
+          },
+          {
+            "name": "the native backdrop is styled through the surface part",
+            "pass": true
+          },
+          {
+            "name": "a nested editor can consume Tab even at the modal boundary",
+            "pass": true
+          },
+          {
+            "name": "native date editor segments keep their Tab steps before moving to the next control",
+            "pass": true
+          },
+          {
+            "name": "an opener removed during the request does not prevent opening",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Dialog opens with native modality, name references and editing focus",
+            "pass": true
+          },
+          {
+            "name": "Escape closes once and returns to the opener",
+            "pass": true
+          },
+          {
+            "name": "canceling close preserves the native session",
+            "pass": true
+          },
+          {
+            "name": "Alert Dialog focuses Cancel without transient destructive focus",
+            "pass": true
+          },
+          {
+            "name": "nonmodal mode permits background interaction and explicit focus targets",
+            "pass": true
+          },
+          {
+            "name": "a removed opener does not close an independent Dialog",
+            "pass": true
+          },
+          {
+            "name": "Menu escape does not dismiss its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "a Dialog opened by a menu survives that menu closing",
+            "pass": true
+          },
+          {
+            "name": "reopening during exit restores interaction without dropping native modality",
+            "pass": true
+          },
+          {
+            "name": "changing native mode after opener removal preserves the dialog",
+            "pass": true
+          },
+          {
+            "name": "the after-close callback runs after focus restoration",
+            "pass": true
+          },
+          {
+            "name": "Dialog follows the opener theme and live appearance changes",
+            "pass": true
+          },
+          {
+            "name": "an external default-theme opener resets a differently themed Dialog",
+            "pass": true
+          },
+          {
+            "name": "Drawer supports every logical edge and keeps author input state",
+            "pass": true
+          },
+          {
+            "name": "Drawer reverses logical edges in RTL and remains bounded after resize",
+            "pass": true
+          },
+          {
+            "name": "Drawer default size responds to a registered theme token",
+            "pass": true
+          },
+          {
+            "name": "Drawer preserves live local CSS theme overrides",
+            "pass": true
+          },
+          {
+            "name": "modal Tab traversal contains all slotted controls",
+            "pass": true
+          },
+          {
+            "name": "native modality blocks background activation through the owned exit",
+            "pass": true
+          },
+          {
+            "name": "unrelated infinite child animation cannot hold the native session open",
+            "pass": true
+          },
+          {
+            "name": "removing an open owner releases modality and scroll resources",
+            "pass": true
+          },
+          {
+            "name": "nested Dialog closes before its parent and parent cleanup closes descendants",
+            "pass": true
+          },
+          {
+            "name": "same-task open and close do not create a ghost session",
+            "pass": true
+          },
+          {
+            "name": "the native backdrop is styled through the surface part",
+            "pass": true
+          },
+          {
+            "name": "a nested editor can consume Tab even at the modal boundary",
+            "pass": true
+          },
+          {
+            "name": "native date editor segments keep their Tab steps before moving to the next control",
+            "pass": true
+          },
+          {
+            "name": "an opener removed during the request does not prevent opening",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Dialog opens with native modality, name references and editing focus",
+            "pass": true
+          },
+          {
+            "name": "Escape closes once and returns to the opener",
+            "pass": true
+          },
+          {
+            "name": "canceling close preserves the native session",
+            "pass": true
+          },
+          {
+            "name": "Alert Dialog focuses Cancel without transient destructive focus",
+            "pass": true
+          },
+          {
+            "name": "nonmodal mode permits background interaction and explicit focus targets",
+            "pass": true
+          },
+          {
+            "name": "a removed opener does not close an independent Dialog",
+            "pass": true
+          },
+          {
+            "name": "Menu escape does not dismiss its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "a Dialog opened by a menu survives that menu closing",
+            "pass": true
+          },
+          {
+            "name": "reopening during exit restores interaction without dropping native modality",
+            "pass": true
+          },
+          {
+            "name": "changing native mode after opener removal preserves the dialog",
+            "pass": true
+          },
+          {
+            "name": "the after-close callback runs after focus restoration",
+            "pass": true
+          },
+          {
+            "name": "Dialog follows the opener theme and live appearance changes",
+            "pass": true
+          },
+          {
+            "name": "an external default-theme opener resets a differently themed Dialog",
+            "pass": true
+          },
+          {
+            "name": "Drawer supports every logical edge and keeps author input state",
+            "pass": true
+          },
+          {
+            "name": "Drawer reverses logical edges in RTL and remains bounded after resize",
+            "pass": true
+          },
+          {
+            "name": "Drawer default size responds to a registered theme token",
+            "pass": true
+          },
+          {
+            "name": "Drawer preserves live local CSS theme overrides",
+            "pass": true
+          },
+          {
+            "name": "modal Tab traversal contains all slotted controls",
+            "pass": true
+          },
+          {
+            "name": "native modality blocks background activation through the owned exit",
+            "pass": true
+          },
+          {
+            "name": "unrelated infinite child animation cannot hold the native session open",
+            "pass": true
+          },
+          {
+            "name": "removing an open owner releases modality and scroll resources",
+            "pass": true
+          },
+          {
+            "name": "nested Dialog closes before its parent and parent cleanup closes descendants",
+            "pass": true
+          },
+          {
+            "name": "same-task open and close do not create a ghost session",
+            "pass": true
+          },
+          {
+            "name": "the native backdrop is styled through the surface part",
+            "pass": true
+          },
+          {
+            "name": "a nested editor can consume Tab even at the modal boundary",
+            "pass": true
+          },
+          {
+            "name": "native date editor segments keep their Tab steps before moving to the next control",
+            "pass": true
+          },
+          {
+            "name": "an opener removed during the request does not prevent opening",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "Dialog opens with native modality, name references and editing focus",
+            "pass": true
+          },
+          {
+            "name": "Escape closes once and returns to the opener",
+            "pass": true
+          },
+          {
+            "name": "canceling close preserves the native session",
+            "pass": true
+          },
+          {
+            "name": "Alert Dialog focuses Cancel without transient destructive focus",
+            "pass": true
+          },
+          {
+            "name": "nonmodal mode permits background interaction and explicit focus targets",
+            "pass": true
+          },
+          {
+            "name": "a removed opener does not close an independent Dialog",
+            "pass": true
+          },
+          {
+            "name": "Menu escape does not dismiss its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "a Dialog opened by a menu survives that menu closing",
+            "pass": true
+          },
+          {
+            "name": "reopening during exit restores interaction without dropping native modality",
+            "pass": true
+          },
+          {
+            "name": "changing native mode after opener removal preserves the dialog",
+            "pass": true
+          },
+          {
+            "name": "the after-close callback runs after focus restoration",
+            "pass": true
+          },
+          {
+            "name": "Dialog follows the opener theme and live appearance changes",
+            "pass": true
+          },
+          {
+            "name": "an external default-theme opener resets a differently themed Dialog",
+            "pass": true
+          },
+          {
+            "name": "Drawer supports every logical edge and keeps author input state",
+            "pass": true
+          },
+          {
+            "name": "Drawer reverses logical edges in RTL and remains bounded after resize",
+            "pass": true
+          },
+          {
+            "name": "Drawer default size responds to a registered theme token",
+            "pass": true
+          },
+          {
+            "name": "Drawer preserves live local CSS theme overrides",
+            "pass": true
+          },
+          {
+            "name": "modal Tab traversal contains all slotted controls",
+            "pass": true
+          },
+          {
+            "name": "native modality blocks background activation through the owned exit",
+            "pass": true
+          },
+          {
+            "name": "unrelated infinite child animation cannot hold the native session open",
+            "pass": true
+          },
+          {
+            "name": "removing an open owner releases modality and scroll resources",
+            "pass": true
+          },
+          {
+            "name": "nested Dialog closes before its parent and parent cleanup closes descendants",
+            "pass": true
+          },
+          {
+            "name": "same-task open and close do not create a ghost session",
+            "pass": true
+          },
+          {
+            "name": "the native backdrop is styled through the surface part",
+            "pass": true
+          },
+          {
+            "name": "a nested editor can consume Tab even at the modal boundary",
+            "pass": true
+          },
+          {
+            "name": "native date editor segments keep their Tab steps before moving to the next control",
+            "pass": true
+          },
+          {
+            "name": "an opener removed during the request does not prevent opening",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "Dialog opens with native modality, name references and editing focus",
+            "pass": true
+          },
+          {
+            "name": "Escape closes once and returns to the opener",
+            "pass": true
+          },
+          {
+            "name": "canceling close preserves the native session",
+            "pass": true
+          },
+          {
+            "name": "Alert Dialog focuses Cancel without transient destructive focus",
+            "pass": true
+          },
+          {
+            "name": "nonmodal mode permits background interaction and explicit focus targets",
+            "pass": true
+          },
+          {
+            "name": "a removed opener does not close an independent Dialog",
+            "pass": true
+          },
+          {
+            "name": "Menu escape does not dismiss its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "a Dialog opened by a menu survives that menu closing",
+            "pass": true
+          },
+          {
+            "name": "reopening during exit restores interaction without dropping native modality",
+            "pass": true
+          },
+          {
+            "name": "changing native mode after opener removal preserves the dialog",
+            "pass": true
+          },
+          {
+            "name": "the after-close callback runs after focus restoration",
+            "pass": true
+          },
+          {
+            "name": "Dialog follows the opener theme and live appearance changes",
+            "pass": true
+          },
+          {
+            "name": "an external default-theme opener resets a differently themed Dialog",
+            "pass": true
+          },
+          {
+            "name": "Drawer supports every logical edge and keeps author input state",
+            "pass": true
+          },
+          {
+            "name": "Drawer reverses logical edges in RTL and remains bounded after resize",
+            "pass": true
+          },
+          {
+            "name": "Drawer default size responds to a registered theme token",
+            "pass": true
+          },
+          {
+            "name": "Drawer preserves live local CSS theme overrides",
+            "pass": true
+          },
+          {
+            "name": "modal Tab traversal contains all slotted controls",
+            "pass": true
+          },
+          {
+            "name": "native modality blocks background activation through the owned exit",
+            "pass": true
+          },
+          {
+            "name": "unrelated infinite child animation cannot hold the native session open",
+            "pass": true
+          },
+          {
+            "name": "removing an open owner releases modality and scroll resources",
+            "pass": true
+          },
+          {
+            "name": "nested Dialog closes before its parent and parent cleanup closes descendants",
+            "pass": true
+          },
+          {
+            "name": "same-task open and close do not create a ghost session",
+            "pass": true
+          },
+          {
+            "name": "the native backdrop is styled through the surface part",
+            "pass": true
+          },
+          {
+            "name": "a nested editor can consume Tab even at the modal boundary",
+            "pass": true
+          },
+          {
+            "name": "native date editor segments keep their Tab steps before moving to the next control",
+            "pass": true
+          },
+          {
+            "name": "an opener removed during the request does not prevent opening",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "Dialog opens with native modality, name references and editing focus",
+            "pass": true
+          },
+          {
+            "name": "Escape closes once and returns to the opener",
+            "pass": true
+          },
+          {
+            "name": "canceling close preserves the native session",
+            "pass": true
+          },
+          {
+            "name": "Alert Dialog focuses Cancel without transient destructive focus",
+            "pass": true
+          },
+          {
+            "name": "nonmodal mode permits background interaction and explicit focus targets",
+            "pass": true
+          },
+          {
+            "name": "a removed opener does not close an independent Dialog",
+            "pass": true
+          },
+          {
+            "name": "Menu escape does not dismiss its parent Dialog",
+            "pass": true
+          },
+          {
+            "name": "a Dialog opened by a menu survives that menu closing",
+            "pass": true
+          },
+          {
+            "name": "reopening during exit restores interaction without dropping native modality",
+            "pass": true
+          },
+          {
+            "name": "changing native mode after opener removal preserves the dialog",
+            "pass": true
+          },
+          {
+            "name": "the after-close callback runs after focus restoration",
+            "pass": true
+          },
+          {
+            "name": "Dialog follows the opener theme and live appearance changes",
+            "pass": true
+          },
+          {
+            "name": "an external default-theme opener resets a differently themed Dialog",
+            "pass": true
+          },
+          {
+            "name": "Drawer supports every logical edge and keeps author input state",
+            "pass": true
+          },
+          {
+            "name": "Drawer reverses logical edges in RTL and remains bounded after resize",
+            "pass": true
+          },
+          {
+            "name": "Drawer default size responds to a registered theme token",
+            "pass": true
+          },
+          {
+            "name": "Drawer preserves live local CSS theme overrides",
+            "pass": true
+          },
+          {
+            "name": "modal Tab traversal contains all slotted controls",
+            "pass": true
+          },
+          {
+            "name": "native modality blocks background activation through the owned exit",
+            "pass": true
+          },
+          {
+            "name": "unrelated infinite child animation cannot hold the native session open",
+            "pass": true
+          },
+          {
+            "name": "removing an open owner releases modality and scroll resources",
+            "pass": true
+          },
+          {
+            "name": "nested Dialog closes before its parent and parent cleanup closes descendants",
+            "pass": true
+          },
+          {
+            "name": "same-task open and close do not create a ghost session",
+            "pass": true
+          },
+          {
+            "name": "the native backdrop is styled through the surface part",
+            "pass": true
+          },
+          {
+            "name": "a nested editor can consume Tab even at the modal boundary",
+            "pass": true
+          },
+          {
+            "name": "native date editor segments keep their Tab steps before moving to the next control",
+            "pass": true
+          },
+          {
+            "name": "an opener removed during the request does not prevent opening",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "Dialog form submission",
+          "long-content initial focus",
+          "Inset body composition",
+          "typed confirmation",
+          "failure and retry",
+          "Drawer input retention",
+          "360px documentation"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "Dialog form submission",
+          "long-content initial focus",
+          "Inset body composition",
+          "typed confirmation",
+          "failure and retry",
+          "Drawer input retention",
+          "360px documentation"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "Dialog form submission",
+          "long-content initial focus",
+          "Inset body composition",
+          "typed confirmation",
+          "failure and retry",
+          "Drawer input retention",
+          "360px documentation"
+        ],
+        "errors": []
+      }
+    ],
+    "selectiveDefinitions": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "errors": []
+      }
+    ],
+    "calendarRegression": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "HTML default and immediate native submission",
+            "pass": true
+          },
+          {
+            "name": "native modal opens on the selected day and Escape restores focus",
+            "pass": true
+          },
+          {
+            "name": "inline control label does not replace date button names",
+            "pass": true
+          },
+          {
+            "name": "day selection commits one ISO value",
+            "pass": true
+          },
+          {
+            "name": "native label focuses the actual Calendar trigger",
+            "pass": true
+          },
+          {
+            "name": "Apply explains an incomplete required range",
+            "pass": true
+          },
+          {
+            "name": "selecting the current day does not emit a change",
+            "pass": true
+          },
+          {
+            "name": "range endpoint navigation starts at the focused end",
+            "pass": true
+          },
+          {
+            "name": "date-only selection stays a civil day across zones",
+            "pass": true
+          },
+          {
+            "name": "time-zone changes preserve the timestamp instant",
+            "pass": true
+          },
+          {
+            "name": "DST gap remains invalid until time is corrected",
+            "pass": true
+          },
+          {
+            "name": "bounds restrict native validity and date buttons",
+            "pass": true
+          },
+          {
+            "name": "native reset and restoration stay silent",
+            "pass": true
+          },
+          {
+            "name": "native fieldset disables submission immediately",
+            "pass": true
+          },
+          {
+            "name": "footer identity survives presentation changes",
+            "pass": true
+          },
+          {
+            "name": "range value serializes as one JSON entry",
+            "pass": true
+          },
+          {
+            "name": "open modal can change presentation and reopen",
+            "pass": true
+          },
+          {
+            "name": "controlled rejection does not emit a commit",
+            "pass": true
+          },
+          {
+            "name": "trigger exposes current dialog relationship and expansion",
+            "pass": true
+          },
+          {
+            "name": "external label updates retain owned popup semantics",
+            "pass": true
+          },
+          {
+            "name": "month buttons retain focus for repeated activation",
+            "pass": true
+          },
+          {
+            "name": "short viewport reveals the selected focused day",
+            "pass": true
+          },
+          {
+            "name": "presets use immutable values and native JSON submission",
+            "pass": true
+          },
+          {
+            "name": "changing zone clears a stale local-time draft error",
+            "pass": true
+          },
+          {
+            "name": "RTL day keys follow the visual direction",
+            "pass": true
+          },
+          {
+            "name": "modal Tab stays contained and reaches supplied footer",
+            "pass": true
+          },
+          {
+            "name": "nested modal releases focus back to its open parent",
+            "pass": true
+          },
+          {
+            "name": "removing an open modal releases focus resources before reconnect",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "sharedOverlayRegression": {
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "153.0.8010.53",
+          "results": [
+            {
+              "name": "native modal opens and locks scrolling",
+              "ok": true
+            },
+            {
+              "name": "owned exit retains modal isolation and scroll lock",
+              "ok": true
+            },
+            {
+              "name": "reopen cancels obsolete exit",
+              "ok": true
+            },
+            {
+              "name": "unrelated child animation does not delay close",
+              "ok": true
+            },
+            {
+              "name": "nested close retains parent lock and modality",
+              "ok": true
+            },
+            {
+              "name": "parent close disposes nested native sessions",
+              "ok": true
+            },
+            {
+              "name": "disconnect closes pending native surface and releases resources",
+              "ok": true
+            },
+            {
+              "name": "stopped placement rejects its outstanding result",
+              "ok": true
+            },
+            {
+              "name": "live placement publishes current geometry",
+              "ok": true
+            },
+            {
+              "name": "removed opener ends its owned native session",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root inside click remains open",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root backdrop closes",
+              "ok": true
+            },
+            {
+              "name": "real inside click retains modal",
+              "ok": true
+            },
+            {
+              "name": "real backdrop click closes modal",
+              "ok": true
+            },
+            {
+              "name": "real Escape closes modal",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "firefox",
+          "version": "155.0",
+          "results": [
+            {
+              "name": "native modal opens and locks scrolling",
+              "ok": true
+            },
+            {
+              "name": "owned exit retains modal isolation and scroll lock",
+              "ok": true
+            },
+            {
+              "name": "reopen cancels obsolete exit",
+              "ok": true
+            },
+            {
+              "name": "unrelated child animation does not delay close",
+              "ok": true
+            },
+            {
+              "name": "nested close retains parent lock and modality",
+              "ok": true
+            },
+            {
+              "name": "parent close disposes nested native sessions",
+              "ok": true
+            },
+            {
+              "name": "disconnect closes pending native surface and releases resources",
+              "ok": true
+            },
+            {
+              "name": "stopped placement rejects its outstanding result",
+              "ok": true
+            },
+            {
+              "name": "live placement publishes current geometry",
+              "ok": true
+            },
+            {
+              "name": "removed opener ends its owned native session",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root inside click remains open",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root backdrop closes",
+              "ok": true
+            },
+            {
+              "name": "real inside click retains modal",
+              "ok": true
+            },
+            {
+              "name": "real backdrop click closes modal",
+              "ok": true
+            },
+            {
+              "name": "real Escape closes modal",
+              "ok": true
+            }
+          ]
+        },
+        {
+          "engine": "webkit",
+          "version": "26.6",
+          "results": [
+            {
+              "name": "native modal opens and locks scrolling",
+              "ok": true
+            },
+            {
+              "name": "owned exit retains modal isolation and scroll lock",
+              "ok": true
+            },
+            {
+              "name": "reopen cancels obsolete exit",
+              "ok": true
+            },
+            {
+              "name": "unrelated child animation does not delay close",
+              "ok": true
+            },
+            {
+              "name": "nested close retains parent lock and modality",
+              "ok": true
+            },
+            {
+              "name": "parent close disposes nested native sessions",
+              "ok": true
+            },
+            {
+              "name": "disconnect closes pending native surface and releases resources",
+              "ok": true
+            },
+            {
+              "name": "stopped placement rejects its outstanding result",
+              "ok": true
+            },
+            {
+              "name": "live placement publishes current geometry",
+              "ok": true
+            },
+            {
+              "name": "removed opener ends its owned native session",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root inside click remains open",
+              "ok": true
+            },
+            {
+              "name": "closed shadow root backdrop closes",
+              "ok": true
+            },
+            {
+              "name": "real inside click retains modal",
+              "ok": true
+            },
+            {
+              "name": "real backdrop click closes modal",
+              "ok": true
+            },
+            {
+              "name": "real Escape closes modal",
+              "ok": true
+            }
+          ]
+        }
+      ],
+      "errors": []
+    },
+    "accessibility": [
+      {
+        "role": "dialog",
+        "name": "End panel",
+        "properties": [
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "modal",
+            "value": {
+              "type": "boolean",
+              "value": true
+            }
+          },
+          {
+            "name": "describedby",
+            "value": {
+              "type": "idrefList",
+              "value": "",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 414
+                }
+              ]
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 413,
+                  "text": "End panel"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "role": "textbox",
+        "name": "Note",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "focused",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "editable",
+            "value": {
+              "type": "token",
+              "value": "plaintext"
+            }
+          },
+          {
+            "name": "settable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "multiline",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "readonly",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "required",
+            "value": {
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 444,
+                  "idref": "acme-field-content-2-label-0",
+                  "text": "Note"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "nativeDialogBaseline": [
+      {
+        "engine": "chromium",
+        "focus": "danger",
+        "backdrop": "0.4",
+        "tabIndex": -1
+      },
+      {
+        "engine": "firefox",
+        "focus": "dialog",
+        "backdrop": "0.4",
+        "tabIndex": 0
+      },
+      {
+        "engine": "webkit",
+        "focus": "dialog",
+        "backdrop": "0.4",
+        "tabIndex": -1
+      }
+    ],
+    "nativeDateTabBaseline": [
+      {
+        "engine": "chromium",
+        "sequence": [
+          {
+            "active": "date",
+            "focused": true
+          },
+          {
+            "active": "date",
+            "focused": true
+          },
+          {
+            "active": "date",
+            "focused": true
+          },
+          {
+            "active": "next",
+            "focused": true
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "sequence": [
+          {
+            "active": "date",
+            "focused": true
+          },
+          {
+            "active": "date",
+            "focused": true
+          },
+          {
+            "active": "date",
+            "focused": true
+          },
+          {
+            "active": "next",
+            "focused": true
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "sequence": [
+          {
+            "active": "date",
+            "focused": true
+          },
+          {
+            "active": "date",
+            "focused": true
+          },
+          {
+            "active": "",
+            "focused": false
+          },
+          {
+            "active": "",
+            "focused": true
+          }
+        ]
+      }
+    ]
+  },
+  "corrections": [
+    "Independent dialog ownership no longer follows the lifetime of a removed opener or a separately mounted menu that opened it. Anchored-popup defaults remain unchanged.",
+    "Reopening during exit clears content inertness. Mode changes avoid rebinding a detached opener and preserve the resolved theme.",
+    "After-close callbacks run after focus restoration. An opener removed during the opening request falls back to connected focus or the dialog scope.",
+    "A supplied theme source is a complete root scope, so an undefined theme name does not inherit an unrelated named theme. Public CSS token values preserve local overrides.",
+    "focus-trap documents Safari keyboard-preference limits and delegates intermediate Tab moves. Its public key hooks now yield to one shared modal traversal owner using maintained tabbable discovery. Native date/time segments retain their own traversal, with navigation completed at their observed focus boundary. Prevented editor keys remain owned by the editor.",
+    "Theme generation supports valid grouped default/light selectors instead of rejecting normalized source CSS. The failing generator regression now passes.",
+    "The token manifest count now includes acme-drawer-size. Retired implementation tests are replaced with the new native contracts rather than retained as compatibility coverage."
+  ],
+  "sources": [
+    "notes/alignment/inventory/overlays-help.md",
+    "notes/decisions/overlay-architecture.md",
+    "notes/decisions/dialog-components.md",
+    "notes/decisions/floating-surface-shadows.md",
+    "notes/alignment/evidence/material-dialog-review-2026-09-19.json",
+    "https://www.radix-ui.com/primitives/docs/components/dialog",
+    "https://www.radix-ui.com/primitives/docs/components/alert-dialog",
+    "https://chakra-ui.com/docs/components/dialog",
+    "https://ui.shadcn.com/docs/components/base/alert-dialog",
+    "node_modules/focus-trap/README.md and public key-policy API, 8.2.2",
+    "node_modules/tabbable/README.md, 6.5.0"
+  ],
+  "fixtures": [
+    "src/components/dialog/__tests__/dialog.browser.ts",
+    "src/components/dialog/__tests__/dialog.test.ts",
+    "src/components/drawer/__tests__/drawer.test.ts",
+    "src/shared/__tests__/overlay-coordination.test.ts",
+    "src/shared/__tests__/theme-context.test.ts",
+    "scripts/__tests__/theme-tokens.test.ts",
+    "/tmp/acme-m17-dialog/run.ts",
+    "/tmp/acme-m17-dialog/run-compiled.ts",
+    "/tmp/acme-m17-dialog/docs-check.ts",
+    "/tmp/acme-m17-dialog/selective-check.ts"
+  ],
+  "limits": [
+    "Actual Safari, OS input and assistive-technology timing remain M22/M26, including native date/time focus boundaries.",
+    "Generated React wrappers and scoped-registry/adoption acceptance remain M22.",
+    "M17 still contains Tooltip, Hover Card and Toggle Tip. This record does not close the whole batch.",
+    "M15 Command Menu is next and must compose the public Dialog/Input/Scroll Area instead of keeping its separate overlay engine.",
+    "Transitive imported-helper fingerprints remain an explicit M25/E03 correction with M26 release verification."
+  ]
+}

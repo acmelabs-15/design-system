@@ -302,3 +302,11 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ### M15 navigation slice complete — 2026-09-23
 
 [Navigation acceptance](evidence/m15-navigation-2026-09-23.json) closes N01/N02/N05 at their assigned boundaries. Appbar is replaced by App Bar and its explicit regions; Toolbar integrates the M10 Radio/Segmented delegation contract; Breadcrumbs owns navigation only. The docs header consumer and Command Menu page-stack consumer are updated together. Strict build/site, 934 tests, thirteen source/compiled checks and seven documentation flows per engine pass. API table overflow is fixed in the site generator. Bring Dialog/Alert Dialog forward from M17, then complete N08 Command Menu.
+
+### Native-dialog dependency order — 2026-09-23
+
+Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before finishing M15 Command Menu and starting M16 Sidebar. The current Drawer/Sheet import Modal helpers; Sidebar explicitly composes the new Drawer. This ordering lets one verified slice remove those old implementations outright. Tooltip/Hover Card/Toggle Tip remain the later M17 remainder.
+
+### O01/O02/O03 brought-forward slice complete — 2026-09-23
+
+[Native-dialog acceptance](evidence/m17-native-dialogs-2026-09-23.json) closes Dialog, Alert Dialog and Drawer at their assigned boundaries. Strict build/site, 919 tests, 27 source/compiled checks per engine, actual documentation flows and shared regressions pass. Modal, Modal Inset and Sheet are removed; Drawer uses the new interface. Continue M15 Command Menu, then M16 Sidebar/TOC/Tree. The remaining M17 help families stay open.

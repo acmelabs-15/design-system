@@ -69,3 +69,7 @@ E01/E02 verifies native top-layer mode, parent/child coordination, ARIA referenc
 ## Typed confirmation recipe
 
 An Alert Dialog owns modality and naming. Field/Input owns confirmation text. Application compares the phrase, handles the operation, supplies pending/error status and closes only on its chosen outcome. Cancel closes through the normal path; it does not falsely claim to cancel a completed server action. Reset the local typed phrase on a fresh opening while preserving failure context during retries. Reuse this recipe in Lit/React without a second dialog state machine.
+
+## O01/O02/O03 engineering resolution — 2026-09-23
+
+The native backdrop is exposed through surface::backdrop; explicit close controls expose their own shared action parts. Dialog medium retains the 540px baseline, with small=400px and large=800px, bounded by the viewport. Drawer uses the sizes.acme-drawer-size theme token (24rem by default); its optional size property overrides the movement axis. Generic Inset uses the shared body-padding context. A connected opener supplies its complete theme and public CSS tokens. If it disappears before native opening, connected focus or the dialog scope supplies the fallback. Removing an opener after opening preserves the captured scope. [Acceptance](../evidence/m17-native-dialogs-2026-09-23.json).

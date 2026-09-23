@@ -80,3 +80,48 @@ test("releasing a parent also releases a child anchored through its slot", () =>
   parent();
   expect(closed).toBe(1);
 });
+
+test("a separately mounted dialog can outlive the menu that opened it", () => {
+  const menu = document.createElement("div"),
+    opener = document.createElement("button"),
+    dialog = document.createElement("dialog");
+  menu.append(opener);
+  document.body.append(menu, dialog);
+  let removed = 0;
+  const releaseMenu = coordinateOverlay({ surface: menu, closeOnEscape: () => true, closeOnOutside: () => true, dismiss: () => {} });
+  const releaseDialog = coordinateOverlay({
+    surface: dialog,
+    anchor: opener,
+    parentFrom: "surface",
+    anchorMustRemainConnected: false,
+    closeOnEscape: () => true,
+    closeOnOutside: () => true,
+    dismiss: () => {},
+    ownerRemoved: () => removed++,
+  });
+  cleanup.push(releaseDialog, releaseMenu);
+  releaseMenu();
+  expect(removed).toBe(0);
+});
+
+test("an independent dialog does not close when its opener is removed", async () => {
+  const opener = document.createElement("button"),
+    dialog = document.createElement("dialog");
+  document.body.append(opener, dialog);
+  let removed = 0;
+  cleanup.push(
+    coordinateOverlay({
+      surface: dialog,
+      anchor: opener,
+      parentFrom: "surface",
+      anchorMustRemainConnected: false,
+      closeOnEscape: () => true,
+      closeOnOutside: () => true,
+      dismiss: () => {},
+      ownerRemoved: () => removed++,
+    }),
+  );
+  opener.remove();
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  expect(removed).toBe(0);
+});

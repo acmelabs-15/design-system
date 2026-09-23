@@ -135,6 +135,7 @@ export const themeCss = css`:root {
   --pad-cell-x: 20px;
   --pad-cell: var(--pad-cell-y) var(--pad-cell-x);
   --bar-h: 52px;
+  --acme-drawer-size: 24rem;
   --topbar-h: 56px;
   --pad-card: 20px;
   --pad-row: 9px 0;

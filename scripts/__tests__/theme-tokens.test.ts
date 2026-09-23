@@ -127,3 +127,14 @@ test("generation is deterministic and has no file-writing side effects", () => {
   expect(fs.readFileSync(path.join(root, "src/generated/theme.css"), "utf8")).toBe(before);
   expect(fs.existsSync(path.join(root, "src/generated/shared"))).toBe(false);
 });
+
+test("grouped root appearances preserve each scope and its changed token values", () => {
+  const root = fixture();
+  fs.appendFileSync(path.join(root, "styles/house.css"), ':root, :root[data-acme-appearance="light"] { --grouped-color: red; } :root[data-acme-appearance="dark"] { --grouped-color: blue; }');
+  const output = generateThemeStyles(root);
+  expect(output.appearanceProperties).toContain("--grouped-color");
+  expect(output.fullResetCss).toContain("--grouped-color: red");
+  expect(output.fullResetCss).toContain("--grouped-color: blue");
+  expect(output.fullResetCss).toContain('data-acme-appearance="light"');
+  expect(output.fullResetCss).toContain('data-acme-appearance="dark"');
+});

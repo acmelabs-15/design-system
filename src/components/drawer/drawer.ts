@@ -1,351 +1,229 @@
-import { preventBodyScroll } from "@zag-js/remove-scroll";
+import { ContextProvider } from "@lit/context";
+import { createAtom } from "@tanstack/lit-store";
 import { html, nothing } from "lit";
-import { property, query } from "lit/decorators.js";
-import { styleMap } from "lit/directives/style-map.js";
-import { AcmeElement, boolish, sharedCss } from "../../base";
+import { property } from "lit/decorators.js";
+import { boolish, sharedCss } from "../../base";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
 import { atomState } from "../../shared/atom-state";
-import { dialogResetCss } from "../../generated/shared/dialog-reset.styles";
-import { deepActive, tabbables } from "../modal/modal";
-import { drawerCss } from "../../generated/components/drawer/drawer.styles";
-import { drawerBackdropCss } from "../../generated/components/drawer/drawer-backdrop.styles";
-import { drawerOverlayCss } from "../../generated/components/drawer/drawer-overlay.styles";
-
-/** The popup's height: `max` (the viewport), a number of px, or its content's. */
-export type DrawerHeight = "" | "max" | number;
-/** Why the drawer asks to close: the Escape key, a press outside the popup, or a swipe down past the threshold. */
-export type DrawerDismissReason = "escape" | "outside" | "swipe";
-
-/** The entrance and the exit: the length of the popup's transform transition. */
-const MOTION_MS = 500;
-/** A swipe released at this speed (px per ms) or faster, downward, closes the drawer. */
-const SWIPE_VELOCITY = 0.5;
-/** The release speed comes from the last move within this window; an older one reads as a stop. */
-const VELOCITY_WINDOW_MS = 80;
-/** A move sample shorter than this counts as one frame. */
-const MIN_SAMPLE_MS = 16;
-/** Movement under this many px is a press, not a swipe. */
-const SWIPE_START_PX = 1;
-/** A swipe past this distance closes the drawer: half the popup's height, at least 10px. */
-const closeThreshold = (height: number) => Math.max(0.5 * height, 10);
-/** A pull up, against the open edge, is damped: it moves the square root of its distance. */
-const damp = (dy: number) => (dy >= 0 ? dy : -Math.sqrt(-dy));
-/** A press on one of these never starts a swipe. */
-const CONTROLS = 'button, a, [role="button"], [role="menuitem"], [role="menuitemradio"], [role="menuitemcheckbox"], [role="option"], [role="tab"]';
-/** The keyboard's inset is padded under the popup once it is taller than this. */
-const KEYBOARD_MIN_PX = 50;
-
-const heightAttr = {
-  fromAttribute: (v: string | null): DrawerHeight => (v === null || v === "" ? "" : v === "max" ? "max" : Number.isFinite(Number(v)) ? Number(v) : ""),
-  toAttribute: (v: DrawerHeight) => (v === "" ? null : String(v)),
-};
-
-/**
- * Drawer: a bottom sheet for small viewports. The native dialog opens in the top layer (focus stays
- * inside it, the page behind is inert), the page stops scrolling, the black 40% backdrop fades in and
- * the full-width popup slides up from the bottom edge, rounded at the top, capped at 80% of the
- * viewport; `height` fixes it (a number of px, or `max` for the whole viewport). The slotted content
- * scrolls inside the popup (`vertical-scroll="false"` clips it instead); `heading` puts a title above
- * it. A swipe down follows the pointer and closes the drawer when released fast, or past half the
- * popup's height; a shorter one springs back. Escape and a press outside ask to close too, all
- * through the cancelable `acme-dismiss`; a request during the entrance waits. On close the popup
- * slides out, then `acme-close` fires and focus returns to the opener. `nested` raises it above an
- * open modal; `reset-scroll` scrolls the popup to its top whenever it changes; `acme-scroll` fires as
- * the popup scrolls.
+import { Places } from "../../shared/places";
+import { StoreSelector } from "../../shared/store-connection";
+import { ComposedParticipants } from "../../shared/composed-participants";
+import { DialogLifetime } from "../../shared/dialog-lifetime";
+import { dialogContext, dialogPartFor, isDialogBoundary, registerDialogBoundary, type DialogReason, type DialogPart, type DialogOwner, type DialogFocusTarget } from "../../shared/dialog-context";
+import { optionalString } from "../../shared/attributes";
+import { dialogCss } from "../../generated/components/dialog/dialog.styles";
+import { drawerStructureCss } from "../../generated/components/drawer/drawer-structure.styles";
+/** A named edge panel with shared native dialog lifetime and directional motion.
+ * @slot trigger - Explicit Drawer Trigger controls.
+ * @slot heading - Accessible heading content.
+ * @slot description - Accessible description content.
+ * @slot header - Additional header content.
+ * @slot - Main content.
+ * @slot footer - Application actions and close controls.
+ * @csspart root - The containing region and focus fallback.
+ * @csspart surface - The native dialog surface.
+ * @csspart header - Header region.
+ * @csspart heading - Heading content.
+ * @csspart description - Description content.
+ * @csspart body - Main content region.
+ * @csspart footer - Action region.
+ * @fires {CustomEvent<{open:boolean,reason:DialogReason}>} acme-open-change - A user changes intended visibility.
+ * @fires {CustomEvent<{action:"close",reason:DialogReason}>} acme-request - Cancelable request before user dismissal.
+ * @fires {CustomEvent<{reason:DialogReason}>} acme-after-open - The owned entrance completes.
+ * @fires {CustomEvent<{reason:DialogReason}>} acme-after-close - The owned exit and native cleanup complete.
  */
-
-export class AcmeDrawer extends AcmeElement {
-  static styles = [sharedCss, dialogResetCss, drawerOverlayCss, drawerBackdropCss, drawerCss];
-  /** Open state; `show()` and `close()` set it. */
-  @property({ type: Boolean, reflect: true }) open = false;
-  /** The title above the content; the dialog is labelled by it. */
-  @property() heading = "";
-  /** The popup's height: `max` (the viewport) or a number of px; unset, its content's, capped at 80% of the viewport. */
-  @property({ converter: heightAttr }) height: DrawerHeight = "";
-  /** `vertical-scroll="false"` clips the popup's content instead of scrolling it. */
-  @property({ converter: boolish, attribute: "vertical-scroll" }) verticalScroll = true;
-  /** The drawer opens from inside a modal: it sits one layer above it. */
-  @property({ type: Boolean }) nested = false;
-  /** Any change scrolls the popup back to its top. */
-  @property({ attribute: "reset-scroll" }) resetScroll = "";
-  /** The popup is on screen at its resting place (false during the entrance and the exit). */
-  @atomState() private rendered = false;
-  /** The dialog is open (the exit keeps it open until the drawer leaves). */
-  @atomState() private mounted = false;
-  /** The entrance has ended: a request to close is taken up. */
-  @atomState() private entered = false;
-  /** The pointer is swiping the popup. */
-  @atomState() private swiping = false;
-  /** The keyboard's inset under the popup, in px. */
-  @atomState() private keyboard = 0;
-  @query("dialog") private dialog!: HTMLDialogElement;
-  @query(".drawer") private panel!: HTMLElement;
-  private opener: HTMLElement | null = null;
-  private unlock?: () => void;
-  private exit?: ReturnType<typeof setTimeout>;
-  private enter?: ReturnType<typeof setTimeout>;
-  private viewport?: VisualViewport;
-  /** The swipe in progress: where it started, the last move, the pointer that holds it. */
-  private swipe: { y0: number; y: number; time: number; last: { y: number; time: number } | null; pointerId: number | null; touch: boolean } | null = null;
-
+export class AcmeDrawer extends AcmeSemanticElement {
+  static styles = [sharedCss, dialogCss, drawerStructureCss];
+  @atomState() private opened = false;
+  /** Intended visibility; programmatic assignments remain silent. @default false */
+  @property({ noAccessor: true, type: Boolean, reflect: true }) get open(): boolean {
+    return this.opened;
+  }
+  set open(value: boolean) {
+    this.transition(Boolean(value), "programmatic");
+  }
+  @atomState() private modalValue = true;
+  /** @default true */
+  @property({ noAccessor: true, converter: boolish, useDefault: true }) get modal(): boolean {
+    return this.modalValue;
+  }
+  set modal(value: boolean) {
+    const previous = this.modalValue;
+    this.modalValue = Boolean(value);
+    this.requestUpdate("modal", previous);
+  }
+  @atomState() @property({ noAccessor: true, converter: boolish, useDefault: true, attribute: "close-on-escape" }) closeOnEscape = true;
+  @atomState() private outside = true;
+  /** @default true */
+  @property({ noAccessor: true, converter: boolish, useDefault: true, attribute: "close-on-outside" }) get closeOnOutside(): boolean {
+    return this.outside;
+  }
+  set closeOnOutside(value: boolean) {
+    const previous = this.outside;
+    this.outside = Boolean(value);
+    this.requestUpdate("closeOnOutside", previous);
+  }
+  @atomState() private initialTarget: DialogFocusTarget;
+  @property({ noAccessor: true, attribute: "initial-focus", converter: optionalString }) get initialFocus(): DialogFocusTarget {
+    return this.initialTarget;
+  }
+  set initialFocus(value: DialogFocusTarget) {
+    this.validateTarget(value);
+    const previous = this.initialTarget;
+    this.initialTarget = value;
+    this.requestUpdate("initialFocus", previous);
+  }
+  @atomState() private returnTarget: DialogFocusTarget;
+  @property({ noAccessor: true, attribute: "return-focus", converter: optionalString }) get returnFocus(): DialogFocusTarget {
+    return this.returnTarget;
+  }
+  set returnFocus(value: DialogFocusTarget) {
+    this.validateTarget(value);
+    const previous = this.returnTarget;
+    this.returnTarget = value;
+    this.requestUpdate("returnFocus", previous);
+  }
+  @atomState() private sizeValue?: string;
+  /** Authored axis size; omission uses the acme-drawer-size theme token. */
+  @property({ noAccessor: true, converter: optionalString }) get size(): string | undefined {
+    return this.sizeValue;
+  }
+  set size(value: string | undefined) {
+    if (
+      value !== undefined &&
+      (typeof value !== "string" ||
+        !value.trim() ||
+        /^(initial|inherit|unset|revert)/i.test(value) ||
+        (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("width", value)))
+    )
+      throw new TypeError("Drawer size requires a CSS dimension");
+    const previous = this.sizeValue;
+    this.sizeValue = value;
+    this.requestUpdate("size", previous);
+  }
+  @atomState() private placementValue: "start" | "end" | "top" | "bottom" = "end";
+  /** @default "end" */
+  @property({ noAccessor: true, useDefault: true }) get placement(): "start" | "end" | "top" | "bottom" {
+    return this.placementValue;
+  }
+  set placement(value: "start" | "end" | "top" | "bottom") {
+    if (!["start", "end", "top", "bottom"].includes(value)) throw new TypeError("Invalid Drawer placement");
+    const previous = this.placementValue;
+    this.placementValue = value;
+    this.requestUpdate("placement", previous);
+  }
+  private reason: DialogReason = "programmatic";
+  private readonly places = new Places(this, { places: ["heading", "description", "header", "footer"] });
+  private readonly parts = createAtom<readonly DialogPart[]>([]);
+  private readonly state = createAtom(() => ({ open: this.open, alert: false }));
+  private readonly owner: DialogOwner = {
+    host: this,
+    state: this.state,
+    register: (part) => {
+      this.parts.set((parts) => [...parts, part]);
+      return () => this.parts.set((parts) => parts.filter((p) => p !== part));
+    },
+    request: (open, reason, opener) => this.request(open, reason, opener),
+  };
+  private readonly provider = new ContextProvider(this, { context: dialogContext, initialValue: this.owner });
+  private readonly participants = new ComposedParticipants(this, {
+    owner: this.owner,
+    parts: () => this.parts.get(),
+    find: dialogPartFor,
+    boundary: isDialogBoundary,
+    slots: () => [...this.renderRoot.querySelectorAll("slot")],
+  });
+  private readonly lifetime = new DialogLifetime(this, {
+    state: () => ({
+      open: this.open,
+      modal: this.modal,
+      alert: false,
+      closeOnEscape: this.closeOnEscape,
+      closeOnOutside: this.closeOnOutside,
+      initialFocus: this.initialFocus,
+      returnFocus: this.returnFocus,
+      reason: this.reason,
+    }),
+    surface: () => this.surface,
+    body: () => this.renderRoot?.querySelector<HTMLElement>(".frame") ?? undefined,
+    focusArea: () => this.renderRoot?.querySelector<HTMLElement>("[part=body]") ?? undefined,
+    fallback: () => this.renderRoot?.querySelector<HTMLElement>("[part=root]") ?? undefined,
+    heading: () => this.headingElement,
+    cancel: () =>
+      this.parts
+        .get()
+        .find((part) => part.kind === "cancel")
+        ?.target(),
+    requestClose: (reason) => this.request(false, reason),
+    nativeClosed: () => {
+      if (this.open) this.transition(false, "programmatic");
+    },
+  });
+  private readonly themeUpdates = new StoreSelector(this, () => this.lifetime.theme?.effective ?? this.themeContext.scope.effective);
+  private get surface() {
+    return this.renderRoot?.querySelector<HTMLDialogElement>("dialog") ?? undefined;
+  }
+  private get headingElement() {
+    return this.places.has("heading") ? (this.renderRoot?.querySelector<HTMLElement>("[part=heading]") ?? undefined) : undefined;
+  }
+  constructor() {
+    super();
+    registerDialogBoundary(this);
+  }
+  private validateTarget(value: DialogFocusTarget) {
+    if (value !== undefined && typeof value !== "string" && (!value || value.nodeType !== 1)) throw new TypeError("Focus target must be an Element or selector");
+  }
+  private transition(open: boolean, reason: DialogReason, opener?: HTMLElement) {
+    if (open === this.opened) return;
+    const previous = this.opened;
+    this.reason = reason;
+    if (open) this.lifetime?.openingFrom(opener);
+    this.opened = open;
+    this.requestUpdate("open", previous);
+  }
+  private request(open: boolean, reason: DialogReason, opener?: HTMLElement) {
+    if (open === this.open || !this.isConnected) return;
+    if (!open) {
+      const request = new CustomEvent("acme-request", { detail: Object.freeze({ action: "close", reason }), bubbles: true, composed: true, cancelable: true });
+      if (!this.dispatchEvent(request) || !this.open) return;
+    }
+    this.transition(open, reason, opener);
+    this.dispatchEvent(new CustomEvent("acme-open-change", { detail: Object.freeze({ open, reason }), bubbles: true, composed: true }));
+  }
   show() {
     this.open = true;
   }
-  close() {
+  hide() {
     this.open = false;
   }
-
+  focus() {
+    this.lifetime.focus();
+  }
+  protected get semanticTarget() {
+    return this.surface;
+  }
+  protected get semanticDefaults() {
+    return {
+      role: "dialog",
+      labelledByElements: this.headingElement ? [this.headingElement] : undefined,
+      describedByElements: this.places.has("description") ? [this.renderRoot.querySelector<HTMLElement>("[part=description]")!] : undefined,
+    };
+  }
+  protected updated() {
+    const surface = this.surface;
+    if (!surface) return;
+    if (this.size === undefined) surface.style.removeProperty("--_drawer-size");
+    else surface.style.setProperty("--_drawer-size", this.size);
+  }
   disconnectedCallback() {
+    this.open = false;
     super.disconnectedCallback();
-    clearTimeout(this.exit);
-    clearTimeout(this.enter);
-    this.unwatchKeyboard();
-    this.unlock?.();
-    this.unlock = undefined;
   }
-
-  /** Asks to close: the cancelable `acme-dismiss` event, then the exit. A request during the entrance is dropped. */
-  private dismiss(reason: DrawerDismissReason) {
-    if (!this.entered) return;
-    const ok = this.dispatchEvent(new CustomEvent<{ reason: DrawerDismissReason }>("acme-dismiss", { detail: { reason }, bubbles: true, composed: true, cancelable: true }));
-    if (ok) this.close();
-  }
-
-  private onCancel = (e: Event) => {
-    e.preventDefault();
-    this.dismiss("escape");
-  };
-
-  /** The dialog closed on its own (a second Escape the platform no longer lets us cancel): the drawer leaves at once. */
-  private onNativeClose = () => {
-    if (this.open) this.open = false;
-    else if (this.mounted) this.unmount();
-  };
-
-  /** A press on the backdrop or the viewport around the popup. */
-  private onOutsidePress = (e: PointerEvent) => {
-    if (e.target === this.dialog) this.dismiss("outside");
-  };
-
-  private onScroll = () => {
-    this.dispatchEvent(new CustomEvent<{ scrollTop: number }>("acme-scroll", { detail: { scrollTop: this.panel.scrollTop }, bubbles: true, composed: true }));
-  };
-
-  /* ---- the swipe ---- */
-
-  /** Whether a press here may start a swipe: not on a control, and not inside content scrolled away from its top. */
-  private canSwipe(e: Event) {
-    const path = e.composedPath();
-    const end = path.indexOf(this.panel);
-    if (end < 0) return false;
-    for (const n of path.slice(0, end + 1)) {
-      if (!(n instanceof Element)) continue;
-      if (n.matches(CONTROLS)) return false;
-      if (n.scrollTop > 0) return false;
-    }
-    return true;
-  }
-
-  private begin(y: number, time: number, pointerId: number | null, touch: boolean) {
-    this.swipe = { y0: y, y, time, last: null, pointerId, touch };
-  }
-
-  /** The popup follows the pointer: down as it moves, up only a little; the transition waits until release. */
-  private move(y: number, time: number) {
-    const s = this.swipe;
-    if (!s) return;
-    s.last = { y: s.y, time: s.time };
-    s.y = y;
-    s.time = time;
-    const dy = y - s.y0;
-    if (!this.swiping) {
-      if (Math.abs(dy) < SWIPE_START_PX) return;
-      this.swiping = true;
-      this.dialog.setAttribute("data-swiping", "");
-    }
-    this.panel.style.transition = "none";
-    this.panel.style.setProperty("--drawer-swipe-movement-y", `${damp(dy)}px`);
-  }
-
-  /** Released: past the threshold or fast enough, the drawer closes; else the popup springs back. */
-  private end(time: number) {
-    const s = this.swipe;
-    this.swipe = null;
-    if (!s || !this.swiping) return;
-    this.swiping = false;
-    this.dialog.removeAttribute("data-swiping");
-    const dy = s.y - s.y0;
-    // The release speed is the last move's own, if the release follows it within the window.
-    let velocity = 0;
-    if (s.last && time - s.time <= VELOCITY_WINDOW_MS) velocity = (s.y - s.last.y) / Math.max(s.time - s.last.time, MIN_SAMPLE_MS);
-    this.panel.style.removeProperty("transition");
-    if (dy > 0 && (velocity >= SWIPE_VELOCITY || dy > closeThreshold(this.panel.offsetHeight))) {
-      // The exit runs from where the popup is: the swipe's offset stays until it leaves.
-      this.dismiss("swipe");
-      if (!this.open) return;
-    }
-    this.panel.style.removeProperty("--drawer-swipe-movement-y");
-  }
-
-  private onPointerDown = (e: PointerEvent) => {
-    if (e.pointerType === "touch" || e.button !== 0 || !this.canSwipe(e)) return;
-    this.begin(e.clientY, e.timeStamp, e.pointerId, false);
-    try {
-      this.panel.setPointerCapture(e.pointerId);
-    } catch {
-      // A pointer the platform does not track (a synthetic event): the moves still reach the popup.
-    }
-  };
-  private onPointerMove = (e: PointerEvent) => {
-    if (this.swipe && !this.swipe.touch && e.pointerId === this.swipe.pointerId) this.move(e.clientY, e.timeStamp);
-  };
-  private onPointerUp = (e: PointerEvent) => {
-    if (this.swipe && !this.swipe.touch && e.pointerId === this.swipe.pointerId) this.end(e.timeStamp);
-  };
-  private onTouchStart = (e: TouchEvent) => {
-    if (e.touches.length !== 1 || !this.canSwipe(e)) return;
-    this.begin(e.touches[0].clientY, e.timeStamp, null, true);
-  };
-  /** Once the swipe is on, the touch moves the popup, not the page or the content. */
-  private onTouchMove = (e: TouchEvent) => {
-    if (!this.swipe?.touch) return;
-    this.move(e.touches[0].clientY, e.timeStamp);
-    if (this.swiping && e.cancelable) e.preventDefault();
-  };
-  private onTouchEnd = (e: TouchEvent) => {
-    if (this.swipe?.touch) this.end(e.timeStamp);
-  };
-
-  /* ---- the keyboard inset ---- */
-
-  private watchKeyboard() {
-    const vv = typeof window !== "undefined" ? window.visualViewport : null;
-    if (!vv) return;
-    this.viewport = vv;
-    vv.addEventListener("resize", this.onViewport);
-    vv.addEventListener("scroll", this.onViewport);
-    this.onViewport();
-  }
-  private unwatchKeyboard() {
-    this.viewport?.removeEventListener("resize", this.onViewport);
-    this.viewport?.removeEventListener("scroll", this.onViewport);
-    this.viewport = undefined;
-    this.keyboard = 0;
-  }
-  private onViewport = () => {
-    const vv = this.viewport;
-    if (!vv) return;
-    const inset = window.innerHeight - vv.height - vv.offsetTop;
-    this.keyboard = inset > KEYBOARD_MIN_PX ? inset : 0;
-  };
-
-  /* ---- open and close ---- */
-
-  /** Focus on open: the first tabbable element in the popup, else the popup. */
-  private focusInitial() {
-    const panel = this.panel;
-    if (!panel) return;
-    (tabbables(panel)[0] ?? panel).focus({ preventScroll: true });
-  }
-
-  /** The drawer leaves: the dialog closes, the page scrolls again, focus returns to the opener. */
-  private unmount() {
-    clearTimeout(this.exit);
-    this.exit = undefined;
-    this.mounted = false;
-    this.rendered = false;
-    this.entered = false;
-    this.swipe = null;
-    this.swiping = false;
-    if (this.dialog?.open) this.dialog.close();
-    this.unwatchKeyboard();
-    this.unlock?.();
-    this.unlock = undefined;
-    this.opener?.focus?.();
-    this.opener = null;
-    this.dispatchEvent(new CustomEvent("acme-close", { bubbles: true, composed: true }));
-  }
-
-  willUpdate(ch: Map<string, unknown>) {
-    if (ch.has("open") && this.open) {
-      clearTimeout(this.exit);
-      this.exit = undefined;
-      this.mounted = true;
-    }
-  }
-
-  updated(ch: Map<string, unknown>) {
-    if (ch.has("resetScroll") && this.panel) this.panel.scrollTop = 0;
-    if (!ch.has("open")) return;
-    if (this.open) {
-      this.opener = deepActive();
-      if (!this.dialog.open) this.dialog.showModal();
-      this.unlock ??= preventBodyScroll();
-      this.panel.scrollTop = 0;
-      this.focusInitial();
-      this.watchKeyboard();
-      // The entrance: the popup is laid out at its start (below the edge, the backdrop clear), then
-      // shown, so the transition runs from that start; a request to close waits until it has ended.
-      void this.dialog.offsetWidth;
-      this.rendered = true;
-      clearTimeout(this.enter);
-      this.enter = setTimeout(() => {
-        this.enter = undefined;
-        this.entered = true;
-      }, MOTION_MS);
-      this.dispatchEvent(new CustomEvent("acme-open", { bubbles: true, composed: true }));
-    } else if (this.mounted) {
-      clearTimeout(this.enter);
-      this.enter = undefined;
-      this.rendered = false;
-      this.entered = false;
-      this.exit = setTimeout(() => this.unmount(), MOTION_MS);
-    }
-  }
-
-  private panelStyle() {
-    const h = this.height;
-    return h === "max" ? { height: "100dvh", maxHeight: "100dvh" } : typeof h === "number" ? { height: `${h}px` } : {};
-  }
-
   render() {
-    // The starting and ending frames of the transition.
-    const starting = this.mounted && !this.rendered && this.open;
-    const ending = this.mounted && !this.rendered && !this.open;
-    const panel = html`<div
-      class=${this.cls("drawer", { noscroll: !this.verticalScroll, max: this.height === "max" })}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby=${this.heading ? "title" : nothing}
-      tabindex="-1"
-      style=${styleMap(this.panelStyle())}
-      ?data-starting-style=${starting}
-      ?data-ending-style=${ending}
-      ?data-swiping=${this.swiping}
-      data-swipe-direction=${this.swiping ? "down" : nothing}
-      @scroll=${this.onScroll}
-      @pointerdown=${this.onPointerDown}
-      @pointermove=${this.onPointerMove}
-      @pointerup=${this.onPointerUp}
-      @pointercancel=${this.onPointerUp}
-      @touchstart=${this.onTouchStart}
-      @touchmove=${this.onTouchMove}
-      @touchend=${this.onTouchEnd}
-      @touchcancel=${this.onTouchEnd}
-      part="drawer"
-    >${this.heading ? html`<h2 class="title" id="title">${this.heading}</h2>` : nothing}<slot></slot></div>`;
-    return html`<dialog
-      class=${this.cls("dialog", { nested: this.nested })}
-      style=${styleMap(this.keyboard ? { paddingBottom: `${this.keyboard}px` } : {})}
-      ?data-starting-style=${starting}
-      ?data-ending-style=${ending}
-      @cancel=${this.onCancel}
-      @close=${this.onNativeClose}
-      @pointerdown=${this.onOutsidePress}
-      part="dialog"
-    >${this.mounted ? panel : nothing}</dialog>`;
+    const theme = this.lifetime.theme?.effective;
+    return html`<div part="root" aria-label=${this.ariaLabel ?? nothing}><slot name="trigger"></slot><acme-overlay-theme .source=${theme} .reference=${this.open || this.lifetime.active ? (this.lifetime.themeReference ?? this) : undefined}><dialog part="surface" data-placement=${this.placement} aria-modal=${String(this.modal)} @cancel=${this.lifetime.cancel} @close=${this.lifetime.nativeClose}><div class="frame"><header part="header" ?hidden=${!this.places.has("heading") && !this.places.has("description") && !this.places.has("header")}><div part="heading" tabindex="-1" ?hidden=${!this.places.has("heading")}><slot name="heading"></slot></div><div part="description" ?hidden=${!this.places.has("description")}><slot name="description"></slot></div><slot name="header"></slot></header><div part="body"><slot></slot></div><footer part="footer" ?hidden=${!this.places.has("footer")}><slot name="footer"></slot></footer></div></dialog></acme-overlay-theme></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-drawer": AcmeDrawer;

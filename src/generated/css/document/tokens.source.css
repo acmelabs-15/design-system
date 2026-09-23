@@ -92,6 +92,7 @@
   --pad-cell-x: 20px;
   --pad-cell: var(--pad-cell-y) var(--pad-cell-x);
   --bar-h: 52px;
+  --acme-drawer-size: 24rem;
   --topbar-h: 56px;
   --pad-card: 20px;
   --pad-row: 9px 0;
@@ -557,14 +558,6 @@ a:hover {
 
 }
 
-@media (width <= 600px) {
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-}
-
 @media (prefers-reduced-motion: reduce) {
 
 }
@@ -649,10 +642,6 @@ html {
 }
 
 @media (width <= 767px) {
-
-}
-
-@media (prefers-reduced-motion: reduce) {
 
 }
 

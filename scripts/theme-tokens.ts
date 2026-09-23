@@ -60,11 +60,10 @@ function rootMode(selector: Selector): Mode | undefined {
   return value === "light" || value === "dark" ? value : undefined;
 }
 
-function styleMode(rule: Extract<Rule, { type: "style" }>): Mode | undefined {
+function styleModes(rule: Extract<Rule, { type: "style" }>): Mode[] | undefined {
   const modes = rule.value.selectors.map(rootMode);
   if (modes.some((mode) => mode === undefined)) return undefined;
-  if (new Set(modes).size !== 1) throw new Error("A theme token rule must have one root appearance");
-  return modes[0];
+  return [...new Set(modes)] as Mode[];
 }
 
 function automaticMedia(rule: Rule): boolean {
@@ -86,7 +85,7 @@ function fingerprint(value: unknown): string {
 function collectFacts(sources: Source[]): Map<string, Fact> {
   const facts = new Map<string, Fact>();
   for (const source of sources) {
-    let active: Mode | undefined;
+    let active: Mode[] | undefined;
     transform({
       filename: source.file,
       code: Buffer.from(source.css),
@@ -94,7 +93,7 @@ function collectFacts(sources: Source[]): Map<string, Fact> {
         Rule(rule) {
           if (automaticMedia(rule)) return [];
           if (rule.type === "style") {
-            active = styleMode(rule);
+            active = styleModes(rule);
             if (active === undefined) return [];
           }
         },
@@ -106,8 +105,8 @@ function collectFacts(sources: Source[]): Map<string, Fact> {
           const { name, value } = declaration.value;
           const fact = facts.get(name) ?? { values: new Set<string>(), hasBase: false, hasAppearance: false, dependencies: new Set<string>() };
           fact.values.add(fingerprint(value));
-          fact.hasBase ||= active === "base";
-          fact.hasAppearance ||= active !== "base";
+          fact.hasBase ||= active.includes("base");
+          fact.hasAppearance ||= active.some((mode) => mode !== "base");
           dependencies(value, fact.dependencies);
           facts.set(name, fact);
         },
@@ -176,7 +175,7 @@ function scopeRule(target: string, body: string, attribute?: string, mode?: stri
 }
 
 function scopeSource(source: Source, target: string, attribute: string, properties?: ReadonlySet<string>): string {
-  let active: Mode | undefined;
+  let active: Mode[] | undefined;
   const selectors = new Map<Mode, Selector[]>();
   for (const mode of ["base", "light", "dark"] as const) selectors.set(mode, scopeSelectors(target, mode === "base" ? undefined : attribute, mode));
   return transform({
@@ -187,7 +186,7 @@ function scopeSource(source: Source, target: string, attribute: string, properti
       Rule(rule) {
         if (automaticMedia(rule)) return [];
         if (rule.type === "style") {
-          active = styleMode(rule);
+          active = styleModes(rule);
           if (active === undefined) return [];
         } else if (rule.type !== "media" && rule.type !== "supports" && rule.type !== "layer-block") return [];
       },
@@ -195,8 +194,9 @@ function scopeSource(source: Source, target: string, attribute: string, properti
         if (rule.type === "style") active = undefined;
         if ((rule.type === "media" || rule.type === "supports" || rule.type === "layer-block") && !rule.value.rules.length) return [];
       },
-      Selector() {
-        return active === undefined ? undefined : selectors.get(active);
+      Selector(value) {
+        const mode = rootMode(value);
+        return active === undefined || mode === undefined ? undefined : selectors.get(mode);
       },
       Declaration(declaration) {
         if (active === undefined) return [];

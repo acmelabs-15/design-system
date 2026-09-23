@@ -128,6 +128,12 @@ class ThemeBinding {
   private document?: ThemeDocument;
   private unsubscribe?: () => void;
   private active = false;
+  private suppliedSource?: ThemeSource;
+  setSource(source: ThemeSource | undefined): void {
+    if (source === this.suppliedSource) return;
+    this.suppliedSource = source;
+    this.refresh();
+  }
   constructor(
     readonly target: HTMLElement,
     private readonly connectedLifetime = false,
@@ -137,7 +143,7 @@ class ThemeBinding {
     this.parentSource = createAtom(() => this.parent.get().source);
   }
   private receive = (source: ThemeSource, dispose?: () => void): void => {
-    if (!this.active || !this.target.isConnected) {
+    if (this.suppliedSource || !this.active || !this.target.isConnected) {
       dispose?.();
       return;
     }
@@ -175,9 +181,10 @@ class ThemeBinding {
       this.unsubscribe?.();
       this.unsubscribe = undefined;
       this.parent.set({});
-      this.scope.setParent(undefined);
+      this.scope.setParent(this.suppliedSource);
       this.scope.setSystemAppearance(document.system.appearance);
-      if (this.target.isConnected) this.target.dispatchEvent(new ContextEvent(themeContext, this.target, this.receive, true));
+      // A supplied complete scope is a new root boundary, not an omitted inherited setting.
+      if (!this.suppliedSource && this.target.isConnected) this.target.dispatchEvent(new ContextEvent(themeContext, this.target, this.receive, true));
     });
     document.reconcileRoots(this);
   };
@@ -234,6 +241,11 @@ export class ThemeContextController implements ReactiveController {
     if (this.provider) return;
     this.provider = new ContextProvider(this.host, { context: themeContext, initialValue: this.scope.effective });
     this.binding.providerAdded();
+  }
+  /** Supplies a complete scope for an owned surface; undefined resumes DOM inheritance. */
+  setSource(source: ThemeSource | undefined): void {
+    this.binding.setSource(source);
+    this.host.requestUpdate();
   }
   hostConnected(): void {
     this.binding.connect();

@@ -3,6 +3,10 @@ export type OverlayDismissReason = "escape" | "outside";
 export type OverlayRegistration = Readonly<{
   surface: HTMLElement;
   anchor?: HTMLElement;
+  /** Use surface ancestry for independently mounted dialogs opened by another overlay. */
+  parentFrom?: "anchor" | "surface";
+  /** Anchored popups require their anchor; an independent dialog can outlive its opener. */
+  anchorMustRemainConnected?: boolean;
   closeOnEscape(): boolean;
   closeOnOutside(): boolean;
   dismiss(reason: OverlayDismissReason, event?: Event): void;
@@ -70,7 +74,8 @@ export function coordinateOverlay(registration: OverlayRegistration): () => void
     coordination = createCoordination(document);
     documents.set(document, coordination);
   }
-  const parent = [...coordination.sessions].reverse().find((session) => composedContains(session.registration.surface, registration.anchor ?? registration.surface));
+  const parentTarget = registration.parentFrom === "surface" ? registration.surface : (registration.anchor ?? registration.surface);
+  const parent = [...coordination.sessions].reverse().find((session) => composedContains(session.registration.surface, parentTarget));
   const session: Session = { registration, inside: new WeakSet<Event>(), parent, release() {} };
   const roots = new Set([registration.surface.getRootNode(), registration.anchor?.getRootNode()].filter((root): root is Node => !!root));
   const captureInside = (event: Event) => {
@@ -84,7 +89,7 @@ export function coordinateOverlay(registration: OverlayRegistration): () => void
     if (
       registration.surface.isConnected &&
       registration.surface.ownerDocument === document &&
-      (!registration.anchor || (registration.anchor.isConnected && registration.anchor.ownerDocument === document))
+      (registration.anchorMustRemainConnected === false || !registration.anchor || (registration.anchor.isConnected && registration.anchor.ownerDocument === document))
     )
       return;
     try {

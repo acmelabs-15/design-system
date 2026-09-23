@@ -902,6 +902,26 @@
       "import": "./dist/generated/icons/classes/album-icon.js",
       "default": "./dist/generated/icons/classes/album-icon.js"
     },
+    "./components/alert-dialog": {
+      "types": "./dist/components/alert-dialog/alert-dialog.d.ts",
+      "import": "./dist/components/alert-dialog/alert-dialog.js",
+      "default": "./dist/components/alert-dialog/alert-dialog.js"
+    },
+    "./components/alert-dialog-action": {
+      "types": "./dist/components/alert-dialog-action/alert-dialog-action.d.ts",
+      "import": "./dist/components/alert-dialog-action/alert-dialog-action.js",
+      "default": "./dist/components/alert-dialog-action/alert-dialog-action.js"
+    },
+    "./components/alert-dialog-cancel": {
+      "types": "./dist/components/alert-dialog-cancel/alert-dialog-cancel.d.ts",
+      "import": "./dist/components/alert-dialog-cancel/alert-dialog-cancel.js",
+      "default": "./dist/components/alert-dialog-cancel/alert-dialog-cancel.js"
+    },
+    "./components/alert-dialog-trigger": {
+      "types": "./dist/components/alert-dialog-trigger/alert-dialog-trigger.d.ts",
+      "import": "./dist/components/alert-dialog-trigger/alert-dialog-trigger.js",
+      "default": "./dist/components/alert-dialog-trigger/alert-dialog-trigger.js"
+    },
     "./components/align-center-icon": {
       "types": "./dist/generated/icons/classes/align-center-icon.d.ts",
       "import": "./dist/generated/icons/classes/align-center-icon.js",
@@ -5697,6 +5717,21 @@
       "import": "./dist/generated/icons/classes/dialer-sip-icon.js",
       "default": "./dist/generated/icons/classes/dialer-sip-icon.js"
     },
+    "./components/dialog": {
+      "types": "./dist/components/dialog/dialog.d.ts",
+      "import": "./dist/components/dialog/dialog.js",
+      "default": "./dist/components/dialog/dialog.js"
+    },
+    "./components/dialog-close": {
+      "types": "./dist/components/dialog-close/dialog-close.d.ts",
+      "import": "./dist/components/dialog-close/dialog-close.js",
+      "default": "./dist/components/dialog-close/dialog-close.js"
+    },
+    "./components/dialog-trigger": {
+      "types": "./dist/components/dialog-trigger/dialog-trigger.d.ts",
+      "import": "./dist/components/dialog-trigger/dialog-trigger.js",
+      "default": "./dist/components/dialog-trigger/dialog-trigger.js"
+    },
     "./components/dialogs-icon": {
       "types": "./dist/generated/icons/classes/dialogs-icon.d.ts",
       "import": "./dist/generated/icons/classes/dialogs-icon.js",
@@ -6176,6 +6211,16 @@
       "types": "./dist/components/drawer/drawer.d.ts",
       "import": "./dist/components/drawer/drawer.js",
       "default": "./dist/components/drawer/drawer.js"
+    },
+    "./components/drawer-close": {
+      "types": "./dist/components/drawer-close/drawer-close.d.ts",
+      "import": "./dist/components/drawer-close/drawer-close.js",
+      "default": "./dist/components/drawer-close/drawer-close.js"
+    },
+    "./components/drawer-trigger": {
+      "types": "./dist/components/drawer-trigger/drawer-trigger.d.ts",
+      "import": "./dist/components/drawer-trigger/drawer-trigger.js",
+      "default": "./dist/components/drawer-trigger/drawer-trigger.js"
     },
     "./components/dresser-icon": {
       "types": "./dist/generated/icons/classes/dresser-icon.d.ts",
@@ -12152,16 +12197,6 @@
       "import": "./dist/generated/icons/classes/mobiledata-off-icon.js",
       "default": "./dist/generated/icons/classes/mobiledata-off-icon.js"
     },
-    "./components/modal": {
-      "types": "./dist/components/modal/modal.d.ts",
-      "import": "./dist/components/modal/modal.js",
-      "default": "./dist/components/modal/modal.js"
-    },
-    "./components/modal-inset": {
-      "types": "./dist/components/modal-inset/modal-inset.d.ts",
-      "import": "./dist/components/modal-inset/modal-inset.js",
-      "default": "./dist/components/modal-inset/modal-inset.js"
-    },
     "./components/mode-comment-icon": {
       "types": "./dist/generated/icons/classes/mode-comment-icon.d.ts",
       "import": "./dist/generated/icons/classes/mode-comment-icon.js",
@@ -16791,11 +16826,6 @@
       "types": "./dist/generated/icons/classes/shaved-ice-icon.d.ts",
       "import": "./dist/generated/icons/classes/shaved-ice-icon.js",
       "default": "./dist/generated/icons/classes/shaved-ice-icon.js"
-    },
-    "./components/sheet": {
-      "types": "./dist/components/sheet/sheet.d.ts",
-      "import": "./dist/components/sheet/sheet.js",
-      "default": "./dist/components/sheet/sheet.js"
     },
     "./components/sheets-rtl-icon": {
       "types": "./dist/generated/icons/classes/sheets-rtl-icon.d.ts",

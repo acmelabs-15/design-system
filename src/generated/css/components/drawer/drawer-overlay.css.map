@@ -1,1 +1,0 @@
-{"version":3,"sourceRoot":null,"mappings":"AAAA;;;;;;;;AACA;;;;AACA","sources":["drawer-overlay.source.css"],"sourcesContent":["dialog{pointer-events:none;position:fixed;inset:0;display:flex;align-items:flex-end}\ndialog:where(.nested){z-index:calc(var(--ds-z-modal) + 1)}\ndialog:where(:not(.nested)){z-index:var(--ds-z-drawer)}"],"names":[]}

@@ -28,8 +28,13 @@ test("the generated manifest links every public key to its one property, default
   const text = fs.readFileSync(file, "utf8");
   const manifest = JSON.parse(text);
   expect(manifest.schemaVersion).toBe(1);
-  expect(manifest.tokens).toHaveLength(446);
-  expect(new Set(manifest.tokens.map((token: { cssProperty: string }) => token.cssProperty)).size).toBe(446);
+  expect(manifest.tokens).toHaveLength(447);
+  expect(new Set(manifest.tokens.map((token: { cssProperty: string }) => token.cssProperty)).size).toBe(447);
+  expect(manifest.tokens.find((token: { key: string }) => token.key === "acme-drawer-size")).toMatchObject({
+    category: "sizes",
+    cssProperty: "--acme-drawer-size",
+    source: "src/shared/theme-tokens.ts",
+  });
   for (const tier of [4, 5, 6]) {
     expect(manifest.tokens.find((token: { key: string }) => token.key === `acme-shadow-${tier}`)).toMatchObject({ category: "shadows", cssProperty: `--acme-shadow-${tier}` });
   }

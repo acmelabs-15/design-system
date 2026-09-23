@@ -1,3 +1,0 @@
-dialog{pointer-events:none;position:fixed;inset:0;display:flex;align-items:flex-end}
-dialog:where(.nested){z-index:calc(var(--ds-z-modal) + 1)}
-dialog:where(:not(.nested)){z-index:var(--ds-z-drawer)}

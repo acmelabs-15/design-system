@@ -3,8 +3,9 @@ import { preventBodyScroll } from "@zag-js/remove-scroll";
 import type { ReactiveController, ReactiveControllerHost } from "lit";
 import { bindThemeContext, type ThemeContextBinding } from "./theme-context";
 import { coordinateOverlay, type OverlayDismissReason } from "./overlay-coordination";
-import { deepActiveElement } from "./composed-tree";
+import { composedContains, deepActiveElement } from "./composed-tree";
 import { createFocusTrap, type FocusTrap } from "focus-trap";
+import { focusable, tabbable, type FocusableElement } from "tabbable";
 
 const modalFocusStacks = new WeakMap<Document, FocusTrap[]>();
 
@@ -12,6 +13,8 @@ export type OverlayPhase = "closed" | "open" | "closing";
 export type OverlayPresenceOptions = {
   surface(): HTMLElement;
   mode(): "modal" | "dialog" | "popover";
+  parentFrom?: "anchor" | "surface";
+  anchorMustRemainConnected?: boolean;
   closeOnEscape(): boolean;
   closeOnOutside(): boolean;
   dismiss(reason: OverlayDismissReason, event?: Event): void;
@@ -107,8 +110,50 @@ export class OverlayPresence implements ReactiveController {
           allowOutsideClick: true,
           isolateSubtrees: false,
           tabbableOptions: { getShadowRoot: true },
+          isKeyForward: () => false,
+          isKeyBackward: () => false,
         });
         trap.activate();
+        const destination = (active: Element, backward: boolean) => {
+          const candidates = tabbable(surface, { getShadowRoot: true });
+          const index = candidates.indexOf(active as FocusableElement);
+          let next: FocusableElement | undefined;
+          if (index >= 0) next = candidates[(index + (backward ? -1 : 1) + candidates.length) % candidates.length];
+          else {
+            const all = focusable(surface, { getShadowRoot: true });
+            const from = all.indexOf(active as FocusableElement);
+            const ordered = backward ? all.slice(0, Math.max(0, from)).reverse() : all.slice(from + 1);
+            next = ordered.find((element) => candidates.includes(element)) ?? (backward ? candidates.at(-1) : candidates[0]);
+          }
+          return next ?? surface;
+        };
+        let nativeTab: { from: Element; event: KeyboardEvent; left: boolean } | undefined;
+        let nativeTimer: ReturnType<typeof setTimeout> | undefined;
+        const leaveEditor = (event: FocusEvent) => {
+          if (nativeTab && event.composedPath()[0] === nativeTab.from && event.relatedTarget !== nativeTab.from) nativeTab.left = true;
+        };
+        const navigate = (event: KeyboardEvent) => {
+          if (event.key !== "Tab" || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.isComposing || trap.paused || surface.inert) return;
+          const active = deepActiveElement(document);
+          if (!active || !composedContains(surface, active)) return;
+          clearTimeout(nativeTimer);
+          nativeTab = undefined;
+          if (active.localName === "input" && ["date", "datetime-local", "month", "time", "week"].includes((active as HTMLInputElement).type)) {
+            const pending = { from: active, event, left: false };
+            nativeTab = pending;
+            // Native date/time segments retain Tab until focus leaves the entire editor.
+            nativeTimer = setTimeout(() => {
+              nativeTab = undefined;
+              nativeTimer = undefined;
+              if (pending.left && !event.defaultPrevented && trap.active && !trap.paused && surface.isConnected && !surface.inert) destination(active, event.shiftKey).focus();
+            }, 0);
+            return;
+          }
+          event.preventDefault();
+          destination(active, event.shiftKey).focus();
+        };
+        surface.addEventListener("keydown", navigate);
+        surface.addEventListener("focusout", leaveEditor);
         const observer = new MutationObserver(() => {
           if (surface.inert) trap.pause();
           else trap.unpause();
@@ -116,6 +161,10 @@ export class OverlayPresence implements ReactiveController {
         observer.observe(surface, { attributes: true, attributeFilter: ["inert"] });
         cleanups.push(() => {
           observer.disconnect();
+          surface.removeEventListener("keydown", navigate);
+          surface.removeEventListener("focusout", leaveEditor);
+          clearTimeout(nativeTimer);
+          nativeTab = undefined;
           trap.deactivate({ returnFocus: false });
         });
       }
@@ -123,6 +172,8 @@ export class OverlayPresence implements ReactiveController {
         coordinateOverlay({
           surface,
           anchor: this.opener,
+          parentFrom: this.options.parentFrom,
+          anchorMustRemainConnected: this.options.anchorMustRemainConnected,
           closeOnEscape: this.options.closeOnEscape,
           closeOnOutside: this.options.closeOnOutside,
           dismiss: this.options.dismiss,
