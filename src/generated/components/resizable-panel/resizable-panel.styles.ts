@@ -1,0 +1,26 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const resizablePanelCss = css`:host {
+  flex: var(--_resize-share, 1) 1 0px;
+  min-block-size: 0;
+  min-inline-size: 0;
+  display: block;
+  overflow: hidden;
+}
+
+[part~="panel"] {
+  block-size: 100%;
+  min-block-size: 0;
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+:host([data-resizing]) {
+  pointer-events: none;
+  user-select: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+`;

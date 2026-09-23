@@ -62,6 +62,21 @@ _Avoid_: Alert as a synonym for absent content; treating missing content alone a
 
 ### Containers and form groups
 
+**Resizable**:
+A layout of adjacent panes whose relative sizes the user can change.
+_Avoid_: Splitter as a competing component name.
+
+**Resizable Panel**:
+One pane of a Resizable layout, with its own content and size limits.
+_Avoid_: Panel as a general content surface; Card as a synonym for a resizable pane.
+
+**Resize Handle**:
+A focusable separator that controls the sizes of two adjacent panes.
+_Avoid_: Separator when referring to this interactive resize control.
+
+**Primary pane**:
+The pane whose size and name a Resize Handle represents.
+
 **Card**:
 A presentation container for related content and actions about one subject. It can have sections or serve as a link.
 _Avoid_: Panel or Link Card as competing names for the same surface; Entity as a synonym for Card.

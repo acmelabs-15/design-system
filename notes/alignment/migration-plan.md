@@ -286,3 +286,7 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ## M14 Scroll Area slice — 2026-09-23
 
 [Acceptance](evidence/m14-scroll-area-2026-09-23.json) closes L08 at its native/Lit boundary. Build/site and all 909 tests pass; seventeen source/compiled cases per engine include an actual TanStack Virtual consumer, keyboard/wheel/drag, ownership and cleanup. The documentation actions and custom-bar appearance pass. Scroller is removed. Resizable is the only remaining M14 family.
+
+## M14 complete — 2026-09-23
+
+[Resizable acceptance](evidence/m14-resizable-2026-09-23.json) closes L09 and M14 at their assigned boundaries. Build/site, 926 tests, 23 source/compiled checks per engine, actual documentation and Chromium accessibility inspection pass. Forty repeated WebKit mounts pass after correcting the global reduced-motion rule; the unsuccessful styling experiments are removed. Continue M15. Include all N12 controls, not just Show. N08 Command Menu depends on the public Dialog family, so implement that M17 slice before Command Menu and record its completion there; do not create another dialog engine.

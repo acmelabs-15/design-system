@@ -1,0 +1,60 @@
+:host {
+  flex: 0 0 8px;
+  min-block-size: 0;
+  min-inline-size: 0;
+  display: block;
+}
+
+[part~="handle"] {
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+  place-items: center;
+  block-size: 100%;
+  min-block-size: 0;
+  inline-size: 100%;
+  min-inline-size: 0;
+  display: grid;
+  position: relative;
+}
+
+[part="indicator"] {
+  background: var(--acme-resize-handle-color, var(--ds-gray-300));
+  block-size: 100%;
+  inline-size: 1px;
+}
+
+[data-axis="vertical"] {
+  cursor: row-resize;
+}
+
+[data-axis="vertical"] [part="indicator"] {
+  block-size: 1px;
+  inline-size: 100%;
+}
+
+[part~="handle"]:hover [part="indicator"], [part~="handle"]:focus-visible [part="indicator"] {
+  background: var(--acme-accent);
+}
+
+[part~="handle"]:focus-visible {
+  outline: 2px solid var(--acme-accent);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+[aria-disabled="true"] {
+  cursor: default;
+  opacity: .5;
+  pointer-events: none;
+}
+
+@media (forced-colors: active) {
+  [part="indicator"] {
+    background: canvastext;
+  }
+
+  [part~="handle"]:focus-visible {
+    outline-color: highlight;
+  }
+}

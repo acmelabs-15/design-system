@@ -155,3 +155,6 @@ export * from "./components/scrollbar/scrollbar";
 export * from "./components/scroll-thumb/scroll-thumb";
 export * from "./components/scroll-corner/scroll-corner";
 export * from "./components/scroll-button/scroll-button";
+export * from "./components/resizable/resizable";
+export * from "./components/resizable-panel/resizable-panel";
+export * from "./components/resize-handle/resize-handle";

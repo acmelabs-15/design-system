@@ -8,17 +8,19 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
-**Completed:** M01–M13 are complete at their assigned boundaries. [Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes M13 with the strict build, site, 900 tests and all-engine native/compiled/documentation/overlay checks. Final React-wrapper, actual platform and whole-library gates remain M22/M26.
+**Completed:** M01–M14 are complete at their assigned boundaries. [Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes M13 with the strict build, site, 900 tests and all-engine native/compiled/documentation/overlay checks. Final React-wrapper, actual platform and whole-library gates remain M22/M26.
 
-**Current work:** M14 is active. [Disabled Wall/List/Data List](evidence/m14-native-content-2026-09-23.json), [Card/Inset/Item](evidence/m14-surfaces-2026-09-23.json) and [Scroll Area](evidence/m14-scroll-area-2026-09-23.json) are complete at their assigned boundaries. Latest build/site and 909 tests pass, with seventeen source/compiled Scroll Area checks per engine and working documentation. **Resizable is the only remaining M14 family.** Its Splitter 1.44.0 machine and core resize/validation utilities have been read in full from /var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-splitter-check-FU5QRs. Finish connector/panel/ARIA/test review, implement the keyed percentage/collapse contract in L09, and continue M15–M26 without questions.
+**Current work:** M14 is complete at its assigned boundaries. [Resizable acceptance](evidence/m14-resizable-2026-09-23.json) closes the last family with build/site, 926 tests, 23 source/compiled checks per engine, native accessibility inspection and forty passing WebKit fresh mounts. The reduced-motion producer defect is corrected. **M15 is next:** Accordion/Collapsible and Show/Show More/Load More; Steps/Timeline; Toolbar/App Bar/Breadcrumbs; Command Menu. R08 contracts, existing Collapse/Collapse Group and disclosure decisions are read. No M15 source is implemented yet. Command Menu requires the public Dialog family: bring that M17 slice forward before Command Menu, then leave the rest of M17 in its assigned batch.
 
-**Next batches:** continue M14–M26 under execution delegation. No further phase-choice questions or Plan toggles are needed.
+**Next batches:** continue M15–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
 
 **Working copies and workers:** parallel workers stopped at an account usage limit. Their work is saved in /tmp/acme-m13-slider-worktree and /tmp/acme-m13-calendar-worktree, both based on 924ad0bd9. Slider and the date-runtime correction are already integrated and committed; main Calendar now contains the later fixes. Continue locally. Do not overwrite main files with older worktree copies.
 
+**Browser verification:** Playwright 1.63.0 and complete Firefox/WebKit binaries now live in /Users/peterkloss/Library/Caches/acme-design-system/browser-checks. Use its node_modules/playwright/index.mjs and browsers/ path. The earlier acme-style-engines-fHTyxk package lost files; do not reuse it.
+
 **Local preview:** port 4180 now runs bun scripts/dev.ts --no-build --no-watch (exec session 53597). A second watch process was found and stopped after it triggered concurrent builds. Use explicit generation/builds; restore normal watch mode after migration completion. Keep heavy package builds sequential.
 
-**Local commits:** e62d95d0a (direct component language), 2ec047be1 (Calendar/M13), 6e431cf16 (native List/Data List/Disabled Wall), c84f73cee (Card/Inset/Item). Scroll Area is the current verified commit slice. No push, publication or Pages change occurred.
+**Local commits:** 2ec047be1 (Calendar/M13), 6e431cf16 (native lists/Disabled Wall), c84f73cee (Card/Inset/Item), 39bdc98c0 (Scroll Area), 335546ad0 (style whitespace). Resizable/M14 closure is the current verified commit slice. No push, publication or Pages change occurred.
 
 **Remaining cross-batch checks:** actual OS IME/voice/autofill/history/Safari and assistive-technology interaction; generated React wrappers; scoped-registry/adoption and native-content cases; the specific saved single-bundle import-initialization reproduction; complete appearance/removal/package acceptance. Preserve their existing M22/M26 owners and source-linked limits.
 

@@ -41,6 +41,16 @@ export class SpringValue implements ReactiveController {
     this.media = undefined;
     this.target = undefined;
   }
+  /** Follows a directly manipulated endpoint without retaining an unfinished interpolation. */
+  jump() {
+    const target = this.endpoint(),
+      parameters = JSON.stringify(this.config());
+    if (!this.spring && this.target === target && this.parameters === parameters) return;
+    this.stop();
+    this.target = target;
+    this.parameters = parameters;
+    this.host.requestUpdate();
+  }
   update() {
     const target = this.endpoint(),
       config = this.config(),
