@@ -1,0 +1,6 @@
+:host {display:block;flex:1;min-inline-size:0;}
+[part=item] {display:flex;align-items:center;gap:var(--acme-spacing-3);position:relative;}
+[part=separator] {display:block;flex:1;min-inline-size:var(--acme-spacing-4);block-size:1px;background:var(--ds-gray-alpha-400);}
+[data-complete] [part=separator] {background:var(--accent);}
+[hidden] {display:none!important;}
+[data-orientation=vertical] [part=separator] {position:absolute;inset-inline-start:12px;inset-block-start:100%;inline-size:1px;min-inline-size:0;block-size:var(--acme-spacing-3);}

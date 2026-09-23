@@ -18182,6 +18182,16 @@
       "import": "./dist/generated/icons/classes/steering-wheel-heat-icon.js",
       "default": "./dist/generated/icons/classes/steering-wheel-heat-icon.js"
     },
+    "./components/step": {
+      "types": "./dist/components/step/step.d.ts",
+      "import": "./dist/components/step/step.js",
+      "default": "./dist/components/step/step.js"
+    },
+    "./components/step-content": {
+      "types": "./dist/components/step-content/step-content.d.ts",
+      "import": "./dist/components/step-content/step-content.js",
+      "default": "./dist/components/step-content/step-content.js"
+    },
     "./components/step-icon": {
       "types": "./dist/generated/icons/classes/step-icon.d.ts",
       "import": "./dist/generated/icons/classes/step-icon.js",
@@ -18202,15 +18212,35 @@
       "import": "./dist/generated/icons/classes/step-over-icon.js",
       "default": "./dist/generated/icons/classes/step-over-icon.js"
     },
+    "./components/step-trigger": {
+      "types": "./dist/components/step-trigger/step-trigger.d.ts",
+      "import": "./dist/components/step-trigger/step-trigger.js",
+      "default": "./dist/components/step-trigger/step-trigger.js"
+    },
     "./components/steppers-icon": {
       "types": "./dist/generated/icons/classes/steppers-icon.d.ts",
       "import": "./dist/generated/icons/classes/steppers-icon.js",
       "default": "./dist/generated/icons/classes/steppers-icon.js"
     },
+    "./components/steps": {
+      "types": "./dist/components/steps/steps.d.ts",
+      "import": "./dist/components/steps/steps.js",
+      "default": "./dist/components/steps/steps.js"
+    },
     "./components/steps-icon": {
       "types": "./dist/generated/icons/classes/steps-icon.d.ts",
       "import": "./dist/generated/icons/classes/steps-icon.js",
       "default": "./dist/generated/icons/classes/steps-icon.js"
+    },
+    "./components/steps-next": {
+      "types": "./dist/components/steps-next/steps-next.d.ts",
+      "import": "./dist/components/steps-next/steps-next.js",
+      "default": "./dist/components/steps-next/steps-next.js"
+    },
+    "./components/steps-previous": {
+      "types": "./dist/components/steps-previous/steps-previous.d.ts",
+      "import": "./dist/components/steps-previous/steps-previous.js",
+      "default": "./dist/components/steps-previous/steps-previous.js"
     },
     "./components/stethoscope-arrow-icon": {
       "types": "./dist/generated/icons/classes/stethoscope-arrow-icon.d.ts",
@@ -19412,10 +19442,20 @@
       "import": "./dist/generated/icons/classes/timelapse-icon.js",
       "default": "./dist/generated/icons/classes/timelapse-icon.js"
     },
+    "./components/timeline": {
+      "types": "./dist/components/timeline/timeline.d.ts",
+      "import": "./dist/components/timeline/timeline.js",
+      "default": "./dist/components/timeline/timeline.js"
+    },
     "./components/timeline-icon": {
       "types": "./dist/generated/icons/classes/timeline-icon.d.ts",
       "import": "./dist/generated/icons/classes/timeline-icon.js",
       "default": "./dist/generated/icons/classes/timeline-icon.js"
+    },
+    "./components/timeline-item": {
+      "types": "./dist/components/timeline-item/timeline-item.d.ts",
+      "import": "./dist/components/timeline-item/timeline-item.js",
+      "default": "./dist/components/timeline-item/timeline-item.js"
     },
     "./components/timer-1-icon": {
       "types": "./dist/generated/icons/classes/timer-1-icon.d.ts",

@@ -97,3 +97,7 @@ Acceptance: real conditional mount/unmount, child cleanup, form state preservati
 ### M13 Menu engineering resolution — 2026-09-22
 
 Under execution delegation, Menu Content is the manual-popover surface. Menu Item supports native href/target/rel for action links, textValue for an explicit typeahead label, and a submenu slot containing a nested Menu. A submenu uses its containing item as opener. Section exposes heading without consuming the native title attribute. Use the reviewed disabled-focus policy: arrow/typeahead can discover disabled items, while all activation and navigation remain blocked. [Resolution and evidence](../../decisions/execution-delegation.md#menu-composition-and-completion--2026-09-22).
+
+### M15 Steps engineering resolution — 2026-09-23
+
+Under execution delegation, value=count is the documented completed state for a nonempty sequence, matching the reviewed upstream model. The read-only count and completed properties expose it. The completed slot supplies its content. Values above count report a diagnostic and block user progression; a value can be supplied before its items mount. Linear mode uses Previous/Next instead of direct trigger jumps. Non-linear arrows move focus without triggering validation; explicit activation requests the change. Disabled items are skipped, and Step.completed can override the positional completion indicator. [Acceptance](../evidence/m15-steps-timeline-2026-09-23.json).

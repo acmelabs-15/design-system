@@ -294,3 +294,7 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ### M15 disclosure slice complete — 2026-09-23
 
 [Disclosure acceptance](evidence/m15-disclosure-2026-09-23.json) closes N09 and N12 at their assigned boundaries. Accordion/Collapsible replace Collapse/Collapse Group; Show controls explicit content lifetimes; Show More and Load More share native action behavior. Tab Panel reuses the same owned-content helper. The newly reproduced focus-token defect in M14 controls is corrected in the authored producer. Build/site, 926 tests and all-engine source/compiled/documentation checks pass. Continue Steps/Timeline and the remaining M15 navigation families.
+
+### M15 Steps and Timeline complete — 2026-09-23
+
+[Acceptance](evidence/m15-steps-timeline-2026-09-23.json) closes N10/N11 at their assigned boundaries. Strict build/site, 932 tests, sixteen source/compiled checks per engine and actual documentation flows pass. Steps uses the documented value=count completion state and application validation requests; Timeline is descriptive ordered content. Continue Toolbar/App Bar/Breadcrumbs, then Dialog before Command Menu.
