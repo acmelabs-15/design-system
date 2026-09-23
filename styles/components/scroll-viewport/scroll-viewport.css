@@ -1,0 +1,3 @@
+:host{display:block;block-size:100%;min-block-size:0;min-inline-size:0;} [part~=viewport]{block-size:100%;inline-size:100%;overflow:auto;scrollbar-width:none;scroll-behavior:auto;} [part~=viewport]::-webkit-scrollbar{display:none;} [data-orientation=vertical]{overflow-x:hidden;} [data-orientation=horizontal]{overflow-y:hidden;} [part~=viewport]:focus-visible{outline:2px solid var(--acme-accent);outline-offset:-2px;} [part=content]{display:flow-root;min-inline-size:100%;} @media(forced-colors:active){[part~=viewport]:focus-visible{outline-color:Highlight;}}
+
+[part~=viewport]{scroll-padding:var(--_scroll-thickness);}

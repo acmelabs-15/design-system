@@ -67,7 +67,6 @@ const MAP: [string, RegExp][] = [
   ["show-more", /^\.show-more/],
   ["pagination", /^\.pagination/],
   ["middle-truncate", /^\.truncate-mid/],
-  ["scroller", /^\.scroller/],
   ["book", /^\.book/],
   ["browser", /^\.browser/],
   ["clearable-input", /^\.clearable/],
@@ -124,7 +123,7 @@ for (const [name, rules] of modules) {
   const key = SHARED.has(name) ? "shared/" + name : "components/" + name + "/" + name;
   writeStyle(key, rules, { producer: "house", inputs });
 }
-console.log("styles: " + modules.size + " house families and document tokens");
+console.log("styles: " + modules.size + " base style families and document tokens");
 
 for (const file of new Bun.Glob("styles/{components,shared}/**/*.css").scanSync(ROOT)) {
   const key = file.slice("styles/".length, -".css".length);

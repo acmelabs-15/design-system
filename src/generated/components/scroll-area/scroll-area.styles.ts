@@ -1,0 +1,94 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const scrollAreaCss = css`:host {
+  --_scroll-thickness: 10px;
+  --_scroll-corner-width: 0px;
+  --_scroll-corner-height: 0px;
+  min-block-size: 0;
+  min-inline-size: 0;
+  display: block;
+}
+
+:host([size="tiny"]) {
+  --_scroll-thickness: 6px;
+}
+
+:host([size="small"]) {
+  --_scroll-thickness: 8px;
+}
+
+:host([size="large"]) {
+  --_scroll-thickness: 12px;
+}
+
+[part="root"] {
+  grid-template-rows: minmax(0, 1fr) auto;
+  block-size: 100%;
+  min-block-size: 0;
+  display: grid;
+}
+
+[part="surface"] {
+  min-block-size: 0;
+  min-inline-size: 0;
+  position: relative;
+}
+
+.controls {
+  gap: 8px;
+  display: flex;
+}
+
+[part="surface"]:before, [part="surface"]:after {
+  content: "";
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  block-size: 16px;
+  position: absolute;
+  inset-inline: 0;
+}
+
+[part="surface"]:before {
+  background: linear-gradient(to bottom,var(--ds-background-100),transparent);
+  inset-block-start: 0;
+}
+
+[part="surface"]:after {
+  background: linear-gradient(to top,var(--ds-background-100),transparent);
+  inset-block-end: 0;
+}
+
+[data-fade-top]:before, [data-fade-bottom]:after {
+  opacity: 1;
+}
+
+.inline-fades {
+  pointer-events: none;
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+}
+
+.inline-fades:before, .inline-fades:after {
+  content: "";
+  opacity: 0;
+  inline-size: 16px;
+  position: absolute;
+  inset-block: 0;
+}
+
+.inline-fades:before {
+  background: linear-gradient(to right,var(--ds-background-100),transparent);
+  left: 0;
+}
+
+.inline-fades:after {
+  background: linear-gradient(to left,var(--ds-background-100),transparent);
+  right: 0;
+}
+
+[data-fade-left] .inline-fades:before, [data-fade-right] .inline-fades:after {
+  opacity: 1;
+}
+`;

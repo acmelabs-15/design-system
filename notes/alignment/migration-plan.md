@@ -282,3 +282,7 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ## M14 Card/Inset/Item slice — 2026-09-23
 
 [Acceptance](evidence/m14-surfaces-2026-09-23.json) closes C01/C02/L06 at their assigned boundary. The package/site and all 906 tests pass; source/compiled geometry and real documentation interactions pass all three engines. Explicit logical Inset edges replace the ambiguous draft. Scroll Area and Resizable are the two remaining M14 families.
+
+## M14 Scroll Area slice — 2026-09-23
+
+[Acceptance](evidence/m14-scroll-area-2026-09-23.json) closes L08 at its native/Lit boundary. Build/site and all 909 tests pass; seventeen source/compiled cases per engine include an actual TanStack Virtual consumer, keyboard/wheel/drag, ownership and cleanup. The documentation actions and custom-bar appearance pass. Scroller is removed. Resizable is the only remaining M14 family.
