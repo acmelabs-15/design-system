@@ -62,7 +62,6 @@ const MAP: [string, RegExp][] = [
   ["book", /^\.book/],
   ["browser", /^\.browser/],
   ["clearable-input", /^\.clearable/],
-  ["command-menu", /^\.cmdk/],
   ["context-card", /^(\.context-card|\.context-target)/],
   ["feedback", /^\.feedback/],
   ["file-tree", /^\.tree/],

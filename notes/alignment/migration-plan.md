@@ -310,3 +310,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### O01/O02/O03 brought-forward slice complete — 2026-09-23
 
 [Native-dialog acceptance](evidence/m17-native-dialogs-2026-09-23.json) closes Dialog, Alert Dialog and Drawer at their assigned boundaries. Strict build/site, 919 tests, 27 source/compiled checks per engine, actual documentation flows and shared regressions pass. Modal, Modal Inset and Sheet are removed; Drawer uses the new interface. Continue M15 Command Menu, then M16 Sidebar/TOC/Tree. The remaining M17 help families stay open.
+
+### M15 complete — 2026-09-23
+
+[Command Menu acceptance](evidence/m15-command-menu-2026-09-23.json) closes N08 and M15. Strict build/site, 915 tests, sixteen source/compiled checks per engine, real documentation and ComboBox regressions pass. The earlier slices close N01/N02/N05/N09/N10/N11/N12. Continue M16 with the already verified Drawer dependency.

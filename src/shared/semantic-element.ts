@@ -2,12 +2,19 @@ import { createAtom } from "@tanstack/lit-store";
 import type { PropertyDeclarations, ReactiveController } from "lit";
 import { AcmeElement } from "../base";
 
-const attributes = ["role", "aria-label", "aria-labelledby", "aria-describedby", "aria-haspopup", "aria-expanded", "aria-controls"] as const;
+const attributes = ["role", "aria-label", "aria-labelledby", "aria-describedby", "aria-haspopup", "aria-expanded", "aria-controls", "aria-autocomplete", "aria-activedescendant"] as const;
 type Attribute = (typeof attributes)[number];
-type ReferenceAttribute = "aria-labelledby" | "aria-describedby" | "aria-controls";
+type ReferenceAttribute = "aria-labelledby" | "aria-describedby" | "aria-controls" | "aria-activedescendant";
 type Reference = Readonly<{ text: string | null; elements?: readonly Element[] }>;
 type State = Readonly<Record<Attribute, Reference>>;
-export type SemanticDefaults = Readonly<{ role?: string; label?: string; labelledByElements?: readonly Element[]; describedByElements?: readonly Element[]; controlsElements?: readonly Element[] }>;
+export type SemanticDefaults = Readonly<{
+  role?: string;
+  label?: string;
+  ariaAutocomplete?: string;
+  labelledByElements?: readonly Element[];
+  describedByElements?: readonly Element[];
+  controlsElements?: readonly Element[];
+}>;
 const empty: State = Object.freeze(Object.fromEntries(attributes.map((name) => [name, Object.freeze({ text: null })])) as Record<Attribute, Reference>);
 const isAttribute = (name: string): name is Attribute => (attributes as readonly string[]).includes(name);
 
@@ -91,8 +98,8 @@ class SemanticAttributes implements ReactiveController {
     if (!this.target) return;
     const state = this.state.get();
     const defaults = this.defaults();
-    for (const name of ["role", "aria-label", "aria-haspopup", "aria-expanded"] as const) {
-      const value = state[name].text ?? (name === "role" ? defaults.role : name === "aria-label" ? defaults.label : undefined) ?? null;
+    for (const name of ["role", "aria-label", "aria-haspopup", "aria-expanded", "aria-autocomplete"] as const) {
+      const value = state[name].text ?? (name === "role" ? defaults.role : name === "aria-label" ? defaults.label : name === "aria-autocomplete" ? defaults.ariaAutocomplete : undefined) ?? null;
       if (value === null) this.target.removeAttribute(name);
       else this.target.setAttribute(name, value);
     }
@@ -113,6 +120,7 @@ class SemanticAttributes implements ReactiveController {
               ? [...defaults.labelledByElements]
               : null);
     }
+    this.target.ariaActiveDescendantElement = this.resolve(state["aria-activedescendant"])[0] ?? null;
     this.changed();
   };
   private observe(): void {
@@ -121,7 +129,7 @@ class SemanticAttributes implements ReactiveController {
     const needed =
       this.defaults().labelledByElements !== undefined ||
       this.defaults().describedByElements !== undefined ||
-      (["aria-labelledby", "aria-describedby", "aria-controls"] as const).some((name) => !!state[name].text?.trim() && !state[name].elements);
+      (["aria-labelledby", "aria-describedby", "aria-controls", "aria-activedescendant"] as const).some((name) => !!state[name].text?.trim() && !state[name].elements);
     const root = this.host.getRootNode();
     if (needed && this.watchedRoot === root) return;
     this.observer?.disconnect();
@@ -164,6 +172,7 @@ class SemanticAttributes implements ReactiveController {
  * @attr {string} aria-labelledby - IDs in the author's tree scope that label the native root.
  * @attr {string} aria-describedby - IDs in the author's tree scope that describe the native root.
  * @attr {string} aria-controls - IDs in the author's tree scope controlled by the native root.
+ * @attr {string} aria-activedescendant - ID of the active item in the author's scope.
  */
 export abstract class AcmeSemanticElement extends AcmeElement {
   static properties: PropertyDeclarations = {
@@ -171,6 +180,8 @@ export abstract class AcmeSemanticElement extends AcmeElement {
     ariaLabel: { attribute: "aria-label", noAccessor: true },
     ariaHasPopup: { attribute: "aria-haspopup", noAccessor: true },
     ariaExpanded: { attribute: "aria-expanded", noAccessor: true },
+    ariaAutoComplete: { attribute: "aria-autocomplete", noAccessor: true },
+    ariaActiveDescendantElement: { attribute: false, noAccessor: true },
     ariaControlsElements: { attribute: false, noAccessor: true },
     ariaLabelledByElements: { attribute: false, noAccessor: true },
     ariaDescribedByElements: { attribute: false, noAccessor: true },
@@ -215,6 +226,18 @@ export abstract class AcmeSemanticElement extends AcmeElement {
   }
   set ariaExpanded(value: string | null) {
     this.semantic.set("aria-expanded", value);
+  }
+  get ariaAutoComplete(): string | null {
+    return this.semantic.get("aria-autocomplete");
+  }
+  set ariaAutoComplete(value: string | null) {
+    this.semantic.set("aria-autocomplete", value);
+  }
+  get ariaActiveDescendantElement(): Element | null {
+    return this.semantic.getElements("aria-activedescendant")?.[0] ?? null;
+  }
+  set ariaActiveDescendantElement(value: Element | null) {
+    this.semantic.setElements("aria-activedescendant", value === null ? null : [value]);
   }
   get ariaControlsElements(): Element[] | null {
     return this.semantic.getElements("aria-controls");

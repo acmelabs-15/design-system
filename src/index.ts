@@ -27,7 +27,7 @@ export * from "./components/checkbox-card/checkbox-card";
 export * from "./components/code/code";
 export * from "./components/code-block/code-block";
 export * from "./components/combobox/combobox";
-export * from "./components/command-divider/command-divider";
+export * from "./components/command-separator/command-separator";
 export * from "./components/command-group/command-group";
 export * from "./components/command-item/command-item";
 export * from "./components/command-menu/command-menu";

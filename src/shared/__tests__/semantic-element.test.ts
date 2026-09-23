@@ -105,3 +105,20 @@ test("reconnection resolves references in the new author scope", async () => {
   await host.updateComplete;
   expect(root(host).ariaLabelledByElements).toEqual([label]);
 });
+
+test("active descendants and autocomplete reach the native semantic root", async () => {
+  const host = await mount('role="combobox" aria-autocomplete="list" aria-activedescendant="option"');
+  const option = document.createElement("div");
+  option.id = "option";
+  option.setAttribute("role", "option");
+  document.body.append(option);
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  expect(root(host).getAttribute("aria-autocomplete")).toBe("list");
+  expect(root(host).ariaActiveDescendantElement).toBe(option);
+  host.ariaActiveDescendantElement = null;
+  expect(root(host).ariaActiveDescendantElement).toBeNull();
+  host.ariaActiveDescendantElement = option;
+  expect(root(host).ariaActiveDescendantElement).toBe(option);
+  host.removeAttribute("aria-autocomplete");
+  expect(root(host).hasAttribute("aria-autocomplete")).toBe(false);
+});

@@ -29,6 +29,9 @@ type Run = { key: HTMLElement; section: string; options: OptionPart[] };
  * @fires {CustomEvent<{open:boolean;reason:string}>} acme-open-change - A user changes popup visibility.
  */
 export class AcmeCombobox extends AcmeOptionControl {
+  protected get semanticDefaults() {
+    return { ...super.semanticDefaults, ariaAutocomplete: "list" };
+  }
   static shadowRootOptions = { ...AcmeOptionControl.shadowRootOptions, slotAssignment: "manual" as const };
   protected get editable(): boolean {
     return true;

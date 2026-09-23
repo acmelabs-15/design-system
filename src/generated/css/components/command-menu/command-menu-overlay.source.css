@@ -1,5 +1,0 @@
-dialog::backdrop{position:fixed;inset:0;z-index:100;background-color:var(--ds-background-100);opacity:.8}
-dialog[data-state=closed]::backdrop{animation:cmdkFadeOut var(--ds-motion-overlay-duration) var(--ds-motion-overlay-timing)}
-dialog[data-state=open]::backdrop{animation:cmdkFadeIn var(--ds-motion-overlay-duration) var(--ds-motion-overlay-timing)}
-@keyframes cmdkFadeOut{0%{opacity:.8}to{opacity:0}}
-@keyframes cmdkFadeIn{0%{opacity:0}to{opacity:.8}}

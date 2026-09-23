@@ -1,115 +1,113 @@
-import { html, nothing } from "lit";
-import { property, query } from "lit/decorators.js";
-import { AcmeElement, boolish, sharedCss } from "../../base";
+import { html } from "lit";
+import { property } from "lit/decorators.js";
+import { AcmeElement, sharedCss } from "../../base";
+import { atomState } from "../../shared/atom-state";
 import { Places } from "../../shared/places";
-import { Interaction } from "../../shared/interaction";
-import { commandMenuItemCss } from "../../generated/components/command-menu/command-menu-item.styles";
-
-/** A keybind's keys as the row shows them: the platform modifiers render as glyphs. */
-const glyphOf = (key: string) => (key === "Meta" ? "⌘" : key === "Shift" ? "⇧" : key);
-
-export type CommandItemSelectDetail = { value: string; label: string; item: AcmeCommandItem; closeOnCallback: boolean };
-
-/**
- * One row of a command menu: the label as content (a Title Case verb phrase), an optional icon in
- * the `start` slot (a 20px box), an optional `keybind` (keys separated by spaces, `Meta K`; kbd
- * chips at the end of the row) and optional content in the `end` slot at the end. `value` is
- * what the query is scored against and what a selection reports (the label, lowercased, when
- * unset); `disabled` keeps the row out of the keys and the pointer; `page` keeps the row to one
- * page of the menu. The menu highlights the row under the keys or the pointer (`selected`); a
- * click or Enter selects it: `acme-select` fires (cancelable; `detail.value`), and the menu closes
- * unless `close-on-callback="false"`.
+import { CommandBinding } from "../../shared/command-context";
+import { commandItemStructureCss } from "../../generated/components/command-item/command-item-structure.styles";
+/** One named action in a Command Menu.
+ * @slot - Visible label; label supplies the fallback text.
+ * @slot start - Decorative leading content.
+ * @slot end - Supporting content, such as a keyboard hint.
+ * @slot description - Supporting description.
+ * @csspart item - The action row.
+ * @csspart label - Label content.
+ * @csspart description - Supporting text.
+ * @csspart start - Leading content.
+ * @csspart end - Trailing content.
  */
-
 export class AcmeCommandItem extends AcmeElement {
-  static styles = [sharedCss, commandMenuItemCss];
-  /** The value the query is scored against and a selection reports; the label, lowercased, when empty. */
-  @property() value = "";
-  @property({ type: Boolean, reflect: true }) disabled = false;
-  /** Keys separated by spaces (`Meta K`), shown as kbd chips at the end of the row. */
-  @property() keybind = "";
-  /** The menu closes on a selection; `"false"` keeps it open. */
-  @property({ converter: boolish, attribute: "close-on-callback" }) closeOnCallback = true;
-  /** The page of the menu the row belongs to; unset, the root page. */
-  @property() page = "";
-  /** The highlighted row; the menu sets it. */
-  @property({ type: Boolean, reflect: true }) selected = false;
-  private places = new Places(this, { places: ["start", "end"] });
-  @query(".item") private row?: HTMLElement;
-  @query(".keys") private keys?: HTMLElement;
-  private rowState = new Interaction(this, { anyFocus: true, disabled: () => this.disabled });
-  private keysState = new Interaction(this, { disabled: () => false });
-  private watch?: MutationObserver;
-
-  /** The visible text (the slotted places left out). */
-  get label() {
-    return Array.from(this.childNodes)
-      .filter((n) => !(n instanceof Element && n.hasAttribute("slot")))
-      .map((n) => n.textContent ?? "")
-      .join("")
+  static styles = [sharedCss, commandItemStructureCss];
+  private readonly places = new Places(this, { places: ["start", "end", "description"] });
+  @atomState() private key = "";
+  /** Required stable identifier. @default "" */
+  @property({ noAccessor: true, useDefault: true }) get value() {
+    return this.key;
+  }
+  set value(value: string) {
+    if (typeof value !== "string") throw new TypeError("Command value must be a string");
+    const previous = this.key;
+    this.key = value;
+    this.requestUpdate("value", previous);
+  }
+  @atomState() private authoredLabel = "";
+  @atomState() private contentLabel = "";
+  /** Explicit search and accessible label; omission uses the default content. @default "" */
+  @property({ noAccessor: true, useDefault: true }) get label() {
+    return this.authoredLabel || this.contentLabel;
+  }
+  set label(value: string) {
+    if (typeof value !== "string") throw new TypeError("Command label must be a string");
+    const previous = this.authoredLabel;
+    this.authoredLabel = value;
+    this.requestUpdate("label", previous);
+  }
+  @atomState() private aliases: readonly string[] = Object.freeze([]);
+  /** Additional search aliases. @default [] */
+  @property({ noAccessor: true, attribute: false }) get keywords(): readonly string[] {
+    return this.aliases;
+  }
+  set keywords(value: readonly string[] | undefined) {
+    if (value !== undefined && (!Array.isArray(value) || value.some((word) => typeof word !== "string"))) throw new TypeError("Command keywords require strings");
+    const previous = this.aliases;
+    this.aliases = Object.freeze([...(value ?? [])]);
+    this.requestUpdate("keywords", previous);
+  }
+  @atomState() @property({ noAccessor: true, type: Boolean }) disabled = false;
+  private readonly binding = new CommandBinding(this, { kind: "item", value: () => this.value, label: () => this.label, keywords: () => this.keywords, disabled: () => this.disabled });
+  private readonly internals = this.attachInternals();
+  private observer?: MutationObserver;
+  private read = () => {
+    const text = [...this.childNodes]
+      .filter((node) => node.nodeType === 3 || (node.nodeType === 1 && !(node as Element).getAttribute("slot")))
+      .map((node) => node.textContent ?? "")
+      .join(" ")
       .replace(/\s+/g, " ")
       .trim();
-  }
-
-  /** The value as the query sees it: `value`, or the label, trimmed and lowercased. */
-  get searchValue() {
-    return (this.value || this.label).trim().toLowerCase();
-  }
-
+    if (text !== this.contentLabel) this.contentLabel = text;
+  };
   connectedCallback() {
     super.connectedCallback();
-    this.readSlots();
-    if (typeof MutationObserver !== "undefined") {
-      this.watch = new MutationObserver(this.readSlots);
-      this.watch.observe(this, { childList: true, attributes: true, attributeFilter: ["slot"], subtree: true });
-    }
+    this.read();
+    this.observer = new MutationObserver(this.read);
+    this.observer.observe(this, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ["slot"] });
   }
-
   disconnectedCallback() {
+    this.observer?.disconnect();
+    this.observer = undefined;
     super.disconnectedCallback();
-    this.watch?.disconnect();
   }
-
-  private readSlots = () => {
+  protected willUpdate() {
+    this.read();
+  }
+  protected updated() {
+    const state = this.binding.current?.state.get();
+    this.internals.role = "option";
+    this.internals.ariaLabel = this.label;
+    this.internals.ariaSelected = String(state?.active === this.binding.record);
+    this.internals.ariaDisabled = String(!this.binding.current?.canSelect(this.binding.record));
+    this.internals.ariaDescribedByElements = ["description", "end"].flatMap((name) => [
+      ...(this.renderRoot.querySelector<HTMLSlotElement>(`slot[name=${name}]`)?.assignedElements({ flatten: true }) ?? []),
+    ]);
+  }
+  private interactive(event: Event) {
+    return event.composedPath().some((node) => (node as Node).nodeType === 1 && (node as Element).matches("button,a[href],input,select,textarea,[contenteditable=true]"));
+  }
+  click() {
+    this.renderRoot?.querySelector<HTMLElement>("[part=item]")?.click();
+  }
+  private activate = (event: MouseEvent) => {
+    if (!event.defaultPrevented && !this.disabled && !this.interactive(event)) this.binding.current?.select(this.binding.record);
   };
-
-  /** Selects the row: `acme-select` (cancelable) with the value, the label and whether the menu closes. */
-  select() {
-    if (this.disabled) return;
-    this.dispatchEvent(
-      new CustomEvent<CommandItemSelectDetail>("acme-select", {
-        detail: { value: this.searchValue, label: this.label, item: this, closeOnCallback: this.closeOnCallback },
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-      }),
-    );
-  }
-
-  updated() {
-    this.rowState.attach(this.row);
-    this.keysState.attach(this.keys);
-  }
-
   render() {
-    const keys = this.keybind.trim() ? this.keybind.trim().split(/[\s+]+/) : [];
-    return html`<div
-      class="item"
-      role="option"
-      data-value=${this.searchValue}
-      aria-selected=${this.selected ? "true" : nothing}
-      aria-disabled=${this.disabled ? "true" : nothing}
-      data-selected=${this.selected ? "true" : nothing}
-      @click=${() => this.select()}
-      part="item"
-    >
-      ${this.places.has("start") ? html`<div class="start" part="start"><slot name="start"></slot></div>` : html`<slot name="start"></slot>`}<slot></slot>${
-        keys.length ? html`<div class="keys" part="keys">${keys.map((k) => html`<kbd class="key">${glyphOf(k)}</kbd>`)}</div>` : nothing
-      }${this.places.has("end") ? html`<div class="end" part="end"><slot name="end"></slot></div>` : html`<slot name="end"></slot>`}
-    </div>`;
+    const active = this.binding.current?.state.get().active === this.binding.record;
+    return html`<div part="item" ?data-active=${active} ?data-disabled=${this.disabled} @pointermove=${() => {
+      if (!this.disabled) this.binding.current?.highlight(this.binding.record);
+    }} @pointerdown=${(event: PointerEvent) => {
+      if (event.button === 0 && !this.interactive(event)) event.preventDefault();
+    }} @click=${this.activate}><span part="start" aria-hidden="true" ?hidden=${!this.places.has("start")}><slot name="start"></slot></span><span class="text"><span part="label"><slot>${this.authoredLabel}</slot></span><span part="description" ?hidden=${!this.places.has("description")}><slot name="description"></slot></span></span><span part="end" ?hidden=${!this.places.has("end")}><slot name="end"></slot></span></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-command-item": AcmeCommandItem;
