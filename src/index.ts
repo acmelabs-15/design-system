@@ -99,7 +99,7 @@ export * from "./components/stack/stack";
 export * from "./components/stat-delta/stat-delta";
 export * from "./components/stat-desc/stat-desc";
 export * from "./components/stat-foot/stat-foot";
-export * from "./components/status-dot/status-dot";
+export * from "./components/status/status";
 export * from "./components/switch/switch";
 export * from "./components/tab/tab";
 export * from "./components/tab-panel/tab-panel";
@@ -190,3 +190,6 @@ export * from "./components/tree-item/tree-item";
 
 export * from "./components/hover-card/hover-card";
 export * from "./components/toggle-tip/toggle-tip";
+
+export * from "./components/empty-state-content/empty-state-content";
+export * from "./components/empty-state-indicator/empty-state-indicator";

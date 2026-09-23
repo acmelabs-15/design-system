@@ -1,0 +1,282 @@
+{
+  "date": "2026-09-23",
+  "status": "Empty State and Status complete at assigned native/Lit boundaries; M18 remains active",
+  "implementation": [
+    "Empty State exposes three treatments and sizes with authored headings/actions and optional content/indicator parts",
+    "Status uses application-supplied value/label/treatment; it does not infer deployment semantics or add a live role",
+    "Status pulse uses the established public Lit Motion lifecycle, with reduced-motion and reconnect cleanup",
+    "Old Empty State fields and Status Dot are removed with their complete stylesheet producers",
+    "Unused scoped Status Dot CSS imports are removed from Stat and Legend Item; their own marker styling remains",
+    "Icon Tile has a dedicated documentation page after replacing its previous host page",
+    "Defaulted Status value, Tooltip content and message heading restore empty strings on attribute removal"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 107,
+      "elements": 4310,
+      "undocumented": 0
+    },
+    "tests": {
+      "passed": 892,
+      "failed": 0,
+      "assertions": 151451,
+      "files": 167
+    },
+    "documentationSuite": {
+      "passed": 108,
+      "failed": 0,
+      "assertions": 645,
+      "reason": "Final Icon Tile documentation page added after the complete runtime suite"
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "empty-state slots preserve authored headings, descriptions and native action behavior",
+            "pass": true
+          },
+          {
+            "name": "optional parts update after insertion and removal without stale empty boxes",
+            "pass": true
+          },
+          {
+            "name": "all empty-state variants and sizes retain content and fit a narrow viewport",
+            "pass": true
+          },
+          {
+            "name": "Status shows meaningful text while its indicator remains decorative and passive",
+            "pass": true
+          },
+          {
+            "name": "slotted Status labels and explicit live semantics do not create duplicate indicators",
+            "pass": true
+          },
+          {
+            "name": "Status pulse uses owned motion and responds to reduced motion and disconnection",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "empty-state slots preserve authored headings, descriptions and native action behavior",
+            "pass": true
+          },
+          {
+            "name": "optional parts update after insertion and removal without stale empty boxes",
+            "pass": true
+          },
+          {
+            "name": "all empty-state variants and sizes retain content and fit a narrow viewport",
+            "pass": true
+          },
+          {
+            "name": "Status shows meaningful text while its indicator remains decorative and passive",
+            "pass": true
+          },
+          {
+            "name": "slotted Status labels and explicit live semantics do not create duplicate indicators",
+            "pass": true
+          },
+          {
+            "name": "Status pulse uses owned motion and responds to reduced motion and disconnection",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "empty-state slots preserve authored headings, descriptions and native action behavior",
+            "pass": true
+          },
+          {
+            "name": "optional parts update after insertion and removal without stale empty boxes",
+            "pass": true
+          },
+          {
+            "name": "all empty-state variants and sizes retain content and fit a narrow viewport",
+            "pass": true
+          },
+          {
+            "name": "Status shows meaningful text while its indicator remains decorative and passive",
+            "pass": true
+          },
+          {
+            "name": "slotted Status labels and explicit live semantics do not create duplicate indicators",
+            "pass": true
+          },
+          {
+            "name": "Status pulse uses owned motion and responds to reduced motion and disconnection",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "empty-state slots preserve authored headings, descriptions and native action behavior",
+            "pass": true
+          },
+          {
+            "name": "optional parts update after insertion and removal without stale empty boxes",
+            "pass": true
+          },
+          {
+            "name": "all empty-state variants and sizes retain content and fit a narrow viewport",
+            "pass": true
+          },
+          {
+            "name": "Status shows meaningful text while its indicator remains decorative and passive",
+            "pass": true
+          },
+          {
+            "name": "slotted Status labels and explicit live semantics do not create duplicate indicators",
+            "pass": true
+          },
+          {
+            "name": "Status pulse uses owned motion and responds to reduced motion and disconnection",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "empty-state slots preserve authored headings, descriptions and native action behavior",
+            "pass": true
+          },
+          {
+            "name": "optional parts update after insertion and removal without stale empty boxes",
+            "pass": true
+          },
+          {
+            "name": "all empty-state variants and sizes retain content and fit a narrow viewport",
+            "pass": true
+          },
+          {
+            "name": "Status shows meaningful text while its indicator remains decorative and passive",
+            "pass": true
+          },
+          {
+            "name": "slotted Status labels and explicit live semantics do not create duplicate indicators",
+            "pass": true
+          },
+          {
+            "name": "Status pulse uses owned motion and responds to reduced motion and disconnection",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "empty-state slots preserve authored headings, descriptions and native action behavior",
+            "pass": true
+          },
+          {
+            "name": "optional parts update after insertion and removal without stale empty boxes",
+            "pass": true
+          },
+          {
+            "name": "all empty-state variants and sizes retain content and fit a narrow viewport",
+            "pass": true
+          },
+          {
+            "name": "Status shows meaningful text while its indicator remains decorative and passive",
+            "pass": true
+          },
+          {
+            "name": "slotted Status labels and explicit live semantics do not create duplicate indicators",
+            "pass": true
+          },
+          {
+            "name": "Status pulse uses owned motion and responds to reduced motion and disconnection",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "Empty State composition and headings",
+          "narrow layout",
+          "explicit Status update",
+          "Icon Tile coverage and dimensions"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "Empty State composition and headings",
+          "narrow layout",
+          "explicit Status update",
+          "Icon Tile coverage and dimensions"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "Empty State composition and headings",
+          "narrow layout",
+          "explicit Status update",
+          "Icon Tile coverage and dimensions"
+        ],
+        "errors": []
+      }
+    ],
+    "retirement": "Complete style fingerprints verify; no legacy empty-state/status-dot producer or source selector remains",
+    "visual": "Chromium narrow source and final documentation screenshots inspected"
+  },
+  "references": [
+    {
+      "url": "https://chakra-ui.com/docs/components/empty-state",
+      "use": "Content/indicator composition, three sizes and authored action examples"
+    },
+    "notes/alignment/inventory/messages-statistics.md#m-04-empty-state",
+    "notes/alignment/inventory/messages-statistics.md#m-08-status",
+    "Existing Spinner public Lit Motion lifecycle and audited 1400ms/.4-opacity pulse reference",
+    "Existing Icon Tile implementation and original Empty State/Status Dot source"
+  ],
+  "corrections": [
+    "Real browser accessibility and assigned-node checks verify slotted Status text; raw text queries include suppressed fallback content and are not the rendering oracle",
+    "Removing string attributes previously returned null despite nonnullable documented defaults; three failing reproductions now pass with useDefault",
+    "The documentation coverage warning exposed missing Icon Tile coverage; its dedicated page restores completeness and the CI gate is assigned to M25"
+  ],
+  "reproduce": {
+    "fixture": "src/components/empty-state/__tests__/empty-state.browser.ts",
+    "runner": "/tmp/acme-m18-passive/run.ts",
+    "compiled": "/tmp/acme-m18-passive/run-compiled.ts",
+    "documentation": "/tmp/acme-m18-passive/docs-check.ts",
+    "attributeReproduction": "/tmp/acme-m18-passive/defaults-red.log"
+  },
+  "limits": [
+    "Actual assistive technology, generated React and final distribution acceptance remain M22/M26"
+  ]
+}

@@ -13,3 +13,9 @@ test("Alert and Banner share status inputs without an automatic live role", () =
     }).toThrow();
   }
 });
+test("removing heading restores the documented empty string", () => {
+  const alert = document.createElement("acme-alert");
+  alert.setAttribute("heading", "Message");
+  alert.removeAttribute("heading");
+  expect(alert.heading).toBe("");
+});

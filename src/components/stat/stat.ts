@@ -3,7 +3,6 @@ import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { badgeCss } from "../../generated/components/badge/badge.styles";
-import { statusDotCss } from "../../generated/components/status-dot/status-dot.styles";
 import { trendCss } from "../../generated/components/trend/trend.styles";
 import { statCss } from "../../generated/components/stat/stat.styles";
 
@@ -15,7 +14,6 @@ export class AcmeStat extends AcmeElement {
     statCss,
     trendCss,
     badgeCss,
-    statusDotCss,
     statStructureCss,
   ];
   @property() label = "";

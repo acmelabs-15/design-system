@@ -339,3 +339,8 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M18 message surfaces — 2026-09-23
 
 [Alert/Banner acceptance](evidence/m18-messages-2026-09-23.json) closes M-01. Shared inputs, explicit live semantics, native actions and application-owned dismissal pass all engines. Note and old Banner producers are removed. M18 display families, scoped Toast and Feedback remain.
+
+
+### M18 passive display surfaces — 2026-09-23
+
+[Empty State/Status acceptance](evidence/m18-passive-displays-2026-09-23.json) closes M-04/M-08 at their assigned native/Lit boundaries. Composed empty content, application-defined status and owned pulse lifetime pass all engines. Default-attribute and documentation-coverage discoveries have concrete M26/M25 return points. Continue Progress/Skeleton/Meter, Stat, Toast and Feedback.

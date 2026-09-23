@@ -16,3 +16,9 @@ test("Tooltip defaults keep short noninteractive help and explicit delays", () =
     el.openDelay = -1;
   }).toThrow();
 });
+test("removing content restores the documented empty string", () => {
+  const tooltip = document.createElement("acme-tooltip");
+  tooltip.setAttribute("content", "Help");
+  tooltip.removeAttribute("content");
+  expect(tooltip.content).toBe("");
+});

@@ -10,7 +10,7 @@ import { AcmeHoverHelp } from "../../shared/hover-help";
  * @fires {CustomEvent<{open:boolean,reason:string}>} acme-open-change - User visibility changes.
  */
 export class AcmeTooltip extends AcmeHoverHelp {
-  @atomState() @property({ noAccessor: true }) content = "";
+  @atomState() @property({ noAccessor: true, useDefault: true }) content = "";
   protected get kind() {
     return "tooltip" as const;
   }

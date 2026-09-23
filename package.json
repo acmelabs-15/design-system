@@ -6672,6 +6672,16 @@
       "import": "./dist/components/empty-state/empty-state.js",
       "default": "./dist/components/empty-state/empty-state.js"
     },
+    "./components/empty-state-content": {
+      "types": "./dist/components/empty-state-content/empty-state-content.d.ts",
+      "import": "./dist/components/empty-state-content/empty-state-content.js",
+      "default": "./dist/components/empty-state-content/empty-state-content.js"
+    },
+    "./components/empty-state-indicator": {
+      "types": "./dist/components/empty-state-indicator/empty-state-indicator.d.ts",
+      "import": "./dist/components/empty-state-indicator/empty-state-indicator.js",
+      "default": "./dist/components/empty-state-indicator/empty-state-indicator.js"
+    },
     "./components/enable-icon": {
       "types": "./dist/generated/icons/classes/enable-icon.d.ts",
       "import": "./dist/generated/icons/classes/enable-icon.js",
@@ -18192,10 +18202,10 @@
       "import": "./dist/generated/icons/classes/stat-minus-3-icon.js",
       "default": "./dist/generated/icons/classes/stat-minus-3-icon.js"
     },
-    "./components/status-dot": {
-      "types": "./dist/components/status-dot/status-dot.d.ts",
-      "import": "./dist/components/status-dot/status-dot.js",
-      "default": "./dist/components/status-dot/status-dot.js"
+    "./components/status": {
+      "types": "./dist/components/status/status.d.ts",
+      "import": "./dist/components/status/status.js",
+      "default": "./dist/components/status/status.js"
     },
     "./components/stay-current-landscape-icon": {
       "types": "./dist/generated/icons/classes/stay-current-landscape-icon.d.ts",

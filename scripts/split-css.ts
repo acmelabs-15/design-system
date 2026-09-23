@@ -28,8 +28,6 @@ const MAP: [string, RegExp][] = [
   ["badge", /^\.badge/],
   ["pill", /^\.pill/],
   ["tag", /^\.tag\b/],
-  ["status-dot", /^(\.status-dot|\.dot\b|@keyframes pulse)/],
-  ["empty-state", /^\.empty-state/],
   ["table", /^(table\.table|\.table\b|\.table-wrap|\.cellbar|\.cellspark|\.table-foot|\.matrix)/],
   ["field", /^(\.field|\.flabel|\.form-label|\.grid2)/],
   ["menu", /^\.menu/],

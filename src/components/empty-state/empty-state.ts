@@ -1,72 +1,52 @@
 import { html } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, boolish, sharedCss } from "../../base";
+import { sharedCss } from "../../base";
+import { emptyStateSurfaceCss } from "../../generated/shared/empty-state-surface.styles";
 import { atomState } from "../../shared/atom-state";
-import { emptyStateCss } from "../../generated/components/empty-state/empty-state.styles";
-
-/**
- * Empty state: fills a space that has no content yet. A full-width bordered column, centred: an
- * optional icon (the `icon` slot, usually an `acme-icon-tile`), the text column with the title and
- * the description (each centred, at most 340px wide), then the default slot's children as they
- * come, one per row (a button, a link). `border="false"` keeps the border box and makes it
- * transparent; `secondary` swaps the background for background-200 and the title for the 14px
- * heading. Slots: default (the calls to action), `icon`, `title` and `description` (rich content
- * in place of the attributes).
+import { Places } from "../../shared/places";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
+/** An empty collection or view with authored headings and actions.
+ * @slot - Composed Empty State Content or additional content.
+ * @slot indicator - Optional illustration or Empty State Indicator.
+ * @slot heading - Authored heading at the correct document level.
+ * @slot description - Explanation of the empty state.
+ * @slot actions - Application-owned actions.
+ * @csspart root - Empty-state surface.
+ * @csspart indicator - Indicator region.
+ * @csspart content - Text region.
+ * @csspart heading - Heading region.
+ * @csspart description - Description region.
+ * @csspart actions - Actions region.
  */
-
-export class AcmeEmptyState extends AcmeElement {
-  static styles = [sharedCss, emptyStateCss];
-  /** The title line, Title Case. */
-  @property() title = "";
-  /** The sentence under the title. */
-  @property() description = "";
-  /** `border="false"` turns the border transparent. */
-  @property({ converter: boolish }) border = true;
-  /** The background-200 form with the 14px title, for a state inside a tinted panel. */
-  @property({ type: Boolean }) secondary = false;
-  @atomState() private hasIcon = false;
-  @atomState() private hasTitle = false;
-  @atomState() private hasDescription = false;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.readSlots();
+export class AcmeEmptyState extends AcmeSemanticElement {
+  static styles = [sharedCss, emptyStateSurfaceCss];
+  @atomState() private scale: "small" | "medium" | "large" = "medium";
+  /** @default "medium" */
+  @property({ noAccessor: true, useDefault: true }) get size() {
+    return this.scale;
   }
-
-  firstUpdated() {
-    // A parser that connects the element before its children (happy-dom does) misses them at connect.
-    this.readSlots();
+  set size(value: "small" | "medium" | "large") {
+    if (!["small", "medium", "large"].includes(value)) throw new TypeError("Invalid Empty State size");
+    const previous = this.scale;
+    this.scale = value;
+    this.requestUpdate("size", previous);
   }
-
-  private readSlots() {
-    this.hasIcon ||= !!this.querySelector('[slot="icon"]');
-    this.hasTitle ||= !!this.querySelector('[slot="title"]');
-    this.hasDescription ||= !!this.querySelector('[slot="description"]');
+  @atomState() private treatment: "default" | "outline" | "subtle" = "default";
+  /** @default "default" */
+  @property({ noAccessor: true, useDefault: true }) get variant() {
+    return this.treatment;
   }
-
-  private slotted = (name: "icon" | "title" | "description") => (e: Event) => {
-    const has = (e.target as HTMLSlotElement).assignedNodes({ flatten: true }).some((n) => n.nodeType === 1 || (n.textContent ?? "").trim());
-    if (name === "icon") this.hasIcon = has;
-    else if (name === "title") this.hasTitle = has;
-    else this.hasDescription = has;
-  };
-
+  set variant(value: "default" | "outline" | "subtle") {
+    if (!["default", "outline", "subtle"].includes(value)) throw new TypeError("Invalid Empty State variant");
+    const previous = this.treatment;
+    this.treatment = value;
+    this.requestUpdate("variant", previous);
+  }
+  private readonly places = new Places(this, { places: ["indicator", "heading", "description", "actions"] });
   render() {
-    const c = this.cls("empty-state", { "no-border": !this.border, secondary: this.secondary });
-    const iconSlot = html`<slot name="icon" @slotchange=${this.slotted("icon")}></slot>`;
-    const titleSlot = html`<slot name="title" @slotchange=${this.slotted("title")}>${this.title}</slot>`;
-    const descriptionSlot = html`<slot name="description" @slotchange=${this.slotted("description")}>${this.description}</slot>`;
-    return html`<div class=${c} part="empty-state">
-      ${this.hasIcon ? html`<div class="icon">${iconSlot}</div>` : iconSlot}
-      <div class="text">
-        ${this.title || this.hasTitle ? html`<div class="title">${titleSlot}</div>` : titleSlot}
-        ${this.description || this.hasDescription ? html`<div class="description">${descriptionSlot}</div>` : descriptionSlot}
-      </div>
-      <slot></slot>
-    </div>`;
+    return html`<div part="root" data-kind="root" data-size=${this.size} data-variant=${this.variant}><div part="indicator" ?hidden=${!this.places.has("indicator")}><slot name="indicator"></slot></div><div part="content" ?hidden=${!this.places.has("heading") && !this.places.has("description")}><div part="heading" ?hidden=${!this.places.has("heading")}><slot name="heading"></slot></div><div part="description" ?hidden=${!this.places.has("description")}><slot name="description"></slot></div></div><slot></slot><div part="actions" ?hidden=${!this.places.has("actions")}><slot name="actions"></slot></div></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-empty-state": AcmeEmptyState;

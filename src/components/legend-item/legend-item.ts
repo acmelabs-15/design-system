@@ -3,13 +3,11 @@ import { html, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { legendCss } from "../../generated/components/legend/legend.styles";
-import { statusDotCss } from "../../generated/components/status-dot/status-dot.styles";
 
 export class AcmeLegendItem extends AcmeElement {
   static styles = [
     sharedCss,
     legendCss,
-    statusDotCss,
     legendItemStructureCss,
   ];
   @property() hue = "";

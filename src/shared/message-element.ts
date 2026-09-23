@@ -36,7 +36,7 @@ export abstract class AcmeMessageElement extends AcmeSemanticElement {
     this.requestUpdate("size", previous);
   }
   @atomState() @property({ noAccessor: true, type: Boolean }) dismissible = false;
-  @atomState() @property({ noAccessor: true }) heading = "";
+  @atomState() @property({ noAccessor: true, useDefault: true }) heading = "";
   private readonly places = new Places(this, { places: ["heading", "start", "end", "actions"] });
   private readonly localeUpdates = new StoreSelector(this, () => this.themeContext.scope.effective);
   private readonly messageUpdates = new StoreSelector(this, () => messageCatalogs);

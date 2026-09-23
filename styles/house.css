@@ -1525,175 +1525,6 @@ a:hover {
   font-family: var(--acme-font-mono);
 }
 
-.status-dot {
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  line-height: 20px;
-  display: inline-flex;
-}
-
-.status-dot:before {
-  content: "";
-  background: var(--st-queued);
-  border-radius: 50%;
-  flex: none;
-  width: 10px;
-  height: 10px;
-}
-
-.status-dot.ready:before {
-  background: var(--st-ready);
-}
-
-.status-dot.error:before {
-  background: var(--st-error);
-}
-
-.status-dot.building:before {
-  background: var(--st-building);
-  animation: 1.4s ease-in-out infinite pulse;
-}
-
-.status-dot.queued:before {
-  background: var(--st-queued);
-  animation: 1.4s ease-in-out infinite pulse;
-}
-
-.status-dot.canceled:before, .status-dot.deleted:before {
-  background: var(--st-queued);
-}
-
-.status-dot.online:before {
-  background: var(--st-online);
-}
-
-.status-dot b {
-  font-weight: var(--acme-font-weight-500);
-}
-
-.status-dot .since {
-  color: var(--text-2);
-  margin-left: 2px;
-}
-
-.dot.st-ready {
-  background: var(--st-ready);
-}
-
-.dot.st-error {
-  background: var(--st-error);
-}
-
-.dot.st-building {
-  background: var(--st-building);
-}
-
-.dot.st-queued {
-  background: var(--st-queued);
-}
-
-.dot.ring {
-  box-shadow: 0 0 0 1px var(--surface);
-}
-
-@keyframes pulse {
-  50% {
-    opacity: .4;
-  }
-}
-
-.dot {
-  background: var(--accent);
-  border-radius: 50%;
-  flex: none;
-  width: 6px;
-  height: 6px;
-}
-
-.dot.warn {
-  background: var(--warn);
-}
-
-.dot.caution {
-  background: var(--caution-bg);
-}
-
-.dot.good {
-  background: var(--success);
-}
-
-.dot.faint {
-  background: var(--border);
-}
-
-.empty-state {
-  text-align: center;
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  background: var(--surface);
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  padding: 48px 70px;
-  display: flex;
-}
-
-.empty-state .icon-tile {
-  border-radius: var(--r);
-  border: 1px solid var(--ds-gray-alpha-200);
-  background: var(--surface);
-  width: 54px;
-  height: 54px;
-  color: var(--text);
-  place-items: center;
-  padding: 10px;
-  display: grid;
-}
-
-.empty-state .icon-tile .ic {
-  width: 32px;
-  height: 32px;
-}
-
-.empty-state .text {
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  display: flex;
-}
-
-.empty-state .title {
-  letter-spacing: -.32px;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: var(--acme-font-weight-500);
-}
-
-.empty-state .message {
-  color: var(--text-2);
-  max-width: 340px;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.empty-state .actions {
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  display: flex;
-}
-
-.empty-state .actions a, .empty-state .actions ::slotted(a) {
-  color: var(--text-2);
-  align-items: center;
-  gap: 2px;
-  font-size: 14px;
-  line-height: 20px;
-  display: inline-flex;
-}
-
 .table-wrap {
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
@@ -2903,7 +2734,7 @@ html {
   color: var(--ds-gray-900);
 }
 
-.dot[class*="hue-"], .fill[class*="hue-"], .progress > i[class*="hue-"] {
+.fill[class*="hue-"], .progress > i[class*="hue-"] {
   background: currentColor;
 }
 
@@ -3354,10 +3185,6 @@ html {
 
 .series-5 {
   color: var(--chart-5);
-}
-
-.dot.series-1, .dot.series-2, .dot.series-3, .dot.series-4, .dot.series-5 {
-  background: currentColor;
 }
 
 .chart .step {
@@ -4031,48 +3858,6 @@ code.inline {
   padding: 1px 5px;
   font-size: 13px;
   line-height: 18px;
-}
-
-.empty-state.flat {
-  background: var(--surface-2);
-  border-radius: var(--r-sm);
-  border: 0;
-  gap: 8px;
-  padding: 40px 24px;
-}
-
-.empty-state.flat .icon-tile {
-  border: 1px solid var(--ds-gray-100);
-  width: 42px;
-  height: 42px;
-  color: var(--text-2);
-  border-radius: 999px;
-  margin-bottom: 8px;
-  padding: 8px;
-}
-
-.empty-state.flat .icon-tile .ic {
-  width: 16px;
-  height: 16px;
-}
-
-.empty-state.flat .title {
-  letter-spacing: 0;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.empty-state.flat .message {
-  color: var(--ds-gray-800);
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.empty-state.quiet {
-  background: none;
-  border: 0;
-  gap: 8px;
-  padding: 32px 24px;
 }
 
 .score-ring {

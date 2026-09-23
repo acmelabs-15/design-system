@@ -80,3 +80,11 @@ Report proposal coverage, actual approvals, the bounded question register and en
 
 - M25/E03: extend mapped-style fingerprints to transitive local imports. tools/geist/maps/command-menu-input.ts imports CLOSED from command-menu.ts, but writeStyles currently records only its explicit map/extends inputs. Add a regression that changes an imported helper and requires stale-output detection. M26 release acceptance must verify closure. Current mapped outputs were fully regenerated; no current visual mismatch is claimed.
 - M22/M26: verify the native date/time Tab boundary and modal focus with actual Safari and assistive technology. Paired native controls plus source/compiled Chromium/Firefox/WebKit cases pass; these are not actual-platform certification.
+
+### M26 public attribute default audit — 2026-09-23
+
+A failing M18 reproduction found that removing a nonnullable string attribute produced null instead of its documented default. Status value, Tooltip content and Alert/Banner heading now use Lit's useDefault and pass explicit removal tests. M26 must audit the remaining public defaulted inputs against their documented types/defaults, including shared bases. Preserve intentionally optional undefined and native ARIA null inputs; do not blanket-convert them. Evidence: the colocated status/tooltip/alert tests and /tmp/acme-m18-passive/defaults-red.log and defaults-green.log.
+
+### M25 documentation coverage gate — 2026-09-23
+
+Replacing the Empty State page temporarily removed Icon Tile's only documentation tag. The site build warned but still exited successfully. Icon Tile now has its own page and coverage is back to zero missing entries. M25 must make missing public documentation a failing release/CI check, while preserving any deliberate preview workflow. Use the existing manifest and page/catalog tag coverage, not a second manually maintained list.

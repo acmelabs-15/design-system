@@ -1,8 +1,0 @@
-.status-dot :where(.label){margin-left:.5rem;font-family:var(--acme-font-sans);font-size:14px;line-height:16px;font-weight:400}
-.status-dot :where(.dot){display:inline-block;width:.625rem;height:.625rem;border-radius:2147483647px}
-.status-dot{display:inline-flex;align-items:center}
-.status-dot:where(:not(.building,.ready,.error)) :where(.dot){background-color:var(--accents-2)}
-.status-dot:where(.ready) :where(.dot){background-color:var(--acme-cyan)}
-.status-dot:where(.error) :where(.dot){background-color:var(--acme-error)}
-.status-dot:where(.building) :where(.dot){background-color:var(--acme-warning)}
-.status-dot :where(.label)>strong{font-weight:500;color:var(--ds-gray-1000)}
