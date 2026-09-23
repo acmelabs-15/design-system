@@ -1461,7 +1461,8 @@
     ],
     "helperTests": "13 focused model/formatter/Spinner/Status tests pass; source Status regression passes all engines",
     "visual": "Chromium circular measurement and documentation screenshots inspected",
-    "retirement": "Style fingerprints and producer absence verify; private Video scrubber rules retain their separate owner"
+    "retirement": "Style fingerprints and producer absence verify; private Video scrubber rules retain their separate owner",
+    "generatedSources": "Retiring obsolete media blocks also removes empty wrappers from other generated source/map outputs; compiled CSS is unchanged and full fingerprint verification passes."
   },
   "corrections": [
     "RTL static indeterminate range was positioned outside its track; logical anchoring and direction-dependent transforms fix both static and moving states",
