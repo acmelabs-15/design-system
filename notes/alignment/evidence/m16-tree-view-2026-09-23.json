@@ -1,0 +1,520 @@
+{
+  "date": "2026-09-23",
+  "status": "Tree View complete at assigned native/Lit boundary; M16 complete",
+  "implementation": [
+    "General Tree View and keyed Tree Item content replace File Tree, Folder and File outright",
+    "Immutable data owns hierarchy, stable IDs, accessible labels and links; content parts supply presentation only",
+    "Canonical TanStack selection and expansion; one keyboard entry, hierarchical arrows, Home/End/typeahead and disabled-node skipping",
+    "Native links retain browser behavior; cancelable serializable activation and separate selection/expansion events",
+    "Collapsed content remains mounted and inert; hidden/removed focused nodes recover to a visible ancestor or available node",
+    "Manual slot projection preserves author nodes through data reorder; descriptions are native accessible references",
+    "Generated CSS uses existing selection/focus/spacing/radius tokens; logical indentation and RTL hierarchy direction"
+  ],
+  "verification": {
+    "build": "Strict package build passes",
+    "site": {
+      "pages": 105,
+      "elements": 4307,
+      "undocumented": 0
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "data creates a named hierarchy with one tab entry and collapsed child groups",
+            "pass": true
+          },
+          {
+            "name": "arrows expand, enter children, skip disabled nodes and return to parents without selecting",
+            "pass": true
+          },
+          {
+            "name": "activation selects one node and emits serializable activation and expansion events",
+            "pass": true
+          },
+          {
+            "name": "Home End and typeahead move focus through visible enabled nodes",
+            "pass": true
+          },
+          {
+            "name": "explicit content overrides presentation while data retains identity and accessible label",
+            "pass": true
+          },
+          {
+            "name": "collapsed selected descendants retain selection while focus recovers to the branch",
+            "pass": true
+          },
+          {
+            "name": "removing a focused node recovers visible focus without rewriting selected state",
+            "pass": true
+          },
+          {
+            "name": "disabled nodes cannot activate and selection none emits only activation",
+            "pass": true
+          },
+          {
+            "name": "native leaf links navigate and canceled activation prevents their default navigation",
+            "pass": true
+          },
+          {
+            "name": "programmatic methods stay silent and disconnected trees reconnect",
+            "pass": true
+          },
+          {
+            "name": "RTL reverses hierarchy arrows and narrow layout stays contained",
+            "pass": true
+          },
+          {
+            "name": "rich descriptions remain accessible without replacing the node label",
+            "pass": true
+          },
+          {
+            "name": "data order changes keep authored content in place and derived part state updates",
+            "pass": true
+          },
+          {
+            "name": "Tree Item disabled input participates in the keyboard and activation state",
+            "pass": true
+          },
+          {
+            "name": "selection background and corner radius use registered theme tokens",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "data creates a named hierarchy with one tab entry and collapsed child groups",
+            "pass": true
+          },
+          {
+            "name": "arrows expand, enter children, skip disabled nodes and return to parents without selecting",
+            "pass": true
+          },
+          {
+            "name": "activation selects one node and emits serializable activation and expansion events",
+            "pass": true
+          },
+          {
+            "name": "Home End and typeahead move focus through visible enabled nodes",
+            "pass": true
+          },
+          {
+            "name": "explicit content overrides presentation while data retains identity and accessible label",
+            "pass": true
+          },
+          {
+            "name": "collapsed selected descendants retain selection while focus recovers to the branch",
+            "pass": true
+          },
+          {
+            "name": "removing a focused node recovers visible focus without rewriting selected state",
+            "pass": true
+          },
+          {
+            "name": "disabled nodes cannot activate and selection none emits only activation",
+            "pass": true
+          },
+          {
+            "name": "native leaf links navigate and canceled activation prevents their default navigation",
+            "pass": true
+          },
+          {
+            "name": "programmatic methods stay silent and disconnected trees reconnect",
+            "pass": true
+          },
+          {
+            "name": "RTL reverses hierarchy arrows and narrow layout stays contained",
+            "pass": true
+          },
+          {
+            "name": "rich descriptions remain accessible without replacing the node label",
+            "pass": true
+          },
+          {
+            "name": "data order changes keep authored content in place and derived part state updates",
+            "pass": true
+          },
+          {
+            "name": "Tree Item disabled input participates in the keyboard and activation state",
+            "pass": true
+          },
+          {
+            "name": "selection background and corner radius use registered theme tokens",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "data creates a named hierarchy with one tab entry and collapsed child groups",
+            "pass": true
+          },
+          {
+            "name": "arrows expand, enter children, skip disabled nodes and return to parents without selecting",
+            "pass": true
+          },
+          {
+            "name": "activation selects one node and emits serializable activation and expansion events",
+            "pass": true
+          },
+          {
+            "name": "Home End and typeahead move focus through visible enabled nodes",
+            "pass": true
+          },
+          {
+            "name": "explicit content overrides presentation while data retains identity and accessible label",
+            "pass": true
+          },
+          {
+            "name": "collapsed selected descendants retain selection while focus recovers to the branch",
+            "pass": true
+          },
+          {
+            "name": "removing a focused node recovers visible focus without rewriting selected state",
+            "pass": true
+          },
+          {
+            "name": "disabled nodes cannot activate and selection none emits only activation",
+            "pass": true
+          },
+          {
+            "name": "native leaf links navigate and canceled activation prevents their default navigation",
+            "pass": true
+          },
+          {
+            "name": "programmatic methods stay silent and disconnected trees reconnect",
+            "pass": true
+          },
+          {
+            "name": "RTL reverses hierarchy arrows and narrow layout stays contained",
+            "pass": true
+          },
+          {
+            "name": "rich descriptions remain accessible without replacing the node label",
+            "pass": true
+          },
+          {
+            "name": "data order changes keep authored content in place and derived part state updates",
+            "pass": true
+          },
+          {
+            "name": "Tree Item disabled input participates in the keyboard and activation state",
+            "pass": true
+          },
+          {
+            "name": "selection background and corner radius use registered theme tokens",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "version": "153.0.8010.53",
+        "checks": [
+          {
+            "name": "data creates a named hierarchy with one tab entry and collapsed child groups",
+            "pass": true
+          },
+          {
+            "name": "arrows expand, enter children, skip disabled nodes and return to parents without selecting",
+            "pass": true
+          },
+          {
+            "name": "activation selects one node and emits serializable activation and expansion events",
+            "pass": true
+          },
+          {
+            "name": "Home End and typeahead move focus through visible enabled nodes",
+            "pass": true
+          },
+          {
+            "name": "explicit content overrides presentation while data retains identity and accessible label",
+            "pass": true
+          },
+          {
+            "name": "collapsed selected descendants retain selection while focus recovers to the branch",
+            "pass": true
+          },
+          {
+            "name": "removing a focused node recovers visible focus without rewriting selected state",
+            "pass": true
+          },
+          {
+            "name": "disabled nodes cannot activate and selection none emits only activation",
+            "pass": true
+          },
+          {
+            "name": "native leaf links navigate and canceled activation prevents their default navigation",
+            "pass": true
+          },
+          {
+            "name": "programmatic methods stay silent and disconnected trees reconnect",
+            "pass": true
+          },
+          {
+            "name": "RTL reverses hierarchy arrows and narrow layout stays contained",
+            "pass": true
+          },
+          {
+            "name": "rich descriptions remain accessible without replacing the node label",
+            "pass": true
+          },
+          {
+            "name": "data order changes keep authored content in place and derived part state updates",
+            "pass": true
+          },
+          {
+            "name": "Tree Item disabled input participates in the keyboard and activation state",
+            "pass": true
+          },
+          {
+            "name": "selection background and corner radius use registered theme tokens",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "155.0",
+        "checks": [
+          {
+            "name": "data creates a named hierarchy with one tab entry and collapsed child groups",
+            "pass": true
+          },
+          {
+            "name": "arrows expand, enter children, skip disabled nodes and return to parents without selecting",
+            "pass": true
+          },
+          {
+            "name": "activation selects one node and emits serializable activation and expansion events",
+            "pass": true
+          },
+          {
+            "name": "Home End and typeahead move focus through visible enabled nodes",
+            "pass": true
+          },
+          {
+            "name": "explicit content overrides presentation while data retains identity and accessible label",
+            "pass": true
+          },
+          {
+            "name": "collapsed selected descendants retain selection while focus recovers to the branch",
+            "pass": true
+          },
+          {
+            "name": "removing a focused node recovers visible focus without rewriting selected state",
+            "pass": true
+          },
+          {
+            "name": "disabled nodes cannot activate and selection none emits only activation",
+            "pass": true
+          },
+          {
+            "name": "native leaf links navigate and canceled activation prevents their default navigation",
+            "pass": true
+          },
+          {
+            "name": "programmatic methods stay silent and disconnected trees reconnect",
+            "pass": true
+          },
+          {
+            "name": "RTL reverses hierarchy arrows and narrow layout stays contained",
+            "pass": true
+          },
+          {
+            "name": "rich descriptions remain accessible without replacing the node label",
+            "pass": true
+          },
+          {
+            "name": "data order changes keep authored content in place and derived part state updates",
+            "pass": true
+          },
+          {
+            "name": "Tree Item disabled input participates in the keyboard and activation state",
+            "pass": true
+          },
+          {
+            "name": "selection background and corner radius use registered theme tokens",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "26.6",
+        "checks": [
+          {
+            "name": "data creates a named hierarchy with one tab entry and collapsed child groups",
+            "pass": true
+          },
+          {
+            "name": "arrows expand, enter children, skip disabled nodes and return to parents without selecting",
+            "pass": true
+          },
+          {
+            "name": "activation selects one node and emits serializable activation and expansion events",
+            "pass": true
+          },
+          {
+            "name": "Home End and typeahead move focus through visible enabled nodes",
+            "pass": true
+          },
+          {
+            "name": "explicit content overrides presentation while data retains identity and accessible label",
+            "pass": true
+          },
+          {
+            "name": "collapsed selected descendants retain selection while focus recovers to the branch",
+            "pass": true
+          },
+          {
+            "name": "removing a focused node recovers visible focus without rewriting selected state",
+            "pass": true
+          },
+          {
+            "name": "disabled nodes cannot activate and selection none emits only activation",
+            "pass": true
+          },
+          {
+            "name": "native leaf links navigate and canceled activation prevents their default navigation",
+            "pass": true
+          },
+          {
+            "name": "programmatic methods stay silent and disconnected trees reconnect",
+            "pass": true
+          },
+          {
+            "name": "RTL reverses hierarchy arrows and narrow layout stays contained",
+            "pass": true
+          },
+          {
+            "name": "rich descriptions remain accessible without replacing the node label",
+            "pass": true
+          },
+          {
+            "name": "data order changes keep authored content in place and derived part state updates",
+            "pass": true
+          },
+          {
+            "name": "Tree Item disabled input participates in the keyboard and activation state",
+            "pass": true
+          },
+          {
+            "name": "selection background and corner radius use registered theme tokens",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "documentation": [
+      {
+        "engine": "chromium",
+        "checks": [
+          "hierarchy selection and keyboard collapse",
+          "file recipe rich content",
+          "native navigation links",
+          "narrow viewport",
+          "Tree inside responsive Sidebar preserves identity and selection"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          "hierarchy selection and keyboard collapse",
+          "file recipe rich content",
+          "native navigation links",
+          "narrow viewport",
+          "Tree inside responsive Sidebar preserves identity and selection"
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          "hierarchy selection and keyboard collapse",
+          "file recipe rich content",
+          "native navigation links",
+          "narrow viewport",
+          "Tree inside responsive Sidebar preserves identity and selection"
+        ],
+        "errors": []
+      }
+    ],
+    "visual": "Chromium RTL source screenshot inspected",
+    "lint": "No errors; four existing controller-registration/member warnings remain",
+    "tests": {
+      "passed": 918,
+      "failed": 0,
+      "assertions": 151409,
+      "files": 166
+    }
+  },
+  "references": [
+    {
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/treeview/",
+      "use": "Hierarchy, keyboard, separate focus and selection, tree/group semantics"
+    },
+    {
+      "url": "https://chakra-ui.com/docs/components/tree-view",
+      "use": "General collection, explicit expansion, single selection, links, disabled nodes and rich content"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/zag/main/packages/machines/tree-view/src/tree-view.connect.ts",
+      "use": "Branch wrapper/control semantics and activation; selected relevant sections read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/zag/main/packages/utilities/collection/src/tree-collection.ts",
+      "use": "Next/previous traversal skips disabled nodes; selected implementation sections read"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chakra-ui/zag/main/packages/machines/tree-view/src/utils/visit-skip.ts",
+      "use": "Ancestor expansion governs traversal; full small helper read"
+    },
+    "notes/alignment/evidence/joint-composition-review-2026-09-19.json",
+    "notes/alignment/evidence/material-navigation-specs-2026-09-19.json"
+  ],
+  "engineering": [
+    "Data is the sole hierarchy/identity/accessible-label source; direct keyed content parts cannot create a second tree",
+    "Tree Item disabled combines with data/root disabled; unsupported content keys are diagnosed and omitted",
+    "No selection follows focus; ordinary activation selects and toggles branches, matching the assigned source behavior",
+    "No optional animation API or advanced Tree engine is added; expanded children use retained native hidden/inert groups",
+    "Literal native a/div templates satisfy the existing definition dependency scanner",
+    "Native accessibility inspection exposed missing supporting descriptions; references now preserve descriptions without changing node names",
+    "A rendered token override reproduction exposed two incorrect style variable names; selection background and radius now use registered accent-weak/r-sm tokens"
+  ],
+  "removed": [
+    "src/components/file-tree",
+    "src/components/folder",
+    "src/components/file",
+    "site/pages/components/file-tree.ts",
+    "corresponding definitions, public exports, generated styles and old style maps"
+  ],
+  "reproduce": {
+    "fixture": "src/components/tree-view/__tests__/tree-view.browser.ts",
+    "runner": "/tmp/acme-m16-navigation/tree/run.ts",
+    "compiled": "/tmp/acme-m16-navigation/tree/run-compiled.ts",
+    "documentation": "/tmp/acme-m16-navigation/tree/docs-check.ts"
+  },
+  "limits": [
+    "Actual Safari/assistive technology, React wrappers and final package acceptance remain M22/M26",
+    "The broad root tsc --noEmit command includes fixtures/tests and reports existing test/tool typing issues; the mandated strict package build excludes test fixtures and passes. M25 owns unified check configuration."
+  ]
+}

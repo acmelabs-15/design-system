@@ -324,3 +324,8 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M16 Sidebar acceptance — 2026-09-23
 
 [Sidebar evidence](evidence/m16-sidebar-2026-09-23.json) closes N03 at its native/Lit boundary. The shared Drawer, separate desktop/mobile state, explicit compact content and node-preserving slot projection pass all-engine source, compiled and documentation checks. Core Tree remains M16 work.
+
+
+### M16 complete — 2026-09-23
+
+[Tree View acceptance](evidence/m16-tree-view-2026-09-23.json) closes N06 and M16 with the prior TOC/Sidebar slices. Data-driven hierarchy, keyed author content, native links, selection/expansion/focus and Sidebar composition pass all engines. File Tree/Folder/File are removed, including their style producers. Continue the M17 help families; O01/O02/O03 are already complete.

@@ -799,3 +799,8 @@ The [accepted TOC slice](../alignment/evidence/m16-toc-2026-09-23.json) reuses H
 ### M16 Sidebar implementation — 2026-09-23
 
 [Sidebar acceptance](../alignment/evidence/m16-sidebar-2026-09-23.json) uses the approved Drawer and configured media thresholds. Unlike the saved Pro example, it preserves one authored content tree rather than duplicating desktop/mobile content. The optional collapsed slot supplies intentionally compact content. A browser reproduction found that changing collapsible policy could move focus unnecessarily or hide the focused control; focus now follows actual visibility, with a temporary named region until the trigger becomes enabled. Core Tree remains open.
+
+
+### M16 Tree View implementation — 2026-09-23
+
+[Tree View acceptance](../alignment/evidence/m16-tree-view-2026-09-23.json) closes the core hierarchy. Current APG and Chakra documentation, the relevant connector/machine sections, the next/previous collection traversal, and the complete small visit-skip helper confirm separate focus/selection, branch activation, disabled-node skipping and ancestor expansion. The implementation uses native Lit and existing TanStack/Typeahead helpers; it does not import a Zag state machine. Data owns IDs/order/names/links; direct keyed Tree Item parts supply optional presentation. Native accessible descriptions and registered theme tokens were verified after failing reproductions. File Tree/Folder/File and their producers are removed outright. The saved Pro/Material navigation review remains the surrounding composition evidence. M16 is complete; M17 help remains next.
