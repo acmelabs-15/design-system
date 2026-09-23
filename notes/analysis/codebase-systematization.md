@@ -827,3 +827,10 @@ RepeatingMotion extracts the already verified Spinner/Status lifecycle through p
 
 
 The [M18 measurement acceptance](../alignment/evidence/m18-measurements-2026-09-23.json) now closes the candidate described above. Strict build/site, 885 tests, fourteen source/compiled checks per engine and five documentation flows pass. The named foreground contrast correction has baseline/final evidence. Gauge is removed, existing optional-number and repeating-motion mechanisms are reused, and remaining work proceeds to Stat, Toast and Feedback.
+
+
+### M18 Stat implementation — 2026-09-23
+
+[Stat acceptance](../alignment/evidence/m18-stat-2026-09-23.json) confirms the native dl/dt/dd composition from the candidate probe. Root loading reaches Value and Change through the existing context/participant pattern, including forwarded slots. Values remain author-owned; formatting delegates to FormatNumber/FormatByte. Direction has no inferred default, while sentiment defaults to neutral. Text states both meanings independently of arrow/color. Radio Cards and Group own the selectable-stat example. Trend and abbreviated parts are removed; Spark retains its own extracted drawing rules until M20.
+
+The upcoming Toast review refreshed [Base UI Toast](https://base-ui.com/react/components/toast): Provider limit 3, timeout 5000 and timeout 0 persistence remain current; limited toasts stay mounted/inert. Default swipe directions are down/right. Timer/focus/gesture implementation still needs source verification before that slice.

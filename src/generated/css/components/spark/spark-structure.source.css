@@ -8,3 +8,9 @@
         height: 40px;
         overflow: visible;
       }
+
+.spark .line{fill:none;stroke:currentColor;stroke-width:1.5px;stroke-linejoin:round;stroke-linecap:round;}
+.spark .area{fill:currentColor;opacity:.12;}
+.spark{color:var(--success);}
+.spark.down{color:var(--warn);}
+.spark.flat{color:var(--text-2);}

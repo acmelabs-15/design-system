@@ -1,0 +1,110 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const statSurfaceCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+dl, dt, dd {
+  min-inline-size: 0;
+  margin: 0;
+}
+
+[data-kind="stat"] {
+  gap: var(--acme-spacing-1-5);
+  --_stat-value-size: var(--t-2xl);
+  --_stat-value-line: 32px;
+  flex-direction: column;
+  inline-size: 100%;
+  display: flex;
+}
+
+[data-kind="stat"][data-size="small"] {
+  --_stat-value-size: var(--t-xl);
+  --_stat-value-line: 28px;
+}
+
+[data-kind="stat"][data-size="large"] {
+  --_stat-value-size: var(--t-3xl);
+  --_stat-value-line: 40px;
+}
+
+[part="label"] {
+  font-size: var(--t-2xs);
+  font-family: var(--acme-font-mono);
+  font-weight: var(--acme-font-weight-600);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ds-gray-900);
+  overflow-wrap: anywhere;
+  line-height: 16px;
+}
+
+[part="value"] {
+  font-family: var(--acme-font-mono);
+  font-size: var(--_stat-value-size, var(--t-2xl));
+  font-weight: var(--acme-font-weight-600);
+  line-height: var(--_stat-value-line, 32px);
+  letter-spacing: -.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ds-gray-1000);
+  overflow-wrap: anywhere;
+}
+
+.value-layout {
+  align-items: baseline;
+  gap: var(--acme-spacing-1-5);
+  flex-wrap: wrap;
+  display: flex;
+}
+
+[part="unit"] {
+  font-family: var(--acme-font-sans);
+  font-size: var(--t-md);
+  font-weight: var(--acme-font-weight-500);
+  letter-spacing: 0;
+  color: var(--ds-gray-900);
+}
+
+[part="description"], [part="footer"] {
+  font-size: var(--t-sm);
+  color: var(--ds-gray-900);
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+[part="footer"] {
+  align-items: center;
+  gap: var(--acme-spacing-2);
+  flex-wrap: wrap;
+  padding-block-start: var(--acme-spacing-2);
+  display: flex;
+}
+
+[part="change"] {
+  align-items: center;
+  gap: var(--acme-spacing-1);
+  font-family: var(--acme-font-mono);
+  font-size: var(--t-xs);
+  color: var(--ds-gray-900);
+  line-height: 1.5;
+  display: inline-flex;
+}
+
+[part="change"][data-sentiment="positive"] {
+  color: var(--success-ink);
+}
+
+[part="change"][data-sentiment="negative"] {
+  color: var(--warn-ink);
+}
+
+[part="indicator"] {
+  align-items: center;
+  display: inline-flex;
+}
+
+[hidden] {
+  display: none;
+}
+`;

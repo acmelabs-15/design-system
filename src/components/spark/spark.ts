@@ -2,14 +2,12 @@ import { sparkStructureCss } from "../../generated/components/spark/spark-struct
 import { html } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { statCss } from "../../generated/components/stat/stat.styles";
 
 /** Sparkline: pass `points` (numbers) and a `tone`. */
 
 export class AcmeSpark extends AcmeElement {
   static styles = [
     sharedCss,
-    statCss,
     sparkStructureCss,
   ];
   @property({ type: Array }) points: number[] = [];

@@ -96,9 +96,6 @@ export * from "./components/split-button/split-button";
 export * from "./components/split-button-item/split-button-item";
 export * from "./components/stat/stat";
 export * from "./components/stack/stack";
-export * from "./components/stat-delta/stat-delta";
-export * from "./components/stat-desc/stat-desc";
-export * from "./components/stat-foot/stat-foot";
 export * from "./components/status/status";
 export * from "./components/switch/switch";
 export * from "./components/tab/tab";
@@ -112,7 +109,6 @@ export * from "./components/toast/toast";
 export * from "./components/toaster/toaster";
 export * from "./components/toolbar/toolbar";
 export * from "./components/tooltip/tooltip";
-export * from "./components/trend/trend";
 export * from "./components/video/video";
 export * from "./components/v-stack/v-stack";
 export { bind as bindField, TanStackFormController } from "./shared/form";
@@ -193,3 +189,10 @@ export * from "./components/toggle-tip/toggle-tip";
 
 export * from "./components/empty-state-content/empty-state-content";
 export * from "./components/empty-state-indicator/empty-state-indicator";
+
+export * from "./components/stat-label/stat-label";
+export * from "./components/stat-value/stat-value";
+export * from "./components/stat-unit/stat-unit";
+export * from "./components/stat-description/stat-description";
+export * from "./components/stat-change/stat-change";
+export * from "./components/stat-footer/stat-footer";

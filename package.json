@@ -18172,20 +18172,25 @@
       "import": "./dist/generated/icons/classes/stat-3-icon.js",
       "default": "./dist/generated/icons/classes/stat-3-icon.js"
     },
-    "./components/stat-delta": {
-      "types": "./dist/components/stat-delta/stat-delta.d.ts",
-      "import": "./dist/components/stat-delta/stat-delta.js",
-      "default": "./dist/components/stat-delta/stat-delta.js"
+    "./components/stat-change": {
+      "types": "./dist/components/stat-change/stat-change.d.ts",
+      "import": "./dist/components/stat-change/stat-change.js",
+      "default": "./dist/components/stat-change/stat-change.js"
     },
-    "./components/stat-desc": {
-      "types": "./dist/components/stat-desc/stat-desc.d.ts",
-      "import": "./dist/components/stat-desc/stat-desc.js",
-      "default": "./dist/components/stat-desc/stat-desc.js"
+    "./components/stat-description": {
+      "types": "./dist/components/stat-description/stat-description.d.ts",
+      "import": "./dist/components/stat-description/stat-description.js",
+      "default": "./dist/components/stat-description/stat-description.js"
     },
-    "./components/stat-foot": {
-      "types": "./dist/components/stat-foot/stat-foot.d.ts",
-      "import": "./dist/components/stat-foot/stat-foot.js",
-      "default": "./dist/components/stat-foot/stat-foot.js"
+    "./components/stat-footer": {
+      "types": "./dist/components/stat-footer/stat-footer.d.ts",
+      "import": "./dist/components/stat-footer/stat-footer.js",
+      "default": "./dist/components/stat-footer/stat-footer.js"
+    },
+    "./components/stat-label": {
+      "types": "./dist/components/stat-label/stat-label.d.ts",
+      "import": "./dist/components/stat-label/stat-label.js",
+      "default": "./dist/components/stat-label/stat-label.js"
     },
     "./components/stat-minus-1-icon": {
       "types": "./dist/generated/icons/classes/stat-minus-1-icon.d.ts",
@@ -18201,6 +18206,16 @@
       "types": "./dist/generated/icons/classes/stat-minus-3-icon.d.ts",
       "import": "./dist/generated/icons/classes/stat-minus-3-icon.js",
       "default": "./dist/generated/icons/classes/stat-minus-3-icon.js"
+    },
+    "./components/stat-unit": {
+      "types": "./dist/components/stat-unit/stat-unit.d.ts",
+      "import": "./dist/components/stat-unit/stat-unit.js",
+      "default": "./dist/components/stat-unit/stat-unit.js"
+    },
+    "./components/stat-value": {
+      "types": "./dist/components/stat-value/stat-value.d.ts",
+      "import": "./dist/components/stat-value/stat-value.js",
+      "default": "./dist/components/stat-value/stat-value.js"
     },
     "./components/status": {
       "types": "./dist/components/status/status.d.ts",
@@ -19986,11 +20001,6 @@
       "types": "./dist/components/tree-view/tree-view.d.ts",
       "import": "./dist/components/tree-view/tree-view.js",
       "default": "./dist/components/tree-view/tree-view.js"
-    },
-    "./components/trend": {
-      "types": "./dist/components/trend/trend.d.ts",
-      "import": "./dist/components/trend/trend.js",
-      "default": "./dist/components/trend/trend.js"
     },
     "./components/trending-down-icon": {
       "types": "./dist/generated/icons/classes/trending-down-icon.d.ts",
