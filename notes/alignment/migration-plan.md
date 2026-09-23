@@ -329,3 +329,8 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M16 complete — 2026-09-23
 
 [Tree View acceptance](evidence/m16-tree-view-2026-09-23.json) closes N06 and M16 with the prior TOC/Sidebar slices. Data-driven hierarchy, keyed author content, native links, selection/expansion/focus and Sidebar composition pass all engines. File Tree/Folder/File are removed, including their style producers. Continue the M17 help families; O01/O02/O03 are already complete.
+
+
+### M17 complete — 2026-09-23
+
+[Help acceptance](evidence/m17-help-2026-09-23.json) closes O04/O05/O06; the earlier native-dialog acceptance closes O01/O02/O03. Shared native presence, anchored geometry, motion, descriptions, focus and explicit interactive help pass source/compiled checks in all engines. Context Card and all legacy Tooltip producers are removed. Continue M18; actual platform/React/final package gates remain M22/M26.

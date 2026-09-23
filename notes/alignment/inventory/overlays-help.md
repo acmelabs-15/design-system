@@ -73,3 +73,8 @@ An Alert Dialog owns modality and naming. Field/Input owns confirmation text. Ap
 ## O01/O02/O03 engineering resolution — 2026-09-23
 
 The native backdrop is exposed through surface::backdrop; explicit close controls expose their own shared action parts. Dialog medium retains the 540px baseline, with small=400px and large=800px, bounded by the viewport. Drawer uses the sizes.acme-drawer-size theme token (24rem by default); its optional size property overrides the movement axis. Generic Inset uses the shared body-padding context. A connected opener supplies its complete theme and public CSS tokens. If it disappears before native opening, connected focus or the dialog scope supplies the fallback. Removing an opener after opening preserves the captured scope. [Acceptance](../evidence/m17-native-dialogs-2026-09-23.json).
+
+
+## O04/O05/O06 implementation resolution — 2026-09-23
+
+[Help acceptance](../evidence/m17-help-2026-09-23.json) closes the three help entries. Toggle Tip owns its native Button; the trigger slot supplies label content, avoiding nested buttons. Its native labelled-by reference tracks the live trigger. Supplementary Tooltip/Hover Card previews are inert and their text supplies a preserved trigger description; interactive help belongs to Toggle Tip. Hover/focus do not replace a native destination or add a wrapper tab stop. No touch interception is added to supplementary previews. Context Card and all retired Tooltip producers are removed.

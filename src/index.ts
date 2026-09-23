@@ -31,7 +31,6 @@ export * from "./components/command-separator/command-separator";
 export * from "./components/command-group/command-group";
 export * from "./components/command-item/command-item";
 export * from "./components/command-menu/command-menu";
-export * from "./components/context-card/context-card";
 export * from "./components/context-menu/context-menu";
 export * from "./components/copy-button/copy-button";
 export * from "./components/data-list/data-list";
@@ -188,3 +187,6 @@ export * from "./components/sidebar-content/sidebar-content";
 
 export * from "./components/tree-view/tree-view";
 export * from "./components/tree-item/tree-item";
+
+export * from "./components/hover-card/hover-card";
+export * from "./components/toggle-tip/toggle-tip";

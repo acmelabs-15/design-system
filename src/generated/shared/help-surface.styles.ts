@@ -1,0 +1,96 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const helpSurfaceCss = css`:host {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+[part="root"] {
+  max-inline-size: 100%;
+  display: inline-flex;
+}
+
+[part="content"] {
+  inset: auto;
+  left: var(--_help-x, 0px);
+  top: var(--_help-y, 0px);
+  border-radius: var(--r);
+  padding: var(--acme-spacing-3);
+  background: var(--ds-background-100);
+  max-block-size: calc(100dvh - 16px);
+  inline-size: max-content;
+  max-inline-size: min(24rem, 100vw - 16px);
+  color: var(--ds-gray-1000);
+  font: inherit;
+  opacity: var(--_help-opacity, 0);
+  box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  font-size: .875rem;
+  line-height: 1.5;
+  position: fixed;
+  overflow: visible;
+}
+
+[part="content"][data-kind="tooltip"] {
+  background: var(--ds-gray-1000);
+  color: var(--ds-background-100);
+  padding: var(--acme-spacing-2) var(--acme-spacing-3);
+  max-inline-size: min(20rem, 100vw - 16px);
+  box-shadow: none;
+  font-size: .8125rem;
+}
+
+[part="content"][data-kind="hover-card"] {
+  box-shadow: var(--acme-shadow-4);
+}
+
+[part="content"][data-kind="toggle-tip"] {
+  box-shadow: var(--acme-shadow-5);
+}
+
+.preview {
+  overflow-wrap: anywhere;
+}
+
+[part="arrow"] {
+  background: inherit;
+  pointer-events: none;
+  block-size: 8px;
+  inline-size: 8px;
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+[data-side="top"] > [part="arrow"] {
+  left: var(--_help-arrow-x, 0px);
+  bottom: -4px;
+}
+
+[data-side="bottom"] > [part="arrow"] {
+  left: var(--_help-arrow-x, 0px);
+  top: -4px;
+}
+
+[data-side="left"] > [part="arrow"] {
+  top: var(--_help-arrow-y, 0px);
+  right: -4px;
+}
+
+[data-side="right"] > [part="arrow"] {
+  top: var(--_help-arrow-y, 0px);
+  left: -4px;
+}
+
+@media (forced-colors: active) {
+  [part="content"] {
+    color: canvastext;
+    background: canvas;
+    outline: 1px solid canvastext;
+  }
+
+  [part="arrow"] {
+    display: none;
+  }
+}
+`;

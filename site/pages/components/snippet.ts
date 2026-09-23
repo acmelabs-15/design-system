@@ -39,15 +39,10 @@ export const doc: Doc = {
       html: `<div class="vstack" style="align-items:stretch"><acme-snippet text="npm init next-app" variant="success" width="300px"></acme-snippet><acme-snippet text="npm init next-app" variant="error" width="300px"></acme-snippet><acme-snippet text="npm init next-app" variant="warning" width="300px"></acme-snippet></div>`,
     },
     {
-      h: "Controlled Copied State",
-      p: "The copied attribute drives the checkmark from outside. A parent surface can copy other text, here from a context card, and reuse the snippet's feedback.",
-      html: `<acme-context-card><div slot="content" class="text-copy-13-mono" style="width:384px;white-space:pre-line">${COPY_TEXT}</div><div role="button" tabindex="0" aria-label="copy content" style="cursor:pointer"><acme-snippet text="Copy install prompt" prompt="false" width="300px"></acme-snippet></div></acme-context-card>`,
-      script: `const copyText = root.querySelector('[slot=content]').textContent;
-const trigger = root.querySelector('[role=button]');
-const snippet = root.querySelector('acme-snippet');
-const copy = () => { snippet.copyText = copyText; void snippet.copy().catch(() => {}); };
-trigger.addEventListener('click', copy);
-trigger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy() } })`,
+      h: "Review and copy a prompt",
+      p: "Open the help to read a longer prompt, then use the snippet's copy control.",
+      html: `<acme-toggle-tip><span slot="trigger">Review install prompt</span><pre style="max-width:100%;white-space:pre-wrap">${COPY_TEXT}</pre><acme-snippet text="Copy install prompt" prompt="false" width="100%"></acme-snippet></acme-toggle-tip>`,
+      script: "root.querySelector('acme-snippet').copyText=root.querySelector('pre').textContent;",
     },
   ],
   practices: {
@@ -57,7 +52,7 @@ trigger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' 
       'Set <code>prompt="false"</code> for content that is not a shell command (URLs, JSON, output copied as is) so what is shown matches what is copied.',
       "Pair <code>placeholder</code> with an empty <code>text</code> for an empty state. Sentence case, no trailing period, no <code>Please</code>: <code>Run vercel link to fetch env vars</code>. The placeholder is information, not copied.",
       "Keep one command per Snippet. Pass a JSON array to <code>text</code> for a short multi-line block; for longer scripts switch to Code Block so users read before they copy.",
-      "Use <code>copied</code> with the <code>acme-copy</code> event when a parent surface (a card, a tooltip) shows the same checkmark while it copies different text.",
+      "Use <code>copied</code> with the <code>acme-copy</code> event when a parent surface (a card or Toggle Tip) shows the same checkmark while it copies different text.",
     ],
   },
 };

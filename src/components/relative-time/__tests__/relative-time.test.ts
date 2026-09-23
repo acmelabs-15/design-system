@@ -13,7 +13,7 @@ test("zero is a valid instant and no card or invented trigger is rendered", asyn
   const time = element.shadowRoot!.querySelector("time")!;
   expect(time.dateTime).toBe("1970-01-01T00:00:00.000Z");
   expect(time.textContent).not.toBe("");
-  expect(element.shadowRoot!.querySelector("acme-context-card")).toBeNull();
+  expect(element.shadowRoot!.querySelector("button, [role=button], [tabindex]")).toBeNull();
   expect(element.autoUpdate).toBe(false);
   expect(typeof (element as unknown as { update: unknown }).update).toBe("function");
   expect(typeof element.style.setProperty).toBe("function");

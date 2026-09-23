@@ -44,7 +44,7 @@ describe("acme-progress", () => {
     expect(stops.length).toBe(2);
     expect(stops[1].getAttribute("style")).toContain("left:calc(20% - 7px)");
     const tip = stops[0].querySelector("acme-tooltip.trigger") as HTMLElement;
-    expect(tip.getAttribute("text")).toBe("10%");
+    expect(tip.getAttribute("content")).toBe("10%");
     expect(tip.querySelector(".hit")!.getAttribute("aria-label")).toBe("10%");
     expect(stops[0].querySelector(".lines > .line + .line-bg")).not.toBeNull();
   });

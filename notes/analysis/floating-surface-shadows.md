@@ -79,3 +79,10 @@ The public theme catalog now includes acme-shadow-4, acme-shadow-5 and acme-shad
 The native comparison builds an independent Radix surface from the pinned upstream stylesheet and palette files, then compares its shadow geometry and rendered sRGB 8-bit colors with the generated house output. All 18 comparisons pass: three tiers, two modes, three engines. WebKit exercises the P3 branch in this environment. CSS serialization is not byte-identical: Lightning CSS precomputes constant color-mix expressions, while upstream variable expressions resolve in the browser. The rendered-color comparison avoids confusing that calculation precision with a different source color. This does not claim exhaustive wide-gamut raster identity or old-engine fallback runtime coverage.
 
 [Source revisions, hashes and verification](../alignment/evidence/m13-shadow-sources-2026-09-22.json). Shadow 4/6 consumers receive their component acceptance in their assigned batches.
+
+
+## M17 help implementation — 2026-09-23
+
+[Accepted help slice](../alignment/evidence/m17-help-2026-09-23.json) implements the selected Tooltip/Hover Card/Toggle Tip split with existing native presence, Floating UI and Lit Motion. Plain Tooltip has no shadow; Hover Card uses shadow4 and Toggle Tip uses shadow5. Supplementary previews are inert and provide text descriptions; interactive content is explicitly activated. Trigger descriptions retain existing references through owned same-scope mirrors, and Toggle Tip naming uses a live native element reference.
+
+Browser reproductions corrected WebKit outside-focus dismissal, exit focus return, visible Tooltip naming and stale Toggle Tip labels. Native Chrome accessibility inspection distinguishes real semantics from Playwright shadow-reference/inert-slot query limitations. Theme/direction/token changes and nested Dialog dismissal pass in all engines. The legacy Context Card stage, Tooltip properties, style producers, trigger/backdrop maps and unused palette-reset controller are removed. Progress and documentation consumers use the new interfaces. Actual Safari/assistive technology and generated React remain assigned final integration gates.

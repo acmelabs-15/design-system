@@ -61,7 +61,7 @@ export class AcmeProgress extends AcmeElement {
       <progress class="bar" max=${this.max} value=${this.value} style=${styleMap({ width: "100%", "--fg": this.fg(), height })} aria-label=${this.label || nothing} part="bar"></progress>
       ${stops.map(
         (s) => html`<div class="stop" style=${`left:calc(${(s.value / this.max) * 100}% - 7px)`}>
-            <acme-tooltip class="trigger" text=${s.tooltip ?? ""} style="grid-area:1 / 1"><span class="hit" style="width:14px;height:10px;--x-offset:2px" tabindex="0" role="img" aria-label=${s.tooltip ?? String(s.value)}></span></acme-tooltip>
+            <acme-tooltip class="trigger" content=${s.tooltip ?? ""} style="grid-area:1 / 1"><span class="hit" style="width:14px;height:10px;--x-offset:2px" tabindex="0" role="img" aria-label=${s.tooltip ?? String(s.value)}></span></acme-tooltip>
             <div class="lines" style="grid-area:1 / 1"><div class="line"></div><div class="line-bg"></div></div>
           </div>`,
       )}

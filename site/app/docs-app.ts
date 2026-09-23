@@ -191,7 +191,7 @@ export class DocsSwatch extends LitElement {
   };
   render() {
     const token = this.getAttribute("token") ?? "";
-    return html`<acme-tooltip text=${token}><button type="button" class="sw" style=${`background:var(${token})`} aria-label=${token} @contextmenu=${this.copy}></button></acme-tooltip>`;
+    return html`<acme-tooltip content=${token}><button type="button" class="sw" style=${`background:var(${token})`} aria-label=${token} @contextmenu=${this.copy}></button></acme-tooltip>`;
   }
 }
 
