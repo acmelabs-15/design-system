@@ -251,9 +251,6 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
   protected get semanticDefaults() {
     return { ...super.semanticDefaults, role: "group" };
   }
-  protected semanticUpdated(): void {
-    this.nativeForm?.sync();
-  }
   private ensureControls(count: number): void {
     if (this.focused >= count) this.focused = -1;
     this.lastFocused = Math.min(this.lastFocused, count - 1);

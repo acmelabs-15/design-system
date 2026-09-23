@@ -755,3 +755,14 @@ The replacement uses canonical immutable numeric arrays, NativeFormController, F
 [Final Slider evidence](../alignment/evidence/m13-slider-2026-09-22.json) records the completed implementation and its limits. Fresh review reproduced coincident-thumb direction, focus-transfer cancellation and custom-validity announcement defects in all engines; all are fixed. Follow-up checks corrected the native-edit atom reset and late accessible references. The shared semantic controller now offers a protected notification after references resolve; Slider synchronizes its additional native targets there. Chromium native accessibility output confirms the delayed label; Playwright’s role-name matcher does not recognize the same modern element-reference path.
 
 The 8px track and 6×14px handle dimensions retain the previous generated geometry. Semantic accent colors and rounded handle treatment support current customization; Material Expressive size sets are not copied. All 883 tests pass, including the migrated Middle Truncate caller; source/compiled native checks and actual documentation flows pass. Calendar implementation and its dependency correction remain open.
+
+
+### M13 Calendar integration in progress — 2026-09-22
+
+Calendar now uses one NativeFormController value, independent navigation and editor drafts, package-backed Gregorian date arithmetic, native dialog/inline presentation and shared placement/motion. HTML default values and property-first configuration preserve supplied data. Date-only formatting uses a UTC bridge so a skipped local day does not change the civil date. Locale changes words, numbers and week boundaries while the grid remains Gregorian. Native editors retain browser presentation.
+
+Twenty-four source and compiled native checks pass per engine after correcting fixture selectors for registered icon roots. The first integrated full suite passes all 900 tests. A live WebKit flow found a ResizeObserver feedback loop while popup focus reveal scrolled the document and changed available geometry. The source fix scrolls only the popup surface in popup mode; final rebuilt verification is pending. Native form semantics now resynchronize after accessible-reference painting, preserving owned expanded/haspopup state when labels change.
+
+### Calendar acceptance and M13 closure — 2026-09-23
+
+The [acceptance record](../alignment/evidence/m13-calendar-2026-09-23.json) preserves all source/compiled/native/documentation results and the prior failures. Shared native-form semantic repaint now resynchronizes component-owned ARIA; placement batches geometry outside ResizeObserver delivery; focus-trap supplements native modal focus traversal while the native dialog retains inertness. Nested dismissal, removal/reconnect and the isolated existing overlay regressions pass all engines. M14 begins with the approved content/surface contracts.

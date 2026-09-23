@@ -22,6 +22,9 @@ export abstract class AcmeFormElement<Value, Extra = undefined> extends AcmeSema
     activate: () => this.activateField(),
     changed: (description) => this.nativeForm?.setContextDisabled(description?.disabled ?? false),
   });
+  protected semanticUpdated(): void {
+    this.nativeForm?.sync();
+  }
   protected activateField(): void {
     this.focus();
   }

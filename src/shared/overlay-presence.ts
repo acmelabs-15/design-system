@@ -4,6 +4,9 @@ import type { ReactiveController, ReactiveControllerHost } from "lit";
 import { bindThemeContext, type ThemeContextBinding } from "./theme-context";
 import { coordinateOverlay, type OverlayDismissReason } from "./overlay-coordination";
 import { deepActiveElement } from "./composed-tree";
+import { createFocusTrap, type FocusTrap } from "focus-trap";
+
+const modalFocusStacks = new WeakMap<Document, FocusTrap[]>();
 
 export type OverlayPhase = "closed" | "open" | "closing";
 export type OverlayPresenceOptions = {
@@ -87,7 +90,35 @@ export class OverlayPresence implements ReactiveController {
           if (dialog.open) dialog.close();
         });
       }
-      if (mode === "modal") cleanups.push(preventBodyScroll(document));
+      if (mode === "modal") {
+        cleanups.push(preventBodyScroll(document));
+        let stack = modalFocusStacks.get(document);
+        if (!stack) modalFocusStacks.set(document, (stack = []));
+        const trap = createFocusTrap(surface, {
+          document,
+          trapStack: stack,
+          initialFocus: false,
+          fallbackFocus: surface,
+          returnFocusOnDeactivate: false,
+          delayInitialFocus: false,
+          delayReturnFocus: false,
+          escapeDeactivates: false,
+          clickOutsideDeactivates: false,
+          allowOutsideClick: true,
+          isolateSubtrees: false,
+          tabbableOptions: { getShadowRoot: true },
+        });
+        trap.activate();
+        const observer = new MutationObserver(() => {
+          if (surface.inert) trap.pause();
+          else trap.unpause();
+        });
+        observer.observe(surface, { attributes: true, attributeFilter: ["inert"] });
+        cleanups.push(() => {
+          observer.disconnect();
+          trap.deactivate({ returnFocus: false });
+        });
+      }
       cleanups.push(
         coordinateOverlay({
           surface,

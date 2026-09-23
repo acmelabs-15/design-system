@@ -74,7 +74,6 @@ const MAP: [string, RegExp][] = [
   ["scroller", /^\.scroller/],
   ["book", /^\.book/],
   ["browser", /^\.browser/],
-  ["calendar", /^(\.calendar|\.cal-)/],
   ["clearable-input", /^\.clearable/],
   ["command-menu", /^\.cmdk/],
   ["context-card", /^(\.context-card|\.context-target)/],

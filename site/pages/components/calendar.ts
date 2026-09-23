@@ -1,91 +1,46 @@
-// Docs page: Calendar — mirrors https://vercel.com/geist/calendar
 import type { Doc } from "../../site";
-
-const presets = `{"last-3-days":{"text":"Last 3 Days","days":3},"last-7-days":{"text":"Last 7 Days","weeks":1},"last-14-days":{"text":"Last 14 Days","weeks":2},"last-month":{"text":"Last Month","months":1}}`;
-const center = (inner: string) => `<div style="display:flex;justify-content:center;padding:48px 0">${inner}</div>`;
-// Two months either side of today, as Geist computes with date-fns.
-const bounds = `const iso = (d) => d.toLocaleDateString('en-CA');
-const now = new Date();
-for (const c of root.querySelectorAll('acme-calendar[allow-clear]')) {
-  c.minValue = iso(new Date(now.getFullYear(), now.getMonth() - 2, now.getDate()));
-  c.maxValue = iso(new Date(now.getFullYear(), now.getMonth() + 2, now.getDate()));
-}`;
-const sizeRow = (size: string) =>
-  `<div class="row" style="gap:16px 16px;row-gap:48px;align-items:flex-start"><acme-calendar allow-clear${size}></acme-calendar><acme-calendar allow-clear compact${size} presets='${presets}'></acme-calendar><acme-calendar allow-clear stacked${size} presets='${presets}'></acme-calendar><acme-calendar${size} presets='${presets}'></acme-calendar></div>`;
-
 export const doc: Doc = {
   id: "calendar",
   title: "Calendar",
-  lede: "A calendar from which the user picks a date or a range of dates.",
+  lede: "Choose a date or a range, with optional time editing and a named time zone.",
   tags: ["acme-calendar"],
   examples: [
     {
-      h: "Default",
-      html: center(`<acme-calendar allow-clear></acme-calendar>`),
-      script: bounds,
+      h: "Date range",
+      html: '<acme-field><span slot="label">Reporting period</span><acme-calendar show-time-input="false" value=\'{"start":"2026-09-10","end":"2026-09-15"}\'></acme-calendar></acme-field>',
     },
-    {
-      h: "Horizontal Layout",
-      p: "horizontal-layout lays the form and the month grid side by side inside the popover.",
-      html: center(`<acme-calendar allow-clear horizontal-layout show-time-input="false" popover-alignment="center"></acme-calendar>`),
-    },
-    {
-      h: "Sizes",
-      p: "medium (the default) or small.",
-      html: `<div class="vstack" style="gap:48px;padding:48px 0"><div><p style="font-family:var(--acme-font-mono);font-size:14px;line-height:20px;color:var(--ds-gray-900);margin-bottom:16px">small</p>${sizeRow(' size="small"')}</div><div><p style="font-family:var(--acme-font-mono);font-size:14px;line-height:20px;color:var(--ds-gray-900);margin-bottom:16px">default / medium</p>${sizeRow("")}</div></div>`,
-      script: bounds,
-    },
+    { h: "Single date", html: '<acme-calendar aria-label="Deadline" mode="single" show-time-input="false" value="2026-09-22" clearable></acme-calendar>' },
+    { h: "Date and time", html: '<acme-calendar aria-label="Meeting" mode="single" time-zone="America/Los_Angeles" value="2026-09-22T09:30:00-07:00"></acme-calendar>' },
+    { h: "Inline", html: '<acme-calendar aria-label="Travel dates" presentation="inline" show-time-input="false" value=\'{"start":"2026-09-12","end":"2026-09-18"}\'></acme-calendar>' },
+    { h: "Bounds", html: '<acme-calendar aria-label="September appointment" mode="single" show-time-input="false" min-value="2026-09-05" max-value="2026-09-25" value="2026-09-15"></acme-calendar>' },
     {
       h: "Presets",
-      p: "Common ranges as buttons.",
-      html: center(`<acme-calendar presets='${presets}'></acme-calendar>`),
+      html: '<acme-calendar aria-label="Release period" show-time-input="false" presets=\'[{"label":"First week","value":{"start":"2026-09-01","end":"2026-09-07"}},{"label":"Release week","value":{"start":"2026-09-14","end":"2026-09-20"}}]\'></acme-calendar>',
     },
     {
-      h: "Compact",
-      html: center(`<acme-calendar compact presets='${presets}'></acme-calendar>`),
+      h: "Custom trigger and footer",
+      html: '<acme-calendar aria-label="Maintenance window" show-time-input="false"><span slot="trigger">Choose maintenance dates</span><p slot="footer">Dates are provisional until you select Apply.</p></acme-calendar>',
     },
+    { h: "Locale and direction", html: '<acme-calendar aria-label="موعد" locale="ar-SA" dir="rtl" mode="single" presentation="inline" show-time-input="false" value="2026-09-22"></acme-calendar>' },
     {
-      h: "Stacked",
-      html: center(`<acme-calendar presets='${presets}' stacked></acme-calendar>`),
-    },
-    {
-      h: "Presets with default value",
-      p: "Common ranges, with one of them selected from the start.",
-      html: center(`<acme-calendar preset-index="2" presets='${presets}' stacked></acme-calendar>`),
-    },
-    {
-      h: "Min and max dates",
-      p: "The earliest and latest dates the user can pick.",
-      html: center(`<acme-calendar></acme-calendar>`),
-      script: `const iso = (d) => d.toLocaleDateString('en-CA');
-const c = root.querySelector('acme-calendar');
-c.minValue = iso(new Date(Date.now() - 864e5)); // yesterday
-c.maxValue = iso(new Date(Date.now() + 864e5)); // tomorrow`,
-    },
-    {
-      h: "Pinned timezone",
-      p: "pinned-timezone locks the calendar to one timezone. It shows as read-only text instead of a select.",
-      html: center(`<acme-calendar pinned-timezone="America/Los_Angeles" popover-alignment="center"></acme-calendar>`),
+      h: "Native form",
+      html: '<form id="calendar-form-example"><acme-field required><span slot="label">Booking dates</span><acme-calendar name="booking" required show-time-input="false" value=\'{"start":"2026-09-10","end":"2026-09-12"}\'></acme-calendar><span slot="help">A complete range is required.</span></acme-field><acme-button type="submit">Read dates</acme-button><acme-button type="reset" variant="secondary">Reset</acme-button><output></output></form>',
+      script: 'root.querySelector("form").addEventListener("submit",event=>{event.preventDefault();root.querySelector("output").textContent=new FormData(event.currentTarget).get("booking");});',
     },
   ],
   practices: {
-    "When to use": [
-      "Analytics ranges, and any picker where the day of the week and the month matter.",
-      "For an ISO date pasted whole, or shorthand like 7d, use a free-form Input.",
-      "Give presets for the common ranges (Last 7 Days, Month to Date) so the user lands on the right window in one click.",
-      "Pair the horizontal layout with live results next to the calendar; in a narrow surface such as a sidebar, use the stacked layout.",
+    Values: [
+      "Use a scalar ISO string for single mode and an object with start and optional end for range mode. HTML range values and presets use validated JSON; Lit and React pass actual objects.",
+      "With showTimeInput=false, values are civil dates such as 2026-09-22. With time editing enabled, values include an explicit UTC offset. Changing timeZone preserves an existing timestamp's instant.",
+      "A range may be incomplete while you choose its end. Required ranges must be complete. Native form data contains one scalar ISO string or one JSON range entry.",
+      "The grid uses Gregorian dates. Locale controls labels, number formatting and the start of the week. Native date/time editor presentation follows the browser.",
     ],
     Behavior: [
-      "Set min-value and max-value to the data window so nobody picks outside the retention range.",
-      "Default to the user's locale and timezone; never show UTC to a US-Pacific viewer without saying so.",
-      "The trigger label is the chosen range (Apr 1 – Apr 28, 2026); once a value is set, it never falls back to Pick a date.",
-      "The range stays when the popover closes and opens again, so the user can change the end date without picking the start again.",
-    ],
-    Accessibility: [
-      "Focus stays inside the popover: Tab cycles the day cells and the presets, not the page behind.",
-      "Arrow keys move by day, Shift + arrow by week, Page Up and Page Down by month.",
-      "A polite live region announces the range (From Apr 1 to Apr 28) after the second click.",
-      "Each preset is a real button with a Title Case label (Last 30 Days), not a menu item without keyboard handling.",
+      "Arrow keys move by day or week. Home and End use locale week boundaries. Page Up/Down moves by month; Shift with Page Up/Down moves by year. Horizontal arrows follow direction.",
+      "acme-input reports provisional edits; acme-change reports a committed change. Single date-only selection commits directly. Ranges and time edits use Apply. Programmatic values, reset and restoration stay silent.",
+      "Nonexistent local times produce an error. Repeated local times retain a valid existing offset; otherwise the earlier occurrence is selected.",
+      "The popup uses a native modal dialog with contained focus. Escape closes it and restores focus. Inline presentation does not trap page focus. Closing does not roll back provisional selection.",
+      "Use Field, a native label or an accessible name. Custom trigger content stays inside the component's native button; keep that content noninteractive.",
     ],
   },
 };

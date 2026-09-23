@@ -14,6 +14,7 @@ export class OverlayPlacement implements ReactiveController {
   private request = 0;
   private reference?: ReferenceElement;
   private floating?: HTMLElement;
+  private frame?: { view: Window; id: number };
   constructor(
     host: ReactiveControllerHost,
     private options: OverlayPlacementOptions,
@@ -34,6 +35,19 @@ export class OverlayPlacement implements ReactiveController {
     }
   }
   refresh = (): void => {
+    if (this.frame) return;
+    const view = this.floating?.ownerDocument.defaultView;
+    if (!view) return;
+    this.request++;
+    this.frame = {
+      view,
+      id: view.requestAnimationFrame(() => {
+        this.frame = undefined;
+        this.measure();
+      }),
+    };
+  };
+  private measure(): void {
     const reference = this.reference,
       floating = this.floating;
     if (!reference || !floating) return;
@@ -52,8 +66,10 @@ export class OverlayPlacement implements ReactiveController {
       .catch((error) => {
         if (this.epoch === epoch && this.request === request) this.options.error(error);
       });
-  };
+  }
   stop(): void {
+    if (this.frame) this.frame.view.cancelAnimationFrame(this.frame.id);
+    this.frame = undefined;
     this.epoch++;
     this.cleanup?.();
     this.cleanup = undefined;

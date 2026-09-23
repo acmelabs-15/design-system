@@ -1,73 +1,99 @@
 import { describe, expect, test } from "bun:test";
 import "../../../all";
-
+import { parseTime } from "../../../shared/date";
+import type { AcmeCalendar } from "../calendar";
 const mount = async (markup: string) => {
   document.body.innerHTML = markup;
-  const el = document.body.firstElementChild as any;
+  const el = document.querySelector("acme-calendar") as AcmeCalendar;
   await el.updateComplete;
   return el;
 };
-const presets = `{"last-3-days":{"text":"Last 3 Days","days":3},"last-7-days":{"text":"Last 7 Days","weeks":1},"last-14-days":{"text":"Last 14 Days","weeks":2},"last-month":{"text":"Last Month","months":1}}`;
-const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-
-describe("acme-calendar", () => {
-  test("the trigger reads the chosen range and the popover holds Start, End, Apply and a timezone select", async () => {
-    const el = await mount(`<acme-calendar static value="2026-09-08" end="2026-09-12"></acme-calendar>`);
-    expect(el.shadowRoot.querySelector(".cal-trigger").textContent.trim()).toBe("Sep 8 – Sep 12, 2026");
-    const labels = Array.from(el.shadowRoot.querySelectorAll(".form-label")).map((n: any) => n.textContent);
-    expect(labels).toEqual(["Start", "End"]);
-    expect(el.shadowRoot.querySelector(".cal-form select[aria-label=Timezone]")).not.toBeNull();
-    expect(el.shadowRoot.querySelectorAll(".cal-form input.time").length).toBe(2);
-    expect(el.shadowRoot.querySelectorAll(".cal-grid td.range").length).toBe(3);
-  });
-  test("presets are real buttons; preset-index selects one at the start", async () => {
-    const el = await mount(`<acme-calendar static stacked preset-index="2" presets='${presets}'></acme-calendar>`);
-    const buttons = Array.from(el.shadowRoot.querySelectorAll(".cal-presets button")).map((b: any) => b.textContent);
-    expect(buttons).toEqual([]);
-    const opts = Array.from(el.shadowRoot.querySelectorAll(".cal-period option")).map((o: any) => o.textContent);
-    expect(opts).toEqual(["Custom", "Last 3 Days", "Last 7 Days", "Last 14 Days", "Last Month"]);
-    expect(el.shadowRoot.querySelector(".cal-join").className).toContain("stacked");
-    const start = new Date();
-    start.setDate(start.getDate() - 14);
-    expect(el.value).toBe(iso(start));
-    expect(el.end).toBe(iso(new Date()));
-    const plain = await mount(`<acme-calendar static presets='${presets}'></acme-calendar>`);
-    expect(plain.shadowRoot.querySelectorAll(".cal-presets button").length).toBe(4);
-  });
-  test("compact joins a period combobox; horizontal-layout, small and show-time-input=false map to the popover", async () => {
-    const el = await mount(`<acme-calendar static compact size="small" horizontal-layout show-time-input="false" presets='${presets}'></acme-calendar>`);
-    expect(el.shadowRoot.querySelector(".cal-join .cal-period")).not.toBeNull();
-    const pop = el.shadowRoot.querySelector(".calendar");
-    expect(pop.className).toContain("horizontal");
-    expect(pop.className).toContain("sm");
-    expect(el.shadowRoot.querySelectorAll("input.time").length).toBe(0);
-  });
-  test("min-value and max-value disable cells; pinned-timezone is read-only text; allow-clear adds the clear button", async () => {
-    const el = await mount(
-      `<acme-calendar static allow-clear value="2026-09-10" end="2026-09-11" min-value="2026-09-09" max-value="2026-09-11" pinned-timezone="America/Los_Angeles"></acme-calendar>`,
-    );
-    expect(el.shadowRoot.querySelector(".cal-tz").textContent).toBe("America/Los_Angeles");
-    expect(el.shadowRoot.querySelector(".cal-form select")).toBeNull();
-    const enabled = el.shadowRoot.querySelectorAll(".cal-grid td:not([aria-disabled])");
-    expect(enabled.length).toBe(3);
-    expect(el.shadowRoot.querySelector(".cal-clear")).not.toBeNull();
-    el.shadowRoot.querySelector(".cal-clear").click();
+describe("Calendar canonical date control", () => {
+  test("range owns one form value and incomplete required ranges are invalid", async () => {
+    const el = await mount('<form><acme-calendar presentation="inline" show-time-input="false" name="dates" required></acme-calendar></form>');
+    el.value = { start: "2026-09-10" };
     await el.updateComplete;
-    expect(el.value).toBe("");
-    expect(el.shadowRoot.querySelector(".cal-trigger").textContent.trim()).toBe("Select Date");
+    expect(el.checkValidity()).toBe(false);
+    el.value = { start: "2026-09-10", end: "2026-09-12" };
+    await el.updateComplete;
+    expect(el.checkValidity()).toBe(true);
+    expect(el.value).toEqual({ start: "2026-09-10", end: "2026-09-12" });
   });
-  test("arrow keys move the focused day and Enter picks it; Escape closes", async () => {
-    const el = await mount(`<acme-calendar static value="2026-09-10"></acme-calendar>`);
-    const grid = el.shadowRoot.querySelector(".cal-grid");
-    grid.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
+  test("single day click commits and programmatic values remain silent", async () => {
+    const el = await mount('<acme-calendar mode="single" presentation="inline" show-time-input="false"></acme-calendar>');
+    const events: string[] = [];
+    el.addEventListener("acme-input", () => events.push("input"));
+    el.addEventListener("acme-change", () => events.push("change"));
+    el.value = "2026-09-10";
     await el.updateComplete;
-    expect(el.shadowRoot.querySelector('.cal-grid [tabindex="0"]').getAttribute("aria-label")).toContain("Sep 11 2026");
-    grid.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", shiftKey: true, bubbles: true }));
+    expect(events).toEqual([]);
+    (el.shadowRoot!.querySelector('[data-date="2026-09-11"]') as HTMLButtonElement).click();
     await el.updateComplete;
-    expect(el.shadowRoot.querySelector('.cal-grid [tabindex="0"]').getAttribute("aria-label")).toContain("Sep 18 2026");
-    grid.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
-    await el.updateComplete;
-    expect(el.value).toBe("2026-09-10");
-    expect(el.end).toBe("2026-09-18");
+    expect(el.value).toBe("2026-09-11");
+    expect(events).toEqual(["input", "change"]);
   });
+  test("day navigation clamps across month ends without changing value", async () => {
+    const el = await mount('<acme-calendar mode="single" presentation="inline" show-time-input="false"></acme-calendar>');
+    el.value = "2026-01-31";
+    await el.updateComplete;
+    el.shadowRoot!.querySelector('[data-date="2026-01-31"]')!.dispatchEvent(new KeyboardEvent("keydown", { key: "PageDown", bubbles: true }));
+    await el.updateComplete;
+    expect(el.shadowRoot!.querySelector('[data-date][tabindex="0"]')!.getAttribute("data-date")).toBe("2026-02-28");
+    expect(el.value).toBe("2026-01-31");
+  });
+  test("time values preserve the instant and reject invalid dates", async () => {
+    const el = await mount('<acme-calendar mode="single" presentation="inline" time-zone="UTC"></acme-calendar>');
+    el.value = "2026-09-22T00:30:00-03:30";
+    await el.updateComplete;
+    expect(parseTime((el.shadowRoot!.querySelector('[data-time="start"]') as HTMLInputElement).value).toString()).toBe("04:00:00");
+    expect(() => {
+      el.value = "2026-09-00T00:00:00Z";
+    }).toThrow();
+  });
+});
+test("Calendar HTML values work independently of configuration attribute order", async () => {
+  for (const markup of [
+    '<acme-calendar value="2026-09-10" mode="single" show-time-input="false" presentation="inline"></acme-calendar>',
+    '<acme-calendar mode="single" show-time-input="false" value="2026-09-10" presentation="inline"></acme-calendar>',
+  ]) {
+    const root = await mount(markup);
+    expect(root.value).toBe("2026-09-10");
+    expect(root.defaultValue).toBe("2026-09-10");
+  }
+});
+test("value-first configuration preserves the supplied Calendar selection", async () => {
+  const root = document.createElement("acme-calendar");
+  root.value = "2026-09-10";
+  root.mode = "single";
+  root.showTimeInput = false;
+  root.presentation = "inline";
+  document.body.append(root);
+  await root.updateComplete;
+  expect(root.value).toBe("2026-09-10");
+  expect(root.validity.valid).toBe(true);
+});
+test("civil-date formatting preserves a day skipped by a time zone", async () => {
+  const root = await mount('<acme-calendar mode="single" show-time-input="false" locale="en-US" time-zone="Pacific/Apia" value="2011-12-30"></acme-calendar>');
+  expect(root.shadowRoot!.querySelector("[part=trigger]")!.textContent).toContain("Dec 30, 2011");
+  expect(root.value).toBe("2011-12-30");
+});
+test("removing presentation, size and presets restores their defaults", async () => {
+  const root = await mount('<acme-calendar mode="single" show-time-input="false" presentation="inline" size="small" presets=\'[{"label":"Day","value":"2026-09-10"}]\'></acme-calendar>');
+  root.removeAttribute("presentation");
+  root.removeAttribute("size");
+  root.removeAttribute("presets");
+  await root.updateComplete;
+  expect(root.presentation).toBe("popover");
+  expect(root.size).toBe("medium");
+  expect(root.presets).toEqual([]);
+});
+test("initial configuration does not dirty an unchanged default value", async () => {
+  const root = await mount('<acme-calendar value="2026-09-10" mode="single" show-time-input="false" presentation="inline"></acme-calendar>');
+  root.setAttribute("value", "2026-09-12");
+  expect(root.value).toBe("2026-09-12");
+  root.value = "2026-09-13";
+  root.setAttribute("value", "2026-09-14");
+  expect(root.value).toBe("2026-09-13");
+  root.formResetCallback();
+  expect(root.value).toBe("2026-09-14");
 });

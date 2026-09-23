@@ -343,3 +343,8 @@ Repair the upstream parser with an exact-version patch and regression fixtures. 
 The exact 3.12.4 patch and private runtime writer are now in the main working tree. Twelve focused tests pass, including RelativeTime and an independently imported bundled runtime. The writer verifies negative fractional offsets/day-zero rejection and emits dependency licenses and patch provenance. Full packed-consumer and browser distribution verification remains pending; no Calendar UI acceptance is claimed.
 
 [Date-runtime delivery acceptance](../alignment/evidence/m13-date-runtime-2026-09-22.json) now passes. Split ESM, selective CDN, normal/minified/standalone bundles use the corrected private runtime. Fresh npm/Bun consumers need no patches; their independently installed upstream parser remains unpatched while the public RelativeTime component produces the corrected instant. The full suite passes 892 tests. Calendar UI still requires its separate implementation gates.
+
+
+## Modal focus follow-up — 2026-09-22
+
+The native-only audit found a concrete gap with Calendar’s slotted footer. A Tab sequence reaches document body in Chromium/WebKit; Firefox stays at the footer rather than traversing the whole dialog. A focus-trap 8.2.2 prototype passes all three engines. Its complete installed README was read, including Shadow DOM, per-document stack, lifecycle, Safari and mobile limits. Initial/return focus, dismissal and inert isolation are disabled in the helper so existing native/controller responsibilities remain authoritative. Source: https://github.com/focus-trap/focus-trap . Prototype: /tmp/acme-m13-calendar/focus-prototype.log; native baseline: /tmp/acme-m13-calendar/tab.log. Final integrated verification is pending.

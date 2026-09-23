@@ -270,3 +270,7 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ## M13 Slider complete — 2026-09-22
 
 [Slider acceptance](evidence/m13-slider-2026-09-22.json) records the strict build/site and all 883 tests, 44 source/compiled native checks per engine, six documentation flows and resolved independent review findings. Middle Truncate consumes the array value and live event. Calendar and date-runtime correction remain; continue locally from the isolated Calendar worktree.
+
+## M13 complete — 2026-09-23
+
+[Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes the final M13 family. The strict package build, 96-page site and all 900 tests pass. Each engine passes 28 source and compiled checks, six visible documentation flows and fifteen shared-overlay regressions. The corrected date runtime, generated styles, native form model, modal focus containment and frame-scheduled placement are integrated. M13 is complete at its assigned boundaries; M22/M26 retain actual platform, React and final release gates. Continue M14 with Disabled Wall, native List/Data List, Card/Inset/Item, Scroll Area and Resizable.
