@@ -465,7 +465,8 @@
       "failed": 0,
       "assertions": 151409,
       "files": 166
-    }
+    },
+    "retirement": "Generator rerun and verifyStyleManifest pass; only retired Tree outputs and input fingerprints change"
   },
   "references": [
     {
@@ -498,7 +499,8 @@
     "No optional animation API or advanced Tree engine is added; expanded children use retained native hidden/inert groups",
     "Literal native a/div templates satisfy the existing definition dependency scanner",
     "Native accessibility inspection exposed missing supporting descriptions; references now preserve descriptions without changing node names",
-    "A rendered token override reproduction exposed two incorrect style variable names; selection background and radius now use registered accent-weak/r-sm tokens"
+    "A rendered token override reproduction exposed two incorrect style variable names; selection background and radius now use registered accent-weak/r-sm tokens",
+    "Final retirement audit found split-css still recreated the File Tree base stylesheet from the audited input. Removed both the splitter mapping and its complete legacy CSS section; regenerated all producers. Style manifest verification passes and no retired Tree style entry remains."
   ],
   "removed": [
     "src/components/file-tree",

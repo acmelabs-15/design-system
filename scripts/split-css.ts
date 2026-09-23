@@ -64,7 +64,6 @@ const MAP: [string, RegExp][] = [
   ["clearable-input", /^\.clearable/],
   ["context-card", /^(\.context-card|\.context-target)/],
   ["feedback", /^\.feedback/],
-  ["file-tree", /^\.tree/],
   ["json-view", /^\.json/],
   ["video", /^\.video/],
 ];
