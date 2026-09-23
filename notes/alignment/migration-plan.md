@@ -278,3 +278,7 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ## M14 native-content and Disabled Wall slice — 2026-09-23
 
 [Acceptance](evidence/m14-native-content-2026-09-23.json) closes C03–C05 at their native/Lit boundaries. Build/site, 902 tests, seven source/compiled checks per engine and all three documentation pages pass. Description is removed. Continue Card/Inset/Item, then Scroll Area and Resizable; M14 is not yet complete.
+
+## M14 Card/Inset/Item slice — 2026-09-23
+
+[Acceptance](evidence/m14-surfaces-2026-09-23.json) closes C01/C02/L06 at their assigned boundary. The package/site and all 906 tests pass; source/compiled geometry and real documentation interactions pass all three engines. Explicit logical Inset edges replace the ambiguous draft. Scroll Area and Resizable are the two remaining M14 families.

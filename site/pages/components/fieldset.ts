@@ -26,7 +26,7 @@ export const doc: Doc = {
     },
     {
       h: "Optional Card",
-      html: '<acme-card><acme-fieldset><legend slot="legend">Account preferences</legend><span slot="help">Card owns the surrounding surface.</span><acme-switch>Weekly digest</acme-switch></acme-fieldset></acme-card>',
+      html: '<acme-card><acme-card-body><acme-fieldset><legend slot="legend">Account preferences</legend><span slot="help">Card owns the surrounding surface.</span><acme-switch>Weekly digest</acme-switch></acme-fieldset></acme-card-body></acme-card>',
     },
   ],
   practices: {

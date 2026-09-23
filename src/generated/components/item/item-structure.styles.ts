@@ -1,6 +1,58 @@
 // Generated from compiled CSS. Edit its generator input.
 import { css } from "lit";
 export const itemStructureCss = css`:host {
+  --_item-padding: var(--acme-item-padding, var(--acme-spacing-4));
+  --_item-gap: var(--acme-item-gap, var(--acme-spacing-3));
+  min-inline-size: 0;
   display: block;
+}
+
+:host([size="small"]) {
+  --_item-padding: var(--acme-item-padding, var(--acme-spacing-3));
+  --_item-gap: var(--acme-item-gap, var(--acme-spacing-2));
+}
+
+:host([size="large"]) {
+  --_item-padding: var(--acme-item-padding, var(--acme-spacing-5));
+  --_item-gap: var(--acme-item-gap, var(--acme-spacing-4));
+}
+
+[part="root"] {
+  align-items: flex-start;
+  gap: var(--_item-gap);
+  padding: var(--_item-padding);
+  border-radius: var(--acme-item-radius, 6px);
+  min-inline-size: 0;
+  color: var(--ds-gray-1000);
+  border: 1px solid #0000;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+:host([orientation="vertical"]) [part="root"] {
+  flex-direction: column;
+}
+
+:host([variant="outline"]) [part="root"] {
+  border-color: var(--ds-gray-300);
+}
+
+:host([variant="muted"]) [part="root"] {
+  background: var(--ds-gray-100);
+}
+
+::slotted(acme-item-content) {
+  flex: 12rem;
+}
+
+:host([orientation="vertical"]) ::slotted(acme-item-content) {
+  flex-basis: auto;
+  inline-size: 100%;
+}
+
+@media (forced-colors: active) {
+  :host([variant="outline"]) [part="root"] {
+    border-color: canvastext;
+  }
 }
 `;

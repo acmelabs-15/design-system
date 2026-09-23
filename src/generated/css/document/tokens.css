@@ -602,6 +602,24 @@ html {
   color: var(--ds-gray-900);
 }
 
+@media (width <= 560px) {
+  .item {
+    flex-wrap: wrap;
+  }
+
+  .item .end {
+    flex-direction: row;
+    flex: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 44px;
+  }
+
+  .item .actions {
+    margin-left: auto;
+  }
+}
+
 a.breadcrumb:hover {
   color: var(--text);
   text-decoration: none;

@@ -10,7 +10,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Completed:** M01–M13 are complete at their assigned boundaries. [Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes M13 with the strict build, site, 900 tests and all-engine native/compiled/documentation/overlay checks. Final React-wrapper, actual platform and whole-library gates remain M22/M26.
 
-**Current work:** M14 is active. [Disabled Wall, List and Data List](evidence/m14-native-content-2026-09-23.json) are complete at their assigned native/Lit boundaries: build/site, 902 tests, source/compiled checks and live documentation pass. Card/Inset/Item are next, followed by Scroll Area and Resizable. Source-driven surface preparation is saved under /tmp/acme-m14-content/surface-plan.md.
+**Current work:** M14 is active. [Disabled Wall/List/Data List](evidence/m14-native-content-2026-09-23.json) and [Card/Inset/Item](evidence/m14-surfaces-2026-09-23.json) are complete at their native/Lit boundaries. The latest strict build/site and 906 tests pass, with all-engine source/compiled/documentation checks. Scroll Area is being ported in /tmp/acme-m14-scroll; its four geometry tests pass and its first native component checks are running. Resizable follows. No Scroll Area production source is integrated yet.
 
 **Next batches:** continue M14–M26 under execution delegation. No further phase-choice questions or Plan toggles are needed.
 

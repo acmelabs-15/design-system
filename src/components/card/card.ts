@@ -1,18 +1,31 @@
 import { html } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { cardCss } from "../../generated/components/card/card.styles";
-
-/** House card: the block that must read as its own object. */
-
-export class AcmeCard extends AcmeElement {
-  static styles = [sharedCss, cardCss];
-  @property() variant: "" | "raised" | "flat" | "feature" = "";
+import { sharedCss } from "../../base";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
+import { atomState } from "../../shared/atom-state";
+import { cardStructureCss } from "../../generated/components/card/card-structure.styles";
+/** A related-content surface with optional padded regions.
+ * @slot - Card sections, media or other author-owned content.
+ * @csspart root - The native surface.
+ * @cssprop --acme-card-padding - Padding supplied to the sections.
+ * @cssprop --acme-card-radius - Surface and media corner radius.
+ */
+export class AcmeCard extends AcmeSemanticElement {
+  static styles = [sharedCss, cardStructureCss];
+  @atomState() @property({ noAccessor: true, reflect: true, useDefault: true }) variant: "default" | "outline" | "subtle" = "default";
+  @atomState() @property({ noAccessor: true, reflect: true, useDefault: true }) size: "small" | "medium" | "large" = "medium";
+  @atomState() @property({ noAccessor: true, reflect: true, useDefault: true }) as: "div" | "section" | "article" = "div";
   render() {
-    return html`<div class=${this.cls("card", { [this.variant]: !!this.variant })} part="card"><slot></slot></div>`;
+    switch (this.as) {
+      case "section":
+        return html`<section part="root"><slot></slot></section>`;
+      case "article":
+        return html`<article part="root"><slot></slot></article>`;
+      default:
+        return html`<div part="root"><slot></slot></div>`;
+    }
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-card": AcmeCard;

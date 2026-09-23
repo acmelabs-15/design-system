@@ -8,11 +8,11 @@
 
 **Tag:** acme-inset; React Inset. **Purpose:** extend media/content to a surrounding surface's padding edge without changing Card ownership. Reference: Radix Themes Inset capability named in the pass; preserve house spacing and real wrapper boxes.
 
-**Inputs:** side: "all" | "inline" | "block" | "start" | "end" = "all"; clip: boolean = true; padding?: responsive spacing value; common parent sizing/placement properties. The side vocabulary is a proposed logical-direction adaptation. The nearest participating Card/surface supplies its content inset through a documented internal context, not a hardcoded negative margin. Outside such a surface the inset is zero and content remains ordinary.
+**Inputs:** side: "all" | "inline" | "block" | "inline-start" | "inline-end" | "block-start" | "block-end" = "all"; clip: boolean = true; padding?: responsive spacing value; common parent sizing/placement properties. The explicit logical edge vocabulary preserves all Radix side capabilities; the delegated implementation correction replaces the ambiguous five-value draft. The nearest participating Card/surface supplies its content inset through a documented internal context, not a hardcoded negative margin. Outside such a surface the inset is zero and content remains ordinary.
 
 **Content:** one default slot; part=root; no events, methods, interaction state or focus behavior. Native child events/semantics remain. clipping follows the parent corner treatment only on touched edges. Images and interactive controls remain author-owned.
 
-**Acceptance:** Card header/body/footer, no Card ancestor, nested surfaces, changed padding/radius, logical sides/RTL, overflow/zoom and focus-ring clearance. The precise public side set is proposed; verify Radix source mapping at its assigned verification gate rather than infer physical-side equivalence.
+**Acceptance:** Card header/body/footer, no Card ancestor, nested surfaces, changed padding/radius, logical sides/RTL, overflow/zoom and focus-ring clearance. The verified Radix source mapping uses both perpendicular edges when one edge is selected; browser geometry still verifies the logical adaptation.
 
 ## L-07 Separator
 
