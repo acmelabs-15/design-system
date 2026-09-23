@@ -2146,78 +2146,6 @@ table.table {
   margin: 4px 0;
 }
 
-.skeleton {
-  border-radius: 5px;
-  max-width: 100%;
-  min-height: 24px;
-  display: block;
-  position: relative;
-  overflow: hidden;
-}
-
-.skeleton:after {
-  content: "";
-  background: linear-gradient(90deg, var(--ds-gray-100) 0%, var(--ds-gray-200) 50%, var(--ds-gray-100) 100%);
-  background-position: 0 0;
-  background-size: 50% 100%;
-  animation: 1.5s ease-in-out infinite reverse shimmer;
-  position: absolute;
-  inset: 0 -200% 0 0;
-}
-
-.skeleton.pill, .skeleton.pill:after {
-  border-radius: 999px;
-}
-
-.skeleton.squared, .skeleton.squared:after {
-  border-radius: 0;
-}
-
-.skeleton.rounded {
-  border-radius: var(--r);
-}
-
-.skeleton.still:after {
-  animation: none;
-}
-
-.skeleton.wrap {
-  visibility: hidden;
-}
-
-.skeleton.wrap:after {
-  visibility: visible;
-}
-
-.skeleton.off {
-  visibility: visible;
-  position: static;
-  overflow: visible;
-  width: auto !important;
-}
-
-.skeleton.off:after {
-  content: none;
-}
-
-.skeleton.button:after {
-  top: -1px;
-  bottom: -1px;
-  left: -1px;
-}
-
-@keyframes shimmer {
-  100% {
-    transform: translate(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .skeleton:after {
-    animation: none;
-  }
-}
-
 .progress {
   background: var(--track);
   border-radius: 6px;
@@ -2276,92 +2204,6 @@ table.table {
   position: absolute;
   top: 0;
   bottom: 0;
-}
-
-.gauge {
-  --gauge-primary: var(--ds-green-700);
-  --gauge-secondary: var(--ds-gray-alpha-400);
-  flex: none;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  display: inline-grid;
-  position: relative;
-}
-
-.gauge.tiny {
-  width: 20px;
-  height: 20px;
-}
-
-.gauge.md {
-  width: 64px;
-  height: 64px;
-}
-
-.gauge.lg {
-  width: 128px;
-  height: 128px;
-}
-
-.gauge svg {
-  grid-area: 1 / 1;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  transform: rotate(-90deg);
-}
-
-.gauge circle {
-  fill: none;
-  stroke-linecap: round;
-}
-
-.gauge .primary {
-  stroke: var(--gauge-primary);
-}
-
-.gauge .secondary {
-  stroke: var(--gauge-secondary);
-}
-
-.gauge .value {
-  font-size: 18px;
-  line-height: 20px;
-  font-weight: var(--acme-font-weight-500);
-  font-variant-numeric: tabular-nums;
-  color: var(--text);
-  grid-area: 1 / 1;
-}
-
-.gauge.tiny .value {
-  font-size: 11px;
-}
-
-.gauge.lg .value {
-  font-size: 32px;
-  font-weight: var(--acme-font-weight-600);
-}
-
-.gauge .overlay {
-  grid-area: 1 / 1;
-  display: inline-flex;
-}
-
-.gauge.indeterminate svg {
-  animation: 1s linear infinite gauge-spin;
-}
-
-@keyframes gauge-spin {
-  to {
-    transform: rotate(270deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gauge.indeterminate svg {
-    animation: none;
-  }
 }
 
 .avatar {
@@ -3356,16 +3198,6 @@ html {
   padding-right: 16px;
 }
 
-.ring {
-  background: conic-gradient(var(--accent) var(--pct, 0%), var(--ds-gray-300) 0);
-  border-radius: 50%;
-  flex: none;
-  width: 20px;
-  height: 20px;
-  -webkit-mask: radial-gradient(circle, #0000 58%, #000 60%);
-  mask: radial-gradient(circle, #0000 58%, #000 60%);
-}
-
 .info-ic {
   background: var(--ds-gray-alpha-300);
   width: 14px;
@@ -3858,17 +3690,6 @@ code.inline {
   padding: 1px 5px;
   font-size: 13px;
   line-height: 18px;
-}
-
-.score-ring {
-  border: 2px solid var(--ds-green-700);
-  width: 40px;
-  height: 40px;
-  font-size: 11px;
-  font-weight: var(--acme-font-weight-500);
-  border-radius: 50%;
-  place-items: center;
-  display: grid;
 }
 
 .usage-sum {

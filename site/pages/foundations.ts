@@ -156,7 +156,7 @@ export const colors: Doc = {
     `${def([
       ["Color 7", "--ds-gray-700", "High contrast background"],
       ["Color 8", "--ds-gray-800", "Hover high contrast background"],
-    ])}<div class="ex-box" style="margin-top:40px;gap:48px"><span class="row" style="gap:20px"><acme-gauge size="medium" value="90" show-value></acme-gauge><acme-gauge size="medium" value="55" show-value></acme-gauge><acme-gauge size="medium" value="20" show-value></acme-gauge></span><acme-button width="160px">Upgrade to Pro</acme-button></div>`,
+    ])}<div class="ex-box" style="margin-top:40px;gap:48px"><span class="row" style="gap:20px"><acme-meter label="High measurement example" size="medium" value="90" low="34" high="68" optimum="100" show-value></acme-meter><acme-meter label="Mid-range measurement example" size="medium" value="55" low="34" high="68" optimum="100" show-value></acme-meter><acme-meter label="Low measurement example" size="medium" value="20" low="34" high="68" optimum="100" show-value></acme-meter></span><acme-button width="160px">Upgrade to Pro</acme-button></div>`,
     "Two colors for high contrast component backgrounds.",
   )}${section(
     "Colors 9-10: Text and Icons",

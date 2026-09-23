@@ -344,3 +344,8 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M18 passive display surfaces — 2026-09-23
 
 [Empty State/Status acceptance](evidence/m18-passive-displays-2026-09-23.json) closes M-04/M-08 at their assigned native/Lit boundaries. Composed empty content, application-defined status and owned pulse lifetime pass all engines. Default-attribute and documentation-coverage discoveries have concrete M26/M25 return points. Continue Progress/Skeleton/Meter, Stat, Toast and Feedback.
+
+
+### M18 measurements — 2026-09-23
+
+[Measurement acceptance](evidence/m18-measurements-2026-09-23.json) closes Progress/Skeleton/Meter and revalidates the shared Spinner/Status motion lifetime. Known zero, missing/loading values, finite ranges, native semantics, RTL and the named contrast deviation pass the assigned checks. M18 Stat, Toast and Feedback remain.

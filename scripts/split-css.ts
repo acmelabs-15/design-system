@@ -31,9 +31,7 @@ const MAP: [string, RegExp][] = [
   ["table", /^(table\.table|\.table\b|\.table-wrap|\.cellbar|\.cellspark|\.table-foot|\.matrix)/],
   ["field", /^(\.field|\.flabel|\.form-label|\.grid2)/],
   ["menu", /^\.menu/],
-  ["skeleton", /^(\.skeleton|@keyframes shimmer)/],
-  ["video", /^\.progress/], // the house bar rules: the video scrubber is their only user (acme-progress is generated)
-  ["gauge", /^(\.gauge|\.ring\b|\.score-ring|@keyframes gauge-spin)/],
+  ["video", /^\.progress/], // Video scrubber rules; Progress owns a separate stylesheet.
   ["avatar", /^\.avatar/],
   ["toast", /^\.toast/],
   ["trend", /^\.trend/],

@@ -1,6 +1,7 @@
 import { html } from "lit";
 import { property } from "lit/decorators.js";
-import { AcmeFormattingElement, numberAttribute } from "../../shared/formatting-element";
+import { AcmeFormattingElement } from "../../shared/formatting-element";
+import { numberAttribute } from "../../shared/attributes";
 import { atomState } from "../../shared/atom-state";
 import { numberOptionsSnapshot } from "../../shared/number-options";
 

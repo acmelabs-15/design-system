@@ -6,7 +6,6 @@ import { atomState } from "./atom-state";
 import { optionalString } from "./attributes";
 import { StoreSelector } from "./store-connection";
 
-export const numberAttribute = { fromAttribute: (value: string | null): number | undefined => (value === null || value.trim() === "" ? undefined : Number(value)) };
 /** Locale-aware text presentation without interaction, form state or periodic work. */
 export abstract class AcmeFormattingElement extends AcmeElement {
   static styles = [sharedCss, formattingCss];

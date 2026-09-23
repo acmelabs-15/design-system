@@ -44,7 +44,7 @@ export * from "./components/fieldset/fieldset";
 export * from "./components/flex/flex";
 export * from "./components/format-number/format-number";
 export * from "./components/format-byte/format-byte";
-export * from "./components/gauge/gauge";
+export * from "./components/meter/meter";
 export * from "./components/h-stack/h-stack";
 export * from "./components/grid/grid";
 export * from "./components/group/group";

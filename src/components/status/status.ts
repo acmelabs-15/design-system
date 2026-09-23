@@ -1,4 +1,4 @@
-import { type Animate, AnimateController, animate } from "@lit-labs/motion";
+import { animate } from "@lit-labs/motion";
 import { html, type PropertyValues } from "lit";
 import { property } from "lit/decorators.js";
 import { keyed } from "lit/directives/keyed.js";
@@ -6,6 +6,7 @@ import { sharedCss } from "../../base";
 import { statusCss } from "../../generated/components/status/status.styles";
 import { atomState } from "../../shared/atom-state";
 import { optionalString } from "../../shared/attributes";
+import { RepeatingMotion } from "../../shared/repeating-motion";
 import { AcmeSemanticElement } from "../../shared/semantic-element";
 export type StatusVariant = "neutral" | "info" | "success" | "warning" | "error";
 /** Application-defined status with a decorative indicator and readable text.
@@ -31,52 +32,16 @@ export class AcmeStatus extends AcmeSemanticElement {
     this.requestUpdate("variant", previous);
   }
   @atomState() @property({ noAccessor: true, type: Boolean }) pulse = false;
-  @atomState() private reduced = false;
-  @atomState() private generation = 0;
-  private media?: MediaQueryList;
-  private readonly motion = new AnimateController(this, {});
-  private readonly directives = new Set<Animate>();
-  private restart() {
-    this.motion.cancel();
-    for (const directive of this.directives) this.removeController(directive);
-    this.directives.clear();
-    this.generation++;
-  }
-  private preference = () => {
-    this.reduced = this.media?.matches ?? false;
-    this.restart();
-  };
-  connectedCallback() {
-    super.connectedCallback();
-    this.media = this.ownerDocument.defaultView?.matchMedia?.("(prefers-reduced-motion: reduce)");
-    this.media?.addEventListener("change", this.preference);
-    this.preference();
-  }
-  disconnectedCallback() {
-    this.media?.removeEventListener("change", this.preference);
-    this.media = undefined;
-    this.restart();
-    super.disconnectedCallback();
-  }
+  private readonly motion = new RepeatingMotion(this, () => this.pulse);
   protected willUpdate(changes: PropertyValues) {
-    if (changes.has("pulse")) this.restart();
+    if (changes.has("pulse")) this.motion.reset();
   }
   render() {
-    const generation = this.generation,
+    const generation = this.motion.key,
       frames = [{ opacity: 1 }, { opacity: 0.4 }, { opacity: 1 }];
     return html`<span part="root" data-variant=${this.variant}>${keyed(
       generation,
-      html`<span part="indicator" aria-hidden="true" ${animate({
-        properties: ["opacity"],
-        disabled: !this.pulse || this.reduced,
-        in: frames,
-        onStart: (directive) => {
-          if (generation === this.generation && this.isConnected) this.directives.add(directive);
-          else this.removeController(directive);
-        },
-        onFrames: () => (this.isConnected && this.pulse && !this.reduced && generation === this.generation ? frames : undefined),
-        keyframeOptions: { duration: 1400, iterations: Infinity, easing: "ease-in-out" },
-      })}></span>`,
+      html`<span part="indicator" aria-hidden="true" ${animate(this.motion.options(frames, { duration: 1400, easing: "ease-in-out" }))}></span>`,
     )}<span part="label"><slot>${this.label || this.value}</slot></span></span>`;
   }
 }
