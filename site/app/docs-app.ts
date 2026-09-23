@@ -23,7 +23,7 @@ declare global {
 export const prefix = location.hostname.endsWith("github.io") ? `/${location.pathname.split("/")[1]}` : "";
 // The docs serve the package's asset files themselves (the build copies `assets/` next to the pages).
 setAssetsBase(`${prefix}/assets/`);
-const ICON_CHART = html`<acme-bar-chart-icon class="ic" slot="logo" size="16px"></acme-bar-chart-icon>`;
+const ICON_CHART = html`<acme-bar-chart-icon class="ic" size="16px"></acme-bar-chart-icon>`;
 const cache = new Map<string, string>();
 
 export class AcmeDocsApp extends LitElement {
@@ -137,14 +137,17 @@ export class AcmeDocsApp extends LitElement {
   render() {
     const cur = (href: string) => (this.page === href ? "page" : nothing);
     const section = this.page.startsWith("components/") ? "components" : ["colors", "typography", "materials"].includes(this.page) ? "foundations" : this.page === "index" ? "start" : "";
-    return html`<acme-theme .appearance=${this.appearance} @acme-request=${this.onAppearance}><acme-appbar name="ACME Design System" href="${prefix}/">
-        ${ICON_CHART}
-        <a href="${prefix}/" aria-current=${section === "start" ? "true" : nothing}>Get Started</a>
-        <a href="${prefix}/colors" aria-current=${section === "foundations" ? "true" : nothing}>Foundations</a>
-        <a href="${prefix}/components/avatar" aria-current=${section === "components" ? "true" : nothing}>Components</a>
+    return html`<acme-theme .appearance=${this.appearance} @acme-request=${this.onAppearance}><acme-app-bar placement="sticky">
+        <acme-app-bar-start><a class="docs-brand" href="${prefix}/">${ICON_CHART}<strong>ACME Design System</strong></a></acme-app-bar-start>
+        <nav class="docs-header-nav" aria-label="Sections">
+        <a href="${prefix}/" aria-current=${section === "start" ? "page" : nothing}>Get Started</a>
+        <a href="${prefix}/colors" aria-current=${section === "foundations" ? "page" : nothing}>Foundations</a>
+        <a href="${prefix}/components/avatar" aria-current=${section === "components" ? "page" : nothing}>Components</a>
         <a href="https://github.com/acmelabs-15/design-system" rel="external" target="_blank">GitHub</a>
         <a href="https://www.npmjs.com/package/@acmelabs/design-system" rel="external" target="_blank">npm</a>
-      </acme-appbar>
+      </nav>
+        <acme-app-bar-end><acme-theme-switcher size="small" .value=${this.appearance}></acme-theme-switcher></acme-app-bar-end>
+      </acme-app-bar>
       <div class="docs">
         <nav class="docs-side" aria-label="Pages">
           ${this.nav.map((g) => html`<div class="grp">${g.group}</div>${g.items.map((i) => html`<a href="${prefix}/${i.href === "index" ? "" : i.href}" aria-current=${cur(i.href)}>${i.title}</a>`)}`)}

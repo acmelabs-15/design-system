@@ -40,6 +40,12 @@ import { iconMarkup as ic } from "./icon-markup";
 /* ---------- page rules (tokens only) ---------- */
 export const pageCss = `
 .docs{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}
+.docs-brand{display:flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;white-space:nowrap;font-size:14px}
+.docs-brand .ic{color:var(--accent);flex:none}
+.docs-header-nav{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.docs-header-nav a{display:inline-flex;align-items:center;min-height:30px;padding:0 8px;border-radius:var(--r-sm);font-size:14px;text-decoration:none;color:var(--text-2)}
+.docs-header-nav a:hover{color:var(--text);background:var(--comp)}
+.docs-header-nav a[aria-current=page]{color:var(--text);font-weight:500}
 .docs-side{position:sticky;top:var(--bar-h);height:calc(100vh - var(--bar-h));overflow:auto;border-right:1px solid var(--border);padding:24px 16px 48px;scrollbar-width:thin}
 .docs-side .grp{font-size:14px;line-height:20px;font-weight:500;padding:8px 8px;margin-top:8px;color:var(--text)}
 .docs-side a{display:flex;align-items:center;height:36px;padding:0 8px;border-radius:var(--r-sm);font-size:14px;line-height:20px;color:var(--text-2);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -84,6 +90,8 @@ export const pageCss = `
 .th-code--line-numbers .th-line::before{content:attr(data-line);display:inline-block;width:32px;padding-right:16px;box-sizing:content-box;text-align:right;color:var(--ds-gray-600);user-select:none}
 .th-tag{color:var(--ds-green-900)} .th-attr{color:var(--ds-purple-900)} .th-string{color:var(--ds-blue-900)} .th-keyword{color:var(--ds-pink-900)}
 .th-comment{color:var(--text-2)} .th-number{color:var(--ds-blue-900)} .th-literal{color:var(--ds-amber-900)} .th-function,.th-type{color:var(--ds-green-900)} .th-property,.th-variable{color:var(--ds-purple-900)}
+.doc-table-scroll{max-width:100%;overflow:auto}
+.doc-table-scroll:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:2px}
 .doc-table{width:100%;border-collapse:collapse;font-size:14px;line-height:20px}
 .doc-table th{text-align:left;height:36px;padding:0 8px;font-weight:500;color:var(--text-2);border-bottom:1px solid var(--border);white-space:nowrap}
 .doc-table td{padding:10px 8px;border-bottom:1px solid var(--ds-gray-200);vertical-align:top;color:var(--text-2)}
@@ -192,15 +200,15 @@ const apiTables = (els: ElementApi[]) =>
             (e) =>
               `<div class="api-el" id="api-${e.tag}"><h3><code>&lt;${e.tag}&gt;</code><small>${e.className}</small></h3>${e.doc ? `<p>${esc(e.doc)}</p>` : ""}${
                 e.props.length
-                  ? `<h4>Attributes and properties</h4><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>${e.props
+                  ? `<h4>Attributes and properties</h4><div class="doc-table-scroll" role="region" aria-label="${esc(e.tag)} attributes and properties" tabindex="0"><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>${e.props
                       .map(
                         (p) =>
                           `<tr><td class="mono">${p.attribute === false ? "—" : p.attribute}</td><td class="mono">${p.name}</td><td class="type">${esc(p.type)}</td><td class="mono">${esc(p.default) || "—"}</td><td>${esc(p.doc)}</td></tr>`,
                       )
-                      .join("")}</tbody></table>`
+                      .join("")}</tbody></table></div>`
                   : ""
-              }${e.slots.length ? `<h4>Slots</h4><table class="doc-table"><tbody>${e.slots.map((s) => `<tr><td class="mono">${s}</td></tr>`).join("")}</tbody></table>` : ""}${
-                e.events.length ? `<h4>Events</h4><table class="doc-table"><tbody>${e.events.map((s) => `<tr><td class="mono">${s}</td></tr>`).join("")}</tbody></table>` : ""
+              }${e.slots.length ? `<h4>Slots</h4><div class="doc-table-scroll" role="region" aria-label="${esc(e.tag)} slots" tabindex="0"><table class="doc-table"><tbody>${e.slots.map((s) => `<tr><td class="mono">${s}</td></tr>`).join("")}</tbody></table></div>` : ""}${
+                e.events.length ? `<h4>Events</h4><div class="doc-table-scroll" role="region" aria-label="${esc(e.tag)} events" tabindex="0"><table class="doc-table"><tbody>${e.events.map((s) => `<tr><td class="mono">${s}</td></tr>`).join("")}</tbody></table></div>` : ""
               }</div>`,
           )
           .join(""),

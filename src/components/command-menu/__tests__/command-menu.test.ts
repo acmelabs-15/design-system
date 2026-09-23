@@ -194,7 +194,7 @@ describe("acme-command-menu", () => {
       `<acme-command-menu placeholder="Root…" pages='[{"label":"Home"},{"label":"Projects","placeholder":"Search projects…"}]'><acme-command-item>Root Row</acme-command-item><acme-command-group heading="Projects" page="Projects"><acme-command-item>acme-site</acme-command-item></acme-command-group></acme-command-menu>`,
     );
     await open(el);
-    const crumbs = Array.from(shadow(el).querySelectorAll(".crumbs acme-breadcrumbs[type=menu] acme-breadcrumb"));
+    const crumbs = Array.from(shadow(el).querySelectorAll(".crumbs acme-group acme-button"));
     expect(crumbs.map((c) => c.textContent)).toEqual(["Home", "Projects"]);
     expect(input(el).getAttribute("placeholder")).toBe("Search projects…");
     expect(items(el).map((r) => r.hidden)).toEqual([true, false]);
@@ -206,11 +206,11 @@ describe("acme-command-menu", () => {
     expect(el.pages.map((p) => p.label)).toEqual(["Home"]);
     expect(input(el).getAttribute("placeholder")).toBe("Root…");
     expect(items(el).map((r) => r.hidden)).toEqual([false, true]);
-    expect(shadow(el).querySelectorAll(".crumbs acme-breadcrumb").length).toBe(1);
+    expect(shadow(el).querySelectorAll(".crumbs acme-button").length).toBe(1);
     el.addPage({ label: "Projects", placeholder: "Search projects…" });
     await flush(el);
-    expect(shadow(el).querySelectorAll(".crumbs acme-breadcrumb").length).toBe(2);
-    (shadow(el).querySelector(".crumbs acme-breadcrumb") as HTMLElement).click();
+    expect(shadow(el).querySelectorAll(".crumbs acme-button").length).toBe(2);
+    (shadow(el).querySelector(".crumbs acme-button") as HTMLElement).click();
     await flush(el);
     expect(el.pages.length).toBe(1);
     expect(stacks).toEqual([1, 2, 1]);

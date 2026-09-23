@@ -620,15 +620,6 @@ html {
   }
 }
 
-a.breadcrumb:hover {
-  color: var(--text);
-  text-decoration: none;
-}
-
-a.breadcrumb.menu:hover {
-  background: var(--comp);
-}
-
 @media (width <= 900px) {
   .cells {
     grid-template-columns: repeat(2, minmax(0, 1fr));

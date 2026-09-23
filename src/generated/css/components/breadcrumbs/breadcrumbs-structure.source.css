@@ -1,3 +1,2 @@
-:host {
-        display: block;
-      }
+:host{display:block;min-inline-size:0;}
+ol{display:flex;align-items:center;flex-wrap:wrap;gap:var(--acme-spacing-2);margin:0;padding:0;list-style:none;}

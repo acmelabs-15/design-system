@@ -27,6 +27,7 @@ export function toolbarKeyboardOwner(host: Element): HTMLElement | undefined {
     const registered = toolbars.get(element);
     if (registered) return registered;
     if (element.getAttribute("role") === "toolbar") return element;
+    if (element.localName === "dialog" || element.hasAttribute("popover")) return undefined;
   }
   return undefined;
 }

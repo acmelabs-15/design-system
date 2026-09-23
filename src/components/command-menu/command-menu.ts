@@ -55,14 +55,7 @@ const WATCHED = ["value", "disabled", "page", "always-render", "slot"];
  */
 
 export class AcmeCommandMenu extends AcmeElement {
-  static styles = [
-    sharedCss,
-    commandMenuStructureCss,
-    commandMenuCss,
-    commandMenuOverlayCss,
-    commandMenuInputCss,
-    commandMenuListCss,
-  ];
+  static styles = [sharedCss, commandMenuStructureCss, commandMenuCss, commandMenuOverlayCss, commandMenuInputCss, commandMenuListCss];
   /** Open state; `show()` and `close()` set it. */
   @property({ type: Boolean, reflect: true }) open = false;
   /** The dialog's accessible name. */
@@ -508,7 +501,7 @@ export class AcmeCommandMenu extends AcmeElement {
           ${
             this.pages.length
               ? html`<div class="crumbs" part="crumbs">
-                  <acme-breadcrumbs type="menu">${this.pages.map((p, i) => html`<acme-breadcrumb menu @click=${() => this.toPage(i)}>${p.label}</acme-breadcrumb>`)}</acme-breadcrumbs>
+                  <acme-group gap="2">${this.pages.map((p, i) => html`<acme-button variant="secondary" size="small" @click=${() => this.toPage(i)}>${p.label}</acme-button>`)}</acme-group>
                 </div>`
               : nothing
           }

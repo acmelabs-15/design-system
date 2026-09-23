@@ -1,9 +1,12 @@
 /** Tests ownership through slots and shadow roots, including top-layer descendants. */
+export function composedParent(node: Node): Node | null {
+  return (node.nodeType === 1 ? (node as Element).assignedSlot : null) ?? node.parentNode ?? (node.nodeType === 11 && "host" in node ? (node as ShadowRoot).host : null);
+}
 export function composedContains(parent: Node, node: Node): boolean {
   let current: Node | null = node;
   while (current) {
     if (current === parent) return true;
-    current = (current.nodeType === 1 ? (current as Element).assignedSlot : null) ?? current.parentNode ?? (current.nodeType === 11 && "host" in current ? (current as ShadowRoot).host : null);
+    current = composedParent(current);
   }
   return false;
 }

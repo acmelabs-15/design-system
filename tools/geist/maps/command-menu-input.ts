@@ -1,12 +1,5 @@
-// Maps the input block of acme-command-menu (src/components/command-menu) to Geist
-// CommandMenuInput: the 12px-padded block under the top edge (`--padding`), with the gray-alpha-400
-// hairline below it, that sticks to the top on a narrow screen. Above the field, when the menu is
-// on a page, the breadcrumbs of the page stack (a menu-type acme-breadcrumbs of acme-breadcrumb
-// chips in ours, styled by their own maps; the wrapper fades their ends on a narrow screen). The
-// field row holds the searchbox (16px, 18px from the sm breakpoint, gray-700 placeholder) and the
-// Esc chip (shown for a fine pointer only, gray-100 under it, the focus ring when focused). While
-// the menu loads, a bar under the block shimmers along its bottom edge. Only the sketched open
-// examples render it.
+// Generates the Command Menu input header, field and loading treatment.
+// Application page-stack actions compose Group and Button; their styles have their own owners.
 import { type GeistMap, has } from "../gen";
 import { CLOSED } from "./command-menu";
 
@@ -21,15 +14,7 @@ export const geist: GeistMap = {
     {
       ours: ".crumbs",
       pick: has("mb-2.5"),
-      children: [
-        {
-          ours: "acme-breadcrumbs",
-          part: "list",
-          extends: "breadcrumbs",
-          pick: (c) => c.tag === "div",
-          children: [{ ours: "acme-breadcrumb", part: "item", extends: "breadcrumb", pick: (c) => c.tag === "span", all: true, leaf: true }],
-        },
-      ],
+      leaf: true,
     },
     {
       ours: ".field",

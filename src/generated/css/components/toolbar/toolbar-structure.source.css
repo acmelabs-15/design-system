@@ -1,6 +1,11 @@
-:host {
-        display: block;
-      }
-      .grow {
-        flex: 1;
-      }
+:host{display:block;min-inline-size:0;}
+[part=content]{display:flex;align-items:center;gap:var(--acme-spacing-2);min-inline-size:0;overflow:auto;}
+[part=start],[part=end]{display:flex;align-items:center;gap:inherit;flex:none;}
+[part=end]{margin-inline-start:auto;}
+[data-orientation=vertical]{flex-direction:column;align-items:stretch;}
+[data-orientation=vertical] [part=start],[data-orientation=vertical] [part=end]{flex-direction:column;align-items:stretch;}
+[data-orientation=vertical] [part=end]{margin-inline-start:0;margin-block-start:auto;}
+[part=root]:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:2px;}
+@media(forced-colors:active){[part=root]:focus-visible{outline-color:Highlight;}}
+
+[hidden]{display:none!important;}

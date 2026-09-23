@@ -298,3 +298,7 @@ Select, ComboBox and Multi Select now share Option, native form ownership, popup
 ### M15 Steps and Timeline complete — 2026-09-23
 
 [Acceptance](evidence/m15-steps-timeline-2026-09-23.json) closes N10/N11 at their assigned boundaries. Strict build/site, 932 tests, sixteen source/compiled checks per engine and actual documentation flows pass. Steps uses the documented value=count completion state and application validation requests; Timeline is descriptive ordered content. Continue Toolbar/App Bar/Breadcrumbs, then Dialog before Command Menu.
+
+### M15 navigation slice complete — 2026-09-23
+
+[Navigation acceptance](evidence/m15-navigation-2026-09-23.json) closes N01/N02/N05 at their assigned boundaries. Appbar is replaced by App Bar and its explicit regions; Toolbar integrates the M10 Radio/Segmented delegation contract; Breadcrumbs owns navigation only. The docs header consumer and Command Menu page-stack consumer are updated together. Strict build/site, 934 tests, thirteen source/compiled checks and seven documentation flows per engine pass. API table overflow is fixed in the site generator. Bring Dialog/Alert Dialog forward from M17, then complete N08 Command Menu.

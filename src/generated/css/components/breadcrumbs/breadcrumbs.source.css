@@ -1,6 +1,0 @@
-.list{display:flex}
-.list:where(:not(.menu)){list-style-type:none;gap:.375rem;padding:0}
-.list:where(.menu){gap:.5rem}
-@media not all and (min-width:401px){
-.list:where(.menu){overflow-x:auto}
-}

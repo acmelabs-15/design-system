@@ -1,29 +1,31 @@
-// Docs page: Breadcrumbs — mirrors https://vercel.com/geist/breadcrumbs
 import type { Doc } from "../../site";
-
-const crumbs = (type = "", mid = "") =>
-  `<acme-breadcrumbs${type ? ` type="${type}"` : ""}><acme-breadcrumb>Home</acme-breadcrumb><acme-breadcrumb${mid}>Dashboard</acme-breadcrumb><acme-breadcrumb>Overview</acme-breadcrumb></acme-breadcrumbs>`;
-const links = (type: string) =>
-  `<acme-breadcrumbs type="${type}"><acme-breadcrumb href="#">Home</acme-breadcrumb><acme-breadcrumb href="#" active>Dashboard</acme-breadcrumb><acme-breadcrumb>Overview</acme-breadcrumb></acme-breadcrumbs>`;
-
 export const doc: Doc = {
   id: "breadcrumbs",
   title: "Breadcrumbs",
-  lede: "Navigation aid that shows the user's location within a site's hierarchy, with text and menu variants.",
+  lede: "The current page and its ordered navigation ancestry.",
   tags: ["acme-breadcrumbs", "acme-breadcrumb"],
   examples: [
-    { h: "Default", html: `<div class="vstack" style="gap:16px">${crumbs("text")}${crumbs("menu")}</div>` },
-    { h: "Active", html: crumbs("", " active") },
-    { h: "Disabled", html: crumbs("", " disabled") },
     {
-      h: "Menu states", census: true,
-      p: "A menu chip is white with a gray-600 border when active, and a disabled button with a gray-alpha-200 fill when disabled.",
-      html: `<acme-breadcrumbs type="menu"><acme-breadcrumb>Home</acme-breadcrumb><acme-breadcrumb active>Dashboard</acme-breadcrumb><acme-breadcrumb disabled>Overview</acme-breadcrumb></acme-breadcrumbs>`,
+      h: "Current page",
+      html: '<acme-breadcrumbs><acme-breadcrumb href="#home">Home</acme-breadcrumb><acme-breadcrumb href="#projects">Projects</acme-breadcrumb><acme-breadcrumb current>Design system</acme-breadcrumb></acme-breadcrumbs>',
+    },
+    { h: "Current link", html: '<acme-breadcrumbs><acme-breadcrumb href="#home">Home</acme-breadcrumb><acme-breadcrumb href="#current" current>Current page</acme-breadcrumb></acme-breadcrumbs>' },
+    {
+      h: "Unavailable ancestor",
+      html: '<acme-breadcrumbs><acme-breadcrumb href="#restricted" disabled>Restricted project</acme-breadcrumb><acme-breadcrumb current>Document</acme-breadcrumb></acme-breadcrumbs>',
     },
     {
-      h: "Links", census: true,
-      p: "<code>href</code> makes a crumb a link: an anchor around the text in a list, the chip itself in a menu.",
-      html: `<div class="vstack" style="gap:16px">${links("text")}${links("menu")}</div>`,
+      h: "Custom separators",
+      html: '<acme-breadcrumbs><acme-breadcrumb href="#home">Home<span slot="separator">/</span></acme-breadcrumb><acme-breadcrumb current>Settings</acme-breadcrumb></acme-breadcrumbs>',
     },
   ],
+  practices: {
+    Navigation: [
+      "Use native href links for ancestors. Mark the current page with current; it exposes aria-current=page on its label or link.",
+      "Breadcrumbs supplies the localized Breadcrumb navigation label. Use aria-label or aria-labelledby when the page contains multiple breadcrumb landmarks.",
+      "The final separator is hidden automatically, including after member removal or reordering. The separator slot on each Breadcrumb accepts decorative custom content.",
+      "A disabled link has no navigable href and is not a tab stop. It remains readable with its disabled state.",
+      "For long paths, compose a Menu that exposes the complete ancestor labels. Do not remove access to hidden ancestors.",
+    ],
+  },
 };

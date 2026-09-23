@@ -89,7 +89,7 @@ export const commandMenuInputCss = css`.head {
 }
 
 @media not all and (width >= 401px) {
-  .head :where(.crumbs) > :where(acme-breadcrumbs)::part(list) {
+  .head :where(.crumbs) > div {
     margin-inline: calc(var(--padding) * -1);
   }
 }
@@ -140,7 +140,7 @@ export const commandMenuInputCss = css`.head {
 }
 
 @media not all and (width >= 401px) {
-  .head :where(.crumbs) > :where(acme-breadcrumbs) :where(acme-breadcrumb):first-of-type::part(item) {
+  .head :where(.crumbs) > div span:first-of-type {
     margin-left: var(--padding);
   }
 }

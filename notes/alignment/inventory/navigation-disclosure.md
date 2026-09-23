@@ -101,3 +101,7 @@ Under execution delegation, Menu Content is the manual-popover surface. Menu Ite
 ### M15 Steps engineering resolution — 2026-09-23
 
 Under execution delegation, value=count is the documented completed state for a nonempty sequence, matching the reviewed upstream model. The read-only count and completed properties expose it. The completed slot supplies its content. Values above count report a diagnostic and block user progression; a value can be supplied before its items mount. Linear mode uses Previous/Next instead of direct trigger jumps. Non-linear arrows move focus without triggering validation; explicit activation requests the change. Disabled items are skipped, and Step.completed can override the positional completion indicator. [Acceptance](../evidence/m15-steps-timeline-2026-09-23.json).
+
+### M15 navigation engineering resolution — 2026-09-23
+
+Toolbar skips native disabled controls and starts each external reentry at its first available control. Editing controls retain their keys; place a conflicting editor last as APG recommends. Popup boundaries retain their own keyboard owner. App Bar medium retains the existing 52px --bar-h baseline; small/large vary by the existing spacing-2 token. App Bar parts are optional real boxes; start/end parts default to their corresponding slots. Breadcrumb separator customization belongs to each item so content is not cloned between owners. [Acceptance](../evidence/m15-navigation-2026-09-23.json).
