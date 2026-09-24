@@ -8,13 +8,13 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
-**Completed:** M01–M19 are complete at their assigned boundaries. [Calendar acceptance](evidence/m13-calendar-2026-09-23.json) closes M13 with the strict build, site, 900 tests and all-engine native/compiled/documentation/overlay checks. Final React-wrapper, actual platform and whole-library gates remain M22/M26.
+**Completed:** M01–M21 are complete at their assigned native/Lit boundaries. [Video acceptance](evidence/m21-video-2026-09-23.json) closes M21. Final React-wrapper, actual platform and whole-library gates remain M22/M26.
 
-**Current work:** Phase 6. M01–M20 are complete at their assigned boundaries. [Flow Diagram acceptance](evidence/m20-flow-diagram-2026-09-23.json) includes the current official Firefox release; the older patched test browser has a recorded tooling limitation. In M21, [Browser/Snippet](evidence/m21-snippet-browser-2026-09-23.json), [Code Block](evidence/m21-code-block-2026-09-23.json) and [JSON View](evidence/m21-json-view-2026-09-23.json) are complete. [Markdown](evidence/m21-markdown-2026-09-23.json) is complete at the native/Lit boundary. [Book](evidence/m21-book-2026-09-23.json) is complete at its native/Lit boundary, including motion, resize/zoom and packaged texture. Finish Video to close M21. Native Video/source/track/event probes and a draft are in /tmp/acme-m21-video; production Video has not yet changed. M22–M26 follow without questions or mode toggles.
+**Current work:** Phase 6, M22: generate the separate React wrappers from the standard manifest; integrate ordered style inputs, native content roots, Video tracks and controlled content mounting. M01–M21 are complete at their assigned boundaries. [Video acceptance](evidence/m21-video-2026-09-23.json) records twelve source/compiled/fresh-consumer cases per engine, real autoplay rejection, Lit/React ownership, documentation, strict build and all 854 tests. M23–M26 follow without questions or mode toggles.
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
-**Next batches:** continue M21–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
+**Next batches:** continue M22–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
 
 **Working copies and workers:** parallel workers stopped at an account usage limit. Their work is saved in /tmp/acme-m13-slider-worktree and /tmp/acme-m13-calendar-worktree, both based on 924ad0bd9. Slider and the date-runtime correction are already integrated and committed; main Calendar now contains the later fixes. Continue locally. Do not overwrite main files with older worktree copies.
 

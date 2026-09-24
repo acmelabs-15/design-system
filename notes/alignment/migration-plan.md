@@ -398,3 +398,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M21 Book — 2026-09-23
 
 [Acceptance](evidence/m21-book-2026-09-23.json) closes RC-05 at its native/Lit boundary. Nine source/compiled cases per engine, six browser distributions, fresh package, live docs, strict build/site and all 859 tests pass. Motion regressions and WebKit resize notification feedback are resolved. Book’s image and Flow’s worker share verified file-asset delivery. Video is the remaining M21 entry.
+
+### M21 Video and content batch closure — 2026-09-23
+
+[Video acceptance](evidence/m21-video-2026-09-23.json) closes RC-07 and M21 at their native/Lit boundary. Source, compiled and fresh packed consumers pass twelve cases per engine; real autoplay rejection, framework-owned tracks, live docs, strict build/site and 854 tests pass. Continue M22 generated React wrappers, including the native Video portal and existing native-content metadata.

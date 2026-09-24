@@ -603,6 +603,10 @@ html {
   color: var(--ds-gray-900);
 }
 
+.fill[class*="hue-"], .progress > i[class*="hue-"] {
+  background: currentColor;
+}
+
 @media (width <= 560px) {
   .item {
     flex-wrap: wrap;

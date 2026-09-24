@@ -1,0 +1,1 @@
+The example MP4 is a synthetic Canvas/MediaRecorder fixture created for this repository. It contains no external media or recorded people. The companion VTT is the caption example. The Video acceptance record links the generator and native playback checks.

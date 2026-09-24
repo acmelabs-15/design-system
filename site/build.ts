@@ -19,6 +19,7 @@ fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 fs.cpSync(path.join(ROOT, "dist/styles"), path.join(OUT, "styles"), { recursive: true });
 fs.cpSync(path.join(ROOT, "assets"), path.join(OUT, "assets"), { recursive: true });
+fs.cpSync(path.join(ROOT, "site/assets"), path.join(OUT, "assets"), { recursive: true });
 fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
 
 const api = readApi();

@@ -1,0 +1,717 @@
+{
+  "date": "2026-09-23",
+  "batch": "M21",
+  "entry": "RC-07 Video",
+  "status": "complete at native/Lit boundary",
+  "implementation": {
+    "media": "One stable native video owns playback, captions, sources, controls and loop behavior. getVideoElement supplies the native rendering target.",
+    "state": "Canonical public inputs; native play promises and exact forwarded events. Explicit pause and disconnected lifetime prevent accidental autoplay restart.",
+    "sizing": "Shared ordered responsive width/height inputs; default width 600px.",
+    "content": "Native source/track children remain owned by their author, including Lit ranges and React portals.",
+    "loading": "IntersectionObserver uniformly defers owned src/poster. Native loading support is not yet common across the tested engines."
+  },
+  "checks": {
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "frameworkSource": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      }
+    ],
+    "frameworkCompiled": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 4,
+        "errors": []
+      }
+    ],
+    "autoplay": [
+      {
+        "engine": "chromium",
+        "result": "NotAllowedError",
+        "plays": 0,
+        "paused": true,
+        "muted": false
+      },
+      {
+        "engine": "firefox",
+        "result": "NotAllowedError",
+        "plays": 0,
+        "paused": true,
+        "muted": false
+      },
+      {
+        "engine": "webkit",
+        "result": "NotAllowedError",
+        "plays": 0,
+        "paused": true,
+        "muted": false
+      }
+    ],
+    "nativeControls": [
+      {
+        "engine": "chromium",
+        "events": [
+          {
+            "shadow": false,
+            "normal": 1,
+            "capture": 2,
+            "composed": false,
+            "tracks": 1,
+            "cues": 1,
+            "parent": true,
+            "duration": 1.397267
+          },
+          {
+            "shadow": true,
+            "normal": 1,
+            "capture": 1,
+            "composed": false,
+            "tracks": 1,
+            "cues": 1,
+            "parent": true,
+            "duration": 1.397267
+          }
+        ],
+        "lazy": {
+          "before": 0,
+          "after": 1
+        }
+      },
+      {
+        "engine": "firefox",
+        "events": [
+          {
+            "shadow": false,
+            "normal": 1,
+            "capture": 2,
+            "composed": false,
+            "tracks": 1,
+            "cues": 1,
+            "parent": true,
+            "duration": 0.046566
+          },
+          {
+            "shadow": true,
+            "normal": 1,
+            "capture": 1,
+            "composed": false,
+            "tracks": 1,
+            "cues": 1,
+            "parent": true,
+            "duration": 0.046566
+          }
+        ],
+        "lazy": {
+          "before": 0,
+          "after": 1
+        }
+      },
+      {
+        "engine": "webkit",
+        "events": [
+          {
+            "shadow": false,
+            "normal": 1,
+            "capture": 2,
+            "composed": false,
+            "tracks": 1,
+            "cues": 1,
+            "parent": true,
+            "duration": 1.443
+          },
+          {
+            "shadow": true,
+            "normal": 1,
+            "capture": 1,
+            "composed": false,
+            "tracks": 1,
+            "cues": 1,
+            "parent": true,
+            "duration": 1.443
+          }
+        ],
+        "lazy": {
+          "before": 0,
+          "after": 2
+        }
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      }
+    ],
+    "consumer": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "one native media owner preserves controls, dimensions and exact native event delivery",
+            "pass": true
+          },
+          {
+            "name": "real caption nodes attach to the native video and retain their references",
+            "pass": true
+          },
+          {
+            "name": "native source children are live without cloning or moving framework-owned ranges",
+            "pass": true
+          },
+          {
+            "name": "lazy loading defers owned source and poster until the viewport reaches it",
+            "pass": true
+          },
+          {
+            "name": "explicit pause survives motion-preference changes and reconnection",
+            "pass": true
+          },
+          {
+            "name": "native media failure appears as fallback and play remains rejected",
+            "pass": true
+          },
+          {
+            "name": "loop false exposes native ended and mute changes survive unrelated updates",
+            "pass": true
+          },
+          {
+            "name": "pause or disconnect before the render flush aborts an obsolete play request",
+            "pass": true
+          },
+          {
+            "name": "unrelated native track changes cannot clear an existing media failure",
+            "pass": true
+          },
+          {
+            "name": "native keyboard playback works in the platform-supported focus mode",
+            "pass": true
+          },
+          {
+            "name": "autoplay omission follows motion preference and explicit values remain authoritative",
+            "pass": true
+          },
+          {
+            "name": "responsive dimensions and captions remain native after resizes",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "unit": {
+      "pass": 854,
+      "fail": 0,
+      "assertions": 152046,
+      "files": 173
+    },
+    "focusedUnit": 6,
+    "build": "Strict declaration/package build passed",
+    "site": "108 pages, 4319 elements, zero undocumented"
+  },
+  "findingsResolved": [
+    "Unrelated track mutation no longer clears failure state.",
+    "Stale play completion is aborted after pause/disconnect.",
+    "Native volume changes survive unrelated property renders.",
+    "Forwarding from a shadow-contained native video avoids duplicate capture delivery."
+  ],
+  "keyboard": {
+    "chromium": "Native inline Space playback",
+    "firefox": "Native inline Space playback",
+    "webkit": "Native fullscreen Space playback, matching upstream media-controller behavior. Inline surface Space is not an equivalent oracle; no component shortcut override was added."
+  },
+  "references": [
+    "https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play",
+    "https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/load",
+    "https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/loading",
+    "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/track",
+    "https://raw.githubusercontent.com/WebKit/WebKit/main/Source/WebCore/Modules/modern-media-controls/media/media-controller.js"
+  ],
+  "removal": "Custom scrubber/progress player, replay cap, acme-play, old style producers and orphan Progress rules removed.",
+  "reproduction": {
+    "fixtures": "m21-video/",
+    "scratch": "/tmp/acme-m21-video",
+    "media": "site/assets/video/example.mp4 is synthetic silent audio/video; captions are authored fixture text.",
+    "note": "Saved runners currently use local absolute paths; M25 owns portable browser orchestration."
+  },
+  "remaining": [
+    "M22 generated Video wrapper must retain React portal ownership.",
+    "M26 actual Safari/device and assistive-technology checks remain distinct from WebKit automation."
+  ]
+}

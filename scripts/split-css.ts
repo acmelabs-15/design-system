@@ -30,7 +30,6 @@ const MAP: [string, RegExp][] = [
   ["tag", /^\.tag\b/],
   ["field", /^(\.field|\.flabel|\.form-label|\.grid2)/],
   ["menu", /^\.menu/],
-  ["video", /^\.progress/], // Video scrubber rules; Progress owns a separate stylesheet.
   ["avatar", /^\.avatar/],
   ["rail", /^(\.with-rail|\.rail)/],
   ["search", /^\.search/],
@@ -44,7 +43,6 @@ const MAP: [string, RegExp][] = [
   ["deploy", /^(\.deploy-|\.project-row|\.bar-list)/],
   ["middle-truncate", /^\.truncate-mid/],
   ["clearable-input", /^\.clearable/],
-  ["video", /^\.video/],
 ];
 const moduleOf = (sel: string): string | null => {
   const parts = sel.split(",").map((s) => s.trim());
