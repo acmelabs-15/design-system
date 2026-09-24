@@ -707,7 +707,7 @@
   "reproduction": {
     "fixtures": "m21-video/",
     "scratch": "/tmp/acme-m21-video",
-    "media": "site/assets/video/example.mp4 is synthetic silent audio/video; captions are authored fixture text.",
+    "media": "site/assets/video/example.mp4 is synthetic video-only media. The autoplay-policy runner creates a separate silent-audio fixture. Captions are authored fixture text.",
     "note": "Saved runners currently use local absolute paths; M25 owns portable browser orchestration."
   },
   "remaining": [

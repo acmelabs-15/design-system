@@ -1,3 +1,4 @@
+import { Table } from "@acmelabs/design-system-react/components/table";
 import type { AcmeTable } from "@acmelabs/design-system/components/table";
 import { useAtom, useCreateAtom } from "@tanstack/react-store";
 import { useTable } from "@tanstack/react-table";
@@ -147,8 +148,8 @@ export function VirtualDeliveryReact({
   const rowSpacer = (height: number, key: string) =>
     height ? h("tr", { key, "aria-hidden": true, "data-acme-table-part": "spacer", style: { "--acme-table-spacer-height": height + "px" } }, h("td", { colSpan: window.columns.length })) : null;
   return h(
-    "acme-table",
-    { ref: container, "sticky-header": true, "aria-label": "Virtual delivery results", style: { height: 320, width: 480, maxWidth: "100%" } },
+    Table,
+    { ref: container, stickyHeader: true, "aria-label": "Virtual delivery results", style: { height: 320, width: 480, maxWidth: "100%" } },
     h(
       "table",
       {

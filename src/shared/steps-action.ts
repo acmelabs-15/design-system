@@ -5,7 +5,9 @@ import { StepsBinding } from "./steps-context";
 import { message, messageCatalogs } from "./messages";
 import { StoreSelector } from "./store-connection";
 import { deepActiveElement } from "./composed-tree";
-/** Shared action lifetime for relative step movement. */
+/** Shared action lifetime for relative step movement.
+ * @acmeDefault variant "secondary"
+ */
 export abstract class AcmeStepsAction extends AcmeActionElement {
   private readonly binding: StepsBinding;
   constructor(protected readonly direction: "previous" | "next") {

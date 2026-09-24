@@ -9,6 +9,8 @@ import { SpringValue } from "../../shared/spring-value";
 import { readMotionSpring } from "../../shared/motion-spring";
 import { showMoreStructureCss } from "../../generated/components/show-more/show-more-structure.styles";
 /** A disclosure action. The application connects its expanded state to content.
+ * @acmeDefault variant "secondary"
+ * @acmeDefault size "small"
  * @slot - Action label, with a localized More/Less fallback.
  * @slot start - Leading content.
  * @slot end - Trailing content in place of the chevron.

@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
 import { createOrderedStyleInputs } from "../ordered-style-inputs";
-import { applyStyleInputBinding, attachStyleInputTarget, type StyleInputs } from "../style-input-binding";
+import { applyReactStyleInputs, applyStyleInputBinding, attachStyleInputTarget, type StyleInputs } from "../style-input-binding";
 
 const createValues = () =>
   createOrderedStyleInputs({
@@ -18,6 +18,20 @@ const createValues = () =>
     },
   });
 type Key = "padding" | "paddingInline" | "backgroundColor";
+test("React synchronization filters actual controller keys and preserves complete prop order", () => {
+  const target = document.createElement("div"),
+    values = createValues(),
+    owner = {};
+  attachStyleInputTarget(target, (inputs, previous) => values.apply(inputs, previous as readonly Key[]), ["padding", "paddingInline"]);
+  values.set("backgroundColor", "red");
+  applyReactStyleInputs(target, owner, { paddingInline: 2, children: {}, padding: 4 });
+  expect(values.entries.get().map(([key]) => key)).toEqual(["backgroundColor", "paddingInline", "padding"]);
+  applyReactStyleInputs(target, owner, { padding: 4, paddingInline: 2 });
+  expect(values.entries.get().map(([key]) => key)).toEqual(["backgroundColor", "padding", "paddingInline"]);
+  applyReactStyleInputs(target, owner, {});
+  expect(values.entries.get()).toEqual([["backgroundColor", "red"]]);
+  expect(() => applyReactStyleInputs(document.createElement("div"), owner, { width: 20 })).not.toThrow();
+});
 const setup = () => {
   const target = document.createElement("div");
   const values = createValues();

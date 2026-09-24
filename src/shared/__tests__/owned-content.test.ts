@@ -2,7 +2,7 @@ import { expect, test } from "bun:test";
 import { LitElement, html, nothing } from "lit";
 import { AsyncDirective } from "lit/async-directive.js";
 import { directive } from "lit/directive.js";
-import { OwnedContent } from "../owned-content";
+import { OwnedContent, getContentMount } from "../owned-content";
 class ContentHost extends LitElement {
   mounted = true;
   renderer?: () => ReturnType<typeof html> | typeof nothing;
@@ -15,6 +15,36 @@ class ContentHost extends LitElement {
   }
 }
 customElements.define("test-owned-content", ContentHost);
+test("framework rendering reads the component mount state without creating a Lit part", async () => {
+  const host = new ContentHost();
+  const mount = getContentMount(host, "");
+  let updates = 0;
+  const release = mount.subscribe(() => updates++);
+  document.body.append(host);
+  await host.updateComplete;
+  expect(mount.getSnapshot()).toBe(true);
+  const input = document.createElement("input");
+  mount.container.append(input);
+  host.mounted = false;
+  host.requestUpdate();
+  await host.updateComplete;
+  expect(mount.getSnapshot()).toBe(false);
+  expect(input.parentElement).toBe(mount.container);
+  expect(updates).toBe(2);
+  release();
+  host.remove();
+});
+test("ordinary author content takes precedence over a framework renderer", async () => {
+  const host = new ContentHost(),
+    child = document.createElement("span");
+  host.append(child);
+  const mount = getContentMount(host);
+  const release = mount.subscribe(() => {});
+  expect(host.content.render(true)).toBe(false);
+  expect(mount.getSnapshot()).toBe(false);
+  expect(child.parentElement).toBe(host);
+  release();
+});
 test("controlled templates mount and unmount actual nodes without moving the template", async () => {
   const host = new ContentHost();
   const template = document.createElement("template");

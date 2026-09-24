@@ -136,3 +136,7 @@ GitHub Pages still serves main/docs, verified through the repository API on 2026
 ## Component naming — 2026-09-22
 
 Peter requires component names to stand on their own. The documentation previously separated one subset into a House navigation group, used different badge colors and appended a component-category sentence in Markdown/skill references. Those distinctions are removed. All components share the Components navigation group and badge treatment; Tokens belongs in Foundations. The unused metadata flag is removed from page and navigation types. Current guidance and glossary wording follow the [component-language decision](../decisions/component-language.md). The site rebuild reports 96 pages and 4262 documented elements; 99 documentation tests pass.
+
+## M22 metadata corrections — 2026-09-23
+
+The generated React consumer exposed three factual metadata gaps: nested native assignments could replace host accessor defaults/types; inherited appearance fallbacks were not represented; and repeated dispatches kept only the last payload shape. The standard analyzer remains the source, with bounded source-fact corrections and explicit inherited-default annotations. A live all-element audit verifies every declared default; the final consumer type fixture verifies the complete Pagination event union. [Evidence](../alignment/evidence/m22-react-2026-09-23.json). M23 now owns the final page, example-lifetime, recipe and navigation audit.

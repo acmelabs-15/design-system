@@ -1,5 +1,17 @@
 import { nothing, render, type ReactiveController, type ReactiveElement, type RootPart, type TemplateResult } from "lit";
 export type ContentRenderer = () => TemplateResult | typeof nothing;
+export type ContentMount = Readonly<{
+  container: HTMLElement;
+  getSnapshot: () => boolean;
+  subscribe: (listener: () => void) => () => void;
+}>;
+const contentMounts = new WeakMap<Element, Map<string, ContentMount>>();
+/** Renderer adapters observe the component's mount decision and own the target's children. */
+export function getContentMount(host: Element, slot = ""): ContentMount {
+  const mount = contentMounts.get(host)?.get(slot);
+  if (!mount) throw new TypeError("The element does not provide this content mount");
+  return mount;
+}
 /** Controls only content created from an inert template or an explicit Lit renderer. */
 export class OwnedContent implements ReactiveController {
   readonly container: HTMLElement;
@@ -9,6 +21,8 @@ export class OwnedContent implements ReactiveController {
   private observer?: MutationObserver;
   private templateObserver?: MutationObserver;
   private warned = false;
+  private mounted = false;
+  private readonly listeners = new Set<() => void>();
   constructor(
     private host: ReactiveElement,
     private options: { slot?: string; marker?: string; diagnostic?: string } = {},
@@ -16,6 +30,22 @@ export class OwnedContent implements ReactiveController {
     this.container = host.ownerDocument.createElement("div");
     this.container.setAttribute(options.marker ?? "data-acme-owned-content", "");
     if (options.slot) this.container.slot = options.slot;
+    let mounts = contentMounts.get(host);
+    if (!mounts) contentMounts.set(host, (mounts = new Map()));
+    const slot = options.slot ?? "";
+    if (mounts.has(slot)) throw new TypeError("Duplicate owned content slot");
+    mounts.set(slot, {
+      container: this.container,
+      getSnapshot: () => this.mounted,
+      subscribe: (listener) => {
+        this.listeners.add(listener);
+        host.requestUpdate();
+        return () => {
+          this.listeners.delete(listener);
+          host.requestUpdate();
+        };
+      },
+    });
     host.addController(this);
   }
   hostConnected() {
@@ -46,6 +76,16 @@ export class OwnedContent implements ReactiveController {
     const nodes = [...this.host.childNodes].filter(
       (node) => node !== this.container && (node.nodeType === 1 ? ((node as Element).getAttribute("slot") ?? "") === slot : node.nodeType === 3 && !slot && !!node.textContent?.trim()),
     );
+    const external = this.listeners.size > 0 && nodes.length === 0;
+    const externalMounted = mounted && (this.listeners.size === 0 || external);
+    if (this.mounted !== externalMounted) {
+      this.mounted = externalMounted;
+      for (const listener of this.listeners) listener();
+    }
+    if (external) {
+      if (this.container.parentNode !== this.host) this.host.append(this.container);
+      return true;
+    }
     const template = nodes.length === 1 && nodes[0].nodeType === 1 && (nodes[0] as Element).localName === "template" ? (nodes[0] as HTMLTemplateElement) : undefined;
     if (template !== this.template) {
       this.template = template;
@@ -65,7 +105,7 @@ export class OwnedContent implements ReactiveController {
       this.part = render(value, this.container, { host: this.host, creationScope: this.host.ownerDocument, isConnected: this.host.isConnected });
     } else {
       if (this.container.parentNode === this.host) {
-        this.part = render(nothing, this.container);
+        if (this.part) this.part = render(nothing, this.container);
         this.container.remove();
       }
       if (nodes.length && mountingRequested && !this.warned) {

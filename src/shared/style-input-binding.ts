@@ -9,6 +9,7 @@ type Apply = (inputs: Patch, previousKeys: readonly StyleInputKey[]) => void;
 type Ownership = { owner?: object; revision: number };
 type Binding = {
   apply?: Apply;
+  keys?: ReadonlySet<string>;
   owners: Map<StyleInputKey, Ownership>;
   pending: Map<StyleInputKey, ResponsiveInput<ResponsiveScalar>>;
   revision: number;
@@ -37,10 +38,11 @@ function snapshot(inputs: StyleInputs): Patch {
 }
 
 /** Connects the actual target instance, independent of its registry or current document. */
-export function attachStyleInputTarget(target: Element, apply: Apply): void {
+export function attachStyleInputTarget(target: Element, apply: Apply, keys?: readonly string[]): void {
   const binding = targetBinding(target);
   if (binding.apply) throw new TypeError("A style input controller is already attached to this target");
   binding.apply = apply;
+  binding.keys = keys && new Set(keys);
   try {
     if (binding.pending.size) apply(Object.fromEntries(binding.pending), []);
     binding.pending.clear();
@@ -48,6 +50,18 @@ export function attachStyleInputTarget(target: Element, apply: Apply): void {
     binding.apply = undefined;
     throw error;
   }
+}
+
+/** Reports whether the actual element controller owns this style input. */
+export function hasStyleInput(target: Element, key: string): boolean {
+  return targets.get(target)?.keys?.has(key) ?? false;
+}
+
+/** Synchronizes only style inputs supported by the actual connected controller. */
+export function applyReactStyleInputs(target: Element, owner: object, props: Readonly<Record<string, unknown>>): void {
+  const keys = targets.get(target)?.keys;
+  if (!keys) return;
+  applyStyleInputBinding(target, owner, Object.fromEntries(Object.entries(props).filter(([key]) => keys.has(key))) as StyleInputs);
 }
 
 /** Applies one helper owner's current inputs. An empty input clears only its still-owned keys. */

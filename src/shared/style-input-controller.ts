@@ -63,7 +63,7 @@ export class StyleInputController<Key extends StyleInputKey> {
     for (const [key, value] of own) this.values.set(key, value);
     for (const [key] of own) Reflect.deleteProperty(host, key);
     new StoreSelector(host, () => this.values.entries);
-    attachStyleInputTarget(host, (inputs, previousKeys) => this.apply(inputs, previousKeys as readonly Key[]));
+    attachStyleInputTarget(host, (inputs, previousKeys) => this.apply(inputs, previousKeys as readonly Key[]), properties);
   }
 
   get entries(): ReadonlyAtom<readonly Entry<Key>[]> {

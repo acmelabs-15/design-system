@@ -4,7 +4,9 @@ import { actionContent } from "./action-content";
 import { DialogBinding, type DialogPart } from "./dialog-context";
 import { message, messageCatalogs } from "./messages";
 import { StoreSelector } from "./store-connection";
-/** Native action behavior shared by dialog triggers and explicit close controls. */
+/** Native action behavior shared by dialog triggers and explicit close controls.
+ * @acmeDefault variant "secondary"
+ */
 export abstract class AcmeDialogAction extends AcmeActionElement {
   private readonly binding: DialogBinding;
   constructor(private readonly kind: DialogPart["kind"]) {

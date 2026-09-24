@@ -1,0 +1,6 @@
+import * as components from '@acmelabs/design-system-react';
+Object.assign(window,{wrapperCount:Object.keys(components).length,auditDefaults:async()=>{
+const manifest=await (await fetch('/manifest.json')).json(),failures=[],errors=[];let fields=0,elements=0;
+for(const module of manifest.modules)for(const declaration of module.declarations??[]){if(!declaration.tagName)continue;elements++;const ctor=customElements.get(declaration.tagName);if(!ctor){errors.push({tag:declaration.tagName,error:'Not registered'});continue}let element;try{element=new ctor()}catch(error){errors.push({tag:declaration.tagName,error:String(error)});continue}
+for(const member of declaration.members??[]){if(member.kind!=='field'||member.static||member.readonly||member.default===undefined)continue;let expected;try{expected=JSON.parse(member.default)}catch{expected=Number(member.default)}let actual;try{actual=element[member.name]}catch(error){errors.push({tag:declaration.tagName,property:member.name,error:String(error)});continue}fields++;if(JSON.stringify(actual)!==JSON.stringify(expected))failures.push({tag:declaration.tagName,property:member.name,expected,actual});}
+}return{elements,fields,failures,errors};}});

@@ -1,9 +1,10 @@
+import { Table } from "@acmelabs/design-system-react/components/table";
 import { useSelector } from "@tanstack/react-store";
 import { useTable } from "@tanstack/react-table";
-import type { Table } from "@tanstack/table-core";
+import type { Table as TanStackTable } from "@tanstack/table-core";
 import { createElement as h, useLayoutEffect } from "react";
 import type { WorkerRow, WorkerSession } from "./worker-session";
-export function WorkerDeliveryReact({ session, ready }: { session: WorkerSession; ready: (table: Table<WorkerSession["features"], WorkerRow>) => void }) {
+export function WorkerDeliveryReact({ session, ready }: { session: WorkerSession; ready: (table: TanStackTable<WorkerSession["features"], WorkerRow>) => void }) {
   const failed = useSelector(session.failed);
   useSelector(session.source);
   useSelector(session.manual);
@@ -19,7 +20,7 @@ export function WorkerDeliveryReact({ session, ready }: { session: WorkerSession
     h("p", { role: "status" }, failed ? "Worker failed" : table.state.workerRowModels.isPending ? "Worker pending" : "Worker ready"),
     h("output", { "data-count": "" }, rows.length),
     h(
-      "acme-table",
+      Table,
       { loading: table.state.workerRowModels.isPending, "aria-label": "Worker results" },
       h(
         "table",

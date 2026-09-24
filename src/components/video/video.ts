@@ -14,6 +14,7 @@ import { videoSurfaceCss } from "../../generated/components/video/video-surface.
 type NativeInputs = Pick<HTMLVideoElement, "controls" | "playsInline" | "muted" | "defaultMuted" | "loop" | "preload" | "autoplay">;
 type Dimension = ResponsiveInput<StyleScalar<"width">>;
 /** A native video owner with visibility-based loading and stable native content access.
+ * @acmeNativeContentTarget getVideoElement
  * @attr width - Responsive CSS width or size token. Defaults to 600px.
  * @attr height - Responsive CSS height or size token. Omission keeps intrinsic height.
  * @slot fallback - Content shown when media is absent or unavailable.

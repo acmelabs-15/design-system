@@ -3,6 +3,7 @@ import { actionContent } from "../../shared/action-content";
 import { AcmeActionElement } from "../../shared/action-element";
 import { SidebarBinding } from "../../shared/sidebar-context";
 /** Named control for desktop expansion and mobile Drawer visibility.
+ * @acmeDefault variant "secondary"
  * @slot - Required action label.
  */
 export class AcmeSidebarTrigger extends AcmeActionElement {

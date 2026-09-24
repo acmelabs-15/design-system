@@ -19,15 +19,18 @@ const CALLBACKS = new Set([
 type EventFact = ManifestEvent & { "x-acme-options": Record<string, boolean | undefined> };
 type Facts = {
   nativeRoot?: string;
+  nativeContentTarget?: string;
+  defaults?: Record<string, string>;
   nestedAssignments: Set<string>;
   directAssignments: Set<string>;
   slots: Set<string>;
   parts: Set<string>;
   queries: Set<string>;
   events: Map<string, EventFact>;
+  eventTypes: Map<string, Set<string>>;
   dynamic: Set<string>;
   annotated: Set<string>;
-  members: Map<string, { default?: string; type?: { text: string }; literalType?: { text: string }; return?: { type: { text: string } } }>;
+  members: Map<string, { default?: string; resetUndefined?: boolean; type?: { text: string }; literalType?: { text: string }; return?: { type: { text: string } } }>;
 };
 type Issue = { file: string; className: string; category: string };
 const key = (file: string, name: string) => file + "#" + name;
@@ -54,12 +57,19 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
         parts: new Set(),
         queries: new Set(),
         events: new Map(),
+        eventTypes: new Map(),
         dynamic: new Set(),
         annotated: new Set(),
         members: new Map(),
       };
       for (const tag of ts.getJSDocTags(declaration)) {
         if (tag.tagName.text === "acmeNativeRoot" && typeof tag.comment === "string") found.nativeRoot = tag.comment.trim();
+        if (tag.tagName.text === "acmeNativeContentTarget" && typeof tag.comment === "string") found.nativeContentTarget = tag.comment.trim();
+        if (tag.tagName.text === "acmeDefault" && typeof tag.comment === "string") {
+          const match = /^(\w+)\s+(.+)$/.exec(tag.comment.trim());
+          if (!match) throw new Error("Invalid inherited default annotation");
+          (found.defaults ??= {})[match[1]] = match[2];
+        }
         if (["fires", "event", "emits"].includes(tag.tagName.text)) found.annotated.add("events");
         if (tag.tagName.text === "slot") found.annotated.add("slots");
         if (tag.tagName.text === "csspart") found.annotated.add("parts");
@@ -72,6 +82,8 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
             if (signature) found.members.set(name, { return: { type: { text: checker.typeToString(checker.getReturnTypeOfSignature(signature), member, ts.TypeFormatFlags.NoTruncation) } } });
           } else {
             const type = checker.getTypeAtLocation(member.name);
+            const defaultTag = ts.getJSDocTags(member).find((tag) => tag.tagName.text === "default");
+            const declaredDefault = typeof defaultTag?.comment === "string" ? defaultTag.comment.trim() : found.members.get(name)?.default;
             const literal =
               type.aliasSymbol &&
               type.isUnion() &&
@@ -79,6 +91,12 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
               type.types.every((part) => !!(part.flags & (ts.TypeFlags.StringLiteral | ts.TypeFlags.NumberLiteral | ts.TypeFlags.BooleanLiteral | ts.TypeFlags.Undefined | ts.TypeFlags.Null)));
             found.members.set(name, {
               ...(ts.isPropertyDeclaration(member) && member.initializer ? { default: member.initializer.getText(source) } : {}),
+              ...(declaredDefault !== undefined ? { default: declaredDefault } : {}),
+              ...(found.members.get(name)?.resetUndefined !== undefined ? { resetUndefined: found.members.get(name)!.resetUndefined } : {}),
+              ...(ts.isSetAccessorDeclaration(member) && member.parameters[0] ? { resetUndefined: (() => {
+                const input = checker.getTypeAtLocation(member.parameters[0]);
+                return (input.isUnion() ? input.types : [input]).some(type => !!(type.flags & ts.TypeFlags.Undefined));
+              })() } : {}),
               type: { text: checker.typeToString(type, member, ts.TypeFormatFlags.NoTruncation) },
               ...(literal ? { literalType: { text: checker.typeToString(type, member, ts.TypeFormatFlags.NoTruncation | ts.TypeFormatFlags.InTypeAlias) } } : {}),
             });
@@ -154,12 +172,17 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
                   }
                 }
               } else if (init) for (const field of Object.keys(options)) options[field] = undefined;
-              for (const name of names)
+              for (const name of names) {
+                const types = found.eventTypes.get(name) ?? new Set<string>();
+                types.add(checker.typeToString(checker.getTypeAtLocation(event), event, ts.TypeFormatFlags.NoTruncation));
+                found.eventTypes.set(name, types);
+                const previous = found.events.get(name)?.["x-acme-options"];
                 found.events.set(name, {
                   name,
-                  type: { text: checker.typeToString(checker.getTypeAtLocation(event), event, ts.TypeFormatFlags.NoTruncation) },
-                  "x-acme-options": options,
+                  type: { text: [...types].join(" | ") },
+                  "x-acme-options": previous ? Object.fromEntries(Object.entries(options).map(([key, value]) => [key, previous[key] === value ? value : undefined])) : options,
                 });
+              }
             } else found.dynamic.add("events");
           } else found.dynamic.add("events");
         }
@@ -243,6 +266,8 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
       const fact = facts.get(key(moduleDoc.path, node.name.text));
       if (!declaration || !fact) return;
       if (fact.nativeRoot) (declaration as ClassDeclaration & { "x-acme-native-root"?: string })["x-acme-native-root"] = fact.nativeRoot;
+      if (fact.nativeContentTarget) (declaration as ClassDeclaration & { "x-acme-native-content-target"?: string })["x-acme-native-content-target"] = fact.nativeContentTarget;
+      if (fact.defaults) (declaration as ClassDeclaration & { "x-acme-defaults"?: Record<string, string> })["x-acme-defaults"] = fact.defaults;
       const element = declaration as ClassDeclaration & { slots?: { name: string }[]; cssParts?: { name: string }[]; events?: ManifestEvent[] };
       for (const category of fact.dynamic) {
         if (!fact.annotated.has(category)) issues.push({ file: moduleDoc.path, className: node.name.text, category });
@@ -256,7 +281,12 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
         .filter((member) => !fact.nestedAssignments.has(member.name) || fact.members.has(member.name) || fact.directAssignments.has(member.name))
         .map((member) => {
           const inferred = fact.members.get(member.name);
-          if (member.kind === "field" && fact.nestedAssignments.has(member.name) && !fact.directAssignments.has(member.name) && inferred?.default !== undefined) member.default = inferred.default;
+          if (member.kind === "field" && inferred?.resetUndefined) (member as typeof member & { "x-acme-reset"?: string })["x-acme-reset"] = "undefined";
+          if (member.kind === "field" && fact.nestedAssignments.has(member.name) && !fact.directAssignments.has(member.name) && inferred) {
+            if (inferred.default === undefined) delete member.default;
+            else member.default = inferred.default;
+            if (inferred.type) member.type = inferred.type;
+          }
           if (member.kind === "field" && !member.type && inferred?.type) member.type = inferred.type;
           if (member.kind === "field" && inferred?.literalType) member.type = inferred.literalType;
           if (member.kind === "method" && !member.return?.type && inferred?.return) member.return = { ...member.return, ...inferred.return };
@@ -336,6 +366,22 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
       }
     }
   const manifest = normalizeManifest(analyzed, root);
+  type WithDefaults = ClassDeclaration & { "x-acme-defaults"?: Record<string, string> };
+  const classes = new Map(manifest.modules.flatMap(module => (module.declarations ?? []).filter(declaration => declaration.kind === "class").map(declaration => [key(module.path, declaration.name), declaration as WithDefaults] as const)));
+  const defaults = (declaration: WithDefaults, module: string): Record<string, string> => {
+    const parentModule = declaration.superclass?.module ?? module;
+    const parent = declaration.superclass && !declaration.superclass.package && classes.get(key(parentModule, declaration.superclass.name));
+    return { ...(parent ? defaults(parent, parentModule) : {}), ...declaration["x-acme-defaults"] };
+  };
+  for (const module of manifest.modules) for (const declaration of module.declarations ?? []) {
+    if (declaration.kind !== "class") continue;
+    for (const [name, value] of Object.entries(defaults(declaration as WithDefaults, module.path))) {
+      const member = declaration.members?.find(member => member.kind === "field" && member.name === name);
+      if (member?.kind !== "field") throw new Error(`Default annotation has no public input: ${declaration.name}.${name}`);
+      member.default = value;
+      for (const attribute of (declaration as ClassDeclaration & { attributes?: { fieldName?: string; default?: string }[] }).attributes ?? []) if (attribute.fieldName === name) attribute.default = value;
+    }
+  }
   profile("normalized modules");
   (manifest as unknown as Record<string, unknown>)["x-acme-version"] = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8")).version;
   return { manifest, issues };

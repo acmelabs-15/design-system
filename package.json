@@ -69,6 +69,11 @@
     },
     "./flow-worker.js": "./dist/shared/elk-worker.js",
     "./assets/book-texture.avif": "./assets/book-texture.avif",
+    "./react-support": {
+      "types": "./dist/react-support.d.ts",
+      "import": "./dist/react-support.js",
+      "default": "./dist/react-support.js"
+    },
     "./components/10k-icon": {
       "types": "./dist/generated/icons/classes/10k-icon.d.ts",
       "import": "./dist/generated/icons/classes/10k-icon.js",

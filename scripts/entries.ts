@@ -277,6 +277,7 @@ export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_RO
   exports["./define/*"] = { types: "./dist/define/*.d.ts", import: "./dist/define/*.js", default: "./dist/define/*.js" };
   exports["./cdn/*"] = "./dist/cdn/*";
   exports["./configure"] = { types: "./dist/configure.d.ts", import: "./dist/configure.js", default: "./dist/configure.js" };
+  exports["./react-support"] = { types: "./dist/react-support.d.ts", import: "./dist/react-support.js", default: "./dist/react-support.js" };
   exports["./icons/*"] = { types: "./dist/generated/icons/classes/*-icon.d.ts", import: "./dist/generated/icons/classes/*-icon.js", default: "./dist/generated/icons/classes/*-icon.js" };
   exports["./icons/artwork/*"] = { types: "./dist/generated/icons/artwork/*.d.ts", import: "./dist/generated/icons/artwork/*.js", default: "./dist/generated/icons/artwork/*.js" };
   exports["./icons/families/*"] = { types: "./dist/generated/icons/families/*.d.ts", import: "./dist/generated/icons/families/*.js", default: "./dist/generated/icons/families/*.js" };

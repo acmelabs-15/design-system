@@ -402,3 +402,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M21 Video and content batch closure — 2026-09-23
 
 [Video acceptance](evidence/m21-video-2026-09-23.json) closes RC-07 and M21 at their native/Lit boundary. Source, compiled and fresh packed consumers pass twelve cases per engine; real autoplay rejection, framework-owned tracks, live docs, strict build/site and 854 tests pass. Continue M22 generated React wrappers, including the native Video portal and existing native-content metadata.
+
+### M22 React package complete — 2026-09-23
+
+[React acceptance](evidence/m22-react-2026-09-23.json) closes the generated browser-wrapper and final native-content boundary. All 4,319 wrappers and 741 declared defaults are verified. Thirteen wrapper and nineteen real Table/Virtual/Worker cases pass per engine; fresh package/type checks and all 860 tests pass. The same Lit stores, selection, form and motion behavior remain authoritative. Continue M23; the stated global-registry wrapper contract does not close M26’s separate core scoped-registry or actual-platform gates.

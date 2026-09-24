@@ -67,6 +67,18 @@ test("the manifest matches every registered Lit class and its runtime property a
   expect(appearance.default).toBe('"auto"');
   expect(density.default).toBe('"normal"');
   const box = elements.find((element) => element.tagName === "acme-box")!;
+  const video = elements.find((element) => element.tagName === "acme-video")!;
+  const preload = video.members?.find((member) => member.name === "preload") as { default: string; type: { text: string } };
+  expect(preload.default).toBe('"auto"');
+  expect(new Set(preload.type.text.match(/"[^"]+"/g))).toEqual(new Set(['"none"', '"metadata"', '"auto"']));
+  const trigger = elements.find(element => element.tagName === "acme-dialog-trigger")!;
+  expect(trigger.members?.find(member => member.name === "variant")).toMatchObject({ default: '"secondary"', "x-acme-reset": "undefined" });
+  const showMore = elements.find(element => element.tagName === "acme-show-more")!;
+  expect(showMore.members?.find(member => member.name === "size")).toMatchObject({ default: '"small"', "x-acme-reset": "undefined" });
+  const pagination = elements.find(element => element.tagName === "acme-pagination")!;
+  const request = pagination.events?.find(event => event.name === "acme-request")?.type?.text;
+  expect(request).toContain('action: "page"');
+  expect(request).toContain('action: "page-size"');
   for (const [name, schema] of Object.entries(commonStyleInputSchema)) {
     expect(box.attributes?.find((attribute) => attribute.name === schema.attribute)?.fieldName).toBe(name);
     expect(box.members?.find((member) => member.name === name && member.kind === "field")).toMatchObject({ attribute: schema.attribute });

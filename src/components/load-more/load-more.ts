@@ -4,6 +4,7 @@ import { actionContent } from "../../shared/action-content";
 import { message, messageCatalogs } from "../../shared/messages";
 import { StoreSelector } from "../../shared/store-connection";
 /** Requests more results. The application owns loading and the result collection.
+ * @acmeDefault variant "secondary"
  * @slot - Action label, with a localized Load More fallback.
  * @slot start - Leading content.
  * @slot end - Trailing content.

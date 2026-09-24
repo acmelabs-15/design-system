@@ -1,9 +1,18 @@
+import { Button } from "@acmelabs/design-system-react/components/button";
+import { Checkbox } from "@acmelabs/design-system-react/components/checkbox";
+import { Input } from "@acmelabs/design-system-react/components/input";
+import { Table } from "@acmelabs/design-system-react/components/table";
+import { Pagination } from "@acmelabs/design-system-react/components/pagination";
+import { PaginationPosition } from "@acmelabs/design-system-react/components/pagination-position";
+import { PaginationPrevious } from "@acmelabs/design-system-react/components/pagination-previous";
+import { PaginationNext } from "@acmelabs/design-system-react/components/pagination-next";
+import { PaginationPageSize } from "@acmelabs/design-system-react/components/pagination-page-size";
 import { useTable } from "@tanstack/react-table";
 import { createElement as h, useLayoutEffect, useRef } from "react";
 import { columnStyle, columns, type Delivery, type DeliveryCell, type DeliveryTable, data, features, headerRows, orderedCells, orderedColumns } from "./data";
 import { gridKey, syncGridFocus } from "./grid-interaction";
 
-const button = (props: Record<string, unknown>, ...children: React.ReactNode[]) => h("acme-button", { size: "small", variant: "tertiary", ...props }, ...children);
+const button = (props: Record<string, unknown>, ...children: React.ReactNode[]) => h(Button, { size: "small", variant: "tertiary", ...props }, ...children);
 const options = {
   features,
   columns,
@@ -53,10 +62,10 @@ export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) =>
         onMouseEnter: cell.getSelectionExtendHandler(),
       },
       cell.column.id === "select"
-        ? h("acme-checkbox", {
+        ? h(Checkbox, {
             "aria-label": "Select " + row.id,
             checked: row.getIsSelected(),
-            "onacme-change": (event: CustomEvent<{ checked: boolean }>) => row.toggleSelected(event.detail.checked),
+            onAcmeChange: (event: CustomEvent<{ checked: boolean }>) => row.toggleSelected(event.detail.checked),
           })
         : cell.column.id === "name"
           ? h(
@@ -64,7 +73,7 @@ export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) =>
               null,
               row.getCanExpand() ? button({ "aria-label": "Expand " + row.id, "aria-expanded": row.getIsExpanded(), onClick: row.getToggleExpandedHandler() }, row.getIsExpanded() ? "−" : "+") : null,
               String(cell.getValue() ?? ""),
-              h("acme-input", { "aria-label": "Note " + row.id, placeholder: "Note", size: "small" }),
+              h(Input, { "aria-label": "Note " + row.id, placeholder: "Note", size: "small" }),
             )
           : String(cell.getValue() ?? ""),
     );
@@ -73,8 +82,8 @@ export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) =>
     "div",
     null,
     h(
-      "acme-table",
-      { "sticky-header": true, "aria-label": "Delivery results", style: { height: 360, maxWidth: 800 } },
+      Table,
+      { stickyHeader: true, "aria-label": "Delivery results", style: { height: 360, maxWidth: 800 } },
       h(
         "table",
         {
@@ -153,12 +162,12 @@ export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) =>
       ),
     ),
     h(
-      "acme-pagination",
+      Pagination,
       {
         page: table.state.pagination.pageIndex + 1,
         pageSize: table.state.pagination.pageSize,
         count: table.getRowCount(),
-        "onacme-request": (event: CustomEvent) => {
+        onAcmeRequest: (event) => {
           if (event.detail.action === "page") {
             event.stopPropagation();
             table.setPageIndex(event.detail.page - 1);
@@ -169,10 +178,10 @@ export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) =>
           }
         },
       },
-      h("acme-pagination-position"),
-      h("acme-pagination-previous"),
-      h("acme-pagination-next"),
-      h("acme-pagination-page-size"),
+      h(PaginationPosition),
+      h(PaginationPrevious),
+      h(PaginationNext),
+      h(PaginationPageSize),
     ),
   );
 }

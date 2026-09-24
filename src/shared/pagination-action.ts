@@ -8,6 +8,7 @@ import { message, messageCatalogs } from "./messages";
 import { PaginationBinding } from "./pagination-context";
 import { StoreSelector } from "./store-connection";
 /** Native action/link rendering shared by page and relative-page controls.
+ * @acmeDefault variant "tertiary"
  * @csspart item - Native page navigation action.
  */
 export abstract class AcmePaginationAction extends AcmeActionElement {

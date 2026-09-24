@@ -21,6 +21,7 @@ import { verifyResponsiveStyleDelivery } from "./responsive-styles";
 import { verifyThemeStyleMetadata } from "./theme-tokens";
 import { verifyBytePrefixes } from "./byte-prefixes";
 import { writeIconEntries } from "./icon-entries";
+import { buildReact } from "./react";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SRC = path.join(ROOT, "src"),
@@ -234,3 +235,4 @@ console.log(
   "dashboard.css",
   size(path.join(DIST, "styles/dashboard.css")),
 );
+await buildReact(ROOT);
