@@ -1,185 +1,196 @@
-import { codeBlockStructureCss } from "../../generated/components/code-block/code-block-structure.styles";
-import { html, nothing, svg } from "lit";
-import { property, query } from "lit/decorators.js";
-import { AcmeElement, sharedCss } from "../../base";
-import { Interaction } from "../../shared/interaction";
-
-import { sourceOf, tokenLines } from "../../shared/highlight";
-import type { AcmeCopyButton } from "../copy-button/copy-button";
-
-import { codeBlockCss } from "../../generated/components/code-block/code-block.styles";
-
-export type CodeBlockOption = { label: string; value: string };
-/** A language switch: its options, or `{ options, value }` as the reference writes it. */
-type Switch = CodeBlockOption[] | { options: CodeBlockOption[]; value?: string };
-const options = { fromAttribute: (v: string | null) => (v ? (JSON.parse(v) as Switch) : []) };
-const numbers = { fromAttribute: (v: string | null) => (v ? (JSON.parse(v) as number[]) : []) };
-
-/** The React atom for a JSX or TSX file, a page glyph for the rest; 16px, sized by attributes. */
-const fileIcon = (filename: string, language: string) =>
-  /\.[jt]sx$/.test(filename) || /^(jsx|tsx|next)$/.test(language)
-    ? svg`<svg width="16" height="16" viewBox="-11.5 -10.23174 23 20.46348" style="shape-rendering:auto" aria-hidden="true"><circle cx="0" cy="0" r="2.05" fill="currentColor"></circle><g stroke="currentColor" stroke-width="1" fill="none"><ellipse rx="11" ry="4.2"></ellipse><ellipse rx="11" ry="4.2" transform="rotate(60)"></ellipse><ellipse rx="11" ry="4.2" transform="rotate(120)"></ellipse></g></svg>`
-    : html`<acme-description-icon size="16px"></acme-description-icon>`;
-
-const v0Mark = svg`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8l4.5 8 4.5-8M13 10a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2zM14 8.5l6 7"></path></svg>`;
-
-const V0 = "https://v0.app/chat?q=";
-const v0Prompt = (code: string) =>
-  `\n  Create a minimal example app for this code: ${code} In your response:\n  1. Keep the example simple and focused on demonstrating the core functionality of the code\n  2. DO NOT include unnecessary features or complexity, aim to only showcase the essential parts\n  3. Show the code in a way that is easy to understand and implement\n  4. Provide clear and concise explanations for each part of the code\n  `;
-
-/**
- * Code block: multi-line source with highlighting in a rounded frame. A filename bar (file icon,
- * name, the actions: an optional language select and the copy button) sits on top; without a
- * filename the copy button floats over the code and shows on the block's hover. The content is a
- * grid of lines, each with a line-number button that marks the line as referenced (amber);
- * `highlighted-lines-numbers` marks lines blue, `added-lines-numbers` green with a `+`,
- * `removed-lines-numbers` red with a `-`; `hide-line-numbers` hides the numbers. `switcher`
- * renders an acme-select, `tabs` an acme-segmented-control above the bar (`switcher-value` is the current
- * language; a change fires `acme-change`). `v0="ask"` adds an Open in v0 link in a foot,
- * `v0="build"` a split button. Copies fire `acme-copy`.
+import type { AcmeScrollViewport } from "../scroll-viewport/scroll-viewport";
+import { deepActiveElement } from "../../shared/composed-tree";
+import { createAtom } from "@tanstack/lit-store";
+import { html, nothing } from "lit";
+import { property } from "lit/decorators.js";
+import { sharedCss, boolish } from "../../base";
+import { AcmeSemanticElement } from "../../shared/semantic-element";
+import { atomState } from "../../shared/atom-state";
+import { numberAttribute } from "../../shared/attributes";
+import { Places } from "../../shared/places";
+import { tokenLines } from "../../shared/highlight";
+import { message, messageCatalogs } from "../../shared/messages";
+import { StoreSelector } from "../../shared/store-connection";
+import { codeBlockSurfaceCss } from "../../generated/components/code-block/code-block-surface.styles";
+import { syntaxCss } from "../../generated/shared/syntax.styles";
+function lineNumbers(value: readonly number[]): readonly number[] {
+  if (!Array.isArray(value) || value.some((line) => !Number.isInteger(line) || line < 1)) throw new RangeError("Code line numbers must be positive integers");
+  return Object.freeze([...new Set(value)]);
+}
+/** Escaped, highlighted source with exact copy text and application-owned line references.
+ * @slot header - Content above the filename and actions.
+ * @slot start - Leading filename-row content.
+ * @slot end - Trailing filename-row controls.
+ * @slot footer - Supporting content below the code.
+ * @slot empty - Empty-source content.
+ * @csspart root - Complete code block.
+ * @csspart header - Filename and action row.
+ * @csspart code - Native source element.
+ * @csspart line - Source line.
+ * @csspart line-number - Keyboard-accessible reference action.
+ * @csspart footer - Supporting content container.
+ * @fires {CustomEvent<{action:"reference-line",line:number}>} acme-request - Explicit line-reference request.
+ * @fires {CustomEvent<{code:"highlight",message:string}>} acme-error - Highlighting failed; plain source remains visible.
  */
-
-export class AcmeCodeBlock extends AcmeElement {
-  static styles = [sharedCss, codeBlockCss, codeBlockStructureCss];
-  /** The paste destination shown in the bar; empty hides the bar. */
-  @property() filename = "";
-  /** The language for highlighting (`jsx`, `tsx`, `json`, `bash`, `diff`, …). */
-  @property() language = "";
-  @property({ type: Boolean, attribute: "hide-line-numbers" }) hideLineNumbers = false;
-  /** One-based lines under discussion. */
-  @property({ converter: numbers, attribute: "highlighted-lines-numbers" }) highlightedLinesNumbers: number[] = [];
-  /** One-based added lines. */
-  @property({ converter: numbers, attribute: "added-lines-numbers" }) addedLinesNumbers: number[] = [];
-  /** One-based removed lines. */
-  @property({ converter: numbers, attribute: "removed-lines-numbers" }) removedLinesNumbers: number[] = [];
-  /** Language options for a select in the bar: `[{ "label", "value" }]` or `{ "options": [...], "value": "js" }`. */
-  @property({ converter: options }) switcher: Switch = [];
-  /** Language options as tabs above the bar instead of the select. */
-  @property({ converter: options }) tabs: Switch = [];
-  /** The current language of the switcher or the tabs. */
-  @property({ attribute: "switcher-value" }) switcherValue = "";
-  /** Adds an Open in v0 action in a foot: `ask` is a link, `build` a split button. */
-  @property() v0: "" | "ask" | "build" = "";
-  /** The source; when empty the element's text content is the source. */
-  @property() code = "";
-  /** The one-based line a reader referenced by pressing its number. */
-  @property({ type: Number, attribute: "referenced-line" }) referencedLine = 0;
-  @property({ attribute: "aria-label" }) label = "";
-  @query(".code-block") private root!: HTMLElement;
-  @query("acme-copy-button") private button?: AcmeCopyButton;
-  private interaction = new Interaction(this);
-
-  get source() {
-    return this.code ? this.code.replace(/^\n/, "").replace(/\s+$/, "") : sourceOf(this);
+export class AcmeCodeBlock extends AcmeSemanticElement {
+  static styles = [sharedCss, codeBlockSurfaceCss, syntaxCss];
+  @atomState() @property({ noAccessor: true, useDefault: true }) code = "";
+  @atomState() @property({ noAccessor: true, useDefault: true }) language = "";
+  @atomState() @property({ noAccessor: true, useDefault: true }) filename = "";
+  @atomState() @property({ noAccessor: true, attribute: "line-numbers", converter: boolish, useDefault: true }) lineNumbers = true;
+  @atomState() @property({ noAccessor: true, converter: boolish, useDefault: true }) copyable = true;
+  @atomState() @property({ noAccessor: true, type: Boolean }) wrap = false;
+  @atomState() private highlights: readonly number[] = Object.freeze([]);
+  /** @default [] */
+  @property({ noAccessor: true, type: Array, attribute: "highlighted-lines", useDefault: true }) get highlightedLines() {
+    return this.highlights;
   }
-
-  private opts(s: Switch): CodeBlockOption[] {
-    return Array.isArray(s) ? s : (s.options ?? []);
+  set highlightedLines(value: readonly number[]) {
+    const old = this.highlights;
+    this.highlights = lineNumbers(value);
+    this.requestUpdate("highlightedLines", old);
   }
-
-  private get value() {
-    return this.switcherValue || (!Array.isArray(this.switcher) && this.switcher.value) || (!Array.isArray(this.tabs) && this.tabs.value) || "";
+  @atomState() private additions: readonly number[] = Object.freeze([]);
+  /** @default [] */
+  @property({ noAccessor: true, type: Array, attribute: "added-lines", useDefault: true }) get addedLines() {
+    return this.additions;
   }
-
-  updated() {
-    this.interaction.attach(this.root);
+  set addedLines(value: readonly number[]) {
+    const old = this.additions;
+    this.additions = lineNumbers(value);
+    this.requestUpdate("addedLines", old);
   }
-
-  /** Copies the source, as clicking the button does. The button owns the clipboard write, the
-   *  one-second check and the error notification. */
-  copy(): Promise<void> {
-    return this.button ? this.button.copy() : Promise.reject(new Error("The copy action is not available"));
+  @atomState() private removals: readonly number[] = Object.freeze([]);
+  /** @default [] */
+  @property({ noAccessor: true, type: Array, attribute: "removed-lines", useDefault: true }) get removedLines() {
+    return this.removals;
   }
-
-  private reference(n: number) {
-    this.referencedLine = this.referencedLine === n ? 0 : n;
-    if (typeof history !== "undefined") history.replaceState(null, "", this.referencedLine ? `#L${n}` : location.pathname + location.search);
-    this.dispatchEvent(new CustomEvent("acme-reference", { detail: { line: this.referencedLine }, bubbles: true, composed: true }));
+  set removedLines(value: readonly number[]) {
+    const old = this.removals;
+    this.removals = lineNumbers(value);
+    this.requestUpdate("removedLines", old);
   }
-
-  /** The composed acme-select and acme-segmented-control fire `acme-change` of their own, which would reach a
-   *  listener on this element beside ours. Theirs stops here; ours carries the block's own value. */
-  private switched(e: CustomEvent) {
-    e.stopPropagation();
-    this.switchTo(e.detail.value);
+  @atomState() private reference?: number;
+  @property({ noAccessor: true, attribute: "referenced-line", converter: numberAttribute }) get referencedLine() {
+    return this.reference;
   }
-
-  private switchTo(v: string) {
-    this.switcherValue = v;
-    this.dispatchEvent(new CustomEvent("acme-change", { detail: { value: v }, bubbles: true, composed: true }));
+  set referencedLine(value: number | undefined) {
+    if (value !== undefined && (!Number.isInteger(value) || value < 1)) throw new RangeError("Referenced line must be a positive integer");
+    const old = this.reference;
+    this.reference = value;
+    this.requestUpdate("referencedLine", old);
   }
-
+  @atomState() private focusedLine = 1;
+  private readonly places = new Places(this, { places: ["header", "start", "end", "footer", "empty"] });
+  private readonly messages = new StoreSelector(this, () => messageCatalogs);
+  private readonly highlighted = createAtom(() => {
+    try {
+      return { lines: tokenLines(this.code, this.language), error: undefined };
+    } catch (error) {
+      return { lines: this.code.split("\n").map((line) => [line]), error: error instanceof Error ? error.message : String(error) };
+    }
+  });
+  private readonly updates = new StoreSelector(this, () => this.highlighted);
+  private reported?: object;
+  private recoverLineFocus = false;
+  private readonly decorations = createAtom(() => ({ highlighted: new Set(this.highlightedLines), added: new Set(this.addedLines), removed: new Set(this.removedLines) }));
+  protected willUpdate(changed: Map<PropertyKey, unknown>) {
+    if (changed.has("code") || changed.has("lineNumbers")) {
+      const active = deepActiveElement(this.ownerDocument);
+      this.recoverLineFocus = active?.getRootNode() === this.renderRoot && active?.getAttribute("part") === "line-number";
+    }
+  }
+  private text(key: string, fallback: string) {
+    return message(this.themeContext.scope.effective.get().locale, "codeBlock." + key, fallback);
+  }
+  protected get semanticDefaults() {
+    return { role: "group", label: this.filename || this.text("source", "Code source") };
+  }
+  private referenceLine(line: number) {
+    this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "reference-line", line }), bubbles: true, composed: true, cancelable: true }));
+  }
+  private get rows() {
+    return [...this.renderRoot.querySelectorAll<HTMLElement>("[part=line]")];
+  }
+  /** Scrolls an existing one-based line into the code viewport without changing reference state. */
+  scrollToLine(line: number) {
+    if (!Number.isInteger(line) || line < 1) throw new RangeError("Code line must be a positive integer");
+    void this.updateComplete.then(() => {
+      if (!this.isConnected) return;
+      const row = this.rows[line - 1],
+        viewport = this.renderRoot.querySelector<AcmeScrollViewport>("acme-scroll-viewport")?.getViewport();
+      if (!row || !viewport) return;
+      const box = row.getBoundingClientRect(),
+        view = viewport.getBoundingClientRect();
+      if (box.top < view.top) viewport.scrollTop -= view.top - box.top;
+      else if (box.bottom > view.bottom) viewport.scrollTop += box.bottom - view.bottom;
+    });
+  }
+  private key = (event: KeyboardEvent) => {
+    const button = event.currentTarget as HTMLButtonElement;
+    let line = Number(button.dataset.line);
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    switch (event.key) {
+      case "ArrowDown":
+        line++;
+        break;
+      case "ArrowUp":
+        line--;
+        break;
+      case "Home":
+        line = 1;
+        break;
+      case "End":
+        line = this.highlighted.get().lines.length;
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    line = Math.max(1, Math.min(this.highlighted.get().lines.length, line));
+    this.focusedLine = line;
+    void this.updateComplete.then(() => {
+      this.rows[line - 1]?.querySelector<HTMLButtonElement>("button")?.focus({ preventScroll: true });
+      this.scrollToLine(line);
+    });
+  };
+  protected updated() {
+    if (this.recoverLineFocus) {
+      this.recoverLineFocus = false;
+      const line = Math.min(this.focusedLine, this.highlighted.get().lines.length);
+      const target = this.rows[line - 1]?.querySelector<HTMLButtonElement>("button");
+      if (target) target.focus({ preventScroll: true });
+      else this.renderRoot.querySelector<HTMLElement>("acme-copy-button,acme-scroll-viewport,[part=root]")?.focus({ preventScroll: true });
+    }
+    const model = this.highlighted.get();
+    if (model !== this.reported) {
+      this.reported = model;
+      if (model.error) this.dispatchEvent(new CustomEvent("acme-error", { detail: Object.freeze({ code: "highlight", message: model.error }), bubbles: true, composed: true }));
+    }
+  }
   render() {
-    const source = this.source;
-    const lines = tokenLines(source, this.language);
-    const flag = (list: number[], n: number) => (list.length ? String(list.includes(n)) : nothing);
-    const copyButton = (floating: boolean) => html`<acme-copy-button
-      class=${floating ? "floating" : ""}
-      variant=${floating ? "secondary" : "tertiary"}
-      shape="square"
-      size="small"
-      aria-label="Copy to clipboard"
-      value=${this.source}
-      part="copy"
-      ><slot name="icon" slot="start"></slot
-    ></acme-copy-button>`;
-    const switcher = this.opts(this.switcher);
-    const tabs = this.opts(this.tabs);
-    const prompt = `${V0}${encodeURIComponent(v0Prompt(source))}`;
-    return html`<div class=${this.cls("code-block", { "with-bar": !!this.filename, "hide-numbers": this.hideLineNumbers, ask: this.v0 === "ask", build: this.v0 === "build" })} aria-label=${this.label || nothing} part="frame">
-      ${
-        tabs.length
-          ? html`<div class="strip" style="scrollbar-width:none;-ms-overflow-style:none">
-              <acme-segmented-control size="small" value=${this.value || nothing} aria-label="Language" @acme-change=${this.switched}
-                >${tabs.map((o) => html`<acme-segmented-control-item value=${o.value}>${o.label}</acme-segmented-control-item>`)}</acme-segmented-control
-              >
-            </div>`
-          : nothing
-      }
-      ${
-        this.filename
-          ? html`<div class="bar">
-              <div class="name"><div class="file-icon" aria-hidden="true">${fileIcon(this.filename, this.language)}</div><span class="filename">${this.filename}</span></div>
-              <div class="actions">
-                ${
-                  switcher.length
-                    ? html`<acme-select
-                        class="switcher"
-                        size="small"
-                        .value=${this.value || undefined}
-                        aria-label="Language"
-                        @acme-change=${this.switched}
-                      >${switcher.map((option) => html`<acme-option value=${option.value}>${option.label}</acme-option>`)}</acme-select>`
-                    : nothing
-                }
-                ${copyButton(false)}
-              </div>
-            </div>`
-          : copyButton(true)
-      }
-      <div class="content"><pre class="pre"><code class="body" style="font-feature-settings:'liga' off">${lines.map((l, i) => {
-        const n = i + 1;
-        return html`<div class="line" id=${`L${n}`} data-highlighted=${flag(this.highlightedLinesNumbers, n)} data-added=${flag(this.addedLinesNumbers, n)} data-removed=${flag(this.removedLinesNumbers, n)} data-active=${this.referencedLine === n ? "true" : nothing}><button class="ln" type="button" tabindex="-1" aria-hidden="true" aria-label="Add line anchor to the URL" @click=${() => this.reference(n)}>${n}</button><div class="tokens">${l}</div></div>`;
-      })}</code></pre></div>
-      ${
-        this.v0
-          ? html`<div class="foot">
-              ${
-                this.v0 === "build"
-                  ? html`<acme-split-button variant="secondary" size="small" menu-label="Open in v0" @acme-request=${(event: CustomEvent<{ action: string }>) => {
-                      if (event.detail.action === "primary" || event.detail.action === "select") window.open(prompt, "_blank", "noopener");
-                    }}
-                      ><div class="v0">${v0Mark}<span class="sr">Open in v0</span></div><acme-split-button-item slot="items" value="open">Open in v0</acme-split-button-item></acme-split-button
-                    >`
-                  : html`<acme-button href=${prompt} variant="secondary" size="small" part="v0"><div class="v0">${v0Mark}<span class="sr">Open in v0</span></div></acme-button>`
-              }
-            </div>`
-          : nothing
-      }
-    </div>`;
+    const model = this.highlighted.get(),
+      header = !!this.filename || this.places.has("start") || this.places.has("end"),
+      tabLine = Math.min(Math.max(1, this.focusedLine), model.lines.length);
+    const copy = () => html`<acme-copy-button variant="tertiary" size="small" .value=${this.code}></acme-copy-button>`;
+    return html`<div part="root" class="root" tabindex="-1" ?data-wrap=${this.wrap} ?data-numbers=${this.lineNumbers}><slot name="header"></slot>${header ? html`<div part="header"><slot name="start"></slot>${this.filename ? html`<span class="filename"><acme-description-icon size="16px"></acme-description-icon><span>${this.filename}</span></span>` : nothing}<slot name="end"></slot>${this.copyable ? copy() : nothing}</div>` : this.copyable ? html`<span class="floating">${copy()}</span>` : nothing}${
+      this.code
+        ? html`<acme-scroll-area orientation=${this.wrap ? "vertical" : "both"}><acme-scroll-viewport aria-label=${this.text("source", "Code source")}><pre><code part="code">${model.lines.map(
+            (line, index) => {
+              const number = index + 1;
+              return html`<span part="line" data-line=${number} data-highlighted=${this.decorations.get().highlighted.has(number) ? "true" : nothing} data-added=${this.decorations.get().added.has(number) ? "true" : nothing} data-removed=${this.decorations.get().removed.has(number) ? "true" : nothing} data-active=${this.referencedLine === number ? "true" : nothing}>${
+                this.lineNumbers
+                  ? html`<button part="line-number" data-line=${number} type="button" tabindex=${tabLine === number ? 0 : -1} aria-current=${this.referencedLine === number ? "true" : nothing} aria-label=${this.text("reference", "Reference line {line}").replace("{line}", String(number))} @focus=${() => {
+                      this.focusedLine = number;
+                    }} @keydown=${this.key} @click=${() => this.referenceLine(number)}>${number}</button>`
+                  : nothing
+              }<span class="tokens">${line}</span></span>`;
+            },
+          )}</code></pre></acme-scroll-viewport></acme-scroll-area>`
+        : html`<div class="empty"><slot name="empty">${this.text("empty", "No code")}</slot></div>`
+    }<div part="footer" ?hidden=${!this.places.has("footer")}><slot name="footer"></slot></div></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-code-block": AcmeCodeBlock;

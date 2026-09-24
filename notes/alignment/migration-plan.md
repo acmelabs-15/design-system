@@ -378,3 +378,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M21 Browser and Snippet — 2026-09-23
 
 [Acceptance](evidence/m21-snippet-browser-2026-09-23.json) closes RC-02/RC-06 at the native/Lit boundary. Source and compiled checks pass seven cases per engine, live documentation passes, and all 870 unit tests pass. Shared Scroll Viewport key handling is verified across physical arrows, RTL boundaries and descendant input isolation. Code Block, JSON View, Markdown, Book and Video remain.
+
+### M21 Code Block — 2026-09-23
+
+[Acceptance](evidence/m21-code-block-2026-09-23.json) closes RC-01 at the native/Lit boundary. Exact source, application-owned references, keyboard focus recovery, scrolling/wrapping, failure fallback and author content pass source/compiled checks in all engines. Live examples and the typography consumer are migrated; strict build/site and 866 tests pass. Continue RC-03/04/05/07.

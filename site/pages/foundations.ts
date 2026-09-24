@@ -182,9 +182,9 @@ export const typography: Doc = {
   examples: [],
   body: `${section(
     "Usage",
-    `<p>The type styles are classes in <code>tokens.css</code>. Each class presets a combination of <code>font-size</code>, <code>line-height</code>, <code>letter-spacing</code> and <code>font-weight</code>. The families are Google Sans Flex for text and Google Sans Code for labels, numbers and code; the scale, the weights and the line heights are the system's.</p><p style="margin-top:16px">For the <strong>Subtle</strong> and <strong>Strong</strong> modifiers, nest a <code>&lt;strong&gt;</code> element inside the element that carries the class:</p><acme-code-block language="html" aria-label="Copy 16 with Strong" style="display:block;margin-top:16px">${esc(`<p class="text-copy-16">
-  Copy 16 <strong>with Strong</strong>
-</p>`)}</acme-code-block>`,
+    `<p>The type styles are classes in <code>tokens.css</code>. Each class presets a combination of <code>font-size</code>, <code>line-height</code>, <code>letter-spacing</code> and <code>font-weight</code>. The families are Google Sans Flex for text and Google Sans Code for labels, numbers and code; the scale, the weights and the line heights are the system's.</p><p style="margin-top:16px">For the <strong>Subtle</strong> and <strong>Strong</strong> modifiers, nest a <code>&lt;strong&gt;</code> element inside the element that carries the class:</p><acme-code-block language="html" aria-label="Copy 16 with Strong" style="display:block;margin-top:16px" code="${esc(`<p class="text-copy-16">
+  With <strong>Strong</strong> content.
+</p>`).replaceAll('"', "&quot;")}"></acme-code-block>`,
   )}${section(
     "Headings",
     ttable(

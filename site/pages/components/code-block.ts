@@ -1,122 +1,56 @@
-// Docs page: Code Block — mirrors https://vercel.com/geist/code-block
 import type { Doc } from "../../site";
-
-const component = `function MyComponent(props) {
-  return (
-    &lt;div&gt;
-      &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;
-      &lt;p&gt;This is an example React component.&lt;/p&gt;
-    &lt;/div&gt;
-  );
-}`;
-
-const greeting = `function MyComponent(props) {
-	return (
-	  &lt;div&gt;
-		&lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;
-		&lt;p&gt;Good to see you&lt;/p&gt;
-	  &lt;/div&gt;
-	);
-  }`;
-
-const languages = `[{"label":"JavaScript","value":"js"},{"label":"TypeScript","value":"ts"},{"label":"Next.js","value":"next"},{"label":"Lua","value":"lua"}]`;
-
-// The switcher script: the parent swaps the source, the filename and the language, as the React example re-renders the block.
-const switcherScript = `const block = root.querySelector('acme-code-block');
-const code = "function MyComponent(props) {\\n\\treturn (\\n\\t  <div>\\n\\t\\t<h1>Hello, {props.name}!</h1>\\n\\t\\t<p>Good to see you</p>\\n\\t  </div>\\n\\t);\\n  }";
-const codeTs = "function MyComponent(props: Props) {\\n\\treturn (\\n\\t  <div>\\n\\t\\t<h1>Hello, {props.name}!</h1>\\n\\t\\t<p>Good to see you</p>\\n\\t  </div>\\n\\t);\\n  }";
-const codeLua = "local b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'\\nlocal decode_table = ffi.new 'uint8_t[256]'\\nfor i = 1, #b64 do\\n  decode_table[str_byte(b64, i)] = i - 1 -- Base64 values start from 0\\nend\\n\\nfunction BloomFilter:has(key)\\n  local ptr = self.ptr -- uint8_t* pointer to start of base64 string\\n  for byte_offset, bit_offset in self:iterator(key) do\\n    local sextet = decode_table[ptr[byte_offset]]\\n    if band(sextet, lshift(1, bit_offset)) == 0 then\\n      return false\\n    end\\n  end\\n  return true\\nend";
-const files = {
-  js: ['language-switcher.jsx', 'jsx', code],
-  ts: ['language-switcher.tsx', 'tsx', codeTs],
-  next: ['language-switcher.tsx', 'next', codeTs],
-  lua: ['bloom-filter.lua', 'lua', codeLua],
-};
-block.addEventListener('acme-change', (e) => {
-  const [filename, language, source] = files[e.detail.value];
-  block.filename = filename;
-  block.language = language;
-  block.code = source;
-});`;
-
+import { esc } from "../../site";
+const attribute = (value: string) => esc(value).replaceAll('"', "&quot;");
+const source = "export function greet(name: string) {\n  return `Hello, ${name}!`;\n}\n";
+const block = (attributes = "") => `<acme-code-block language="ts" filename="greet.ts" code="${attribute(source)}" ${attributes}></acme-code-block>`;
 export const doc: Doc = {
   id: "code-block",
   title: "Code Block",
-  lede: "The code block Vercel and Next.js use across their sites and docs.",
+  lede: "Highlighted source with exact copying, line references and composable controls.",
   tags: ["acme-code-block"],
   examples: [
+    { h: "Source file", html: block() },
+    { h: "Highlighted lines", html: block('highlighted-lines="[2]"') },
     {
-      h: "Default",
-      html: `<acme-code-block aria-label="Hello world" filename="Table.jsx" language="jsx">// Usage:
-//   enabled by \`--debug-prerender\`
-//   route patterns: [id...] or [...id]
-//   NODE_OPTIONS='--debug-prerender' node
-${component}</acme-code-block>`,
+      h: "Added and removed lines",
+      html: '<acme-code-block filename="config.ts" language="ts" code="const oldValue = false;&#10;const newValue = true;&#10;" removed-lines="[1]" added-lines="[2]"></acme-code-block>',
     },
     {
-      h: "No filename",
-      html: `<acme-code-block aria-label="Hello world" language="jsx">${component}</acme-code-block>`,
+      h: "Line references",
+      p: "A line button requests a reference. The application decides how to store or link it.",
+      html: block() + '<output aria-live="polite"></output>',
+      script:
+        'const block=root.querySelector("acme-code-block");block.addEventListener("acme-request",event=>{if(event.detail.action==="reference-line"){block.referencedLine=event.detail.line;root.querySelector("output").textContent="Referenced line "+event.detail.line;}});',
     },
     {
-      h: "Highlighted lines",
-      html: `<acme-code-block aria-label="Hello world" filename="highlighted.jsx" highlighted-lines-numbers="[1, 4]" language="jsx">${component}</acme-code-block>`,
+      h: "Application language selector",
+      html: '<acme-code-block filename="greet.ts" language="ts"><acme-select slot="end" size="small" value="ts" aria-label="Language"><acme-option value="ts">TypeScript</acme-option><acme-option value="js">JavaScript</acme-option></acme-select></acme-code-block>',
+      script: `const block=root.querySelector('acme-code-block');const files={ts:${JSON.stringify(source)},js:${JSON.stringify(source.replace(": string", ""))}};block.code=files.ts;root.querySelector('acme-select').addEventListener('acme-change',event=>{const language=event.detail.value;block.language=language;block.filename='greet.'+language;block.code=files[language];});`,
     },
+    { h: "Wrapping", html: '<acme-code-block wrap line-numbers="false" code="' + attribute('const message = "' + "A long source line. ".repeat(12) + '";') + '" language="js"></acme-code-block>' },
     {
-      h: "Added & removed lines",
-      html: `<acme-code-block aria-label="Hello world" filename="next.config.js" added-lines-numbers="[5]" removed-lines-numbers="[2, 3, 4]" language="jsx">module.exports = {
-  experimental: {
-    appDir: true,
-  },
-  appDir: true,
-}</acme-code-block>`,
+      h: "Header and footer content",
+      html: `<acme-code-block filename="greet.ts" code="${attribute(source)}" language="ts"><acme-text slot="header">A reusable greeting function</acme-text><acme-text slot="footer">The caller supplies the name.</acme-text></acme-code-block>`,
     },
-    {
-      h: "Referenced lines",
-      p: "A line number is a link to that line: press one and the line is marked.",
-      html: `<acme-code-block aria-label="Hello world" language="jsx">function MyComponent(props) {
-  return (
-    &lt;div&gt;
-      &lt;h1&gt;Count: {props.count}&lt;/h1&gt;
-    &lt;/div&gt;
-  );
-}</acme-code-block>`,
-    },
-    {
-      h: "Language switcher",
-      html: `<acme-code-block aria-label="Hello world" filename="language-switcher.jsx" language="jsx" switcher='${languages}' switcher-value="js">${greeting}</acme-code-block>`,
-      script: switcherScript,
-    },
-    {
-      h: "Language switcher with tabs",
-      p: "Set `tabs` instead of `switcher` for a tabbed language switcher in place of the select.",
-      html: `<acme-code-block aria-label="Hello world" filename="language-switcher.jsx" language="jsx" tabs='${languages}' switcher-value="js">${greeting}</acme-code-block>`,
-      script: switcherScript,
-    },
-    {
-      h: "Hidden line numbers",
-      html: `<acme-code-block aria-label="Hello world" filename="hidden-line-numbers.jsx" hide-line-numbers language="jsx">${greeting}</acme-code-block>`,
-    },
-    {
-      h: "Open in v0",
-      p: "Set `v0` to add an Open in v0 action to the toolbar.",
-      html: `<div class="vstack" style="gap:16px"><acme-code-block aria-label="Hello world" filename="Table.jsx" language="jsx" v0="ask">${component}</acme-code-block><acme-code-block aria-label="Hello world" filename="Table.jsx" language="jsx" v0="build">${component}</acme-code-block></div>`,
-    },
+    { h: "Read without copying", html: block('copyable="false"') },
+    { h: "Empty", html: '<acme-code-block filename="empty.ts"><span slot="empty">This file has no source yet.</span></acme-code-block>' },
   ],
   practices: {
-    "When to use": [
-      "A code block is for multi-line source the reader scans or pastes, with highlighting.",
-      "One inline token (an env var, a function name, a file path) is Inline Code.",
-      "A shell command or a one-line key to copy is a Snippet: it brings the prompt glyph and the copy control.",
+    Source: [
+      "The code property or attribute is the only source. Source text is escaped and copied exactly, including leading and trailing whitespace.",
+      "Registered languages include TypeScript, TSX, JavaScript, JSX, HTML, CSS, JSON, shell, diff and plain text. Unknown languages render as plain text.",
+      "Highlighting failure leaves safe plain source visible and emits acme-error.",
     ],
-    Behavior: [
-      "Always set the language (tsx, bash, json, diff); highlighting is the reason to pick a code block over a plain pre.",
-      "Highlight only the lines the text talks about. When every line is highlighted, none is.",
-      "Mark added and removed lines with the diff language or the added and removed props; a comment such as // added breaks copy and paste.",
-      "Show the filename bar when the snippet has a paste destination (app/page.tsx, vercel.json); leave it off for a passing example.",
+    Composition: [
+      "Use the end slot for Select or other file controls. The application owns file and language selection.",
+      "Use the header and footer slots for supporting content. Layout components own outside spacing.",
+      "Set --acme-code-block-max-height when a tall block needs an internal scroll viewport.",
     ],
-    Content: [
-      "Snippets stay runnable: real code, never pseudo-syntax, and no $ before a shell command (Snippet draws the prompt, so a $ in the text doubles it).",
-      "Prose around the block is sentence case, and a CLI flag in prose is inline code (--prebuilt).",
+    Accessibility: [
+      "One line-number button is in the tab sequence. Arrow keys, Home and End move between line references; Enter or Space requests the focused line.",
+      "Line-number actions do not change the page URL. The application can set referencedLine after accepting a request.",
+      "Overlapping line treatments keep all supplied flags. The visible background priority is referenced, removed, added, then highlighted.",
+      "Use copyable=false when the source has no useful copy action; reading and scrolling remain available.",
     ],
   },
 };

@@ -38,6 +38,3 @@ export function tokenLines(code: string, lang: string): (TemplateResult | string
   }
   return lines;
 }
-
-/** The element's text, without the leading newline of a template and the trailing whitespace. */
-export const sourceOf = (el: Element) => (el.textContent ?? "").replace(/^\n/, "").replace(/\s+$/, "");
