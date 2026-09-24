@@ -140,7 +140,7 @@ export * from "./components/simple-grid/simple-grid";
 export * from "./components/skeleton/skeleton";
 export * from "./components/slider/slider";
 export * from "./components/snippet/snippet";
-export * from "./components/spark/spark";
+export * from "./components/sparkline/sparkline";
 export * from "./components/spinner/spinner";
 export * from "./components/split-button/split-button";
 export * from "./components/split-button-item/split-button-item";

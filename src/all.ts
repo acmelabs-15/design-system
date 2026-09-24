@@ -138,7 +138,7 @@ import "./define/simple-grid";
 import "./define/skeleton";
 import "./define/slider";
 import "./define/snippet";
-import "./define/spark";
+import "./define/sparkline";
 import "./define/spinner";
 import "./define/split-button";
 import "./define/split-button-item";

@@ -32,8 +32,6 @@ const MAP: [string, RegExp][] = [
   ["menu", /^\.menu/],
   ["video", /^\.progress/], // Video scrubber rules; Progress owns a separate stylesheet.
   ["avatar", /^\.avatar/],
-  ["legend", /^(\.legend|\.stat-legend|\.series-|\.chart-head)/],
-  ["chart", /^\.chart\b/],
   ["rail", /^(\.with-rail|\.rail)/],
   ["search", /^\.search/],
   ["info-ic", /^(\.info-ic|\.check-circle)/],

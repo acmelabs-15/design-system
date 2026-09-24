@@ -17617,10 +17617,10 @@
       "import": "./dist/generated/icons/classes/space-dashboard-icon.js",
       "default": "./dist/generated/icons/classes/space-dashboard-icon.js"
     },
-    "./components/spark": {
-      "types": "./dist/components/spark/spark.d.ts",
-      "import": "./dist/components/spark/spark.js",
-      "default": "./dist/components/spark/spark.js"
+    "./components/sparkline": {
+      "types": "./dist/components/sparkline/sparkline.d.ts",
+      "import": "./dist/components/sparkline/sparkline.js",
+      "default": "./dist/components/sparkline/sparkline.js"
     },
     "./components/spatial-audio-icon": {
       "types": "./dist/generated/icons/classes/spatial-audio-icon.d.ts",
@@ -21693,6 +21693,7 @@
     "@tanstack/markdown": "^0.0.13",
     "@tanstack/pacer": "^0.22.0",
     "@zag-js/remove-scroll": "^1.43.3",
+    "d3-scale": "4.0.2",
     "focus-trap": "8.2.2",
     "lit": "^3.3.3",
     "match-sorter": "8.3.0",
@@ -21710,6 +21711,7 @@
     "@tanstack/react-virtual": "3.14.0",
     "@tanstack/table-core": "9.2.4",
     "@types/bun": "^1.4.2",
+    "@types/d3-scale": "4",
     "@types/node": "^26.5.0",
     "@types/react": "19",
     "@types/react-dom": "19",

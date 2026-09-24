@@ -60,15 +60,15 @@ Acceptance: zero/one/many results, out-of-range supplied page, unknown totals, e
 
 ## D-03 Chart
 
-acme-chart props type: line|bar|area=line; data: readonly `Record<string,unknown>`[]=[], x="x", series: readonly { key, label, color?, formatter? }[] (empty means no plotted series); height: CSS dimension="180px" baseline; points=false; grid=true; tooltip=true; label required. The application owns data and transforms. Use TanStack Charts and shared state; no alternative plotting package.
+acme-chart props type: line|bar|area=line; data: readonly `Record<string,unknown>`[]=[], x="x", series: readonly { key, label, color?, formatter? }[] (empty means no plotted series); height: CSS dimension="180px" baseline; points=false; grid=true; tooltip=true; interactive=false; label required. The application owns data and transforms. Use TanStack Charts and shared state; no alternative plotting package.
 
-Slots header/legend/tooltip/empty; parts root/plot/axes/grid/tooltip. Tooltip content is author-owned and safe; axis/value formatting follows supplied formatters/locale. acme-request { action:"point", seriesKey, index } only when a documented interaction is enabled; a static chart is not an automatic selection control.
+Slots header/legend/tooltip/empty; parts root/plot/axes/grid/tooltip. Tooltip content is author-owned and safe; axis/value formatting follows supplied formatters/locale. acme-request { action:"point", seriesKey, index } only when interactive=true; a static chart is not an automatic selection control.
 
 Keyboard/accessible summary and data alternative are required. Loading/empty/error/zero datasets remain distinct. Gaps/missing data are not zeros. Multiple series, numerical/time/category axes and combined interactions must use supported installed package APIs; extensions beyond the reviewed three types require new evidence. Retain house visual baseline and explicit shadow/tooltip rules.
 
 ## D-04 Sparkline and Legend
 
-acme-sparkline props values: readonly number[]=[], label="", direction?: up|down|flat; sentiment: positive|negative|neutral=neutral proposed. root/line/fill parts; no axes/actions by default. Use the same chart/formatting primitives as Chart; a missing/nonfinite value creates a documented gap, not silent zero. Remove Spark name. An accessible label/summary is required unless decorative inside an already named Stat.
+acme-sparkline props values: readonly (number|null)[]=[], label="", direction?: up|down|flat; sentiment: positive|negative|neutral=neutral proposed. root/line/fill parts; no axes/actions by default. Use the same chart/formatting primitives as Chart; a missing/nonfinite value creates a documented gap, not silent zero. Remove Spark name. An accessible label/summary is required unless decorative inside an already named Stat.
 
 acme-legend contains acme-legend-item; root orientation horizontal|vertical=horizontal, item value:string required, label="", color?:CSS color, hidden=false. Default item content; root/item/swatch/label parts. Passive by default. An interactive legend is composed from Checkbox/Toggle Button and emits those controls' events; Legend does not create a second series-selection store. Data links to Chart remain application-owned.
 

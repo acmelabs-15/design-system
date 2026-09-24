@@ -10,8 +10,8 @@
   --st-queued: #eaeaea;
   --st-online: #0cce6b;
   --chart-1: #3392ff;
-  --chart-2: #ffb224;
-  --chart-3: #52aeff;
+  --chart-2: var(--ds-amber-900);
+  --chart-3: var(--ds-blue-900);
   --chart-4: #e5484d;
   --chart-5: #7d7d7d;
   --mac-red: #fe5f57;
@@ -601,11 +601,6 @@ html {
 
 .hue-gray {
   color: var(--ds-gray-900);
-}
-
-.table td[class*="hue-"] {
-  font-family: var(--acme-font-mono);
-  font-variant-numeric: tabular-nums;
 }
 
 @media (width <= 560px) {

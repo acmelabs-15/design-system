@@ -366,3 +366,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M19 completion — 2026-09-23
 
 [Table/Pagination acceptance](evidence/m19-table-pagination-2026-09-23.json) closes M19 at its assigned boundaries. Native content, generated scoped CSS, coordinated result controls and both framework-owned consumer renderers pass source/compiled/fresh-package checks. The required feature combinations, 10,000-row virtualization and real experimental-worker lifecycle are recorded with their limits. Old data-driven Table and documentation-link Pagination interfaces and producers are removed. Continue M20: Chart, Sparkline, Legend and Flow Diagram.
+
+### M20 chart families — 2026-09-23
+
+[Chart/Sparkline/Legend acceptance](evidence/m20-chart-sparkline-legend-2026-09-23.json) closes D-03/D-04 at the native/Lit boundary. The typed engine, exact-value alternative, safe point information, theme contrast and primitive compositions pass the recorded gates. Spark and old Chart/Legend interfaces/producers are removed. Flow Diagram remains M20 work.

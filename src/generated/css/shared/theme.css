@@ -51,8 +51,8 @@
   --st-queued: #eaeaea;
   --st-online: #0cce6b;
   --chart-1: #3392ff;
-  --chart-2: #ffb224;
-  --chart-3: #52aeff;
+  --chart-2: var(--ds-amber-900);
+  --chart-3: var(--ds-blue-900);
   --chart-4: #e5484d;
   --chart-5: #7d7d7d;
   --mac-red: #fe5f57;
@@ -1594,6 +1594,8 @@
 :where([data-acme-appearance-boundary]), :host(:where([data-acme-appearance-boundary])) {
   color-scheme: light;
   --scrim: #f2f2f2cc;
+  --chart-2: var(--ds-amber-900);
+  --chart-3: var(--ds-blue-900);
   --bg: var(--ds-background-100);
   --surface: var(--ds-background-100);
   --surface-2: var(--ds-background-200);

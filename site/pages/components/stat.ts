@@ -6,7 +6,7 @@ export const doc: Doc = {
   id: "stat",
   title: "Stat",
   lede: "One composable family for a measurement and its context.",
-  tags: ["acme-stat", "acme-stat-label", "acme-stat-value", "acme-stat-unit", "acme-stat-description", "acme-stat-change", "acme-stat-footer", "acme-spark"],
+  tags: ["acme-stat", "acme-stat-label", "acme-stat-value", "acme-stat-unit", "acme-stat-description", "acme-stat-change", "acme-stat-footer"],
   examples: [
     {
       h: "Label value and unit",
@@ -28,7 +28,7 @@ export const doc: Doc = {
     },
     {
       h: "Composed displays",
-      html: '<acme-h-stack gap="8" flex-wrap="wrap"><acme-stat><acme-stat-label>Storage used</acme-stat-label><acme-stat-value>72<acme-stat-unit>GB</acme-stat-unit></acme-stat-value><acme-stat-footer><acme-meter label="Storage used" value="72" max="100" size="medium"></acme-meter><span>Of 100 GB available</span></acme-stat-footer></acme-stat><acme-stat><acme-stat-label>Recent activity</acme-stat-label><acme-stat-value>240</acme-stat-value><acme-stat-footer><acme-spark points="[1,3,2,5,4,6]"></acme-spark></acme-stat-footer><acme-stat-description>Activity increased over the last six samples.</acme-stat-description></acme-stat></acme-h-stack>',
+      html: '<acme-h-stack gap="8" flex-wrap="wrap"><acme-stat><acme-stat-label>Storage used</acme-stat-label><acme-stat-value>72<acme-stat-unit>GB</acme-stat-unit></acme-stat-value><acme-stat-footer><acme-meter label="Storage used" value="72" max="100" size="medium"></acme-meter><span>Of 100 GB available</span></acme-stat-footer></acme-stat><acme-stat><acme-stat-label>Recent activity</acme-stat-label><acme-stat-value>240</acme-stat-value><acme-stat-footer><acme-sparkline values="[1,3,2,5,4,6]"></acme-sparkline></acme-stat-footer><acme-stat-description>Activity increased over the last six samples.</acme-stat-description></acme-stat></acme-h-stack>',
     },
     {
       h: "Selectable statistics",

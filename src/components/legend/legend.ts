@@ -1,23 +1,29 @@
-import { legendStructureCss } from "../../generated/components/legend/legend-structure.styles";
 import { html } from "lit";
 import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
-import { legendCss } from "../../generated/components/legend/legend.styles";
-
-/** House legend: dot, label and a value; `list` stacks them. Items: acme-legend-item with `hue` or `series`. */
-
+import { legendSurfaceCss } from "../../generated/shared/legend-surface.styles";
+import { atomState } from "../../shared/atom-state";
+/** Passive series labels; applications compose selection controls when needed.
+ * @slot - Legend Item content.
+ * @csspart root - Legend arrangement.
+ */
 export class AcmeLegend extends AcmeElement {
-  static styles = [
-    sharedCss,
-    legendCss,
-    legendStructureCss,
-  ];
-  @property({ type: Boolean }) list = false;
+  static styles = [sharedCss, legendSurfaceCss];
+  @atomState() private axis: "horizontal" | "vertical" = "horizontal";
+  /** @default "horizontal" */
+  @property({ noAccessor: true, useDefault: true }) get orientation() {
+    return this.axis;
+  }
+  set orientation(value: "horizontal" | "vertical") {
+    if (value !== "horizontal" && value !== "vertical") throw new TypeError("Invalid Legend orientation");
+    const previous = this.axis;
+    this.axis = value;
+    this.requestUpdate("orientation", previous);
+  }
   render() {
-    return html`<div class=${this.cls("legend", { list: this.list })} part="legend"><slot></slot></div>`;
+    return html`<div part="root" data-kind="legend" data-orientation=${this.orientation}><slot></slot></div>`;
   }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     "acme-legend": AcmeLegend;

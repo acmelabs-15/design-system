@@ -1,0 +1,92 @@
+// Generated from compiled CSS. Edit its generator input.
+import { css } from "lit";
+export const chartSurfaceCss = css`:host {
+  min-inline-size: 0;
+  display: block;
+}
+
+figure {
+  gap: var(--acme-spacing-3);
+  flex-direction: column;
+  min-inline-size: 0;
+  margin: 0;
+  display: flex;
+}
+
+.plot-frame {
+  block-size: var(--_chart-height, 180px);
+  min-inline-size: 0;
+  position: relative;
+}
+
+[part="plot"] {
+  block-size: 100%;
+  inline-size: 100%;
+  font-family: var(--acme-font-mono);
+  color: var(--ds-gray-900);
+  font-size: 10px;
+}
+
+[part="plot"] svg {
+  display: block;
+  overflow: visible;
+}
+
+[part="plot"] svg:focus-visible {
+  outline: 2px solid var(--ds-focus-color);
+  outline-offset: 2px;
+}
+
+.empty {
+  block-size: 100%;
+  color: var(--ds-gray-900);
+  justify-content: center;
+  align-items: center;
+  font-size: .875rem;
+  display: flex;
+}
+
+.chart-tooltip {
+  --ts-chart-tooltip-background: var(--ds-background-100);
+  --ts-chart-tooltip-color: var(--ds-gray-1000);
+  --ts-chart-tooltip-border: 1px solid var(--ds-gray-400);
+  --ts-chart-tooltip-border-radius: var(--r);
+  --ts-chart-tooltip-shadow: var(--acme-shadow-4);
+  --ts-chart-tooltip-padding: var(--acme-spacing-3);
+  --ts-chart-tooltip-font: var(--acme-font-sans);
+}
+
+[part="tooltip"] {
+  font-family: var(--acme-font-sans);
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.tooltip-title {
+  font-weight: var(--acme-font-weight-600);
+  margin-block-end: var(--acme-spacing-1);
+}
+
+.tooltip-row {
+  align-items: center;
+  gap: var(--acme-spacing-2);
+  display: flex;
+}
+
+.tooltip-row b {
+  font-family: var(--acme-font-mono);
+  font-weight: var(--acme-font-weight-500);
+  margin-inline-start: auto;
+}
+
+.swatch {
+  border-radius: 50%;
+  flex: none;
+  block-size: 6px;
+  inline-size: 6px;
+}
+
+[hidden] {
+  display: none !important;
+}
+`;
