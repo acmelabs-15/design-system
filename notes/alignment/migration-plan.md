@@ -374,3 +374,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M20 Flow implementation checkpoint — 2026-09-23
 
 [Flow Diagram evidence](evidence/m20-flow-diagram-2026-09-23.json) records the viewer, worker delivery, package assets, normal/isolated compiled matrix and tested geometry sizes. One rapid-cancellation/navigation Firefox DOM-worker crash remains a final release gate. Independent M21 work may proceed; M26 must resolve or establish the exact external platform defect with an explicit supported-runtime disposition. This is not a passing final M20 acceptance.
+
+### M21 Browser and Snippet — 2026-09-23
+
+[Acceptance](evidence/m21-snippet-browser-2026-09-23.json) closes RC-02/RC-06 at the native/Lit boundary. Source and compiled checks pass seven cases per engine, live documentation passes, and all 870 unit tests pass. Shared Scroll Viewport key handling is verified across physical arrows, RTL boundaries and descendant input isolation. Code Block, JSON View, Markdown, Book and Video remain.

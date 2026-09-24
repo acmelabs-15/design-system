@@ -40,7 +40,7 @@ export const intro: Doc = {
     "/components/avatar",
     "Components",
     "Building blocks for any page.",
-    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system" width="100%"></acme-snippet><acme-button>${ic("groups", ' slot="start"')}Collaborate</acme-button><acme-icon-button aria-label="Shield" shape="square">${ic("shield")}</acme-icon-button><acme-theme-switcher size="small"></acme-theme-switcher><acme-field><span slot="label">Label</span><acme-input placeholder="Label" aria-label="Not a real input"></acme-input></acme-field></span>`,
+    `<span class="tile-comps"><acme-snippet text="bun add @acmelabs/design-system"></acme-snippet><acme-button>${ic("groups", ' slot="start"')}Collaborate</acme-button><acme-icon-button aria-label="Shield" shape="square">${ic("shield")}</acme-icon-button><acme-theme-switcher size="small"></acme-theme-switcher><acme-field><span slot="label">Label</span><acme-input placeholder="Label" aria-label="Not a real input"></acme-input></acme-field></span>`,
   )}${tile(
     "/colors",
     "Colors",

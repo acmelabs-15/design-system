@@ -1,9 +1,8 @@
 // Maps acme-browser (src/components/browser) to Geist Browser: the generator derives browser.styles.ts
 // from this. The frame (a small material, rounded by container width from the md breakpoint) holds
 // the header and the slotted content. The header is three sections: the traffic-light dots with the
-// navigation controls, the address pill with its copy button (a composed acme-button, tertiary tiny
-// square; only the icon size the browser adds is derived here), and an empty spacer hidden below lg.
-// The copy button's icon stack has a mapping of its own (browser-copy).
+// navigation controls, the address pill and an empty spacer hidden below lg.
+
 import { type GeistMap, has } from "../gen";
 
 export const geist: GeistMap = {
@@ -37,7 +36,6 @@ export const geist: GeistMap = {
               pick: has("w-full"),
               children: [
                 { ours: ".text", pick: has("truncate") },
-                { ours: "acme-icon-button", pick: (c) => c.tag === "button", extends: "button", part: "root", children: [{ ours: "", pick: 0, children: [{ ours: "", pick: 0, leaf: true }] }] },
               ],
             },
           ],

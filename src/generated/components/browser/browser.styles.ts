@@ -133,12 +133,6 @@ export const browserCss = css`.frame :where(.header) {
   font-weight: var(--acme-font-weight-550);
 }
 
-.frame :where(.header) :where(.section) :where(.address) :where(acme-icon-button) svg {
-  flex-shrink: 0;
-  width: .75rem;
-  height: .75rem;
-}
-
 .frame :where(.header) :where(.section):first-child, .frame :where(.header) :where(.spacer):first-child {
   justify-content: flex-start;
 }

@@ -1,58 +1,42 @@
-// Docs page: Snippet — mirrors https://vercel.com/geist/snippet
 import type { Doc } from "../../site";
-
-const COPY_TEXT = `# About
-Template for a full-featured Next.js AI chatbot
-
-# Requirements
-This template uses the Vercel AI Gateway to access multiple AI models through a unified interface. The default model is OpenAI GPT-4.1 Mini, with support for Anthropic, Google, and xAI models.`;
-
 export const doc: Doc = {
   id: "snippet",
   title: "Snippet",
-  lede: "A copyable snippet of code for the command line.",
+  lede: "Copyable command text with optional prompts and semantic color variants.",
   tags: ["acme-snippet"],
   examples: [
-    {
-      h: "Default",
-      html: `<acme-snippet text="npm init next-app" width="300px"></acme-snippet>`,
-    },
-    {
-      h: "Inverted",
-      html: `<acme-snippet dark text="npm init next-app" width="300px"></acme-snippet>`,
-    },
-    {
-      h: "Multi line",
-      html: `<acme-snippet text='["cd project", "now"]' width="100%"></acme-snippet>`,
-    },
-    {
-      h: "No prompt",
-      html: `<acme-snippet prompt="false" text="npm init next-app" width="300px"></acme-snippet>`,
-    },
-    {
-      h: "Callback",
-      html: `<acme-snippet text="npm init next-app" width="300px"></acme-snippet>`,
-      script: "root.querySelector('acme-snippet').addEventListener('acme-copy', () => alert('You copied the text!'))",
-    },
+    { h: "Command", html: '<acme-snippet text="bun add @acmelabs/design-system"></acme-snippet>' },
+    { h: "Multiple lines", html: '<acme-snippet text=\'["cd project","bun install","bun run dev"]\'></acme-snippet>' },
+    { h: "Output", html: '<acme-snippet prompt="false" text="https://example.com/releases"></acme-snippet>' },
+    { h: "Small", html: '<acme-snippet size="small" text="bun run build"></acme-snippet>' },
     {
       h: "Variants",
-      html: `<div class="vstack" style="align-items:stretch"><acme-snippet text="npm init next-app" variant="success" width="300px"></acme-snippet><acme-snippet text="npm init next-app" variant="error" width="300px"></acme-snippet><acme-snippet text="npm init next-app" variant="warning" width="300px"></acme-snippet></div>`,
+      html: '<acme-v-stack gap="3"><acme-snippet variant="success" text="Deployment complete" prompt="false"></acme-snippet><acme-snippet variant="warning" text="Review the output" prompt="false"></acme-snippet><acme-snippet variant="error" text="Build failed" prompt="false"></acme-snippet></acme-v-stack>',
     },
+    { h: "Theme scope", html: '<acme-theme appearance="dark"><acme-snippet text="bun run dev"></acme-snippet></acme-theme>' },
     {
-      h: "Review and copy a prompt",
-      p: "Open the help to read a longer prompt, then use the snippet's copy control.",
-      html: `<acme-toggle-tip><span slot="trigger">Review install prompt</span><pre style="max-width:100%;white-space:pre-wrap">${COPY_TEXT}</pre><acme-snippet text="Copy install prompt" prompt="false" width="100%"></acme-snippet></acme-toggle-tip>`,
-      script: "root.querySelector('acme-snippet').copyText=root.querySelector('pre').textContent;",
+      h: "Copy override",
+      p: "The visible description and copied source can differ. An explicitly empty copy-text copies an empty string.",
+      html: '<acme-snippet text="Copy the installation command" copy-text="bun add @acmelabs/design-system" prompt="false"></acme-snippet><output aria-live="polite"></output>',
+      script:
+        'root.querySelector("acme-snippet").addEventListener("acme-copy",()=>root.querySelector("output").textContent="Command copied");root.querySelector("acme-snippet").addEventListener("acme-error",()=>root.querySelector("output").textContent="Could not copy command");',
     },
+    { h: "Leading and trailing content", html: '<acme-snippet text="bun run test"><acme-terminal-icon slot="start"></acme-terminal-icon><acme-badge slot="end">Local</acme-badge></acme-snippet>' },
+    { h: "Text only", html: '<acme-snippet copyable="false" prompt="false" text="All checks passed"></acme-snippet>' },
   ],
   practices: {
-    "Best Practices": [
-      "Use Snippet for one shell command the user should copy. Use inline code for tokens (env var names, paths) and Code Block for multi-line source.",
-      'Pass the command in <code>text</code> without a leading <code>$</code>. The component draws the prompt, so <code>text="$ vercel deploy"</code> shows <code>$ $ vercel deploy</code>.',
-      'Set <code>prompt="false"</code> for content that is not a shell command (URLs, JSON, output copied as is) so what is shown matches what is copied.',
-      "Pair <code>placeholder</code> with an empty <code>text</code> for an empty state. Sentence case, no trailing period, no <code>Please</code>: <code>Run vercel link to fetch env vars</code>. The placeholder is information, not copied.",
-      "Keep one command per Snippet. Pass a JSON array to <code>text</code> for a short multi-line block; for longer scripts switch to Code Block so users read before they copy.",
-      "Use <code>copied</code> with the <code>acme-copy</code> event when a parent surface (a card or Toggle Tip) shows the same checkmark while it copies different text.",
+    Data: [
+      "Supply a string or an array of strings. Arrays display one command per entry and copy with newline separators.",
+      "Prompt symbols are decorative and are excluded from copied data. All source text is escaped.",
+      "Supply a replacement array when the source changes. Copy Button owns clipboard feedback and emits its result once.",
+    ],
+    Layout: [
+      "The surrounding layout sets width. Long lines use the shared horizontal Scroll Area.",
+      "Use Theme for appearance and the small or medium size for spacing. Start and end slots contain optional supporting content.",
+    ],
+    Accessibility: [
+      "The copy action remains keyboard accessible. Listen for acme-error to show application feedback if clipboard access fails.",
+      "Do not include secrets in examples intended to be shared or copied.",
     ],
   },
 };
