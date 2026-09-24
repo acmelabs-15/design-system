@@ -1,0 +1,362 @@
+{
+  "date": "2026-09-23",
+  "batch": "M21",
+  "entry": "RC-03 JSON View",
+  "status": "complete at native/Lit boundary",
+  "implementation": {
+    "inspection": "Iterative descriptor snapshot; no ordinary getters/toJSON; cycle and unsupported-value markers; existing cross-document plain-record helper",
+    "rendering": "Stable native treeitem/group nodes; visible hierarchy only; iterative painting retains inline short-pair/bracket presentation without recursive rendering",
+    "state": "Canonical source/model and expansion atoms; stable encoded JSON Pointer paths; unchanged subtree identity retains expansion",
+    "interaction": "One tab entry, arrows/Home/End/Enter/Space, shared Typeahead, RTL, focus recovery, selection-safe pointer disclosure",
+    "highlight": "Literal string search or a copied native RegExp; caller lastIndex is not mutated"
+  },
+  "checks": {
+    "focusedUnit": {
+      "pass": 8,
+      "assertions": 30,
+      "deepInspection": 2500
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "owned hierarchy, one focus entry and keyboard expansion",
+            "pass": true
+          },
+          {
+            "name": "typeahead, RTL expansion and collapse focus recovery",
+            "pass": true
+          },
+          {
+            "name": "getter/cycle/special-value input stays safe and escaped",
+            "pass": true
+          },
+          {
+            "name": "unchanged subtree state survives replacement and highlighting does not replace rows",
+            "pass": true
+          },
+          {
+            "name": "deep/large measurements",
+            "pass": true,
+            "result": {
+              "collapsed": 4,
+              "expanded": 1002,
+              "large": 1001,
+              "ms": 977
+            }
+          },
+          {
+            "name": "deep data and large collections avoid recursive render overflow",
+            "pass": true
+          },
+          {
+            "name": "default attributes restore and source updates stay presentation-only",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "owned hierarchy, one focus entry and keyboard expansion",
+            "pass": true
+          },
+          {
+            "name": "typeahead, RTL expansion and collapse focus recovery",
+            "pass": true
+          },
+          {
+            "name": "getter/cycle/special-value input stays safe and escaped",
+            "pass": true
+          },
+          {
+            "name": "unchanged subtree state survives replacement and highlighting does not replace rows",
+            "pass": true
+          },
+          {
+            "name": "deep/large measurements",
+            "pass": true,
+            "result": {
+              "collapsed": 4,
+              "expanded": 1002,
+              "large": 1001,
+              "ms": 1521
+            }
+          },
+          {
+            "name": "deep data and large collections avoid recursive render overflow",
+            "pass": true
+          },
+          {
+            "name": "default attributes restore and source updates stay presentation-only",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "owned hierarchy, one focus entry and keyboard expansion",
+            "pass": true
+          },
+          {
+            "name": "typeahead, RTL expansion and collapse focus recovery",
+            "pass": true
+          },
+          {
+            "name": "getter/cycle/special-value input stays safe and escaped",
+            "pass": true
+          },
+          {
+            "name": "unchanged subtree state survives replacement and highlighting does not replace rows",
+            "pass": true
+          },
+          {
+            "name": "deep/large measurements",
+            "pass": true,
+            "result": {
+              "collapsed": 4,
+              "expanded": 1002,
+              "large": 1001,
+              "ms": 583
+            }
+          },
+          {
+            "name": "deep data and large collections avoid recursive render overflow",
+            "pass": true
+          },
+          {
+            "name": "default attributes restore and source updates stay presentation-only",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "crossDocument": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "plain records from another document keep their data identity",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "plain records from another document keep their data identity",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "plain records from another document keep their data identity",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "owned hierarchy, one focus entry and keyboard expansion",
+            "pass": true
+          },
+          {
+            "name": "typeahead, RTL expansion and collapse focus recovery",
+            "pass": true
+          },
+          {
+            "name": "getter/cycle/special-value input stays safe and escaped",
+            "pass": true
+          },
+          {
+            "name": "unchanged subtree state survives replacement and highlighting does not replace rows",
+            "pass": true
+          },
+          {
+            "name": "deep/large measurements",
+            "pass": true,
+            "result": {
+              "collapsed": 4,
+              "expanded": 1002,
+              "large": 1001,
+              "ms": 967.6000000238419
+            }
+          },
+          {
+            "name": "deep data and large collections avoid recursive render overflow",
+            "pass": true
+          },
+          {
+            "name": "default attributes restore and source updates stay presentation-only",
+            "pass": true
+          },
+          {
+            "name": "plain records from another document keep their data identity",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "owned hierarchy, one focus entry and keyboard expansion",
+            "pass": true
+          },
+          {
+            "name": "typeahead, RTL expansion and collapse focus recovery",
+            "pass": true
+          },
+          {
+            "name": "getter/cycle/special-value input stays safe and escaped",
+            "pass": true
+          },
+          {
+            "name": "unchanged subtree state survives replacement and highlighting does not replace rows",
+            "pass": true
+          },
+          {
+            "name": "deep/large measurements",
+            "pass": true,
+            "result": {
+              "collapsed": 4,
+              "expanded": 1002,
+              "large": 1001,
+              "ms": 1529
+            }
+          },
+          {
+            "name": "deep data and large collections avoid recursive render overflow",
+            "pass": true
+          },
+          {
+            "name": "default attributes restore and source updates stay presentation-only",
+            "pass": true
+          },
+          {
+            "name": "plain records from another document keep their data identity",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "owned hierarchy, one focus entry and keyboard expansion",
+            "pass": true
+          },
+          {
+            "name": "typeahead, RTL expansion and collapse focus recovery",
+            "pass": true
+          },
+          {
+            "name": "getter/cycle/special-value input stays safe and escaped",
+            "pass": true
+          },
+          {
+            "name": "unchanged subtree state survives replacement and highlighting does not replace rows",
+            "pass": true
+          },
+          {
+            "name": "deep/large measurements",
+            "pass": true,
+            "result": {
+              "collapsed": 4,
+              "expanded": 1002,
+              "large": 1001,
+              "ms": 579
+            }
+          },
+          {
+            "name": "deep data and large collections avoid recursive render overflow",
+            "pass": true
+          },
+          {
+            "name": "default attributes restore and source updates stay presentation-only",
+            "pass": true
+          },
+          {
+            "name": "plain records from another document keep their data identity",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "liveDocs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "checks": 5,
+        "accessibility": {
+          "trees": 11,
+          "groups": 6,
+          "items": 29,
+          "level3": true
+        },
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "checks": 5,
+        "errors": []
+      }
+    ],
+    "strictPackageBuild": true,
+    "siteBuild": {
+      "pages": 108,
+      "elements": 4319,
+      "undocumented": 0
+    },
+    "fullSuite": {
+      "pass": 864,
+      "fail": 0,
+      "assertions": 151991
+    },
+    "visual": "json-docs.png inspected"
+  },
+  "references": [
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors",
+    "https://www.w3.org/WAI/ARIA/apg/patterns/treeview/",
+    "https://www.w3.org/WAI/ARIA/apg/patterns/treeview/examples/treeview-1b/",
+    "notes/alignment/inventory/rich-content.md#rc-03-json-view"
+  ],
+  "removal": [
+    "data/defaultExpandDepth/highlightPattern and old highlight helper",
+    "Old generated JSON View map, structure styles, outputs, raw source rules and splitter membership"
+  ],
+  "limits": [
+    "Native UI fixture: 1000 nested objects and 1000 array entries, not a universal size guarantee.",
+    "Proxy reflection traps remain application JavaScript; this is not a sandbox for arbitrary executable proxies.",
+    "Configured RegExp cost belongs to the application; plain string searches are escaped.",
+    "Actual assistive-tech and final React/scoped-registry checks remain M22/M26."
+  ]
+}

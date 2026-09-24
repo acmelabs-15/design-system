@@ -382,3 +382,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M21 Code Block — 2026-09-23
 
 [Acceptance](evidence/m21-code-block-2026-09-23.json) closes RC-01 at the native/Lit boundary. Exact source, application-owned references, keyboard focus recovery, scrolling/wrapping, failure fallback and author content pass source/compiled checks in all engines. Live examples and the typography consumer are migrated; strict build/site and 866 tests pass. Continue RC-03/04/05/07.
+
+### M21 JSON View — 2026-09-23
+
+[Acceptance](evidence/m21-json-view-2026-09-23.json) closes RC-03 at its native/Lit boundary. Descriptor snapshots, safe markers, real owned groups, iterative deep rendering, expansion preservation, keyboard/RTL and cross-document data pass the recorded gates. The package/site build and all 864 tests pass. Markdown, Book and Video remain.

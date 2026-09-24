@@ -1,69 +1,64 @@
-// Docs page: JSON View — mirrors https://vercel.com/geist/json-view
 import type { Doc } from "../../site";
-
 export const doc: Doc = {
   id: "json-view",
   title: "JSON View",
-  lede: "Render JSON objects and arrays as a collapsible tree with syntax coloring, keyboard navigation, search highlighting and selectable text.",
+  lede: "Inspect structured values with safe property reading, expandable hierarchy and keyboard navigation.",
   tags: ["acme-json-view"],
   examples: [
     {
-      h: "Default",
-      p: "Levels strictly below default-expand-depth start open (3 when unset). Depth 1 opens the first level, so the reader scans the object without opening every nested value.",
-      html: `<acme-json-view default-expand-depth="1" data='{"deployment":{"id":"dpl_9WjH8QFQySx7","project":"docs","target":"production","state":"ready"},"request":{"method":"GET","path":"/api/search","status":200,"durationMs":42},"cached":false,"error":null}'></acme-json-view>`,
+      h: "Structured value",
+      html: '<acme-json-view expanded-depth="1" value=\'{"deployment":{"id":"dpl_42","state":"ready"},"request":{"method":"GET","status":200},"cached":false,"error":null}\'></acme-json-view>',
+    },
+    { h: "Single pair", html: '<acme-json-view value=\'{"status":"ready"}\'></acme-json-view>' },
+    { h: "Collapsed", html: '<acme-json-view expanded-depth="0" value=\'{"request":{"id":"req_42","path":"/api/projects"},"flags":["logs","traces"]}\'></acme-json-view>' },
+    {
+      h: "Literal search",
+      p: "String highlights match literal text, including punctuation.",
+      html: '<acme-json-view highlight="request" value=\'{"requestId":"req_42","message":"The request failed","status":500}\'></acme-json-view>',
     },
     {
-      h: "Single line",
-      p: "An open object with one short primitive pair renders on one line. Nested and long values stay multiline.",
-      html: `<acme-json-view default-expand-depth="1" data='{"foo":"bar"}'></acme-json-view>`,
+      h: "Configured pattern",
+      html: '<acme-json-view value=\'{"service":"api","count":42,"active":true,"error":null}\'></acme-json-view>',
+      script: 'root.querySelector("acme-json-view").highlight=/api|42|true|null/gi;',
     },
     {
-      h: "Embedded",
-      p: "The tree flows with the text before and after it.",
-      html: `<div class="text-copy-13" style="white-space:pre-wrap;word-break:break-all;font-family:var(--acme-font-mono)"><span>ClickHouse slow query detected queryStats: </span><acme-json-view default-expand-depth="1" data='{"read_rows":8866333,"read_bytes":1220624299,"elapsed_ms":10513774868,"result_rows":39,"chunks_queried":1,"total_chunks":1,"stopped_early":false}'></acme-json-view><span>, endpoint: 'GET /api/logs/request-logs'</span></div>`,
+      h: "Expansion controls",
+      html: '<acme-h-stack gap="2"><acme-button data-action="expand">Expand all</acme-button><acme-button data-action="collapse" variant="secondary">Collapse all</acme-button></acme-h-stack><acme-json-view expanded-depth="1" value=\'{"deployment":{"project":{"name":"docs"}},"request":{"status":200}}\'></acme-json-view><output aria-live="polite"></output>',
+      script:
+        'const view=root.querySelector("acme-json-view");root.querySelector("[data-action=expand]").addEventListener("click",()=>view.expandAll());root.querySelector("[data-action=collapse]").addEventListener("click",()=>view.collapseAll());view.addEventListener("acme-expanded-change",event=>root.querySelector("output").textContent="Expanded paths: "+JSON.stringify(event.detail.expanded));',
     },
     {
-      h: "Wrapped",
-      p: "A long primitive value takes the multiline layout and wraps to the width it has.",
-      html: `<acme-json-view default-expand-depth="1" data='{"browserApiUrl":"https://browser-api.vercel.sh/screenshot?url=https%3A%2F%2Fprocore-com-prod-f5vem4o6u-marketing-web-dev.vercel.app&width=1440&height=900&fullPage=true"}'></acme-json-view>`,
+      h: "Cycles and accessors",
+      html: "<acme-json-view></acme-json-view>",
+      script:
+        'const value={status:"ready",missing:undefined};value.self=value;Object.defineProperty(value,"computed",{enumerable:true,get(){throw new Error("This getter must not run");}});root.querySelector("acme-json-view").value=value;',
     },
     {
-      h: "Collapsed",
-      p: "Depth 0 keeps the surface compact; the reader opens the object they want.",
-      html: `<acme-json-view default-expand-depth="0" data='{"trace":{"spanId":"span_7Qk9b4","parentId":"span_root","service":"api"},"request":{"id":"req_00042","path":"/api/projects","method":"GET"},"flags":["enable-logs-json-rendering","observability-panel"]}'></acme-json-view>`,
-    },
-    {
-      h: "Highlighted",
-      p: "highlight-pattern is a case-insensitive regular expression that marks matching field names and primitive values; makeJsonViewHighlightPattern(terms) builds one from search terms (terms of at least two characters) for the property.",
-      html: `<acme-json-view default-expand-depth="1" highlight-pattern="request|failed" data='{"level":"error","requestId":"req_00042","deploymentId":"dpl_9WjH8QFQySx7","message":"Deployment request failed","statusCode":500}'></acme-json-view>`,
-    },
-    {
-      h: "Nested", census: true,
-      p: "The default depth (3) opens the nested rows: an object and an array with their closing brackets on their own line, an empty object without a toggle, single pairs on one line, a long single pair stacked, and marks on a number, a boolean and null.",
-      html: `<acme-json-view highlight-pattern="api|42|true|null" data='{"trace":{"spanId":"span_7Qk9b4","service":"api"},"apiTags":["api","edge"],"apiMeta":{},"note":{"id":42},"ok":{"flag":true},"none":{"value":null},"name":{"api":"api"},"url":{"href":"https://browser-api.vercel.sh/screenshot?url=https%3A%2F%2Fexample.vercel.app&width=1440"},"count":42,"active":true,"error":null}'></acme-json-view>`,
-    },
-    {
-      h: "Inline kinds", census: true,
-      p: "A single pair of each value kind on one line, with marks on the key and the value.",
-      html: `<acme-json-view highlight-pattern="api|42|true|null" data='{"api":"api"}'></acme-json-view> <acme-json-view highlight-pattern="api|42|true|null" data='{"n":42}'></acme-json-view> <acme-json-view highlight-pattern="api|42|true|null" data='{"b":true}'></acme-json-view> <acme-json-view highlight-pattern="api|42|true|null" data='{"z":null}'></acme-json-view>`,
+      h: "Primitive values",
+      html: '<acme-v-stack gap="2"><acme-json-view value="null"></acme-json-view><acme-json-view value="42"></acme-json-view><acme-json-view value="false"></acme-json-view><acme-json-view></acme-json-view></acme-v-stack>',
     },
   ],
   practices: {
-    "When to use": [
-      "JSON View is for objects and arrays the reader inspects, scans, collapses, expands, selects or copies.",
-      "Prefer it to a raw JSON string when the nesting matters, or when log lines carry structured payloads.",
-      "A code block is for static documentation, not an interactive product surface.",
+    Data: [
+      "Assign values through the value property. The value attribute accepts valid JSON for static HTML.",
+      "The viewer snapshots own enumerable data properties. It labels accessors instead of reading their values and never calls toJSON or ordinary value getters.",
+      "Circular references, undefined, functions, nonfinite numbers and unsupported objects have explicit markers. Sparse arrays show their present indices.",
+      "Assign value again after a mutation to take a new snapshot. Unchanged object branches keep their expansion choices when their paths and identities remain the same.",
+      "JavaScript Proxy reflection traps remain application code. Use ordinary records or parsed JSON when those effects are not acceptable.",
     ],
-    Behavior: [
-      "Start with default-expand-depth 1 on log and detail surfaces, where the top-level fields help by default.",
-      "Use default-expand-depth 0 in dense tables, compact previews and rows where open JSON would compete with the row content.",
-      "Set highlight-pattern only during an active search; leave it empty when nothing is searched.",
-      "Pass the data as an object or array. Do not stringify JSON before handing it to data.",
+    Expansion: [
+      "expandedDepth sets the initial open levels for branches without an explicit choice. Zero starts closed.",
+      "expandAll and collapseAll change presentation only. User actions emit acme-expanded-change with JSON Pointer paths; the root path is an empty string.",
+      "The viewer is read-only. It does not edit the supplied value.",
+    ],
+    Search: [
+      "A string highlight is a literal case-insensitive search. Pass a RegExp property for a configured application pattern.",
+      "The viewer copies regex state. The application owns the cost and trust of its configured expression.",
     ],
     Accessibility: [
-      "The element is a tree. Arrow keys move between visible nodes, Enter and Space toggle an expandable node, Home and End jump to the first and last visible node, a typed character jumps to the next node whose label starts with it.",
-      "Keep the element near the text or control that introduces the JSON. The tree's accessible label is JSON, so the surrounding context names the object.",
-      "Keep the text selectable. Readers copy JSON from logs and traces into search, support and debugging tools; a click that ends a text selection does not toggle the node.",
+      "Arrow keys move between visible nodes and open or close branches. Home and End move to the first or last visible value. Enter and Space toggle branches.",
+      "Typing a prefix moves to a matching property. Focus and expansion stay separate; changing data recovers focus when a value disappears.",
+      "Provide surrounding context or an aria-label for the tree. Selecting text does not toggle the selected row.",
     ],
   },
 };

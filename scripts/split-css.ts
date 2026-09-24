@@ -46,7 +46,6 @@ const MAP: [string, RegExp][] = [
   ["middle-truncate", /^\.truncate-mid/],
   ["book", /^\.book/],
   ["clearable-input", /^\.clearable/],
-  ["json-view", /^\.json/],
   ["video", /^\.video/],
 ];
 const moduleOf = (sel: string): string | null => {
