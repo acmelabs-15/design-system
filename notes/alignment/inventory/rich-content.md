@@ -36,7 +36,7 @@ Acceptance: arrays/objects/primitives/null, undefined/missing, circular/deep dat
 
 Use TanStack Markdown and Highlight. Preserve allowHtml=false and the existing explicit trusted-content-only opt-in. The installed parser documents sanitized normal link/image URLs; raw HTML mode is not a sanitizer. Do not promise safe rendering of untrusted raw HTML or add a sanitizer dependency silently. Q09 is retired: retain the existing trust boundary and test it; no remote fetching, evaluation or execution of code fences.
 
-Events acme-error { code:"parse"|"sanitize"|"highlight", message }; safe plain-text fallback on parse failure. Mounting creates no persistent script listeners from content. Relative-link resolution must be explicit in the consuming page's context.
+Events acme-error { code:"parse"|"highlight", message }; safe plain-text fallback on parse failure. Mounting creates no persistent script listeners from content. Relative-link resolution must be explicit in the consuming page's context.
 
 Acceptance: headings/lists/tables/fences, inline code in search indexing, links/images, malicious HTML/URLs, long content, locale/RTL, stable headings/TOC and highlight failures. Source: src/components/markdown/markdown.ts and selected package decisions. The trusted-only raw-HTML path must be documented separately from default escaped rendering.
 

@@ -36,7 +36,6 @@ const MAP: [string, RegExp][] = [
   ["search", /^\.search/],
   ["info-ic", /^(\.info-ic|\.check-circle)/],
   ["code", /^(\.step-n|\.codeblock|\.code\b|\.hide-ln|\.th-|code\.inline)/],
-  ["markdown", /^\.markdown/],
   ["usage-sum", /^\.usage-sum/],
   ["classes", /^\.classes/],
   ["severity", /^(\.severity|\.issue)/],

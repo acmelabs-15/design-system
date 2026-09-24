@@ -386,3 +386,11 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M21 JSON View — 2026-09-23
 
 [Acceptance](evidence/m21-json-view-2026-09-23.json) closes RC-03 at its native/Lit boundary. Descriptor snapshots, safe markers, real owned groups, iterative deep rendering, expansion preservation, keyboard/RTL and cross-document data pass the recorded gates. The package/site build and all 864 tests pass. Markdown, Book and Video remain.
+
+### M20 current Firefox acceptance — 2026-09-23
+
+[Official Firefox156.0.1 evidence](evidence/m20-flow-diagram-2026-09-23.json) closes the Flow component release concern for the current supported browser: twenty timing-varied reconnect/cancel/navigation cycles pass using the unmodified, checksum/signature-verified release. The same sequence crashes the older Playwright-patched Firefox155. Its exact cause remains unverified. This is now an explicit M25/M26 test-runtime constraint: retain both reproductions and the official-browser gate; do not add a speculative library workaround or silently omit the regression. M20 is complete at its assigned native/Lit boundary.
+
+### M21 Markdown — 2026-09-23
+
+[Acceptance](evidence/m21-markdown-2026-09-23.json) closes RC-04 at the native/Lit boundary. Native prose, TOC/fragments, scoped IDs/styles, shared highlighting/scrolling, trust/failure behavior and live labels pass the recorded source/compiled/docs gates. The complete suite passes 867 tests. Book and Video remain in M21.
