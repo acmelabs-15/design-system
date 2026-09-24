@@ -370,3 +370,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M20 chart families — 2026-09-23
 
 [Chart/Sparkline/Legend acceptance](evidence/m20-chart-sparkline-legend-2026-09-23.json) closes D-03/D-04 at the native/Lit boundary. The typed engine, exact-value alternative, safe point information, theme contrast and primitive compositions pass the recorded gates. Spark and old Chart/Legend interfaces/producers are removed. Flow Diagram remains M20 work.
+
+### M20 Flow implementation checkpoint — 2026-09-23
+
+[Flow Diagram evidence](evidence/m20-flow-diagram-2026-09-23.json) records the viewer, worker delivery, package assets, normal/isolated compiled matrix and tested geometry sizes. One rapid-cancellation/navigation Firefox DOM-worker crash remains a final release gate. Independent M21 work may proceed; M26 must resolve or establish the exact external platform defect with an explicit supported-runtime disposition. This is not a passing final M20 acceptance.

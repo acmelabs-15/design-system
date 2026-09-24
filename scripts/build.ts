@@ -1,8 +1,9 @@
+import { writeFlowAssets, flowAssetPlugin } from "./flow-assets";
 /// <reference types="bun" />
 // Builds dist/ two ways, following lit.dev/docs/tools/publishing:
 //   dist/*.js (+ .d.ts, .d.ts.map)  unbundled ES2022 modules with Lit templates precompiled by @lit-labs/compiler;
 //                                    the npm entry, for consumers with a bundler
-//   dist/bundle/design-system(.min).js  one self-contained ES module with Lit and the labs packages inside,
+//   dist/bundle/design-system(.min).js  ES module entries with Lit, shared chunks and on-demand worker assets,
 //                                    for a static page that loads it from jsdelivr with no build step
 //   dist/styles/                  compiled CSS, document layers and source maps
 // Pure Bun: no Node runtime, no Python.
@@ -87,6 +88,7 @@ for (const f of files) {
 console.log(`modules: ${files.length} files, ${compiled} with compiled templates`);
 
 await writeDateRuntime(ROOT, DIST);
+writeFlowAssets(ROOT, DIST);
 
 // 2. Declarations with maps.
 const program = ts.createProgram(files, {
@@ -140,6 +142,7 @@ fs.writeFileSync(
     sourcemap: "none",
     naming: { entry: "[dir]/[name].[ext]", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
     metafile: true,
+    plugins: [flowAssetPlugin(DIST)],
   });
   if (!result.success) throw new AggregateError(result.logs, "Selective browser build failed");
   fs.mkdirSync(path.join(ROOT, ".artifacts"), { recursive: true });
@@ -154,14 +157,16 @@ for (const [name, minify] of [
   const r = await Bun.build({
     entrypoints: [path.join(DIST, "all.js")],
     outdir: path.join(DIST, "bundle"),
-    naming: name,
+    naming: { entry: name, chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
+    splitting: true,
     target: "browser",
     format: "esm",
     minify,
     sourcemap: minify ? "none" : "linked",
     plugins: minify
-      ? []
+      ? [flowAssetPlugin(DIST)]
       : [
+          flowAssetPlugin(DIST),
           {
             name: "compiled-css-debug-maps",
             setup(build) {
@@ -204,7 +209,9 @@ for (const [name, minify] of [
   const r = await Bun.build({
     entrypoints: [standaloneEntry],
     outdir: path.join(DIST, "bundle"),
-    naming: "design-system.standalone.min.js",
+    naming: { entry: "design-system.standalone.min.js", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
+    splitting: true,
+    plugins: [flowAssetPlugin(DIST)],
     target: "browser",
     format: "esm",
     minify: true,

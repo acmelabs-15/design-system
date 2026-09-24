@@ -1,3 +1,4 @@
+import { flowAssetPlugin } from "../scripts/flow-assets";
 // Builds the docs site into /_site: the app shell (index.html and its 404.html twin for deep
 // links on GitHub Pages), one prebuilt HTML fragment per page under /pages, the docs app bundle
 // (the design system plus the router app) and the two stylesheets.
@@ -101,7 +102,9 @@ const appEntry = writeDocumentationIconEntry(
 const r = await Bun.build({
   entrypoints: [appEntry],
   outdir: OUT,
-  naming: "app.js",
+  naming: { entry: "app.js", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
+  splitting: true,
+  plugins: [flowAssetPlugin(path.join(ROOT, "dist"))],
   target: "browser",
   format: "esm",
   minify: true,

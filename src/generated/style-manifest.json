@@ -1509,6 +1509,52 @@
       "registrations": [],
       "exportName": "flexStructureCss"
     },
+    "components/flow-diagram/flow-diagram": {
+      "key": "components/flow-diagram/flow-diagram",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "deb8d5e513c1bde4ba25504de7f769d1a47e53991e844ad0b30cd3dc2b9563e4",
+        "scripts/styles.ts": "44a962ee4a9a0c1b1a3d660b0eb3332a33fff59a1c5871de5364ea615c131970",
+        "scripts/theme-tokens.ts": "bea9ae0771749ae43a0b31ced3eba8d6746dce6298761d062e3b223c94e3ef99",
+        "src/shared/motion-tokens.ts": "2fbb00c0e7407366d57342e50a659008da389d75f4eb673ebcc52e24afffd5c8",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "e92fd230d6c3aaf95c2386da99476b5a7dc30848653a8ae91050db433220fe93",
+        "styles/components/flow-diagram/flow-diagram.css": "7dd21750ec335bec1a06ced7c9c1fb4de5fe54db2da4e183b315898e2af779a3"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/components/flow-diagram/flow-diagram.source.css": "7dd21750ec335bec1a06ced7c9c1fb4de5fe54db2da4e183b315898e2af779a3",
+        "src/generated/css/components/flow-diagram/flow-diagram.css": "ef200e25acfbcda981719a65697d78aea3f642154824a662d39ec7a806655c23",
+        "src/generated/css/components/flow-diagram/flow-diagram.css.map": "b3d67619c9c4773cc9046836324000a690d42c44746315e282948c12dc3500f4",
+        "src/generated/components/flow-diagram/flow-diagram.styles.ts": "256fc7bb04e32cd4215023a991af867fdde5f399a9ec6c0c7d7e21e81a065b9e"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "flowDiagramCss"
+    },
+    "components/flow-node/flow-node": {
+      "key": "components/flow-node/flow-node",
+      "producer": "authored",
+      "inputs": {
+        "scripts/split-css.ts": "deb8d5e513c1bde4ba25504de7f769d1a47e53991e844ad0b30cd3dc2b9563e4",
+        "scripts/styles.ts": "44a962ee4a9a0c1b1a3d660b0eb3332a33fff59a1c5871de5364ea615c131970",
+        "scripts/theme-tokens.ts": "bea9ae0771749ae43a0b31ced3eba8d6746dce6298761d062e3b223c94e3ef99",
+        "src/shared/motion-tokens.ts": "2fbb00c0e7407366d57342e50a659008da389d75f4eb673ebcc52e24afffd5c8",
+        "src/shared/numeric-tokens.ts": "4b0e755f64949128d9500b1d1346d634a3ea5dc729fddfb47d84a16ae9ef9d24",
+        "src/shared/theme-tokens.ts": "e92fd230d6c3aaf95c2386da99476b5a7dc30848653a8ae91050db433220fe93",
+        "styles/components/flow-node/flow-node.css": "ae47e0ac3dafa8537461c00d6fc69648090323c3f07a22d66550d047b038c8d9"
+      },
+      "externalInputs": {},
+      "files": {
+        "src/generated/css/components/flow-node/flow-node.source.css": "ae47e0ac3dafa8537461c00d6fc69648090323c3f07a22d66550d047b038c8d9",
+        "src/generated/css/components/flow-node/flow-node.css": "9b920c401a7aeb295a2598ad0cec8361c80e8799858d4f0d205501a70b052f76",
+        "src/generated/css/components/flow-node/flow-node.css.map": "478d98178325d25c345de4c18902ac9b98e5b7b32663d144330dc37b4d58f2d3",
+        "src/generated/components/flow-node/flow-node.styles.ts": "496b2d271242db865e98f36b19bc124a925d765093e88565896d8e14b6f8ada3"
+      },
+      "properties": [],
+      "registrations": [],
+      "exportName": "flowNodeCss"
+    },
     "components/group/group-structure": {
       "key": "components/group/group-structure",
       "producer": "authored",
@@ -4124,7 +4170,7 @@
       "key": "document/dashboard",
       "producer": "document",
       "inputs": {
-        "scripts/build.ts": "6c7ebc8546a6238ba288302ca1f3d306860d900e372685caf5f1594dbb6f3718",
+        "scripts/build.ts": "41695086f918a4736b17e2b148432eff569fccd5ad321a6201b9f23017afabb5",
         "scripts/styles.ts": "44a962ee4a9a0c1b1a3d660b0eb3332a33fff59a1c5871de5364ea615c131970",
         "scripts/theme-tokens.ts": "bea9ae0771749ae43a0b31ced3eba8d6746dce6298761d062e3b223c94e3ef99",
         "src/generated/css/components/code/code.css": "b062051ed125157e2d7e0493d35265802eea432d21dd0d65b0f02f33d8afdb7c",

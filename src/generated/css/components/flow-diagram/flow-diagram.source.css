@@ -1,0 +1,20 @@
+:host{display:block;min-inline-size:0;}
+[part=root]{display:flex;flex-direction:column;gap:var(--acme-spacing-3);}
+[part=viewport]{position:relative;overflow:hidden;block-size:var(--acme-flow-height,480px);min-block-size:180px;border:1px solid var(--ds-gray-400);border-radius:var(--r);background:var(--ds-background-200);isolation:isolate;}
+[part=background]{position:absolute;inset:0;touch-action:none;cursor:grab;background-image:linear-gradient(var(--ds-gray-200) 1px,transparent 1px),linear-gradient(90deg,var(--ds-gray-200) 1px,transparent 1px);background-size:20px 20px;}
+[part=background]:active{cursor:grabbing;}
+[part=background]:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:-3px;}
+.scene{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none;}
+.scene>svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;}
+::slotted(*){pointer-events:auto;}
+[part=edge]{fill:none;stroke:var(--ds-blue-900);stroke-width:1.5;}
+.arrow{fill:var(--ds-blue-900);}
+[part=edge-label]{position:absolute;color:var(--ds-gray-1000);background:var(--ds-background-200);font-size:.75rem;line-height:1.5;white-space:pre;padding:2px 4px;border-radius:3px;}
+.measure{position:absolute;visibility:hidden;pointer-events:none;left:0;top:0;}
+.fallback{position:absolute;box-sizing:border-box;inline-size:max-content;min-inline-size:140px;max-inline-size:360px;padding:var(--acme-spacing-4);border:1px solid var(--ds-gray-400);border-radius:var(--r);background:var(--ds-background-100);color:var(--ds-gray-1000);pointer-events:auto;font-size:.875rem;line-height:1.5;overflow:auto;}
+.fallback button{font:inherit;font-weight:var(--acme-font-weight-600);border:0;padding:0;background:transparent;color:inherit;text-align:start;cursor:pointer;}
+.fallback button:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:3px;}
+[part=controls]{display:flex;align-items:center;gap:var(--acme-spacing-2);flex-wrap:wrap;}
+.empty{position:absolute;inset:0;display:grid;place-items:center;color:var(--ds-gray-900);pointer-events:none;}
+.status{font-size:.875rem;color:var(--ds-gray-900);}
+[hidden]{display:none!important;}

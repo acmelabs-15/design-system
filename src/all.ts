@@ -58,6 +58,8 @@ import "./define/feedback";
 import "./define/field";
 import "./define/fieldset";
 import "./define/flex";
+import "./define/flow-diagram";
+import "./define/flow-node";
 import "./define/format-byte";
 import "./define/format-number";
 import "./define/grid";

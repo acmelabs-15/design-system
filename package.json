@@ -67,6 +67,7 @@
       "import": "./dist/configure.js",
       "default": "./dist/configure.js"
     },
+    "./flow-worker.js": "./dist/shared/elk-worker.js",
     "./components/10k-icon": {
       "types": "./dist/generated/icons/classes/10k-icon.d.ts",
       "import": "./dist/generated/icons/classes/10k-icon.js",
@@ -7831,6 +7832,16 @@
       "types": "./dist/generated/icons/classes/flourescent-icon.d.ts",
       "import": "./dist/generated/icons/classes/flourescent-icon.js",
       "default": "./dist/generated/icons/classes/flourescent-icon.js"
+    },
+    "./components/flow-diagram": {
+      "types": "./dist/components/flow-diagram/flow-diagram.d.ts",
+      "import": "./dist/components/flow-diagram/flow-diagram.js",
+      "default": "./dist/components/flow-diagram/flow-diagram.js"
+    },
+    "./components/flow-node": {
+      "types": "./dist/components/flow-node/flow-node.d.ts",
+      "import": "./dist/components/flow-node/flow-node.js",
+      "default": "./dist/components/flow-node/flow-node.js"
     },
     "./components/flowchart-icon": {
       "types": "./dist/generated/icons/classes/flowchart-icon.d.ts",
@@ -21694,6 +21705,7 @@
     "@tanstack/pacer": "^0.22.0",
     "@zag-js/remove-scroll": "^1.43.3",
     "d3-scale": "4.0.2",
+    "elkjs": "0.12.0",
     "focus-trap": "8.2.2",
     "lit": "^3.3.3",
     "match-sorter": "8.3.0",
