@@ -2405,6 +2405,92 @@
       "inputName": "Specification title",
       "source": "Accessibility.getFullAXTree",
       "note": "Native element-reference label is correct; Playwright name matcher missed it."
+    },
+    "firefoxWithoutAutomation": {
+      "sameBinary": "Playwright Firefox155 macOS arm64 launched directly without Juggler or Playwright",
+      "status": "reported",
+      "cycles": [
+        {
+          "cycle": 0,
+          "empty": true
+        },
+        {
+          "cycle": 1,
+          "empty": true
+        },
+        {
+          "cycle": 2,
+          "empty": true
+        },
+        {
+          "cycle": 3,
+          "empty": true
+        },
+        {
+          "cycle": 4,
+          "empty": true
+        },
+        {
+          "cycle": 5,
+          "empty": true
+        },
+        {
+          "cycle": 6,
+          "empty": true
+        },
+        {
+          "cycle": 7,
+          "empty": true
+        },
+        {
+          "cycle": 8,
+          "empty": true
+        },
+        {
+          "cycle": 9,
+          "empty": true
+        },
+        {
+          "cycle": 10,
+          "empty": true
+        },
+        {
+          "cycle": 11,
+          "empty": true
+        },
+        {
+          "cycle": 12,
+          "empty": true
+        },
+        {
+          "cycle": 13,
+          "empty": true
+        },
+        {
+          "cycle": 14,
+          "empty": true
+        },
+        {
+          "cycle": 15,
+          "empty": true
+        },
+        {
+          "cycle": 16,
+          "empty": true
+        },
+        {
+          "cycle": 17,
+          "empty": true
+        },
+        {
+          "cycle": 18,
+          "empty": true
+        },
+        {
+          "cycle": 19,
+          "empty": true
+        }
+      ]
     }
   },
   "open": [
@@ -2412,7 +2498,7 @@
       "id": "flow-firefox-cancel-navigation",
       "owner": "M26",
       "severity": "release gate",
-      "detail": "Playwright Firefox155 on macOS arm64 sometimes crashes its DOM Worker thread after reconnect starts a new worker, immediate cancellation/emptying, then navigation. Also reproduced with isolated FlowLayout. Native simple/ELK Worker immediate-termination controls and ten uninstrumented engine cycles pass. Instrumentation affects timing but is not the cause established: a compiled uninstrumented viewer run also crashed. No browser-specific delay or main-thread fallback added. Need an independent full-browser reproduction or worker-runtime/browser correction before final release readiness.",
+      "detail": "Playwright Firefox155 on macOS arm64 sometimes crashes its DOM Worker thread after reconnect starts a new worker, immediate cancellation/emptying, then navigation. Also reproduced with isolated FlowLayout. Native simple/ELK Worker immediate-termination controls and ten uninstrumented engine cycles pass. Instrumentation affects timing but is not the cause established: a compiled uninstrumented viewer run also crashed. No browser-specific delay or main-thread fallback added. Need an independent full-browser reproduction or worker-runtime/browser correction before final release readiness. A later direct launch of the same Firefox binary, without Playwright/Juggler, completed twenty self-driven reconnect/cancel/navigation cycles. This narrows the reproduction but does not establish a fixed root cause.",
       "evidence": [
         "m20-flow/firefox-sequence.log",
         "m20-flow/compiled.log",
