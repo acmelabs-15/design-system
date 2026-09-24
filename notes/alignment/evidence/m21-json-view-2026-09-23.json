@@ -358,5 +358,6 @@
     "Proxy reflection traps remain application JavaScript; this is not a sandbox for arbitrary executable proxies.",
     "Configured RegExp cost belongs to the application; plain string searches are escaped.",
     "Actual assistive-tech and final React/scoped-registry checks remain M22/M26."
-  ]
+  ],
+  "reproduction": "m21-json-view-checks.ts"
 }

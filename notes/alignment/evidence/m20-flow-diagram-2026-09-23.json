@@ -1,7 +1,7 @@
 {
   "date": "2026-09-23",
   "batch": "M20",
-  "status": "Flow implementation and normal delivery verified; rapid Firefox cancellation/navigation regression remains open for M26 closure",
+  "status": "complete at native/Lit boundary; old patched Firefox155 failure retained as a test-runtime constraint",
   "references": [
     "../../decisions/flow-diagram.md",
     "../../alignment/inventory/data-displays.md#d-05-flow-diagram"
@@ -2491,14 +2491,139 @@
           "empty": true
         }
       ]
+    },
+    "firefoxDelayedWithoutAutomation": {
+      "sameBinary": "Playwright Firefox155 launched directly",
+      "delaysMs": [
+        0,
+        5,
+        10,
+        16,
+        30,
+        60
+      ],
+      "status": "timeout",
+      "completedCycles": [
+        {
+          "cycle": 0,
+          "empty": true
+        },
+        {
+          "cycle": 1,
+          "empty": true
+        }
+      ],
+      "crash": true
+    },
+    "officialFirefox": {
+      "version": "156.0.1",
+      "verification": {
+        "version": "156.0.1",
+        "file": "/Users/peterkloss/Library/Caches/acme-design-system/browser-checks/firefox-156.0.1.dmg",
+        "bytes": 160451034,
+        "sha512": "5aeba2dc2e95e8f042df27e3424463e7cc550ad1a6382d96382563c7aeed3a39945904665659c6079225bbf559bca566c5bfcaab2aa8a5f7edcae9a4df1cde2b"
+      },
+      "signature": "codesign --verify --deep --strict passed",
+      "source": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+      "harness": "m20-flow/firefox-release.ts",
+      "delaysMs": [
+        0,
+        5,
+        10,
+        16,
+        30,
+        60
+      ],
+      "cycles": [
+        {
+          "cycle": 0,
+          "empty": true
+        },
+        {
+          "cycle": 1,
+          "empty": true
+        },
+        {
+          "cycle": 2,
+          "empty": true
+        },
+        {
+          "cycle": 3,
+          "empty": true
+        },
+        {
+          "cycle": 4,
+          "empty": true
+        },
+        {
+          "cycle": 5,
+          "empty": true
+        },
+        {
+          "cycle": 6,
+          "empty": true
+        },
+        {
+          "cycle": 7,
+          "empty": true
+        },
+        {
+          "cycle": 8,
+          "empty": true
+        },
+        {
+          "cycle": 9,
+          "empty": true
+        },
+        {
+          "cycle": 10,
+          "empty": true
+        },
+        {
+          "cycle": 11,
+          "empty": true
+        },
+        {
+          "cycle": 12,
+          "empty": true
+        },
+        {
+          "cycle": 13,
+          "empty": true
+        },
+        {
+          "cycle": 14,
+          "empty": true
+        },
+        {
+          "cycle": 15,
+          "empty": true
+        },
+        {
+          "cycle": 16,
+          "empty": true
+        },
+        {
+          "cycle": 17,
+          "empty": true
+        },
+        {
+          "cycle": 18,
+          "empty": true
+        },
+        {
+          "cycle": 19,
+          "empty": true
+        }
+      ]
     }
   },
   "open": [
     {
       "id": "flow-firefox-cancel-navigation",
-      "owner": "M26",
-      "severity": "release gate",
-      "detail": "Playwright Firefox155 on macOS arm64 sometimes crashes its DOM Worker thread after reconnect starts a new worker, immediate cancellation/emptying, then navigation. Also reproduced with isolated FlowLayout. Native simple/ELK Worker immediate-termination controls and ten uninstrumented engine cycles pass. Instrumentation affects timing but is not the cause established: a compiled uninstrumented viewer run also crashed. No browser-specific delay or main-thread fallback added. Need an independent full-browser reproduction or worker-runtime/browser correction before final release readiness. A later direct launch of the same Firefox binary, without Playwright/Juggler, completed twenty self-driven reconnect/cancel/navigation cycles. This narrows the reproduction but does not establish a fixed root cause.",
+      "owner": "M25/M26 test-runtime verification",
+      "severity": "known old test-runtime limitation",
+      "detail": "Playwright Firefox155 on macOS arm64 sometimes crashes its DOM Worker thread after reconnect starts a new worker, immediate cancellation/emptying, then navigation. Also reproduced with isolated FlowLayout. Native simple/ELK Worker immediate-termination controls and ten uninstrumented engine cycles pass. Instrumentation affects timing but is not the cause established: a compiled uninstrumented viewer run also crashed. No browser-specific delay or main-thread fallback added. Need an independent full-browser reproduction or worker-runtime/browser correction before final release readiness. A later direct launch of the same Firefox binary, without Playwright/Juggler, completed twenty self-driven reconnect/cancel/navigation cycles. This narrows the reproduction but does not establish a fixed root cause. Adding 0/5/10/16/30/60 ms timing variation to that direct launch reproduces SIGSEGV after two completed cycles. It is not limited to active Playwright control, though this remains the Playwright-patched Firefox binary rather than a separate official release. Official Mozilla Firefox156.0.1, verified against its published SHA-512 and macOS code signature, passes all twenty identical timing-varied cycles. The specific difference causing the older patched155 crash is unverified. Use the current official-browser check for this regression; M25 must preserve it rather than silently dropping the case.",
       "evidence": [
         "m20-flow/firefox-sequence.log",
         "m20-flow/compiled.log",
@@ -2508,7 +2633,8 @@
         "https://developer.mozilla.org/en-US/docs/Web/API/Worker/terminate",
         "https://firefox-source-docs.mozilla.org/dom/workersAndStorage/WorkerLifeCycleAndWorkerRefs.html",
         "https://playwright.dev/docs/api/class-worker"
-      ]
+      ],
+      "status": "Current unmodified release passes; retain the failing patched-runtime reproduction without a source workaround."
     }
   ],
   "limits": [
