@@ -43,7 +43,6 @@ const MAP: [string, RegExp][] = [
   ["plan", /^(\.plan-head|\.icon-rows?|\.section-title)/],
   ["deploy", /^(\.deploy-|\.project-row|\.bar-list)/],
   ["middle-truncate", /^\.truncate-mid/],
-  ["book", /^\.book/],
   ["clearable-input", /^\.clearable/],
   ["video", /^\.video/],
 ];

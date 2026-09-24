@@ -11,47 +11,47 @@ const icon = `<svg slot="illustration" width="48" height="48" viewBox="0 0 48 48
 export const doc: Doc = {
   id: "book",
   title: "Book",
-  lede: "A responsive book cover.",
+  lede: "A responsive book cover with interruptible hover motion and a reduced-motion alternative.",
   tags: ["acme-book"],
   examples: [
     {
       h: "Default",
-      html: `<acme-book title="${T}"></acme-book>`,
+      html: `<acme-book heading="${T}"></acme-book>`,
     },
     {
       h: "Variants",
-      html: row(`<acme-book title="${T}" variant="simple" width="196"></acme-book><acme-book title="${T}" variant="stripe" width="196"></acme-book>`),
+      html: row(`<acme-book heading="${T}" variant="simple" width="196px"></acme-book><acme-book heading="${T}" variant="stripe" width="196px"></acme-book>`),
     },
     {
       h: "Custom color",
       html: row(
-        `<acme-book color="#9D2127" title="How Vercel improves your website's search engine ranking"></acme-book><acme-book color="#7DC1C1" text-color="white" title="Design Engineering at Vercel" variant="simple"></acme-book><acme-book color="#FED954" title="${T}"></acme-book>`,
+        `<acme-book color="#9D2127" heading="How Vercel improves your website's search engine ranking"></acme-book><acme-book color="#7DC1C1" text-color="#0a0a0a" heading="Design Engineering at Vercel" variant="simple"></acme-book><acme-book color="#FED954" heading="${T}"></acme-book>`,
       ),
     },
     {
       h: "Custom icon",
       html: row(
-        `<acme-book title="Vercel Platform Guide"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-vercel"/></svg></acme-book><acme-book title="Next.js Documentation"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-next"/></svg></acme-book><acme-book title="React Essentials"><svg class="ic" width="16" height="16" slot="icon" aria-hidden="true"><use href="#brand-react"/></svg></acme-book>`,
+        `<acme-book heading="Vercel Platform Guide"><svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#brand-vercel"/></svg></acme-book><acme-book heading="Next.js Documentation"><svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#brand-next"/></svg></acme-book><acme-book heading="React Essentials"><svg class="ic" width="16" height="16" slot="start" aria-hidden="true"><use href="#brand-react"/></svg></acme-book>`,
       ),
     },
     {
       h: "Custom illustration",
-      html: row(`<acme-book title="${T}">${lines}</acme-book><acme-book title="${T}" variant="simple">${icon}</acme-book>`, "stretch"),
+      html: row(`<acme-book heading="${T}">${lines}</acme-book><acme-book heading="${T}" variant="simple">${icon}</acme-book>`, "stretch"),
     },
     {
       h: "Responsive",
-      html: `<acme-book title="${T}" width='{"sm":150,"md":196}'></acme-book>`,
+      html: `<acme-book heading="${T}" width='{"compact":"150px","medium":"196px"}'></acme-book>`,
     },
     {
       h: "Width",
-      html: row(`<acme-book title="${T}" width="300"></acme-book><acme-book title="${T}" width="200"></acme-book><acme-book title="${T}" width="150"></acme-book>`),
+      html: row(`<acme-book heading="${T}" width="300px"></acme-book><acme-book heading="${T}" width="200px"></acme-book><acme-book heading="${T}" width="150px"></acme-book>`),
     },
     {
       h: "Textured",
       html: `<div class="vstack" style="gap:48px">${row(
-        `<acme-book color="#7DC1C1" textured title="Design Engineering at Vercel"></acme-book><acme-book color="#9D2127" textured title="Design Engineering at Vercel"></acme-book><acme-book color="#FED954" textured title="Design Engineering at Vercel"></acme-book>`,
+        `<acme-book color="#7DC1C1" textured heading="Design Engineering at Vercel"></acme-book><acme-book color="#9D2127" textured heading="Design Engineering at Vercel"></acme-book><acme-book color="#FED954" textured heading="Design Engineering at Vercel"></acme-book>`,
       )}${row(
-        `<acme-book color="#7DC1C1" text-color="white" textured title="Design Engineering at Vercel" variant="simple"></acme-book><acme-book color="#9D2127" text-color="#ece4db" textured title="Design Engineering at Vercel" variant="simple"></acme-book><acme-book color="#FED954" text-color="#9d3b05" textured title="Design Engineering at Vercel" variant="simple"></acme-book>`,
+        `<acme-book color="#7DC1C1" text-color="#0a0a0a" textured heading="Design Engineering at Vercel" variant="simple"></acme-book><acme-book color="#9D2127" text-color="#ece4db" textured heading="Design Engineering at Vercel" variant="simple"></acme-book><acme-book color="#FED954" text-color="#9d3b05" textured heading="Design Engineering at Vercel" variant="simple"></acme-book>`,
       )}</div>`,
     },
   ],
@@ -64,12 +64,17 @@ export const doc: Doc = {
     Behavior: [
       "Set color from a token (var(--ds-blue-700), var(--ds-amber-600)) rather than a raw hex, so the cover follows the light and dark themes.",
       "Keep textured for hero shots; in a row of several books the texture fights the labels.",
-      "Use width and width-sm to keep covers in proportion across breakpoints; a squashed aspect ratio breaks the metaphor.",
+      "Pointer motion uses Lit Motion. Touch does not start hover motion, and reduced-motion preferences cancel interpolation.",
+      "Use the shared responsive width contract, for example compact and medium values. Numeric values are size tokens; use a CSS unit for pixel widths.",
+    ],
+    Assets: [
+      "Browser distributions include the texture asset. Standard URL-aware application bundlers resolve the package image from the component module.",
+      "For a bundler with custom asset handling, import @acmelabs/design-system/assets/book-texture.avif as a file and set --acme-book-texture to its CSS url(...) value. The default asset remains packaged with the library.",
     ],
     Accessibility: [
-      "The cover is decorative chrome; the title lives in the heading element, so screen readers do not announce it twice.",
+      "The cover text is supplied through heading. The component is presentation, with no built-in action.",
       "An inner illustration needs alt text only when it says something the title does not; otherwise mark it aria-hidden.",
-      "When the book wraps a link, put the focus ring on the link, not on the cover, so keyboard users see the real target.",
+      "Wrap Book in Link when it needs an action. Keep the focus indicator on that real link.",
     ],
   },
 };

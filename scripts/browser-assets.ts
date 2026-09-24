@@ -19,19 +19,23 @@ export function writeFlowAssets(root: string, dist: string) {
     ) + "\n",
   );
 }
-/** Bun does not transform Worker URL assets; its file loader supplies correct per-chunk URLs. */
-export function flowAssetPlugin(dist: string): BunPlugin {
+/** The file loader preserves asset URLs when browser code moves into shared chunks. */
+export function browserAssetPlugin(dist: string): BunPlugin {
+  const assets = [
+    { suffix: "/shared/flow-engine", expression: 'new URL("./elk-worker.js", import.meta.url)', file: path.join(dist, "shared/elk-worker.js") },
+    { suffix: "/components/book/book", expression: 'new URL("../../../assets/book-texture.avif", import.meta.url)', file: path.join(dist, "../assets/book-texture.avif") },
+  ];
   return {
-    name: "flow-worker-asset",
+    name: "browser-module-assets",
     setup(build) {
-      build.onLoad({ filter: /[/\\]shared[/\\]flow-engine\.js$/ }, async (args) => {
+      build.onLoad({ filter: /[/\\](?:shared[/\\]flow-engine|components[/\\]book[/\\]book)\.(?:js|ts)$/ }, async (args) => {
+        const normalized = args.path.replaceAll("\\", "/").replace(/\.(?:js|ts)$/, "");
+        const asset = assets.find((asset) => normalized.endsWith(asset.suffix))!;
         const source = await Bun.file(args.path).text();
-        const expression = 'new URL("./elk-worker.js", import.meta.url)';
-        if (!source.includes(expression)) throw new Error("Flow worker asset expression changed");
+        if (!source.includes(asset.expression)) throw new Error("Browser asset expression changed: " + asset.suffix);
         return {
-          contents:
-            `import elkWorkerAsset from ${JSON.stringify(path.join(dist, "shared/elk-worker.js"))} with {type:"file"};\n` + source.replace(expression, "new URL(elkWorkerAsset, import.meta.url)"),
-          loader: "js",
+          contents: `import acmeAssetUrl from ${JSON.stringify(asset.file)} with {type:"file"};\n` + source.replace(asset.expression, "new URL(acmeAssetUrl, import.meta.url)"),
+          loader: args.path.endsWith(".ts") ? "ts" : "js",
           resolveDir: path.dirname(args.path),
         };
       });

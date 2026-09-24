@@ -1,0 +1,835 @@
+{
+  "date": "2026-09-23",
+  "batch": "M21",
+  "entry": "RC-05 Book",
+  "status": "complete at native/Lit boundary",
+  "implementation": {
+    "interface": "heading, stripe/simple, optional CSS colors, canonical responsive width, textured, illustration/start slots and root/cover/spine/content parts",
+    "state": "Canonical atoms and existing gesture store, derived frames, StoreEffect and AnimateController",
+    "motion": "250ms ease-out; live matrix capture before generated hover state; cancellation before reversal; touch excluded; reduced-motion cancellation; consumed gestures do not replay when preferences change",
+    "geometry": "Actual host width feeds the original 49:60 cover geometry through a batched ResizeObserver projection; common numeric tokens and responsive conditions replace local breakpoint names",
+    "assets": "215KB packaged AVIF remains separate and loads on demand. Shared browser asset plugin preserves Book image and Flow worker URLs across chunks. Public image export/CSS hook supports custom application bundlers."
+  },
+  "checks": {
+    "focusedUnit": {
+      "pass": 4,
+      "assertions": 15
+    },
+    "source": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "default and CSS widths preserve the cover ratio",
+            "pass": true
+          },
+          {
+            "name": "responsive widths use window and named-container queries",
+            "pass": true
+          },
+          {
+            "name": "real hover starts from rest and reversal does not continue outward",
+            "pass": true
+          },
+          {
+            "name": "reduced motion and a changed preference cancel active animations",
+            "pass": true
+          },
+          {
+            "name": "touch stays at rest and authored marks remain owned across variants",
+            "pass": true
+          },
+          {
+            "name": "disconnect ends motion and reconnect starts from rest",
+            "pass": true
+          },
+          {
+            "name": "texture loads the packaged image only when requested",
+            "pass": true
+          },
+          {
+            "name": "reenabling motion does not replay a consumed reduced-motion gesture",
+            "pass": true
+          },
+          {
+            "name": "page zoom preserves measured cover geometry",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "default and CSS widths preserve the cover ratio",
+            "pass": true
+          },
+          {
+            "name": "responsive widths use window and named-container queries",
+            "pass": true
+          },
+          {
+            "name": "real hover starts from rest and reversal does not continue outward",
+            "pass": true
+          },
+          {
+            "name": "reduced motion and a changed preference cancel active animations",
+            "pass": true
+          },
+          {
+            "name": "touch stays at rest and authored marks remain owned across variants",
+            "pass": true
+          },
+          {
+            "name": "disconnect ends motion and reconnect starts from rest",
+            "pass": true
+          },
+          {
+            "name": "texture loads the packaged image only when requested",
+            "pass": true
+          },
+          {
+            "name": "reenabling motion does not replay a consumed reduced-motion gesture",
+            "pass": true
+          },
+          {
+            "name": "page zoom preserves measured cover geometry",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "default and CSS widths preserve the cover ratio",
+            "pass": true
+          },
+          {
+            "name": "responsive widths use window and named-container queries",
+            "pass": true
+          },
+          {
+            "name": "real hover starts from rest and reversal does not continue outward",
+            "pass": true
+          },
+          {
+            "name": "reduced motion and a changed preference cancel active animations",
+            "pass": true
+          },
+          {
+            "name": "touch stays at rest and authored marks remain owned across variants",
+            "pass": true
+          },
+          {
+            "name": "disconnect ends motion and reconnect starts from rest",
+            "pass": true
+          },
+          {
+            "name": "texture loads the packaged image only when requested",
+            "pass": true
+          },
+          {
+            "name": "reenabling motion does not replay a consumed reduced-motion gesture",
+            "pass": true
+          },
+          {
+            "name": "page zoom preserves measured cover geometry",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "compiled": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "name": "default and CSS widths preserve the cover ratio",
+            "pass": true
+          },
+          {
+            "name": "responsive widths use window and named-container queries",
+            "pass": true
+          },
+          {
+            "name": "real hover starts from rest and reversal does not continue outward",
+            "pass": true
+          },
+          {
+            "name": "reduced motion and a changed preference cancel active animations",
+            "pass": true
+          },
+          {
+            "name": "touch stays at rest and authored marks remain owned across variants",
+            "pass": true
+          },
+          {
+            "name": "disconnect ends motion and reconnect starts from rest",
+            "pass": true
+          },
+          {
+            "name": "texture loads the packaged image only when requested",
+            "pass": true
+          },
+          {
+            "name": "reenabling motion does not replay a consumed reduced-motion gesture",
+            "pass": true
+          },
+          {
+            "name": "page zoom preserves measured cover geometry",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "name": "default and CSS widths preserve the cover ratio",
+            "pass": true
+          },
+          {
+            "name": "responsive widths use window and named-container queries",
+            "pass": true
+          },
+          {
+            "name": "real hover starts from rest and reversal does not continue outward",
+            "pass": true
+          },
+          {
+            "name": "reduced motion and a changed preference cancel active animations",
+            "pass": true
+          },
+          {
+            "name": "touch stays at rest and authored marks remain owned across variants",
+            "pass": true
+          },
+          {
+            "name": "disconnect ends motion and reconnect starts from rest",
+            "pass": true
+          },
+          {
+            "name": "texture loads the packaged image only when requested",
+            "pass": true
+          },
+          {
+            "name": "reenabling motion does not replay a consumed reduced-motion gesture",
+            "pass": true
+          },
+          {
+            "name": "page zoom preserves measured cover geometry",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "name": "default and CSS widths preserve the cover ratio",
+            "pass": true
+          },
+          {
+            "name": "responsive widths use window and named-container queries",
+            "pass": true
+          },
+          {
+            "name": "real hover starts from rest and reversal does not continue outward",
+            "pass": true
+          },
+          {
+            "name": "reduced motion and a changed preference cancel active animations",
+            "pass": true
+          },
+          {
+            "name": "touch stays at rest and authored marks remain owned across variants",
+            "pass": true
+          },
+          {
+            "name": "disconnect ends motion and reconnect starts from rest",
+            "pass": true
+          },
+          {
+            "name": "texture loads the packaged image only when requested",
+            "pass": true
+          },
+          {
+            "name": "reenabling motion does not replay a consumed reduced-motion gesture",
+            "pass": true
+          },
+          {
+            "name": "page zoom preserves measured cover geometry",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "distributions": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/book.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/book.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/book.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/cdn/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "pass": true,
+            "image": {
+              "url": "http://localhost:54264/dist/bundle/assets/book-texture-w697mxjq.avif",
+              "width": 1920,
+              "height": 1274
+            },
+            "errors": []
+          }
+        ]
+      }
+    ],
+    "flowAssetRegression": [
+      {
+        "engine": "chromium",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "checks": [
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/define/flow-diagram.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/all.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/cdn/standalone.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/cdn/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": false,
+            "pass": true,
+            "workerAsset": "http://localhost:54291/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          },
+          {
+            "entry": "/dist/bundle/design-system.standalone.min.js",
+            "cross": true,
+            "pass": true,
+            "workerAsset": "http://localhost:54292/dist/bundle/assets/elk-worker-4d2t87j4.js",
+            "errors": []
+          }
+        ]
+      }
+    ],
+    "freshPackage": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "result": {
+          "image": "http://localhost:56455/book-texture-w697mxjq.avif",
+          "naturalWidth": 1920
+        },
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "result": {
+          "image": "http://localhost:56455/book-texture-w697mxjq.avif",
+          "naturalWidth": 1920
+        },
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "result": {
+          "image": "http://localhost:56455/book-texture-w697mxjq.avif",
+          "naturalWidth": 1920
+        },
+        "errors": []
+      }
+    ],
+    "docs": [
+      {
+        "engine": "chromium",
+        "pass": true,
+        "image": {
+          "url": "http://localhost:4180/assets/book-texture-w697mxjq.avif",
+          "width": 1920
+        },
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "pass": true,
+        "image": {
+          "url": "http://localhost:4180/assets/book-texture-w697mxjq.avif",
+          "width": 1920
+        },
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "pass": true,
+        "image": {
+          "url": "http://localhost:4180/assets/book-texture-w697mxjq.avif",
+          "width": 1920
+        },
+        "errors": []
+      }
+    ],
+    "strictBuild": true,
+    "siteBuild": {
+      "pages": 108,
+      "elements": 4319,
+      "undocumented": 0
+    },
+    "fullSuite": {
+      "pass": 859,
+      "fail": 0,
+      "assertions": 152035
+    },
+    "visual": "Book texture/variant screenshot inspected"
+  },
+  "findingsResolved": [
+    "Original implementation ran WAAPI during reduced motion and started a hover gesture for touch.",
+    "A first width-only update replayed a return-from-hover animation before any gesture.",
+    "Changing reduced motion off while hovered replayed a consumed gesture.",
+    "Initial nondefault size in a fresh WebKit consumer produced ResizeObserver loop notifications; measurement writes now use an animation frame."
+  ],
+  "references": [
+    "notes/decisions/motion-on-the-book.md",
+    "notes/alignment/inventory/rich-content.md#rc-05-book",
+    "tools/geist/maps/book.ts retained reference-only",
+    "src/shared/responsive-input.ts",
+    "src/shared/style-renderer.ts"
+  ],
+  "removal": [
+    "title/old icon slot/BookWidth/widthVars/textureFlipped public helpers",
+    "Local xs/sm/smd/md/lg width variables and production reference-map output",
+    "Unversioned texture URL and raw legacy Book rules"
+  ],
+  "reproduction": "m21-book-checks.ts",
+  "remaining": [
+    "RC-07 Video",
+    "M22 generated React/scoped-registry checks",
+    "M25/M26 final asset and current-browser gates"
+  ]
+}

@@ -1,4 +1,4 @@
-import { writeFlowAssets, flowAssetPlugin } from "./flow-assets";
+import { writeFlowAssets, browserAssetPlugin } from "./browser-assets";
 /// <reference types="bun" />
 // Builds dist/ two ways, following lit.dev/docs/tools/publishing:
 //   dist/*.js (+ .d.ts, .d.ts.map)  unbundled ES2022 modules with Lit templates precompiled by @lit-labs/compiler;
@@ -142,7 +142,7 @@ fs.writeFileSync(
     sourcemap: "none",
     naming: { entry: "[dir]/[name].[ext]", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
     metafile: true,
-    plugins: [flowAssetPlugin(DIST)],
+    plugins: [browserAssetPlugin(DIST)],
   });
   if (!result.success) throw new AggregateError(result.logs, "Selective browser build failed");
   fs.mkdirSync(path.join(ROOT, ".artifacts"), { recursive: true });
@@ -164,9 +164,9 @@ for (const [name, minify] of [
     minify,
     sourcemap: minify ? "none" : "linked",
     plugins: minify
-      ? [flowAssetPlugin(DIST)]
+      ? [browserAssetPlugin(DIST)]
       : [
-          flowAssetPlugin(DIST),
+          browserAssetPlugin(DIST),
           {
             name: "compiled-css-debug-maps",
             setup(build) {
@@ -211,7 +211,7 @@ for (const [name, minify] of [
     outdir: path.join(DIST, "bundle"),
     naming: { entry: "design-system.standalone.min.js", chunk: "chunks/[name]-[hash].[ext]", asset: "assets/[name]-[hash].[ext]" },
     splitting: true,
-    plugins: [flowAssetPlugin(DIST)],
+    plugins: [browserAssetPlugin(DIST)],
     target: "browser",
     format: "esm",
     minify: true,

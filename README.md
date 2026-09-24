@@ -33,7 +33,7 @@ component dependencies. The `dist/cdn/all.js` entry registers the component libr
 heavy component packages. The standalone bundle also installs tokens. `dashboard.css` carries the page-level recipes
 the Vercel dashboard composes in light DOM. Import configuration helpers from `dist/cdn/configure.js` when using browser modules. The bootstrap, configuration helpers, definitions and optional artwork share one runtime graph.
 
-`dist/bundle/design-system.standalone.min.js` loads the component library and tokens. Keep its generated chunks and assets beside it: Flow Diagram loads its layout engine and worker on demand. Use the shared CDN graph when adding optional icons or artwork.
+`dist/bundle/design-system.standalone.min.js` loads the component library and tokens. Keep its generated chunks and assets beside it: Flow Diagram loads its layout engine and worker on demand; textured Book loads its packaged image when used. Use the shared CDN graph when adding optional icons or artwork.
 
 ## Install from npm
 

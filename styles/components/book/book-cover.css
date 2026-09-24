@@ -41,7 +41,7 @@
   container-type: inline-size;
 }
 
-.book :where(.wrap) :where(.cover) :where(.body) :where(.content) :where(.title) {
+.book :where(.wrap) :where(.cover) :where(.body) :where(.content) :where(.heading) {
   font-family: var(--acme-font-sans);
   font-size: 14px;
   line-height: 20px;
@@ -96,35 +96,15 @@
   left: 0;
 }
 
-@media screen and (width <= 400px) {
-  .book {
-    --book-width: var(--xs-book-width, var(--sm-book-width));
-  }
-}
 
-@media screen and (width >= 401px) and (width <= 600px) {
-  .book {
-    --book-width: var(--sm-book-width);
-  }
-}
 
-@media screen and (width >= 601px) and (width <= 768px) {
-  .book {
-    --book-width: var(--smd-book-width, var(--md-book-width, var(--sm-book-width)));
-  }
-}
 
-@media screen and (width >= 769px) and (width <= 960px) {
-  .book {
-    --book-width: var(--md-book-width, var(--smd-book-width, var(--sm-book-width)));
-  }
-}
 
-@media screen and (width >= 961px) {
-  .book {
-    --book-width: var(--lg-book-width, var(--md-book-width, var(--smd-book-width, var(--sm-book-width))));
-  }
-}
+
+
+
+
+
 
 .book :where(.wrap) > :first-child {
   min-width: calc(var(--book-width) * 1px);
@@ -141,7 +121,7 @@
   opacity: .5;
   pointer-events: none;
   filter: brightness(1.1);
-  background-image: url("https://cdn.jsdelivr.net/npm/@acmelabs/design-system/assets/book-texture.avif");
+  background-image: var(--acme-book-texture, var(--_book-texture));
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -221,7 +201,7 @@
   border: none;
 }
 
-.book:where(.stripe) :where(.wrap) :where(.cover) :where(.body) :where(.content) :where(.title) {
+.book:where(.stripe) :where(.wrap) :where(.cover) :where(.body) :where(.content) :where(.heading) {
   letter-spacing: -.02em;
   font-size: 10.5cqw;
   line-height: 1.25em;
@@ -246,7 +226,7 @@
   opacity: 1;
 }
 
-.book:where(.simple) :where(.wrap) :where(.cover) :where(.body) :where(.content) :where(.title) {
+.book:where(.simple) :where(.wrap) :where(.cover) :where(.body) :where(.content) :where(.heading) {
   letter-spacing: -.02em;
   text-shadow: 0 .025em .5px color-mix(in srgb, var(--book-color) 80%, white 20%), -.02em -.02em .5px color-mix(in srgb, var(--book-color) 80%, black 20%);
   font-size: 12cqw;

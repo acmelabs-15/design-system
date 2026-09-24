@@ -625,10 +625,6 @@ html {
 
 }
 
-@media (width <= 767px) {
-
-}
-
 @media (width <= 900px) {
   .cells {
     grid-template-columns: repeat(2, minmax(0, 1fr));

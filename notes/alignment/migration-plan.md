@@ -394,3 +394,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M21 Markdown — 2026-09-23
 
 [Acceptance](evidence/m21-markdown-2026-09-23.json) closes RC-04 at the native/Lit boundary. Native prose, TOC/fragments, scoped IDs/styles, shared highlighting/scrolling, trust/failure behavior and live labels pass the recorded source/compiled/docs gates. The complete suite passes 867 tests. Book and Video remain in M21.
+
+### M21 Book — 2026-09-23
+
+[Acceptance](evidence/m21-book-2026-09-23.json) closes RC-05 at its native/Lit boundary. Nine source/compiled cases per engine, six browser distributions, fresh package, live docs, strict build/site and all 859 tests pass. Motion regressions and WebKit resize notification feedback are resolved. Book’s image and Flow’s worker share verified file-asset delivery. Video is the remaining M21 entry.

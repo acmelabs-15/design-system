@@ -42,7 +42,7 @@ Acceptance: headings/lists/tables/fences, inline code in search indexing, links/
 
 ## RC-05 Book
 
-**Tag:** acme-book. Inputs heading="", variant: stripe|simple=stripe, color?: CSS color, textColor?: CSS color, width: supported size/CSS width (existing 196px default), textured=false. Slots illustration/start; parts root/cover/spine/content. Native semantic content is decorative/product presentation, not an action unless an explicit Link composition surrounds suitable content.
+**Tag:** acme-book. Inputs heading="", variant: stripe|simple=stripe, color?: CSS color, textColor?: CSS color, width: shared responsive size input=196px (numeric size tokens or CSS lengths; common responsiveTarget/responsiveContainer apply), textured=false. Slots illustration/start; parts root/cover/spine/content. Native semantic content is decorative/product presentation, not an action unless an explicit Link composition surrounds suitable content.
 
 Keep the established hover/tilt motion and interruption/reduced-motion behavior through Lit Motion. The [complete Book motion decision](../../decisions/motion-on-the-book.md) owns detailed spring/transform constraints and source values; this entry does not replace it with generic CSS transitions. Rename visible title to heading and icon slot to start consistently.
 
@@ -56,7 +56,7 @@ Acceptance: long addresses, arbitrary responsive content, keyboard access to des
 
 ## RC-07 Video
 
-**Tag:** acme-video. Native video is the owner. Inputs src="", poster="", controls=true, playsInline=true, muted=true, loop=true, autoplay defaults to !reducedMotion as in the source, preload: none|metadata|auto=auto; loading: eager|lazy=lazy. Width defaults to the source-equivalent 600px and height to intrinsic; explicit dimensions use the shared CSS-size contract. Surrounding layout owns outside spacing. Supply native track/source children through named/documented native-content forwarding, preserving caption support.
+**Tag:** acme-video. Native video is the owner. Inputs src="", poster="", controls=true, playsInline=true, muted=true, loop=true, autoplay defaults to !reducedMotion as in the source, preload: none|metadata|auto=auto; loading: eager|lazy=lazy. Width defaults to the source-equivalent 600px and height to intrinsic; explicit dimensions use the shared CSS-size contract. Surrounding layout owns outside spacing. Author native source/track children directly in the stable getVideoElement() target: DOM append, Lit render or React portal. This preserves their actual video parent and framework ownership. The fallback slot remains on the host; native children are not cloned or moved from framework-owned ranges.
 
 Methods play(): `Promise<void>`, pause(), getVideoElement(): HTMLVideoElement. Forward meaningful native play/pause/ended/error once; do not report successful play when its promise rejects. No acme-play duplicate. Parts root/video; slot fallback for unavailable media.
 
