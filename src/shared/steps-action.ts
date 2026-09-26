@@ -29,9 +29,13 @@ export abstract class AcmeStepsAction extends AcmeActionElement {
     return super.effectiveDisabled || this.unavailable;
   }
   protected synchronizeControl() {
-    if (this.control && this.unavailable && deepActiveElement(this.ownerDocument) === this.control) this.binding?.current?.recover();
+    if (this.control && this.unavailable && deepActiveElement(this.ownerDocument) === this.control) {
+      this.binding?.current?.recover();
+    }
     super.synchronizeControl();
-    if (this.control?.localName === "button") (this.control as HTMLButtonElement).disabled = this.disabled || this.nativeAction.fieldsetDisabled || this.unavailable;
+    if (this.control?.localName === "button") {
+      (this.control as HTMLButtonElement).disabled = this.disabled || this.nativeAction.fieldsetDisabled || this.unavailable;
+    }
   }
   protected activate() {
     this.binding.current?.move(this.binding.record);

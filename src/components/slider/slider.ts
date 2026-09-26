@@ -18,7 +18,9 @@ import { sliderBounds, sliderConfigurationValid, sliderMove, sliderNormalize, sl
 type Gesture = Readonly<{ pointer: number; index: number; start: readonly number[]; offset: number; target: HTMLElement; coincident: readonly number[]; origin: number }>;
 type Configuration = SliderConfiguration & { orientation: "horizontal" | "vertical"; labels: readonly string[] };
 const finite = (value: number, name: string): number => {
-  if (!Number.isFinite(value)) throw new RangeError(`${name} must be finite`);
+  if (!Number.isFinite(value)) {
+    throw new RangeError(`${name} must be finite`);
+  }
   return value;
 };
 const optionalNumber = { fromAttribute: (value: string | null) => (value === null ? undefined : Number(value)) };
@@ -93,7 +95,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
   }
   set step(value: number | undefined) {
     const next = finite(value ?? 1, "step");
-    if (next <= 0) throw new RangeError("step must be positive");
+    if (next <= 0) {
+      throw new RangeError("step must be positive");
+    }
     this.increment = next;
     this.constraintsChanged("step");
   }
@@ -103,7 +107,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
   }
   set largeStep(value: number | undefined) {
     const next = finite(value ?? 10, "largeStep");
-    if (next <= 0) throw new RangeError("largeStep must be positive");
+    if (next <= 0) {
+      throw new RangeError("largeStep must be positive");
+    }
     this.largeIncrement = next;
     this.constraintsChanged("largeStep");
   }
@@ -113,7 +119,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
   }
   set minStepsBetweenValues(value: number | undefined) {
     const next = value ?? 0;
-    if (!Number.isInteger(next) || next < 0) throw new RangeError("minStepsBetweenValues must be a nonnegative integer");
+    if (!Number.isInteger(next) || next < 0) {
+      throw new RangeError("minStepsBetweenValues must be a nonnegative integer");
+    }
     this.minimumSteps = next;
     this.constraintsChanged("minStepsBetweenValues");
   }
@@ -123,7 +131,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {
     const next = value ?? "horizontal";
-    if (next !== "horizontal" && next !== "vertical") throw new TypeError("Invalid slider orientation");
+    if (next !== "horizontal" && next !== "vertical") {
+      throw new TypeError("Invalid slider orientation");
+    }
     this.axis = next;
     this.constraintsChanged("orientation");
   }
@@ -133,7 +143,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     return this.names;
   }
   set thumbLabels(value: readonly string[] | undefined) {
-    if (value !== undefined && (!Array.isArray(value) || value.some((name) => typeof name !== "string"))) throw new TypeError("thumbLabels must be strings");
+    if (value !== undefined && (!Array.isArray(value) || value.some((name) => typeof name !== "string"))) {
+      throw new TypeError("thumbLabels must be strings");
+    }
     this.names = Object.freeze([...(value ?? [])]);
     this.nativeForm?.sync();
     this.requestUpdate("thumbLabels");
@@ -142,7 +154,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     return this.formatter;
   }
   set formatValue(value: ((value: number, index: number) => string) | undefined) {
-    if (value !== undefined && typeof value !== "function") throw new TypeError("formatValue must be a function");
+    if (value !== undefined && typeof value !== "function") {
+      throw new TypeError("formatValue must be a function");
+    }
     this.formatter = value;
     this.nativeForm?.sync();
     this.requestUpdate("formatValue");
@@ -159,9 +173,13 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     toAttribute: JSON.stringify,
     extra: () => this.configuration(),
     serialize: (state) => {
-      if (!state.name) return null;
+      if (!state.name) {
+        return null;
+      }
       const data = new FormData();
-      for (const value of state.value) data.append(state.name, String(value));
+      for (const value of state.value) {
+        data.append(state.name, String(value));
+      }
       return data;
     },
     restoration: (state) => JSON.stringify(state.value),
@@ -180,7 +198,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
       this.ensureControls(state.value.length);
       const valid = sliderConfigurationValid(config, state.value.length),
         disabled = state.disabled || state.platformDisabled || !valid;
-      if (disabled) this.endGesture(false);
+      if (disabled) {
+        this.endGesture(false);
+      }
       const displayed = valid ? sliderNormalize(state.value, config) : state.value.map(() => config.min);
       const invalid = !!state.customValidity || Object.keys(this.validation(state.value, config).flags).length > 0 || !!this.field.description.get()?.invalid;
       for (const [index, input] of this.controls.entries()) {
@@ -205,7 +225,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     validate: (state, config) => this.validation(state.value, config),
   });
   private validation(value: readonly number[], config: SliderConfiguration) {
-    if (!sliderConfigurationValid(config, value.length)) return { flags: { customError: true }, message: this.text("slider.constraints", "Set valid slider bounds and thumb spacing.") };
+    if (!sliderConfigurationValid(config, value.length)) {
+      return { flags: { customError: true }, message: this.text("slider.constraints", "Set valid slider bounds and thumb spacing.") };
+    }
     this.constraint.type = "number";
     this.constraint.min = String(config.min);
     this.constraint.max = String(config.max);
@@ -213,9 +235,13 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     for (const entry of value) {
       this.constraint.value = String(entry);
       const result = nativeValidation(this.constraint);
-      if (Object.keys(result.flags).length) return result;
+      if (Object.keys(result.flags).length) {
+        return result;
+      }
     }
-    if (!sameSliderValues(value, sliderNormalize(value, config))) return { flags: { customError: true }, message: this.text("slider.spacing", "Keep the required space between values.") };
+    if (!sameSliderValues(value, sliderNormalize(value, config))) {
+      return { flags: { customError: true }, message: this.text("slider.spacing", "Keep the required space between values.") };
+    }
     return { flags: {}, message: "" };
   }
   /** @default [0] */
@@ -252,7 +278,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     return { ...super.semanticDefaults, role: "group" };
   }
   private ensureControls(count: number): void {
-    if (this.focused >= count) this.focused = -1;
+    if (this.focused >= count) {
+      this.focused = -1;
+    }
     this.lastFocused = Math.min(this.lastFocused, count - 1);
     while (this.controls.length > count) {
       this.controls.pop()!.remove();
@@ -270,22 +298,30 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
         this.focused = this.lastFocused = index;
       });
       input.addEventListener("blur", () => {
-        if (this.gesture?.index === index) this.endGesture(false);
+        if (this.gesture?.index === index) {
+          this.endGesture(false);
+        }
         this.focused = -1;
       });
       input.addEventListener("input", (event) => {
         event.stopPropagation();
-        if (this.gesture || input.disabled) return;
+        if (this.gesture || input.disabled) {
+          return;
+        }
         this.nativeEdit.set(this.nativeEdit.get() ?? this.value);
         this.edit(index, input.valueAsNumber);
       });
       input.addEventListener("change", (event) => {
         event.stopPropagation();
-        if (this.gesture || input.disabled) return;
+        if (this.gesture || input.disabled) {
+          return;
+        }
         const previous = this.nativeEdit.get() ?? this.value;
         this.edit(index, input.valueAsNumber);
         this.nativeEdit.set(() => undefined);
-        if (!sameSliderValues(previous, this.value)) this.emit("acme-change");
+        if (!sameSliderValues(previous, this.value)) {
+          this.emit("acme-change");
+        }
       });
       this.controls.push(input);
       this.interactions.push(new Interaction(this, { disabled: () => input.disabled }));
@@ -295,7 +331,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     this.dispatchEvent(new CustomEvent(type, { detail: { value: this.value }, bubbles: true, composed: true }));
   }
   private edit(index: number, candidate: number): boolean {
-    if (this.nativeForm.effectiveDisabled || !sliderConfigurationValid(this.configuration(), this.value.length)) return false;
+    if (this.nativeForm.effectiveDisabled || !sliderConfigurationValid(this.configuration(), this.value.length)) {
+      return false;
+    }
     const baseline = sliderNormalize(this.value, this.configuration()),
       next = sliderMove(baseline, index, candidate, this.configuration());
     if (sameSliderValues(next, this.value)) {
@@ -308,7 +346,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     return this.value === accepted;
   }
   private key(event: KeyboardEvent, index: number): void {
-    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || this.controls[index]?.disabled) return;
+    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || this.controls[index]?.disabled) {
+      return;
+    }
     const config = this.configuration(),
       current = sliderNormalize(this.value, config),
       [low, high] = sliderBounds(current, index, config),
@@ -343,24 +383,33 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     this.endGesture(false);
     this.nativeEdit.set(() => undefined);
     next = Math.max(low, Math.min(high, next));
-    if (next !== current[index]) next = snapDecimal(next, this.step, this.min, next > current[index]! ? "ceil" : "floor");
-    if (this.edit(index, next)) this.emit("acme-change");
+    if (next !== current[index]) {
+      next = snapDecimal(next, this.step, this.min, next > current[index]! ? "ceil" : "floor");
+    }
+    if (this.edit(index, next)) {
+      this.emit("acme-change");
+    }
   }
   private pointerValue(event: PointerEvent, offset = 0): number | undefined {
     const track = this.renderRoot.querySelector<HTMLElement>("[part=track]")!,
       rect = track.getBoundingClientRect(),
       vertical = this.orientation === "vertical",
       length = vertical ? rect.height : rect.width;
-    if (!length) return undefined;
+    if (!length) {
+      return undefined;
+    }
     const rtl = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl";
     const fraction = vertical ? (rect.bottom - event.clientY + offset) / length : rtl ? (rect.right - event.clientX + offset) / length : (event.clientX - rect.left - offset) / length;
     return this.min + Math.max(0, Math.min(1, fraction)) * (this.max - this.min);
   }
   private pointerDown = (event: PointerEvent): void => {
-    if (event.defaultPrevented || event.button !== 0 || !event.isPrimary || this.gesture || this.nativeForm.effectiveDisabled || !sliderConfigurationValid(this.configuration(), this.value.length))
+    if (event.defaultPrevented || event.button !== 0 || !event.isPrimary || this.gesture || this.nativeForm.effectiveDisabled || !sliderConfigurationValid(this.configuration(), this.value.length)) {
       return;
+    }
     const candidate = this.pointerValue(event);
-    if (candidate === undefined) return;
+    if (candidate === undefined) {
+      return;
+    }
     const path = event.composedPath(),
       actual = this.controls.findIndex((input) => path.includes(input));
     let index = actual;
@@ -381,7 +430,9 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
     this.gesture = { pointer: event.pointerId, index, start: this.value, offset, target, coincident, origin };
     const win = this.ownerDocument.defaultView!;
     const move = (e: PointerEvent) => {
-      if (e.pointerId !== this.gesture?.pointer) return;
+      if (e.pointerId !== this.gesture?.pointer) {
+        return;
+      }
       if (!this.gesture.target.hasPointerCapture(e.pointerId)) {
         this.endGesture(false);
         return;
@@ -403,10 +454,14 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
       }
     };
     const up = (e: PointerEvent) => {
-      if (e.pointerId === this.gesture?.pointer) this.endGesture(this.gesture.target.hasPointerCapture(e.pointerId));
+      if (e.pointerId === this.gesture?.pointer) {
+        this.endGesture(this.gesture.target.hasPointerCapture(e.pointerId));
+      }
     };
     const cancel = (e: Event) => {
-      if (!("pointerId" in e) || (e as PointerEvent).pointerId === this.gesture?.pointer) this.endGesture(false);
+      if (!("pointerId" in e) || (e as PointerEvent).pointerId === this.gesture?.pointer) {
+        this.endGesture(false);
+      }
     };
     win.addEventListener("pointermove", move);
     win.addEventListener("pointerup", up);
@@ -426,16 +481,24 @@ export class AcmeSlider extends AcmeFormElement<readonly number[], Configuration
       this.endGesture(false);
       return;
     }
-    if (actual < 0) this.edit(index, candidate);
+    if (actual < 0) {
+      this.edit(index, candidate);
+    }
   };
   private endGesture(commit: boolean): void {
     const gesture = this.gesture;
-    if (!gesture) return;
+    if (!gesture) {
+      return;
+    }
     this.gesture = undefined;
     this.cleanupGesture?.();
     this.cleanupGesture = undefined;
-    if (gesture.target.hasPointerCapture?.(gesture.pointer)) gesture.target.releasePointerCapture(gesture.pointer);
-    if (commit && !sameSliderValues(gesture.start, this.value)) this.emit("acme-change");
+    if (gesture.target.hasPointerCapture?.(gesture.pointer)) {
+      gesture.target.releasePointerCapture(gesture.pointer);
+    }
+    if (commit && !sameSliderValues(gesture.start, this.value)) {
+      this.emit("acme-change");
+    }
   }
   disconnectedCallback(): void {
     this.endGesture(false);

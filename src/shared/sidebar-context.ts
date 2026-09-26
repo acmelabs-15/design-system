@@ -2,6 +2,7 @@ import { ContextConsumer, createContext } from "@lit/context";
 import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
+
 export type SidebarView = Readonly<{ mobile: boolean; expanded: boolean; mobileOpen: boolean; collapsible: boolean }>;
 export type SidebarPart = { host: ReactiveElement; kind: "trigger" | "content"; target(): HTMLElement | undefined; currentOwner(): SidebarOwner | undefined; reconnect(): void };
 export interface SidebarOwner {
@@ -33,7 +34,9 @@ export class SidebarBinding {
       context: sidebarContext,
       subscribe: true,
       callback: (owner) => {
-        if (this.current === owner) return;
+        if (this.current === owner) {
+          return;
+        }
         this.release?.();
         this.owner.set({ value: owner });
         this.release = owner.register(this.record);
@@ -60,6 +63,8 @@ export class SidebarBinding {
     this.owner.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
 }

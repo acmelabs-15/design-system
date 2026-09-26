@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const nodes = JSON.stringify([
   { id: "idea", label: "Idea", width: 150 },
   {

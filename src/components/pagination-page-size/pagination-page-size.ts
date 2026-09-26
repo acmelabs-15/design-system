@@ -17,8 +17,9 @@ export class AcmePaginationPageSize extends AcmeElement {
     return this.choices;
   }
   set options(value: readonly number[]) {
-    if (!Array.isArray(value) || !value.length || value.some((item) => !Number.isSafeInteger(item) || item < 1) || new Set(value).size !== value.length)
+    if (!Array.isArray(value) || !value.length || value.some((item) => !Number.isSafeInteger(item) || item < 1) || new Set(value).size !== value.length) {
       throw new TypeError("Page-size options require distinct positive integers");
+    }
     const previous = this.choices;
     this.choices = Object.freeze([...value]);
     this.requestUpdate("options", previous);
@@ -33,7 +34,9 @@ export class AcmePaginationPageSize extends AcmeElement {
   protected updated() {
     const select = this.renderRoot.querySelector("acme-select") as (HTMLElement & { value?: string }) | null;
     const pageSize = this.binding.current?.view.get().pageSize;
-    if (select && pageSize !== undefined) select.value = String(pageSize);
+    if (select && pageSize !== undefined) {
+      select.value = String(pageSize);
+    }
   }
   render() {
     const view = this.binding.current?.view.get(),

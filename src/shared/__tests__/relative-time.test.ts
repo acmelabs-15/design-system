@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { relativeInstant, relativeState } from "../relative-time";
+
 test("dates are explicit instants with UTC date-only parsing", () => {
   expect(relativeInstant(0)).toBe(0);
   expect(relativeInstant(new Date(0))).toBe(0);

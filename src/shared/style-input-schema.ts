@@ -145,18 +145,26 @@ export const sizeTokenKeys = Object.freeze([...numericTokenKeys] as const);
 
 /** Checks a scalar without committing state or resolving CSS variables/computed values. */
 export function isStyleScalar<Property extends StyleInputKey>(property: Property, value: unknown, supports: StyleSupports, displayModes?: readonly StyleDisplayMode[]): value is StyleScalar<Property> {
-  if (!Object.hasOwn(styleInputSchema, property)) return false;
+  if (!Object.hasOwn(styleInputSchema, property)) {
+    return false;
+  }
   const metadata = styleInputSchema[property];
   if (typeof value === "string") {
     const trimmed = value.trim();
-    if (!trimmed) return false;
+    if (!trimmed) {
+      return false;
+    }
     if (property === "display") {
       const mode = trimmed.toLowerCase();
-      if (mode === "contents" || !displayModes?.some((allowed) => allowed === mode)) return false;
+      if (mode === "contents" || !displayModes?.some((allowed) => allowed === mode)) {
+        return false;
+      }
     }
     return supports(metadata.cssProperty, value);
   }
-  if (typeof value !== "number" || !Number.isFinite(value)) return false;
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return false;
+  }
   switch (metadata.numeric) {
     case "signed-spacing":
       return (spacingTokenKeys as readonly number[]).includes(Math.abs(value));
@@ -190,7 +198,11 @@ export function isAuthoredStyleScalar<Property extends StyleInputKey>(
   supports: StyleSupports,
   displayModes?: readonly StyleDisplayMode[],
 ): value is StyleScalar<Property> {
-  if (!Object.hasOwn(styleInputSchema, property)) return false;
-  if (typeof value === "string" && property !== "display") return true;
+  if (!Object.hasOwn(styleInputSchema, property)) {
+    return false;
+  }
+  if (typeof value === "string" && property !== "display") {
+    return true;
+  }
   return isStyleScalar(property, value, supports, displayModes);
 }

@@ -5,6 +5,7 @@ import { styleMap } from "lit/directives/style-map.js";
 import { atomState } from "../../shared/atom-state";
 import { AcmeTextControl, type TextNativeControl } from "../../shared/text-control";
 import { textareaStructureCss } from "../../generated/components/textarea/textarea-structure.styles";
+
 export type TextareaSize = "small" | "medium" | "large";
 /** A native multiline field with optional content sizing.
  * @csspart root - The field surface.
@@ -24,7 +25,9 @@ export class AcmeTextarea extends AcmeTextControl {
   }
   set rows(value: number | undefined) {
     value ??= 3;
-    if (!Number.isInteger(value) || value < 1) throw new RangeError("rows must be a positive integer");
+    if (!Number.isInteger(value) || value < 1) {
+      throw new RangeError("rows must be a positive integer");
+    }
     this.rowCount = value;
     this.nativeForm?.sync();
     this.requestUpdate("rows");
@@ -36,7 +39,9 @@ export class AcmeTextarea extends AcmeTextControl {
   }
   set resize(value: "none" | "vertical" | "horizontal" | "both" | undefined) {
     value ??= "vertical";
-    if (!["none", "vertical", "horizontal", "both"].includes(value)) throw new TypeError("Invalid resize direction");
+    if (!["none", "vertical", "horizontal", "both"].includes(value)) {
+      throw new TypeError("Invalid resize direction");
+    }
     this.resizeDirection = value;
     this.requestUpdate("resize");
   }
@@ -50,7 +55,9 @@ export class AcmeTextarea extends AcmeTextControl {
   }
   set wrap(value: "soft" | "hard" | undefined) {
     value ??= "soft";
-    if (!["soft", "hard"].includes(value)) throw new TypeError("Invalid textarea wrap");
+    if (!["soft", "hard"].includes(value)) {
+      throw new TypeError("Invalid textarea wrap");
+    }
     this.wrapping = value;
     this.nativeForm?.sync();
     this.requestUpdate("wrap");
@@ -60,12 +67,18 @@ export class AcmeTextarea extends AcmeTextControl {
   }
   protected configure(control: TextNativeControl) {
     const textarea = control as HTMLTextAreaElement;
-    if (textarea.rows !== this.rows) textarea.rows = this.rows;
-    if (textarea.wrap !== this.wrap) textarea.wrap = this.wrap;
+    if (textarea.rows !== this.rows) {
+      textarea.rows = this.rows;
+    }
+    if (textarea.wrap !== this.wrap) {
+      textarea.wrap = this.wrap;
+    }
   }
   protected serializeValue(value: string): string {
     const form = this.control.form;
-    if (this.wrap !== "hard" || !form || !this.control.name) return value;
+    if (this.wrap !== "hard" || !form || !this.control.name) {
+      return value;
+    }
     const result = new this.ownerDocument.defaultView!.FormData(form).get(this.control.name);
     return typeof result === "string" ? result : value;
   }
@@ -93,9 +106,13 @@ export class AcmeTextarea extends AcmeTextControl {
     super.disconnectedCallback();
   }
   protected edited() {
-    if (!this.control.isConnected) return;
+    if (!this.control.isConnected) {
+      return;
+    }
     this.control.style.removeProperty("--acme-textarea-height");
-    if (!this.autoResize) return;
+    if (!this.autoResize) {
+      return;
+    }
     const scroll = this.control.scrollTop;
     this.control.style.setProperty("--acme-textarea-height", "0px");
     const height = this.control.scrollHeight;

@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { diagnosticMetadata } from "../devtools-metadata";
 import type { Package } from "custom-elements-manifest/schema";
+
 test("inspector metadata keeps public facts and deduplicates equivalent contracts", () => {
   const declaration = {
     kind: "class",

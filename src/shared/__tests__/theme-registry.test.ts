@@ -10,7 +10,9 @@ test("registers immutable independent spacing and size overrides and inherits om
   expect(registered.properties["--acme-spacing-2"]).toBe("0.75rem");
   expect(registered.properties["--acme-size-2"]).toBe("2rem");
   expect(Object.keys(registered.definition)).toEqual(["sizes", "spacing"]);
-  for (const object of [registered, registered.definition, registered.definition.spacing, registered.properties]) expect(Object.isFrozen(object)).toBe(true);
+  for (const object of [registered, registered.definition, registered.definition.spacing, registered.properties]) {
+    expect(Object.isFrozen(object)).toBe(true);
+  }
   expect(registry.get("brand")).toBe(registered);
   expect(registry.get(undefined)).toBeUndefined();
 });
@@ -72,7 +74,9 @@ test("names are exact Map keys and unknown names cannot silently select the hous
   const prototypeName = registry.register("__proto__", {});
   expect(registry.get("__proto__")).toBe(prototypeName);
   expect(() => registry.get("missing")).toThrow("before use");
-  for (const name of ["", " ", " brand", "brand "]) expect(() => registry.register(name, {})).toThrow();
+  for (const name of ["", " ", " brand", "brand "]) {
+    expect(() => registry.register(name, {})).toThrow();
+  }
 });
 
 test("motion spring tokens accept positive numeric CSS and reject nonpositive literals", () => {
@@ -83,5 +87,7 @@ test("motion spring tokens accept positive numeric CSS and reject nonpositive li
   });
   registry.register("spring", { motion: { "acme-motion-standard-spatial-default-stiffness": "calc(350 * 2)" } });
   expect(calls).toContainEqual(["animation-iteration-count", "calc(350 * 2)"]);
-  for (const value of ["0", "-1", "infinite"]) expect(() => registry.register("bad-spring", { motion: { "acme-motion-standard-spatial-default-stiffness": value } })).toThrow();
+  for (const value of ["0", "-1", "infinite"]) {
+    expect(() => registry.register("bad-spring", { motion: { "acme-motion-standard-spatial-default-stiffness": value } })).toThrow();
+  }
 });

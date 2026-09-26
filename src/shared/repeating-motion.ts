@@ -25,7 +25,9 @@ export class RepeatingMotion implements ReactiveController {
   }
   reset() {
     this.motion.cancel();
-    for (const directive of this.directives) this.host.removeController(directive);
+    for (const directive of this.directives) {
+      this.host.removeController(directive);
+    }
     this.directives.clear();
     this.state.set((state) => ({ ...state, generation: state.generation + 1 }));
   }
@@ -50,8 +52,11 @@ export class RepeatingMotion implements ReactiveController {
       disabled: !this.enabled() || this.reduced,
       in: frames,
       onStart: (directive) => {
-        if (generation === this.key && this.host.isConnected) this.directives.add(directive);
-        else this.host.removeController(directive);
+        if (generation === this.key && this.host.isConnected) {
+          this.directives.add(directive);
+        } else {
+          this.host.removeController(directive);
+        }
       },
       onFrames: () => (this.host.isConnected && this.enabled() && !this.reduced && generation === this.key ? frames : undefined),
       keyframeOptions: { ...timing, iterations: Infinity },

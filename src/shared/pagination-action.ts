@@ -50,18 +50,31 @@ export abstract class AcmePaginationAction extends AcmeActionElement {
   }
   protected synchronizeControl() {
     const control = this.control;
-    if (control && this.unavailable && deepActiveElement(this.ownerDocument) === control) this.binding?.current?.recover();
+    if (control && this.unavailable && deepActiveElement(this.ownerDocument) === control) {
+      this.binding?.current?.recover();
+    }
     super.synchronizeControl();
     control?.setAttribute("part", "root item");
-    if (control?.localName === "button") (control as HTMLButtonElement).disabled = this.disabled || this.nativeAction.fieldsetDisabled || this.unavailable;
-    if (control?.localName === "a" && this.unavailable) control.tabIndex = -1;
-    if (this.current) control?.setAttribute("aria-current", "page");
-    else control?.removeAttribute("aria-current");
+    if (control?.localName === "button") {
+      (control as HTMLButtonElement).disabled = this.disabled || this.nativeAction.fieldsetDisabled || this.unavailable;
+    }
+    if (control?.localName === "a" && this.unavailable) {
+      control.tabIndex = -1;
+    }
+    if (this.current) {
+      control?.setAttribute("aria-current", "page");
+    } else {
+      control?.removeAttribute("aria-current");
+    }
   }
   protected activate(event: MouseEvent) {
-    if (this.link && (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return;
+    if (this.link && (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) {
+      return;
+    }
     const page = this.destination;
-    if (page !== undefined && !this.binding.current?.page(page)) event.preventDefault();
+    if (page !== undefined && !this.binding.current?.page(page)) {
+      event.preventDefault();
+    }
   }
   protected get semanticDefaults() {
     const label =

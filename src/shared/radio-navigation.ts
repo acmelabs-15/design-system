@@ -3,6 +3,7 @@ import type { ReactiveController, ReactiveElement } from "lit";
 import { selectionOrder, type SelectionMember } from "./selection-member";
 import { RovingTabindex } from "./roving-tabindex";
 import { delegateToolbarKey, registerKeyboardCollection, toolbarKeyboardOwner } from "./keyboard-delegation";
+
 type Options = Readonly<{ members(): readonly SelectionMember[]; value(): string | undefined; disabled(): boolean; loop(): boolean; synchronize(): void }>;
 const arrows = new Set(["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]);
 /** One tab-entry and arrow-key owner for an explicit radio collection. */
@@ -38,20 +39,34 @@ export class RadioNavigation implements ReactiveController {
     return members.find((member) => member.value() === this.options.value())?.target() ?? members[0]?.target();
   }
   synchronize = () => {
-    if (!this.host.isConnected) return;
+    if (!this.host.isConnected) {
+      return;
+    }
     const members = this.options.members();
     const targets = new Set<HTMLElement>([this.host, ...members.map((member) => member.host)]);
     if (this.resize) {
-      for (const target of this.observed) if (!targets.has(target)) this.resize.unobserve(target);
-      for (const target of targets) if (!this.observed.has(target)) this.resize.observe(target);
+      for (const target of this.observed) {
+        if (!targets.has(target)) {
+          this.resize.unobserve(target);
+        }
+      }
+      for (const target of targets) {
+        if (!this.observed.has(target)) {
+          this.resize.observe(target);
+        }
+      }
       this.observed = targets;
     }
-    if (toolbarKeyboardOwner(this.host)) return;
+    if (toolbarKeyboardOwner(this.host)) {
+      return;
+    }
     const target = this.options.disabled() ? undefined : this.target();
     for (const member of members) {
       const control = member.target();
       const index = control === target ? 0 : -1;
-      if (control.tabIndex !== index) control.tabIndex = index;
+      if (control.tabIndex !== index) {
+        control.tabIndex = index;
+      }
     }
     if (target !== this.stop.get().target) {
       this.stop.set({ target });
@@ -59,12 +74,18 @@ export class RadioNavigation implements ReactiveController {
     }
   };
   private keydown = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || this.options.disabled() || !arrows.has(event.key)) return;
+    if (event.defaultPrevented || this.options.disabled() || !arrows.has(event.key)) {
+      return;
+    }
     const origin = event.composedPath()[0];
     const members = this.available();
     const index = members.findIndex((member) => member.target() === origin || member.host === origin);
-    if (index < 0) return;
-    if (delegateToolbarKey(event, this.host)) return;
+    if (index < 0) {
+      return;
+    }
+    if (delegateToolbarKey(event, this.host)) {
+      return;
+    }
     this.navigation.handleKey(event, index);
     event.preventDefault();
     event.stopPropagation();

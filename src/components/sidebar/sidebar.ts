@@ -33,7 +33,9 @@ export class AcmeSidebar extends AcmeSemanticElement {
   }
   set expanded(value: boolean) {
     const previous = this.expandedValue;
-    if (previous && !value && !this.mobile && this.collapsible) this.recoverContentFocus();
+    if (previous && !value && !this.mobile && this.collapsible) {
+      this.recoverContentFocus();
+    }
     this.expandedValue = Boolean(value);
     this.requestUpdate("expanded", previous);
   }
@@ -45,7 +47,9 @@ export class AcmeSidebar extends AcmeSemanticElement {
   }
   set collapsible(value: boolean) {
     const previous = this.collapseAllowed;
-    if (!previous && value && !this.expanded && !this.mobile) this.recoverContentFocus();
+    if (!previous && value && !this.expanded && !this.mobile) {
+      this.recoverContentFocus();
+    }
     this.collapseAllowed = Boolean(value);
     this.requestUpdate("collapsible", previous);
   }
@@ -55,7 +59,9 @@ export class AcmeSidebar extends AcmeSemanticElement {
     return this.edge;
   }
   set placement(value: "start" | "end") {
-    if (value !== "start" && value !== "end") throw new TypeError("Invalid Sidebar placement");
+    if (value !== "start" && value !== "end") {
+      throw new TypeError("Invalid Sidebar placement");
+    }
     const previous = this.edge;
     this.edge = value;
     this.requestUpdate("placement", previous);
@@ -88,7 +94,9 @@ export class AcmeSidebar extends AcmeSemanticElement {
     return this.threshold;
   }
   set mobileBelow(value: ResponsiveBand) {
-    if (!responsiveBands.includes(value)) throw new TypeError("Invalid Sidebar breakpoint");
+    if (!responsiveBands.includes(value)) {
+      throw new TypeError("Invalid Sidebar breakpoint");
+    }
     const previous = this.threshold;
     this.threshold = value;
     this.requestUpdate("mobileBelow", previous);
@@ -143,15 +151,18 @@ export class AcmeSidebar extends AcmeSemanticElement {
       !value.trim() ||
       /^(initial|inherit|unset|revert)/i.test(value) ||
       (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("width", value))
-    )
+    ) {
       throw new TypeError("Sidebar width requires a CSS dimension");
+    }
   }
   private get drawer() {
     return this.renderRoot?.querySelector<AcmeDrawer>("acme-drawer") ?? undefined;
   }
   private recoverContentFocus() {
     const focused = deepActiveElement(this.ownerDocument);
-    if (!focused || !this.parts?.get().some((part) => part.kind === "content" && composedContains(part.host, focused))) return;
+    if (!focused || !this.parts?.get().some((part) => part.kind === "content" && composedContains(part.host, focused))) {
+      return;
+    }
     const trigger = this.parts.get().find((part) => part.kind === "trigger" && focusAvailable(part.target()));
     if (!trigger) {
       const root = this.renderRoot?.querySelector<HTMLElement>("[part=root]");
@@ -160,10 +171,16 @@ export class AcmeSidebar extends AcmeSemanticElement {
         this.releaseFocus = focusSection(root);
         void this.updateComplete.then(async () => {
           for (const part of this.parts.get()) {
-            if (part.kind !== "trigger") continue;
+            if (part.kind !== "trigger") {
+              continue;
+            }
             await part.host.updateComplete;
-            if (!this.isConnected || deepActiveElement(this.ownerDocument) !== root) return;
-            if (focusAvailable(part.target())) return;
+            if (!this.isConnected || deepActiveElement(this.ownerDocument) !== root) {
+              return;
+            }
+            if (focusAvailable(part.target())) {
+              return;
+            }
           }
         });
       }
@@ -171,7 +188,9 @@ export class AcmeSidebar extends AcmeSemanticElement {
   }
   private mediaChanged = () => {
     this.desiredMobile = !!this.media?.matches;
-    if (this.mobile === this.desiredMobile) return;
+    if (this.mobile === this.desiredMobile) {
+      return;
+    }
     if (this.mobile && (this.drawer?.open || this.waitingForClose)) {
       this.waitingForClose = true;
       this.mobileOpen = false;
@@ -181,11 +200,15 @@ export class AcmeSidebar extends AcmeSemanticElement {
     this.mobileValue = this.desiredMobile;
   };
   private configureMedia() {
-    if (!this.isConnected) return;
+    if (!this.isConnected) {
+      return;
+    }
     const widths = useBreakpoints();
     const threshold = this.mobileBelow === "compact" ? 0 : widths[this.mobileBelow];
     const query = `(width < ${threshold}rem)`;
-    if (this.media && this.query === query) return;
+    if (this.media && this.query === query) {
+      return;
+    }
     this.media?.removeEventListener("change", this.mediaChanged);
     this.query = query;
     this.media = this.ownerDocument.defaultView!.matchMedia(query);
@@ -193,7 +216,9 @@ export class AcmeSidebar extends AcmeSemanticElement {
     this.mediaChanged();
   }
   private afterClose = (event: Event) => {
-    if (event.target !== this.drawer) return;
+    if (event.target !== this.drawer) {
+      return;
+    }
     event.stopPropagation();
     if (this.waitingForClose) {
       this.waitingForClose = false;
@@ -201,7 +226,9 @@ export class AcmeSidebar extends AcmeSemanticElement {
     }
   };
   private openChanged = (event: CustomEvent<{ open: boolean }>) => {
-    if (event.target !== this.drawer) return;
+    if (event.target !== this.drawer) {
+      return;
+    }
     event.stopPropagation();
     this.mobileOpen = event.detail.open;
     this.dispatchEvent(new CustomEvent("acme-open-change", { detail: Object.freeze({ open: this.mobileOpen }), bubbles: true, composed: true }));

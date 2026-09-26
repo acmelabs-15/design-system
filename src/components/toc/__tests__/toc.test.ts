@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/toc";
+
 test("TOC defaults and explicit empty entries remain distinct from discovery", () => {
   const toc = document.createElement("acme-toc");
   expect(toc.levels).toEqual([2, 3]);

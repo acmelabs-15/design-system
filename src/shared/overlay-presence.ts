@@ -43,9 +43,13 @@ export class OverlayPresence implements ReactiveController {
 
   show(opener?: HTMLElement): void {
     this.epoch++;
-    for (const animation of this.animations) animation.cancel();
+    for (const animation of this.animations) {
+      animation.cancel();
+    }
     this.animations = [];
-    if (this.current.get() === "open") return;
+    if (this.current.get() === "open") {
+      return;
+    }
     if (this.current.get() === "closing") {
       this.current.set("open");
       this.options.after("open");
@@ -54,8 +58,12 @@ export class OverlayPresence implements ReactiveController {
     const surface = this.options.surface(),
       document = surface.ownerDocument,
       mode = this.options.mode();
-    if (!surface.isConnected) throw new Error("An overlay surface must be connected before opening");
-    if (mode !== "popover" && surface.localName !== "dialog") throw new Error("Dialog presence requires a native dialog surface");
+    if (!surface.isConnected) {
+      throw new Error("An overlay surface must be connected before opening");
+    }
+    if (mode !== "popover" && surface.localName !== "dialog") {
+      throw new Error("Dialog presence requires a native dialog surface");
+    }
     const focused = deepActiveElement(document);
     this.opener = opener ?? (focused && focused !== document.body && focused !== document.documentElement && "focus" in focused ? (focused as HTMLElement) : undefined);
     this.surface = surface;
@@ -69,7 +77,9 @@ export class OverlayPresence implements ReactiveController {
           errors.push(error);
         }
       }
-      if (errors.length) throw new AggregateError(errors, "Overlay cleanup failed");
+      if (errors.length) {
+        throw new AggregateError(errors, "Overlay cleanup failed");
+      }
     };
     try {
       if (this.opener) {
@@ -83,20 +93,29 @@ export class OverlayPresence implements ReactiveController {
         surface.popover = "manual";
         surface.showPopover();
         cleanups.push(() => {
-          if (surface.matches(":popover-open")) surface.hidePopover();
+          if (surface.matches(":popover-open")) {
+            surface.hidePopover();
+          }
         });
       } else {
         const dialog = surface as HTMLDialogElement;
-        if (mode === "modal") dialog.showModal();
-        else dialog.show();
+        if (mode === "modal") {
+          dialog.showModal();
+        } else {
+          dialog.show();
+        }
         cleanups.push(() => {
-          if (dialog.open) dialog.close();
+          if (dialog.open) {
+            dialog.close();
+          }
         });
       }
       if (mode === "modal") {
         cleanups.push(preventBodyScroll(document));
         let stack = modalFocusStacks.get(document);
-        if (!stack) modalFocusStacks.set(document, (stack = []));
+        if (!stack) {
+          modalFocusStacks.set(document, (stack = []));
+        }
         const trap = createFocusTrap(surface, {
           document,
           trapStack: stack,
@@ -118,8 +137,9 @@ export class OverlayPresence implements ReactiveController {
           const candidates = tabbable(surface, { getShadowRoot: true });
           const index = candidates.indexOf(active as FocusableElement);
           let next: FocusableElement | undefined;
-          if (index >= 0) next = candidates[(index + (backward ? -1 : 1) + candidates.length) % candidates.length];
-          else {
+          if (index >= 0) {
+            next = candidates[(index + (backward ? -1 : 1) + candidates.length) % candidates.length];
+          } else {
             const all = focusable(surface, { getShadowRoot: true });
             const from = all.indexOf(active as FocusableElement);
             const ordered = backward ? all.slice(0, Math.max(0, from)).reverse() : all.slice(from + 1);
@@ -130,12 +150,18 @@ export class OverlayPresence implements ReactiveController {
         let nativeTab: { from: Element; event: KeyboardEvent; left: boolean } | undefined;
         let nativeTimer: ReturnType<typeof setTimeout> | undefined;
         const leaveEditor = (event: FocusEvent) => {
-          if (nativeTab && event.composedPath()[0] === nativeTab.from && event.relatedTarget !== nativeTab.from) nativeTab.left = true;
+          if (nativeTab && event.composedPath()[0] === nativeTab.from && event.relatedTarget !== nativeTab.from) {
+            nativeTab.left = true;
+          }
         };
         const navigate = (event: KeyboardEvent) => {
-          if (event.key !== "Tab" || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.isComposing || trap.paused || surface.inert) return;
+          if (event.key !== "Tab" || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.isComposing || trap.paused || surface.inert) {
+            return;
+          }
           const active = deepActiveElement(document);
-          if (!active || !composedContains(surface, active)) return;
+          if (!active || !composedContains(surface, active)) {
+            return;
+          }
           clearTimeout(nativeTimer);
           nativeTab = undefined;
           if (active.localName === "input" && ["date", "datetime-local", "month", "time", "week"].includes((active as HTMLInputElement).type)) {
@@ -145,7 +171,9 @@ export class OverlayPresence implements ReactiveController {
             nativeTimer = setTimeout(() => {
               nativeTab = undefined;
               nativeTimer = undefined;
-              if (pending.left && !event.defaultPrevented && trap.active && !trap.paused && surface.isConnected && !surface.inert) destination(active, event.shiftKey).focus();
+              if (pending.left && !event.defaultPrevented && trap.active && !trap.paused && surface.isConnected && !surface.inert) {
+                destination(active, event.shiftKey).focus();
+              }
             }, 0);
             return;
           }
@@ -155,8 +183,11 @@ export class OverlayPresence implements ReactiveController {
         surface.addEventListener("keydown", navigate);
         surface.addEventListener("focusout", leaveEditor);
         const observer = new MutationObserver(() => {
-          if (surface.inert) trap.pause();
-          else trap.unpause();
+          if (surface.inert) {
+            trap.pause();
+          } else {
+            trap.unpause();
+          }
         });
         observer.observe(surface, { attributes: true, attributeFilter: ["inert"] });
         cleanups.push(() => {
@@ -189,19 +220,29 @@ export class OverlayPresence implements ReactiveController {
   }
 
   async hide(animations: readonly Animation[] = [], returnFocus = true): Promise<void> {
-    if (this.current.get() === "closed") return;
+    if (this.current.get() === "closed") {
+      return;
+    }
     const epoch = ++this.epoch;
-    for (const animation of this.animations) animation.cancel();
+    for (const animation of this.animations) {
+      animation.cancel();
+    }
     this.animations = [...animations];
     this.current.set("closing");
     const reduced = this.surface?.ownerDocument.defaultView?.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduced && animations.length) await Promise.allSettled(animations.map((animation) => animation.finished));
-    if (epoch !== this.epoch) return;
+    if (!reduced && animations.length) {
+      await Promise.allSettled(animations.map((animation) => animation.finished));
+    }
+    if (epoch !== this.epoch) {
+      return;
+    }
     this.finish(returnFocus);
   }
   private finish(returnFocus: boolean): void {
     this.epoch++;
-    for (const animation of this.animations) animation.cancel();
+    for (const animation of this.animations) {
+      animation.cancel();
+    }
     this.animations = [];
     const wasOpen = this.current.get() !== "closed";
     let failure: unknown;
@@ -213,10 +254,16 @@ export class OverlayPresence implements ReactiveController {
     this.release = undefined;
     this.surface = undefined;
     this.current.set("closed");
-    if (returnFocus && this.opener?.isConnected) this.opener.focus();
+    if (returnFocus && this.opener?.isConnected) {
+      this.opener.focus();
+    }
     this.opener = undefined;
-    if (wasOpen) this.options.after("closed");
-    if (failure) throw failure;
+    if (wasOpen) {
+      this.options.after("closed");
+    }
+    if (failure) {
+      throw failure;
+    }
   }
   hostDisconnected(): void {
     this.finish(false);

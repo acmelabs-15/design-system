@@ -13,6 +13,7 @@ import { Places } from "./places";
 import { Ripple } from "./ripple";
 import { selectionControlCss } from "../generated/shared/selection-control.styles";
 import type { SemanticDefaults } from "./semantic-element";
+
 type CheckContext = { value: string; indeterminate: boolean; owner?: SelectionOwner; checked?: boolean; disabled: boolean };
 /** Shared canonical state and native lifetime for checked selection controls. */
 export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, CheckContext> {
@@ -79,7 +80,9 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
     return this.appearance.effective.get().size!;
   }
   set size(value: "small" | "medium" | "large" | undefined) {
-    if (value !== undefined && !["small", "medium", "large"].includes(value)) throw new TypeError("Invalid Checkbox size");
+    if (value !== undefined && !["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid Checkbox size");
+    }
     const previous = this.size;
     this.appearance.setAuthored({ size: value });
     this.requestUpdate("size", previous);
@@ -92,7 +95,9 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
   set ripple(value: boolean) {
     const previous = this.rippleEnabled;
     this.rippleEnabled = Boolean(value);
-    if (!this.rippleEnabled) this.pressEffect?.cancel();
+    if (!this.rippleEnabled) {
+      this.pressEffect?.cancel();
+    }
     this.requestUpdate("ripple", previous);
   }
   protected readonly input = this.ownerDocument.createElement("input");
@@ -152,7 +157,9 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
   protected connectSelection(owner: SelectionOwner | undefined) {
     const current = this.checked;
     this.selection.setOwner(owner);
-    if (!owner) this.nativeForm.setValue(current);
+    if (!owner) {
+      this.nativeForm.setValue(current);
+    }
     this.nativeForm.sync();
     this.membershipChanged();
     this.requestUpdate();
@@ -165,8 +172,11 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
     return this.selection.owner?.checked(this.selectionMember) ?? this.nativeForm.value;
   }
   set checked(value: boolean) {
-    if (this.selection.owner) this.selection.owner.change(this.selectionMember, Boolean(value), "programmatic");
-    else this.nativeForm.setValue(value);
+    if (this.selection.owner) {
+      this.selection.owner.change(this.selectionMember, Boolean(value), "programmatic");
+    } else {
+      this.nativeForm.setValue(value);
+    }
   }
   /** @default false */
   @property({ noAccessor: true, attribute: false }) get defaultChecked() {
@@ -204,19 +214,28 @@ export abstract class AcmeSelectionControl extends AcmeFormElement<boolean, Chec
     this.input.addEventListener("input", this.change);
     this.input.addEventListener("change", this.change);
     this.addEventListener("click", (event) => {
-      if (event.composedPath()[0] === this && !this.effectiveDisabled) this.input.click();
+      if (event.composedPath()[0] === this && !this.effectiveDisabled) {
+        this.input.click();
+      }
     });
   }
   click() {
-    if (!this.effectiveDisabled) this.input.click();
+    if (!this.effectiveDisabled) {
+      this.input.click();
+    }
   }
   private change = () => {
-    if (this.effectiveDisabled) return;
+    if (this.effectiveDisabled) {
+      return;
+    }
     const checked = this.input.checked;
-    if (checked === this.checked && !this.mixedState) return;
+    if (checked === this.checked && !this.mixedState) {
+      return;
+    }
     this.clearMixedState();
-    if (this.selection.owner) this.selection.owner.change(this.selectionMember, checked, "user");
-    else {
+    if (this.selection.owner) {
+      this.selection.owner.change(this.selectionMember, checked, "user");
+    } else {
       this.nativeForm.setValue(checked, "user");
       this.emitUserChange();
     }

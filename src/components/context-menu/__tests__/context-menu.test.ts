@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("disabled context menu preserves the browser context event", async () => {
   const menu = document.createElement("acme-context-menu");
   menu.disabled = true;

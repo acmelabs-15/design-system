@@ -19,7 +19,9 @@ export class AcmeTabPanel extends AcmeElement {
     return this.key;
   }
   set value(value: string) {
-    if (typeof value !== "string") throw new TypeError("Panel value must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("Panel value must be a string");
+    }
     const old = this.key;
     this.key = value;
     this.connection?.notify();
@@ -32,7 +34,9 @@ export class AcmeTabPanel extends AcmeElement {
     return this.contentRenderer;
   }
   set renderContent(value: (() => TemplateResult | typeof nothing) | undefined) {
-    if (value !== undefined && typeof value !== "function") throw new TypeError("Panel renderContent must be a function or undefined");
+    if (value !== undefined && typeof value !== "function") {
+      throw new TypeError("Panel renderContent must be a function or undefined");
+    }
     const old = this.contentRenderer;
     this.contentRenderer = value;
     this.requestUpdate("renderContent", old);
@@ -52,7 +56,9 @@ export class AcmeTabPanel extends AcmeElement {
     connect: (owner) => {
       const previous = this.connection.owner;
       this.connection.setOwner(owner);
-      if (!owner && previous?.state.get().unmountOnExit) this.mounted = false;
+      if (!owner && previous?.state.get().unmountOnExit) {
+        this.mounted = false;
+      }
       this.synchronize();
     },
     synchronize: () => this.synchronize(),
@@ -63,20 +69,30 @@ export class AcmeTabPanel extends AcmeElement {
   private synchronize() {
     const owner = this.connection?.owner,
       active = owner?.selected(this.member) ?? false;
-    if (this.hidden === active) this.hidden = !active;
-    if (this.inert === active) this.inert = !active;
+    if (this.hidden === active) {
+      this.hidden = !active;
+    }
+    if (this.inert === active) {
+      this.inert = !active;
+    }
     this.internals.role = "tabpanel";
     this.internals.ariaLabelledByElements = owner?.counterpart(this.member) ? [owner.counterpart(this.member)!.host] : [];
-    if (active && !this.visited) this.visited = true;
+    if (active && !this.visited) {
+      this.visited = true;
+    }
     if (owner) {
       const state = owner.state.get();
       const mounted = active || (!state.unmountOnExit && (!state.lazyMount || this.visited));
-      if (this.mounted !== mounted) this.mounted = mounted;
+      if (this.mounted !== mounted) {
+        this.mounted = mounted;
+      }
     }
   }
   connectedCallback() {
     super.connectedCallback();
-    if (!this.hasAttribute("tabindex")) this.tabIndex = 0;
+    if (!this.hasAttribute("tabindex")) {
+      this.tabIndex = 0;
+    }
     this.synchronize();
   }
   protected updated() {

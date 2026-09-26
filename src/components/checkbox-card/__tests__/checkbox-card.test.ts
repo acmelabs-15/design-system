@@ -1,5 +1,6 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
+
 afterEach(() => document.body.replaceChildren());
 test("card structure keeps independent actions outside its native label", async () => {
   const card = document.createElement("acme-checkbox-card");

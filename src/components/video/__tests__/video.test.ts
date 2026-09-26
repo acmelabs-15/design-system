@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 async function mount() {
   const el = document.createElement("acme-video");
   el.loading = "eager";

@@ -29,12 +29,19 @@ export class AcmeSidebarTrigger extends AcmeActionElement {
   }
   protected synchronizeControl() {
     super.synchronizeControl();
-    if (!this.control) return;
+    if (!this.control) {
+      return;
+    }
     const state = this.binding?.current?.view.get();
-    if (this.control.localName === "button") (this.control as HTMLButtonElement).disabled = this.effectiveDisabled;
+    if (this.control.localName === "button") {
+      (this.control as HTMLButtonElement).disabled = this.effectiveDisabled;
+    }
     this.control.setAttribute("aria-expanded", String(state?.mobile ? state.mobileOpen : state?.expanded || !state?.collapsible));
-    if (state?.mobile) this.control.setAttribute("aria-haspopup", "dialog");
-    else this.control.removeAttribute("aria-haspopup");
+    if (state?.mobile) {
+      this.control.setAttribute("aria-haspopup", "dialog");
+    } else {
+      this.control.removeAttribute("aria-haspopup");
+    }
   }
   protected activate() {
     this.binding.current?.toggle(this.control);

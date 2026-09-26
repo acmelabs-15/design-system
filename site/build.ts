@@ -1,6 +1,6 @@
-import {buildConsumerSkills} from "../scripts/consumer-skills";
-import {documentationRelease} from "./release";
-import {recipeDocs, recipes, docStates, docCensus} from "./recipes";
+import { buildConsumerSkills } from "../scripts/consumer-skills";
+import { documentationRelease } from "./release";
+import { recipeDocs, recipes, docStates, docCensus } from "./recipes";
 import { compileStyle } from "../scripts/styles";
 import { browserAssetPlugin } from "../scripts/browser-assets";
 // Builds the docs site into /_site: the app shell (index.html and its 404.html twin for deep
@@ -17,7 +17,9 @@ import { censusPage, type Doc, docPage, type Nav, OUT, shell, writeFragment } fr
 import { writeDocumentationIconEntry } from "../scripts/docs-icons";
 
 const ROOT = path.resolve(import.meta.dir, "..");
-if (!fs.existsSync(path.join(ROOT, "dist/index.js"))) throw new Error("dist/ is missing: run `bun run build` first");
+if (!fs.existsSync(path.join(ROOT, "dist/index.js"))) {
+  throw new Error("dist/ is missing: run `bun run build` first");
+}
 
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
@@ -36,9 +38,15 @@ const byTag = new Map(api.map((e) => [e.tag, e]));
 const components: Doc[] = (await loadDocs()).sort((a, b) => a.title.localeCompare(b.title));
 
 const documented = new Set([...components, icons].flatMap((d) => [...(d.tags ?? []), ...(d.catalogTags ?? [])]));
-for (const t of documented) if (!byTag.has(t)) throw new Error(`docs name an unknown element: ${t}`);
+for (const t of documented) {
+  if (!byTag.has(t)) {
+    throw new Error(`docs name an unknown element: ${t}`);
+  }
+}
 const undocumented = api.map((e) => e.tag).filter((t) => !documented.has(t));
-if (undocumented.length) console.warn("elements without a docs page:", undocumented.join(", "));
+if (undocumented.length) {
+  console.warn("elements without a docs page:", undocumented.join(", "));
+}
 
 const nav: Nav = [
   {
@@ -59,7 +67,7 @@ const nav: Nav = [
     ],
   },
   { group: "Components", items: components.map((d) => ({ title: d.title, href: `components/${d.id}` })) },
-  { group: "Recipes", items: recipePages.map(d => ({title:d.title,href:`recipes/${d.id}`})) },
+  { group: "Recipes", items: recipePages.map((d) => ({ title: d.title, href: `recipes/${d.id}` })) },
 ];
 
 const foundations: [Doc, string][] = [
@@ -97,27 +105,43 @@ for (const d of components) {
   );
   await md(`components/${d.id}`, d);
   // The census page carries the census-only examples too; it is not linked from the navigation.
-  if (d.examples.some((e) => e.census)) writeFragment(`census/${d.id}.html`, await censusPage(d, docCensus.filter(record=>record.fixtureId===d.id)));
+  if (d.examples.some((e) => e.census)) {
+    writeFragment(
+      `census/${d.id}.html`,
+      await censusPage(
+        d,
+        docCensus.filter((record) => record.fixtureId === d.id),
+      ),
+    );
+  }
 }
 
 for (const doc of recipePages) {
   writeFragment(`recipes/${doc.id}.html`, await docPage(doc, []));
   await md(`recipes/${doc.id}`, doc);
 }
-fs.writeFileSync(path.join(OUT,"recipes.json"), JSON.stringify({version:api[0].version,recipes,states:docStates,census:docCensus}, null,2)+"\n");
+fs.writeFileSync(path.join(OUT, "recipes.json"), JSON.stringify({ version: api[0].version, recipes, states: docStates, census: docCensus }, null, 2) + "\n");
 
-const release = await documentationRelease(JSON.parse(fs.readFileSync(path.join(ROOT,"dist/custom-elements.json"),"utf8")), api, [...components, ...foundations.map(([doc])=>doc)], foundations.map(([doc])=>doc), recipes);
-fs.mkdirSync(path.join(ROOT,".artifacts"), {recursive:true});
-fs.writeFileSync(path.join(ROOT,".artifacts/documentation.json"), JSON.stringify(release));
-fs.mkdirSync(path.join(ROOT,"packages/mcp/dist"), {recursive:true});
-fs.writeFileSync(path.join(ROOT,"packages/mcp/dist/documentation.json"), JSON.stringify(release));
+const release = await documentationRelease(
+  JSON.parse(fs.readFileSync(path.join(ROOT, "dist/custom-elements.json"), "utf8")),
+  api,
+  [...components, ...foundations.map(([doc]) => doc)],
+  foundations.map(([doc]) => doc),
+  recipes,
+);
+fs.mkdirSync(path.join(ROOT, ".artifacts"), { recursive: true });
+fs.writeFileSync(path.join(ROOT, ".artifacts/documentation.json"), JSON.stringify(release));
+fs.mkdirSync(path.join(ROOT, "packages/mcp/dist"), { recursive: true });
+fs.writeFileSync(path.join(ROOT, "packages/mcp/dist/documentation.json"), JSON.stringify(release));
 
 await buildConsumerSkills(release);
 
 const html = shell(nav);
 fs.writeFileSync(path.join(OUT, "index.html"), html);
 fs.writeFileSync(path.join(OUT, "404.html"), html);
-for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new Function(m[1]); // every inline script parses
+for (const m of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) {
+  new Function(m[1]);
+} // every inline script parses
 
 const appEntry = writeDocumentationIconEntry(
   ROOT,
@@ -137,7 +161,9 @@ const r = await Bun.build({
 });
 fs.unlinkSync(appEntry);
 if (!r.success) {
-  for (const l of r.logs) console.error(l);
+  for (const l of r.logs) {
+    console.error(l);
+  }
   process.exit(1);
 }
 const kb = (p: string) => `${(fs.statSync(p).size / 1024).toFixed(0)} KB`;

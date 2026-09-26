@@ -1,5 +1,6 @@
 import type { Doc } from "../../site";
 import { esc } from "../../site";
+
 const attribute = (value: string) => esc(value).replaceAll('"', "&quot;");
 const source = "export function greet(name: string) {\n  return `Hello, ${name}!`;\n}\n";
 const block = (attributes = "") => `<acme-code-block language="ts" filename="greet.ts" code="${attribute(source)}" ${attributes}></acme-code-block>`;

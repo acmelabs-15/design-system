@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/show-more";
+
 test("Show More has one expansion event and silent programmatic writes", async () => {
   const control = document.createElement("acme-show-more");
   document.body.append(control);

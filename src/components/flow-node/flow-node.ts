@@ -35,8 +35,11 @@ export class AcmeFlowNode extends AcmeElement {
     this.toggleAttribute("data-flow-ready", !!box);
     this.toggleAttribute("data-flow-owned", !!node);
     for (const [name, value] of Object.entries({ x: box?.x, y: box?.y, width: node?.width, height: node?.height })) {
-      if (value === undefined) this.style.removeProperty("--_flow-" + name);
-      else this.style.setProperty("--_flow-" + name, value + "px");
+      if (value === undefined) {
+        this.style.removeProperty("--_flow-" + name);
+      } else {
+        this.style.setProperty("--_flow-" + name, value + "px");
+      }
     }
   }
   render() {

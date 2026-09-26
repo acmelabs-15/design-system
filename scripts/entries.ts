@@ -21,7 +21,9 @@ function sourceFiles(directory: string): string[] {
     .readdirSync(directory, { withFileTypes: true })
     .flatMap((entry) => {
       const file = path.join(directory, entry.name);
-      if (entry.isDirectory()) return entry.name === "__tests__" || entry.name === "define" ? [] : sourceFiles(file);
+      if (entry.isDirectory()) {
+        return entry.name === "__tests__" || entry.name === "define" ? [] : sourceFiles(file);
+      }
       return entry.isFile() && entry.name.endsWith(".ts") && entry.name !== "all.ts" ? [file] : [];
     })
     .sort();
@@ -38,22 +40,31 @@ function literalTags(markup: string, location: string): string[] {
       continue;
     }
     const name = /^<\/?([^\s/>]+)/.exec(markup.slice(offset))?.[1];
-    if (name?.includes("\0")) throw new Error(`Unresolved dynamic tag in Lit template at ${location}; use literal tags or add explicit dependency support`);
+    if (name?.includes("\0")) {
+      throw new Error(`Unresolved dynamic tag in Lit template at ${location}; use literal tags or add explicit dependency support`);
+    }
     const match = /^<([a-z][a-z0-9-]*)(?=[\s/>])/i.exec(markup.slice(offset));
     if (!match) {
       offset++;
       continue;
     }
     const tag = match[1].toLowerCase();
-    if (tag.startsWith("acme-")) tags.push(tag);
+    if (tag.startsWith("acme-")) {
+      tags.push(tag);
+    }
     offset += match[0].length;
     let quote = "";
     while (offset < markup.length) {
       const character = markup[offset++];
       if (quote) {
-        if (character === quote) quote = "";
-      } else if (character === '"' || character === "'") quote = character;
-      else if (character === ">") break;
+        if (character === quote) {
+          quote = "";
+        }
+      } else if (character === '"' || character === "'") {
+        quote = character;
+      } else if (character === ">") {
+        break;
+      }
     }
     if (["script", "style", "textarea", "title"].includes(tag)) {
       const end = markup.toLowerCase().indexOf(`</${tag}`, offset);
@@ -65,7 +76,9 @@ function literalTags(markup: string, location: string): string[] {
 
 function importSource(node: ts.Node): string | undefined {
   let parent: ts.Node | undefined = node;
-  while (parent && !ts.isImportDeclaration(parent)) parent = parent.parent;
+  while (parent && !ts.isImportDeclaration(parent)) {
+    parent = parent.parent;
+  }
   return parent && ts.isStringLiteral(parent.moduleSpecifier) ? parent.moduleSpecifier.text : undefined;
 }
 
@@ -94,16 +107,26 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
     const visit = (node: ts.Node) => {
       if (ts.isInterfaceDeclaration(node) && node.name.text === "HTMLElementTagNameMap") {
         for (const member of node.members) {
-          if (!ts.isPropertySignature(member) || !member.name || !ts.isStringLiteral(member.name) || !member.name.text.startsWith("acme-")) continue;
+          if (!ts.isPropertySignature(member) || !member.name || !ts.isStringLiteral(member.name) || !member.name.text.startsWith("acme-")) {
+            continue;
+          }
           const tag = member.name.text;
-          if (!/^acme-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(tag)) throw new Error(`Invalid component tag ${tag} at ${location(member)}`);
-          if (records.has(tag)) throw new Error(`Duplicate component tag ${tag} at ${location(member)}`);
+          if (!/^acme-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(tag)) {
+            throw new Error(`Invalid component tag ${tag} at ${location(member)}`);
+          }
+          if (records.has(tag)) {
+            throw new Error(`Duplicate component tag ${tag} at ${location(member)}`);
+          }
           const symbol = member.type && ts.isTypeReferenceNode(member.type) ? resolve(member.type.typeName) : undefined;
           const declaration = symbol?.declarations?.find(ts.isClassDeclaration);
-          if (!declaration?.name) throw new Error(`Missing class for ${tag} at ${location(member)}`);
+          if (!declaration?.name) {
+            throw new Error(`Missing class for ${tag} at ${location(member)}`);
+          }
           const classFile = declaration.getSourceFile();
           const relative = portable(path.relative(root, classFile.fileName));
-          if (!relative.startsWith("src/")) throw new Error(`Component class for ${tag} is outside src: ${relative}`);
+          if (!relative.startsWith("src/")) {
+            throw new Error(`Component class for ${tag} is outside src: ${relative}`);
+          }
           const moduleSymbol = checker.getSymbolAtLocation(classFile);
           const exported = moduleSymbol && checker.getExportsOfModule(moduleSymbol).find((item) => item.name === declaration.name!.text);
           if (!exported || (exported.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(exported) : exported) !== symbol) {
@@ -111,7 +134,9 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
           }
           const internal = relative.startsWith("src/internal/");
           const annotated = ts.getJSDocTags(declaration).some((tag) => tag.tagName.text === "internal");
-          if (internal !== annotated) throw new Error(`Internal component annotation and src/internal location must agree: ${relative}`);
+          if (internal !== annotated) {
+            throw new Error(`Internal component annotation and src/internal location must agree: ${relative}`);
+          }
           records.set(tag, { entry: { name: tag.slice(5), tag, className: declaration.name.text, file: relative, dependencies: [], ...(internal ? { internal: true as const } : {}) }, declaration });
         }
       }
@@ -139,25 +164,35 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
   };
 
   const createdTags = (expression: ts.Expression): string[] => {
-    if (ts.isStringLiteral(expression) || ts.isNoSubstitutionTemplateLiteral(expression)) return [expression.text];
+    if (ts.isStringLiteral(expression) || ts.isNoSubstitutionTemplateLiteral(expression)) {
+      return [expression.text];
+    }
     const collect = (type: ts.Type): string[] | undefined => {
-      if (type.isStringLiteral()) return [type.value];
+      if (type.isStringLiteral()) {
+        return [type.value];
+      }
       if (type.isUnion()) {
         const members = type.types.map(collect);
         return members.every((member) => member !== undefined) ? members.flat() : undefined;
       }
       if (type.flags & ts.TypeFlags.TemplateLiteral) {
         const prefix = (type as ts.TemplateLiteralType).texts[0];
-        if (prefix && !prefix.startsWith("acme-") && !"acme-".startsWith(prefix)) return [];
+        if (prefix && !prefix.startsWith("acme-") && !"acme-".startsWith(prefix)) {
+          return [];
+        }
       }
       if (type.flags & ts.TypeFlags.TypeParameter) {
         const constraint = checker.getBaseConstraintOfType(type);
-        if (constraint && constraint !== type) return collect(constraint);
+        if (constraint && constraint !== type) {
+          return collect(constraint);
+        }
       }
       return undefined;
     };
     const names = collect(checker.getTypeAtLocation(expression));
-    if (!names) throw new Error(`Unresolved dynamic tag in createElement at ${location(expression)}; use finite literal names or add explicit dependency support`);
+    if (!names) {
+      throw new Error(`Unresolved dynamic tag in createElement at ${location(expression)}; use finite literal names or add explicit dependency support`);
+    }
     return names;
   };
 
@@ -165,37 +200,55 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
     const tags = new Set<string>();
     const visited = new Set<ts.Node>();
     const scan = (node: ts.Node): void => {
-      if (visited.has(node) || ts.isTypeNode(node) || ts.isImportDeclaration(node)) return;
+      if (visited.has(node) || ts.isTypeNode(node) || ts.isImportDeclaration(node)) {
+        return;
+      }
       visited.add(node);
       if (ts.isTaggedTemplateExpression(node) && isLitTemplate(node.tag)) {
         const template = node.template;
         const markup = ts.isNoSubstitutionTemplateLiteral(template) ? template.text : template.head.text + template.templateSpans.map((span) => `\0${span.literal.text}`).join("");
-        for (const tag of literalTags(markup, location(node))) tags.add(tag);
+        for (const tag of literalTags(markup, location(node))) {
+          tags.add(tag);
+        }
       }
       if (ts.isCallExpression(node) && ts.isPropertyAccessExpression(node.expression) && node.expression.name.text === "createElement") {
         const receiver = node.expression.expression;
         if ((ts.isIdentifier(receiver) && receiver.text === "document") || (ts.isPropertyAccessExpression(receiver) && receiver.name.text === "ownerDocument")) {
           const name = node.arguments[0];
-          if (name) for (const tag of createdTags(name)) if (tag.startsWith("acme-")) tags.add(tag);
+          if (name) {
+            for (const tag of createdTags(name)) {
+              if (tag.startsWith("acme-")) {
+                tags.add(tag);
+              }
+            }
+          }
         }
       }
       if (ts.isIdentifier(node)) {
         for (const target of resolve(node)?.declarations ?? []) {
-          if ((ts.isVariableDeclaration(target) || ts.isFunctionDeclaration(target)) && path.resolve(target.getSourceFile().fileName).startsWith(`${root}${path.sep}src${path.sep}`)) scan(target);
+          if ((ts.isVariableDeclaration(target) || ts.isFunctionDeclaration(target)) && path.resolve(target.getSourceFile().fileName).startsWith(`${root}${path.sep}src${path.sep}`)) {
+            scan(target);
+          }
         }
       }
       ts.forEachChild(node, scan);
     };
     const inherited = new Set<ts.ClassDeclaration>();
     const scanClass = (current: ts.ClassDeclaration): void => {
-      if (inherited.has(current)) return;
+      if (inherited.has(current)) {
+        return;
+      }
       inherited.add(current);
       scan(current);
       for (const clause of current.heritageClauses ?? []) {
-        if (clause.token !== ts.SyntaxKind.ExtendsKeyword) continue;
+        if (clause.token !== ts.SyntaxKind.ExtendsKeyword) {
+          continue;
+        }
         for (const parent of clause.types) {
           const base = resolve(parent.expression)?.declarations?.find(ts.isClassDeclaration);
-          if (base && path.resolve(base.getSourceFile().fileName).startsWith(`${root}${path.sep}src${path.sep}`)) scanClass(base);
+          if (base && path.resolve(base.getSourceFile().fileName).startsWith(`${root}${path.sep}src${path.sep}`)) {
+            scanClass(base);
+          }
         }
       }
     };
@@ -203,7 +256,9 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
     entry.dependencies = [...tags]
       .map((tag) => {
         const dependency = records.get(tag);
-        if (!dependency) throw new Error(`Unknown component tag ${tag} owned by ${entry.tag} (${entry.file})`);
+        if (!dependency) {
+          throw new Error(`Unknown component tag ${tag} owned by ${entry.tag} (${entry.file})`);
+        }
         return dependency.entry.name;
       })
       .sort();
@@ -213,12 +268,20 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
   const byName = new Map(entries.map((entry) => [entry.name, entry]));
   const complete = new Set<string>();
   const visit = (name: string, ancestors: string[]): void => {
-    if (ancestors.includes(name)) throw new Error(`Component dependency cycle: ${[...ancestors, name].join(" -> ")}`);
-    if (complete.has(name)) return;
-    for (const dependency of byName.get(name)!.dependencies) visit(dependency, [...ancestors, name]);
+    if (ancestors.includes(name)) {
+      throw new Error(`Component dependency cycle: ${[...ancestors, name].join(" -> ")}`);
+    }
+    if (complete.has(name)) {
+      return;
+    }
+    for (const dependency of byName.get(name)!.dependencies) {
+      visit(dependency, [...ancestors, name]);
+    }
     complete.add(name);
   };
-  for (const entry of entries) visit(entry.name, []);
+  for (const entry of entries) {
+    visit(entry.name, []);
+  }
   return entries;
 }
 
@@ -255,16 +318,24 @@ export function writeEntries(root = DEFAULT_ROOT): ComponentEntry[] {
         .join(""),
   );
   for (const file of outputs.keys()) {
-    if (fs.existsSync(file) && (fs.lstatSync(file).isSymbolicLink() || !fs.readFileSync(file, "utf8").startsWith(HEADER))) throw new Error(`Refusing to overwrite authored entry: ${file}`);
+    if (fs.existsSync(file) && (fs.lstatSync(file).isSymbolicLink() || !fs.readFileSync(file, "utf8").startsWith(HEADER))) {
+      throw new Error(`Refusing to overwrite authored entry: ${file}`);
+    }
   }
   for (const directory of directories) {
     fs.mkdirSync(directory, { recursive: true });
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
       const file = path.join(directory, entry.name);
-      if (entry.isFile() && entry.name.endsWith(".ts") && !outputs.has(file) && fs.readFileSync(file, "utf8").startsWith(HEADER)) fs.unlinkSync(file);
+      if (entry.isFile() && entry.name.endsWith(".ts") && !outputs.has(file) && fs.readFileSync(file, "utf8").startsWith(HEADER)) {
+        fs.unlinkSync(file);
+      }
     }
   }
-  for (const [file, content] of outputs) if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== content) fs.writeFileSync(file, content);
+  for (const [file, content] of outputs) {
+    if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== content) {
+      fs.writeFileSync(file, content);
+    }
+  }
   return entries;
 }
 
@@ -285,7 +356,9 @@ export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_RO
   exports["./icons/all"] = { types: "./dist/generated/icons/all.d.ts", import: "./dist/generated/icons/all.js", default: "./dist/generated/icons/all.js" };
   exports["./icons/catalog"] = "./dist/icons.json";
   for (const entry of entries) {
-    if (entry.internal) continue;
+    if (entry.internal) {
+      continue;
+    }
     const module = "./" + entry.file.replace(/^src\//, "dist/").replace(/\.ts$/, "");
     exports["./components/" + entry.name] = { types: module + ".d.ts", import: module + ".js", default: module + ".js" };
   }
@@ -302,7 +375,9 @@ export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_RO
     "**/*.css",
   ];
   const content = JSON.stringify(pkg, null, 2) + "\n";
-  if (content !== before) fs.writeFileSync(file, content);
+  if (content !== before) {
+    fs.writeFileSync(file, content);
+  }
 }
 
 if (import.meta.main) {

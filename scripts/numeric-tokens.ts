@@ -28,12 +28,16 @@ export function writeTokenManifest(root: string): string {
   const file = path.join(root, "src/generated/tokens.json");
   const content = manifestText();
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== content) fs.writeFileSync(file, content);
+  if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== content) {
+    fs.writeFileSync(file, content);
+  }
   return file;
 }
 
 export function verifyTokenManifest(root: string): string {
   const file = path.join(root, "src/generated/tokens.json");
-  if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== manifestText()) throw new Error("Missing or stale token manifest; run bun run split");
+  if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== manifestText()) {
+    throw new Error("Missing or stale token manifest; run bun run split");
+  }
   return file;
 }

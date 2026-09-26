@@ -8,6 +8,7 @@ import { focusSection } from "./focus-recovery";
 import { StoreSelector } from "./store-connection";
 import type { DialogFocusTarget, DialogReason } from "./dialog-context";
 import type { ThemeScope } from "./theme-scope";
+
 type DialogState = {
   open: boolean;
   modal: boolean;
@@ -90,7 +91,9 @@ export class DialogLifetime implements ReactiveController {
     this.requestedOpener = opener;
   }
   private resolve(value: DialogFocusTarget): Element | undefined {
-    if (typeof value !== "string") return value;
+    if (typeof value !== "string") {
+      return value;
+    }
     try {
       return this.host.querySelector(value) ?? this.host.renderRoot?.querySelector(value) ?? (this.host.getRootNode() as Document | ShadowRoot).querySelector(value) ?? undefined;
     } catch {
@@ -99,41 +102,68 @@ export class DialogLifetime implements ReactiveController {
     }
   }
   private focusTarget(target: Element | undefined): boolean {
-    if (!target?.isConnected || !("focus" in target)) return false;
+    if (!target?.isConnected || !("focus" in target)) {
+      return false;
+    }
     (target as HTMLElement).focus();
     const active = deepActiveElement(target.ownerDocument);
     return !!active && composedContains(target, active);
   }
   focus() {
     const surface = this.options.surface();
-    if (!surface?.open) return;
+    if (!surface?.open) {
+      return;
+    }
     const state = this.options.state(),
       explicit = this.resolve(state.initialFocus);
-    if (explicit && composedContains(surface, explicit) && this.focusTarget(explicit)) return;
+    if (explicit && composedContains(surface, explicit) && this.focusTarget(explicit)) {
+      return;
+    }
     if (state.alert) {
-      if (this.focusTarget(this.options.cancel())) return;
+      if (this.focusTarget(this.options.cancel())) {
+        return;
+      }
     } else {
       const body = this.options.focusArea?.() ?? this.options.body();
       const first = body ? focusable(body, { getShadowRoot: true }).find((target) => !this.options.cancel() || target !== this.options.cancel()) : undefined;
-      if (this.focusTarget(first)) return;
+      if (this.focusTarget(first)) {
+        return;
+      }
     }
-    if (!this.focusTarget(this.options.heading())) this.focusTarget(surface);
+    if (!this.focusTarget(this.options.heading())) {
+      this.focusTarget(surface);
+    }
   }
   private restore(external?: Element | null) {
-    if (external?.isConnected && this.focusTarget(external)) return;
-    if (this.focusTarget(this.resolve(this.options.state().returnFocus))) return;
-    if (this.focusTarget(this.opener)) return;
+    if (external?.isConnected && this.focusTarget(external)) {
+      return;
+    }
+    if (this.focusTarget(this.resolve(this.options.state().returnFocus))) {
+      return;
+    }
+    if (this.focusTarget(this.opener)) {
+      return;
+    }
     const fallback = this.options.fallback();
-    if (fallback) this.releaseFocus = focusSection(fallback, this.options.heading() ? [this.options.heading()!] : []);
+    if (fallback) {
+      this.releaseFocus = focusSection(fallback, this.options.heading() ? [this.options.heading()!] : []);
+    }
   }
   private after(phase: "open" | "close") {
-    if (!this.host.isConnected) return;
+    if (!this.host.isConnected) {
+      return;
+    }
     const detail = Object.freeze({ reason: this.options.state().reason });
     const notify = () => {
-      if (this.host.isConnected) this.host.dispatchEvent(new CustomEvent("acme-after-" + phase, { detail, bubbles: true, composed: true }));
+      if (this.host.isConnected) {
+        this.host.dispatchEvent(new CustomEvent("acme-after-" + phase, { detail, bubbles: true, composed: true }));
+      }
     };
-    if (phase === "close") queueMicrotask(notify);
-    else notify();
+    if (phase === "close") {
+      queueMicrotask(notify);
+    } else {
+      notify();
+    }
   }
   hostUpdate() {
     this.motion.update();
@@ -141,19 +171,25 @@ export class DialogLifetime implements ReactiveController {
   }
   hostUpdated() {
     const surface = this.options.surface();
-    if (!surface || !this.host.isConnected) return;
+    if (!surface || !this.host.isConnected) {
+      return;
+    }
     const state = this.options.state(),
       body = this.options.body();
     surface.style.setProperty("--_dialog-progress", String(Math.max(0, Math.min(1, this.motion.value))));
     surface.style.setProperty("--_dialog-spatial", String(this.spatial.value));
     if (state.open) {
       this.closing = false;
-      if (body) body.inert = false;
+      if (body) {
+        body.inert = false;
+      }
       if (surface.open && this.nativeMode !== state.modal) {
         const focused = deepActiveElement(this.host.ownerDocument);
         this.cachedTheme = this.presence.theme?.scope ?? this.cachedTheme;
         this.suppressNative = true;
-        if (body) body.inert = true;
+        if (body) {
+          body.inert = true;
+        }
         try {
           void this.presence.hide([], false);
           this.presence.show(this.opener?.isConnected ? this.opener : undefined);
@@ -163,10 +199,15 @@ export class DialogLifetime implements ReactiveController {
           throw error;
         } finally {
           this.suppressNative = false;
-          if (body) body.inert = false;
+          if (body) {
+            body.inert = false;
+          }
         }
-        if (focused && composedContains(surface, focused)) this.focusTarget(focused);
-        else this.focus();
+        if (focused && composedContains(surface, focused)) {
+          this.focusTarget(focused);
+        } else {
+          this.focus();
+        }
       }
       if (this.presence.phase.get() === "closed" && !this.opening) {
         this.opening = true;
@@ -174,7 +215,9 @@ export class DialogLifetime implements ReactiveController {
         const theme = this.host.renderRoot.querySelector("acme-overlay-theme") as HTMLElement & { updateComplete?: Promise<unknown> };
         void Promise.resolve(theme?.updateComplete).then(() => {
           this.opening = false;
-          if (epoch !== this.epoch || !this.host.isConnected || !this.options.state().open) return;
+          if (epoch !== this.epoch || !this.host.isConnected || !this.options.state().open) {
+            return;
+          }
           const active = deepActiveElement(this.host.ownerDocument);
           this.opener = this.requestedOpener?.isConnected
             ? this.requestedOpener
@@ -183,11 +226,15 @@ export class DialogLifetime implements ReactiveController {
               : undefined;
           this.requestedOpener = undefined;
           // Keep native opening focus away from application actions until the chosen target is ready.
-          if (body) body.inert = true;
+          if (body) {
+            body.inert = true;
+          }
           this.presence.show(this.opener);
           this.cachedTheme = this.presence.theme?.scope;
           this.nativeMode = this.options.state().modal;
-          if (body) body.inert = false;
+          if (body) {
+            body.inert = false;
+          }
           this.focus();
           this.host.requestUpdate();
         });
@@ -203,9 +250,13 @@ export class DialogLifetime implements ReactiveController {
       if (surface.open && !this.closing) {
         this.closing = true;
         const active = deepActiveElement(this.host.ownerDocument);
-        if (active && composedContains(surface, active)) surface.focus({ preventScroll: true });
+        if (active && composedContains(surface, active)) {
+          surface.focus({ preventScroll: true });
+        }
       }
-      if (body) body.inert = true;
+      if (body) {
+        body.inert = true;
+      }
       if (this.motion.settled && this.presence.phase.get() !== "closed") {
         const active = deepActiveElement(this.host.ownerDocument),
           external = active && active !== this.host.ownerDocument.body && !composedContains(surface, active) ? active : undefined;
@@ -217,7 +268,9 @@ export class DialogLifetime implements ReactiveController {
     }
   }
   nativeClose = () => {
-    if (this.suppressNative || this.options.surface()?.open || this.presence.phase.get() === "closed") return;
+    if (this.suppressNative || this.options.surface()?.open || this.presence.phase.get() === "closed") {
+      return;
+    }
     this.options.nativeClosed();
     void this.presence.hide([], false);
     this.restore();
@@ -225,7 +278,9 @@ export class DialogLifetime implements ReactiveController {
   };
   cancel = (event: Event) => {
     event.preventDefault();
-    if (this.options.state().open && this.options.state().closeOnEscape) this.options.requestClose("escape");
+    if (this.options.state().open && this.options.state().closeOnEscape) {
+      this.options.requestClose("escape");
+    }
   };
   hostDisconnected() {
     this.epoch++;

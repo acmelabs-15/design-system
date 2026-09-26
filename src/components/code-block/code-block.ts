@@ -13,8 +13,11 @@ import { message, messageCatalogs } from "../../shared/messages";
 import { StoreSelector } from "../../shared/store-connection";
 import { codeBlockSurfaceCss } from "../../generated/components/code-block/code-block-surface.styles";
 import { syntaxCss } from "../../generated/shared/syntax.styles";
+
 function lineNumbers(value: readonly number[]): readonly number[] {
-  if (!Array.isArray(value) || value.some((line) => !Number.isInteger(line) || line < 1)) throw new RangeError("Code line numbers must be positive integers");
+  if (!Array.isArray(value) || value.some((line) => !Number.isInteger(line) || line < 1)) {
+    throw new RangeError("Code line numbers must be positive integers");
+  }
   return Object.freeze([...new Set(value)]);
 }
 /** Escaped, highlighted source with exact copy text and application-owned line references.
@@ -75,7 +78,9 @@ export class AcmeCodeBlock extends AcmeSemanticElement {
     return this.reference;
   }
   set referencedLine(value: number | undefined) {
-    if (value !== undefined && (!Number.isInteger(value) || value < 1)) throw new RangeError("Referenced line must be a positive integer");
+    if (value !== undefined && (!Number.isInteger(value) || value < 1)) {
+      throw new RangeError("Referenced line must be a positive integer");
+    }
     const old = this.reference;
     this.reference = value;
     this.requestUpdate("referencedLine", old);
@@ -114,22 +119,33 @@ export class AcmeCodeBlock extends AcmeSemanticElement {
   }
   /** Scrolls an existing one-based line into the code viewport without changing reference state. */
   scrollToLine(line: number) {
-    if (!Number.isInteger(line) || line < 1) throw new RangeError("Code line must be a positive integer");
+    if (!Number.isInteger(line) || line < 1) {
+      throw new RangeError("Code line must be a positive integer");
+    }
     void this.updateComplete.then(() => {
-      if (!this.isConnected) return;
+      if (!this.isConnected) {
+        return;
+      }
       const row = this.rows[line - 1],
         viewport = this.renderRoot.querySelector<AcmeScrollViewport>("acme-scroll-viewport")?.getViewport();
-      if (!row || !viewport) return;
+      if (!row || !viewport) {
+        return;
+      }
       const box = row.getBoundingClientRect(),
         view = viewport.getBoundingClientRect();
-      if (box.top < view.top) viewport.scrollTop -= view.top - box.top;
-      else if (box.bottom > view.bottom) viewport.scrollTop += box.bottom - view.bottom;
+      if (box.top < view.top) {
+        viewport.scrollTop -= view.top - box.top;
+      } else if (box.bottom > view.bottom) {
+        viewport.scrollTop += box.bottom - view.bottom;
+      }
     });
   }
   private key = (event: KeyboardEvent) => {
     const button = event.currentTarget as HTMLButtonElement;
     let line = Number(button.dataset.line);
-    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.altKey || event.ctrlKey || event.metaKey) {
+      return;
+    }
     switch (event.key) {
       case "ArrowDown":
         line++;
@@ -159,13 +175,18 @@ export class AcmeCodeBlock extends AcmeSemanticElement {
       this.recoverLineFocus = false;
       const line = Math.min(this.focusedLine, this.highlighted.get().lines.length);
       const target = this.rows[line - 1]?.querySelector<HTMLButtonElement>("button");
-      if (target) target.focus({ preventScroll: true });
-      else this.renderRoot.querySelector<HTMLElement>("acme-copy-button,acme-scroll-viewport,[part=root]")?.focus({ preventScroll: true });
+      if (target) {
+        target.focus({ preventScroll: true });
+      } else {
+        this.renderRoot.querySelector<HTMLElement>("acme-copy-button,acme-scroll-viewport,[part=root]")?.focus({ preventScroll: true });
+      }
     }
     const model = this.highlighted.get();
     if (model !== this.reported) {
       this.reported = model;
-      if (model.error) this.dispatchEvent(new CustomEvent("acme-error", { detail: Object.freeze({ code: "highlight", message: model.error }), bubbles: true, composed: true }));
+      if (model.error) {
+        this.dispatchEvent(new CustomEvent("acme-error", { detail: Object.freeze({ code: "highlight", message: model.error }), bubbles: true, composed: true }));
+      }
     }
   }
   render() {

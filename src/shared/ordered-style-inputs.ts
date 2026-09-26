@@ -14,7 +14,9 @@ type StyleInputPatch<Validators extends StyleInputValidators> = { readonly [Key 
 function freezeValue<Value extends StyleInputValue>(value: Value, visited = new WeakSet<object>()): Value {
   if (value !== null && typeof value === "object" && !visited.has(value)) {
     visited.add(value);
-    for (const child of Object.values(value)) freezeValue(child, visited);
+    for (const child of Object.values(value)) {
+      freezeValue(child, visited);
+    }
     Object.freeze(value);
   }
   return value;
@@ -35,10 +37,14 @@ export function createOrderedStyleInputs<Validators extends StyleInputValidators
   // Validators establish each key's value type; freezing gives the public view its readonly shape.
   const entries = createAtom(() => state.get()) as unknown as ReadonlyAtom<readonly Entry[]>;
   function checkKey(key: string): asserts key is Key {
-    if (!Object.hasOwn(validators, key)) throw new TypeError("Unknown style input: " + key);
+    if (!Object.hasOwn(validators, key)) {
+      throw new TypeError("Unknown style input: " + key);
+    }
   }
   const normalize = (key: Key, value: unknown): StoredEntry | undefined => {
-    if (value === undefined) return undefined;
+    if (value === undefined) {
+      return undefined;
+    }
     const normalized = validators[key](value);
     return normalized === undefined ? undefined : Object.freeze([key, freezeValue(normalized)] as const);
   };
@@ -54,25 +60,35 @@ export function createOrderedStyleInputs<Validators extends StyleInputValidators
       const entry = normalize(key, value);
       const current = state.get();
       const index = current.findIndex((item) => item[0] === key);
-      if (entry === undefined) state.set(Object.freeze(current.filter((item) => item[0] !== key)));
-      else if (index === -1) state.set(Object.freeze([...current, entry]));
-      else state.set(Object.freeze(current.map((item, position) => (position === index ? entry : item))));
+      if (entry === undefined) {
+        state.set(Object.freeze(current.filter((item) => item[0] !== key)));
+      } else if (index === -1) {
+        state.set(Object.freeze([...current, entry]));
+      } else {
+        state.set(Object.freeze(current.map((item, position) => (position === index ? entry : item))));
+      }
     },
     apply(inputs: StyleInputPatch<Validators>, previousKeys: readonly Key[] = []): readonly Key[] {
       if (!isPlainRecord(inputs)) {
         throw new TypeError("Style inputs must be a plain ordered object");
       }
-      for (const key of previousKeys) checkKey(key);
+      for (const key of previousKeys) {
+        checkKey(key);
+      }
       const keys: Key[] = [];
       for (const key of Reflect.ownKeys(inputs)) {
-        if (typeof key !== "string" || !Object.prototype.propertyIsEnumerable.call(inputs, key)) throw new TypeError("Style inputs require enumerable string keys");
+        if (typeof key !== "string" || !Object.prototype.propertyIsEnumerable.call(inputs, key)) {
+          throw new TypeError("Style inputs require enumerable string keys");
+        }
         checkKey(key);
         keys.push(key);
       }
       const supplied: StoredEntry[] = [];
       for (const key of keys) {
         const entry = normalize(key, inputs[key]);
-        if (entry !== undefined) supplied.push(entry);
+        if (entry !== undefined) {
+          supplied.push(entry);
+        }
       }
       const touched = new Set([...previousKeys, ...keys]);
       const unmanaged = state.get().filter((entry) => !touched.has(entry[0]));

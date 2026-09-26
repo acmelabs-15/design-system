@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/tooltip";
+
 test("Tooltip defaults keep short noninteractive help and explicit delays", () => {
   const el = document.createElement("acme-tooltip");
   expect(el.content).toBe("");

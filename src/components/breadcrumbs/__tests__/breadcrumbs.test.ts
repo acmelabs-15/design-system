@@ -1,11 +1,14 @@
 import { expect, test } from "bun:test";
 import "../../../define/breadcrumbs";
 import "../../../define/breadcrumb";
+
 async function fixture() {
   document.body.innerHTML =
     '<acme-breadcrumbs><acme-breadcrumb href="/">Home</acme-breadcrumb><acme-breadcrumb href="/private" disabled>Private</acme-breadcrumb><acme-breadcrumb current>Page</acme-breadcrumb></acme-breadcrumbs>';
   const root = document.querySelector("acme-breadcrumbs")!;
-  for (let i = 0; i < 3; i++) await Promise.all([root, ...root.querySelectorAll("acme-breadcrumb")].map((el) => el.updateComplete));
+  for (let i = 0; i < 3; i++) {
+    await Promise.all([root, ...root.querySelectorAll("acme-breadcrumb")].map((el) => el.updateComplete));
+  }
   return root;
 }
 test("Breadcrumbs supplies native ordered navigation and page meaning", async () => {

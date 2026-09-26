@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Split Button composes Group and Menu with a required trigger name", async () => {
   const split = document.createElement("acme-split-button");
   split.menuLabel = "More save actions";

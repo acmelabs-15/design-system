@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeToggleButton } from "../toggle-button";
+
 afterEach(() => document.body.replaceChildren());
 test("user activation changes pressed once and programmatic assignment stays silent", async () => {
   const button = document.createElement("acme-toggle-button") as AcmeToggleButton;

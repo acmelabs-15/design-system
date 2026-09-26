@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { LitElement } from "lit";
 import { SpringValue } from "../spring-value";
+
 class SpringTarget extends LitElement {}
 customElements.define("test-spring-value-target", SpringTarget);
 test("direct manipulation settles at the canonical endpoint without a release jump", () => {

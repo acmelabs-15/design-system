@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Password visibility changes native presentation without replacing its value", async () => {
   const el = document.createElement("acme-password-input");
   el.value = "private";

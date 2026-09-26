@@ -13,7 +13,9 @@ export class AcmePaginationPosition extends AcmeElement {
   private readonly messages = new StoreSelector(this, () => messageCatalogs);
   render() {
     const view = this.binding.current?.view.get();
-    if (!view) return html``;
+    if (!view) {
+      return html``;
+    }
     const locale = this.themeContext.scope.effective.get().locale,
       number = new Intl.NumberFormat(locale);
     const text =

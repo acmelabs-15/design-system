@@ -3,6 +3,7 @@ import { AcmeActionElement } from "./action-element";
 import { atomState } from "./atom-state";
 import { optionalString } from "./attributes";
 import type { ActionSubmission, ActionType } from "./action-submitter";
+
 type State = Readonly<{
   type: ActionType;
   href: string;
@@ -25,7 +26,9 @@ export abstract class AcmeFormActionElement extends AcmeActionElement {
   @atomState() private action: State = initial;
   private setAction<Key extends keyof State>(key: Key, value: State[Key]) {
     const previous = this.action[key];
-    if (Object.is(previous, value)) return;
+    if (Object.is(previous, value)) {
+      return;
+    }
     this.action = Object.freeze({ ...this.action, [key]: value });
     this.nativeAction.sync();
     this.synchronizeControl();

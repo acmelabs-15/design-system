@@ -29,7 +29,9 @@ export class AcmeToggleTip extends AcmeSemanticElement {
     return this.edge;
   }
   set side(value: HelpSide) {
-    if (!["top", "bottom", "left", "right"].includes(value)) throw new TypeError("Invalid help side");
+    if (!["top", "bottom", "left", "right"].includes(value)) {
+      throw new TypeError("Invalid help side");
+    }
     const previous = this.edge;
     this.edge = value;
     this.requestUpdate("side", previous);
@@ -40,7 +42,9 @@ export class AcmeToggleTip extends AcmeSemanticElement {
     return this.alignment;
   }
   set align(value: HelpAlign) {
-    if (!["start", "center", "end"].includes(value)) throw new TypeError("Invalid help alignment");
+    if (!["start", "center", "end"].includes(value)) {
+      throw new TypeError("Invalid help alignment");
+    }
     const previous = this.alignment;
     this.alignment = value;
     this.requestUpdate("align", previous);
@@ -51,7 +55,9 @@ export class AcmeToggleTip extends AcmeSemanticElement {
     return this.gap;
   }
   set sideOffset(value: number) {
-    if (!Number.isFinite(value) || value < 0) throw new RangeError("Help distance requires a nonnegative finite number");
+    if (!Number.isFinite(value) || value < 0) {
+      throw new RangeError("Help distance requires a nonnegative finite number");
+    }
     const previous = this.gap;
     this.gap = value;
     this.requestUpdate("sideOffset", previous);
@@ -75,7 +81,9 @@ export class AcmeToggleTip extends AcmeSemanticElement {
     opened: () => {
       if (this.focusOnOpen) {
         const surface = this.surface();
-        if (surface) (tabbable(surface, { getShadowRoot: true })[0] ?? surface).focus({ preventScroll: true });
+        if (surface) {
+          (tabbable(surface, { getShadowRoot: true })[0] ?? surface).focus({ preventScroll: true });
+        }
       }
       this.focusOnOpen = false;
     },
@@ -91,13 +99,19 @@ export class AcmeToggleTip extends AcmeSemanticElement {
   }
 
   private userOpen(open: boolean, reason: string) {
-    if (open === this.open) return;
-    if (!open && !this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "close", reason }), bubbles: true, composed: true, cancelable: true }))) return;
+    if (open === this.open) {
+      return;
+    }
+    if (!open && !this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "close", reason }), bubbles: true, composed: true, cancelable: true }))) {
+      return;
+    }
     this.open = open;
     this.dispatchEvent(new CustomEvent("acme-open-change", { detail: Object.freeze({ open, reason }), bubbles: true, composed: true }));
   }
   private toggle = (event: MouseEvent) => {
-    if (event.defaultPrevented) return;
+    if (event.defaultPrevented) {
+      return;
+    }
     this.focusOnOpen = event.detail === 0 && !this.open;
     this.userOpen(!this.open, "trigger");
   };
@@ -116,12 +130,18 @@ export class AcmeToggleTip extends AcmeSemanticElement {
   private focusOut = () => {
     queueMicrotask(() => {
       const active = deepActiveElement(this.ownerDocument);
-      if (active === this.ownerDocument.body && this.pointerInside) return;
-      if (this.open && this.closeOnOutside && active && !composedContains(this, active)) this.userOpen(false, "focus-outside");
+      if (active === this.ownerDocument.body && this.pointerInside) {
+        return;
+      }
+      if (this.open && this.closeOnOutside && active && !composedContains(this, active)) {
+        this.userOpen(false, "focus-outside");
+      }
     });
   };
   private readonly documentFocus = () => {
-    if (this.open) this.focusOut();
+    if (this.open) {
+      this.focusOut();
+    }
   };
   private focusDocument?: Document;
   connectedCallback() {

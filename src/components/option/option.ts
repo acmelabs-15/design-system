@@ -24,7 +24,9 @@ export class AcmeOption extends AcmeElement {
     return this.choiceValue;
   }
   set value(value: string | undefined) {
-    if (value !== undefined && (typeof value !== "string" || !value)) throw new TypeError("Option value must be a nonempty string or undefined");
+    if (value !== undefined && (typeof value !== "string" || !value)) {
+      throw new TypeError("Option value must be a nonempty string or undefined");
+    }
     const previous = this.value;
     this.choiceValue = value;
     this.requestUpdate("value", previous);
@@ -34,7 +36,9 @@ export class AcmeOption extends AcmeElement {
     return (this.authoredLabel ?? this.text).replace(/\s+/g, " ").trim();
   }
   set label(value: string | undefined) {
-    if (value !== undefined && typeof value !== "string") throw new TypeError("Option label must be a string or undefined");
+    if (value !== undefined && typeof value !== "string") {
+      throw new TypeError("Option label must be a string or undefined");
+    }
     const previous = this.label;
     this.authoredLabel = value;
     this.requestUpdate("label", previous);
@@ -60,7 +64,9 @@ export class AcmeOption extends AcmeElement {
     context: optionContext,
     subscribe: true,
     callback: (owner) => {
-      if (this.binding.get().owner === owner) return;
+      if (this.binding.get().owner === owner) {
+        return;
+      }
       this.release?.();
       this.binding.set({ owner });
       this.release = owner.register(this.partRecord);
@@ -86,21 +92,31 @@ export class AcmeOption extends AcmeElement {
       .map((node) => node.textContent ?? "")
       .join(" ")
       .trim();
-    if (content !== this.text) this.text = content;
-    if (description !== this.description) this.description = description;
+    if (content !== this.text) {
+      this.text = content;
+    }
+    if (description !== this.description) {
+      this.description = description;
+    }
   };
   constructor() {
     super();
     registerOptionPart(this.partRecord);
     this.addEventListener("pointerdown", (event) => {
-      if (event.isPrimary && event.button === 0 && this.binding.get().owner) event.preventDefault();
+      if (event.isPrimary && event.button === 0 && this.binding.get().owner) {
+        event.preventDefault();
+      }
     });
     this.addEventListener("click", (event) => {
-      if (event.defaultPrevented || this.projection.get().disabled) return;
+      if (event.defaultPrevented || this.projection.get().disabled) {
+        return;
+      }
       this.binding.get().owner?.choose(this.partRecord);
     });
     this.addEventListener("pointermove", (event) => {
-      if (event.pointerType === "mouse" && !event.buttons && !this.projection.get().disabled) this.binding.get().owner?.highlight(this.partRecord);
+      if (event.pointerType === "mouse" && !event.buttons && !this.projection.get().disabled) {
+        this.binding.get().owner?.highlight(this.partRecord);
+      }
     });
   }
   connectedCallback() {
@@ -115,7 +131,9 @@ export class AcmeOption extends AcmeElement {
     this.binding.set({});
     this.owner.hostDisconnected();
     this.owner.value = undefined;
-    if (this.isConnected) this.owner.hostConnected();
+    if (this.isConnected) {
+      this.owner.hostConnected();
+    }
   }
   disconnectedCallback() {
     this.observer?.disconnect();

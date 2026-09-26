@@ -7,6 +7,7 @@ import { message, messageCatalogs } from "./messages";
 import { Places } from "./places";
 import { AcmeSemanticElement } from "./semantic-element";
 import { StoreSelector } from "./store-connection";
+
 export type MessageVariant = "default" | "success" | "error" | "warning" | "secondary" | "violet" | "cyan";
 export type MessageSize = "small" | "medium" | "large";
 /** Shared presentation for supplied section and page messages. */
@@ -19,7 +20,9 @@ export abstract class AcmeMessageElement extends AcmeSemanticElement {
     return this.treatment;
   }
   set variant(value: MessageVariant) {
-    if (!["default", "success", "error", "warning", "secondary", "violet", "cyan"].includes(value)) throw new TypeError("Invalid message variant");
+    if (!["default", "success", "error", "warning", "secondary", "violet", "cyan"].includes(value)) {
+      throw new TypeError("Invalid message variant");
+    }
     const previous = this.treatment;
     this.treatment = value;
     this.requestUpdate("variant", previous);
@@ -30,7 +33,9 @@ export abstract class AcmeMessageElement extends AcmeSemanticElement {
     return this.scale;
   }
   set size(value: MessageSize) {
-    if (!["small", "medium", "large"].includes(value)) throw new TypeError("Invalid message size");
+    if (!["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid message size");
+    }
     const previous = this.scale;
     this.scale = value;
     this.requestUpdate("size", previous);
@@ -44,9 +49,15 @@ export abstract class AcmeMessageElement extends AcmeSemanticElement {
     this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "dismiss" }), bubbles: true, composed: true, cancelable: true }));
   };
   private icon() {
-    if (this.variant === "success") return html`<acme-check-icon size="1em"></acme-check-icon>`;
-    if (this.variant === "error") return html`<acme-error-icon size="1em"></acme-error-icon>`;
-    if (this.variant === "warning") return html`<acme-warning-icon size="1em"></acme-warning-icon>`;
+    if (this.variant === "success") {
+      return html`<acme-check-icon size="1em"></acme-check-icon>`;
+    }
+    if (this.variant === "error") {
+      return html`<acme-error-icon size="1em"></acme-error-icon>`;
+    }
+    if (this.variant === "warning") {
+      return html`<acme-warning-icon size="1em"></acme-warning-icon>`;
+    }
     return html`<acme-info-icon size="1em"></acme-info-icon>`;
   }
   render() {

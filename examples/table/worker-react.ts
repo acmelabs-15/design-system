@@ -4,6 +4,7 @@ import { useTable } from "@tanstack/react-table";
 import type { Table as TanStackTable } from "@tanstack/table-core";
 import { createElement as h, useLayoutEffect } from "react";
 import type { WorkerRow, WorkerSession } from "./worker-session";
+
 export function WorkerDeliveryReact({ session, ready }: { session: WorkerSession; ready: (table: TanStackTable<WorkerSession["features"], WorkerRow>) => void }) {
   const failed = useSelector(session.failed);
   useSelector(session.source);

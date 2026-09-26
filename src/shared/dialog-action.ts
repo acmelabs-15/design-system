@@ -35,8 +35,12 @@ export abstract class AcmeDialogAction extends AcmeActionElement {
   }
   protected synchronizeControl() {
     super.synchronizeControl();
-    if (!this.control) return;
-    if (this.control.localName === "button") (this.control as HTMLButtonElement).disabled = this.disabled || this.nativeAction.fieldsetDisabled || this.unavailable;
+    if (!this.control) {
+      return;
+    }
+    if (this.control.localName === "button") {
+      (this.control as HTMLButtonElement).disabled = this.disabled || this.nativeAction.fieldsetDisabled || this.unavailable;
+    }
     if (this.kind === "trigger") {
       this.control.setAttribute("aria-haspopup", "dialog");
       this.control.setAttribute("aria-expanded", String(!!this.binding?.current?.state.get().open));
@@ -44,7 +48,9 @@ export abstract class AcmeDialogAction extends AcmeActionElement {
   }
   protected activate() {
     const owner = this.binding.current;
-    if (owner) owner.request(this.kind === "trigger" ? !owner.state.get().open : false, this.kind === "trigger" ? "trigger" : "close-control", this.kind === "trigger" ? this.control : undefined);
+    if (owner) {
+      owner.request(this.kind === "trigger" ? !owner.state.get().open : false, this.kind === "trigger" ? "trigger" : "close-control", this.kind === "trigger" ? this.control : undefined);
+    }
   }
   protected renderContent() {
     const label =

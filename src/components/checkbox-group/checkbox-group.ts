@@ -10,12 +10,17 @@ import { SelectionRegistry, selectionOrder, type SelectionOwner, type SelectionM
 import { optionalString } from "../../shared/attributes";
 import { message, messageCatalogs } from "../../shared/messages";
 import { checkboxGroupStructureCss } from "../../generated/components/checkbox-group/checkbox-group-structure.styles";
+
 const values = (value: readonly string[]): readonly string[] => {
-  if (!Array.isArray(value) || value.some((item) => typeof item !== "string")) throw new TypeError("Checkbox Group value requires an array of strings");
+  if (!Array.isArray(value) || value.some((item) => typeof item !== "string")) {
+    throw new TypeError("Checkbox Group value requires an array of strings");
+  }
   return Object.freeze([...new Set(value)]);
 };
 const fromAttribute = (value: string | null): readonly string[] => {
-  if (value === null) return Object.freeze([]);
+  if (value === null) {
+    return Object.freeze([]);
+  }
   try {
     return values(JSON.parse(value));
   } catch {
@@ -67,7 +72,11 @@ export class AcmeCheckboxGroup extends AcmeFormElement<readonly string[], Member
     },
     serialize: (state, members) => {
       const data = new FormData();
-      if (state.name) for (const value of this.successful(state, members)) data.append(state.name, value);
+      if (state.name) {
+        for (const value of this.successful(state, members)) {
+          data.append(state.name, value);
+        }
+      }
       return data;
     },
     restoration: (state) => JSON.stringify(state.value),
@@ -77,20 +86,29 @@ export class AcmeCheckboxGroup extends AcmeFormElement<readonly string[], Member
       return target?.isConnected ? target : this.semanticTarget;
     },
     synchronize: (state, members) => {
-      for (const member of members) member.synchronize();
+      for (const member of members) {
+        member.synchronize();
+      }
       this.constraint.type = "checkbox";
       this.constraint.checked = this.successful(state, members).length > 0;
       this.constraint.required = state.required;
       this.constraint.disabled = state.disabled || state.platformDisabled;
     },
     validate: (state, members) => {
-      if (state.disabled || state.platformDisabled) return { flags: {}, message: "" };
-      if (new Set(members.map((member) => member.value())).size !== members.length)
+      if (state.disabled || state.platformDisabled) {
+        return { flags: {}, message: "" };
+      }
+      if (new Set(members.map((member) => member.value())).size !== members.length) {
         return { flags: { customError: true }, message: message(this.themeContext.scope.effective.get().locale, "checkboxGroup.duplicate", "Each option must have a unique value.") };
+      }
       for (const member of members) {
-        if (member.disabled()) continue;
+        if (member.disabled()) {
+          continue;
+        }
         const validation = member.validation();
-        if (Object.values(validation.flags).some(Boolean)) return validation;
+        if (Object.values(validation.flags).some(Boolean)) {
+          return validation;
+        }
       }
       const result = nativeValidation(this.constraint);
       return result.flags.valueMissing ? { flags: result.flags, message: this.requiredMessage() } : result;
@@ -138,13 +156,19 @@ export class AcmeCheckboxGroup extends AcmeFormElement<readonly string[], Member
     return message(this.themeContext.scope.effective.get().locale, "checkboxGroup.required", "Select at least one option.");
   }
   private change(member: SelectionMember, checked: boolean, reason: "programmatic" | "user") {
-    if (!this.registered.includes(member) || (reason === "user" && (this.nativeForm.effectiveDisabled || member.disabled()))) return;
+    if (!this.registered.includes(member) || (reason === "user" && (this.nativeForm.effectiveDisabled || member.disabled()))) {
+      return;
+    }
     if (this.value.includes(member.value()) === checked) {
-      if (reason === "programmatic") this.nativeForm.setValue(this.value);
+      if (reason === "programmatic") {
+        this.nativeForm.setValue(this.value);
+      }
       return;
     }
     this.nativeForm.setValue(checked ? [...this.value, member.value()] : this.value.filter((value) => value !== member.value()), reason);
-    if (reason === "user") this.dispatchEvent(new CustomEvent<{ value: readonly string[] }>("acme-change", { detail: { value: this.value }, bubbles: true, composed: true }));
+    if (reason === "user") {
+      this.dispatchEvent(new CustomEvent<{ value: readonly string[] }>("acme-change", { detail: { value: this.value }, bubbles: true, composed: true }));
+    }
   }
   render() {
     return html`<div part="root" class="group" tabindex="-1" aria-disabled=${this.nativeForm.effectiveDisabled ? "true" : nothing} aria-invalid=${this.invalid || this.field.description.get()?.invalid ? "true" : nothing}><slot></slot><span class="sr" id="requirement" ?hidden=${!this.required}>${this.required ? this.requiredMessage() : ""}</span></div>`;

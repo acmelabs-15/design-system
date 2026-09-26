@@ -3,7 +3,9 @@ import { initTableWorker } from "@tanstack/table-core/experimental-worker-plugin
 
 // This application fixture deliberately exposes one reproducible failure for its recovery example.
 self.addEventListener("message", (event) => {
-  if (event.data?.demoCommand === "fail") throw new Error("Simulated table worker failure");
+  if (event.data?.demoCommand === "fail") {
+    throw new Error("Simulated table worker failure");
+  }
 });
 initTableWorker({
   features: tableFeatures({

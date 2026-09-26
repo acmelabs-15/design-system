@@ -28,7 +28,9 @@ export class AcmePasswordInput extends AcmeSingleLineControl {
       direction = input?.selectionDirection;
     this.revealed = Boolean(value);
     this.nativeForm?.sync();
-    if (start != null && end != null) input.setSelectionRange(start, end, direction ?? undefined);
+    if (start != null && end != null) {
+      input.setSelectionRange(start, end, direction ?? undefined);
+    }
     this.requestUpdate("visible");
   }
   @atomState() @property({ noAccessor: true, converter: boolish }) revealable = true;
@@ -36,7 +38,9 @@ export class AcmePasswordInput extends AcmeSingleLineControl {
     return this.visible ? "text" : "password";
   }
   private reveal = () => {
-    if (this.nativeForm.effectiveDisabled) return;
+    if (this.nativeForm.effectiveDisabled) {
+      return;
+    }
     this.visible = !this.visible;
     this.focus({ preventScroll: true });
     this.dispatchEvent(new CustomEvent("acme-visible-change", { detail: { visible: this.visible }, bubbles: true, composed: true }));

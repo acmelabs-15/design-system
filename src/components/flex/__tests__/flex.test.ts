@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeFlex } from "../flex";
+
 afterEach(() => document.body.replaceChildren());
 async function mount(markup = "<acme-flex></acme-flex>") {
   document.body.innerHTML = markup;

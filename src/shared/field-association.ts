@@ -35,8 +35,9 @@ export class FieldRegistry {
           b = description[key as keyof FieldDescription];
         return Array.isArray(a) && Array.isArray(b) ? a.length === b.length && a.every((item, index) => item === b[index]) : a === b;
       })
-    )
+    ) {
       return;
+    }
     this.description.set({
       value: Object.freeze({
         ...description,
@@ -48,17 +49,25 @@ export class FieldRegistry {
     this.publish();
   }
   register(participant: FieldParticipant): () => void {
-    if (this.members.has(participant)) throw new Error("The control is already registered with this Field");
+    if (this.members.has(participant)) {
+      throw new Error("The control is already registered with this Field");
+    }
     registrations.get(participant)?.release();
     const registration = Symbol();
     this.members.set(participant, registration);
-    if (this.members.size === 2) this.diagnostic("A Field requires one logical control. Use separate Fields or a Fieldset for multiple controls.");
+    if (this.members.size === 2) {
+      this.diagnostic("A Field requires one logical control. Use separate Fields or a Fieldset for multiple controls.");
+    }
     this.publish();
     let active = true;
     const release = () => {
-      if (!active) return;
+      if (!active) {
+        return;
+      }
       active = false;
-      if (this.members.get(participant) !== registration) return;
+      if (this.members.get(participant) !== registration) {
+        return;
+      }
       this.members.delete(participant);
       participant.associate(undefined);
       this.publish();
@@ -70,17 +79,23 @@ export class FieldRegistry {
     return this.members.has(participant);
   }
   activate(): void {
-    if (this.members.size !== 1 || this.description.get().value?.disabled) return;
+    if (this.members.size !== 1 || this.description.get().value?.disabled) {
+      return;
+    }
     this.members.keys().next().value?.activate();
   }
   private publish(): void {
     const description = this.members.size === 1 ? this.description.get().value : undefined;
-    for (const participant of this.members.keys()) participant.associate(description);
+    for (const participant of this.members.keys()) {
+      participant.associate(description);
+    }
   }
   clear(): void {
     for (const participant of [...this.members.keys()]) {
       const entry = registrations.get(participant);
-      if (entry?.registry === this) entry.release();
+      if (entry?.registry === this) {
+        entry.release();
+      }
     }
     this.members.clear();
   }
@@ -95,11 +110,15 @@ export class FieldAssociation {
   private readonly prefix = `acme-field-${++nextId}`;
 
   attach(target: HTMLElement): void {
-    if (this.target === target && this.mirrors?.label.getRootNode() === target.getRootNode()) return;
+    if (this.target === target && this.mirrors?.label.getRootNode() === target.getRootNode()) {
+      return;
+    }
     this.detach();
     this.target = target;
     const root = target.getRootNode();
-    if (root.nodeType !== 9 && root.nodeType !== 11) throw new Error("Field association requires a control in a document or shadow root");
+    if (root.nodeType !== 9 && root.nodeType !== 11) {
+      throw new Error("Field association requires a control in a document or shadow root");
+    }
     const parent = root.nodeType === 9 ? target.ownerDocument.body : root;
     this.mirrors = Object.fromEntries(
       ["label", "help", "error"].map((name) => {
@@ -117,9 +136,13 @@ export class FieldAssociation {
     this.paint();
   }
   get defaults() {
-    if (!this.mirrors) return {};
+    if (!this.mirrors) {
+      return {};
+    }
     const roots = new Set<Node>();
-    for (let root: Node | undefined = this.target?.getRootNode(); root; root = "host" in root ? (root as ShadowRoot).host.getRootNode() : undefined) roots.add(root);
+    for (let root: Node | undefined = this.target?.getRootNode(); root; root = "host" in root ? (root as ShadowRoot).host.getRootNode() : undefined) {
+      roots.add(root);
+    }
     const references = (name: "label" | "help" | "error") => {
       const elements = this.description?.[(name + "Elements") as "labelElements" | "helpElements" | "errorElements"];
       return elements?.length && elements.every((element) => roots.has(element.getRootNode())) ? [...elements] : this.description?.[name] ? [this.mirrors![name]] : [];
@@ -127,7 +150,9 @@ export class FieldAssociation {
     return { labelledByElements: references("label"), describedByElements: [...references("help"), ...(this.description?.invalid ? references("error") : [])] };
   }
   private paint(): void {
-    if (!this.mirrors) return;
+    if (!this.mirrors) {
+      return;
+    }
     for (const name of ["label", "help", "error"] as const) {
       const text = name === "error" && !this.description?.invalid ? "" : (this.description?.[name] ?? "");
       const mirror = this.mirrors[name];
@@ -135,10 +160,11 @@ export class FieldAssociation {
     }
   }
   detach(): void {
-    if (this.mirrors)
+    if (this.mirrors) {
       for (const name of ["label", "help", "error"] as const) {
         this.mirrors[name].remove();
       }
+    }
     this.mirrors = undefined;
     this.target = undefined;
   }

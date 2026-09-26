@@ -6,9 +6,15 @@ export type Place = (typeof PLACES)[number];
 type Host = ReactiveControllerHost & Element & { renderRoot?: HTMLElement | DocumentFragment };
 
 function hasContent(node: Node): boolean {
-  if (node.nodeType === 3) return !!node.textContent?.trim();
-  if (node.nodeType !== 1) return false;
-  if ((node as Element).localName !== "slot") return true;
+  if (node.nodeType === 3) {
+    return !!node.textContent?.trim();
+  }
+  if (node.nodeType !== 1) {
+    return false;
+  }
+  if ((node as Element).localName !== "slot") {
+    return true;
+  }
   return (node as HTMLSlotElement).assignedNodes({ flatten: true }).some(hasContent);
 }
 
@@ -38,10 +44,14 @@ export class Places implements ReactiveController {
           ? slot.assignedNodes({ flatten: true })
           : []
         : [...this.host.childNodes].filter((child) => (child.nodeType === 3 ? name === "" : child.nodeType === 1 && ((child as Element).getAttribute("slot") ?? "") === name));
-      if (nodes.some(hasContent)) now.add(name);
+      if (nodes.some(hasContent)) {
+        now.add(name);
+      }
     }
     const before = this.filled.get();
-    if (now.size === before.size && [...now].every((name) => before.has(name))) return;
+    if (now.size === before.size && [...now].every((name) => before.has(name))) {
+      return;
+    }
     this.filled.set(now);
     this.host.requestUpdate();
   };
@@ -54,7 +64,9 @@ export class Places implements ReactiveController {
   }
   private bindRoot(): void {
     const root = this.host.renderRoot;
-    if (root === this.root) return;
+    if (root === this.root) {
+      return;
+    }
     this.root?.removeEventListener("slotchange", this.read);
     this.root = root;
     this.root?.addEventListener("slotchange", this.read);

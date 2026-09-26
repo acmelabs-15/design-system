@@ -49,7 +49,9 @@ export abstract class AcmeDisclosureTrigger extends AcmeSemanticElement {
       disabled = !state || state.disabled,
       locked = !!state?.expanded && !state.canCollapse;
     return html`<button type="button" part="root trigger" ?disabled=${disabled} aria-expanded=${String(!!state?.expanded)} aria-disabled=${String(disabled || locked)} @click=${(event: MouseEvent) => {
-      if (event.defaultPrevented || disabled) return;
+      if (event.defaultPrevented || disabled) {
+        return;
+      }
       this.button?.focus({ preventScroll: true });
       this.binding.current?.toggle();
     }} @keydown=${(event: KeyboardEvent) => this.binding.current?.key(this.binding.record, event)}><span part="label"><slot></slot></span><span part="indicator" aria-hidden="true"><acme-expand-more-icon size="16px"></acme-expand-more-icon></span></button>`;

@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/status";
+
 test("Status preserves application values and does not infer a deployment treatment", () => {
   const status = document.createElement("acme-status");
   status.value = "READY";

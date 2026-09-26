@@ -7,6 +7,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { DocumentationCatalog, type DocumentationRelease } from "../catalog";
 import { createDocumentationServer } from "../server";
+
 const release: DocumentationRelease = {
   schemaVersion: 1,
   packageName: "@acmelabs/design-system",
@@ -37,15 +38,8 @@ const release: DocumentationRelease = {
 };
 async function exercise(client: Client) {
   const tools = await client.listTools();
-  expect(tools.tools.map((tool) => tool.name)).toEqual([
-    "resolve_version",
-    "search_docs",
-    "get_component",
-    "get_recipe",
-  ]);
-  expect(tools.tools.every((tool) => tool.annotations?.readOnlyHint && tool.annotations?.openWorldHint === false)).toBe(
-    true,
-  );
+  expect(tools.tools.map((tool) => tool.name)).toEqual(["resolve_version", "search_docs", "get_component", "get_recipe"]);
+  expect(tools.tools.every((tool) => tool.annotations?.readOnlyHint && tool.annotations?.openWorldHint === false)).toBe(true);
   const read = (name: string, args: Record<string, unknown>) => client.callTool({ name, arguments: args });
   expect(await read("resolve_version", { framework: "html" })).toMatchObject({
     isError: true,
@@ -80,12 +74,8 @@ async function exercise(client: Client) {
     const result = await client.readResource({ uri: resource.uri });
     expect(JSON.parse((result.contents[0] as { text: string }).text).version).toBe("0.2.0");
   }
-  await expect(client.readResource({ uri: "acme-docs://release/0.2.0/component/missing" })).rejects.toThrow(
-    "Unknown documentation resource",
-  );
-  await expect(client.readResource({ uri: "acme-docs://release/0.3.0/component/acme-input" })).rejects.toThrow(
-    "version is unavailable",
-  );
+  await expect(client.readResource({ uri: "acme-docs://release/0.2.0/component/missing" })).rejects.toThrow("Unknown documentation resource");
+  await expect(client.readResource({ uri: "acme-docs://release/0.3.0/component/acme-input" })).rejects.toThrow("version is unavailable");
 }
 test("MCP schemas, read-only tools and resources work through the protocol", async () => {
   const server = createDocumentationServer(new DocumentationCatalog([release]), "0.2.0");
@@ -111,10 +101,7 @@ test("the Bun stdio entry reads only its adjacent packaged release", async () =>
   });
   expect(output.success).toBe(true);
   await Bun.write(join(directory, "dist/documentation.json"), JSON.stringify(release));
-  await Bun.write(
-    join(directory, "package.json"),
-    JSON.stringify({ name: "@acmelabs/design-system-mcp", type: "module", version: release.version }),
-  );
+  await Bun.write(join(directory, "package.json"), JSON.stringify({ name: "@acmelabs/design-system-mcp", type: "module", version: release.version }));
   const client = new Client({ name: "stdio-test", version: "1.0.0" });
   const transport = new StdioClientTransport({
     command: process.execPath,

@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { AcmeList } from "../list";
 import "../../../define/list";
+
 test("List retains native numbering, nested content and node identity", async () => {
   document.body.innerHTML = '<acme-list><ol start="5" reversed><li>Five<ul><li>Nested</li></ul></li><li value="2"><button>Two</button></li></ol></acme-list>';
   const root = document.querySelector("acme-list") as AcmeList;

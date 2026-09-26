@@ -30,7 +30,16 @@ export const geist: GeistMap = {
     {
       ours: ".label",
       pick: has("truncate"),
-      children: [{ ours: ".inner", pick: 0, children: [{ ours: ".chev", pick: has("absolute"), children: [{ ours: "svg", pick: 0 }] }, { ours: "", pick: (c) => !has("absolute")(c), leaf: true }] }],
+      children: [
+        {
+          ours: ".inner",
+          pick: 0,
+          children: [
+            { ours: ".chev", pick: has("absolute"), children: [{ ours: "svg", pick: 0 }] },
+            { ours: "", pick: (c) => !has("absolute")(c), leaf: true },
+          ],
+        },
+      ],
     },
   ],
   ignore: ["group/trigger"],

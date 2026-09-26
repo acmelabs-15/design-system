@@ -2,6 +2,7 @@ import { ContextConsumer, createContext } from "@lit/context";
 import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
+
 export type DialogReason = "trigger" | "escape" | "outside" | "close-control" | "selection" | "programmatic";
 export type DialogFocusTarget = Element | string | undefined;
 export type DialogPart = { host: ReactiveElement; kind: "trigger" | "close" | "cancel"; target(): HTMLElement | undefined; currentOwner(): DialogOwner | undefined; reconnect(): void };
@@ -34,7 +35,9 @@ export class DialogBinding {
       context: dialogContext,
       subscribe: true,
       callback: (owner) => {
-        if (this.current === owner) return;
+        if (this.current === owner) {
+          return;
+        }
         this.release?.();
         this.owner.set({ value: owner });
         this.release = owner.register(this.record);
@@ -61,6 +64,8 @@ export class DialogBinding {
     this.owner.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
 }

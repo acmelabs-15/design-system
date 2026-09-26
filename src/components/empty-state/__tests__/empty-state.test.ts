@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/empty-state";
+
 test("Empty State owns only size and surface treatment, with authored content", () => {
   const state = document.createElement("acme-empty-state");
   expect(state.size).toBe("medium");

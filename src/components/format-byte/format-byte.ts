@@ -23,14 +23,16 @@ export class AcmeFormatByte extends AcmeFormattingElement {
   unitSystem: ByteUnitSystem = "decimal";
   render() {
     let text = "";
-    if (this.value === undefined) this.clearDiagnostic();
-    else
+    if (this.value === undefined) {
+      this.clearDiagnostic();
+    } else {
       try {
         text = formatByte(this.value, this.formatLocale, { unit: this.unit, unitDisplay: this.unitDisplay, unitSystem: this.unitSystem });
         this.clearDiagnostic();
       } catch {
         this.diagnostic("invalid-byte-format");
       }
+    }
     return html`<span part="root">${text}</span>`;
   }
 }

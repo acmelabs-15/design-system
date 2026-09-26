@@ -1,9 +1,15 @@
 export type MeasurementTone = "neutral" | "success" | "warning" | "error";
 export type ProgressReading = { kind: "invalid"; code: string } | { kind: "indeterminate"; max: number } | { kind: "determinate"; max: number; value: number; ratio: number; clamped: boolean };
 export function resolveProgress(value: number | undefined, max: number): ProgressReading {
-  if (!Number.isFinite(max) || max <= 0) return { kind: "invalid", code: "invalid-progress-maximum" };
-  if (value === undefined) return { kind: "indeterminate", max };
-  if (!Number.isFinite(value)) return { kind: "invalid", code: "invalid-progress-value" };
+  if (!Number.isFinite(max) || max <= 0) {
+    return { kind: "invalid", code: "invalid-progress-maximum" };
+  }
+  if (value === undefined) {
+    return { kind: "indeterminate", max };
+  }
+  if (!Number.isFinite(value)) {
+    return { kind: "invalid", code: "invalid-progress-value" };
+  }
   const bounded = Math.max(0, Math.min(max, value));
   return { kind: "determinate", max, value: bounded, ratio: bounded / max, clamped: bounded !== value };
 }
@@ -14,23 +20,37 @@ export type MeterReading =
   | { kind: "known"; min: number; max: number; value: number; ratio: number; low: number; high: number; optimum: number; tone: MeasurementTone; clamped: boolean };
 export function resolveMeter(input: MeterInput): MeterReading {
   const { min, max, value } = input;
-  if (!Number.isFinite(min) || !Number.isFinite(max) || max <= min) return { kind: "invalid", code: "invalid-meter-range" };
+  if (!Number.isFinite(min) || !Number.isFinite(max) || max <= min) {
+    return { kind: "invalid", code: "invalid-meter-range" };
+  }
   const low = input.low ?? min,
     high = input.high ?? max,
     optimum = input.optimum ?? min / 2 + max / 2;
-  if (![low, high, optimum].every(Number.isFinite) || low < min || high > max || low > high || optimum < min || optimum > max) return { kind: "invalid", code: "invalid-meter-thresholds" };
-  if (input.loading) return { kind: "loading" };
-  if (value === undefined) return { kind: "empty" };
-  if (!Number.isFinite(value)) return { kind: "invalid", code: "invalid-meter-value" };
+  if (![low, high, optimum].every(Number.isFinite) || low < min || high > max || low > high || optimum < min || optimum > max) {
+    return { kind: "invalid", code: "invalid-meter-thresholds" };
+  }
+  if (input.loading) {
+    return { kind: "loading" };
+  }
+  if (value === undefined) {
+    return { kind: "empty" };
+  }
+  if (!Number.isFinite(value)) {
+    return { kind: "invalid", code: "invalid-meter-value" };
+  }
   const bounded = Math.max(min, Math.min(max, value)),
     difference = max - min,
     scale = Math.max(Math.abs(min), Math.abs(max));
   const ratio = Number.isFinite(difference) ? (bounded - min) / difference : (bounded / scale - min / scale) / (max / scale - min / scale);
   let tone: MeasurementTone = "neutral";
   if (input.low !== undefined || input.high !== undefined) {
-    if (optimum < low) tone = bounded <= low ? "success" : bounded <= high ? "warning" : "error";
-    else if (optimum > high) tone = bounded >= high ? "success" : bounded >= low ? "warning" : "error";
-    else tone = bounded >= low && bounded <= high ? "success" : "warning";
+    if (optimum < low) {
+      tone = bounded <= low ? "success" : bounded <= high ? "warning" : "error";
+    } else if (optimum > high) {
+      tone = bounded >= high ? "success" : bounded >= low ? "warning" : "error";
+    } else {
+      tone = bounded >= low && bounded <= high ? "success" : "warning";
+    }
   }
   return { kind: "known", min, max, value: bounded, ratio, low, high, optimum, tone, clamped: bounded !== value };
 }

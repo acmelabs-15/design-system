@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Segmented Control owns one value while items expose only their own inputs", async () => {
   const group = document.createElement("acme-segmented-control");
   group.innerHTML = '<acme-segmented-control-item value="first">First</acme-segmented-control-item><acme-segmented-control-item value="second">Second</acme-segmented-control-item>';

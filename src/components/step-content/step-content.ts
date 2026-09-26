@@ -17,7 +17,9 @@ export class AcmeStepContent extends AcmeElement {
     return this.key;
   }
   set value(value: string) {
-    if (typeof value !== "string") throw new TypeError("Step Content value must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("Step Content value must be a string");
+    }
     const previous = this.key;
     this.key = value;
     this.requestUpdate("value", previous);
@@ -29,8 +31,12 @@ export class AcmeStepContent extends AcmeElement {
     const active = deepActiveElement(this.ownerDocument),
       current = !!this.binding.current?.current(this.value);
     this.recover = !current && !!active && composedContains(this, active);
-    if (this.inert === current) this.inert = !current;
-    if (this.hidden === current) this.hidden = !current;
+    if (this.inert === current) {
+      this.inert = !current;
+    }
+    if (this.hidden === current) {
+      this.hidden = !current;
+    }
     this.internals.role = "tabpanel";
     const trigger = this.binding.current?.counterpart("trigger", this.value);
     this.internals.ariaLabelledByElements = trigger ? [trigger.host] : null;
@@ -43,7 +49,9 @@ export class AcmeStepContent extends AcmeElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    if (!this.hasAttribute("tabindex")) this.tabIndex = 0;
+    if (!this.hasAttribute("tabindex")) {
+      this.tabIndex = 0;
+    }
   }
   render() {
     return html`<div part="content"><slot></slot></div>`;

@@ -69,7 +69,9 @@ test("the selected engine preserves line gaps and groups bar series beside each 
     grid: true,
     tooltip: false,
   }).definition;
-  if (!("marks" in definition)) throw new Error("The fixture requires a static chart definition");
+  if (!("marks" in definition)) {
+    throw new Error("The fixture requires a static chart definition");
+  }
   const scene = createChartScene(definition, { width: 500, height: 180 });
   expect(scene.points).toHaveLength(4);
   const first = scene.points.filter((point) => point.datum.index === 0);
@@ -89,14 +91,20 @@ test("the selected engine preserves line gaps and groups bar series beside each 
     grid: true,
     tooltip: false,
   });
-  if (!("marks" in gap.definition)) throw new Error("The fixture requires a static chart definition");
+  if (!("marks" in gap.definition)) {
+    throw new Error("The fixture requires a static chart definition");
+  }
   const result = createChartScene(gap.definition, { width: 500, height: 180 });
   expect(result.points).toHaveLength(4);
   const paths: SceneNode[] = [];
   const walk = (nodes: readonly SceneNode[]) => {
     for (const node of nodes) {
-      if (node.kind === "polyline") paths.push(node);
-      if (node.kind === "group") walk(node.children);
+      if (node.kind === "polyline") {
+        paths.push(node);
+      }
+      if (node.kind === "group") {
+        walk(node.children);
+      }
     }
   };
   walk(result.nodes);

@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const items = '<acme-segmented-control-item value="source">Source</acme-segmented-control-item><acme-segmented-control-item value="output">Output</acme-segmented-control-item>';
 export const doc: Doc = {
   id: "segmented-control",

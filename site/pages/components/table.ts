@@ -1,7 +1,21 @@
 import { readFileSync } from "node:fs";
 import type { Doc } from "../../site";
 
-const source = (file: string) => ({language: "typescript" as const,registerFunction:"registerTableExamples",entryPath: "examples/table/docs-entry.ts",sourcePath: "examples/table/"+file,code:readFileSync(new URL("../../../examples/table/"+file,import.meta.url),"utf8"),sourceFiles:["examples/table/docs-entry.ts","examples/table/definitions.ts","examples/table/data.ts","examples/table/review-feature.ts","examples/table/grid-interaction.ts","examples/table/virtual-layout.ts"]});
+const source = (file: string) => ({
+  language: "typescript" as const,
+  registerFunction: "registerTableExamples",
+  entryPath: "examples/table/docs-entry.ts",
+  sourcePath: "examples/table/" + file,
+  code: readFileSync(new URL("../../../examples/table/" + file, import.meta.url), "utf8"),
+  sourceFiles: [
+    "examples/table/docs-entry.ts",
+    "examples/table/definitions.ts",
+    "examples/table/data.ts",
+    "examples/table/review-feature.ts",
+    "examples/table/grid-interaction.ts",
+    "examples/table/virtual-layout.ts",
+  ],
+});
 
 const rows =
   '<tr><th scope="row">Order created</th><td><acme-status value="delivered" variant="success">Delivered</acme-status></td><td>12</td></tr><tr><th scope="row">Invoice updated</th><td><acme-status value="retrying" variant="warning">Retrying</acme-status></td><td>3</td></tr>';
@@ -18,7 +32,12 @@ export const doc: Doc = {
       p: "The application owns sorting, grouping, selection, column state and result pagination. Arrow keys move between cells; Enter opens a cell action and F2 enters its editor.",
       html: '<docs-table-lit style="display:block"></docs-table-lit>',
     },
-    { h: "TanStack Table in React", ...source("react.ts"), p: "React renders and retains its own cells inside the same Table component.", html: '<docs-table-react style="display:block"></docs-table-react>' },
+    {
+      h: "TanStack Table in React",
+      ...source("react.ts"),
+      p: "React renders and retains its own cells inside the same Table component.",
+      html: '<docs-table-react style="display:block"></docs-table-react>',
+    },
     {
       h: "TanStack Virtual",
       ...source("virtual-lit.ts"),

@@ -19,7 +19,9 @@ export class HeadingTargets implements ReactiveController {
     sources.set(this.host, this.read);
   }
   hostUpdated(): void {
-    if (!this.connected) return;
+    if (!this.connected) {
+      return;
+    }
     const next = this.read();
     const same =
       next.length === this.previous.length &&
@@ -27,7 +29,9 @@ export class HeadingTargets implements ReactiveController {
         const previous = this.previous[index];
         return item.heading === previous.heading && item.target === previous.target && item.id === previous.id && item.label === previous.label && item.level === previous.level;
       });
-    if (same) return;
+    if (same) {
+      return;
+    }
     this.previous = next;
     this.host.dispatchEvent(new Event(headingTargetsChanged, { bubbles: true, composed: true }));
   }
@@ -47,12 +51,17 @@ export function discoverHeadingTargets(root: Document | ShadowRoot | Element): r
       targets.push(...source());
       return;
     }
-    if (/^h[1-6]$/.test(element.localName))
+    if (/^h[1-6]$/.test(element.localName)) {
       targets.push(
         Object.freeze({ heading: element as HTMLHeadingElement, target: element as HTMLElement, id: element.id, label: element.textContent?.trim() ?? "", level: Number(element.localName.slice(1)) }),
       );
+    }
   };
-  if (root.nodeType === 1) visit(root as Element);
-  for (const element of root.querySelectorAll("*")) visit(element);
+  if (root.nodeType === 1) {
+    visit(root as Element);
+  }
+  for (const element of root.querySelectorAll("*")) {
+    visit(element);
+  }
   return Object.freeze(targets);
 }

@@ -5,7 +5,9 @@ test("all ten theme categories expose exact, unique keys and properties", () => 
   expect(themeTokenCategories).toEqual(["colors", "fonts", "fontSizes", "fontWeights", "lineHeights", "spacing", "sizes", "radii", "shadows", "motion"]);
   expect(new Set(themeTokenDefinitions.map((token) => token.cssProperty)).size).toBe(themeTokenDefinitions.length);
   expect(new Set(themeTokenDefinitions.map((token) => `${token.category}:${token.key}`)).size).toBe(themeTokenDefinitions.length);
-  for (const category of themeTokenCategories) expect(themeTokenDefinitions.some((token) => token.category === category)).toBe(true);
+  for (const category of themeTokenCategories) {
+    expect(themeTokenDefinitions.some((token) => token.category === category)).toBe(true);
+  }
   expect(Object.isFrozen(themeTokenDefinitions)).toBe(true);
   expect(themeTokenDefinitions.every(Object.isFrozen)).toBe(true);
 });
@@ -21,12 +23,16 @@ test("existing names map directly while private channels and composition fields 
 test("numeric spacing and dimensions remain independent", () => {
   expect(themeTokenDefinitions.find((token) => token.category === "spacing" && token.key === "0.5")?.cssProperty).toBe("--acme-spacing-0-5");
   expect(themeTokenDefinitions.find((token) => token.category === "sizes" && token.key === "0.5")?.cssProperty).toBe("--acme-size-0-5");
-  for (const category of ["spacing", "sizes"]) expect(themeTokenDefinitions.filter((token) => token.category === category && /^\d/.test(token.key))).toHaveLength(35);
+  for (const category of ["spacing", "sizes"]) {
+    expect(themeTokenDefinitions.filter((token) => token.category === category && /^\d/.test(token.key))).toHaveLength(35);
+  }
 });
 
 test("weight defaults are the six numeric values present in authored and generated CSS", () => {
   expect(fontWeightTokenDefinitions.map((token) => token.defaultValue)).toEqual(["400", "450", "500", "550", "600", "700"]);
-  for (const token of fontWeightTokenDefinitions) expect(String(token.cssProperty)).toBe(`--acme-font-weight-${token.defaultValue}`);
+  for (const token of fontWeightTokenDefinitions) {
+    expect(String(token.cssProperty)).toBe(`--acme-font-weight-${token.defaultValue}`);
+  }
 });
 
 test("compact density changes only the approved role values", () => {

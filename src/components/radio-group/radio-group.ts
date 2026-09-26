@@ -19,7 +19,9 @@ export class AcmeRadioGroup extends AcmeSingleSelectionGroup {
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {
     const next = value ?? "vertical";
-    if (next !== "horizontal" && next !== "vertical") throw new TypeError("Invalid radio orientation");
+    if (next !== "horizontal" && next !== "vertical") {
+      throw new TypeError("Invalid radio orientation");
+    }
     const previous = this.direction;
     this.direction = next;
     this.requestUpdate("orientation", previous);

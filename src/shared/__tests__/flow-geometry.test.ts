@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { flowArrow, roundedFlowPath, fitFlowViewport, zoomFlowViewport } from "../flow-geometry";
+
 test("rounded paths preserve endpoints and keep tight obstacle corners sharp", () => {
   const points = [
     { x: 0, y: 0 },

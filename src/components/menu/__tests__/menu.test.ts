@@ -1,8 +1,15 @@
 import { describe, expect, test } from "bun:test";
 import "../../../all";
+
 const mount = async (markup: string) => {
   document.body.innerHTML = markup;
-  for (let n = 0; n < 3; n++) for (const el of document.querySelectorAll("*")) if ("updateComplete" in el) await el.updateComplete;
+  for (let n = 0; n < 3; n++) {
+    for (const el of document.querySelectorAll("*")) {
+      if ("updateComplete" in el) {
+        await el.updateComplete;
+      }
+    }
+  }
   return document.body.firstElementChild!;
 };
 describe("Menu authoring contracts", () => {

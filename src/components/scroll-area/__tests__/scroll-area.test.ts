@@ -2,6 +2,7 @@ import { expect, test } from "bun:test";
 import "../../../define/scroll-area";
 import "../../../define/scroll-viewport";
 import "../../../define/scroll-button";
+
 test("Scroll Area exposes its native viewport and preserves author content", async () => {
   document.body.innerHTML = "<acme-scroll-area><acme-scroll-viewport><button>Content</button></acme-scroll-viewport></acme-scroll-area>";
   const root = document.querySelector("acme-scroll-area")!,

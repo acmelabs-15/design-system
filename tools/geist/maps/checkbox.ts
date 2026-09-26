@@ -27,7 +27,16 @@ export const geist: GeistMap = {
         {
           ours: ".box",
           pick: (c: SpecNode) => c.tag === "span" && "aria-hidden" in c.attrs,
-          children: [{ ours: "svg", pick: tag("svg"), children: [{ ours: "path", pick: tag("path") }, { ours: "line", pick: tag("line") }] }],
+          children: [
+            {
+              ours: "svg",
+              pick: tag("svg"),
+              children: [
+                { ours: "path", pick: tag("path") },
+                { ours: "line", pick: tag("line") },
+              ],
+            },
+          ],
         },
       ],
     },

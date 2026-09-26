@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { simpleGridTracks } from "../simple-grid-sizing";
+
 test("minimum mode is selected before responsive mapping and preserves skipped bands", () => {
   expect(simpleGridTracks(3, { expanded: "100px" })).toEqual({ expanded: "repeat(auto-fit, minmax(100px, 1fr))" });
   expect(simpleGridTracks(3, [undefined, 0])).toEqual([undefined, "repeat(auto-fit, minmax(var(--acme-size-0), 1fr))"]);

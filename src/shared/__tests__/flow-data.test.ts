@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { flowNodes, flowEdges, validateFlowGraph } from "../flow-data";
+
 test("flow snapshots own nested ports and reject ambiguous identities", () => {
   const input = [{ id: "a", label: "First", ports: [{ id: "out", side: "end" }] }];
   const nodes = flowNodes(input);

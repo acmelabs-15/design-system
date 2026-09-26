@@ -25,7 +25,9 @@ export class AcmeTab extends AcmeSemanticElement {
     return this.key;
   }
   set value(value: string) {
-    if (typeof value !== "string") throw new TypeError("Tab value must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("Tab value must be a string");
+    }
     const old = this.key;
     this.key = value;
     this.connection?.notify();
@@ -76,7 +78,9 @@ export class AcmeTab extends AcmeSemanticElement {
   }
   private synchronize() {
     const button = this.button;
-    if (!button) return;
+    if (!button) {
+      return;
+    }
     const owner = this.connection.owner;
     button.disabled = this.inactive;
     button.tabIndex = owner?.tabindex(this.member) ?? -1;
@@ -84,23 +88,31 @@ export class AcmeTab extends AcmeSemanticElement {
     button.setAttribute("data-variant", owner?.state.get().variant ?? "primary");
     button.toggleAttribute("data-selected", owner?.selected(this.member) ?? false);
     button.setAttribute("data-orientation", owner?.state.get().orientation ?? "horizontal");
-    if (this.ariaControlsElements === null && this.getAttribute("aria-controls") === null) button.ariaControlsElements = owner?.counterpart(this.member) ? [owner.counterpart(this.member)!.host] : [];
+    if (this.ariaControlsElements === null && this.getAttribute("aria-controls") === null) {
+      button.ariaControlsElements = owner?.counterpart(this.member) ? [owner.counterpart(this.member)!.host] : [];
+    }
   }
   private focused = () => this.connection.owner?.focus(this.member);
   private clicked = (event: MouseEvent) => {
     const owner = this.connection.owner;
     queueMicrotask(() => {
-      if (!event.defaultPrevented && this.isConnected && owner === this.connection.owner && !this.inactive) owner?.select(this.member);
+      if (!event.defaultPrevented && this.isConnected && owner === this.connection.owner && !this.inactive) {
+        owner?.select(this.member);
+      }
     });
   };
   constructor() {
     super();
     this.addEventListener("click", (event) => {
-      if (event.composedPath()[0] === this) this.click();
+      if (event.composedPath()[0] === this) {
+        this.click();
+      }
     });
   }
   click() {
-    if (!this.inactive) this.button?.click();
+    if (!this.inactive) {
+      this.button?.click();
+    }
   }
   focus(options?: FocusOptions) {
     this.button?.focus(options);

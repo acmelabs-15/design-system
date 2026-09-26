@@ -1,9 +1,13 @@
 const expect = (actual: unknown) => ({
   toEqual(expected: unknown) {
-    if (JSON.stringify(actual) !== JSON.stringify(expected)) throw new Error(`Expected ${JSON.stringify(expected)}, received ${JSON.stringify(actual)}`);
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+      throw new Error(`Expected ${JSON.stringify(expected)}, received ${JSON.stringify(actual)}`);
+    }
   },
   toBe(expected: unknown) {
-    if (actual !== expected) throw new Error(`Expected ${expected}, received ${actual}`);
+    if (actual !== expected) {
+      throw new Error(`Expected ${expected}, received ${actual}`);
+    }
   },
 });
 export async function pinInputSlotRegression() {
@@ -12,7 +16,9 @@ export async function pinInputSlotRegression() {
     '<acme-pin-input count="1" value=\'["1"]\'><slot name="left"></slot></acme-pin-input><acme-pin-input count="1" value=\'["2"]\'><slot name="right"></slot></acme-pin-input><slot name="orphan"></slot>';
   app.innerHTML = '<acme-pin-input-field index="0" slot="left"></acme-pin-input-field>';
   const settle = async () => {
-    for (let i = 0; i < 3; i++) await new Promise((resolve) => setTimeout(resolve, 0));
+    for (let i = 0; i < 3; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    }
   };
   document.body.append(app);
   try {

@@ -1,6 +1,7 @@
 import type { VirtualItem } from "@tanstack/virtual-core";
 import type { DeliveryCell, DeliveryRow, DeliveryTable } from "./data";
 import { orderedCells, orderedColumns } from "./data";
+
 export type VirtualMode = "vertical" | "horizontal" | "both";
 export function columnWindow(table: DeliveryTable, rows: readonly DeliveryRow[], items: readonly VirtualItem[], enabled: boolean) {
   const columns = orderedColumns(table),
@@ -14,7 +15,9 @@ export function columnWindow(table: DeliveryTable, rows: readonly DeliveryRow[],
       const cells = row.getCenterVisibleCells();
       for (let i = 0; i < cells.length; i++) {
         const span = cells[i].getColSpan();
-        if (span < 2 || i > end || i + span - 1 < start) continue;
+        if (span < 2 || i > end || i + span - 1 < start) {
+          continue;
+        }
         const a = Math.min(start, i),
           b = Math.max(end, i + span - 1);
         if (a !== start || b !== end) {

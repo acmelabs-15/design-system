@@ -20,7 +20,9 @@ export class AcmeStat extends AcmeSemanticElement {
     return this.scale;
   }
   set size(value: "small" | "medium" | "large") {
-    if (!["small", "medium", "large"].includes(value)) throw new TypeError("Invalid Stat size");
+    if (!["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid Stat size");
+    }
     const previous = this.scale;
     this.scale = value;
     this.requestUpdate("size", previous);

@@ -23,7 +23,9 @@ export class AcmeDataList extends AcmeSemanticElement {
     if (value !== undefined) {
       const scratch = this.ownerDocument.createElement("div").style;
       scratch.width = value;
-      if (!scratch.width || value.trim() === "" || value.includes("url(")) throw new TypeError("columnWidth requires a CSS size");
+      if (!scratch.width || value.trim() === "" || value.includes("url(")) {
+        throw new TypeError("columnWidth requires a CSS size");
+      }
     }
     const previous = this.column;
     this.column = value;
@@ -32,8 +34,11 @@ export class AcmeDataList extends AcmeSemanticElement {
   private readonly lightStyles = new RootStyles(this, [dataListLightCss]);
   protected updated() {
     const root = this.renderRoot.querySelector<HTMLElement>("[part=root]")!;
-    if (this.columnWidth === undefined) root.style.removeProperty("--acme-data-list-column-width");
-    else root.style.setProperty("--acme-data-list-column-width", this.columnWidth);
+    if (this.columnWidth === undefined) {
+      root.style.removeProperty("--acme-data-list-column-width");
+    } else {
+      root.style.setProperty("--acme-data-list-column-width", this.columnWidth);
+    }
   }
   render() {
     return html`<div part="root"><slot></slot></div>`;

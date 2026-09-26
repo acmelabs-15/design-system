@@ -21,7 +21,9 @@ export class AcmeTimeline extends AcmeSemanticElement {
     return this.axis;
   }
   set orientation(value: "vertical" | "horizontal") {
-    if (!["vertical", "horizontal"].includes(value)) throw new TypeError("Invalid Timeline orientation");
+    if (!["vertical", "horizontal"].includes(value)) {
+      throw new TypeError("Invalid Timeline orientation");
+    }
     const previous = this.axis;
     this.axis = value;
     this.requestUpdate("orientation", previous);

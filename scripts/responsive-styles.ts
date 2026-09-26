@@ -82,8 +82,12 @@ export function writeResponsiveStyleDelivery(root = path.resolve(import.meta.dir
 
 export function verifyResponsiveStyleDelivery(root = path.resolve(import.meta.dir, "..")): string {
   const file = output(root);
-  if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== moduleText()) throw new Error("Missing or stale responsive style delivery; run bun run split");
+  if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== moduleText()) {
+    throw new Error("Missing or stale responsive style delivery; run bun run split");
+  }
   return file;
 }
 
-if (import.meta.main) console.log(writeResponsiveStyleDelivery(process.argv[2]));
+if (import.meta.main) {
+  console.log(writeResponsiveStyleDelivery(process.argv[2]));
+}

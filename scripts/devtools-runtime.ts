@@ -1,6 +1,7 @@
 import path from "node:path";
 import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import type { BunPlugin } from "bun";
+
 const uiVersion = "0.7.1";
 const treeHash = "a7a7a305ff7256bc71e423fc6cefdf14726bc1d57dc19e1ab0ea0a49beaa06a3";
 const original = 'props.keyName && typeof props.value !== "object"';
@@ -8,9 +9,12 @@ const corrected = 'props.keyName && (props.value === null || typeof props.value 
 
 /** Correct the null primitive's missing key in the pinned upstream renderer. */
 export function correctDevtoolsTree(source: string, version: string): string {
-  if (version !== uiVersion || new Bun.CryptoHasher("sha256").update(source).digest("hex") !== treeHash)
+  if (version !== uiVersion || new Bun.CryptoHasher("sha256").update(source).digest("hex") !== treeHash) {
     throw new Error("Revalidate the Devtools JsonTree correction against the new upstream source");
-  if (source.split(original).length !== 2) throw new Error("Devtools JsonTree key condition changed");
+  }
+  if (source.split(original).length !== 2) {
+    throw new Error("Devtools JsonTree key condition changed");
+  }
   return source.replace(original, corrected);
 }
 export function devtoolsRuntimePlugin(): BunPlugin {
@@ -29,15 +33,14 @@ export function devtoolsRuntimePlugin(): BunPlugin {
       build.onLoad({ filter: /devtools-ui.*[/\\]assets[/\\]fonts[/\\][^/\\]+\.js$/ }, async (args) => {
         const source = await Bun.file(args.path).text();
         const relative = /new URL\(["']([^"']+)["'],\s*import\.meta\.url\)/.exec(source)?.[1];
-        if (!relative) throw new Error("Revalidate Devtools font delivery against the new upstream asset module");
+        if (!relative) {
+          throw new Error("Revalidate Devtools font delivery against the new upstream asset module");
+        }
         const file = path.resolve(path.dirname(args.path), relative),
           bytes = await Bun.file(file).arrayBuffer();
         const mime = file.endsWith(".woff2") ? "font/woff2" : "font/ttf";
         return {
-          contents:
-            "export default " +
-            JSON.stringify("data:" + mime + ";base64," + Buffer.from(bytes).toString("base64")) +
-            ";",
+          contents: "export default " + JSON.stringify("data:" + mime + ";base64," + Buffer.from(bytes).toString("base64")) + ";",
           loader: "js",
         };
       });
@@ -63,7 +66,9 @@ export async function buildDevtoolsRuntime(root = path.resolve(import.meta.dir, 
     metafile: true,
     plugins: [devtoolsRuntimePlugin()],
   });
-  if (!result.success) throw new AggregateError(result.logs);
+  if (!result.success) {
+    throw new AggregateError(result.logs);
+  }
   const names = ["@tanstack/devtools-ui", "solid-js", "goober", "clsx", "dayjs"];
   await mkdir(path.join(outdir, "licenses"), { recursive: true });
   const packages = [];
@@ -85,11 +90,9 @@ export async function buildDevtoolsRuntime(root = path.resolve(import.meta.dir, 
       delivery: "embedded data URL",
     });
   }
-  for (const file of ["OFL-Inter.txt", "OFL-Bricolage-Grotesque.txt"])
-    await writeFile(
-      path.join(outdir, "licenses", file),
-      await readFile(path.join(root, "node_modules/@tanstack/devtools-ui/src/assets/fonts", file)),
-    );
+  for (const file of ["OFL-Inter.txt", "OFL-Bricolage-Grotesque.txt"]) {
+    await writeFile(path.join(outdir, "licenses", file), await readFile(path.join(root, "node_modules/@tanstack/devtools-ui/src/assets/fonts", file)));
+  }
   const provenance = {
     packages,
     fonts,
@@ -102,12 +105,12 @@ export async function buildDevtoolsRuntime(root = path.resolve(import.meta.dir, 
       corrected,
       reason: "Null is a JSON primitive; its field name must remain visible",
     },
-    assets: result.outputs
-      .filter((output) => /\.(ttf|woff2?)$/.test(output.path))
-      .map((output) => path.relative(outdir, output.path)),
+    assets: result.outputs.filter((output) => /\.(ttf|woff2?)$/.test(output.path)).map((output) => path.relative(outdir, output.path)),
     inputs: Object.keys(result.metafile!.inputs).length,
   };
   await Bun.write(path.join(outdir, "licenses/provenance.json"), JSON.stringify(provenance, null, 2) + "\n");
   return provenance;
 }
-if (import.meta.main) console.log(await buildDevtoolsRuntime());
+if (import.meta.main) {
+  console.log(await buildDevtoolsRuntime());
+}

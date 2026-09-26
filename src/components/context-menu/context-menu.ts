@@ -19,22 +19,30 @@ export class AcmeContextMenu extends AcmeMenu {
   }
   private point(x: number, y: number) {
     const region = this.opener;
-    if (!region || this.disabled) return;
+    if (!region || this.disabled) {
+      return;
+    }
     this.showAt({ contextElement: region, getBoundingClientRect: () => new DOMRect(x, y, 0, 0) }, region);
   }
   private cancelPress = () => {
-    if (this.press) clearTimeout(this.press.timer);
+    if (this.press) {
+      clearTimeout(this.press.timer);
+    }
     this.press = undefined;
   };
   private onContext = (event: MouseEvent) => {
-    if (this.disabled || event.defaultPrevented || this.inContent(event)) return;
+    if (this.disabled || event.defaultPrevented || this.inContent(event)) {
+      return;
+    }
     event.preventDefault();
     this.cancelPress();
     const box = this.opener!.getBoundingClientRect();
     this.point(event.clientX || event.clientY ? event.clientX : box.left, event.clientX || event.clientY ? event.clientY : box.bottom);
   };
   private onKey = (event: KeyboardEvent) => {
-    if (this.disabled || event.defaultPrevented || event.isComposing || this.inContent(event)) return;
+    if (this.disabled || event.defaultPrevented || event.isComposing || this.inContent(event)) {
+      return;
+    }
     if (event.key === "ContextMenu" || (event.key === "F10" && event.shiftKey)) {
       event.preventDefault();
       const box = this.opener!.getBoundingClientRect();
@@ -48,7 +56,9 @@ export class AcmeContextMenu extends AcmeMenu {
     this.addEventListener("pointerdown", (event) => {
       this.cancelPress();
       this.suppressClick = false;
-      if (this.disabled || this.inContent(event) || !event.isPrimary || event.pointerType === "mouse" || event.button !== 0) return;
+      if (this.disabled || this.inContent(event) || !event.isPrimary || event.pointerType === "mouse" || event.button !== 0) {
+        return;
+      }
       const { pointerId: id, clientX: x, clientY: y } = event;
       this.press = {
         id,
@@ -64,7 +74,9 @@ export class AcmeContextMenu extends AcmeMenu {
       };
     });
     this.addEventListener("pointermove", (event) => {
-      if (this.press && (event.pointerId !== this.press.id || Math.hypot(event.clientX - this.press.x, event.clientY - this.press.y) > 10)) this.cancelPress();
+      if (this.press && (event.pointerId !== this.press.id || Math.hypot(event.clientX - this.press.x, event.clientY - this.press.y) > 10)) {
+        this.cancelPress();
+      }
     });
     this.addEventListener(
       "click",
@@ -98,7 +110,9 @@ export class AcmeContextMenu extends AcmeMenu {
   protected willUpdate(changes: Map<string, unknown>) {
     if (this.disabled) {
       this.cancelPress();
-      if (this.open) this.hide();
+      if (this.open) {
+        this.hide();
+      }
     }
     super.willUpdate(changes);
   }

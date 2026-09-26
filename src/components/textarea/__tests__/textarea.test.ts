@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Textarea carries multiline constraints and separate reset state", async () => {
   const el = document.createElement("acme-textarea");
   el.setAttribute("value", "first");
@@ -47,7 +48,9 @@ test("removing configuration attributes restores defaults", async () => {
   el.setAttribute("resize", "both");
   document.body.append(el);
   await el.updateComplete;
-  for (const attr of ["rows", "wrap", "resize"]) el.removeAttribute(attr);
+  for (const attr of ["rows", "wrap", "resize"]) {
+    el.removeAttribute(attr);
+  }
   expect(el.rows).toBe(3);
   expect(el.wrap).toBe("soft");
   expect(el.resize).toBe("vertical");

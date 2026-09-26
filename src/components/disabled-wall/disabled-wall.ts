@@ -25,7 +25,9 @@ export class AcmeDisabledWall extends AcmeSemanticElement {
     this.recoverFocus = !!(this.disabled && content && !content.inert && active && composedContains(content, active));
   }
   protected updated() {
-    if (this.recoverFocus) this.renderRoot.querySelector<HTMLElement>("[part=explanation]")?.focus({ preventScroll: true });
+    if (this.recoverFocus) {
+      this.renderRoot.querySelector<HTMLElement>("[part=explanation]")?.focus({ preventScroll: true });
+    }
     this.recoverFocus = false;
   }
   render() {

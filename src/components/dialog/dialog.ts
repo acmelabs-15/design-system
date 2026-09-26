@@ -50,7 +50,9 @@ export class AcmeDialog extends AcmeSemanticElement {
     return this.modalValue;
   }
   set modal(value: boolean) {
-    if (this.alertDialog && !value) throw new TypeError("Alert Dialog must remain modal");
+    if (this.alertDialog && !value) {
+      throw new TypeError("Alert Dialog must remain modal");
+    }
     const previous = this.modalValue;
     this.modalValue = Boolean(value);
     this.requestUpdate("modal", previous);
@@ -92,7 +94,9 @@ export class AcmeDialog extends AcmeSemanticElement {
     return this.sizeValue;
   }
   set size(value: "small" | "medium" | "large") {
-    if (!["small", "medium", "large"].includes(value)) throw new TypeError("Invalid Dialog size");
+    if (!["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid Dialog size");
+    }
     const previous = this.sizeValue;
     this.sizeValue = value;
     this.requestUpdate("size", previous);
@@ -103,7 +107,9 @@ export class AcmeDialog extends AcmeSemanticElement {
     return this.placementValue;
   }
   set placement(value: "center") {
-    if (value !== "center") throw new TypeError("Invalid Dialog placement");
+    if (value !== "center") {
+      throw new TypeError("Invalid Dialog placement");
+    }
     this.placementValue = value;
   }
   private reason: DialogReason = "programmatic";
@@ -150,7 +156,9 @@ export class AcmeDialog extends AcmeSemanticElement {
         ?.target(),
     requestClose: (reason) => this.request(false, reason),
     nativeClosed: () => {
-      if (this.open) this.transition(false, "programmatic");
+      if (this.open) {
+        this.transition(false, "programmatic");
+      }
     },
   });
   private readonly themeUpdates = new StoreSelector(this, () => this.lifetime.theme?.effective ?? this.themeContext.scope.effective);
@@ -165,21 +173,31 @@ export class AcmeDialog extends AcmeSemanticElement {
     registerDialogBoundary(this);
   }
   private validateTarget(value: DialogFocusTarget) {
-    if (value !== undefined && typeof value !== "string" && (!value || value.nodeType !== 1)) throw new TypeError("Focus target must be an Element or selector");
+    if (value !== undefined && typeof value !== "string" && (!value || value.nodeType !== 1)) {
+      throw new TypeError("Focus target must be an Element or selector");
+    }
   }
   private transition(open: boolean, reason: DialogReason, opener?: HTMLElement) {
-    if (open === this.opened) return;
+    if (open === this.opened) {
+      return;
+    }
     const previous = this.opened;
     this.reason = reason;
-    if (open) this.lifetime?.openingFrom(opener);
+    if (open) {
+      this.lifetime?.openingFrom(opener);
+    }
     this.opened = open;
     this.requestUpdate("open", previous);
   }
   private request(open: boolean, reason: DialogReason, opener?: HTMLElement) {
-    if (open === this.open || !this.isConnected) return;
+    if (open === this.open || !this.isConnected) {
+      return;
+    }
     if (!open) {
       const request = new CustomEvent("acme-request", { detail: Object.freeze({ action: "close", reason }), bubbles: true, composed: true, cancelable: true });
-      if (!this.dispatchEvent(request) || !this.open) return;
+      if (!this.dispatchEvent(request) || !this.open) {
+        return;
+      }
     }
     this.transition(open, reason, opener);
     this.dispatchEvent(new CustomEvent("acme-open-change", { detail: Object.freeze({ open, reason }), bubbles: true, composed: true }));

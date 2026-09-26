@@ -77,11 +77,16 @@ export class AcmeResizablePanel extends AcmeSemanticElement {
       this.laidOut = true;
     }
     const active = deepActiveElement(this.ownerDocument);
-    if ((this.collapsed || share === 0) && active && composedContains(this, active)) this.binding.current?.recover(this.binding.record);
+    if ((this.collapsed || share === 0) && active && composedContains(this, active)) {
+      this.binding.current?.recover(this.binding.record);
+    }
   }
   protected updated() {
-    if (this.share === undefined) this.style.removeProperty("--_resize-share");
-    else this.style.setProperty("--_resize-share", String(Math.max(this.visualRange.min, Math.min(this.visualRange.max, this.motion.value))));
+    if (this.share === undefined) {
+      this.style.removeProperty("--_resize-share");
+    } else {
+      this.style.setProperty("--_resize-share", String(Math.max(this.visualRange.min, Math.min(this.visualRange.max, this.motion.value))));
+    }
     this.toggleAttribute("data-collapsed", this.collapsed);
     this.toggleAttribute("data-resizing", !!this.binding.current?.state.get().dragging);
   }

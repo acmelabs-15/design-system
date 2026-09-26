@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import type { ReactiveElement } from "lit";
 import { PressRepeat } from "../press-repeat";
+
 test("releasing a press permits the next press and commits each changed action once", () => {
   const host = document.createElement("div") as unknown as ReactiveElement;
   host.addController = () => {};

@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/load-more";
+
 test("Load More requests results without submitting or changing loading", async () => {
   const control = document.createElement("acme-load-more");
   document.body.append(control);

@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { stackSeparatorRectangles, type StackMemberRectangle } from "../stack-geometry";
+
 const base = { vertical: false, reverse: false, rtl: false, wrap: true, thickness: 1, crossStart: 0, crossSize: 100 };
 const member = (index: number, x: number, y: number, width = 100, height = 30, order = 0): StackMemberRectangle => ({ index, x, y, width, height, order });
 test("wrapped lines have no orphan or cross-line dividers", () => {

@@ -1,16 +1,22 @@
 import { AcmeScrollCorner } from "../../scroll-corner/scroll-corner";
+
 customElements.define("acme-scroll-corner", AcmeScrollCorner);
 import { AcmeScrollThumb } from "../../scroll-thumb/scroll-thumb";
+
 customElements.define("acme-scroll-thumb", AcmeScrollThumb);
 import { AcmeScrollbar } from "../../scrollbar/scrollbar";
+
 customElements.define("acme-scrollbar", AcmeScrollbar);
 import { AcmeScrollViewport } from "../../scroll-viewport/scroll-viewport";
+
 customElements.define("acme-scroll-viewport", AcmeScrollViewport);
 import { AcmeScrollArea } from "../../scroll-area/scroll-area";
+
 customElements.define("acme-scroll-area", AcmeScrollArea);
 import { AcmeResizable } from "../../resizable/resizable";
 import { AcmeResizablePanel } from "../../resizable-panel/resizable-panel";
 import { AcmeResizeHandle } from "../../resize-handle/resize-handle";
+
 customElements.define("acme-resizable", AcmeResizable);
 customElements.define("acme-resizable-panel", AcmeResizablePanel);
 customElements.define("acme-resize-handle", AcmeResizeHandle);

@@ -8,7 +8,9 @@ import { appBarRegionCss } from "../../generated/shared/app-bar-region.styles";
 export class AcmeAppBarStart extends AcmeElement {
   static styles = [sharedCss, appBarRegionCss];
   connectedCallback() {
-    if (!this.hasAttribute("slot")) this.slot = "start";
+    if (!this.hasAttribute("slot")) {
+      this.slot = "start";
+    }
     super.connectedCallback();
   }
   render() {

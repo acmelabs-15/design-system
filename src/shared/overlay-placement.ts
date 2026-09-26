@@ -24,7 +24,9 @@ export class OverlayPlacement implements ReactiveController {
   start(reference: ReferenceElement, floating: HTMLElement): void {
     this.stop();
     const context = "contextElement" in reference ? reference.contextElement : "isConnected" in reference ? reference : undefined;
-    if (!floating.isConnected || (context && !context.isConnected)) throw new Error("Placement requires connected reference and floating elements");
+    if (!floating.isConnected || (context && !context.isConnected)) {
+      throw new Error("Placement requires connected reference and floating elements");
+    }
     this.reference = reference;
     this.floating = floating;
     try {
@@ -35,9 +37,13 @@ export class OverlayPlacement implements ReactiveController {
     }
   }
   refresh = (): void => {
-    if (this.frame) return;
+    if (this.frame) {
+      return;
+    }
     const view = this.floating?.ownerDocument.defaultView;
-    if (!view) return;
+    if (!view) {
+      return;
+    }
     this.request++;
     this.frame = {
       view,
@@ -50,7 +56,9 @@ export class OverlayPlacement implements ReactiveController {
   private measure(): void {
     const reference = this.reference,
       floating = this.floating;
-    if (!reference || !floating) return;
+    if (!reference || !floating) {
+      return;
+    }
     const context = "contextElement" in reference ? reference.contextElement : "isConnected" in reference ? reference : undefined;
     if (!floating.isConnected || (context && !context.isConnected)) {
       this.stop();
@@ -61,14 +69,20 @@ export class OverlayPlacement implements ReactiveController {
       document = floating.ownerDocument;
     void computePosition(reference, floating, this.options.configuration())
       .then((result) => {
-        if (this.epoch === epoch && this.request === request && floating.isConnected && floating.ownerDocument === document) this.options.apply(result);
+        if (this.epoch === epoch && this.request === request && floating.isConnected && floating.ownerDocument === document) {
+          this.options.apply(result);
+        }
       })
       .catch((error) => {
-        if (this.epoch === epoch && this.request === request) this.options.error(error);
+        if (this.epoch === epoch && this.request === request) {
+          this.options.error(error);
+        }
       });
   }
   stop(): void {
-    if (this.frame) this.frame.view.cancelAnimationFrame(this.frame.id);
+    if (this.frame) {
+      this.frame.view.cancelAnimationFrame(this.frame.id);
+    }
     this.frame = undefined;
     this.epoch++;
     this.cleanup?.();

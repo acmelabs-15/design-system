@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 const mount = async (markup: string) => {
   document.body.innerHTML = markup;
   const el = document.querySelector("acme-input")!;
@@ -22,14 +23,18 @@ test("Input carries canonical value, constraints and Field presentation to one n
 });
 test("all four affix positions retain independent author content", async () => {
   const el = await mount('<acme-input><span slot="start">Inside</span><button slot="start-addon">Outside</button><span slot="end">End</span><button slot="end-addon">Action</button></acme-input>');
-  for (const name of ["start", "start-addon", "end", "end-addon"]) expect(el.shadowRoot!.querySelector(`slot[name="${name}"]`)).not.toBeNull();
+  for (const name of ["start", "start-addon", "end", "end-addon"]) {
+    expect(el.shadowRoot!.querySelector(`slot[name="${name}"]`)).not.toBeNull();
+  }
   expect(el.querySelectorAll("button")).toHaveLength(2);
   expect(el.shadowRoot!.querySelector("[aria-hidden]")).toBeNull();
 });
 test("user input and commit have distinct events, programmatic writes stay silent", async () => {
   const el = await mount("<acme-input clearable></acme-input>");
   const seen: unknown[] = [];
-  for (const event of ["acme-input", "acme-change"]) el.addEventListener(event, (e) => seen.push([event, (e as CustomEvent).detail.value]));
+  for (const event of ["acme-input", "acme-change"]) {
+    el.addEventListener(event, (e) => seen.push([event, (e as CustomEvent).detail.value]));
+  }
   el.value = "silent";
   expect(seen).toEqual([]);
   const input = el.shadowRoot!.querySelector("input")!;

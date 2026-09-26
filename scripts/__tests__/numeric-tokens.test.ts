@@ -6,7 +6,9 @@ import { numericTokenCss, verifyTokenManifest, writeTokenManifest } from "../num
 
 const roots: string[] = [];
 afterEach(() => {
-  for (const root of roots.splice(0)) fs.rmSync(root, { recursive: true, force: true });
+  for (const root of roots.splice(0)) {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("numeric CSS declares independent spacing and size defaults with no negative aliases", () => {

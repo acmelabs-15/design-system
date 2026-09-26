@@ -30,7 +30,9 @@ export class Interaction implements ReactiveController {
   }
 
   attach(target: HTMLElement | null | undefined): void {
-    if (this.target === target && this.cleanup.length) return;
+    if (this.target === target && this.cleanup.length) {
+      return;
+    }
     this.unbind();
     this.target = target ?? undefined;
     this.bind();
@@ -48,7 +50,9 @@ export class Interaction implements ReactiveController {
   }
   private paint = (): void => {
     const target = this.target;
-    if (!target) return;
+    if (!target) {
+      return;
+    }
     const state = this.state.get();
     for (const [name, present] of [
       ["data-hover", state.hover],
@@ -57,26 +61,40 @@ export class Interaction implements ReactiveController {
       ["data-focus-within", state.within],
     ] as const) {
       if (present) {
-        if (target.getAttribute(name) !== "true") target.setAttribute(name, "true");
-      } else target.removeAttribute(name);
+        if (target.getAttribute(name) !== "true") {
+          target.setAttribute(name, "true");
+        }
+      } else {
+        target.removeAttribute(name);
+      }
     }
   };
   private releaseListeners(): void {
-    for (const remove of this.releases.splice(0)) remove();
+    for (const remove of this.releases.splice(0)) {
+      remove();
+    }
   }
   private endPress(): void {
     this.set({ pointer: undefined, space: false, enter: false });
     this.releaseListeners();
   }
   private listenForRelease(): void {
-    if (this.releases.length || !this.target) return;
+    if (this.releases.length || !this.target) {
+      return;
+    }
     const owner: EventTarget = this.target.ownerDocument.defaultView ?? this.target.ownerDocument;
     const released = (event: Event) => {
       const pointer = this.state.get().pointer;
-      if (pointer === undefined || (event as PointerEvent).pointerId !== pointer) return;
+      if (pointer === undefined || (event as PointerEvent).pointerId !== pointer) {
+        return;
+      }
       this.set({ pointer: undefined });
-      if (event.type === "pointercancel") this.options.onCancel?.();
-      if (!this.pressed()) this.releaseListeners();
+      if (event.type === "pointercancel") {
+        this.options.onCancel?.();
+      }
+      if (!this.pressed()) {
+        this.releaseListeners();
+      }
     };
     const blurred = () => {
       this.endPress();
@@ -93,7 +111,9 @@ export class Interaction implements ReactiveController {
   }
   private bind(): void {
     const target = this.target;
-    if (!this.connected || !target || this.cleanup.length) return;
+    if (!this.connected || !target || this.cleanup.length) {
+      return;
+    }
     this.subscription = this.state.subscribe(this.paint);
     this.paint();
     const on = <Key extends keyof HTMLElementEventMap>(type: Key, handler: (event: HTMLElementEventMap[Key]) => void) => {
@@ -101,41 +121,62 @@ export class Interaction implements ReactiveController {
       this.cleanup.push(() => target.removeEventListener(type, handler));
     };
     on("pointerenter", (event) => {
-      if ((event.pointerType === "mouse" || event.pointerType === "pen") && !this.disabled()) this.set({ hover: true });
+      if ((event.pointerType === "mouse" || event.pointerType === "pen") && !this.disabled()) {
+        this.set({ hover: true });
+      }
     });
     on("pointerleave", () => {
       this.options.onCancel?.();
       this.set({ hover: false, pointer: undefined });
-      if (!this.pressed()) this.releaseListeners();
+      if (!this.pressed()) {
+        this.releaseListeners();
+      }
     });
     on("pointerdown", (event) => {
-      if (this.disabled() || event.button !== 0 || !event.isPrimary) return;
+      if (this.disabled() || event.button !== 0 || !event.isPrimary) {
+        return;
+      }
       const pressed = this.pressed();
       this.set({ pointer: event.pointerId });
-      if (!pressed) this.options.onPress?.(event);
+      if (!pressed) {
+        this.options.onPress?.(event);
+      }
       this.listenForRelease();
     });
     on("lostpointercapture", (event) => {
       if (this.state.get().pointer === event.pointerId) {
         this.options.onCancel?.();
         this.set({ pointer: undefined });
-        if (!this.pressed()) this.releaseListeners();
+        if (!this.pressed()) {
+          this.releaseListeners();
+        }
       }
     });
     on("keydown", (event) => {
-      if (this.disabled() || (event.key !== " " && event.key !== "Enter")) return;
+      if (this.disabled() || (event.key !== " " && event.key !== "Enter")) {
+        return;
+      }
       const pressed = this.pressed();
       this.set(event.key === " " ? { space: true } : { enter: true });
-      if (!pressed) this.options.onPress?.(event);
+      if (!pressed) {
+        this.options.onPress?.(event);
+      }
       this.listenForRelease();
     });
     on("keyup", (event) => {
-      if (event.key === " ") this.set({ space: false });
-      else if (event.key === "Enter") this.set({ enter: false });
-      if (!this.pressed()) this.releaseListeners();
+      if (event.key === " ") {
+        this.set({ space: false });
+      } else if (event.key === "Enter") {
+        this.set({ enter: false });
+      }
+      if (!this.pressed()) {
+        this.releaseListeners();
+      }
     });
     on("focusin", (event) => {
-      if (this.disabled()) return;
+      if (this.disabled()) {
+        return;
+      }
       const focused = event.composedPath()[0] as Element;
       const own = !this.options.ownFocus || focused === target;
       this.set({ focus: own && (this.options.anyFocus || focused.matches(":focus-visible")) === true, within: true });
@@ -151,7 +192,9 @@ export class Interaction implements ReactiveController {
   private unbind(): void {
     this.options.onCancel?.();
     this.releaseListeners();
-    for (const remove of this.cleanup.splice(0)) remove();
+    for (const remove of this.cleanup.splice(0)) {
+      remove();
+    }
     this.state.set(empty);
     this.subscription?.unsubscribe();
     this.subscription = undefined;
@@ -169,7 +212,9 @@ export class Interaction implements ReactiveController {
     this.unbind();
   }
   hostUpdated(): void {
-    if (!this.connected || !this.target || !this.disabled()) return;
+    if (!this.connected || !this.target || !this.disabled()) {
+      return;
+    }
     this.options.onCancel?.();
     this.releaseListeners();
     this.state.set(empty);

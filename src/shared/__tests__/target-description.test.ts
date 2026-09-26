@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { TargetDescription } from "../target-description";
+
 test("owned descriptions preserve existing description text and restore the original attribute", () => {
   const target = document.createElement("button"),
     existing = document.createElement("span");

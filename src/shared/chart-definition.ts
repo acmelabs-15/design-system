@@ -6,17 +6,26 @@ import { tooltip } from "@tanstack/charts/tooltip";
 import { portal } from "@tanstack/charts/tooltip/portal";
 import { scaleUtc } from "d3-scale";
 import { type ChartDatum, type ChartRow, type ChartSeries, chartPoints } from "./chart-data";
+
 export type ChartType = "line" | "bar" | "area";
 export type ChartPointInfo = ChartPoint<ChartDatum, ChartValue, number>;
 export function formatChartX(value: ChartValue | undefined, locale?: string) {
-  if (value === undefined) return "—";
-  if (value instanceof Date) return value.toISOString();
+  if (value === undefined) {
+    return "—";
+  }
+  if (value instanceof Date) {
+    return value.toISOString();
+  }
   return typeof value === "number" ? new Intl.NumberFormat(locale, { maximumSignificantDigits: 21 }).format(value) : value;
 }
 export function formatChartY(value: number | undefined, series: ChartSeries | undefined, locale?: string) {
-  if (value === undefined) return "—";
+  if (value === undefined) {
+    return "—";
+  }
   const result = series?.formatter ? series.formatter(value) : new Intl.NumberFormat(locale, { maximumSignificantDigits: 21 }).format(value);
-  if (typeof result !== "string") throw new TypeError("Chart formatters must return text");
+  if (typeof result !== "string") {
+    throw new TypeError("Chart formatters must return text");
+  }
   return result;
 }
 export function chartDefinition(options: {
@@ -29,15 +38,16 @@ export function chartDefinition(options: {
   tooltip: boolean;
   locale?: string;
   sparkline?: boolean;
-}): {definition:DomChartDefinition<ChartDatum,ChartValue,number>;model:ReturnType<typeof chartPoints>} {
+}): { definition: DomChartDefinition<ChartDatum, ChartValue, number>; model: ReturnType<typeof chartPoints> } {
   const model = chartPoints(options.data, options.x, options.series);
   let dateMin = Infinity,
     dateMax = -Infinity;
-  for (const point of model.values)
+  for (const point of model.values) {
     if (point.x instanceof Date) {
       dateMin = Math.min(dateMin, point.x.getTime());
       dateMax = Math.max(dateMax, point.x.getTime());
     }
+  }
   const extent = Number.isFinite(dateMin) ? dateMax - dateMin : 0;
   const dateTicks = new Intl.DateTimeFormat(
     options.locale,
@@ -67,7 +77,11 @@ export function chartDefinition(options: {
             color = values[0]?.color ?? "currentColor";
           if (options.sparkline) {
             let minimum = Infinity;
-            for (const point of values) if (point.y !== undefined) minimum = Math.min(minimum, point.y);
+            for (const point of values) {
+              if (point.y !== undefined) {
+                minimum = Math.min(minimum, point.y);
+              }
+            }
             return [
               areaY(values, {
                 id: series.key + "-fill",

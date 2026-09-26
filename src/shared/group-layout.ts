@@ -26,18 +26,23 @@ export class GroupLayout implements ReactiveController {
     host.addController(this);
   }
   private changed = (event?: Event): void => {
-    if (event?.type === groupParticipantChange) event.stopPropagation();
+    if (event?.type === groupParticipantChange) {
+      event.stopPropagation();
+    }
     this.refresh();
     this.schedule();
   };
   private refresh(): void {
-    if (!this.connected) return;
+    if (!this.connected) {
+      return;
+    }
     const next = new Set(this.options.nodes().flatMap((node) => (node.nodeType === 1 ? [groupParticipant(node as Element)].filter((member): member is GroupMemberController => !!member) : [])));
-    for (const member of this.participants)
+    for (const member of this.participants) {
       if (!next.has(member)) {
         member.release(this);
         this.participants.delete(member);
       }
+    }
     for (const member of next) {
       this.participants.add(member);
       member.provide(this, this.options.defaults);
@@ -45,14 +50,20 @@ export class GroupLayout implements ReactiveController {
     const targets = new Set<Element>([this.host, ...(this.root ? [this.root] : []), ...[...next].flatMap((member) => [member.host, ...(member.surface ? [member.surface] : [])])]);
     if (targets.size !== this.targets.size || [...targets].some((target) => !this.targets.has(target))) {
       this.resize?.disconnect();
-      for (const target of targets) this.resize?.observe(target);
+      for (const target of targets) {
+        this.resize?.observe(target);
+      }
       this.targets = targets;
     }
   }
   schedule = (): void => {
-    if (!this.connected || this.frame) return;
+    if (!this.connected || this.frame) {
+      return;
+    }
     const view = this.host.ownerDocument.defaultView;
-    if (!view) return;
+    if (!view) {
+      return;
+    }
     this.frame = {
       view,
       id: view.requestAnimationFrame(() => {
@@ -64,7 +75,9 @@ export class GroupLayout implements ReactiveController {
   private measure(): void {
     const root = this.root,
       view = this.host.ownerDocument.defaultView;
-    if (!this.connected || !root || !view) return;
+    if (!this.connected || !root || !view) {
+      return;
+    }
     this.refresh();
     const style = view.getComputedStyle(root),
       vertical = style.flexDirection.startsWith("column"),
@@ -74,35 +87,51 @@ export class GroupLayout implements ReactiveController {
       runs: GroupMemberController[][] = [];
     let run: GroupMemberController[] = [];
     const close = () => {
-      if (run.length) runs.push(run);
+      if (run.length) {
+        runs.push(run);
+      }
       run = [];
     };
     const visible = new Set<GroupMemberController>();
     let reordered = false;
     for (const node of this.options.nodes()) {
       if (node.nodeType === 3) {
-        if (node.textContent?.trim()) close();
+        if (node.textContent?.trim()) {
+          close();
+        }
         continue;
       }
-      if (node.nodeType !== 1) continue;
+      if (node.nodeType !== 1) {
+        continue;
+      }
       const element = node as Element,
         css = view.getComputedStyle(element);
-      if (!element.getClientRects().length || css.display === "none" || css.position === "absolute" || css.position === "fixed") continue;
+      if (!element.getClientRects().length || css.display === "none" || css.position === "absolute" || css.position === "fixed") {
+        continue;
+      }
       const member = groupParticipant(element);
       if (!member || !member.surface) {
         close();
         continue;
       }
-      if (css.order !== "0") reordered = true;
+      if (css.order !== "0") {
+        reordered = true;
+      }
       visible.add(member);
       run.push(member);
     }
     close();
-    if (joined && reordered && !this.orderWarning) console.warn(this.host.localName, "Attached members use DOM order; CSS order is not supported.");
+    if (joined && reordered && !this.orderWarning) {
+      console.warn(this.host.localName, "Attached members use DOM order; CSS order is not supported.");
+    }
     this.orderWarning = joined && reordered;
-    for (const member of this.participants) if (!visible.has(member)) member.present(this, { joined: false, grow: false, vertical, rtl, first: true, last: true, overlap: 0, frame: noFrame });
+    for (const member of this.participants) {
+      if (!visible.has(member)) {
+        member.present(this, { joined: false, grow: false, vertical, rtl, first: true, last: true, overlap: 0, frame: noFrame });
+      }
+    }
     const layouts = new Map<GroupMemberController, GroupMemberLayout>();
-    for (const group of runs)
+    for (const group of runs) {
       for (let index = 0; index < group.length; index++) {
         const member = group[index],
           border = member.borders(),
@@ -112,6 +141,7 @@ export class GroupLayout implements ReactiveController {
         member.present(this, layout);
         layouts.set(member, layout);
       }
+    }
     const hostStyle = view.getComputedStyle(this.host),
       bounds = this.host.getBoundingClientRect();
     const scaleX = pixels(hostStyle.width) > 0 ? bounds.width / pixels(hostStyle.width) : 1,
@@ -154,7 +184,9 @@ export class GroupLayout implements ReactiveController {
     this.refresh();
   }
   hostUpdated(): void {
-    if (!this.connected) return;
+    if (!this.connected) {
+      return;
+    }
     const root = this.options.root();
     if (root !== this.root) {
       this.root?.removeEventListener("slotchange", this.changed);
@@ -178,8 +210,12 @@ export class GroupLayout implements ReactiveController {
     this.resize?.disconnect();
     this.resize = undefined;
     this.targets.clear();
-    for (const release of this.cleanup.splice(0)) release();
-    for (const member of this.participants) member.release(this);
+    for (const release of this.cleanup.splice(0)) {
+      release();
+    }
+    for (const member of this.participants) {
+      member.release(this);
+    }
     this.participants.clear();
   }
 }

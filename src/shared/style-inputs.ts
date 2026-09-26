@@ -6,7 +6,9 @@ class StyleInputsDirective extends Directive {
   private readonly owner = {};
   constructor(part: PartInfo) {
     super(part);
-    if (part.type !== PartType.ELEMENT) throw new TypeError("styleInputs must be used in an element expression");
+    if (part.type !== PartType.ELEMENT) {
+      throw new TypeError("styleInputs must be used in an element expression");
+    }
   }
   render(_inputs: StyleInputs) {
     return noChange;

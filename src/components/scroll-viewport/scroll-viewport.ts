@@ -27,7 +27,9 @@ export class AcmeScrollViewport extends AcmeSemanticElement {
   }
   private key = (event: KeyboardEvent) => {
     const viewport = this.getViewport();
-    if (!viewport || event.composedPath()[0] !== viewport || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (!viewport || event.composedPath()[0] !== viewport || event.altKey || event.ctrlKey || event.metaKey) {
+      return;
+    }
     const orientation = this.binding.current?.state.get().orientation ?? "both";
     const rtl = this.ownerDocument.defaultView!.getComputedStyle(viewport).direction === "rtl";
     const maxX = Math.max(0, viewport.scrollWidth - viewport.clientWidth),
@@ -38,39 +40,58 @@ export class AcmeScrollViewport extends AcmeSemanticElement {
       y = fromY;
     switch (event.key) {
       case "ArrowLeft":
-        if (orientation !== "vertical") x -= 40;
+        if (orientation !== "vertical") {
+          x -= 40;
+        }
         break;
       case "ArrowRight":
-        if (orientation !== "vertical") x += 40;
+        if (orientation !== "vertical") {
+          x += 40;
+        }
         break;
       case "ArrowUp":
-        if (orientation !== "horizontal") y -= 40;
+        if (orientation !== "horizontal") {
+          y -= 40;
+        }
         break;
       case "ArrowDown":
-        if (orientation !== "horizontal") y += 40;
+        if (orientation !== "horizontal") {
+          y += 40;
+        }
         break;
       case "PageUp":
       case "PageDown":
       case " ": {
         const forward = event.key === "PageDown" || (event.key === " " && !event.shiftKey);
-        if (orientation === "horizontal") x += (forward ? 1 : -1) * (rtl ? -1 : 1) * viewport.clientWidth * 0.9;
-        else y += (forward ? 1 : -1) * viewport.clientHeight * 0.9;
+        if (orientation === "horizontal") {
+          x += (forward ? 1 : -1) * (rtl ? -1 : 1) * viewport.clientWidth * 0.9;
+        } else {
+          y += (forward ? 1 : -1) * viewport.clientHeight * 0.9;
+        }
         break;
       }
       case "Home":
-        if (orientation === "horizontal") x = rtl ? maxX : 0;
-        else y = 0;
+        if (orientation === "horizontal") {
+          x = rtl ? maxX : 0;
+        } else {
+          y = 0;
+        }
         break;
       case "End":
-        if (orientation === "horizontal") x = rtl ? 0 : maxX;
-        else y = maxY;
+        if (orientation === "horizontal") {
+          x = rtl ? 0 : maxX;
+        } else {
+          y = maxY;
+        }
         break;
       default:
         return;
     }
     x = Math.max(0, Math.min(maxX, x));
     y = Math.max(0, Math.min(maxY, y));
-    if (x === fromX && y === fromY) return;
+    if (x === fromX && y === fromY) {
+      return;
+    }
     event.preventDefault();
     viewport.scrollTo({ left: nativeScrollLeft(x, maxX, rtl), top: y, behavior: "instant" });
     this.binding.current?.refresh();

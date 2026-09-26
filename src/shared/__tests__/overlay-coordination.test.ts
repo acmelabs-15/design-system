@@ -3,7 +3,9 @@ import { coordinateOverlay } from "../overlay-coordination";
 
 const cleanup: (() => void)[] = [];
 afterEach(() => {
-  for (const release of cleanup.splice(0)) release();
+  for (const release of cleanup.splice(0)) {
+    release();
+  }
   document.body.replaceChildren();
 });
 const pointer = (type: string, id = 1) => new PointerEvent(type, { pointerId: id, pointerType: "mouse", button: 0, isPrimary: true, bubbles: true, composed: true });

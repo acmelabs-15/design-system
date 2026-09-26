@@ -20,7 +20,9 @@ export class AcmeBreadcrumb extends AcmeElement {
   @atomState() @property({ noAccessor: true, type: Boolean, reflect: true }) disabled = false;
   private readonly binding = new BreadcrumbBinding(this);
   focus(options?: FocusOptions) {
-    if (!this.disabled) this.renderRoot.querySelector<HTMLElement>("a")?.focus(options);
+    if (!this.disabled) {
+      this.renderRoot.querySelector<HTMLElement>("a")?.focus(options);
+    }
   }
   render() {
     const members = this.binding.current?.members.get(),
@@ -30,7 +32,9 @@ export class AcmeBreadcrumb extends AcmeElement {
         ? html`<a part="link" href=${this.disabled ? nothing : this.href} role=${this.disabled ? "link" : nothing} target=${this.target || nothing} rel=${this.rel || nothing} aria-current=${this.current ? "page" : nothing} aria-disabled=${this.disabled ? "true" : nothing} @click=${(
             event: MouseEvent,
           ) => {
-            if (this.disabled) event.preventDefault();
+            if (this.disabled) {
+              event.preventDefault();
+            }
           }}><slot></slot></a>`
         : html`<span part="link" aria-current=${this.current ? "page" : nothing} aria-disabled=${this.disabled ? "true" : nothing}><slot></slot></span>`
     }<span part="separator" aria-hidden="true" ?hidden=${last || !members}><slot name="separator"><acme-chevron-right-icon size="16px"></acme-chevron-right-icon></slot></span></li>`;

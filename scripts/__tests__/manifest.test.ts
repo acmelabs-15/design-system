@@ -1,4 +1,4 @@
-import {corePackageDirectory,corePackageManifestPath} from "../core-package";
+import { corePackageDirectory, corePackageManifestPath } from "../core-package";
 import "../../src/all";
 import "../../src/generated/icons/all";
 import { expect, test } from "bun:test";
@@ -21,9 +21,11 @@ test("store-backed public properties retain manifest defaults and inherited attr
   try {
     fs.mkdirSync(path.join(root, "src/shared"), { recursive: true });
     fs.symlinkSync(path.join(repository, "node_modules"), path.join(root, "node_modules"), "dir");
-    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.mkdirSync(corePackageDirectory(root), { recursive: true });
     fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
-    for (const name of ["atom-state", "store-connection"]) fs.copyFileSync(path.join(repository, "src/shared", name + ".ts"), path.join(root, "src/shared", name + ".ts"));
+    for (const name of ["atom-state", "store-connection"]) {
+      fs.copyFileSync(path.join(repository, "src/shared", name + ".ts"), path.join(root, "src/shared", name + ".ts"));
+    }
     let source = fs
       .readFileSync(path.join(repository, "src/shared/__tests__/fixtures/atom-state-public.ts"), "utf8")
       .replaceAll('"../../atom-state"', '"./shared/atom-state"')
@@ -73,17 +75,17 @@ test("the manifest matches every registered Lit class and its runtime property a
   const preload = video.members?.find((member) => member.name === "preload") as { default: string; type: { text: string } };
   expect(preload.default).toBe('"auto"');
   expect(new Set(preload.type.text.match(/"[^"]+"/g))).toEqual(new Set(['"none"', '"metadata"', '"auto"']));
-  const trigger = elements.find(element => element.tagName === "acme-dialog-trigger")!;
-  expect(trigger.members?.find(member => member.name === "variant")).toMatchObject({ default: '"secondary"', "x-acme-reset": "undefined" });
-  const showMore = elements.find(element => element.tagName === "acme-show-more")!;
-  expect(showMore.members?.find(member => member.name === "size")).toMatchObject({ default: '"small"', "x-acme-reset": "undefined" });
-  const pagination = elements.find(element => element.tagName === "acme-pagination")!;
-  const request = pagination.events?.find(event => event.name === "acme-request")?.type?.text;
+  const trigger = elements.find((element) => element.tagName === "acme-dialog-trigger")!;
+  expect(trigger.members?.find((member) => member.name === "variant")).toMatchObject({ default: '"secondary"', "x-acme-reset": "undefined" });
+  const showMore = elements.find((element) => element.tagName === "acme-show-more")!;
+  expect(showMore.members?.find((member) => member.name === "size")).toMatchObject({ default: '"small"', "x-acme-reset": "undefined" });
+  const pagination = elements.find((element) => element.tagName === "acme-pagination")!;
+  const request = pagination.events?.find((event) => event.name === "acme-request")?.type?.text;
   expect(request).toContain('action: "page"');
   expect(request).toContain('action: "page-size"');
-  const input = elements.find(element => element.tagName === "acme-input")!;
-  expect(input.attributes?.find(attribute => attribute.name === "form")).toMatchObject({ type: { text: "string" } });
-  expect(input.attributes?.find(attribute => attribute.name === "form")?.fieldName).toBeUndefined();
+  const input = elements.find((element) => element.tagName === "acme-input")!;
+  expect(input.attributes?.find((attribute) => attribute.name === "form")).toMatchObject({ type: { text: "string" } });
+  expect(input.attributes?.find((attribute) => attribute.name === "form")?.fieldName).toBeUndefined();
   for (const [name, schema] of Object.entries(commonStyleInputSchema)) {
     expect(box.attributes?.find((attribute) => attribute.name === schema.attribute)?.fieldName).toBe(name);
     expect(box.members?.find((member) => member.name === name && member.kind === "field")).toMatchObject({ attribute: schema.attribute });
@@ -91,9 +93,15 @@ test("the manifest matches every registered Lit class and its runtime property a
   for (const element of elements) {
     expect(element.events?.some((event) => event.name === "type") ?? false).toBe(false);
     for (const member of element.members ?? []) {
-      if (member.static || member.privacy === "private" || member.privacy === "protected") continue;
-      if (member.kind === "field") expect(member.type?.text).toBeTruthy();
-      if (member.kind === "method") expect(member.return?.type?.text).toBeTruthy();
+      if (member.static || member.privacy === "private" || member.privacy === "protected") {
+        continue;
+      }
+      if (member.kind === "field") {
+        expect(member.type?.text).toBeTruthy();
+      }
+      if (member.kind === "method") {
+        expect(member.return?.type?.text).toBeTruthy();
+      }
     }
     for (const attribute of element.attributes ?? []) {
       const member = element.members?.find((member) => member.name === attribute.fieldName);
@@ -110,24 +118,29 @@ test("the manifest matches every registered Lit class and its runtime property a
       const expected = options.attribute === false ? false : typeof options.attribute === "string" ? options.attribute : String(name).toLowerCase();
       expect(element.attributes?.find((attribute) => attribute.fieldName === name)?.name ?? false).toBe(expected);
       let prototype = ctor.prototype;
-      while (prototype && !Object.getOwnPropertyDescriptor(prototype, name)) prototype = Object.getPrototypeOf(prototype);
-      if (prototype && Object.getOwnPropertyDescriptor(prototype, name)?.set) expect((element.members?.find(member => member.name === name) as { readonly?: boolean }).readonly ?? false).toBe(false);
+      while (prototype && !Object.getOwnPropertyDescriptor(prototype, name)) {
+        prototype = Object.getPrototypeOf(prototype);
+      }
+      if (prototype && Object.getOwnPropertyDescriptor(prototype, name)?.set) {
+        expect((element.members?.find((member) => member.name === name) as { readonly?: boolean }).readonly ?? false).toBe(false);
+      }
     }
   }
-  for (const tag of ["acme-input", "acme-search", "acme-textarea"])
+  for (const tag of ["acme-input", "acme-search", "acme-textarea"]) {
     expect(
       elements
         .find((element) => element.tagName === tag)!
         .events!.map((event) => event.name)
         .sort(),
     ).toEqual(["acme-change", "acme-input"]);
+  }
 }, 30000);
 
 test("manifest facts cover conditional events, event variables, slots and forwarded parts", async () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-manifest-"));
   try {
     fs.mkdirSync(path.join(root, "src"));
-    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.mkdirSync(corePackageDirectory(root), { recursive: true });
     fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     fs.writeFileSync(
       path.join(root, "src/probe.ts"),
@@ -229,7 +242,7 @@ test("internal definitions stay out of consumer metadata and API pages", async (
   try {
     fs.mkdirSync(path.join(root, "src/internal"), { recursive: true });
     fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
-    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.mkdirSync(corePackageDirectory(root), { recursive: true });
     fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     fs.writeFileSync(
       path.join(root, "src/internal/inner.ts"),
@@ -254,7 +267,7 @@ test("assignments to owned native elements do not become host properties", async
   try {
     fs.mkdirSync(path.join(root, "src"), { recursive: true });
     fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
-    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.mkdirSync(corePackageDirectory(root), { recursive: true });
     fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     fs.writeFileSync(
       path.join(root, "src/probe.ts"),
@@ -275,7 +288,7 @@ test("native renderer-container metadata survives standard analysis", async () =
   try {
     fs.mkdirSync(path.join(root, "src"), { recursive: true });
     fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
-    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.mkdirSync(corePackageDirectory(root), { recursive: true });
     fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     fs.writeFileSync(
       path.join(root, "src/probe.ts"),

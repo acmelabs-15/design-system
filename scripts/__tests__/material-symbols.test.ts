@@ -14,8 +14,9 @@ test("unrecognized SVG markup fails before generation", () => {
     '<svg width="24" height="24" onload="bad()"><path d="M0 0Z"/></svg>',
     '<svg width="24" height="24"><path d="M0 0Z" fill="url(https://example.com)"/></svg>',
     '<svg width="24" height="24" width="32"><path d="M0 0Z"/></svg>',
-  ])
+  ]) {
     expect(() => parseSymbolSvg(svg)).toThrow();
+  }
 });
 test("symbol identifiers produce deterministic class and tag names", () => {
   expect(symbolTag("3d_rotation")).toBe("acme-3d-rotation-icon");

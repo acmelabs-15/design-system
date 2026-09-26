@@ -26,11 +26,17 @@ function targetBinding(target: Element): Binding {
 }
 
 function snapshot(inputs: StyleInputs): Patch {
-  if (!isPlainRecord(inputs)) throw new TypeError("Style inputs must be a plain ordered object");
+  if (!isPlainRecord(inputs)) {
+    throw new TypeError("Style inputs must be a plain ordered object");
+  }
   const entries = Reflect.ownKeys(inputs).map((key) => {
-    if (typeof key !== "string" || !Object.hasOwn(styleInputSchema, key)) throw new TypeError("Unknown style input");
+    if (typeof key !== "string" || !Object.hasOwn(styleInputSchema, key)) {
+      throw new TypeError("Unknown style input");
+    }
     const descriptor = Object.getOwnPropertyDescriptor(inputs, key)!;
-    if (!descriptor.enumerable || !Object.hasOwn(descriptor, "value")) throw new TypeError("Style inputs require enumerable data properties");
+    if (!descriptor.enumerable || !Object.hasOwn(descriptor, "value")) {
+      throw new TypeError("Style inputs require enumerable data properties");
+    }
     const value = copyResponsiveInput(descriptor.value, (leaf): leaf is ResponsiveScalar => ["string", "number", "boolean"].includes(typeof leaf));
     return [key, value] as const;
   });
@@ -40,11 +46,15 @@ function snapshot(inputs: StyleInputs): Patch {
 /** Connects the actual target instance, independent of its registry or current document. */
 export function attachStyleInputTarget(target: Element, apply: Apply, keys?: readonly string[]): void {
   const binding = targetBinding(target);
-  if (binding.apply) throw new TypeError("A style input controller is already attached to this target");
+  if (binding.apply) {
+    throw new TypeError("A style input controller is already attached to this target");
+  }
   binding.apply = apply;
   binding.keys = keys && new Set(keys);
   try {
-    if (binding.pending.size) apply(Object.fromEntries(binding.pending), []);
+    if (binding.pending.size) {
+      apply(Object.fromEntries(binding.pending), []);
+    }
     binding.pending.clear();
   } catch (error) {
     binding.apply = undefined;
@@ -60,7 +70,9 @@ export function hasStyleInput(target: Element, key: string): boolean {
 /** Synchronizes only style inputs supported by the actual connected controller. */
 export function applyReactStyleInputs(target: Element, owner: object, props: Readonly<Record<string, unknown>>): void {
   const keys = targets.get(target)?.keys;
-  if (!keys) return;
+  if (!keys) {
+    return;
+  }
   applyStyleInputBinding(target, owner, Object.fromEntries(Object.entries(props).filter(([key]) => keys.has(key))) as StyleInputs);
 }
 
@@ -74,8 +86,12 @@ export function applyStyleInputBinding(target: Element, owner: object, inputs: S
   const touched = new Set([...previous, ...keys]);
   const before = new Map([...touched].map((key) => [key, binding.owners.get(key)]));
   // Ownership must be visible while canonical state synchronously notifies subscribers.
-  for (const key of previous) binding.owners.set(key, { revision });
-  for (const key of keys) binding.owners.set(key, { owner, revision });
+  for (const key of previous) {
+    binding.owners.set(key, { revision });
+  }
+  for (const key of keys) {
+    binding.owners.set(key, { owner, revision });
+  }
   try {
     if (binding.apply) {
       binding.apply(patch, previous);
@@ -94,9 +110,14 @@ export function applyStyleInputBinding(target: Element, owner: object, inputs: S
     }
   } catch (error) {
     for (const [key, ownership] of before) {
-      if (binding.owners.get(key)?.revision !== revision) continue;
-      if (ownership) binding.owners.set(key, ownership);
-      else binding.owners.delete(key);
+      if (binding.owners.get(key)?.revision !== revision) {
+        continue;
+      }
+      if (ownership) {
+        binding.owners.set(key, ownership);
+      } else {
+        binding.owners.delete(key);
+      }
     }
     throw error;
   }

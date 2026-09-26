@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeSpinner } from "../spinner";
+
 afterEach(() => document.body.replaceChildren());
 const mount = async (markup: string) => {
   document.body.innerHTML = markup;

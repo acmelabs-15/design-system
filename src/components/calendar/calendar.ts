@@ -19,6 +19,7 @@ import { createInheritedAppearance } from "../../shared/inherited-appearance";
 import { GroupMemberController, groupMemberStyles } from "../../shared/group-member";
 import { sharedCss, boolish } from "../../base";
 import { calendarStructureCss } from "../../generated/components/calendar/calendar-structure.styles";
+
 export type { CalendarValue, CalendarPreset } from "../../shared/calendar-value";
 type Editors = { startDate: string; endDate: string; startTime: string; endTime: string };
 
@@ -41,7 +42,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
   constructor() {
     super();
     this.addEventListener("click", (event) => {
-      if (event.composedPath()[0] === this && !event.defaultPrevented) this.focus();
+      if (event.composedPath()[0] === this && !event.defaultPrevented) {
+        this.focus();
+      }
     });
   }
   @atomState() private selectionMode: CalendarMode = "range";
@@ -51,15 +54,21 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
   }
   set mode(value: CalendarMode | undefined) {
     value ??= "range";
-    if (value !== "single" && value !== "range") throw new TypeError("Calendar mode must be single or range");
-    if (value === this.mode) return;
+    if (value !== "single" && value !== "range") {
+      throw new TypeError("Calendar mode must be single or range");
+    }
+    if (value === this.mode) {
+      return;
+    }
     const previous = this.mode,
       current = this.nativeForm?.value;
     batch(() => {
       this.selectionMode = value;
       if (current !== undefined) {
         const converted = value === "single" ? (typeof current === "string" ? current : current.start) : typeof current === "string" ? { start: current } : current;
-        if (JSON.stringify(converted) !== JSON.stringify(current)) this.value = converted;
+        if (JSON.stringify(converted) !== JSON.stringify(current)) {
+          this.value = converted;
+        }
       }
     });
     this.requestUpdate("mode", previous);
@@ -72,10 +81,14 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
   set showTimeInput(value: boolean) {
     const next = Boolean(value),
       previous = this.timed;
-    if (next === previous) return;
+    if (next === previous) {
+      return;
+    }
     const current = this.nativeForm?.value;
     const convert = (text: string, clock: string) => {
-      if (text.includes("T") === next) return text;
+      if (text.includes("T") === next) {
+        return text;
+      }
       const day = toCalendarDate(calendarEndpoint(text, text.includes("T"), this.zone)).toString();
       return calendarEdit(day, clock, next, this.zone, text.includes("T") ? text : undefined);
     };
@@ -87,7 +100,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
           : { start: convert(current.start, this.editors.startTime), ...(current.end ? { end: convert(current.end, this.editors.endTime) } : {}) };
     batch(() => {
       this.timed = next;
-      if (current !== undefined && JSON.stringify(converted) !== JSON.stringify(current)) this.value = converted;
+      if (current !== undefined && JSON.stringify(converted) !== JSON.stringify(current)) {
+        this.value = converted;
+      }
     });
     this.requestUpdate("showTimeInput", previous);
   }
@@ -98,7 +113,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
   }
   set presentation(value: "popover" | "inline" | undefined) {
     const next = value ?? "popover";
-    if (next !== "popover" && next !== "inline") throw new TypeError("Calendar presentation must be inline or popover");
+    if (next !== "popover" && next !== "inline") {
+      throw new TypeError("Calendar presentation must be inline or popover");
+    }
     const old = this.displayMode;
     this.displayMode = next;
     this.requestUpdate("presentation", old);
@@ -108,7 +125,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     return this.authoredLocale;
   }
   set locale(value: string | undefined) {
-    if (value !== undefined) Intl.getCanonicalLocales(value);
+    if (value !== undefined) {
+      Intl.getCanonicalLocales(value);
+    }
     const old = this.authoredLocale;
     this.authoredLocale = value;
     this.requestUpdate("locale", old);
@@ -118,7 +137,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     return this.authoredZone;
   }
   set timeZone(value: string | undefined) {
-    if (value !== undefined) new Intl.DateTimeFormat("en-US", { timeZone: value });
+    if (value !== undefined) {
+      new Intl.DateTimeFormat("en-US", { timeZone: value });
+    }
     const old = this.authoredZone;
     batch(() => {
       this.authoredZone = value;
@@ -148,7 +169,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     return this.appearance.effective.get().size!;
   }
   set size(value: "small" | "medium" | undefined) {
-    if (value !== undefined && value !== "small" && value !== "medium") throw new TypeError("Calendar size must be small or medium");
+    if (value !== undefined && value !== "small" && value !== "medium") {
+      throw new TypeError("Calendar size must be small or medium");
+    }
     const old = this.size;
     this.appearance.setAuthored({ size: value });
     this.requestUpdate("size", old);
@@ -159,7 +182,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     return this.presetValues;
   }
   set presets(value: readonly CalendarPreset[] | undefined) {
-    if (value !== undefined && !Array.isArray(value)) throw new TypeError("Calendar presets must be an array");
+    if (value !== undefined && !Array.isArray(value)) {
+      throw new TypeError("Calendar presets must be an array");
+    }
     this.presetValues = Object.freeze(
       (value ?? []).map((preset) => {
         if (
@@ -169,8 +194,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
           !preset.label.trim() ||
           preset.value === undefined ||
           Object.keys(preset).some((key) => key !== "label" && key !== "value")
-        )
+        ) {
           throw new TypeError("Each Calendar preset needs a label and value");
+        }
         return Object.freeze({ label: preset.label, value: calendarSnapshot(preset.value, this.zone)! });
       }),
     );
@@ -183,7 +209,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
   set open(value: boolean) {
     const previous = this.visible,
       next = Boolean(value);
-    if (previous === next) return;
+    if (previous === next) {
+      return;
+    }
     this.visible = next;
     this.restoreFocus = true;
     this.requestUpdate("open", previous);
@@ -263,7 +291,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     serialize: (state) => (state.value === undefined ? null : typeof state.value === "string" ? state.value : JSON.stringify(state.value)),
     restoration: (state) => JSON.stringify({ value: state.value ?? null }),
     restore: (value) => {
-      if (typeof value !== "string") return undefined;
+      if (typeof value !== "string") {
+        return undefined;
+      }
       try {
         return calendarSnapshot(JSON.parse(value).value ?? undefined, this.zone);
       } catch {
@@ -293,7 +323,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     synchronize: (state) => {
       this.trigger?.setAttribute("aria-haspopup", "dialog");
       this.trigger?.setAttribute("aria-expanded", String(this.open));
-      if (this.trigger) this.trigger.ariaControlsElements = this.surface ? [this.surface] : null;
+      if (this.trigger) {
+        this.trigger.ariaControlsElements = this.surface ? [this.surface] : null;
+      }
       const invalid =
         this.invalid ||
         !!this.field.description.get()?.invalid ||
@@ -301,8 +333,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
         !!this.editorError ||
         (this.validationVisible && Object.keys(this.validation(state.value, state.required).flags).length > 0);
       this.semanticTarget?.setAttribute("aria-invalid", String(invalid));
-      for (const control of this.renderRoot?.querySelectorAll<HTMLInputElement | HTMLButtonElement>("input,button") ?? [])
+      for (const control of this.renderRoot?.querySelectorAll<HTMLInputElement | HTMLButtonElement>("input,button") ?? []) {
         control.disabled = state.disabled || state.platformDisabled || control.hasAttribute("data-unavailable");
+      }
     },
   });
   protected get semanticTarget() {
@@ -319,20 +352,31 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     };
   }
   private validation(value: CalendarValue, required: boolean): NativeFormValidation {
-    if (this.editorError) return { flags: { badInput: true }, message: this.editorError };
+    if (this.editorError) {
+      return { flags: { badInput: true }, message: this.editorError };
+    }
     try {
       calendarValue(value, this.mode, this.showTimeInput, this.zone);
       const { start, end } = this.endpoints(value);
-      if (required && (!start || (this.mode === "range" && !end))) return { flags: { valueMissing: true }, message: this.text("calendar.required", "Choose a complete date selection") };
+      if (required && (!start || (this.mode === "range" && !end))) {
+        return { flags: { valueMissing: true }, message: this.text("calendar.required", "Choose a complete date selection") };
+      }
       const min = this.minValue ? calendarEndpoint(this.minValue, this.showTimeInput, this.zone) : undefined,
         max = this.maxValue ? calendarEndpoint(this.maxValue, this.showTimeInput, this.zone) : undefined;
-      if (min && max && min.compare(max) > 0) return { flags: { customError: true }, message: this.text("calendar.bounds", "Minimum date must not exceed maximum date") };
-      for (const item of [start, end])
+      if (min && max && min.compare(max) > 0) {
+        return { flags: { customError: true }, message: this.text("calendar.bounds", "Minimum date must not exceed maximum date") };
+      }
+      for (const item of [start, end]) {
         if (item) {
           const parsed = calendarEndpoint(item, this.showTimeInput, this.zone);
-          if (min && parsed.compare(min) < 0) return { flags: { rangeUnderflow: true }, message: this.text("calendar.minimum", "Choose a date at or after the minimum") };
-          if (max && parsed.compare(max) > 0) return { flags: { rangeOverflow: true }, message: this.text("calendar.maximum", "Choose a date at or before the maximum") };
+          if (min && parsed.compare(min) < 0) {
+            return { flags: { rangeUnderflow: true }, message: this.text("calendar.minimum", "Choose a date at or after the minimum") };
+          }
+          if (max && parsed.compare(max) > 0) {
+            return { flags: { rangeOverflow: true }, message: this.text("calendar.maximum", "Choose a date at or before the maximum") };
+          }
         }
+      }
       return { flags: {}, message: "" };
     } catch {
       return { flags: { customError: true }, message: this.text("calendar.invalid", "Use a valid ISO date and time") };
@@ -341,7 +385,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
   private refreshEditors() {
     const { start, end } = this.endpoints();
     const parts = (value: string | undefined, fallback: string) => {
-      if (!value) return { day: "", time: fallback };
+      if (!value) {
+        return { day: "", time: fallback };
+      }
       const date = calendarEndpoint(value, value.includes("T"), this.zone);
       return { day: toCalendarDate(date).toString(), time: "hour" in date ? [date.hour, date.minute, date.second].map((n) => String(n).padStart(2, "0")).join(":") : fallback };
     };
@@ -352,8 +398,12 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
   private bounded(day: CalendarDate) {
     let result = day;
     try {
-      if (this.minValue && result.compare(this.day(this.minValue)) < 0) result = this.day(this.minValue);
-      if (this.maxValue && result.compare(this.day(this.maxValue)) > 0) result = this.day(this.maxValue);
+      if (this.minValue && result.compare(this.day(this.minValue)) < 0) {
+        result = this.day(this.minValue);
+      }
+      if (this.maxValue && result.compare(this.day(this.maxValue)) > 0) {
+        result = this.day(this.maxValue);
+      }
     } catch {}
     return result;
   }
@@ -369,7 +419,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     closeOnOutside: () => this.open,
     dismiss: (reason) => this.close(reason),
     after: (phase) => {
-      if (phase === "closed") this.placement.stop();
+      if (phase === "closed") {
+        this.placement.stop();
+      }
     },
   });
   private readonly motion = new SpringValue(
@@ -399,7 +451,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     },
   });
   show() {
-    if (this.unavailable || this.presentation === "inline") return;
+    if (this.unavailable || this.presentation === "inline") {
+      return;
+    }
     this.resetView();
     this.focusPending = true;
     this.restoreFocus = true;
@@ -409,17 +463,24 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     this.open = false;
   }
   private toggle = () => {
-    if (this.unavailable) return;
-    if (this.open) this.close("trigger");
-    else {
+    if (this.unavailable) {
+      return;
+    }
+    if (this.open) {
+      this.close("trigger");
+    } else {
       this.show();
       this.dispatchEvent(new CustomEvent("acme-open-change", { bubbles: true, composed: true, detail: { open: this.open, reason: "trigger" } }));
     }
   };
   private close(reason: string) {
-    if (!this.open) return;
+    if (!this.open) {
+      return;
+    }
     const event = new CustomEvent("acme-request", { bubbles: true, composed: true, cancelable: true, detail: { action: "close", reason } });
-    if (!this.dispatchEvent(event)) return;
+    if (!this.dispatchEvent(event)) {
+      return;
+    }
     this.open = false;
     this.restoreFocus = reason !== "outside";
     this.dispatchEvent(new CustomEvent("acme-open-change", { bubbles: true, composed: true, detail: { open: false, reason } }));
@@ -439,7 +500,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     return this.value === accepted;
   }
   private commit = () => {
-    if (this.unavailable) return;
+    if (this.unavailable) {
+      return;
+    }
     const { start, end } = this.endpoints();
     if (!this.checkValidity() || (start && this.mode === "range" && !end)) {
       this.validationVisible = true;
@@ -452,7 +515,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     this.close("selection");
   };
   clear() {
-    if (this.unavailable) return;
+    if (this.unavailable) {
+      return;
+    }
     const changed = this.value !== undefined;
     const accepted = this.provisional(undefined);
     this.refreshEditors();
@@ -466,15 +531,19 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     return this.unavailable || this.bounded(day).compare(day) !== 0;
   }
   private pick(day: CalendarDate) {
-    if (this.disabledDay(day)) return;
+    if (this.disabledDay(day)) {
+      return;
+    }
     const { start, end } = this.endpoints();
     try {
       this.focused = day;
       this.view = startOfMonth(day);
       this.focusPending = true;
-      if (this.mode === "single") this.provisional(calendarEdit(day.toString(), this.editors.startTime, this.showTimeInput, this.zone, start));
-      else if (!start || end) this.provisional({ start: calendarEdit(day.toString(), this.editors.startTime, this.showTimeInput, this.zone) });
-      else {
+      if (this.mode === "single") {
+        this.provisional(calendarEdit(day.toString(), this.editors.startTime, this.showTimeInput, this.zone, start));
+      } else if (!start || end) {
+        this.provisional({ start: calendarEdit(day.toString(), this.editors.startTime, this.showTimeInput, this.zone) });
+      } else {
         const before = day.compare(this.day(start)) < 0;
         this.provisional({
           start: before ? calendarEdit(day.toString(), this.editors.startTime, this.showTimeInput, this.zone) : start,
@@ -483,7 +552,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
       }
       this.refreshEditors();
       this.announcement = this.displayValue;
-      if (this.mode === "single" && !this.showTimeInput) this.commit();
+      if (this.mode === "single" && !this.showTimeInput) {
+        this.commit();
+      }
     } catch (error) {
       this.editorError = String((error as Error).message);
     }
@@ -496,11 +567,15 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
       return;
     }
     this.editors = { ...this.editors, [key]: input.value };
-    if ((event as InputEvent).isComposing) return;
+    if ((event as InputEvent).isComposing) {
+      return;
+    }
     try {
       const { startDate, endDate, startTime, endTime } = this.editors;
       if (!startDate) {
-        if (endDate) throw new Error(this.text("calendar.start", "Choose a start date"));
+        if (endDate) {
+          throw new Error(this.text("calendar.start", "Choose a start date"));
+        }
         this.provisional(undefined);
         return;
       }
@@ -519,19 +594,28 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
   }
   private revealFocusedDay() {
     const active = deepActiveElement(this.ownerDocument);
-    if (!active || !this.grid || !composedContains(this.grid, active)) return;
+    if (!active || !this.grid || !composedContains(this.grid, active)) {
+      return;
+    }
     if (this.presentation === "inline") {
       active.scrollIntoView({ block: "nearest", inline: "nearest" });
       return;
     }
-    if (!this.surface) return;
+    if (!this.surface) {
+      return;
+    }
     const bounds = this.surface.getBoundingClientRect();
     const target = active.getBoundingClientRect();
-    if (target.top < bounds.top + 4) this.surface.scrollTop -= bounds.top + 4 - target.top;
-    else if (target.bottom > bounds.bottom - 4) this.surface.scrollTop += target.bottom - bounds.bottom + 4;
+    if (target.top < bounds.top + 4) {
+      this.surface.scrollTop -= bounds.top + 4 - target.top;
+    } else if (target.bottom > bounds.bottom - 4) {
+      this.surface.scrollTop += target.bottom - bounds.bottom + 4;
+    }
   }
   private key = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing || this.unavailable || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.defaultPrevented || event.isComposing || this.unavailable || event.altKey || event.ctrlKey || event.metaKey) {
+      return;
+    }
     const direction = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl" ? -1 : 1;
     const actions: Record<string, () => void> = {
       ArrowLeft: () => this.navigate(-direction * (event.shiftKey ? 7 : 1)),
@@ -550,8 +634,12 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
     }
   };
   protected willUpdate(changes: PropertyValues) {
-    if (!["inline", "popover"].includes(this.presentation)) throw new TypeError("Calendar presentation must be inline or popover");
-    if (this.unavailable || this.presentation === "inline") this.open = false;
+    if (!["inline", "popover"].includes(this.presentation)) {
+      throw new TypeError("Calendar presentation must be inline or popover");
+    }
+    if (this.unavailable || this.presentation === "inline") {
+      this.open = false;
+    }
     if (changes.has("timeZone") || changes.has("locale") || changes.has("showTimeInput")) {
       this.refreshEditors();
       this.resetView();
@@ -588,7 +676,9 @@ export class AcmeCalendar extends AcmeFormElement<CalendarValue> {
       this.renderRoot.querySelector<HTMLButtonElement>('[data-date][tabindex="0"]')?.focus({ preventScroll: true });
       this.revealFocusedDay();
     }
-    if (this.grid) this.grid.ariaLabelledByElements = this.semanticDefaults.labelledByElements ?? null;
+    if (this.grid) {
+      this.grid.ariaLabelledByElements = this.semanticDefaults.labelledByElements ?? null;
+    }
     this.nativeForm.sync();
   }
   disconnectedCallback() {

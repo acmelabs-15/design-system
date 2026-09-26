@@ -57,11 +57,15 @@ function commandScoreInner(
   memoizedResults: Record<string, number>,
 ): number {
   if (abbreviationIndex === abbreviation.length) {
-    if (stringIndex === string.length) return SCORE_CONTINUE_MATCH;
+    if (stringIndex === string.length) {
+      return SCORE_CONTINUE_MATCH;
+    }
     return PENALTY_NOT_COMPLETE;
   }
   const memoizeKey = `${stringIndex},${abbreviationIndex}`;
-  if (memoizedResults[memoizeKey] !== undefined) return memoizedResults[memoizeKey];
+  if (memoizedResults[memoizeKey] !== undefined) {
+    return memoizedResults[memoizeKey];
+  }
   const abbreviationChar = lowerAbbreviation.charAt(abbreviationIndex);
   let index = lowerString.indexOf(abbreviationChar, stringIndex);
   let highScore = 0;
@@ -77,16 +81,24 @@ function commandScoreInner(
       } else if (IS_GAP_REGEXP.test(string.charAt(index - 1))) {
         score *= SCORE_NON_SPACE_WORD_JUMP;
         wordBreaks = string.slice(stringIndex, index - 1).match(COUNT_GAPS_REGEXP);
-        if (wordBreaks && stringIndex > 0) score *= PENALTY_SKIPPED ** wordBreaks.length;
+        if (wordBreaks && stringIndex > 0) {
+          score *= PENALTY_SKIPPED ** wordBreaks.length;
+        }
       } else if (IS_SPACE_REGEXP.test(string.charAt(index - 1))) {
         score *= SCORE_SPACE_WORD_JUMP;
         spaceBreaks = string.slice(stringIndex, index - 1).match(COUNT_SPACE_REGEXP);
-        if (spaceBreaks && stringIndex > 0) score *= PENALTY_SKIPPED ** spaceBreaks.length;
+        if (spaceBreaks && stringIndex > 0) {
+          score *= PENALTY_SKIPPED ** spaceBreaks.length;
+        }
       } else {
         score *= SCORE_CHARACTER_JUMP;
-        if (stringIndex > 0) score *= PENALTY_SKIPPED ** (index - stringIndex);
+        if (stringIndex > 0) {
+          score *= PENALTY_SKIPPED ** (index - stringIndex);
+        }
       }
-      if (string.charAt(index) !== abbreviation.charAt(abbreviationIndex)) score *= PENALTY_CASE_MISMATCH;
+      if (string.charAt(index) !== abbreviation.charAt(abbreviationIndex)) {
+        score *= PENALTY_CASE_MISMATCH;
+      }
     }
     if (
       (score < SCORE_TRANSPOSITION && lowerString.charAt(index - 1) === lowerAbbreviation.charAt(abbreviationIndex + 1)) ||
@@ -94,9 +106,13 @@ function commandScoreInner(
       (lowerAbbreviation.charAt(abbreviationIndex + 1) === lowerAbbreviation.charAt(abbreviationIndex) && lowerString.charAt(index - 1) !== lowerAbbreviation.charAt(abbreviationIndex))
     ) {
       transposedScore = commandScoreInner(string, abbreviation, lowerString, lowerAbbreviation, index + 1, abbreviationIndex + 2, memoizedResults);
-      if (transposedScore * SCORE_TRANSPOSITION > score) score = transposedScore * SCORE_TRANSPOSITION;
+      if (transposedScore * SCORE_TRANSPOSITION > score) {
+        score = transposedScore * SCORE_TRANSPOSITION;
+      }
     }
-    if (score > highScore) highScore = score;
+    if (score > highScore) {
+      highScore = score;
+    }
     index = lowerString.indexOf(abbreviationChar, index + 1);
   }
   memoizedResults[memoizeKey] = highScore;

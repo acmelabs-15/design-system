@@ -2,6 +2,7 @@ import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeGrid } from "../grid";
 import type { AcmeSimpleGrid } from "../../simple-grid/simple-grid";
+
 afterEach(() => document.body.replaceChildren());
 test("Grid exposes tracks and preserves author nodes through semantic changes", async () => {
   document.body.innerHTML = '<acme-grid as="main"><article>One</article><article>Two</article></acme-grid>';

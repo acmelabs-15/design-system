@@ -24,7 +24,9 @@ export function acquireSystemAppearance(document: Document): SystemAppearanceBin
   return Object.freeze({
     appearance: current.appearance,
     release(): void {
-      if (!active) return;
+      if (!active) {
+        return;
+      }
       active = false;
       if (--current.users === 0) {
         current.stop();

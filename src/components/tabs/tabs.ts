@@ -27,7 +27,9 @@ export class AcmeTabs extends AcmeSemanticElement {
     return this.selection.get().value;
   }
   set value(value: string | undefined) {
-    if (value !== undefined && (typeof value !== "string" || !value)) throw new TypeError("Tab value must be a nonempty string or undefined");
+    if (value !== undefined && (typeof value !== "string" || !value)) {
+      throw new TypeError("Tab value must be a nonempty string or undefined");
+    }
     this.selection.set(Object.freeze({ value, initialized: true }));
     this.synchronize();
     this.requestUpdate("value");
@@ -39,7 +41,9 @@ export class AcmeTabs extends AcmeSemanticElement {
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {
     const next = value ?? "horizontal";
-    if (!["horizontal", "vertical"].includes(next)) throw new TypeError("Invalid tab orientation");
+    if (!["horizontal", "vertical"].includes(next)) {
+      throw new TypeError("Invalid tab orientation");
+    }
     this.direction = next;
     this.synchronize();
     this.requestUpdate("orientation");
@@ -51,7 +55,9 @@ export class AcmeTabs extends AcmeSemanticElement {
   }
   set activation(value: "automatic" | "manual" | undefined) {
     const next = value ?? "automatic";
-    if (!["automatic", "manual"].includes(next)) throw new TypeError("Invalid tab activation");
+    if (!["automatic", "manual"].includes(next)) {
+      throw new TypeError("Invalid tab activation");
+    }
     this.mode = next;
     this.requestUpdate("activation");
   }
@@ -62,7 +68,9 @@ export class AcmeTabs extends AcmeSemanticElement {
   }
   set variant(value: "primary" | "inset" | undefined) {
     const next = value ?? "primary";
-    if (!["primary", "inset"].includes(next)) throw new TypeError("Invalid tab variant");
+    if (!["primary", "inset"].includes(next)) {
+      throw new TypeError("Invalid tab variant");
+    }
     this.treatment = next;
     this.requestUpdate("variant");
   }
@@ -124,7 +132,9 @@ export class AcmeTabs extends AcmeSemanticElement {
     return [...this.registry.members.get()].filter((member) => member.kind === "tab").sort(tabOrder);
   }
   private available() {
-    if (this.disabled) return [];
+    if (this.disabled) {
+      return [];
+    }
     return this.tabs().filter((member) => {
       const target = member.target();
       return !!member.value() && !member.disabled() && !!target?.isConnected && !!target.getClientRects().length && getComputedStyle(target).visibility === "visible";
@@ -139,32 +149,42 @@ export class AcmeTabs extends AcmeSemanticElement {
     return focused && available.includes(focused) ? focused : (available.find((member) => member === this.selected()) ?? available[0]);
   }
   private counterpart(member: TabPart) {
-    if (!member.value()) return undefined;
+    if (!member.value()) {
+      return undefined;
+    }
     const kind = member.kind === "tab" ? "panel" : "tab";
     return [...this.registry.members.get()].filter((part) => part.kind === kind && part.value() === member.value()).sort(tabOrder)[0];
   }
   private synchronize() {
-    if (this.syncing || !this.registry) return;
+    if (this.syncing || !this.registry) {
+      return;
+    }
     this.syncing = true;
     try {
       const members = this.registry.members.get();
       if (!this.selection.get().initialized) {
         const first = this.disabled ? undefined : this.tabs().find((member) => member.value() && !member.disabled() && !member.host.hidden);
-        if (first) this.selection.set(Object.freeze({ value: first.value(), initialized: true }));
+        if (first) {
+          this.selection.set(Object.freeze({ value: first.value(), initialized: true }));
+        }
       }
-      for (const member of members) member.synchronize();
+      for (const member of members) {
+        member.synchronize();
+      }
       const targets = new Set<HTMLElement>(members.map((member) => member.host));
       if (this.observer) {
-        for (const target of this.observed)
+        for (const target of this.observed) {
           if (!targets.has(target)) {
             this.observer.unobserve(target);
             this.observed.delete(target);
           }
-        for (const target of targets)
+        }
+        for (const target of targets) {
           if (!this.observed.has(target)) {
             this.observer.observe(target);
             this.observed.add(target);
           }
+        }
       }
       const invalid =
         members.some((member) => !member.value()) ||
@@ -173,30 +193,40 @@ export class AcmeTabs extends AcmeSemanticElement {
           return new Set(values).size !== values.length;
         });
       const signature = invalid ? "invalid-tab-values" : "";
-      if (signature && signature !== this.diagnostic) console.warn(this.localName, { code: signature });
+      if (signature && signature !== this.diagnostic) {
+        console.warn(this.localName, { code: signature });
+      }
       this.diagnostic = signature;
     } finally {
       this.syncing = false;
     }
   }
   private select(member: TabPart) {
-    if (!this.available().includes(member) || this.value === member.value()) return;
+    if (!this.available().includes(member) || this.value === member.value()) {
+      return;
+    }
     this.selection.set(Object.freeze({ value: member.value(), initialized: true }));
     this.synchronize();
     this.scrollToMember(member);
     this.dispatchEvent(new CustomEvent<{ value: string }>("acme-change", { detail: { value: member.value() }, bubbles: true, composed: true }));
   }
   private focusedPart(member: TabPart) {
-    if (!this.available().includes(member)) return;
+    if (!this.available().includes(member)) {
+      return;
+    }
     this.focused.set({ member });
-    if (this.activation === "automatic") this.select(member);
+    if (this.activation === "automatic") {
+      this.select(member);
+    }
     this.synchronize();
     this.scrollToMember(member);
   }
   private scrollToMember(member: TabPart) {
     const list = this.list(),
       target = member.target();
-    if (!list || !target) return;
+    if (!list || !target) {
+      return;
+    }
     const viewport = list.getBoundingClientRect(),
       box = target.getBoundingClientRect();
     if (this.orientation === "horizontal") {
@@ -210,18 +240,26 @@ export class AcmeTabs extends AcmeSemanticElement {
             : box.right > viewport.right
               ? box.right - viewport.right
               : 0;
-      if (left) list.scrollBy({ left: left > 0 ? Math.ceil(left) : Math.floor(left), behavior: "instant" });
+      if (left) {
+        list.scrollBy({ left: left > 0 ? Math.ceil(left) : Math.floor(left), behavior: "instant" });
+      }
     } else {
       const top = box.top < viewport.top ? box.top - viewport.top : box.bottom > viewport.bottom ? box.bottom - viewport.bottom : 0;
-      if (top) list.scrollBy({ top: top > 0 ? Math.ceil(top) : Math.floor(top), behavior: "instant" });
+      if (top) {
+        list.scrollBy({ top: top > 0 ? Math.ceil(top) : Math.floor(top), behavior: "instant" });
+      }
     }
   }
   private keydown = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || this.disabled) return;
+    if (event.defaultPrevented || this.disabled) {
+      return;
+    }
     const origin = event.composedPath()[0];
     const available = this.available(),
       index = available.findIndex((member) => member.target() === origin);
-    if (index >= 0 && this.roving.handleKey(event, index)) event.stopPropagation();
+    if (index >= 0 && this.roving.handleKey(event, index)) {
+      event.stopPropagation();
+    }
   };
   private focusout = () =>
     queueMicrotask(() => {
@@ -231,7 +269,9 @@ export class AcmeTabs extends AcmeSemanticElement {
       }
     });
   private geometry: IndicatorGeometry = (target, frame, orientation) => {
-    if (this.variant === "inset") return target;
+    if (this.variant === "inset") {
+      return target;
+    }
     const length = Math.max(24, (orientation === "horizontal" ? target.width : target.height) - 4);
     return orientation === "horizontal"
       ? { x: target.x + (target.width - length) / 2, y: frame.height - 3, width: length, height: 3 }

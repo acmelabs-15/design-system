@@ -234,7 +234,9 @@ describe("atomState and changedProperties", () => {
     const el = await mount();
     const seen: string[] = [];
     (el as unknown as { updated(ch: Map<string, unknown>): void }).updated = (ch) => {
-      for (const k of ch.keys()) seen.push(String(k));
+      for (const k of ch.keys()) {
+        seen.push(String(k));
+      }
     };
     el.count = 5;
     await el.updateComplete;

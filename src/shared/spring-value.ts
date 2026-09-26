@@ -27,7 +27,9 @@ export class SpringValue implements ReactiveController {
     }
   }
   private preference = () => {
-    if (this.media?.matches) this.stop();
+    if (this.media?.matches) {
+      this.stop();
+    }
     this.host.requestUpdate();
   };
   hostConnected() {
@@ -45,7 +47,9 @@ export class SpringValue implements ReactiveController {
   jump() {
     const target = this.endpoint(),
       parameters = JSON.stringify(this.config());
-    if (!this.spring && this.target === target && this.parameters === parameters) return;
+    if (!this.spring && this.target === target && this.parameters === parameters) {
+      return;
+    }
     this.stop();
     this.target = target;
     this.parameters = parameters;
@@ -55,14 +59,18 @@ export class SpringValue implements ReactiveController {
     const target = this.endpoint(),
       config = this.config(),
       parameters = JSON.stringify(config);
-    if (this.target === target && this.parameters === parameters) return;
+    if (this.target === target && this.parameters === parameters) {
+      return;
+    }
     const from = this.value,
       velocity = this.spring?.currentVelocity ?? 0,
       initial = this.target === undefined;
     this.stop();
     this.target = target;
     this.parameters = parameters;
-    if (!initial && !this.media?.matches && from !== target) this.spring = new SpringController(this.host, { ...config, fromValue: from, toValue: target, initialVelocity: velocity });
+    if (!initial && !this.media?.matches && from !== target) {
+      this.spring = new SpringController(this.host, { ...config, fromValue: from, toValue: target, initialVelocity: velocity });
+    }
     this.host.requestUpdate();
   }
 }

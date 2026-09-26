@@ -141,5 +141,7 @@ test("snapshots supplied transitions and authored values into deeply immutable p
   widths.medium = 45;
   expect(plan[0].range).toEqual({ min: 40 });
   expect(plan[0].declarations[0].value).toBe("var(--acme-size-2)");
-  for (const value of [plan, plan[0], plan[0].range, plan[0].declarations, plan[0].declarations[0]]) expect(Object.isFrozen(value)).toBe(true);
+  for (const value of [plan, plan[0], plan[0].range, plan[0].declarations, plan[0].declarations[0]]) {
+    expect(Object.isFrozen(value)).toBe(true);
+  }
 });

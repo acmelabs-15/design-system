@@ -3,15 +3,7 @@ import path from "node:path";
 import { readCorePackage } from "./core-package";
 import { validateRelease, type DocumentationRelease } from "../packages/mcp/src/catalog";
 
-export const consumerSkillNames = [
-  "choose-and-compose",
-  "html-artifacts",
-  "lit-integration",
-  "react-integration",
-  "forms-and-accessibility",
-  "data-layouts",
-  "migration-between-releases",
-] as const;
+export const consumerSkillNames = ["choose-and-compose", "html-artifacts", "lit-integration", "react-integration", "forms-and-accessibility", "data-layouts", "migration-between-releases"] as const;
 export interface ConsumerSkillsOptions {
   root?: string;
   outDir?: string;
@@ -22,20 +14,20 @@ export async function buildConsumerSkills(input: DocumentationRelease, options: 
   const root = path.resolve(options.root ?? path.resolve(import.meta.dir, ".."));
   const source = path.join(root, "skills");
   const out = path.resolve(options.outDir ?? path.join(root, "dist/skills"));
-  if (out === source || out.startsWith(`${source}${path.sep}`) || source.startsWith(`${out}${path.sep}`))
+  if (out === source || out.startsWith(`${source}${path.sep}`) || source.startsWith(`${out}${path.sep}`)) {
     throw new Error("Consumer skill output must be separate from authored skills");
+  }
   const pkg = await readCorePackage(root);
-  if (pkg.name !== release.packageName || pkg.version !== release.version)
+  if (pkg.name !== release.packageName || pkg.version !== release.version) {
     throw new Error("Consumer skill package and documentation versions differ");
+  }
   const present = (await readdir(source, { withFileTypes: true }))
-    .filter(
-      (entry) =>
-        entry.isDirectory() && !entry.name.startsWith("_") && entry.name !== "references" && entry.name !== "evals",
-    )
+    .filter((entry) => entry.isDirectory() && !entry.name.startsWith("_") && entry.name !== "references" && entry.name !== "evals")
     .map((entry) => entry.name)
     .sort();
-  if (JSON.stringify(present) !== JSON.stringify([...consumerSkillNames].sort()))
+  if (JSON.stringify(present) !== JSON.stringify([...consumerSkillNames].sort())) {
     throw new Error("Consumer skills must contain the approved seven task areas");
+  }
   const skills = await Promise.all(
     consumerSkillNames.map(async (name) => {
       const file = path.join(source, name, "SKILL.md");
@@ -50,10 +42,12 @@ export async function buildConsumerSkills(input: DocumentationRelease, options: 
         metadata?.library !== release.packageName ||
         metadata.library_version !== release.version ||
         Object.values(metadata).some((value) => typeof value !== "string")
-      )
+      ) {
         throw new Error(`Invalid or stale skill metadata: ${name}`);
-      if (!text.includes("../references/release.json"))
+      }
+      if (!text.includes("../references/release.json")) {
         throw new Error(`Skill lacks the shared release reference: ${name}`);
+      }
       return { name, file, sha256: new Bun.CryptoHasher("sha256").update(text).digest("hex") };
     }),
   );
@@ -67,10 +61,7 @@ export async function buildConsumerSkills(input: DocumentationRelease, options: 
   const documents = [...release.documents].sort((a, b) => `${a.kind}/${a.id}`.localeCompare(`${b.kind}/${b.id}`));
   for (const document of documents) {
     await mkdir(path.join(records, document.kind), { recursive: true });
-    await Bun.write(
-      path.join(records, document.kind, `${document.id}.json`),
-      JSON.stringify({ version: release.version, ...document }, null, 2) + "\n",
-    );
+    await Bun.write(path.join(records, document.kind, `${document.id}.json`), JSON.stringify({ version: release.version, ...document }, null, 2) + "\n");
   }
   await Bun.write(
     path.join(records, "index.json"),
@@ -108,7 +99,9 @@ export async function buildConsumerSkills(input: DocumentationRelease, options: 
 
 if (import.meta.main) {
   const file = process.argv[2];
-  if (!file) throw new Error("Usage: bun scripts/consumer-skills.ts <generated-documentation.json> [output-directory]");
+  if (!file) {
+    throw new Error("Usage: bun scripts/consumer-skills.ts <generated-documentation.json> [output-directory]");
+  }
   const result = await buildConsumerSkills(await Bun.file(file).json(), { outDir: process.argv[3] });
   console.log(`Generated ${result.skills} consumer skills and ${result.documents} references for ${result.version}`);
 }

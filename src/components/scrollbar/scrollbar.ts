@@ -23,7 +23,9 @@ export class AcmeScrollbar extends AcmeElement {
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {
     const next = value ?? "vertical";
-    if (!["horizontal", "vertical"].includes(next)) throw new TypeError("Invalid orientation");
+    if (!["horizontal", "vertical"].includes(next)) {
+      throw new TypeError("Invalid orientation");
+    }
     const previous = this.orientationValue;
     this.orientationValue = next;
     this.requestUpdate("orientation", previous);
@@ -59,21 +61,30 @@ export class AcmeScrollbar extends AcmeElement {
     this.releaseDrag?.();
     this.releaseDrag = undefined;
     this.binding.current?.dragging(false);
-    if (drag?.track.hasPointerCapture(drag.id)) drag.track.releasePointerCapture(drag.id);
+    if (drag?.track.hasPointerCapture(drag.id)) {
+      drag.track.releasePointerCapture(drag.id);
+    }
   };
   private setPosition(point: number, grab: number) {
     const track = this.track,
       viewport = this.binding.current?.viewport();
-    if (!track || !viewport) return;
+    if (!track || !viewport) {
+      return;
+    }
     const bounds = track.getBoundingClientRect(),
       horizontal = this.orientation === "horizontal",
       position = scrollFromPointer(point, horizontal ? bounds.left : bounds.top, grab, this.geometry);
-    if (horizontal) viewport.scrollLeft = nativeScrollLeft(position, this.geometry.maximum, this.binding.current!.state.get().rtl);
-    else viewport.scrollTop = position;
+    if (horizontal) {
+      viewport.scrollLeft = nativeScrollLeft(position, this.geometry.maximum, this.binding.current!.state.get().rtl);
+    } else {
+      viewport.scrollTop = position;
+    }
     this.binding.current?.refresh();
   }
   private pointer = (event: PointerEvent) => {
-    if (event.button !== 0 || !event.isPrimary || !this.active || this.drag || this.binding.current?.state.get().dragging) return;
+    if (event.button !== 0 || !event.isPrimary || !this.active || this.drag || this.binding.current?.state.get().dragging) {
+      return;
+    }
     const track = this.track!;
     const horizontal = this.orientation === "horizontal";
     const thumb = event.composedPath().find((node) => (node as Node).nodeType === 1 && (node as Element).getAttribute("part")?.split(" ").includes("thumb")) as Element | undefined;
@@ -83,12 +94,18 @@ export class AcmeScrollbar extends AcmeElement {
     event.preventDefault();
     this.drag = { id: event.pointerId, grab, track, viewport: this.binding.current!.viewport()! };
     this.binding.current?.dragging(true);
-    if (!thumb) this.setPosition(coordinate, grab);
+    if (!thumb) {
+      this.setPosition(coordinate, grab);
+    }
     const move = (e: PointerEvent) => {
-      if (e.pointerId === this.drag?.id) this.setPosition(horizontal ? e.clientX : e.clientY, this.drag.grab);
+      if (e.pointerId === this.drag?.id) {
+        this.setPosition(horizontal ? e.clientX : e.clientY, this.drag.grab);
+      }
     };
     const end = (e: PointerEvent) => {
-      if (e.pointerId === this.drag?.id) this.end();
+      if (e.pointerId === this.drag?.id) {
+        this.end();
+      }
     };
     const view = this.ownerDocument.defaultView!;
     track.addEventListener("pointermove", move);
@@ -111,25 +128,39 @@ export class AcmeScrollbar extends AcmeElement {
   };
   private wheel = (event: WheelEvent) => {
     const viewport = this.binding.current?.viewport();
-    if (!viewport || event.ctrlKey) return;
+    if (!viewport || event.ctrlKey) {
+      return;
+    }
     const horizontal = this.orientation === "horizontal";
     let delta = horizontal ? event.deltaX : event.deltaY;
-    if (!delta) return;
+    if (!delta) {
+      return;
+    }
     const style = this.ownerDocument.defaultView!.getComputedStyle(viewport);
-    if (event.deltaMode === 1) delta *= parseFloat(style.lineHeight) || parseFloat(style.fontSize);
-    else if (event.deltaMode === 2) delta *= horizontal ? viewport.clientWidth : viewport.clientHeight;
+    if (event.deltaMode === 1) {
+      delta *= parseFloat(style.lineHeight) || parseFloat(style.fontSize);
+    } else if (event.deltaMode === 2) {
+      delta *= horizontal ? viewport.clientWidth : viewport.clientHeight;
+    }
     const geometry = this.geometry,
       rtl = this.binding.current!.state.get().rtl,
       current = horizontal ? physicalScrollLeft(viewport.scrollLeft, geometry.maximum, rtl) : viewport.scrollTop,
       next = Math.max(0, Math.min(geometry.maximum, current + delta));
-    if (Math.abs(next - current) < 0.5) return;
+    if (Math.abs(next - current) < 0.5) {
+      return;
+    }
     event.preventDefault();
-    if (horizontal) viewport.scrollLeft = nativeScrollLeft(next, geometry.maximum, rtl);
-    else viewport.scrollTop = next;
+    if (horizontal) {
+      viewport.scrollLeft = nativeScrollLeft(next, geometry.maximum, rtl);
+    } else {
+      viewport.scrollTop = next;
+    }
     this.binding.current?.refresh();
   };
   protected willUpdate(changes: Map<PropertyKey, unknown>) {
-    if (this.drag && (!this.active || changes.has("orientation") || this.drag.viewport !== this.binding.current?.viewport())) this.end();
+    if (this.drag && (!this.active || changes.has("orientation") || this.drag.viewport !== this.binding.current?.viewport())) {
+      this.end();
+    }
     this.motion.update();
   }
   protected updated() {

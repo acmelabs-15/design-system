@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const content =
   '<acme-tab value="overview">Overview</acme-tab><acme-tab value="settings">Settings</acme-tab><acme-tab-panel value="overview" slot="panels"><p>Overview content.</p></acme-tab-panel><acme-tab-panel value="settings" slot="panels"><p>Settings content.</p></acme-tab-panel>';
 export const doc: Doc = {

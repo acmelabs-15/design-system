@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const items =
   '<acme-command-group heading="Projects"><acme-command-item value="create"><acme-add-icon slot="start"></acme-add-icon>Create project</acme-command-item><acme-command-item value="open">Open project<acme-kbd slot="end" keys=\'["Mod","O"]\'></acme-kbd></acme-command-item><acme-command-item value="archive" disabled>Archive project</acme-command-item></acme-command-group><acme-command-separator></acme-command-separator><acme-command-item value="settings">Open settings</acme-command-item>';
 const menu = (attributes = "") =>

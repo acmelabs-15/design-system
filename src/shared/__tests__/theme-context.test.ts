@@ -19,7 +19,9 @@ customElements.define("theme-context-provider-test", ThemeProvider);
 const consumer = () => document.createElement("theme-context-consumer-test") as ThemeConsumer;
 const provider = () => document.createElement("theme-context-provider-test") as ThemeProvider;
 const settle = async () => {
-  for (let index = 0; index < 8; index++) await Promise.resolve();
+  for (let index = 0; index < 8; index++) {
+    await Promise.resolve();
+  }
 };
 
 test("nearest providers carry live TanStack state without replacing the provided source", async () => {

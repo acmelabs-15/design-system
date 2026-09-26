@@ -5,15 +5,21 @@ import { applyReactStyleInputs, applyStyleInputBinding, attachStyleInputTarget, 
 const createValues = () =>
   createOrderedStyleInputs({
     padding: (value: unknown) => {
-      if (typeof value !== "number" || value < 0) throw new TypeError("Invalid padding");
+      if (typeof value !== "number" || value < 0) {
+        throw new TypeError("Invalid padding");
+      }
       return value;
     },
     paddingInline: (value: unknown) => {
-      if (typeof value !== "number" || value < 0) throw new TypeError("Invalid padding inline");
+      if (typeof value !== "number" || value < 0) {
+        throw new TypeError("Invalid padding inline");
+      }
       return value;
     },
     backgroundColor: (value: unknown) => {
-      if (typeof value !== "string") throw new TypeError("Invalid background");
+      if (typeof value !== "string") {
+        throw new TypeError("Invalid background");
+      }
       return value;
     },
   });
@@ -46,7 +52,9 @@ test("same-owner clearing during first publication sees its newly supplied keys"
   const owner = {};
   let first = true;
   const subscription = values.entries.subscribe(() => {
-    if (!first) return;
+    if (!first) {
+      return;
+    }
     first = false;
     applyStyleInputBinding(target, owner, {});
   });
@@ -194,7 +202,9 @@ test("newer reentrant ownership survives an older invocation and its later clear
     second = {};
   let reenter = true;
   const subscription = values.entries.subscribe(() => {
-    if (!reenter) return;
+    if (!reenter) {
+      return;
+    }
     reenter = false;
     applyStyleInputBinding(target, second, { padding: 4 });
   });

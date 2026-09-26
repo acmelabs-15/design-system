@@ -8,6 +8,7 @@ import { atomState } from "../../shared/atom-state";
 import { optionalString } from "../../shared/attributes";
 import { RepeatingMotion } from "../../shared/repeating-motion";
 import { AcmeSemanticElement } from "../../shared/semantic-element";
+
 export type StatusVariant = "neutral" | "info" | "success" | "warning" | "error";
 /** Application-defined status with a decorative indicator and readable text.
  * @slot - Visible label instead of label or value text.
@@ -26,7 +27,9 @@ export class AcmeStatus extends AcmeSemanticElement {
     return this.treatment;
   }
   set variant(value: StatusVariant) {
-    if (!["neutral", "info", "success", "warning", "error"].includes(value)) throw new TypeError("Invalid Status variant");
+    if (!["neutral", "info", "success", "warning", "error"].includes(value)) {
+      throw new TypeError("Invalid Status variant");
+    }
     const previous = this.treatment;
     this.treatment = value;
     this.requestUpdate("variant", previous);
@@ -34,7 +37,9 @@ export class AcmeStatus extends AcmeSemanticElement {
   @atomState() @property({ noAccessor: true, type: Boolean }) pulse = false;
   private readonly motion = new RepeatingMotion(this, () => this.pulse);
   protected willUpdate(changes: PropertyValues) {
-    if (changes.has("pulse")) this.motion.reset();
+    if (changes.has("pulse")) {
+      this.motion.reset();
+    }
   }
   render() {
     const generation = this.motion.key,

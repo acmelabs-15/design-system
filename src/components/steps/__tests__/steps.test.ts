@@ -5,10 +5,13 @@ import "../../../define/step-trigger";
 import "../../../define/step-content";
 import "../../../define/steps-next";
 import "../../../define/steps-previous";
+
 async function fixture(linear = false) {
   document.body.innerHTML = `<acme-steps aria-label="Setup" ${linear ? "linear" : ""}><acme-step value="account"><acme-step-trigger>Account</acme-step-trigger></acme-step><acme-step value="confirm"><acme-step-trigger>Confirm</acme-step-trigger></acme-step><acme-step-content slot="panels" value="account"><input value="Retained"></acme-step-content><acme-step-content slot="panels" value="confirm">Confirmation</acme-step-content><span slot="completed">Done</span><acme-steps-previous slot="actions"></acme-steps-previous><acme-steps-next slot="actions"></acme-steps-next></acme-steps>`;
   const root = document.querySelector("acme-steps")!;
-  for (let i = 0; i < 3; i++) await Promise.all([root, ...root.querySelectorAll("*")].map((el) => (el as any).updateComplete));
+  for (let i = 0; i < 3; i++) {
+    await Promise.all([root, ...root.querySelectorAll("*")].map((el) => (el as any).updateComplete));
+  }
   return root;
 }
 test("Steps validates a user transition before changing the canonical value", async () => {

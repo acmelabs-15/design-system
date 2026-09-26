@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const content =
   '<acme-menu-content slot="content" aria-label="Document actions"><acme-menu-item value="copy">Copy</acme-menu-item><acme-menu-item value="rename">Rename</acme-menu-item><acme-menu-item value="remove" disabled>Remove</acme-menu-item></acme-menu-content>';
 export const doc: Doc = {

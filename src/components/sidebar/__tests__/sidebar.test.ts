@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/sidebar";
+
 test("Sidebar keeps independent desktop and mobile state with configured presentation defaults", () => {
   const sidebar = document.createElement("acme-sidebar");
   expect(sidebar.expanded).toBe(true);

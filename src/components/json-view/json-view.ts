@@ -10,6 +10,7 @@ import { deepActiveElement } from "../../shared/composed-tree";
 import { Typeahead } from "../../shared/typeahead";
 import { StoreSelector } from "../../shared/store-connection";
 import { jsonViewSurfaceCss } from "../../generated/components/json-view/json-view-surface.styles";
+
 type Row = {
   item: HTMLDivElement;
   row: HTMLSpanElement;
@@ -40,7 +41,11 @@ export class AcmeJsonView extends AcmeSemanticElement {
     const previous = this.source,
       model = inspectJson(value),
       kept = new Map<string, boolean>();
-    for (const [path, open] of this.overrides) if (Object.is(previous.model.byPath.get(path)?.identity, model.byPath.get(path)?.identity) && model.byPath.has(path)) kept.set(path, open);
+    for (const [path, open] of this.overrides) {
+      if (Object.is(previous.model.byPath.get(path)?.identity, model.byPath.get(path)?.identity) && model.byPath.has(path)) {
+        kept.set(path, open);
+      }
+    }
     this.source = { value, model };
     this.overrides = kept;
     this.requestUpdate("value", previous.value);
@@ -51,7 +56,9 @@ export class AcmeJsonView extends AcmeSemanticElement {
     return this.depth;
   }
   set expandedDepth(value: number) {
-    if (!Number.isInteger(value) || value < 0) throw new RangeError("Expanded depth must be a nonnegative integer");
+    if (!Number.isInteger(value) || value < 0) {
+      throw new RangeError("Expanded depth must be a nonnegative integer");
+    }
     const previous = this.depth;
     this.depth = value;
     this.requestUpdate("expandedDepth", previous);
@@ -70,7 +77,9 @@ export class AcmeJsonView extends AcmeSemanticElement {
     return true;
   }
   set readOnly(value: boolean) {
-    if (value !== true) throw new TypeError("JSON View is read-only");
+    if (value !== true) {
+      throw new TypeError("JSON View is read-only");
+    }
   }
   @atomState() private overrides: ReadonlyMap<string, boolean> = new Map();
   @atomState() private focusPath = "";
@@ -101,7 +110,9 @@ export class AcmeJsonView extends AcmeSemanticElement {
   }
   private toggle(path: string) {
     const node = this.source.model.byPath.get(path);
-    if (!node?.children.length) return;
+    if (!node?.children.length) {
+      return;
+    }
     this.overrides = new Map([...this.overrides, [path, !this.open(node)]]);
     const expanded = Object.freeze(this.source.model.nodes.filter((node) => this.open(node)).map((node) => node.path));
     this.dispatchEvent(new CustomEvent("acme-expanded-change", { detail: Object.freeze({ expanded }), bubbles: true, composed: true }));
@@ -119,58 +130,90 @@ export class AcmeJsonView extends AcmeSemanticElement {
   }
   private onClick = (event: MouseEvent) => {
     const target = (event.target as Element).closest<HTMLElement>(".row[data-branch]");
-    if (!target) return;
+    if (!target) {
+      return;
+    }
     const item = target.closest<HTMLElement>("[data-path]");
-    if (!item) return;
+    if (!item) {
+      return;
+    }
     const selection = (this.renderRoot as ShadowRoot & { getSelection?(): Selection | null }).getSelection?.() ?? this.ownerDocument.defaultView!.getSelection();
-    if (selection && !selection.isCollapsed) for (let index = 0; index < selection.rangeCount; index++) if (selection.getRangeAt(index).intersectsNode(target)) return;
+    if (selection && !selection.isCollapsed) {
+      for (let index = 0; index < selection.rangeCount; index++) {
+        if (selection.getRangeAt(index).intersectsNode(target)) {
+          return;
+        }
+      }
+    }
     this.focusNode(item.dataset.path!);
     this.toggle(item.dataset.path!);
   };
   private key = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
     const path = (event.target as HTMLElement).dataset.path;
-    if (path === undefined) return;
+    if (path === undefined) {
+      return;
+    }
     const node = this.source.model.byPath.get(path);
-    if (!node) return;
+    if (!node) {
+      return;
+    }
     const visible = this.visible.get(),
       index = visible.indexOf(node),
       rtl = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl";
     let target: JsonNode | undefined;
-    if (event.key === "ArrowDown") target = visible[index + 1];
-    else if (event.key === "ArrowUp") target = visible[index - 1];
-    else if (event.key === "Home") target = visible[0];
-    else if (event.key === "End") target = visible.at(-1);
-    else if (event.key === (rtl ? "ArrowLeft" : "ArrowRight")) {
+    if (event.key === "ArrowDown") {
+      target = visible[index + 1];
+    } else if (event.key === "ArrowUp") {
+      target = visible[index - 1];
+    } else if (event.key === "Home") {
+      target = visible[0];
+    } else if (event.key === "End") {
+      target = visible.at(-1);
+    } else if (event.key === (rtl ? "ArrowLeft" : "ArrowRight")) {
       if (node.children.length) {
-        if (!this.open(node)) this.toggle(path);
-        else target = this.source.model.byPath.get(node.children[0]);
+        if (!this.open(node)) {
+          this.toggle(path);
+        } else {
+          target = this.source.model.byPath.get(node.children[0]);
+        }
       }
     } else if (event.key === (rtl ? "ArrowRight" : "ArrowLeft")) {
-      if (this.open(node)) this.toggle(path);
-      else if (node.parent !== undefined) target = this.source.model.byPath.get(node.parent);
-    } else if (event.key === "Enter" || (event.key === " " && !this.typeahead.active)) this.toggle(path);
-    else {
+      if (this.open(node)) {
+        this.toggle(path);
+      } else if (node.parent !== undefined) {
+        target = this.source.model.byPath.get(node.parent);
+      }
+    } else if (event.key === "Enter" || (event.key === " " && !this.typeahead.active)) {
+      this.toggle(path);
+    } else {
       this.typeahead.handleKey(event);
       return;
     }
     event.preventDefault();
     this.typeahead.clear();
-    if (target) this.focusNode(target.path);
+    if (target) {
+      this.focusNode(target.path);
+    }
   };
   private mark(element: HTMLElement, text: string, pattern: RegExp | undefined) {
     const document = this.ownerDocument,
       fragment = document.createDocumentFragment();
     let previous = 0;
-    if (pattern)
+    if (pattern) {
       for (const match of text.matchAll(pattern)) {
-        if (!match[0] || match.index === undefined) continue;
+        if (!match[0] || match.index === undefined) {
+          continue;
+        }
         fragment.append(document.createTextNode(text.slice(previous, match.index)));
         const mark = document.createElement("mark");
         mark.textContent = match[0];
         fragment.append(mark);
         previous = match.index + match[0].length;
       }
+    }
     fragment.append(document.createTextNode(text.slice(previous)));
     element.replaceChildren(fragment);
   }
@@ -211,16 +254,21 @@ export class AcmeJsonView extends AcmeSemanticElement {
     let recover: string | undefined;
     if (held && !paths.has((active as HTMLElement).dataset.path!)) {
       recover = (active as HTMLElement).dataset.path;
-      while (recover !== undefined && !paths.has(recover)) recover = this.previousModel.byPath.get(recover)?.parent;
+      while (recover !== undefined && !paths.has(recover)) {
+        recover = this.previousModel.byPath.get(recover)?.parent;
+      }
       recover ??= "";
       this.focusPath = recover;
     }
-    if (!paths.has(this.focusPath)) this.focusPath = visible[0]?.path ?? "";
-    for (const [path, row] of this.rows)
+    if (!paths.has(this.focusPath)) {
+      this.focusPath = visible[0]?.path ?? "";
+    }
+    for (const [path, row] of this.rows) {
       if (!paths.has(path)) {
         row.item.remove();
         this.rows.delete(path);
       }
+    }
     const children = new Map<HTMLElement, HTMLElement[]>();
     children.set(root, []);
     for (const node of visible) {
@@ -237,8 +285,11 @@ export class AcmeJsonView extends AcmeSemanticElement {
       item.setAttribute("aria-level", String(node.level));
       item.setAttribute("aria-posinset", String(node.position));
       item.setAttribute("aria-setsize", String(node.size));
-      if (branch) item.setAttribute("aria-expanded", String(open));
-      else item.removeAttribute("aria-expanded");
+      if (branch) {
+        item.setAttribute("aria-expanded", String(open));
+      } else {
+        item.removeAttribute("aria-expanded");
+      }
       item.tabIndex = node.path === this.focusPath ? 0 : -1;
       item.dataset.kind = node.kind;
       toggle.hidden = !branch;
@@ -265,13 +316,18 @@ export class AcmeJsonView extends AcmeSemanticElement {
       const siblings = children.get(parent) ?? [];
       siblings.push(item);
       children.set(parent, siblings);
-      if (!children.has(group)) children.set(group, []);
+      if (!children.has(group)) {
+        children.set(group, []);
+      }
     }
     for (const [parent, wanted] of children) {
       let cursor = parent.firstElementChild;
       for (const child of wanted) {
-        if (child !== cursor) parent.insertBefore(child, cursor);
-        else cursor = cursor.nextElementSibling;
+        if (child !== cursor) {
+          parent.insertBefore(child, cursor);
+        } else {
+          cursor = cursor.nextElementSibling;
+        }
       }
       while (cursor) {
         const next = cursor.nextElementSibling;
@@ -280,12 +336,16 @@ export class AcmeJsonView extends AcmeSemanticElement {
       }
     }
     this.previousModel = this.source.model;
-    if (recover !== undefined) this.rows.get(recover)?.item.focus({ preventScroll: true });
+    if (recover !== undefined) {
+      this.rows.get(recover)?.item.focus({ preventScroll: true });
+    }
   }
   render() {
     return html`<div part="root" role="tree" @keydown=${this.key} @click=${this.onClick} @focusin=${(event: FocusEvent) => {
       const path = (event.target as HTMLElement).dataset.path;
-      if (path !== undefined) this.focusPath = path;
+      if (path !== undefined) {
+        this.focusPath = path;
+      }
     }}></div>`;
   }
 }

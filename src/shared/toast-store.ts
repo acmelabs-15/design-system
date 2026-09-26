@@ -1,6 +1,7 @@
 import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import { isPlainRecord } from "./plain-record";
 import { ToastTimers } from "./toast-timers";
+
 export type ToastVariant = "default" | "success" | "warning" | "error";
 export type ToastRecord = Readonly<{
   id: string;
@@ -47,31 +48,41 @@ const runtimes = new WeakMap<ToastStore, ToastRuntime>();
 let storeSequence = 0;
 export function toastRuntime(store: ToastStore): ToastRuntime {
   const runtime = runtimes.get(store);
-  if (!runtime) throw new TypeError("Use a store created by createToastStore");
+  if (!runtime) {
+    throw new TypeError("Use a store created by createToastStore");
+  }
   return runtime;
 }
 function recordData(value: unknown, keys: readonly string[]): Record<string, unknown> {
-  if (!isPlainRecord(value)) throw new TypeError("Toast data requires a plain record");
+  if (!isPlainRecord(value)) {
+    throw new TypeError("Toast data requires a plain record");
+  }
   for (const key of Reflect.ownKeys(value)) {
     const descriptor = Object.getOwnPropertyDescriptor(value, key)!;
-    if (typeof key !== "string" || !keys.includes(key) || !descriptor.enumerable || !("value" in descriptor)) throw new TypeError("Toast records require supported data fields");
+    if (typeof key !== "string" || !keys.includes(key) || !descriptor.enumerable || !("value" in descriptor)) {
+      throw new TypeError("Toast records require supported data fields");
+    }
   }
   return value;
 }
 const fields = ["id", "heading", "description", "variant", "duration", "action", "dismissible"] as const;
 function snapshot(input: ToastInput, id: string): ToastRecord {
   recordData(input, fields);
-  if (typeof id !== "string" || !id.trim() || typeof input.description !== "string" || (input.heading !== undefined && typeof input.heading !== "string"))
+  if (typeof id !== "string" || !id.trim() || typeof input.description !== "string" || (input.heading !== undefined && typeof input.heading !== "string")) {
     throw new TypeError("Toast identity and content require strings");
+  }
   const variant = input.variant ?? "default",
     duration = input.duration ?? 5000,
     dismissible = input.dismissible ?? true;
-  if (!["default", "success", "warning", "error"].includes(variant) || !Number.isFinite(duration) || duration < 0 || typeof dismissible !== "boolean")
+  if (!["default", "success", "warning", "error"].includes(variant) || !Number.isFinite(duration) || duration < 0 || typeof dismissible !== "boolean") {
     throw new TypeError("Invalid Toast variant, duration or dismissible value");
+  }
   let action: ToastRecord["action"];
   if (input.action !== undefined) {
     const data = recordData(input.action, ["id", "label"]);
-    if (typeof data.id !== "string" || !data.id.trim() || typeof data.label !== "string" || !data.label.trim()) throw new TypeError("Toast actions require an identifier and label");
+    if (typeof data.id !== "string" || !data.id.trim() || typeof data.label !== "string" || !data.label.trim()) {
+      throw new TypeError("Toast actions require an identifier and label");
+    }
     action = Object.freeze({ id: data.id, label: data.label });
   }
   return Object.freeze({ id, heading: input.heading, description: input.description, variant, duration, action, dismissible });
@@ -103,13 +114,19 @@ export function createToastStore(): ToastStore {
   }
   function dismiss(id: string, reason: ToastDismissReason) {
     const entry = entries.get().find((entry) => entry.record.id === id);
-    if (!entry || entry.status === "closing") return;
+    if (!entry || entry.status === "closing") {
+      return;
+    }
     timers.cancel(id);
     announced.delete(id);
     entries.set((rows) => Object.freeze(rows.map((item) => (item === entry ? Object.freeze({ ...item, status: "closing" as const, reason }) : item))));
     const detail = Object.freeze({ id, reason });
-    for (const listener of [...listeners]) listener(detail);
-    if (!presentations.size) finish(id, entry.version);
+    for (const listener of [...listeners]) {
+      listener(detail);
+    }
+    if (!presentations.size) {
+      finish(id, entry.version);
+    }
   }
   function attach(presenter: object) {
     presentations.add(presenter);
@@ -128,8 +145,9 @@ export function createToastStore(): ToastStore {
       recordData(input, fields);
       let id = input.id;
       if (id === undefined) {
-        do id = `toast-${prefix}-${++sequence}`;
-        while (entries.get().some((entry) => entry.record.id === id));
+        do {
+          id = `toast-${prefix}-${++sequence}`;
+        } while (entries.get().some((entry) => entry.record.id === id));
       }
       const previous = entries.get().find((entry) => entry.record.id === id);
       const record = snapshot(previous && previous.status === "open" ? { ...previous.record, ...input } : input, id);
@@ -144,14 +162,20 @@ export function createToastStore(): ToastStore {
         fields.filter((field) => field !== "id"),
       );
       const previous = entries.get().find((entry) => entry.record.id === id);
-      if (!previous || previous.status === "closing") return;
+      if (!previous || previous.status === "closing") {
+        return;
+      }
       const record = snapshot({ ...previous.record, ...patch }, id);
       entries.set((rows) => Object.freeze(rows.map((entry) => (entry === previous ? Object.freeze({ ...entry, record, revision: entry.revision + 1 }) : entry))));
-      if (Object.hasOwn(patch, "duration")) timers.start(id, record.duration);
+      if (Object.hasOwn(patch, "duration")) {
+        timers.start(id, record.duration);
+      }
     },
     dismiss: (id: string) => dismiss(id, "programmatic"),
     clear() {
-      for (const entry of [...entries.get()]) dismiss(entry.record.id, "clear");
+      for (const entry of [...entries.get()]) {
+        dismiss(entry.record.id, "clear");
+      }
     },
   });
   const runtime: ToastRuntime = {
@@ -175,7 +199,9 @@ export function createToastStore(): ToastStore {
       return () => listeners.delete(listener);
     },
     claimAnnouncement(id, content) {
-      if (announced.get(id) === content) return false;
+      if (announced.get(id) === content) {
+        return false;
+      }
       announced.set(id, content);
       return true;
     },

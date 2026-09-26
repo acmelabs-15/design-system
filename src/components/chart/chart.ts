@@ -45,8 +45,11 @@ export class AcmeChart extends AcmeElement {
   }
   set series(value: readonly ChartSeries[]) {
     const next = snapshotChartSeries(value);
-    for (const series of next)
-      if (series.color && this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("color", series.color)) throw new TypeError("Chart series color requires a CSS color");
+    for (const series of next) {
+      if (series.color && this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("color", series.color)) {
+        throw new TypeError("Chart series color requires a CSS color");
+      }
+    }
     const previous = this.seriesRecords;
     this.seriesRecords = next;
     this.requestUpdate("series", previous);
@@ -58,7 +61,9 @@ export class AcmeChart extends AcmeElement {
     return this.kind;
   }
   set type(value: ChartType) {
-    if (!["line", "bar", "area"].includes(value)) throw new TypeError("Invalid Chart type");
+    if (!["line", "bar", "area"].includes(value)) {
+      throw new TypeError("Invalid Chart type");
+    }
     const previous = this.kind;
     this.kind = value;
     this.requestUpdate("type", previous);
@@ -74,8 +79,9 @@ export class AcmeChart extends AcmeElement {
       !value.trim() ||
       /^(initial|inherit|unset|revert)/i.test(value) ||
       (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("height", value))
-    )
+    ) {
       throw new TypeError("Chart height requires a CSS dimension");
+    }
     const previous = this.blockSize;
     this.blockSize = value;
     this.requestUpdate("height", previous);
@@ -132,12 +138,15 @@ export class AcmeChart extends AcmeElement {
     return message(this.themeContext.scope.effective.get().locale, "chart." + key, fallback);
   }
   private selectPoint = (point: ChartPointInfo | null) => {
-    if (!this.interactive || !point) return;
+    if (!this.interactive || !point) {
+      return;
+    }
     const current = this.prepared.get().model.values.find((value) => value.key === point.datum.key);
-    if (current)
+    if (current) {
       this.dispatchEvent(
         new CustomEvent("acme-request", { detail: Object.freeze({ action: "point", seriesKey: current.seriesKey, index: current.index }), bubbles: true, composed: true, cancelable: true }),
       );
+    }
   };
   private rendered = ({ surface }: ChartRendererRenderContext<ChartDatum, ChartValue, number>) => {
     const root = surface.element;
@@ -145,9 +154,13 @@ export class AcmeChart extends AcmeElement {
     root.querySelector(".ts-chart__grid")?.setAttribute("part", "grid");
   };
   private tooltipBody = (target: ChartTooltipBodyTarget<ChartDatum, ChartValue, number> | null) => {
-    if (this.tooltipTarget && this.tooltipTarget !== target?.element) render(nothing, this.tooltipTarget);
+    if (this.tooltipTarget && this.tooltipTarget !== target?.element) {
+      render(nothing, this.tooltipTarget);
+    }
     this.tooltipTarget = target?.element;
-    if (!target) return;
+    if (!target) {
+      return;
+    }
     const content = target.content;
     render(
       html`<div part="tooltip">${typeof content === "string" ? content : html`<div class="tooltip-title">${content.title}</div>${content.rows.map((row) => html`<div class="tooltip-row"><span class="swatch" aria-hidden="true" style=${styleMap({ background: row.color ?? "currentColor" })}></span><span>${row.label}</span><b>${row.value}</b></div>`)}`}<slot name="tooltip"></slot></div>`,
@@ -156,25 +169,33 @@ export class AcmeChart extends AcmeElement {
   };
   private measure = () => {
     const height = this.plotElement?.getBoundingClientRect().height ?? 0;
-    if (Math.abs(height - this.measuredHeight) > 0.1) this.measuredHeight = height;
+    if (Math.abs(height - this.measuredHeight) > 0.1) {
+      this.measuredHeight = height;
+    }
   };
   protected firstUpdated() {
     this.resize = new ResizeObserver(this.measure);
-    if (this.plotElement) this.resize.observe(this.plotElement);
+    if (this.plotElement) {
+      this.resize.observe(this.plotElement);
+    }
     this.measure();
   }
   protected updated() {
     if (this.hasValues && !this.label.trim() && !this.warned) {
       console.warn(this.localName, { code: "missing-label", message: "Chart requires a meaningful label" });
       this.warned = true;
-    } else if (this.label.trim()) this.warned = false;
+    } else if (this.label.trim()) {
+      this.warned = false;
+    }
     this.measure();
   }
   connectedCallback() {
     super.connectedCallback();
     if (this.hasUpdated) {
       this.resize = new ResizeObserver(this.measure);
-      if (this.plotElement) this.resize.observe(this.plotElement);
+      if (this.plotElement) {
+        this.resize.observe(this.plotElement);
+      }
       this.measure();
       this.requestUpdate();
     }
@@ -182,7 +203,9 @@ export class AcmeChart extends AcmeElement {
   disconnectedCallback() {
     this.resize?.disconnect();
     this.resize = undefined;
-    if (this.tooltipTarget) render(nothing, this.tooltipTarget);
+    if (this.tooltipTarget) {
+      render(nothing, this.tooltipTarget);
+    }
     this.tooltipTarget = undefined;
     super.disconnectedCallback();
   }

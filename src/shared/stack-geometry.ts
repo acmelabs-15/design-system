@@ -12,7 +12,9 @@ type Options = Readonly<{
 
 /** Finds same-line neighbors from native layout without moving or cloning their elements. */
 export function stackSeparatorRectangles(members: readonly StackMemberRectangle[], options: Options): readonly StackRectangle[] {
-  if (options.thickness <= 0) return Object.freeze([]);
+  if (options.thickness <= 0) {
+    return Object.freeze([]);
+  }
   const main = (rect: StackRectangle) => (options.vertical ? rect.y : rect.x);
   const mainSize = (rect: StackRectangle) => (options.vertical ? rect.height : rect.width);
   const cross = (rect: StackRectangle) => (options.vertical ? rect.x : rect.y);
@@ -25,7 +27,9 @@ export function stackSeparatorRectangles(members: readonly StackMemberRectangle[
   for (const member of ordered) {
     const separateCross = previous && (cross(member) >= cross(previous) + crossSize(previous) || cross(previous) >= cross(member) + crossSize(member));
     const reset = previous && (leading(member) < leading(previous) - 0.1 || (Math.abs(leading(member) - leading(previous)) < 0.1 && separateCross && cross(member) !== cross(previous)));
-    if (!previous || (options.wrap && reset)) lines.push([]);
+    if (!previous || (options.wrap && reset)) {
+      lines.push([]);
+    }
     lines.at(-1)!.push(member);
     previous = member;
   }
@@ -39,7 +43,9 @@ export function stackSeparatorRectangles(members: readonly StackMemberRectangle[
         after = line[index];
       const gapStart = main(before) + mainSize(before),
         gapEnd = main(after);
-      if (gapEnd < gapStart) continue;
+      if (gapEnd < gapStart) {
+        continue;
+      }
       const position = (gapStart + gapEnd - options.thickness) / 2;
       separators.push(
         Object.freeze(

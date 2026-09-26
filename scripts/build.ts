@@ -1,4 +1,4 @@
-import {ensureCorePackageLinks} from "./core-package";
+import { ensureCorePackageLinks } from "./core-package";
 import { writeBrowserIconModules } from "./browser-icon-modules";
 import { writeFlowAssets, browserAssetPlugin } from "./browser-assets";
 /// <reference types="bun" />
@@ -48,13 +48,17 @@ fs.mkdirSync(path.join(DIST, "bundle"), { recursive: true });
 fs.copyFileSync(tokenManifest, path.join(DIST, "tokens.json"));
 fs.copyFileSync(path.join(ROOT, "assets/material-symbols/catalog.json"), path.join(DIST, "icons.json"));
 for (const entry of Object.values(manifest.entries)) {
-  if (entry.producer !== "document") continue;
+  if (entry.producer !== "document") {
+    continue;
+  }
   const target = entry.key.replace(/^document\//, "");
   for (const suffix of [".css", ".css.map"]) {
     const output = path.join(DIST, "styles", target + suffix);
     fs.mkdirSync(path.dirname(output), { recursive: true });
     let content = fs.readFileSync(path.join(ROOT, "src/generated/css", entry.key + suffix), "utf8");
-    if (suffix === ".css") content += "\n/*# sourceMappingURL=" + path.basename(target) + ".css.map */\n";
+    if (suffix === ".css") {
+      content += "\n/*# sourceMappingURL=" + path.basename(target) + ".css.map */\n";
+    }
     fs.writeFileSync(output, content);
   }
 }
@@ -63,7 +67,9 @@ for (const entry of Object.values(manifest.entries)) {
 async function runStage(script: string) {
   const child = Bun.spawn([process.execPath, path.join(ROOT, "scripts", script)], { cwd: ROOT, stdout: "inherit", stderr: "inherit" });
   const status = await child.exited;
-  if (status !== 0) throw new Error(script + " failed with exit " + status);
+  if (status !== 0) {
+    throw new Error(script + " failed with exit " + status);
+  }
 }
 await runStage("build-modules.ts");
 await writeDateRuntime(ROOT, DIST);
@@ -99,7 +105,9 @@ fs.writeFileSync(
     metafile: true,
     plugins: [browserAssetPlugin(DIST)],
   });
-  if (!result.success) throw new AggregateError(result.logs, "Selective browser build failed");
+  if (!result.success) {
+    throw new AggregateError(result.logs, "Selective browser build failed");
+  }
   fs.mkdirSync(path.join(ROOT, ".artifacts"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, ".artifacts/cdn-metafile.json"), JSON.stringify(result.metafile, null, 2) + "\n");
 }
@@ -135,7 +143,9 @@ for (const [name, minify] of [
                   .replace(/^generated\//, "")
                   .replace(/\.styles\.js$/, "");
                 const entry = manifest.entries[key];
-                if (!entry?.exportName) return;
+                if (!entry?.exportName) {
+                  return;
+                }
                 const css = fs.readFileSync(path.join(ROOT, "src/generated/css", key + ".css"), "utf8");
                 const map = fs.readFileSync(path.join(ROOT, "src/generated/css", key + ".css.map"), "utf8");
                 const debugCss = css + "\n/*# sourceURL=acme-styles://" + key + ".css */\n/*# sourceMappingURL=data:application/json;base64," + Buffer.from(map).toString("base64") + " */";
@@ -155,7 +165,9 @@ for (const [name, minify] of [
         ],
   });
   if (!r.success) {
-    for (const l of r.logs) console.error(l);
+    for (const l of r.logs) {
+      console.error(l);
+    }
     process.exit(1);
   }
 }
@@ -175,7 +187,9 @@ for (const [name, minify] of [
     sourcemap: "none",
   });
   if (!r.success) {
-    for (const l of r.logs) console.error(l);
+    for (const l of r.logs) {
+      console.error(l);
+    }
     process.exit(1);
   }
 }

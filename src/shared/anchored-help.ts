@@ -6,6 +6,7 @@ import { OverlayPlacement } from "./overlay-placement";
 import { OverlayPresence } from "./overlay-presence";
 import { SpringValue } from "./spring-value";
 import { StoreSelector } from "./store-connection";
+
 export type HelpSide = "top" | "bottom" | "left" | "right";
 export type HelpAlign = "start" | "center" | "end";
 type Options = {
@@ -48,7 +49,9 @@ export class AnchoredHelp implements ReactiveController {
       after: (phase) => {
         if (phase === "closed") {
           this.positioning?.stop();
-          if (!this.suppressClosed) options.closed();
+          if (!this.suppressClosed) {
+            options.closed();
+          }
         }
       },
     });
@@ -85,7 +88,9 @@ export class AnchoredHelp implements ReactiveController {
       },
       apply: (result) => {
         const surface = options.surface();
-        if (!surface) return;
+        if (!surface) {
+          return;
+        }
         surface.style.setProperty("--_help-x", `${result.x}px`);
         surface.style.setProperty("--_help-y", `${result.y}px`);
         surface.dataset.side = result.placement.split("-")[0];
@@ -115,7 +120,9 @@ export class AnchoredHelp implements ReactiveController {
   }
   hostUpdated() {
     const surface = this.options.surface();
-    if (!surface || !this.host.isConnected) return;
+    if (!surface || !this.host.isConnected) {
+      return;
+    }
     surface.style.setProperty("--_help-opacity", String(Math.max(0, Math.min(1, this.motion.value))));
     if (this.options.open()) {
       this.closing = false;
@@ -138,14 +145,18 @@ export class AnchoredHelp implements ReactiveController {
         const theme = this.host.renderRoot.querySelector("acme-overlay-theme") as HTMLElement & { updateComplete?: Promise<unknown> };
         void Promise.resolve(theme?.updateComplete).then(() => {
           this.opening = false;
-          if (epoch !== this.epoch || !this.host.isConnected || !this.options.open() || !anchor.isConnected) return;
+          if (epoch !== this.epoch || !this.host.isConnected || !this.options.open() || !anchor.isConnected) {
+            return;
+          }
           this.anchor = anchor;
           this.presence.show(anchor);
           this.positioning.start(anchor, surface);
           this.options.opened();
           this.host.requestUpdate();
         });
-      } else if (this.active) this.positioning.refresh();
+      } else if (this.active) {
+        this.positioning.refresh();
+      }
     } else {
       this.epoch++;
       this.opening = false;

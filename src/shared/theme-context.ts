@@ -17,7 +17,9 @@ function locationFor(target: HTMLElement): Location {
   let node: Node | null = target;
   while (node && !visited.has(node)) {
     visited.add(node);
-    if (node.nodeType === 9) roots.add(node as Document);
+    if (node.nodeType === 9) {
+      roots.add(node as Document);
+    }
     if (node.nodeType === 11 && "host" in node) {
       roots.add(node as ShadowRoot);
       node = (node as ShadowRoot).host;
@@ -26,7 +28,9 @@ function locationFor(target: HTMLElement): Location {
     }
   }
   const rendered = (target as HTMLElement & { renderRoot?: Node }).renderRoot ?? target.shadowRoot;
-  if (rendered?.nodeType === 11 && "host" in rendered) roots.add(rendered as ShadowRoot);
+  if (rendered?.nodeType === 11 && "host" in rendered) {
+    roots.add(rendered as ShadowRoot);
+  }
   return { roots, ancestors: visited };
 }
 
@@ -45,56 +49,90 @@ class ThemeDocument {
     document.addEventListener("context-provider", this.providerAvailable, true);
   }
   private providerAvailable = (event: Event): void => {
-    if ("context" in event && event.context === themeContext) this.invalidate();
+    if ("context" in event && event.context === themeContext) {
+      this.invalidate();
+    }
   };
   private changed = (records: MutationRecord[]): void => {
-    if (records.some((record) => record.type === "attributes" || [...record.addedNodes, ...record.removedNodes].some((node) => this.affectsBinding(node)))) this.invalidate();
+    if (records.some((record) => record.type === "attributes" || [...record.addedNodes, ...record.removedNodes].some((node) => this.affectsBinding(node)))) {
+      this.invalidate();
+    }
   };
   private affectsBinding(node: Node): boolean {
-    if (node.nodeType === 1 && ((node as Element).localName === "slot" || (node as Element).querySelector("slot"))) return true;
+    if (node.nodeType === 1 && ((node as Element).localName === "slot" || (node as Element).querySelector("slot"))) {
+      return true;
+    }
     return this.ancestors.has(node);
   }
   invalidate = (): void => {
-    if (this.queued || this.disposed) return;
+    if (this.queued || this.disposed) {
+      return;
+    }
     this.queued = true;
     queueMicrotask(() => {
       this.queued = false;
-      if (this.disposed) return;
+      if (this.disposed) {
+        return;
+      }
       batch(() => {
-        for (const binding of [...this.bindings]) binding.refresh();
+        for (const binding of [...this.bindings]) {
+          binding.refresh();
+        }
       });
     });
   };
   reconcileRoots(binding: ThemeBinding): void {
-    if (this.disposed) return;
+    if (this.disposed) {
+      return;
+    }
     const previous = this.locations.get(binding);
     const next = locationFor(binding.target);
-    for (const node of previous?.ancestors ?? []) if (!next.ancestors.has(node)) this.removeAncestor(node);
-    for (const node of next.ancestors) if (!previous?.ancestors.has(node)) this.ancestors.set(node, (this.ancestors.get(node) ?? 0) + 1);
-    for (const root of previous?.roots ?? []) if (!next.roots.has(root)) this.removeRoot(root);
+    for (const node of previous?.ancestors ?? []) {
+      if (!next.ancestors.has(node)) {
+        this.removeAncestor(node);
+      }
+    }
+    for (const node of next.ancestors) {
+      if (!previous?.ancestors.has(node)) {
+        this.ancestors.set(node, (this.ancestors.get(node) ?? 0) + 1);
+      }
+    }
+    for (const root of previous?.roots ?? []) {
+      if (!next.roots.has(root)) {
+        this.removeRoot(root);
+      }
+    }
     const Observer = this.document.defaultView?.MutationObserver;
-    if (Observer)
-      for (const root of next.roots)
+    if (Observer) {
+      for (const root of next.roots) {
         if (!previous?.roots.has(root)) {
           const existing = this.roots.get(root);
-          if (existing) existing.users++;
-          else {
+          if (existing) {
+            existing.users++;
+          } else {
             const observer = new Observer(this.changed);
             observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["slot", "name"] });
             root.addEventListener("slotchange", this.invalidate, true);
             this.roots.set(root, { observer, users: 1 });
           }
         }
+      }
+    }
     this.locations.set(binding, next);
   }
   private removeAncestor(node: Node): void {
     const remaining = (this.ancestors.get(node) ?? 0) - 1;
-    if (remaining > 0) this.ancestors.set(node, remaining);
-    else this.ancestors.delete(node);
+    if (remaining > 0) {
+      this.ancestors.set(node, remaining);
+    } else {
+      this.ancestors.delete(node);
+    }
   }
   private removeRoot(root: Root): void {
     const existing = this.roots.get(root);
-    if (!existing || --existing.users > 0) return;
+    if (!existing || --existing.users > 0) {
+      return;
+    }
     existing.observer.disconnect();
     root.removeEventListener("slotchange", this.invalidate, true);
     this.roots.delete(root);
@@ -103,11 +141,17 @@ class ThemeDocument {
     this.bindings.delete(binding);
     const previous = this.locations.get(binding);
     if (previous) {
-      for (const root of previous.roots) this.removeRoot(root);
-      for (const node of previous.ancestors) this.removeAncestor(node);
+      for (const root of previous.roots) {
+        this.removeRoot(root);
+      }
+      for (const node of previous.ancestors) {
+        this.removeAncestor(node);
+      }
       this.locations.delete(binding);
     }
-    if (this.bindings.size) return;
+    if (this.bindings.size) {
+      return;
+    }
     this.disposed = true;
     this.contextRoot.detach(this.document.documentElement);
     this.document.removeEventListener("context-provider", this.providerAvailable, true);
@@ -130,7 +174,9 @@ class ThemeBinding {
   private active = false;
   private suppliedSource?: ThemeSource;
   setSource(source: ThemeSource | undefined): void {
-    if (source === this.suppliedSource) return;
+    if (source === this.suppliedSource) {
+      return;
+    }
     this.suppliedSource = source;
     this.refresh();
   }
@@ -147,7 +193,9 @@ class ThemeBinding {
       dispose?.();
       return;
     }
-    if (dispose !== this.unsubscribe) this.unsubscribe?.();
+    if (dispose !== this.unsubscribe) {
+      this.unsubscribe?.();
+    }
     this.unsubscribe = dispose;
     batch(() => {
       this.parent.set({ source });
@@ -159,7 +207,9 @@ class ThemeBinding {
     this.refresh();
   }
   refresh = (): void => {
-    if (!this.active) return;
+    if (!this.active) {
+      return;
+    }
     if (this.connectedLifetime && !this.target.isConnected) {
       this.disconnect();
       return;
@@ -184,12 +234,16 @@ class ThemeBinding {
       this.scope.setParent(this.suppliedSource);
       this.scope.setSystemAppearance(document.system.appearance);
       // A supplied complete scope is a new root boundary, not an omitted inherited setting.
-      if (!this.suppliedSource && this.target.isConnected) this.target.dispatchEvent(new ContextEvent(themeContext, this.target, this.receive, true));
+      if (!this.suppliedSource && this.target.isConnected) {
+        this.target.dispatchEvent(new ContextEvent(themeContext, this.target, this.receive, true));
+      }
     });
     document.reconcileRoots(this);
   };
   disconnect(): void {
-    if (!this.active) return;
+    if (!this.active) {
+      return;
+    }
     this.active = false;
     this.unsubscribe?.();
     this.unsubscribe = undefined;
@@ -215,7 +269,9 @@ export type ThemeContextBinding = Readonly<{ scope: ThemeScope; parentSource: Re
 
 /** Follows a connected opener until release or detachment, then retains its final resolved scope. */
 export function bindThemeContext(opener: HTMLElement): ThemeContextBinding {
-  if (!opener.isConnected) throw new TypeError("Theme opener must be connected");
+  if (!opener.isConnected) {
+    throw new TypeError("Theme opener must be connected");
+  }
   const binding = new ThemeBinding(opener, true);
   binding.connect();
   return Object.freeze({ scope: binding.scope, parentSource: binding.parentSource, refresh: binding.refresh, release: () => binding.disconnect() });
@@ -235,10 +291,14 @@ export class ThemeContextController implements ReactiveController {
     this.scope = this.binding.scope;
     this.parentSource = this.binding.parentSource;
     host.addController(this);
-    if (options.provide) this.provide();
+    if (options.provide) {
+      this.provide();
+    }
   }
   provide(): void {
-    if (this.provider) return;
+    if (this.provider) {
+      return;
+    }
     this.provider = new ContextProvider(this.host, { context: themeContext, initialValue: this.scope.effective });
     this.binding.providerAdded();
   }

@@ -24,7 +24,9 @@ export class AcmeToolbar extends AcmeSemanticElement {
     return this.axis;
   }
   set orientation(value: "horizontal" | "vertical") {
-    if (!["horizontal", "vertical"].includes(value)) throw new TypeError("Invalid Toolbar orientation");
+    if (!["horizontal", "vertical"].includes(value)) {
+      throw new TypeError("Invalid Toolbar orientation");
+    }
     const previous = this.axis;
     this.axis = value;
     this.requestUpdate("orientation", previous);

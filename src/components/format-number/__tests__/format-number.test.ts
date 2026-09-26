@@ -2,6 +2,7 @@ import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeFormatNumber } from "../format-number";
 import type { AcmeFormatByte } from "../../format-byte/format-byte";
+
 afterEach(() => document.body.replaceChildren());
 const text = (element: Element) => element.shadowRoot!.querySelector('[part="root"]')!.textContent;
 test("missing and empty values stay absent while zero renders", async () => {

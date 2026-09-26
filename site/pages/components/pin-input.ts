@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 export const doc: Doc = {
   id: "pin-input",
   title: "Pin Input",

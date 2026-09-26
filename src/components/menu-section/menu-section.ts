@@ -3,6 +3,7 @@ import { property } from "lit/decorators.js";
 import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { menuSectionStructureCss } from "../../generated/components/menu-section/menu-section-structure.styles";
+
 let sequence = 0;
 /** A named group within a menu.
  * @slot - Menu items.

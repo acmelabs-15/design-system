@@ -1,4 +1,4 @@
-import {readCorePackage} from "../scripts/core-package";
+import { readCorePackage } from "../scripts/core-package";
 // Writes the element reference the design-system skill reads: one section per docs page with the
 // lede, every example's markup and the API of each element, all from the same sources as the
 // docs site. Run: bun site/skill-reference.ts [out.md]   (default: the skill's references/).
@@ -34,7 +34,9 @@ const lines: string[] = [
   ...docs.map((d) => `- [${d.title}](#${d.id}): ${(d.tags ?? []).map((t) => `\`<${t}>\``).join(", ")}`),
   "",
 ];
-for (const d of docs) lines.push(...(await docToMarkdown(d, byTag, { level: 2 })).map((l, i) => (i === 0 ? `${l}\n\n<a id="${d.id}"></a>` : l)));
+for (const d of docs) {
+  lines.push(...(await docToMarkdown(d, byTag, { level: 2 })).map((l, i) => (i === 0 ? `${l}\n\n<a id="${d.id}"></a>` : l)));
+}
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, `${lines.join("\n")}\n`);
 console.log(`wrote ${out}: ${docs.length} sections, ${api.length} elements`);

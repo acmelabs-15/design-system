@@ -11,9 +11,13 @@ export function submitImplicitly(form: HTMLFormElement): void {
     (element) => element.form === form && (element.type === "submit" || element.type === "image"),
   );
   if (submitter) {
-    if (!submitter.matches(":disabled")) submitter.click();
+    if (!submitter.matches(":disabled")) {
+      submitter.click();
+    }
     return;
   }
   const fields = Array.from(form.elements).filter((element) => textControls.has(element) || (element.localName === "input" && blockingTypes.has((element as HTMLInputElement).type)));
-  if (fields.length <= 1) form.ownerDocument.defaultView!.HTMLFormElement.prototype.requestSubmit.call(form);
+  if (fields.length <= 1) {
+    form.ownerDocument.defaultView!.HTMLFormElement.prototype.requestSubmit.call(form);
+  }
 }

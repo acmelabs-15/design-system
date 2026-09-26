@@ -9,6 +9,7 @@ import { optionalString } from "./attributes";
 import { GroupMemberController, groupMemberStyles } from "./group-member";
 import { sharedCss } from "../base";
 import { textControlCss } from "../generated/shared/text-control.styles";
+
 export type TextNativeControl = HTMLInputElement | HTMLTextAreaElement;
 type TextOptions = Readonly<{ placeholder: string; autocomplete: string; inputMode: string; minLength: number; maxLength: number; configuration: string }>;
 const optionalLength = { fromAttribute: (value: string | null) => (value === null ? -1 : Number(value)) };
@@ -60,7 +61,9 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
   }
   set minLength(value: number | undefined) {
     const next = value ?? -1;
-    if (!Number.isInteger(next) || next < -1) throw new RangeError("minLength must be -1 or a nonnegative integer");
+    if (!Number.isInteger(next) || next < -1) {
+      throw new RangeError("minLength must be -1 or a nonnegative integer");
+    }
     this.minimumLength = next;
     this.nativeForm?.sync();
     this.requestUpdate("minLength");
@@ -72,7 +75,9 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
   }
   set maxLength(value: number | undefined) {
     const next = value ?? -1;
-    if (!Number.isInteger(next) || next < -1) throw new RangeError("maxLength must be -1 or a nonnegative integer");
+    if (!Number.isInteger(next) || next < -1) {
+      throw new RangeError("maxLength must be -1 or a nonnegative integer");
+    }
     this.maximumLength = next;
     this.nativeForm?.sync();
     this.requestUpdate("maxLength");
@@ -85,7 +90,9 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
     return this.appearance.effective.get().size!;
   }
   set size(value: "small" | "medium" | "large" | undefined) {
-    if (value !== undefined && !["small", "medium", "large"].includes(value)) throw new TypeError("Invalid text control size");
+    if (value !== undefined && !["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid text control size");
+    }
     const previous = this.size;
     this.appearance.setAuthored({ size: value });
     this.requestUpdate("size", previous);
@@ -122,8 +129,12 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
     target: () => (this.control.isConnected ? this.control : undefined),
     synchronize: (state, options) => {
       this.configure(this.control);
-      if (this.control.defaultValue !== state.defaultValue) this.control.defaultValue = state.defaultValue;
-      if (this.control.value !== state.value) this.control.value = state.value;
+      if (this.control.defaultValue !== state.defaultValue) {
+        this.control.defaultValue = state.defaultValue;
+      }
+      if (this.control.value !== state.value) {
+        this.control.value = state.value;
+      }
       this.control.name = state.name;
       this.control.disabled = state.disabled || state.platformDisabled;
       this.control.required = state.required;
@@ -135,8 +146,11 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
         ["minlength", options.minLength],
         ["maxlength", options.maxLength],
       ] as const) {
-        if (value < 0) this.control.removeAttribute(attribute);
-        else if (this.control.getAttribute(attribute) !== String(value)) this.control.setAttribute(attribute, String(value));
+        if (value < 0) {
+          this.control.removeAttribute(attribute);
+        } else if (this.control.getAttribute(attribute) !== String(value)) {
+          this.control.setAttribute(attribute, String(value));
+        }
       }
     },
     validate: () => this.validateValue(),
@@ -168,13 +182,17 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
   }
   protected edited(): void {}
   protected onNativeInput(_event: InputEvent): void {
-    if (this.nativeForm.effectiveDisabled || this.readOnly) return;
+    if (this.nativeForm.effectiveDisabled || this.readOnly) {
+      return;
+    }
     this.nativeForm.setValue(this.control.value, "user");
     this.edited();
     this.emitValue("acme-input");
   }
   protected onNativeChange(): void {
-    if (this.nativeForm.effectiveDisabled || this.readOnly) return;
+    if (this.nativeForm.effectiveDisabled || this.readOnly) {
+      return;
+    }
     this.nativeForm.setValue(this.control.value, "user");
     this.emitValue("acme-change");
   }
@@ -184,7 +202,9 @@ export abstract class AcmeTextControl extends AcmeReadOnlyFormElement<string, Te
     this.control.addEventListener("input", (event) => this.onNativeInput(event as InputEvent));
     this.control.addEventListener("change", () => this.onNativeChange());
     this.addEventListener("click", (event) => {
-      if (event.composedPath()[0] === this) this.focus();
+      if (event.composedPath()[0] === this) {
+        this.focus();
+      }
     });
   }
   select() {

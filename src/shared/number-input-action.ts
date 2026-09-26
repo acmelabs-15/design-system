@@ -68,17 +68,25 @@ export abstract class AcmeNumberInputAction extends AcmeActionElement {
   }
   protected synchronizeControl() {
     super.synchronizeControl();
-    if (this.control?.localName === "button") (this.control as HTMLButtonElement).disabled = this.effectiveDisabled;
-    if (this.effectiveDisabled) this.owner?.release(this);
+    if (this.control?.localName === "button") {
+      (this.control as HTMLButtonElement).disabled = this.effectiveDisabled;
+    }
+    if (this.effectiveDisabled) {
+      this.owner?.release(this);
+    }
   }
   protected activate(event: MouseEvent) {
-    if (event.detail === 0) this.owner?.step(this.direction);
+    if (event.detail === 0) {
+      this.owner?.step(this.direction);
+    }
   }
   constructor() {
     super();
     registerNumberInputPart(this.registration);
     this.addEventListener("pointerdown", (event) => {
-      if (!this.effectiveDisabled) this.owner?.press(event, this.direction);
+      if (!this.effectiveDisabled) {
+        this.owner?.press(event, this.direction);
+      }
     });
   }
   private reconnectOwner(): void {
@@ -87,7 +95,9 @@ export abstract class AcmeNumberInputAction extends AcmeActionElement {
     this.ownerState.set({});
     this.context.hostDisconnected();
     this.context.value = undefined;
-    if (this.isConnected) this.context.hostConnected();
+    if (this.isConnected) {
+      this.context.hostConnected();
+    }
     this.requestUpdate();
   }
   disconnectedCallback() {

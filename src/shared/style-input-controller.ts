@@ -31,8 +31,12 @@ export class StyleInputController<Key extends StyleInputKey> {
   constructor(host: ReactiveElement, properties: readonly Key[], options: Options<Key>) {
     const hostClass = host.constructor as typeof ReactiveElement;
     for (const property of properties) {
-      if (!Object.hasOwn(styleInputSchema, property)) throw new TypeError("Unknown style input: " + property);
-      if (hostClass.elementProperties.has(property)) throw new TypeError("Style inputs must stay outside Lit property metadata: " + property);
+      if (!Object.hasOwn(styleInputSchema, property)) {
+        throw new TypeError("Unknown style input: " + property);
+      }
+      if (hostClass.elementProperties.has(property)) {
+        throw new TypeError("Style inputs must stay outside Lit property metadata: " + property);
+      }
       this.attributes.set(styleInputSchema[property].attribute, property);
     }
     const selected = new Set(properties);
@@ -52,16 +56,24 @@ export class StyleInputController<Key extends StyleInputKey> {
       .filter((key): key is Key => typeof key === "string" && selected.has(key as Key))
       .map((key) => {
         const descriptor = Object.getOwnPropertyDescriptor(host, key)!;
-        if (!descriptor.configurable || !Object.hasOwn(descriptor, "value")) throw new TypeError("Pre-upgrade style inputs must be configurable data properties: " + key);
+        if (!descriptor.configurable || !Object.hasOwn(descriptor, "value")) {
+          throw new TypeError("Pre-upgrade style inputs must be configurable data properties: " + key);
+        }
         return [key, descriptor.value] as const;
       });
     for (const attribute of host.attributes) {
-      if (!this.attributes.has(attribute.name)) continue;
+      if (!this.attributes.has(attribute.name)) {
+        continue;
+      }
       this.initialAttributes.set(attribute.name, attribute.value);
       this.readAttribute(attribute.name, attribute.value);
     }
-    for (const [key, value] of own) this.values.set(key, value);
-    for (const [key] of own) Reflect.deleteProperty(host, key);
+    for (const [key, value] of own) {
+      this.values.set(key, value);
+    }
+    for (const [key] of own) {
+      Reflect.deleteProperty(host, key);
+    }
     new StoreSelector(host, () => this.values.entries);
     attachStyleInputTarget(host, (inputs, previousKeys) => this.apply(inputs, previousKeys as readonly Key[]), properties);
   }
@@ -84,7 +96,9 @@ export class StyleInputController<Key extends StyleInputKey> {
 
   /** Returns false for attributes that belong to another host behavior. */
   attributeChanged(name: string, oldValue: string | null, value: string | null): boolean {
-    if (!this.attributes.has(name)) return false;
+    if (!this.attributes.has(name)) {
+      return false;
+    }
     // Each queued upgrade callback consumes only its own captured value. Reentrant changes can
     // arrive before other initial callbacks, or connect the host before an outer callback returns.
     if (oldValue === null && this.initialAttributes.get(name) === value) {
@@ -99,6 +113,8 @@ export class StyleInputController<Key extends StyleInputKey> {
     const property = this.attributes.get(name)!;
     const result = parseResponsiveAttribute(value, this.scalar(property), { numbers: styleInputSchema[property].numeric !== "none" });
     this.values.set(property, result.value);
-    if (result.diagnostic) this.diagnostic?.({ ...result.diagnostic, property, attribute: name });
+    if (result.diagnostic) {
+      this.diagnostic?.({ ...result.diagnostic, property, attribute: name });
+    }
   }
 }

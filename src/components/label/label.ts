@@ -19,10 +19,14 @@ export class AcmeLabel extends AcmeElement {
     return this.controlId;
   }
   set for(value: string | undefined) {
-    if (value !== undefined && typeof value !== "string") throw new TypeError("Label for must be a string or undefined");
+    if (value !== undefined && typeof value !== "string") {
+      throw new TypeError("Label for must be a string or undefined");
+    }
     const previous = this.controlId;
     this.controlId = value;
-    if (this.content) this.syncRoot(this.content.root);
+    if (this.content) {
+      this.syncRoot(this.content.root);
+    }
     this.requestUpdate("for", previous);
   }
   private readonly lightStyles = new RootStyles(this, [labelLightCss]);
@@ -39,24 +43,36 @@ export class AcmeLabel extends AcmeElement {
       root.addEventListener("click", this.focusActivatedControl);
     }
     if (this.for === undefined) {
-      if (root.hasAttribute("for")) root.removeAttribute("for");
-    } else if (root.htmlFor !== this.for) root.htmlFor = this.for;
+      if (root.hasAttribute("for")) {
+        root.removeAttribute("for");
+      }
+    } else if (root.htmlFor !== this.for) {
+      root.htmlFor = this.for;
+    }
   }
   private pendingActivation?: () => void;
   private focusActivatedControl = (event: MouseEvent) => {
     const label = event.currentTarget as HTMLLabelElement,
       control = label.control;
-    if (!control || !control.localName.includes("-") || event.composedPath().includes(control)) return;
+    if (!control || !control.localName.includes("-") || event.composedPath().includes(control)) {
+      return;
+    }
     this.pendingActivation?.();
     const view = this.ownerDocument.defaultView!;
     const cleanup = () => {
       view.clearTimeout(timer);
       control.removeEventListener("click", activated, true);
-      if (this.pendingActivation === cleanup) this.pendingActivation = undefined;
+      if (this.pendingActivation === cleanup) {
+        this.pendingActivation = undefined;
+      }
     };
     const activated = (activation: Event) => {
-      if (activation.composedPath()[0] !== control) return;
-      if (this.isConnected && label === this.content.root && label.control === control) control.focus({ preventScroll: true });
+      if (activation.composedPath()[0] !== control) {
+        return;
+      }
+      if (this.isConnected && label === this.content.root && label.control === control) {
+        control.focus({ preventScroll: true });
+      }
       cleanup();
     };
     control.addEventListener("click", activated, { capture: true });
@@ -66,7 +82,9 @@ export class AcmeLabel extends AcmeElement {
   constructor() {
     super();
     this.addEventListener("click", (event) => {
-      if (event.composedPath()[0] === this) this.click();
+      if (event.composedPath()[0] === this) {
+        this.click();
+      }
     });
   }
   disconnectedCallback() {

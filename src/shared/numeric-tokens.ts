@@ -9,11 +9,15 @@ export type NumericTokenDefinition = Readonly<{
 }>;
 
 function checkCategory(category: NumericTokenCategory): void {
-  if (category !== "spacing" && category !== "sizes") throw new TypeError("Unknown numeric token category: " + category);
+  if (category !== "spacing" && category !== "sizes") {
+    throw new TypeError("Unknown numeric token category: " + category);
+  }
 }
 
 function checkKey(key: number): asserts key is NumericTokenKey {
-  if (typeof key !== "number" || !(numericTokenKeys as readonly number[]).includes(key)) throw new TypeError("Unknown numeric token key: " + key);
+  if (typeof key !== "number" || !(numericTokenKeys as readonly number[]).includes(key)) {
+    throw new TypeError("Unknown numeric token key: " + key);
+  }
 }
 
 /** Positive token properties are independent for spacing and dimensions. */
@@ -26,8 +30,12 @@ export function numericTokenProperty(category: NumericTokenCategory, key: Numeri
 /** Signed spacing follows its positive theme token; size tokens remain nonnegative. */
 export function numericTokenValue(category: NumericTokenCategory, key: number): string {
   checkCategory(category);
-  if (typeof key !== "number") throw new TypeError("Numeric token keys must be numbers");
-  if (category === "sizes" && key < 0) throw new TypeError("Size tokens cannot be negative");
+  if (typeof key !== "number") {
+    throw new TypeError("Numeric token keys must be numbers");
+  }
+  if (category === "sizes" && key < 0) {
+    throw new TypeError("Size tokens cannot be negative");
+  }
   const positive = Math.abs(key);
   checkKey(positive);
   const value = `var(${numericTokenProperty(category, positive)})`;

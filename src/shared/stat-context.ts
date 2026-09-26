@@ -2,6 +2,7 @@ import { ContextConsumer, createContext } from "@lit/context";
 import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
+
 export type StatState = Readonly<{ loading: boolean }>;
 export type StatPart = { host: ReactiveElement; currentOwner(): StatOwner | undefined; reconnect(): void };
 export interface StatOwner {
@@ -27,7 +28,9 @@ export class StatBinding {
       context: statContext,
       subscribe: true,
       callback: (value) => {
-        if (value === this.current) return;
+        if (value === this.current) {
+          return;
+        }
         this.release?.();
         this.source.set({ value });
         this.release = value.register(this.record);
@@ -57,6 +60,8 @@ export class StatBinding {
     this.source.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
 }

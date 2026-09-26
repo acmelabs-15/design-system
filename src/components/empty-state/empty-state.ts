@@ -26,7 +26,9 @@ export class AcmeEmptyState extends AcmeSemanticElement {
     return this.scale;
   }
   set size(value: "small" | "medium" | "large") {
-    if (!["small", "medium", "large"].includes(value)) throw new TypeError("Invalid Empty State size");
+    if (!["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid Empty State size");
+    }
     const previous = this.scale;
     this.scale = value;
     this.requestUpdate("size", previous);
@@ -37,7 +39,9 @@ export class AcmeEmptyState extends AcmeSemanticElement {
     return this.treatment;
   }
   set variant(value: "default" | "outline" | "subtle") {
-    if (!["default", "outline", "subtle"].includes(value)) throw new TypeError("Invalid Empty State variant");
+    if (!["default", "outline", "subtle"].includes(value)) {
+      throw new TypeError("Invalid Empty State variant");
+    }
     const previous = this.treatment;
     this.treatment = value;
     this.requestUpdate("variant", previous);

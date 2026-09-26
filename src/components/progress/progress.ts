@@ -12,6 +12,7 @@ import { Places } from "../../shared/places";
 import { RepeatingMotion } from "../../shared/repeating-motion";
 import { AcmeSemanticElement } from "../../shared/semantic-element";
 import { SpringValue } from "../../shared/spring-value";
+
 export type ProgressVariant = "default" | "success" | "error" | "warning" | "secondary";
 /** Task completion with native progress semantics and an explicit indeterminate state.
  * @slot - Optional visible label; otherwise label supplies the accessible name.
@@ -32,7 +33,9 @@ export class AcmeProgress extends AcmeSemanticElement {
     return this.treatment;
   }
   set variant(value: ProgressVariant) {
-    if (!["default", "success", "error", "warning", "secondary"].includes(value)) throw new TypeError("Invalid Progress variant");
+    if (!["default", "success", "error", "warning", "secondary"].includes(value)) {
+      throw new TypeError("Invalid Progress variant");
+    }
     const previous = this.treatment;
     this.treatment = value;
     this.requestUpdate("variant", previous);
@@ -43,7 +46,9 @@ export class AcmeProgress extends AcmeSemanticElement {
     return this.shapeValue;
   }
   set shape(value: "linear") {
-    if (value !== "linear") throw new TypeError("Progress supports the linear shape");
+    if (value !== "linear") {
+      throw new TypeError("Progress supports the linear shape");
+    }
     const previous = this.shapeValue;
     this.shapeValue = value;
     this.requestUpdate("shape", previous);
@@ -77,7 +82,9 @@ export class AcmeProgress extends AcmeSemanticElement {
     }
     this.movement.update();
     const code = reading.kind === "invalid" ? reading.code : reading.kind === "determinate" && reading.clamped ? "progress-value-clamped" : "";
-    if (code && code !== this.diagnostic) console.warn(this.localName, { code });
+    if (code && code !== this.diagnostic) {
+      console.warn(this.localName, { code });
+    }
     this.diagnostic = code;
   }
   protected updated() {

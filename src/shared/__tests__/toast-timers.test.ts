@@ -18,7 +18,9 @@ function clock() {
       const end = time + ms;
       while (true) {
         const next = [...jobs].sort((a, b) => a[1].at - b[1].at)[0];
-        if (!next || next[1].at > end) break;
+        if (!next || next[1].at > end) {
+          break;
+        }
         time = next[1].at;
         jobs.delete(next[0]);
         next[1].run();

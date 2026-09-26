@@ -22,7 +22,9 @@ export class AcmeAccordion extends AcmeElement {
     return this.values;
   }
   set expanded(value: readonly string[] | undefined) {
-    if (value !== undefined && (!Array.isArray(value) || [...value].some((key) => typeof key !== "string" || !key.trim()))) throw new TypeError("expanded requires nonempty string keys");
+    if (value !== undefined && (!Array.isArray(value) || [...value].some((key) => typeof key !== "string" || !key.trim()))) {
+      throw new TypeError("expanded requires nonempty string keys");
+    }
     const previous = this.values;
     this.values = Object.freeze([...new Set(value ?? [])]);
     this.requestUpdate("expanded", previous);
@@ -70,21 +72,29 @@ export class AcmeAccordion extends AcmeElement {
     return [...this.members.get()].sort((a, b) => (a.host.compareDocumentPosition(b.host) & Node.DOCUMENT_POSITION_PRECEDING ? 1 : -1));
   }
   private toggle(member: AccordionMember) {
-    if (this.disabled || member.disabled() || !this.owner.valid(member)) return;
+    if (this.disabled || member.disabled() || !this.owner.valid(member)) {
+      return;
+    }
     const key = member.value(),
       open = this.expanded.includes(key);
-    if (open && !this.multiple && !this.collapsible) return;
+    if (open && !this.multiple && !this.collapsible) {
+      return;
+    }
     this.expanded = open ? this.expanded.filter((value) => value !== key) : this.multiple ? [...this.expanded, key] : [key];
     this.dispatchEvent(new CustomEvent("acme-expanded-change", { bubbles: true, composed: true, detail: Object.freeze({ expanded: this.expanded }) }));
   }
   private navigate(member: AccordionMember, event: KeyboardEvent) {
-    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.isComposing || this.disabled) return;
+    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.isComposing || this.disabled) {
+      return;
+    }
     const entries = this.ordered().filter((item) => {
       const target = item.scope.counterpart("trigger")?.target();
       return this.owner.valid(item) && !item.disabled() && target && isFocusable(target, { getShadowRoot: true });
     });
     const index = entries.indexOf(member);
-    if (index < 0) return;
+    if (index < 0) {
+      return;
+    }
     const next =
       event.key === "Home"
         ? 0
@@ -108,7 +118,9 @@ export class AcmeAccordion extends AcmeElement {
       this.warned = signature;
       console.warn(this.localName, { code: "accordion-values-must-be-unique" });
     }
-    if (!invalid) this.warned = undefined;
+    if (!invalid) {
+      this.warned = undefined;
+    }
   }
   render() {
     return html`<div part="root"><slot></slot></div>`;

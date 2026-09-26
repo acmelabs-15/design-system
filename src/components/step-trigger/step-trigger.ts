@@ -47,7 +47,9 @@ export class AcmeStepTrigger extends AcmeSemanticElement {
   private synchronize() {
     const owner = this.binding.current,
       button = this.button;
-    if (!button) return;
+    if (!button) {
+      return;
+    }
     button.setAttribute("aria-selected", String(!!owner?.current(this.key)));
     button.setAttribute("aria-disabled", String(this.disabled || (!!owner?.view.get().linear && !owner.current(this.key))));
     button.disabled = this.disabled;
@@ -60,10 +62,14 @@ export class AcmeStepTrigger extends AcmeSemanticElement {
     this.synchronize();
   }
   click() {
-    if (!this.disabled) this.button?.click();
+    if (!this.disabled) {
+      this.button?.click();
+    }
   }
   focus(options?: FocusOptions) {
-    if (!this.disabled) this.button?.focus(options);
+    if (!this.disabled) {
+      this.button?.focus(options);
+    }
   }
   disconnectedCallback() {
     this.item.set({});
@@ -78,7 +84,9 @@ export class AcmeStepTrigger extends AcmeSemanticElement {
     return html`<button type="button" part="root trigger" ?disabled=${this.disabled} aria-selected=${String(current)} aria-description=${complete ? message(this.themeContext.scope.effective.get().locale, "steps.complete", "Completed") : nothing} tabindex=${owner?.tabindex(this.binding.record) ?? -1} ?data-current=${current} ?data-complete=${complete} @focus=${() => owner?.focus(this.binding.record)} @click=${(
       event: MouseEvent,
     ) => {
-      if (!event.defaultPrevented && !this.disabled) owner?.move(this.binding.record);
+      if (!event.defaultPrevented && !this.disabled) {
+        owner?.move(this.binding.record);
+      }
     }}><span part="indicator" aria-hidden="true"><slot name="indicator">${complete ? html`<acme-check-icon size="16px"></acme-check-icon>` : index + 1}</slot></span><span part="label"><slot></slot></span></button>`;
   }
 }

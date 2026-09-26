@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { html } from "lit";
 import "../../../define/show";
+
 async function settle(host: HTMLElement & { updateComplete: Promise<boolean> }) {
   await host.updateComplete;
   await host.updateComplete;

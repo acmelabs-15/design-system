@@ -26,7 +26,9 @@ const sha = (text: string) => new Bun.CryptoHasher("sha256").update(text).digest
 const slash = (file: string) => file.split(path.sep).join("/");
 const read = (root: string, file: string) => fs.readFileSync(path.join(root, file), "utf8");
 const writeChanged = (file: string, text: string) => {
-  if (fs.existsSync(file) && fs.readFileSync(file, "utf8") === text) return;
+  if (fs.existsSync(file) && fs.readFileSync(file, "utf8") === text) {
+    return;
+  }
   fs.mkdirSync(path.dirname(file), { recursive: true });
   const temporary = file + "." + process.pid + ".tmp";
   fs.writeFileSync(temporary, text);
@@ -46,7 +48,9 @@ function fullColorTokens(tokens: TokenOrValue[], self?: string): TokenOrValue[] 
       const fallback = fullColorTokens(token.value.fallback, self);
       return fallback === token.value.fallback ? token : { ...token, value: { ...token.value, fallback } };
     }
-    if (token.type !== "function") return token;
+    if (token.type !== "function") {
+      return token;
+    }
     const args = fullColorTokens(token.value.arguments, self);
     const significant = args.filter((value) => value.type !== "token" || value.value.type !== "white-space");
     const first = significant[0];
@@ -54,9 +58,11 @@ function fullColorTokens(tokens: TokenOrValue[], self?: string): TokenOrValue[] 
       const name = first.value.name.ident.slice(0, -6);
       if (name !== self && colorTokens.has(name)) {
         const origin: TokenOrValue = { type: "var", value: { name: { ident: name } } };
-        if (significant.length === 1) return origin;
+        if (significant.length === 1) {
+          return origin;
+        }
         const separator = significant[1];
-        if (significant.length === 3 && separator.type === "token" && (separator.value.type === "comma" || (separator.value.type === "delim" && separator.value.value === "/")))
+        if (significant.length === 3 && separator.type === "token" && (separator.value.type === "comma" || (separator.value.type === "delim" && separator.value.value === "/"))) {
           return {
             type: "function",
             value: {
@@ -64,6 +70,7 @@ function fullColorTokens(tokens: TokenOrValue[], self?: string): TokenOrValue[] 
               arguments: [ident("from"), space, origin, space, ident("r"), space, ident("g"), space, ident("b"), space, { type: "token", value: { type: "delim", value: "/" } }, space, significant[2]],
             },
           };
+        }
       }
     }
     return args === token.value.arguments ? token : { ...token, value: { ...token.value, arguments: args } };
@@ -76,7 +83,9 @@ function transformCss(source: string, filename: string, visitor: Visitor<CustomA
   // A same-length temporary property keeps source-map columns aligned with the authored CSS.
   let id = 0;
   let marker = "--acme00000";
-  while (source.includes(marker)) marker = "--acme" + String(++id).padStart(5, "0");
+  while (source.includes(marker)) {
+    marker = "--acme" + String(++id).padStart(5, "0");
+  }
   let prepared = "",
     quote = "",
     boundary = true,
@@ -91,12 +100,16 @@ function transformCss(source: string, filename: string, visitor: Visitor<CustomA
         prepared += source[++i] ?? "";
         continue;
       }
-      if (c === quote) quote = "";
+      if (c === quote) {
+        quote = "";
+      }
       continue;
     }
     if (source.startsWith("/*", i)) {
       const end = source.indexOf("*/", i + 2);
-      if (end < 0) throw new Error("Unterminated CSS comment");
+      if (end < 0) {
+        throw new Error("Unterminated CSS comment");
+      }
       prepared += source.slice(i, end + 2);
       i = end + 1;
       continue;
@@ -114,7 +127,9 @@ function transformCss(source: string, filename: string, visitor: Visitor<CustomA
     }
     const block = blocks.at(-1);
     if (boundary && block && !block.valueBlock && !parentheses && !brackets) {
-      if (source.startsWith("--", i)) block.customValue = true;
+      if (source.startsWith("--", i)) {
+        block.customValue = true;
+      }
       if (/^line-height\s*:\s*calc\(/i.test(source.slice(i))) {
         prepared += marker;
         i += "line-height".length - 1;
@@ -123,10 +138,18 @@ function transformCss(source: string, filename: string, visitor: Visitor<CustomA
       }
     }
     prepared += c;
-    if (c === "(") parentheses++;
-    if (c === ")") parentheses--;
-    if (c === "[") brackets++;
-    if (c === "]") brackets--;
+    if (c === "(") {
+      parentheses++;
+    }
+    if (c === ")") {
+      parentheses--;
+    }
+    if (c === "[") {
+      brackets++;
+    }
+    if (c === "]") {
+      brackets--;
+    }
     if (!parentheses && !brackets && c === "{") {
       const valueBlock = !!(block?.customValue || block?.valueBlock);
       blocks.push({ customValue: false, valueBlock });
@@ -135,9 +158,13 @@ function transformCss(source: string, filename: string, visitor: Visitor<CustomA
       blocks.pop();
       boundary = !blocks.at(-1)?.customValue && !blocks.at(-1)?.valueBlock;
     } else if (!parentheses && !brackets && !block?.valueBlock && c === ";") {
-      if (block) block.customValue = false;
+      if (block) {
+        block.customValue = false;
+      }
       boundary = true;
-    } else if (!/\s/.test(c)) boundary = false;
+    } else if (!/\s/.test(c)) {
+      boundary = false;
+    }
   }
   const result = transform({
     filename,
@@ -150,21 +177,31 @@ function transformCss(source: string, filename: string, visitor: Visitor<CustomA
       Selector: documentThemeSelector,
       VariableExit(variable) {
         const name = fontAliases[variable.name.ident];
-        if (name) return { type: "var", value: JSON.parse(JSON.stringify({ ...variable, name: { ...variable.name, ident: name } }), (_key, value) => (value === null ? undefined : value)) };
+        if (name) {
+          return { type: "var", value: JSON.parse(JSON.stringify({ ...variable, name: { ...variable.name, ident: name } }), (_key, value) => (value === null ? undefined : value)) };
+        }
       },
       DeclarationExit(declaration) {
-        if (declaration.property === "custom" && Object.hasOwn(fontAliases, declaration.value.name)) return [];
+        if (declaration.property === "custom" && Object.hasOwn(fontAliases, declaration.value.name)) {
+          return [];
+        }
         if (declaration.property === "font-weight" && declaration.value.type === "absolute" && declaration.value.value.type === "weight") {
           const name = weightTokens.get(declaration.value.value.value);
-          if (name) return { property: "unparsed", value: { propertyId: { property: "font-weight" }, value: [{ type: "var", value: { name: { ident: name } } }] } };
+          if (name) {
+            return { property: "unparsed", value: { propertyId: { property: "font-weight" }, value: [{ type: "var", value: { name: { ident: name } } }] } };
+          }
         }
         if (declaration.property === "unparsed" && declaration.value.propertyId.property === "font-weight" && declaration.value.value.length === 1) {
           const value = declaration.value.value[0];
-          if (value.type === "var" && fontFamilyTokens.has(value.value.name.ident)) return [];
+          if (value.type === "var" && fontFamilyTokens.has(value.value.name.ident)) {
+            return [];
+          }
         }
         if (declaration.property === "unparsed" || declaration.property === "custom") {
           const value = fullColorTokens(declaration.value.value, declaration.property === "custom" ? declaration.value.name : undefined);
-          if (value !== declaration.value.value) return JSON.parse(JSON.stringify({ ...declaration, value: { ...declaration.value, value } }), (_key, item) => (item === null ? undefined : item));
+          if (value !== declaration.value.value) {
+            return JSON.parse(JSON.stringify({ ...declaration, value: { ...declaration.value, value } }), (_key, item) => (item === null ? undefined : item));
+          }
         }
         if (declaration.property === "custom" && declaration.value.name === marker) {
           const tokens = JSON.parse(JSON.stringify(declaration.value.value), (_, value) => (value === null ? undefined : value));
@@ -204,7 +241,9 @@ export function validateRegistrations(groups: Registration[][]): Registration[] 
   for (const group of groups) {
     for (const property of group) {
       const existing = known.get(property.name);
-      if (existing && existing.definition !== property.definition) throw new Error("Conflicting CSS registration: " + property.name);
+      if (existing && existing.definition !== property.definition) {
+        throw new Error("Conflicting CSS registration: " + property.name);
+      }
       known.set(property.name, property);
     }
   }
@@ -243,7 +282,9 @@ export function writeStyle(
   source: string,
   options: { producer: StyleEntry["producer"]; inputs: string[]; externalInputs?: string[]; properties?: PropertyRegistration[]; module?: boolean; root?: string },
 ): StyleEntry {
-  if (!/^(components\/[a-z0-9-]+\/[a-z0-9-]+|shared\/[a-z0-9-]+|document\/[a-z0-9-]+)$/.test(key)) throw new Error("Invalid generated style key: " + key);
+  if (!/^(components\/[a-z0-9-]+\/[a-z0-9-]+|shared\/[a-z0-9-]+|document\/[a-z0-9-]+)$/.test(key)) {
+    throw new Error("Invalid generated style key: " + key);
+  }
   const root = options.root ?? ROOT;
   const properties = options.properties ?? [];
   const sourceFile = "src/generated/css/" + key + ".source.css";
@@ -261,7 +302,9 @@ export function writeStyle(
           path.basename(sourceFile),
           {
             Rule(rule) {
-              if (rule.type === "property") return [];
+              if (rule.type === "property") {
+                return [];
+              }
             },
           },
           true,
@@ -299,7 +342,9 @@ export function writeStyle(
   try {
     lock = fs.openSync(lockFile, "wx");
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "EEXIST") throw new Error("Style output is locked. Confirm the recorded producer has stopped before clearing: " + lockFile);
+    if ((error as NodeJS.ErrnoException).code === "EEXIST") {
+      throw new Error("Style output is locked. Confirm the recorded producer has stopped before clearing: " + lockFile);
+    }
     throw error;
   }
   try {
@@ -307,7 +352,9 @@ export function writeStyle(
     const manifest = loadStyleManifest(root);
     manifest.entries[key] = entry;
     validateRegistrations(Object.values(manifest.entries).map((e) => e.registrations));
-    for (const [file, text] of Object.entries(files)) writeChanged(path.join(root, file), text);
+    for (const [file, text] of Object.entries(files)) {
+      writeChanged(path.join(root, file), text);
+    }
     manifest.entries = Object.fromEntries(Object.entries(manifest.entries).sort(([a], [b]) => a.localeCompare(b)));
     writeChanged(path.join(root, MANIFEST), JSON.stringify(manifest, null, 2) + "\n");
     return entry;
@@ -319,20 +366,30 @@ export function writeStyle(
 
 /** Removes a retired producer's recorded outputs without touching other style families. */
 export function removeStyle(key: string, root = ROOT): void {
-  if (!/^(components\/[a-z0-9-]+\/[a-z0-9-]+|shared\/[a-z0-9-]+|document\/[a-z0-9-]+)$/.test(key)) throw new Error("Invalid generated style key: " + key);
+  if (!/^(components\/[a-z0-9-]+\/[a-z0-9-]+|shared\/[a-z0-9-]+|document\/[a-z0-9-]+)$/.test(key)) {
+    throw new Error("Invalid generated style key: " + key);
+  }
   const lockFile = path.join(root, ".style-write.lock");
   const lock = fs.openSync(lockFile, "wx");
   try {
     fs.writeFileSync(lock, String(process.pid));
     const manifest = loadStyleManifest(root),
       entry = manifest.entries[key];
-    if (!entry) return;
+    if (!entry) {
+      return;
+    }
     for (const [file, expected] of Object.entries(entry.files)) {
       const resolved = path.resolve(root, file);
-      if (!resolved.startsWith(path.resolve(root, "src/generated") + path.sep)) throw new Error("Invalid generated output path");
-      if (fs.existsSync(resolved) && sha(read(root, file)) !== expected) throw new Error("Retired style output has unrecorded changes: " + file);
+      if (!resolved.startsWith(path.resolve(root, "src/generated") + path.sep)) {
+        throw new Error("Invalid generated output path");
+      }
+      if (fs.existsSync(resolved) && sha(read(root, file)) !== expected) {
+        throw new Error("Retired style output has unrecorded changes: " + file);
+      }
     }
-    for (const file of Object.keys(entry.files)) fs.rmSync(path.join(root, file), { force: true });
+    for (const file of Object.keys(entry.files)) {
+      fs.rmSync(path.join(root, file), { force: true });
+    }
     delete manifest.entries[key];
     writeChanged(path.join(root, MANIFEST), JSON.stringify(manifest, null, 2) + "\n");
   } finally {
@@ -343,18 +400,26 @@ export function removeStyle(key: string, root = ROOT): void {
 
 export function verifyStyleManifest(root = ROOT, exclude: string[] = []): StyleManifest {
   const manifest = loadStyleManifest(root);
-  if (manifest.version !== 1 || manifest.compiler !== COMPILER || !Object.keys(manifest.entries).length) throw new Error("Generate styles before building");
+  if (manifest.version !== 1 || manifest.compiler !== COMPILER || !Object.keys(manifest.entries).length) {
+    throw new Error("Generate styles before building");
+  }
   for (const entry of Object.values(manifest.entries)) {
-    if (exclude.includes(entry.key)) continue;
+    if (exclude.includes(entry.key)) {
+      continue;
+    }
     for (const [file, expected] of Object.entries({ ...entry.inputs, ...entry.files })) {
-      if (!fs.existsSync(path.join(root, file)) || sha(read(root, file)) !== expected) throw new Error("Stale generated style: " + entry.key + " (" + file + ")");
+      if (!fs.existsSync(path.join(root, file)) || sha(read(root, file)) !== expected) {
+        throw new Error("Stale generated style: " + entry.key + " (" + file + ")");
+      }
     }
     const externalFiles = Object.keys(entry.externalInputs).sort();
     const directories = [...new Set(externalFiles.map((file) => path.dirname(file)))];
     if (directories.some((directory) => fs.existsSync(path.join(root, directory)))) {
       const actualFiles = directories
         .flatMap((directory) => {
-          if (!fs.existsSync(path.join(root, directory))) return [];
+          if (!fs.existsSync(path.join(root, directory))) {
+            return [];
+          }
           const extensions = new Set(externalFiles.filter((file) => path.dirname(file) === directory).map((file) => path.extname(file)));
           return fs
             .readdirSync(path.join(root, directory), { withFileTypes: true })
@@ -362,15 +427,21 @@ export function verifyStyleManifest(root = ROOT, exclude: string[] = []): StyleM
             .map((file) => slash(path.join(directory, file.name)));
         })
         .sort();
-      if (JSON.stringify(actualFiles) !== JSON.stringify(externalFiles)) throw new Error("Changed reference input set: " + entry.key);
+      if (JSON.stringify(actualFiles) !== JSON.stringify(externalFiles)) {
+        throw new Error("Changed reference input set: " + entry.key);
+      }
       for (const [file, expected] of Object.entries(entry.externalInputs)) {
-        if (sha(read(root, file)) !== expected) throw new Error("Changed reference input: " + file);
+        if (sha(read(root, file)) !== expected) {
+          throw new Error("Changed reference input: " + file);
+        }
       }
     }
   }
   const outputs = new Set(Object.values(manifest.entries).flatMap((entry) => Object.keys(entry.files)));
   for (const file of new Bun.Glob("src/generated/{components,shared}/**/*.styles.ts").scanSync(root)) {
-    if (!outputs.has(file)) throw new Error("Unrecorded generated style: " + file);
+    if (!outputs.has(file)) {
+      throw new Error("Unrecorded generated style: " + file);
+    }
   }
   validateRegistrations(Object.values(manifest.entries).map((e) => e.registrations));
   return manifest;
@@ -387,7 +458,9 @@ export function partitionStyleSheet(source: string, select: (selector: string) =
   });
   const leaf = (rule: Rule): boolean => "value" in rule && rule.value !== null && "loc" in rule.value && (rule.type === "style" || !("rules" in rule.value));
   const owner = (rule: Rule): string | null => {
-    if (!("value" in rule) || rule.value === null || !("loc" in rule.value)) return null;
+    if (!("value" in rule) || rule.value === null || !("loc" in rule.value)) {
+      return null;
+    }
     const loc = rule.value.loc;
     const start = offsets[loc.line] + loc.column - 1;
     let quote = "",
@@ -404,14 +477,18 @@ export function partitionStyleSheet(source: string, select: (selector: string) =
         continue;
       }
       if (quote) {
-        if (c === quote) quote = "";
+        if (c === quote) {
+          quote = "";
+        }
         continue;
       }
       if (c === '"' || c === "'") {
         quote = c;
         continue;
       }
-      if (c === "{" || c === ";") break;
+      if (c === "{" || c === ";") {
+        break;
+      }
     }
     return select(css.slice(start, end).trim());
   };
@@ -428,11 +505,15 @@ export function partitionStyleSheet(source: string, select: (selector: string) =
           const key = parents.length ? parents[parents.length - 1] : owner(rule);
           owners.add(key);
           ownership.set(location(rule), key);
-          if (rule.type === "style") parents.push(key);
+          if (rule.type === "style") {
+            parents.push(key);
+          }
         }
       },
       RuleExit(rule) {
-        if (rule.type === "style") parents.pop();
+        if (rule.type === "style") {
+          parents.pop();
+        }
       },
     },
   });
@@ -441,7 +522,9 @@ export function partitionStyleSheet(source: string, select: (selector: string) =
       key,
       transformCss(css, "house.css", {
         Rule(rule) {
-          if (leaf(rule) && ownership.get(location(rule)) !== key) return [];
+          if (leaf(rule) && ownership.get(location(rule)) !== key) {
+            return [];
+          }
         },
       }).code.toString(),
     ]),

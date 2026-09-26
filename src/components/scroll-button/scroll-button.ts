@@ -21,7 +21,9 @@ export class AcmeScrollButton extends AcmeSemanticElement {
   }
   set direction(value: "inline-start" | "inline-end" | "block-start" | "block-end" | undefined) {
     const next = value ?? "block-end";
-    if (!["inline-start", "inline-end", "block-start", "block-end"].includes(next)) throw new TypeError("Invalid direction");
+    if (!["inline-start", "inline-end", "block-start", "block-end"].includes(next)) {
+      throw new TypeError("Invalid direction");
+    }
     const previous = this.directionValue;
     this.directionValue = next;
     this.requestUpdate("direction", previous);
@@ -39,8 +41,9 @@ export class AcmeScrollButton extends AcmeSemanticElement {
         /^(thin|medium|thick|auto|inherit|initial|unset|revert)/i.test(value) ||
         /^0(?:\.0+)?(?:[a-z]+)?$/i.test(value.trim()) ||
         (css && !css.supports("border-top-width", value))
-      )
+      ) {
         throw new TypeError("Scroll button step requires a positive CSS length");
+      }
     }
     const previous = this.distance;
     this.distance = value;
@@ -57,9 +60,13 @@ export class AcmeScrollButton extends AcmeSemanticElement {
   }
   private get disabled() {
     const state = this.binding.current?.state.get();
-    if (!state) return true;
+    if (!state) {
+      return true;
+    }
     const axis = this.horizontal ? state.x : state.y;
-    if (!axis.overflow || (state.orientation !== "both" && state.orientation !== (this.horizontal ? "horizontal" : "vertical"))) return true;
+    if (!axis.overflow || (state.orientation !== "both" && state.orientation !== (this.horizontal ? "horizontal" : "vertical"))) {
+      return true;
+    }
     const towardStart = this.direction.endsWith("start");
     const towardMaximum = this.horizontal && state.rtl ? towardStart : !towardStart;
     return towardMaximum ? axis.maximum - axis.position <= 1 : axis.position <= 1;
@@ -75,17 +82,24 @@ export class AcmeScrollButton extends AcmeSemanticElement {
   private move = () => {
     const owner = this.binding.current,
       viewport = owner?.viewport();
-    if (!viewport || this.disabled) return;
+    if (!viewport || this.disabled) {
+      return;
+    }
     const measure = this.renderRoot.querySelector<HTMLElement>(".step")!;
     const amount = this.step === undefined ? (this.horizontal ? viewport.clientWidth : viewport.clientHeight) * 0.8 : measure.getBoundingClientRect().width;
-    if (!Number.isFinite(amount) || amount <= 0) throw new RangeError("Scroll button step must resolve to a positive length");
+    if (!Number.isFinite(amount) || amount <= 0) {
+      throw new RangeError("Scroll button step must resolve to a positive length");
+    }
     const delta = amount * (this.direction.endsWith("start") ? -1 : 1) * (this.horizontal && owner!.state.get().rtl ? -1 : 1);
     viewport.scrollBy({ [this.horizontal ? "left" : "top"]: delta, behavior: this.ownerDocument.defaultView?.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   };
   protected updated() {
     const measure = this.renderRoot.querySelector<HTMLElement>(".step")!;
-    if (this.step === undefined) measure.style.removeProperty("--_scroll-step");
-    else measure.style.setProperty("--_scroll-step", this.step);
+    if (this.step === undefined) {
+      measure.style.removeProperty("--_scroll-step");
+    } else {
+      measure.style.setProperty("--_scroll-step", this.step);
+    }
   }
   render() {
     return html`<acme-button type="button" variant="secondary" size="small" part="root button" .disabled=${this.disabled} @click=${this.move}><slot>${this.label()}</slot></acme-button><span class="step" aria-hidden="true"></span>`;

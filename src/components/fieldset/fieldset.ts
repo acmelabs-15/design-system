@@ -25,7 +25,9 @@ export class AcmeFieldset extends AcmeSemanticElement {
   set disabled(value: boolean) {
     const previous = this.unavailable;
     this.unavailable = Boolean(value);
-    if (this.content) this.content.root.disabled = this.unavailable;
+    if (this.content) {
+      this.content.root.disabled = this.unavailable;
+    }
     this.requestUpdate("disabled", previous);
   }
   @atomState() private invalidGroup = false;
@@ -36,7 +38,9 @@ export class AcmeFieldset extends AcmeSemanticElement {
   set invalid(value: boolean) {
     const previous = this.invalidGroup;
     this.invalidGroup = Boolean(value);
-    if (this.content) this.syncRoot(this.content.root);
+    if (this.content) {
+      this.syncRoot(this.content.root);
+    }
     this.requestUpdate("invalid", previous);
   }
   private readonly lightStyles = new RootStyles(this, [fieldsetLightCss]);
@@ -49,8 +53,12 @@ export class AcmeFieldset extends AcmeSemanticElement {
   private observer?: MutationObserver;
   private warned = false;
   private syncRoot(root: HTMLFieldSetElement) {
-    if (root.disabled !== this.disabled) root.disabled = this.disabled;
-    if (root.getAttribute("aria-invalid") !== String(this.invalid)) root.setAttribute("aria-invalid", String(this.invalid));
+    if (root.disabled !== this.disabled) {
+      root.disabled = this.disabled;
+    }
+    if (root.getAttribute("aria-invalid") !== String(this.invalid)) {
+      root.setAttribute("aria-invalid", String(this.invalid));
+    }
     if (this.observed !== root || !this.observer) {
       this.observer?.disconnect();
       this.observed = root;

@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test";
 import "../../../all";
 import { parseTime } from "../../../shared/date";
 import type { AcmeCalendar } from "../calendar";
+
 const mount = async (markup: string) => {
   document.body.innerHTML = markup;
   const el = document.querySelector("acme-calendar") as AcmeCalendar;

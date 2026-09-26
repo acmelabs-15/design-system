@@ -54,7 +54,9 @@ export class AcmeTreeView extends AcmeSemanticElement {
     return this.selected;
   }
   set value(value: string | undefined) {
-    if (value !== undefined && (typeof value !== "string" || !value.trim())) throw new TypeError("Tree value requires a nonempty identifier");
+    if (value !== undefined && (typeof value !== "string" || !value.trim())) {
+      throw new TypeError("Tree value requires a nonempty identifier");
+    }
     const previous = this.selected;
     this.selected = value;
     this.requestUpdate("value", previous);
@@ -65,7 +67,9 @@ export class AcmeTreeView extends AcmeSemanticElement {
     return this.selectionMode;
   }
   set selection(value: "none" | "single") {
-    if (value !== "none" && value !== "single") throw new TypeError("Invalid Tree selection");
+    if (value !== "none" && value !== "single") {
+      throw new TypeError("Invalid Tree selection");
+    }
     const previous = this.selectionMode;
     this.selectionMode = value;
     this.requestUpdate("selection", previous);
@@ -82,11 +86,17 @@ export class AcmeTreeView extends AcmeSemanticElement {
     for (const part of this.parts.get()) {
       const key = part.value();
       part.disabled();
-      if (part.host.parentNode !== this || !key) continue;
-      if (result.has(key)) duplicates.add(key);
+      if (part.host.parentNode !== this || !key) {
+        continue;
+      }
+      if (result.has(key)) {
+        duplicates.add(key);
+      }
       result.set(key, part);
     }
-    for (const key of duplicates) result.delete(key);
+    for (const key of duplicates) {
+      result.delete(key);
+    }
     return result;
   });
   private readonly state = createAtom(() => ({ entries: this.entries.get(), expanded: this.expanded, value: this.value, selection: this.selection, disabled: this.disabled }));
@@ -130,32 +140,46 @@ export class AcmeTreeView extends AcmeSemanticElement {
   }
   focus(value?: string | FocusOptions) {
     const key = typeof value === "string" ? value : this.entryId();
-    if (!key || !this.enabled().some((entry) => entry.node.id === key)) return;
+    if (!key || !this.enabled().some((entry) => entry.node.id === key)) {
+      return;
+    }
     const row = this.row(key);
-    if (!row) return;
+    if (!row) {
+      return;
+    }
     this.focused = key;
     row.focus(typeof value === "object" ? value : { preventScroll: true });
     row.scrollIntoView({ block: "nearest", inline: "nearest" });
   }
   expand(value: string) {
     const entry = this.entries.get().find((entry) => entry.node.id === value);
-    if (entry?.node.children?.length && !this.expanded.includes(value)) this.expanded = [...this.expanded, value];
+    if (entry?.node.children?.length && !this.expanded.includes(value)) {
+      this.expanded = [...this.expanded, value];
+    }
   }
   collapse(value: string) {
-    if (this.expanded.includes(value)) this.expanded = this.expanded.filter((key) => key !== value);
+    if (this.expanded.includes(value)) {
+      this.expanded = this.expanded.filter((key) => key !== value);
+    }
   }
   private userExpand(value: string, open: boolean) {
     const previous = this.expanded;
     open ? this.expand(value) : this.collapse(value);
-    if (previous !== this.expanded) this.dispatchEvent(new CustomEvent("acme-expanded-change", { detail: Object.freeze({ expanded: this.expanded }), bubbles: true, composed: true }));
+    if (previous !== this.expanded) {
+      this.dispatchEvent(new CustomEvent("acme-expanded-change", { detail: Object.freeze({ expanded: this.expanded }), bubbles: true, composed: true }));
+    }
   }
   private activate(entry: TreeEntry, event: MouseEvent) {
-    if (event.defaultPrevented) return;
+    if (event.defaultPrevented) {
+      return;
+    }
     if (this.unavailable(entry)) {
       event.preventDefault();
       return;
     }
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+      return;
+    }
     const request = new CustomEvent("acme-request", { detail: Object.freeze({ action: "activate", value: entry.node.id }), bubbles: true, composed: true, cancelable: true });
     if (!this.dispatchEvent(request)) {
       event.preventDefault();
@@ -166,40 +190,60 @@ export class AcmeTreeView extends AcmeSemanticElement {
       this.value = entry.node.id;
       this.dispatchEvent(new CustomEvent("acme-change", { detail: Object.freeze({ value: this.value }), bubbles: true, composed: true }));
     }
-    if (entry.node.children?.length) this.userExpand(entry.node.id, !this.expanded.includes(entry.node.id));
+    if (entry.node.children?.length) {
+      this.userExpand(entry.node.id, !this.expanded.includes(entry.node.id));
+    }
   }
   private keydown = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing || this.disabled || event.metaKey || event.ctrlKey || event.altKey) return;
+    if (event.defaultPrevented || event.isComposing || this.disabled || event.metaKey || event.ctrlKey || event.altKey) {
+      return;
+    }
     const row = event.composedPath().find((node) => (node as HTMLElement).dataset?.treeRow !== undefined) as HTMLElement | undefined;
-    if (!row || row.getRootNode() !== this.renderRoot) return;
+    if (!row || row.getRootNode() !== this.renderRoot) {
+      return;
+    }
     const entry = this.entries.get().find((item) => item.node.id === row.dataset.treeRow);
-    if (!entry) return;
+    if (!entry) {
+      return;
+    }
     const enabled = this.enabled(),
       index = enabled.findIndex((item) => item.node.id === entry.node.id);
     const rtl = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl";
     let target: TreeEntry | undefined;
-    if (event.key === "ArrowDown") target = enabled[index + 1];
-    else if (event.key === "ArrowUp") target = enabled[index - 1];
-    else if (event.key === "Home") target = enabled[0];
-    else if (event.key === "End") target = enabled.at(-1);
-    else if (event.key === (rtl ? "ArrowLeft" : "ArrowRight")) {
+    if (event.key === "ArrowDown") {
+      target = enabled[index + 1];
+    } else if (event.key === "ArrowUp") {
+      target = enabled[index - 1];
+    } else if (event.key === "Home") {
+      target = enabled[0];
+    } else if (event.key === "End") {
+      target = enabled.at(-1);
+    } else if (event.key === (rtl ? "ArrowLeft" : "ArrowRight")) {
       if (!this.unavailable(entry) && entry.node.children?.length) {
-        if (!this.expanded.includes(entry.node.id)) this.userExpand(entry.node.id, true);
-        else target = enabled.find((item) => item.parent === entry.node.id);
+        if (!this.expanded.includes(entry.node.id)) {
+          this.userExpand(entry.node.id, true);
+        } else {
+          target = enabled.find((item) => item.parent === entry.node.id);
+        }
       }
     } else if (event.key === (rtl ? "ArrowRight" : "ArrowLeft")) {
-      if (!this.unavailable(entry) && entry.node.children?.length && this.expanded.includes(entry.node.id)) this.userExpand(entry.node.id, false);
-      else {
+      if (!this.unavailable(entry) && entry.node.children?.length && this.expanded.includes(entry.node.id)) {
+        this.userExpand(entry.node.id, false);
+      } else {
         let parent = entry.parent;
         while (parent) {
           target = enabled.find((item) => item.node.id === parent);
-          if (target) break;
+          if (target) {
+            break;
+          }
           parent = this.entries.get().find((item) => item.node.id === parent)?.parent;
         }
       }
     } else if (event.key === "Enter" || (event.key === " " && !this.typeahead.active)) {
       event.preventDefault();
-      if (!this.unavailable(entry)) row.click();
+      if (!this.unavailable(entry)) {
+        row.click();
+      }
       return;
     } else {
       this.typeahead.handleKey(event);
@@ -207,14 +251,22 @@ export class AcmeTreeView extends AcmeSemanticElement {
     }
     event.preventDefault();
     this.typeahead.clear();
-    if (target) this.focus(target.node.id);
+    if (target) {
+      this.focus(target.node.id);
+    }
   };
   private scan = () => {
     for (const child of this.children) {
       const part = treePartFor(child);
-      if (part && part.currentOwner() !== this.owner) part.reconnect();
+      if (part && part.currentOwner() !== this.owner) {
+        part.reconnect();
+      }
     }
-    for (const part of this.parts.get()) if (part.host.parentNode !== this) part.reconnect();
+    for (const part of this.parts.get()) {
+      if (part.host.parentNode !== this) {
+        part.reconnect();
+      }
+    }
     this.revision.set((value) => value + 1);
   };
   connectedCallback() {
@@ -236,7 +288,9 @@ export class AcmeTreeView extends AcmeSemanticElement {
       const enabled = this.enabled();
       if (id && !enabled.some((entry) => entry.node.id === id)) {
         let parent = this.previous.find((entry) => entry.node.id === id)?.parent;
-        while (parent && !enabled.some((entry) => entry.node.id === parent)) parent = this.previous.find((entry) => entry.node.id === parent)?.parent;
+        while (parent && !enabled.some((entry) => entry.node.id === parent)) {
+          parent = this.previous.find((entry) => entry.node.id === parent)?.parent;
+        }
         this.recover = parent ?? enabled[0]?.node.id;
         this.recoverRoot = !this.recover;
         this.focused = this.recover;
@@ -250,13 +304,17 @@ export class AcmeTreeView extends AcmeSemanticElement {
       const part = content.get(slot.dataset.node!);
       const nodes = part ? [part.host] : [];
       const previous = slot.assignedNodes();
-      if (nodes.length !== previous.length || nodes.some((node, index) => node !== previous[index])) slot.assign(...nodes);
+      if (nodes.length !== previous.length || nodes.some((node, index) => node !== previous[index])) {
+        slot.assign(...nodes);
+      }
     }
     for (const row of this.renderRoot.querySelectorAll<HTMLElement>("[data-tree-row]")) {
       const part = content.get(row.dataset.treeRow!);
       const descriptions = part ? [...part.host.children].filter((child) => child.getAttribute("slot") === "description") : [];
       row.ariaDescribedByElements = descriptions.length ? descriptions : null;
-      if (row.parentElement?.getAttribute("role") === "treeitem") row.parentElement.ariaDescribedByElements = descriptions.length ? descriptions : null;
+      if (row.parentElement?.getAttribute("role") === "treeitem") {
+        row.parentElement.ariaDescribedByElements = descriptions.length ? descriptions : null;
+      }
     }
     const known = new Set(this.entries.get().map((entry) => entry.node.id));
     const invalid = this.parts
@@ -264,7 +322,9 @@ export class AcmeTreeView extends AcmeSemanticElement {
       .filter((part) => part.host.parentNode === this && (!known.has(part.value()) || !content.has(part.value())))
       .map((part) => part.value());
     const warning = invalid.join("|");
-    if (warning && warning !== this.warning) console.warn(this.localName, { code: "tree-content-unknown-or-duplicate", values: invalid });
+    if (warning && warning !== this.warning) {
+      console.warn(this.localName, { code: "tree-content-unknown-or-duplicate", values: invalid });
+    }
     this.warning = warning;
     if (this.recover) {
       const key = this.recover;
@@ -296,7 +356,9 @@ export class AcmeTreeView extends AcmeSemanticElement {
       (node) => node.id,
       (node) => {
         const entry = this.entries.get().find((item) => item.node.id === node.id)!;
-        if (!node.children?.length) return this.renderRow(entry, false);
+        if (!node.children?.length) {
+          return this.renderRow(entry, false);
+        }
         const open = this.expanded.includes(node.id),
           disabled = this.unavailable(entry);
         return html`<div part="item" role="treeitem" aria-label=${node.label} aria-expanded=${String(open)} aria-selected=${this.selection === "single" && !disabled ? String(this.value === node.id) : nothing} aria-disabled=${disabled ? "true" : nothing} aria-level=${entry.level} aria-posinset=${entry.position} aria-setsize=${entry.size}>${this.renderRow(entry, true)}<div part="children" role="group" ?hidden=${!open} ?inert=${!open}>${this.renderNodes(node.children)}</div></div>`;
@@ -305,7 +367,9 @@ export class AcmeTreeView extends AcmeSemanticElement {
   }
   render() {
     return html`<div part="root" role="tree" tabindex=${this.enabled().length ? -1 : 0} aria-disabled=${this.disabled ? "true" : nothing} @keydown=${this.keydown} @focusout=${(event: FocusEvent) => {
-      if (event.relatedTarget && !composedContains(this, event.relatedTarget as Node)) this.focused = undefined;
+      if (event.relatedTarget && !composedContains(this, event.relatedTarget as Node)) {
+        this.focused = undefined;
+      }
     }}>${this.renderNodes(this.items)}</div>`;
   }
   protected get semanticDefaults() {

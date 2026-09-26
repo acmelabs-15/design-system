@@ -3,6 +3,7 @@ import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
 import type { ToastStore } from "./toast-store";
+
 export type ToastPlacement = "top-start" | "top-end" | "bottom-start" | "bottom-end";
 export type ToastGeometry = Readonly<{ index: number; y: number; height: number; scale: number; visible: boolean; behind: boolean }>;
 export type ToastView = Readonly<{ store?: ToastStore; active: boolean; expanded: boolean; placement: ToastPlacement; geometry: ReadonlyMap<string, ToastGeometry> }>;
@@ -32,7 +33,9 @@ export class ToastBinding {
       context: toastContext,
       subscribe: true,
       callback: (owner) => {
-        if (this.current === owner) return;
+        if (this.current === owner) {
+          return;
+        }
         this.release?.();
         this.owner.set({ value: owner });
         this.release = owner.register(this.record);
@@ -59,6 +62,8 @@ export class ToastBinding {
     this.owner.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
 }

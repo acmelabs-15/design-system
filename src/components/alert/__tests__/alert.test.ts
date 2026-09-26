@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import "../../../define/alert";
 import "../../../define/banner";
+
 test("Alert and Banner share status inputs without an automatic live role", () => {
   for (const tag of ["acme-alert", "acme-banner"] as const) {
     const element = document.createElement(tag);

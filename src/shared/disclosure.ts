@@ -4,6 +4,7 @@ import type { ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
 import { ComposedParticipants } from "./composed-participants";
 import { focusAvailable, focusSection } from "./focus-recovery";
+
 export type DisclosureState = Readonly<{ expanded: boolean; disabled: boolean; canCollapse: boolean; lazyMount: boolean; unmountOnExit: boolean }>;
 export type DisclosurePart = { host: ReactiveElement; kind: "trigger" | "content"; target(): HTMLElement | undefined; currentOwner(): DisclosureScope | undefined; reconnect(): void };
 const parts = new WeakMap<Element, DisclosurePart>();
@@ -47,14 +48,18 @@ export class DisclosureScope {
   }
   toggle() {
     const state = this.state.get();
-    if (!state.disabled && (!state.expanded || state.canCollapse)) this.change();
+    if (!state.disabled && (!state.expanded || state.canCollapse)) {
+      this.change();
+    }
   }
   key(part: DisclosurePart, event: KeyboardEvent) {
     this.navigation?.(part, event);
   }
   recover() {
     const trigger = this.counterpart("trigger");
-    if (!this.state.get().disabled && focusAvailable(trigger?.target())) return;
+    if (!this.state.get().disabled && focusAvailable(trigger?.target())) {
+      return;
+    }
     this.releaseFocus = focusSection(this.host, trigger ? [trigger.host] : []);
   }
 }
@@ -75,7 +80,9 @@ export class DisclosureBinding {
       context: disclosureContext,
       subscribe: true,
       callback: (owner) => {
-        if (this.current === owner) return;
+        if (this.current === owner) {
+          return;
+        }
         this.release?.();
         this.owner.set({ value: owner });
         this.release = owner.register(this.record);
@@ -102,7 +109,9 @@ export class DisclosureBinding {
     this.owner.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
 }
 export type AccordionState = Readonly<{ expanded: readonly string[]; multiple: boolean; collapsible: boolean; disabled: boolean; lazyMount: boolean; unmountOnExit: boolean }>;

@@ -15,6 +15,7 @@ import { atomState } from "../../shared/atom-state";
 import { StoreSelector } from "../../shared/store-connection";
 import { registerTextControl, submitImplicitly } from "../../shared/implicit-submit";
 import { pinValue, pinCharacters, pinCharacter, pinDelete, pinPaste, pinInsertion, pinFocus, type PinInputType } from "../../shared/pin-value";
+
 type Extra = { count: number; kind: PinInputType; mask: boolean; otp: boolean; placeholder: string; focused: number };
 export type { PinInputType } from "../../shared/pin-value";
 /** One logical code value edited through indexed character fields.
@@ -40,7 +41,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
   }
   set size(value: "small" | "medium" | "large" | undefined) {
     const next = value ?? "medium";
-    if (!["small", "medium", "large"].includes(next)) throw new TypeError("Invalid Pin Input size");
+    if (!["small", "medium", "large"].includes(next)) {
+      throw new TypeError("Invalid Pin Input size");
+    }
     this.controlSize = next;
     this.requestUpdate("size");
   }
@@ -51,20 +54,29 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     return this.cells;
   }
   set count(value: number | undefined) {
-    if (value !== undefined && (!Number.isInteger(value) || value <= 0)) throw new RangeError("count must be a positive integer");
+    if (value !== undefined && (!Number.isInteger(value) || value <= 0)) {
+      throw new RangeError("count must be a positive integer");
+    }
     const refocus = this.controls.some((control) => control?.matches(":focus")) && this.focusState.get().index >= (value ?? 0);
     batch(() => {
       this.composition.set({});
       this.cells = value;
-      if (this.focusState.get().index >= (value ?? 0)) this.focusState.set({ index: -1 });
+      if (this.focusState.get().index >= (value ?? 0)) {
+        this.focusState.set({ index: -1 });
+      }
       this.nativeForm?.refreshValue();
-      if (this.nativeForm) this.committed.set({ value: JSON.stringify(this.value) });
+      if (this.nativeForm) {
+        this.committed.set({ value: JSON.stringify(this.value) });
+      }
     });
     this.requestUpdate("count");
-    if (refocus && value)
+    if (refocus && value) {
       queueMicrotask(() => {
-        if (this.isConnected) this.focus(pinInsertion(this.value));
+        if (this.isConnected) {
+          this.focus(pinInsertion(this.value));
+        }
       });
+    }
   }
   @atomState() private kind: PinInputType = "numeric";
   /** @default "numeric" */
@@ -73,7 +85,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
   }
   set type(value: PinInputType | undefined) {
     const next = value ?? "numeric";
-    if (!["numeric", "alphabetic", "alphanumeric"].includes(next)) throw new TypeError("Invalid Pin Input type");
+    if (!["numeric", "alphabetic", "alphanumeric"].includes(next)) {
+      throw new TypeError("Invalid Pin Input type");
+    }
     this.kind = next;
     this.nativeForm?.sync();
     this.requestUpdate("type");
@@ -103,7 +117,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     const indices = new Map<number, PinFieldPart>();
     for (const part of this.registered.get()) {
       const index = part.index();
-      if (index !== undefined && !indices.has(index)) indices.set(index, part);
+      if (index !== undefined && !indices.has(index)) {
+        indices.set(index, part);
+      }
     }
     return indices;
   });
@@ -112,7 +128,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     return Array.from({ length: this.count ?? 0 }, (_, index) => indexed.get(index)?.control);
   }
   private register(part: PinFieldPart) {
-    if (this.bindings.has(part)) return;
+    if (this.bindings.has(part)) {
+      return;
+    }
     this.bindings.set(part, this.bindControl(part.control, part.index));
     this.registered.set([...this.registered.get(), part]);
     this.nativeForm.sync();
@@ -123,7 +141,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     this.registered.set(this.registered.get().filter((item) => item !== part));
     this.nativeForm.sync();
     queueMicrotask(() => {
-      if (this.isConnected && !this.controls.some((control) => control?.matches(":focus")) && this.focusState.get().index !== -1) this.focusState.set({ index: -1 });
+      if (this.isConnected && !this.controls.some((control) => control?.matches(":focus")) && this.focusState.get().index !== -1) {
+        this.focusState.set({ index: -1 });
+      }
     });
   }
   private readonly presentation = createAtom<PinPresentation>(() => ({
@@ -176,17 +196,23 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
         const composing = this.composition.get().index !== undefined;
         this.composition.set({});
         this.committed.set({ value: JSON.stringify(this.value) });
-        if (composing) this.nativeForm.sync();
+        if (composing) {
+          this.nativeForm.sync();
+        }
       }
     },
     extra: () => {
-      for (const part of this.registered.get()) part.index();
+      for (const part of this.registered.get()) {
+        part.index();
+      }
       return { count: this.count ?? 0, kind: this.type, mask: this.mask, otp: this.otp, placeholder: this.placeholder, focused: this.focusState.get().index };
     },
     serialize: (state) => state.value.join(""),
     restoration: (state) => JSON.stringify(state.value),
     restore: (value, mode) => {
-      if (typeof value !== "string") return [];
+      if (typeof value !== "string") {
+        return [];
+      }
       try {
         return pinValue(mode === "autocomplete" ? [...value] : JSON.parse(value), this.count ?? 0);
       } catch {
@@ -195,7 +221,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     },
     target: () => this.controls.find((control, index) => !this.value[index] && control?.isConnected) ?? this.controls.find((control) => control?.isConnected) ?? this.semanticTarget,
     synchronize: (state, extra) => {
-      if ((state.disabled || state.platformDisabled || state.readOnly) && this.composition.get().index !== undefined) this.composition.set({});
+      if ((state.disabled || state.platformDisabled || state.readOnly) && this.composition.get().index !== undefined) {
+        this.composition.set({});
+      }
       for (const part of this.registered.get()) {
         const index = part.index();
         if (index === undefined || index >= extra.count) {
@@ -205,14 +233,20 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
         }
       }
       for (const [index, control] of this.controls.entries()) {
-        if (!control) continue;
+        if (!control) {
+          continue;
+        }
         const type = extra.mask ? "password" : extra.kind === "numeric" ? "tel" : "text";
         if (control.type !== type) {
-          if (this.composition.get().index === index) this.composition.set({});
+          if (this.composition.get().index === index) {
+            this.composition.set({});
+          }
           control.type = type;
         }
         const value = this.composition.get().index === index ? (this.composition.get().draft ?? "") : (state.value[index] ?? "");
-        if (control.value !== value) control.value = value;
+        if (control.value !== value) {
+          control.value = value;
+        }
         control.disabled = state.disabled || state.platformDisabled;
         control.readOnly = state.readOnly;
         control.required = state.required;
@@ -230,11 +264,14 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
       this.constraint.value = state.value.join("");
     },
     validate: (_state, extra) => {
-      if (extra.count < 1) return { flags: { customError: true }, message: this.text("pinInput.count", "Set the number of code fields.") };
+      if (extra.count < 1) {
+        return { flags: { customError: true }, message: this.text("pinInput.count", "Set the number of code fields.") };
+      }
       if (this.content.has("")) {
         const indices = this.registered.get().map((part) => part.index());
-        if (indices.length !== extra.count || new Set(indices).size !== extra.count || indices.some((index) => index === undefined || index < 0 || index >= extra.count))
+        if (indices.length !== extra.count || new Set(indices).size !== extra.count || indices.some((index) => index === undefined || index < 0 || index >= extra.count)) {
           return { flags: { customError: true }, message: this.text("pinInput.fields", "Supply one field for each code position.") };
+        }
       }
       return nativeValidation(this.constraint);
     },
@@ -275,23 +312,35 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
   }
   private commit() {
     const value = JSON.stringify(this.value);
-    if (this.committed.get().value === value) return;
+    if (this.committed.get().value === value) {
+      return;
+    }
     this.committed.set({ value });
     this.emit("acme-change");
   }
   private edit(value: readonly string[], after?: () => void) {
-    if (this.nativeForm.effectiveDisabled || this.readOnly || (value.length === this.value.length && value.every((cell, index) => cell === this.value[index]))) return false;
+    if (this.nativeForm.effectiveDisabled || this.readOnly || (value.length === this.value.length && value.every((cell, index) => cell === this.value[index]))) {
+      return false;
+    }
     const complete = this.complete;
     this.nativeForm.setValue(value, "user");
     this.emit("acme-input");
-    if (!this.isConnected) return true;
+    if (!this.isConnected) {
+      return true;
+    }
     after?.();
-    if (value.length !== this.value.length || value.some((cell, index) => cell !== this.value[index])) return true;
+    if (value.length !== this.value.length || value.some((cell, index) => cell !== this.value[index])) {
+      return true;
+    }
     if (!complete && this.complete) {
       this.commit();
       this.emit("acme-complete");
-      if (this.blurOnComplete) this.controls[this.focusState.get().index]?.blur();
-      if (this.autoSubmit && this.complete && this.form) this.ownerDocument.defaultView!.HTMLFormElement.prototype.requestSubmit.call(this.form);
+      if (this.blurOnComplete) {
+        this.controls[this.focusState.get().index]?.blur();
+      }
+      if (this.autoSubmit && this.complete && this.form) {
+        this.ownerDocument.defaultView!.HTMLFormElement.prototype.requestSubmit.call(this.form);
+      }
     }
     return true;
   }
@@ -300,7 +349,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     const getIndex = () => index() ?? -1;
     const on = <K extends keyof HTMLElementEventMap>(type: K, listener: (event: HTMLElementEventMap[K]) => void) => {
       const wrapped = (event: Event) => {
-        if (getIndex() >= 0 && getIndex() < (this.count ?? 0)) listener(event as HTMLElementEventMap[K]);
+        if (getIndex() >= 0 && getIndex() < (this.count ?? 0)) {
+          listener(event as HTMLElementEventMap[K]);
+        }
       };
       control.addEventListener(type, wrapped);
       cleanups.push(() => control.removeEventListener(type, wrapped));
@@ -309,7 +360,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
       const wanted = pinFocus(this.value, getIndex()),
         next = this.controls[wanted] ? wanted : getIndex();
       this.focusState.set({ index: next });
-      if (next !== getIndex()) this.controls[next]?.focus({ preventScroll: true });
+      if (next !== getIndex()) {
+        this.controls[next]?.focus({ preventScroll: true });
+      }
       this.nativeForm.sync();
     });
     on("blur", (event) => {
@@ -318,7 +371,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
         this.nativeForm.sync();
       }
       queueMicrotask(() => {
-        if (!this.isConnected || this.controls.some((input) => input?.matches(":focus"))) return;
+        if (!this.isConnected || this.controls.some((input) => input?.matches(":focus"))) {
+          return;
+        }
         this.focusState.set({ index: -1 });
         this.commit();
       });
@@ -326,20 +381,28 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     on("keydown", (event) => this.key(event, getIndex()));
     on("paste", (event) => {
       const text = event.clipboardData?.getData("text/plain");
-      if (event.defaultPrevented || !text || this.readOnly || this.nativeForm.effectiveDisabled) return;
+      if (event.defaultPrevented || !text || this.readOnly || this.nativeForm.effectiveDisabled) {
+        return;
+      }
       event.preventDefault();
       if (pinCharacters(text, this.type)) {
-        if (!this.edit(pinPaste(this.value, getIndex(), text), () => this.move(pinInsertion(this.value)))) this.move(pinInsertion(this.value));
+        if (!this.edit(pinPaste(this.value, getIndex(), text), () => this.move(pinInsertion(this.value)))) {
+          this.move(pinInsertion(this.value));
+        }
       }
     });
     on("beforeinput", (raw) => {
       const event = raw as InputEvent;
-      if (event.defaultPrevented || event.isComposing || event.inputType.startsWith("delete") || event.data === null) return;
+      if (event.defaultPrevented || event.isComposing || event.inputType.startsWith("delete") || event.data === null) {
+        return;
+      }
       if (!pinCharacters(event.data, this.type)) {
         event.preventDefault();
         return;
       }
-      if (control.value.length) control.setSelectionRange(0, control.value.length);
+      if (control.value.length) {
+        control.setSelectionRange(0, control.value.length);
+      }
     });
     on("compositionstart", () => {
       this.composition.set({ index: getIndex(), draft: control.value });
@@ -352,22 +415,32 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     });
     on("input", (event) => this.input(event as InputEvent, getIndex()));
     return () => {
-      for (const cleanup of cleanups) cleanup();
+      for (const cleanup of cleanups) {
+        cleanup();
+      }
     };
   }
 
   private move(index: number) {
-    if (this.nativeForm.effectiveDisabled) return;
+    if (this.nativeForm.effectiveDisabled) {
+      return;
+    }
     index = pinFocus(this.value, index);
-    if (!this.controls[index]?.isConnected) return;
+    if (!this.controls[index]?.isConnected) {
+      return;
+    }
     this.focusState.set({ index });
     this.nativeForm.sync();
     this.controls[index]?.focus({ preventScroll: true });
   }
   private key(event: KeyboardEvent, index: number) {
-    if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.altKey || event.metaKey || this.nativeForm.effectiveDisabled) return;
+    if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.altKey || event.metaKey || this.nativeForm.effectiveDisabled) {
+      return;
+    }
     if (this.readOnly && !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
-      if (event.key === "Backspace" || event.key === "Delete") event.preventDefault();
+      if (event.key === "Backspace" || event.key === "Delete") {
+        event.preventDefault();
+      }
       return;
     }
     const rtl = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl";
@@ -379,8 +452,11 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     switch (event.key) {
       case "Backspace":
         event.preventDefault();
-        if (this.value[index]) this.edit(pinDelete(this.value, index));
-        else this.edit(pinDelete(this.value, Math.max(0, index - 1)));
+        if (this.value[index]) {
+          this.edit(pinDelete(this.value, index));
+        } else {
+          this.edit(pinDelete(this.value, Math.max(0, index - 1)));
+        }
         this.move(Math.max(0, index - 1));
         break;
       case "Delete":
@@ -407,7 +483,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
   }
   private input(event: InputEvent, index: number) {
     const input = this.controls[index];
-    if (!input || this.readOnly || this.nativeForm.effectiveDisabled) return;
+    if (!input || this.readOnly || this.nativeForm.effectiveDisabled) {
+      return;
+    }
     const raw = input.value;
     if (event.isComposing || this.composition.get().index === index) {
       this.composition.set({ index, draft: raw });
@@ -419,37 +497,54 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
     }
     if (event.inputType.startsWith("delete")) {
       if (event.inputType === "deleteContentBackward") {
-        if (this.value[index]) this.edit(pinDelete(this.value, index));
-        else this.edit(pinDelete(this.value, Math.max(0, index - 1)));
+        if (this.value[index]) {
+          this.edit(pinDelete(this.value, index));
+        } else {
+          this.edit(pinDelete(this.value, Math.max(0, index - 1)));
+        }
         this.move(Math.max(0, index - 1));
-      } else this.edit(pinDelete(this.value, index));
+      } else {
+        this.edit(pinDelete(this.value, index));
+      }
       return;
     }
     if (raw.length > 2 || (this.count! > 1 && raw.length >= this.count!) || (event.inputType === "insertReplacementText" && raw.length > 1)) {
-      if (!this.edit(pinPaste(this.value, index, raw), () => this.move(pinInsertion(this.value)))) this.move(pinInsertion(this.value));
+      if (!this.edit(pinPaste(this.value, index, raw), () => this.move(pinInsertion(this.value)))) {
+        this.move(pinInsertion(this.value));
+      }
       return;
     }
     const next = [...this.value];
     next[index] = pinCharacter(next[index] ?? "", raw);
     this.edit(next, () => {
-      if (next[index]) this.move(index + 1);
+      if (next[index]) {
+        this.move(index + 1);
+      }
     });
   }
   focus(options?: FocusOptions): void;
   focus(index?: number, options?: FocusOptions): void;
   focus(indexOrOptions: number | FocusOptions = 0, options?: FocusOptions) {
     const index = typeof indexOrOptions === "number" ? indexOrOptions : 0;
-    if (!this.nativeForm.effectiveDisabled) this.controls[pinFocus(this.value, index)]?.focus(typeof indexOrOptions === "number" ? options : indexOrOptions);
+    if (!this.nativeForm.effectiveDisabled) {
+      this.controls[pinFocus(this.value, index)]?.focus(typeof indexOrOptions === "number" ? options : indexOrOptions);
+    }
   }
   /** Clears the code and focuses the first field. */
   clear() {
-    if (this.nativeForm.effectiveDisabled || this.readOnly) return;
-    if (this.edit(pinValue([], this.count ?? 0))) this.commit();
+    if (this.nativeForm.effectiveDisabled || this.readOnly) {
+      return;
+    }
+    if (this.edit(pinValue([], this.count ?? 0))) {
+      this.commit();
+    }
     this.move(0);
   }
   /** Sets one character without user notifications. */
   setValueAt(index: number, value: string) {
-    if (!Number.isInteger(index) || index < 0 || index >= (this.count ?? 0)) throw new RangeError("Invalid code field index");
+    if (!Number.isInteger(index) || index < 0 || index >= (this.count ?? 0)) {
+      throw new RangeError("Invalid code field index");
+    }
     const next = [...this.value];
     next[index] = value;
     this.value = next;
@@ -471,7 +566,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
   }
   protected firstUpdated() {
     queueMicrotask(() => {
-      if (this.autoFocus && this.isConnected) this.focus();
+      if (this.autoFocus && this.isConnected) {
+        this.focus();
+      }
     });
   }
   protected updated() {
@@ -479,7 +576,9 @@ export class AcmePinInput extends AcmeReadOnlyFormElement<readonly string[], Ext
   }
   private submit() {
     this.commit();
-    if (this.complete && this.form) submitImplicitly(this.form);
+    if (this.complete && this.form) {
+      submitImplicitly(this.form);
+    }
   }
   render() {
     const custom = this.content.has("");

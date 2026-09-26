@@ -15,5 +15,7 @@ test("copy includes transitive files, cycles once and rejects missing dependenci
     expect(exampleFiles(["examples/entry.ts"], root)).toEqual(["examples/entry.ts", "examples/view.ts", "examples/data.ts"]);
     write("data.ts", 'import "./missing";');
     expect(() => exampleFiles(["examples/entry.ts"], root)).toThrow("Missing example dependency");
-  } finally { fs.rmSync(root, {recursive:true, force:true}); }
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });

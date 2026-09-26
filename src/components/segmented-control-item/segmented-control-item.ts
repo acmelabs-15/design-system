@@ -25,7 +25,9 @@ export class AcmeSegmentedControlItem extends AcmeSemanticElement {
     return this.optionValue;
   }
   set value(value: string) {
-    if (typeof value !== "string") throw new TypeError("Selection value must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("Selection value must be a string");
+    }
     const old = this.optionValue;
     this.optionValue = value;
     this.selection?.notify();
@@ -81,7 +83,9 @@ export class AcmeSegmentedControlItem extends AcmeSemanticElement {
     return { labelledByElements: label ? [label] : [] };
   }
   private synchronize() {
-    if (!this.input) return;
+    if (!this.input) {
+      return;
+    }
     this.input.type = "radio";
     this.input.checked = this.selected;
     this.input.disabled = this.effectiveDisabled;
@@ -92,14 +96,20 @@ export class AcmeSegmentedControlItem extends AcmeSemanticElement {
     this.input.className = "native";
     this.input.setAttribute("part", "control");
     this.input.addEventListener("input", () => {
-      if (!this.effectiveDisabled && this.input.checked) this.selection.owner?.change(this.member, true, "user");
+      if (!this.effectiveDisabled && this.input.checked) {
+        this.selection.owner?.change(this.member, true, "user");
+      }
     });
     this.addEventListener("click", (event) => {
-      if (event.composedPath()[0] === this) this.click();
+      if (event.composedPath()[0] === this) {
+        this.click();
+      }
     });
   }
   click() {
-    if (!this.effectiveDisabled) this.input.click();
+    if (!this.effectiveDisabled) {
+      this.input.click();
+    }
   }
   focus(options?: FocusOptions) {
     this.input.focus(options);

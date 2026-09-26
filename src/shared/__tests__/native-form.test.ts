@@ -129,7 +129,9 @@ test("a constraint callback cannot leave native submission behind the canonical 
   let controller: NativeFormController<string, string> | undefined;
   const f = fixture({
     synchronize: (state) => {
-      if (state.value === "normalize") controller?.setValue("normalized");
+      if (state.value === "normalize") {
+        controller?.setValue("normalized");
+      }
     },
   });
   controller = f.form;

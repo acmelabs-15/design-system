@@ -63,7 +63,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
   }
   set open(value: boolean) {
     const previous = this.visibility;
-    if (previous === Boolean(value)) return;
+    if (previous === Boolean(value)) {
+      return;
+    }
     this.visibility = Boolean(value);
     this.restoreFocus = true;
     this.reason = "programmatic";
@@ -81,7 +83,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     return this.appearance.effective.get().size!;
   }
   set size(value: "small" | "medium" | "large" | undefined) {
-    if (value !== undefined && !["small", "medium", "large"].includes(value)) throw new TypeError("Invalid selection control size");
+    if (value !== undefined && !["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid selection control size");
+    }
     const previous = this.size;
     this.appearance.setAuthored({ size: value });
     this.requestUpdate("size", previous);
@@ -108,7 +112,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
   });
   private readonly valueCounts = createAtom(() => {
     const counts = new Map<string | undefined, number>();
-    for (const part of this.ordered.get()) counts.set(part.value(), (counts.get(part.value()) ?? 0) + 1);
+    for (const part of this.ordered.get()) {
+      counts.set(part.value(), (counts.get(part.value()) ?? 0) + 1);
+    }
     return counts;
   });
   private constraintValues = "";
@@ -132,10 +138,14 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
         console.error("ComboBox options must be direct children. Use the section property for labelled groups.");
         return () => {};
       }
-      if (!this.members.includes(part)) this.members = Object.freeze([...this.members, part]);
+      if (!this.members.includes(part)) {
+        this.members = Object.freeze([...this.members, part]);
+      }
       return () => {
         this.members = Object.freeze(this.members.filter((item) => item !== part));
-        if (this.active === part) this.active = undefined;
+        if (this.active === part) {
+          this.active = undefined;
+        }
       };
     },
     presentation: (part) => ({
@@ -165,8 +175,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     fromAttribute: (value) => this.attributeValue(value),
     toAttribute: (value) => (this.multiple ? JSON.stringify(value) : (value[0] ?? null)),
     normalize: (value) => {
-      if (!Array.isArray(value) || value.some((item) => typeof item !== "string" || !item) || new Set(value).size !== value.length || (!this.multiple && value.length > 1))
+      if (!Array.isArray(value) || value.some((item) => typeof item !== "string" || !item) || new Set(value).size !== value.length || (!this.multiple && value.length > 1)) {
         throw new TypeError("Selection values must be unique nonempty strings");
+      }
       const previous = this.nativeForm?.value;
       return previous && previous.length === value.length && previous.every((item, i) => item === value[i]) ? previous : Object.freeze([...value]);
     },
@@ -180,15 +191,25 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     },
     serialize: (state) => {
       const values = state.value.filter((value) => this.members.some((part) => part.value() === value && !part.disabled()));
-      if (!this.multiple) return values[0] ?? null;
+      if (!this.multiple) {
+        return values[0] ?? null;
+      }
       const data = new FormData();
-      if (state.name) for (const value of values) data.append(state.name, value);
+      if (state.name) {
+        for (const value of values) {
+          data.append(state.name, value);
+        }
+      }
       return state.name ? data : null;
     },
     restoration: (state) => JSON.stringify(state.value),
     restore: (value, mode) => {
-      if (typeof value !== "string") return empty;
-      if (mode === "autocomplete") return value ? [value] : empty;
+      if (typeof value !== "string") {
+        return empty;
+      }
+      if (mode === "autocomplete") {
+        return value ? [value] : empty;
+      }
       try {
         const parsed = JSON.parse(value);
         return Array.isArray(parsed) && (this.multiple || parsed.length <= 1) && parsed.every((item) => typeof item === "string" && item) && new Set(parsed).size === parsed.length ? parsed : empty;
@@ -198,16 +219,23 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     },
     target: () => (this.control.isConnected ? this.control : undefined),
     changed: (reason) => {
-      if (reason === "reset" || reason === "restore" || reason === "programmatic" || reason === "default") this.valueChanged();
+      if (reason === "reset" || reason === "restore" || reason === "programmatic" || reason === "default") {
+        this.valueChanged();
+      }
     },
     synchronize: (state) => {
       this.control.disabled = state.disabled || state.platformDisabled;
-      if (this.multiple) this.control.removeAttribute("aria-required");
-      else this.control.setAttribute("aria-required", String(state.required));
+      if (this.multiple) {
+        this.control.removeAttribute("aria-required");
+      } else {
+        this.control.setAttribute("aria-required", String(state.required));
+      }
       this.control.setAttribute("aria-invalid", String(this.effectiveInvalid));
       this.control.setAttribute("aria-expanded", String(this.open));
       this.control.setAttribute("aria-haspopup", "listbox");
-      if (this.list) this.list.ariaLabelledByElements = [this.control];
+      if (this.list) {
+        this.list.ariaLabelledByElements = [this.control];
+      }
       const active = this.open && this.active && this.visibleOptions.includes(this.active) ? this.active.host : null;
       this.control.ariaActiveDescendantElement = this.multiple ? null : active;
       if (this.list) {
@@ -250,8 +278,12 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     this.nativeForm.setDefaultValue(value);
   }
   protected attributeValue(value: string | null): readonly string[] {
-    if (value === null) return empty;
-    if (!this.multiple) return value ? [value] : empty;
+    if (value === null) {
+      return empty;
+    }
+    if (!this.multiple) {
+      return value ? [value] : empty;
+    }
     try {
       const parsed = JSON.parse(value);
       return Array.isArray(parsed) ? parsed : empty;
@@ -260,7 +292,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     }
   }
   protected valueChanged(): void {
-    if (this.editable) this.queryValue = this.displayValue;
+    if (this.editable) {
+      this.queryValue = this.displayValue;
+    }
   }
   protected get allOptions(): readonly OptionPart[] {
     return this.ordered.get();
@@ -269,7 +303,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     return this.allOptions.filter((part) => {
       let node: Node | null = part.host;
       while (node && node !== this && node !== this.surface) {
-        if (node.nodeType === 1 && (node as HTMLElement).hidden) return false;
+        if (node.nodeType === 1 && (node as HTMLElement).hidden) {
+          return false;
+        }
         node = (node.nodeType === 1 ? (node as Element).assignedSlot : null) ?? node.parentNode ?? (node.nodeType === 11 && "host" in node ? (node as ShadowRoot).host : null);
       }
       return true;
@@ -310,7 +346,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
         this.active = undefined;
         this.typeahead.clear();
         this.completedOpen = false;
-        if (this.open) this.open = false;
+        if (this.open) {
+          this.open = false;
+        }
         this.dispatchEvent(new CustomEvent("acme-after-close", { bubbles: true, composed: true, detail: { reason: this.reason } }));
       }
     },
@@ -351,20 +389,27 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     current: () => this.active ?? this.enabled.find((part) => this.selectedValues.includes(part.value()!)),
     text: (part) => part.text(),
     move: (part) => {
-      if (this.open) this.highlight(part);
-      else this.choose(part, true);
+      if (this.open) {
+        this.highlight(part);
+      } else {
+        this.choose(part, true);
+      }
     },
     locale: () => this.themeContext.scope.effective.get().locale,
   });
   constructor() {
     super();
     this.addEventListener("click", (event) => {
-      if (event.composedPath()[0] === this && !event.defaultPrevented) this.focus();
+      if (event.composedPath()[0] === this && !event.defaultPrevented) {
+        this.focus();
+      }
     });
     this.control.className = "native";
     this.control.setAttribute("part", this.editable ? "input" : "trigger");
     registerOptionBoundary(this);
-    if (this.editable) registerTextControl(this);
+    if (this.editable) {
+      registerTextControl(this);
+    }
     this.control.setAttribute("type", this.editable ? "text" : "button");
     if (!this.editable) {
       this.triggerContent.name = "trigger";
@@ -383,15 +428,22 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     this.addEventListener("focusout", () =>
       queueMicrotask(() => {
         const active = deepActiveElement(this.ownerDocument);
-        if (this.open && active && !composedContains(this, active)) this.dismiss("outside", false);
+        if (this.open && active && !composedContains(this, active)) {
+          this.dismiss("outside", false);
+        }
       }),
     );
   }
   protected edit(_event: Event): void {}
   private toggle = (event: Event): void => {
-    if (event.defaultPrevented || this.nativeForm.effectiveDisabled) return;
-    if (this.open && !this.editable) this.dismiss("trigger");
-    else this.openFromUser();
+    if (event.defaultPrevented || this.nativeForm.effectiveDisabled) {
+      return;
+    }
+    if (this.open && !this.editable) {
+      this.dismiss("trigger");
+    } else {
+      this.openFromUser();
+    }
   };
   show(): void {
     if (!this.nativeForm.effectiveDisabled) {
@@ -404,7 +456,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     this.open = false;
   }
   protected openFromUser(): void {
-    if (this.nativeForm.effectiveDisabled || this.open) return;
+    if (this.nativeForm.effectiveDisabled || this.open) {
+      return;
+    }
     this.show();
     this.control.focus({ preventScroll: true });
     this.reason = "trigger";
@@ -414,8 +468,12 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     this.dispatchEvent(new CustomEvent("acme-open-change", { bubbles: true, composed: true, detail: { open: this.open, reason: this.reason } }));
   }
   protected dismiss(reason: string, restore = true): void {
-    if (!this.open) return;
-    if (!this.dispatchEvent(new CustomEvent("acme-request", { bubbles: true, composed: true, cancelable: true, detail: { action: "close", reason } }))) return;
+    if (!this.open) {
+      return;
+    }
+    if (!this.dispatchEvent(new CustomEvent("acme-request", { bubbles: true, composed: true, cancelable: true, detail: { action: "close", reason } }))) {
+      return;
+    }
     this.open = false;
     this.reason = reason;
     this.restoreFocus = restore;
@@ -424,71 +482,107 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
   }
   protected dismissed(_reason: string): void {}
   protected choose(part: OptionPart, closed = false): void {
-    if ((!this.open && !closed) || this.nativeForm.effectiveDisabled || part.disabled() || !this.validPart(part)) return;
+    if ((!this.open && !closed) || this.nativeForm.effectiveDisabled || part.disabled() || !this.validPart(part)) {
+      return;
+    }
     const value = part.value()!;
     const values = this.multiple ? (this.selectedValues.includes(value) ? this.selectedValues.filter((item) => item !== value) : [...this.selectedValues, value]) : [value];
     const changed = values.length !== this.selectedValues.length || values.some((item, index) => item !== this.selectedValues[index]);
     this.nativeForm.setValue(values, "user");
     this.valueChanged();
-    if (changed) this.notifyValue();
-    if (this.open && !this.multiple) this.dismiss("selection");
+    if (changed) {
+      this.notifyValue();
+    }
+    if (this.open && !this.multiple) {
+      this.dismiss("selection");
+    }
   }
   private notifyValue(): void {
     this.dispatchEvent(new CustomEvent("acme-change", { bubbles: true, composed: true, detail: { value: this.multiple ? this.selectedValues : this.selectedValues[0] } }));
   }
   clear(): void {
-    if (this.nativeForm.effectiveDisabled) return;
+    if (this.nativeForm.effectiveDisabled) {
+      return;
+    }
     const changed = this.selectedValues.length > 0;
     this.nativeForm.setValue(empty, "user");
     this.valueChanged();
-    if (changed) this.notifyValue();
-    if (this.multiple && this.open) this.list?.focus();
-    else this.control.focus();
+    if (changed) {
+      this.notifyValue();
+    }
+    if (this.multiple && this.open) {
+      this.list?.focus();
+    } else {
+      this.control.focus();
+    }
   }
   private highlight(part: OptionPart): void {
-    if (!this.open || part.disabled() || !this.enabled.includes(part)) return;
+    if (!this.open || part.disabled() || !this.enabled.includes(part)) {
+      return;
+    }
     this.active = part;
     part.host.scrollIntoView({ block: "nearest", inline: "nearest" });
     this.nativeForm.sync();
   }
   private key = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing || this.composing || this.nativeForm.effectiveDisabled || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (event.defaultPrevented || event.isComposing || this.composing || this.nativeForm.effectiveDisabled || event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
     if (event.key === "Tab") {
       return;
     }
     if (this.multiple && event.currentTarget === this.control && ["Enter", " ", "ArrowDown", "ArrowUp"].includes(event.key)) {
       event.preventDefault();
-      if (!this.open) this.openFromUser();
-      else if (event.key === "Enter" || event.key === " ") this.dismiss("trigger");
-      else this.list?.focus();
+      if (!this.open) {
+        this.openFromUser();
+      } else if (event.key === "Enter" || event.key === " ") {
+        this.dismiss("trigger");
+      } else {
+        this.list?.focus();
+      }
       return;
     }
     if (event.key === "ArrowDown" || event.key === "ArrowUp") {
       event.preventDefault();
       if (!this.open) {
         this.openFromUser();
-        if (event.key === "ArrowUp") this.active = this.enabled.at(-1);
+        if (event.key === "ArrowUp") {
+          this.active = this.enabled.at(-1);
+        }
         return;
       }
       const index = this.enabled.indexOf(this.active!),
         next = Math.max(0, Math.min(this.enabled.length - 1, index + (event.key === "ArrowDown" ? 1 : -1)));
-      if (this.enabled[next]) this.highlight(this.enabled[next]);
+      if (this.enabled[next]) {
+        this.highlight(this.enabled[next]);
+      }
       return;
     }
     if (this.open && !this.editable && (event.key === "Home" || event.key === "End")) {
       event.preventDefault();
       const part = event.key === "Home" ? this.enabled[0] : this.enabled.at(-1);
-      if (part) this.highlight(part);
+      if (part) {
+        this.highlight(part);
+      }
       return;
     }
-    if (!this.editable && (this.open || !this.multiple) && this.typeahead.handleKey(event)) return;
-    if (this.editable && !this.open && event.key === "Enter") return;
+    if (!this.editable && (this.open || !this.multiple) && this.typeahead.handleKey(event)) {
+      return;
+    }
+    if (this.editable && !this.open && event.key === "Enter") {
+      return;
+    }
     if (event.key === "Enter" || (!this.editable && event.key === " ")) {
       event.preventDefault();
       if (this.open) {
-        if (this.active) this.choose(this.active);
-        else if (this.editable) this.dismiss("selection");
-      } else this.openFromUser();
+        if (this.active) {
+          this.choose(this.active);
+        } else if (this.editable) {
+          this.dismiss("selection");
+        }
+      } else {
+        this.openFromUser();
+      }
     }
   };
   disconnectedCallback() {
@@ -496,20 +590,32 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     super.disconnectedCallback();
   }
   protected willUpdate(changes: Map<string, unknown>) {
-    if (changes.has("open")) this.completedOpen = false;
-    if (this.nativeForm.effectiveDisabled && this.open) this.open = false;
-    if (this.active && !this.enabled.includes(this.active)) this.active = undefined;
+    if (changes.has("open")) {
+      this.completedOpen = false;
+    }
+    if (this.nativeForm.effectiveDisabled && this.open) {
+      this.open = false;
+    }
+    if (this.active && !this.enabled.includes(this.active)) {
+      this.active = undefined;
+    }
     this.motion.update();
     if (this.control instanceof HTMLButtonElement) {
       const text = this.displayValue || this.placeholder;
-      if (this.triggerContent.textContent !== text) this.triggerContent.textContent = text;
-    } else if (!this.composing && this.control.value !== this.queryValue) this.control.value = this.queryValue;
+      if (this.triggerContent.textContent !== text) {
+        this.triggerContent.textContent = text;
+      }
+    } else if (!this.composing && this.control.value !== this.queryValue) {
+      this.control.value = this.queryValue;
+    }
   }
   protected updated(changes: Map<string, unknown>) {
     this.surface = this.renderRoot.querySelector<HTMLElement>("[part=content]") ?? undefined;
     this.list = this.renderRoot.querySelector<HTMLElement>("[part=list]") ?? undefined;
     const surface = this.surface;
-    if (!surface) return;
+    if (!surface) {
+      return;
+    }
     const focused = deepActiveElement(this.ownerDocument);
     if (!this.open && !surface.inert && focused && composedContains(surface, focused) && this.restoreFocus) {
       this.control.focus();
@@ -522,8 +628,12 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
       if (this.presence.phase.get() === "closed") {
         this.presence.show(this.control);
         this.positioner.start(this.renderRoot.querySelector<HTMLElement>("[part=root]")!, surface);
-        if (this.multiple) this.list?.focus({ preventScroll: true });
-      } else if (changes.has("side") || changes.has("align") || changes.has("sideOffset")) this.positioner.refresh();
+        if (this.multiple) {
+          this.list?.focus({ preventScroll: true });
+        }
+      } else if (changes.has("side") || changes.has("align") || changes.has("sideOffset")) {
+        this.positioner.refresh();
+      }
       if (this.motion.settled && !this.completedOpen) {
         this.completedOpen = true;
         this.dispatchEvent(new CustomEvent("acme-after-open", { bubbles: true, composed: true, detail: { reason: this.reason } }));
@@ -537,7 +647,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
   private submit = (event: Event): void => {
     event.preventDefault();
     event.stopPropagation();
-    if (this.editable && this.form && !this.nativeForm.effectiveDisabled) submitImplicitly(this.form);
+    if (this.editable && this.form && !this.nativeForm.effectiveDisabled) {
+      submitImplicitly(this.form);
+    }
   };
   protected renderEndContent() {
     return html`<acme-expand-more-icon size="16px" @click=${this.toggle}></acme-expand-more-icon>`;

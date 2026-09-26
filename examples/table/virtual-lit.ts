@@ -9,6 +9,7 @@ import { styleMap } from "lit/directives/style-map.js";
 import { columnStyle, columns, type Delivery, type DeliveryCell, type DeliveryRow, type DeliveryTable, data, features, orderedColumns } from "./data";
 import { gridKey, syncGridFocus } from "./grid-interaction";
 import { columnWindow, type VirtualMode, visibleRows, windowCells } from "./virtual-layout";
+
 export class VirtualDeliveryLit extends LitElement {
   private readonly source = createAtom(data);
   private readonly sourceUpdates = new TanStackStoreAtom(this, () => this.source);
@@ -58,8 +59,12 @@ export class VirtualDeliveryLit extends LitElement {
   private async reveal(rowId: string, columnId: string) {
     const row = this.currentRows.findIndex((row) => row.id === rowId),
       column = this.model?.getCenterVisibleLeafColumns().findIndex((column) => column.id === columnId) ?? -1;
-    if (row >= 0 && this.mode.get() !== "horizontal") this.rowVirtual.getVirtualizer().scrollToIndex(row, { align: "auto" });
-    if (column >= 0 && this.mode.get() !== "vertical") this.columnVirtual.getVirtualizer().scrollToIndex(column, { align: "auto" });
+    if (row >= 0 && this.mode.get() !== "horizontal") {
+      this.rowVirtual.getVirtualizer().scrollToIndex(row, { align: "auto" });
+    }
+    if (column >= 0 && this.mode.get() !== "vertical") {
+      this.columnVirtual.getVirtualizer().scrollToIndex(column, { align: "auto" });
+    }
     await this.updateComplete;
     await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
   }
@@ -74,7 +79,9 @@ export class VirtualDeliveryLit extends LitElement {
         : "";
     if (geometry !== this.columnGeometry) {
       this.columnGeometry = geometry ?? "";
-      if (geometry) this.columnVirtual.getVirtualizer().measure();
+      if (geometry) {
+        this.columnVirtual.getVirtualizer().measure();
+      }
     }
     const body = this.renderRoot.querySelector<HTMLElement>("[data-virtual-body]"),
       scroll = this.container?.getScrollElement();
@@ -86,8 +93,14 @@ export class VirtualDeliveryLit extends LitElement {
         this.requestUpdate();
       }
     }
-    if (this.mode.get() !== "horizontal") for (const row of this.renderRoot.querySelectorAll<HTMLTableRowElement>("[data-index]")) this.rowVirtual.getVirtualizer().measureElement(row);
-    if (this.model && this.container?.getTableElement()) syncGridFocus(this.container.getTableElement()!, this.model);
+    if (this.mode.get() !== "horizontal") {
+      for (const row of this.renderRoot.querySelectorAll<HTMLTableRowElement>("[data-index]")) {
+        this.rowVirtual.getVirtualizer().measureElement(row);
+      }
+    }
+    if (this.model && this.container?.getTableElement()) {
+      syncGridFocus(this.container.getTableElement()!, this.model);
+    }
   }
   render() {
     const mode = this.mode.get(),
@@ -126,7 +139,9 @@ export class VirtualDeliveryLit extends LitElement {
     return html`<th data-header data-leaf="true" data-column=${column.id} data-pinned=${column.getIsPinned() || nothing} style=${styleMap(columnStyle(column))}>${String(column.columnDef.header ?? column.id)}</th>`;
   }
   private cell(cell: DeliveryCell) {
-    if (cell.getIsCovered()) return nothing;
+    if (cell.getIsCovered()) {
+      return nothing;
+    }
     return html`<td role="gridcell" data-cell=${cell.id} data-column=${cell.column.id} aria-colindex=${orderedColumns(this.model!).findIndex((column) => column.id === cell.column.id) + 1} colspan=${cell.getColSpan()} rowspan=${cell.getRowSpan()} data-pinned=${cell.column.getIsPinned() || nothing} style=${styleMap(columnStyle(cell.column))} tabindex="-1">${cell.column.id === "name" ? html`${cell.row.getCanExpand() ? html`<button type="button" @click=${cell.row.getToggleExpandedHandler()} aria-label=${"Expand " + cell.row.id}>Expand</button>` : nothing}${String(cell.getValue() ?? "")}` : String(cell.getValue() ?? "")}</td>`;
   }
 }

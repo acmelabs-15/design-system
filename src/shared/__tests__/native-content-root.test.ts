@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { LitElement, html } from "lit";
 import { NativeContentRoot, nativeContentMarker } from "../native-content-root";
+
 class Probe extends LitElement {
   readonly content = new NativeContentRoot(
     this,

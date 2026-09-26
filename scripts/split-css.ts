@@ -46,7 +46,11 @@ const MAP: [string, RegExp][] = [
 ];
 const moduleOf = (sel: string): string | null => {
   const parts = sel.split(",").map((s) => s.trim());
-  for (const [name, re] of MAP) if (parts.some((p) => re.test(p))) return name;
+  for (const [name, re] of MAP) {
+    if (parts.some((p) => re.test(p))) {
+      return name;
+    }
+  }
   return null;
 };
 
@@ -85,7 +89,9 @@ const generated = new Set(
   }),
 );
 for (const [name, rules] of modules) {
-  if (generated.has(name)) continue;
+  if (generated.has(name)) {
+    continue;
+  }
   const key = SHARED.has(name) ? "shared/" + name : "components/" + name + "/" + name;
   writeStyle(key, rules, { producer: "house", inputs });
 }

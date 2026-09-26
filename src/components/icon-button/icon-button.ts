@@ -15,14 +15,18 @@ export class AcmeIconButton extends AcmeFormActionElement {
     return super.shape === "circle" ? "circle" : "square";
   }
   set shape(value: "square" | "circle" | undefined) {
-    if (value !== undefined && value !== "square" && value !== "circle") throw new TypeError("Invalid icon button shape");
+    if (value !== undefined && value !== "square" && value !== "circle") {
+      throw new TypeError("Invalid icon button shape");
+    }
     super.shape = value;
   }
   private warned = false;
   protected updated(changed: Map<string, unknown>) {
     super.updated(changed);
     const named = !!this.ariaLabel?.trim() || !!this.ariaLabelledByElements?.length;
-    if (!named && !this.warned) console.warn(this.localName, { code: "missing-action-name" });
+    if (!named && !this.warned) {
+      console.warn(this.localName, { code: "missing-action-name" });
+    }
     this.warned = !named;
   }
   protected renderContent() {

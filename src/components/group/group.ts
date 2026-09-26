@@ -67,8 +67,12 @@ export class AcmeGroup extends AcmeFlexLayoutElement {
     if (name === "orientation") {
       const parsed = parseResponsiveAttribute(value, orientationValue);
       this.orientation = parsed.value;
-      if (parsed.diagnostic) console.warn(this.localName, { ...parsed.diagnostic, attribute: name });
-    } else super.attributeChangedCallback(name, previous, value);
+      if (parsed.diagnostic) {
+        console.warn(this.localName, { ...parsed.diagnostic, attribute: name });
+      }
+    } else {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   protected resolvedStyleInputs(): readonly (readonly [StyleInputKey, unknown])[] {
     const inputs = super.resolvedStyleInputs(),

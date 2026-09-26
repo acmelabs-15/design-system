@@ -1,13 +1,6 @@
 import { createComponent, createSignal } from "solid-js";
 import { render } from "solid-js/web";
-import {
-  JsonTree,
-  MainPanel,
-  Section,
-  SectionDescription,
-  SectionTitle,
-  ThemeContextProvider,
-} from "@tanstack/devtools-ui";
+import { JsonTree, MainPanel, Section, SectionDescription, SectionTitle, ThemeContextProvider } from "@tanstack/devtools-ui";
 import { DiagnosticObserver, type DiagnosticMetadata, type DiagnosticOptions } from "./diagnostics";
 
 const SnapshotTree = JsonTree<unknown, never>;
@@ -30,12 +23,18 @@ export function createInspector(metadata: DiagnosticMetadata, options: Diagnosti
   };
   return {
     mount(container) {
-      if (disposed) throw new Error("Inspector is disposed");
-      if (remove) throw new Error("Inspector is already mounted");
-      if (container.ownerDocument !== options.root.ownerDocument)
+      if (disposed) {
+        throw new Error("Inspector is disposed");
+      }
+      if (remove) {
+        throw new Error("Inspector is already mounted");
+      }
+      if (container.ownerDocument !== options.root.ownerDocument) {
         throw new Error("Inspector and inspected root must share a document");
-      if (container === options.root || container.contains(options.root))
+      }
+      if (container === options.root || container.contains(options.root)) {
         throw new Error("Mount the inspector beside or inside its inspected root, not around it");
+      }
       const surface = container.ownerDocument.createElement("section");
       surface.setAttribute("aria-label", "Design system inspector");
       surface.setAttribute("data-acme-inspector", "");
@@ -101,7 +100,9 @@ export function createInspector(metadata: DiagnosticMetadata, options: Diagnosti
     },
     unmount,
     dispose() {
-      if (disposed) return;
+      if (disposed) {
+        return;
+      }
       unmount();
       disposed = true;
     },

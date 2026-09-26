@@ -29,7 +29,9 @@ export class AcmeToastViewport extends AcmeSemanticElement {
     return this.supplied;
   }
   set store(value: ToastStore | undefined) {
-    if (value !== undefined) toastRuntime(value);
+    if (value !== undefined) {
+      toastRuntime(value);
+    }
     const previous = this.supplied;
     this.supplied = value;
     this.requestUpdate("store", previous);
@@ -40,7 +42,9 @@ export class AcmeToastViewport extends AcmeSemanticElement {
     return this.edge;
   }
   set placement(value: ToastPlacement) {
-    if (!["top-start", "top-end", "bottom-start", "bottom-end"].includes(value)) throw new TypeError("Invalid Toast placement");
+    if (!["top-start", "top-end", "bottom-start", "bottom-end"].includes(value)) {
+      throw new TypeError("Invalid Toast placement");
+    }
     const previous = this.edge;
     this.edge = value;
     this.requestUpdate("placement", previous);
@@ -51,7 +55,9 @@ export class AcmeToastViewport extends AcmeSemanticElement {
     return this.visibleLimit;
   }
   set limit(value: number) {
-    if (!Number.isSafeInteger(value) || value < 1) throw new RangeError("Toast limit requires a positive safe integer");
+    if (!Number.isSafeInteger(value) || value < 1) {
+      throw new RangeError("Toast limit requires a positive safe integer");
+    }
     const previous = this.visibleLimit;
     this.visibleLimit = value;
     this.requestUpdate("limit", previous);
@@ -69,7 +75,11 @@ export class AcmeToastViewport extends AcmeSemanticElement {
   private readonly custom = createAtom(() => {
     this.revision.get();
     const map = new Map<string, ToastPart>();
-    for (const part of this.parts.get()) if (part.host.parentNode === this && part.id() && !map.has(part.id())) map.set(part.id(), part);
+    for (const part of this.parts.get()) {
+      if (part.host.parentNode === this && part.id() && !map.has(part.id())) {
+        map.set(part.id(), part);
+      }
+    }
     return map;
   });
   private get runtime() {
@@ -107,7 +117,9 @@ export class AcmeToastViewport extends AcmeSemanticElement {
       return () => this.parts.set((parts) => parts.filter((item) => item !== part));
     },
     measure: (id, height) => {
-      if (Math.abs((this.heights.get().get(id) ?? 0) - height) < 0.1) return;
+      if (Math.abs((this.heights.get().get(id) ?? 0) - height) < 0.1) {
+        return;
+      }
       this.heights.set((values) => new Map([...values, [id, height]]));
     },
   };
@@ -136,19 +148,29 @@ export class AcmeToastViewport extends AcmeSemanticElement {
     return this.renderRoot?.querySelector<HTMLElement>("[part=viewport]") ?? undefined;
   }
   private bind() {
-    if (!this.isConnected) return;
+    if (!this.isConnected) {
+      return;
+    }
     const runtime = this.runtime;
-    if (runtime === this.bound) return;
+    if (runtime === this.bound) {
+      return;
+    }
     this.unbind();
     this.bound = runtime;
-    if (!runtime) return;
+    if (!runtime) {
+      return;
+    }
     this.release = runtime.attachViewport(this);
     this.unsubscribe = runtime.subscribeDismiss((detail) => {
-      if (runtime.owner.get() !== this) return;
+      if (runtime.owner.get() !== this) {
+        return;
+      }
       const part = this.parts.get().find((part) => part.id() === detail.id);
       (part?.host ?? this).dispatchEvent(new CustomEvent("acme-dismiss", { detail, bubbles: true, composed: true }));
       const active = deepActiveElement(this.ownerDocument);
-      if (part && active && composedContains(part.host, active)) this.recoverFocus();
+      if (part && active && composedContains(part.host, active)) {
+        this.recoverFocus();
+      }
     });
   }
   private unbind() {
@@ -164,27 +186,41 @@ export class AcmeToastViewport extends AcmeSemanticElement {
   private recoverFocus() {
     this.surface?.focus({ preventScroll: true });
     void this.updateComplete.then(async () => {
-      if (!this.isConnected) return;
+      if (!this.isConnected) {
+        return;
+      }
       const next = this.runtime?.entries.get().find((entry) => entry.status === "open" && this.view.get().geometry.get(entry.record.id)?.visible);
       const part = next ? this.parts.get().find((part) => part.id() === next.record.id) : undefined;
       if (part) {
         await part.host.updateComplete;
-        if (deepActiveElement(this.ownerDocument) === this.surface) part.target()?.focus({ preventScroll: true });
-      } else if (this.previousFocus?.isConnected && deepActiveElement(this.ownerDocument) === this.surface) this.previousFocus.focus({ preventScroll: true });
+        if (deepActiveElement(this.ownerDocument) === this.surface) {
+          part.target()?.focus({ preventScroll: true });
+        }
+      } else if (this.previousFocus?.isConnected && deepActiveElement(this.ownerDocument) === this.surface) {
+        this.previousFocus.focus({ preventScroll: true });
+      }
     });
   }
   private syncPauses() {
     const runtime = this.bound;
-    if (!runtime) return;
+    if (!runtime) {
+      return;
+    }
     if (!this.view.get().active) {
       runtime.resume(this.interactionPause);
       runtime.resume(this.backgroundPause);
       return;
     }
-    if (this.hovered || this.focused || this.touching) runtime.pause(this.interactionPause);
-    else runtime.resume(this.interactionPause);
-    if (this.ownerDocument.hidden || !this.ownerDocument.hasFocus()) runtime.pause(this.backgroundPause);
-    else runtime.resume(this.backgroundPause);
+    if (this.hovered || this.focused || this.touching) {
+      runtime.pause(this.interactionPause);
+    } else {
+      runtime.resume(this.interactionPause);
+    }
+    if (this.ownerDocument.hidden || !this.ownerDocument.hasFocus()) {
+      runtime.pause(this.backgroundPause);
+    } else {
+      runtime.resume(this.backgroundPause);
+    }
   }
   private background = () => {
     this.syncPauses();
@@ -197,7 +233,9 @@ export class AcmeToastViewport extends AcmeSemanticElement {
   };
   private focusIn = (event: FocusEvent) => {
     const previous = event.relatedTarget;
-    if (previous instanceof HTMLElement && !composedContains(this, previous)) this.previousFocus = previous;
+    if (previous instanceof HTMLElement && !composedContains(this, previous)) {
+      this.previousFocus = previous;
+    }
     this.focused = true;
     this.syncPauses();
   };
@@ -215,9 +253,13 @@ export class AcmeToastViewport extends AcmeSemanticElement {
     }
   };
   focus(options?: FocusOptions) {
-    if (!this.view.get().active) return;
+    if (!this.view.get().active) {
+      return;
+    }
     const previous = deepActiveElement(this.ownerDocument);
-    if (previous && previous instanceof HTMLElement && !composedContains(this, previous)) this.previousFocus = previous;
+    if (previous && previous instanceof HTMLElement && !composedContains(this, previous)) {
+      this.previousFocus = previous;
+    }
     this.focused = true;
     this.syncPauses();
     void this.updateComplete.then(() => {
@@ -267,7 +309,9 @@ export class AcmeToastViewport extends AcmeSemanticElement {
     this.bind();
     const active = deepActiveElement(this.ownerDocument);
     const focusedPart = active ? this.parts.get().find((part) => composedContains(part.host, active)) : undefined;
-    if (focusedPart && !this.view.get().geometry.get(focusedPart.id())?.visible) this.recoverFocus();
+    if (focusedPart && !this.view.get().geometry.get(focusedPart.id())?.visible) {
+      this.recoverFocus();
+    }
     if (!this.runtime?.entries.get().some((entry) => entry.status === "open")) {
       this.hovered = false;
       this.focused = false;
@@ -277,40 +321,58 @@ export class AcmeToastViewport extends AcmeSemanticElement {
   }
   protected updated() {
     const surface = this.surface;
-    if (!surface || !this.isConnected) return;
+    if (!surface || !this.isConnected) {
+      return;
+    }
     const view = this.view.get(),
       entries = this.runtime?.entries.get() ?? [];
     for (const slot of this.renderRoot.querySelectorAll<HTMLSlotElement>("slot[data-toast]")) {
       const part = this.custom.get().get(slot.dataset.toast!);
       const nodes = part ? [part.host] : [];
       const previous = slot.assignedNodes();
-      if (nodes.length !== previous.length || nodes.some((node, index) => node !== previous[index])) slot.assign(...nodes);
+      if (nodes.length !== previous.length || nodes.some((node, index) => node !== previous[index])) {
+        slot.assign(...nodes);
+      }
     }
     const shouldShow = view.active && entries.length > 0;
-    if (shouldShow && !surface.matches(":popover-open")) surface.showPopover();
-    if (!shouldShow && surface.matches(":popover-open")) surface.hidePopover();
+    if (shouldShow && !surface.matches(":popover-open")) {
+      surface.showPopover();
+    }
+    if (!shouldShow && surface.matches(":popover-open")) {
+      surface.hidePopover();
+    }
     if (shouldShow) {
       const measured = this.renderRoot.querySelector<HTMLElement>(".gap-measure")?.getBoundingClientRect().height ?? 0;
-      if (measured > 0 && Math.abs(measured - this.gap) > 0.1) this.gap = measured;
+      if (measured > 0 && Math.abs(measured - this.gap) > 0.1) {
+        this.gap = measured;
+      }
     }
     const height = Math.max(0, ...[...view.geometry.values()].map((item) => Math.abs(item.y) + item.height));
     surface.style.setProperty("--_toast-viewport-height", `${height}px`);
     surface.style.setProperty("--_toast-keyboard-offset", `${this.keyboardOffset}px`);
     const current = new Set(entries.filter((entry) => entry.status === "open").map((entry) => entry.record.id));
     const retained = new Set(entries.map((entry) => entry.record.id));
-    if ([...this.heights.get().keys()].some((id) => !retained.has(id))) this.heights.set((heights) => new Map([...heights].filter(([id]) => retained.has(id))));
+    if ([...this.heights.get().keys()].some((id) => !retained.has(id))) {
+      this.heights.set((heights) => new Map([...heights].filter(([id]) => retained.has(id))));
+    }
     const visible = new Set([...view.geometry].filter(([, geometry]) => geometry.visible).map(([id]) => id));
     let next = this.announcements.filter((item) => current.has(item.id) && visible.has(item.id));
     for (const entry of entries) {
-      if (!view.geometry.get(entry.record.id)?.visible || entry.status !== "open") continue;
+      if (!view.geometry.get(entry.record.id)?.visible || entry.status !== "open") {
+        continue;
+      }
       const record = entry.record,
         key = JSON.stringify([entry.version, record.heading, record.description, record.action, record.variant]);
-      if (!this.runtime?.claimAnnouncement(record.id, key)) continue;
+      if (!this.runtime?.claimAnnouncement(record.id, key)) {
+        continue;
+      }
       next = next.filter((item) => item.id !== record.id);
       next.push({ key: record.id + key, id: record.id, text: [record.heading, record.description, record.action?.label].filter(Boolean).join(" ") });
     }
     next = next.slice(-this.limit);
-    if (next.length !== this.announcements.length || next.some((item, index) => item !== this.announcements[index])) this.announcements = Object.freeze(next);
+    if (next.length !== this.announcements.length || next.some((item, index) => item !== this.announcements[index])) {
+      this.announcements = Object.freeze(next);
+    }
   }
   render() {
     const view = this.view.get(),

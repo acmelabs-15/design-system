@@ -4,6 +4,7 @@ import { createRoot, type Root } from "react-dom/client";
 import { DeliveryTableLit } from "./lit";
 import { DeliveryTableReact } from "./react";
 import { VirtualDeliveryLit } from "./virtual-lit";
+
 class ReactTableExample extends HTMLElement {
   private root?: Root;
   connectedCallback() {

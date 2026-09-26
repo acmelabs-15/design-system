@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Switch has canonical checked/reset state and an independent submission value", async () => {
   const control = document.createElement("acme-switch");
   control.textContent = "Updates";

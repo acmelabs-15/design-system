@@ -34,7 +34,9 @@ export class AcmeHeading extends AcmeSizedTypographyElement {
   }
   getHeadingElement(): HTMLHeadingElement {
     const element = this.renderRoot?.querySelector('[part="root"]');
-    if (!element) throw new Error("Await updateComplete before reading the native heading");
+    if (!element) {
+      throw new Error("Await updateComplete before reading the native heading");
+    }
     return element as HTMLHeadingElement;
   }
   render() {

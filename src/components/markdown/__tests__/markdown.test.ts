@@ -4,6 +4,7 @@ import { expect, test, spyOn } from "bun:test";
 import "../../../all";
 import { discoverHeadingTargets } from "../../../shared/heading-targets";
 import { highlighter } from "../../../shared/highlight";
+
 async function mount(text: string, id = "article") {
   const el = document.createElement("acme-markdown");
   el.id = id;

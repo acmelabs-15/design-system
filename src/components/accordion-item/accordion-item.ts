@@ -18,7 +18,9 @@ export class AcmeAccordionItem extends AcmeElement {
     return this.key;
   }
   set value(value: string) {
-    if (typeof value !== "string") throw new TypeError("value must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("value must be a string");
+    }
     const previous = this.key;
     this.key = value;
     this.requestUpdate("value", previous);
@@ -55,7 +57,9 @@ export class AcmeAccordionItem extends AcmeElement {
     context: accordionContext,
     subscribe: true,
     callback: (owner) => {
-      if (this.parent.get().owner === owner) return;
+      if (this.parent.get().owner === owner) {
+        return;
+      }
       this.release?.();
       this.parent.set({ owner });
       this.release = owner.register(this.member);
@@ -73,7 +77,9 @@ export class AcmeAccordionItem extends AcmeElement {
     this.parent.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.isConnected) this.consumer.hostConnected();
+    if (this.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
   disconnectedCallback() {
     this.release?.();

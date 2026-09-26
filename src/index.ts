@@ -195,7 +195,7 @@ export { styleInputs } from "./shared/style-inputs";
 export { registerTheme, type ThemeDefinition } from "./shared/theme-registry";
 export type { ThemeAppearance, ThemeDensity } from "./shared/theme-scope";
 
-export {configureFlowDiagram,type FlowDiagramConfiguration} from "./shared/flow-configuration";
+export { configureFlowDiagram, type FlowDiagramConfiguration } from "./shared/flow-configuration";
 
 export * from "./components/flow-diagram/flow-diagram";
 export * from "./components/flow-node/flow-node";

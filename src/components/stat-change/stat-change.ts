@@ -22,7 +22,9 @@ export class AcmeStatChange extends AcmeElement {
     return this.orientation;
   }
   set direction(value: "up" | "down" | "flat" | undefined) {
-    if (value !== undefined && !["up", "down", "flat"].includes(value)) throw new TypeError("Invalid Stat direction");
+    if (value !== undefined && !["up", "down", "flat"].includes(value)) {
+      throw new TypeError("Invalid Stat direction");
+    }
     const previous = this.orientation;
     this.orientation = value;
     this.requestUpdate("direction", previous);
@@ -33,7 +35,9 @@ export class AcmeStatChange extends AcmeElement {
     return this.meaning;
   }
   set sentiment(value: "positive" | "negative" | "neutral") {
-    if (!["positive", "negative", "neutral"].includes(value)) throw new TypeError("Invalid Stat sentiment");
+    if (!["positive", "negative", "neutral"].includes(value)) {
+      throw new TypeError("Invalid Stat sentiment");
+    }
     const previous = this.meaning;
     this.meaning = value;
     this.requestUpdate("sentiment", previous);

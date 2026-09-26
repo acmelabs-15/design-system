@@ -21,26 +21,40 @@ type Out = { at: string; sel: string; decls: string[] };
 const blocks: Out[] = [];
 const push = (at: string, sel: string, decls: string[]) => {
   const last = blocks[blocks.length - 1];
-  if (last && last.at === at && last.sel === sel) last.decls.push(...decls);
-  else blocks.push({ at, sel, decls: [...decls] });
+  if (last && last.at === at && last.sel === sel) {
+    last.decls.push(...decls);
+  } else {
+    blocks.push({ at, sel, decls: [...decls] });
+  }
 };
 
 for (const r of allRules()) {
-  if (/@media \(prefers-color-scheme/.test(r.at)) continue; // Geist themes by class; the guard is ours below
+  if (/@media \(prefers-color-scheme/.test(r.at)) {
+    continue;
+  } // Geist themes by class; the guard is ours below
   const s = r.sel.trim();
   const targets: string[] = [];
-  if (/^(:root|html|:host)$/.test(s)) targets.push(":root");
-  else if (/^(:root|html)?\.(dark|dark-theme)$/.test(s)) targets.push(':root:where([data-theme="dark"])', "@dark");
-  else if (/^(:root|html)?\.light-theme$/.test(s)) targets.push(':root:where([data-theme="light"])');
-  else continue;
+  if (/^(:root|html|:host)$/.test(s)) {
+    targets.push(":root");
+  } else if (/^(:root|html)?\.(dark|dark-theme)$/.test(s)) {
+    targets.push(':root:where([data-theme="dark"])', "@dark");
+  } else if (/^(:root|html)?\.light-theme$/.test(s)) {
+    targets.push(':root:where([data-theme="light"])');
+  } else {
+    continue;
+  }
   const decls = r.decl
     .split(/;(?![^(]*\))/)
     .map((d) => d.trim())
     .filter((d) => KEEP.test(d.slice(0, d.indexOf(":")).trim()))
     .map(transformTokenDeclaration)
     .filter((d): d is string => d !== undefined);
-  if (!decls.length) continue;
-  for (const t of targets) push(r.at.replace(/@layer [a-z]+\s*/g, "").trim(), t, decls);
+  if (!decls.length) {
+    continue;
+  }
+  for (const t of targets) {
+    push(r.at.replace(/@layer [a-z]+\s*/g, "").trim(), t, decls);
+  }
 }
 
 const wrap = (at: string, body: string) => {
@@ -49,7 +63,9 @@ const wrap = (at: string, body: string) => {
 };
 const render = (b: Out) => {
   const body = `  ${b.decls.join(";\n  ")};`;
-  if (b.sel === "@dark") return wrap(`${b.at} @media (prefers-color-scheme: dark)`.trim(), `:root:where(:not([data-theme="light"])) {\n${body}\n}`);
+  if (b.sel === "@dark") {
+    return wrap(`${b.at} @media (prefers-color-scheme: dark)`.trim(), `:root:where(:not([data-theme="light"])) {\n${body}\n}`);
+  }
   return wrap(b.at, `${b.sel} {\n${body}\n}`);
 };
 

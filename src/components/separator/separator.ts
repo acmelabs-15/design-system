@@ -13,17 +13,15 @@ import { separatorCss } from "../../generated/components/separator/separator.sty
  */
 
 export class AcmeSeparator extends AcmeElement {
-  static styles = [
-    sharedCss,
-    separatorCss,
-    separatorStructureCss,
-  ];
+  static styles = [sharedCss, separatorCss, separatorStructureCss];
   /** horizontal · vertical. */
   @atomState()
-  @property({ reflect: true, noAccessor: true, useDefault: true }) orientation: "horizontal" | "vertical" = "horizontal";
+  @property({ reflect: true, noAccessor: true, useDefault: true })
+  orientation: "horizontal" | "vertical" = "horizontal";
   /** False exposes separator semantics. In HTML, use decorative="false". */
   @atomState()
-  @property({ type: Boolean, converter: boolish, noAccessor: true, useDefault: true }) decorative = true;
+  @property({ type: Boolean, converter: boolish, noAccessor: true, useDefault: true })
+  decorative = true;
   render() {
     const vertical = this.orientation === "vertical";
     return html`<div class=${this.cls("separator", { vertical })} role=${this.decorative ? nothing : "separator"} aria-hidden=${this.decorative ? "true" : nothing} aria-orientation=${this.decorative ? nothing : vertical ? "vertical" : "horizontal"} part="root"></div>`;

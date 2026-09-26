@@ -22,7 +22,9 @@ export class AcmeAppBar extends AcmeSemanticElement {
   connectedCallback() {
     super.connectedCallback();
     queueMicrotask(() => {
-      if (this.isConnected) this.requestUpdate();
+      if (this.isConnected) {
+        this.requestUpdate();
+      }
     });
   }
   @atomState() private placementValue: "static" | "sticky" = "static";
@@ -31,7 +33,9 @@ export class AcmeAppBar extends AcmeSemanticElement {
     return this.placementValue;
   }
   set placement(value: "static" | "sticky") {
-    if (!["static", "sticky"].includes(value)) throw new TypeError("Invalid App Bar placement");
+    if (!["static", "sticky"].includes(value)) {
+      throw new TypeError("Invalid App Bar placement");
+    }
     const previous = this.placementValue;
     this.placementValue = value;
     this.requestUpdate("placement", previous);
@@ -42,16 +46,22 @@ export class AcmeAppBar extends AcmeSemanticElement {
     return this.sizeValue;
   }
   set size(value: "small" | "medium" | "large") {
-    if (!["small", "medium", "large"].includes(value)) throw new TypeError("Invalid App Bar size");
+    if (!["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid App Bar size");
+    }
     const previous = this.sizeValue;
     this.sizeValue = value;
     this.requestUpdate("size", previous);
   }
   protected get semanticDefaults() {
     for (let node: Node | null = composedParent(this); node; node = composedParent(node)) {
-      if (node.nodeType !== 1) continue;
+      if (node.nodeType !== 1) {
+        continue;
+      }
       const element = node as Element;
-      if (element.localName === "dialog" || ["dialog", "alertdialog"].includes(element.getAttribute("role") ?? "")) return { role: "generic" };
+      if (element.localName === "dialog" || ["dialog", "alertdialog"].includes(element.getAttribute("role") ?? "")) {
+        return { role: "generic" };
+      }
     }
     return {};
   }

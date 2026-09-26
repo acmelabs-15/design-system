@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { inspectJson, visibleJsonNodes, jsonHighlight } from "../json-view-model";
+
 test("inspection labels accessors, cycles and unsupported values without invoking them", () => {
   let called = 0;
   const value: any = { number: 1, fn: () => called++ };
@@ -27,7 +28,9 @@ test("encoded paths distinguish special keys and visible depth does not erase da
 });
 test("deep and shared graphs use iterative inspection and preserve copied display values", () => {
   let value: any = { leaf: 1 };
-  for (let i = 0; i < 2500; i++) value = { child: value };
+  for (let i = 0; i < 2500; i++) {
+    value = { child: value };
+  }
   expect(inspectJson(value).nodes.length).toBe(2502);
   const shared = { a: 1 };
   const model = inspectJson({ one: shared, two: shared });

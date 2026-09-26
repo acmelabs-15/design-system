@@ -1,8 +1,11 @@
 import { expect, test } from "bun:test";
 import { addDecimal } from "../decimal-step";
+
 test("decimal steps do not accumulate binary addition drift", () => {
   let value = 0;
-  for (let n = 0; n < 10; n++) value = addDecimal(value, 0.1);
+  for (let n = 0; n < 10; n++) {
+    value = addDecimal(value, 0.1);
+  }
   expect(value).toBe(1);
   expect(addDecimal(0.1, 0.2)).toBe(0.3);
   expect(addDecimal(0.3, -0.1)).toBe(0.2);

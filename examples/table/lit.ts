@@ -43,7 +43,9 @@ export class DeliveryTableLit extends LitElement {
                     ? html`<acme-button size="small" variant="tertiary" aria-label=${"Resize " + header.column.id} @mousedown=${header.getResizeHandler()} @touchstart=${header.getResizeHandler()} @keydown=${(
                         e: KeyboardEvent,
                       ) => {
-                        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+                        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") {
+                          return;
+                        }
                         e.preventDefault();
                         table.setColumnSizing((old) => ({ ...old, [header.column.id]: Math.max(40, header.column.getSize() + (e.key === "ArrowRight" ? 10 : -10)) }));
                       }}>↔</acme-button>`
@@ -73,21 +75,27 @@ export class DeliveryTableLit extends LitElement {
     }}><acme-pagination-position></acme-pagination-position><acme-pagination-previous></acme-pagination-previous><acme-pagination-next></acme-pagination-next><acme-pagination-page-size></acme-pagination-page-size></acme-pagination>`;
   }
   private cell(cell: DeliveryCell) {
-    if (cell.getIsCovered()) return nothing;
+    if (cell.getIsCovered()) {
+      return nothing;
+    }
     const edges = cell.getSelectionEdges();
     const row = cell.row,
       pin = cell.column.getIsPinned();
     return html`<td role="gridcell" ?data-range-start=${edges.left} ?data-range-end=${edges.right} ?data-range-top=${edges.top} ?data-range-bottom=${edges.bottom} data-cell=${cell.id} data-column=${cell.column.id} colspan=${cell.getColSpan()} rowspan=${cell.getRowSpan()} data-pinned=${pin || nothing} style=${styleMap(columnStyle(cell.column))} aria-selected=${String(cell.getIsSelected())} tabindex="-1" @mousedown=${(
       event: MouseEvent,
     ) => {
-      if ((event.target as Element).closest("button,input,acme-button,acme-input,acme-checkbox")) return;
+      if ((event.target as Element).closest("button,input,acme-button,acme-input,acme-checkbox")) {
+        return;
+      }
       cell.getSelectionStartHandler()(event);
       (event.currentTarget as HTMLElement).focus();
     }} @mouseenter=${cell.getSelectionExtendHandler()}>${cell.column.id === "select" ? html`<acme-checkbox aria-label=${"Select " + row.id} .checked=${row.getIsSelected()} @acme-change=${(event: CustomEvent<{ checked: boolean }>) => row.toggleSelected(event.detail.checked)}></acme-checkbox>` : cell.column.id === "name" ? html`${row.getCanExpand() ? html`<acme-button size="small" variant="tertiary" aria-label=${"Expand " + row.id} aria-expanded=${String(row.getIsExpanded())} @click=${row.getToggleExpandedHandler()}>${row.getIsExpanded() ? "−" : "+"}</acme-button>` : nothing}<span>${String(cell.getValue() ?? "")}</span><acme-input aria-label=${"Note " + row.id} placeholder="Note" size="small"></acme-input>` : String(cell.getValue() ?? "")}</td>`;
   }
   protected updated() {
     const root = this.container?.getTableElement();
-    if (root && this.model) syncGridFocus(root, this.model);
+    if (root && this.model) {
+      syncGridFocus(root, this.model);
+    }
   }
   get container() {
     return this.renderRoot.querySelector<AcmeTable>("acme-table");

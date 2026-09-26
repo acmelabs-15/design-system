@@ -3,6 +3,7 @@ import { mountChartRenderer } from "@tanstack/charts/renderer";
 import { createSvgChartRenderer } from "@tanstack/charts/svg/renderer";
 import type { ReactiveController, ReactiveElement } from "lit";
 import type { ChartDatum } from "./chart-data";
+
 export type ChartSurfaceOptions = Omit<ChartRendererHostOptions<ChartDatum, ChartValue, number>, "renderer">;
 /** Owns one typed chart renderer and releases every engine resource with its host. */
 export class ChartSurface implements ReactiveController {
@@ -17,18 +18,25 @@ export class ChartSurface implements ReactiveController {
     host.addController(this);
   }
   hostUpdated() {
-    if (!this.host.isConnected) return;
+    if (!this.host.isConnected) {
+      return;
+    }
     const target = this.target(),
       options = this.options();
     if (!target || !options) {
       this.clear();
       return;
     }
-    if (target !== this.container) this.clear();
+    if (target !== this.container) {
+      this.clear();
+    }
     this.container = target;
     const complete = { ...options, renderer: this.renderer };
-    if (this.chart) this.chart.update(complete);
-    else this.chart = mountChartRenderer(target, complete);
+    if (this.chart) {
+      this.chart.update(complete);
+    } else {
+      this.chart = mountChartRenderer(target, complete);
+    }
   }
   private clear() {
     this.chart?.destroy();

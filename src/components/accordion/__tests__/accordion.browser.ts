@@ -6,6 +6,7 @@ import { AcmeCollapsible } from "../../collapsible/collapsible";
 import { AcmeCollapsibleTrigger } from "../../collapsible-trigger/collapsible-trigger";
 import { AcmeCollapsibleContent } from "../../collapsible-content/collapsible-content";
 import { AcmeExpandMoreIcon } from "../../../generated/icons/classes/expand-more-icon";
+
 customElements.define("acme-accordion", AcmeAccordion);
 customElements.define("acme-accordion-item", AcmeAccordionItem);
 customElements.define("acme-accordion-trigger", AcmeAccordionTrigger);
@@ -33,6 +34,7 @@ import { AcmeSpinner } from "../../spinner/spinner";
 import { AcmeTabs } from "../../tabs/tabs";
 import { AcmeTab } from "../../tab/tab";
 import { AcmeTabPanel } from "../../tab-panel/tab-panel";
+
 customElements.define("acme-show", AcmeShow);
 customElements.define("acme-show-more", AcmeShowMore);
 customElements.define("acme-load-more", AcmeLoadMore);
@@ -52,5 +54,6 @@ document.body.insertAdjacentHTML(
 
 import { AcmeGroup } from "../../group/group";
 import { AcmeSelectionIndicator } from "../../../internal/selection-indicator/selection-indicator";
+
 customElements.define("acme-group", AcmeGroup);
 customElements.define("acme-selection-indicator", AcmeSelectionIndicator);

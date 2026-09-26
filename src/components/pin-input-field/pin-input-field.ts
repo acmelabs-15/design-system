@@ -40,7 +40,9 @@ export class AcmePinInputField extends AcmeSemanticElement {
     return this.position;
   }
   set index(value: number | undefined) {
-    if (value !== undefined && (!Number.isInteger(value) || value < 0)) throw new RangeError("index must be a nonnegative integer");
+    if (value !== undefined && (!Number.isInteger(value) || value < 0)) {
+      throw new RangeError("index must be a nonnegative integer");
+    }
     this.position = value;
     this.owner?.synchronize();
     this.requestUpdate("index");
@@ -71,7 +73,9 @@ export class AcmePinInputField extends AcmeSemanticElement {
   private labelNumbers?: { locale?: string; format: Intl.NumberFormat };
   protected get semanticDefaults() {
     const state = this.presentation.get();
-    if (!this.labelNumbers || this.labelNumbers.locale !== state?.locale) this.labelNumbers = { locale: state?.locale, format: new Intl.NumberFormat(state?.locale, { useGrouping: false }) };
+    if (!this.labelNumbers || this.labelNumbers.locale !== state?.locale) {
+      this.labelNumbers = { locale: state?.locale, format: new Intl.NumberFormat(state?.locale, { useGrouping: false }) };
+    }
     const format = this.labelNumbers.format;
     return { label: state && this.index !== undefined ? state.labelTemplate.replaceAll("{index}", format.format(this.index + 1)).replaceAll("{count}", format.format(state.count)) : "Code character" };
   }
@@ -85,7 +89,9 @@ export class AcmePinInputField extends AcmeSemanticElement {
     this.control.value = "";
     this.context.hostDisconnected();
     this.context.value = undefined;
-    if (this.isConnected) this.context.hostConnected();
+    if (this.isConnected) {
+      this.context.hostConnected();
+    }
     this.requestUpdate();
   }
   disconnectedCallback() {

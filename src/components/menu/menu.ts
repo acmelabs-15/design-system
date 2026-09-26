@@ -33,7 +33,9 @@ export class AcmeMenu extends AcmeElement {
   }
   set open(value: boolean) {
     const previous = this.visibility;
-    if (previous === Boolean(value)) return;
+    if (previous === Boolean(value)) {
+      return;
+    }
     this.visibility = Boolean(value);
     this.restoreFocus = true;
     this.reason = "programmatic";
@@ -85,7 +87,9 @@ export class AcmeMenu extends AcmeElement {
       const path = event?.composedPath() ?? [];
       while (owner.dismiss("outside", false) && owner.parent instanceof AcmeMenu) {
         const parent = owner.parent;
-        if ((parent.content && path.includes(parent.content)) || (parent.opener && path.includes(parent.opener))) break;
+        if ((parent.content && path.includes(parent.content)) || (parent.opener && path.includes(parent.opener))) {
+          break;
+        }
         owner = parent;
       }
     },
@@ -95,8 +99,12 @@ export class AcmeMenu extends AcmeElement {
         this.typeahead.clear();
         this.completedOpen = false;
         this.current = undefined;
-        if (this.open) this.open = false;
-        for (const item of this.entries) item.highlight(false);
+        if (this.open) {
+          this.open = false;
+        }
+        for (const item of this.entries) {
+          item.highlight(false);
+        }
         this.dispatchEvent(new CustomEvent("acme-after-close", { bubbles: true, composed: true, detail: { reason: this.reason } }));
       }
     },
@@ -184,21 +192,31 @@ export class AcmeMenu extends AcmeElement {
   }
   private register(part: HTMLElement, kind: MenuPartKind) {
     const participant = menuPartFor(part);
-    if (participant) this.participants.add(participant);
-    if (kind === "item") this.entries.add(part as MenuEntry);
-    else if (kind === "trigger") this.triggerPart = part;
-    else if (kind === "content") {
-      if (this.content && this.content !== part) throw new Error("Menu accepts one Content");
+    if (participant) {
+      this.participants.add(participant);
+    }
+    if (kind === "item") {
+      this.entries.add(part as MenuEntry);
+    } else if (kind === "trigger") {
+      this.triggerPart = part;
+    } else if (kind === "content") {
+      if (this.content && this.content !== part) {
+        throw new Error("Menu accepts one Content");
+      }
       this.content = part;
     }
     this.requestUpdate();
     return () => {
-      if (participant) this.participants.delete(participant);
+      if (participant) {
+        this.participants.delete(participant);
+      }
       if (kind === "item") {
         this.entries.delete(part as MenuEntry);
         if (this.current === part) {
           this.current = undefined;
-          if (this.open) queueMicrotask(() => this.items[0]?.focus());
+          if (this.open) {
+            queueMicrotask(() => this.items[0]?.focus());
+          }
         }
       } else if (this.triggerPart === part) {
         this.triggerPart = undefined;
@@ -211,8 +229,11 @@ export class AcmeMenu extends AcmeElement {
     };
   }
   private toggle() {
-    if (this.open) this.dismiss("trigger");
-    else this.openFromTrigger();
+    if (this.open) {
+      this.dismiss("trigger");
+    } else {
+      this.openFromTrigger();
+    }
   }
   private openFromTrigger(edge: "first" | "last" = "first") {
     this.pendingFocus = edge;
@@ -240,14 +261,20 @@ export class AcmeMenu extends AcmeElement {
     this.reference = reference;
     this.openingAnchor = opener;
     this.openFromTrigger();
-    if (this.open && this.content) this.positioner.start(reference, this.content);
+    if (this.open && this.content) {
+      this.positioner.start(reference, this.content);
+    }
   }
   private notify() {
     this.dispatchEvent(new CustomEvent("acme-open-change", { bubbles: true, composed: true, detail: { open: this.open, reason: this.reason } }));
   }
   private dismiss(reason: MenuReason, restore = true): boolean {
-    if (!this.open) return true;
-    if (!this.dispatchEvent(new CustomEvent("acme-request", { bubbles: true, composed: true, cancelable: true, detail: { action: "close", reason } }))) return false;
+    if (!this.open) {
+      return true;
+    }
+    if (!this.dispatchEvent(new CustomEvent("acme-request", { bubbles: true, composed: true, cancelable: true, detail: { action: "close", reason } }))) {
+      return false;
+    }
     this.restoreFocus = restore;
     this.open = false;
     this.reason = reason;
@@ -255,27 +282,44 @@ export class AcmeMenu extends AcmeElement {
     return true;
   }
   private closeChain(reason: MenuReason, restore: boolean): boolean {
-    if (!this.dismiss(reason, restore)) return false;
+    if (!this.dismiss(reason, restore)) {
+      return false;
+    }
     return this.parent instanceof AcmeMenu ? this.parent.closeChain(reason, restore) : true;
   }
   private select(item: MenuEntry) {
-    if (!this.open || !this.entries.has(item) || item.disabled || !item.value) return;
-    if (item.type === "action") item.dispatchEvent(new CustomEvent("acme-request", { bubbles: true, composed: true, detail: { action: "select", value: item.value } }));
-    else {
-      if (item.type === "radio" && !item.name) return;
+    if (!this.open || !this.entries.has(item) || item.disabled || !item.value) {
+      return;
+    }
+    if (item.type === "action") {
+      item.dispatchEvent(new CustomEvent("acme-request", { bubbles: true, composed: true, detail: { action: "select", value: item.value } }));
+    } else {
+      if (item.type === "radio" && !item.name) {
+        return;
+      }
       const checked = item.type === "checkbox" ? !item.checked : true;
       if (checked !== item.checked) {
         batch(() => {
-          if (item.type === "radio") for (const peer of this.entries) if (peer !== item && peer.type === "radio" && peer.name === item.name) peer.checked = false;
+          if (item.type === "radio") {
+            for (const peer of this.entries) {
+              if (peer !== item && peer.type === "radio" && peer.name === item.name) {
+                peer.checked = false;
+              }
+            }
+          }
           item.checked = checked;
         });
         item.dispatchEvent(new CustomEvent("acme-change", { bubbles: true, composed: true, detail: { value: item.value, checked } }));
       }
     }
-    if (this.closeOnSelect) this.closeChain("selection", true);
+    if (this.closeOnSelect) {
+      this.closeChain("selection", true);
+    }
   }
   private focusItem(item: MenuEntry) {
-    if (!this.open || !this.entries.has(item)) return;
+    if (!this.open || !this.entries.has(item)) {
+      return;
+    }
     if (this.current !== item) {
       this.current?.highlight(false);
       this.current = item;
@@ -284,13 +328,17 @@ export class AcmeMenu extends AcmeElement {
     }
     for (const peer of this.entries) {
       const nested = (peer as AcmeMenuItem).submenu;
-      if (peer !== item && nested?.open) nested.dismiss("outside", false);
+      if (peer !== item && nested?.open) {
+        nested.dismiss("outside", false);
+      }
     }
   }
   private focusLeft(): void {
     queueMicrotask(() => {
       const active = deepActiveElement(this.ownerDocument);
-      if (this.open && active && !(this.content && composedContains(this.content, active)) && !(this.opener && composedContains(this.opener, active))) this.dismiss("outside", false);
+      if (this.open && active && !(this.content && composedContains(this.content, active)) && !(this.opener && composedContains(this.opener, active))) {
+        this.dismiss("outside", false);
+      }
     });
   }
   private hover(item: MenuEntry, event: PointerEvent) {
@@ -300,14 +348,23 @@ export class AcmeMenu extends AcmeElement {
     }
   }
   private key(event: KeyboardEvent) {
-    if (!this.open || event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (!this.open || event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
     const nearest = event.composedPath().find((node) => node instanceof Element && node.localName === "acme-menu-content");
-    if (nearest && nearest !== this.content) return;
+    if (nearest && nearest !== this.content) {
+      return;
+    }
     if (event.key === "Tab") {
       let root: AcmeMenu = this;
-      while (root.parent instanceof AcmeMenu) root = root.parent;
-      if (this.closeChain("outside", false)) root.opener?.focus();
-      else event.preventDefault();
+      while (root.parent instanceof AcmeMenu) {
+        root = root.parent;
+      }
+      if (this.closeChain("outside", false)) {
+        root.opener?.focus();
+      } else {
+        event.preventDefault();
+      }
       return;
     }
     const back = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl" ? "ArrowRight" : "ArrowLeft";
@@ -328,7 +385,9 @@ export class AcmeMenu extends AcmeElement {
       this.typeahead.clear();
       return;
     }
-    if (this.typeahead.handleKey(event)) event.stopPropagation();
+    if (this.typeahead.handleKey(event)) {
+      event.stopPropagation();
+    }
   }
   private focusEdge() {
     const items = this.items;
@@ -337,17 +396,25 @@ export class AcmeMenu extends AcmeElement {
     if (item) {
       item.focus({ preventScroll: true });
       this.focusItem(item);
-    } else this.content?.focus();
+    } else {
+      this.content?.focus();
+    }
   }
   protected willUpdate(changes: Map<string, unknown>) {
-    if (changes.has("open")) this.completedOpen = false;
+    if (changes.has("open")) {
+      this.completedOpen = false;
+    }
     this.motion.update();
   }
   protected updated(changes: Map<string, unknown>) {
     const content = this.content,
       opener = this.opener;
-    if (changes.has("open")) this.submenuTrigger?.requestUpdate();
-    if (!content) return;
+    if (changes.has("open")) {
+      this.submenuTrigger?.requestUpdate();
+    }
+    if (!content) {
+      return;
+    }
     const active = deepActiveElement(this.ownerDocument);
     if (!this.open && !content.inert && active && composedContains(content, active) && this.restoreFocus) {
       opener?.focus();
@@ -361,9 +428,13 @@ export class AcmeMenu extends AcmeElement {
         this.presence.show(opener);
         this.positioner.start(this.reference ?? opener, content);
         queueMicrotask(() => {
-          if (this.open && this.isConnected) this.focusEdge();
+          if (this.open && this.isConnected) {
+            this.focusEdge();
+          }
         });
-      } else if (changes.has("placement") || changes.has("sideOffset")) this.positioner.refresh();
+      } else if (changes.has("placement") || changes.has("sideOffset")) {
+        this.positioner.refresh();
+      }
       if (this.motion.settled && !this.completedOpen) {
         this.completedOpen = true;
         this.dispatchEvent(new CustomEvent("acme-after-open", { bubbles: true, composed: true, detail: { reason: this.reason } }));

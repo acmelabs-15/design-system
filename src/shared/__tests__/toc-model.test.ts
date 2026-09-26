@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { copyTocItems, selectTocCurrent } from "../toc-model";
+
 test("TOC owns immutable explicit entries and rejects ambiguous identities", () => {
   const items = [{ id: "intro", href: "#intro", label: "Introduction", level: 2 }];
   const copy = copyTocItems(items)!;

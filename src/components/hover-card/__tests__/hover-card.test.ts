@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/hover-card";
+
 test("Hover Card uses the approved preview placement and delays", () => {
   const el = document.createElement("acme-hover-card");
   expect(el.side).toBe("bottom");

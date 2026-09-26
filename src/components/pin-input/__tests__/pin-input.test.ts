@@ -1,11 +1,14 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 const mount = async () => {
   const c = document.createElement("acme-pin-input");
   c.count = 4;
   document.body.append(c);
   await c.updateComplete;
-  for (const f of c.shadowRoot!.querySelectorAll("acme-pin-input-field")) await f.updateComplete;
+  for (const f of c.shadowRoot!.querySelectorAll("acme-pin-input-field")) {
+    await f.updateComplete;
+  }
   return c;
 };
 test("Pin Input owns one immutable string array and separates reset defaults", async () => {
@@ -26,7 +29,9 @@ test("Pin Input owns one immutable string array and separates reset defaults", a
 test("restoration and programmatic writes remain silent", async () => {
   const c = await mount();
   const events: Event[] = [];
-  for (const event of ["acme-input", "acme-change", "acme-complete"]) c.addEventListener(event, (e) => events.push(e));
+  for (const event of ["acme-input", "acme-change", "acme-complete"]) {
+    c.addEventListener(event, (e) => events.push(e));
+  }
   c.value = ["1", "2", "3", "4"];
   c.formStateRestoreCallback("5678", "autocomplete");
   expect(c.valueAsString).toBe("5678");
@@ -61,7 +66,9 @@ test("Pin Input fields transfer ownership on DOM moves and reconnect", async () 
   parts.innerHTML = '<acme-pin-input-field index="0"></acme-pin-input-field>';
   app.querySelector("acme-pin-input")!.append(...parts.children);
   const settle = async () => {
-    for (let i = 0; i < 3; i++) await new Promise((resolve) => setTimeout(resolve, 0));
+    for (let i = 0; i < 3; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    }
   };
   document.body.append(app);
   try {

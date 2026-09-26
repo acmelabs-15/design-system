@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 const mount = async () => {
   const c = document.createElement("acme-number-input");
   document.body.append(c);
@@ -43,7 +44,9 @@ test("optional constraints restore defaults and reject invalid numeric configura
   c.setAttribute("min", "1");
   c.setAttribute("max", "10");
   c.setAttribute("step", ".2");
-  for (const attribute of ["min", "max", "step"]) c.removeAttribute(attribute);
+  for (const attribute of ["min", "max", "step"]) {
+    c.removeAttribute(attribute);
+  }
   expect(c.min).toBe(Number.MIN_SAFE_INTEGER);
   expect(c.max).toBe(Number.MAX_SAFE_INTEGER);
   expect(c.step).toBe(1);
@@ -78,7 +81,9 @@ test("Number Input actions transfer ownership on DOM moves and reconnect", async
   parts.innerHTML = "<acme-number-input-increment></acme-number-input-increment><acme-number-input-decrement></acme-number-input-decrement>";
   app.querySelector("acme-number-input")!.append(...parts.children);
   const settle = async () => {
-    for (let i = 0; i < 3; i++) await new Promise((resolve) => setTimeout(resolve, 0));
+    for (let i = 0; i < 3; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    }
   };
   document.body.append(app);
   try {
@@ -97,7 +102,9 @@ test("Number Input actions transfer ownership on DOM moves and reconnect", async
     expect([left.value, right.value]).toEqual(["1", "10"]);
     app.append(increment, decrement);
     await settle();
-    for (const part of [increment, decrement]) expect(part.shadowRoot!.querySelector("button")!.disabled).toBe(true);
+    for (const part of [increment, decrement]) {
+      expect(part.shadowRoot!.querySelector("button")!.disabled).toBe(true);
+    }
   } finally {
     app.remove();
   }

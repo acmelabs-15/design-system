@@ -22,7 +22,9 @@ export class AcmeResizeHandle extends AcmeSemanticElement {
   }
   set keyboardStep(value: number | undefined) {
     const next = value ?? 1;
-    if (!Number.isFinite(next) || next <= 0) throw new RangeError("Resize steps must be positive percentage points");
+    if (!Number.isFinite(next) || next <= 0) {
+      throw new RangeError("Resize steps must be positive percentage points");
+    }
     const previous = this.keyboardStepValue;
     this.keyboardStepValue = next;
     this.requestUpdate("keyboardStep", previous);
@@ -34,7 +36,9 @@ export class AcmeResizeHandle extends AcmeSemanticElement {
   }
   set largeKeyboardStep(value: number | undefined) {
     const next = value ?? 10;
-    if (!Number.isFinite(next) || next <= 0) throw new RangeError("Resize steps must be positive percentage points");
+    if (!Number.isFinite(next) || next <= 0) {
+      throw new RangeError("Resize steps must be positive percentage points");
+    }
     const previous = this.largeKeyboardStepValue;
     this.largeKeyboardStepValue = next;
     this.requestUpdate("largeKeyboardStep", previous);
@@ -45,7 +49,9 @@ export class AcmeResizeHandle extends AcmeSemanticElement {
     disabled: () => this.disabled,
     step: (large) => {
       const value = large ? this.largeKeyboardStep : this.keyboardStep;
-      if (!Number.isFinite(value) || value <= 0) throw new RangeError("Resize steps must be positive percentage points");
+      if (!Number.isFinite(value) || value <= 0) {
+        throw new RangeError("Resize steps must be positive percentage points");
+      }
       return value;
     },
   });
@@ -58,8 +64,12 @@ export class AcmeResizeHandle extends AcmeSemanticElement {
     const locale = this.themeContext.scope.effective.get().locale ?? "en-US";
     const info = this.info;
     const key = info?.before?.definition?.().value;
-    if (key && this.binding.current?.state.get().layout.collapsed.includes(key)) return message(locale, "resizable.collapsed", "Collapsed");
-    if (this.shareFormatter?.locale !== locale) this.shareFormatter = { locale, value: new Intl.NumberFormat(locale, { style: "percent", maximumFractionDigits: 1 }) };
+    if (key && this.binding.current?.state.get().layout.collapsed.includes(key)) {
+      return message(locale, "resizable.collapsed", "Collapsed");
+    }
+    if (this.shareFormatter?.locale !== locale) {
+      this.shareFormatter = { locale, value: new Intl.NumberFormat(locale, { style: "percent", maximumFractionDigits: 1 }) };
+    }
     return this.shareFormatter.value.format((info?.now ?? 0) / 100);
   }
   private get control() {
@@ -87,7 +97,9 @@ export class AcmeResizeHandle extends AcmeSemanticElement {
     return html`<div part="root handle" role="separator" tabindex=${disabled ? -1 : 0} aria-disabled=${String(disabled)} aria-orientation=${horizontal ? "vertical" : "horizontal"} aria-valuemin=${info?.min ?? 0} aria-valuemax=${info?.max ?? 100} aria-valuenow=${info?.now ?? 0} aria-valuetext=${this.valueText()} data-axis=${horizontal ? "horizontal" : "vertical"} @pointerdown=${(event: PointerEvent) => this.binding.current?.pointer(this.binding.record, event)} @keydown=${(event: KeyboardEvent) => this.binding.current?.key(this.binding.record, event)} @dblclick=${(
       event: MouseEvent,
     ) => {
-      if (!event.defaultPrevented) this.binding.current?.toggle(this.binding.record);
+      if (!event.defaultPrevented) {
+        this.binding.current?.toggle(this.binding.record);
+      }
     }} @blur=${() => this.binding.current?.blur(this.binding.record)}><span part="indicator" aria-hidden="true"></span></div>`;
   }
   protected updated() {

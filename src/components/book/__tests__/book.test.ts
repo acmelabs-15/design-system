@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 async function mount() {
   const element = document.createElement("acme-book");
   element.heading = "Design systems";

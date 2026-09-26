@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeLink } from "../link";
+
 afterEach(() => document.body.replaceChildren());
 test("Link forwards native navigation fields and keeps optional parts empty until supplied", async () => {
   document.body.innerHTML = '<acme-link href="/details" target="_blank" rel="noopener" download="report.txt">Details</acme-link>';

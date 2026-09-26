@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const actions = '<acme-button variant="secondary">Save</acme-button><acme-toggle-button>Bold</acme-toggle-button><acme-button variant="secondary" disabled>Unavailable</acme-button>';
 export const doc: Doc = {
   id: "toolbar",

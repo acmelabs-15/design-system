@@ -1,11 +1,15 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeCopyButton } from "../copy-button";
+
 const clipboard = Object.getOwnPropertyDescriptor(navigator, "clipboard");
 afterEach(() => {
   document.body.replaceChildren();
-  if (clipboard) Object.defineProperty(navigator, "clipboard", clipboard);
-  else delete (navigator as unknown as { clipboard?: unknown }).clipboard;
+  if (clipboard) {
+    Object.defineProperty(navigator, "clipboard", clipboard);
+  } else {
+    delete (navigator as unknown as { clipboard?: unknown }).clipboard;
+  }
 });
 const mount = async (markup = '<acme-copy-button value="exact text"></acme-copy-button>') => {
   document.body.innerHTML = markup;

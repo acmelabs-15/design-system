@@ -25,10 +25,14 @@ export class AcmeSplitButton extends AcmeElement {
   @atomState() @property({ noAccessor: true, type: Boolean, reflect: true }) open = false;
   @atomState() @property({ noAccessor: true, attribute: "menu-label" }) menuLabel = "";
   protected willUpdate() {
-    if ((this.disabled || this.loading) && this.open) this.open = false;
+    if ((this.disabled || this.loading) && this.open) {
+      this.open = false;
+    }
   }
   private primary = (event: MouseEvent) => {
-    if (!event.defaultPrevented && !this.disabled && !this.loading) this.dispatchEvent(new CustomEvent("acme-request", { bubbles: true, composed: true, detail: { action: "primary" } }));
+    if (!event.defaultPrevented && !this.disabled && !this.loading) {
+      this.dispatchEvent(new CustomEvent("acme-request", { bubbles: true, composed: true, detail: { action: "primary" } }));
+    }
   };
   private changed = (event: CustomEvent<{ open: boolean; reason: string }>) => {
     event.stopPropagation();

@@ -3,6 +3,7 @@ import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveElement } from "lit";
 import type { PaginationState } from "./pagination-model";
 import { StoreSelector } from "./store-connection";
+
 export type PaginationView = PaginationState & Readonly<{ disabled: boolean; loading: boolean; getPageUrl?: (page: number) => string }>;
 export type PaginationPart = { host: ReactiveElement; target(): HTMLElement | undefined; page(): number | undefined; currentOwner(): PaginationOwner | undefined; reconnect(): void };
 export interface PaginationOwner {
@@ -30,7 +31,9 @@ export class PaginationBinding {
       context: paginationContext,
       subscribe: true,
       callback: (owner) => {
-        if (this.current === owner) return;
+        if (this.current === owner) {
+          return;
+        }
         this.release?.();
         this.owner.set({ value: owner });
         this.release = owner.register(this.record);
@@ -57,6 +60,8 @@ export class PaginationBinding {
     this.owner.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
 }

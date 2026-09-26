@@ -63,7 +63,9 @@ export class AcmePagination extends AcmeSemanticElement {
     return this.nextAvailable;
   }
   set hasNextPage(value: boolean | undefined) {
-    if (value !== undefined && typeof value !== "boolean") throw new TypeError("hasNextPage requires a boolean or undefined");
+    if (value !== undefined && typeof value !== "boolean") {
+      throw new TypeError("hasNextPage requires a boolean or undefined");
+    }
     const previous = this.nextAvailable;
     this.nextAvailable = value;
     this.requestUpdate("hasNextPage", previous);
@@ -76,7 +78,9 @@ export class AcmePagination extends AcmeSemanticElement {
     return this.treatment;
   }
   set variant(value: "numbered" | "compact") {
-    if (value !== "numbered" && value !== "compact") throw new TypeError("Invalid Pagination variant");
+    if (value !== "numbered" && value !== "compact") {
+      throw new TypeError("Invalid Pagination variant");
+    }
     const previous = this.treatment;
     this.treatment = value;
     this.requestUpdate("variant", previous);
@@ -86,7 +90,9 @@ export class AcmePagination extends AcmeSemanticElement {
     return this.url;
   }
   set getPageUrl(value: ((page: number) => string) | undefined) {
-    if (value !== undefined && typeof value !== "function") throw new TypeError("getPageUrl requires a function");
+    if (value !== undefined && typeof value !== "function") {
+      throw new TypeError("getPageUrl requires a function");
+    }
     const previous = this.url;
     this.url = value;
     this.requestUpdate("getPageUrl", previous);
@@ -122,13 +128,21 @@ export class AcmePagination extends AcmeSemanticElement {
   private focusBefore?: Element | null;
   private requestPage(page: number) {
     const view = this.view.get();
-    if (view.disabled || view.loading || !Number.isSafeInteger(page) || page < 1 || (view.totalPages !== undefined && page > view.totalPages)) return false;
-    if (page === this.page) return true;
+    if (view.disabled || view.loading || !Number.isSafeInteger(page) || page < 1 || (view.totalPages !== undefined && page > view.totalPages)) {
+      return false;
+    }
+    if (page === this.page) {
+      return true;
+    }
     return this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "page", page }), bubbles: true, composed: true, cancelable: true }));
   }
   private requestSize(pageSize: number) {
-    if (this.disabled || this.loading || !Number.isSafeInteger(pageSize) || pageSize < 1) return false;
-    if (pageSize === this.pageSize) return true;
+    if (this.disabled || this.loading || !Number.isSafeInteger(pageSize) || pageSize < 1) {
+      return false;
+    }
+    if (pageSize === this.pageSize) {
+      return true;
+    }
     return this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "page-size", pageSize }), bubbles: true, composed: true, cancelable: true }));
   }
   private recover() {
@@ -150,8 +164,11 @@ export class AcmePagination extends AcmeSemanticElement {
         .get()
         .find((part) => part.page() === this.page)
         ?.target();
-      if (next && !this.disabled && !this.loading) next.focus({ preventScroll: true });
-      else this.recover();
+      if (next && !this.disabled && !this.loading) {
+        next.focus({ preventScroll: true });
+      } else {
+        this.recover();
+      }
     }
     this.focusBefore = undefined;
   }

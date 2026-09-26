@@ -2,6 +2,7 @@ import { optionalString } from "../../shared/attributes";
 import { property } from "lit/decorators.js";
 import { atomState } from "../../shared/atom-state";
 import { AcmeSingleLineControl } from "../../shared/single-line-control";
+
 export type InputSize = "small" | "medium" | "large";
 export type InputType = "text" | "email" | "url" | "tel" | "password" | "search";
 /** A native single-line text control.
@@ -27,7 +28,9 @@ export class AcmeInput extends AcmeSingleLineControl {
   }
   set type(value: InputType | undefined) {
     value ??= "text";
-    if (!["text", "email", "url", "tel", "password", "search"].includes(value)) throw new TypeError("Invalid input type");
+    if (!["text", "email", "url", "tel", "password", "search"].includes(value)) {
+      throw new TypeError("Invalid input type");
+    }
     const old = this.kind;
     this.kind = value;
     this.nativeForm?.refreshValue();

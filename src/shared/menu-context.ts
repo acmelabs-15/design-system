@@ -2,6 +2,7 @@ import { ContextConsumer, createContext } from "@lit/context";
 import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveController, ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
+
 export type MenuReason = "trigger" | "escape" | "outside" | "close-control" | "selection" | "programmatic";
 export type MenuPartKind = "item" | "trigger" | "content" | "root";
 export interface MenuEntry extends HTMLElement {
@@ -51,7 +52,9 @@ export class MenuConnection implements ReactiveController {
       context: menuContext,
       subscribe: true,
       callback: (owner) => {
-        if (owner === this.owner) return;
+        if (owner === this.owner) {
+          return;
+        }
         this.cleanup?.();
         this.binding.set({ owner });
         this.cleanup = owner.register(host, kind);
@@ -70,7 +73,9 @@ export class MenuConnection implements ReactiveController {
   reconnect(): void {
     this.hostDisconnected();
     this.consumer.hostDisconnected();
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
   hostDisconnected() {
     this.cleanup?.();

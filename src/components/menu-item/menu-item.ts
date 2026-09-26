@@ -7,6 +7,7 @@ import { MenuConnection, menuOwnerFor } from "../../shared/menu-context";
 import { Places } from "../../shared/places";
 import type { AcmeMenu } from "../menu/menu";
 import { menuItemStructureCss } from "../../generated/components/menu-item/menu-item-structure.styles";
+
 let sequence = 0;
 /** An action, checkbox or radio choice in a menu.
  * @slot - The visible label.
@@ -52,7 +53,9 @@ export class AcmeMenuItem extends AcmeSemanticElement {
     return Array.from(this.children).find((node) => node.localName === "acme-menu" && node.getAttribute("slot") === "submenu") as AcmeMenu | undefined;
   }
   highlight(value: boolean) {
-    if (this.highlighted !== value) this.highlighted = value;
+    if (this.highlighted !== value) {
+      this.highlighted = value;
+    }
   }
   focus(options?: FocusOptions) {
     this.semanticTarget?.focus(options);
@@ -65,7 +68,9 @@ export class AcmeMenuItem extends AcmeSemanticElement {
       event.preventDefault();
       return;
     }
-    if (event.defaultPrevented) return;
+    if (event.defaultPrevented) {
+      return;
+    }
     if (this.submenu) {
       event.preventDefault();
       menuOwnerFor(this.submenu)?.openFromTrigger();
@@ -80,19 +85,27 @@ export class AcmeMenuItem extends AcmeSemanticElement {
       if (event.pointerType === "mouse" && !this.disabled && this.submenu && this.menu.owner?.state.get().open) {
         this.hoverTimer = setTimeout(() => {
           this.hoverTimer = undefined;
-          if (this.isConnected && !this.disabled && this.menu.owner?.state.get().open && this.submenu) menuOwnerFor(this.submenu)?.openFromTrigger();
+          if (this.isConnected && !this.disabled && this.menu.owner?.state.get().open && this.submenu) {
+            menuOwnerFor(this.submenu)?.openFromTrigger();
+          }
         }, 400);
       }
     });
     this.addEventListener("pointerleave", this.cancelHover);
     this.addEventListener("focusin", (event) => {
-      if (this.owns(event)) this.menu.owner?.focusItem(this);
+      if (this.owns(event)) {
+        this.menu.owner?.focusItem(this);
+      }
     });
     this.addEventListener("pointermove", (event) => {
-      if (this.owns(event)) this.menu.owner?.hover(this, event);
+      if (this.owns(event)) {
+        this.menu.owner?.hover(this, event);
+      }
     });
     this.addEventListener("keydown", (event) => {
-      if (!this.owns(event) || event.defaultPrevented || event.isComposing) return;
+      if (!this.owns(event) || event.defaultPrevented || event.isComposing) {
+        return;
+      }
       const forward = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl" ? "ArrowLeft" : "ArrowRight";
       if (this.submenu && event.key === forward && !this.disabled) {
         event.preventDefault();
@@ -114,11 +127,18 @@ export class AcmeMenuItem extends AcmeSemanticElement {
     };
   }
   protected updated() {
-    if (this.disabled) this.cancelHover();
+    if (this.disabled) {
+      this.cancelHover();
+    }
     const root = this.semanticTarget;
-    if (!root) return;
-    if (this.type === "action") root.removeAttribute("aria-checked");
-    else root.setAttribute("aria-checked", String(this.checked));
+    if (!root) {
+      return;
+    }
+    if (this.type === "action") {
+      root.removeAttribute("aria-checked");
+    } else {
+      root.setAttribute("aria-checked", String(this.checked));
+    }
     root.setAttribute("aria-disabled", String(this.disabled));
     if (this.submenu) {
       root.setAttribute("aria-haspopup", "menu");

@@ -18,12 +18,7 @@ export interface DocumentationRelease {
   version: string;
   documents: readonly DocumentationRecord[];
 }
-export type DocumentationError =
-  | "version_required"
-  | "unknown_version"
-  | "unknown_id"
-  | "unavailable_content"
-  | "invalid_request";
+export type DocumentationError = "version_required" | "unknown_version" | "unknown_id" | "unavailable_content" | "invalid_request";
 export type Result<T> = { ok: true; value: T } | { ok: false; error: { code: DocumentationError; message: string } };
 const fail = (code: DocumentationError, message: string): Result<never> => ({ ok: false, error: { code, message } });
 const success = <T>(value: T): Result<T> => ({ ok: true, value });
@@ -38,16 +33,13 @@ export function resourceUri(version: string, kind: DocumentKind, id: string): st
 }
 /** Reject mismatched or malformed package content before opening a transport. */
 export function validateRelease(input: unknown): DocumentationRelease {
-  if (!input || typeof input !== "object") throw new Error("Documentation release must be an object");
+  if (!input || typeof input !== "object") {
+    throw new Error("Documentation release must be an object");
+  }
   const value = input as DocumentationRelease;
-  if (
-    value.schemaVersion !== 1 ||
-    value.packageName !== "@acmelabs/design-system" ||
-    typeof value.version !== "string" ||
-    !releasePattern.test(value.version) ||
-    !Array.isArray(value.documents)
-  )
+  if (value.schemaVersion !== 1 || value.packageName !== "@acmelabs/design-system" || typeof value.version !== "string" || !releasePattern.test(value.version) || !Array.isArray(value.documents)) {
     throw new Error("Invalid documentation release header");
+  }
   const ids = new Set<string>();
   for (const document of value.documents) {
     if (
@@ -60,24 +52,23 @@ export function validateRelease(input: unknown): DocumentationRelease {
       !Array.isArray(document.frameworks) ||
       !document.frameworks.length ||
       !document.frameworks.every(validFramework)
-    )
+    ) {
       throw new Error("Invalid documentation record");
+    }
     const key = `${document.kind}/${document.id}`;
-    if (ids.has(key)) throw new Error(`Duplicate documentation record: ${key}`);
+    if (ids.has(key)) {
+      throw new Error(`Duplicate documentation record: ${key}`);
+    }
     ids.add(key);
-    if (
-      document.kind === "component" &&
-      (!document.id.startsWith("acme-") ||
-        !document.declaration ||
-        typeof document.declaration !== "object" ||
-        Array.isArray(document.declaration))
-    )
+    if (document.kind === "component" && (!document.id.startsWith("acme-") || !document.declaration || typeof document.declaration !== "object" || Array.isArray(document.declaration))) {
       throw new Error(`Missing component declaration: ${document.id}`);
+    }
     if (document.kind === "recipe") {
       for (const framework of document.frameworks) {
         const example = document.examples?.[framework];
-        if (!example || typeof example !== "object" || typeof example.source !== "string" || !example.source.trim())
+        if (!example || typeof example !== "object" || typeof example.source !== "string" || !example.source.trim()) {
           throw new Error(`Missing ${framework} recipe source: ${document.id}`);
+        }
       }
     }
   }
@@ -90,18 +81,22 @@ export class DocumentationCatalog {
   constructor(releases: readonly unknown[]) {
     for (const input of releases) {
       const release = validateRelease(input);
-      if (this.releases.has(release.version)) throw new Error(`Duplicate documentation version: ${release.version}`);
+      if (this.releases.has(release.version)) {
+        throw new Error(`Duplicate documentation version: ${release.version}`);
+      }
       this.releases.set(release.version, release);
     }
   }
-  resolveVersion(
-    packageVersion: string | undefined,
-    framework: Framework,
-  ): Result<{ version: string; framework: Framework }> {
-    if (!validFramework(framework)) return fail("invalid_request", "Specify html, lit or react");
-    if (!packageVersion) return fail("version_required", "Specify the exact installed package or CDN version");
-    if (!this.releases.has(packageVersion))
+  resolveVersion(packageVersion: string | undefined, framework: Framework): Result<{ version: string; framework: Framework }> {
+    if (!validFramework(framework)) {
+      return fail("invalid_request", "Specify html, lit or react");
+    }
+    if (!packageVersion) {
+      return fail("version_required", "Specify the exact installed package or CDN version");
+    }
+    if (!this.releases.has(packageVersion)) {
       return fail("unknown_version", `Documentation is unavailable for ${packageVersion}`);
+    }
     return success({ version: packageVersion, framework });
   }
   private getRelease(version: string): Result<DocumentationRelease> {
@@ -119,9 +114,13 @@ export class DocumentationCatalog {
     declaration: Readonly<Record<string, unknown>>;
   }> {
     const release = this.getRelease(version);
-    if (!release.ok) return release;
+    if (!release.ok) {
+      return release;
+    }
     const document = release.value.documents.find((entry) => entry.kind === "component" && entry.id === tag);
-    if (!document) return fail("unknown_id", `Unknown component: ${tag}`);
+    if (!document) {
+      return fail("unknown_id", `Unknown component: ${tag}`);
+    }
     return success(
       structuredClone({
         version,
@@ -144,14 +143,21 @@ export class DocumentationCatalog {
     text: string;
     example: Readonly<Record<string, unknown>>;
   }> {
-    if (!validFramework(framework)) return fail("invalid_request", "Specify html, lit or react");
+    if (!validFramework(framework)) {
+      return fail("invalid_request", "Specify html, lit or react");
+    }
     const release = this.getRelease(version);
-    if (!release.ok) return release;
+    if (!release.ok) {
+      return release;
+    }
     const document = release.value.documents.find((entry) => entry.kind === "recipe" && entry.id === id);
-    if (!document) return fail("unknown_id", `Unknown recipe: ${id}`);
+    if (!document) {
+      return fail("unknown_id", `Unknown recipe: ${id}`);
+    }
     const example = document.examples?.[framework];
-    if (!document.frameworks.includes(framework) || !example)
+    if (!document.frameworks.includes(framework) || !example) {
       return fail("unavailable_content", `Recipe ${id} has no ${framework} example`);
+    }
     return success(
       structuredClone({
         version,
@@ -173,29 +179,20 @@ export class DocumentationCatalog {
     framework: Framework;
     results: { title: string; excerpt: string; uri: string; kind: DocumentKind; id: string }[];
   }> {
-    if (
-      !validFramework(framework) ||
-      typeof query !== "string" ||
-      !query.trim() ||
-      query.length > 500 ||
-      !Number.isInteger(limit) ||
-      limit < 1 ||
-      limit > 50
-    )
+    if (!validFramework(framework) || typeof query !== "string" || !query.trim() || query.length > 500 || !Number.isInteger(limit) || limit < 1 || limit > 50) {
       return fail("invalid_request", "Use a nonempty query up to 500 characters and a limit from 1 to 50");
+    }
     const release = this.getRelease(version);
-    if (!release.ok) return release;
+    if (!release.ok) {
+      return release;
+    }
     const terms = query.toLocaleLowerCase("en").trim().split(/\s+/);
     const matches = release.value.documents
       .filter((document) => document.frameworks.includes(framework))
       .map((document) => {
         const title = document.title.toLocaleLowerCase("en"),
           text = document.text.toLocaleLowerCase("en");
-        const score = terms.reduce(
-          (total, term) =>
-            total + (title.includes(term) || document.id.includes(term) ? 10 : 0) + (text.includes(term) ? 1 : 0),
-          0,
-        );
+        const score = terms.reduce((total, term) => total + (title.includes(term) || document.id.includes(term) ? 10 : 0) + (text.includes(term) ? 1 : 0), 0);
         return { document, score, text };
       })
       .filter(({ score }) => score > 0)
@@ -229,10 +226,14 @@ export class DocumentationCatalog {
   readResource(uri: string): Result<{ uri: string; version: string; document: DocumentationRecord }> {
     for (const release of this.releases.values()) {
       const document = release.documents.find((entry) => resourceUri(release.version, entry.kind, entry.id) === uri);
-      if (document) return success(structuredClone({ uri, version: release.version, document }));
+      if (document) {
+        return success(structuredClone({ uri, version: release.version, document }));
+      }
     }
     const version = /^acme-docs:\/\/release\/([^/]+)\//.exec(uri)?.[1];
-    if (version && !this.releases.has(version)) return fail("unknown_version", "The resource version is unavailable");
+    if (version && !this.releases.has(version)) {
+      return fail("unknown_version", "The resource version is unavailable");
+    }
     return fail("unknown_id", "Unknown documentation resource");
   }
 }

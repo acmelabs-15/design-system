@@ -2,7 +2,9 @@ export type ScrollGeometry = Readonly<{ maximum: number; thumb: number; travel: 
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 /** Uses physical track coordinates; native scrolling remains the source of position. */
 export function scrollGeometry(viewport: number, content: number, track: number, position: number, minimumThumb = 24): ScrollGeometry {
-  if (![viewport, content, track, position, minimumThumb].every(Number.isFinite)) throw new TypeError("Scroll measurements must be finite");
+  if (![viewport, content, track, position, minimumThumb].every(Number.isFinite)) {
+    throw new TypeError("Scroll measurements must be finite");
+  }
   viewport = Math.max(0, viewport);
   content = Math.max(0, content);
   track = Math.max(0, track);

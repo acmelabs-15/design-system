@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const drawer = (placement: string) =>
   `<acme-drawer placement="${placement}" size="20rem"><acme-drawer-trigger slot="trigger">Open ${placement} drawer</acme-drawer-trigger><h2 slot="heading">${placement[0].toUpperCase() + placement.slice(1)} panel</h2><p slot="description">Details stay connected to the current page.</p><acme-field><span slot="label">Note</span><acme-input value="Retained note"></acme-input></acme-field><acme-drawer-close slot="footer">Close panel</acme-drawer-close></acme-drawer>`;
 export const doc: Doc = {

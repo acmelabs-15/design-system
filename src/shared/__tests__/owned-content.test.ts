@@ -3,6 +3,7 @@ import { LitElement, html, nothing } from "lit";
 import { AsyncDirective } from "lit/async-directive.js";
 import { directive } from "lit/directive.js";
 import { OwnedContent, getContentMount } from "../owned-content";
+
 class ContentHost extends LitElement {
   mounted = true;
   renderer?: () => ReturnType<typeof html> | typeof nothing;

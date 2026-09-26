@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/tree-view";
+
 test("Tree View keeps expansion independent from its single selected value", () => {
   const tree = document.createElement("acme-tree-view");
   tree.items = [{ id: "a", label: "A", children: [{ id: "b", label: "B" }] }];

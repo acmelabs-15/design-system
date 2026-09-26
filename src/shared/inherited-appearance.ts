@@ -19,7 +19,9 @@ export type InheritedAppearance<Size extends string, Variant extends string> = R
 }>;
 
 function ownDefinition<Value extends string>(definition: AppearanceDefinition<Value> | undefined): AppearanceDefinition<Value> | undefined {
-  if (!definition) return undefined;
+  if (!definition) {
+    return undefined;
+  }
   return Object.freeze({ supported: Object.freeze([...definition.supported]), defaultValue: definition.defaultValue });
 }
 
@@ -46,12 +48,20 @@ export function createInheritedAppearance<Size extends string = never, Variant e
     const inherited = needsProvider ? provider.get().source?.get() : undefined;
     const diagnostics: AppearanceDiagnostic[] = [];
     const resolve = <Value extends string>(property: "size" | "variant", definition: AppearanceDefinition<Value> | undefined, input: Value | undefined): Value | undefined => {
-      if (!definition) return undefined;
-      if (input !== undefined) return input;
+      if (!definition) {
+        return undefined;
+      }
+      if (input !== undefined) {
+        return input;
+      }
       const value = inherited?.[property] ?? fallback?.get()[property];
-      if (value === undefined) return definition.defaultValue;
+      if (value === undefined) {
+        return definition.defaultValue;
+      }
       const supported = definition.supported.find((candidate) => candidate === value);
-      if (supported !== undefined) return supported;
+      if (supported !== undefined) {
+        return supported;
+      }
       diagnostics.push(Object.freeze({ code: "unsupported-inherited-value", property, value, supported: definition.supported }));
       return definition.defaultValue;
     };
@@ -70,12 +80,18 @@ export function createInheritedAppearance<Size extends string = never, Variant e
     setAuthored(inputs: AuthoredAppearance<Size, Variant>): void {
       const next = { ...authoredState.get() };
       if (Object.hasOwn(inputs, "size")) {
-        if (inputs.size === undefined) delete next.size;
-        else next.size = inputs.size;
+        if (inputs.size === undefined) {
+          delete next.size;
+        } else {
+          next.size = inputs.size;
+        }
       }
       if (Object.hasOwn(inputs, "variant")) {
-        if (inputs.variant === undefined) delete next.variant;
-        else next.variant = inputs.variant;
+        if (inputs.variant === undefined) {
+          delete next.variant;
+        } else {
+          next.variant = inputs.variant;
+        }
       }
       authoredState.set(Object.freeze(next));
     },

@@ -3,11 +3,14 @@ import "../../../define/command-menu";
 import "../../../define/command-item";
 import "../../../define/command-group";
 import "../../../define/command-separator";
+
 async function fixture() {
   document.body.innerHTML =
     '<acme-command-menu heading="Commands"><acme-command-group heading="Projects"><acme-command-item value="create">Create project</acme-command-item><acme-command-item value="open">Open project</acme-command-item></acme-command-group><acme-command-separator></acme-command-separator><acme-command-item value="settings">Settings</acme-command-item></acme-command-menu>';
   const root = document.querySelector("acme-command-menu")!;
-  for (let i = 0; i < 4; i++) await Promise.all([root, ...root.querySelectorAll("*")].map((el) => (el as any).updateComplete));
+  for (let i = 0; i < 4; i++) {
+    await Promise.all([root, ...root.querySelectorAll("*")].map((el) => (el as any).updateComplete));
+  }
   return root;
 }
 test("query and keywords filter retained author nodes without reordering them", async () => {

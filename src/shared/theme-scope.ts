@@ -52,12 +52,18 @@ export function createThemeScope(initialSources: ThemeScopeSources): ThemeScope 
     effective,
     setAuthored(inputs: AuthoredThemeScope): void {
       const record: unknown = inputs;
-      if (!isPlainRecord(record)) throw new TypeError("Theme scope inputs must be a plain record");
+      if (!isPlainRecord(record)) {
+        throw new TypeError("Theme scope inputs must be a plain record");
+      }
       const properties: { key: keyof AuthoredThemeScope; descriptor: PropertyDescriptor }[] = [];
       for (const key of Reflect.ownKeys(record)) {
-        if (key !== "theme" && key !== "appearance" && key !== "density" && key !== "locale") throw new TypeError("Unknown theme scope input");
+        if (key !== "theme" && key !== "appearance" && key !== "density" && key !== "locale") {
+          throw new TypeError("Unknown theme scope input");
+        }
         const descriptor = Object.getOwnPropertyDescriptor(record, key);
-        if (!descriptor?.enumerable || !Object.hasOwn(descriptor, "value")) throw new TypeError("Theme scope inputs require enumerable data properties");
+        if (!descriptor?.enumerable || !Object.hasOwn(descriptor, "value")) {
+          throw new TypeError("Theme scope inputs require enumerable data properties");
+        }
         properties.push({ key, descriptor });
       }
       const next = { ...authoredState.get() };
@@ -70,15 +76,21 @@ export function createThemeScope(initialSources: ThemeScopeSources): ThemeScope 
         switch (key) {
           case "theme":
           case "locale":
-            if (typeof value !== "string") throw new TypeError("Theme scope " + key + " must be a string");
+            if (typeof value !== "string") {
+              throw new TypeError("Theme scope " + key + " must be a string");
+            }
             next[key] = value;
             break;
           case "appearance":
-            if (value !== "auto" && value !== "light" && value !== "dark") throw new TypeError("Invalid theme appearance");
+            if (value !== "auto" && value !== "light" && value !== "dark") {
+              throw new TypeError("Invalid theme appearance");
+            }
             next.appearance = value;
             break;
           case "density":
-            if (value !== "normal" && value !== "compact") throw new TypeError("Invalid theme density");
+            if (value !== "normal" && value !== "compact") {
+              throw new TypeError("Invalid theme density");
+            }
             next.density = value;
             break;
         }

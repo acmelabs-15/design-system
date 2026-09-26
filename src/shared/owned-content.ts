@@ -1,4 +1,5 @@
 import { nothing, render, type ReactiveController, type ReactiveElement, type RootPart, type TemplateResult } from "lit";
+
 export type ContentRenderer = () => TemplateResult | typeof nothing;
 export type ContentMount = Readonly<{
   container: HTMLElement;
@@ -9,7 +10,9 @@ const contentMounts = new WeakMap<Element, Map<string, ContentMount>>();
 /** Renderer adapters observe the component's mount decision and own the target's children. */
 export function getContentMount(host: Element, slot = ""): ContentMount {
   const mount = contentMounts.get(host)?.get(slot);
-  if (!mount) throw new TypeError("The element does not provide this content mount");
+  if (!mount) {
+    throw new TypeError("The element does not provide this content mount");
+  }
   return mount;
 }
 /** Controls only content created from an inert template or an explicit Lit renderer. */
@@ -29,11 +32,17 @@ export class OwnedContent implements ReactiveController {
   ) {
     this.container = host.ownerDocument.createElement("div");
     this.container.setAttribute(options.marker ?? "data-acme-owned-content", "");
-    if (options.slot) this.container.slot = options.slot;
+    if (options.slot) {
+      this.container.slot = options.slot;
+    }
     let mounts = contentMounts.get(host);
-    if (!mounts) contentMounts.set(host, (mounts = new Map()));
+    if (!mounts) {
+      contentMounts.set(host, (mounts = new Map()));
+    }
     const slot = options.slot ?? "";
-    if (mounts.has(slot)) throw new TypeError("Duplicate owned content slot");
+    if (mounts.has(slot)) {
+      throw new TypeError("Duplicate owned content slot");
+    }
     mounts.set(slot, {
       container: this.container,
       getSnapshot: () => this.mounted,
@@ -64,7 +73,9 @@ export class OwnedContent implements ReactiveController {
   private watchTemplate() {
     this.templateObserver?.disconnect();
     this.templateObserver = undefined;
-    if (!this.template || !this.host.isConnected) return;
+    if (!this.template || !this.host.isConnected) {
+      return;
+    }
     this.templateObserver = new MutationObserver(() => {
       this.fragment = undefined;
       this.host.requestUpdate();
@@ -80,10 +91,14 @@ export class OwnedContent implements ReactiveController {
     const externalMounted = mounted && (this.listeners.size === 0 || external);
     if (this.mounted !== externalMounted) {
       this.mounted = externalMounted;
-      for (const listener of this.listeners) listener();
+      for (const listener of this.listeners) {
+        listener();
+      }
     }
     if (external) {
-      if (this.container.parentNode !== this.host) this.host.append(this.container);
+      if (this.container.parentNode !== this.host) {
+        this.host.append(this.container);
+      }
       return true;
     }
     const template = nodes.length === 1 && nodes[0].nodeType === 1 && (nodes[0] as Element).localName === "template" ? (nodes[0] as HTMLTemplateElement) : undefined;
@@ -94,18 +109,26 @@ export class OwnedContent implements ReactiveController {
     }
     const managed = !!template || (nodes.length === 0 && !!renderer);
     if (managed) {
-      if (this.container.parentNode !== this.host) this.host.append(this.container);
+      if (this.container.parentNode !== this.host) {
+        this.host.append(this.container);
+      }
       let value: TemplateResult | DocumentFragment | typeof nothing = nothing;
       if (mounted) {
         if (template) {
           this.fragment ??= template.content.cloneNode(true) as DocumentFragment;
           value = this.fragment;
-        } else value = renderer!();
-      } else this.fragment = undefined;
+        } else {
+          value = renderer!();
+        }
+      } else {
+        this.fragment = undefined;
+      }
       this.part = render(value, this.container, { host: this.host, creationScope: this.host.ownerDocument, isConnected: this.host.isConnected });
     } else {
       if (this.container.parentNode === this.host) {
-        if (this.part) this.part = render(nothing, this.container);
+        if (this.part) {
+          this.part = render(nothing, this.container);
+        }
         this.container.remove();
       }
       if (nodes.length && mountingRequested && !this.warned) {

@@ -17,7 +17,9 @@ const whole = (g: string[]): Cut => {
 };
 /** Keeps `keep` graphemes: from six up, at least three go to the tail and the head takes the rest; below that the two halves split evenly, the head one longer. */
 export const cut = (g: string[], keep: number): Cut => {
-  if (keep <= 0) return { prefix: "", prefixCount: 0, suffix: "", suffixCount: 0, text: "…", truncated: true };
+  if (keep <= 0) {
+    return { prefix: "", prefixCount: 0, suffix: "", suffixCount: 0, text: "…", truncated: true };
+  }
   const tail = keep >= 6 ? Math.max(3, Math.floor(keep / 2)) : Math.floor(keep / 2);
   const head = keep - tail;
   const prefix = g.slice(0, head).join("");
@@ -28,7 +30,9 @@ export const cut = (g: string[], keep: number): Cut => {
 export const fitCut = (g: string[], avail: number, width: (s: string) => number, fullWidth?: number): Cut => {
   const full = g.join("");
   const w = fullWidth ?? width(full);
-  if (avail <= 0 || g.length === 0 || w <= avail) return whole(g);
+  if (avail <= 0 || g.length === 0 || w <= avail) {
+    return whole(g);
+  }
   let lo = 0;
   let hi = g.length - 1;
   let best = -1;
@@ -37,17 +41,25 @@ export const fitCut = (g: string[], avail: number, width: (s: string) => number,
     if (width(cut(g, mid).text) <= avail) {
       best = mid;
       lo = mid + 1;
-    } else hi = mid - 1;
+    } else {
+      hi = mid - 1;
+    }
   }
   return best === -1 ? { prefix: "", prefixCount: 0, suffix: "", suffixCount: 0, text: "", truncated: true } : cut(g, best);
 };
 /** The part of the full value a selection over the cut text stands for; null when the selection does not span the ellipsis. */
 export const expandSelection = (prefix: string, suffix: string, value: string, start: number, end: number): string | null => {
   const shown = `${prefix}…${suffix}`;
-  if (start < 0 || end > shown.length || start >= end) return null;
-  if (start === 0 && end === shown.length) return value;
+  if (start < 0 || end > shown.length || start >= end) {
+    return null;
+  }
+  if (start === 0 && end === shown.length) {
+    return value;
+  }
   const gap = prefix.length;
-  if (start > gap || end < gap + 1) return null;
+  if (start > gap || end < gap + 1) {
+    return null;
+  }
   const all = graphemes(value);
   const before = graphemes(shown.slice(0, start)).length;
   const after = graphemes(shown.slice(gap + 1, end)).length;
@@ -58,19 +70,29 @@ export const expandSelection = (prefix: string, suffix: string, value: string, s
 const expandText = (prefix: string, suffix: string, value: string, text: string): string | null => {
   const shown = `${prefix}…${suffix}`;
   const inner = text.trim();
-  if (!inner) return null;
+  if (!inner) {
+    return null;
+  }
   const lead = text.slice(0, text.length - text.trimStart().length);
   const trail = text.slice(text.trimEnd().length);
-  if (inner === shown) return lead + value + trail;
-  if (!inner.includes("…")) return null;
+  if (inner === shown) {
+    return lead + value + trail;
+  }
+  if (!inner.includes("…")) {
+    return null;
+  }
   const at = shown.indexOf(inner);
-  if (at === -1) return null;
+  if (at === -1) {
+    return null;
+  }
   const expanded = expandSelection(prefix, suffix, value, at, at + inner.length);
   return expanded === null ? null : lead + expanded + trail;
 };
 /** Text offsets of a range inside an element. */
 const offsetsIn = (el: Node, range: Range): { start: number; end: number } | null => {
-  if (!el.contains(range.startContainer) || !el.contains(range.endContainer)) return null;
+  if (!el.contains(range.startContainer) || !el.contains(range.endContainer)) {
+    return null;
+  }
   try {
     const document = el.ownerDocument!;
     const head = document.createRange();
@@ -95,17 +117,23 @@ const schedule = (view: Window, key: object, read: () => (() => void) | null) =>
     batches.set(view, batch);
   }
   batch.pending.set(key, read);
-  if (batch.frame !== undefined) return;
+  if (batch.frame !== undefined) {
+    return;
+  }
   batch.frame = view.requestAnimationFrame(() => {
     batch.frame = undefined;
     const reads = [...batch.pending.values()];
     batch.pending.clear();
-    for (const measure of reads.map((read) => read())) measure?.();
+    for (const measure of reads.map((read) => read())) {
+      measure?.();
+    }
   });
 };
 const unschedule = (view: Window | undefined, key: object) => {
   const batch = view && batches.get(view);
-  if (!batch) return;
+  if (!batch) {
+    return;
+  }
   batch.pending.delete(key);
   if (!batch.pending.size && batch.frame !== undefined) {
     view!.cancelAnimationFrame(batch.frame);
@@ -143,12 +171,17 @@ export class AcmeMiddleTruncate extends AcmeElement {
     super.connectedCallback();
     this.view = this.ownerDocument.defaultView ?? undefined;
     this.fonts = this.ownerDocument.fonts;
-    if (typeof ResizeObserver !== "undefined") this.ro = new ResizeObserver(this.queue);
-    else this.view?.addEventListener("resize", this.queue);
+    if (typeof ResizeObserver !== "undefined") {
+      this.ro = new ResizeObserver(this.queue);
+    } else {
+      this.view?.addEventListener("resize", this.queue);
+    }
     this.fonts?.addEventListener?.("loadingdone", this.fontsChanged);
     this.last = null;
     this.widths.clear();
-    if (this.root) this.ro?.observe(this.root);
+    if (this.root) {
+      this.ro?.observe(this.root);
+    }
     this.queue();
   }
   disconnectedCallback() {
@@ -166,19 +199,27 @@ export class AcmeMiddleTruncate extends AcmeElement {
     this.refit();
   }
   updated(ch: Map<string, unknown>) {
-    if (ch.has("value")) this.refit();
+    if (ch.has("value")) {
+      this.refit();
+    }
   }
 
   /** The width available and the typography the measurement depends on. */
   private read = () => {
-    if (!this.root || !this.probe) return null;
+    if (!this.root || !this.probe) {
+      return null;
+    }
     const s = this.ownerDocument.defaultView?.getComputedStyle(this.probe);
-    if (!s) return null;
+    if (!s) {
+      return null;
+    }
     const typography = [s.fontFamily, s.fontFeatureSettings, s.fontKerning, s.fontSize, s.fontStretch, s.fontStyle, s.fontVariationSettings, s.fontWeight, s.letterSpacing, s.textTransform].join("\0");
     return { avail: this.root.clientWidth, typography };
   };
   private queue = () => {
-    if (!this.view || !this.isConnected) return;
+    if (!this.view || !this.isConnected) {
+      return;
+    }
     schedule(this.view, this.key, () => {
       const r = this.read();
       return r === null ? null : () => this.measure(r);
@@ -192,9 +233,13 @@ export class AcmeMiddleTruncate extends AcmeElement {
   /** Cuts `value` to the width read; widths of candidate texts are cached per typography and value. */
   private measure({ avail, typography }: { avail: number; typography: string }) {
     const probe = this.probe;
-    if (!probe) return;
+    if (!probe) {
+      return;
+    }
     const value = this.value;
-    if (this.last?.avail === avail && this.last.typography === typography && this.last.value === value) return;
+    if (this.last?.avail === avail && this.last.typography === typography && this.last.value === value) {
+      return;
+    }
     this.last = { avail, typography, value };
     const g = graphemes(value);
     if (avail <= 0) {
@@ -208,7 +253,9 @@ export class AcmeMiddleTruncate extends AcmeElement {
     }
     const width = (s: string) => {
       const hit = this.widths.get(s);
-      if (hit !== undefined) return hit;
+      if (hit !== undefined) {
+        return hit;
+      }
       probe.textContent = s;
       const w = probe.scrollWidth;
       this.widths.set(s, w);
@@ -218,28 +265,40 @@ export class AcmeMiddleTruncate extends AcmeElement {
   }
   private setShown(c: Cut) {
     const s = this.shown;
-    if (s.text === c.text && s.truncated === c.truncated && s.prefix === c.prefix && s.prefixCount === c.prefixCount && s.suffix === c.suffix && s.suffixCount === c.suffixCount) return;
+    if (s.text === c.text && s.truncated === c.truncated && s.prefix === c.prefix && s.prefixCount === c.prefixCount && s.suffix === c.suffix && s.suffixCount === c.suffixCount) {
+      return;
+    }
     this.shown = c;
   }
   /** Measures now, outside the frame batch: the first layout, and a new value. */
   private refit() {
     const r = this.read();
-    if (r) this.measure(r);
+    if (r) {
+      this.measure(r);
+    }
   }
 
   private onCopy = (e: ClipboardEvent) => {
-    if (e.defaultPrevented || !this.shown.truncated) return;
+    if (e.defaultPrevented || !this.shown.truncated) {
+      return;
+    }
     const sel = (this.renderRoot as unknown as { getSelection?: () => Selection | null }).getSelection?.() ?? this.ownerDocument.defaultView?.getSelection();
-    if (!sel || sel.rangeCount === 0) return;
+    if (!sel || sel.rangeCount === 0) {
+      return;
+    }
     const text = sel.toString();
-    if (!text) return;
+    if (!text) {
+      return;
+    }
     const range = sel.getRangeAt(0);
     const root = e.currentTarget as HTMLElement;
     const { prefix, suffix } = this.shown;
     let out: string | null = null;
     if (text.includes("…") && root.contains(range.startContainer) && root.contains(range.endContainer) && this.textEl) {
       const o = offsetsIn(this.textEl, range);
-      if (o) out = expandSelection(prefix, suffix, this.value, o.start, o.end);
+      if (o) {
+        out = expandSelection(prefix, suffix, this.value, o.start, o.end);
+      }
     }
     out ??= expandText(prefix, suffix, this.value, text);
     if (out !== null) {

@@ -1,12 +1,15 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 const mount = async () => {
   document.body.innerHTML = '<acme-multi-select><acme-option value="a">Alpha</acme-option><acme-option value="b">Beta</acme-option></acme-multi-select>';
   const root = document.querySelector("acme-multi-select")!;
   root.defaultValue = ["a"];
   for (let i = 0; i < 3; i++) {
     await root.updateComplete;
-    for (const option of root.querySelectorAll("acme-option")) await option.updateComplete;
+    for (const option of root.querySelectorAll("acme-option")) {
+      await option.updateComplete;
+    }
   }
   return root;
 };

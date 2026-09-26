@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const item = (value: string, label: string, content: string) =>
   `<acme-accordion-item value="${value}"><h3><acme-accordion-trigger>${label}</acme-accordion-trigger></h3><acme-accordion-content>${content}</acme-accordion-content></acme-accordion-item>`;
 const content = item("delivery", "Delivery", "Delivery takes three business days.") + item("returns", "Returns", "Return unused items within thirty days.");

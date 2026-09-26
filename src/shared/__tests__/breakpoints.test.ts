@@ -55,9 +55,19 @@ test("use preserves configured widths and only equivalent later calls are accept
 
 test("invalid calls leave the startup opportunity and selected widths unchanged", () => {
   const invalid: unknown[] = [
-    { medium: 0 }, { medium: -1 }, { medium: Infinity }, { medium: NaN },
-    { medium: 60 }, { large: 100 }, { extraLarge: 75 }, { compact: 0 },
-    { medium: "40rem" }, { small: 20 }, null, [], new Date(),
+    { medium: 0 },
+    { medium: -1 },
+    { medium: Infinity },
+    { medium: NaN },
+    { medium: 60 },
+    { large: 100 },
+    { extraLarge: 75 },
+    { compact: 0 },
+    { medium: "40rem" },
+    { small: 20 },
+    null,
+    [],
+    new Date(),
   ];
   for (const input of invalid) {
     const configuration = createBreakpointConfiguration();
@@ -70,7 +80,14 @@ test("invalid calls leave the startup opportunity and selected widths unchanged"
 test("cross-realm plain records configure normally while accessors are not invoked", () => {
   const configuration = createBreakpointConfiguration();
   let invoked = false;
-  expect(() => configuration.configure({ get medium() { invoked = true; return 40; } })).toThrow();
+  expect(() =>
+    configuration.configure({
+      get medium() {
+        invoked = true;
+        return 40;
+      },
+    }),
+  ).toThrow();
   expect(invoked).toBe(false);
   const input = runInNewContext("({ medium: 40 })");
   expect(configuration.configure(input).medium).toBe(40);

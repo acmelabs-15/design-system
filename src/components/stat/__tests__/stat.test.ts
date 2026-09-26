@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import "../../../define/stat";
 import "../../../define/stat-change";
+
 test("Stat is a passive composed measurement and change does not infer direction from meaning", () => {
   const stat = document.createElement("acme-stat");
   expect(stat.size).toBe("medium");

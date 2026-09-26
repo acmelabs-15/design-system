@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { rankCommands } from "../command-ranking";
+
 const item = (value: string, label: string, group?: object) => ({ value, label, keywords: [] as readonly string[], disabled: false, group });
 test("command ranking preserves group boundaries and scores visible labels with keywords", () => {
   const group = {};

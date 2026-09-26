@@ -1,7 +1,10 @@
 import type { ElkNode } from "elkjs/lib/elk-api.js";
 import type { FlowEngine } from "./flow-engine";
+
 function abortable<T>(work: Promise<T>, signal: AbortSignal): Promise<T> {
-  if (signal.aborted) return Promise.reject(signal.reason);
+  if (signal.aborted) {
+    return Promise.reject(signal.reason);
+  }
   return new Promise((resolve, reject) => {
     const abort = () => reject(signal.reason);
     signal.addEventListener("abort", abort, { once: true });
@@ -53,11 +56,15 @@ export class FlowLayout {
     try {
       return await abortable(operation, abort.signal);
     } finally {
-      if (this.pending === abort) this.pending = undefined;
+      if (this.pending === abort) {
+        this.pending = undefined;
+      }
     }
   }
   cancel() {
-    if (!this.pending) return;
+    if (!this.pending) {
+      return;
+    }
     this.pending.abort(new DOMException("Flow layout superseded", "AbortError"));
     this.pending = undefined;
     this.engine?.dispose();

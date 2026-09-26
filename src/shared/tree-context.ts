@@ -3,6 +3,7 @@ import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
 import type { TreeEntry } from "./tree-model";
+
 export type TreePart = { host: ReactiveElement; value(): string; disabled(): boolean; currentOwner(): TreeOwner | undefined; reconnect(): void };
 export type TreeViewState = Readonly<{ entries: readonly TreeEntry[]; expanded: readonly string[]; value?: string; selection: "none" | "single"; disabled: boolean }>;
 export interface TreeOwner {
@@ -28,7 +29,9 @@ export class TreeBinding {
       context: treeContext,
       subscribe: true,
       callback: (owner) => {
-        if (owner === this.current) return;
+        if (owner === this.current) {
+          return;
+        }
         this.release?.();
         this.owner.set({ value: owner });
         this.release = owner.register(this.record);
@@ -55,6 +58,8 @@ export class TreeBinding {
     this.owner.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
 }

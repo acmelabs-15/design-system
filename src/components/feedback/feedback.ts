@@ -57,7 +57,9 @@ export class AcmeFeedback extends AcmeSemanticElement {
   set submitting(value: boolean) {
     const previous = this.busy;
     this.busy = Boolean(value);
-    if (!this.busy) this.cancelSubmission();
+    if (!this.busy) {
+      this.cancelSubmission();
+    }
     this.requestUpdate("submitting", previous);
   }
   @atomState() private failure = "";
@@ -67,7 +69,9 @@ export class AcmeFeedback extends AcmeSemanticElement {
   set error(value: string) {
     const previous = this.failure;
     this.failure = value ?? "";
-    if (this.failure) this.cancelSubmission();
+    if (this.failure) {
+      this.cancelSubmission();
+    }
     this.requestUpdate("error", previous);
   }
   @atomState() private pending = false;
@@ -93,11 +97,15 @@ export class AcmeFeedback extends AcmeSemanticElement {
   }
   private edit = (field: keyof FeedbackValue, event: CustomEvent<{ value: string }>) => {
     event.stopPropagation();
-    if (this.submitting) return;
+    if (this.submitting) {
+      return;
+    }
     this.current = feedbackValue({ ...this.value, [field]: event.detail.value });
     this.cancelSubmission();
     const detail = Object.freeze({ value: this.value });
-    if (event.type === "acme-change" && (field === "rating" || field === "topic")) this.dispatchEvent(new CustomEvent("acme-input", { detail, bubbles: true, composed: true }));
+    if (event.type === "acme-change" && (field === "rating" || field === "topic")) {
+      this.dispatchEvent(new CustomEvent("acme-input", { detail, bubbles: true, composed: true }));
+    }
     this.dispatchEvent(new CustomEvent(event.type, { detail, bubbles: true, composed: true }));
   };
   reset() {
@@ -118,12 +126,16 @@ export class AcmeFeedback extends AcmeSemanticElement {
   }
   /** Validates the displayed fields and requests application submission once. */
   async requestSubmit(): Promise<void> {
-    if (this.submitting || this.pending || !this.isConnected) return;
+    if (this.submitting || this.pending || !this.isConnected) {
+      return;
+    }
     const generation = ++this.submissionGeneration;
     this.pending = true;
     await this.updateComplete;
     await Promise.all(this.controls.map((control) => control.updateComplete));
-    if (generation !== this.submissionGeneration || this.submitting || !this.isConnected) return;
+    if (generation !== this.submissionGeneration || this.submitting || !this.isConnected) {
+      return;
+    }
     this.attempted = true;
     const invalid = this.controls.find((control) => !control.checkValidity());
     if (invalid) {
@@ -138,7 +150,9 @@ export class AcmeFeedback extends AcmeSemanticElement {
       ...(this.collectEmail ? { email: this.value.email } : {}),
       ...(this.topics.length ? { topic: this.value.topic } : {}),
     });
-    if (!this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "submit", value }), bubbles: true, composed: true, cancelable: true }))) this.pending = false;
+    if (!this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "submit", value }), bubbles: true, composed: true, cancelable: true }))) {
+      this.pending = false;
+    }
   }
   private submit = (event: Event) => {
     event.preventDefault();

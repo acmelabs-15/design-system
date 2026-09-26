@@ -18,7 +18,9 @@ class CaptureHost extends LitElement {
   beforeAttribute?: (name: string, oldValue: string | null, value: string | null) => void;
   constructor() {
     super();
-    if (!(this.constructor as typeof CaptureHost).deferred) this.initialize();
+    if (!(this.constructor as typeof CaptureHost).deferred) {
+      this.initialize();
+    }
   }
   initialize() {
     this.controller = new StyleInputController(this, properties, {
@@ -46,7 +48,9 @@ class CaptureHost extends LitElement {
   }
   attributeChangedCallback(name: string, oldValue: string | null, value: string | null) {
     this.beforeAttribute?.(name, oldValue, value);
-    if (!this.controller?.attributeChanged(name, oldValue, value)) super.attributeChangedCallback(name, oldValue, value);
+    if (!this.controller?.attributeChanged(name, oldValue, value)) {
+      super.attributeChangedCallback(name, oldValue, value);
+    }
   }
   render() {
     return html`${JSON.stringify(this.controller?.entries.get())}`;
@@ -64,7 +68,9 @@ const initializeWithQueuedAttributes = (host: CaptureHost) => {
   const initial = [...host.attributes].map((attribute) => [attribute.name, attribute.value] as const);
   host.initialize();
   // Unit model of native upgrade reactions; the same cases also run in real browser upgrades.
-  for (const [name, value] of initial) host.attributeChangedCallback(name, null, value);
+  for (const [name, value] of initial) {
+    host.attributeChangedCallback(name, null, value);
+  }
 };
 
 describe("style input capture", () => {
@@ -151,7 +157,9 @@ describe("style input capture", () => {
     Object.defineProperty(host, "paddingInline", { value: 3, configurable: true });
     Object.defineProperty(host, "padding", { value: 4, configurable: true });
     host.beforeAttribute = (name, oldValue) => {
-      if (name === "padding-inline" && oldValue === null) host.setAttribute("padding", "6");
+      if (name === "padding-inline" && oldValue === null) {
+        host.setAttribute("padding", "6");
+      }
     };
     initializeWithQueuedAttributes(host);
     expect(host.controller!.entries.get()).toEqual([

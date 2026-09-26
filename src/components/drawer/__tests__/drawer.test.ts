@@ -2,11 +2,14 @@ import { expect, test } from "bun:test";
 import "../../../define/drawer";
 import "../../../define/drawer-trigger";
 import "../../../define/drawer-close";
+
 async function fixture() {
   document.body.innerHTML =
     '<acme-drawer><acme-drawer-trigger slot="trigger">Open details</acme-drawer-trigger><h2 slot="heading">Details</h2><input value="Retained"><acme-drawer-close slot="footer">Close details</acme-drawer-close></acme-drawer>';
   const root = document.querySelector("acme-drawer")!;
-  for (let i = 0; i < 3; i++) await Promise.all([root, ...root.querySelectorAll("*")].map((el) => (el as any).updateComplete));
+  for (let i = 0; i < 3; i++) {
+    await Promise.all([root, ...root.querySelectorAll("*")].map((el) => (el as any).updateComplete));
+  }
   return root;
 }
 test("Drawer uses logical placement and an optional authored CSS size", async () => {

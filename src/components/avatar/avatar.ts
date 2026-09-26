@@ -9,6 +9,7 @@ import { optionalString } from "../../shared/attributes";
 import { ResponsiveStyleRenderer } from "../../shared/style-renderer";
 import { responsiveStyleDelivery } from "../../generated/responsive-styles";
 import { avatarStructureCss } from "../../generated/components/avatar/avatar-structure.styles";
+
 export type AvatarSize = "tiny" | "small" | "medium" | "large";
 /** One entity image with a named or decorative fallback.
  * @slot fallback - Content used when an image is absent or unavailable.
@@ -31,7 +32,9 @@ export class AcmeAvatar extends AcmeElement {
   }
   set src(value: string) {
     const next = value ?? "";
-    if (next === this.source) return;
+    if (next === this.source) {
+      return;
+    }
     const previous = this.source;
     this.source = next;
     this.generation++;
@@ -51,9 +54,13 @@ export class AcmeAvatar extends AcmeElement {
     state: () => ({ inputs: [["width", this.width]] }),
   });
   private complete(image: HTMLImageElement, source: string, generation: number, loaded: boolean) {
-    if (!this.isConnected || source !== this.src || generation !== this.generation || image !== this.renderRoot.querySelector("img")) return;
+    if (!this.isConnected || source !== this.src || generation !== this.generation || image !== this.renderRoot.querySelector("img")) {
+      return;
+    }
     const state = loaded ? "loaded" : "error";
-    if (this.status === state) return;
+    if (this.status === state) {
+      return;
+    }
     this.status = state;
     this.dispatchEvent(
       loaded
@@ -66,7 +73,9 @@ export class AcmeAvatar extends AcmeElement {
     );
   }
   private derivedInitials() {
-    if (this.initials) return this.initials;
+    if (this.initials) {
+      return this.initials;
+    }
     const locale = this.themeContext.scope.effective.get().locale;
     const words = [...new Intl.Segmenter(locale, { granularity: "word" }).segment(this.label)].filter((word) => word.isWordLike).map((word) => word.segment);
     const selected = words.length > 1 ? [words[0], words.at(-1)!] : words;
@@ -81,7 +90,9 @@ export class AcmeAvatar extends AcmeElement {
   }
   protected updated() {
     const image = this.renderRoot.querySelector("img");
-    if (image?.complete && this.status === "loading") this.complete(image, this.src, this.generation, image.naturalWidth > 0);
+    if (image?.complete && this.status === "loading") {
+      this.complete(image, this.src, this.generation, image.naturalWidth > 0);
+    }
   }
   connectedCallback() {
     super.connectedCallback();

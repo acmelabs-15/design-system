@@ -31,8 +31,12 @@ export function tokenLines(code: string, lang: string): (TemplateResult | string
   const lines: (TemplateResult | string)[][] = [[]];
   for (const t of highlighter.tokenize(code, { lang: langOf(lang) }).tokens) {
     t.value.split("\n").forEach((part, i) => {
-      if (i) lines.push([]);
-      if (!part) return;
+      if (i) {
+        lines.push([]);
+      }
+      if (!part) {
+        return;
+      }
       lines[lines.length - 1].push(t.className ? html`<span class=${`token ${KIND[t.className] ?? t.className}`}>${part}</span>` : part);
     });
   }

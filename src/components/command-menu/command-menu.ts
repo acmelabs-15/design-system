@@ -18,6 +18,7 @@ import type { AcmeDialog } from "../dialog/dialog";
 import type { AcmeInput } from "../input/input";
 import type { AcmeScrollArea } from "../scroll-area/scroll-area";
 import { commandMenuStructureCss } from "../../generated/components/command-menu/command-menu-structure.styles";
+
 export type { CommandMenuFilter } from "../../shared/command-ranking";
 type Entry = SearchableCommand & { part: CommandPart; group?: CommandPart };
 type Block = { part: CommandPart; members: readonly CommandPart[] };
@@ -50,7 +51,9 @@ export class AcmeCommandMenu extends AcmeElement {
     const previous = this.opened;
     this.reason = "programmatic";
     this.opened = Boolean(value);
-    if (this.dialog) this.dialog.open = this.opened;
+    if (this.dialog) {
+      this.dialog.open = this.opened;
+    }
     this.requestUpdate("open", previous);
   }
   @atomState() private queryText = "";
@@ -59,9 +62,13 @@ export class AcmeCommandMenu extends AcmeElement {
     return this.queryText;
   }
   set query(value: string) {
-    if (typeof value !== "string") throw new TypeError("Command query must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("Command query must be a string");
+    }
     const previous = this.queryText;
-    if (value === previous) return;
+    if (value === previous) {
+      return;
+    }
     this.queryText = value;
     this.highlighted?.set({});
     this.lastRequest = "";
@@ -77,7 +84,9 @@ export class AcmeCommandMenu extends AcmeElement {
     return this.ranking;
   }
   set filter(value: CommandMenuFilter | undefined) {
-    if (value !== undefined && typeof value !== "function") throw new TypeError("Command filter must be a function");
+    if (value !== undefined && typeof value !== "function") {
+      throw new TypeError("Command filter must be a function");
+    }
     const previous = this.ranking;
     this.ranking = value;
     this.requestUpdate("filter", previous);
@@ -88,9 +97,13 @@ export class AcmeCommandMenu extends AcmeElement {
     return this.shortcut;
   }
   set hotkey(value: string | undefined) {
-    if (value !== undefined && (typeof value !== "string" || !value.trim())) throw new TypeError("Hotkey must be a nonempty shortcut");
+    if (value !== undefined && (typeof value !== "string" || !value.trim())) {
+      throw new TypeError("Hotkey must be a nonempty shortcut");
+    }
     const previous = this.shortcut;
-    if (value === previous) return;
+    if (value === previous) {
+      return;
+    }
     this.shortcut = value;
     this.configureHotkey();
     this.requestUpdate("hotkey", previous);
@@ -102,7 +115,9 @@ export class AcmeCommandMenu extends AcmeElement {
     return this.threshold;
   }
   set loadMoreThreshold(value: number) {
-    if (!Number.isFinite(value) || value < 0) throw new RangeError("Load-more threshold must be nonnegative");
+    if (!Number.isFinite(value) || value < 0) {
+      throw new RangeError("Load-more threshold must be nonnegative");
+    }
     const previous = this.threshold;
     this.threshold = value;
     this.requestUpdate("loadMoreThreshold", previous);
@@ -179,7 +194,9 @@ export class AcmeCommandMenu extends AcmeElement {
   private enabled() {
     const entries = this.entries.get(),
       counts = new Map<string, number>();
-    for (const entry of entries) counts.set(entry.value, (counts.get(entry.value) ?? 0) + 1);
+    for (const entry of entries) {
+      counts.set(entry.value, (counts.get(entry.value) ?? 0) + 1);
+    }
     return this.ranked
       .get()
       .filter((entry) => entry.value.trim() && entry.label.trim() && !entry.disabled && counts.get(entry.value) === 1 && !entry.part.host.inert)
@@ -193,8 +210,12 @@ export class AcmeCommandMenu extends AcmeElement {
         .map((child) => commandPartFor(child))
         .filter((part): part is CommandPart => !!part && !part.host.hidden)
         .flatMap((part) => {
-          if (part.kind === "item") return visible.has(part) ? [{ part, members: [] }] : [];
-          if (part.kind === "separator") return [{ part, members: [] }];
+          if (part.kind === "item") {
+            return visible.has(part) ? [{ part, members: [] }] : [];
+          }
+          if (part.kind === "separator") {
+            return [{ part, members: [] }];
+          }
           const members = [...part.host.children]
             .map((child) => commandPartFor(child))
             .filter((member): member is CommandPart => !!member && (visible.has(member) || member.kind === "separator") && !member.host.hidden);
@@ -206,28 +227,44 @@ export class AcmeCommandMenu extends AcmeElement {
     const seen = new Set<CommandPart>();
     for (const entry of ranked) {
       const part = entry.group ?? entry.part;
-      if (seen.has(part)) continue;
+      if (seen.has(part)) {
+        continue;
+      }
       seen.add(part);
       blocks.push({ part, members: entry.group ? ranked.filter((item) => item.group === entry.group).map((item) => item.part) : [] });
     }
     return blocks;
   }
   private highlight(part: CommandPart, scroll = false) {
-    if (!this.enabled().includes(part)) return;
-    if (this.highlighted.get().part !== part) this.highlighted.set({ part });
-    if (scroll) part.host.scrollIntoView({ block: "nearest" });
+    if (!this.enabled().includes(part)) {
+      return;
+    }
+    if (this.highlighted.get().part !== part) {
+      this.highlighted.set({ part });
+    }
+    if (scroll) {
+      part.host.scrollIntoView({ block: "nearest" });
+    }
   }
   private select(part: CommandPart) {
-    if (!this.open || !this.enabled().includes(part)) return;
+    if (!this.open || !this.enabled().includes(part)) {
+      return;
+    }
     const event = new CustomEvent("acme-request", { detail: Object.freeze({ action: "select", value: part.value() }), bubbles: true, composed: true, cancelable: true });
-    if (this.dispatchEvent(event)) this.userOpen(false, "selection");
+    if (this.dispatchEvent(event)) {
+      this.userOpen(false, "selection");
+    }
   }
   private userOpen(open: boolean, reason: DialogReason) {
-    if (open === this.open) return;
+    if (open === this.open) {
+      return;
+    }
     const previous = this.opened;
     this.reason = reason;
     this.opened = open;
-    if (this.dialog) this.dialog.open = open;
+    if (this.dialog) {
+      this.dialog.open = open;
+    }
     this.requestUpdate("open", previous);
     this.dispatchEvent(new CustomEvent("acme-open-change", { detail: Object.freeze({ open, reason }), bubbles: true, composed: true }));
   }
@@ -242,44 +279,64 @@ export class AcmeCommandMenu extends AcmeElement {
   }
   private edit = (event: CustomEvent<{ value: string }>) => {
     event.stopPropagation();
-    if (event.detail.value === this.query) return;
+    if (event.detail.value === this.query) {
+      return;
+    }
     this.query = event.detail.value;
     this.dispatchEvent(new CustomEvent("acme-input", { detail: Object.freeze({ value: this.query }), bubbles: true, composed: true }));
   };
   private keydown = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing || this.composing) return;
+    if (event.defaultPrevented || event.isComposing || this.composing) {
+      return;
+    }
     const items = this.enabled(),
       index = items.indexOf(this.highlighted.get().part!);
     let target: number | undefined;
-    if (event.key === "ArrowDown") target = Math.min(index + 1, items.length - 1);
-    else if (event.key === "ArrowUp") target = Math.max(index - 1, 0);
-    else if (event.key === "Home" && (event.ctrlKey || event.metaKey)) target = 0;
-    else if (event.key === "End" && (event.ctrlKey || event.metaKey)) target = items.length - 1;
-    else if (event.key === "Enter") {
+    if (event.key === "ArrowDown") {
+      target = Math.min(index + 1, items.length - 1);
+    } else if (event.key === "ArrowUp") {
+      target = Math.max(index - 1, 0);
+    } else if (event.key === "Home" && (event.ctrlKey || event.metaKey)) {
+      target = 0;
+    } else if (event.key === "End" && (event.ctrlKey || event.metaKey)) {
+      target = items.length - 1;
+    } else if (event.key === "Enter") {
       event.preventDefault();
       const active = this.highlighted.get().part;
-      if (active) this.select(active);
+      if (active) {
+        this.select(active);
+      }
       return;
     }
     if (target !== undefined) {
       event.preventDefault();
       event.stopPropagation();
-      if (items[target]) this.highlight(items[target], true);
+      if (items[target]) {
+        this.highlight(items[target], true);
+      }
     }
   };
   private dialogRequest = (event: CustomEvent) => {
-    if (event.target !== this.dialog || event.detail?.action !== "close") return;
+    if (event.target !== this.dialog || event.detail?.action !== "close") {
+      return;
+    }
     event.stopPropagation();
     const forwarded = new CustomEvent("acme-request", { detail: event.detail, bubbles: true, composed: true, cancelable: true });
-    if (!this.dispatchEvent(forwarded)) event.preventDefault();
+    if (!this.dispatchEvent(forwarded)) {
+      event.preventDefault();
+    }
   };
   private dialogChanged = (event: CustomEvent<{ open: boolean; reason: DialogReason }>) => {
-    if (event.target !== this.dialog) return;
+    if (event.target !== this.dialog) {
+      return;
+    }
     event.stopPropagation();
     this.userOpen(event.detail.open, event.detail.reason);
   };
   private dialogAfter = (event: CustomEvent) => {
-    if (event.target !== this.dialog) return;
+    if (event.target !== this.dialog) {
+      return;
+    }
     event.stopPropagation();
     if (event.type === "acme-after-open") {
       this.focus();
@@ -288,23 +345,31 @@ export class AcmeCommandMenu extends AcmeElement {
     this.dispatchEvent(new CustomEvent(event.type, { detail: Object.freeze({ reason: this.reason }), bubbles: true, composed: true }));
   };
   private measure = () => {
-    if (this.measureFrame) return;
+    if (this.measureFrame) {
+      return;
+    }
     this.measureFrame = this.ownerDocument.defaultView!.requestAnimationFrame(() => {
       this.measureFrame = 0;
       const height = Math.max(48, this.renderRoot?.querySelector<HTMLElement>("[part=results]")?.scrollHeight ?? 0);
-      if (this.style.getPropertyValue("--_command-list-height") !== height + "px") this.style.setProperty("--_command-list-height", height + "px");
+      if (this.style.getPropertyValue("--_command-list-height") !== height + "px") {
+        this.style.setProperty("--_command-list-height", height + "px");
+      }
       this.more();
     });
   };
   private more = () => {
-    if (!this.open || !this.hasMore || this.loading || this.loadMoreThreshold <= 0 || !this.viewport) return;
+    if (!this.open || !this.hasMore || this.loading || this.loadMoreThreshold <= 0 || !this.viewport) {
+      return;
+    }
     const near = this.viewport.scrollHeight - this.viewport.clientHeight - this.viewport.scrollTop <= this.loadMoreThreshold;
     if (!near) {
       this.lastRequest = "";
       return;
     }
     const key = JSON.stringify([this.query, this.entries.get().map((entry) => entry.value)]);
-    if (key === this.lastRequest) return;
+    if (key === this.lastRequest) {
+      return;
+    }
     this.lastRequest = key;
     this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "load-more", query: this.query }), bubbles: true, composed: true }));
   };
@@ -319,7 +384,9 @@ export class AcmeCommandMenu extends AcmeElement {
         this,
         this.shortcut as RegisterableHotkey,
         (event) => {
-          if (event.isComposing || this.hidden || this.inert || !this.getClientRects().length) return;
+          if (event.isComposing || this.hidden || this.inert || !this.getClientRects().length) {
+            return;
+          }
           this.userOpen(!this.open, "trigger");
         },
         { target: this.ownerDocument, preventDefault: true, stopPropagation: true, requireReset: true, conflictBehavior: "warn" },
@@ -345,7 +412,9 @@ export class AcmeCommandMenu extends AcmeElement {
     this.resize = undefined;
     this.viewport?.removeEventListener("scroll", this.more);
     this.viewport = undefined;
-    if (this.measureFrame) this.ownerDocument.defaultView?.cancelAnimationFrame(this.measureFrame);
+    if (this.measureFrame) {
+      this.ownerDocument.defaultView?.cancelAnimationFrame(this.measureFrame);
+    }
     this.measureFrame = 0;
     if (this.keys) {
       this.keys.hostDisconnected();
@@ -360,33 +429,48 @@ export class AcmeCommandMenu extends AcmeElement {
     this.configureHotkey();
   }
   protected updated() {
-    if (!this.isConnected) return;
+    if (!this.isConnected) {
+      return;
+    }
     const blocks = this.blocks();
-    for (const part of this.parts.get()) if (part.kind === "group") part.project?.(blocks.find((block) => block.part === part)?.members ?? []);
+    for (const part of this.parts.get()) {
+      if (part.kind === "group") {
+        part.project?.(blocks.find((block) => block.part === part)?.members ?? []);
+      }
+    }
     for (const slot of this.renderRoot.querySelectorAll("slot")) {
       const block = slot.getAttribute("data-block");
       const nodes =
         block !== null ? [blocks[Number(block)]?.part.host].filter((node): node is NonNullable<typeof node> => !!node) : [...this.children].filter((child) => child.getAttribute("slot") === slot.name);
       const previous = slot.assignedNodes();
-      if (nodes.length !== previous.length || nodes.some((node, i) => node !== previous[i])) slot.assign(...nodes);
+      if (nodes.length !== previous.length || nodes.some((node, i) => node !== previous[i])) {
+        slot.assign(...nodes);
+      }
     }
     const enabled = this.enabled();
-    if (!enabled.includes(this.highlighted.get().part!) && (this.highlighted.get().part !== undefined || enabled[0] !== undefined)) this.highlighted.set(enabled[0] ? { part: enabled[0] } : {});
+    if (!enabled.includes(this.highlighted.get().part!) && (this.highlighted.get().part !== undefined || enabled[0] !== undefined)) {
+      this.highlighted.set(enabled[0] ? { part: enabled[0] } : {});
+    }
     if (this.input) {
       this.input.ariaControlsElements = this.list ? [this.list] : null;
       this.input.ariaActiveDescendantElement = this.open ? (this.highlighted.get().part?.host ?? null) : null;
     }
-    if (this.dialog) this.dialog.initialFocus = this.input;
+    if (this.dialog) {
+      this.dialog.initialFocus = this.input;
+    }
     const area = this.area,
       child = this.renderRoot.querySelector("acme-scroll-viewport") as HTMLElement & { updateComplete: Promise<unknown> };
-    if (!this.viewport && !this.viewportBinding && area && child)
+    if (!this.viewport && !this.viewportBinding && area && child) {
       this.viewportBinding = Promise.all([area.updateComplete, child.updateComplete]).then(() => {
         this.viewportBinding = undefined;
-        if (!this.isConnected || this.area !== area) return;
+        if (!this.isConnected || this.area !== area) {
+          return;
+        }
         this.viewport = area.getViewport();
         this.viewport.addEventListener("scroll", this.more);
         this.measure();
       });
+    }
     const results = this.renderRoot.querySelector<HTMLElement>("[part=results]");
     if (!this.resize && results) {
       this.resize = new ResizeObserver(this.measure);
@@ -397,7 +481,9 @@ export class AcmeCommandMenu extends AcmeElement {
       this.entries.get().some((entry) => entry.part.host.hasUpdated && (!entry.value.trim() || !entry.label.trim())) ||
       new Set(this.entries.get().map((entry) => entry.value)).size !== this.entries.get().length;
     const message = invalid ? "command-items-require-unique-values-and-labels" : "";
-    if (message && message !== this.diagnostic) console.warn(this.localName, { code: message });
+    if (message && message !== this.diagnostic) {
+      console.warn(this.localName, { code: message });
+    }
     this.diagnostic = message;
   }
   render() {

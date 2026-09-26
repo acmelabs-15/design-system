@@ -2,7 +2,9 @@ import type { DeliveryTable } from "./data";
 
 function active(document: Document): Element | null {
   let element = document.activeElement;
-  while (element?.shadowRoot?.activeElement) element = element.shadowRoot.activeElement;
+  while (element?.shadowRoot?.activeElement) {
+    element = element.shadowRoot.activeElement;
+  }
   return element;
 }
 const target = (root: HTMLTableElement, id: string) => root.querySelector<HTMLElement>(`[data-cell="${CSS.escape(id)}"]`);
@@ -20,14 +22,22 @@ export function syncGridFocus(root: HTMLTableElement, table: DeliveryTable) {
   }
   const focused = currentCell && root.contains(currentCell) ? currentCell : table.getFocusedCell() ? target(root, table.getFocusedCell()!.id) : undefined;
   const entry = focused ?? root.querySelector<HTMLElement>("tbody [data-cell]");
-  for (const cell of root.querySelectorAll<HTMLElement>("[data-cell],[data-header]")) cell.tabIndex = cell === entry ? 0 : -1;
-  for (const control of root.querySelectorAll<HTMLElement>("button,input,select,textarea,a[href],acme-button,acme-input,acme-checkbox")) control.tabIndex = -1;
+  for (const cell of root.querySelectorAll<HTMLElement>("[data-cell],[data-header]")) {
+    cell.tabIndex = cell === entry ? 0 : -1;
+  }
+  for (const control of root.querySelectorAll<HTMLElement>("button,input,select,textarea,a[href],acme-button,acme-input,acme-checkbox")) {
+    control.tabIndex = -1;
+  }
 }
 export async function gridKey(event: KeyboardEvent, table: DeliveryTable, root: HTMLTableElement, reveal?: (rowId: string, columnId: string) => Promise<void>) {
-  if (event.defaultPrevented) return;
+  if (event.defaultPrevented) {
+    return;
+  }
   const origin = event.composedPath()[0] as HTMLElement,
     cell = event.composedPath().find((node) => node instanceof HTMLElement && (node.hasAttribute("data-cell") || node.hasAttribute("data-header"))) as HTMLElement | undefined;
-  if (!cell) return;
+  if (!cell) {
+    return;
+  }
   if (origin !== cell) {
     if (event.key === "Escape") {
       event.preventDefault();
@@ -53,7 +63,9 @@ export async function gridKey(event: KeyboardEvent, table: DeliveryTable, root: 
     ArrowRight: getComputedStyle(root).direction === "rtl" ? "left" : "right",
   };
   const direction = directions[event.key];
-  if (!direction) return;
+  if (!direction) {
+    return;
+  }
   event.preventDefault();
   const columnId = cell.dataset.column!;
   if (cell.dataset.header !== undefined) {
@@ -62,7 +74,9 @@ export async function gridKey(event: KeyboardEvent, table: DeliveryTable, root: 
       if (row) {
         await reveal?.(row.id, columnId);
         const first = row.getAllCells().find((cell) => cell.column.id === columnId);
-        if (first) target(root, first.id)?.focus();
+        if (first) {
+          target(root, first.id)?.focus();
+        }
       }
     } else if (direction === "left" || direction === "right") {
       const headers = [...root.querySelectorAll<HTMLElement>('thead [data-header][data-leaf="true"]')],
@@ -86,9 +100,14 @@ export async function gridKey(event: KeyboardEvent, table: DeliveryTable, root: 
     syncGridFocus(root, table);
     return;
   }
-  if (table.getFocusedCell()?.id !== modelCell.id) table.setFocusedCell(rowId, columnId);
-  if (event.shiftKey) table.extendCellSelection(direction);
-  else table.moveCellSelection(direction);
+  if (table.getFocusedCell()?.id !== modelCell.id) {
+    table.setFocusedCell(rowId, columnId);
+  }
+  if (event.shiftKey) {
+    table.extendCellSelection(direction);
+  } else {
+    table.moveCellSelection(direction);
+  }
   const next = table.getFocusedCell();
   if (next) {
     await reveal?.(next.row.id, next.column.id);

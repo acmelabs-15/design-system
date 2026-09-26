@@ -11,6 +11,7 @@ import type { StyleScalar } from "../../shared/style-input-schema";
 import { message, messageCatalogs } from "../../shared/messages";
 import { StoreSelector } from "../../shared/store-connection";
 import { videoSurfaceCss } from "../../generated/components/video/video-surface.styles";
+
 type NativeInputs = Pick<HTMLVideoElement, "controls" | "playsInline" | "muted" | "defaultMuted" | "loop" | "preload" | "autoplay">;
 type Dimension = ResponsiveInput<StyleScalar<"width">>;
 /** A native video owner with visibility-based loading and stable native content access.
@@ -43,7 +44,9 @@ export class AcmeVideo extends AcmeResponsiveElement {
     return this.requestedAutoplay ?? !this.reducedMotion;
   }
   set autoplay(value: boolean | undefined) {
-    if (value !== undefined && typeof value !== "boolean") throw new TypeError("Autoplay requires a boolean or undefined");
+    if (value !== undefined && typeof value !== "boolean") {
+      throw new TypeError("Autoplay requires a boolean or undefined");
+    }
     const previous = this.autoplay;
     this.requestedAutoplay = value;
     this.requestUpdate("autoplay", previous);
@@ -54,7 +57,9 @@ export class AcmeVideo extends AcmeResponsiveElement {
     return this.preloadValue;
   }
   set preload(value: "none" | "metadata" | "auto") {
-    if (!["none", "metadata", "auto"].includes(value)) throw new TypeError("Invalid Video preload");
+    if (!["none", "metadata", "auto"].includes(value)) {
+      throw new TypeError("Invalid Video preload");
+    }
     const previous = this.preloadValue;
     this.preloadValue = value;
     this.requestUpdate("preload", previous);
@@ -65,7 +70,9 @@ export class AcmeVideo extends AcmeResponsiveElement {
     return this.loadingValue;
   }
   set loading(value: "eager" | "lazy") {
-    if (value !== "eager" && value !== "lazy") throw new TypeError("Invalid Video loading");
+    if (value !== "eager" && value !== "lazy") {
+      throw new TypeError("Invalid Video loading");
+    }
     const previous = this.loadingValue;
     this.loadingValue = value;
     this.requestUpdate("loading", previous);
@@ -73,7 +80,9 @@ export class AcmeVideo extends AcmeResponsiveElement {
   private readonly dimensions = new StyleInputController(this, ["width", "height"], {
     supports: (property, value) => {
       const css = this.ownerDocument.defaultView?.CSS;
-      if (css?.supports) return css.supports(property, value);
+      if (css?.supports) {
+        return css.supports(property, value);
+      }
       const style = this.ownerDocument.createElement("div").style;
       style.setProperty(property, value);
       return !!style.getPropertyValue(property);
@@ -124,14 +133,20 @@ export class AcmeVideo extends AcmeResponsiveElement {
   }
   /** Resolves only when native playback starts, and preserves native rejection. */
   async play(): Promise<void> {
-    if (!this.isConnected) throw new DOMException("Connect Video before playback", "InvalidStateError");
+    if (!this.isConnected) {
+      throw new DOMException("Connect Video before playback", "InvalidStateError");
+    }
     const generation = ++this.playGeneration;
     this.userPaused = false;
     this.activate();
     await this.updateComplete;
-    if (!this.isConnected || generation !== this.playGeneration) throw new DOMException("Playback superseded", "AbortError");
+    if (!this.isConnected || generation !== this.playGeneration) {
+      throw new DOMException("Playback superseded", "AbortError");
+    }
     await this.media.play();
-    if (!this.isConnected || generation !== this.playGeneration) throw new DOMException("Playback superseded", "AbortError");
+    if (!this.isConnected || generation !== this.playGeneration) {
+      throw new DOMException("Playback superseded", "AbortError");
+    }
   }
   /** Pauses media and prevents later lazy/preference updates from restarting it. */
   pause() {
@@ -156,7 +171,9 @@ export class AcmeVideo extends AcmeResponsiveElement {
     this.syncMedia();
   };
   private observeVisibility() {
-    if (this.ready) return;
+    if (this.ready) {
+      return;
+    }
     if (this.loading === "eager") {
       this.activate();
       return;
@@ -164,7 +181,9 @@ export class AcmeVideo extends AcmeResponsiveElement {
     if (!this.intersection) {
       this.intersection = new this.ownerDocument.defaultView!.IntersectionObserver(
         (entries) => {
-          if (entries.some((entry) => entry.isIntersecting)) this.activate();
+          if (entries.some((entry) => entry.isIntersecting)) {
+            this.activate();
+          }
         },
         { rootMargin: "20% 0px" },
       );
@@ -189,14 +208,18 @@ export class AcmeVideo extends AcmeResponsiveElement {
     this.apply("autoplay", this.ready && this.autoplay && !this.userPaused && this.isConnected);
     if (this.ready) {
       if (this.posterApplied !== this.poster) {
-        if (this.poster) media.poster = this.poster;
-        else if (this.posterApplied) media.removeAttribute("poster");
+        if (this.poster) {
+          media.poster = this.poster;
+        } else if (this.posterApplied) {
+          media.removeAttribute("poster");
+        }
         this.posterApplied = this.poster;
       }
       if (this.sourceApplied !== this.src) {
         this.failed = false;
-        if (this.src) media.src = this.src;
-        else if (this.sourceApplied) {
+        if (this.src) {
+          media.src = this.src;
+        } else if (this.sourceApplied) {
           media.removeAttribute("src");
           media.load();
         }
@@ -205,25 +228,39 @@ export class AcmeVideo extends AcmeResponsiveElement {
     }
   }
   private native = (event: Event) => {
-    if (event.target !== this.media) return;
-    if (event.type === "pause" && this.media.paused && !this.media.ended) this.userPaused = true;
-    if (event.type === "play" && !this.media.paused) this.userPaused = false;
+    if (event.target !== this.media) {
+      return;
+    }
+    if (event.type === "pause" && this.media.paused && !this.media.ended) {
+      this.userPaused = true;
+    }
+    if (event.type === "play" && !this.media.paused) {
+      this.userPaused = false;
+    }
     if (event.type === "error") {
-      if (this.failed) return;
+      if (this.failed) {
+        return;
+      }
       this.failed = true;
     }
-    if (this.isConnected && !event.composed) this.dispatchEvent(new Event(event.type, { bubbles: true, composed: true }));
+    if (this.isConnected && !event.composed) {
+      this.dispatchEvent(new Event(event.type, { bubbles: true, composed: true }));
+    }
     this.requestUpdate();
   };
   private volume = () => {
-    if (this.muted !== this.media.muted) this.muted = this.media.muted;
+    if (this.muted !== this.media.muted) {
+      this.muted = this.media.muted;
+    }
   };
   private loaded = () => {
     this.failed = false;
     this.requestUpdate();
   };
   private sourceError = (event: Event) => {
-    if ((event.target as Element).localName !== "source" || this.sourceErrorFrame !== undefined) return;
+    if ((event.target as Element).localName !== "source" || this.sourceErrorFrame !== undefined) {
+      return;
+    }
     const view = this.ownerDocument.defaultView!;
     this.sourceErrorView = view;
     this.sourceErrorFrame = view.requestAnimationFrame(() => {
@@ -244,13 +281,17 @@ export class AcmeVideo extends AcmeResponsiveElement {
     this.preference.addEventListener("change", this.motionPreference);
     this.motionPreference();
     const types = ["play", "pause", "ended", "error"] as const;
-    for (const type of types) this.media.addEventListener(type, this.native);
+    for (const type of types) {
+      this.media.addEventListener(type, this.native);
+    }
     this.media.addEventListener("error", this.sourceError, true);
     this.media.addEventListener("volumechange", this.volume);
     this.media.addEventListener("loadedmetadata", this.loaded);
     this.media.addEventListener("loadstart", this.loaded);
     this.releaseMedia = () => {
-      for (const type of types) this.media.removeEventListener(type, this.native);
+      for (const type of types) {
+        this.media.removeEventListener(type, this.native);
+      }
       this.media.removeEventListener("error", this.sourceError, true);
       this.media.removeEventListener("volumechange", this.volume);
       this.media.removeEventListener("loadedmetadata", this.loaded);
@@ -273,7 +314,9 @@ export class AcmeVideo extends AcmeResponsiveElement {
     this.preference = undefined;
     this.releaseMedia?.();
     this.releaseMedia = undefined;
-    if (this.sourceErrorFrame !== undefined) this.sourceErrorView?.cancelAnimationFrame(this.sourceErrorFrame);
+    if (this.sourceErrorFrame !== undefined) {
+      this.sourceErrorView?.cancelAnimationFrame(this.sourceErrorFrame);
+    }
     this.sourceErrorFrame = undefined;
     this.sourceErrorView = undefined;
     this.userPaused = true;
@@ -282,7 +325,9 @@ export class AcmeVideo extends AcmeResponsiveElement {
     super.disconnectedCallback();
   }
   attributeChangedCallback(name: string, previous: string | null, value: string | null) {
-    if (!this.dimensions?.attributeChanged(name, previous, value)) super.attributeChangedCallback(name, previous, value);
+    if (!this.dimensions?.attributeChanged(name, previous, value)) {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   adoptedCallback() {
     super.adoptedCallback();

@@ -24,7 +24,9 @@ export class AcmeCommandGroup extends AcmeElement {
     keywords: () => [],
     disabled: () => false,
     project: (parts) => {
-      if (parts.length !== this.projected.length || parts.some((part, i) => part !== this.projected[i])) this.projected = Object.freeze([...parts]);
+      if (parts.length !== this.projected.length || parts.some((part, i) => part !== this.projected[i])) {
+        this.projected = Object.freeze([...parts]);
+      }
     },
   });
   private readonly internals = this.attachInternals();
@@ -35,7 +37,9 @@ export class AcmeCommandGroup extends AcmeElement {
       .map((child) => child.textContent ?? "")
       .join(" ")
       .trim();
-    if (text !== this.headingText) this.headingText = text;
+    if (text !== this.headingText) {
+      this.headingText = text;
+    }
   };
   connectedCallback() {
     super.connectedCallback();
@@ -58,7 +62,9 @@ export class AcmeCommandGroup extends AcmeElement {
           ? [...this.children].filter((child) => child.getAttribute("slot") === "heading")
           : [this.projected[Number(index)]?.host].filter((node): node is NonNullable<typeof node> => !!node);
       const previous = slot.assignedNodes();
-      if (nodes.length !== previous.length || nodes.some((node, i) => node !== previous[i])) slot.assign(...nodes);
+      if (nodes.length !== previous.length || nodes.some((node, i) => node !== previous[i])) {
+        slot.assign(...nodes);
+      }
     }
   }
   render() {

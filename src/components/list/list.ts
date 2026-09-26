@@ -11,6 +11,7 @@ import { ResponsiveStyleRenderer } from "../../shared/style-renderer";
 import { responsiveStyleDelivery } from "../../generated/responsive-styles";
 import { listStructureCss } from "../../generated/components/list/list-structure.styles";
 import { listLightCss } from "../../generated/components/list/list-light.styles";
+
 const spacingToken = (value: unknown): value is NumericTokenKey => typeof value === "number" && (numericTokenKeys as readonly number[]).includes(value);
 /** Styles an author-owned native list without taking ownership of its items.
  * @slot - One native ul or ol with native li children.
@@ -35,24 +36,33 @@ export class AcmeList extends AcmeResponsiveElement {
   });
   private readonly ownedRoles = new Set<Element>();
   private syncLists = () => {
-    for (const list of this.ownedRoles)
+    for (const list of this.ownedRoles) {
       if (list.parentElement !== this || this.marker === "native") {
-        if (list.getAttribute("role") === "list") list.removeAttribute("role");
+        if (list.getAttribute("role") === "list") {
+          list.removeAttribute("role");
+        }
         this.ownedRoles.delete(list);
       }
-    if (this.marker !== "native")
-      for (const list of this.children)
+    }
+    if (this.marker !== "native") {
+      for (const list of this.children) {
         if ((list.localName === "ul" || list.localName === "ol") && !list.hasAttribute("role")) {
           list.setAttribute("role", "list");
           this.ownedRoles.add(list);
         }
+      }
+    }
   };
   attributeChangedCallback(name: string, previous: string | null, value: string | null) {
     if (name === "spacing") {
       const parsed = parseResponsiveAttribute(value, spacingToken, { numbers: true });
       this.spacing = parsed.value;
-      if (parsed.diagnostic) console.warn(this.localName, parsed.diagnostic);
-    } else super.attributeChangedCallback(name, previous, value);
+      if (parsed.diagnostic) {
+        console.warn(this.localName, parsed.diagnostic);
+      }
+    } else {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   protected updated() {
     this.syncLists();

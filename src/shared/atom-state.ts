@@ -53,7 +53,9 @@ class NamedAtom<T> extends TanStackStoreAtom<T> {
     const sync = (value: T) => {
       const old = this.previous;
       this.previous = value;
-      if (!Object.is(old, value)) this.notify(old);
+      if (!Object.is(old, value)) {
+        this.notify(old);
+      }
     };
     let subscription: { unsubscribe(): void } | undefined;
     host.addController({
@@ -72,8 +74,11 @@ class NamedAtom<T> extends TanStackStoreAtom<T> {
   override set(value: T | ((previous: T) => T)): void {
     // An external write inside a batch may not have notified Lit yet.
     const old = this.previous;
-    if (typeof value === "function") super.set(value as (previous: T) => T);
-    else super.set(value);
+    if (typeof value === "function") {
+      super.set(value as (previous: T) => T);
+    } else {
+      super.set(value);
+    }
     this.previous = this.store.get();
     this.notify(old);
   }
@@ -110,7 +115,9 @@ export function atomState<T>(shared?: Atom<T>, options?: { compare?: (a: T, b: T
     // subscribes and the element stops re-rendering for that field.
     (proto.constructor as typeof ReactiveElement).addInitializer((host) => {
       atomFor<T>(host, name, undefined as T, shared, options);
-      if (shared) host.requestUpdate(name, undefined);
+      if (shared) {
+        host.requestUpdate(name, undefined);
+      }
     });
     Object.defineProperty(proto, name, {
       configurable: true,

@@ -33,7 +33,9 @@ export function createBreakpointConfiguration(): BreakpointConfiguration {
     },
     use(): ResponsiveBreakpoints {
       const current = state.get();
-      if (!current.used) state.set(Object.freeze({ ...current, used: true }));
+      if (!current.used) {
+        state.set(Object.freeze({ ...current, used: true }));
+      }
       return current.widths;
     },
   });

@@ -53,7 +53,9 @@ export class AcmeTheme extends AcmeElement {
     return this.themeContext.scope.effective.get().theme;
   }
   set theme(value: string | undefined) {
-    if (value !== undefined) getTheme(value);
+    if (value !== undefined) {
+      getTheme(value);
+    }
     this.themeContext.scope.setAuthored({ theme: value });
   }
 
@@ -98,7 +100,9 @@ export class AcmeTheme extends AcmeElement {
     this.syncStyles();
   }
   private syncStyles(): void {
-    if (!this.renderRoot) return;
+    if (!this.renderRoot) {
+      return;
+    }
     const authored = this.themeContext.scope.authored.get();
     const effective = this.themeContext.scope.effective.get();
     const root = this.themeContext.parentSource.get() === undefined;
@@ -117,7 +121,9 @@ export class AcmeTheme extends AcmeElement {
             Object.entries(registered).filter(([name]) => (authored.appearance !== undefined && appearanceProperties.has(name)) || (authored.density !== undefined && densityProperties.has(name))),
           );
     const buffer = this.ownerDocument.createElement("span").style;
-    for (const [name, value] of Object.entries(properties)) buffer.setProperty(name, value);
+    for (const [name, value] of Object.entries(properties)) {
+      buffer.setProperty(name, value);
+    }
     const text = buffer.cssText;
     if (text !== this.overrideText) {
       this.overrideText = text;

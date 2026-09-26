@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { reactModule } from "../react";
+
 test("wrapper metadata limits props to writable instance inputs and maps typed events", () => {
   const output = reactModule({
     name: "AcmeExample",

@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const script = `const scope = root.querySelector("acme-theme"); const picker = root.querySelector("acme-theme-switcher"); picker.addEventListener("acme-request", event => { event.stopPropagation(); picker.value = event.detail.value; scope.appearance = event.detail.value; });`;
 export const doc: Doc = {
   id: "theme-switcher",

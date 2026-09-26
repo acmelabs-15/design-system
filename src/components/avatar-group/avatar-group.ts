@@ -9,6 +9,7 @@ import { message, messageCatalogs } from "../../shared/messages";
 import { isPlainRecord } from "../../shared/plain-record";
 import type { AvatarSize } from "../avatar/avatar";
 import { avatarGroupStructureCss } from "../../generated/components/avatar-group/avatar-group-structure.styles";
+
 export type AvatarMember = Readonly<{ id: string; src?: string; label: string; initials?: string }>;
 const sizes = { tiny: 16, small: 24, medium: 32, large: 48 } as const;
 /** A bounded collection of entity images and its exact remaining count.
@@ -25,8 +26,12 @@ export class AcmeAvatarGroup extends AcmeElement {
     return this.entries;
   }
   set members(value: readonly AvatarMember[]) {
-    if (value == null) value = [];
-    if (!Array.isArray(value)) throw new TypeError("Avatar members require an array");
+    if (value == null) {
+      value = [];
+    }
+    if (!Array.isArray(value)) {
+      throw new TypeError("Avatar members require an array");
+    }
     const ids = new Set<string>();
     const next = value.map((member) => {
       if (
@@ -36,13 +41,23 @@ export class AcmeAvatarGroup extends AcmeElement {
         typeof member.label !== "string" ||
         (member.src !== undefined && typeof member.src !== "string") ||
         (member.initials !== undefined && typeof member.initials !== "string")
-      )
+      ) {
         throw new TypeError("Avatar members require an id, label and optional string source/initials");
-      if (ids.has(member.id)) throw new TypeError("Avatar member IDs must be unique");
+      }
+      if (ids.has(member.id)) {
+        throw new TypeError("Avatar member IDs must be unique");
+      }
       ids.add(member.id);
-      return Object.freeze({ id: member.id, label: member.label, src: typeof member.src === "string" ? member.src : undefined, initials: typeof member.initials === "string" ? member.initials : undefined });
+      return Object.freeze({
+        id: member.id,
+        label: member.label,
+        src: typeof member.src === "string" ? member.src : undefined,
+        initials: typeof member.initials === "string" ? member.initials : undefined,
+      });
     });
-    if (!Number.isSafeInteger(next.length + this.extra)) throw new RangeError("Avatar total must be a safe integer");
+    if (!Number.isSafeInteger(next.length + this.extra)) {
+      throw new RangeError("Avatar total must be a safe integer");
+    }
     const previous = this.entries;
     this.entries = Object.freeze(next);
     this.requestUpdate("members", previous);
@@ -54,7 +69,9 @@ export class AcmeAvatarGroup extends AcmeElement {
     return this.maximum;
   }
   set limit(value: number) {
-    if (!Number.isSafeInteger(value) || value < 0) throw new RangeError("Avatar limit must be a nonnegative integer");
+    if (!Number.isSafeInteger(value) || value < 0) {
+      throw new RangeError("Avatar limit must be a nonnegative integer");
+    }
     const previous = this.maximum;
     this.maximum = value;
     this.requestUpdate("limit", previous);
@@ -65,7 +82,9 @@ export class AcmeAvatarGroup extends AcmeElement {
     return this.additional;
   }
   set extra(value: number) {
-    if (!Number.isSafeInteger(value) || value < 0 || !Number.isSafeInteger(value + this.members.length)) throw new RangeError("Extra avatar count and total must be nonnegative safe integers");
+    if (!Number.isSafeInteger(value) || value < 0 || !Number.isSafeInteger(value + this.members.length)) {
+      throw new RangeError("Extra avatar count and total must be nonnegative safe integers");
+    }
     const previous = this.additional;
     this.additional = value;
     this.requestUpdate("extra", previous);

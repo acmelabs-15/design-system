@@ -22,11 +22,15 @@ export class AcmeKbd extends AcmeTypographyElement {
   set keys(value: readonly string[] | undefined) {
     let owned: readonly string[] | undefined;
     if (value !== undefined) {
-      if (!Array.isArray(value)) throw new TypeError("keys must be an array of named key strings");
+      if (!Array.isArray(value)) {
+        throw new TypeError("keys must be an array of named key strings");
+      }
       const keys: string[] = [];
       for (let index = 0; index < value.length; index++) {
         const descriptor = Object.getOwnPropertyDescriptor(value, index);
-        if (!descriptor || !("value" in descriptor) || typeof descriptor.value !== "string" || !descriptor.value) throw new TypeError("keys require nonempty string data entries");
+        if (!descriptor || !("value" in descriptor) || typeof descriptor.value !== "string" || !descriptor.value) {
+          throw new TypeError("keys require nonempty string data entries");
+        }
         keys.push(descriptor.value);
       }
       owned = Object.freeze(keys);
@@ -45,7 +49,9 @@ export class AcmeKbd extends AcmeTypographyElement {
         this.keys = Object.freeze([]);
         console.warn(this.localName, { code: "invalid-key-list" });
       }
-    } else super.attributeChangedCallback(name, previous, value);
+    } else {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   render() {
     const locale = this.themeContext.scope.effective.get().locale;

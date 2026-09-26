@@ -1,6 +1,7 @@
 import { AcmeTreeView } from "../tree-view";
 import { AcmeTreeItem } from "../../tree-item/tree-item";
 import { AcmeChevronRightIcon } from "../../../generated/icons/classes/chevron-right-icon";
+
 customElements.define("acme-chevron-right-icon", AcmeChevronRightIcon);
 customElements.define("acme-tree-view", AcmeTreeView);
 customElements.define("acme-tree-item", AcmeTreeItem);

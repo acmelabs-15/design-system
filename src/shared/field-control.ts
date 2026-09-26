@@ -1,6 +1,7 @@
 import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveController, ReactiveElement } from "lit";
 import { FieldAssociation, releaseFieldParticipant, type FieldDescription, type FieldParticipant } from "./field-association";
+
 export const fieldControlChange = "acme-internal-field-control";
 export interface RegisteredFieldControl extends FieldParticipant {
   host: HTMLElement;
@@ -25,12 +26,17 @@ export class FieldControl implements ReactiveController {
       eligible: () => options.eligible(),
       activate: () => options.activate(),
       associate: (description) => {
-        if (this.current.get().description === description) return;
+        if (this.current.get().description === description) {
+          return;
+        }
         this.current.set({ description });
         this.association.update(description);
         const target = this.options.target();
-        if (description && target) this.association.attach(target);
-        else this.association.detach();
+        if (description && target) {
+          this.association.attach(target);
+        } else {
+          this.association.detach();
+        }
         options.changed(description);
         this.host.requestUpdate();
       },
@@ -39,7 +45,9 @@ export class FieldControl implements ReactiveController {
     host.addController(this);
   }
   private notify() {
-    if (this.host.isConnected) this.host.dispatchEvent(new Event(fieldControlChange, { bubbles: true, composed: true }));
+    if (this.host.isConnected) {
+      this.host.dispatchEvent(new Event(fieldControlChange, { bubbles: true, composed: true }));
+    }
   }
   hostConnected() {
     this.target = undefined;
@@ -50,7 +58,9 @@ export class FieldControl implements ReactiveController {
     if (target !== this.target) {
       this.target = target;
       this.association.detach();
-      if (target && this.current.get().description) this.association.attach(target);
+      if (target && this.current.get().description) {
+        this.association.attach(target);
+      }
       this.host.requestUpdate();
       this.notify();
     }

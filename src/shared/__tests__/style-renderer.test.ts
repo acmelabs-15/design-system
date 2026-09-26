@@ -192,9 +192,15 @@ test("uses one nonce-bearing fallback node and removes only that owned node", as
     expect(owned.parentNode).toBeNull();
     host.remove();
   } finally {
-    if (previousShady === undefined) delete view.ShadyCSS;
-    else view.ShadyCSS = previousShady;
-    if (previousNonce === undefined) delete view.litNonce;
-    else view.litNonce = previousNonce;
+    if (previousShady === undefined) {
+      delete view.ShadyCSS;
+    } else {
+      view.ShadyCSS = previousShady;
+    }
+    if (previousNonce === undefined) {
+      delete view.litNonce;
+    } else {
+      view.litNonce = previousNonce;
+    }
   }
 });

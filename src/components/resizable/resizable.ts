@@ -22,6 +22,7 @@ import {
 } from "../../shared/resizable-context";
 import { message, messageCatalogs } from "../../shared/messages";
 import { resizableCss } from "../../generated/components/resizable/resizable.styles";
+
 export type { Layout as ResizableLayout } from "../../shared/resizable-layout";
 type Gesture = {
   part: ResizablePart;
@@ -39,28 +40,41 @@ type Gesture = {
 };
 const same = (a: ResizableLayout, b: ResizableLayout) => JSON.stringify(a) === JSON.stringify(b);
 function copySizes(value: readonly number[] | undefined): readonly number[] | undefined {
-  if (value === undefined) return undefined;
-  if (!Array.isArray(value) || !value.length || [...value].some((n) => typeof n !== "number" || !Number.isFinite(n) || n < 0 || n > 100) || value.every((n) => n === 0))
+  if (value === undefined) {
+    return undefined;
+  }
+  if (!Array.isArray(value) || !value.length || [...value].some((n) => typeof n !== "number" || !Number.isFinite(n) || n < 0 || n > 100) || value.every((n) => n === 0)) {
     throw new TypeError("sizes requires positive-total percentages");
+  }
   return Object.freeze([...value]);
 }
 function dataRecord(value: unknown): Record<string, unknown> {
-  if (!isPlainRecord(value)) throw new TypeError("Layout fields must be plain data records");
+  if (!isPlainRecord(value)) {
+    throw new TypeError("Layout fields must be plain data records");
+  }
   const output: [string, unknown][] = [];
   for (const key of Reflect.ownKeys(value)) {
     const descriptor = Object.getOwnPropertyDescriptor(value, key)!;
-    if (typeof key !== "string" || !descriptor.enumerable || !("value" in descriptor)) throw new TypeError("Layout fields require enumerable data");
+    if (typeof key !== "string" || !descriptor.enumerable || !("value" in descriptor)) {
+      throw new TypeError("Layout fields require enumerable data");
+    }
     output.push([key, descriptor.value]);
   }
   return Object.fromEntries(output);
 }
 function copyLayout(value: ResizableLayout): ResizableLayout {
   const input = dataRecord(value);
-  if (Object.keys(input).some((key) => !["sizes", "collapsed", "previousSizes"].includes(key)) || !Array.isArray(input.collapsed) || input.collapsed.some((key) => typeof key !== "string" || !key))
+  if (Object.keys(input).some((key) => !["sizes", "collapsed", "previousSizes"].includes(key)) || !Array.isArray(input.collapsed) || input.collapsed.some((key) => typeof key !== "string" || !key)) {
     throw new TypeError("Layout requires sizes, collapsed and previousSizes");
+  }
   const records = [dataRecord(input.sizes), dataRecord(input.previousSizes)];
-  for (const record of records)
-    for (const size of Object.values(record)) if (typeof size !== "number" || !Number.isFinite(size) || size < 0 || size > 100) throw new TypeError("Layout sizes must be percentages");
+  for (const record of records) {
+    for (const size of Object.values(record)) {
+      if (typeof size !== "number" || !Number.isFinite(size) || size < 0 || size > 100) {
+        throw new TypeError("Layout sizes must be percentages");
+      }
+    }
+  }
   return Object.freeze({
     sizes: Object.freeze(records[0]) as Readonly<Record<string, number>>,
     collapsed: Object.freeze([...new Set(input.collapsed)]),
@@ -82,7 +96,9 @@ export class AcmeResizable extends AcmeSemanticElement {
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {
     const next = value ?? "horizontal";
-    if (next !== "horizontal" && next !== "vertical") throw new TypeError("Invalid Resizable orientation");
+    if (next !== "horizontal" && next !== "vertical") {
+      throw new TypeError("Invalid Resizable orientation");
+    }
     const previous = this.axis;
     this.axis = next;
     this.requestUpdate("orientation", previous);
@@ -91,9 +107,13 @@ export class AcmeResizable extends AcmeSemanticElement {
   @atomState() private requestedSizes?: { value: readonly number[] | undefined };
   @atomState() private requestedLayout?: ResizableLayout;
   @property({ noAccessor: true, converter: { fromAttribute: (value: string | null) => (value === null ? undefined : JSON.parse(value)) } }) get sizes(): readonly number[] | undefined {
-    if (this.requestedSizes) return this.requestedSizes.value;
+    if (this.requestedSizes) {
+      return this.requestedSizes.value;
+    }
     const panes = this.panels();
-    if (!panes.length) return undefined;
+    if (!panes.length) {
+      return undefined;
+    }
     const sizes = this.current.get().layout.sizes;
     return panes.every((part) => Object.hasOwn(sizes, part.definition!().value)) ? Object.freeze(panes.map((part) => sizes[part.definition!().value])) : undefined;
   }
@@ -109,7 +129,9 @@ export class AcmeResizable extends AcmeSemanticElement {
         this.commit(resolved, false);
       }
       this.requestedSizes = undefined;
-    } else this.requestedSizes = { value: next };
+    } else {
+      this.requestedSizes = { value: next };
+    }
     this.requestedLayout = undefined;
     this.requestUpdate("sizes", previous);
   }
@@ -124,17 +146,22 @@ export class AcmeResizable extends AcmeSemanticElement {
     state: this.current,
     register: (part) => {
       this.members.set((parts) => [...parts, part]);
-      if (part.kind === "panel") this.initialCollapse.set(part, { value: part.initialCollapsed?.() ?? false, explicit: false });
+      if (part.kind === "panel") {
+        this.initialCollapse.set(part, { value: part.initialCollapsed?.() ?? false, explicit: false });
+      }
       return () => {
-        if (this.gesture?.part === part) this.finish(false);
+        if (this.gesture?.part === part) {
+          this.finish(false);
+        }
         this.members.set((parts) => parts.filter((p) => p !== part));
         this.initialCollapse.delete(part);
       };
     },
     collapse: (part, value) => {
       const key = part.definition?.().value;
-      if (key && Object.hasOwn(this.current.get().layout.sizes, key)) this.changeCollapse(key, value);
-      else {
+      if (key && Object.hasOwn(this.current.get().layout.sizes, key)) {
+        this.changeCollapse(key, value);
+      } else {
         this.initialCollapse.set(part, { value, explicit: true });
         this.requestUpdate();
       }
@@ -144,14 +171,18 @@ export class AcmeResizable extends AcmeSemanticElement {
     key: (part, event) => this.key(part, event),
     toggle: (part) => {
       const info = this.handleInfo(part);
-      if (info.disabled || !info.before?.definition?.().collapsible) return;
+      if (info.disabled || !info.before?.definition?.().collapsible) {
+        return;
+      }
       const value = info.before.definition().value;
       this.startKeyboard(part);
       this.tryUser(() => togglePane(this.definitions(), this.current.get().layout, value, !this.current.get().layout.collapsed.includes(value), info.pivot), true);
       this.finish(true);
     },
     blur: (part) => {
-      if (this.gesture?.part === part) this.finish(false);
+      if (this.gesture?.part === part) {
+        this.finish(false);
+      }
     },
     recover: (part) => this.recover(part),
   };
@@ -206,7 +237,9 @@ export class AcmeResizable extends AcmeSemanticElement {
         this.commit(next, true);
       }
       this.requestedLayout = undefined;
-    } else this.requestedLayout = snapshot;
+    } else {
+      this.requestedLayout = snapshot;
+    }
     this.requestedSizes = undefined;
     this.requestUpdate();
   }
@@ -217,7 +250,9 @@ export class AcmeResizable extends AcmeSemanticElement {
     this.changeCollapse(value, false);
   }
   private changeCollapse(value: string, collapsed: boolean) {
-    if (!Object.hasOwn(this.getLayout().sizes, value)) throw new Error("Resizable layout is not ready for this pane");
+    if (!Object.hasOwn(this.getLayout().sizes, value)) {
+      throw new Error("Resizable layout is not ready for this pane");
+    }
     const panes = this.definitions();
     const base = resolveLayout(panes, undefined, this.getLayout());
     const next = togglePane(panes, base, value, collapsed);
@@ -233,28 +268,39 @@ export class AcmeResizable extends AcmeSemanticElement {
   private reconcile() {
     const parts = this.ordered(),
       panes = this.definitions();
-    if (parts.length && (parts.length !== this.elements().length || parts.some((part, index) => part.kind !== (index % 2 === 0 ? "panel" : "handle")) || parts.at(-1)?.kind !== "panel"))
+    if (parts.length && (parts.length !== this.elements().length || parts.some((part, index) => part.kind !== (index % 2 === 0 ? "panel" : "handle")) || parts.at(-1)?.kind !== "panel")) {
       throw new TypeError("Resizable requires direct alternating panels and handles");
+    }
     let base = this.requestedLayout ?? this.getLayout();
     const closed = new Set(base.collapsed);
     for (const [part, request] of this.initialCollapse) {
       const pane = part.definition!();
       if (request.explicit || !Object.hasOwn(base.sizes, pane.value)) {
-        if (request.value && !pane.collapsible) throw new TypeError("Only collapsible panes can start collapsed");
-        if (request.value) closed.add(pane.value);
-        else closed.delete(pane.value);
+        if (request.value && !pane.collapsible) {
+          throw new TypeError("Only collapsible panes can start collapsed");
+        }
+        if (request.value) {
+          closed.add(pane.value);
+        } else {
+          closed.delete(pane.value);
+        }
       }
     }
     base = { ...base, collapsed: [...closed] };
-    if (this.requestedSizes && this.requestedSizes.value === undefined) base = { ...base, sizes: {} };
+    if (this.requestedSizes && this.requestedSizes.value === undefined) {
+      base = { ...base, sizes: {} };
+    }
     const next = resolveLayout(panes, this.requestedSizes?.value, base),
       previous = this.current.get();
     const signature = JSON.stringify({ panes, orientation: this.orientation });
     const configurationChanged = signature !== this.signature;
-    if (this.gesture && (signature !== this.gesture.signature || this.disabled || this.gesture.part.disabled?.())) this.finish(false);
+    if (this.gesture && (signature !== this.gesture.signature || this.disabled || this.gesture.part.disabled?.())) {
+      this.finish(false);
+    }
     this.signature = signature;
-    if (configurationChanged || !same(next, previous.layout) || previous.error || previous.orientation !== this.orientation || previous.disabled !== Boolean(this.disabled))
+    if (configurationChanged || !same(next, previous.layout) || previous.error || previous.orientation !== this.orientation || previous.disabled !== Boolean(this.disabled)) {
       this.commit(next, this.requestedLayout !== undefined);
+    }
     this.requestedSizes = undefined;
     this.requestedLayout = undefined;
     this.initialCollapse.clear();
@@ -274,11 +320,13 @@ export class AcmeResizable extends AcmeSemanticElement {
       after?.kind !== "panel" ||
       !Object.hasOwn(state.layout.sizes, before.definition!().value) ||
       !Object.hasOwn(state.layout.sizes, after.definition!().value)
-    )
+    ) {
       return { pivot: -1, min: 0, max: 100, now: 0, disabled: true };
+    }
     const definitions = this.definitions();
-    if (state.error || JSON.stringify({ panes: definitions, orientation: this.orientation }) !== this.signature || definitions.some((pane) => !Object.hasOwn(state.layout.sizes, pane.value)))
+    if (state.error || JSON.stringify({ panes: definitions, orientation: this.orientation }) !== this.signature || definitions.some((pane) => !Object.hasOwn(state.layout.sizes, pane.value))) {
       return { before, after, pivot, min: 0, max: 100, now: state.layout.sizes[before.definition!().value], disabled: true };
+    }
     return {
       before,
       after,
@@ -294,7 +342,9 @@ export class AcmeResizable extends AcmeSemanticElement {
     return this.panels().reduce((total, part) => total + (this.orientation === "horizontal" ? part.host.getBoundingClientRect().width : part.host.getBoundingClientRect().height), 0);
   }
   private startKeyboard(part: ResizablePart): Gesture {
-    if (this.gesture?.kind === "keyboard" && this.gesture.part === part) return this.gesture;
+    if (this.gesture?.kind === "keyboard" && this.gesture.part === part) {
+      return this.gesture;
+    }
     this.finish(false);
     const info = this.handleInfo(part),
       target = part.element()!;
@@ -313,7 +363,9 @@ export class AcmeResizable extends AcmeSemanticElement {
     const view = this.ownerDocument.defaultView!,
       keyup = (event: KeyboardEvent) => {
         gesture.keys.delete(event.key);
-        if (!gesture.keys.size) this.finish(true);
+        if (!gesture.keys.size) {
+          this.finish(true);
+        }
       },
       blur = () => this.finish(false);
     view.addEventListener("keyup", keyup);
@@ -326,7 +378,9 @@ export class AcmeResizable extends AcmeSemanticElement {
     return gesture;
   }
   private applyUser(layout: ResizableLayout, animate = false) {
-    if (same(layout, this.getLayout())) return;
+    if (same(layout, this.getLayout())) {
+      return;
+    }
     this.commit(layout, animate);
     this.dispatchEvent(new CustomEvent("acme-input", { bubbles: true, composed: true, detail: Object.freeze({ sizes: this.sizes }) }));
   }
@@ -334,7 +388,9 @@ export class AcmeResizable extends AcmeSemanticElement {
     try {
       this.applyUser(action(), animate);
     } catch (error) {
-      if (!(error instanceof RangeError)) throw error;
+      if (!(error instanceof RangeError)) {
+        throw error;
+      }
       if (this.warned !== error.message) {
         this.warned = error.message;
         console.warn(this.localName, { code: "resize-limit", message: error.message });
@@ -343,20 +399,30 @@ export class AcmeResizable extends AcmeSemanticElement {
   }
   private finish(commit: boolean) {
     const gesture = this.gesture;
-    if (!gesture) return;
+    if (!gesture) {
+      return;
+    }
     this.gesture = undefined;
     gesture.release();
-    if (gesture.pointer !== undefined && gesture.target.hasPointerCapture?.(gesture.pointer)) gesture.target.releasePointerCapture(gesture.pointer);
+    if (gesture.pointer !== undefined && gesture.target.hasPointerCapture?.(gesture.pointer)) {
+      gesture.target.releasePointerCapture(gesture.pointer);
+    }
     this.current.set((previous) => ({ ...previous, dragging: false }));
-    if (commit && !same(gesture.initial, this.getLayout())) this.dispatchEvent(new CustomEvent("acme-change", { bubbles: true, composed: true, detail: this.getLayout() }));
+    if (commit && !same(gesture.initial, this.getLayout())) {
+      this.dispatchEvent(new CustomEvent("acme-change", { bubbles: true, composed: true, detail: this.getLayout() }));
+    }
   }
   private pointer(part: ResizablePart, event: PointerEvent) {
     const info = this.handleInfo(part);
-    if (event.defaultPrevented || !event.isPrimary || event.button !== 0 || info.disabled) return;
+    if (event.defaultPrevented || !event.isPrimary || event.button !== 0 || info.disabled) {
+      return;
+    }
     this.finish(false);
     const target = part.element()!,
       extent = this.paneExtent();
-    if (extent <= 0) return;
+    if (extent <= 0) {
+      return;
+    }
     event.preventDefault();
     event.stopPropagation();
     target.focus({ preventScroll: true });
@@ -375,7 +441,9 @@ export class AcmeResizable extends AcmeSemanticElement {
       release: () => {},
     };
     const move = (input: PointerEvent) => {
-      if (input.pointerId !== gesture.pointer || this.gesture !== gesture) return;
+      if (input.pointerId !== gesture.pointer || this.gesture !== gesture) {
+        return;
+      }
       const length = this.paneExtent();
       if (!length || this.direction() !== gesture.rtl || this.disabled || part.disabled?.() || JSON.stringify({ panes: this.definitions(), orientation: this.orientation }) !== gesture.signature) {
         this.finish(false);
@@ -386,10 +454,14 @@ export class AcmeResizable extends AcmeSemanticElement {
       this.applyUser(resizePair(this.definitions(), gesture.initial, gesture.pivot, delta, gesture.initial));
     };
     const up = (input: PointerEvent) => {
-        if (input.pointerId === gesture.pointer) this.finish(true);
+        if (input.pointerId === gesture.pointer) {
+          this.finish(true);
+        }
       },
       cancel = (input: Event) => {
-        if (!("pointerId" in input) || (input as PointerEvent).pointerId === gesture.pointer) this.finish(false);
+        if (!("pointerId" in input) || (input as PointerEvent).pointerId === gesture.pointer) {
+          this.finish(false);
+        }
       },
       view = this.ownerDocument.defaultView!;
     target.addEventListener("pointermove", move);
@@ -399,11 +471,15 @@ export class AcmeResizable extends AcmeSemanticElement {
     view.addEventListener("blur", cancel);
     const document = this.ownerDocument;
     const visibility = () => {
-      if (document.hidden) this.finish(false);
+      if (document.hidden) {
+        this.finish(false);
+      }
     };
     document.addEventListener("visibilitychange", visibility);
     const resize = new ResizeObserver(() => {
-      if (this.gesture === gesture && Math.abs(this.paneExtent() - extent) > 0.5) this.finish(false);
+      if (this.gesture === gesture && Math.abs(this.paneExtent() - extent) > 0.5) {
+        this.finish(false);
+      }
     });
     resize.observe(this.semanticTarget ?? this);
     gesture.release = () => {
@@ -425,7 +501,9 @@ export class AcmeResizable extends AcmeSemanticElement {
   }
   private key(part: ResizablePart, event: KeyboardEvent) {
     const info = this.handleInfo(part);
-    if (info.disabled || event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (info.disabled || event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) {
+      return;
+    }
     const horizontal = this.orientation === "horizontal",
       direction = horizontal && this.direction() ? -1 : 1,
       step = part.step!(event.shiftKey);
@@ -443,16 +521,22 @@ export class AcmeResizable extends AcmeSemanticElement {
                 : !horizontal && event.key === "ArrowDown"
                   ? step
                   : undefined;
-    if (delta === undefined && event.key !== "Enter") return;
+    if (delta === undefined && event.key !== "Enter") {
+      return;
+    }
     event.preventDefault();
     const gesture = this.startKeyboard(part);
     gesture.keys.add(event.key);
     const panes = this.definitions(),
       layout = this.getLayout();
     if (event.key === "Enter") {
-      if (event.repeat) return;
+      if (event.repeat) {
+        return;
+      }
       const pane = panes[info.pivot];
-      if (pane.collapsible) this.tryUser(() => togglePane(panes, layout, pane.value, !layout.collapsed.includes(pane.value), info.pivot, gesture.initial), true);
+      if (pane.collapsible) {
+        this.tryUser(() => togglePane(panes, layout, pane.value, !layout.collapsed.includes(pane.value), info.pivot, gesture.initial), true);
+      }
       return;
     }
     const shrinking = delta! < 0 ? panes[info.pivot] : panes[info.pivot + 1];
@@ -461,7 +545,9 @@ export class AcmeResizable extends AcmeSemanticElement {
         this.applyUser(togglePane(panes, layout, shrinking.value, true, info.pivot, gesture.initial), true);
         return;
       } catch (error) {
-        if (!(error instanceof RangeError)) throw error;
+        if (!(error instanceof RangeError)) {
+          throw error;
+        }
       }
     }
     this.tryUser(() => resizePair(panes, layout, info.pivot, delta!, gesture.initial));
@@ -476,7 +562,9 @@ export class AcmeResizable extends AcmeSemanticElement {
     return { role: "group", label: message(this.themeContext.scope.effective.get().locale, "resizable.label", "Resizable panes") };
   }
   protected willUpdate() {
-    if (!this.isConnected) return;
+    if (!this.isConnected) {
+      return;
+    }
     try {
       batch(() => this.reconcile());
     } catch (error) {
@@ -486,8 +574,9 @@ export class AcmeResizable extends AcmeSemanticElement {
         this.warned = message;
         console.warn(this.localName, { code: "invalid-resizable-layout", message });
       }
-      if (this.current.get().error !== message || this.current.get().orientation !== this.orientation || this.current.get().disabled !== Boolean(this.disabled))
+      if (this.current.get().error !== message || this.current.get().orientation !== this.orientation || this.current.get().disabled !== Boolean(this.disabled)) {
         this.current.set((previous) => ({ ...previous, error: message, orientation: this.orientation, disabled: Boolean(this.disabled) }));
+      }
     }
   }
   disconnectedCallback() {

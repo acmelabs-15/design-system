@@ -3,6 +3,7 @@ import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
 import type { Pane, Layout } from "./resizable-layout";
+
 export type ResizableState = Readonly<{ layout: Layout; orientation: "horizontal" | "vertical"; disabled: boolean; dragging: boolean; animate: boolean; error?: string }>;
 export interface ResizablePart {
   host: ReactiveElement;
@@ -57,7 +58,9 @@ export class ResizablePartBinding {
       context: resizableContext,
       subscribe: true,
       callback: (owner) => {
-        if (this.current === owner) return;
+        if (this.current === owner) {
+          return;
+        }
         this.release?.();
         this.owner.set({ value: owner });
         this.release = owner.register(this.record);
@@ -84,6 +87,8 @@ export class ResizablePartBinding {
     this.owner.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
 }

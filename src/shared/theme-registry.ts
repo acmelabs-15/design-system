@@ -9,10 +9,14 @@ export type RegisteredTheme = Readonly<{
 type Supports = (property: string, value: string) => boolean;
 
 function dataEntries(value: unknown): readonly (readonly [string, unknown])[] {
-  if (!isPlainRecord(value)) throw new TypeError("Theme definitions require plain records");
+  if (!isPlainRecord(value)) {
+    throw new TypeError("Theme definitions require plain records");
+  }
   return Reflect.ownKeys(value).map((key) => {
     const descriptor = Object.getOwnPropertyDescriptor(value, key)!;
-    if (typeof key !== "string" || !descriptor.enumerable || !Object.hasOwn(descriptor, "value")) throw new TypeError("Theme definitions require enumerable data properties");
+    if (typeof key !== "string" || !descriptor.enumerable || !Object.hasOwn(descriptor, "value")) {
+      throw new TypeError("Theme definitions require enumerable data properties");
+    }
     return [key, descriptor.value] as const;
   });
 }
@@ -24,18 +28,30 @@ export function createThemeRegistry(supports: Supports) {
   const tokens = new Map(themeTokenDefinitions.map((token) => [token.category + ":" + token.key, token]));
   return Object.freeze({
     register(name: string, input: ThemeDefinition): RegisteredTheme {
-      if (typeof name !== "string" || !name.trim() || name.trim() !== name) throw new TypeError("Theme names must be nonempty strings without surrounding whitespace");
+      if (typeof name !== "string" || !name.trim() || name.trim() !== name) {
+        throw new TypeError("Theme names must be nonempty strings without surrounding whitespace");
+      }
       const definition: Record<string, Readonly<Record<string, string>>> = {};
       const properties: Record<string, string> = {};
       for (const [category, values] of [...dataEntries(input)].sort(([a], [b]) => a.localeCompare(b))) {
-        if (!categories.has(category)) throw new TypeError("Unknown theme category: " + category);
-        if (values === undefined) continue;
+        if (!categories.has(category)) {
+          throw new TypeError("Unknown theme category: " + category);
+        }
+        if (values === undefined) {
+          continue;
+        }
         const entries: [string, string][] = [];
         for (const [key, raw] of [...dataEntries(values)].sort(([a], [b]) => a.localeCompare(b))) {
           const token = tokens.get(category + ":" + key);
-          if (!token) throw new TypeError("Unknown theme token: " + category + "." + key);
-          if (raw === undefined) continue;
-          if (typeof raw !== "string" || !raw.trim()) throw new TypeError("Theme token values must be nonempty CSS strings");
+          if (!token) {
+            throw new TypeError("Unknown theme token: " + category + "." + key);
+          }
+          if (raw === undefined) {
+            continue;
+          }
+          if (typeof raw !== "string" || !raw.trim()) {
+            throw new TypeError("Theme token values must be nonempty CSS strings");
+          }
           const value = raw.trim();
           const valid =
             token.syntax === "positive-number"
@@ -43,15 +59,21 @@ export function createThemeRegistry(supports: Supports) {
               : token.syntax === "scale-factor"
                 ? supports("transform", `scale(${value})`)
                 : supports(token.syntax, value);
-          if (!valid) throw new TypeError("Invalid CSS for theme token: " + category + "." + key);
+          if (!valid) {
+            throw new TypeError("Invalid CSS for theme token: " + category + "." + key);
+          }
           entries.push([key, value]);
           properties[token.cssProperty] = value;
         }
-        if (entries.length) definition[category] = Object.freeze(Object.fromEntries(entries));
+        if (entries.length) {
+          definition[category] = Object.freeze(Object.fromEntries(entries));
+        }
       }
       const previous = themes.get(name);
       if (previous) {
-        if (JSON.stringify(previous.definition) !== JSON.stringify(definition)) throw new Error("Conflicting theme registration: " + name);
+        if (JSON.stringify(previous.definition) !== JSON.stringify(definition)) {
+          throw new Error("Conflicting theme registration: " + name);
+        }
         return previous;
       }
       const theme = Object.freeze({ name, definition: Object.freeze(definition) as ThemeDefinition, properties: Object.freeze(properties) });
@@ -59,16 +81,22 @@ export function createThemeRegistry(supports: Supports) {
       return theme;
     },
     get(name: string | undefined): RegisteredTheme | undefined {
-      if (name === undefined) return undefined;
+      if (name === undefined) {
+        return undefined;
+      }
       const theme = themes.get(name);
-      if (!theme) throw new Error("Theme must be registered before use: " + name);
+      if (!theme) {
+        throw new Error("Theme must be registered before use: " + name);
+      }
       return theme;
     },
   });
 }
 
 const registry = createThemeRegistry((property, value) => {
-  if (!globalThis.CSS?.supports) throw new Error("Theme registration requires native CSS grammar support");
+  if (!globalThis.CSS?.supports) {
+    throw new Error("Theme registration requires native CSS grammar support");
+  }
   return CSS.supports(property, value);
 });
 

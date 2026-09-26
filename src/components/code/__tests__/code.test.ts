@@ -2,6 +2,7 @@ import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeCode } from "../code";
 import { tokenLines } from "../../../shared/highlight";
+
 afterEach(() => document.body.replaceChildren());
 const mount = async (source: string, syntax = "") => {
   const code = document.createElement("acme-code") as AcmeCode;

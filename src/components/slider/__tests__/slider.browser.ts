@@ -1,8 +1,11 @@
 import { html, render } from "lit";
 import { AcmeSlider } from "../slider";
+
 customElements.define("acme-slider", AcmeSlider);
 const settle = async () => {
-  for (let i = 0; i < 3; i++) await new Promise(requestAnimationFrame);
+  for (let i = 0; i < 3; i++) {
+    await new Promise(requestAnimationFrame);
+  }
 };
 export async function sliderNativeContracts() {
   const results: { name: string; ok: boolean }[] = [];
@@ -20,11 +23,12 @@ export async function sliderNativeContracts() {
   const value = slider.value;
   check("immutable value snapshot", Object.isFrozen(value));
   const events: string[] = [];
-  for (const type of ["acme-input", "acme-change"])
+  for (const type of ["acme-input", "acme-change"]) {
     slider.addEventListener(type, (e) => {
       events.push(type);
       check("form current inside " + type, JSON.stringify(new FormData(form).getAll("amount")) === JSON.stringify((e as CustomEvent).detail.value.map(String)));
     });
+  }
   const first = slider.shadowRoot!.querySelector("input")!;
   first.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowUp", bubbles: true, cancelable: true }));
   check("key emits one live and one completion", events.join("|") === "acme-input|acme-change" && slider.value[0] === 31);
@@ -104,10 +108,11 @@ export async function sliderNativeContracts() {
   document.body.append(fixture);
   await settle();
   (window as any).__slider = { fixture, slider: fixture.querySelector("acme-slider"), events: [], pointer: undefined };
-  for (const type of ["acme-input", "acme-change"])
+  for (const type of ["acme-input", "acme-change"]) {
     (window as any).__slider.slider.addEventListener(type, (e: CustomEvent) => {
       (window as any).__slider.events.push({ type, value: [...e.detail.value] });
     });
+  }
   fixture.addEventListener("pointerdown", (e) => ((window as any).__slider.pointer = (e as PointerEvent).pointerId), true);
   return results;
 }

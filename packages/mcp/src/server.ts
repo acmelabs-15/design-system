@@ -2,6 +2,7 @@ import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mc
 import { ErrorCode, McpError, type CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import * as z from "zod/v4";
 import { DocumentationCatalog, type Result } from "./catalog";
+
 const framework = z.enum(["html", "lit", "react"]);
 const version = z.string().min(1).max(100);
 const identifier = z.string().min(1).max(200);
@@ -25,8 +26,7 @@ export function createDocumentationServer(catalog: DocumentationCatalog, serverV
   server.registerTool(
     "resolve_version",
     {
-      description:
-        "Resolve an exact installed-package or CDN version. A missing or unavailable version produces an explicit error; there is no latest or framework fallback.",
+      description: "Resolve an exact installed-package or CDN version. A missing or unavailable version produces an explicit error; there is no latest or framework fallback.",
       inputSchema: z.object({ packageVersion: version.optional(), framework }).strict(),
       annotations,
     },
@@ -35,8 +35,7 @@ export function createDocumentationServer(catalog: DocumentationCatalog, serverV
   server.registerTool(
     "search_docs",
     {
-      description:
-        "Search packaged documentation for one explicit version and framework. Results include release-qualified resource IDs and bounded excerpts.",
+      description: "Search packaged documentation for one explicit version and framework. Results include release-qualified resource IDs and bounded excerpts.",
       inputSchema: z
         .object({
           version,
@@ -61,8 +60,7 @@ export function createDocumentationServer(catalog: DocumentationCatalog, serverV
   server.registerTool(
     "get_recipe",
     {
-      description:
-        "Read the matching runnable recipe, imports and ownership notes. Unavailable frameworks are reported explicitly.",
+      description: "Read the matching runnable recipe, imports and ownership notes. Unavailable frameworks are reported explicitly.",
       inputSchema: z.object({ version, id: identifier, framework }).strict(),
       annotations,
     },
@@ -71,15 +69,12 @@ export function createDocumentationServer(catalog: DocumentationCatalog, serverV
   const template = new ResourceTemplate("acme-docs://release/{version}/{kind}/{id}", {
     list: async () => ({ resources: catalog.listResources() }),
   });
-  server.registerResource(
-    "release-documentation",
-    template,
-    { mimeType: "application/json", description: "Versioned component, foundation or recipe reference data" },
-    (uri) => {
-      const result = catalog.readResource(uri.href);
-      if (!result.ok) throw new McpError(ErrorCode.InvalidParams, result.error.message, { code: result.error.code });
-      return { contents: [{ uri: uri.href, mimeType: "application/json", text: JSON.stringify(result.value) }] };
-    },
-  );
+  server.registerResource("release-documentation", template, { mimeType: "application/json", description: "Versioned component, foundation or recipe reference data" }, (uri) => {
+    const result = catalog.readResource(uri.href);
+    if (!result.ok) {
+      throw new McpError(ErrorCode.InvalidParams, result.error.message, { code: result.error.code });
+    }
+    return { contents: [{ uri: uri.href, mimeType: "application/json", text: JSON.stringify(result.value) }] };
+  });
   return server;
 }

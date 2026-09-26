@@ -95,8 +95,9 @@ export class AcmeDrawer extends AcmeSemanticElement {
         !value.trim() ||
         /^(initial|inherit|unset|revert)/i.test(value) ||
         (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("width", value)))
-    )
+    ) {
       throw new TypeError("Drawer size requires a CSS dimension");
+    }
     const previous = this.sizeValue;
     this.sizeValue = value;
     this.requestUpdate("size", previous);
@@ -107,7 +108,9 @@ export class AcmeDrawer extends AcmeSemanticElement {
     return this.placementValue;
   }
   set placement(value: "start" | "end" | "top" | "bottom") {
-    if (!["start", "end", "top", "bottom"].includes(value)) throw new TypeError("Invalid Drawer placement");
+    if (!["start", "end", "top", "bottom"].includes(value)) {
+      throw new TypeError("Invalid Drawer placement");
+    }
     const previous = this.placementValue;
     this.placementValue = value;
     this.requestUpdate("placement", previous);
@@ -156,7 +159,9 @@ export class AcmeDrawer extends AcmeSemanticElement {
         ?.target(),
     requestClose: (reason) => this.request(false, reason),
     nativeClosed: () => {
-      if (this.open) this.transition(false, "programmatic");
+      if (this.open) {
+        this.transition(false, "programmatic");
+      }
     },
   });
   private readonly themeUpdates = new StoreSelector(this, () => this.lifetime.theme?.effective ?? this.themeContext.scope.effective);
@@ -171,21 +176,31 @@ export class AcmeDrawer extends AcmeSemanticElement {
     registerDialogBoundary(this);
   }
   private validateTarget(value: DialogFocusTarget) {
-    if (value !== undefined && typeof value !== "string" && (!value || value.nodeType !== 1)) throw new TypeError("Focus target must be an Element or selector");
+    if (value !== undefined && typeof value !== "string" && (!value || value.nodeType !== 1)) {
+      throw new TypeError("Focus target must be an Element or selector");
+    }
   }
   private transition(open: boolean, reason: DialogReason, opener?: HTMLElement) {
-    if (open === this.opened) return;
+    if (open === this.opened) {
+      return;
+    }
     const previous = this.opened;
     this.reason = reason;
-    if (open) this.lifetime?.openingFrom(opener);
+    if (open) {
+      this.lifetime?.openingFrom(opener);
+    }
     this.opened = open;
     this.requestUpdate("open", previous);
   }
   private request(open: boolean, reason: DialogReason, opener?: HTMLElement) {
-    if (open === this.open || !this.isConnected) return;
+    if (open === this.open || !this.isConnected) {
+      return;
+    }
     if (!open) {
       const request = new CustomEvent("acme-request", { detail: Object.freeze({ action: "close", reason }), bubbles: true, composed: true, cancelable: true });
-      if (!this.dispatchEvent(request) || !this.open) return;
+      if (!this.dispatchEvent(request) || !this.open) {
+        return;
+      }
     }
     this.transition(open, reason, opener);
     this.dispatchEvent(new CustomEvent("acme-open-change", { detail: Object.freeze({ open, reason }), bubbles: true, composed: true }));
@@ -211,9 +226,14 @@ export class AcmeDrawer extends AcmeSemanticElement {
   }
   protected updated() {
     const surface = this.surface;
-    if (!surface) return;
-    if (this.size === undefined) surface.style.removeProperty("--_drawer-size");
-    else surface.style.setProperty("--_drawer-size", this.size);
+    if (!surface) {
+      return;
+    }
+    if (this.size === undefined) {
+      surface.style.removeProperty("--_drawer-size");
+    } else {
+      surface.style.setProperty("--_drawer-size", this.size);
+    }
   }
   disconnectedCallback() {
     this.open = false;

@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/progress";
+
 test("Progress preserves absent values and restores default maximum on attribute removal", () => {
   const progress = document.createElement("acme-progress");
   expect(progress.value).toBeUndefined();

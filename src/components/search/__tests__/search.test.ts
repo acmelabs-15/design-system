@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Search uses a native search target with a clear action and loading icon", async () => {
   const el = document.createElement("acme-search");
   document.body.append(el);

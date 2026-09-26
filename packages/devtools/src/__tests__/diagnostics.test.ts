@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { LitElement, html } from "lit";
 import { DiagnosticObserver, safeValue, type DiagnosticMetadata } from "../diagnostics";
+
 class DiagnosticFixture extends LitElement {
   static properties = { value: {}, type: {}, name: {}, privateValue: {} };
   declare value: string;
@@ -18,7 +19,9 @@ class DiagnosticFixture extends LitElement {
     return html`<span>${this.value}</span>`;
   }
 }
-if (!customElements.get("acme-diagnostic-fixture")) customElements.define("acme-diagnostic-fixture", DiagnosticFixture);
+if (!customElements.get("acme-diagnostic-fixture")) {
+  customElements.define("acme-diagnostic-fixture", DiagnosticFixture);
+}
 const metadata: DiagnosticMetadata = {
   version: "0.2.0",
   contracts: [
@@ -65,11 +68,10 @@ test("root scoping, stable event identity, bounded events and detach/reconnect c
   const observer = new DiagnosticObserver(metadata, { root, eventLimit: 2 });
   observer.start();
   const identity = observer.getSnapshot().components[0]!.id;
-  for (let index = 0; index < 4; index++)
+  for (let index = 0; index < 4; index++) {
     host.dispatchEvent(new CustomEvent("acme-change", { detail: { value: index }, bubbles: true, composed: true }));
-  outside.dispatchEvent(
-    new CustomEvent("acme-change", { detail: { value: "outside" }, bubbles: true, composed: true }),
-  );
+  }
+  outside.dispatchEvent(new CustomEvent("acme-change", { detail: { value: "outside" }, bubbles: true, composed: true }));
   await tick();
   expect(observer.getSnapshot().events.map((event) => event.detail)).toEqual([{ value: 2 }, { value: 3 }]);
   expect(observer.getSnapshot().events.every((event) => event.componentId === identity)).toBe(true);
@@ -174,7 +176,9 @@ test("public getter synchronization does not create an internal-attribute observ
   Object.defineProperty(host, "synchronized", {
     get() {
       reads++;
-      if (reads > 10) throw new Error("Observation loop");
+      if (reads > 10) {
+        throw new Error("Observation loop");
+      }
       host.shadowRoot!.querySelector("span")!.setAttribute("data-native-validity", "valid");
       return "valid";
     },

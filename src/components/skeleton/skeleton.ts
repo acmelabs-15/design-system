@@ -21,7 +21,9 @@ export class AcmeSkeleton extends AcmeElement {
     return this.form;
   }
   set shape(value: "rectangle" | "circle") {
-    if (value !== "rectangle" && value !== "circle") throw new TypeError("Invalid Skeleton shape");
+    if (value !== "rectangle" && value !== "circle") {
+      throw new TypeError("Invalid Skeleton shape");
+    }
     const previous = this.form;
     this.form = value;
     this.requestUpdate("shape", previous);
@@ -53,12 +55,15 @@ export class AcmeSkeleton extends AcmeElement {
         !value.trim() ||
         /^(initial|inherit|unset|revert)/i.test(value) ||
         (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("width", value)))
-    )
+    ) {
       throw new TypeError("Skeleton dimensions require CSS sizes");
+    }
   }
   private readonly motion = new RepeatingMotion(this, () => this.loading);
   protected willUpdate(changes: PropertyValues) {
-    if (changes.has("loading")) this.motion.reset();
+    if (changes.has("loading")) {
+      this.motion.reset();
+    }
   }
   protected updated() {
     const root = this.renderRoot.querySelector<HTMLElement>("[part=root]")!;
@@ -66,8 +71,11 @@ export class AcmeSkeleton extends AcmeElement {
       ["--_skeleton-width", this.width],
       ["--_skeleton-height", this.height],
     ] as const) {
-      if (value === undefined) root.style.removeProperty(name);
-      else root.style.setProperty(name, value);
+      if (value === undefined) {
+        root.style.removeProperty(name);
+      } else {
+        root.style.setProperty(name, value);
+      }
     }
   }
   render() {

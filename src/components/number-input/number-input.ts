@@ -28,7 +28,9 @@ import { numberInputStructureCss } from "../../generated/components/number-input
 export type NumberInputFormatOptions = Omit<Intl.NumberFormatOptions, "notation"> & { notation?: "standard" };
 const optionalNumber = { fromAttribute: (value: string | null) => (value === null ? undefined : Number(value)) };
 function finite(value: number, name: string): number {
-  if (!Number.isFinite(value)) throw new RangeError(name + " must be finite");
+  if (!Number.isFinite(value)) {
+    throw new RangeError(name + " must be finite");
+  }
   return value;
 }
 /** Locale-aware numeric editing with native form participation.
@@ -81,7 +83,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     return this.incrementSize ?? (this.formatOptions?.style === "percent" ? 0.01 : 1);
   }
   set step(value: number | undefined) {
-    if (value !== undefined && (!Number.isFinite(value) || value <= 0)) throw new RangeError("step must be positive and finite");
+    if (value !== undefined && (!Number.isFinite(value) || value <= 0)) {
+      throw new RangeError("step must be positive and finite");
+    }
     this.incrementSize = value;
     this.nativeForm?.sync();
     this.requestUpdate("step");
@@ -92,7 +96,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     return this.bigIncrement ?? scaleDecimal(this.step, 1);
   }
   set largeStep(value: number | undefined) {
-    if (value !== undefined && (!Number.isFinite(value) || value <= 0)) throw new RangeError("largeStep must be positive and finite");
+    if (value !== undefined && (!Number.isFinite(value) || value <= 0)) {
+      throw new RangeError("largeStep must be positive and finite");
+    }
     this.bigIncrement = value;
     this.requestUpdate("largeStep");
   }
@@ -102,7 +108,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     return this.littleIncrement ?? scaleDecimal(this.step, -1);
   }
   set smallStep(value: number | undefined) {
-    if (value !== undefined && (!Number.isFinite(value) || value <= 0)) throw new RangeError("smallStep must be positive and finite");
+    if (value !== undefined && (!Number.isFinite(value) || value <= 0)) {
+      throw new RangeError("smallStep must be positive and finite");
+    }
     this.littleIncrement = value;
     this.requestUpdate("smallStep");
   }
@@ -123,7 +131,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     return this.preferredLocale;
   }
   set locale(value: string | undefined) {
-    if (value !== undefined) Intl.getCanonicalLocales(value);
+    if (value !== undefined) {
+      Intl.getCanonicalLocales(value);
+    }
     this.reformat(() => {
       this.preferredLocale = value;
     });
@@ -141,7 +151,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
   }
   set formatOptions(value: NumberInputFormatOptions | undefined) {
     const options = numberOptionsSnapshot(value);
-    if (options.notation !== undefined && options.notation !== "standard") throw new RangeError("Number Input supports standard notation");
+    if (options.notation !== undefined && options.notation !== "standard") {
+      throw new RangeError("Number Input supports standard notation");
+    }
     new Intl.NumberFormat(this.locale, options);
     this.reformat(() => {
       this.numberOptions = options as Readonly<NumberInputFormatOptions>;
@@ -154,7 +166,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
       change();
       this.cached = undefined;
       this.appliedFormat = this.hasUpdated ? this.formats : undefined;
-      if (Number.isFinite(number)) this.value = this.formatValue(number);
+      if (Number.isFinite(number)) {
+        this.value = this.formatValue(number);
+      }
       this.nativeForm?.sync();
     });
   }
@@ -171,7 +185,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     this.appliedFormat = next;
     if (this.hasUpdated && previous && previous.key !== next.key && this.value) {
       const number = previous.parser.isValidPartialNumber(this.value) ? previous.parser.parse(this.value) : NaN;
-      if (Number.isFinite(number)) this.value = this.formatValue(number);
+      if (Number.isFinite(number)) {
+        this.value = this.formatValue(number);
+      }
     }
   }
   connectedCallback() {
@@ -183,13 +199,17 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     const locale = this.locale ?? this.themeContext.scope.effective.get().locale;
     const options = this.formatOptions ?? {};
     const key = JSON.stringify([locale, options]);
-    if (this.cached?.key !== key) this.cached = { key, parser: new NumberParser(locale ?? "en-US", options), formatter: new Intl.NumberFormat(locale, { maximumFractionDigits: 20, ...options }) };
+    if (this.cached?.key !== key) {
+      this.cached = { key, parser: new NumberParser(locale ?? "en-US", options), formatter: new Intl.NumberFormat(locale, { maximumFractionDigits: 20, ...options }) };
+    }
     return this.cached;
   }
   private formatValue(number: number): string {
     const text = this.formats.formatter.format(number),
       options = this.formatOptions;
-    if (options.maximumFractionDigits !== undefined || options.maximumSignificantDigits !== undefined || Object.is(this.formats.parser.parse(text), number)) return text;
+    if (options.maximumFractionDigits !== undefined || options.maximumSignificantDigits !== undefined || Object.is(this.formats.parser.parse(text), number)) {
+      return text;
+    }
     return new Intl.NumberFormat(this.locale ?? this.themeContext.scope.effective.get().locale, { ...options, maximumSignificantDigits: 21 }).format(number);
   }
   private parseValue(value: string): number {
@@ -208,21 +228,35 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
   }
   protected validateValue(): NativeFormValidation {
     const native = super.validateValue();
-    if (!this.control.willValidate || Object.values(native.flags).some(Boolean)) return native;
-    if (!Number.isFinite(this.min) || !Number.isFinite(this.max) || this.min > this.max)
+    if (!this.control.willValidate || Object.values(native.flags).some(Boolean)) {
+      return native;
+    }
+    if (!Number.isFinite(this.min) || !Number.isFinite(this.max) || this.min > this.max) {
       return { flags: { customError: true }, message: this.text("numberInput.bounds", "The number limits are invalid.") };
-    if (!this.value) return native;
+    }
+    if (!this.value) {
+      return native;
+    }
     const number = this.valueAsNumber;
-    if (!Number.isFinite(number)) return { flags: { badInput: true }, message: this.text("numberInput.number", "Enter a valid number.") };
-    if (number < this.min) return { flags: { rangeUnderflow: true }, message: this.text("numberInput.minimum", "The value is below the minimum.") };
-    if (number > this.max) return { flags: { rangeOverflow: true }, message: this.text("numberInput.maximum", "The value exceeds the maximum.") };
+    if (!Number.isFinite(number)) {
+      return { flags: { badInput: true }, message: this.text("numberInput.number", "Enter a valid number.") };
+    }
+    if (number < this.min) {
+      return { flags: { rangeUnderflow: true }, message: this.text("numberInput.minimum", "The value is below the minimum.") };
+    }
+    if (number > this.max) {
+      return { flags: { rangeOverflow: true }, message: this.text("numberInput.maximum", "The value exceeds the maximum.") };
+    }
     return native;
   }
   private readonly committed = createAtom<string | undefined>(undefined);
   protected emitValue(type: "acme-input" | "acme-change") {
-    if (type === "acme-input") this.committed.set(() => undefined);
-    else {
-      if (this.committed.get() === this.value) return;
+    if (type === "acme-input") {
+      this.committed.set(() => undefined);
+    } else {
+      if (this.committed.get() === this.value) {
+        return;
+      }
       this.committed.set(this.value);
     }
     this.dispatchEvent(new CustomEvent(type, { detail: { value: this.value, valueAsNumber: this.valueAsNumber }, bubbles: true, composed: true }));
@@ -235,7 +269,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     super.onNativeInput(event);
   }
   protected onNativeChange() {
-    if (this.nativeForm.effectiveDisabled || this.readOnly) return;
+    if (this.nativeForm.effectiveDisabled || this.readOnly) {
+      return;
+    }
     const number = this.valueAsNumber;
     if (Number.isFinite(number)) {
       const next = this.clampValueOnBlur ? Math.max(this.min, Math.min(this.max, number)) : number;
@@ -250,21 +286,33 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     return this.locale === undefined ? super.text(key, fallback) : message(this.locale, key, fallback);
   }
   private stepBy(direction: 1 | -1, step = this.step, commit = true): boolean {
-    if (this.nativeForm.effectiveDisabled || this.readOnly) return false;
-    if (Number.isNaN(step) || step <= 0) return false;
+    if (this.nativeForm.effectiveDisabled || this.readOnly) {
+      return false;
+    }
+    if (Number.isNaN(step) || step <= 0) {
+      return false;
+    }
     const value = this.valueAsNumber;
     let number = step === Infinity ? direction * Infinity : addDecimal(Number.isFinite(value) ? value : 0, direction * step);
-    if (!this.allowOverflow) number = Math.max(this.min, Math.min(this.max, number));
-    if (!Number.isFinite(number)) return false;
+    if (!this.allowOverflow) {
+      number = Math.max(this.min, Math.min(this.max, number));
+    }
+    if (!Number.isFinite(number)) {
+      return false;
+    }
     return this.changeNumber(number, commit);
   }
   private changeNumber(number: number, commit: boolean): boolean {
-    if (!Number.isFinite(number)) return false;
+    if (!Number.isFinite(number)) {
+      return false;
+    }
     const previous = this.value;
     this.value = this.formatValue(number);
     if (this.value !== previous) {
       this.emitValue("acme-input");
-      if (commit) this.emitValue("acme-change");
+      if (commit) {
+        this.emitValue("acme-change");
+      }
       return true;
     }
     return false;
@@ -287,23 +335,35 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
     registerNumberInputBoundary(this);
     this.control.addEventListener("beforeinput", (raw) => {
       const event = raw as InputEvent;
-      if (event.defaultPrevented || event.isComposing || event.inputType.startsWith("delete") || event.data === null) return;
+      if (event.defaultPrevented || event.isComposing || event.inputType.startsWith("delete") || event.data === null) {
+        return;
+      }
       const input = this.control as HTMLInputElement;
       const next = input.value.slice(0, input.selectionStart ?? 0) + event.data + input.value.slice(input.selectionEnd ?? 0);
-      if (!this.formats.parser.isValidPartialNumber(next)) event.preventDefault();
+      if (!this.formats.parser.isValidPartialNumber(next)) {
+        event.preventDefault();
+      }
     });
     this.control.addEventListener("paste", (raw) => {
       const event = raw as ClipboardEvent;
-      if (event.defaultPrevented) return;
+      if (event.defaultPrevented) {
+        return;
+      }
       const text = event.clipboardData?.getData("text/plain");
-      if (text === undefined) return;
+      if (text === undefined) {
+        return;
+      }
       const input = this.control as HTMLInputElement;
       const next = input.value.slice(0, input.selectionStart ?? 0) + text.replace(/\r\n?|\n/g, "") + input.value.slice(input.selectionEnd ?? 0);
-      if (!this.formats.parser.isValidPartialNumber(next)) event.preventDefault();
+      if (!this.formats.parser.isValidPartialNumber(next)) {
+        event.preventDefault();
+      }
     });
     this.control.addEventListener("keydown", (raw) => {
       const event = raw as KeyboardEvent;
-      if (event.defaultPrevented || event.isComposing || this.readOnly || this.nativeForm.effectiveDisabled) return;
+      if (event.defaultPrevented || event.isComposing || this.readOnly || this.nativeForm.effectiveDisabled) {
+        return;
+      }
       if (event.key === "ArrowUp" || event.key === "ArrowDown") {
         event.preventDefault();
         this.stepBy(event.key === "ArrowUp" ? 1 : -1, event.altKey ? this.smallStep : event.shiftKey ? this.largeStep : this.step);
@@ -324,8 +384,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
           this.readOnly ||
           this.nativeForm.effectiveDisabled ||
           !event.deltaY
-        )
+        ) {
           return;
+        }
         event.preventDefault();
         this.stepBy(event.deltaY < 0 ? 1 : -1);
       },
@@ -348,7 +409,9 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
   private readonly numberOwner: NumberInputOwner = {
     state: this.actionState,
     register: (part) => {
-      if (!this.participants.get().includes(part)) this.participants.set([...this.participants.get(), part]);
+      if (!this.participants.get().includes(part)) {
+        this.participants.set([...this.participants.get(), part]);
+      }
     },
     unregister: (part) => this.participants.set(this.participants.get().filter((item) => item !== part)),
     step: (direction) => this.stepBy(direction),
@@ -382,11 +445,16 @@ export class AcmeNumberInput extends AcmeSingleLineControl {
   protected updated() {
     this.appliedFormat ??= this.formats;
     super.updated();
-    if (this.nativeForm.effectiveDisabled || this.readOnly) this.repeat.stop();
+    if (this.nativeForm.effectiveDisabled || this.readOnly) {
+      this.repeat.stop();
+    }
     this.control.setAttribute("aria-valuemin", String(this.min));
     this.control.setAttribute("aria-valuemax", String(this.max));
-    if (Number.isFinite(this.valueAsNumber)) this.control.setAttribute("aria-valuenow", String(this.valueAsNumber));
-    else this.control.removeAttribute("aria-valuenow");
+    if (Number.isFinite(this.valueAsNumber)) {
+      this.control.setAttribute("aria-valuenow", String(this.valueAsNumber));
+    } else {
+      this.control.removeAttribute("aria-valuenow");
+    }
     this.control.setAttribute("aria-valuetext", this.value);
   }
 }

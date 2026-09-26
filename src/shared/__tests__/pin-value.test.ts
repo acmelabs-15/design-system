@@ -1,5 +1,6 @@
 import { test, expect } from "bun:test";
 import { pinValue, pinPaste, pinDelete, pinCharacter, pinFocus, pinCharacters } from "../pin-value";
+
 test("normalization fills, truncates and owns values", () => {
   const source = ["1", "2"];
   const value = pinValue(source, 4);

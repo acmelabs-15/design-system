@@ -27,7 +27,9 @@ describe("acme-checkbox", () => {
     expect(input.disabled).toBe(true);
     expect(input.indeterminate).toBe(true);
     expect(input.checked).toBe(true);
-    for (const a of ["data-checked", "data-disabled", "data-indeterminate"]) expect(root(el).hasAttribute(a)).toBe(true);
+    for (const a of ["data-checked", "data-disabled", "data-indeterminate"]) {
+      expect(root(el).hasAttribute(a)).toBe(true);
+    }
   });
   test("a change on the input updates checked, clears indeterminate and emits acme-change", async () => {
     const el = await mount(`<acme-checkbox indeterminate>Option 1</acme-checkbox>`);

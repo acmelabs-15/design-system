@@ -147,11 +147,17 @@ describe("common style input schema", () => {
       ].sort(),
     );
     for (const [property, metadata] of Object.entries(styleInputSchema)) {
-      if (!["signed-spacing", "nonnegative-spacing", "size"].includes(metadata.numeric)) continue;
+      if (!["signed-spacing", "nonnegative-spacing", "size"].includes(metadata.numeric)) {
+        continue;
+      }
       const key = property as StyleInputKey;
-      for (const value of spacingTokenKeys) expect(isStyleScalar(key, value, supportsAll)).toBe(true);
+      for (const value of spacingTokenKeys) {
+        expect(isStyleScalar(key, value, supportsAll)).toBe(true);
+      }
       expect(isStyleScalar(key, -2, supportsAll)).toBe(metadata.numeric === "signed-spacing");
-      for (const value of [0.25, 13, 97, NaN, Infinity, -Infinity]) expect(isStyleScalar(key, value, supportsAll)).toBe(false);
+      for (const value of [0.25, 13, 97, NaN, Infinity, -Infinity]) {
+        expect(isStyleScalar(key, value, supportsAll)).toBe(false);
+      }
     }
   });
 
@@ -168,14 +174,19 @@ describe("common style input schema", () => {
       { key: "gridColumn", accepted: [], rejected: [0, 1] },
     ];
     for (const { key, accepted, rejected } of cases) {
-      for (const value of accepted) expect(isStyleScalar(key, value, supportsAll)).toBe(true);
-      for (const value of rejected) expect(isStyleScalar(key, value, supportsAll)).toBe(false);
+      for (const value of accepted) {
+        expect(isStyleScalar(key, value, supportsAll)).toBe(true);
+      }
+      for (const value of rejected) {
+        expect(isStyleScalar(key, value, supportsAll)).toBe(false);
+      }
     }
-    for (const [key, metadata] of Object.entries(styleInputSchema))
+    for (const [key, metadata] of Object.entries(styleInputSchema)) {
       if (metadata.numeric === "zero-only") {
         expect(isStyleScalar(key as StyleInputKey, 0, supportsAll)).toBe(true);
         expect(isStyleScalar(key as StyleInputKey, 1, supportsAll)).toBe(false);
       }
+    }
   });
 
   test("passes integer grid lines through the supplied native-property grammar check", () => {
@@ -218,8 +229,9 @@ describe("common style input schema", () => {
       ["marginInline", "auto"],
       ["padding", "var(--custom-space)"],
       ["gridColumn", "[content-start]"],
-    ] as const)
+    ] as const) {
       expect(isStyleScalar(key, value, supports)).toBe(true);
+    }
     expect(isStyleScalar("padding", "invalid", supports)).toBe(false);
     expect(calls).toEqual([
       ["border-width", "1px 2px 3px 4px"],
@@ -247,8 +259,12 @@ describe("common style input schema", () => {
     const supports = () => {
       throw new Error("Unexpected grammar check");
     };
-    for (const value of [undefined, null, false, {}, [], "", "   "]) expect(isStyleScalar("padding", value, supports)).toBe(false);
+    for (const value of [undefined, null, false, {}, [], "", "   "]) {
+      expect(isStyleScalar("padding", value, supports)).toBe(false);
+    }
     const candidate: unknown = "red";
-    if (isStyleScalar("color", candidate, supportsAll)) expectTypeOf(candidate).toEqualTypeOf<string>();
+    if (isStyleScalar("color", candidate, supportsAll)) {
+      expectTypeOf(candidate).toEqualTypeOf<string>();
+    }
   });
 });

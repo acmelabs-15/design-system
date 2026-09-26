@@ -1,5 +1,6 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
+
 afterEach(() => document.body.replaceChildren());
 async function mount() {
   const form = document.createElement("form");

@@ -72,7 +72,9 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
     return this.appearance.effective.get().size!;
   }
   set size(value: ButtonSize | undefined) {
-    if (value !== undefined && !["tiny", "small", "medium", "large"].includes(value)) throw new TypeError("Invalid action size");
+    if (value !== undefined && !["tiny", "small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid action size");
+    }
     const previous = this.size;
     this.appearance.setAuthored({ size: value });
     this.requestUpdate("size", previous);
@@ -82,7 +84,9 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
     return this.appearance.effective.get().variant!;
   }
   set variant(value: ButtonVariant | undefined) {
-    if (value !== undefined && !["default", "secondary", "tertiary", "error", "warning", "unstyled"].includes(value)) throw new TypeError("Invalid action variant");
+    if (value !== undefined && !["default", "secondary", "tertiary", "error", "warning", "unstyled"].includes(value)) {
+      throw new TypeError("Invalid action variant");
+    }
     const previous = this.variant;
     this.appearance.setAuthored({ variant: value });
     this.requestUpdate("variant", previous);
@@ -105,7 +109,9 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
     return this.presentation.shape;
   }
   set shape(value: ActionShape | undefined) {
-    if (value !== undefined && !["square", "circle", "pill"].includes(value)) throw new TypeError("Invalid action shape");
+    if (value !== undefined && !["square", "circle", "pill"].includes(value)) {
+      throw new TypeError("Invalid action shape");
+    }
     this.setPresentation("shape", value);
   }
   /** @default false */
@@ -135,9 +141,13 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
   }
   private setPresentation<Key extends keyof Presentation>(key: Key, value: Presentation[Key]) {
     const previous = this.presentation[key];
-    if (Object.is(previous, value)) return;
+    if (Object.is(previous, value)) {
+      return;
+    }
     this.presentation = Object.freeze({ ...this.presentation, [key]: value });
-    if ((key === "ripple" && !value) || ((key === "disabled" || key === "loading") && value)) this.pressEffect?.cancel();
+    if ((key === "ripple" && !value) || ((key === "disabled" || key === "loading") && value)) {
+      this.pressEffect?.cancel();
+    }
     this.nativeAction?.sync();
     this.synchronizeControl();
     this.requestUpdate(key, previous);
@@ -170,7 +180,9 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
   protected activate(_event: MouseEvent): void {}
   protected synchronizeControl(): void {
     const control = this.control;
-    if (!control) return;
+    if (!control) {
+      return;
+    }
     const disabled = this.disabled || this.nativeAction.fieldsetDisabled;
     if (control.localName === "button") {
       const button = control as HTMLButtonElement;
@@ -178,15 +190,25 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
       button.type = this.submission.type;
     }
     control.setAttribute("aria-busy", String(this.loading));
-    if (this.nativeAction.disabled.get()) control.setAttribute("aria-disabled", "true");
-    else control.removeAttribute("aria-disabled");
+    if (this.nativeAction.disabled.get()) {
+      control.setAttribute("aria-disabled", "true");
+    } else {
+      control.removeAttribute("aria-disabled");
+    }
     if (control.localName === "a") {
-      if (disabled) control.tabIndex = -1;
-      else if (this.loading) control.tabIndex = 0;
-      else control.removeAttribute("tabindex");
+      if (disabled) {
+        control.tabIndex = -1;
+      } else if (this.loading) {
+        control.tabIndex = 0;
+      } else {
+        control.removeAttribute("tabindex");
+      }
       const href = this.link?.href;
-      if (href && !this.nativeAction.disabled.get()) control.setAttribute("href", href);
-      else control.removeAttribute("href");
+      if (href && !this.nativeAction.disabled.get()) {
+        control.setAttribute("href", href);
+      } else {
+        control.removeAttribute("href");
+      }
     }
   }
   private clickControl = (event: MouseEvent) => {
@@ -195,16 +217,22 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
       event.stopImmediatePropagation();
       return;
     }
-    if (!event.defaultPrevented) this.activate(event);
+    if (!event.defaultPrevented) {
+      this.activate(event);
+    }
   };
   focus(options?: FocusOptions): void {
-    if (!this.effectiveDisabled) this.control?.focus(options);
+    if (!this.effectiveDisabled) {
+      this.control?.focus(options);
+    }
   }
   blur(): void {
     this.control?.blur();
   }
   click(): void {
-    if (!this.effectiveDisabled) this.control?.click();
+    if (!this.effectiveDisabled) {
+      this.control?.click();
+    }
   }
   protected abstract renderContent(): unknown;
   protected renderFeedback(): unknown {
@@ -222,7 +250,9 @@ export abstract class AcmeActionElement extends AcmeSemanticElement {
     if (name === "form") {
       this.nativeAction?.sync();
       this.requestUpdate();
-    } else super.attributeChangedCallback(name, previous, value);
+    } else {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   adoptedCallback() {
     super.adoptedCallback();

@@ -1,27 +1,82 @@
 const fixture = window as typeof window & { feedback: AcmeFeedback; requests: unknown[]; changes: unknown[]; inputs: unknown[] };
-import {AcmeFeedback} from '../feedback';customElements.define('acme-feedback',AcmeFeedback);
-import {AcmeField} from '../../field/field';customElements.define('acme-field',AcmeField);
-import {AcmeInput} from '../../input/input';customElements.define('acme-input',AcmeInput);
-import {AcmeTextarea} from '../../textarea/textarea';customElements.define('acme-textarea',AcmeTextarea);
-import {AcmeRadio} from '../../radio/radio';customElements.define('acme-radio',AcmeRadio);
-import {AcmeRadioGroup} from '../../radio-group/radio-group';customElements.define('acme-radio-group',AcmeRadioGroup);
-import {AcmeRadioCard} from '../../radio-card/radio-card';customElements.define('acme-radio-card',AcmeRadioCard);
-import {AcmeGroup} from '../../group/group';customElements.define('acme-group',AcmeGroup);
-import {AcmeSelect} from '../../select/select';customElements.define('acme-select',AcmeSelect);
-import {AcmeOption} from '../../option/option';customElements.define('acme-option',AcmeOption);
-import {AcmeButton} from '../../button/button';customElements.define('acme-button',AcmeButton);
-import {AcmeAlert} from '../../alert/alert';customElements.define('acme-alert',AcmeAlert);
-import {AcmeIconButton} from '../../icon-button/icon-button';customElements.define('acme-icon-button',AcmeIconButton);
-import {AcmeSpinner} from '../../spinner/spinner';customElements.define('acme-spinner',AcmeSpinner);
-import {AcmeScrollArea} from '../../scroll-area/scroll-area';customElements.define('acme-scroll-area',AcmeScrollArea);
-import {AcmeToggleTip} from '../../toggle-tip/toggle-tip';customElements.define('acme-toggle-tip',AcmeToggleTip);
-import {AcmeDialog} from '../../dialog/dialog';customElements.define('acme-dialog',AcmeDialog);
-import {AcmeTheme} from '../../theme/theme';customElements.define('acme-theme',AcmeTheme);
-import {AcmeOverlayTheme} from '../../../internal/overlay-theme/overlay-theme';customElements.define('acme-overlay-theme',AcmeOverlayTheme);
-import {AcmeInfoIcon} from '../../../generated/icons/classes/info-icon';customElements.define('acme-info-icon',AcmeInfoIcon);
-import {AcmeErrorIcon} from '../../../generated/icons/classes/error-icon';customElements.define('acme-error-icon',AcmeErrorIcon);
-import {AcmeWarningIcon} from '../../../generated/icons/classes/warning-icon';customElements.define('acme-warning-icon',AcmeWarningIcon);
-import {AcmeCheckIcon} from '../../../generated/icons/classes/check-icon';customElements.define('acme-check-icon',AcmeCheckIcon);
-import {AcmeCloseIcon} from '../../../generated/icons/classes/close-icon';customElements.define('acme-close-icon',AcmeCloseIcon);
-import {AcmeExpandMoreIcon} from '../../../generated/icons/classes/expand-more-icon';customElements.define('acme-expand-more-icon',AcmeExpandMoreIcon);
-document.body.innerHTML='<acme-feedback id="feedback"></acme-feedback>';const feedback=document.querySelector<AcmeFeedback>('#feedback')!;Object.assign(fixture,{feedback,requests:[],changes:[],inputs:[]});feedback.addEventListener('acme-request',e=>fixture.requests.push((e as CustomEvent<unknown>).detail));feedback.addEventListener('acme-change',e=>fixture.changes.push((e as CustomEvent<unknown>).detail));feedback.addEventListener('acme-input',e=>fixture.inputs.push((e as CustomEvent<unknown>).detail));
+import { AcmeFeedback } from "../feedback";
+
+customElements.define("acme-feedback", AcmeFeedback);
+import { AcmeField } from "../../field/field";
+
+customElements.define("acme-field", AcmeField);
+import { AcmeInput } from "../../input/input";
+
+customElements.define("acme-input", AcmeInput);
+import { AcmeTextarea } from "../../textarea/textarea";
+
+customElements.define("acme-textarea", AcmeTextarea);
+import { AcmeRadio } from "../../radio/radio";
+
+customElements.define("acme-radio", AcmeRadio);
+import { AcmeRadioGroup } from "../../radio-group/radio-group";
+
+customElements.define("acme-radio-group", AcmeRadioGroup);
+import { AcmeRadioCard } from "../../radio-card/radio-card";
+
+customElements.define("acme-radio-card", AcmeRadioCard);
+import { AcmeGroup } from "../../group/group";
+
+customElements.define("acme-group", AcmeGroup);
+import { AcmeSelect } from "../../select/select";
+
+customElements.define("acme-select", AcmeSelect);
+import { AcmeOption } from "../../option/option";
+
+customElements.define("acme-option", AcmeOption);
+import { AcmeButton } from "../../button/button";
+
+customElements.define("acme-button", AcmeButton);
+import { AcmeAlert } from "../../alert/alert";
+
+customElements.define("acme-alert", AcmeAlert);
+import { AcmeIconButton } from "../../icon-button/icon-button";
+
+customElements.define("acme-icon-button", AcmeIconButton);
+import { AcmeSpinner } from "../../spinner/spinner";
+
+customElements.define("acme-spinner", AcmeSpinner);
+import { AcmeScrollArea } from "../../scroll-area/scroll-area";
+
+customElements.define("acme-scroll-area", AcmeScrollArea);
+import { AcmeToggleTip } from "../../toggle-tip/toggle-tip";
+
+customElements.define("acme-toggle-tip", AcmeToggleTip);
+import { AcmeDialog } from "../../dialog/dialog";
+
+customElements.define("acme-dialog", AcmeDialog);
+import { AcmeTheme } from "../../theme/theme";
+
+customElements.define("acme-theme", AcmeTheme);
+import { AcmeOverlayTheme } from "../../../internal/overlay-theme/overlay-theme";
+
+customElements.define("acme-overlay-theme", AcmeOverlayTheme);
+import { AcmeInfoIcon } from "../../../generated/icons/classes/info-icon";
+
+customElements.define("acme-info-icon", AcmeInfoIcon);
+import { AcmeErrorIcon } from "../../../generated/icons/classes/error-icon";
+
+customElements.define("acme-error-icon", AcmeErrorIcon);
+import { AcmeWarningIcon } from "../../../generated/icons/classes/warning-icon";
+
+customElements.define("acme-warning-icon", AcmeWarningIcon);
+import { AcmeCheckIcon } from "../../../generated/icons/classes/check-icon";
+
+customElements.define("acme-check-icon", AcmeCheckIcon);
+import { AcmeCloseIcon } from "../../../generated/icons/classes/close-icon";
+
+customElements.define("acme-close-icon", AcmeCloseIcon);
+import { AcmeExpandMoreIcon } from "../../../generated/icons/classes/expand-more-icon";
+
+customElements.define("acme-expand-more-icon", AcmeExpandMoreIcon);
+document.body.innerHTML = '<acme-feedback id="feedback"></acme-feedback>';
+const feedback = document.querySelector<AcmeFeedback>("#feedback")!;
+Object.assign(fixture, { feedback, requests: [], changes: [], inputs: [] });
+feedback.addEventListener("acme-request", (e) => fixture.requests.push((e as CustomEvent<unknown>).detail));
+feedback.addEventListener("acme-change", (e) => fixture.changes.push((e as CustomEvent<unknown>).detail));
+feedback.addEventListener("acme-input", (e) => fixture.inputs.push((e as CustomEvent<unknown>).detail));

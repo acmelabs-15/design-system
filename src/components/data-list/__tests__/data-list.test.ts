@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { AcmeDataList } from "../data-list";
 import "../../../define/data-list";
+
 test("Data List keeps native pairs and rich values owned by the author", async () => {
   document.body.innerHTML = "<acme-data-list><dl><div><dt>Owner</dt><dd><button>Details</button></dd><dd>Secondary</dd></div><dt>Status</dt><dd>Ready</dd></dl></acme-data-list>";
   const root = document.querySelector("acme-data-list") as AcmeDataList,

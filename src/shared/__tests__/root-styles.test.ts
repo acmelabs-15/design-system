@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import { LitElement, css, html } from "lit";
 import { RootStyles } from "../root-styles";
+
 const sheet = css`
   [data-native-style-probe] {
     color: blue;

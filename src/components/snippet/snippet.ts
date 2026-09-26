@@ -25,7 +25,9 @@ export class AcmeSnippet extends AcmeElement {
     return this.source;
   }
   set text(value: string | readonly string[]) {
-    if (typeof value !== "string" && (!Array.isArray(value) || value.some((line) => typeof line !== "string"))) throw new TypeError("Snippet text requires a string or an array of strings");
+    if (typeof value !== "string" && (!Array.isArray(value) || value.some((line) => typeof line !== "string"))) {
+      throw new TypeError("Snippet text requires a string or an array of strings");
+    }
     const old = this.source;
     this.source = typeof value === "string" ? value : Object.freeze([...value]);
     this.requestUpdate("text", old);
@@ -39,7 +41,9 @@ export class AcmeSnippet extends AcmeElement {
     return this.treatment;
   }
   set variant(value: "default" | "success" | "error" | "warning") {
-    if (!["default", "success", "error", "warning"].includes(value)) throw new TypeError("Invalid Snippet variant");
+    if (!["default", "success", "error", "warning"].includes(value)) {
+      throw new TypeError("Invalid Snippet variant");
+    }
     const old = this.treatment;
     this.treatment = value;
     this.requestUpdate("variant", old);
@@ -50,7 +54,9 @@ export class AcmeSnippet extends AcmeElement {
     return this.scale;
   }
   set size(value: "small" | "medium") {
-    if (value !== "small" && value !== "medium") throw new TypeError("Invalid Snippet size");
+    if (value !== "small" && value !== "medium") {
+      throw new TypeError("Invalid Snippet size");
+    }
     const old = this.scale;
     this.scale = value;
     this.requestUpdate("size", old);

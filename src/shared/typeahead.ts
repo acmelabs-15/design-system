@@ -1,5 +1,6 @@
 import { createAtom } from "@tanstack/lit-store";
 import type { ReactiveController, ReactiveControllerHost } from "lit";
+
 type Options<Item> = { items(): readonly Item[]; current(): Item | undefined; text(item: Item): string; move(item: Item): void; locale?(): string | undefined; now?(): number; delay?: number };
 /** Prefix navigation with repeated-letter cycling and an elapsed-time buffer. */
 export class Typeahead<Item> implements ReactiveController {
@@ -19,7 +20,9 @@ export class Typeahead<Item> implements ReactiveController {
     this.input.set({ text: "", at: -Infinity });
   }
   handleKey(event: KeyboardEvent): boolean {
-    if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.key.length !== 1 || (event.key === " " && !this.active)) return false;
+    if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.key.length !== 1 || (event.key === " " && !this.active)) {
+      return false;
+    }
     const previous = this.active ? this.input.get().text : "",
       text = previous + event.key;
     this.input.set({ text, at: this.now() });
@@ -28,7 +31,9 @@ export class Typeahead<Item> implements ReactiveController {
       cycling = characters.every((character) => character === characters[0]);
     const query = cycling ? characters[0]! : text;
     const items = this.options.items();
-    if (!items.length) return true;
+    if (!items.length) {
+      return true;
+    }
     const current = items.indexOf(this.options.current() as Item),
       start = current < 0 ? 0 : cycling ? (current + 1) % items.length : current;
     const collator = new Intl.Collator(this.options.locale?.(), { usage: "search", sensitivity: "base" });

@@ -4,10 +4,14 @@ import type { AcmeCombobox } from "../combobox";
 export async function rankedOptionIdentity(root: AcmeCombobox, renderOptions: (values: string[]) => void): Promise<void> {
   const settle = async () => {
     await root.updateComplete;
-    for (let index = 0; index < 3; index++) await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+    for (let index = 0; index < 3; index++) {
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+    }
   };
   const equal = (actual: unknown, expected: unknown) => {
-    if (JSON.stringify(actual) !== JSON.stringify(expected)) throw new Error(`Expected ${JSON.stringify(expected)}, received ${JSON.stringify(actual)}`);
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+      throw new Error(`Expected ${JSON.stringify(expected)}, received ${JSON.stringify(actual)}`);
+    }
   };
   const visualOrder = () =>
     Array.from(root.querySelectorAll("acme-option"))
@@ -24,10 +28,14 @@ export async function rankedOptionIdentity(root: AcmeCombobox, renderOptions: (v
     Array.from(root.children).map((option) => (option as HTMLElement & { value: string }).value),
     ["c", "a"],
   );
-  if (Array.from(root.querySelectorAll("acme-option")).find((option) => option.value === "a") !== original) throw new Error("The renderer replaced the retained option node");
+  if (Array.from(root.querySelectorAll("acme-option")).find((option) => option.value === "a") !== original) {
+    throw new Error("The renderer replaced the retained option node");
+  }
   equal(visualOrder(), ["a", "c"]);
   renderOptions(["c"]);
   await settle();
-  if (original.isConnected) throw new Error("A deleted option remains connected");
+  if (original.isConnected) {
+    throw new Error("A deleted option remains connected");
+  }
   equal(visualOrder(), ["c"]);
 }

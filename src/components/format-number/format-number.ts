@@ -43,12 +43,18 @@ export class AcmeFormatNumber extends AcmeFormattingElement {
       return html`<span part="root"></span>`;
     }
     try {
-      if (typeof this.value !== "number" || !Number.isFinite(this.value)) throw new RangeError("Invalid numeric value");
-      if (this.configuration.invalid) throw new TypeError("Invalid options");
+      if (typeof this.value !== "number" || !Number.isFinite(this.value)) {
+        throw new RangeError("Invalid numeric value");
+      }
+      if (this.configuration.invalid) {
+        throw new TypeError("Invalid options");
+      }
       const locale = this.formatLocale,
         options = this.options;
       let cached = this.cached;
-      if (!cached || cached.locale !== locale || cached.options !== options) cached = this.cached = { locale, options, formatter: new Intl.NumberFormat(locale, options) };
+      if (!cached || cached.locale !== locale || cached.options !== options) {
+        cached = this.cached = { locale, options, formatter: new Intl.NumberFormat(locale, options) };
+      }
       text = cached.formatter.format(this.value);
       this.clearDiagnostic();
     } catch {

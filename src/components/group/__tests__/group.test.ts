@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeGroup } from "../group";
+
 afterEach(() => document.body.replaceChildren());
 async function mount(markup = "<acme-group></acme-group>") {
   document.body.innerHTML = markup;
@@ -17,7 +18,9 @@ test("Group has semantic defaults without owning selection form or disabled stat
   expect(group.gap).toBeUndefined();
   expect(group.size).toBeUndefined();
   expect(group.variant).toBeUndefined();
-  for (const key of ["value", "checked", "selected", "disabled", "name", "flexDirection"]) expect(key in group).toBe(false);
+  for (const key of ["value", "checked", "selected", "disabled", "name", "flexDirection"]) {
+    expect(key in group).toBe(false);
+  }
 });
 test("orientation uses owned responsive data and clears to horizontal", async () => {
   const group = await mount();

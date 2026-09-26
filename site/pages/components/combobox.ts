@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const options =
   '<acme-option value="apple" section="Fruit">Apple</acme-option><acme-option value="apricot" section="Fruit">Apricot</acme-option><acme-option value="asparagus" section="Vegetables">Asparagus</acme-option><acme-option value="pear" section="Fruit">Pear<span slot="description">Seasonal fruit</span></acme-option>';
 export const doc: Doc = {

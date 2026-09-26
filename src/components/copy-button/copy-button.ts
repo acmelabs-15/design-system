@@ -37,7 +37,9 @@ export class AcmeCopyButton extends AcmeActionElement {
     return this.duration;
   }
   set copiedDuration(value: number) {
-    if (!Number.isFinite(value) || value < 0) throw new RangeError("copiedDuration must be nonnegative");
+    if (!Number.isFinite(value) || value < 0) {
+      throw new RangeError("copiedDuration must be nonnegative");
+    }
     this.duration = value;
   }
   @atomState() private done = false;
@@ -59,22 +61,30 @@ export class AcmeCopyButton extends AcmeActionElement {
     return !this.content.has("") ? { label: message(this.themeContext.scope.effective.get().locale, "copy.copy", "Copy") } : {};
   }
   private stopTimer() {
-    if (this.timer) this.timer.view.clearTimeout(this.timer.id);
+    if (this.timer) {
+      this.timer.view.clearTimeout(this.timer.id);
+    }
     this.timer = undefined;
   }
   async copy(): Promise<void> {
     const generation = ++this.generation;
     this.stopTimer();
     try {
-      if (this.effectiveDisabled) throw new DOMException("The copy action is unavailable", "InvalidStateError");
+      if (this.effectiveDisabled) {
+        throw new DOMException("The copy action is unavailable", "InvalidStateError");
+      }
       const clipboard = this.ownerDocument.defaultView?.navigator.clipboard;
-      if (!clipboard?.writeText) throw new DOMException("Clipboard writing is unavailable", "NotSupportedError");
+      if (!clipboard?.writeText) {
+        throw new DOMException("Clipboard writing is unavailable", "NotSupportedError");
+      }
       await clipboard.writeText(this.value);
-      if (!this.isConnected || generation !== this.generation) return;
+      if (!this.isConnected || generation !== this.generation) {
+        return;
+      }
       this.done = true;
       this.dispatchEvent(new CustomEvent<Record<string, never>>("acme-copy", { detail: {}, bubbles: true, composed: true }));
       const view = this.ownerDocument.defaultView;
-      if (view)
+      if (view) {
         this.timer = {
           view,
           id: view.setTimeout(() => {
@@ -82,6 +92,7 @@ export class AcmeCopyButton extends AcmeActionElement {
             this.done = false;
           }, this.copiedDuration),
         };
+      }
     } catch (error) {
       if (this.isConnected && generation === this.generation) {
         this.done = false;
@@ -107,8 +118,9 @@ export class AcmeCopyButton extends AcmeActionElement {
   }
   protected renderContent() {
     const icon = this.copied ? html`<acme-check-icon part="icon" size="16px"></acme-check-icon>` : html`<acme-content-copy-icon part="icon" size="16px"></acme-content-copy-icon>`;
-    if (this.iconOnly)
+    if (this.iconOnly) {
       return html`<slot name="start" ?hidden=${this.copied || this.loading}></slot>${this.loading ? html`<acme-spinner size=${this.size === "large" ? "large" : this.size === "medium" ? "medium" : "small"}></acme-spinner>` : this.copied || !this.places.has("start") ? icon : undefined}<slot></slot><slot name="end"></slot>`;
+    }
     return actionContent({ loading: this.loading, size: this.size, start: this.places.has("start"), end: this.places.has("end"), leading: icon, replaceStart: this.copied, exposeParts: false });
   }
   protected renderFeedback() {

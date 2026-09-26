@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const confirmation =
   '<acme-alert-dialog><acme-alert-dialog-trigger slot="trigger">Confirm deletion</acme-alert-dialog-trigger><h2 slot="heading">Delete example project?</h2><p slot="description">Type DELETE to confirm the example action.</p><acme-field><span slot="label">Confirmation</span><acme-input></acme-input></acme-field><acme-alert-dialog-cancel slot="footer">Cancel</acme-alert-dialog-cancel><acme-alert-dialog-action slot="footer" variant="error" disabled>Delete project</acme-alert-dialog-action></acme-alert-dialog><output></output>';
 export const doc: Doc = {

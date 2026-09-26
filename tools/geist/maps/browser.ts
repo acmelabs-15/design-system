@@ -34,9 +34,7 @@ export const geist: GeistMap = {
             {
               ours: ".address",
               pick: has("w-full"),
-              children: [
-                { ours: ".text", pick: has("truncate") },
-              ],
+              children: [{ ours: ".text", pick: has("truncate") }],
             },
           ],
         },

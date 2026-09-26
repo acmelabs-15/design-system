@@ -3,6 +3,7 @@ import { createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveElement } from "lit";
 import { StoreSelector } from "./store-connection";
 import type { ScrollGeometry } from "./scroll-geometry";
+
 export type ScrollAxis = "horizontal" | "vertical";
 export type ScrollState = Readonly<{
   x: ScrollGeometry;
@@ -54,7 +55,9 @@ export class ScrollPartBinding {
       context: scrollContext,
       subscribe: true,
       callback: (owner) => {
-        if (this.owner.get().value === owner) return;
+        if (this.owner.get().value === owner) {
+          return;
+        }
         this.release?.();
         this.owner.set({ value: owner });
         this.release = owner.register(this.record);
@@ -79,7 +82,9 @@ export class ScrollPartBinding {
     this.owner.set({});
     this.consumer.hostDisconnected();
     this.consumer.value = undefined;
-    if (this.host.isConnected) this.consumer.hostConnected();
+    if (this.host.isConnected) {
+      this.consumer.hostConnected();
+    }
   }
   get current() {
     return this.owner.get().value;

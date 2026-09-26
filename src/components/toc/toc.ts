@@ -29,7 +29,9 @@ export class AcmeToc extends AcmeSemanticElement {
     return this.sourceValue;
   }
   set source(value: Element | string | undefined) {
-    if (value !== undefined && typeof value !== "string" && value?.nodeType !== 1) throw new TypeError("TOC source requires an Element or selector");
+    if (value !== undefined && typeof value !== "string" && value?.nodeType !== 1) {
+      throw new TypeError("TOC source requires an Element or selector");
+    }
     const previous = this.sourceValue;
     this.sourceValue = value;
     this.requestUpdate("source", previous);
@@ -49,7 +51,9 @@ export class AcmeToc extends AcmeSemanticElement {
     return this.headingLevels;
   }
   set levels(value: readonly number[]) {
-    if (!Array.isArray(value) || value.some((level) => !Number.isInteger(level) || level < 1 || level > 6)) throw new TypeError("TOC levels must be heading levels");
+    if (!Array.isArray(value) || value.some((level) => !Number.isInteger(level) || level < 1 || level > 6)) {
+      throw new TypeError("TOC levels must be heading levels");
+    }
     const previous = this.headingLevels;
     this.headingLevels = Object.freeze([...new Set(value)]);
     this.requestUpdate("levels", previous);
@@ -59,7 +63,9 @@ export class AcmeToc extends AcmeSemanticElement {
     return this.scrollElement;
   }
   set scrollRoot(value: Element | undefined) {
-    if (value !== undefined && value?.nodeType !== 1) throw new TypeError("scrollRoot must be an Element");
+    if (value !== undefined && value?.nodeType !== 1) {
+      throw new TypeError("scrollRoot must be an Element");
+    }
     const previous = this.scrollElement;
     this.scrollElement = value;
     this.requestUpdate("scrollRoot", previous);
@@ -70,8 +76,9 @@ export class AcmeToc extends AcmeSemanticElement {
     return this.distance;
   }
   set offset(value: string) {
-    if (typeof value !== "string" || !value.trim() || (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("scroll-margin-top", value)))
+    if (typeof value !== "string" || !value.trim() || (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("scroll-margin-top", value))) {
       throw new TypeError("TOC offset requires a CSS length");
+    }
     const previous = this.distance;
     this.distance = value;
     this.requestUpdate("offset", previous);
@@ -82,7 +89,9 @@ export class AcmeToc extends AcmeSemanticElement {
     return this.treatment;
   }
   set variant(value: "line" | "minimal" | "numbers") {
-    if (!["line", "minimal", "numbers"].includes(value)) throw new TypeError("Invalid TOC variant");
+    if (!["line", "minimal", "numbers"].includes(value)) {
+      throw new TypeError("Invalid TOC variant");
+    }
     const previous = this.treatment;
     this.treatment = value;
     this.requestUpdate("variant", previous);
@@ -109,7 +118,9 @@ export class AcmeToc extends AcmeSemanticElement {
     return this.getRootNode() as Document | ShadowRoot;
   }
   private resolveSource(): Document | ShadowRoot | Element | undefined {
-    if (this.source !== undefined && typeof this.source !== "string" && this.source.nodeType === 1) return this.source as Element;
+    if (this.source !== undefined && typeof this.source !== "string" && this.source.nodeType === 1) {
+      return this.source as Element;
+    }
     if (typeof this.source === "string") {
       try {
         return this.authorRoot.querySelector(this.source) ?? undefined;
@@ -125,7 +136,9 @@ export class AcmeToc extends AcmeSemanticElement {
     this.schedule();
   };
   private schedule = () => {
-    if (this.frame || !this.isConnected) return;
+    if (this.frame || !this.isConnected) {
+      return;
+    }
     this.frame = this.ownerDocument.defaultView!.requestAnimationFrame(() => {
       this.frame = 0;
       if (this.dirty) {
@@ -145,20 +158,28 @@ export class AcmeToc extends AcmeSemanticElement {
       if (source) {
         source.addEventListener(headingTargetsChanged, this.invalidate);
         this.sourceObserver = new MutationObserver((records) => {
-          if (records.some((record) => !this.contains(record.target))) this.invalidate();
+          if (records.some((record) => !this.contains(record.target))) {
+            this.invalidate();
+          }
         });
         this.sourceObserver.observe(source, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ["id", "hidden", "inert", "class", "style"] });
       }
     }
     if (!source) {
       this.resize?.disconnect();
-      if (this.entries.length) this.entries = [];
+      if (this.entries.length) {
+        this.entries = [];
+      }
       return;
     }
     const targets = discoverHeadingTargets(source),
       ids = new Map<string, HTMLElement[]>();
-    if (source.nodeType === 1 && (source as Element).id) ids.set((source as Element).id, [source as HTMLElement]);
-    for (const element of source.querySelectorAll<HTMLElement>("[id]")) ids.set(element.id, [...(ids.get(element.id) ?? []), element]);
+    if (source.nodeType === 1 && (source as Element).id) {
+      ids.set((source as Element).id, [source as HTMLElement]);
+    }
+    for (const element of source.querySelectorAll<HTMLElement>("[id]")) {
+      ids.set(element.id, [...(ids.get(element.id) ?? []), element]);
+    }
     const headingByTarget = new Map(targets.map((target) => [target.target, target]));
     const raw =
       this.items ??
@@ -191,7 +212,9 @@ export class AcmeToc extends AcmeSemanticElement {
       entries.push(Object.freeze({ ...item, target, heading: heading?.heading }));
     }
     const warning = issues.join("|");
-    if (warning && warning !== this.warning) console.warn(this.localName, { code: "toc-targets-missing-or-ambiguous", targets: issues });
+    if (warning && warning !== this.warning) {
+      console.warn(this.localName, { code: "toc-targets-missing-or-ambiguous", targets: issues });
+    }
     this.warning = warning;
     const same =
       entries.length === this.entries.length &&
@@ -199,13 +222,22 @@ export class AcmeToc extends AcmeSemanticElement {
         const old = this.entries[index];
         return entry.id === old.id && entry.href === old.href && entry.label === old.label && entry.level === old.level && entry.target === old.target && entry.heading === old.heading;
       });
-    if (!same) this.entries = Object.freeze(entries);
+    if (!same) {
+      this.entries = Object.freeze(entries);
+    }
     this.resize?.disconnect();
     this.resize = new ResizeObserver(this.schedule);
-    for (const entry of entries) this.resize.observe(entry.target);
-    if (this.scrollRoot) this.resize.observe(this.scrollRoot);
-    if (source.nodeType === 1) this.resize.observe(source as Element);
-    else if (source.nodeType === 9) this.resize.observe((source as Document).documentElement);
+    for (const entry of entries) {
+      this.resize.observe(entry.target);
+    }
+    if (this.scrollRoot) {
+      this.resize.observe(this.scrollRoot);
+    }
+    if (source.nodeType === 1) {
+      this.resize.observe(source as Element);
+    } else if (source.nodeType === 9) {
+      this.resize.observe((source as Document).documentElement);
+    }
   }
   private offsetPixels() {
     const measure = this.renderRoot?.querySelector<HTMLElement>("[data-offset]");
@@ -231,21 +263,29 @@ export class AcmeToc extends AcmeSemanticElement {
     }
   }
   private navigate = (event: MouseEvent, entry: Entry) => {
-    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+      return;
+    }
     event.preventDefault();
     const document = this.ownerDocument,
       view = document.defaultView!,
       root = this.scrollRoot;
     const top = entry.target.getBoundingClientRect().top - (root ? root.getBoundingClientRect().top + root.clientTop : 0) + (root ? root.scrollTop : view.scrollY) - this.offsetPixels();
-    if (view.location.hash !== new URL(entry.href, document.baseURI).hash) view.history.pushState(view.history.state, "", entry.href);
+    if (view.location.hash !== new URL(entry.href, document.baseURI).hash) {
+      view.history.pushState(view.history.state, "", entry.href);
+    }
     const target = entry.heading ?? entry.target;
     this.releaseFocus?.();
     const previous = target.getAttribute("tabindex");
-    if (previous === null) target.tabIndex = -1;
+    if (previous === null) {
+      target.tabIndex = -1;
+    }
     target.focus({ preventScroll: true });
     const release = () => {
       target.removeEventListener("blur", release);
-      if (previous === null && target.getAttribute("tabindex") === "-1") target.removeAttribute("tabindex");
+      if (previous === null && target.getAttribute("tabindex") === "-1") {
+        target.removeAttribute("tabindex");
+      }
     };
     target.addEventListener("blur", release, { once: true });
     this.releaseFocus = release;
@@ -262,7 +302,9 @@ export class AcmeToc extends AcmeSemanticElement {
       root.addEventListener("load", this.schedule, true);
       this.observer?.disconnect();
       this.observer = new MutationObserver((records) => {
-        if (records.some((record) => record.type === "childList" || record.attributeName === "id")) this.invalidate();
+        if (records.some((record) => record.type === "childList" || record.attributeName === "id")) {
+          this.invalidate();
+        }
       });
       this.observer.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ["id"] });
     }
@@ -290,7 +332,9 @@ export class AcmeToc extends AcmeSemanticElement {
     this.scrollTarget?.removeEventListener("scroll", this.schedule);
     this.ownerDocument.defaultView?.removeEventListener("resize", this.invalidate);
     this.ownerDocument.defaultView?.removeEventListener("hashchange", this.schedule);
-    if (this.frame) this.ownerDocument.defaultView?.cancelAnimationFrame(this.frame);
+    if (this.frame) {
+      this.ownerDocument.defaultView?.cancelAnimationFrame(this.frame);
+    }
     this.frame = 0;
     this.eventRoot = undefined;
     this.scrollTarget = undefined;
@@ -303,11 +347,15 @@ export class AcmeToc extends AcmeSemanticElement {
     return { label: message(this.themeContext.scope.effective.get().locale, "toc.label", "On this page") };
   }
   protected updated(changes: Map<string, unknown>) {
-    if (!this.isConnected) return;
+    if (!this.isConnected) {
+      return;
+    }
     const measure = this.renderRoot.querySelector<HTMLElement>("[data-offset]")!;
     measure.style.setProperty("--_toc-offset", this.offset);
     this.connect();
-    if (["source", "items", "levels", "scrollRoot", "offset"].some((key) => changes.has(key))) this.invalidate();
+    if (["source", "items", "levels", "scrollRoot", "offset"].some((key) => changes.has(key))) {
+      this.invalidate();
+    }
   }
   render() {
     const minimum = this.entries.length ? Math.min(...this.entries.map((entry) => entry.level)) : 1;

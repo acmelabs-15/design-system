@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const menu = (content: string, attributes = "") =>
   `<acme-menu ${attributes}><acme-menu-trigger slot="trigger">Actions</acme-menu-trigger><acme-menu-content aria-label="Actions">${content}</acme-menu-content></acme-menu>`;
 const items = '<acme-menu-item value="save">Save</acme-menu-item><acme-menu-item value="duplicate">Duplicate</acme-menu-item><acme-menu-item value="archive" disabled>Archive</acme-menu-item>';

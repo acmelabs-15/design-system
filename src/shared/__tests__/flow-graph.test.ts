@@ -1,6 +1,7 @@
 import { test, expect } from "bun:test";
 import { createFlowGraph, flowScene } from "../flow-graph";
 import { flowNodes, flowEdges } from "../flow-data";
+
 const nodes = flowNodes([
   { id: "graph", label: "Root", ports: [{ id: "n1", side: "start" }] },
   { id: "e0", label: "Target" },

@@ -15,10 +15,14 @@ test("scalars preserve zero, false and bracketed CSS; absence removes the overri
 
 test("five array positions map to the selected bands and skip only null or undefined", () => {
   expect(normalizeResponsive([0, null, 2, undefined, 4], number)).toEqual([
-    { min: 0, value: 0 }, { min: 52.5, value: 2 }, { min: 100, value: 4 },
+    { min: 0, value: 0 },
+    { min: 52.5, value: 2 },
+    { min: 100, value: 4 },
   ]);
   expect(normalizeResponsive([false, true, false], boolean)).toEqual([
-    { min: 0, value: false }, { min: 37.5, value: true }, { min: 52.5, value: false },
+    { min: 0, value: false },
+    { min: 37.5, value: true },
+    { min: 52.5, value: false },
   ]);
   expect(normalizeResponsive([, , 0], number)).toEqual([{ min: 52.5, value: 0 }]);
   expect(normalizeResponsive([], number)).toEqual([]);
@@ -49,7 +53,12 @@ test("Chakra categories order baseline, ascending minima and descending maximum-
 });
 
 test("equal minima use source query-text ties, not a numeric maximum or narrowest-first rule", () => {
-  const entries = [["mediumToLarge", "to75"], ["mediumOnly", "to52.5"], ["mediumToExtraLarge", "to100"], ["medium", "up"]] as const;
+  const entries = [
+    ["mediumToLarge", "to75"],
+    ["mediumOnly", "to52.5"],
+    ["mediumToExtraLarge", "to100"],
+    ["medium", "up"],
+  ] as const;
   const expected = [
     { min: 37.5, value: "up" },
     { min: 37.5, max: 100, value: "to100" },
@@ -73,8 +82,12 @@ test("all selected conditions normalize to fifteen unique intervals", () => {
   for (const [index, band] of bands.entries()) {
     conditions[band] = 1;
     conditions[`${band}Only`] = 1;
-    if (index) conditions[`${band}Down`] = 1;
-    for (const upper of bands.slice(index + 1)) conditions[`${band}To${upper[0].toUpperCase()}${upper.slice(1)}`] = 1;
+    if (index) {
+      conditions[`${band}Down`] = 1;
+    }
+    for (const upper of bands.slice(index + 1)) {
+      conditions[`${band}To${upper[0].toUpperCase()}${upper.slice(1)}`] = 1;
+    }
   }
   expect(Object.keys(conditions)).toHaveLength(24);
   expect(normalizeResponsive(conditions, number)).toHaveLength(15);
@@ -93,7 +106,8 @@ test("normalization returns frozen records and does not retain mutable container
 test("a pure transition table changes numeric rem bounds without mutating defaults", () => {
   const widths = { medium: 40, expanded: 60, large: 80, extraLarge: 120 };
   expect(normalizeResponsive({ mediumToLarge: 1, extraLarge: 2 }, number, widths)).toEqual([
-    { min: 40, max: 80, value: 1 }, { min: 120, value: 2 },
+    { min: 40, max: 80, value: 1 },
+    { min: 120, value: 2 },
   ]);
   widths.medium = 45;
   expect(normalizeResponsive({ medium: 1 }, number)).toEqual([{ min: 37.5, value: 1 }]);
@@ -117,18 +131,34 @@ test("nonplain objects from another realm remain invalid", () => {
   }
 });
 
-test.each([
-  null, new Date(), new Map(), Object.create({ medium: 1 }),
-  [1, 2, 3, 4, 5, 6], [[1]], { medium: [1] }, { medium: null }, { medium: undefined },
-  { small: 1 }, { extra: 1 }, { compactDown: 1 }, { largeToMedium: 1 }, { mediumToMedium: 1 },
-  { mediumToUnknown: 1 }, { Medium: 1 }, { medium: Infinity }, { medium: false },
-].map((input) => [input]))("rejects unsupported input shape or condition %#", (input) => {
+test.each(
+  [
+    null,
+    new Date(),
+    new Map(),
+    Object.create({ medium: 1 }),
+    [1, 2, 3, 4, 5, 6],
+    [[1]],
+    { medium: [1] },
+    { medium: null },
+    { medium: undefined },
+    { small: 1 },
+    { extra: 1 },
+    { compactDown: 1 },
+    { largeToMedium: 1 },
+    { mediumToMedium: 1 },
+    { mediumToUnknown: 1 },
+    { Medium: 1 },
+    { medium: Infinity },
+    { medium: false },
+  ].map((input) => [input]),
+)("rejects unsupported input shape or condition %#", (input) => {
   expect(() => normalizeResponsive(input, number)).toThrow();
 });
 
-test.each([
-  { medium: 0 }, { medium: -1 }, { medium: Infinity }, { medium: NaN },
-  { medium: 60 }, { large: 100 }, { extraLarge: 74 }, { small: 10 },
-])("rejects invalid or unordered transition tables %#", (widths) => {
-  expect(() => normalizeResponsive(1, number, widths)).toThrow();
-});
+test.each([{ medium: 0 }, { medium: -1 }, { medium: Infinity }, { medium: NaN }, { medium: 60 }, { large: 100 }, { extraLarge: 74 }, { small: 10 }])(
+  "rejects invalid or unordered transition tables %#",
+  (widths) => {
+    expect(() => normalizeResponsive(1, number, widths)).toThrow();
+  },
+);

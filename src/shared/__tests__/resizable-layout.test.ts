@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { resolveLayout, resizePair, togglePane, handleRange, type Pane, type Layout } from "../resizable-layout";
+
 const panels: Pane[] = [
   { value: "a", minSize: 10, maxSize: 90, collapsible: true, collapsedSize: 0 },
   { value: "b", minSize: 10, maxSize: 100 },

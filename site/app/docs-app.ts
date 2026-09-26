@@ -31,10 +31,15 @@ export class AcmeDocsApp extends LitElement {
   @atomState() private appearance: ThemeAppearance = "auto";
   private onAppearance = (event: CustomEvent) => {
     const value = event.detail?.value;
-    if (event.defaultPrevented || event.detail?.action !== "appearance" || !["auto", "light", "dark"].includes(value)) return;
+    if (event.defaultPrevented || event.detail?.action !== "appearance" || !["auto", "light", "dark"].includes(value)) {
+      return;
+    }
     this.appearance = value;
-    if (value === "auto") document.documentElement.removeAttribute("data-acme-appearance");
-    else document.documentElement.setAttribute("data-acme-appearance", value);
+    if (value === "auto") {
+      document.documentElement.removeAttribute("data-acme-appearance");
+    } else {
+      document.documentElement.setAttribute("data-acme-appearance", value);
+    }
     event.stopPropagation();
   };
   private nav: Nav = window.__docsNav ?? [];
@@ -50,27 +55,39 @@ export class AcmeDocsApp extends LitElement {
   private observedNavigation?: HTMLElement;
   private readonly wideLayout = matchMedia("(min-width: 901px)");
   private onLayoutChange = () => {
-    if (this.wideLayout.matches) this.menuOpen = false;
+    if (this.wideLayout.matches) {
+      this.menuOpen = false;
+    }
   };
   private onMenuChange = (event: CustomEvent<{ open: boolean }>) => {
-    if (event.target !== this.querySelector(".docs-menu")) return;
+    if (event.target !== this.querySelector(".docs-menu")) {
+      return;
+    }
     this.menuOpen = event.detail.open;
   };
   private onMenuLink = (event: MouseEvent) => {
-    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const anchor = event.composedPath().find(node => node instanceof HTMLAnchorElement);
-    if (!anchor) return;
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    const anchor = event.composedPath().find((node) => node instanceof HTMLAnchorElement);
+    if (!anchor) {
+      return;
+    }
     this.focusAfterMenu = true;
     this.menuOpen = false;
   };
   private focusHeading() {
     const heading = this.querySelector<HTMLElement>("main h1");
-    if (!heading) return;
+    if (!heading) {
+      return;
+    }
     heading.tabIndex = -1;
     heading.focus({ preventScroll: true });
   }
   private onMenuClosed = () => {
-    if (!this.focusAfterMenu) return;
+    if (!this.focusAfterMenu) {
+      return;
+    }
     this.focusAfterMenu = false;
     this.focusPage = false;
     this.focusHeading();
@@ -79,7 +96,9 @@ export class AcmeDocsApp extends LitElement {
   private request?: AbortController;
   private readonly examples = new Map<HTMLElement, ExampleController>();
   private disposeExamples() {
-    for (const example of this.examples.values()) example.dispose();
+    for (const example of this.examples.values()) {
+      example.dispose();
+    }
     this.examples.clear();
   }
 
@@ -119,12 +138,16 @@ export class AcmeDocsApp extends LitElement {
   private onHash = (e: MouseEvent) => {
     const a = e.composedPath().find((n) => (n as HTMLElement).tagName === "A") as HTMLAnchorElement | undefined;
     const href = a?.getAttribute("href");
-    if (e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey || !a || a.getRootNode() !== document || !href?.startsWith("#")) return;
+    if (e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey || !a || a.getRootNode() !== document || !href?.startsWith("#")) {
+      return;
+    }
     e.preventDefault();
     if (href.length > 1) {
       const target = document.getElementById(href.slice(1));
       target?.scrollIntoView({ block: "start" });
-      if (target?.id === "docs-main") target.focus({ preventScroll: true });
+      if (target?.id === "docs-main") {
+        target.focus({ preventScroll: true });
+      }
       history.replaceState(history.state, "", href);
     }
   };
@@ -149,22 +172,37 @@ export class AcmeDocsApp extends LitElement {
     if (body === undefined) {
       try {
         const r = await fetch(`${prefix}/pages/${file}.html`, { cache: "no-cache", signal: request.signal });
-        if (generation !== this.loadGeneration) return false;
-        if (r.status === 404) return this.load("__missing");
-        if (!r.ok) throw new Error(`The page request failed (${r.status}).`);
+        if (generation !== this.loadGeneration) {
+          return false;
+        }
+        if (r.status === 404) {
+          return this.load("__missing");
+        }
+        if (!r.ok) {
+          throw new Error(`The page request failed (${r.status}).`);
+        }
         body = await r.text();
-        if (generation !== this.loadGeneration) return false;
+        if (generation !== this.loadGeneration) {
+          return false;
+        }
         cache.set(file, body);
       } catch (error) {
-        if (request.signal.aborted || generation !== this.loadGeneration) return false;
-        this.disposeExamples(); this.page = file; this.body = ""; this.missing = false;
+        if (request.signal.aborted || generation !== this.loadGeneration) {
+          return false;
+        }
+        this.disposeExamples();
+        this.page = file;
+        this.body = "";
+        this.missing = false;
         this.loadError = error instanceof Error ? error.message : String(error);
         this.focusPage = focusPage;
         return true;
       }
     }
     this.page = file;
-    if (this.body !== body) this.disposeExamples();
+    if (this.body !== body) {
+      this.disposeExamples();
+    }
     this.body = body;
     this.missing = false;
     this.loadError = "";
@@ -173,7 +211,9 @@ export class AcmeDocsApp extends LitElement {
     const census = file.startsWith("census/") ? this.flat.find((i) => i.href === `components/${file.slice(7)}`) : undefined;
     const item = census ? { ...census, title: `${census.title} (census)` } : this.flat.find((i) => i.href === file);
     document.title = file === "index" ? "ACME Design System" : `${item?.title ?? "Not found"} · ACME Design System`;
-    if (!location.hash) window.scrollTo(0, 0);
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
     return true;
   }
 
@@ -187,21 +227,35 @@ export class AcmeDocsApp extends LitElement {
         this.navigationObserver = new ResizeObserver(measure);
         this.navigationObserver.observe(navigation);
         measure();
-      } else this.style.setProperty("--docs-navigation-height", "0px");
+      } else {
+        this.style.setProperty("--docs-navigation-height", "0px");
+      }
     }
     if (this.focusPage && !this.menuOpen && !this.focusAfterMenu) {
       this.focusPage = false;
       this.focusHeading();
     }
     // Content links are written root-relative; on a project site they need the prefix.
-    if (prefix)
+    if (prefix) {
       for (const a of this.querySelectorAll<HTMLAnchorElement>('main a[href^="/"]:not([data-prefixed])')) {
         a.setAttribute("href", prefix + a.getAttribute("href"));
         a.dataset.prefixed = "";
       }
-    if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: "start" });
-    for (const [host, example] of this.examples) if (!this.contains(host)) { example.dispose(); this.examples.delete(host); }
-    for (const host of this.querySelectorAll<HTMLElement>(".showcase[data-example]")) if (!this.examples.has(host)) this.examples.set(host, new ExampleController(host, { registerTheme, createToastStore }));
+    }
+    if (location.hash) {
+      document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: "start" });
+    }
+    for (const [host, example] of this.examples) {
+      if (!this.contains(host)) {
+        example.dispose();
+        this.examples.delete(host);
+      }
+    }
+    for (const host of this.querySelectorAll<HTMLElement>(".showcase[data-example]")) {
+      if (!this.examples.has(host)) {
+        this.examples.set(host, new ExampleController(host, { registerTheme, createToastStore }));
+      }
+    }
   }
 
   private frame() {
@@ -216,18 +270,28 @@ export class AcmeDocsApp extends LitElement {
 
   render() {
     const cur = (href: string) => (this.page === href ? "page" : nothing);
-    const section = this.page.startsWith("components/") ? "components" : this.page.startsWith("recipes/") ? "recipes" : ["colors", "typography", "materials", "tokens"].includes(this.page) ? "foundations" : this.page === "index" ? "start" : "";
+    const section = this.page.startsWith("components/")
+      ? "components"
+      : this.page.startsWith("recipes/")
+        ? "recipes"
+        : ["colors", "typography", "materials", "tokens"].includes(this.page)
+          ? "foundations"
+          : this.page === "index"
+            ? "start"
+            : "";
     return html`<acme-theme .appearance=${this.appearance} @acme-request=${this.onAppearance}><a class="docs-skip" href="#docs-main">Skip to content</a><acme-app-bar class="docs-header" placement="sticky">
         <acme-app-bar-start><a class="docs-brand" href="${prefix}/">${ICON_CHART}<strong>ACME Design System</strong></a></acme-app-bar-start>
         <nav class="docs-header-nav" aria-label="Sections">
         <a href="${prefix}/" aria-current=${section === "start" ? "page" : nothing}>Get Started</a>
         <a href="${prefix}/colors" aria-current=${section === "foundations" ? "page" : nothing}>Foundations</a>
         <a href="${prefix}/components/avatar" aria-current=${section === "components" ? "page" : nothing}>Components</a>
-        ${this.nav.find(group => group.group === "Recipes")?.items[0] ? html`<a href="${prefix}/${this.nav.find(group => group.group === "Recipes")!.items[0]!.href}" aria-current=${section === "recipes" ? "page" : nothing}>Recipes</a>` : nothing}
+        ${this.nav.find((group) => group.group === "Recipes")?.items[0] ? html`<a href="${prefix}/${this.nav.find((group) => group.group === "Recipes")!.items[0]!.href}" aria-current=${section === "recipes" ? "page" : nothing}>Recipes</a>` : nothing}
         <a href="https://github.com/acmelabs-15/design-system" rel="external" target="_blank">GitHub</a>
         <a href="https://www.npmjs.com/package/@acmelabs/design-system" rel="external" target="_blank">npm</a>
       </nav>
-        <acme-app-bar-end><acme-button id="docs-menu-button" class="docs-menu-button" variant="tertiary" size="small" aria-label="Open page navigation" aria-haspopup="dialog" aria-expanded=${String(this.menuOpen)} @click=${() => { this.menuOpen = true; }}>Pages</acme-button><acme-theme-switcher class="docs-header-appearance" size="small" .value=${this.appearance}></acme-theme-switcher></acme-app-bar-end>
+        <acme-app-bar-end><acme-button id="docs-menu-button" class="docs-menu-button" variant="tertiary" size="small" aria-label="Open page navigation" aria-haspopup="dialog" aria-expanded=${String(this.menuOpen)} @click=${() => {
+          this.menuOpen = true;
+        }}>Pages</acme-button><acme-theme-switcher class="docs-header-appearance" size="small" .value=${this.appearance}></acme-theme-switcher></acme-app-bar-end>
       </acme-app-bar>
       <div class="docs">
         <nav class="docs-side" aria-label="Pages">
@@ -238,7 +302,7 @@ export class AcmeDocsApp extends LitElement {
       <acme-drawer class="docs-menu" placement="start" size="min(22rem, 100vw)" .open=${this.menuOpen} return-focus="#docs-menu-button" @acme-open-change=${this.onMenuChange} @acme-after-close=${this.onMenuClosed}>
         <h2 slot="heading">Documentation pages</h2>
         <nav class="docs-menu-links" aria-label="Mobile pages" @click=${this.onMenuLink}>
-          ${this.nav.map(group => html`<h3 class="grp">${group.group}</h3>${group.items.map(item => html`<a href="${prefix}/${item.href === "index" ? "" : item.href}" aria-current=${cur(item.href)}>${item.title}</a>`)}`)}
+          ${this.nav.map((group) => html`<h3 class="grp">${group.group}</h3>${group.items.map((item) => html`<a href="${prefix}/${item.href === "index" ? "" : item.href}" aria-current=${cur(item.href)}>${item.title}</a>`)}`)}
           <h3 class="grp">Project</h3><a href="https://github.com/acmelabs-15/design-system" rel="external" target="_blank">GitHub</a><a href="https://www.npmjs.com/package/@acmelabs/design-system" rel="external" target="_blank">npm</a>
         </nav>
         <acme-theme-switcher slot="footer" size="small" .value=${this.appearance}></acme-theme-switcher><acme-drawer-close slot="footer">Close navigation</acme-drawer-close>

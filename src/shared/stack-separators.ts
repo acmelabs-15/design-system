@@ -37,9 +37,13 @@ export class StackSeparators implements ReactiveController {
     new StoreSelector(host, () => this.state);
   }
   schedule = (): void => {
-    if (!this.connected || !this.options.enabled() || this.frame) return;
+    if (!this.connected || !this.options.enabled() || this.frame) {
+      return;
+    }
     const view = this.host.ownerDocument.defaultView;
-    if (!view) return;
+    if (!view) {
+      return;
+    }
     this.frame = {
       view,
       id: view.requestAnimationFrame(() => {
@@ -49,28 +53,40 @@ export class StackSeparators implements ReactiveController {
     };
   };
   private write(property: string, value: string): void {
-    if (!this.root) return;
+    if (!this.root) {
+      return;
+    }
     let owned = this.values.get(property);
     if (!owned) {
       owned = { previous: this.root.style.getPropertyValue(property), priority: this.root.style.getPropertyPriority(property) };
       this.values.set(property, owned);
     }
-    if (owned.requested === value && this.root.style.getPropertyValue(property) === owned.written) return;
+    if (owned.requested === value && this.root.style.getPropertyValue(property) === owned.written) {
+      return;
+    }
     this.root.style.setProperty(property, value);
     owned.requested = value;
     owned.written = this.root.style.getPropertyValue(property);
   }
   private restore(): void {
-    if (this.root)
+    if (this.root) {
       for (const [property, owned] of this.values) {
-        if (this.root.style.getPropertyValue(property) !== owned.written) continue;
-        if (owned.previous) this.root.style.setProperty(property, owned.previous, owned.priority);
-        else this.root.style.removeProperty(property);
+        if (this.root.style.getPropertyValue(property) !== owned.written) {
+          continue;
+        }
+        if (owned.previous) {
+          this.root.style.setProperty(property, owned.previous, owned.priority);
+        } else {
+          this.root.style.removeProperty(property);
+        }
       }
+    }
     this.values.clear();
   }
   private warn(message: string): void {
-    if (this.diagnostic !== message) console.warn(this.host.localName, message);
+    if (this.diagnostic !== message) {
+      console.warn(this.host.localName, message);
+    }
     this.diagnostic = message;
   }
   private bind(root: HTMLElement): void {
@@ -81,12 +97,16 @@ export class StackSeparators implements ReactiveController {
     this.resize.observe(root);
     this.resize.observe(this.host);
     const meter = root.querySelector("[data-stack-measure]");
-    if (meter) this.resize.observe(meter);
+    if (meter) {
+      this.resize.observe(meter);
+    }
     this.mutation = new MutationObserver(this.schedule);
     this.mutation.observe(this.host, { childList: true, subtree: true, attributes: true, characterData: true });
     let ancestor: Element | null = this.host;
     while (ancestor) {
-      if (ancestor !== this.host) this.mutation.observe(ancestor, { attributes: true });
+      if (ancestor !== this.host) {
+        this.mutation.observe(ancestor, { attributes: true });
+      }
       const scope = ancestor.getRootNode();
       ancestor = ancestor.assignedSlot ?? ancestor.parentElement ?? (scope.nodeType === 11 && "host" in scope ? (scope as ShadowRoot).host : null);
     }
@@ -102,10 +122,14 @@ export class StackSeparators implements ReactiveController {
     this.cleanup.push(() => fonts?.removeEventListener("loadingdone", this.schedule));
   }
   private measure(): void {
-    if (!this.connected || !this.options.enabled() || !this.root || !this.slot) return;
+    if (!this.connected || !this.options.enabled() || !this.root || !this.slot) {
+      return;
+    }
     const root = this.root,
       view = this.host.ownerDocument.defaultView;
-    if (!view) return;
+    if (!view) {
+      return;
+    }
     const assigned = this.slot.assignedNodes({ flatten: true });
     if (assigned.some((node) => node.nodeType === 3 && !!node.textContent?.trim())) {
       this.warn("Automatic separators require element children; text remains ordinary Stack content.");
@@ -126,8 +150,12 @@ export class StackSeparators implements ReactiveController {
       return child.getClientRects().length > 0 && style.display !== "none" && style.position !== "absolute" && style.position !== "fixed";
     });
     if (members.length !== this.observedMembers.length || members.some((member, i) => member !== this.observedMembers[i])) {
-      for (const member of this.observedMembers) this.resize?.unobserve(member);
-      for (const member of members) this.resize?.observe(member);
+      for (const member of this.observedMembers) {
+        this.resize?.unobserve(member);
+      }
+      for (const member of members) {
+        this.resize?.observe(member);
+      }
       this.observedMembers = members;
     }
     const authored = view.getComputedStyle(this.host),
@@ -159,7 +187,9 @@ export class StackSeparators implements ReactiveController {
     const measuredWidth = (meter?.width ?? 0) / scaleX,
       inset = (meter?.height ?? 0) / scaleY;
     const overlay = root.querySelector("[data-stack-overlay]")?.getBoundingClientRect();
-    if (!overlay) return;
+    if (!overlay) {
+      return;
+    }
     const offsetX = (bounds.x - overlay.x) / scaleX + leftBorder,
       offsetY = (bounds.y - overlay.y) / scaleY + topBorder;
     const rectangles = stackSeparatorRectangles(
@@ -205,7 +235,9 @@ export class StackSeparators implements ReactiveController {
     this.mutation = undefined;
     this.slot?.removeEventListener("slotchange", this.schedule);
     this.slot = undefined;
-    for (const release of this.cleanup.splice(0)) release();
+    for (const release of this.cleanup.splice(0)) {
+      release();
+    }
     this.restore();
     this.root = undefined;
   }
@@ -219,8 +251,12 @@ export class StackSeparators implements ReactiveController {
       return;
     }
     const root = this.options.root();
-    if (!root) return;
-    if (root !== this.root) this.bind(root);
+    if (!root) {
+      return;
+    }
+    if (root !== this.root) {
+      this.bind(root);
+    }
     this.schedule();
   }
   hostDisconnected(): void {

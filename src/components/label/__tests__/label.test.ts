@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Label retains real label content and follows its for input", async () => {
   const label = document.createElement("acme-label"),
     text = document.createTextNode("Email address");

@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 const mount = async (markup = "<acme-slider></acme-slider>") => {
   const box = document.createElement("div");
   box.innerHTML = markup;
@@ -30,7 +31,9 @@ test("Slider publishes live and committed keyboard edits once, keeping thumb ord
   const { slider, box } = await mount('<acme-slider value="[40,60]" min-steps-between-values="5"></acme-slider>');
   try {
     const seen: string[] = [];
-    for (const name of ["acme-input", "acme-change", "acme-commit"]) slider.addEventListener(name, (e) => seen.push(name));
+    for (const name of ["acme-input", "acme-change", "acme-commit"]) {
+      slider.addEventListener(name, (e) => seen.push(name));
+    }
     const input = slider.shadowRoot!.querySelector("input")!;
     input.dispatchEvent(new KeyboardEvent("keydown", { key: "End", bubbles: true, cancelable: true }));
     expect(slider.value).toEqual([55, 60]);

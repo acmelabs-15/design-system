@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import type { Doc } from "../../site";
+
 export const doc: Doc = {
   id: "forms",
   title: "Forms",
@@ -11,7 +12,8 @@ export const doc: Doc = {
       p: "The application renders label and error content in Field. bindField keeps value or checked and invalid presentation in sync with the typed field state.",
       html: "<docs-form-demo></docs-form-demo>",
       language: "typescript",
-      registerFunction:"registerManagedFormExample", sourcePath: "examples/forms/lit.ts",
+      registerFunction: "registerManagedFormExample",
+      sourcePath: "examples/forms/lit.ts",
       code: readFileSync(new URL("../../../examples/forms/lit.ts", import.meta.url), "utf8"),
     },
     {

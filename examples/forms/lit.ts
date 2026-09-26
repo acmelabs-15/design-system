@@ -14,8 +14,7 @@ export class ManagedFormExample extends LitElement {
   private form = new TanStackFormController(this, {
     defaultValues: { name: "", email: "", plan: "hobby", updates: true },
     onSubmit: ({ value }) => {
-      this.querySelector("output")!.textContent =
-        `Submitted ${value.name} with the ${value.plan} plan.`;
+      this.querySelector("output")!.textContent = `Submitted ${value.name} with the ${value.plan} plan.`;
     },
   });
   createRenderRoot() {

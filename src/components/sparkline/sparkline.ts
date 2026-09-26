@@ -22,7 +22,9 @@ export class AcmeSparkline extends AcmeElement {
     return this.data;
   }
   set values(value: readonly (number | null)[]) {
-    if (!Array.isArray(value) || value.some((item) => item !== null && typeof item !== "number")) throw new TypeError("Sparkline values require numbers or null gaps");
+    if (!Array.isArray(value) || value.some((item) => item !== null && typeof item !== "number")) {
+      throw new TypeError("Sparkline values require numbers or null gaps");
+    }
     const previous = this.data;
     this.data = Object.freeze([...value]);
     this.requestUpdate("values", previous);
@@ -33,7 +35,9 @@ export class AcmeSparkline extends AcmeElement {
     return this.trend;
   }
   set direction(value: "up" | "down" | "flat" | undefined) {
-    if (value !== undefined && !["up", "down", "flat"].includes(value)) throw new TypeError("Invalid Sparkline direction");
+    if (value !== undefined && !["up", "down", "flat"].includes(value)) {
+      throw new TypeError("Invalid Sparkline direction");
+    }
     const previous = this.trend;
     this.trend = value;
     this.requestUpdate("direction", previous);
@@ -44,7 +48,9 @@ export class AcmeSparkline extends AcmeElement {
     return this.meaning;
   }
   set sentiment(value: "positive" | "negative" | "neutral") {
-    if (!["positive", "negative", "neutral"].includes(value)) throw new TypeError("Invalid Sparkline sentiment");
+    if (!["positive", "negative", "neutral"].includes(value)) {
+      throw new TypeError("Invalid Sparkline sentiment");
+    }
     const previous = this.meaning;
     this.meaning = value;
     this.requestUpdate("sentiment", previous);

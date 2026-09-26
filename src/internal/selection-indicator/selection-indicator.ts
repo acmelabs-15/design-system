@@ -9,6 +9,7 @@ import { readMotionSpring } from "../../shared/motion-spring";
 import type { MotionScheme, MotionSpeed } from "../../shared/motion-tokens";
 import { motionCss } from "../../generated/shared/motion.styles";
 import { selectionIndicatorCss } from "../../generated/shared/selection-indicator.styles";
+
 export type IndicatorRect = Readonly<{ x: number; y: number; width: number; height: number }>;
 export type IndicatorGeometry = (target: IndicatorRect, frame: Readonly<{ width: number; height: number }>, orientation: "horizontal" | "vertical") => IndicatorRect;
 type Springs = Record<keyof IndicatorRect, SpringController>;
@@ -38,11 +39,12 @@ export class AcmeSelectionIndicator extends AcmeElement {
     return !!this.springs && keys.some((key) => this.springs![key].isAnimating);
   }
   private stopSprings() {
-    if (this.springs)
+    if (this.springs) {
       for (const spring of Object.values(this.springs)) {
         spring.hostDisconnected();
         this.removeController(spring);
       }
+    }
     this.springs = undefined;
   }
   private stopObservation() {
@@ -52,7 +54,9 @@ export class AcmeSelectionIndicator extends AcmeElement {
     this.observed = undefined;
   }
   private preference = () => {
-    if (this.media?.matches) this.stopSprings();
+    if (this.media?.matches) {
+      this.stopSprings();
+    }
     this.refresh();
     this.requestUpdate();
   };
@@ -66,14 +70,21 @@ export class AcmeSelectionIndicator extends AcmeElement {
     this.observed = target;
     const generation = this.generation;
     const cleanup = autoUpdate(target, this, () => {
-      if (generation === this.generation) this.refresh();
+      if (generation === this.generation) {
+        this.refresh();
+      }
     });
-    if (generation !== this.generation || !this.isConnected) cleanup();
-    else this.cleanup = cleanup;
+    if (generation !== this.generation || !this.isConnected) {
+      cleanup();
+    } else {
+      this.cleanup = cleanup;
+    }
   }
   private hide() {
     this.stopSprings();
-    if (this.rectangle !== undefined) this.rectangle = undefined;
+    if (this.rectangle !== undefined) {
+      this.rectangle = undefined;
+    }
   }
   private reference() {
     const box = this.getBoundingClientRect();
@@ -83,7 +94,9 @@ export class AcmeSelectionIndicator extends AcmeElement {
     const target = this.target;
     if (!this.isConnected || !target?.isConnected || target.ownerDocument !== this.ownerDocument) {
       this.hide();
-      if (this.observed) this.stopObservation();
+      if (this.observed) {
+        this.stopObservation();
+      }
       return;
     }
     if (this.observed !== target) {
@@ -105,7 +118,9 @@ export class AcmeSelectionIndicator extends AcmeElement {
     }
     const config = readMotionSpring(this, this.scheme, "spatial", this.speed),
       parameters = JSON.stringify(config);
-    if (this.rectangle && keys.every((key) => Math.abs(this.rectangle![key] - next[key]) < 0.01) && this.parameters === parameters) return;
+    if (this.rectangle && keys.every((key) => Math.abs(this.rectangle![key] - next[key]) < 0.01) && this.parameters === parameters) {
+      return;
+    }
     const paint = this.renderRoot?.querySelector<HTMLElement>("[part=paint]");
     const current = this.rectangle && paint?.getBoundingClientRect();
     const from =
@@ -142,18 +157,25 @@ export class AcmeSelectionIndicator extends AcmeElement {
     this.media?.removeEventListener("change", this.preference);
     this.declarations = this.ownerDocument.createElement("span").style;
     this.media = this.ownerDocument.defaultView!.matchMedia("(prefers-reduced-motion: reduce)");
-    if (this.isConnected) this.media.addEventListener("change", this.preference);
+    if (this.isConnected) {
+      this.media.addEventListener("change", this.preference);
+    }
     this.requestUpdate();
   }
   protected updated(changed: PropertyValues) {
     const theme = this.themeContext.scope.effective.get();
-    if (this.target !== this.observed) this.observe();
-    else if (changed.has("geometry") || changed.has("orientation") || changed.has("scheme") || changed.has("speed") || theme !== this.theme) this.refresh();
+    if (this.target !== this.observed) {
+      this.observe();
+    } else if (changed.has("geometry") || changed.has("orientation") || changed.has("scheme") || changed.has("speed") || theme !== this.theme) {
+      this.refresh();
+    }
     this.theme = theme;
   }
   private paintStyle() {
     const rectangle = this.rectangle;
-    if (!rectangle) return "";
+    if (!rectangle) {
+      return "";
+    }
     const values = Object.fromEntries(keys.map((key) => [key, this.springs?.[key].currentValue ?? rectangle[key]])) as Record<keyof IndicatorRect, number>;
     if (!keys.every((key) => Number.isFinite(values[key]))) {
       this.stopSprings();
@@ -166,8 +188,9 @@ export class AcmeSelectionIndicator extends AcmeElement {
       "--indicator-height": `${rectangle.height}px`,
       "--indicator-scale-x": String(Math.max(0.001, values.width) / rectangle.width),
       "--indicator-scale-y": String(Math.max(0.001, values.height) / rectangle.height),
-    }))
+    })) {
       this.declarations.setProperty(property, value);
+    }
     return this.declarations.cssText;
   }
   render() {

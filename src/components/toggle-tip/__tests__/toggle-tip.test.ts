@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/toggle-tip";
+
 test("Toggle Tip keeps explicit visibility and independent dismissal flags", () => {
   const el = document.createElement("acme-toggle-tip");
   expect(el.open).toBe(false);

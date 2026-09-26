@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { IconArtwork, configureIcons, iconDefaults } from "../icon-artwork";
+
 const home = { viewBox: "0 -960 960 960", paths: [{ d: "M240-200h120v-240h240v240h120v-360L480-740 240-560v360Z" }] };
 test("artwork owns immutable geometry and identifies unavailable styles", () => {
   const source = structuredClone(home),

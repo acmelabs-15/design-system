@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { DocumentationCatalog, resourceUri, validateRelease, type DocumentationRelease } from "../catalog";
+
 const release = (version = "0.2.0"): DocumentationRelease => ({
   schemaVersion: 1,
   packageName: "@acmelabs/design-system",
@@ -46,8 +47,9 @@ describe("versioned documentation catalog", () => {
   test("requires an explicit exact version and never substitutes a framework", () => {
     const catalog = new DocumentationCatalog([release()]);
     expect(catalog.resolveVersion(undefined, "html")).toMatchObject({ ok: false, error: { code: "version_required" } });
-    for (const version of ["latest", "^0.2.0", "0.3.0"])
+    for (const version of ["latest", "^0.2.0", "0.3.0"]) {
       expect(catalog.resolveVersion(version, "react")).toMatchObject({ ok: false, error: { code: "unknown_version" } });
+    }
     expect(catalog.resolveVersion("0.2.0", "html")).toEqual({
       ok: true,
       value: { version: "0.2.0", framework: "html" },
@@ -64,7 +66,9 @@ describe("versioned documentation catalog", () => {
     (source.documents[0]!.declaration! as Record<string, unknown>).name = "Tampered";
     const result = catalog.getComponent("0.2.0", "acme-input");
     expect(result.ok).toBe(true);
-    if (!result.ok) throw new Error("Expected a component");
+    if (!result.ok) {
+      throw new Error("Expected a component");
+    }
     expect(result.value.declaration).toEqual(release().documents[0]!.declaration!);
     (result.value.declaration as Record<string, unknown>).name = "Tampered again";
     expect(catalog.getComponent("0.2.0", "acme-input")).toMatchObject({
@@ -84,11 +88,12 @@ describe("versioned documentation catalog", () => {
     });
     const result = catalog.searchDocs("0.2.0", "react", "form");
     expect(result).toMatchObject({ ok: true, value: { results: [{ id: "acme-input" }] } });
-    for (const limit of [0, 51, 1.5, Infinity])
+    for (const limit of [0, 51, 1.5, Infinity]) {
       expect(catalog.searchDocs("0.2.0", "html", "form", limit)).toMatchObject({
         ok: false,
         error: { code: "invalid_request" },
       });
+    }
     expect(catalog.searchDocs("0.2.0", "html", " ")).toMatchObject({ ok: false, error: { code: "invalid_request" } });
     expect(catalog.searchDocs("0.2.0", "html", "a".repeat(501))).toMatchObject({
       ok: false,
@@ -97,21 +102,19 @@ describe("versioned documentation catalog", () => {
   });
   test("uses matching stable resources and never interprets resource IDs as filesystem paths", () => {
     const catalog = new DocumentationCatalog([release()]);
-    for (const resource of catalog.listResources())
+    for (const resource of catalog.listResources()) {
       expect(catalog.readResource(resource.uri)).toMatchObject({
         ok: true,
         value: { uri: resource.uri, version: "0.2.0" },
       });
+    }
     expect(catalog.readResource(resourceUri("0.3.0", "component", "acme-input"))).toMatchObject({
       ok: false,
       error: { code: "unknown_version" },
     });
-    for (const uri of [
-      "file:///etc/passwd",
-      "acme-docs://release/0.2.0/component/../../secret",
-      "https://example.com/",
-    ])
+    for (const uri of ["file:///etc/passwd", "acme-docs://release/0.2.0/component/../../secret", "https://example.com/"]) {
       expect(catalog.readResource(uri)).toMatchObject({ ok: false, error: { code: "unknown_id" } });
+    }
   });
   test("rejects incomplete and duplicate release records", () => {
     expect(() => validateRelease({ ...release(), version: "latest" })).toThrow();

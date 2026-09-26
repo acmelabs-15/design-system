@@ -30,7 +30,9 @@ export class AcmeCheckboxCard extends AcmeCheckbox {
     return this.appearance.effective.get().variant!;
   }
   set variant(value: "default" | "secondary" | undefined) {
-    if (value !== undefined && value !== "default" && value !== "secondary") throw new TypeError("Invalid Checkbox Card variant");
+    if (value !== undefined && value !== "default" && value !== "secondary") {
+      throw new TypeError("Invalid Checkbox Card variant");
+    }
     const previous = this.variant;
     this.appearance.setAuthored({ variant: value });
     this.requestUpdate("variant", previous);
@@ -45,8 +47,12 @@ export class AcmeCheckboxCard extends AcmeCheckbox {
     const description = this.renderRoot?.querySelector("[part=description]");
     const field = this.field.association.defaults;
     const descriptions: Element[] = [...(field.describedByElements ?? [])];
-    if (this.content?.has("heading") && this.content.has("") && body) descriptions.push(body);
-    if (this.content?.has("description") && description) descriptions.push(description);
+    if (this.content?.has("heading") && this.content.has("") && body) {
+      descriptions.push(body);
+    }
+    if (this.content?.has("description") && description) {
+      descriptions.push(description);
+    }
     return { labelledByElements: external.length ? external : field.labelledByElements?.length ? field.labelledByElements : label ? [label] : [], describedByElements: descriptions };
   }
   protected renderControl() {

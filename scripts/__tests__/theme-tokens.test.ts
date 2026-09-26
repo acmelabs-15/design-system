@@ -38,7 +38,9 @@ function fixture() {
   return root;
 }
 afterEach(() => {
-  for (const root of roots.splice(0)) fs.rmSync(root, { recursive: true, force: true });
+  for (const root of roots.splice(0)) {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("document selector normalization preserves automatic appearance guards and unrelated attributes", () => {
@@ -72,7 +74,9 @@ test("appearance output includes changed values and dependent aliases, not invar
   expect(output.appearanceProperties).toEqual(["--accent", "--bg", "--ds-background-100", "--ds-blue-700"]);
   expect(output.appearanceCss).toContain("--accent: var(--ds-blue-700)");
   expect(output.appearanceCss).toContain("color-scheme: dark");
-  for (const property of ["--sans", "--gap", "--chart-1", "--acme-form-font", "--acme-spacing-2", "--acme-font-weight-400"]) expect(output.appearanceCss).not.toContain(`${property}:`);
+  for (const property of ["--sans", "--gap", "--chart-1", "--acme-form-font", "--acme-spacing-2", "--acme-font-weight-400"]) {
+    expect(output.appearanceCss).not.toContain(`${property}:`);
+  }
 });
 
 test("full reset includes invariant and canonical defaults while ambient document rules stay outside", () => {
@@ -103,12 +107,14 @@ test("compact density emits layout, table and action roles with a normal reset p
   const output = generateThemeStyles(fixture());
   expect(output.compactCss).toContain('data-acme-density="normal"');
   expect(output.compactCss).toContain('data-acme-density="compact"');
-  for (const value of ["--acme-layout-gap-2: .375rem", "--acme-layout-gap-4: .75rem", "--acme-table-padding-block: .3125rem", "--acme-table-padding-inline: .5rem"])
+  for (const value of ["--acme-layout-gap-2: .375rem", "--acme-layout-gap-4: .75rem", "--acme-table-padding-block: .3125rem", "--acme-table-padding-inline: .5rem"]) {
     expect(output.compactCss).toContain(value);
+  }
   expect(output.compactCss).not.toContain("--acme-spacing-");
   expect(output.compactCss).not.toContain("font-size");
-  for (const value of ["--acme-button-small-height: 1.75rem", "--acme-button-medium-height: 2rem", "--acme-button-large-height: 2.25rem", "--acme-button-padding-inline: .5rem"])
+  for (const value of ["--acme-button-small-height: 1.75rem", "--acme-button-medium-height: 2rem", "--acme-button-large-height: 2.25rem", "--acme-button-padding-inline: .5rem"]) {
     expect(output.compactCss).toContain(value);
+  }
   expect(output.hooks.compactTargetMinimumPx).toBe(24);
   expect(output.hooks.normalDensitySurfaces).toEqual(["menu", "dialog", "toast"]);
 });

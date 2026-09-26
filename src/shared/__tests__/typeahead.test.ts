@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { Typeahead } from "../typeahead";
+
 const fixture = () => {
   let current: string | undefined,
     time = 0;
@@ -47,7 +48,9 @@ test("repeated characters cycle while a multi-letter prefix retains its match", 
 test("a buffered space extends a label instead of activating an item", () => {
   const f = fixture();
   expect(f.key(" ").handled).toBe(false);
-  for (const key of "save a") f.key(key);
+  for (const key of "save a") {
+    f.key(key);
+  }
   expect(f.current).toBe("Save as");
 });
 test("locale search handles accents and ignores canceled/composing keys", () => {

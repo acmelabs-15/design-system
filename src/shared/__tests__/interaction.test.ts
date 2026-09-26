@@ -4,7 +4,9 @@ import { Interaction } from "../interaction";
 
 const resources: Interaction[] = [];
 afterEach(() => {
-  for (const interaction of resources.splice(0)) interaction.detach();
+  for (const interaction of resources.splice(0)) {
+    interaction.detach();
+  }
   document.body.replaceChildren();
 });
 function fixture(options: ConstructorParameters<typeof Interaction>[1] = {}) {
@@ -14,7 +16,9 @@ function fixture(options: ConstructorParameters<typeof Interaction>[1] = {}) {
   document.body.append(element);
   const interaction = new Interaction(host, options);
   resources.push(interaction);
-  for (const controller of controllers) controller.hostConnected?.();
+  for (const controller of controllers) {
+    controller.hostConnected?.();
+  }
   interaction.attach(element);
   return { element, interaction, controllers };
 }
@@ -34,7 +38,9 @@ test("disconnect removes temporary window release listeners and clears visual st
   const add = window.addEventListener.bind(window),
     remove = window.removeEventListener.bind(window);
   window.addEventListener = ((type: string, listener: EventListenerOrEventListenerObject, options?: unknown) => {
-    if (["pointerup", "pointercancel", "blur"].includes(type)) (added.get(type) ?? (added.set(type, new Set()), added.get(type)!)).add(listener);
+    if (["pointerup", "pointercancel", "blur"].includes(type)) {
+      (added.get(type) ?? (added.set(type, new Set()), added.get(type)!)).add(listener);
+    }
     add(type, listener, options as AddEventListenerOptions);
   }) as typeof window.addEventListener;
   window.removeEventListener = ((type: string, listener: EventListenerOrEventListenerObject, options?: unknown) => {
@@ -67,7 +73,9 @@ test("an unrelated pointer cannot end the active pointer's visual press", () => 
 test("reconnect restores the retained target without requiring another attach call", () => {
   const { element, interaction, controllers } = fixture();
   interaction.hostDisconnected();
-  for (const controller of controllers) controller.hostConnected?.();
+  for (const controller of controllers) {
+    controller.hostConnected?.();
+  }
   element.dispatchEvent(pointer("pointerenter"));
   expect(element.hasAttribute("data-hover")).toBe(true);
   element.dispatchEvent(pointer("pointerdown"));
@@ -84,7 +92,9 @@ test("touch does not hover, and disabling cancels current visual interaction", (
   element.dispatchEvent(pointer("pointerenter"));
   element.dispatchEvent(pointer("pointerdown"));
   disabled = true;
-  for (const controller of controllers) controller.hostUpdated?.();
+  for (const controller of controllers) {
+    controller.hostUpdated?.();
+  }
   expect(element.hasAttribute("data-hover")).toBe(false);
   expect(element.hasAttribute("data-active")).toBe(false);
 });

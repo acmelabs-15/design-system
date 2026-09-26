@@ -5,6 +5,7 @@ import { atomState } from "../../shared/atom-state";
 import { optionalString } from "../../shared/attributes";
 import { browserCss } from "../../generated/components/browser/browser.styles";
 import { browserStructureCss } from "../../generated/components/browser/browser-structure.styles";
+
 const displayAddress = (address: string) =>
   address
     .replace(/^https?:\/\//, "")

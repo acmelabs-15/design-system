@@ -1,5 +1,6 @@
 import { html, nothing, type TemplateResult } from "lit";
 import type { ButtonSize } from "./action-element";
+
 type Content = Readonly<{
   loading: boolean;
   size: ButtonSize;

@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/skeleton";
+
 test("Skeleton owns loading and shape while author content stays in place", () => {
   const skeleton = document.createElement("acme-skeleton");
   expect(skeleton.loading).toBe(true);

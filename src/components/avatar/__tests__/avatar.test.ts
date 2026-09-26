@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeAvatar } from "../avatar";
+
 afterEach(() => document.body.replaceChildren());
 async function mount(markup: string) {
   document.body.innerHTML = markup;
@@ -66,7 +67,9 @@ test("decorative avatar preserves fallback and badge author content without a se
 
 test("removing scalar attributes restores authored defaults", async () => {
   const avatar = await mount('<acme-avatar label="Person" initials="P" size="large" shape="square"></acme-avatar>');
-  for (const attr of ["label", "initials", "size", "shape"]) avatar.removeAttribute(attr);
+  for (const attr of ["label", "initials", "size", "shape"]) {
+    avatar.removeAttribute(attr);
+  }
   await avatar.updateComplete;
   expect(avatar.label).toBe("");
   expect(avatar.initials).toBe("");

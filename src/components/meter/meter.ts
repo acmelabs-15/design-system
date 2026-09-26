@@ -36,7 +36,9 @@ export class AcmeMeter extends AcmeSemanticElement {
     return this.scale;
   }
   set size(value: MeterSize) {
-    if (!["tiny", "small", "medium", "large"].includes(value)) throw new TypeError("Invalid Meter size");
+    if (!["tiny", "small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid Meter size");
+    }
     const previous = this.scale;
     this.scale = value;
     this.requestUpdate("size", previous);
@@ -60,7 +62,9 @@ export class AcmeMeter extends AcmeSemanticElement {
   }
   protected get semanticDefaults() {
     const reading = this.reading;
-    if (reading.kind === "known") return { label: this.label || undefined };
+    if (reading.kind === "known") {
+      return { label: this.label || undefined };
+    }
     const state = message(this.themeContext.scope.effective.get().locale, reading.kind === "loading" ? "meter.loading" : "meter.unavailable", reading.kind === "loading" ? "Loading" : "Unavailable");
     return { role: "img", label: [this.label, state].filter(Boolean).join(": ") };
   }
@@ -68,7 +72,9 @@ export class AcmeMeter extends AcmeSemanticElement {
     this.motion.update();
     const reading = this.reading;
     const code = reading.kind === "invalid" ? reading.code : reading.kind === "known" && reading.clamped ? "meter-value-clamped" : "";
-    if (code && code !== this.diagnostic) console.warn(this.localName, { code });
+    if (code && code !== this.diagnostic) {
+      console.warn(this.localName, { code });
+    }
     this.diagnostic = code;
   }
   protected updated() {

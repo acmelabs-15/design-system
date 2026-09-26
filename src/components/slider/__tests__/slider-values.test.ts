@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { sliderNormalize, sliderMove, sliderConfigurationValid } from "../slider-values";
+
 const config = { min: 0, max: 100, step: 1, minStepsBetweenValues: 5 };
 test("ordered thumbs stay on the step grid and keep gaps without pushing neighbors", () => {
   expect(sliderMove([20, 50, 80], 1, 99, config)).toEqual([20, 75, 80]);

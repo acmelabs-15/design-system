@@ -1,4 +1,5 @@
 import { isPlainRecord } from "./plain-record";
+
 export type JsonNode = Readonly<{
   path: string;
   parent?: string;
@@ -53,7 +54,7 @@ export function inspectJson(value: unknown): JsonModel {
       if (ancestors.has(current)) {
         node.kind = "circular";
         node.text = "[Circular]";
-      } else
+      } else {
         try {
           const array = Array.isArray(current);
           if (!array && !isPlainRecord(current)) {
@@ -71,13 +72,22 @@ export function inspectJson(value: unknown): JsonModel {
           node.kind = "unsupported";
           node.text = "[Uninspectable object]";
         }
-    } else if (typeof current === "string") node.text = JSON.stringify(current);
-    else if (typeof current === "number") node.text = Number.isFinite(current) ? String(current) : "[" + String(current) + "]";
-    else if (typeof current === "boolean") node.text = String(current);
-    else if (typeof current === "undefined") node.text = "undefined";
-    else if (typeof current === "bigint") node.text = String(current) + "n";
-    else if (typeof current === "function") node.text = "[Function]";
-    else node.text = "[Symbol]";
+      }
+    } else if (typeof current === "string") {
+      node.text = JSON.stringify(current);
+    } else if (typeof current === "number") {
+      node.text = Number.isFinite(current) ? String(current) : "[" + String(current) + "]";
+    } else if (typeof current === "boolean") {
+      node.text = String(current);
+    } else if (typeof current === "undefined") {
+      node.text = "undefined";
+    } else if (typeof current === "bigint") {
+      node.text = String(current) + "n";
+    } else if (typeof current === "function") {
+      node.text = "[Function]";
+    } else {
+      node.text = "[Symbol]";
+    }
     node.children = Object.freeze(entries.map(([key]) => childPath(frame.path, key)));
     node.label = (frame.key === undefined ? "" : frame.key + ": ") + node.text;
     const frozen = Object.freeze(node);
@@ -105,15 +115,21 @@ export function jsonNodeOpen(node: JsonNode, overrides: ReadonlyMap<string, bool
 export function visibleJsonNodes(model: JsonModel, overrides: ReadonlyMap<string, boolean>, depth: number): readonly JsonNode[] {
   const included = new Set<string>();
   return model.nodes.filter((node) => {
-    if (node.parent !== undefined && (!included.has(node.parent) || !jsonNodeOpen(model.byPath.get(node.parent)!, overrides, depth))) return false;
+    if (node.parent !== undefined && (!included.has(node.parent) || !jsonNodeOpen(model.byPath.get(node.parent)!, overrides, depth))) {
+      return false;
+    }
     included.add(node.path);
     return true;
   });
 }
 /** Plain text matches literally; native regex inputs are copied without mutating lastIndex. */
 export function jsonHighlight(value: string | RegExp | undefined): RegExp | undefined {
-  if (value === undefined || value === "") return undefined;
-  if (typeof value === "string") return new RegExp(value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "giu");
+  if (value === undefined || value === "") {
+    return undefined;
+  }
+  if (typeof value === "string") {
+    return new RegExp(value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "giu");
+  }
   const source = Object.getOwnPropertyDescriptor(RegExp.prototype, "source")!.get!.call(value);
   let flags = "g";
   for (const [property, flag] of [
@@ -126,7 +142,9 @@ export function jsonHighlight(value: string | RegExp | undefined): RegExp | unde
     ["unicodeSets", "v"],
   ] as const) {
     const getter = Object.getOwnPropertyDescriptor(RegExp.prototype, property)?.get;
-    if (getter?.call(value)) flags += flag;
+    if (getter?.call(value)) {
+      flags += flag;
+    }
   }
   return new RegExp(source, flags);
 }

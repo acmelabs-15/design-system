@@ -44,7 +44,9 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     return this.edge;
   }
   set side(value: HelpSide) {
-    if (!["top", "bottom", "left", "right"].includes(value)) throw new TypeError("Invalid help side");
+    if (!["top", "bottom", "left", "right"].includes(value)) {
+      throw new TypeError("Invalid help side");
+    }
     const previous = this.edge;
     this.edge = value;
     this.requestUpdate("side", previous);
@@ -55,7 +57,9 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     return this.alignment;
   }
   set align(value: HelpAlign) {
-    if (!["start", "center", "end"].includes(value)) throw new TypeError("Invalid help alignment");
+    if (!["start", "center", "end"].includes(value)) {
+      throw new TypeError("Invalid help alignment");
+    }
     const previous = this.alignment;
     this.alignment = value;
     this.requestUpdate("align", previous);
@@ -94,7 +98,9 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     this.requestUpdate("closeDelay", previous);
   }
   private validateNumber(value: number) {
-    if (!Number.isFinite(value) || value < 0) throw new RangeError("Help distance and delay require nonnegative finite numbers");
+    if (!Number.isFinite(value) || value < 0) {
+      throw new RangeError("Help distance and delay require nonnegative finite numbers");
+    }
   }
   private readonly places = new Places(this, { places: ["", "content"] });
   private readonly description = new TargetDescription(this);
@@ -133,7 +139,9 @@ export abstract class AcmeHoverHelp extends AcmeElement {
   }
   private anchor() {
     const wrapper = this.trigger();
-    if (!wrapper || !this.places.has("")) return undefined;
+    if (!wrapper || !this.places.has("")) {
+      return undefined;
+    }
     const control = focusable(wrapper, { getShadowRoot: true }).find((element): element is HTMLElement => element.namespaceURI === "http://www.w3.org/1999/xhtml");
     const assigned = this.renderRoot.querySelector<HTMLSlotElement>("slot:not([name])")?.assignedElements({ flatten: true })[0];
     return control ?? (assigned?.namespaceURI === "http://www.w3.org/1999/xhtml" ? (assigned as HTMLElement) : wrapper);
@@ -153,19 +161,27 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     this.closeTimer = undefined;
   }
   private userOpen(open: boolean, reason: string) {
-    if ((open && (this.disabled || this.dismissed || (!this.contentText() && !this.places.has("content")))) || open === this.open) return;
+    if ((open && (this.disabled || this.dismissed || (!this.contentText() && !this.places.has("content")))) || open === this.open) {
+      return;
+    }
     this.open = open;
     this.dispatchEvent(new CustomEvent("acme-open-change", { detail: Object.freeze({ open, reason }), bubbles: true, composed: true }));
   }
   private reconcile = () => {
-    if (this.disabled) return;
+    if (this.disabled) {
+      return;
+    }
     const desired = this.pointer || this.contentPointer || this.focused;
     if (desired) {
       clearTimeout(this.closeTimer);
-      if (this.open || this.openTimer || this.dismissed) return;
+      if (this.open || this.openTimer || this.dismissed) {
+        return;
+      }
       this.openTimer = setTimeout(() => {
         this.openTimer = undefined;
-        if (this.pointer || this.contentPointer || this.focused) this.userOpen(true, "interaction");
+        if (this.pointer || this.contentPointer || this.focused) {
+          this.userOpen(true, "interaction");
+        }
       }, this.openDelay);
     } else {
       this.dismissed = false;
@@ -174,17 +190,23 @@ export abstract class AcmeHoverHelp extends AcmeElement {
       clearTimeout(this.closeTimer);
       this.closeTimer = setTimeout(() => {
         this.closeTimer = undefined;
-        if (!this.pointer && !this.contentPointer && !this.focused) this.userOpen(false, "leave");
+        if (!this.pointer && !this.contentPointer && !this.focused) {
+          this.userOpen(false, "leave");
+        }
       }, this.closeDelay);
     }
   };
   private triggerEnter = (event: PointerEvent) => {
-    if (event.pointerType === "touch") return;
+    if (event.pointerType === "touch") {
+      return;
+    }
     this.pointer = true;
     this.reconcile();
   };
   private triggerLeave = (event: PointerEvent) => {
-    if (event.pointerType === "touch") return;
+    if (event.pointerType === "touch") {
+      return;
+    }
     this.pointer = false;
     this.reconcile();
   };
@@ -219,7 +241,9 @@ export abstract class AcmeHoverHelp extends AcmeElement {
   protected updated() {
     const anchor = this.anchor();
     this.description.update(!this.disabled ? anchor : undefined, this.contentText());
-    if (this.open && (!anchor || (!this.contentText() && !this.places.has("content")))) this.open = false;
+    if (this.open && (!anchor || (!this.contentText() && !this.places.has("content")))) {
+      this.open = false;
+    }
   }
   render() {
     return html`<span part="root" @pointerenter=${this.triggerEnter} @pointerleave=${this.triggerLeave} @focusin=${this.focusIn} @focusout=${this.focusOut}><slot @slotchange=${this.changed}></slot></span><acme-overlay-theme .source=${this.lifetime.theme} .reference=${this.lifetime.active ? this.lifetime.reference : undefined}><div part="content" popover="manual" role=${this.kind === "tooltip" ? "tooltip" : nothing} aria-label=${this.kind === "tooltip" ? this.contentText() : nothing} data-kind=${this.kind} @pointerenter=${(

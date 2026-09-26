@@ -85,7 +85,9 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     return this.options.participates?.(state, extra) !== false;
   }
   setContextDisabled(disabled: boolean): void {
-    if (this.context.get().disabled === disabled) return;
+    if (this.context.get().disabled === disabled) {
+      return;
+    }
     this.context.set({ disabled });
     this.sync();
     this.host.requestUpdate();
@@ -114,7 +116,9 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
 
   private change(patch: Partial<NativeFormState<Value>>, reason: FormUpdateReason = "constraints", property?: string): void {
     const previous = this.current.get();
-    if (Object.entries(patch).every(([key, value]) => Object.is(previous[key as keyof typeof previous], value))) return;
+    if (Object.entries(patch).every(([key, value]) => Object.is(previous[key as keyof typeof previous], value))) {
+      return;
+    }
     batch(() => {
       this.current.set(Object.freeze({ ...previous, ...patch }));
       this.sync(reason);
@@ -129,8 +133,11 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
   refreshValue(): void {
     const previous = this.value,
       next = this.options.normalize(previous);
-    if (Object.is(previous, next)) this.sync();
-    else this.change({ value: next }, "constraints", this.options.valueProperty ?? "value");
+    if (Object.is(previous, next)) {
+      this.sync();
+    } else {
+      this.change({ value: next }, "constraints", this.options.valueProperty ?? "value");
+    }
   }
   setDefaultValue(value: Value): void {
     const normalized = this.options.normalizeDefault ? this.options.normalizeDefault(value) : this.options.normalize(value);
@@ -138,7 +145,9 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     if (attribute && this.options.toAttribute) {
       const text = this.options.toAttribute(normalized);
       batch(() => (text === null ? this.host.removeAttribute(attribute) : this.host.setAttribute(attribute, text)));
-    } else this.applyDefault(normalized);
+    } else {
+      this.applyDefault(normalized);
+    }
   }
   private applyDefault(value: Value): void {
     this.change({ defaultValue: value, ...(!this.current.get().dirty ? { value: this.options.normalizeDefault ? this.options.normalize(value) : value } : {}) }, "default");
@@ -152,12 +161,19 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
       this.applyDefault(this.options.normalizeDefault ? this.options.normalizeDefault(parsed) : this.options.normalize(parsed));
       return true;
     }
-    if (name === "name") this.change({ name: value ?? "" });
-    else if (name === "disabled") this.change({ disabled: value !== null, platformDisabled: this.host.matches(":disabled") });
-    else if (name === "required") this.change({ required: value !== null });
-    else if (name === "readonly") this.change({ readOnly: value !== null });
-    else if (name === "form") this.sync();
-    else return false;
+    if (name === "name") {
+      this.change({ name: value ?? "" });
+    } else if (name === "disabled") {
+      this.change({ disabled: value !== null, platformDisabled: this.host.matches(":disabled") });
+    } else if (name === "required") {
+      this.change({ required: value !== null });
+    } else if (name === "readonly") {
+      this.change({ readOnly: value !== null });
+    } else if (name === "form") {
+      this.sync();
+    } else {
+      return false;
+    }
     return true;
   }
 
@@ -172,7 +188,9 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
         this.pendingSync = false;
         const { state, extra, context } = this.tracked.get();
         this.options.synchronize?.(context.disabled ? { ...state, disabled: true } : state, extra, reason);
-        if (this.pendingSync) continue;
+        if (this.pendingSync) {
+          continue;
+        }
         if (context.disabled || this.options.participates?.(state, extra) === false) {
           this.internals.setFormValue(null);
           this.internals.setValidity({});
@@ -199,7 +217,9 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     this.change({ customValidity: String(message) });
   }
   focus(options?: FocusOptions): void {
-    if (!this.effectiveDisabled) this.options.target?.()?.focus(options);
+    if (!this.effectiveDisabled) {
+      this.options.target?.()?.focus(options);
+    }
   }
   formAssociatedCallback(): void {
     this.sync();
@@ -211,7 +231,9 @@ export class NativeFormController<Value, Extra = undefined> implements ReactiveC
     this.change({ value: this.options.normalize(this.current.get().defaultValue), dirty: false }, "reset", this.options.valueProperty ?? "value");
   }
   formStateRestoreCallback(value: string | File | FormData, mode: "restore" | "autocomplete"): void {
-    if (!this.options.restore) return;
+    if (!this.options.restore) {
+      return;
+    }
     const restored = this.options.normalize(this.options.restore(value, mode));
     this.change({ value: restored, dirty: true }, "restore", this.options.valueProperty ?? "value");
   }

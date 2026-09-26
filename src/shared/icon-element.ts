@@ -48,7 +48,9 @@ export abstract class AcmeIconElement extends AcmeElement {
       geometry = this.artwork.get(family, filled);
     if (!geometry) {
       const key = `${family}:${filled}`;
-      if (this.missing !== key) console.warn(this.localName, { code: "missing-icon-artwork", symbol: this.artwork.name, family, filled });
+      if (this.missing !== key) {
+        console.warn(this.localName, { code: "missing-icon-artwork", symbol: this.artwork.name, family, filled });
+      }
       this.missing = key;
       return html`<span class="missing" part="root" role="img" aria-label=${`${message(this.themeContext.scope.effective.get().locale, "icon.unavailable", "Artwork unavailable")}: ${this.label || this.artwork.name}`}>?</span>`;
     }

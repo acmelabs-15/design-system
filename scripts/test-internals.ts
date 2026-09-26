@@ -2,13 +2,17 @@
  * real association, submission, labels, validity and focus require the native browser fixtures.
  */
 export function installTestInternals(): void {
-  if (HTMLElement.prototype.attachInternals) return;
+  if (HTMLElement.prototype.attachInternals) {
+    return;
+  }
   const attached = new WeakSet<HTMLElement>();
   Object.defineProperty(HTMLElement.prototype, "attachInternals", {
     configurable: true,
     writable: true,
     value: function (this: HTMLElement) {
-      if (attached.has(this)) throw new DOMException("Internals already attached", "NotSupportedError");
+      if (attached.has(this)) {
+        throw new DOMException("Internals already attached", "NotSupportedError");
+      }
       attached.add(this);
       const host = this;
       let flags: ValidityStateFlags = {},

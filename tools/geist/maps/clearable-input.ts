@@ -25,7 +25,16 @@ export const geist: GeistMap = {
           ours: ".cmdk",
           pick: has("clearable-input"),
           children: [
-            kbd(".k-esc", 0, [{ ours: ".keys", pick: (c: SpecNode) => c.tag === "span", children: [{ ours: "[data-key=esc]", pick: (c: SpecNode) => c.attrs["data-key"] === "esc" }, { ours: "[data-key=cmd]", pick: (c: SpecNode) => c.attrs["data-key"] === "cmd" }] }]),
+            kbd(".k-esc", 0, [
+              {
+                ours: ".keys",
+                pick: (c: SpecNode) => c.tag === "span",
+                children: [
+                  { ours: "[data-key=esc]", pick: (c: SpecNode) => c.attrs["data-key"] === "esc" },
+                  { ours: "[data-key=cmd]", pick: (c: SpecNode) => c.attrs["data-key"] === "cmd" },
+                ],
+              },
+            ]),
             kbd(".k-k", 1),
           ],
         },

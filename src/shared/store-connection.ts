@@ -5,7 +5,9 @@ const hostsWithStoreConnection = new WeakSet<ReactiveControllerHost>();
 
 /** Schedules the update in which TanStack restores a host's store subscriptions. */
 export function connectStore(host: ReactiveControllerHost): void {
-  if (hostsWithStoreConnection.has(host)) return;
+  if (hostsWithStoreConnection.has(host)) {
+    return;
+  }
   hostsWithStoreConnection.add(host);
   host.addController({ hostConnected: () => host.requestUpdate() });
 }

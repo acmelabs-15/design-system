@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { Window } from "happy-dom";
 import catalog from "../assets/material-symbols/catalog.json";
+
 const known = new Set(catalog.symbols.map((symbol) => symbol.tag));
 export function documentationIconEntries(markup: readonly string[]): readonly string[] {
   const entries = new Set<string>();
@@ -12,14 +13,22 @@ export function documentationIconEntries(markup: readonly string[]): readonly st
       template.innerHTML = text;
       for (const element of template.content.querySelectorAll("*")) {
         const tag = element.localName;
-        if (!/^acme-[a-z0-9-]+-icon$/.test(tag)) continue;
-        if (!known.has(tag)) throw new Error("Unknown documentation icon: " + tag);
+        if (!/^acme-[a-z0-9-]+-icon$/.test(tag)) {
+          continue;
+        }
+        if (!known.has(tag)) {
+          throw new Error("Unknown documentation icon: " + tag);
+        }
         const name = tag.slice(5, -5);
         entries.add("define/" + name + "-icon");
         const family = element.getAttribute("family") ?? "rounded";
-        if (!["rounded", "outlined", "sharp"].includes(family)) throw new Error("Unknown documentation icon family: " + family);
+        if (!["rounded", "outlined", "sharp"].includes(family)) {
+          throw new Error("Unknown documentation icon family: " + family);
+        }
         const filled = element.hasAttribute("filled") && element.getAttribute("filled") !== "false";
-        if (family !== "rounded" || filled) entries.add(`generated/icons/artwork/${family}/${filled ? "filled" : "unfilled"}/${name}`);
+        if (family !== "rounded" || filled) {
+          entries.add(`generated/icons/artwork/${family}/${filled ? "filled" : "unfilled"}/${name}`);
+        }
       }
     }
   } finally {

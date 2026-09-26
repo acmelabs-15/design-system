@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/meter";
+
 test("Meter keeps missing data distinct from zero and retains explicit native bounds", () => {
   const meter = document.createElement("acme-meter");
   expect(meter.value).toBeUndefined();

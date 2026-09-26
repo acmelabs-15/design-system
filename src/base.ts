@@ -39,7 +39,9 @@ export class AcmeElement extends LitElement {
     return (this.constructor as typeof AcmeElement).elementStyles;
   }
   protected refreshScopedStyles(): void {
-    if (this.renderRoot?.nodeType === 11 && "host" in this.renderRoot) applyStaticStyles(this.renderRoot as ShadowRoot, this.scopedStyles);
+    if (this.renderRoot?.nodeType === 11 && "host" in this.renderRoot) {
+      applyStaticStyles(this.renderRoot as ShadowRoot, this.scopedStyles);
+    }
   }
   protected createRenderRoot(): HTMLElement | DocumentFragment {
     const componentClass = this.constructor as typeof AcmeElement;
@@ -57,7 +59,9 @@ export class AcmeElement extends LitElement {
   adoptedCallback() {
     this.registerStyles();
     this.themeContext.adopted();
-    if (this.renderRoot?.nodeType === 11 && "host" in this.renderRoot) applyStaticStyles(this.renderRoot as ShadowRoot, this.scopedStyles);
+    if (this.renderRoot?.nodeType === 11 && "host" in this.renderRoot) {
+      applyStaticStyles(this.renderRoot as ShadowRoot, this.scopedStyles);
+    }
   }
   private registerStyles() {
     const view = this.ownerDocument.defaultView as (Window & { CSS?: typeof CSS }) | null;
@@ -69,7 +73,11 @@ export class AcmeElement extends LitElement {
   /** Reflects a boolean/enum attribute into a class list on the inner element. */
   protected cls(base: string, extra: Record<string, boolean | undefined | null | string> = {}) {
     const map: Record<string, boolean> = {};
-    for (const [k, v] of Object.entries(extra)) if (v) map[k] = true;
+    for (const [k, v] of Object.entries(extra)) {
+      if (v) {
+        map[k] = true;
+      }
+    }
     return classMap({ [base]: true, ...map });
   }
 }

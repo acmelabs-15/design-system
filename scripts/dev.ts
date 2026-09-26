@@ -12,15 +12,19 @@ const build = async (regenerateStyles = false) => {
   const scripts = [...(regenerateStyles ? ["scripts/split-css.ts"] : []), "scripts/build.ts", "site/build.ts"];
   for (const script of scripts) {
     const result = Bun.spawnSync(["bun", script], { cwd: ROOT, stdout: "inherit", stderr: "inherit" });
-    if (result.exitCode !== 0) return;
+    if (result.exitCode !== 0) {
+      return;
+    }
   }
   console.log(`rebuilt in ${Date.now() - t} ms`);
 };
-if (!process.argv.includes("--no-build")) await build(true);
+if (!process.argv.includes("--no-build")) {
+  await build(true);
+}
 let timer: ReturnType<typeof setTimeout> | undefined;
 let regenerateStyles = false;
-if (!process.argv.includes("--no-watch"))
-  for (const d of ["styles", "src", "site"])
+if (!process.argv.includes("--no-watch")) {
+  for (const d of ["styles", "src", "site"]) {
     fs.watch(path.join(ROOT, d), { recursive: true }, (_event, filename) => {
       const catalog = d === "src" && ["numeric-tokens.ts", "theme-tokens.ts", "style-input-schema.ts"].some((name) => path.normalize(filename?.toString() ?? "") === path.join("shared", name));
       regenerateStyles ||= d === "styles" || catalog;
@@ -31,12 +35,16 @@ if (!process.argv.includes("--no-watch"))
         void build(split);
       }, 200);
     });
+  }
+}
 Bun.serve({
   port: 4180,
   async fetch(req) {
     const p = decodeURIComponent(new URL(req.url).pathname);
     let file = Bun.file(path.join(DOCS, p.endsWith("/") ? `${p}index.html` : p));
-    if (!(await file.exists()) && !path.extname(p)) file = Bun.file(path.join(DOCS, "index.html"));
+    if (!(await file.exists()) && !path.extname(p)) {
+      file = Bun.file(path.join(DOCS, "index.html"));
+    }
     return (await file.exists()) ? new Response(file, { headers: { "cache-control": "no-store" } }) : new Response("not found", { status: 404 });
   },
 });

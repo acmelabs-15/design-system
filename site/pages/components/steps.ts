@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const steps = (linear = false) =>
   `<acme-steps aria-label="Account setup" ${linear ? "linear" : ""}><acme-step value="account"><acme-step-trigger>Account</acme-step-trigger></acme-step><acme-step value="profile"><acme-step-trigger>Profile</acme-step-trigger></acme-step><acme-step value="review"><acme-step-trigger>Review</acme-step-trigger></acme-step><acme-step-content slot="panels" value="account"><acme-field><span slot="label">Name</span><acme-input value="Alex"></acme-input></acme-field></acme-step-content><acme-step-content slot="panels" value="profile">Choose your profile details.</acme-step-content><acme-step-content slot="panels" value="review">Review your account.</acme-step-content><p slot="completed">Your setup is complete.</p><acme-steps-previous slot="actions"></acme-steps-previous><acme-steps-next slot="actions"></acme-steps-next></acme-steps>`;
 export const doc: Doc = {

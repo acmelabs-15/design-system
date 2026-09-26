@@ -11,7 +11,9 @@ export class AcmePaginationItem extends AcmePaginationAction {
     return this.targetPage;
   }
   set page(value: number) {
-    if (!Number.isSafeInteger(value) || value < 1) throw new RangeError("Pagination Item requires a positive page");
+    if (!Number.isSafeInteger(value) || value < 1) {
+      throw new RangeError("Pagination Item requires a positive page");
+    }
     const previous = this.targetPage;
     this.targetPage = value;
     this.requestUpdate("page", previous);

@@ -30,11 +30,15 @@ export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) =>
   const native = useRef<HTMLTableElement>(null);
   useLayoutEffect(() => {
     ready(table);
-    if (native.current) syncGridFocus(native.current, table);
+    if (native.current) {
+      syncGridFocus(native.current, table);
+    }
   });
   const rows = [...table.getTopRows(), ...table.getCenterRows(), ...table.getBottomRows()];
   function cell(cell: DeliveryCell) {
-    if (cell.getIsCovered()) return null;
+    if (cell.getIsCovered()) {
+      return null;
+    }
     const row = cell.row;
     const edges = cell.getSelectionEdges();
     return h(
@@ -55,7 +59,9 @@ export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) =>
         "aria-selected": cell.getIsSelected(),
         tabIndex: -1,
         onMouseDown: (event: React.MouseEvent<HTMLElement>) => {
-          if ((event.target as Element).closest("button,input,acme-button,acme-input,acme-checkbox")) return;
+          if ((event.target as Element).closest("button,input,acme-button,acme-input,acme-checkbox")) {
+            return;
+          }
           cell.getSelectionStartHandler()(event);
           event.currentTarget.focus();
         },
@@ -131,7 +137,9 @@ export function DeliveryTableReact({ ready }: { ready: (table: DeliveryTable) =>
                               onMouseDown: header.getResizeHandler(),
                               onTouchStart: header.getResizeHandler(),
                               onKeyDown: (event: React.KeyboardEvent) => {
-                                if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+                                if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
+                                  return;
+                                }
                                 event.preventDefault();
                                 table.setColumnSizing((old) => ({ ...old, [header.column.id]: Math.max(40, header.column.getSize() + (event.key === "ArrowRight" ? 10 : -10)) }));
                               },

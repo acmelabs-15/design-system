@@ -40,7 +40,9 @@ class SemanticAttributes implements ReactiveController {
   set(name: Attribute, value: string | null): void {
     const text = value === null ? null : String(value);
     const current = this.state.get()[name];
-    if (current.text === text && !current.elements) return;
+    if (current.text === text && !current.elements) {
+      return;
+    }
     this.state.set((previous) => Object.freeze({ ...previous, [name]: Object.freeze({ text }) }));
     this.observe();
     this.paint();
@@ -48,14 +50,19 @@ class SemanticAttributes implements ReactiveController {
   }
   getElements(name: ReferenceAttribute): Element[] | null {
     const reference = this.state.get()[name];
-    if (reference.text === null && !reference.elements) return null;
+    if (reference.text === null && !reference.elements) {
+      return null;
+    }
     return Object.freeze([...this.resolve(reference)]) as unknown as Element[];
   }
   setElements(name: ReferenceAttribute, elements: readonly Element[] | null): void {
-    if (elements !== null)
+    if (elements !== null) {
       for (const element of elements) {
-        if (!element || element.nodeType !== 1 || !Element.prototype.matches.call(element, "*")) throw new TypeError("Accessible element references require Elements");
+        if (!element || element.nodeType !== 1 || !Element.prototype.matches.call(element, "*")) {
+          throw new TypeError("Accessible element references require Elements");
+        }
       }
+    }
     const reference: Reference = elements === null ? Object.freeze({ text: null }) : Object.freeze({ text: "", elements: Object.freeze([...elements]) });
     this.state.set((previous) => Object.freeze({ ...previous, [name]: reference }));
     this.observe();
@@ -63,11 +70,16 @@ class SemanticAttributes implements ReactiveController {
     this.host.requestUpdate();
   }
   attributeChanged(name: string, value: string | null): boolean {
-    if (!isAttribute(name)) return false;
+    if (!isAttribute(name)) {
+      return false;
+    }
     const pending = this.removals.get(name) ?? 0;
     if (value === null && pending) {
-      if (pending === 1) this.removals.delete(name);
-      else this.removals.set(name, pending - 1);
+      if (pending === 1) {
+        this.removals.delete(name);
+      } else {
+        this.removals.set(name, pending - 1);
+      }
       return true;
     }
     this.set(name, value);
@@ -90,18 +102,25 @@ class SemanticAttributes implements ReactiveController {
       return reference.elements.filter((element) => scopes.has(element.getRootNode()));
     }
     const root = this.host.getRootNode();
-    if (!("getElementById" in root)) return [];
+    if (!("getElementById" in root)) {
+      return [];
+    }
     const ids = [...new Set((reference.text ?? "").split(/\s+/).filter(Boolean))];
     return ids.map((id) => (root as Document | ShadowRoot).getElementById(id)).filter((element): element is NonNullable<typeof element> => !!element);
   }
   private paint = (): void => {
-    if (!this.target) return;
+    if (!this.target) {
+      return;
+    }
     const state = this.state.get();
     const defaults = this.defaults();
     for (const name of ["role", "aria-label", "aria-haspopup", "aria-expanded", "aria-autocomplete"] as const) {
       const value = state[name].text ?? (name === "role" ? defaults.role : name === "aria-label" ? defaults.label : name === "aria-autocomplete" ? defaults.ariaAutocomplete : undefined) ?? null;
-      if (value === null) this.target.removeAttribute(name);
-      else this.target.setAttribute(name, value);
+      if (value === null) {
+        this.target.removeAttribute(name);
+      } else {
+        this.target.setAttribute(name, value);
+      }
     }
     for (const [name, property] of [
       ["aria-labelledby", "ariaLabelledByElements"],
@@ -110,8 +129,9 @@ class SemanticAttributes implements ReactiveController {
     ] as const) {
       const reference = state[name];
       const authored = reference.text === null && !reference.elements ? null : [...this.resolve(reference)];
-      if (name === "aria-describedby" && defaults.describedByElements?.length) this.target[property] = [...new Set([...(authored ?? []), ...defaults.describedByElements])];
-      else
+      if (name === "aria-describedby" && defaults.describedByElements?.length) {
+        this.target[property] = [...new Set([...(authored ?? []), ...defaults.describedByElements])];
+      } else {
         this.target[property] =
           authored ??
           (name === "aria-controls"
@@ -119,23 +139,30 @@ class SemanticAttributes implements ReactiveController {
             : name === "aria-labelledby" && state["aria-label"].text === null && defaults.labelledByElements?.length
               ? [...defaults.labelledByElements]
               : null);
+      }
     }
     this.target.ariaActiveDescendantElement = this.resolve(state["aria-activedescendant"])[0] ?? null;
     this.changed();
   };
   private observe(): void {
-    if (!this.connected) return;
+    if (!this.connected) {
+      return;
+    }
     const state = this.state.get();
     const needed =
       this.defaults().labelledByElements !== undefined ||
       this.defaults().describedByElements !== undefined ||
       (["aria-labelledby", "aria-describedby", "aria-controls", "aria-activedescendant"] as const).some((name) => !!state[name].text?.trim() && !state[name].elements);
     const root = this.host.getRootNode();
-    if (needed && this.watchedRoot === root) return;
+    if (needed && this.watchedRoot === root) {
+      return;
+    }
     this.observer?.disconnect();
     this.observer = undefined;
     this.watchedRoot = undefined;
-    if (!needed) return;
+    if (!needed) {
+      return;
+    }
     this.observer = new MutationObserver(this.paint);
     this.observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ["id", "for"] });
     this.watchedRoot = root;
@@ -143,7 +170,9 @@ class SemanticAttributes implements ReactiveController {
   hostConnected(): void {
     this.connected = true;
     for (const name of attributes) {
-      if (!Element.prototype.hasAttribute.call(this.host, name)) continue;
+      if (!Element.prototype.hasAttribute.call(this.host, name)) {
+        continue;
+      }
       this.removals.set(name, (this.removals.get(name) ?? 0) + 1);
       Element.prototype.removeAttribute.call(this.host, name);
     }
@@ -152,7 +181,9 @@ class SemanticAttributes implements ReactiveController {
   }
   hostUpdated(): void {
     const target = this.targetElement();
-    if (this.target !== target) this.target = target ?? undefined;
+    if (this.target !== target) {
+      this.target = target ?? undefined;
+    }
     this.paint();
   }
   hostDisconnected(): void {
@@ -162,7 +193,9 @@ class SemanticAttributes implements ReactiveController {
     this.watchedRoot = undefined;
   }
   adopted(): void {
-    if (this.host.isConnected) this.observe();
+    if (this.host.isConnected) {
+      this.observe();
+    }
     this.paint();
   }
 }
@@ -258,7 +291,9 @@ export abstract class AcmeSemanticElement extends AcmeElement {
     this.semantic.setElements("aria-describedby", value);
   }
   attributeChangedCallback(name: string, previous: string | null, value: string | null): void {
-    if (!this.semantic.attributeChanged(name, value)) super.attributeChangedCallback(name, previous, value);
+    if (!this.semantic.attributeChanged(name, value)) {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   getAttribute(name: string): string | null {
     const key = name.toLowerCase();
@@ -270,16 +305,24 @@ export abstract class AcmeSemanticElement extends AcmeElement {
   }
   removeAttribute(name: string): void {
     const key = name.toLowerCase();
-    if (this.semantic && isAttribute(key)) this.semantic.set(key, null);
+    if (this.semantic && isAttribute(key)) {
+      this.semantic.set(key, null);
+    }
     super.removeAttribute(name);
   }
   toggleAttribute(name: string, force?: boolean): boolean {
     const key = name.toLowerCase();
-    if (!isAttribute(key)) return super.toggleAttribute(name, force);
+    if (!isAttribute(key)) {
+      return super.toggleAttribute(name, force);
+    }
     const present = force ?? !this.hasAttribute(key);
     if (present) {
-      if (!this.hasAttribute(key)) this.setAttribute(key, "");
-    } else this.removeAttribute(key);
+      if (!this.hasAttribute(key)) {
+        this.setAttribute(key, "");
+      }
+    } else {
+      this.removeAttribute(key);
+    }
     return present;
   }
   adoptedCallback(): void {

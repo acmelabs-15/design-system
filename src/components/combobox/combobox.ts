@@ -57,7 +57,9 @@ export class AcmeCombobox extends AcmeOptionControl {
     return this.queryValue;
   }
   set inputValue(value: string) {
-    if (typeof value !== "string") throw new TypeError("ComboBox inputValue must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("ComboBox inputValue must be a string");
+    }
     this.queryValue = value;
     this.filtering = true;
   }
@@ -82,18 +84,26 @@ export class AcmeCombobox extends AcmeOptionControl {
     this.notifyInput(previous);
   }
   private notifyInput(previous: string): void {
-    if (previous !== this.inputValue) this.dispatchEvent(new CustomEvent("acme-input", { bubbles: true, composed: true, detail: { value: this.inputValue } }));
+    if (previous !== this.inputValue) {
+      this.dispatchEvent(new CustomEvent("acme-input", { bubbles: true, composed: true, detail: { value: this.inputValue } }));
+    }
   }
   clear(): void {
-    if (this.nativeForm.effectiveDisabled) return;
+    if (this.nativeForm.effectiveDisabled) {
+      return;
+    }
     const previous = this.inputValue;
     super.clear();
     this.notifyInput(previous);
   }
   protected edit(_event: Event): void {
-    if (this.composing || this.nativeForm.effectiveDisabled) return;
+    if (this.composing || this.nativeForm.effectiveDisabled) {
+      return;
+    }
     const next = (this.control as HTMLInputElement).value;
-    if (next === this.queryValue) return;
+    if (next === this.queryValue) {
+      return;
+    }
     this.queryValue = next;
     this.filtering = true;
     this.openFromUser();
@@ -102,15 +112,18 @@ export class AcmeCombobox extends AcmeOptionControl {
   }
   protected get visibleOptions(): readonly OptionPart[] {
     const available = super.visibleOptions.filter((part) => part.host.parentNode === this);
-    if (!this.filtering) return available;
+    if (!this.filtering) {
+      return available;
+    }
     const options = available.map((part) => part.host as AcmeOption);
     const ranked = this.filter
       ? this.filter(Object.freeze(options), this.queryValue)
       : this.queryValue
         ? matchSorter(options, this.queryValue.normalize("NFC"), { keys: [(option) => (option.value ?? "").normalize("NFC"), (option) => option.label.normalize("NFC")] })
         : options;
-    if (!Array.isArray(ranked) || new Set(ranked).size !== ranked.length || ranked.some((option) => !options.includes(option)))
+    if (!Array.isArray(ranked) || new Set(ranked).size !== ranked.length || ranked.some((option) => !options.includes(option))) {
       throw new TypeError("ComboBox filter must return a unique subset of its supplied options");
+    }
     const parts = new Map(available.map((part) => [part.host, part]));
     return ranked.map((option) => parts.get(option)!);
   }
@@ -119,8 +132,11 @@ export class AcmeCombobox extends AcmeOptionControl {
     for (const option of this.visibleOptions) {
       const section = option.section();
       const previous = runs.at(-1);
-      if (previous && previous.section === section) previous.options.push(option);
-      else runs.push({ key: option.host, section, options: [option] });
+      if (previous && previous.section === section) {
+        previous.options.push(option);
+      } else {
+        runs.push({ key: option.host, section, options: [option] });
+      }
     }
     return runs;
   }
@@ -128,7 +144,9 @@ export class AcmeCombobox extends AcmeOptionControl {
     return this.loading ? html`<acme-spinner size="small"></acme-spinner>` : super.renderEndContent();
   }
   protected willUpdate(changes: Map<string, unknown>) {
-    if (!this.filtering && !this.composing) this.queryValue = this.displayValue;
+    if (!this.filtering && !this.composing) {
+      this.queryValue = this.displayValue;
+    }
     super.willUpdate(changes);
   }
   protected renderOptionContent() {
@@ -147,7 +165,9 @@ export class AcmeCombobox extends AcmeOptionControl {
       const run = slot.getAttribute("data-run");
       const nodes = run !== null ? (runs[Number(run)]?.options.map((option) => option.host) ?? []) : [...this.children].filter((child) => child.getAttribute("slot") === slot.name);
       const previous = slot.assignedNodes();
-      if (nodes.length !== previous.length || nodes.some((node, index) => node !== previous[index])) slot.assign(...nodes);
+      if (nodes.length !== previous.length || nodes.some((node, index) => node !== previous[index])) {
+        slot.assign(...nodes);
+      }
     }
     super.updated(changes);
     this.control.setAttribute("aria-busy", String(this.loading));

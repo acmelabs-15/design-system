@@ -2,6 +2,7 @@ import { expect, test } from "bun:test";
 import "../../../define/resizable";
 import "../../../define/resizable-panel";
 import "../../../define/resize-handle";
+
 const markup =
   '<acme-resizable sizes="[30,70]"><acme-resizable-panel value="navigation" min-size="10" collapsible><input value="Retained"></acme-resizable-panel><acme-resize-handle aria-label="Navigation"></acme-resize-handle><acme-resizable-panel value="content" min-size="10">Content</acme-resizable-panel></acme-resizable>';
 async function mount() {

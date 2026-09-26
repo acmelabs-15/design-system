@@ -1,5 +1,6 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
+
 afterEach(() => document.body.replaceChildren());
 async function mount(tag: "acme-badge" | "acme-pill" | "acme-tag") {
   const el = document.createElement(tag);
@@ -18,7 +19,9 @@ test("Badge keeps every source variant with canonical sizes and affixes", async 
     const root = badge.shadowRoot!.querySelector("[part=root]")!;
     expect(root.classList.contains("subtle")).toBe(true);
     expect(root.classList.contains("sm")).toBe(true);
-    if (variant !== "gray") expect(root.classList.contains(variant)).toBe(true);
+    if (variant !== "gray") {
+      expect(root.classList.contains(variant)).toBe(true);
+    }
     expect(root.querySelector("slot[name=start]")).not.toBeNull();
     expect(root.querySelector("slot[name=end]")).not.toBeNull();
   }

@@ -23,15 +23,25 @@ function splitClasses(s: string): string[] {
   let cur = "";
   let depth = 0;
   for (const ch of s.replace(/&amp;/g, "&").replace(/&gt;/g, ">").replace(/&lt;/g, "<")) {
-    if (ch === "[" || ch === "(") depth++;
-    if (ch === "]" || ch === ")") depth--;
+    if (ch === "[" || ch === "(") {
+      depth++;
+    }
+    if (ch === "]" || ch === ")") {
+      depth--;
+    }
     if (/\s/.test(ch) && depth <= 0) {
-      if (cur) out.push(cur);
+      if (cur) {
+        out.push(cur);
+      }
       cur = "";
       depth = 0;
-    } else cur += ch;
+    } else {
+      cur += ch;
+    }
   }
-  if (cur) out.push(cur);
+  if (cur) {
+    out.push(cur);
+  }
   return out;
 }
 
@@ -48,10 +58,15 @@ function stylesFor(cls: string): StyleRule[] {
   });
 }
 
-const KEEP_ATTRS = /^(role|type|tabindex|disabled|aria-.*|data-.*|href|target|rel|for|id|name|value|placeholder|checked|readonly|required|min|max|step|open|hidden|style|src|alt|title|autocomplete|inputmode|dir)$/;
+const KEEP_ATTRS =
+  /^(role|type|tabindex|disabled|aria-.*|data-.*|href|target|rel|for|id|name|value|placeholder|checked|readonly|required|min|max|step|open|hidden|style|src|alt|title|autocomplete|inputmode|dir)$/;
 function walk(el: Element, depth = 0): Node {
   const attrs: Record<string, string> = {};
-  for (const a of Array.from(el.attributes)) if (KEEP_ATTRS.test(a.name)) attrs[a.name] = a.name === "id" || a.name.startsWith("aria-") && /radix/.test(a.value) ? a.value.replace(/radix-[A-Za-z0-9_]+/g, "radix-*") : a.value;
+  for (const a of Array.from(el.attributes)) {
+    if (KEEP_ATTRS.test(a.name)) {
+      attrs[a.name] = a.name === "id" || (a.name.startsWith("aria-") && /radix/.test(a.value)) ? a.value.replace(/radix-[A-Za-z0-9_]+/g, "radix-*") : a.value;
+    }
+  }
   const classes = splitClasses(el.getAttribute("class") ?? "");
   const styles = classes.flatMap(stylesFor);
   const unresolved = classes.filter((c) => resolve(c).length === 0);
@@ -62,7 +77,9 @@ function walk(el: Element, depth = 0): Node {
     .filter(Boolean)
     .join(" ");
   const node: Node = { tag: el.tagName.toLowerCase(), attrs, styles, unresolved, children };
-  if (own) node.text = own;
+  if (own) {
+    node.text = own;
+  }
   return node;
 }
 
@@ -78,12 +95,16 @@ export function extract(page: string): Spec {
   const lede = main.querySelector("h1 + p, h1 ~ p")?.textContent?.trim() ?? "";
   const primitives = Array.from(new Set([...html.matchAll(/data-(radix|react-aria|cmdk|geist|sonner|vaul|headlessui)[a-z-]*/g)].map((m) => m[0]))).sort();
   // A showcase ends with the "Show code" bar: a radix collapsible trigger inside a rounded-b bar.
-  const bars = Array.from(main.querySelectorAll('button[aria-controls^="radix-"][data-state]')).map((b) => b.closest("div.bg-background-200")).filter((element): element is Element => element !== null);
+  const bars = Array.from(main.querySelectorAll('button[aria-controls^="radix-"][data-state]'))
+    .map((b) => b.closest("div.bg-background-200"))
+    .filter((element): element is Element => element !== null);
   const codes = Array.from(md.matchAll(/^## (.+)\n([\s\S]*?)```tsx\n([\s\S]*?)```/gm)).map((m) => ({ heading: m[1].trim(), description: m[2].replace(/\s+/g, " ").trim(), code: m[3] }));
   const examples: Example[] = [];
   for (const bar of bars) {
     const preview = bar.previousElementSibling;
-    if (!preview) continue;
+    if (!preview) {
+      continue;
+    }
     // Nearest preceding h2 in document order.
     let h: Element | null = bar.closest("section, div")?.parentElement ?? null;
     let heading = "";
@@ -102,7 +123,12 @@ export function extract(page: string): Spec {
     }
     h = null;
     const code = codes[examples.length];
-    examples.push({ heading: heading || code?.heading || `example ${examples.length + 1}`, description: code?.description ?? "", code: code?.code ?? "", dom: Array.from(preview.children).map((c) => walk(c)) });
+    examples.push({
+      heading: heading || code?.heading || `example ${examples.length + 1}`,
+      description: code?.description ?? "",
+      code: code?.code ?? "",
+      dom: Array.from(preview.children).map((c) => walk(c)),
+    });
   }
   return { page, title, lede, primitives, examples };
 }
@@ -117,12 +143,18 @@ if (import.meta.main && process.argv[2] !== "synth") {
     const un = new Set<string>();
     const collect = (ns: Node[]) => {
       for (const n of ns) {
-        for (const u of n.unresolved) un.add(u);
+        for (const u of n.unresolved) {
+          un.add(u);
+        }
         collect(n.children);
       }
     };
-    for (const e of spec.examples) collect(e.dom);
-    console.log(`${p}: ${spec.examples.length} examples, ${spec.examples.reduce((n, e) => n + nodes(e.dom), 0)} nodes, primitives ${spec.primitives.join(",") || "-"}, unresolved ${[...un].join(" ") || "-"}`);
+    for (const e of spec.examples) {
+      collect(e.dom);
+    }
+    console.log(
+      `${p}: ${spec.examples.length} examples, ${spec.examples.reduce((n, e) => n + nodes(e.dom), 0)} nodes, primitives ${spec.primitives.join(",") || "-"}, unresolved ${[...un].join(" ") || "-"}`,
+    );
   }
 }
 
@@ -136,7 +168,9 @@ export type Sketch = { tag: string; class?: string; attrs?: Record<string, strin
 export function fromSketch(s: Sketch): Node {
   const classes = splitClasses(s.class ?? "");
   const node: Node = { tag: s.tag, attrs: s.attrs ?? {}, styles: classes.flatMap(stylesFor), unresolved: classes.filter((c) => resolve(c).length === 0), children: (s.children ?? []).map(fromSketch) };
-  if (s.text) node.text = s.text;
+  if (s.text) {
+    node.text = s.text;
+  }
   return node;
 }
 if (import.meta.main && process.argv[2] === "synth") {
@@ -146,8 +180,11 @@ if (import.meta.main && process.argv[2] === "synth") {
   const spec = JSON.parse(fs.readFileSync(specFile, "utf8")) as Spec;
   const example: Example = { heading: sketch.heading, description: sketch.description ?? "", code: sketch.code, dom: sketch.dom.map(fromSketch) };
   const i = spec.examples.findIndex((e) => e.heading === example.heading);
-  if (i >= 0) spec.examples[i] = example;
-  else spec.examples.push(example);
+  if (i >= 0) {
+    spec.examples[i] = example;
+  } else {
+    spec.examples.push(example);
+  }
   fs.writeFileSync(specFile, JSON.stringify(spec, null, 1));
   console.log(`${page}: example "${example.heading}" ${i >= 0 ? "replaced" : "added"} (${spec.examples.length} examples)`);
 }

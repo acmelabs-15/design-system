@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const options =
   '<acme-option value="react">React</acme-option><acme-option value="lit">Lit<span slot="description">Web components and HTML templates.</span></acme-option><acme-option value="vue">Vue</acme-option>';
 export const doc: Doc = {

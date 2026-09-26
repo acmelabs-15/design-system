@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeIconButton } from "../icon-button";
+
 afterEach(() => document.body.replaceChildren());
 test("Icon Button uses one named native control and its icon part", async () => {
   document.body.innerHTML = '<acme-icon-button aria-label="Close"><acme-close-icon></acme-close-icon></acme-icon-button>';

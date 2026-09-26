@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeAvatarGroup } from "../avatar-group";
+
 afterEach(() => document.body.replaceChildren());
 const members = Array.from({ length: 5 }, (_, i) => ({ id: String(i), label: `Person ${i}`, initials: String(i) }));
 async function mount() {

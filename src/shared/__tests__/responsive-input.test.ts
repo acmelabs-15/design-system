@@ -7,7 +7,9 @@ const scalar = (value: unknown): value is string | number =>
 
 describe("responsive attribute conversion", () => {
   test("absence and empty attributes clear while numeric tokens retain their type", () => {
-    for (const value of [null, "", "  "]) expect(parseResponsiveAttribute(value, scalar)).toEqual({ value: undefined });
+    for (const value of [null, "", "  "]) {
+      expect(parseResponsiveAttribute(value, scalar)).toEqual({ value: undefined });
+    }
     expect(parseResponsiveAttribute("0", scalar, { numbers: true })).toEqual({ value: 0 });
     expect(parseResponsiveAttribute(" .5 ", scalar, { numbers: true })).toEqual({ value: 0.5 });
     expect(parseResponsiveAttribute("2e0", scalar, { numbers: true })).toEqual({ value: 2 });
@@ -22,7 +24,9 @@ describe("responsive attribute conversion", () => {
   });
 
   test("recognizes scalar CSS before attempting structured JSON", () => {
-    for (const value of ["4px", "var(--gap)", "[main] 1fr [end]"]) expect(parseResponsiveAttribute(value, scalar)).toEqual({ value });
+    for (const value of ["4px", "var(--gap)", "[main] 1fr [end]"]) {
+      expect(parseResponsiveAttribute(value, scalar)).toEqual({ value });
+    }
   });
 
   test("preserves authored responsive objects and skipped array positions", () => {

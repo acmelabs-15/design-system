@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 const settle = async (tabs: HTMLElement & { updateComplete: Promise<unknown> }) => {
   await tabs.updateComplete;
   await Promise.all([...tabs.querySelectorAll("acme-tab,acme-tab-panel")].map((part) => (part as HTMLElement & { updateComplete: Promise<unknown> }).updateComplete));

@@ -113,8 +113,9 @@ describe("theme scope", () => {
         { [Symbol("unknown")]: true },
         [],
         null,
-      ])
+      ]) {
         expect(() => write(patch)).toThrow(TypeError);
+      }
       expect(scope.authored.get()).toBe(authored);
       expect(scope.effective.get()).toBe(effective);
       expect(changes).toEqual([]);

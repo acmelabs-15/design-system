@@ -61,7 +61,9 @@ export function VirtualDeliveryReact({
   });
   const geometry = horizontal ? center.map((column) => column.id + ":" + column.getSize()).join("|") : "";
   useLayoutEffect(() => {
-    if (geometry) columnVirtual.measure();
+    if (geometry) {
+      columnVirtual.measure();
+    }
   }, [geometry]);
   const items = rowVirtual.getVirtualItems(),
     shown = visibleRows(rows, items, vertical),
@@ -79,18 +81,26 @@ export function VirtualDeliveryReact({
         rowVirtual.measure();
       }
     }
-    if (native.current) syncGridFocus(native.current, table);
+    if (native.current) {
+      syncGridFocus(native.current, table);
+    }
   });
   async function reveal(rowId: string, columnId: string) {
     const row = rows.findIndex((row) => row.id === rowId),
       column = center.findIndex((column) => column.id === columnId);
-    if (row >= 0 && vertical) rowVirtual.scrollToIndex(row, { align: "auto" });
-    if (column >= 0 && horizontal) columnVirtual.scrollToIndex(column, { align: "auto" });
+    if (row >= 0 && vertical) {
+      rowVirtual.scrollToIndex(row, { align: "auto" });
+    }
+    if (column >= 0 && horizontal) {
+      columnVirtual.scrollToIndex(column, { align: "auto" });
+    }
     await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
   }
   const spacer = (width: number, count: number, key: string) => (count ? h("td", { key, "aria-hidden": true, colSpan: count, style: { width, padding: 0, border: 0 } }) : null);
   function cell(cell: DeliveryCell) {
-    if (cell.getIsCovered()) return null;
+    if (cell.getIsCovered()) {
+      return null;
+    }
     return h(
       "td",
       {
@@ -129,7 +139,9 @@ export function VirtualDeliveryReact({
           index === undefined || !vertical
             ? undefined
             : (element: HTMLTableRowElement | null) => {
-                if (element) rowVirtual.measureElement(element);
+                if (element) {
+                  rowVirtual.measureElement(element);
+                }
               },
       },
       ...cells.start.map(cell),

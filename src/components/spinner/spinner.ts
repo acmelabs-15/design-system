@@ -25,7 +25,9 @@ export class AcmeSpinner extends AcmeElement {
   @atomState() @property({ noAccessor: true, useDefault: true }) label = "";
   private readonly motion = new RepeatingMotion(this, () => true);
   protected willUpdate(changed: PropertyValues) {
-    if (changed.has("size")) this.motion.reset();
+    if (changed.has("size")) {
+      this.motion.reset();
+    }
   }
   render() {
     const size = Object.hasOwn(sizes, this.size) ? this.size : "medium",

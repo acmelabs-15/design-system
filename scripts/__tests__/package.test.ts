@@ -17,7 +17,7 @@ test("private workspaces resolve the one live core build", () => {
     const pkg = JSON.parse(fs.readFileSync(path.join(directory, "package.json"), "utf8"));
     expect(pkg.private).toBe(true);
     expect(pkg.peerDependencies[core.name]).toBe(core.version);
-    const probe = Bun.spawnSync([process.execPath, "-e", "console.log(Bun.resolveSync(process.argv[1],process.argv[2]))", core.name, directory], { stdout:"pipe", stderr:"pipe" });
+    const probe = Bun.spawnSync([process.execPath, "-e", "console.log(Bun.resolveSync(process.argv[1],process.argv[2]))", core.name, directory], { stdout: "pipe", stderr: "pipe" });
     expect(probe.exitCode).toBe(0);
     expect(fs.realpathSync(probe.stdout.toString().trim())).toBe(path.join(root, "dist/index.js"));
   }
@@ -27,25 +27,32 @@ test("core staging dereferences only its explicit delivery links", async () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-core-pack-"));
   try {
     const core = corePackageDirectory(root);
-    fs.mkdirSync(core,{recursive:true});
-    fs.mkdirSync(path.join(root,"dist"));
-    fs.mkdirSync(path.join(root,"assets/licenses"),{recursive:true});
-    fs.writeFileSync(path.join(root,"dist/index.js"),"export const identity = {};\n");
-    fs.writeFileSync(path.join(root,"README.md"),"Consumer instructions");
-    fs.writeFileSync(path.join(root,"assets/book-texture.avif"),"fixture texture");
-    fs.writeFileSync(path.join(root,"assets/private.txt"),"not distributed");
-    fs.writeFileSync(path.join(core,"package.json"),JSON.stringify({name:"core-pack-fixture",version:"0.0.0",files:["dist","assets/book-texture.avif","assets/licenses","README.md"]}));
+    fs.mkdirSync(core, { recursive: true });
+    fs.mkdirSync(path.join(root, "dist"));
+    fs.mkdirSync(path.join(root, "assets/licenses"), { recursive: true });
+    fs.writeFileSync(path.join(root, "dist/index.js"), "export const identity = {};\n");
+    fs.writeFileSync(path.join(root, "README.md"), "Consumer instructions");
+    fs.writeFileSync(path.join(root, "assets/book-texture.avif"), "fixture texture");
+    fs.writeFileSync(path.join(root, "assets/private.txt"), "not distributed");
+    fs.writeFileSync(path.join(core, "package.json"), JSON.stringify({ name: "core-pack-fixture", version: "0.0.0", files: ["dist", "assets/book-texture.avif", "assets/licenses", "README.md"] }));
     ensureCorePackageLinks(root);
-    const result = await packPackage(core,path.join(root,"artifacts"));
+    const result = await packPackage(core, path.join(root, "artifacts"));
     expect(result.log).toContain("dist/index.js");
     expect(result.log).toContain("assets/book-texture.avif");
     expect(result.log).not.toContain("private.txt");
-    const archive = Bun.spawnSync(["tar","-tvf",result.file],{stdout:"pipe",stderr:"pipe"});
+    const archive = Bun.spawnSync(["tar", "-tvf", result.file], { stdout: "pipe", stderr: "pipe" });
     expect(archive.exitCode).toBe(0);
-    expect(archive.stdout.toString().split("\n").some(line=>line.startsWith("l"))).toBe(false);
-    fs.symlinkSync(path.join(root,"assets/private.txt"),path.join(root,"dist/escape.txt"));
-    await expect(packPackage(core,path.join(root,"artifacts"))).rejects.toThrow("Unapproved package symlink");
-  } finally { fs.rmSync(root,{recursive:true,force:true}); }
+    expect(
+      archive.stdout
+        .toString()
+        .split("\n")
+        .some((line) => line.startsWith("l")),
+    ).toBe(false);
+    fs.symlinkSync(path.join(root, "assets/private.txt"), path.join(root, "dist/escape.txt"));
+    await expect(packPackage(core, path.join(root, "artifacts"))).rejects.toThrow("Unapproved package symlink");
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("production metadata contains runtime contracts and resolves coordinated workspaces", () => {
@@ -68,7 +75,9 @@ test("production metadata contains runtime contracts and resolves coordinated wo
   expect(manifest.peerDependencies).toEqual({ "@acme/core": "0.2.0" });
   expect(manifest.exports).toEqual({ ".": "./dist/index.js" });
   expect(manifest.private).toBe(true);
-  for (const key of ["devDependencies", "patchedDependencies", "scripts", "workspaces", "overrides"]) expect(manifest).not.toHaveProperty(key);
+  for (const key of ["devDependencies", "patchedDependencies", "scripts", "workspaces", "overrides"]) {
+    expect(manifest).not.toHaveProperty(key);
+  }
   expect(() => productionManifest({ name: "fixture", version: "0.2.0", dependencies: { missing: "workspace:*" } }, new Map())).toThrow("Unresolved workspace dependency");
 });
 
@@ -102,16 +111,18 @@ test("packing preserves the authoring manifest and ships only staged production 
 });
 
 test("packing skills publishes generated references once and excludes authoring evals", async () => {
-  const root=fs.mkdtempSync(path.join(os.tmpdir(),"acme-pack-skills-"));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-pack-skills-"));
   try {
-    fs.mkdirSync(path.join(root,"dist/skills/references"),{recursive:true});
-    fs.mkdirSync(path.join(root,"skills/evals"),{recursive:true});
-    fs.writeFileSync(path.join(root,"skills/evals/private.json"),'{}');
-    fs.writeFileSync(path.join(root,"dist/skills/references/release.json"),JSON.stringify({version:"0.0.0"}));
-    fs.writeFileSync(path.join(root,"package.json"),JSON.stringify({name:"skills-pack-fixture",version:"0.0.0",files:["dist","skills"]}));
-    const packed=await packPackage(root,path.join(root,"artifacts"));
+    fs.mkdirSync(path.join(root, "dist/skills/references"), { recursive: true });
+    fs.mkdirSync(path.join(root, "skills/evals"), { recursive: true });
+    fs.writeFileSync(path.join(root, "skills/evals/private.json"), "{}");
+    fs.writeFileSync(path.join(root, "dist/skills/references/release.json"), JSON.stringify({ version: "0.0.0" }));
+    fs.writeFileSync(path.join(root, "package.json"), JSON.stringify({ name: "skills-pack-fixture", version: "0.0.0", files: ["dist", "skills"] }));
+    const packed = await packPackage(root, path.join(root, "artifacts"));
     expect(packed.log).toContain("skills/references/release.json");
     expect(packed.log).not.toContain("dist/skills/");
     expect(packed.log).not.toContain("evals/private.json");
-  } finally {fs.rmSync(root,{recursive:true,force:true});}
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });

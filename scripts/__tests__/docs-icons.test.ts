@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { documentationIconEntries } from "../docs-icons";
+
 test("documentation icons use parsed attributes and retain explicit artwork imports", () => {
   expect(
     documentationIconEntries([

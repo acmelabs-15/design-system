@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const navigation = Array.from({ length: 18 }, (_, i) => `<div style="padding:10px 16px">Section ${i + 1}</div>`).join("");
 const pair = (id: string) =>
   `<acme-resizable id="${id}" sizes="[30,70]" style="height:240px"><acme-resizable-panel value="navigation" aria-label="Navigation" min-size="15" collapsible><acme-scroll-area orientation="vertical" style="height:100%"><acme-scroll-viewport aria-label="Navigation sections">${navigation}</acme-scroll-viewport></acme-scroll-area></acme-resizable-panel><acme-resize-handle></acme-resize-handle><acme-resizable-panel value="editor" aria-label="Editor" min-size="20"><div style="padding:16px"><acme-heading as="h3" size="20px">Editor</acme-heading><acme-text>Drag the separator or focus it and use the arrow keys.</acme-text><acme-input aria-label="Draft" value="Retained content"></acme-input></div></acme-resizable-panel></acme-resizable>`;

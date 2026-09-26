@@ -15,7 +15,9 @@ export class AcmeLegend extends AcmeElement {
     return this.axis;
   }
   set orientation(value: "horizontal" | "vertical") {
-    if (value !== "horizontal" && value !== "vertical") throw new TypeError("Invalid Legend orientation");
+    if (value !== "horizontal" && value !== "vertical") {
+      throw new TypeError("Invalid Legend orientation");
+    }
     const previous = this.axis;
     this.axis = value;
     this.requestUpdate("orientation", previous);

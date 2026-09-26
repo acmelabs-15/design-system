@@ -22,7 +22,9 @@ export class AcmeThemeSwitcher extends AcmeSemanticElement {
   }
   set value(value: ThemeAppearance | undefined) {
     const next = value ?? "auto";
-    if (!["auto", "light", "dark"].includes(next)) throw new TypeError("Invalid appearance preference");
+    if (!["auto", "light", "dark"].includes(next)) {
+      throw new TypeError("Invalid appearance preference");
+    }
     const old = this.preference;
     this.preference = next;
     this.requestUpdate("value", old);
@@ -34,7 +36,9 @@ export class AcmeThemeSwitcher extends AcmeSemanticElement {
   }
   set size(value: "small" | "medium" | "large" | undefined) {
     const next = value ?? "small";
-    if (!["small", "medium", "large"].includes(next)) throw new TypeError("Invalid appearance control size");
+    if (!["small", "medium", "large"].includes(next)) {
+      throw new TypeError("Invalid appearance control size");
+    }
     const old = this.controlSize;
     this.controlSize = next;
     this.requestUpdate("size", old);
@@ -51,8 +55,9 @@ export class AcmeThemeSwitcher extends AcmeSemanticElement {
   private request = (event: CustomEvent<{ value: string }>) => {
     event.stopPropagation();
     const value = event.detail.value as ThemeAppearance;
-    if (!this.disabled && value !== this.value && ["auto", "light", "dark"].includes(value))
+    if (!this.disabled && value !== this.value && ["auto", "light", "dark"].includes(value)) {
       this.dispatchEvent(new CustomEvent("acme-request", { detail: { action: "appearance" as const, value }, bubbles: true, composed: true, cancelable: true }));
+    }
     const selector = event.currentTarget as HTMLElement & { value: ThemeAppearance };
     selector.value = this.value;
   };

@@ -9,7 +9,9 @@ export type CorePackageManifest = Record<string, unknown> & { name: string; vers
 /** The public package owns consumer metadata; the repository root owns build tools. */
 export function readCorePackage(root = repositoryRoot): CorePackageManifest {
   const pkg = JSON.parse(fs.readFileSync(corePackageManifestPath(root), "utf8"));
-  if (typeof pkg.name !== "string" || typeof pkg.version !== "string") throw new Error("Core package name and version are required");
+  if (typeof pkg.name !== "string" || typeof pkg.version !== "string") {
+    throw new Error("Core package name and version are required");
+  }
   return pkg;
 }
 
@@ -22,10 +24,22 @@ export function ensureCorePackageLinks(root = repositoryRoot): void {
     const link = path.join(directory, name);
     const relative = path.relative(directory, path.join(root, target));
     let existing: fs.Stats | undefined;
-    try { existing = fs.lstatSync(link); } catch (error) { if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error; }
+    try {
+      existing = fs.lstatSync(link);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== "ENOENT") {
+        throw error;
+      }
+    }
     if (existing) {
-      if (!existing.isSymbolicLink() || fs.readlinkSync(link) !== relative) throw new Error("Unexpected core delivery path: " + link);
-    } else fs.symlinkSync(relative, link);
+      if (!existing.isSymbolicLink() || fs.readlinkSync(link) !== relative) {
+        throw new Error("Unexpected core delivery path: " + link);
+      }
+    } else {
+      fs.symlinkSync(relative, link);
+    }
   }
 }
-if (import.meta.main) ensureCorePackageLinks();
+if (import.meta.main) {
+  ensureCorePackageLinks();
+}

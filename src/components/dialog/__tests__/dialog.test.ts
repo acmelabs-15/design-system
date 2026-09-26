@@ -6,8 +6,11 @@ import "../../../define/alert-dialog";
 import "../../../define/alert-dialog-trigger";
 import "../../../define/alert-dialog-action";
 import "../../../define/alert-dialog-cancel";
+
 async function settle(root: Element) {
-  for (let i = 0; i < 3; i++) await Promise.all([root, ...root.querySelectorAll("*")].map((el) => (el as any).updateComplete));
+  for (let i = 0; i < 3; i++) {
+    await Promise.all([root, ...root.querySelectorAll("*")].map((el) => (el as any).updateComplete));
+  }
 }
 test("Dialog has one user-state event and cancelable close requests", async () => {
   document.body.innerHTML =

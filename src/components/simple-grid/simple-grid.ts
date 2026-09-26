@@ -33,7 +33,9 @@ export class AcmeSimpleGrid extends AcmeGridLayoutElement {
   }
   private supportsMinimum(value: string): boolean {
     const css = this.ownerDocument.defaultView?.CSS;
-    if (css?.supports) return css.supports("grid-template-columns", minimumTrack(value));
+    if (css?.supports) {
+      return css.supports("grid-template-columns", minimumTrack(value));
+    }
     const style = this.ownerDocument.createElement("div").style;
     style.setProperty("grid-template-columns", minimumTrack(value));
     return !!style.getPropertyValue("grid-template-columns");
@@ -42,13 +44,19 @@ export class AcmeSimpleGrid extends AcmeGridLayoutElement {
     if (name === "columns") {
       const input = parseResponsiveAttribute(value, isColumnCount, { numbers: true });
       this.columns = input.value;
-      if (input.diagnostic) console.warn(this.localName, { ...input.diagnostic, attribute: name });
+      if (input.diagnostic) {
+        console.warn(this.localName, { ...input.diagnostic, attribute: name });
+      }
     } else if (name === "min-child-width") {
       const scalar = (value: unknown): value is string | number => isMinimumWidth(value) && (typeof value === "number" || this.supportsMinimum(value));
       const input = parseResponsiveAttribute(value, scalar, { numbers: true });
       this.minChildWidth = input.value;
-      if (input.diagnostic) console.warn(this.localName, { ...input.diagnostic, attribute: name });
-    } else super.attributeChangedCallback(name, previous, value);
+      if (input.diagnostic) {
+        console.warn(this.localName, { ...input.diagnostic, attribute: name });
+      }
+    } else {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   protected resolvedStyleInputs(): readonly (readonly [StyleInputKey, unknown])[] {
     const inputs = super.resolvedStyleInputs(),

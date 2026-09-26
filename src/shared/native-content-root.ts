@@ -19,15 +19,20 @@ export class NativeContentRoot<T extends HTMLElement> implements ReactiveControl
     return this.current;
   }
   private collect = () => {
-    if (!this.host.isConnected || this.collecting) return;
+    if (!this.host.isConnected || this.collecting) {
+      return;
+    }
     this.collecting = true;
     try {
       const supplied = [...this.host.children].find(
         (node) =>
           node !== this.current && node.localName === this.current.localName && node.namespaceURI === this.current.namespaceURI && node.getAttribute(nativeContentMarker) === this.current.localName,
       );
-      if (supplied && (!this.initialized || this.current.parentNode !== this.host)) this.current = supplied as T;
-      else if (this.initialized && this.current.parentNode !== this.host) this.current = this.create();
+      if (supplied && (!this.initialized || this.current.parentNode !== this.host)) {
+        this.current = supplied as T;
+      } else if (this.initialized && this.current.parentNode !== this.host) {
+        this.current = this.create();
+      }
       this.current.setAttribute(nativeContentMarker, this.current.localName);
       this.changed(this.current);
       const nodes = [...this.host.childNodes].filter((node) => node !== this.current);
@@ -36,7 +41,9 @@ export class NativeContentRoot<T extends HTMLElement> implements ReactiveControl
       while (focused) {
         focusPath.push(focused);
         const next = focused.shadowRoot?.activeElement as HTMLElement | undefined;
-        if (!next) break;
+        if (!next) {
+          break;
+        }
         focused = next;
       }
       const displaced = focusPath.some((active) => nodes.some((node) => node === active || node.contains(active)));
@@ -45,15 +52,22 @@ export class NativeContentRoot<T extends HTMLElement> implements ReactiveControl
         textTarget?.selectionStart !== null && textTarget?.selectionStart !== undefined
           ? { start: textTarget.selectionStart, end: textTarget.selectionEnd!, direction: textTarget.selectionDirection ?? "none" }
           : undefined;
-      if (this.current.parentNode !== this.host) this.host.append(this.current);
+      if (this.current.parentNode !== this.host) {
+        this.host.append(this.current);
+      }
       for (const node of nodes) {
         const target = this.current as T & { moveBefore?: (node: Node, before: Node | null) => void };
-        if (target.moveBefore && node.isConnected) target.moveBefore(node, null);
-        else target.append(node);
+        if (target.moveBefore && node.isConnected) {
+          target.moveBefore(node, null);
+        } else {
+          target.append(node);
+        }
       }
       if (displaced && focused?.isConnected && !focused.matches(":disabled") && !focused.closest("[inert]")) {
         focused.focus({ preventScroll: true });
-        if (selection) textTarget!.setSelectionRange(selection.start, selection.end, selection.direction);
+        if (selection) {
+          textTarget!.setSelectionRange(selection.start, selection.end, selection.direction);
+        }
       }
       this.initialized = true;
       this.changed(this.current);

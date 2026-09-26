@@ -22,13 +22,19 @@ export function createResponsiveStylePlan(inputs: readonly (readonly [StyleInput
   const blocks = new Map<string, { range: ResponsiveRange; declarations: ResponsiveStyleDeclaration[] }>();
   const supplied = new Set<StyleInputKey>();
   for (const [key, input] of inputs) {
-    if (!Object.hasOwn(styleInputSchema, key)) throw new TypeError("Unknown style input: " + key);
-    if (supplied.has(key)) throw new TypeError("Duplicate style input: " + key);
+    if (!Object.hasOwn(styleInputSchema, key)) {
+      throw new TypeError("Unknown style input: " + key);
+    }
+    if (supplied.has(key)) {
+      throw new TypeError("Duplicate style input: " + key);
+    }
     supplied.add(key);
     const metadata = styleInputSchema[key];
     const entries = normalizeResponsive(input, (value): value is string | number => isAuthoredStyleScalar(key, value, options.supports, options.displayModes), options.breakpoints);
     for (const { min, max, value } of entries) {
-      if (!isStyleScalar(key, value, options.supports, options.displayModes)) continue;
+      if (!isStyleScalar(key, value, options.supports, options.displayModes)) {
+        continue;
+      }
       const rangeKey = `${min}:${max ?? "unbounded"}`;
       let block = blocks.get(rangeKey);
       if (!block) {
@@ -37,8 +43,11 @@ export function createResponsiveStylePlan(inputs: readonly (readonly [StyleInput
       }
       let cssValue = String(value);
       if (typeof value === "number") {
-        if (metadata.numeric === "signed-spacing" || metadata.numeric === "nonnegative-spacing") cssValue = numericTokenValue("spacing", value);
-        else if (metadata.numeric === "size") cssValue = numericTokenValue("sizes", value);
+        if (metadata.numeric === "signed-spacing" || metadata.numeric === "nonnegative-spacing") {
+          cssValue = numericTokenValue("spacing", value);
+        } else if (metadata.numeric === "size") {
+          cssValue = numericTokenValue("sizes", value);
+        }
       }
       block.declarations.push(Object.freeze({ property: metadata.cssProperty, value: cssValue, target: metadata.target }));
     }

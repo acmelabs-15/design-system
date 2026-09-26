@@ -16,7 +16,9 @@ export abstract class AcmeDisclosureContent extends AcmeElement {
     return this.renderer;
   }
   set renderContent(value: ContentRenderer | undefined) {
-    if (value !== undefined && typeof value !== "function") throw new TypeError("renderContent must be a function");
+    if (value !== undefined && typeof value !== "function") {
+      throw new TypeError("renderContent must be a function");
+    }
     const old = this.renderer;
     this.renderer = value;
     this.requestUpdate("renderContent", old);
@@ -40,18 +42,26 @@ export abstract class AcmeDisclosureContent extends AcmeElement {
     return this.renderRoot?.querySelector<HTMLElement>(".body") ?? undefined;
   }
   private measure = () => {
-    if (this.hidden || !this.body) return;
+    if (this.hidden || !this.body) {
+      return;
+    }
     const value = this.body.getBoundingClientRect().height;
-    if (Math.abs(value - this.height) > 0.1) this.height = value;
+    if (Math.abs(value - this.height) > 0.1) {
+      this.height = value;
+    }
   };
   protected willUpdate() {
     const expanded = this.expanded,
       active = deepActiveElement(this.ownerDocument);
-    if (!expanded && active && composedContains(this, active)) this.binding.current?.recover();
+    if (!expanded && active && composedContains(this, active)) {
+      this.binding.current?.recover();
+    }
     this.inert = !expanded;
     if (expanded) {
       this.hidden = false;
-      if (!this.visited) this.visited = true;
+      if (!this.visited) {
+        this.visited = true;
+      }
     }
     this.motion.update();
   }

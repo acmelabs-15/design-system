@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import { AcmeIconElement } from "../icon-element";
 import { IconArtwork, configureIcons } from "../icon-artwork";
+
 const geometry = { viewBox: "0 -960 960 960", paths: [{ d: "M240-200h120v-240h240v240h120v-360L480-740 240-560v360Z" }] };
 const artwork = new IconArtwork("home", geometry);
 class TestIcon extends AcmeIconElement {

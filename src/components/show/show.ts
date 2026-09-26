@@ -25,7 +25,9 @@ export class AcmeShow extends AcmeElement {
     return this.contentRenderer;
   }
   set renderContent(value: ContentRenderer | undefined) {
-    if (value !== undefined && typeof value !== "function") throw new TypeError("renderContent must be a function");
+    if (value !== undefined && typeof value !== "function") {
+      throw new TypeError("renderContent must be a function");
+    }
     const previous = this.contentRenderer;
     this.contentRenderer = value;
     this.requestUpdate("renderContent", previous);
@@ -34,7 +36,9 @@ export class AcmeShow extends AcmeElement {
     return this.fallbackRenderer;
   }
   set renderFallback(value: ContentRenderer | undefined) {
-    if (value !== undefined && typeof value !== "function") throw new TypeError("renderFallback must be a function");
+    if (value !== undefined && typeof value !== "function") {
+      throw new TypeError("renderFallback must be a function");
+    }
     const previous = this.fallbackRenderer;
     this.fallbackRenderer = value;
     this.requestUpdate("renderFallback", previous);
@@ -54,10 +58,14 @@ export class AcmeShow extends AcmeElement {
     this.previous = this.when;
   }
   protected updated() {
-    if (!this.recover) return;
+    if (!this.recover) {
+      return;
+    }
     this.recover = false;
     const branch = this.renderRoot.querySelector<HTMLElement>(`[part=${this.when ? "content" : "fallback"}]`)!;
-    if (!focusAvailable(focusable(branch, { getShadowRoot: true })[0])) branch.focus({ preventScroll: true });
+    if (!focusAvailable(focusable(branch, { getShadowRoot: true })[0])) {
+      branch.focus({ preventScroll: true });
+    }
   }
   render() {
     const label = this.ariaLabel || message(this.themeContext.scope.effective.get().locale, "show.content", "Conditional content");

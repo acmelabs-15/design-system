@@ -16,6 +16,7 @@ import { SpringValue } from "../../shared/spring-value";
 import { readMotionSpring } from "../../shared/motion-spring";
 import { message, messageCatalogs } from "../../shared/messages";
 import { StoreSelector } from "../../shared/store-connection";
+
 export type { FlowNode, FlowEdge, FlowPort } from "../../shared/flow-data";
 /** Automatically routed read-only diagram with stable authored node content.
  * @slot - Flow Node parts keyed by node-id.
@@ -58,7 +59,9 @@ export class AcmeFlowDiagram extends AcmeElement {
     return this.axis;
   }
   set direction(value: "right" | "down") {
-    if (value !== "right" && value !== "down") throw new TypeError("Invalid Flow direction");
+    if (value !== "right" && value !== "down") {
+      throw new TypeError("Invalid Flow direction");
+    }
     const old = this.axis;
     this.axis = value;
     this.requestUpdate("direction", old);
@@ -149,14 +152,18 @@ export class AcmeFlowDiagram extends AcmeElement {
     return message(this.themeContext.scope.effective.get().locale, "flow." + key, fallback);
   }
   private limits() {
-    if (this.minZoom > this.maxZoom) throw new RangeError("Flow minZoom must not exceed maxZoom");
+    if (this.minZoom > this.maxZoom) {
+      throw new RangeError("Flow minZoom must not exceed maxZoom");
+    }
     return { min: this.minZoom, max: this.maxZoom };
   }
   private center() {
     return { x: (this.canvas?.clientWidth ?? 0) / 2, y: (this.canvas?.clientHeight ?? 0) / 2 };
   }
   private setViewport(value: FlowViewport, animate = true) {
-    if (value.x === this.viewport.x && value.y === this.viewport.y && value.zoom === this.zoom) return;
+    if (value.x === this.viewport.x && value.y === this.viewport.y && value.zoom === this.zoom) {
+      return;
+    }
     this.viewport = Object.freeze(value);
     if (!animate) {
       this.motionX.jump();
@@ -166,7 +173,9 @@ export class AcmeFlowDiagram extends AcmeElement {
   }
   /** Fits the current complete graph within the canvas. */
   fit() {
-    if (!this.scene || !this.canvas) return;
+    if (!this.scene || !this.canvas) {
+      return;
+    }
     const { min, max } = this.limits();
     this.setViewport(fitFlowViewport({ width: this.canvas.clientWidth, height: this.canvas.clientHeight }, this.scene, min, max, 20));
   }
@@ -178,7 +187,9 @@ export class AcmeFlowDiagram extends AcmeElement {
   }
   /** Sets the translated viewport position in canvas pixels. */
   panTo(point: FlowPoint) {
-    if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new RangeError("Flow pan coordinates must be finite");
+    if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) {
+      throw new RangeError("Flow pan coordinates must be finite");
+    }
     this.setViewport({ ...this.viewport, x: point.x, y: point.y });
   }
   private emitChange = () => this.dispatchEvent(new CustomEvent("acme-change", { detail: Object.freeze({ viewport: this.viewport }), bubbles: true, composed: true }));
@@ -191,8 +202,9 @@ export class AcmeFlowDiagram extends AcmeElement {
     this.emitChange();
   };
   private activate = (id: string) => {
-    if (this.nodes.some((node) => node.id === id))
+    if (this.nodes.some((node) => node.id === id)) {
       this.dispatchEvent(new CustomEvent("acme-request", { detail: Object.freeze({ action: "node", id }), bubbles: true, composed: true, cancelable: true }));
+    }
   };
   private scan = () => {
     const slot = this.renderRoot?.querySelector<HTMLSlotElement>("slot");
@@ -201,7 +213,11 @@ export class AcmeFlowDiagram extends AcmeElement {
       return part ? [part] : [];
     });
     if (next.length !== this.authored.length || next.some((part, index) => part !== this.authored[index])) {
-      for (const part of this.authored) if (!next.includes(part)) part.update(undefined, undefined, undefined);
+      for (const part of this.authored) {
+        if (!next.includes(part)) {
+          part.update(undefined, undefined, undefined);
+        }
+      }
       this.authored = next;
     }
     this.applyNodes();
@@ -209,10 +225,14 @@ export class AcmeFlowDiagram extends AcmeElement {
   };
   private applyNodes() {
     const definitions = new Map(this.nodes.map((node) => [node.id, node]));
-    for (const part of this.authored) part.update(definitions.get(part.id()), this.scene?.nodes.get(part.id()), this.activate);
+    for (const part of this.authored) {
+      part.update(definitions.get(part.id()), this.scene?.nodes.get(part.id()), this.activate);
+    }
   }
   private schedule = () => {
-    if (!this.isConnected || this.frame !== undefined) return;
+    if (!this.isConnected || this.frame !== undefined) {
+      return;
+    }
     this.frame = this.ownerDocument.defaultView!.requestAnimationFrame(() => {
       this.frame = undefined;
       void this.runLayout(false).catch(() => {});
@@ -233,8 +253,12 @@ export class AcmeFlowDiagram extends AcmeElement {
 
       sizes.set(id, { width: part.host.offsetWidth, height: part.host.offsetHeight });
     }
-    for (const element of this.renderRoot.querySelectorAll<HTMLElement>("[data-flow-fallback]")) sizes.set(element.dataset.flowFallback!, { width: element.offsetWidth, height: element.offsetHeight });
-    for (const element of this.renderRoot.querySelectorAll<HTMLElement>("[data-flow-measure]")) labels.set(element.dataset.flowMeasure!, { width: element.offsetWidth, height: element.offsetHeight });
+    for (const element of this.renderRoot.querySelectorAll<HTMLElement>("[data-flow-fallback]")) {
+      sizes.set(element.dataset.flowFallback!, { width: element.offsetWidth, height: element.offsetHeight });
+    }
+    for (const element of this.renderRoot.querySelectorAll<HTMLElement>("[data-flow-measure]")) {
+      labels.set(element.dataset.flowMeasure!, { width: element.offsetWidth, height: element.offsetHeight });
+    }
     return { sizes, labels };
   }
   /** Recomputes measured positions and routes; obsolete requests reject with AbortError. */
@@ -243,10 +267,14 @@ export class AcmeFlowDiagram extends AcmeElement {
     return this.runLayout(true);
   }
   private async runLayout(force: boolean) {
-    if (!this.isConnected) throw new DOMException("Flow Diagram is disconnected", "AbortError");
+    if (!this.isConnected) {
+      throw new DOMException("Flow Diagram is disconnected", "AbortError");
+    }
     this.applyNodes();
     await Promise.all(this.authored.map((part) => (part.host as AcmeElement).updateComplete));
-    if (!this.isConnected) throw new DOMException("Flow Diagram is disconnected", "AbortError");
+    if (!this.isConnected) {
+      throw new DOMException("Flow Diagram is disconnected", "AbortError");
+    }
     let version = this.version;
     let started = false;
     try {
@@ -261,7 +289,9 @@ export class AcmeFlowDiagram extends AcmeElement {
       const spacing = { node: space("--acme-flow-node-gap", 40), layer: space("--acme-flow-layer-gap", 60), edge: space("--acme-flow-edge-gap", 14), padding: 20 },
         workerUrl = flowDiagramConfiguration.get().workerUrl;
       const signature = JSON.stringify([nodes, edges, [...sizes], [...labels], this.direction, css.direction, spacing, workerUrl, this.authored.map((part) => part.id()), this.minZoom, this.maxZoom]);
-      if (!force && signature === this.signature) return;
+      if (!force && signature === this.signature) {
+        return;
+      }
       this.signature = signature;
       version = ++this.version;
       started = true;
@@ -269,12 +299,18 @@ export class AcmeFlowDiagram extends AcmeElement {
       this.busy = true;
       this.failure = "";
       const limits = this.limits();
-      if (this.zoom < limits.min || this.zoom > limits.max) this.zoomTo(this.zoom);
+      if (this.zoom < limits.min || this.zoom > limits.max) {
+        this.zoomTo(this.zoom);
+      }
       validateFlowGraph(nodes, edges);
       const customIds = this.authored.map((part) => part.id());
-      if (new Set(customIds).size !== customIds.length) throw new TypeError("Flow Node IDs must be unique");
+      if (new Set(customIds).size !== customIds.length) {
+        throw new TypeError("Flow Node IDs must be unique");
+      }
       const declaredIds = new Set(nodes.map((node) => node.id));
-      if (customIds.some((id) => !declaredIds.has(id))) throw new TypeError("Flow Node must reference a declared node");
+      if (customIds.some((id) => !declaredIds.has(id))) {
+        throw new TypeError("Flow Node must reference a declared node");
+      }
       if (!nodes.length) {
         this.engine.dispose();
         this.scene = undefined;
@@ -283,7 +319,9 @@ export class AcmeFlowDiagram extends AcmeElement {
       }
       const graph = createFlowGraph(nodes, edges, sizes, labels, this.direction, css.direction === "rtl", spacing);
       const result = await this.engine.layout(graph, this.ownerDocument, workerUrl);
-      if (version !== this.version || !this.isConnected) throw new DOMException("Flow layout superseded", "AbortError");
+      if (version !== this.version || !this.isConnected) {
+        throw new DOMException("Flow layout superseded", "AbortError");
+      }
       this.scene = flowScene(result, nodes, edges);
       this.applyNodes();
       if (!this.fitted && this.fitOnLoad) {
@@ -303,7 +341,9 @@ export class AcmeFlowDiagram extends AcmeElement {
       }
       throw error;
     } finally {
-      if (started && version === this.version) this.busy = false;
+      if (started && version === this.version) {
+        this.busy = false;
+      }
     }
   }
   private point(event: PointerEvent | WheelEvent) {
@@ -312,22 +352,32 @@ export class AcmeFlowDiagram extends AcmeElement {
   }
   private revealFocus = (event: FocusEvent) => {
     const target = event.composedPath()[0];
-    if (!(target instanceof this.ownerDocument.defaultView!.HTMLElement) || target === this.background) return;
-    if (this.focusFrame !== undefined) this.ownerDocument.defaultView!.cancelAnimationFrame(this.focusFrame);
+    if (!(target instanceof this.ownerDocument.defaultView!.HTMLElement) || target === this.background) {
+      return;
+    }
+    if (this.focusFrame !== undefined) {
+      this.ownerDocument.defaultView!.cancelAnimationFrame(this.focusFrame);
+    }
     this.focusFrame = this.ownerDocument.defaultView!.requestAnimationFrame(() => {
       this.focusFrame = undefined;
-      if (!this.isConnected || !this.canvas || !target.isConnected) return;
+      if (!this.isConnected || !this.canvas || !target.isConnected) {
+        return;
+      }
       this.canvas.scrollLeft = 0;
       this.canvas.scrollTop = 0;
       const outer = this.canvas.getBoundingClientRect(),
         inner = target.getBoundingClientRect();
       const x = inner.left < outer.left + 12 ? outer.left + 12 - inner.left : inner.right > outer.right - 12 ? outer.right - 12 - inner.right : 0;
       const y = inner.top < outer.top + 12 ? outer.top + 12 - inner.top : inner.bottom > outer.bottom - 12 ? outer.bottom - 12 - inner.bottom : 0;
-      if (x || y) this.setViewport({ x: this.motionX.value + x, y: this.motionY.value + y, zoom: this.motionZoom.value }, false);
+      if (x || y) {
+        this.setViewport({ x: this.motionX.value + x, y: this.motionY.value + y, zoom: this.motionZoom.value }, false);
+      }
     });
   };
   private pointerDown = (event: PointerEvent) => {
-    if (event.button !== 0 || event.target !== this.background || this.pointers.size >= 2) return;
+    if (event.button !== 0 || event.target !== this.background || this.pointers.size >= 2) {
+      return;
+    }
     event.preventDefault();
     this.background!.setPointerCapture(event.pointerId);
     this.pointers.set(event.pointerId, this.point(event));
@@ -337,10 +387,13 @@ export class AcmeFlowDiagram extends AcmeElement {
   };
   private pointerMove = (event: PointerEvent) => {
     const old = this.pointers.get(event.pointerId);
-    if (!old) return;
+    if (!old) {
+      return;
+    }
     const point = this.point(event);
-    if (this.pointers.size === 1) this.setViewport({ ...this.viewport, x: this.viewport.x + point.x - old.x, y: this.viewport.y + point.y - old.y }, false);
-    else {
+    if (this.pointers.size === 1) {
+      this.setViewport({ ...this.viewport, x: this.viewport.x + point.x - old.x, y: this.viewport.y + point.y - old.y }, false);
+    } else {
       const other = [...this.pointers].find(([id]) => id !== event.pointerId)![1];
       const from = Math.hypot(old.x - other.x, old.y - other.y),
         to = Math.hypot(point.x - other.x, point.y - other.y);
@@ -359,14 +412,18 @@ export class AcmeFlowDiagram extends AcmeElement {
     this.pointers.delete(event.pointerId);
   };
   private wheel = (event: WheelEvent) => {
-    if (!(event.ctrlKey || event.metaKey) || event.target !== this.background) return;
+    if (!(event.ctrlKey || event.metaKey) || event.target !== this.background) {
+      return;
+    }
     event.preventDefault();
     const { min, max } = this.limits();
     this.setViewport(zoomFlowViewport(this.viewport, Math.max(min, Math.min(max, this.zoom * Math.exp(-event.deltaY * 0.005))), this.point(event)), false);
     this.emitChange();
   };
   private key = (event: KeyboardEvent) => {
-    if (event.target !== this.background || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.target !== this.background || event.altKey || event.ctrlKey || event.metaKey) {
+      return;
+    }
     switch (event.key) {
       case "ArrowLeft":
         this.panTo({ x: this.viewport.x + 40, y: this.viewport.y });
@@ -404,8 +461,16 @@ export class AcmeFlowDiagram extends AcmeElement {
   protected updated() {
     this.applyNodes();
     const targets = new Set<Element>([...(this.canvas ? [this.canvas] : []), ...this.targets()]);
-    for (const old of this.observed) if (!targets.has(old)) this.resize?.unobserve(old);
-    for (const target of targets) if (!this.observed.has(target)) this.resize?.observe(target);
+    for (const old of this.observed) {
+      if (!targets.has(old)) {
+        this.resize?.unobserve(old);
+      }
+    }
+    for (const target of targets) {
+      if (!this.observed.has(target)) {
+        this.resize?.observe(target);
+      }
+    }
     this.observed = targets;
     this.schedule();
   }
@@ -422,9 +487,13 @@ export class AcmeFlowDiagram extends AcmeElement {
   disconnectedCallback() {
     ++this.version;
     this.engine.dispose();
-    if (this.frame !== undefined) this.ownerDocument.defaultView!.cancelAnimationFrame(this.frame);
+    if (this.frame !== undefined) {
+      this.ownerDocument.defaultView!.cancelAnimationFrame(this.frame);
+    }
     this.frame = undefined;
-    if (this.focusFrame !== undefined) this.ownerDocument.defaultView!.cancelAnimationFrame(this.focusFrame);
+    if (this.focusFrame !== undefined) {
+      this.ownerDocument.defaultView!.cancelAnimationFrame(this.focusFrame);
+    }
     this.focusFrame = undefined;
     this.resize?.disconnect();
     this.observed.clear();
@@ -467,7 +536,9 @@ export class AcmeFlowDiagram extends AcmeElement {
   }
 }
 function positive(value: number) {
-  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) throw new RangeError("Flow zoom must be positive and finite");
+  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+    throw new RangeError("Flow zoom must be positive and finite");
+  }
 }
 declare global {
   interface HTMLElementTagNameMap {

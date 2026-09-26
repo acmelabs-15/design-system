@@ -21,8 +21,9 @@ export class AcmeLegendItem extends AcmeElement {
     return this.paint;
   }
   set color(value: string | undefined) {
-    if (value !== undefined && (typeof value !== "string" || !value.trim() || (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("color", value))))
+    if (value !== undefined && (typeof value !== "string" || !value.trim() || (this.ownerDocument.defaultView?.CSS && !this.ownerDocument.defaultView.CSS.supports("color", value)))) {
       throw new TypeError("Legend color requires a CSS color");
+    }
     const previous = this.paint;
     this.paint = value;
     this.requestUpdate("color", previous);

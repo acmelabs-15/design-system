@@ -3,6 +3,7 @@ import "../../../define/app-bar";
 import "../../../define/app-bar-start";
 import "../../../define/app-bar-content";
 import "../../../define/app-bar-end";
+
 test("App Bar has explicit parts and no implicit application controls", async () => {
   document.body.innerHTML =
     "<acme-app-bar><acme-app-bar-start>Brand</acme-app-bar-start><acme-app-bar-content>Page</acme-app-bar-content><acme-app-bar-end><button>Save</button></acme-app-bar-end></acme-app-bar>";

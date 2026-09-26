@@ -3,8 +3,10 @@ import path from "node:path";
 import ts from "typescript";
 import { compileLitTemplates } from "@lit-labs/compiler";
 import { writeManifest } from "./manifest";
+
 const ROOT = path.resolve(import.meta.dir, "..");
-const SRC = path.join(ROOT, "src"), DIST = path.join(ROOT, "dist");
+const SRC = path.join(ROOT, "src"),
+  DIST = path.join(ROOT, "dist");
 
 const walk = (d: string): string[] =>
   fs
@@ -29,7 +31,9 @@ for (const f of files) {
   const rel = path.relative(SRC, f).replace(/\.ts$/, ".js");
   fs.mkdirSync(path.dirname(path.join(DIST, rel)), { recursive: true });
   fs.writeFileSync(path.join(DIST, rel), out.outputText);
-  if (out.outputText.includes('["_$litType$"]')) compiled++;
+  if (out.outputText.includes('["_$litType$"]')) {
+    compiled++;
+  }
 }
 console.log(`modules: ${files.length} files, ${compiled} with compiled templates`);
 
@@ -49,8 +53,9 @@ const diags = ts
   .getPreEmitDiagnostics(program)
   .concat(emit.diagnostics)
   .filter((d) => d.category === ts.DiagnosticCategory.Error);
-for (const d of diags.slice(0, 30))
+for (const d of diags.slice(0, 30)) {
   console.error(ts.flattenDiagnosticMessageText(d.messageText, "\n"), d.file ? `${path.relative(ROOT, d.file.fileName)}:${d.file.getLineAndCharacterOfPosition(d.start ?? 0).line + 1}` : "");
+}
 if (diags.length) {
   console.error(`${diags.length} type errors`);
   process.exit(1);

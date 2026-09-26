@@ -48,7 +48,9 @@ export abstract class AcmeTypographyElement extends AcmeResponsiveElement {
     return this.clamp;
   }
   set lineClamp(value: number | undefined) {
-    if (value !== undefined && (!Number.isInteger(value) || value < 1)) throw new RangeError("lineClamp must be a positive integer");
+    if (value !== undefined && (!Number.isInteger(value) || value < 1)) {
+      throw new RangeError("lineClamp must be a positive integer");
+    }
     const previous = this.clamp;
     this.clamp = value;
     this.requestUpdate("lineClamp", previous);
@@ -69,7 +71,9 @@ export abstract class AcmeTypographyElement extends AcmeResponsiveElement {
   }
   private supports = (property: string, value: string): boolean => {
     const css = this.ownerDocument.defaultView?.CSS;
-    if (css?.supports) return css.supports(property, value);
+    if (css?.supports) {
+      return css.supports(property, value);
+    }
     const style = this.ownerDocument.createElement("div").style;
     style.setProperty(property, value);
     return !!style.getPropertyValue(property);
@@ -78,15 +82,20 @@ export abstract class AcmeTypographyElement extends AcmeResponsiveElement {
     const value = copyResponsiveInput(input, (value): value is StyleScalar<Key> => isAuthoredStyleScalar(key, value, this.supports));
     const previous = this.textStyles[key],
       next = { ...this.textStyles };
-    if (value === undefined) delete next[key];
-    else next[key] = value;
+    if (value === undefined) {
+      delete next[key];
+    } else {
+      next[key] = value;
+    }
     this.textStyles = Object.freeze(next);
     this.requestUpdate(names[key], previous);
   }
   protected textAttribute<Key extends TypographyKey>(key: Key, value: string | null): void {
     const parsed = parseResponsiveAttribute(value, (value): value is StyleScalar<Key> => isStyleScalar(key, value, this.supports), { numbers: key === "fontWeight" });
     this.setTextStyle(key, parsed.value);
-    if (parsed.diagnostic) console.warn(this.localName, { ...parsed.diagnostic, attribute: names[key] });
+    if (parsed.diagnostic) {
+      console.warn(this.localName, { ...parsed.diagnostic, attribute: names[key] });
+    }
   }
   attributeChangedCallback(name: string, previous: string | null, value: string | null): void {
     if (Object.hasOwn(attributes, name)) {
@@ -95,8 +104,9 @@ export abstract class AcmeTypographyElement extends AcmeResponsiveElement {
     }
     if (name === "line-clamp") {
       const number = value === null || value.trim() === "" ? undefined : Number(value);
-      if (number === undefined || (Number.isInteger(number) && number > 0)) this.lineClamp = number;
-      else {
+      if (number === undefined || (Number.isInteger(number) && number > 0)) {
+        this.lineClamp = number;
+      } else {
         this.lineClamp = undefined;
         console.warn(this.localName, { code: "invalid-line-clamp" });
       }
@@ -124,7 +134,10 @@ export abstract class AcmeSizedTypographyElement extends AcmeTypographyElement {
     this.setTextStyle("fontSize", value);
   }
   attributeChangedCallback(name: string, previous: string | null, value: string | null): void {
-    if (name === "size") this.textAttribute("fontSize", value);
-    else super.attributeChangedCallback(name, previous, value);
+    if (name === "size") {
+      this.textAttribute("fontSize", value);
+    } else {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
 }

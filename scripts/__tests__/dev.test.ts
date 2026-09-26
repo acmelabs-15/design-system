@@ -18,7 +18,9 @@ async function waitFor<T>(read: () => Promise<T>, accepts: (value: T) => boolean
   let value: T;
   do {
     value = await read();
-    if (accepts(value)) return value;
+    if (accepts(value)) {
+      return value;
+    }
     await Bun.sleep(25);
   } while (Date.now() < deadline);
   throw new Error(`Expected watcher outcome was not observed: ${JSON.stringify(value!)}`);
@@ -51,7 +53,9 @@ async function fixture() {
   let output = "";
   while (!/TEST_PORT=\d+\n/.test(output)) {
     const chunk = await reader.read();
-    if (chunk.done) throw new Error("Development server exited before listening");
+    if (chunk.done) {
+      throw new Error("Development server exited before listening");
+    }
     output += new TextDecoder().decode(chunk.value);
   }
   const port = Number(output.match(/TEST_PORT=(\d+)/)?.[1]);

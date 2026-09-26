@@ -1,5 +1,6 @@
 import { createContext } from "@lit/context";
 import type { ReadonlyAtom } from "@tanstack/lit-store";
+
 export interface OptionPart {
   readonly host: HTMLElement;
   value(): string | undefined;

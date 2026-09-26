@@ -8,7 +8,7 @@ const roots: string[] = [];
 const fixture = (files: Record<string, string>) => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-entries-"));
   roots.push(root);
-  fs.mkdirSync(path.join(root, "packages/core"), {recursive:true});
+  fs.mkdirSync(path.join(root, "packages/core"), { recursive: true });
   for (const [name, source] of Object.entries(files)) {
     const file = path.join(root, "src", name);
     fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -31,7 +31,9 @@ test("the entries command updates definitions and exports together", () => {
   expect(pkg.exports["./components/stale"]).toBeUndefined();
 });
 afterEach(() => {
-  for (const root of roots.splice(0)) fs.rmSync(root, { recursive: true, force: true });
+  for (const root of roots.splice(0)) {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("records use tag declarations and owned markup, not component imports or text", () => {

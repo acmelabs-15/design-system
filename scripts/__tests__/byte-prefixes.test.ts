@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { verifyBytePrefixes } from "../byte-prefixes";
 import { binaryPrefixLocales, binaryPrefixPatterns } from "../../src/generated/byte-prefixes";
+
 test("generated binary prefix data covers every locale in the pinned source", () => {
   const root = path.resolve(import.meta.dir, "../..");
   verifyBytePrefixes(root);

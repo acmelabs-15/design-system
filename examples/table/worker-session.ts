@@ -1,6 +1,7 @@
 import { createAtom } from "@tanstack/lit-store";
 import { columnFilteringFeature, createSortedRowModel, filterFns, globalFilteringFeature, rowSortingFeature, sortFns, tableFeatures } from "@tanstack/table-core";
 import { createTableWorker, createWorkerRowModel, workerRowModelsFeature } from "@tanstack/table-core/experimental-worker-plugin";
+
 export type WorkerRow = { id: string; name: string; amount: number };
 export const workerColumns = [
   { accessorKey: "name" as const, header: "Name" },
@@ -59,7 +60,9 @@ export function createWorkerSession() {
     },
     dispose: stop,
     simulateFailure() {
-      for (const worker of workers) worker.postMessage({ demoCommand: "fail" });
+      for (const worker of workers) {
+        worker.postMessage({ demoCommand: "fail" });
+      }
     },
     useServerRows(rows: WorkerRow[]) {
       stop();

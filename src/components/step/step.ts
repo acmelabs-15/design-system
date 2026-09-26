@@ -18,7 +18,9 @@ export class AcmeStep extends AcmeElement {
     return this.key;
   }
   set value(value: string) {
-    if (typeof value !== "string") throw new TypeError("Step value must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("Step value must be a string");
+    }
     const previous = this.key;
     this.key = value;
     this.requestUpdate("value", previous);
@@ -30,7 +32,9 @@ export class AcmeStep extends AcmeElement {
     return this.completion;
   }
   set completed(value: boolean | undefined) {
-    if (value !== undefined && typeof value !== "boolean") throw new TypeError("completed must be a boolean or undefined");
+    if (value !== undefined && typeof value !== "boolean") {
+      throw new TypeError("completed must be a boolean or undefined");
+    }
     const previous = this.completion;
     this.completion = value;
     this.requestUpdate("completed", previous);

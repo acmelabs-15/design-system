@@ -24,9 +24,13 @@ export const twProperty: Record<string, string> = {};
 let loaded = false;
 let themes: { light: Record<string, string>; dark: Record<string, string> } = { light: {}, dark: {} };
 function load() {
-  if (loaded) return;
+  if (loaded) {
+    return;
+  }
   loaded = true;
-  const cssText = sheetOrder().map((f) => fs.readFileSync(path.join(cssDir, f), "utf8")).join("\n");
+  const cssText = sheetOrder()
+    .map((f) => fs.readFileSync(path.join(cssDir, f), "utf8"))
+    .join("\n");
   for (const m of cssText.matchAll(/@property (--tw-[a-z0-9-]+)\{([^}]*)\}/g)) {
     twProperty[m[1]] = `@property ${m[1]} { ${m[2].trim().replace(/;\s*/g, "; ").replace(/;\s*$/, "")}; }`;
     const iv = m[2].match(/initial-value:([^;]*)/);
@@ -50,12 +54,18 @@ const INLINE = /^--(text-|font-weight-|radius-|spacing$|default-|tracking-|leadi
 const constant = (name: string, seen: Set<string> = new Set()): string | undefined => {
   const v = themeOf()[name];
   const dark = (load(), themes.dark[name]);
-  if (v === undefined || (dark !== undefined && dark !== v) || seen.has(name)) return undefined;
+  if (v === undefined || (dark !== undefined && dark !== v) || seen.has(name)) {
+    return undefined;
+  }
   let ok = true;
   const out = v.replace(/var\((--[\w-]+)\)/g, (m, inner: string) => {
-    if (!INLINE.test(inner)) return m;
+    if (!INLINE.test(inner)) {
+      return m;
+    }
     const c = constant(inner, new Set([...seen, name]));
-    if (c === undefined) ok = false;
+    if (c === undefined) {
+      ok = false;
+    }
     return c ?? m;
   });
   return ok ? out : undefined;
@@ -72,7 +82,9 @@ export const parseDecls = (s: string): Decl[] =>
       const prop = d.slice(0, i).trim();
       let value = d.slice(i + 1).trim();
       const important = /!important$/.test(value);
-      if (important) value = value.replace(/\s*!important$/, "");
+      if (important) {
+        value = value.replace(/\s*!important$/, "");
+      }
       return { prop, value, important };
     });
 
@@ -82,14 +94,22 @@ const splitTop = (v: string): string[] => {
   let depth = 0;
   let cur = "";
   for (const ch of v) {
-    if (ch === "(") depth++;
-    if (ch === ")") depth--;
+    if (ch === "(") {
+      depth++;
+    }
+    if (ch === ")") {
+      depth--;
+    }
     if (ch === "," && depth === 0) {
       out.push(cur.trim());
       cur = "";
-    } else cur += ch;
+    } else {
+      cur += ch;
+    }
   }
-  if (cur.trim()) out.push(cur.trim());
+  if (cur.trim()) {
+    out.push(cur.trim());
+  }
   return out;
 };
 
@@ -107,8 +127,11 @@ function substitute(value: string, lookup: (name: string) => string | undefined)
     let depth = 1;
     let j = at + 4;
     while (j < value.length && depth) {
-      if (value[j] === "(") depth++;
-      else if (value[j] === ")") depth--;
+      if (value[j] === "(") {
+        depth++;
+      } else if (value[j] === ")") {
+        depth--;
+      }
       j++;
     }
     const inner = value.slice(at + 4, j - 1);
@@ -116,19 +139,28 @@ function substitute(value: string, lookup: (name: string) => string | undefined)
     const name = (comma < 0 ? inner : inner.slice(0, comma)).trim();
     const fallback = comma < 0 ? undefined : inner.slice(comma + 1).trim();
     const v = lookup(name);
-    if (v === "unset") out += fallback !== undefined ? substitute(fallback, lookup) : ""; // a registered --tw-* with no value: the fallback applies
-    else if (v !== undefined) out += substitute(v, lookup);
-    else out += fallback !== undefined ? `var(${name}, ${substitute(fallback, lookup)})` : `var(${name})`; // a design token stays a token
+    if (v === "unset") {
+      out += fallback !== undefined ? substitute(fallback, lookup) : "";
+    } // a registered --tw-* with no value: the fallback applies
+    else if (v !== undefined) {
+      out += substitute(v, lookup);
+    } else {
+      out += fallback !== undefined ? `var(${name}, ${substitute(fallback, lookup)})` : `var(${name})`;
+    } // a design token stays a token
     i = j;
   }
   return out;
 }
 
 // A division that does not terminate within four decimals (`calc(1 / .75)`, a line-height ratio) stays a calc: the browser evaluates it exactly, where a rounded ratio lands a hair off (15.9996px for 16px).
-const calcSimple = (v: string) => v.replace(/calc\(\s*(-?[\d.]+)\s*\/\s*(-?[\d.]+)\s*\)/g, (m, a, b) => {
-    const q = parseFloat((Number(a) / Number(b)).toFixed(4));
-    return Math.abs(q * Number(b) - Number(a)) < 1e-9 ? String(q) : m;
-  }).replace(/calc\(\s*([\d.]+)(rem|px|%)\s*\*\s*(-?[\d.]+)\s*\)/g, (_, n, u, k) => `${parseFloat((Number(n) * Number(k)).toFixed(4))}${u}`).replace(/calc\(\s*(-?[\d.]+(?:rem|px|%))\s*\)/g, "$1");
+const calcSimple = (v: string) =>
+  v
+    .replace(/calc\(\s*(-?[\d.]+)\s*\/\s*(-?[\d.]+)\s*\)/g, (m, a, b) => {
+      const q = parseFloat((Number(a) / Number(b)).toFixed(4));
+      return Math.abs(q * Number(b) - Number(a)) < 1e-9 ? String(q) : m;
+    })
+    .replace(/calc\(\s*([\d.]+)(rem|px|%)\s*\*\s*(-?[\d.]+)\s*\)/g, (_, n, u, k) => `${parseFloat((Number(n) * Number(k)).toFixed(4))}${u}`)
+    .replace(/calc\(\s*(-?[\d.]+(?:rem|px|%))\s*\)/g, "$1");
 
 /**
  * Simplifies one selector's declarations given the `--tw-*` environment inherited from the rules
@@ -136,28 +168,48 @@ const calcSimple = (v: string) => v.replace(/calc\(\s*(-?[\d.]+)\s*\/\s*(-?[\d.]
  */
 export function simplify(decls: Decl[], inherited: Decl[], keep: Set<string> = new Set()): Decl[] {
   const env: Record<string, string> = { ...twDefaults };
-  for (const d of [...inherited, ...decls]) if (d.prop.startsWith("--tw-")) env[d.prop] = d.value;
+  for (const d of [...inherited, ...decls]) {
+    if (d.prop.startsWith("--tw-")) {
+      env[d.prop] = d.value;
+    }
+  }
   const lookup = (name: string): string | undefined => {
-    if (keep.has(name)) return undefined; // stays a variable: the module registers it and its rules set it
-    if (name.startsWith("--tw-")) return name in env && env[name] !== "" ? env[name] : "unset";
-    if (INLINE.test(name)) return constant(name);
+    if (keep.has(name)) {
+      return undefined;
+    } // stays a variable: the module registers it and its rules set it
+    if (name.startsWith("--tw-")) {
+      return name in env && env[name] !== "" ? env[name] : "unset";
+    }
+    if (INLINE.test(name)) {
+      return constant(name);
+    }
     return undefined;
   };
   const out: Decl[] = [];
   for (const d of decls) {
-    if (d.prop.startsWith("--tw-") && !keep.has(d.prop)) continue;
+    if (d.prop.startsWith("--tw-") && !keep.has(d.prop)) {
+      continue;
+    }
     // A zero length drops its unit, except as a calc() operand: `calc(2px + 0px)` needs the unit to stay a length.
     // A custom property keeps it too: its value is substituted later, into a calc() as often as not.
     let value = calcSimple(substitute(d.value, lookup).replace(/\s+/g, " ").trim());
-    if (!d.prop.startsWith("--")) value = value.replace(/(^|(?<![-+*/])\s)0(?:rem|px|em)(?=\s|$|,)/g, "$10");
+    if (!d.prop.startsWith("--")) {
+      value = value.replace(/(^|(?<![-+*/])\s)0(?:rem|px|em)(?=\s|$|,)/g, "$10");
+    }
     if (d.prop === "box-shadow") {
       const parts = splitTop(value).filter((p) => p && p !== "0 0 #0000");
       // All layers transparent (`shadow-none`): a valid declaration that still overrides in the cascade, so it stays as `none`.
       value = parts.length ? parts.join(", ") : "none";
     }
-    if ((d.prop === "transform" || d.prop === "filter" || d.prop === "backdrop-filter") && !value.trim()) continue;
-    if (d.prop === "transform") value = value.trim().replace(/\s{2,}/g, " ");
-    if (!value.trim()) continue;
+    if ((d.prop === "transform" || d.prop === "filter" || d.prop === "backdrop-filter") && !value.trim()) {
+      continue;
+    }
+    if (d.prop === "transform") {
+      value = value.trim().replace(/\s{2,}/g, " ");
+    }
+    if (!value.trim()) {
+      continue;
+    }
     out.push({ ...d, value });
   }
   // Later declarations replace earlier ones of the same property, and a later shorthand replaces every
@@ -166,13 +218,16 @@ export function simplify(decls: Decl[], inherited: Decl[], keep: Set<string> = n
   // The replacement takes the place of the first declaration it replaces, so the block's order is stable.
   const merged: Decl[] = [];
   for (const d of out) {
-    if (merged.some((m) => m.prop === d.prop && m.important && !d.important)) continue;
+    if (merged.some((m) => m.prop === d.prop && m.important && !d.important)) {
+      continue;
+    }
     let at = merged.length;
-    for (let j = merged.length - 1; j >= 0; j--)
+    for (let j = merged.length - 1; j >= 0; j--) {
       if (covers(d.prop, merged[j].prop) && !(merged[j].important && !d.important)) {
         merged.splice(j, 1);
         at = j;
       }
+    }
     merged.splice(at, 0, d);
   }
   return merged;
@@ -190,15 +245,33 @@ export function atoms(p: string): string[] {
   props = expand(props, /-inline(?=-|$)/, ["-left", "-right"]);
   props = expand(props, /-block(?=-|$)/, ["-top", "-bottom"]);
   return props.flatMap((x) => {
-    if (/^(padding|margin|scroll-margin|scroll-padding)$/.test(x)) return sides.map((s) => `${x}-${s}`);
-    if (x === "inset") return sides;
-    if (x === "border-radius") return ["top-left", "top-right", "bottom-right", "bottom-left"].map((c) => `border-${c}-radius`);
-    if (/^border-(width|style|color)$/.test(x)) return sides.map((s) => x.replace("border-", `border-${s}-`));
-    if (x === "border") return sides.flatMap((s) => ["width", "style", "color"].map((k) => `border-${s}-${k}`));
-    if (/^border-(top|right|bottom|left)$/.test(x)) return ["width", "style", "color"].map((k) => `${x}-${k}`);
-    if (x === "gap") return ["row-gap", "column-gap"];
-    if (x === "flex") return ["flex-grow", "flex-shrink", "flex-basis"];
-    if (/^place-(items|content|self)$/.test(x)) return [x.replace("place-", "align-"), x.replace("place-", "justify-")];
+    if (/^(padding|margin|scroll-margin|scroll-padding)$/.test(x)) {
+      return sides.map((s) => `${x}-${s}`);
+    }
+    if (x === "inset") {
+      return sides;
+    }
+    if (x === "border-radius") {
+      return ["top-left", "top-right", "bottom-right", "bottom-left"].map((c) => `border-${c}-radius`);
+    }
+    if (/^border-(width|style|color)$/.test(x)) {
+      return sides.map((s) => x.replace("border-", `border-${s}-`));
+    }
+    if (x === "border") {
+      return sides.flatMap((s) => ["width", "style", "color"].map((k) => `border-${s}-${k}`));
+    }
+    if (/^border-(top|right|bottom|left)$/.test(x)) {
+      return ["width", "style", "color"].map((k) => `${x}-${k}`);
+    }
+    if (x === "gap") {
+      return ["row-gap", "column-gap"];
+    }
+    if (x === "flex") {
+      return ["flex-grow", "flex-shrink", "flex-basis"];
+    }
+    if (/^place-(items|content|self)$/.test(x)) {
+      return [x.replace("place-", "align-"), x.replace("place-", "justify-")];
+    }
     return [x];
   });
 }
@@ -242,8 +315,12 @@ const NOT_RESET: Record<string, string[]> = {
 };
 /** Whether a declaration of `x` resets one of `y`: the same property, or a shorthand over that longhand. */
 const resets = (x: string, y: string) => {
-  if (x === y) return true;
-  if (!y.startsWith(`${x}-`)) return false;
+  if (x === y) {
+    return true;
+  }
+  if (!y.startsWith(`${x}-`)) {
+    return false;
+  }
   return !NOT_RESET[x]?.includes(y);
 };
 /** Whether a declaration of `p` resets everything a declaration of `q` sets: the same property, or a shorthand over each of its longhands. */

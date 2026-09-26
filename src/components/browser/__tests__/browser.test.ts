@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Browser keeps native authored content and exposes a named presentation frame", async () => {
   const frame = document.createElement("acme-browser"),
     button = document.createElement("button");

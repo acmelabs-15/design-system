@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const rows = Array.from({ length: 24 }, (_, index) => `<div style="padding:12px;border-bottom:1px solid var(--ds-gray-200)">Record ${index + 1}</div>`).join("");
 export const doc: Doc = {
   id: "scroll-area",

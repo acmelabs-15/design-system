@@ -27,7 +27,9 @@ export class AcmeScrollArea extends AcmeElement {
   }
   set orientation(value: "horizontal" | "vertical" | "both" | undefined) {
     const next = value ?? "both";
-    if (!["horizontal", "vertical", "both"].includes(next)) throw new TypeError("Invalid orientation");
+    if (!["horizontal", "vertical", "both"].includes(next)) {
+      throw new TypeError("Invalid orientation");
+    }
     const previous = this.orientationValue;
     this.orientationValue = next;
     this.requestUpdate("orientation", previous);
@@ -39,7 +41,9 @@ export class AcmeScrollArea extends AcmeElement {
   }
   set scrollbarVisibility(value: "hover" | "always" | undefined) {
     const next = value ?? "hover";
-    if (!["hover", "always"].includes(next)) throw new TypeError("Invalid scrollbarVisibility");
+    if (!["hover", "always"].includes(next)) {
+      throw new TypeError("Invalid scrollbarVisibility");
+    }
     const previous = this.scrollbarVisibilityValue;
     this.scrollbarVisibilityValue = next;
     this.requestUpdate("scrollbarVisibility", previous);
@@ -51,7 +55,9 @@ export class AcmeScrollArea extends AcmeElement {
   }
   set size(value: "tiny" | "small" | "medium" | "large" | undefined) {
     const next = value ?? "medium";
-    if (!["tiny", "small", "medium", "large"].includes(next)) throw new TypeError("Invalid size");
+    if (!["tiny", "small", "medium", "large"].includes(next)) {
+      throw new TypeError("Invalid size");
+    }
     const previous = this.sizeValue;
     this.sizeValue = next;
     this.requestUpdate("size", previous);
@@ -72,7 +78,9 @@ export class AcmeScrollArea extends AcmeElement {
   private readonly owner: ScrollOwner = {
     state: this.current,
     register: (part) => {
-      if (part.kind === "viewport" && this.members.get().some((other) => other.kind === "viewport" && other.host.isConnected)) throw new Error("Scroll Area accepts exactly one Scroll Viewport");
+      if (part.kind === "viewport" && this.members.get().some((other) => other.kind === "viewport" && other.host.isConnected)) {
+        throw new Error("Scroll Area accepts exactly one Scroll Viewport");
+      }
       this.members.set((parts) => [...parts, part]);
       this.refresh();
       return () => {
@@ -118,14 +126,18 @@ export class AcmeScrollArea extends AcmeElement {
     this.addEventListener("focusin", () => this.current.set((previous) => ({ ...previous, focus: true })));
     this.addEventListener("focusout", () =>
       queueMicrotask(() => {
-        if (this.isConnected) this.current.set((previous) => ({ ...previous, focus: this.matches(":focus-within") }));
+        if (this.isConnected) {
+          this.current.set((previous) => ({ ...previous, focus: this.matches(":focus-within") }));
+        }
       }),
     );
   }
   /** The real scroll owner used by native APIs and virtualizers. */
   getViewport(): HTMLElement {
     const viewport = this.viewportPart()?.element();
-    if (!viewport) throw new Error("Scroll Area requires one connected Scroll Viewport");
+    if (!viewport) {
+      throw new Error("Scroll Area requires one connected Scroll Viewport");
+    }
     return viewport;
   }
   scrollTo(options?: ScrollToOptions): void;
@@ -141,7 +153,9 @@ export class AcmeScrollArea extends AcmeElement {
     this.getViewport().scrollBy({ ...value, ...(this.ownerDocument.defaultView?.matchMedia("(prefers-reduced-motion: reduce)").matches ? { behavior: "instant" as const } : {}) });
   }
   private refresh() {
-    if (!this.isConnected || this.frame !== undefined) return;
+    if (!this.isConnected || this.frame !== undefined) {
+      return;
+    }
     const view = this.ownerDocument.defaultView!;
     this.frameWindow = view;
     this.frame = view.requestAnimationFrame(() => {
@@ -154,14 +168,18 @@ export class AcmeScrollArea extends AcmeElement {
     if (!viewport) {
       this.release();
       const previous = this.current.get();
-      if (previous.x.maximum || previous.y.maximum) this.current.set({ ...previous, x: scrollGeometry(0, 0, 0, 0), y: scrollGeometry(0, 0, 0, 0), scrolling: false, focus: false, dragging: false });
+      if (previous.x.maximum || previous.y.maximum) {
+        this.current.set({ ...previous, x: scrollGeometry(0, 0, 0, 0), y: scrollGeometry(0, 0, 0, 0), scrolling: false, focus: false, dragging: false });
+      }
       return;
     }
     if (this.observed !== viewport) {
       this.release();
       this.observed = viewport;
       const onScroll = () => {
-        if (!this.current.get().scrolling) this.current.set((previous) => ({ ...previous, scrolling: true }));
+        if (!this.current.get().scrolling) {
+          this.current.set((previous) => ({ ...previous, scrolling: true }));
+        }
         this.idle.maybeExecute();
         this.refresh();
       };
@@ -173,15 +191,29 @@ export class AcmeScrollArea extends AcmeElement {
     }
     const elements = new Set<Element>([viewport]);
     const content = this.viewportPart()?.content?.();
-    if (content) elements.add(content);
-    for (const child of this.viewportPart()!.host.children) elements.add(child);
+    if (content) {
+      elements.add(content);
+    }
+    for (const child of this.viewportPart()!.host.children) {
+      elements.add(child);
+    }
     const bars = this.members.get().filter((part) => part.kind === "bar");
     for (const part of bars) {
       const el = part.element();
-      if (el) elements.add(el);
+      if (el) {
+        elements.add(el);
+      }
     }
-    for (const element of this.observedElements) if (!elements.has(element)) this.resize?.unobserve(element);
-    for (const element of elements) if (!this.observedElements.has(element)) this.resize?.observe(element);
+    for (const element of this.observedElements) {
+      if (!elements.has(element)) {
+        this.resize?.unobserve(element);
+      }
+    }
+    for (const element of elements) {
+      if (!this.observedElements.has(element)) {
+        this.resize?.observe(element);
+      }
+    }
     this.observedElements = elements;
     const xTrack = bars.find((part) => part.axis?.() === "horizontal")?.element(),
       yTrack = bars.find((part) => part.axis?.() === "vertical")?.element();
@@ -196,11 +228,16 @@ export class AcmeScrollArea extends AcmeElement {
     for (const [name, value] of [
       ["--_scroll-corner-width", x.overflow && y.overflow ? (yTrack?.clientWidth ?? 0) + "px" : "0px"],
       ["--_scroll-corner-height", x.overflow && y.overflow ? (xTrack?.clientHeight ?? 0) + "px" : "0px"],
-    ])
-      if (this.style.getPropertyValue(name) !== value) this.style.setProperty(name, value);
+    ]) {
+      if (this.style.getPropertyValue(name) !== value) {
+        this.style.setProperty(name, value);
+      }
+    }
     const previous = this.current.get(),
       next = { ...previous, x, y, rtl, visibility: this.scrollbarVisibility, orientation: this.orientation };
-    if (JSON.stringify(previous) !== JSON.stringify(next)) this.current.set(next);
+    if (JSON.stringify(previous) !== JSON.stringify(next)) {
+      this.current.set(next);
+    }
   }
   private release() {
     this.resize?.disconnect();
@@ -217,7 +254,9 @@ export class AcmeScrollArea extends AcmeElement {
     let scope: Node | undefined = this.getRootNode();
     while (scope) {
       const observer = new MutationObserver((records) => {
-        if (records.some((record) => composedContains(record.target, this))) this.refresh();
+        if (records.some((record) => composedContains(record.target, this))) {
+          this.refresh();
+        }
       });
       observer.observe(scope, { subtree: true, attributes: true, attributeFilter: ["dir", "style", "class"] });
       this.directionObservers.push(observer);
@@ -230,11 +269,15 @@ export class AcmeScrollArea extends AcmeElement {
     this.refresh();
   }
   disconnectedCallback() {
-    for (const observer of this.directionObservers) observer.disconnect();
+    for (const observer of this.directionObservers) {
+      observer.disconnect();
+    }
     this.directionObservers = [];
     this.viewCleanup?.();
     this.viewCleanup = undefined;
-    if (this.frame !== undefined) this.frameWindow?.cancelAnimationFrame(this.frame);
+    if (this.frame !== undefined) {
+      this.frameWindow?.cancelAnimationFrame(this.frame);
+    }
     this.frame = undefined;
     this.release();
     this.idle.cancel();

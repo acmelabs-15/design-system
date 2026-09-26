@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 async function mount(value: unknown) {
   const el = document.createElement("acme-json-view");
   el.value = value;

@@ -54,12 +54,19 @@ export class AcmeRadio extends AcmeSelectionControl {
   protected controlSynchronized() {
     this.input.name = this.name;
     this.input.required = false;
-    if (!this.selection?.owner && this.peers?.required) this.input.setAttribute("aria-required", "true");
-    else this.input.removeAttribute("aria-required");
-    if (!this.selection?.owner && !toolbarKeyboardOwner(this)) this.input.tabIndex = this.peers?.tabIndex() ?? 0;
+    if (!this.selection?.owner && this.peers?.required) {
+      this.input.setAttribute("aria-required", "true");
+    } else {
+      this.input.removeAttribute("aria-required");
+    }
+    if (!this.selection?.owner && !toolbarKeyboardOwner(this)) {
+      this.input.tabIndex = this.peers?.tabIndex() ?? 0;
+    }
   }
   protected validateControl() {
-    if (!this.value) return { flags: { customError: true }, message: message(this.themeContext.scope.effective.get().locale, "radio.value", "Each radio needs a nonempty value.") };
+    if (!this.value) {
+      return { flags: { customError: true }, message: message(this.themeContext.scope.effective.get().locale, "radio.value", "Each radio needs a nonempty value.") };
+    }
     return this.peers?.validation() ?? super.validateControl();
   }
   protected emitUserChange() {

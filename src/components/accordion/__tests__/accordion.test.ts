@@ -6,6 +6,7 @@ import "../../../define/accordion-content";
 import "../../../define/collapsible";
 import "../../../define/collapsible-trigger";
 import "../../../define/collapsible-content";
+
 const item = (value: string) =>
   `<acme-accordion-item value="${value}"><h3><acme-accordion-trigger>${value}</acme-accordion-trigger></h3><acme-accordion-content><input value="${value}"></acme-accordion-content></acme-accordion-item>`;
 async function settle(root: Element) {

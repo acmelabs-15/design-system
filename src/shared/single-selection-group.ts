@@ -11,8 +11,12 @@ import { message, messageCatalogs } from "./messages";
 
 type Members = readonly SelectionMember[];
 const valueOf = (value: string | undefined) => {
-  if (value === undefined) return undefined;
-  if (typeof value !== "string" || !value) throw new TypeError("Selection value must be a nonempty string or undefined");
+  if (value === undefined) {
+    return undefined;
+  }
+  if (typeof value !== "string" || !value) {
+    throw new TypeError("Selection value must be a nonempty string or undefined");
+  }
   return value;
 };
 /** Owns one selected value, native submission and radio keyboard navigation.
@@ -65,7 +69,9 @@ export abstract class AcmeSingleSelectionGroup extends AcmeFormElement<string | 
     serialize: (state, members) => (state.value !== undefined && members.some((member) => member.value() === state.value && !member.disabled()) ? state.value : null),
     restoration: (state) => JSON.stringify({ value: state.value ?? null }),
     restore: (value) => {
-      if (typeof value !== "string") return undefined;
+      if (typeof value !== "string") {
+        return undefined;
+      }
       try {
         const parsed = JSON.parse(value);
         return parsed.value === null ? undefined : valueOf(parsed.value);
@@ -75,7 +81,9 @@ export abstract class AcmeSingleSelectionGroup extends AcmeFormElement<string | 
     },
     target: () => this.navigation?.target() ?? this.semanticTarget,
     synchronize: (state, members) => {
-      for (const member of members) member.synchronize();
+      for (const member of members) {
+        member.synchronize();
+      }
       this.constraint.type = "radio";
       this.constraint.name = "group";
       this.constraint.required = state.required || members.some((member) => member.required());
@@ -84,14 +92,21 @@ export abstract class AcmeSingleSelectionGroup extends AcmeFormElement<string | 
       this.navigation?.synchronize();
     },
     validate: (state, members) => {
-      if (state.disabled || state.platformDisabled) return { flags: {}, message: "" };
+      if (state.disabled || state.platformDisabled) {
+        return { flags: {}, message: "" };
+      }
       const values = members.map((member) => member.value());
-      if (values.some((value) => !value) || new Set(values).size !== values.length)
+      if (values.some((value) => !value) || new Set(values).size !== values.length) {
         return { flags: { customError: true }, message: message(this.themeContext.scope.effective.get().locale, "radioGroup.values", "Each option needs a unique nonempty value.") };
+      }
       for (const member of [...members].sort(selectionOrder)) {
-        if (member.disabled()) continue;
+        if (member.disabled()) {
+          continue;
+        }
         const validation = member.validation();
-        if (Object.values(validation.flags).some(Boolean)) return validation;
+        if (Object.values(validation.flags).some(Boolean)) {
+          return validation;
+        }
       }
       const result = nativeValidation(this.constraint);
       return result.flags.valueMissing ? { flags: result.flags, message: message(this.themeContext.scope.effective.get().locale, "radioGroup.required", "Select an option.") } : result;
@@ -123,13 +138,19 @@ export abstract class AcmeSingleSelectionGroup extends AcmeFormElement<string | 
     return { ...super.semanticDefaults, role: "radiogroup" };
   }
   private change(member: SelectionMember, checked: boolean, reason: "programmatic" | "user") {
-    if (!this.members.includes(member) || !member.value() || (reason === "user" && (this.nativeForm.effectiveDisabled || member.disabled()))) return;
+    if (!this.members.includes(member) || !member.value() || (reason === "user" && (this.nativeForm.effectiveDisabled || member.disabled()))) {
+      return;
+    }
     const value = checked ? member.value() : this.value === member.value() ? undefined : this.value;
     if (value === this.value) {
-      if (reason === "programmatic") this.nativeForm.setValue(value);
+      if (reason === "programmatic") {
+        this.nativeForm.setValue(value);
+      }
       return;
     }
     this.nativeForm.setValue(value, reason);
-    if (reason === "user" && value !== undefined) this.dispatchEvent(new CustomEvent<{ value: string }>("acme-change", { detail: { value }, bubbles: true, composed: true }));
+    if (reason === "user" && value !== undefined) {
+      this.dispatchEvent(new CustomEvent<{ value: string }>("acme-change", { detail: { value }, bubbles: true, composed: true }));
+    }
   }
 }

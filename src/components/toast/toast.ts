@@ -32,7 +32,9 @@ export class AcmeToast extends AcmeSemanticElement {
     return this.supplied;
   }
   set store(value: ToastStore | undefined) {
-    if (value !== undefined) toastRuntime(value);
+    if (value !== undefined) {
+      toastRuntime(value);
+    }
     const previous = this.supplied;
     this.supplied = value;
     this.requestUpdate("store", previous);
@@ -61,7 +63,9 @@ export class AcmeToast extends AcmeSemanticElement {
     return this.binding.current?.view.get().expanded ?? true;
   }
   private get geometry(): ToastGeometry {
-    if (this.status === "closing") return this.exitGeometry;
+    if (this.status === "closing") {
+      return this.exitGeometry;
+    }
     return this.binding.current?.view.get().geometry.get(this.toastId) ?? { index: 0, y: 0, height: this.naturalHeight, scale: 1, visible: !this.binding.current, behind: false };
   }
   private get visible() {
@@ -125,31 +129,42 @@ export class AcmeToast extends AcmeSemanticElement {
     return this.renderRoot?.querySelector<HTMLElement>("[part=root]") ?? undefined;
   }
   private bind() {
-    if (!this.isConnected) return;
+    if (!this.isConnected) {
+      return;
+    }
     const store = this.effectiveStore;
-    if (store === this.boundStore) return;
+    if (store === this.boundStore) {
+      return;
+    }
     this.releasePresentation?.();
     this.releaseDismiss?.();
     this.boundStore = store;
     this.releasePresentation = store ? toastRuntime(store).attachToast(this) : undefined;
     this.releaseDismiss = store
       ? toastRuntime(store).subscribeDismiss((detail) => {
-          if (detail.id === this.toastId && !this.binding.current) this.dispatchEvent(new CustomEvent("acme-dismiss", { detail, bubbles: true, composed: true }));
+          if (detail.id === this.toastId && !this.binding.current) {
+            this.dispatchEvent(new CustomEvent("acme-dismiss", { detail, bubbles: true, composed: true }));
+          }
         })
       : undefined;
   }
   private dismiss(reason: ToastDismissReason) {
-    if (this.entry?.record.dismissible) this.runtime?.dismiss(this.toastId, reason);
+    if (this.entry?.record.dismissible) {
+      this.runtime?.dismiss(this.toastId, reason);
+    }
   }
   private action = () => {
     const record = this.entry?.record;
-    if (record?.action && this.status === "open")
+    if (record?.action && this.status === "open") {
       this.dispatchEvent(
         new CustomEvent("acme-request", { detail: Object.freeze({ action: "toast-action", id: record.id, actionId: record.action.id }), bubbles: true, composed: true, cancelable: true }),
       );
+    }
   };
   private closeRequest = (event: CustomEvent) => {
-    if (event.detail?.action !== "dismiss") return;
+    if (event.detail?.action !== "dismiss") {
+      return;
+    }
     event.stopPropagation();
     this.dismiss("close");
   };
@@ -166,34 +181,49 @@ export class AcmeToast extends AcmeSemanticElement {
       this.dragX = 0;
       this.lastStatus = undefined;
     }
-    if (this.status === "closing" && this.lastStatus !== "closing") this.exitGeometry = { ...this.lastGeometry, y: this.vertical.value, scale: this.scale.value };
-    if (this.status === "open") this.lastGeometry = this.geometry;
+    if (this.status === "closing" && this.lastStatus !== "closing") {
+      this.exitGeometry = { ...this.lastGeometry, y: this.vertical.value, scale: this.scale.value };
+    }
+    if (this.status === "open") {
+      this.lastGeometry = this.geometry;
+    }
     this.lastStatus = this.status;
     this.previousFocus = deepActiveElement(this.ownerDocument);
-    if (this.previousFocus && !composedContains(this, this.previousFocus)) this.previousFocus = undefined;
+    if (this.previousFocus && !composedContains(this, this.previousFocus)) {
+      this.previousFocus = undefined;
+    }
     this.opacity.update();
     this.vertical.update();
     this.scale.update();
-    if (this.dragging) this.horizontal.jump();
-    else this.horizontal.update();
+    if (this.dragging) {
+      this.horizontal.jump();
+    } else {
+      this.horizontal.update();
+    }
   }
   private measure = () => {
     const content = this.renderRoot?.querySelector<HTMLElement>("[part=content]");
-    if (!content || !this.visible || this.status !== "open") return;
+    if (!content || !this.visible || this.status !== "open") {
+      return;
+    }
     const height = content.offsetHeight;
     if (height > 0) {
       if (Math.abs(height - this.naturalHeight) > 0.1) {
         this.naturalHeight = height;
         this.binding.current?.measure(this.toastId, height);
       }
-      if (!this.ready) this.ready = true;
+      if (!this.ready) {
+        this.ready = true;
+      }
     }
   };
   protected updated() {
     const surface = this.surface;
     this.toggleAttribute("data-toast-hidden", !this.visible);
     this.setAttribute("data-toast-placement", this.binding.current?.view.get().placement ?? "bottom-end");
-    if (!surface) return;
+    if (!surface) {
+      return;
+    }
     surface.inert = !this.visible || this.status === "closing";
     surface.style.setProperty("--_toast-opacity", String(Math.max(0, Math.min(1, this.opacity.value))));
     surface.style.setProperty("--_toast-y", `${this.vertical.value}px`);
@@ -209,23 +239,30 @@ export class AcmeToast extends AcmeSemanticElement {
       this.resize.observe(content);
     }
     this.measure();
-    if (this.previousFocus && !this.previousFocus.isConnected && deepActiveElement(this.ownerDocument) === this.ownerDocument.body && this.visible && this.status === "open")
+    if (this.previousFocus && !this.previousFocus.isConnected && deepActiveElement(this.ownerDocument) === this.ownerDocument.body && this.visible && this.status === "open") {
       surface.focus({ preventScroll: true });
+    }
     this.previousFocus = undefined;
     if (this.status === "closing" && (!this.visible || (this.opacity.settled && this.horizontal.settled))) {
       const entry = this.entry;
-      if (entry) this.runtime?.finish(this.toastId, entry.version);
+      if (entry) {
+        this.runtime?.finish(this.toastId, entry.version);
+      }
     }
   }
   focus(options?: FocusOptions) {
     this.surface?.focus(options);
   }
   private down = (event: PointerEvent) => {
-    if (event.button !== 0 || !event.isPrimary || !this.entry?.record.dismissible || !this.visible || this.status !== "open") return;
+    if (event.button !== 0 || !event.isPrimary || !this.entry?.record.dismissible || !this.visible || this.status !== "open") {
+      return;
+    }
     const interactive = event
       .composedPath()
       .some((node) => node !== this.surface && (node as Node).nodeType === 1 && (node as Element).matches("button,a[href],input,textarea,select,[contenteditable],[data-acme-swipe-ignore]"));
-    if (interactive) return;
+    if (interactive) {
+      return;
+    }
     const placement = this.binding.current?.view.get().placement ?? "bottom-end",
       rtl = this.ownerDocument.defaultView!.getComputedStyle(this).direction === "rtl";
     const end = placement.endsWith("end");
@@ -234,7 +271,9 @@ export class AcmeToast extends AcmeSemanticElement {
   };
   private move = (event: PointerEvent) => {
     const pointer = this.pointer;
-    if (!pointer || pointer.id !== event.pointerId) return;
+    if (!pointer || pointer.id !== event.pointerId) {
+      return;
+    }
     if (pointer.firstTouch) {
       pointer.startX = event.clientX;
       pointer.startY = event.clientY;
@@ -247,20 +286,29 @@ export class AcmeToast extends AcmeSemanticElement {
       this.end(event, true);
       return;
     }
-    if (Math.abs(x) < 1 && !this.dragging) return;
+    if (Math.abs(x) < 1 && !this.dragging) {
+      return;
+    }
     event.preventDefault();
     this.dragging = true;
     const distance = x * pointer.direction;
     pointer.peak = Math.max(pointer.peak, distance);
-    if (distance > 40) pointer.cancelled = false;
-    else if (pointer.peak - distance >= 10) pointer.cancelled = true;
+    if (distance > 40) {
+      pointer.cancelled = false;
+    } else if (pointer.peak - distance >= 10) {
+      pointer.cancelled = true;
+    }
     this.dragX = distance >= 0 ? x : Math.sign(x) * Math.sqrt(Math.abs(x));
   };
   private end = (event: PointerEvent, cancel = false) => {
     const pointer = this.pointer;
-    if (!pointer || pointer.id !== event.pointerId) return;
+    if (!pointer || pointer.id !== event.pointerId) {
+      return;
+    }
     this.pointer = undefined;
-    if (this.surface?.hasPointerCapture(pointer.id)) this.surface.releasePointerCapture(pointer.id);
+    if (this.surface?.hasPointerCapture(pointer.id)) {
+      this.surface.releasePointerCapture(pointer.id);
+    }
     if (this.dragging) {
       this.suppressClick = true;
       clearTimeout(this.suppressionTimer);
@@ -273,7 +321,9 @@ export class AcmeToast extends AcmeSemanticElement {
     if (dismiss) {
       this.swiped = pointer.direction * (this.surface?.getBoundingClientRect().width ?? 420) * 1.2;
       this.dismiss("swipe");
-    } else this.dragX = 0;
+    } else {
+      this.dragX = 0;
+    }
   };
   disconnectedCallback() {
     this.resize?.disconnect();
@@ -291,7 +341,9 @@ export class AcmeToast extends AcmeSemanticElement {
   render() {
     const entry = this.entry,
       record = entry?.record;
-    if (!record) return html``;
+    if (!record) {
+      return html``;
+    }
     return html`<div part="root" tabindex="0" aria-modal="false" aria-description=${record.description} data-placement=${this.binding.current?.view.get().placement ?? "bottom-end"} @pointerdown=${this.down} @pointermove=${this.move} @pointerup=${(event: PointerEvent) => this.end(event)} @pointercancel=${(event: PointerEvent) => this.end(event, true)} @keydown=${(
       event: KeyboardEvent,
     ) => {

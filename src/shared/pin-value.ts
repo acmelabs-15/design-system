@@ -4,7 +4,9 @@ export function pinCharacters(value: string, kind: PinInputType): boolean {
   return patterns[kind].test(value);
 }
 export function pinValue(value: unknown, count: number): readonly string[] {
-  if (!Array.isArray(value) || value.some((cell) => typeof cell !== "string" || cell.length > 1)) throw new TypeError("Pin values must be an array of single characters");
+  if (!Array.isArray(value) || value.some((cell) => typeof cell !== "string" || cell.length > 1)) {
+    throw new TypeError("Pin values must be an array of single characters");
+  }
   return Object.freeze(count > 0 ? Array.from({ length: count }, (_, index) => value[index] ?? "") : [...value]);
 }
 export function pinInsertion(value: readonly string[]): number {
@@ -14,12 +16,18 @@ export function pinFocus(value: readonly string[], index: number): number {
   return Math.max(0, Math.min(index, pinInsertion(value)));
 }
 export function pinCharacter(current: string, next: string): string {
-  if (next.length === 2 && next[0] === current) return next[1]!;
-  if (next.length === 2 && next[1] === current) return next[0]!;
+  if (next.length === 2 && next[0] === current) {
+    return next[1]!;
+  }
+  if (next.length === 2 && next[1] === current) {
+    return next[0]!;
+  }
   return next.at(-1) ?? "";
 }
 export function pinDelete(value: readonly string[], index: number): readonly string[] {
-  if (!value[index]) return value;
+  if (!value[index]) {
+    return value;
+  }
   const next = [...value];
   next.splice(index, 1);
   next.push("");

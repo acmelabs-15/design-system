@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../all";
+
 test("Fieldset preserves native legend/control nodes and synchronizes its own flags", async () => {
   const element = document.createElement("acme-fieldset"),
     legend = document.createElement("legend"),

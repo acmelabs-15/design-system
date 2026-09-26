@@ -11,12 +11,17 @@ test("composed descendant rules reach the terminal part through its ancestor hos
   const scratch = await mkdtemp(path.join(tmpdir(), "acme-generator-test-"));
   try {
     const generator = path.join(scratch, "tools/geist");
-    for (const directory of ["corpus/css", "corpus/html", "spec"]) await mkdir(path.join(generator, directory), { recursive: true });
+    for (const directory of ["corpus/css", "corpus/html", "spec"]) {
+      await mkdir(path.join(generator, directory), { recursive: true });
+    }
     await mkdir(path.join(scratch, "scripts"));
-    for (const file of ["gen.ts", "tw.ts", "simplify.ts"]) await copyFile(path.join(import.meta.dir, "..", file), path.join(generator, file));
+    for (const file of ["gen.ts", "tw.ts", "simplify.ts"]) {
+      await copyFile(path.join(import.meta.dir, "..", file), path.join(generator, file));
+    }
     await mkdir(path.join(scratch, "src/shared"), { recursive: true });
-    for (const file of ["scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "src/shared/motion-tokens.ts"])
+    for (const file of ["scripts/styles.ts", "scripts/theme-tokens.ts", "src/shared/theme-tokens.ts", "src/shared/numeric-tokens.ts", "src/shared/motion-tokens.ts"]) {
       await copyFile(path.join(import.meta.dir, "../../..", file), path.join(scratch, file));
+    }
     await symlink(path.join(import.meta.dir, "../../../node_modules"), path.join(scratch, "node_modules"));
     await writeFile(path.join(generator, "corpus/html/fixture.html"), '<link rel="stylesheet" href="/fixture.css">');
     await writeFile(path.join(generator, "corpus/css/fixture.css"), ".crumbs > div { gap: 8px; }\n.crumbs > div > a { padding: 6px; }");

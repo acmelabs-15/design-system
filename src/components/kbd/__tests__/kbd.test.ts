@@ -3,6 +3,7 @@ import "../../../all";
 import type { AcmeKbd } from "../kbd";
 import { keyLabel } from "../../../shared/key-labels";
 import { configureMessages } from "../../../shared/messages";
+
 afterEach(() => document.body.replaceChildren());
 const root = (element: AcmeKbd) => element.shadowRoot!.querySelector("kbd")!;
 test("named keys are owned values and describe rather than register a shortcut", async () => {

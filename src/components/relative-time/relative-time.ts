@@ -25,22 +25,31 @@ export class AcmeRelativeTime extends AcmeFormattingElement {
   private nextChange?: number;
   private timer?: { view: Window; id: number };
   private stop(): void {
-    if (this.timer) this.timer.view.clearTimeout(this.timer.id);
+    if (this.timer) {
+      this.timer.view.clearTimeout(this.timer.id);
+    }
     this.timer = undefined;
   }
   private schedule(): void {
     this.stop();
     const view = this.ownerDocument.defaultView;
-    if (!view || !this.isConnected || !this.autoUpdate || this.nextChange === undefined) return;
+    if (!view || !this.isConnected || !this.autoUpdate || this.nextChange === undefined) {
+      return;
+    }
     const remaining = this.nextChange - Date.now();
     this.timer = {
       view,
       id: view.setTimeout(
         () => {
           this.timer = undefined;
-          if (!this.isConnected || !this.autoUpdate) return;
-          if (this.nextChange !== undefined && Date.now() < this.nextChange) this.schedule();
-          else this.requestUpdate();
+          if (!this.isConnected || !this.autoUpdate) {
+            return;
+          }
+          if (this.nextChange !== undefined && Date.now() < this.nextChange) {
+            this.schedule();
+          } else {
+            this.requestUpdate();
+          }
         },
         Math.max(0, Math.min(2147483647, remaining)),
       ),

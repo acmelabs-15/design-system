@@ -1,6 +1,7 @@
 import { expect, test, spyOn } from "bun:test";
 import "../../../all";
 import { highlighter } from "../../../shared/highlight";
+
 async function mount(code: string) {
   const element = document.createElement("acme-code-block");
   element.code = code;

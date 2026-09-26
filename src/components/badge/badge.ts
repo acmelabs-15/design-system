@@ -4,6 +4,7 @@ import { AcmeElement, sharedCss } from "../../base";
 import { atomState } from "../../shared/atom-state";
 import { badgeCss } from "../../generated/components/badge/badge.styles";
 import { badgeStructureCss } from "../../generated/components/badge/badge-structure.styles";
+
 export type BadgeVariant = "gray" | "blue" | "purple" | "amber" | "red" | "pink" | "green" | "teal" | "inverted" | "trial" | "turbo";
 export type BadgeSize = "small" | "medium" | "large";
 /** A passive status or category label.

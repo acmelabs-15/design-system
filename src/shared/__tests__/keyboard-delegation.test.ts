@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { toolbarKeyboardOwner } from "../keyboard-delegation";
+
 test("a popup inside a Toolbar keeps its own keyboard collection boundary", () => {
   const toolbar = document.createElement("div");
   toolbar.setAttribute("role", "toolbar");

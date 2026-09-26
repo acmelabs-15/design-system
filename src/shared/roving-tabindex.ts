@@ -49,23 +49,35 @@ export class RovingTabindex implements ReactiveController {
     const next = (horizontal && e.key === (rtl ? "ArrowLeft" : "ArrowRight")) || (vertical && e.key === "ArrowDown");
     const home = o.homeEnd && e.key === "Home";
     const end = o.homeEnd && e.key === "End";
-    if (!prev && !next && !home && !end) return false;
+    if (!prev && !next && !home && !end) {
+      return false;
+    }
     const items = o.items();
-    if (!items.length) return false;
+    if (!items.length) {
+      return false;
+    }
     let j: number;
     if (home || end) {
       const dir = home ? 1 : -1;
       j = home ? 0 : items.length - 1;
-      while (j >= 0 && j < items.length && this.isOff(items[j])) j += dir;
+      while (j >= 0 && j < items.length && this.isOff(items[j])) {
+        j += dir;
+      }
     } else {
       const dir = next ? 1 : -1;
       j = current + dir;
       const wraps = typeof o.wrap === "function" ? o.wrap() : !!o.wrap;
       const wrap = (k: number) => (wraps ? (k + items.length) % items.length : k);
       j = wrap(j);
-      if (o.skipDisabled) for (let n = 0; n < items.length && j >= 0 && j < items.length && this.isOff(items[j]); n++) j = wrap(j + dir);
+      if (o.skipDisabled) {
+        for (let n = 0; n < items.length && j >= 0 && j < items.length && this.isOff(items[j]); n++) {
+          j = wrap(j + dir);
+        }
+      }
     }
-    if (j < 0 || j >= items.length || this.isOff(items[j])) return false;
+    if (j < 0 || j >= items.length || this.isOff(items[j])) {
+      return false;
+    }
     e.preventDefault();
     items[j].focus({ preventScroll: true });
     o.onMove(items[j], j);

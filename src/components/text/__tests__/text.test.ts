@@ -3,6 +3,7 @@ import "../../../all";
 import type { AcmeText } from "../text";
 import type { AcmeHeading } from "../../heading/heading";
 import { discoverHeadingTargets } from "../../../shared/heading-targets";
+
 afterEach(() => document.body.replaceChildren());
 test("Text keeps native semantics and author nodes", async () => {
   document.body.innerHTML = "<acme-text><strong>Important</strong> text</acme-text>";

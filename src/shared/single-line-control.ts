@@ -32,11 +32,17 @@ export abstract class AcmeSingleLineControl extends AcmeTextControl {
   }
   protected configure(control: TextNativeControl) {
     const input = control as HTMLInputElement;
-    if (input.type !== this.inputType) input.type = this.inputType;
+    if (input.type !== this.inputType) {
+      input.type = this.inputType;
+    }
     const pattern = this.pattern ?? "";
     if (pattern) {
-      if (input.pattern !== pattern) input.pattern = pattern;
-    } else input.removeAttribute("pattern");
+      if (input.pattern !== pattern) {
+        input.pattern = pattern;
+      }
+    } else {
+      input.removeAttribute("pattern");
+    }
   }
   @atomState() @property({ noAccessor: true, type: Boolean }) clearable = false;
   protected get trackedPlaces(): readonly string[] {
@@ -60,7 +66,9 @@ export abstract class AcmeSingleLineControl extends AcmeTextControl {
 
   /** Clears an editable value and returns focus to the input. */
   clear() {
-    if (this.nativeForm.effectiveDisabled || this.readOnly) return;
+    if (this.nativeForm.effectiveDisabled || this.readOnly) {
+      return;
+    }
     const changed = this.value !== "";
     this.value = "";
     this.focus();
@@ -83,7 +91,9 @@ export abstract class AcmeSingleLineControl extends AcmeTextControl {
     event.stopPropagation();
     this.prepareSubmission();
     const form = this.form;
-    if (form && !this.nativeForm.effectiveDisabled) submitImplicitly(form);
+    if (form && !this.nativeForm.effectiveDisabled) {
+      submitImplicitly(form);
+    }
   };
   render() {
     const disabled = this.nativeForm.effectiveDisabled;

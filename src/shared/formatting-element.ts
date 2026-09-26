@@ -19,7 +19,9 @@ export abstract class AcmeFormattingElement extends AcmeElement {
     return this.locale ?? this.inheritedLocale.get();
   }
   protected diagnostic(code: string): void {
-    if (this.lastDiagnostic !== code) console.warn(this.localName, { code });
+    if (this.lastDiagnostic !== code) {
+      console.warn(this.localName, { code });
+    }
     this.lastDiagnostic = code;
   }
   protected clearDiagnostic(): void {

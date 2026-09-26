@@ -111,7 +111,9 @@ export abstract class AcmeLayoutElement extends AcmeResponsiveElement {
     displayModes: (this.constructor as typeof AcmeLayoutElement).displayModes,
     supports: (property, value) => {
       const css = this.ownerDocument.defaultView?.CSS;
-      if (css?.supports) return css.supports(property, value);
+      if (css?.supports) {
+        return css.supports(property, value);
+      }
       const style = this.ownerDocument.createElement("div").style;
       style.setProperty(property, value);
       return !!style.getPropertyValue(property);
@@ -126,7 +128,9 @@ export abstract class AcmeLayoutElement extends AcmeResponsiveElement {
     diagnostic: (diagnostic) => console.warn(this.localName, diagnostic),
   });
   attributeChangedCallback(name: string, previous: string | null, value: string | null): void {
-    if (!this.styleInputs?.attributeChanged(name, previous, value)) super.attributeChangedCallback(name, previous, value);
+    if (!this.styleInputs?.attributeChanged(name, previous, value)) {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   adoptedCallback(): void {
     super.adoptedCallback();

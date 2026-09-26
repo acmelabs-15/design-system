@@ -18,7 +18,9 @@ export class AcmeMenuTrigger extends AcmeActionElement {
   constructor() {
     super();
     this.addEventListener("keydown", (event) => {
-      if (event.defaultPrevented || event.isComposing || this.effectiveDisabled) return;
+      if (event.defaultPrevented || event.isComposing || this.effectiveDisabled) {
+        return;
+      }
       if (event.key === "ArrowDown" || event.key === "ArrowUp") {
         event.preventDefault();
         this.menu.owner?.openFromTrigger(event.key === "ArrowUp" ? "last" : "first");

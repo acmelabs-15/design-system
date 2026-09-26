@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const items =
   '<acme-timeline-item><time slot="date" datetime="2026-09-21">September 21</time><h3 slot="heading">Order placed</h3><p slot="description">Your order is confirmed.</p></acme-timeline-item><acme-timeline-item><time slot="date" datetime="2026-09-22">September 22</time><h3 slot="heading">Shipped</h3><p slot="description">Your order is on the way.</p></acme-timeline-item><acme-timeline-item><time slot="date" datetime="2026-09-23">September 23</time><h3 slot="heading">Delivered</h3><p slot="description">Your order has arrived.</p></acme-timeline-item>';
 export const doc: Doc = {

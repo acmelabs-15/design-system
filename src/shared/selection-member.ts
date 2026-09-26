@@ -1,5 +1,6 @@
 import { batch, createAtom, type ReadonlyAtom } from "@tanstack/lit-store";
 import type { ReactiveController, ReactiveElement } from "lit";
+
 export const selectionMemberChange = "acme-internal-selection-member";
 export type SelectionContext = Readonly<{ disabled: boolean; invalid: boolean; size?: string }>;
 export interface SelectionOwner {
@@ -26,10 +27,14 @@ const members = new WeakMap<Element, SelectionMember>();
 const boundaries = new WeakSet<Element>();
 const guarded = new WeakSet<Element>();
 export function guardSelectionChanges(host: ReactiveElement): void {
-  if (guarded.has(host)) return;
+  if (guarded.has(host)) {
+    return;
+  }
   guarded.add(host);
   host.addEventListener("acme-change", (event) => {
-    if (event.composedPath()[0] !== host) event.stopImmediatePropagation();
+    if (event.composedPath()[0] !== host) {
+      event.stopImmediatePropagation();
+    }
   });
 }
 export const selectionMember = (element: Element) => members.get(element);
@@ -42,7 +47,9 @@ export class SelectionConnection implements ReactiveController {
     private host: ReactiveElement,
     readonly member: SelectionMember,
   ) {
-    if (members.has(host)) throw new Error("One selection participant per control");
+    if (members.has(host)) {
+      throw new Error("One selection participant per control");
+    }
     members.set(host, member);
     guardSelectionChanges(host);
     host.addController(this);
@@ -51,12 +58,16 @@ export class SelectionConnection implements ReactiveController {
     return this.current.get().owner;
   }
   setOwner(owner: SelectionOwner | undefined) {
-    if (this.owner === owner) return;
+    if (this.owner === owner) {
+      return;
+    }
     this.current.set({ owner });
     this.host.requestUpdate();
   }
   notify() {
-    if (this.host.isConnected) this.host.dispatchEvent(new Event(selectionMemberChange, { bubbles: true, composed: true }));
+    if (this.host.isConnected) {
+      this.host.dispatchEvent(new Event(selectionMemberChange, { bubbles: true, composed: true }));
+    }
   }
   hostConnected() {
     this.previousTarget = undefined;
@@ -78,7 +89,9 @@ function parent(node: Node): Node | null {
 }
 function ancestry(node: Node): Node[] {
   const result: Node[] = [];
-  for (let current: Node | null = node; current; current = parent(current)) result.unshift(current);
+  for (let current: Node | null = node; current; current = parent(current)) {
+    result.unshift(current);
+  }
   return result;
 }
 
@@ -97,18 +110,26 @@ export class SelectionRegistry implements ReactiveController {
     host.addController(this);
   }
   private add(member: SelectionMember) {
-    if (member.kind !== this.owner.kind) return;
-    if (this.current.get().includes(member)) return;
+    if (member.kind !== this.owner.kind) {
+      return;
+    }
+    if (this.current.get().includes(member)) {
+      return;
+    }
     batch(() => {
       const previous = member.owner();
-      if (previous && previous !== this.owner) previous.remove(member);
+      if (previous && previous !== this.owner) {
+        previous.remove(member);
+      }
       member.connect(this.owner);
       this.current.set(Object.freeze([...this.current.get(), member]));
       this.owner.synchronize();
     });
   }
   remove(member: SelectionMember) {
-    if (!this.current.get().includes(member)) return;
+    if (!this.current.get().includes(member)) {
+      return;
+    }
     batch(() => {
       this.current.set(Object.freeze(this.current.get().filter((value) => value !== member)));
       this.owner.synchronize();
@@ -117,23 +138,39 @@ export class SelectionRegistry implements ReactiveController {
   }
   private belongs(member: SelectionMember) {
     for (let node = parent(member.host); node; node = parent(node)) {
-      if (node.nodeType !== 1) continue;
-      if (members.has(node as Element)) return false;
-      if (boundaries.has(node as Element)) return node === this.host;
+      if (node.nodeType !== 1) {
+        continue;
+      }
+      if (members.has(node as Element)) {
+        return false;
+      }
+      if (boundaries.has(node as Element)) {
+        return node === this.host;
+      }
     }
     return false;
   }
   private nested(member: SelectionMember) {
-    for (let node = parent(member.host); node && node !== this.host; node = parent(node)) if (node.nodeType === 1 && (members.has(node as Element) || boundaries.has(node as Element))) return true;
+    for (let node = parent(member.host); node && node !== this.host; node = parent(node)) {
+      if (node.nodeType === 1 && (members.has(node as Element) || boundaries.has(node as Element))) {
+        return true;
+      }
+    }
     return false;
   }
   private changed = (event: Event) => {
-    if (!this.host.isConnected) return;
+    if (!this.host.isConnected) {
+      return;
+    }
     const member = selectionMember(event.composedPath()[0] as Element);
-    if (!member) return;
+    if (!member) {
+      return;
+    }
     event.stopPropagation();
     if (this.nested(member)) {
-      if (member.owner() === this.owner) this.remove(member);
+      if (member.owner() === this.owner) {
+        this.remove(member);
+      }
       return;
     }
     if (member.kind !== this.owner.kind) {
@@ -146,24 +183,42 @@ export class SelectionRegistry implements ReactiveController {
     });
   };
   private scan = () => {
-    if (!this.host.isConnected) return;
+    if (!this.host.isConnected) {
+      return;
+    }
     const found = new Set<SelectionMember>();
     const visit = (node: Node) => {
-      if (node.nodeType !== 1) return;
+      if (node.nodeType !== 1) {
+        return;
+      }
       const element = node as Element;
       const member = selectionMember(element);
       if (member) {
         found.add(member);
         return;
       }
-      if (boundaries.has(element)) return;
+      if (boundaries.has(element)) {
+        return;
+      }
       const children = element.localName === "slot" ? (element as HTMLSlotElement).assignedNodes({ flatten: true }) : [...element.childNodes];
-      for (const child of children) visit(child);
+      for (const child of children) {
+        visit(child);
+      }
     };
     const slot = this.host.renderRoot?.querySelector("slot");
-    for (const node of slot ? slot.assignedNodes({ flatten: true }) : [...this.host.childNodes]) visit(node);
-    for (const member of this.current.get()) if (!found.has(member) && !this.belongs(member)) this.remove(member);
-    for (const member of found) if (!this.nested(member)) this.add(member);
+    for (const node of slot ? slot.assignedNodes({ flatten: true }) : [...this.host.childNodes]) {
+      visit(node);
+    }
+    for (const member of this.current.get()) {
+      if (!found.has(member) && !this.belongs(member)) {
+        this.remove(member);
+      }
+    }
+    for (const member of found) {
+      if (!this.nested(member)) {
+        this.add(member);
+      }
+    }
     this.owner.synchronize();
   };
   hostConnected() {
@@ -174,7 +229,9 @@ export class SelectionRegistry implements ReactiveController {
     this.scan();
   }
   hostUpdated() {
-    if (!this.host.isConnected) return;
+    if (!this.host.isConnected) {
+      return;
+    }
     if (this.root !== this.host.renderRoot) {
       this.root?.removeEventListener("slotchange", this.scan);
       this.root = this.host.renderRoot;
@@ -189,7 +246,9 @@ export class SelectionRegistry implements ReactiveController {
     this.root = undefined;
     this.observer?.disconnect();
     this.observer = undefined;
-    for (const member of this.current.get()) this.remove(member);
+    for (const member of this.current.get()) {
+      this.remove(member);
+    }
   }
 }
 /** Orders explicit members across their known shadow boundaries without inspecting private trees. */
@@ -197,7 +256,11 @@ export function selectionOrder(a: { host: Node }, b: { host: Node }): number {
   const left = ancestry(a.host),
     right = ancestry(b.host);
   let i = 0;
-  while (i < left.length && left[i] === right[i]) i++;
-  if (!left[i] || !right[i]) return left.length - right.length;
+  while (i < left.length && left[i] === right[i]) {
+    i++;
+  }
+  if (!left[i] || !right[i]) {
+    return left.length - right.length;
+  }
   return left[i].compareDocumentPosition(right[i]) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
 }

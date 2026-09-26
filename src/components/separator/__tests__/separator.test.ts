@@ -30,10 +30,15 @@ describe("acme-separator", () => {
 
   test("property changes and attribute removal restore the canonical defaults", async () => {
     const el = await mount('<acme-separator orientation="vertical" decorative="false"></acme-separator>');
-    el.orientation = "horizontal"; el.decorative = true; await el.updateComplete;
+    el.orientation = "horizontal";
+    el.decorative = true;
+    await el.updateComplete;
     expect(el.getAttribute("orientation")).toBe("horizontal");
     expect(root(el).hasAttribute("role")).toBe(false);
-    el.removeAttribute("orientation"); el.removeAttribute("decorative"); await el.updateComplete;
-    expect(el.orientation).toBe("horizontal"); expect(el.decorative).toBe(true);
+    el.removeAttribute("orientation");
+    el.removeAttribute("decorative");
+    await el.updateComplete;
+    expect(el.orientation).toBe("horizontal");
+    expect(el.decorative).toBe(true);
   });
 });

@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import { copyTreeNodes, treeEntries, visibleTreeEntries, treeKeys } from "../tree-model";
+
 test("Tree owns immutable data with unique IDs and detects cycles", () => {
   const nodes = [{ id: "a", label: "Alpha", children: [{ id: "b", label: "Beta" }] }];
   const copy = copyTreeNodes(nodes);

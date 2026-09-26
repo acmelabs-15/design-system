@@ -3,13 +3,21 @@ import { runInNewContext } from "node:vm";
 import { createOrderedStyleInputs } from "../ordered-style-inputs";
 
 const spacing = (value: unknown): string | number | readonly (number | null)[] => {
-  if (typeof value === "string") return value.trim();
-  if (typeof value === "number" && Number.isFinite(value) && value >= 0) return value;
-  if (Array.isArray(value) && value.every((item) => item === null || (typeof item === "number" && Number.isFinite(item) && item >= 0))) return [...value];
+  if (typeof value === "string") {
+    return value.trim();
+  }
+  if (typeof value === "number" && Number.isFinite(value) && value >= 0) {
+    return value;
+  }
+  if (Array.isArray(value) && value.every((item) => item === null || (typeof item === "number" && Number.isFinite(item) && item >= 0))) {
+    return [...value];
+  }
   throw new TypeError("Invalid test spacing");
 };
 const color = (value: unknown): string => {
-  if (typeof value !== "string") throw new TypeError("Invalid test color");
+  if (typeof value !== "string") {
+    throw new TypeError("Invalid test color");
+  }
   return value.trim();
 };
 const createInputs = () => createOrderedStyleInputs({ padding: spacing, paddingInline: spacing, backgroundColor: color });

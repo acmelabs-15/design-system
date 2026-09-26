@@ -13,7 +13,9 @@ import { documentationIconEntries } from "../../scripts/docs-icons";
 const DOCS = path.resolve(import.meta.dir, "../../_site");
 const PAGES = path.join(DOCS, "pages");
 const fragments = fs.existsSync(PAGES) ? [...fs.readdirSync(PAGES).filter((f) => f.endsWith(".html")), ...fs.readdirSync(path.join(PAGES, "components")).map((f) => `components/${f}`)] : [];
-for (const entry of documentationIconEntries(fragments.map((file) => fs.readFileSync(path.join(PAGES, file), "utf8")))) await import(path.resolve(import.meta.dir, "../../src", entry + ".ts"));
+for (const entry of documentationIconEntries(fragments.map((file) => fs.readFileSync(path.join(PAGES, file), "utf8")))) {
+  await import(path.resolve(import.meta.dir, "../../src", entry + ".ts"));
+}
 
 // Elements whose own shadow root is legitimately empty, plus the docs-only token rows the app defines.
 const LIGHT = new Set(["acme-tab-panel", "acme-toast", "docs-tokens"]);
@@ -59,7 +61,9 @@ describe("docs site", () => {
         const empty = Array.from(new Set(all.filter((e) => !LIGHT.has(e.localName) && e.shadowRoot && e.shadowRoot.childElementCount === 0).map((e) => e.localName)));
         expect(empty).toEqual([]);
         // A component page documents at least one element, unless it is a guide page (Forms) with no tags.
-        if (page.startsWith("components/") && !html.includes("docs-form-demo")) expect(html).toContain('class="api-el"');
+        if (page.startsWith("components/") && !html.includes("docs-form-demo")) {
+          expect(html).toContain('class="api-el"');
+        }
         expect(errors).toEqual([]);
       } finally {
         document.body.innerHTML = "";

@@ -25,7 +25,9 @@
    */
   window.__run = async (page, side, theme) => {
     const res = await fetch(`${COLLECTOR}/config/${page}`);
-    if (!res.ok) return { error: `no saved config for ${page}` };
+    if (!res.ok) {
+      return { error: `no saved config for ${page}` };
+    }
     const cfg = await res.json();
     const out = [];
     for (const root of rootsOf(cfg)) {

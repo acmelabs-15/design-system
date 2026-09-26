@@ -21,7 +21,9 @@ export class AcmeSegmentedControl extends AcmeSingleSelectionGroup {
   }
   set orientation(value: "horizontal" | "vertical" | undefined) {
     const next = value ?? "horizontal";
-    if (!["horizontal", "vertical"].includes(next)) throw new TypeError("Invalid selection orientation");
+    if (!["horizontal", "vertical"].includes(next)) {
+      throw new TypeError("Invalid selection orientation");
+    }
     const old = this.direction;
     this.direction = next;
     this.requestUpdate("orientation", old);
@@ -33,7 +35,9 @@ export class AcmeSegmentedControl extends AcmeSingleSelectionGroup {
   }
   set size(value: "small" | "medium" | "large" | undefined) {
     const next = value ?? "medium";
-    if (!["small", "medium", "large"].includes(next)) throw new TypeError("Invalid selection size");
+    if (!["small", "medium", "large"].includes(next)) {
+      throw new TypeError("Invalid selection size");
+    }
     const old = this.controlSize;
     this.controlSize = next;
     this.requestUpdate("size", old);

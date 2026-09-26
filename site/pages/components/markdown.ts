@@ -1,5 +1,6 @@
 import type { Doc } from "../../site";
 import { esc } from "../../site";
+
 const attribute = (value: string) => esc(value).replaceAll('"', "&quot;");
 const prose =
   "## Overview\n\nRead **structured prose** with `inline()` code, lists and links.\n\n- Keep source text in the text property.\n- Use [the details](#details) to continue.\n\n## Details\n\n| Feature | Status |\n| :--- | ---: |\n| Native headings | Ready |\n| Scoped styles | Ready |";

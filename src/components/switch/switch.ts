@@ -37,7 +37,9 @@ export class AcmeSwitch extends AcmeSelectionControl {
   }
   set labelPosition(value: "start" | "end" | undefined) {
     const next = value ?? "start";
-    if (!["start", "end"].includes(next)) throw new TypeError("Invalid label position");
+    if (!["start", "end"].includes(next)) {
+      throw new TypeError("Invalid label position");
+    }
     const old = this.position;
     this.position = next;
     this.requestUpdate("labelPosition", old);

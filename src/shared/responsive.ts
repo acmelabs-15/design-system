@@ -19,7 +19,9 @@ export const defaultBreakpoints: ResponsiveBreakpoints = Object.freeze({ medium:
 function ownValues(value: object): [string, unknown][] {
   return Reflect.ownKeys(value).map((key) => {
     const descriptor = Object.getOwnPropertyDescriptor(value, key)!;
-    if (typeof key !== "string" || !("value" in descriptor) || !descriptor.enumerable) throw new TypeError("Responsive inputs require enumerable data properties");
+    if (typeof key !== "string" || !("value" in descriptor) || !descriptor.enumerable) {
+      throw new TypeError("Responsive inputs require enumerable data properties");
+    }
     return [key, descriptor.value];
   });
 }
@@ -28,15 +30,21 @@ function ownValues(value: object): [string, unknown][] {
 export function resolveBreakpoints(overrides?: Partial<ResponsiveBreakpoints>): ResponsiveBreakpoints {
   const widths = { ...defaultBreakpoints };
   if (overrides !== undefined) {
-    if (!isPlainRecord(overrides)) throw new TypeError("Breakpoints must be a plain object");
+    if (!isPlainRecord(overrides)) {
+      throw new TypeError("Breakpoints must be a plain object");
+    }
     for (const [key, value] of ownValues(overrides)) {
-      if (!Object.hasOwn(defaultBreakpoints, key) || typeof value !== "number") throw new TypeError(`Invalid breakpoint: ${key}`);
+      if (!Object.hasOwn(defaultBreakpoints, key) || typeof value !== "number") {
+        throw new TypeError(`Invalid breakpoint: ${key}`);
+      }
       widths[key as keyof typeof widths] = value;
     }
   }
   const starts = [0, ...responsiveBands.slice(1).map((name) => widths[name as keyof typeof widths])];
   for (let index = 1; index < starts.length; index++) {
-    if (!Number.isFinite(starts[index]) || starts[index] <= starts[index - 1]) throw new RangeError("Breakpoints must be finite, positive and strictly increasing");
+    if (!Number.isFinite(starts[index]) || starts[index] <= starts[index - 1]) {
+      throw new RangeError("Breakpoints must be finite, positive and strictly increasing");
+    }
   }
   return Object.freeze(widths);
 }
@@ -48,7 +56,9 @@ function conditions(overrides?: Partial<ResponsiveBreakpoints>): Map<string, Res
   for (const [index, name] of responsiveBands.entries()) {
     result.set(name, { min: starts[index] });
     result.set(`${name}Only`, index + 1 < starts.length ? { min: starts[index], max: starts[index + 1] } : { min: starts[index] });
-    if (index) result.set(`${name}Down`, { min: 0, max: starts[index] });
+    if (index) {
+      result.set(`${name}Down`, { min: 0, max: starts[index] });
+    }
     for (let end = index + 1; end < starts.length; end++) {
       const upper = responsiveBands[end];
       result.set(`${name}To${upper[0].toUpperCase()}${upper.slice(1)}`, { min: starts[index], max: starts[end] });
@@ -69,10 +79,14 @@ function comparisonKey(interval: ResponsiveRange): string {
 // chakra-ui/chakra-ui@1ff9873754e9913fc3d849d23c0844a628f5f20d,
 // packages/react/src/styled-system/sort-at-params.ts:69-93. Bounds stay numeric here; no query regex or fractional subtraction.
 export function compareResponsiveRanges(a: ResponsiveRange, b: ResponsiveRange): number {
-  if (baseline(a) || baseline(b)) return baseline(a) ? (baseline(b) ? 0 : -1) : 1;
+  if (baseline(a) || baseline(b)) {
+    return baseline(a) ? (baseline(b) ? 0 : -1) : 1;
+  }
   const minimumA = a.min > 0;
   const minimumB = b.min > 0;
-  if (minimumA !== minimumB) return minimumA ? -1 : 1;
+  if (minimumA !== minimumB) {
+    return minimumA ? -1 : 1;
+  }
   const distance = minimumA ? a.min - b.min : b.max! - a.max!;
   return distance || comparisonKey(a).localeCompare(comparisonKey(b));
 }
@@ -87,29 +101,49 @@ export function normalizeResponsive<T extends ResponsiveScalar>(
   const normalized = new Map<string, ResponsiveEntry<T>>();
   const append = (condition: string, value: unknown) => {
     const interval = known.get(condition);
-    if (!interval) throw new TypeError(`Unknown responsive condition: ${condition}`);
-    if (!["string", "number", "boolean"].includes(typeof value) || !leafValidator(value)) throw new TypeError(`Invalid responsive value for ${condition}`);
+    if (!interval) {
+      throw new TypeError(`Unknown responsive condition: ${condition}`);
+    }
+    if (!["string", "number", "boolean"].includes(typeof value) || !leafValidator(value)) {
+      throw new TypeError(`Invalid responsive value for ${condition}`);
+    }
     const key = `${interval.min}:${interval.max ?? "unbounded"}`;
     const existing = normalized.get(key);
     if (existing) {
-      if (existing.value !== value) throw new TypeError(`Conflicting responsive values for equivalent interval: ${condition}`);
+      if (existing.value !== value) {
+        throw new TypeError(`Conflicting responsive values for equivalent interval: ${condition}`);
+      }
       return;
     }
     normalized.set(key, Object.freeze({ ...interval, value }));
   };
 
-  if (input === undefined) return Object.freeze([]);
+  if (input === undefined) {
+    return Object.freeze([]);
+  }
   if (Array.isArray(input)) {
-    if (input.length > responsiveBands.length) throw new RangeError("Responsive arrays have at most five positions");
+    if (input.length > responsiveBands.length) {
+      throw new RangeError("Responsive arrays have at most five positions");
+    }
     for (const key of Reflect.ownKeys(input)) {
-      if (key === "length") continue;
-      if (typeof key !== "string" || !/^[0-4]$/.test(key)) throw new TypeError("Responsive arrays contain only band positions");
+      if (key === "length") {
+        continue;
+      }
+      if (typeof key !== "string" || !/^[0-4]$/.test(key)) {
+        throw new TypeError("Responsive arrays contain only band positions");
+      }
       const descriptor = Object.getOwnPropertyDescriptor(input, key)!;
-      if (!("value" in descriptor)) throw new TypeError("Responsive arrays require data properties");
-      if (descriptor.value !== null && descriptor.value !== undefined) append(responsiveBands[Number(key)], descriptor.value);
+      if (!("value" in descriptor)) {
+        throw new TypeError("Responsive arrays require data properties");
+      }
+      if (descriptor.value !== null && descriptor.value !== undefined) {
+        append(responsiveBands[Number(key)], descriptor.value);
+      }
     }
   } else if (isPlainRecord(input)) {
-    for (const [condition, value] of ownValues(input)) append(condition, value);
+    for (const [condition, value] of ownValues(input)) {
+      append(condition, value);
+    }
   } else {
     append("compact", input);
   }

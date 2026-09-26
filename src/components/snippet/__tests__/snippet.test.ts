@@ -1,6 +1,7 @@
 import { expect, test } from "bun:test";
 import "../../../all";
 import type { AcmeSnippet } from "../snippet";
+
 async function mount(text: string | readonly string[]) {
   const el = document.createElement("acme-snippet");
   el.text = text;
@@ -52,7 +53,10 @@ test("copy result bubbles once from Copy Button and invalid arrays are rejected"
       el.text = [4] as unknown as string[];
     }).toThrow();
   } finally {
-    if (original) Object.defineProperty(navigator, "clipboard", original);
-    else delete (navigator as any).clipboard;
+    if (original) {
+      Object.defineProperty(navigator, "clipboard", original);
+    } else {
+      delete (navigator as any).clipboard;
+    }
   }
 });

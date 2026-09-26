@@ -1,5 +1,6 @@
 import type { FlowNode } from "./flow-data";
 import type { FlowBounds } from "./flow-geometry";
+
 export interface FlowNodePart {
   host: HTMLElement;
   id(): string;

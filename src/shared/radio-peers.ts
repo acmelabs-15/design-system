@@ -3,6 +3,7 @@ import { nativeValidation } from "./native-form-element";
 import { RovingTabindex } from "./roving-tabindex";
 import { delegateToolbarKey, toolbarKeyboardOwner } from "./keyboard-delegation";
 import { selectionOrder, type SelectionMember } from "./selection-member";
+
 type Peer = Readonly<{
   host: ReactiveElement;
   member: SelectionMember;
@@ -39,7 +40,9 @@ export class RadioPeers implements ReactiveController {
     peer.host.addController(this);
   }
   private list(key = this.key): RadioPeers[] {
-    if (!key || !key.name) return [this];
+    if (!key || !key.name) {
+      return [this];
+    }
     return [...(scopes.get(key.root) ?? [])]
       .filter((item) => item.peer.host.isConnected && !item.peer.grouped() && item.peer.name() === key.name && item.peer.form() === key.form)
       .sort((a, b) => selectionOrder(a.peer.member, b.peer.member));
@@ -51,11 +54,15 @@ export class RadioPeers implements ReactiveController {
     });
   }
   private drop() {
-    if (!this.key) return;
+    if (!this.key) {
+      return;
+    }
     scopes.get(this.key.root)?.delete(this);
   }
   reconcile = () => {
-    if (this.updating) return;
+    if (this.updating) {
+      return;
+    }
     this.updating = true;
     try {
       const previous = this.list();
@@ -70,8 +77,18 @@ export class RadioPeers implements ReactiveController {
         entries.add(this);
       }
       const current = this.key ? this.list() : [];
-      if (this.key && this.peer.checked()) for (const item of current) if (item !== this && item.peer.checked()) item.peer.setChecked(false);
-      for (const item of new Set([...previous, ...current])) if (item.peer.host.isConnected) item.peer.sync();
+      if (this.key && this.peer.checked()) {
+        for (const item of current) {
+          if (item !== this && item.peer.checked()) {
+            item.peer.setChecked(false);
+          }
+        }
+      }
+      for (const item of new Set([...previous, ...current])) {
+        if (item.peer.host.isConnected) {
+          item.peer.sync();
+        }
+      }
     } finally {
       this.updating = false;
     }
@@ -88,15 +105,23 @@ export class RadioPeers implements ReactiveController {
   tabIndex(): 0 | -1 {
     const items = this.visible();
     const current = items.find((item) => item.peer.checked()) ?? items[0];
-    if (current) return current === this ? 0 : -1;
+    if (current) {
+      return current === this ? 0 : -1;
+    }
     const initial = this.list().filter((item) => !item.peer.member.disabled());
     return initial.every((item) => !item.peer.member.target().isConnected) && initial[0] === this ? 0 : -1;
   }
   private keydown = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || this.peer.grouped() || !arrows.has(event.key)) return;
+    if (event.defaultPrevented || this.peer.grouped() || !arrows.has(event.key)) {
+      return;
+    }
     const origin = event.composedPath()[0];
-    if (origin !== this.peer.member.target() && origin !== this.peer.host) return;
-    if (delegateToolbarKey(event, this.peer.host)) return;
+    if (origin !== this.peer.member.target() && origin !== this.peer.host) {
+      return;
+    }
+    if (delegateToolbarKey(event, this.peer.host)) {
+      return;
+    }
     const items = this.visible();
     this.navigation.handleKey(event, items.indexOf(this));
     event.preventDefault();
@@ -109,7 +134,9 @@ export class RadioPeers implements ReactiveController {
     this.reconcile();
   }
   hostUpdated() {
-    if (!this.peer.grouped() && !toolbarKeyboardOwner(this.peer.host)) this.peer.member.target().tabIndex = this.tabIndex();
+    if (!this.peer.grouped() && !toolbarKeyboardOwner(this.peer.host)) {
+      this.peer.member.target().tabIndex = this.tabIndex();
+    }
   }
   hostDisconnected() {
     const previous = this.list();
@@ -118,6 +145,10 @@ export class RadioPeers implements ReactiveController {
     this.resize?.disconnect();
     this.resize = undefined;
     this.peer.host.removeEventListener("keydown", this.keydown);
-    for (const item of previous) if (item !== this && item.peer.host.isConnected) item.peer.sync();
+    for (const item of previous) {
+      if (item !== this && item.peer.host.isConnected) {
+        item.peer.sync();
+      }
+    }
   }
 }

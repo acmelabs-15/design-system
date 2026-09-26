@@ -5,7 +5,9 @@ import type { BunPlugin } from "bun";
 export function writeFlowAssets(root: string, dist: string) {
   const source = path.join(root, "node_modules/elkjs");
   const manifest = JSON.parse(fs.readFileSync(path.join(source, "package.json"), "utf8"));
-  if (manifest.version !== "0.12.0") throw new Error("Revalidate Flow worker delivery before changing ELK");
+  if (manifest.version !== "0.12.0") {
+    throw new Error("Revalidate Flow worker delivery before changing ELK");
+  }
   fs.mkdirSync(path.join(dist, "shared"), { recursive: true });
   fs.copyFileSync(path.join(source, "lib/elk-worker.min.js"), path.join(dist, "shared/elk-worker.js"));
   fs.mkdirSync(path.join(dist, "licenses"), { recursive: true });
@@ -32,7 +34,9 @@ export function browserAssetPlugin(dist: string): BunPlugin {
         const normalized = args.path.replaceAll("\\", "/").replace(/\.(?:js|ts)$/, "");
         const asset = assets.find((asset) => normalized.endsWith(asset.suffix))!;
         const source = await Bun.file(args.path).text();
-        if (!source.includes(asset.expression)) throw new Error("Browser asset expression changed: " + asset.suffix);
+        if (!source.includes(asset.expression)) {
+          throw new Error("Browser asset expression changed: " + asset.suffix);
+        }
         return {
           contents: `import acmeAssetUrl from ${JSON.stringify(asset.file)} with {type:"file"};\n` + source.replace(asset.expression, "new URL(acmeAssetUrl, import.meta.url)"),
           loader: args.path.endsWith(".ts") ? "ts" : "js",

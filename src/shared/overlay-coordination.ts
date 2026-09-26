@@ -1,4 +1,5 @@
 import { composedContains } from "./composed-tree";
+
 export type OverlayDismissReason = "escape" | "outside";
 export type OverlayRegistration = Readonly<{
   surface: HTMLElement;
@@ -32,10 +33,14 @@ function createCoordination(document: Document): Coordination {
   const top = () => sessions.at(-1);
   const keydown = (event: KeyboardEvent) => {
     const session = top();
-    if (!session || event.key !== "Escape" || event.defaultPrevented || event.isComposing) return;
+    if (!session || event.key !== "Escape" || event.defaultPrevented || event.isComposing) {
+      return;
+    }
     // Keep native dialog cancellation from also dismissing the surface below this one.
     event.preventDefault();
-    if (session.registration.closeOnEscape()) session.registration.dismiss("escape", event);
+    if (session.registration.closeOnEscape()) {
+      session.registration.dismiss("escape", event);
+    }
   };
   const pointerdown = (event: PointerEvent) => {
     const session = top();
@@ -43,9 +48,13 @@ function createCoordination(document: Document): Coordination {
   };
   const pointerup = (event: PointerEvent) => {
     const start = press;
-    if (!start || event.pointerId !== start.pointerId) return;
+    if (!start || event.pointerId !== start.pointerId) {
+      return;
+    }
     press = undefined;
-    if (top() === start.session && !isInside(start.session, event) && start.session.registration.closeOnOutside()) start.session.registration.dismiss("outside", event);
+    if (top() === start.session && !isInside(start.session, event) && start.session.registration.closeOnOutside()) {
+      start.session.registration.dismiss("outside", event);
+    }
   };
   const pointercancel = () => {
     press = undefined;
@@ -79,7 +88,9 @@ export function coordinateOverlay(registration: OverlayRegistration): () => void
   const session: Session = { registration, inside: new WeakSet<Event>(), parent, release() {} };
   const roots = new Set([registration.surface.getRootNode(), registration.anchor?.getRootNode()].filter((root): root is Node => !!root));
   const captureInside = (event: Event) => {
-    if (contains(registration, event)) session.inside.add(event);
+    if (contains(registration, event)) {
+      session.inside.add(event);
+    }
   };
   for (const root of roots) {
     root.addEventListener("pointerdown", captureInside, true);
@@ -90,8 +101,9 @@ export function coordinateOverlay(registration: OverlayRegistration): () => void
       registration.surface.isConnected &&
       registration.surface.ownerDocument === document &&
       (registration.anchorMustRemainConnected === false || !registration.anchor || (registration.anchor.isConnected && registration.anchor.ownerDocument === document))
-    )
+    ) {
       return;
+    }
     try {
       registration.ownerRemoved?.();
     } finally {
@@ -99,16 +111,24 @@ export function coordinateOverlay(registration: OverlayRegistration): () => void
     }
   });
   observer.observe(document, { childList: true, subtree: true });
-  for (const root of roots) if (root !== document) observer.observe(root, { childList: true, subtree: true });
+  for (const root of roots) {
+    if (root !== document) {
+      observer.observe(root, { childList: true, subtree: true });
+    }
+  }
   coordination.sessions.push(session);
   let active = true;
   session.release = () => {
-    if (!active) return;
+    if (!active) {
+      return;
+    }
     active = false;
     observer.disconnect();
     const errors: unknown[] = [];
     for (const child of [...coordination.sessions].reverse()) {
-      if (child.parent !== session) continue;
+      if (child.parent !== session) {
+        continue;
+      }
       try {
         child.registration.ownerRemoved?.();
       } catch (error) {
@@ -125,12 +145,16 @@ export function coordinateOverlay(registration: OverlayRegistration): () => void
       root.removeEventListener("pointerup", captureInside, true);
     }
     const index = coordination.sessions.indexOf(session);
-    if (index !== -1) coordination.sessions.splice(index, 1);
+    if (index !== -1) {
+      coordination.sessions.splice(index, 1);
+    }
     if (!coordination.sessions.length) {
       coordination.dispose();
       documents.delete(document);
     }
-    if (errors.length) throw new AggregateError(errors, "Overlay child cleanup failed");
+    if (errors.length) {
+      throw new AggregateError(errors, "Overlay child cleanup failed");
+    }
   };
   return session.release;
 }

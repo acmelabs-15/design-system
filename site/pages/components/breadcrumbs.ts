@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 export const doc: Doc = {
   id: "breadcrumbs",
   title: "Breadcrumbs",

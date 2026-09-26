@@ -3,6 +3,7 @@ import { TableController } from "@tanstack/lit-table";
 import { html, LitElement } from "lit";
 import { repeat } from "lit/directives/repeat.js";
 import { createWorkerSession, type WorkerRow } from "./worker-session";
+
 export class WorkerDeliveryLit extends LitElement {
   readonly session = createWorkerSession();
   private readonly failure = new TanStackStoreAtom(this, () => this.session.failed);

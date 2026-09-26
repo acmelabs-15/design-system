@@ -1,5 +1,6 @@
 import { afterEach, expect, test } from "bun:test";
 import "../../../all";
+
 afterEach(() => document.body.replaceChildren());
 test("radio cards retain one radio owner and separate independent actions", async () => {
   const group = document.createElement("acme-radio-group"),

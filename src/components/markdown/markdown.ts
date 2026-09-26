@@ -14,6 +14,7 @@ import { RootStyles } from "../../shared/root-styles";
 import { message, messageCatalogs } from "../../shared/messages";
 import { markdownStructureCss } from "../../generated/components/markdown/markdown-structure.styles";
 import { markdownLightCss } from "../../generated/components/markdown/markdown-light.styles";
+
 const highlight = createTanStackMarkdownHighlighter(highlighter);
 const escaped = (text: string) => text.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]!);
 type Failure = Readonly<{ code: "parse" | "highlight"; message: string }>;
@@ -47,7 +48,9 @@ export class AcmeMarkdown extends AcmeElement {
   private readonly prepared = createAtom(() => {
     const parsed = this.parsed.get();
     const errors: Failure[] = [];
-    if (!parsed.document) return { html: undefined, text: this.text, errors: [{ code: "parse" as const, message: parsed.error ?? "Could not parse Markdown" }] };
+    if (!parsed.document) {
+      return { html: undefined, text: this.text, errors: [{ code: "parse" as const, message: parsed.error ?? "Could not parse Markdown" }] };
+    }
     try {
       const output = renderHtml(parsed.document, {
         allowHtml: this.allowHtml,
@@ -83,7 +86,9 @@ export class AcmeMarkdown extends AcmeElement {
       values = new Map();
       this.references.set(element, values);
     }
-    if (!values.has(attribute)) values.set(attribute, element.getAttribute(attribute) ?? "");
+    if (!values.has(attribute)) {
+      values.set(attribute, element.getAttribute(attribute) ?? "");
+    }
     return values.get(attribute)!;
   }
   private namespace() {
@@ -92,12 +97,16 @@ export class AcmeMarkdown extends AcmeElement {
     for (const element of this.prose.querySelectorAll<HTMLElement>("[id]")) {
       const original = this.ids.get(element) ?? element.id;
       this.ids.set(element, original);
-      if (!original) continue;
+      if (!original) {
+        continue;
+      }
       const count = (counts.get(original) ?? 0) + 1;
       counts.set(original, count);
       const name = this.fragmentPrefix + "-" + original + (count > 1 ? "-" + count : "");
       element.id = name;
-      if (!names.has(original)) names.set(original, name);
+      if (!names.has(original)) {
+        names.set(original, name);
+      }
     }
     for (const element of this.prose.querySelectorAll<HTMLElement>("[href],[for],[aria-labelledby],[aria-describedby],[aria-controls],[aria-activedescendant],[headers]")) {
       if (element.hasAttribute("href")) {
@@ -108,10 +117,12 @@ export class AcmeMarkdown extends AcmeElement {
             id = decodeURIComponent(id);
           } catch {}
           const mapped = names.get(id);
-          if (mapped) element.setAttribute("href", "#" + encodeURIComponent(mapped));
+          if (mapped) {
+            element.setAttribute("href", "#" + encodeURIComponent(mapped));
+          }
         }
       }
-      for (const attribute of ["for", "aria-labelledby", "aria-describedby", "aria-controls", "aria-activedescendant", "headers"])
+      for (const attribute of ["for", "aria-labelledby", "aria-describedby", "aria-controls", "aria-activedescendant", "headers"]) {
         if (element.hasAttribute(attribute)) {
           const value = this.original(element, attribute);
           element.setAttribute(
@@ -122,6 +133,7 @@ export class AcmeMarkdown extends AcmeElement {
               .join(" "),
           );
         }
+      }
     }
   }
   private prepareNativeContent() {
@@ -130,14 +142,18 @@ export class AcmeMarkdown extends AcmeElement {
     const codeLabel = message(locale, "markdown.code", "Code source");
     for (const heading of this.prose.querySelectorAll("section[data-footnotes] h2")) {
       const text = message(locale, "markdown.footnotes", "Footnotes");
-      if (heading.textContent !== text) heading.textContent = text;
+      if (heading.textContent !== text) {
+        heading.textContent = text;
+      }
     }
     for (const link of this.prose.querySelectorAll("[data-footnote-backref]")) {
       const original = this.original(link, "aria-label"),
         reference = original.match(/\d+(?:-\d+)?$/)?.[0];
       if (reference) {
         const label = message(locale, "markdown.backToReference", "Back to reference {reference}").replace("{reference}", reference);
-        if (link.getAttribute("aria-label") !== label) link.setAttribute("aria-label", label);
+        if (link.getAttribute("aria-label") !== label) {
+          link.setAttribute("aria-label", label);
+        }
       }
     }
     for (const cell of this.prose.querySelectorAll<HTMLElement>("th[style],td[style]")) {
@@ -149,7 +165,9 @@ export class AcmeMarkdown extends AcmeElement {
     }
     for (const pre of this.prose.querySelectorAll<HTMLPreElement>("pre.tm-code")) {
       if (pre.parentElement?.localName === "acme-scroll-viewport") {
-        if (pre.parentElement.ariaLabel !== codeLabel) pre.parentElement.ariaLabel = codeLabel;
+        if (pre.parentElement.ariaLabel !== codeLabel) {
+          pre.parentElement.ariaLabel = codeLabel;
+        }
         continue;
       }
       const area: AcmeScrollArea = document.createElement("acme-scroll-area"),
@@ -166,7 +184,9 @@ export class AcmeMarkdown extends AcmeElement {
     this.fragmentPrefix = this.id || this.identity;
     this.prose.setAttribute("data-acme-markdown-prose", "");
     this.prose.slot = this.slotName;
-    if (this.prose.parentNode !== this) this.append(this.prose);
+    if (this.prose.parentNode !== this) {
+      this.append(this.prose);
+    }
     this.observer = new MutationObserver(() => {
       this.fragmentPrefix = this.id || this.identity;
     });
@@ -180,15 +200,22 @@ export class AcmeMarkdown extends AcmeElement {
   }
   protected updated() {
     const prepared = this.prepared.get();
-    if (this.prose.parentNode !== this) this.append(this.prose);
+    if (this.prose.parentNode !== this) {
+      this.append(this.prose);
+    }
     if (prepared !== this.previous) {
       this.previous = prepared;
-      if (prepared.html !== undefined) render(unsafeHTML(prepared.html), this.prose, { host: this });
-      else render(html`<pre class="tm-code"><code>${prepared.text}</code></pre>`, this.prose, { host: this });
+      if (prepared.html !== undefined) {
+        render(unsafeHTML(prepared.html), this.prose, { host: this });
+      } else {
+        render(html`<pre class="tm-code"><code>${prepared.text}</code></pre>`, this.prose, { host: this });
+      }
       this.prepareNativeContent();
       this.namespace();
       this.previousPrefix = this.fragmentPrefix;
-      for (const error of prepared.errors) this.dispatchEvent(new CustomEvent("acme-error", { detail: Object.freeze(error), bubbles: true, composed: true }));
+      for (const error of prepared.errors) {
+        this.dispatchEvent(new CustomEvent("acme-error", { detail: Object.freeze(error), bubbles: true, composed: true }));
+      }
     } else if (this.previousPrefix !== this.fragmentPrefix) {
       this.namespace();
       this.previousPrefix = this.fragmentPrefix;

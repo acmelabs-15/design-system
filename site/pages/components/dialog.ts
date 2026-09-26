@@ -1,4 +1,5 @@
 import type { Doc } from "../../site";
+
 const profile =
   '<acme-dialog><acme-dialog-trigger slot="trigger">Edit profile</acme-dialog-trigger><h2 slot="heading">Profile settings</h2><p slot="description">Update the details shown on your profile.</p><form id="profile-form"><acme-field required><span slot="label">Name</span><acme-input name="name" required value="Ada"></acme-input></acme-field><acme-button type="submit">Save profile</acme-button></form><acme-dialog-close slot="footer">Cancel</acme-dialog-close></acme-dialog><output></output>';
 export const doc: Doc = {

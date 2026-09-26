@@ -35,7 +35,9 @@ export class AcmeSteps extends AcmeSemanticElement {
     return this.indexValue;
   }
   set value(value: number) {
-    if (!Number.isSafeInteger(value) || value < 0) throw new RangeError("Steps value requires a nonnegative safe integer");
+    if (!Number.isSafeInteger(value) || value < 0) {
+      throw new RangeError("Steps value requires a nonnegative safe integer");
+    }
     const previous = this.indexValue;
     this.indexValue = value;
     this.requestUpdate("value", previous);
@@ -47,7 +49,9 @@ export class AcmeSteps extends AcmeSemanticElement {
     return this.axis;
   }
   set orientation(value: "horizontal" | "vertical") {
-    if (value !== "horizontal" && value !== "vertical") throw new TypeError("Invalid Steps orientation");
+    if (value !== "horizontal" && value !== "vertical") {
+      throw new TypeError("Invalid Steps orientation");
+    }
     const previous = this.axis;
     this.axis = value;
     this.requestUpdate("orientation", previous);
@@ -58,7 +62,9 @@ export class AcmeSteps extends AcmeSemanticElement {
   private readonly view = createAtom<StepsView>(() => {
     this.revision.get();
     const parts = this.parts.get();
-    for (const part of parts) part.value();
+    for (const part of parts) {
+      part.value();
+    }
     const items = parts
       .filter((part) => part.kind === "item")
       .sort((a, b) => (a.host.compareDocumentPosition(b.host) & Node.DOCUMENT_POSITION_PRECEDING ? 1 : -1))
@@ -135,40 +141,63 @@ export class AcmeSteps extends AcmeSemanticElement {
     return focused && available.includes(focused) ? focused : (available.find((part) => this.owner.current(part.value())) ?? available[0]);
   }
   private destination(part: StepsPart): number | undefined {
-    if (this.value > this.count || !this.count) return;
+    if (this.value > this.count || !this.count) {
+      return;
+    }
     if (part.kind === "trigger") {
-      if (this.linear || part.disabled() || !this.owner.valid(part.value())) return;
+      if (this.linear || part.disabled() || !this.owner.valid(part.value())) {
+        return;
+      }
       const index = this.owner.index(part.value());
       return index === this.value ? undefined : index;
     }
     const direction = part.kind === "next" ? 1 : part.kind === "previous" ? -1 : 0;
-    if (!direction) return;
+    if (!direction) {
+      return;
+    }
     let next = this.value + direction;
     const items = this.view.get().items;
-    while (next >= 0 && next < items.length && (items[next].disabled || !this.owner.valid(items[next].value))) next += direction;
-    if (next >= 0 && next <= this.count && next !== this.value) return next;
+    while (next >= 0 && next < items.length && (items[next].disabled || !this.owner.valid(items[next].value))) {
+      next += direction;
+    }
+    if (next >= 0 && next <= this.count && next !== this.value) {
+      return next;
+    }
   }
   private move(part: StepsPart) {
     const next = this.destination(part);
-    if (next === undefined) return;
+    if (next === undefined) {
+      return;
+    }
     const previous = this.value;
     const request = new CustomEvent("acme-request", { detail: Object.freeze({ action: "step", value: next, previousValue: previous }), bubbles: true, composed: true, cancelable: true });
-    if (!this.dispatchEvent(request) || this.value !== previous || !this.isConnected || next !== this.destination(part)) return;
+    if (!this.dispatchEvent(request) || this.value !== previous || !this.isConnected || next !== this.destination(part)) {
+      return;
+    }
     this.value = next;
     this.focused.set({});
     this.dispatchEvent(new CustomEvent("acme-change", { detail: Object.freeze({ value: next }), bubbles: true, composed: true }));
   }
   private recover() {
     const selected = this.view.get().items[this.value];
-    if (selected && focusAvailable(this.owner.counterpart("trigger", selected.value)?.target())) return;
-    if (this.completed) this.renderRoot.querySelector<HTMLElement>("[part=completed]")?.focus({ preventScroll: true });
-    else this.renderRoot.querySelector<HTMLElement>("[part=list]")?.focus({ preventScroll: true });
+    if (selected && focusAvailable(this.owner.counterpart("trigger", selected.value)?.target())) {
+      return;
+    }
+    if (this.completed) {
+      this.renderRoot.querySelector<HTMLElement>("[part=completed]")?.focus({ preventScroll: true });
+    } else {
+      this.renderRoot.querySelector<HTMLElement>("[part=list]")?.focus({ preventScroll: true });
+    }
   }
   private keydown = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.isComposing) return;
+    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.isComposing) {
+      return;
+    }
     const available = this.available(),
       index = available.findIndex((part) => part.target() === event.composedPath()[0]);
-    if (index >= 0 && this.roving.handleKey(event, index)) event.stopPropagation();
+    if (index >= 0 && this.roving.handleKey(event, index)) {
+      event.stopPropagation();
+    }
   };
   protected get semanticTarget() {
     return this.renderRoot?.querySelector<HTMLElement>("[part=list]") ?? undefined;
@@ -179,14 +208,20 @@ export class AcmeSteps extends AcmeSemanticElement {
   protected willUpdate() {
     const completed = this.renderRoot?.querySelector<HTMLElement>("[part=completed]"),
       active = deepActiveElement(this.ownerDocument);
-    if (!this.completed && completed && active && composedContains(completed, active)) this.recover();
+    if (!this.completed && completed && active && composedContains(completed, active)) {
+      this.recover();
+    }
   }
   protected updated() {
     const keys = this.view.get().items.map((item) => item.value);
     const issue = keys.some((key) => !this.owner.valid(key)) ? "step-values-must-be-unique" : this.count && this.value > this.count ? "step-index-out-of-range" : "";
-    if (issue && issue !== this.diagnostic) console.warn(this.localName, { code: issue });
+    if (issue && issue !== this.diagnostic) {
+      console.warn(this.localName, { code: issue });
+    }
     this.diagnostic = issue;
-    for (const part of this.parts.get()) part.host.requestUpdate();
+    for (const part of this.parts.get()) {
+      part.host.requestUpdate();
+    }
   }
   connectedCallback() {
     super.connectedCallback();

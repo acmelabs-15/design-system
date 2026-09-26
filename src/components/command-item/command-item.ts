@@ -25,7 +25,9 @@ export class AcmeCommandItem extends AcmeElement {
     return this.key;
   }
   set value(value: string) {
-    if (typeof value !== "string") throw new TypeError("Command value must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("Command value must be a string");
+    }
     const previous = this.key;
     this.key = value;
     this.requestUpdate("value", previous);
@@ -37,7 +39,9 @@ export class AcmeCommandItem extends AcmeElement {
     return this.authoredLabel || this.contentLabel;
   }
   set label(value: string) {
-    if (typeof value !== "string") throw new TypeError("Command label must be a string");
+    if (typeof value !== "string") {
+      throw new TypeError("Command label must be a string");
+    }
     const previous = this.authoredLabel;
     this.authoredLabel = value;
     this.requestUpdate("label", previous);
@@ -48,7 +52,9 @@ export class AcmeCommandItem extends AcmeElement {
     return this.aliases;
   }
   set keywords(value: readonly string[] | undefined) {
-    if (value !== undefined && (!Array.isArray(value) || value.some((word) => typeof word !== "string"))) throw new TypeError("Command keywords require strings");
+    if (value !== undefined && (!Array.isArray(value) || value.some((word) => typeof word !== "string"))) {
+      throw new TypeError("Command keywords require strings");
+    }
     const previous = this.aliases;
     this.aliases = Object.freeze([...(value ?? [])]);
     this.requestUpdate("keywords", previous);
@@ -64,7 +70,9 @@ export class AcmeCommandItem extends AcmeElement {
       .join(" ")
       .replace(/\s+/g, " ")
       .trim();
-    if (text !== this.contentLabel) this.contentLabel = text;
+    if (text !== this.contentLabel) {
+      this.contentLabel = text;
+    }
   };
   connectedCallback() {
     super.connectedCallback();
@@ -97,14 +105,20 @@ export class AcmeCommandItem extends AcmeElement {
     this.renderRoot?.querySelector<HTMLElement>("[part=item]")?.click();
   }
   private activate = (event: MouseEvent) => {
-    if (!event.defaultPrevented && !this.disabled && !this.interactive(event)) this.binding.current?.select(this.binding.record);
+    if (!event.defaultPrevented && !this.disabled && !this.interactive(event)) {
+      this.binding.current?.select(this.binding.record);
+    }
   };
   render() {
     const active = this.binding.current?.state.get().active === this.binding.record;
     return html`<div part="item" ?data-active=${active} ?data-disabled=${this.disabled} @pointermove=${() => {
-      if (!this.disabled) this.binding.current?.highlight(this.binding.record);
+      if (!this.disabled) {
+        this.binding.current?.highlight(this.binding.record);
+      }
     }} @pointerdown=${(event: PointerEvent) => {
-      if (event.button === 0 && !this.interactive(event)) event.preventDefault();
+      if (event.button === 0 && !this.interactive(event)) {
+        event.preventDefault();
+      }
     }} @click=${this.activate}><span part="start" aria-hidden="true" ?hidden=${!this.places.has("start")}><slot name="start"></slot></span><span class="text"><span part="label"><slot>${this.authoredLabel}</slot></span><span part="description" ?hidden=${!this.places.has("description")}><slot name="description"></slot></span></span><span part="end" ?hidden=${!this.places.has("end")}><slot name="end"></slot></span></div>`;
   }
 }

@@ -27,7 +27,9 @@ export class AcmeTable extends AcmeSemanticElement {
     return this.treatment;
   }
   set variant(value: "default" | "striped" | "bordered") {
-    if (!["default", "striped", "bordered"].includes(value)) throw new TypeError("Invalid Table variant");
+    if (!["default", "striped", "bordered"].includes(value)) {
+      throw new TypeError("Invalid Table variant");
+    }
     const previous = this.treatment;
     this.treatment = value;
     this.requestUpdate("variant", previous);
@@ -38,7 +40,9 @@ export class AcmeTable extends AcmeSemanticElement {
     return this.scale;
   }
   set size(value: "small" | "medium" | "large") {
-    if (!["small", "medium", "large"].includes(value)) throw new TypeError("Invalid Table size");
+    if (!["small", "medium", "large"].includes(value)) {
+      throw new TypeError("Invalid Table size");
+    }
     const previous = this.scale;
     this.scale = value;
     this.requestUpdate("size", previous);
@@ -75,7 +79,9 @@ export class AcmeTable extends AcmeSemanticElement {
       this.observed = table ?? undefined;
       if (this.resize) {
         this.resize.observe(this.viewport);
-        if (table) this.resize.observe(table);
+        if (table) {
+          this.resize.observe(table);
+        }
       }
     }
     this.measure();

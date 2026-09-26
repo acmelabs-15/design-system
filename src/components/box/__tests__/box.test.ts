@@ -3,6 +3,7 @@ import "../../../all";
 import { AcmeBox } from "../box";
 import { commonStyleInputSchema } from "../../../shared/style-input-schema";
 import type { StructuralTag } from "../../../shared/layout-element";
+
 afterEach(() => document.body.replaceChildren());
 async function mount(markup = "<acme-box>Content</acme-box>") {
   document.body.innerHTML = markup;

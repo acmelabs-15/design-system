@@ -87,7 +87,9 @@ export abstract class AcmeFormElement<Value, Extra = undefined> extends AcmeSema
     this.nativeForm.focus(options);
   }
   attributeChangedCallback(name: string, previous: string | null, value: string | null): void {
-    if (!this.nativeForm.attributeChanged(name, previous, value)) super.attributeChangedCallback(name, previous, value);
+    if (!this.nativeForm.attributeChanged(name, previous, value)) {
+      super.attributeChangedCallback(name, previous, value);
+    }
   }
   formAssociatedCallback(): void {
     this.nativeForm.formAssociatedCallback();
@@ -119,8 +121,14 @@ const validityKeys = ["badInput", "customError", "patternMismatch", "rangeOverfl
 
 /** Copies browser-calculated constraints without a second validation implementation. */
 export function nativeValidation(control: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): NativeFormValidation {
-  if (!control.willValidate) return { flags: {}, message: "" };
+  if (!control.willValidate) {
+    return { flags: {}, message: "" };
+  }
   const flags: ValidityStateFlags = {};
-  for (const key of validityKeys) if (control.validity[key]) flags[key] = true;
+  for (const key of validityKeys) {
+    if (control.validity[key]) {
+      flags[key] = true;
+    }
+  }
   return { flags, message: control.validationMessage };
 }

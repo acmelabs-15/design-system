@@ -3,6 +3,7 @@ import path from "node:path";
 import type { Doc } from "../site";
 import { esc, section, VERSION } from "../site";
 import catalog from "../../assets/material-symbols/catalog.json";
+
 const source = path.resolve(import.meta.dir, "../../assets/material-symbols");
 const groups = new Map<string, typeof catalog.symbols>();
 for (const symbol of catalog.symbols) {

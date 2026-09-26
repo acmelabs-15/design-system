@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import "../../../define/toolbar";
+
 test("Toolbar exposes canonical orientation, looping and disability", async () => {
   const toolbar = document.createElement("acme-toolbar");
   toolbar.ariaLabel = "Editing";
