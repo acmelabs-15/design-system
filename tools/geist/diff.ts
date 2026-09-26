@@ -115,8 +115,9 @@ const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string,
     // `.ic { flex: none }`. Demo markup on both sides, like the badge case. Every geometry reading
     // on this page matches exactly — 162 of 162 — so the books themselves agree.
     why: "book icon element type: theirs is an <img> logo, ours an inline <svg>; these four are UA defaults and each page's own demo styling, not the element",
-    test: (part, prop, gv, ov) =>
-      (part === "icon" &&
+    test: (part, prop, gv, ov) => {
+      if (part !== "icon") return false;
+      return (
         // An SVG element returns an empty string from getComputedStyle for a layout property it does
         // not apply, where their <img> returns a real value. Root 10's icon is our slotted
         // illustration in a `simple` book, hidden with zero height on both sides, so all 38 of its
@@ -125,18 +126,19 @@ const ACCEPTED: { why: string; test: (part: string, prop: string, geist: string,
         // querySelector returns it, so the census reads a 0x0 hidden twin while the visible dark file
         // reads 16x16 exactly like ours. No selector fixes that in both themes at once, because the
         // hidden twin swaps sides. Verified in the browser, both themes.
-        gv === "none" &&
-        ov === "block") ||
-      (prop === "height" && gv === "auto" && ov === "16px") ||
-      (prop === "__rect" && String(gv) === "0,0" && /^1[56],1[67]$/.test(String(ov))) ||
-      // Its rect follows: a box with no layout reports 0x0 on ours, 156x0 on theirs. Zero height on
-      // both sides, so neither renders anything.
-      (prop === "__rect" && /^\d+,[01]$/.test(String(gv)) && String(ov) === "0,0") ||
-      (ov === "" && gv !== "") ||
-      (prop === "overflow" && gv === "clip" && ov === "hidden") ||
-      (prop === "color" && /^rgba?\(0, ?0, ?0, ?0\)$/.test(gv)) ||
-      (prop === "max-width" && gv === "100%" && ov === "none") ||
-      (prop === "flex-shrink" && gv === "1" && ov === "0"),
+        (gv === "none" && ov === "block") ||
+        (prop === "height" && gv === "auto" && ov === "16px") ||
+        (prop === "__rect" && String(gv) === "0,0" && /^1[56],1[67]$/.test(String(ov))) ||
+        // Its rect follows: a box with no layout reports 0x0 on ours, 156x0 on theirs. Zero height on
+        // both sides, so neither renders anything.
+        (prop === "__rect" && /^\d+,[01]$/.test(String(gv)) && String(ov) === "0,0") ||
+        (ov === "" && gv !== "") ||
+        (prop === "overflow" && gv === "clip" && ov === "hidden") ||
+        (prop === "color" && /^rgba?\(0, ?0, ?0, ?0\)$/.test(gv)) ||
+        (prop === "max-width" && gv === "100%" && ov === "none") ||
+        (prop === "flex-shrink" && gv === "1" && ov === "0")
+      );
+    },
   },
   {
     // Accepted by Peter 2026-09-10 rather than fixed. The reference has exactly one elementChild

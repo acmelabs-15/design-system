@@ -54,3 +54,9 @@ which moved the band and body by 4px in opposite directions. The rest of the sav
 
 `book.config.json` is written, verified against a control, and carries the reasoning for every
 selector so the run repeats.
+
+## Comparison-rule scope correction — 2026-09-26
+
+A later code review found that the implementation did not enforce the scope stated above. JavaScript operator precedence applied `part === "icon"` to only the first OR branch. For example, an unrelated frame whose height changed from auto to16px was incorrectly accepted. A subprocess regression reproduces the false passing exit status.
+
+The rule now rejects non-icon parts before testing any accepted value pair. The regression passes: the icon difference is accepted and the same frame difference fails. Running the corrected tool against the saved light/dark Book pairs still reports zero hard differences. These are checks of historical measurement files, not new measurements of the current Book implementation.
