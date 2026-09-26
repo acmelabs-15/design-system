@@ -3,8 +3,8 @@ import { createComponent as createLitComponent, type EventName } from "@lit/reac
 import { createPortal } from "react-dom";
 import { applyReactStyleInputs, getContentMount, hasStyleInput } from "@acmelabs/design-system/react-support";
 
-export type ComponentProps<Element extends HTMLElement, Inputs extends keyof Element, Events> =
-  Omit<React.HTMLAttributes<Element>, Inputs | keyof Events> & Partial<Pick<Element, Inputs>> & Events;
+export type ComponentProps<Element extends HTMLElement, Inputs extends keyof Element, AdditionalProps> =
+  Omit<React.HTMLAttributes<Element>, Inputs | keyof AdditionalProps> & Partial<Pick<Element, Inputs>> & AdditionalProps;
 
 type Options<Element extends HTMLElement> = {
   tagName: string;
@@ -16,6 +16,7 @@ type Options<Element extends HTMLElement> = {
   contentSlots?: Readonly<Record<string, string>>;
   inputs: readonly string[];
   defaults: Readonly<Record<string, unknown>>;
+  attributes: Readonly<Record<string, "boolean" | "string">>;
 };
 
 function ContentOutlet({ element, slot, renderer }: { element: HTMLElement; slot: string; renderer: () => React.ReactNode }) {
@@ -33,6 +34,7 @@ export function createComponent<Element extends HTMLElement, Props extends { chi
     const [connected, setConnected] = React.useState<Element | null>(null);
     const owner = React.useRef({});
     const previousInputs = React.useRef<ReadonlySet<string>>(new Set());
+    const previousAttributes = React.useRef<ReadonlySet<string>>(new Set());
     const setRef = React.useCallback((node: Element | null) => {
       element.current = node;
       if (options.nativeContentTarget || options.contentSlots) setConnected(node);
@@ -55,6 +57,16 @@ export function createComponent<Element extends HTMLElement, Props extends { chi
       const target = element.current;
       if (!target) return;
       const current = new Set<string>();
+      const attributes = new Set<string>();
+      for (const [key, type] of Object.entries(options.attributes)) {
+        if (!Object.hasOwn(props, key)) continue;
+        attributes.add(key);
+        const value = (props as Record<string, unknown>)[key];
+        if (value == null || (type === "boolean" && !value)) target.removeAttribute(key);
+        else target.setAttribute(key, type === "boolean" ? "" : String(value));
+      }
+      for (const key of previousAttributes.current) if (!attributes.has(key)) target.removeAttribute(key);
+      previousAttributes.current = attributes;
       for (const [key, value] of Object.entries(props)) {
         if (!inputKeys.has(key) || hasStyleInput(target, key)) continue;
         current.add(key);
@@ -68,6 +80,7 @@ export function createComponent<Element extends HTMLElement, Props extends { chi
     const forwarded = { ...props } as Record<string, unknown>;
     for (const key of inputKeys) delete forwarded[key];
     for (const key of Object.keys(options.events)) delete forwarded[key];
+    for (const key of Object.keys(options.attributes)) delete forwarded[key];
     const outlets: React.ReactNode[] = [];
     for (const [property, slot] of Object.entries(options.contentSlots ?? {})) {
       const renderer = forwarded[property] as (() => React.ReactNode) | undefined;

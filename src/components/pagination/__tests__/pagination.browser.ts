@@ -1,3 +1,4 @@
+const fixture = window as typeof window & { pager: AcmePagination; requests: unknown[] };
 import {AcmePagination} from '../pagination';customElements.define('acme-pagination',AcmePagination);
 import {AcmePaginationPrevious} from '../../pagination-previous/pagination-previous';customElements.define('acme-pagination-previous',AcmePaginationPrevious);
 import {AcmePaginationNext} from '../../pagination-next/pagination-next';customElements.define('acme-pagination-next',AcmePaginationNext);
@@ -17,4 +18,4 @@ import {AcmeOverlayTheme} from '../../../internal/overlay-theme/overlay-theme';c
 import {AcmeExpandMoreIcon} from '../../../generated/icons/classes/expand-more-icon';customElements.define('acme-expand-more-icon',AcmeExpandMoreIcon);
 import {AcmeCheckIcon} from '../../../generated/icons/classes/check-icon';customElements.define('acme-check-icon',AcmeCheckIcon);
 import {AcmeCloseIcon} from '../../../generated/icons/classes/close-icon';customElements.define('acme-close-icon',AcmeCloseIcon);
-document.body.innerHTML='<button id="before">Before</button><acme-pagination id="pager" count="100"></acme-pagination><button id="after">After</button>';Object.assign(window,{pager:document.querySelector('#pager'),requests:[]});window.pager.addEventListener('acme-request',e=>window.requests.push(e.detail));
+document.body.innerHTML='<button id="before">Before</button><acme-pagination id="pager" count="100"></acme-pagination><button id="after">After</button>';Object.assign(fixture,{pager:document.querySelector<AcmePagination>('#pager')!,requests:[]});fixture.pager.addEventListener('acme-request',e=>fixture.requests.push((e as CustomEvent<unknown>).detail));

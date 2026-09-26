@@ -34,7 +34,7 @@ export const doc: Doc = {
     {
       h: "Overflow action",
       html: `<div><acme-avatar-group id="avatar-overflow-example" members='${members}'><acme-icon-button slot="overflow" variant="secondary" shape="circle" size="small" aria-label="Show all people"><acme-more-horiz-icon></acme-more-horiz-icon></acme-icon-button></acme-avatar-group><p id="avatar-overflow-result" hidden></p></div>`,
-      script: 'const group = document.querySelector("#avatar-overflow-example"); group.querySelector("acme-icon-button").addEventListener("click", () => { const result = document.querySelector("#avatar-overflow-result"); result.textContent = group.members.map(member => member.label).join(", "); result.hidden = false; });',
+      script: 'const group = root.querySelector("#avatar-overflow-example"); group.querySelector("acme-icon-button").addEventListener("click", () => { const result = root.querySelector("#avatar-overflow-result"); result.textContent = group.members.map(member => member.label).join(", "); result.hidden = false; });',
     },
   ],
   practices: {

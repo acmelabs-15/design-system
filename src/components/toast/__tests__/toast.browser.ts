@@ -1,3 +1,4 @@
+const fixture = window as typeof window & { store: ReturnType<typeof createToastStore>; createToastStore: typeof createToastStore };
 import {AcmeToast} from '../toast';customElements.define('acme-toast',AcmeToast);
 import {AcmeToastViewport} from '../../toast-viewport/toast-viewport';customElements.define('acme-toast-viewport',AcmeToastViewport);
 import {AcmeAlert} from '../../alert/alert';customElements.define('acme-alert',AcmeAlert);
@@ -13,4 +14,4 @@ import {AcmeErrorIcon} from '../../../generated/icons/classes/error-icon';custom
 import {AcmeWarningIcon} from '../../../generated/icons/classes/warning-icon';customElements.define('acme-warning-icon',AcmeWarningIcon);
 import {AcmeCheckIcon} from '../../../generated/icons/classes/check-icon';customElements.define('acme-check-icon',AcmeCheckIcon);
 import {AcmeCloseIcon} from '../../../generated/icons/classes/close-icon';customElements.define('acme-close-icon',AcmeCloseIcon);
-document.body.innerHTML='<button id="before">Before notifications</button><button id="add">Add notification</button><acme-toast-viewport id="viewport"></acme-toast-viewport><button id="after">After notifications</button>';const store=createToastStore();document.querySelector('#viewport').store=store;document.querySelector('#add').addEventListener('click',()=>store.add({description:'Saved changes',duration:0}));Object.assign(window,{store,createToastStore});
+document.body.innerHTML='<button id="before">Before notifications</button><button id="add">Add notification</button><acme-toast-viewport id="viewport"></acme-toast-viewport><button id="after">After notifications</button>';const store=createToastStore();document.querySelector<AcmeToastViewport>('#viewport')!.store=store;document.querySelector<HTMLButtonElement>('#add')!.addEventListener('click',()=>store.add({description:'Saved changes',duration:0}));Object.assign(fixture,{store,createToastStore});

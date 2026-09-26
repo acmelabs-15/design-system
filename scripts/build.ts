@@ -1,3 +1,5 @@
+import {ensureCorePackageLinks} from "./core-package";
+import { writeBrowserIconModules } from "./browser-icon-modules";
 import { writeFlowAssets, browserAssetPlugin } from "./browser-assets";
 /// <reference types="bun" />
 // Builds dist/ two ways, following lit.dev/docs/tools/publishing:
@@ -11,21 +13,17 @@ import { writeFlowAssets, browserAssetPlugin } from "./browser-assets";
 import fs from "node:fs";
 import { writeDateRuntime } from "./date-runtime";
 import path from "node:path";
-import { compileLitTemplates } from "@lit-labs/compiler";
-import ts from "typescript";
 import { litStyleModule, verifyStyleManifest, writeStyle } from "./styles";
-import { writeManifest } from "./manifest";
 import { writeEntries, writePackageExports } from "./entries";
 import { verifyTokenManifest } from "./numeric-tokens";
 import { verifyResponsiveStyleDelivery } from "./responsive-styles";
 import { verifyThemeStyleMetadata } from "./theme-tokens";
 import { verifyBytePrefixes } from "./byte-prefixes";
 import { writeIconEntries } from "./icon-entries";
-import { buildReact } from "./react";
 
 const ROOT = path.resolve(import.meta.dir, "..");
-const SRC = path.join(ROOT, "src"),
-  DIST = path.join(ROOT, "dist");
+const DIST = path.join(ROOT, "dist");
+ensureCorePackageLinks(ROOT);
 await writeIconEntries(ROOT);
 const components = writeEntries(ROOT);
 writePackageExports(components, ROOT);
@@ -61,60 +59,15 @@ for (const entry of Object.values(manifest.entries)) {
   }
 }
 
-const walk = (d: string): string[] =>
-  fs
-    .readdirSync(d, { withFileTypes: true })
-    .flatMap((e) =>
-      e.isDirectory() ? (e.name === "__tests__" ? [] : walk(path.join(d, e.name))) : e.name.endsWith(".ts") && !e.name.endsWith(".d.ts") && !e.name.endsWith(".geist.ts") ? [path.join(d, e.name)] : [],
-    ); // .geist.ts mappings feed tools/geist/gen.ts, not the package
-const files = walk(SRC);
-const compilerOptions: ts.CompilerOptions = {
-  strict: true,
-  target: ts.ScriptTarget.ES2022,
-  module: ts.ModuleKind.ESNext,
-  experimentalDecorators: true,
-  useDefineForClassFields: false,
-  moduleResolution: ts.ModuleResolutionKind.Bundler,
-};
-
-// 1. Unbundled modules, templates precompiled.
-let compiled = 0;
-for (const f of files) {
-  const out = ts.transpileModule(fs.readFileSync(f, "utf8"), { compilerOptions, fileName: f, transformers: { before: [compileLitTemplates()] } });
-  const rel = path.relative(SRC, f).replace(/\.ts$/, ".js");
-  fs.mkdirSync(path.dirname(path.join(DIST, rel)), { recursive: true });
-  fs.writeFileSync(path.join(DIST, rel), out.outputText);
-  if (out.outputText.includes('["_$litType$"]')) compiled++;
+// Compiler ASTs and analyzer projects live only for this stage.
+async function runStage(script: string) {
+  const child = Bun.spawn([process.execPath, path.join(ROOT, "scripts", script)], { cwd: ROOT, stdout: "inherit", stderr: "inherit" });
+  const status = await child.exited;
+  if (status !== 0) throw new Error(script + " failed with exit " + status);
 }
-console.log(`modules: ${files.length} files, ${compiled} with compiled templates`);
-
+await runStage("build-modules.ts");
 await writeDateRuntime(ROOT, DIST);
 writeFlowAssets(ROOT, DIST);
-
-// 2. Declarations with maps.
-const program = ts.createProgram(files, {
-  ...compilerOptions,
-  declaration: true,
-  declarationMap: true,
-  emitDeclarationOnly: true,
-  outDir: DIST,
-  rootDir: SRC,
-  skipLibCheck: true,
-  lib: ["lib.es2022.d.ts", "lib.dom.d.ts", "lib.dom.iterable.d.ts"],
-});
-const emit = program.emit();
-const diags = ts
-  .getPreEmitDiagnostics(program)
-  .concat(emit.diagnostics)
-  .filter((d) => d.category === ts.DiagnosticCategory.Error);
-for (const d of diags.slice(0, 30))
-  console.error(ts.flattenDiagnosticMessageText(d.messageText, "\n"), d.file ? `${path.relative(ROOT, d.file.fileName)}:${d.file.getLineAndCharacterOfPosition(d.start ?? 0).line + 1}` : "");
-if (diags.length) {
-  console.error(`${diags.length} type errors`);
-  process.exit(1);
-}
-
-await writeManifest();
 
 const standaloneEntry = path.join(DIST, "standalone.js");
 const tokens = fs.readFileSync(path.join(ROOT, "src/generated/css/document/tokens.css"), "utf8");
@@ -131,7 +84,8 @@ fs.writeFileSync(
       path.join(DIST, "configure.js"),
       standaloneEntry,
       ...components.filter((component) => !component.internal).map((component) => path.join(DIST, "define", component.name + ".js")),
-      ...[...new Bun.Glob("generated/icons/{artwork,families}/**/*.js").scanSync({ cwd: DIST })].map((file) => path.join(DIST, file)),
+      ...components.filter((component) => !component.internal).map((component) => path.join(ROOT, component.file.replace(/^src\//, "dist/").replace(/\.ts$/, ".js"))),
+      ...[...new Bun.Glob("generated/icons/records/*.js").scanSync({ cwd: DIST })].map((file) => path.join(DIST, file)),
       path.join(DIST, "generated/icons/all.js"),
     ],
     root: DIST,
@@ -149,6 +103,8 @@ fs.writeFileSync(
   fs.mkdirSync(path.join(ROOT, ".artifacts"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, ".artifacts/cdn-metafile.json"), JSON.stringify(result.metafile, null, 2) + "\n");
 }
+
+console.log("browser icon modules:", writeBrowserIconModules(DIST));
 
 // 3. The self-contained browser bundle.
 for (const [name, minify] of [
@@ -235,4 +191,4 @@ console.log(
   "dashboard.css",
   size(path.join(DIST, "styles/dashboard.css")),
 );
-await buildReact(ROOT);
+await runStage("react.ts");

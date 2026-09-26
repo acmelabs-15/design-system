@@ -7,9 +7,12 @@ function fixture(overrides: Partial<NativeFormOptions<string, string>> = {}) {
   let submitted: NativeFormValue = null;
   let restored: NativeFormValue = null;
   let flags: ValidityStateFlags = {};
-  const host = document.createElement("div") as HTMLElement & ReactiveControllerHost;
-  host.addController = () => {};
-  host.requestUpdate = () => {};
+  const host: HTMLElement & ReactiveControllerHost = Object.assign(document.createElement("div"), {
+    addController() {},
+    removeController() {},
+    requestUpdate() {},
+    updateComplete: Promise.resolve(true),
+  });
   host.attachInternals = () =>
     ({
       setFormValue(value: NativeFormValue, state: NativeFormValue) {

@@ -1,3 +1,4 @@
+const fixture = window as typeof window & { snippet: AcmeSnippet; copied: string[]; fail: boolean; events: {name:string;detail:unknown}[] };
 import {AcmeCode} from "../../../components/code/code";
 import {AcmeCheckIcon} from "../../../generated/icons/classes/check-icon";
 import {AcmeContentCopyIcon} from "../../../generated/icons/classes/content-copy-icon";
@@ -29,4 +30,4 @@ customElements.define('acme-arrow-forward-icon',AcmeArrowForwardIcon);
 customElements.define('acme-refresh-icon',AcmeRefreshIcon);
 customElements.define('acme-browser',AcmeBrowser);
 document.body.innerHTML='<acme-snippet id="snippet"></acme-snippet><acme-browser id="browser" label="Project preview" address="https://www.example.com/"><input id="preview" aria-label="Preview input"></acme-browser>';
-window.snippet=document.querySelector('#snippet');window.snippet.text=['bun install','bun run test'];window.copied=[];window.fail=false;Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async value=>{if(window.fail)throw Error('denied');window.copied.push(value)}}});window.events=[];for(const name of ['acme-copy','acme-error'])window.snippet.addEventListener(name,event=>window.events.push({name,detail:event.detail}));
+fixture.snippet=document.querySelector<AcmeSnippet>('#snippet')!;fixture.snippet.text=['bun install','bun run test'];fixture.copied=[];fixture.fail=false;Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async (value: string)=>{if(fixture.fail)throw Error('denied');fixture.copied.push(value)}}});fixture.events=[];for(const name of ['acme-copy','acme-error'])fixture.snippet.addEventListener(name,event=>fixture.events.push({name,detail:(event as CustomEvent<unknown>).detail}));

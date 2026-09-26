@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { corePackageDirectory, corePackageLinks } from "./core-package";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const FIELDS = [
@@ -52,7 +53,29 @@ export function productionManifest(source: Record<string, unknown>, workspaceVer
   return manifest;
 }
 
-export async function packPackage(sourceRoot = ROOT, destination = path.join(ROOT, ".artifacts/packages"), workspaceVersions = new Map<string, string>()) {
+function packageInput(sourceRoot: string, relative: string): string {
+  const repository = path.resolve(sourceRoot, "../..");
+  const isCore = sourceRoot === corePackageDirectory(repository);
+  let input = sourceRoot;
+  for (const part of relative.split(/[\\/]/)) {
+    if (!part || part === "." || part === "..") throw new Error("Invalid package input: " + relative);
+    input = path.join(input, part);
+    if (!fs.lstatSync(input).isSymbolicLink()) continue;
+    const approved = isCore && path.dirname(input) === sourceRoot ? corePackageLinks[part as keyof typeof corePackageLinks] : undefined;
+    const target = path.resolve(path.dirname(input), fs.readlinkSync(input));
+    if (!approved || target !== path.join(repository, approved) || fs.lstatSync(target).isSymbolicLink()) throw new Error("Unapproved package symlink: " + input);
+    input = target;
+  }
+  return input;
+}
+
+function verifyPackageTree(input: string): void {
+  const info = fs.lstatSync(input);
+  if (info.isSymbolicLink()) throw new Error("Unapproved package symlink: " + input);
+  if (info.isDirectory()) for (const entry of fs.readdirSync(input)) verifyPackageTree(path.join(input, entry));
+}
+
+export async function packPackage(sourceRoot = corePackageDirectory(ROOT), destination = path.join(ROOT, ".artifacts/packages"), workspaceVersions = new Map<string, string>()) {
   sourceRoot = path.resolve(sourceRoot);
   destination = path.resolve(destination);
   const source = JSON.parse(fs.readFileSync(path.join(sourceRoot, "package.json"), "utf8"));
@@ -62,10 +85,16 @@ export async function packPackage(sourceRoot = ROOT, destination = path.join(ROO
   try {
     for (const file of source.files) {
       if (typeof file !== "string" || /[*?!\[\]{}]/.test(file)) throw new Error("Package staging requires explicit file or directory paths");
-      const input = path.resolve(sourceRoot, file);
-      if (!input.startsWith(sourceRoot + path.sep) || file === "package.json") throw new Error("Invalid package input: " + file);
+      if (path.isAbsolute(file) || file === "package.json") throw new Error("Invalid package input: " + file);
+      const input = packageInput(sourceRoot, file === "skills" ? "dist/skills" : file);
+      if (file === "skills") {
+        const release = JSON.parse(fs.readFileSync(path.join(input, "references/release.json"), "utf8"));
+        if (release.version !== source.version) throw new Error("Rebuild consumer skills for the package version before packing");
+      }
+      verifyPackageTree(input);
       fs.cpSync(input, path.join(stage, file), { recursive: true });
     }
+    if (source.files.includes("skills")) fs.rmSync(path.join(stage,"dist/skills"), {recursive:true, force:true});
     fs.writeFileSync(path.join(stage, "package.json"), JSON.stringify(manifest, null, 2) + "\n");
     fs.mkdirSync(destination, { recursive: true });
     const child = Bun.spawn([process.execPath, "pm", "pack", "--ignore-scripts", "--destination", destination], { cwd: stage, stdout: "pipe", stderr: "pipe" });
@@ -86,8 +115,6 @@ if (import.meta.main) {
     const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, file), "utf8"));
     versions.set(manifest.name, manifest.version);
   }
-  const rootManifest = JSON.parse(fs.readFileSync(path.join(ROOT, "package.json"), "utf8"));
-  versions.set(rootManifest.name, rootManifest.version);
-  const result = await packPackage(process.argv[2] ?? ROOT, process.argv[3], versions);
+  const result = await packPackage(process.argv[2] ?? corePackageDirectory(ROOT), process.argv[3], versions);
   console.log(result.file);
 }

@@ -1,14 +1,16 @@
+import {readCorePackage} from "../scripts/core-package";
+import type {DocCensusRecord} from "./recipes";
 // The docs site shell in the vercel.com/geist docs anatomy: an app bar, a sidebar of pages, a
 // content column with a hero, hairline-guided sections, showcases with "Show code", API tables
 // and Best Practices. The chrome is the design system's own elements; every page rule uses tokens.
 import fs from "node:fs";
 import path from "node:path";
-import type { ElementApi } from "./api";
-import { formatHtml, highlightHtml } from "./format";
+import { apiSections, type ElementApi } from "./api";
+import { exampleId, exampleSources } from "./example-source";
 
 /** `script` runs after the example mounts, as `(root) => {...}` with the preview element; it is shown under the markup in the code panel. */
 /** `census`: the example exists for the parity census only (a state the reference page does not show); it renders on the element's census page, never on its docs page or its Markdown twin. */
-export type Example = { h: string; p?: string; html: string; code?: string; script?: string; census?: boolean };
+export type Example = { h: string; p?: string; html: string; code?: string; language?: "html" | "typescript"; sourcePath?: string; entryPath?: string; registerFunction?: string; sourceFiles?: readonly string[]; script?: string; census?: boolean };
 export type Doc = {
   id: string;
   title: string;
@@ -29,141 +31,15 @@ export type Nav = { group: string; items: { title: string; href: string }[] }[];
 const ROOT = path.resolve(import.meta.dir, "..");
 export const OUT = path.join(ROOT, "_site");
 const brandMarks = fs.readFileSync(path.join(import.meta.dir, "brand-marks.html"), "utf8");
-const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, "package.json"), "utf8")) as { version: string; repository: { url: string } };
+const pkg = readCorePackage(ROOT);
+const repository = pkg.repository;
+if (!repository || typeof repository !== "object" || !("url" in repository) || typeof repository.url !== "string") throw new Error("Core package repository URL is required");
 export const VERSION = pkg.version;
-export const REPO = pkg.repository.url.replace(/^git\+/, "").replace(/\.git$/, "");
+export const REPO = repository.url.replace(/^git\+/, "").replace(/\.git$/, "");
 
 export const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 export { iconMarkup as ic } from "./icon-markup";
 import { iconMarkup as ic } from "./icon-markup";
-
-/* ---------- page rules (tokens only) ---------- */
-export const pageCss = `
-.docs{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}
-.docs-brand{display:flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;white-space:nowrap;font-size:14px}
-.docs-brand .ic{color:var(--accent);flex:none}
-.docs-header-nav{display:flex;align-items:center;gap:4px;white-space:nowrap}
-.docs-header-nav a{display:inline-flex;align-items:center;min-height:30px;padding:0 8px;border-radius:var(--r-sm);font-size:14px;text-decoration:none;color:var(--text-2)}
-.docs-header-nav a:hover{color:var(--text);background:var(--comp)}
-.docs-header-nav a[aria-current=page]{color:var(--text);font-weight:500}
-.docs-side{position:sticky;top:var(--bar-h);height:calc(100vh - var(--bar-h));overflow:auto;border-right:1px solid var(--border);padding:24px 16px 48px;scrollbar-width:thin}
-.docs-side .grp{font-size:14px;line-height:20px;font-weight:500;padding:8px 8px;margin-top:8px;color:var(--text)}
-.docs-side a{display:flex;align-items:center;height:36px;padding:0 8px;border-radius:var(--r-sm);font-size:14px;line-height:20px;color:var(--text-2);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.docs-side a:hover{color:var(--text);background:var(--comp);text-decoration:none}
-.docs-side a[aria-current="page"]{color:var(--text);background:var(--ds-gray-200)}
-.docs-main{min-width:0;padding:0 48px 96px}
-.doc{max-width:960px;margin:0 auto}
-.doc-hero{padding:48px 0 32px}
-.doc-hero h1{font-size:40px;line-height:48px;letter-spacing:-2.4px;font-weight:600}
-.doc-hero p{font-size:20px;line-height:36px;color:var(--text-2);margin-top:4px}
-.doc-hero .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.doc-sec{padding:40px 0;border-top:1px solid var(--border);scroll-margin-top:calc(var(--bar-h) + 16px)}
-.doc-sec h2{font-size:24px;line-height:32px;letter-spacing:-.96px;font-weight:600;display:flex;align-items:center;gap:8px}
-.doc-sec h2 a{color:var(--text-2);opacity:0;text-decoration:none;font-weight:400}
-.doc-sec h2:hover a{opacity:1}
-.doc-sec h3{font-size:16px;line-height:24px;font-weight:600;margin-top:32px}
-.doc-sec h3:first-child{margin-top:0}
-.doc-sec h3 code{font-family:var(--acme-font-mono);font-size:14px;font-weight:500}
-.doc-sec > p{font-size:16px;line-height:24px;color:var(--text-2);margin-top:16px;max-width:72ch}
-.doc-sec > p code,.doc-sec td code{font-family:var(--acme-font-mono);font-size:13px;background:var(--ds-gray-100);border:1px solid var(--ds-gray-alpha-400);border-radius:4px;padding:1px 4px}
-.doc-sec > .doc-body{margin-top:40px}
-.doc-sec > p + .doc-body{margin-top:24px}
-.showcase{border:1px solid var(--ds-gray-alpha-400);background:var(--ds-background-100);border-radius:var(--r);overflow:hidden}
-.showcase + .showcase{margin-top:24px}
-.showcase .preview{padding:24px;overflow-x:auto;font-size:16px;line-height:1.5}
-/* The demo container owns the spacing around a demo, so an element's own outer margin does not
-   stack with our padding. The reference's docs do the same: their demo wrapper zeroes the margin on
-   every demo root it holds, which is why their code block shows no gap while its own my-4 is real.
-   Measured on the live page: removing the marker restores 16px, so the element keeps its margin and
-   only the harness cancels it. */
-
-.showcase .showbar{height:48px;display:flex;align-items:center;gap:8px;padding:0 16px;background:var(--ds-background-200);border:0;border-top:1px solid var(--ds-gray-alpha-400);width:100%;text-align:left;font:inherit;font-size:14px;line-height:20px;color:var(--text-2);cursor:pointer}
-.showcase .showbar:hover{color:var(--text)}
-.showcase .showbar .ic{transition:transform var(--dur) var(--ease)}
-.showcase[data-open="true"] .showbar .ic{transform:rotate(90deg)}
-.showcase .code{display:none;position:relative;border-top:1px solid var(--ds-gray-alpha-400);background:var(--surface)}
-.showcase[data-open="true"] .code{display:block}
-.showcase .code acme-copy-button{position:absolute;right:12px;top:12px;z-index:1}
-.th-code{margin:0;padding:16px 64px 16px 0;font-family:var(--acme-font-mono);font-size:13px;line-height:20px;color:var(--text);overflow-x:auto;tab-size:2;white-space:normal}
-.th-code code{display:block;font:inherit;white-space:normal}
-.th-line{display:block;height:20px;white-space:pre;padding-right:16px}
-.th-code--line-numbers .th-line::before{content:attr(data-line);display:inline-block;width:32px;padding-right:16px;box-sizing:content-box;text-align:right;color:var(--ds-gray-600);user-select:none}
-.th-tag{color:var(--ds-green-900)} .th-attr{color:var(--ds-purple-900)} .th-string{color:var(--ds-blue-900)} .th-keyword{color:var(--ds-pink-900)}
-.th-comment{color:var(--text-2)} .th-number{color:var(--ds-blue-900)} .th-literal{color:var(--ds-amber-900)} .th-function,.th-type{color:var(--ds-green-900)} .th-property,.th-variable{color:var(--ds-purple-900)}
-.doc-table-scroll{max-width:100%;overflow:auto}
-.doc-table-scroll:focus-visible{outline:2px solid var(--ds-focus-color);outline-offset:2px}
-.doc-table{width:100%;border-collapse:collapse;font-size:14px;line-height:20px}
-.doc-table th{text-align:left;height:36px;padding:0 8px;font-weight:500;color:var(--text-2);border-bottom:1px solid var(--border);white-space:nowrap}
-.doc-table td{padding:10px 8px;border-bottom:1px solid var(--ds-gray-200);vertical-align:top;color:var(--text-2)}
-.doc-table td:first-child{color:var(--text)}
-.doc-table td.cls,.doc-table td.mono{font-family:var(--acme-font-mono);font-size:13px;white-space:nowrap}
-.doc-table td.type{font-family:var(--acme-font-mono);font-size:12px;color:var(--ds-purple-900);white-space:normal;max-width:280px}
-.api-el + .api-el{margin-top:40px}
-.api-el h3{display:flex;align-items:center;gap:12px}
-.api-el h3 small{font-family:var(--acme-font-mono);font-size:12px;font-weight:400;color:var(--text-2)}
-.api-el p{font-size:14px;line-height:20px;color:var(--text-2);margin:8px 0 16px;max-width:72ch}
-.api-el h4{font-size:13px;line-height:16px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:var(--text-2);margin:24px 0 8px}
-.practices h3{font-size:20px;line-height:26px;letter-spacing:-.4px;font-weight:600;margin-top:24px}
-.practices h3:first-child{margin-top:0}
-.practices ul{margin:12px 0 0;padding-left:20px;font-size:16px;line-height:24px;color:var(--text-2)}
-.practices li + li{margin-top:8px}
-.link-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.link-tile{display:flex;flex-direction:column;gap:16px;padding:32px;border:1px solid var(--border);border-radius:var(--r);text-decoration:none;color:var(--text);background:var(--surface);transition:border-color var(--dur) var(--ease)}
-.link-tile:hover{border-color:var(--accent);text-decoration:none}
-.link-tile .prev{height:140px;display:flex;align-items:center;justify-content:center;gap:12px;background:var(--surface-2);border-radius:var(--r-sm);overflow:hidden;padding:16px}
-.link-tile .t{font-size:16px;line-height:24px;font-weight:600}
-.link-tile .d{font-size:14px;line-height:20px;color:var(--text-2)}
-.swatch-row{display:flex;align-items:center;gap:8px;margin-bottom:24px}
-.swatch-row .n{width:100px;flex:none;font-size:14px;line-height:20px;font-weight:500}
-.swatch-row docs-swatch{flex:1 1 0;min-width:0;max-width:68px;display:flex}
-.swatch-row acme-tooltip{display:grid;grid-template-columns:minmax(0,1fr);width:100%}
-.swatch-row .sw{display:block;width:100%;height:40px;border:0;padding:0;border-radius:4px;box-shadow:var(--ds-shadow-border-inset);cursor:copy}
-.swatch-row .sw:focus-visible{outline:none;box-shadow:var(--ds-focus-ring)}
-.def-row{display:flex;align-items:center;gap:12px;height:40px;border-bottom:1px solid var(--border);font-size:14px;line-height:20px}
-.def-row .d{width:16px;height:16px;border-radius:50%;flex:none;box-shadow:var(--ds-shadow-border-inset)}
-.def-row b{font-weight:500;min-width:140px}
-.def-row span{color:var(--text-2)}
-.demo-box{margin-top:16px;padding:24px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.mat-ex{max-width:240px;height:100px;display:flex;align-items:flex-end;padding:12px;font-family:var(--acme-font-mono);font-size:12px;color:var(--text-2)}
-.type-table td.ex{color:var(--text);width:50%;white-space:nowrap}
-.type-table td.ex>span{display:block}
-.table-scroll{overflow-x:auto}
-.tile-icons{display:flex;flex-direction:column;gap:28px;width:100%;color:var(--text-2)}
-.tile-icons span{display:flex;justify-content:space-between}
-.tile-comps{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;pointer-events:none}
-.tile-dots{display:flex;justify-content:space-between;width:100%}
-.tile-dots span{width:32px;height:32px;border-radius:50%;background:var(--ds-background-200);border:1px solid var(--ds-gray-alpha-400);display:grid;place-items:center}
-.tile-dots span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--c);animation:docs-pulse 2s ease-in-out infinite}
-@keyframes docs-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.6}}
-.tile-type{display:grid;grid-template-columns:1fr 1fr;width:100%;height:80px;border:1px solid var(--border);color:var(--ds-gray-700)}
-.tile-type span{display:grid;place-items:center;text-align:center}
-.tile-type span:first-child{border-right:1px dashed var(--ds-gray-400)}
-.ex-split{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ds-gray-400);background:var(--ds-background-100)}
-.ex-split>div{display:grid;place-items:center;padding:48px 24px}
-.ex-split>div+div{border-left:1px solid var(--ds-gray-400)}
-.ex-cell{display:flex;gap:8px;padding:16px;border:1px solid var(--ds-gray-400);background:var(--ds-background-100)}
-.ex-cell span{width:24px;height:24px;display:grid;place-items:center;font-family:var(--acme-font-mono);font-size:12px;background:var(--ds-gray-alpha-100)}
-.ex-cell span:first-child{border-radius:50%}
-.ex-logs{border:1px solid var(--ds-gray-400);background:var(--ds-background-100)}
-.ex-logs ul{list-style:none;margin:0;padding:8px;display:flex;flex-direction:column;align-items:center}
-.ex-logs li{display:flex;align-items:center;gap:12px;height:40px;width:100%;max-width:420px;padding:0 12px;border-radius:4px;color:var(--ds-gray-900);cursor:pointer}
-.ex-logs li:hover{background:var(--ds-gray-100)}
-.ex-logs li:active{background:var(--ds-gray-200)}
-.ex-logs li.warn,.ex-logs li.warn:hover{background:var(--ds-amber-100);color:var(--ds-amber-900)}
-.ex-logs li .vr{width:1px;height:20px;background:var(--ds-gray-400)}
-.ex-logs li.warn .vr{background:var(--ds-amber-400)}
-.ex-logs .foot{display:flex;justify-content:center;gap:8px;padding:24px;border-top:1px solid var(--ds-gray-400)}
-.ex-box{border:1px solid var(--ds-gray-400);background:var(--ds-background-100);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:48px 24px}
-.ex-box.col{flex-direction:column;padding:0}
-.ex-box .icons{display:flex;justify-content:center;gap:28px;width:100%;padding:24px;border-top:1px solid var(--ds-gray-400)}
-.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.vstack{display:flex;flex-direction:column;gap:12px}
-.row-md{display:flex;flex-direction:column;gap:12px}
-@media (min-width:601px){.row-md{flex-direction:row}}
-.pager{display:flex;justify-content:space-between;gap:16px;margin-top:48px;padding-top:24px;border-top:1px solid var(--border)}
-.foot{margin-top:48px;color:var(--text-2);font-size:12px;font-family:var(--acme-font-mono);line-height:1.7}
-@media (max-width:900px){.docs{grid-template-columns:minmax(0,1fr)}.docs-side{display:none}.docs-main{padding:0 16px 64px}.doc-hero h1{font-size:24px;line-height:32px;letter-spacing:-.96px}.doc-hero p{font-size:16px;line-height:24px}.link-grid{grid-template-columns:1fr}.swatch-row .n{width:64px}}
-`;
 
 /* ---------- renderers ---------- */
 const slug = (h: string) =>
@@ -174,11 +50,10 @@ const slug = (h: string) =>
 export const section = (h: string, inner: string, p?: string, id = slug(h)) =>
   `<div class="doc-sec" id="${id}"><h2>${h}<a href="#${id}" aria-label="Link to ${h}">#</a></h2>${p ? `<p>${p}</p>` : ""}<div class="doc-body">${inner}</div></div>`;
 
-export const showcase = (e: Example) => {
-  const code = (e.code ?? e.html) + (e.script ? `\n<script>\n${e.script.trim()}\n</script>` : "");
-  const plain = formatHtml(code);
+export const showcase = async (e: Example, id = exampleId("example", e.h)) => {
+  const sources = await exampleSources(e, id);
   const attr = e.script ? ` data-script="${esc(e.script).replace(/"/g, "&quot;")}"` : "";
-  return `<div class="showcase"${attr}><div class="preview">${e.html}</div><button class="showbar" aria-expanded="false">${ic("chevron-right")}Show code</button><div class="code"><acme-copy-button aria-label="Copy code" value="${esc(plain).replace(/"/g, "&quot;")}"></acme-copy-button>${highlightHtml(code)}</div></div>`;
+  return `<div class="showcase" data-example="${id}"${attr}><template data-example-markup>${e.html}</template><div class="preview">${e.html}</div><p class="example-error" data-example-error role="alert" hidden></p><acme-collapsible class="example-source" lazy-mount><acme-h-stack justify-content="space-between" flex-wrap="wrap" gap="2"><acme-collapsible-trigger>Source code</acme-collapsible-trigger><acme-button data-example-reset variant="tertiary" size="small">Reset example</acme-button></acme-h-stack><acme-collapsible-content><template>${sources.map(source => `<acme-code-block language="${source.language === "typescript" ? "ts" : "html"}" code="${esc(source.code).replace(/"/g, "&quot;")}" filename="${esc(source.label)}" copyable wrap></acme-code-block>`).join("")}</template></acme-collapsible-content></acme-collapsible></div>`;
 };
 
 const practices = (p?: Record<string, string[]>) =>
@@ -191,42 +66,19 @@ const practices = (p?: Record<string, string[]>) =>
       )
     : "";
 
-const apiTables = (els: ElementApi[]) =>
-  els.length
-    ? section(
-        "API",
-        els
-          .map(
-            (e) =>
-              `<div class="api-el" id="api-${e.tag}"><h3><code>&lt;${e.tag}&gt;</code><small>${e.className}</small></h3>${e.doc ? `<p>${esc(e.doc)}</p>` : ""}${
-                e.props.length
-                  ? `<h4>Attributes and properties</h4><div class="doc-table-scroll" role="region" aria-label="${esc(e.tag)} attributes and properties" tabindex="0"><table class="doc-table"><thead><tr><th>Attribute</th><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody>${e.props
-                      .map(
-                        (p) =>
-                          `<tr><td class="mono">${p.attribute === false ? "—" : p.attribute}</td><td class="mono">${p.name}</td><td class="type">${esc(p.type)}</td><td class="mono">${esc(p.default) || "—"}</td><td>${esc(p.doc)}</td></tr>`,
-                      )
-                      .join("")}</tbody></table></div>`
-                  : ""
-              }${e.slots.length ? `<h4>Slots</h4><div class="doc-table-scroll" role="region" aria-label="${esc(e.tag)} slots" tabindex="0"><table class="doc-table"><tbody>${e.slots.map((s) => `<tr><td class="mono">${s}</td></tr>`).join("")}</tbody></table></div>` : ""}${
-                e.events.length ? `<h4>Events</h4><div class="doc-table-scroll" role="region" aria-label="${esc(e.tag)} events" tabindex="0"><table class="doc-table"><tbody>${e.events.map((s) => `<tr><td class="mono">${s}</td></tr>`).join("")}</tbody></table></div>` : ""
-              }</div>`,
-          )
-          .join(""),
-        "The element manifest supplies this API. A dash in the attribute column means the property has no attribute.",
-      )
-    : "";
+export const docApi = (elements: ElementApi[]) => elements.length ? section("API", elements.map(element => `<div class="api-el" id="api-${esc(element.tag)}"><h3><code>&lt;${esc(element.tag)}&gt;</code><small>${esc(element.className)}</small></h3>${element.doc ? `<p>${esc(element.doc)}</p>` : ""}<p>Version ${esc(element.version)} · <a href="${REPO}/blob/main/${element.file}">Source</a></p>${apiSections(element).map(table => `<h4>${table.heading}</h4><acme-table class="doc-table-scroll" size="small" aria-label="${esc(element.tag)} ${table.heading}"><table class="doc-table"><thead><tr>${table.headings.map(heading => `<th scope="col">${heading}</th>`).join("")}</tr></thead><tbody>${table.rows.map(row => `<tr>${row.map((cell,index) => `<td class="${table.codeColumns.includes(index) ? "type" : ""}">${esc(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></acme-table>`).join("")}</div>`).join(""), "Generated from the package manifest. Additional attributes are separate from read-only DOM properties. Set or omit returns an input to its inherited or default behavior.") : "";
 
-export const docPage = (d: Doc, api: ElementApi[]) =>
+export const docPage = async (d: Doc, api: ElementApi[]) =>
   `<article class="doc" id="${d.id}"><div class="doc-hero"><h1>${d.title}</h1><p>${d.lede}</p>${
     d.tags?.length ? `<div class="tags">${d.tags.map((t) => `<acme-badge variant="gray" contrast="low"><code>&lt;${t}&gt;</code></acme-badge>`).join("")}</div>` : ""
-  }</div>${d.examples
+  }</div>${(await Promise.all(d.examples
     .filter((e) => !e.census)
-    .map((e) => section(e.h, showcase(e), e.p))
-    .join("")}${d.body ?? ""}${apiTables(api)}${practices(d.practices)}</article>`;
+    .map(async (e) => section(e.h, await showcase(e, exampleId(d.id, e.h)), e.p))))
+    .join("")}${d.body ?? ""}${docApi(api)}${practices(d.practices)}</article>`;
 
 /** The census page of an element: every example, the docs page's and the census-only ones, in the order the mirror renders them (page examples first, then sketches). */
-export const censusPage = (d: Doc) =>
-  `<article class="doc census" id="census-${d.id}"><div class="doc-hero"><h1>${d.title} (census)</h1><p>Every state the parity census reads; the docs page shows only the reference's sections.</p></div>${d.examples.map((e) => section(e.h, showcase(e), e.p)).join("")}</article>`;
+export const censusPage = async (d: Doc, records: readonly DocCensusRecord[] = []) =>
+  `<article class="doc census" id="census-${d.id}"><div class="doc-hero"><h1>${d.title} (census)</h1><p>Executable comparison fixtures. This page does not claim a new measurement.</p></div>${records.map(record => `<section class="doc-sec"><h2>Saved comparison · ${esc(record.recordedOn)}</h2><p>${esc(record.limitations)}</p><p>Fixture: ${esc(record.fixtureId)} · <a href="${REPO}/blob/${record.referenceRevision}/${record.configId}">Configuration</a></p><ul>${[...record.resultFiles,...record.acceptedDifferences].map(file=>`<li><a href="${REPO}/blob/${record.referenceRevision}/${file}">${esc(file)}</a></li>`).join("")}</ul></section>`).join("")}${(await Promise.all(d.examples.map(async (e) => section(e.h, await showcase(e, exampleId(d.id, e.h)), e.p)))).join("")}</article>`;
 
 /* ---------- the shell and the fragments ---------- */
 // index.html is the app shell; 404.html is the same file, so a deep link on GitHub Pages
@@ -243,9 +95,8 @@ export const shell = (nav: Nav) => `<!doctype html>
 <script>
 // Project sites on GitHub Pages live under /<repo>/; the stylesheets and the app resolve against it.
 // The links are written here, after the prefix is known, so the preload scanner never fetches them from the root.
-(() => { const p = location.hostname.endsWith("github.io") ? "/" + location.pathname.split("/")[1] : ""; window.__docsPrefix = p; document.write('<link rel="stylesheet" href="' + p + '/styles/tokens.css"><link rel="stylesheet" href="' + p + '/styles/dashboard.css">'); })();
+(() => { const p = location.hostname.endsWith("github.io") ? "/" + location.pathname.split("/")[1] : ""; window.__docsPrefix = p; document.write('<link rel="stylesheet" href="' + p + '/styles/tokens.css"><link rel="stylesheet" href="' + p + '/styles/dashboard.css"><link rel="stylesheet" href="' + p + '/styles/docs.css">'); })();
 </script>
-<style>${pageCss}</style>
 <script>window.__docsNav = ${JSON.stringify(nav)};</script>
 </head>
 <body>

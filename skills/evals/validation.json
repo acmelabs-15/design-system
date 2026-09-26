@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-26",
+  "scope": "Consumer-skill generation and isolated installed-package discovery; behavioral evaluation pending",
+  "versions": {
+    "bun": "1.4.0",
+    "intent": "0.4.0",
+    "package": "0.2.0"
+  },
+  "authoredSkillCount": 7,
+  "structuralValidation": "passed",
+  "generatorTests": {
+    "passed": 2,
+    "assertions": 13,
+    "strictTypecheck": "passed"
+  },
+  "installedFixture": {
+    "path": "/tmp/acme-m24-skills-consumer",
+    "referenceData": "One synthetic acme-input record; not the full release catalog",
+    "validate": "passed with no packaging warnings",
+    "discover": "All seven skills found under installed node_modules package",
+    "load": "html-artifacts loaded as version 0.2.0 from the installed package",
+    "emptyAllowlist": "Rejected with exit 1",
+    "initialFailure": "Discovery rejected fixture metadata without repository/docs source. Adding the repository metadata already present in the real core package resolved it."
+  },
+  "remaining": [
+    "Root build and package staging integration with the complete generated release catalog",
+    "Pinned Intent dependency and root metadata installation",
+    "Fresh packed-consumer validation, discovery and load",
+    "Independent with-skill and baseline runs for the three seeded artifact tasks",
+    "Type and browser outcome checks on those produced artifacts"
+  ],
+  "review": {
+    "date": "2026-09-26",
+    "scope": "All seven authored skills checked for false-value guidance",
+    "finding": "Only html-artifacts contained the blanket native-boolean rule",
+    "correction": "Distinguish native presence/absence from documented false-string conversions; preserve Separator decorative=false, Video controls=false and preference-based autoplay=false",
+    "evidence": [
+      "notes/decisions/execution-delegation.md#default-true-property-attributes--2026-09-21",
+      "src/components/video/video.ts",
+      "site/pages/components/video.ts",
+      "dist/custom-elements.json"
+    ]
+  }
+}

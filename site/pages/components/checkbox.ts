@@ -20,20 +20,20 @@ export const doc: Doc = {
       h: "Native form",
       html: '<form id="checkbox-form-example"><acme-checkbox name="agreement" value="accepted" required>I agree to the terms.</acme-checkbox><acme-h-stack gap="2"><acme-button type="submit">Submit</acme-button><acme-button type="reset" variant="secondary">Reset</acme-button></acme-h-stack><output></output></form>',
       script:
-        'const form=document.querySelector("#checkbox-form-example"); form.addEventListener("submit",event=>{event.preventDefault(); form.querySelector("output").textContent=new FormData(form).get("agreement") ?? "No selection";}); form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
+        'const form=root.querySelector("#checkbox-form-example"); form.addEventListener("submit",event=>{event.preventDefault(); form.querySelector("output").textContent=new FormData(form).get("agreement") ?? "No selection";}); form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
     },
 
     {
       h: "Checkbox Group",
       html: '<form id="checkbox-group-form"><acme-checkbox-group name="features" value=\'["alerts"]\' required aria-label="Features"><acme-v-stack gap="2"><acme-checkbox value="alerts">Alerts</acme-checkbox><acme-checkbox value="exports">Exports</acme-checkbox></acme-v-stack></acme-checkbox-group><acme-h-stack gap="2"><acme-button type="submit">Save features</acme-button><acme-button type="reset" variant="secondary">Reset features</acme-button></acme-h-stack><output></output></form>',
       script:
-        'const form=document.querySelector("#checkbox-group-form"); form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=JSON.stringify(new FormData(form).getAll("features"));}); form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
+        'const form=root.querySelector("#checkbox-group-form"); form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=JSON.stringify(new FormData(form).getAll("features"));}); form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
     },
     {
       h: "Attached cards and independent actions",
       html: '<div><acme-checkbox-group id="checkbox-card-example" aria-label="Tools"><acme-group attached outline align-items="stretch" variant="secondary" size="small"><acme-checkbox-card value="editor"><acme-code-icon slot="start"></acme-code-icon><span slot="heading">Editor</span><span slot="description">Code tools</span><acme-button id="card-about" slot="actions" size="small" variant="tertiary">About the editor</acme-button><acme-toggle-button id="card-pin" slot="actions" size="small" variant="secondary">Pin editor</acme-toggle-button></acme-checkbox-card><acme-checkbox-card value="browser"><acme-language-icon slot="start"></acme-language-icon><span slot="heading">Browser</span><span slot="description">Preview tools</span></acme-checkbox-card></acme-group></acme-checkbox-group><p>Selected: <output id="card-selection">None</output></p><p><output id="card-details"></output></p><p><output id="card-pinned">Not pinned</output></p></div>',
       script:
-        'const group=document.querySelector("#checkbox-card-example");group.addEventListener("acme-change",event=>{document.querySelector("#card-selection").textContent=event.detail.value.join(", ")||"None";});document.querySelector("#card-about").addEventListener("click",()=>{document.querySelector("#card-details").textContent="The editor option enables code tools.";});document.querySelector("#card-pin").addEventListener("acme-change",event=>{document.querySelector("#card-pinned").textContent=event.detail.pressed?"Pinned":"Not pinned";});',
+        'const group=root.querySelector("#checkbox-card-example");group.addEventListener("acme-change",event=>{root.querySelector("#card-selection").textContent=event.detail.value.join(", ")||"None";});root.querySelector("#card-about").addEventListener("click",()=>{root.querySelector("#card-details").textContent="The editor option enables code tools.";});root.querySelector("#card-pin").addEventListener("acme-change",event=>{root.querySelector("#card-pinned").textContent=event.detail.pressed?"Pinned":"Not pinned";});',
     },
     { h: "Optional ripple", html: "<acme-checkbox ripple>Press feedback</acme-checkbox>" },
   ],

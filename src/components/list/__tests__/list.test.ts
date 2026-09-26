@@ -23,7 +23,7 @@ test("List snapshots responsive spacing and respects an authored list role", asy
   const root = new AcmeList();
   root.innerHTML = '<ul role="list"><li>One</li></ul>';
   document.body.append(root);
-  const input = { compact: 2, medium: 4 };
+  const input: { compact: 2; medium: 4 | 6 } = { compact: 2, medium: 4 };
   root.spacing = input;
   input.medium = 6;
   await root.updateComplete;
@@ -34,6 +34,6 @@ test("List snapshots responsive spacing and respects an authored list role", asy
   await root.updateComplete;
   expect(root.querySelector("ul")!.getAttribute("role")).toBe("list");
   expect(() => {
-    root.spacing = -1;
+    Reflect.set(root, "spacing", -1);
   }).toThrow();
 });

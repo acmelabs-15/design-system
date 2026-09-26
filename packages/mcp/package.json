@@ -11,5 +11,18 @@
   ],
   "peerDependencies": {
     "@acmelabs/design-system": "0.2.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "acme-design-system-mcp": "./dist/cli.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "4.6.5"
   }
 }

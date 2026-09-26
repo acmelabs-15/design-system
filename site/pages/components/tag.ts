@@ -10,7 +10,7 @@ export const doc: Doc = {
     {
       h: "Removable tag",
       html: '<acme-h-stack id="removable-tag-example" gap="1"><acme-tag>TypeScript</acme-tag><acme-icon-button size="tiny" variant="tertiary" aria-label="Remove TypeScript"><acme-close-icon></acme-close-icon></acme-icon-button></acme-h-stack>',
-      script: 'const example = document.querySelector("#removable-tag-example"); example.querySelector("acme-icon-button").addEventListener("click", () => { example.remove(); });',
+      script: 'const example = root.querySelector("#removable-tag-example"); example.querySelector("acme-icon-button").addEventListener("click", () => { example.remove(); });',
     },
   ],
 };

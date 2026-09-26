@@ -6,7 +6,7 @@ import { describe, expect, test } from "bun:test";
 
 // census.js is a browser file that assigns to `window`; give it one, then take the export.
 (globalThis as unknown as { window: unknown }).window ??= globalThis;
-const { attr } = (await import("../census.js")) as unknown as { attr: (s: string) => string };
+const { attr } = await import("../census.js");
 
 describe("state rewrite", () => {
   test("a pseudo-class on a compound carries the state down to the parts inside", () => {

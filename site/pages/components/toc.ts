@@ -1,7 +1,7 @@
 import type { Doc } from "../../site";
 
 const example = (id: string, variant = "line") =>
-  `<acme-h-stack align="start" gap="6"><acme-toc source="#${id}" variant="${variant}" offset="16px"></acme-toc><article id="${id}" style="height:240px;overflow:auto;flex:1;min-width:0;border:1px solid var(--ds-gray-alpha-400);padding:16px"><section style="min-height:280px"><h2 id="${id}-overview">Overview</h2><p>Use real headings and stable IDs for document navigation.</p></section><section style="min-height:280px"><h3 id="${id}-details">Details</h3><p>Scroll this article or follow a link.</p></section><section style="min-height:280px"><acme-heading as="h2" id="${id}-next">Next steps</acme-heading><p>Registered Heading components are discovered too.</p></section></article></acme-h-stack>`;
+  `<acme-h-stack align-items="start" gap="6"><acme-toc source="#${id}" variant="${variant}" offset="16px"></acme-toc><article id="${id}" style="height:240px;overflow:auto;flex:1;min-width:0;border:1px solid var(--ds-gray-alpha-400);padding:16px"><section style="min-height:280px"><h2 id="${id}-overview">Overview</h2><p>Use real headings and stable IDs for document navigation.</p></section><section style="min-height:280px"><h3 id="${id}-details">Details</h3><p>Scroll this article or follow a link.</p></section><section style="min-height:280px"><acme-heading as="h2" id="${id}-next">Next steps</acme-heading><p>Registered Heading components are discovered too.</p></section></article></acme-h-stack>`;
 export const doc: Doc = {
   id: "toc",
   title: "Table of Contents",

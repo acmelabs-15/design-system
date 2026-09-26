@@ -8,15 +8,15 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
-**Completed:** M01–M22 are complete at their assigned boundaries. [React acceptance](evidence/m22-react-2026-09-23.json) covers all 4,319 wrappers, fresh packages, all declared defaults, native content and complete Table/Virtual/Worker examples. Final actual-platform and whole-library gates remain M26.
+**Completed:** M01–M23 are complete at their assigned boundaries. [React acceptance](evidence/m22-react-2026-09-23.json) covers all 4,319 wrappers, fresh packages, all declared defaults, native content and complete Table/Virtual/Worker examples. Final actual-platform and whole-library gates remain M26.
 
-**Current work:** Phase 6, M23: audit documentation units, example source/execution/cleanup, complete API/Markdown references, persistent navigation and approved recipes. M22 passes thirteen wrapper and nineteen Table/Virtual/Worker cases per engine, all 741 declared defaults, strict builds, fresh package/types and all 860 tests. [Evidence and portable fixtures](evidence/m22-react-2026-09-23.json). M24–M26 follow under execution delegation.
+**Current work:** M23 documentation acceptance is complete: 123 pages, fifteen recipes, thirteen interaction outcomes per engine, source-copy checks, full build, strict types and 906 tests pass. [Evidence and portable runners](evidence/m23-documentation-2026-09-26.json). M24 MCP, seven consumer skills and optional read-only inspector now have passing scoped implementations; package integration/evaluations remain. M25 has replaced the defective Bun root-package override with a [real core workspace](../decisions/core-workspace.md), verified across incremental installs, and is completing Oxlint/Oxfmt/Ultracite/Stylelint migration. M26 final acceptance follows.
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
-**Next batches:** continue M23–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
+**Next batches:** continue M24–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
 
-**Working copies and workers:** parallel workers stopped at an account usage limit. Their work is saved in /tmp/acme-m13-slider-worktree and /tmp/acme-m13-calendar-worktree, both based on 924ad0bd9. Slider and the date-runtime correction are already integrated and committed; main Calendar now contains the later fixes. Continue locally. Do not overwrite main files with older worktree copies.
+**Working copies and workers:** current parallel work covers package topology, optional consumer tooling and lint migration. Earlier Slider/Calendar worktrees remain historical and must not overwrite the later integrated code. M23 acceptance and M24/M25 work are still uncommitted; checkpoint coherent behavior before broad mechanical formatting.
 
 **Browser verification:** Playwright 1.63.0 and complete Firefox/WebKit binaries now live in /Users/peterkloss/Library/Caches/acme-design-system/browser-checks. Use its node_modules/playwright/index.mjs and browsers/ path. The earlier acme-style-engines-fHTyxk package lost files; do not reuse it.
 

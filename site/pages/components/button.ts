@@ -21,7 +21,7 @@ export const doc: Doc = {
     {
       h: "Native form action",
       html: '<form id="button-form" class="row"><label>Project <input name="project" required value="Example"></label><acme-button type="submit" name="action" value="save">Save project</acme-button><output></output></form>',
-      script: 'const form = document.querySelector("#button-form"); form.addEventListener("submit", event => { event.preventDefault(); const data = new FormData(form, event.submitter); form.querySelector("output").textContent = `${data.get("action")}: ${data.get("project")}`; });',
+      script: 'const form = root.querySelector("#button-form"); form.addEventListener("submit", event => { event.preventDefault(); const data = new FormData(form, event.submitter); form.querySelector("output").textContent = `${data.get("action")}: ${data.get("project")}`; });',
     },
     { h: "Toggle action", html: '<acme-toggle-button variant="secondary">Pin</acme-toggle-button>' },
     {

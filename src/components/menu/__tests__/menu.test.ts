@@ -35,7 +35,7 @@ describe("Menu authoring contracts", () => {
     const root = item.shadowRoot!.querySelector("[part=root]")!;
     expect(root.getAttribute("role")).toBe("menuitemcheckbox");
     expect(root.getAttribute("aria-checked")).toBe("true");
-    expect((root as HTMLElement).ariaDescribedByElements?.[0]).toBe(item.shadowRoot!.querySelector(".description"));
+    expect((root as HTMLElement).ariaDescribedByElements?.[0]).toBe(item.shadowRoot!.querySelector(".description")!);
   });
   test("programmatic visibility does not fabricate a user notification", async () => {
     const menu = (await mount("<acme-menu></acme-menu>")) as HTMLElementTagNameMap["acme-menu"];

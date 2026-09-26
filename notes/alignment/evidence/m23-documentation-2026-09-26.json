@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-26",
+  "batch": "M23",
+  "status": "documentation acceptance complete; package topology and final cross-package checks remain M25/M26",
+  "scope": [
+    "DocPage",
+    "DocExample lifecycle/reset/error",
+    "DocAPI from versioned CEM",
+    "DocStates thirteen explicit outcomes",
+    "DocComposition fifteen recipe families",
+    "DocCensus dated historical measurement links",
+    "DocNavigation persistent/mobile/focus"
+  ],
+  "counts": {
+    "pages": 123,
+    "elements": 4319,
+    "recipes": 15,
+    "recipeExamples": 20,
+    "htmlExamplesWithVerifiedPackageUrls": 461
+  },
+  "verification": {
+    "build": "Full core/template/declaration/CEM/browser/React build passes after isolating compiler stage and preserving native artwork modules",
+    "typecheck": "Full root strict TypeScript passes without relaxing settings or excluding fixtures",
+    "unit": {
+      "passed": 906,
+      "failed": 0,
+      "assertions": 171288,
+      "files": 192
+    },
+    "browser": {
+      "pages": "m23-docs/pages-results-2026-09-26.json",
+      "recipes": "m23-docs/recipes-results-2026-09-26.json",
+      "navigation": "m23-docs/navigation-results-2026-09-26.json",
+      "nativeAccessibility": "m23-docs/recipe-accessibility-results-2026-09-26.json",
+      "copiedHtml": "m23-docs/copied-results-2026-09-26.json",
+      "copiedVideo": "m23-docs/video-results-2026-09-26.json",
+      "iconDelivery": "m23-docs/icons-results-2026-09-26.json"
+    },
+    "review": {
+      "findings": [
+        "Nested Markdown fences truncated copied source",
+        "Lazy template children omitted definition imports"
+      ],
+      "resolution": "Both reproduced red then corrected; focused regressions pass"
+    }
+  },
+  "changes": [
+    "Correct readonly form attribute metadata and writable inherited orientation; generated React forwards attribute-only inputs explicitly",
+    "One complete API model supplies HTML and Markdown tables",
+    "Actual Forms/Table source files and dependency closure replace displayed-source surrogates",
+    "Explicit demo registration survives bundler side-effect analysis",
+    "Oxfmt formatting preserves source semantics and template text; complete copied scripts have imports and cleanup",
+    "All required recipe sources and state outcomes exist",
+    "Native ESM artwork delivery preserves shared class/record/configuration identity while avoiding the 33000-entry bundler memory failure"
+  ],
+  "limits": [
+    "External Google Fonts blocked in site checks due DNS failure; fallback-font geometry only",
+    "Whole-library actual OS/Safari/assistive-technology checks stay M26",
+    "A separate Bun root-package override defect reproduces during incremental workspace dependency installs; real core workspace migration is active in M25",
+    "MCP/skills/read-only inspector implementation is active M24; these are not closed by documentation acceptance"
+  ],
+  "sources": "../analysis/documentation-site.md",
+  "reproduction": "m23-docs/README.md"
+}

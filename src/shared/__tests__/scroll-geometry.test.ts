@@ -8,11 +8,12 @@ test("thumb geometry is bounded by its track, including a track below the minimu
   expect(scrollFromPointer(500, 0, 0, tiny)).toBe(400);
 });
 test("empty and nonoverflowing geometry never produces NaN", () => {
-  for (const args of [
+  const cases: Parameters<typeof scrollGeometry>[] = [
     [0, 0, 0, 0],
     [100, 20, 100, 20],
     [0, 200, 0, -20],
-  ]) {
+  ];
+  for (const args of cases) {
     const state = scrollGeometry(...args);
     for (const n of Object.values(state)) if (typeof n === "number") expect(Number.isFinite(n)).toBe(true);
   }

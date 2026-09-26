@@ -1,7 +1,7 @@
 import type { Doc } from "../../site";
 
 const viewport = "<acme-toast-viewport></acme-toast-viewport>";
-const setup = 'const viewport=root.querySelector("acme-toast-viewport"); const store=window.acme.createToastStore(); viewport.store=store;';
+const setup = 'const viewport=root.querySelector("acme-toast-viewport"); const store=createToastStore(); viewport.store=store;';
 export const doc: Doc = {
   id: "toast",
   title: "Toast",

@@ -13,8 +13,7 @@ export const doc: Doc = {
     {
       h: "Named theme",
       html: "<acme-theme><acme-button>Named theme</acme-button></acme-theme>",
-      script: 'root.querySelector("acme-theme").theme = "docs-ocean";',
-      code: 'registerTheme("ocean", { colors: { "ds-blue-700": "#0068d6" }, spacing: { 2: "0.75rem" } });\n\n<acme-theme theme="ocean"><acme-button>Named theme</acme-button></acme-theme>',
+      script: 'registerTheme("example-ocean", { colors: { "ds-blue-700": "#0068d6" }, spacing: { 2: "0.75rem" } }); root.querySelector("acme-theme").theme = "example-ocean";',
     },
     { h: "Density scope", html: '<acme-theme density="compact"><p>Compact roles; text size is unchanged.</p></acme-theme>' },
   ],

@@ -4,7 +4,7 @@
 // Output: spec/<page>.json. Run: bun extract.ts <page> | bun extract.ts all
 import fs from "node:fs";
 import path from "node:path";
-import { Window } from "happy-dom";
+import { Window, type Element } from "happy-dom";
 import { settleStreamed } from "./stream";
 import { resolve } from "./tw";
 
@@ -78,7 +78,7 @@ export function extract(page: string): Spec {
   const lede = main.querySelector("h1 + p, h1 ~ p")?.textContent?.trim() ?? "";
   const primitives = Array.from(new Set([...html.matchAll(/data-(radix|react-aria|cmdk|geist|sonner|vaul|headlessui)[a-z-]*/g)].map((m) => m[0]))).sort();
   // A showcase ends with the "Show code" bar: a radix collapsible trigger inside a rounded-b bar.
-  const bars = Array.from(main.querySelectorAll('button[aria-controls^="radix-"][data-state]')).map((b) => b.closest("div.bg-background-200")).filter(Boolean) as Element[];
+  const bars = Array.from(main.querySelectorAll('button[aria-controls^="radix-"][data-state]')).map((b) => b.closest("div.bg-background-200")).filter((element): element is Element => element !== null);
   const codes = Array.from(md.matchAll(/^## (.+)\n([\s\S]*?)```tsx\n([\s\S]*?)```/gm)).map((m) => ({ heading: m[1].trim(), description: m[2].replace(/\s+/g, " ").trim(), code: m[3] }));
   const examples: Example[] = [];
   for (const bar of bars) {

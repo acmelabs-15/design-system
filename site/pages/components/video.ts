@@ -1,6 +1,7 @@
+import {readFileSync} from "node:fs";
 import type { Doc } from "../../site";
-const source = "../assets/video/example.mp4",
-  captions = "../assets/video/captions.vtt";
+const source = "data:video/mp4;base64," + readFileSync(new URL("../../assets/video/example.mp4", import.meta.url)).toString("base64"),
+  captions = "data:text/vtt;base64," + readFileSync(new URL("../../assets/video/captions.vtt", import.meta.url)).toString("base64");
 export const doc: Doc = {
   id: "video",
   title: "Video",

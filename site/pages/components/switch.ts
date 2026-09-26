@@ -16,7 +16,7 @@ export const doc: Doc = {
       h: "Native form",
       html: '<form id="switch-form"><acme-switch name="updates" required value="yes">Product updates</acme-switch><acme-h-stack gap="2"><acme-button type="submit">Save setting</acme-button><acme-button type="reset" variant="secondary">Reset setting</acme-button></acme-h-stack><output></output></form>',
       script:
-        'const form=document.querySelector("#switch-form");form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=new FormData(form).get("updates")??"Off";});form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
+        'const form=root.querySelector("#switch-form");form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=new FormData(form).get("updates")??"Off";});form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
     },
     { h: "Optional ripple", html: "<acme-switch ripple>Enable animation previews</acme-switch>" },
   ],

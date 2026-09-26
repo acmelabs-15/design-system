@@ -50,7 +50,7 @@ const set = (w) => { for (const b of boxes) b.style.maxWidth = w + 'px'; out.tex
 slider.addEventListener('acme-input', (e) => set(e.detail.value[0]));
 let raf = 0, start = null;
 const step = (t) => { if (start === null) start = t; const p = ((t - start) % 4000) / 4000; const k = p < 0.5 ? p * 2 : 2 - p * 2; set(Math.round(k * MAX)); raf = requestAnimationFrame(step); };
-toggle.addEventListener('acme-change', (e) => { slider.disabled = e.detail.checked; if (e.detail.checked) { start = null; raf = requestAnimationFrame(step); } else cancelAnimationFrame(raf); });`,
+toggle.addEventListener('acme-change', (e) => { slider.disabled = e.detail.checked; if (e.detail.checked) { start = null; raf = requestAnimationFrame(step); } else cancelAnimationFrame(raf); });\nreturn () => cancelAnimationFrame(raf);`,
     },
   ],
   practices: {

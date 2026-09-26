@@ -406,3 +406,7 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ### M22 React package complete — 2026-09-23
 
 [React acceptance](evidence/m22-react-2026-09-23.json) closes the generated browser-wrapper and final native-content boundary. All 4,319 wrappers and 741 declared defaults are verified. Thirteen wrapper and nineteen real Table/Virtual/Worker cases pass per engine; fresh package/type checks and all 860 tests pass. The same Lit stores, selection, form and motion behavior remain authoritative. Continue M23; the stated global-registry wrapper contract does not close M26’s separate core scoped-registry or actual-platform gates.
+
+## M23 documentation complete — 2026-09-26
+
+[Acceptance](evidence/m23-documentation-2026-09-26.json) closes the seven documentation units, complete API/Markdown projection, explicit source/lifecycle/reset/error handling, fifteen recipe families and persistent/mobile navigation. The full build, strict root types and all 906 tests pass. Thirteen recipe outcomes pass in each engine; source-copy and native accessibility regressions are retained. Continue M24 consumer tools and M25 toolchain/package integration. The Bun incremental-install root-package defect and final actual-platform checks retain their later owners; no publication or push occurred.

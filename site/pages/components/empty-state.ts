@@ -16,7 +16,7 @@ export const doc: Doc = {
     {
       h: "Surface treatments",
       html:
-        '<acme-v-stack align="stretch" gap="4">' +
+        '<acme-v-stack align-items="stretch" gap="4">' +
         ["default", "outline", "subtle"]
           .map(
             (variant) =>

@@ -1,3 +1,4 @@
+const fixture = window as typeof window & { feedback: AcmeFeedback; requests: unknown[]; changes: unknown[]; inputs: unknown[] };
 import {AcmeFeedback} from '../feedback';customElements.define('acme-feedback',AcmeFeedback);
 import {AcmeField} from '../../field/field';customElements.define('acme-field',AcmeField);
 import {AcmeInput} from '../../input/input';customElements.define('acme-input',AcmeInput);
@@ -23,4 +24,4 @@ import {AcmeWarningIcon} from '../../../generated/icons/classes/warning-icon';cu
 import {AcmeCheckIcon} from '../../../generated/icons/classes/check-icon';customElements.define('acme-check-icon',AcmeCheckIcon);
 import {AcmeCloseIcon} from '../../../generated/icons/classes/close-icon';customElements.define('acme-close-icon',AcmeCloseIcon);
 import {AcmeExpandMoreIcon} from '../../../generated/icons/classes/expand-more-icon';customElements.define('acme-expand-more-icon',AcmeExpandMoreIcon);
-document.body.innerHTML='<acme-feedback id="feedback"></acme-feedback>';const feedback=document.querySelector('#feedback');Object.assign(window,{feedback,requests:[],changes:[],inputs:[]});feedback.addEventListener('acme-request',e=>window.requests.push(e.detail));feedback.addEventListener('acme-change',e=>window.changes.push(e.detail));feedback.addEventListener('acme-input',e=>window.inputs.push(e.detail));
+document.body.innerHTML='<acme-feedback id="feedback"></acme-feedback>';const feedback=document.querySelector<AcmeFeedback>('#feedback')!;Object.assign(fixture,{feedback,requests:[],changes:[],inputs:[]});feedback.addEventListener('acme-request',e=>fixture.requests.push((e as CustomEvent<unknown>).detail));feedback.addEventListener('acme-change',e=>fixture.changes.push((e as CustomEvent<unknown>).detail));feedback.addEventListener('acme-input',e=>fixture.inputs.push((e as CustomEvent<unknown>).detail));

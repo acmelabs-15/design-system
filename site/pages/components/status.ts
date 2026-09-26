@@ -7,7 +7,7 @@ export const doc: Doc = {
   examples: [
     {
       h: "Application states",
-      html: '<acme-v-stack align="start" gap="3"><acme-status value="queued" label="Queued"></acme-status><acme-status value="processing" label="Processing" variant="info" pulse></acme-status><acme-status value="ready" label="Ready" variant="success"></acme-status><acme-status value="attention" label="Needs attention" variant="warning"></acme-status><acme-status value="failed" label="Failed" variant="error"></acme-status></acme-v-stack>',
+      html: '<acme-v-stack align-items="start" gap="3"><acme-status value="queued" label="Queued"></acme-status><acme-status value="processing" label="Processing" variant="info" pulse></acme-status><acme-status value="ready" label="Ready" variant="success"></acme-status><acme-status value="attention" label="Needs attention" variant="warning"></acme-status><acme-status value="failed" label="Failed" variant="error"></acme-status></acme-v-stack>',
     },
     { h: "Authored label", html: '<acme-status value="available" variant="success">Available <span>for new work</span></acme-status>' },
     {

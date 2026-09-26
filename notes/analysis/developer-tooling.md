@@ -124,3 +124,82 @@ This is bounded local runtime compatibility, not an assertion of official npm su
 ## Implemented style tooling checkpoint
 
 Lightning CSS is now the build compiler. Its integration, corpus-free build, source-map delivery and before/after browser comparisons are recorded in [M02 evidence](../alignment/evidence/m02-css-pipeline-2026-09-20.json). Biome remains the current authored-code formatter until M25; generated files are excluded because compiler output and map offsets must stay aligned. The obsolete format-generated wrapper is removed. The wider strict TypeScript check retains nine pre-existing diagnostics; the touched generator's four errors are fixed. New script checks and all 624 unit tests pass.
+
+## M24 inspector scope verification — 2026-09-26
+
+The installed official `@tanstack/devtools` 0.14.2 source exposes a scope conflict
+that the earlier synthetic panel probe did not test. `src/devtools.tsx` always
+mounts `SourceInspector`, renders SEO and Marketplace destinations through
+`components/workbench-header.tsx`, and portals its surface to `document.body`.
+`src/core.ts` exposes configuration for source hotkeys/actions but no exclusion
+switch for those capabilities. The shell's context also persists settings.
+Embedding that complete shell would add whole-page inspection beyond the approved
+root-scoped read-only component inspector.
+
+The implementation therefore uses the official `@tanstack/devtools-ui` 0.7.1
+public `MainPanel`, `Section`, `JsonTree` and `ThemeContextProvider` components with
+Solid 1.9.15 in the optional package. This is the selected ecosystem's UI layer,
+not a claim that the full shell's behavior is equivalent. Its source was inspected
+at `dist/esm/components/{main-panel,section,tree,theme}.js` and
+`dist/esm/styles/semantic-theme.js`. The UI layer installs its packaged font and
+forced-colors styles; it has no source inspector, marketplace, event bus or settings
+persistence. The inspector disables JsonTree copying and only displays already
+redacted snapshots. The full shell is not a runtime dependency.
+
+The current official [custom-plugin guide](https://tanstack.com/devtools/latest/docs/building-custom-plugins)
+was also read. Its event client supports application-to-panel communication and
+optional commands, but this inspector needs neither remote transport nor a global
+event bus. It observes only explicitly selected component roots through Lit's
+public controller interface and generated public metadata. `hostUpdated` supplies
+property notifications; DOM observation discovers insertion/removal and public
+attribute changes. No component prototype or private store is patched.
+
+This paragraph records the source-backed implementation choice. Full-browser,
+packaged-asset, redaction and production-exclusion results are recorded separately;
+source inspection alone is not their acceptance result.
+
+### Inspector runtime findings and bounded fixes
+
+The real Input fixture exposed an observation loop absent from synthetic controls.
+Reading the public `validity`, `validationMessage` and `willValidate` accessors
+calls `NativeForm.sync()` (`src/shared/native-form.ts`). That synchronizes internal
+native attributes. Observing every shadow attribute caused those reads to schedule
+themselves again. The optional observer now reacts only to declared public-host
+attributes, real value changes and theme/style dependencies; shadow roots supply
+child discovery. A regression test verifies a public getter can synchronize native
+attributes without an observation loop. Core component behavior stays unchanged.
+
+Visual inspection found that Devtools UI 0.7.1's JsonTree omits keys for null-valued
+fields. Its `dist/esm/components/tree.js` key condition tests only
+`typeof value !== "object"`; JavaScript classifies null as object. The optional
+runtime builder corrects that exact condition to include null. It verifies package
+version and original SHA256 `a7a7a305ff7256bc71e423fc6cefdf14726bc1d57dc19e1ab0ea0a49beaa06a3`
+before applying the one-expression change. Browser verification checks that
+`"form": null` remains visible. The correction is bundled into the optional
+package; consumers do not need to apply a package-manager patch.
+
+The upstream font modules use relative URL expressions. A first bundler can emit
+those assets correctly, but a downstream consumer can move the emitted URL strings
+again. The optional runtime therefore embeds the two small fonts (82,204-byte
+Bricolage Grotesque and 72,920-byte Inter) as data URLs. Both OFL notices, third-party
+MIT notices, font hashes and correction provenance ship in the optional package.
+The normal production graph excludes this package and its font data.
+
+The final scoped fixture uses the compiled optional runtime and bundles it again
+with actual Lit and generated React Input consumers. It passes 13 outcome checks
+in each of Chromium, Firefox and WebKit: scoped collection, no settings record,
+keyboard expansion, desktop/narrow rendering, redaction, visible null-field keys,
+loaded embedded fonts, property-only updates in both frameworks, bounded public
+events, ancestor theme updates, detach/reconnect, unmount/remount/disposal, and no
+outbound requests or browser errors. The runner is
+`notes/alignment/evidence/m24-devtools/browser-run.ts`; results and screenshots are under
+`.artifacts/m24-devtools/`. A separate production branch in that runner contains
+102 input modules and no Devtools UI, Solid or font output. Those are local compiled
+consumer results; final packed-consumer verification remains the release gate.
+
+Firefox returns quoted `FontFace.family` names while Chromium returns unquoted
+names. Both fonts were already loaded; the test now normalizes that serialization
+before asserting family identity. No runtime font workaround was added for this
+harness discrepancy. Public declarations contain no TanStack Devtools UI or Solid
+imports. The runtime has no Lit import either; it uses the host's public controller
+interface and its generated metadata.

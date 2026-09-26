@@ -1,9 +1,10 @@
+import {readCorePackage} from "./core-package";
 import fs from "node:fs";
 import path from "node:path";
 import { create, ts as analyzerTs, type Plugin } from "@custom-elements-manifest/analyzer";
 import { Window } from "happy-dom";
 import ts from "typescript";
-import type { Package, ClassDeclaration, Event as ManifestEvent } from "custom-elements-manifest/schema";
+import type { Package, ClassDeclaration, ClassField, Event as ManifestEvent } from "custom-elements-manifest/schema";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const CALLBACKS = new Set([
@@ -30,7 +31,7 @@ type Facts = {
   eventTypes: Map<string, Set<string>>;
   dynamic: Set<string>;
   annotated: Set<string>;
-  members: Map<string, { default?: string; resetUndefined?: boolean; type?: { text: string }; literalType?: { text: string }; return?: { type: { text: string } } }>;
+  members: Map<string, { default?: string; writable?: boolean; resetUndefined?: boolean; type?: { text: string }; literalType?: { text: string }; return?: { type: { text: string } } }>;
 };
 type Issue = { file: string; className: string; category: string };
 const key = (file: string, name: string) => file + "#" + name;
@@ -92,6 +93,7 @@ function sourceFacts(program: ts.Program, files: string[], root: string): Map<st
             found.members.set(name, {
               ...(ts.isPropertyDeclaration(member) && member.initializer ? { default: member.initializer.getText(source) } : {}),
               ...(declaredDefault !== undefined ? { default: declaredDefault } : {}),
+              ...((ts.isSetAccessorDeclaration(member) || found.members.get(name)?.writable) ? { writable: true } : {}),
               ...(found.members.get(name)?.resetUndefined !== undefined ? { resetUndefined: found.members.get(name)!.resetUndefined } : {}),
               ...(ts.isSetAccessorDeclaration(member) && member.parameters[0] ? { resetUndefined: (() => {
                 const input = checker.getTypeAtLocation(member.parameters[0]);
@@ -281,6 +283,7 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
         .filter((member) => !fact.nestedAssignments.has(member.name) || fact.members.has(member.name) || fact.directAssignments.has(member.name))
         .map((member) => {
           const inferred = fact.members.get(member.name);
+          if (member.kind === "field" && inferred?.writable) (member as typeof member & { readonly?: boolean }).readonly = false;
           if (member.kind === "field" && inferred?.resetUndefined) (member as typeof member & { "x-acme-reset"?: string })["x-acme-reset"] = "undefined";
           if (member.kind === "field" && fact.nestedAssignments.has(member.name) && !fact.directAssignments.has(member.name) && inferred) {
             if (inferred.default === undefined) delete member.default;
@@ -290,7 +293,7 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
           if (member.kind === "field" && !member.type && inferred?.type) member.type = inferred.type;
           if (member.kind === "field" && inferred?.literalType) member.type = inferred.literalType;
           if (member.kind === "method" && !member.return?.type && inferred?.return) member.return = { ...member.return, ...inferred.return };
-          return fact.queries.has(member.name) ? { ...member, privacy: "private" } : member;
+          return fact.queries.has(member.name) ? { ...member, privacy: "private" as const } : member;
         })
         .filter((member) => member.privacy !== "private" && member.privacy !== "protected");
     },
@@ -350,13 +353,18 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
       if (declaration.kind !== "class" || !("attributes" in declaration)) continue;
       const element = declaration as ClassDeclaration & { attributes?: { name: string; fieldName?: string; type?: { text: string }; default?: string }[] };
       for (const attribute of element.attributes ?? []) {
+        const linked = element.members?.find(member => member.name === attribute.fieldName) as (ClassField & { readonly?: boolean; attribute?: string }) | undefined;
+        if (linked?.readonly) {
+          delete attribute.fieldName;
+          if (linked.attribute === attribute.name) delete linked.attribute;
+        }
         if (!attribute.fieldName) {
           const matching = element.members?.filter(
-            (member) => member.kind === "field" && (!member.privacy || member.privacy === "public") && member.name.replace(/[A-Z]/g, (character) => "-" + character.toLowerCase()) === attribute.name,
+            (member) => member.kind === "field" && !(member as { readonly?: boolean }).readonly && (!member.privacy || member.privacy === "public") && member.name.replace(/[A-Z]/g, (character) => "-" + character.toLowerCase()) === attribute.name,
           );
           if (matching?.length === 1 && matching[0].kind === "field") {
             attribute.fieldName = matching[0].name;
-            matching[0].attribute ??= attribute.name;
+            (matching[0] as ClassField & { attribute?: string }).attribute ??= attribute.name;
           }
         }
         const member = element.members?.find((member) => member.kind === "field" && member.name === attribute.fieldName);
@@ -383,7 +391,7 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
     }
   }
   profile("normalized modules");
-  (manifest as unknown as Record<string, unknown>)["x-acme-version"] = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8")).version;
+  (manifest as unknown as Record<string, unknown>)["x-acme-version"] = readCorePackage(root).version;
   return { manifest, issues };
 }
 

@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { html, LitElement } from "lit";
 import "../../all";
-import { bindField, TanStackFormController } from "../../index.ts";
+import { bindField, TanStackFormController } from "../../index";
 
 class TestForm extends LitElement {
   form = new TanStackFormController(this, { defaultValues: { name: "", agree: false } });

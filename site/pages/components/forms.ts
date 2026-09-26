@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import type { Doc } from "../../site";
 export const doc: Doc = {
   id: "forms",
@@ -9,7 +10,9 @@ export const doc: Doc = {
       h: "Managed form",
       p: "The application renders label and error content in Field. bindField keeps value or checked and invalid presentation in sync with the typed field state.",
       html: "<docs-form-demo></docs-form-demo>",
-      code: 'import {html} from "lit";\nimport {TanStackFormController, bindField} from "@acmelabs/design-system";\nimport "@acmelabs/design-system/define/field";\nimport "@acmelabs/design-system/define/input";\n\n// In a Lit element:\nform = new TanStackFormController(this, {\n  defaultValues: {profile: {name: ""}},\n  onSubmit: ({value}) => saveProfile(value),\n});\n\nrender() {\n  return html`<form @submit=${(event) => {\n    event.preventDefault();\n    this.form.api.handleSubmit();\n  }}>\n    ${this.form.field({\n      name: "profile.name",\n      validators: {onChange: ({value}) =>\n        value.length < 2 ? "Use at least two letters." : undefined},\n    }, field => html`\n      <acme-field .invalid=${field.state.meta.isTouched && !field.state.meta.isValid}>\n        <span slot="label">Name</span>\n        <acme-input name="profile.name" ${bindField(field)}></acme-input>\n        <span slot="error">${field.state.meta.errors.join(" ")}</span>\n      </acme-field>\n    `)}\n    <button type="submit">Save</button>\n  </form>`;\n}',
+      language: "typescript",
+      registerFunction:"registerManagedFormExample", sourcePath: "examples/forms/lit.ts",
+      code: readFileSync(new URL("../../../examples/forms/lit.ts", import.meta.url), "utf8"),
     },
     {
       h: "Native form",

@@ -14,13 +14,13 @@ export const doc: Doc = {
       h: "Native form",
       html: '<form id="radio-form-example"><acme-radio-group aria-label="Plan" name="plan" required><acme-radio value="starter">Starter</acme-radio><acme-radio value="pro">Pro</acme-radio></acme-radio-group><acme-h-stack gap="2"><acme-button type="submit">Save plan</acme-button><acme-button type="reset" variant="secondary">Reset plan</acme-button></acme-h-stack><output></output></form>',
       script:
-        'const form=document.querySelector("#radio-form-example");form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=new FormData(form).get("plan")??"No choice";});form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
+        'const form=root.querySelector("#radio-form-example");form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=new FormData(form).get("plan")??"No choice";});form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
     },
     {
       h: "Cards",
       html: '<div><acme-radio-group id="radio-card-example" aria-label="Billing" orientation="horizontal"><acme-group attached outline align-items="stretch" variant="secondary"><acme-radio-card value="monthly"><span slot="heading">Monthly</span><span slot="description">Pay each month.</span><acme-button id="billing-details" slot="actions" size="small" variant="tertiary">Billing details</acme-button></acme-radio-card><acme-radio-card value="yearly"><span slot="heading">Yearly</span><span slot="description">Pay once a year.</span></acme-radio-card></acme-group></acme-radio-group><output id="billing-output">No choice</output><p><output id="billing-help"></output></p></div>',
       script:
-        'document.querySelector("#radio-card-example").addEventListener("acme-change",event=>{document.querySelector("#billing-output").textContent=event.detail.value;});document.querySelector("#billing-details").addEventListener("click",()=>{document.querySelector("#billing-help").textContent="The application owns billing details.";});',
+        'root.querySelector("#radio-card-example").addEventListener("acme-change",event=>{root.querySelector("#billing-output").textContent=event.detail.value;});root.querySelector("#billing-details").addEventListener("click",()=>{root.querySelector("#billing-help").textContent="The application owns billing details.";});',
     },
     {
       h: "Standalone name groups",

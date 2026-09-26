@@ -1,3 +1,4 @@
+import {corePackageDirectory,corePackageManifestPath} from "../core-package";
 import "../../src/all";
 import "../../src/generated/icons/all";
 import { expect, test } from "bun:test";
@@ -20,7 +21,8 @@ test("store-backed public properties retain manifest defaults and inherited attr
   try {
     fs.mkdirSync(path.join(root, "src/shared"), { recursive: true });
     fs.symlinkSync(path.join(repository, "node_modules"), path.join(root, "node_modules"), "dir");
-    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     for (const name of ["atom-state", "store-connection"]) fs.copyFileSync(path.join(repository, "src/shared", name + ".ts"), path.join(root, "src/shared", name + ".ts"));
     let source = fs
       .readFileSync(path.join(repository, "src/shared/__tests__/fixtures/atom-state-public.ts"), "utf8")
@@ -79,6 +81,9 @@ test("the manifest matches every registered Lit class and its runtime property a
   const request = pagination.events?.find(event => event.name === "acme-request")?.type?.text;
   expect(request).toContain('action: "page"');
   expect(request).toContain('action: "page-size"');
+  const input = elements.find(element => element.tagName === "acme-input")!;
+  expect(input.attributes?.find(attribute => attribute.name === "form")).toMatchObject({ type: { text: "string" } });
+  expect(input.attributes?.find(attribute => attribute.name === "form")?.fieldName).toBeUndefined();
   for (const [name, schema] of Object.entries(commonStyleInputSchema)) {
     expect(box.attributes?.find((attribute) => attribute.name === schema.attribute)?.fieldName).toBe(name);
     expect(box.members?.find((member) => member.name === name && member.kind === "field")).toMatchObject({ attribute: schema.attribute });
@@ -104,6 +109,9 @@ test("the manifest matches every registered Lit class and its runtime property a
       expect(element.members?.some((member) => member.kind === "field" && member.name === name)).toBe(true);
       const expected = options.attribute === false ? false : typeof options.attribute === "string" ? options.attribute : String(name).toLowerCase();
       expect(element.attributes?.find((attribute) => attribute.fieldName === name)?.name ?? false).toBe(expected);
+      let prototype = ctor.prototype;
+      while (prototype && !Object.getOwnPropertyDescriptor(prototype, name)) prototype = Object.getPrototypeOf(prototype);
+      if (prototype && Object.getOwnPropertyDescriptor(prototype, name)?.set) expect((element.members?.find(member => member.name === name) as { readonly?: boolean }).readonly ?? false).toBe(false);
     }
   }
   for (const tag of ["acme-input", "acme-search", "acme-textarea"])
@@ -119,7 +127,8 @@ test("manifest facts cover conditional events, event variables, slots and forwar
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-manifest-"));
   try {
     fs.mkdirSync(path.join(root, "src"));
-    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     fs.writeFileSync(
       path.join(root, "src/probe.ts"),
       [
@@ -189,7 +198,7 @@ test("partitioned icon analysis preserves real ancestry and authored descendants
   };
   try {
     fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
-    write("package.json", '{"version":"0.0.0"}');
+    write("packages/core/package.json", '{"name":"fixture","version":"0.0.0"}');
     write(
       "src/shared/icon-element.ts",
       'import {LitElement} from "lit"; import {property} from "lit/decorators.js"; export class AcmeIconElement extends LitElement { @property() label=""; private secret="hidden"; }',
@@ -220,7 +229,8 @@ test("internal definitions stay out of consumer metadata and API pages", async (
   try {
     fs.mkdirSync(path.join(root, "src/internal"), { recursive: true });
     fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
-    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     fs.writeFileSync(
       path.join(root, "src/internal/inner.ts"),
       'import {LitElement,html} from "lit";\n/** @internal */\nexport class Inner extends LitElement {render(){return html`<span></span>`;}}declare global{interface HTMLElementTagNameMap{"acme-inner":Inner;}}',
@@ -244,7 +254,8 @@ test("assignments to owned native elements do not become host properties", async
   try {
     fs.mkdirSync(path.join(root, "src"), { recursive: true });
     fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
-    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     fs.writeFileSync(
       path.join(root, "src/probe.ts"),
       'import {LitElement} from "lit";export class Probe extends LitElement {private input=document.createElement("input");name="host";constructor(){super();this.input.className="native";this.input.name="child";} }customElements.define("acme-probe",Probe);',
@@ -264,7 +275,8 @@ test("native renderer-container metadata survives standard analysis", async () =
   try {
     fs.mkdirSync(path.join(root, "src"), { recursive: true });
     fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
-    fs.writeFileSync(path.join(root, "package.json"), '{"version":"0.0.0"}');
+    fs.mkdirSync(corePackageDirectory(root), {recursive:true});
+    fs.writeFileSync(corePackageManifestPath(root), '{"name":"fixture","version":"0.0.0"}');
     fs.writeFileSync(
       path.join(root, "src/probe.ts"),
       'import {LitElement} from "lit";\n/** @acmeNativeRoot fieldset */\nexport class Probe extends LitElement {} customElements.define("acme-probe",Probe);',

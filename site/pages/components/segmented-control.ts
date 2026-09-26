@@ -27,7 +27,7 @@ export const doc: Doc = {
         items +
         '</acme-segmented-control><acme-h-stack gap="2"><acme-button type="submit">Save view</acme-button><acme-button type="reset" variant="secondary">Reset view</acme-button></acme-h-stack><output></output></form>',
       script:
-        'const form=document.querySelector("#segment-form");form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=new FormData(form).get("view")??"No choice";});form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
+        'const form=root.querySelector("#segment-form");form.addEventListener("submit",event=>{event.preventDefault();form.querySelector("output").textContent=new FormData(form).get("view")??"No choice";});form.addEventListener("reset",()=>{form.querySelector("output").textContent="";});',
     },
   ],
   practices: {

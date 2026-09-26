@@ -11,5 +11,16 @@
   ],
   "peerDependencies": {
     "@acmelabs/design-system": "0.2.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@tanstack/devtools-ui": "0.7.1",
+    "solid-js": "1.9.15"
   }
 }

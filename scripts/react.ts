@@ -7,6 +7,7 @@ type Declaration = {
   tagName: string;
   members?: { name: string; kind: string; readonly?: boolean; static?: boolean; privacy?: string; default?: string; type?: { text: string }; "x-acme-reset"?: string }[];
   events?: { name: string; type?: { text: string } }[];
+  attributes?: { name: string; fieldName?: string; type?: { text: string } }[];
   "x-acme-native-root"?: string;
   "x-acme-native-content-target"?: string;
 };
@@ -19,6 +20,7 @@ export function reactModule(declaration: Declaration): string {
   const keys = (declaration.members ?? []).filter((m) => m.kind === "field" && !m.static && !m.readonly && (!m.privacy || m.privacy === "public")).map((m) => m.name);
   const contentSlots = Object.fromEntries(keys.filter((key) => key === "renderContent" || key === "renderFallback").map((key) => [key, key === "renderFallback" ? "fallback" : ""]));
   const inputs = keys.filter((key) => !Object.hasOwn(contentSlots, key));
+  const attributes = (declaration.attributes ?? []).filter(attribute => !attribute.fieldName);
   const defaults = Object.fromEntries(
     (declaration.members ?? [])
       .filter((member) => inputs.includes(member.name) && member["x-acme-reset"] !== "undefined" && (member.default !== undefined || (/\bnull\b/.test(member.type?.text ?? "") && !/\bundefined\b/.test(member.type?.text ?? ""))))
@@ -45,9 +47,9 @@ export function reactModule(declaration: Declaration): string {
     type: event.type?.text ?? "Event",
   }));
   const imports = eventTypes.filter((name) => events.some((e) => new RegExp("\\b" + name + "\\b").test(e.type)));
-  return `// Generated from the standard custom-elements manifest.\nimport { ${declaration.name} } from "@acmelabs/design-system/components/${slug}";\nimport "@acmelabs/design-system/define/${slug}";\nimport { createComponent, type ComponentProps } from "../create-component.js";\nimport type { EventName } from "@lit/react";\n${Object.keys(contentSlots).length ? 'import type { ReactNode } from "react";\n' : ""}${imports.length ? `import type { ${imports.join(", ")} } from "@acmelabs/design-system/react-support";\n` : ""}export type ${name}Props = ComponentProps<${declaration.name}, ${inputs.map((k) => JSON.stringify(k)).join(" | ") || "never"}, {${[...events.map((e) => `${e.name}?: (event: ${e.type}) => void`), ...Object.keys(contentSlots).map((key) => `${key}?: () => ReactNode`)].join("; ")}}>;\nexport const ${name} = createComponent<${declaration.name}, ${name}Props>({\n ${Object.keys(contentSlots).length ? `contentSlots: ${JSON.stringify(contentSlots)},` : ""}
+  return `// Generated from the standard custom-elements manifest.\nimport { ${declaration.name} } from "@acmelabs/design-system/components/${slug}";\nimport "@acmelabs/design-system/define/${slug}";\nimport { createComponent, type ComponentProps } from "../create-component.js";\nimport type { EventName } from "@lit/react";\n${Object.keys(contentSlots).length ? 'import type { ReactNode } from "react";\n' : ""}${imports.length ? `import type { ${imports.join(", ")} } from "@acmelabs/design-system/react-support";\n` : ""}export type ${name}Props = ComponentProps<${declaration.name}, ${inputs.map((k) => JSON.stringify(k)).join(" | ") || "never"}, {${[...events.map((e) => `${e.name}?: (event: ${e.type}) => void`), ...Object.keys(contentSlots).map((key) => `${key}?: () => ReactNode`), ...attributes.map(attribute => `${JSON.stringify(attribute.name)}?: ${attribute.type?.text ?? "string"}`)].join("; ")}}>;\nexport const ${name} = createComponent<${declaration.name}, ${name}Props>({\n ${Object.keys(contentSlots).length ? `contentSlots: ${JSON.stringify(contentSlots)},` : ""}
  ${declaration["x-acme-native-content-target"] ? `nativeContentTarget: element => element[${JSON.stringify(declaration["x-acme-native-content-target"])}](),` : ""}
- inputs: ${JSON.stringify(inputs)}, defaults: ${JSON.stringify(defaults)},
+ inputs: ${JSON.stringify(inputs)}, defaults: ${JSON.stringify(defaults)}, attributes: ${JSON.stringify(Object.fromEntries(attributes.map(attribute => [attribute.name, attribute.type?.text === "boolean" ? "boolean" : "string"])))},
  tagName: ${JSON.stringify(tag)}, elementClass: ${declaration.name}, displayName: ${JSON.stringify(name)},\n events: {${events.map((e) => `${e.name}: ${JSON.stringify(e.event)} as EventName<${e.type}>`).join(", ")}},\n ${declaration["x-acme-native-root"] ? ` nativeRoot: ${JSON.stringify(declaration["x-acme-native-root"])},` : ""}\n});\n`;
 }
 export async function buildReact(root = ROOT) {

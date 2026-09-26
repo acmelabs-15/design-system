@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import ts from "typescript";
+import { corePackageManifestPath } from "./core-package";
 
 export interface ComponentEntry {
   name: string;
@@ -269,7 +270,7 @@ export function writeEntries(root = DEFAULT_ROOT): ComponentEntry[] {
 
 /** Publish exactly the class entries represented by the source tag records. */
 export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_ROOT): void {
-  const file = path.join(root, "package.json");
+  const file = corePackageManifestPath(root);
   const before = fs.readFileSync(file, "utf8");
   const pkg = JSON.parse(before);
   const exports = Object.fromEntries(Object.entries(pkg.exports ?? {}).filter(([name]) => !name.startsWith("./components/") && name !== "./dist/*"));

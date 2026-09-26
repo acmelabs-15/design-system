@@ -8,6 +8,7 @@ const roots: string[] = [];
 const fixture = (files: Record<string, string>) => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-entries-"));
   roots.push(root);
+  fs.mkdirSync(path.join(root, "packages/core"), {recursive:true});
   for (const [name, source] of Object.entries(files)) {
     const file = path.join(root, "src", name);
     fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -20,12 +21,12 @@ const component = (name: string, body = "", imports = "") =>
 
 test("the entries command updates definitions and exports together", () => {
   const root = fixture({ "one.ts": component("One") });
-  fs.writeFileSync(path.join(root, "package.json"), JSON.stringify({ name: "fixture", exports: { "./components/stale": "./dist/stale.js" } }));
+  fs.writeFileSync(path.join(root, "packages/core/package.json"), JSON.stringify({ name: "fixture", exports: { "./components/stale": "./dist/stale.js" } }));
   const result = Bun.spawnSync([process.execPath, path.resolve(import.meta.dir, "../entries.ts"), root], { stdout: "pipe", stderr: "pipe" });
   expect(result.stderr.toString()).toBe("");
   expect(result.exitCode).toBe(0);
   expect(fs.existsSync(path.join(root, "src/define/one.ts"))).toBe(true);
-  const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+  const pkg = JSON.parse(fs.readFileSync(path.join(root, "packages/core/package.json"), "utf8"));
   expect(pkg.exports["./components/one"]).toBeDefined();
   expect(pkg.exports["./components/stale"]).toBeUndefined();
 });
@@ -110,7 +111,7 @@ test("writes deterministic definitions, preserves authored files and removes onl
 
 test("package exports track the source records and retain unrelated authored exports", () => {
   const root = fixture({ "one.ts": component("One") });
-  const file = path.join(root, "package.json");
+  const file = path.join(root, "packages/core/package.json");
   fs.writeFileSync(file, JSON.stringify({ name: "fixture", exports: { ".": "./dist/index.js", "./styles/*": "./dist/styles/*", "./components/stale": "./dist/stale.js", "./dist/*": "./dist/*" } }));
   writePackageExports(collectComponents(root), root);
   const first = fs.readFileSync(file, "utf8"),
@@ -204,7 +205,7 @@ test("internal components register through their owner without public entries or
     "internal/inner.ts": "/** @internal */\n" + component("Inner"),
     "owner.ts": component("Owner", "render(){return html`<acme-inner></acme-inner>`;}", 'import {html} from "lit";'),
   });
-  fs.writeFileSync(path.join(root, "package.json"), '{"name":"fixture"}');
+  fs.writeFileSync(path.join(root, "packages/core/package.json"), '{"name":"fixture"}');
   const entries = writeEntries(root);
   writePackageExports(entries, root);
   expect(entries.find((entry) => entry.name === "inner")?.internal).toBe(true);
@@ -212,7 +213,7 @@ test("internal components register through their owner without public entries or
   expect(fs.existsSync(path.join(root, "src/define/inner.ts"))).toBe(false);
   expect(fs.readFileSync(path.join(root, "src/define/owner.ts"), "utf8")).toContain('import "../internal/define/inner"');
   expect(fs.readFileSync(path.join(root, "src/all.ts"), "utf8")).not.toContain("inner");
-  const pkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+  const pkg = JSON.parse(fs.readFileSync(path.join(root, "packages/core/package.json"), "utf8"));
   expect(pkg.exports["./components/inner"]).toBeUndefined();
   expect(pkg.exports["./components/owner"]).toBeDefined();
   expect(pkg.sideEffects).toContain("./dist/internal/define/*.js");

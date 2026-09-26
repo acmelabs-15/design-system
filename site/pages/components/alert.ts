@@ -12,7 +12,7 @@ export const doc: Doc = {
     {
       h: "Status treatments",
       html:
-        '<acme-v-stack align="stretch" gap="3">' +
+        '<acme-v-stack align-items="stretch" gap="3">' +
         ["default", "success", "error", "warning", "secondary", "violet", "cyan"]
           .map((variant) => `<acme-alert variant="${variant}" heading="${variant[0].toUpperCase() + variant.slice(1)} message">The application supplies the message and its meaning.</acme-alert>`)
           .join("") +

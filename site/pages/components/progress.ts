@@ -15,7 +15,7 @@ export const doc: Doc = {
     {
       h: "Status treatments",
       html:
-        '<acme-v-stack align="stretch" gap="4">' +
+        '<acme-v-stack align-items="stretch" gap="4">' +
         ["default", "success", "error", "warning", "secondary"].map((variant) => `<acme-progress label="${variant} example" value="65" variant="${variant}"></acme-progress>`).join("") +
         "</acme-v-stack>",
     },
