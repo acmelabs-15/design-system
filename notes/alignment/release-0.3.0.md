@@ -33,3 +33,7 @@ Linux run36312017815 includes the license fix and has passed install, lint, buil
 ## Second Linux run
 
 Run36312017815 passed22 of23 browser invocations and1445 of1446 family results. The only failure was a hardcoded native date-editor Tab expectation in WebKit. The case now uses a paired native dialog as its exact per-browser oracle; all27 local dialog cases pass in each engine. The shared full-release driver now clears diagnostic filters, with a failing baseline and passing regression. No runtime component was changed for this finding. The next Linux run must pass before integration/publication.
+
+## Third Linux run
+
+Run36313857937 confirms the paired native date check in all engines: Chromium/Firefox retain three editor stops, while LinuxWebKit moves directly to the next control. The only remaining failure was Firefox worker cleanup measured after a fixed30ms delay. The test now waits for actual worker close events and retains its zero-worker check. All13 local Flow cases pass per engine; no runtime component changed. The next Linux rerun must complete before release. npm password confirmation remains pending, and no tag, package publication or Pages change has occurred.
