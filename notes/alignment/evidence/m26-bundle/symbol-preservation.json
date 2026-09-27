@@ -1,0 +1,2020 @@
+{
+  "symbols": 251,
+  "values": 199,
+  "typesOnly": 52,
+  "allowedSeparateRemovals": [
+    "assetsBase",
+    "setAssetsBase"
+  ],
+  "equal": true,
+  "profile": [
+    {
+      "name": "AcmeAccordion",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/accordion/accordion.ts#AcmeAccordion"
+      ]
+    },
+    {
+      "name": "AcmeAccordionContent",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/accordion-content/accordion-content.ts#AcmeAccordionContent"
+      ]
+    },
+    {
+      "name": "AcmeAccordionItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/accordion-item/accordion-item.ts#AcmeAccordionItem"
+      ]
+    },
+    {
+      "name": "AcmeAccordionTrigger",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/accordion-trigger/accordion-trigger.ts#AcmeAccordionTrigger"
+      ]
+    },
+    {
+      "name": "AcmeAlert",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/alert/alert.ts#AcmeAlert"
+      ]
+    },
+    {
+      "name": "AcmeAlertDialog",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/alert-dialog/alert-dialog.ts#AcmeAlertDialog"
+      ]
+    },
+    {
+      "name": "AcmeAlertDialogAction",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/alert-dialog-action/alert-dialog-action.ts#AcmeAlertDialogAction"
+      ]
+    },
+    {
+      "name": "AcmeAlertDialogCancel",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/alert-dialog-cancel/alert-dialog-cancel.ts#AcmeAlertDialogCancel"
+      ]
+    },
+    {
+      "name": "AcmeAlertDialogTrigger",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/alert-dialog-trigger/alert-dialog-trigger.ts#AcmeAlertDialogTrigger"
+      ]
+    },
+    {
+      "name": "AcmeAppBar",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/app-bar/app-bar.ts#AcmeAppBar"
+      ]
+    },
+    {
+      "name": "AcmeAppBarContent",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/app-bar-content/app-bar-content.ts#AcmeAppBarContent"
+      ]
+    },
+    {
+      "name": "AcmeAppBarEnd",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/app-bar-end/app-bar-end.ts#AcmeAppBarEnd"
+      ]
+    },
+    {
+      "name": "AcmeAppBarStart",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/app-bar-start/app-bar-start.ts#AcmeAppBarStart"
+      ]
+    },
+    {
+      "name": "AcmeAvatar",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/avatar/avatar.ts#AcmeAvatar"
+      ]
+    },
+    {
+      "name": "AcmeAvatarGroup",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/avatar-group/avatar-group.ts#AcmeAvatarGroup"
+      ]
+    },
+    {
+      "name": "AcmeBadge",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/badge/badge.ts#AcmeBadge"
+      ]
+    },
+    {
+      "name": "AcmeBanner",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/banner/banner.ts#AcmeBanner"
+      ]
+    },
+    {
+      "name": "AcmeBook",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/book/book.ts#AcmeBook"
+      ]
+    },
+    {
+      "name": "AcmeBox",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/box/box.ts#AcmeBox"
+      ]
+    },
+    {
+      "name": "AcmeBreadcrumb",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/breadcrumb/breadcrumb.ts#AcmeBreadcrumb"
+      ]
+    },
+    {
+      "name": "AcmeBreadcrumbs",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/breadcrumbs/breadcrumbs.ts#AcmeBreadcrumbs"
+      ]
+    },
+    {
+      "name": "AcmeBrowser",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/browser/browser.ts#AcmeBrowser"
+      ]
+    },
+    {
+      "name": "AcmeButton",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/button/button.ts#AcmeButton"
+      ]
+    },
+    {
+      "name": "AcmeCalendar",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/calendar/calendar.ts#AcmeCalendar"
+      ]
+    },
+    {
+      "name": "AcmeCard",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/card/card.ts#AcmeCard"
+      ]
+    },
+    {
+      "name": "AcmeCardBody",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/card-body/card-body.ts#AcmeCardBody"
+      ]
+    },
+    {
+      "name": "AcmeCardFooter",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/card-footer/card-footer.ts#AcmeCardFooter"
+      ]
+    },
+    {
+      "name": "AcmeCardHeader",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/card-header/card-header.ts#AcmeCardHeader"
+      ]
+    },
+    {
+      "name": "AcmeChart",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/chart/chart.ts#AcmeChart"
+      ]
+    },
+    {
+      "name": "AcmeCheckbox",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/checkbox/checkbox.ts#AcmeCheckbox"
+      ]
+    },
+    {
+      "name": "AcmeCheckboxCard",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/checkbox-card/checkbox-card.ts#AcmeCheckboxCard"
+      ]
+    },
+    {
+      "name": "AcmeCheckboxGroup",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/checkbox-group/checkbox-group.ts#AcmeCheckboxGroup"
+      ]
+    },
+    {
+      "name": "AcmeCode",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/code/code.ts#AcmeCode"
+      ]
+    },
+    {
+      "name": "AcmeCodeBlock",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/code-block/code-block.ts#AcmeCodeBlock"
+      ]
+    },
+    {
+      "name": "AcmeCollapsible",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/collapsible/collapsible.ts#AcmeCollapsible"
+      ]
+    },
+    {
+      "name": "AcmeCollapsibleContent",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/collapsible-content/collapsible-content.ts#AcmeCollapsibleContent"
+      ]
+    },
+    {
+      "name": "AcmeCollapsibleTrigger",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/collapsible-trigger/collapsible-trigger.ts#AcmeCollapsibleTrigger"
+      ]
+    },
+    {
+      "name": "AcmeCombobox",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/combobox/combobox.ts#AcmeCombobox"
+      ]
+    },
+    {
+      "name": "AcmeCommandGroup",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/command-group/command-group.ts#AcmeCommandGroup"
+      ]
+    },
+    {
+      "name": "AcmeCommandItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/command-item/command-item.ts#AcmeCommandItem"
+      ]
+    },
+    {
+      "name": "AcmeCommandMenu",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/command-menu/command-menu.ts#AcmeCommandMenu"
+      ]
+    },
+    {
+      "name": "AcmeCommandSeparator",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/command-separator/command-separator.ts#AcmeCommandSeparator"
+      ]
+    },
+    {
+      "name": "AcmeContextMenu",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/context-menu/context-menu.ts#AcmeContextMenu"
+      ]
+    },
+    {
+      "name": "AcmeCopyButton",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/copy-button/copy-button.ts#AcmeCopyButton"
+      ]
+    },
+    {
+      "name": "AcmeDataList",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/data-list/data-list.ts#AcmeDataList"
+      ]
+    },
+    {
+      "name": "AcmeDialog",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/dialog/dialog.ts#AcmeDialog"
+      ]
+    },
+    {
+      "name": "AcmeDialogClose",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/dialog-close/dialog-close.ts#AcmeDialogClose"
+      ]
+    },
+    {
+      "name": "AcmeDialogTrigger",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/dialog-trigger/dialog-trigger.ts#AcmeDialogTrigger"
+      ]
+    },
+    {
+      "name": "AcmeDisabledWall",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/disabled-wall/disabled-wall.ts#AcmeDisabledWall"
+      ]
+    },
+    {
+      "name": "AcmeDrawer",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/drawer/drawer.ts#AcmeDrawer"
+      ]
+    },
+    {
+      "name": "AcmeDrawerClose",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/drawer-close/drawer-close.ts#AcmeDrawerClose"
+      ]
+    },
+    {
+      "name": "AcmeDrawerTrigger",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/drawer-trigger/drawer-trigger.ts#AcmeDrawerTrigger"
+      ]
+    },
+    {
+      "name": "AcmeElement",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/base.ts#AcmeElement"
+      ]
+    },
+    {
+      "name": "AcmeEmptyState",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/empty-state/empty-state.ts#AcmeEmptyState"
+      ]
+    },
+    {
+      "name": "AcmeEmptyStateContent",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/empty-state-content/empty-state-content.ts#AcmeEmptyStateContent"
+      ]
+    },
+    {
+      "name": "AcmeEmptyStateIndicator",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/empty-state-indicator/empty-state-indicator.ts#AcmeEmptyStateIndicator"
+      ]
+    },
+    {
+      "name": "AcmeFeedback",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/feedback/feedback.ts#AcmeFeedback"
+      ]
+    },
+    {
+      "name": "AcmeField",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/field/field.ts#AcmeField"
+      ]
+    },
+    {
+      "name": "AcmeFieldset",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/fieldset/fieldset.ts#AcmeFieldset"
+      ]
+    },
+    {
+      "name": "AcmeFlex",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/flex/flex.ts#AcmeFlex"
+      ]
+    },
+    {
+      "name": "AcmeFlowDiagram",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/flow-diagram/flow-diagram.ts#AcmeFlowDiagram"
+      ]
+    },
+    {
+      "name": "AcmeFlowNode",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/flow-node/flow-node.ts#AcmeFlowNode"
+      ]
+    },
+    {
+      "name": "AcmeFormatByte",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/format-byte/format-byte.ts#AcmeFormatByte"
+      ]
+    },
+    {
+      "name": "AcmeFormatNumber",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/format-number/format-number.ts#AcmeFormatNumber"
+      ]
+    },
+    {
+      "name": "AcmeGrid",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/grid/grid.ts#AcmeGrid"
+      ]
+    },
+    {
+      "name": "AcmeGroup",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/group/group.ts#AcmeGroup"
+      ]
+    },
+    {
+      "name": "AcmeHeading",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/heading/heading.ts#AcmeHeading"
+      ]
+    },
+    {
+      "name": "AcmeHoverCard",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/hover-card/hover-card.ts#AcmeHoverCard"
+      ]
+    },
+    {
+      "name": "AcmeHStack",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/h-stack/h-stack.ts#AcmeHStack"
+      ]
+    },
+    {
+      "name": "AcmeIconButton",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/icon-button/icon-button.ts#AcmeIconButton"
+      ]
+    },
+    {
+      "name": "AcmeIconTile",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/icon-tile/icon-tile.ts#AcmeIconTile"
+      ]
+    },
+    {
+      "name": "AcmeInput",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/input/input.ts#AcmeInput"
+      ]
+    },
+    {
+      "name": "AcmeInset",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/inset/inset.ts#AcmeInset"
+      ]
+    },
+    {
+      "name": "AcmeItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/item/item.ts#AcmeItem"
+      ]
+    },
+    {
+      "name": "AcmeItemActions",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/item-actions/item-actions.ts#AcmeItemActions"
+      ]
+    },
+    {
+      "name": "AcmeItemContent",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/item-content/item-content.ts#AcmeItemContent"
+      ]
+    },
+    {
+      "name": "AcmeItemDescription",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/item-description/item-description.ts#AcmeItemDescription"
+      ]
+    },
+    {
+      "name": "AcmeItemHeading",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/item-heading/item-heading.ts#AcmeItemHeading"
+      ]
+    },
+    {
+      "name": "AcmeItemMedia",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/item-media/item-media.ts#AcmeItemMedia"
+      ]
+    },
+    {
+      "name": "AcmeItemMetadata",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/item-metadata/item-metadata.ts#AcmeItemMetadata"
+      ]
+    },
+    {
+      "name": "AcmeJsonView",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/json-view/json-view.ts#AcmeJsonView"
+      ]
+    },
+    {
+      "name": "AcmeKbd",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/kbd/kbd.ts#AcmeKbd"
+      ]
+    },
+    {
+      "name": "AcmeLabel",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/label/label.ts#AcmeLabel"
+      ]
+    },
+    {
+      "name": "AcmeLegend",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/legend/legend.ts#AcmeLegend"
+      ]
+    },
+    {
+      "name": "AcmeLegendItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/legend-item/legend-item.ts#AcmeLegendItem"
+      ]
+    },
+    {
+      "name": "AcmeLink",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/link/link.ts#AcmeLink"
+      ]
+    },
+    {
+      "name": "AcmeList",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/list/list.ts#AcmeList"
+      ]
+    },
+    {
+      "name": "AcmeLoadMore",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/load-more/load-more.ts#AcmeLoadMore"
+      ]
+    },
+    {
+      "name": "AcmeMarkdown",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/markdown/markdown.ts#AcmeMarkdown"
+      ]
+    },
+    {
+      "name": "AcmeMenu",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/menu/menu.ts#AcmeMenu"
+      ]
+    },
+    {
+      "name": "AcmeMenuContent",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/menu-content/menu-content.ts#AcmeMenuContent"
+      ]
+    },
+    {
+      "name": "AcmeMenuItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/menu-item/menu-item.ts#AcmeMenuItem"
+      ]
+    },
+    {
+      "name": "AcmeMenuSection",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/menu-section/menu-section.ts#AcmeMenuSection"
+      ]
+    },
+    {
+      "name": "AcmeMenuSeparator",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/menu-separator/menu-separator.ts#AcmeMenuSeparator"
+      ]
+    },
+    {
+      "name": "AcmeMenuTrigger",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/menu-trigger/menu-trigger.ts#AcmeMenuTrigger"
+      ]
+    },
+    {
+      "name": "AcmeMeter",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/meter/meter.ts#AcmeMeter"
+      ]
+    },
+    {
+      "name": "AcmeMiddleTruncate",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/middle-truncate/middle-truncate.ts#AcmeMiddleTruncate"
+      ]
+    },
+    {
+      "name": "AcmeMultiSelect",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/multi-select/multi-select.ts#AcmeMultiSelect"
+      ]
+    },
+    {
+      "name": "AcmeNumberInput",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/number-input/number-input.ts#AcmeNumberInput"
+      ]
+    },
+    {
+      "name": "AcmeNumberInputDecrement",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/number-input-decrement/number-input-decrement.ts#AcmeNumberInputDecrement"
+      ]
+    },
+    {
+      "name": "AcmeNumberInputIncrement",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/number-input-increment/number-input-increment.ts#AcmeNumberInputIncrement"
+      ]
+    },
+    {
+      "name": "AcmeOption",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/option/option.ts#AcmeOption"
+      ]
+    },
+    {
+      "name": "AcmePagination",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pagination/pagination.ts#AcmePagination"
+      ]
+    },
+    {
+      "name": "AcmePaginationEllipsis",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pagination-ellipsis/pagination-ellipsis.ts#AcmePaginationEllipsis"
+      ]
+    },
+    {
+      "name": "AcmePaginationItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pagination-item/pagination-item.ts#AcmePaginationItem"
+      ]
+    },
+    {
+      "name": "AcmePaginationNext",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pagination-next/pagination-next.ts#AcmePaginationNext"
+      ]
+    },
+    {
+      "name": "AcmePaginationPageSize",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pagination-page-size/pagination-page-size.ts#AcmePaginationPageSize"
+      ]
+    },
+    {
+      "name": "AcmePaginationPosition",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pagination-position/pagination-position.ts#AcmePaginationPosition"
+      ]
+    },
+    {
+      "name": "AcmePaginationPrevious",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pagination-previous/pagination-previous.ts#AcmePaginationPrevious"
+      ]
+    },
+    {
+      "name": "AcmePasswordInput",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/password-input/password-input.ts#AcmePasswordInput"
+      ]
+    },
+    {
+      "name": "AcmePill",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pill/pill.ts#AcmePill"
+      ]
+    },
+    {
+      "name": "AcmePinInput",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pin-input/pin-input.ts#AcmePinInput"
+      ]
+    },
+    {
+      "name": "AcmePinInputField",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/pin-input-field/pin-input-field.ts#AcmePinInputField"
+      ]
+    },
+    {
+      "name": "AcmeProgress",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/progress/progress.ts#AcmeProgress"
+      ]
+    },
+    {
+      "name": "AcmeQuote",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/quote/quote.ts#AcmeQuote"
+      ]
+    },
+    {
+      "name": "AcmeRadio",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/radio/radio.ts#AcmeRadio"
+      ]
+    },
+    {
+      "name": "AcmeRadioCard",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/radio-card/radio-card.ts#AcmeRadioCard"
+      ]
+    },
+    {
+      "name": "AcmeRadioGroup",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/radio-group/radio-group.ts#AcmeRadioGroup"
+      ]
+    },
+    {
+      "name": "AcmeRelativeTime",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/relative-time/relative-time.ts#AcmeRelativeTime"
+      ]
+    },
+    {
+      "name": "AcmeResizable",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/resizable/resizable.ts#AcmeResizable"
+      ]
+    },
+    {
+      "name": "AcmeResizablePanel",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/resizable-panel/resizable-panel.ts#AcmeResizablePanel"
+      ]
+    },
+    {
+      "name": "AcmeResizeHandle",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/resize-handle/resize-handle.ts#AcmeResizeHandle"
+      ]
+    },
+    {
+      "name": "AcmeScrollArea",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/scroll-area/scroll-area.ts#AcmeScrollArea"
+      ]
+    },
+    {
+      "name": "AcmeScrollbar",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/scrollbar/scrollbar.ts#AcmeScrollbar"
+      ]
+    },
+    {
+      "name": "AcmeScrollButton",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/scroll-button/scroll-button.ts#AcmeScrollButton"
+      ]
+    },
+    {
+      "name": "AcmeScrollCorner",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/scroll-corner/scroll-corner.ts#AcmeScrollCorner"
+      ]
+    },
+    {
+      "name": "AcmeScrollThumb",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/scroll-thumb/scroll-thumb.ts#AcmeScrollThumb"
+      ]
+    },
+    {
+      "name": "AcmeScrollViewport",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/scroll-viewport/scroll-viewport.ts#AcmeScrollViewport"
+      ]
+    },
+    {
+      "name": "AcmeSearch",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/search/search.ts#AcmeSearch"
+      ]
+    },
+    {
+      "name": "AcmeSegmentedControl",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/segmented-control/segmented-control.ts#AcmeSegmentedControl"
+      ]
+    },
+    {
+      "name": "AcmeSegmentedControlItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/segmented-control-item/segmented-control-item.ts#AcmeSegmentedControlItem"
+      ]
+    },
+    {
+      "name": "AcmeSelect",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/select/select.ts#AcmeSelect"
+      ]
+    },
+    {
+      "name": "AcmeSeparator",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/separator/separator.ts#AcmeSeparator"
+      ]
+    },
+    {
+      "name": "AcmeShow",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/show/show.ts#AcmeShow"
+      ]
+    },
+    {
+      "name": "AcmeShowMore",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/show-more/show-more.ts#AcmeShowMore"
+      ]
+    },
+    {
+      "name": "AcmeSidebar",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/sidebar/sidebar.ts#AcmeSidebar"
+      ]
+    },
+    {
+      "name": "AcmeSidebarContent",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/sidebar-content/sidebar-content.ts#AcmeSidebarContent"
+      ]
+    },
+    {
+      "name": "AcmeSidebarTrigger",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/sidebar-trigger/sidebar-trigger.ts#AcmeSidebarTrigger"
+      ]
+    },
+    {
+      "name": "AcmeSimpleGrid",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/simple-grid/simple-grid.ts#AcmeSimpleGrid"
+      ]
+    },
+    {
+      "name": "AcmeSkeleton",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/skeleton/skeleton.ts#AcmeSkeleton"
+      ]
+    },
+    {
+      "name": "AcmeSlider",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/slider/slider.ts#AcmeSlider"
+      ]
+    },
+    {
+      "name": "AcmeSnippet",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/snippet/snippet.ts#AcmeSnippet"
+      ]
+    },
+    {
+      "name": "AcmeSparkline",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/sparkline/sparkline.ts#AcmeSparkline"
+      ]
+    },
+    {
+      "name": "AcmeSpinner",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/spinner/spinner.ts#AcmeSpinner"
+      ]
+    },
+    {
+      "name": "AcmeSplitButton",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/split-button/split-button.ts#AcmeSplitButton"
+      ]
+    },
+    {
+      "name": "AcmeSplitButtonItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/split-button-item/split-button-item.ts#AcmeSplitButtonItem"
+      ]
+    },
+    {
+      "name": "AcmeStack",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/stack/stack.ts#AcmeStack"
+      ]
+    },
+    {
+      "name": "AcmeStat",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/stat/stat.ts#AcmeStat"
+      ]
+    },
+    {
+      "name": "AcmeStatChange",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/stat-change/stat-change.ts#AcmeStatChange"
+      ]
+    },
+    {
+      "name": "AcmeStatDescription",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/stat-description/stat-description.ts#AcmeStatDescription"
+      ]
+    },
+    {
+      "name": "AcmeStatFooter",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/stat-footer/stat-footer.ts#AcmeStatFooter"
+      ]
+    },
+    {
+      "name": "AcmeStatLabel",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/stat-label/stat-label.ts#AcmeStatLabel"
+      ]
+    },
+    {
+      "name": "AcmeStatUnit",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/stat-unit/stat-unit.ts#AcmeStatUnit"
+      ]
+    },
+    {
+      "name": "AcmeStatus",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/status/status.ts#AcmeStatus"
+      ]
+    },
+    {
+      "name": "AcmeStatValue",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/stat-value/stat-value.ts#AcmeStatValue"
+      ]
+    },
+    {
+      "name": "AcmeStep",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/step/step.ts#AcmeStep"
+      ]
+    },
+    {
+      "name": "AcmeStepContent",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/step-content/step-content.ts#AcmeStepContent"
+      ]
+    },
+    {
+      "name": "AcmeSteps",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/steps/steps.ts#AcmeSteps"
+      ]
+    },
+    {
+      "name": "AcmeStepsNext",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/steps-next/steps-next.ts#AcmeStepsNext"
+      ]
+    },
+    {
+      "name": "AcmeStepsPrevious",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/steps-previous/steps-previous.ts#AcmeStepsPrevious"
+      ]
+    },
+    {
+      "name": "AcmeStepTrigger",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/step-trigger/step-trigger.ts#AcmeStepTrigger"
+      ]
+    },
+    {
+      "name": "AcmeStrong",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/strong/strong.ts#AcmeStrong"
+      ]
+    },
+    {
+      "name": "AcmeSwitch",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/switch/switch.ts#AcmeSwitch"
+      ]
+    },
+    {
+      "name": "AcmeTab",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/tab/tab.ts#AcmeTab"
+      ]
+    },
+    {
+      "name": "AcmeTable",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/table/table.ts#AcmeTable"
+      ]
+    },
+    {
+      "name": "AcmeTabPanel",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/tab-panel/tab-panel.ts#AcmeTabPanel"
+      ]
+    },
+    {
+      "name": "AcmeTabs",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/tabs/tabs.ts#AcmeTabs"
+      ]
+    },
+    {
+      "name": "AcmeTag",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/tag/tag.ts#AcmeTag"
+      ]
+    },
+    {
+      "name": "AcmeText",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/text/text.ts#AcmeText"
+      ]
+    },
+    {
+      "name": "AcmeTextarea",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/textarea/textarea.ts#AcmeTextarea"
+      ]
+    },
+    {
+      "name": "AcmeTheme",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/theme/theme.ts#AcmeTheme"
+      ]
+    },
+    {
+      "name": "AcmeThemeSwitcher",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/theme-switcher/theme-switcher.ts#AcmeThemeSwitcher"
+      ]
+    },
+    {
+      "name": "AcmeTimeline",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/timeline/timeline.ts#AcmeTimeline"
+      ]
+    },
+    {
+      "name": "AcmeTimelineItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/timeline-item/timeline-item.ts#AcmeTimelineItem"
+      ]
+    },
+    {
+      "name": "AcmeToast",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/toast/toast.ts#AcmeToast"
+      ]
+    },
+    {
+      "name": "AcmeToastViewport",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/toast-viewport/toast-viewport.ts#AcmeToastViewport"
+      ]
+    },
+    {
+      "name": "AcmeToc",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/toc/toc.ts#AcmeToc"
+      ]
+    },
+    {
+      "name": "AcmeToggleButton",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/toggle-button/toggle-button.ts#AcmeToggleButton"
+      ]
+    },
+    {
+      "name": "AcmeToggleTip",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/toggle-tip/toggle-tip.ts#AcmeToggleTip"
+      ]
+    },
+    {
+      "name": "AcmeToolbar",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/toolbar/toolbar.ts#AcmeToolbar"
+      ]
+    },
+    {
+      "name": "AcmeTooltip",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/tooltip/tooltip.ts#AcmeTooltip"
+      ]
+    },
+    {
+      "name": "AcmeTreeItem",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/tree-item/tree-item.ts#AcmeTreeItem"
+      ]
+    },
+    {
+      "name": "AcmeTreeView",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/tree-view/tree-view.ts#AcmeTreeView"
+      ]
+    },
+    {
+      "name": "AcmeVideo",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/video/video.ts#AcmeVideo"
+      ]
+    },
+    {
+      "name": "AcmeVStack",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "src/components/v-stack/v-stack.ts#AcmeVStack"
+      ]
+    },
+    {
+      "name": "AvatarMember",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/avatar-group/avatar-group.ts#AvatarMember"
+      ]
+    },
+    {
+      "name": "AvatarSize",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/avatar/avatar.ts#AvatarSize"
+      ]
+    },
+    {
+      "name": "BadgeSize",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/badge/badge.ts#BadgeSize"
+      ]
+    },
+    {
+      "name": "BadgeVariant",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/badge/badge.ts#BadgeVariant"
+      ]
+    },
+    {
+      "name": "bindField",
+      "flags": 16,
+      "value": true,
+      "origins": [
+        "src/shared/form.ts#bind"
+      ]
+    },
+    {
+      "name": "boolish",
+      "flags": 2,
+      "value": true,
+      "origins": [
+        "src/base.ts#boolish"
+      ]
+    },
+    {
+      "name": "ButtonSize",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/action-element.ts#ButtonSize"
+      ]
+    },
+    {
+      "name": "ButtonVariant",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/action-element.ts#ButtonVariant"
+      ]
+    },
+    {
+      "name": "CalendarPreset",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/calendar-value.ts#CalendarPreset"
+      ]
+    },
+    {
+      "name": "CalendarValue",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/calendar-value.ts#CalendarValue"
+      ]
+    },
+    {
+      "name": "ChartRow",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/chart-data.ts#ChartRow"
+      ]
+    },
+    {
+      "name": "ChartSeries",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/chart-data.ts#ChartSeries"
+      ]
+    },
+    {
+      "name": "ComboboxFilter",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/combobox/combobox.ts#ComboboxFilter"
+      ]
+    },
+    {
+      "name": "CommandMenuFilter",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/command-ranking.ts#CommandMenuFilter"
+      ]
+    },
+    {
+      "name": "configureBreakpoints",
+      "flags": 2,
+      "value": true,
+      "origins": [
+        "src/shared/breakpoints.ts#configureBreakpoints"
+      ]
+    },
+    {
+      "name": "configureFlowDiagram",
+      "flags": 16,
+      "value": true,
+      "origins": [
+        "src/shared/flow-configuration.ts#configureFlowDiagram"
+      ]
+    },
+    {
+      "name": "configureIcons",
+      "flags": 16,
+      "value": true,
+      "origins": [
+        "src/shared/icon-artwork.ts#configureIcons"
+      ]
+    },
+    {
+      "name": "configureMessages",
+      "flags": 16,
+      "value": true,
+      "origins": [
+        "src/shared/messages.ts#configureMessages"
+      ]
+    },
+    {
+      "name": "ContentRenderer",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/owned-content.ts#ContentRenderer"
+      ]
+    },
+    {
+      "name": "createToastStore",
+      "flags": 16,
+      "value": true,
+      "origins": [
+        "src/shared/toast-store.ts#createToastStore"
+      ]
+    },
+    {
+      "name": "cut",
+      "flags": 2,
+      "value": true,
+      "origins": [
+        "src/components/middle-truncate/middle-truncate.ts#cut"
+      ]
+    },
+    {
+      "name": "Cut",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/middle-truncate/middle-truncate.ts#Cut"
+      ]
+    },
+    {
+      "name": "DialogFocusTarget",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/dialog-context.ts#DialogFocusTarget"
+      ]
+    },
+    {
+      "name": "DialogReason",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/dialog-context.ts#DialogReason"
+      ]
+    },
+    {
+      "name": "expandSelection",
+      "flags": 2,
+      "value": true,
+      "origins": [
+        "src/components/middle-truncate/middle-truncate.ts#expandSelection"
+      ]
+    },
+    {
+      "name": "FeedbackTopic",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/feedback-data.ts#FeedbackTopic"
+      ]
+    },
+    {
+      "name": "FeedbackValue",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/feedback-data.ts#FeedbackValue"
+      ]
+    },
+    {
+      "name": "fitCut",
+      "flags": 2,
+      "value": true,
+      "origins": [
+        "src/components/middle-truncate/middle-truncate.ts#fitCut"
+      ]
+    },
+    {
+      "name": "FlowDiagramConfiguration",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/flow-configuration.ts#FlowDiagramConfiguration"
+      ]
+    },
+    {
+      "name": "FlowEdge",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/flow-data.ts#FlowEdge"
+      ]
+    },
+    {
+      "name": "FlowNode",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/flow-data.ts#FlowNode"
+      ]
+    },
+    {
+      "name": "FlowPort",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/flow-data.ts#FlowPort"
+      ]
+    },
+    {
+      "name": "GroupOrientation",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/group/group.ts#GroupOrientation"
+      ]
+    },
+    {
+      "name": "IconDefaults",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/icon-artwork.ts#IconDefaults"
+      ]
+    },
+    {
+      "name": "IconFamily",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/icon-artwork.ts#IconFamily"
+      ]
+    },
+    {
+      "name": "InputSize",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/input/input.ts#InputSize"
+      ]
+    },
+    {
+      "name": "InputType",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/input/input.ts#InputType"
+      ]
+    },
+    {
+      "name": "LayoutStyleValue",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/layout-element.ts#LayoutStyleValue"
+      ]
+    },
+    {
+      "name": "Messages",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/messages.ts#Messages"
+      ]
+    },
+    {
+      "name": "MessageSize",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/message-element.ts#MessageSize"
+      ]
+    },
+    {
+      "name": "MessageVariant",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/message-element.ts#MessageVariant"
+      ]
+    },
+    {
+      "name": "MeterSize",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/measurement.ts#MeterSize"
+      ]
+    },
+    {
+      "name": "NumberInputFormatOptions",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/number-input/number-input.ts#NumberInputFormatOptions"
+      ]
+    },
+    {
+      "name": "PinInputType",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/pin-value.ts#PinInputType"
+      ]
+    },
+    {
+      "name": "ProgressVariant",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/progress/progress.ts#ProgressVariant"
+      ]
+    },
+    {
+      "name": "registerTheme",
+      "flags": 2,
+      "value": true,
+      "origins": [
+        "src/shared/theme-registry.ts#registerTheme"
+      ]
+    },
+    {
+      "name": "ResizableLayout",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/resizable-layout.ts#Layout"
+      ]
+    },
+    {
+      "name": "ResponsiveInput",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/responsive.ts#ResponsiveInput"
+      ]
+    },
+    {
+      "name": "sharedCss",
+      "flags": 2,
+      "value": true,
+      "origins": [
+        "src/base.ts#sharedCss"
+      ]
+    },
+    {
+      "name": "SpinnerSize",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/spinner/spinner.ts#SpinnerSize"
+      ]
+    },
+    {
+      "name": "StatusVariant",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/status/status.ts#StatusVariant"
+      ]
+    },
+    {
+      "name": "StructuralTag",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/layout-element.ts#StructuralTag"
+      ]
+    },
+    {
+      "name": "styleInputs",
+      "flags": 2,
+      "value": true,
+      "origins": [
+        "src/shared/style-inputs.ts#styleInputs"
+      ]
+    },
+    {
+      "name": "TanStackFormController",
+      "flags": 32,
+      "value": true,
+      "origins": [
+        "node_modules/@tanstack/lit-form/dist/tanstack-form-controller.d.ts#TanStackFormController"
+      ]
+    },
+    {
+      "name": "TextareaSize",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/components/textarea/textarea.ts#TextareaSize"
+      ]
+    },
+    {
+      "name": "ThemeAppearance",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/theme-scope.ts#ThemeAppearance"
+      ]
+    },
+    {
+      "name": "ThemeDefinition",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/theme-tokens.ts#ThemeDefinition"
+      ]
+    },
+    {
+      "name": "ThemeDensity",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/theme-scope.ts#ThemeDensity"
+      ]
+    },
+    {
+      "name": "ToastDismissReason",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/toast-store.ts#ToastDismissReason"
+      ]
+    },
+    {
+      "name": "ToastInput",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/toast-store.ts#ToastInput"
+      ]
+    },
+    {
+      "name": "ToastPatch",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/toast-store.ts#ToastPatch"
+      ]
+    },
+    {
+      "name": "ToastRecord",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/toast-store.ts#ToastRecord"
+      ]
+    },
+    {
+      "name": "ToastStore",
+      "flags": 64,
+      "value": false,
+      "origins": [
+        "src/shared/toast-store.ts#ToastStore"
+      ]
+    },
+    {
+      "name": "ToastVariant",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/toast-store.ts#ToastVariant"
+      ]
+    },
+    {
+      "name": "TocItem",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/toc-model.ts#TocItem"
+      ]
+    },
+    {
+      "name": "TreeNode",
+      "flags": 524288,
+      "value": false,
+      "origins": [
+        "src/shared/tree-model.ts#TreeNode"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { createScopedElement } from "../../shared/scoped-render-root";
 import { createAtom } from "@tanstack/lit-store";
 import { html } from "lit";
 import { property } from "lit/decorators.js";
@@ -230,7 +231,7 @@ export class AcmeJsonView extends AcmeSemanticElement {
     item.setAttribute("part", "item");
     row.className = "row";
     toggle.setAttribute("part", "toggle");
-    const icon = document.createElement("acme-chevron-right-icon");
+    const icon = createScopedElement(this, "acme-chevron-right-icon");
     icon.setAttribute("size", "16px");
     icon.setAttribute("aria-hidden", "true");
     toggle.append(icon);

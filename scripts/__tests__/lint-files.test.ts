@@ -6,6 +6,8 @@ test("source selection excludes generated output but includes its producers and 
   for (const file of [
     "src/generated/components/button/button.styles.ts",
     "src/define/button.ts",
+    "src/register/button.ts",
+    "src/internal/register/example.ts",
     "src/internal/define/example.ts",
     "src/all.ts",
     "packages/react/.build-src/button.ts",

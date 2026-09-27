@@ -122,7 +122,9 @@ test("the manifest matches every registered Lit class and its runtime property a
         prototype = Object.getPrototypeOf(prototype);
       }
       if (prototype && Object.getOwnPropertyDescriptor(prototype, name)?.set) {
-        expect((element.members?.find((member) => member.name === name) as { readonly?: boolean }).readonly ?? false).toBe(false);
+        const member = element.members?.find((member) => member.name === name);
+        expect(member).toBeDefined();
+        expect((member as { readonly?: boolean } | undefined)?.readonly ?? false).toBe(false);
       }
     }
   }
@@ -323,4 +325,31 @@ test("manifest normalization rewrites shared reference objects once", () => {
   expect(first.members?.[0]?.inheritedFrom?.module).toBe("dist/shared/native-form-element.js");
   expect(second.superclass?.module).toBe("dist/shared/native-form-element.js");
   expect(shared.module).toBe("src/shared/native-form-element.ts");
+});
+
+test("delegated registration retains standard element definitions and class contracts", async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "acme-register-manifest-"));
+  try {
+    fs.mkdirSync(path.join(root, "src/shared"), { recursive: true });
+    fs.mkdirSync(corePackageDirectory(root), { recursive: true });
+    fs.symlinkSync(path.resolve(import.meta.dir, "../../node_modules"), path.join(root, "node_modules"), "dir");
+    fs.writeFileSync(corePackageManifestPath(root), JSON.stringify({ name: "fixture", version: "0.0.0" }));
+    fs.copyFileSync(path.resolve(import.meta.dir, "../../src/shared/registration.ts"), path.join(root, "src/shared/registration.ts"));
+    fs.writeFileSync(
+      path.join(root, "src/probe.ts"),
+      'import {LitElement} from "lit";import {property} from "lit/decorators.js";export class Probe extends LitElement { @property() value="ready"; } declare global { interface HTMLElementTagNameMap {"acme-probe":Probe;} }',
+    );
+    writeEntries(root);
+    const { manifest } = await analyzeManifest(root);
+    const declaration = manifest.modules.find((module) => module.path === "dist/probe.js")!.declarations!.find((value) => value.name === "Probe") as ClassDeclaration & CustomElement;
+    expect(declaration.tagName).toBe("acme-probe");
+    expect(declaration.attributes!.find((attribute) => attribute.name === "value")?.default).toBe('"ready"');
+    expect(manifest.modules.find((module) => module.path === "dist/define/probe.js")?.exports).toContainEqual({
+      kind: "custom-element-definition",
+      name: "acme-probe",
+      declaration: { name: "Probe", module: "dist/probe.js" },
+    });
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });

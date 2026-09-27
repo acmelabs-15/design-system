@@ -1,0 +1,167 @@
+{
+  "capturedAt": "2026-09-27T00:35:57.460Z",
+  "bun": "1.4.2",
+  "archiveVersion": "0.3.0",
+  "archiveSha256": "c21217e01e9179cdfe8313aaead4c5e174637799ad36d4cf7d86509cb6d4c12c",
+  "probeSha256": "091724b11114b6a2615409cf3e6c3677214a1e7e04a452c14c131c6ef246438e",
+  "consumer": "/var/folders/b6/2r9mrtsj70s3x013xbhxt2yr0000gn/T/acme-m26-bundle-3bIxJy",
+  "notes": "Current0.3 snapshot before unrelated pending attribute-reset fixes; Heading unchanged",
+  "reports": [
+    {
+      "engine": "chromium",
+      "browser": "154.0.8037.57",
+      "splitting": false,
+      "outputs": 2,
+      "passed": false,
+      "results": [
+        {
+          "name": "class-only package import stays inert",
+          "ok": false
+        },
+        {
+          "name": "packed text styles and heading semantics are present",
+          "ok": true
+        },
+        {
+          "name": "packed inline code and keyboard labels render",
+          "ok": true
+        },
+        {
+          "name": "packed relative time retains epoch zero",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "splitting": false,
+      "outputs": 2,
+      "passed": false,
+      "results": [
+        {
+          "name": "class-only package import stays inert",
+          "ok": false
+        },
+        {
+          "name": "packed text styles and heading semantics are present",
+          "ok": true
+        },
+        {
+          "name": "packed inline code and keyboard labels render",
+          "ok": true
+        },
+        {
+          "name": "packed relative time retains epoch zero",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "splitting": false,
+      "outputs": 2,
+      "passed": false,
+      "results": [
+        {
+          "name": "class-only package import stays inert",
+          "ok": false
+        },
+        {
+          "name": "packed text styles and heading semantics are present",
+          "ok": true
+        },
+        {
+          "name": "packed inline code and keyboard labels render",
+          "ok": true
+        },
+        {
+          "name": "packed relative time retains epoch zero",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "browser": "154.0.8037.57",
+      "splitting": true,
+      "outputs": 20,
+      "passed": true,
+      "results": [
+        {
+          "name": "class-only package import stays inert",
+          "ok": true
+        },
+        {
+          "name": "packed text styles and heading semantics are present",
+          "ok": true
+        },
+        {
+          "name": "packed inline code and keyboard labels render",
+          "ok": true
+        },
+        {
+          "name": "packed relative time retains epoch zero",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "splitting": true,
+      "outputs": 20,
+      "passed": true,
+      "results": [
+        {
+          "name": "class-only package import stays inert",
+          "ok": true
+        },
+        {
+          "name": "packed text styles and heading semantics are present",
+          "ok": true
+        },
+        {
+          "name": "packed inline code and keyboard labels render",
+          "ok": true
+        },
+        {
+          "name": "packed relative time retains epoch zero",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "browser": "26.6",
+      "splitting": true,
+      "outputs": 20,
+      "passed": true,
+      "results": [
+        {
+          "name": "class-only package import stays inert",
+          "ok": true
+        },
+        {
+          "name": "packed text styles and heading semantics are present",
+          "ok": true
+        },
+        {
+          "name": "packed inline code and keyboard labels render",
+          "ok": true
+        },
+        {
+          "name": "packed relative time retains epoch zero",
+          "ok": true
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

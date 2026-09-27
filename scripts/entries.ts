@@ -22,7 +22,7 @@ function sourceFiles(directory: string): string[] {
     .flatMap((entry) => {
       const file = path.join(directory, entry.name);
       if (entry.isDirectory()) {
-        return entry.name === "__tests__" || entry.name === "define" ? [] : sourceFiles(file);
+        return entry.name === "__tests__" || entry.name === "define" || entry.name === "register" ? [] : sourceFiles(file);
       }
       return entry.isFile() && entry.name.endsWith(".ts") && entry.name !== "all.ts" ? [file] : [];
     })
@@ -196,11 +196,14 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
     return names;
   };
 
+  const isScopedFactory = (node: ts.Node): boolean =>
+    ts.isFunctionDeclaration(node) && node.name?.text === "createScopedElement" && path.resolve(node.getSourceFile().fileName) === path.join(root, "src/shared/scoped-render-root.ts");
+
   for (const { entry, declaration } of records.values()) {
     const tags = new Set<string>();
     const visited = new Set<ts.Node>();
     const scan = (node: ts.Node): void => {
-      if (visited.has(node) || ts.isTypeNode(node) || ts.isImportDeclaration(node)) {
+      if (visited.has(node) || ts.isTypeNode(node) || ts.isImportDeclaration(node) || isScopedFactory(node)) {
         return;
       }
       visited.add(node);
@@ -220,6 +223,17 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
               if (tag.startsWith("acme-")) {
                 tags.add(tag);
               }
+            }
+          }
+        }
+      }
+      if (ts.isCallExpression(node) && ts.isIdentifier(node.expression)) {
+        const scopedFactory = resolve(node.expression)?.declarations?.some(isScopedFactory);
+        const name = scopedFactory ? node.arguments[1] : undefined;
+        if (name) {
+          for (const tag of createdTags(name)) {
+            if (tag.startsWith("acme-")) {
+              tags.add(tag);
             }
           }
         }
@@ -286,28 +300,35 @@ export function collectComponents(root = DEFAULT_ROOT): ComponentEntry[] {
 }
 
 export const definitionPath = (entry: ComponentEntry): string => (entry.internal ? "internal/define/" : "define/") + entry.name;
+export const registrationPath = (entry: ComponentEntry): string => (entry.internal ? "internal/register/" : "register/") + entry.name;
 
 export function writeEntries(root = DEFAULT_ROOT): ComponentEntry[] {
   root = path.resolve(root);
   const entries = collectComponents(root);
-  const directories = [path.join(root, "src/define"), path.join(root, "src/internal/define")];
+  const directories = ["define", "internal/define", "register", "internal/register"].map((directory) => path.join(root, "src", directory));
   const byName = new Map(entries.map((entry) => [entry.name, entry]));
   const outputs = new Map<string, string>();
   for (const entry of entries) {
     const file = path.join(root, "src", definitionPath(entry) + ".ts");
-    const directory = path.dirname(file);
+    const registrationFile = path.join(root, "src", registrationPath(entry) + ".ts");
+    const directory = path.dirname(registrationFile);
     const module = portable(path.relative(directory, path.join(root, entry.file))).replace(/\.ts$/, "");
+    const relativeImport = (target: string) => {
+      const relative = portable(path.relative(directory, path.join(root, "src", target)));
+      return relative.startsWith(".") ? relative : "./" + relative;
+    };
     outputs.set(
-      file,
+      registrationFile,
       HEADER +
-        entry.dependencies
-          .map((name) => {
-            const relative = portable(path.relative(directory, path.join(root, "src", definitionPath(byName.get(name)!))));
-            return `import "${relative.startsWith(".") ? relative : "./" + relative}";\n`;
-          })
-          .join("") +
-        `import "${module.startsWith(".") ? module : `./${module}`}";\nimport { ${entry.className} } from "${module.startsWith(".") ? module : `./${module}`}";\n\ncustomElements.define("${entry.tag}", ${entry.className});\n`,
+        entry.dependencies.map((name, index) => `import { register as register${index} } from "${relativeImport(registrationPath(byName.get(name)!))}";\n`).join("") +
+        `import { ${entry.className} } from "${module.startsWith(".") ? module : `./${module}`}";\n` +
+        `import { registerElement } from "${relativeImport("shared/registration")}";\n\n` +
+        `export function register(registry: CustomElementRegistry): void {\n` +
+        entry.dependencies.map((_, index) => `  register${index}(registry);\n`).join("") +
+        `  registerElement(registry, "${entry.tag}", ${entry.className});\n}\n`,
     );
+    const registration = portable(path.relative(path.dirname(file), registrationFile)).replace(/\.ts$/, "");
+    outputs.set(file, HEADER + `import { register } from "${registration.startsWith(".") ? registration : "./" + registration}";\n\nregister(customElements);\n`);
   }
   outputs.set(
     path.join(root, "src/all.ts"),
@@ -347,6 +368,7 @@ export function writePackageExports(entries: ComponentEntry[], root = DEFAULT_RO
   const exports = Object.fromEntries(Object.entries(pkg.exports ?? {}).filter(([name]) => !name.startsWith("./components/") && name !== "./dist/*"));
   exports["./all"] = { types: "./dist/all.d.ts", import: "./dist/all.js", default: "./dist/all.js" };
   exports["./define/*"] = { types: "./dist/define/*.d.ts", import: "./dist/define/*.js", default: "./dist/define/*.js" };
+  exports["./register/*"] = { types: "./dist/register/*.d.ts", import: "./dist/register/*.js", default: "./dist/register/*.js" };
   exports["./cdn/*"] = "./dist/cdn/*";
   exports["./configure"] = { types: "./dist/configure.d.ts", import: "./dist/configure.js", default: "./dist/configure.js" };
   exports["./react-support"] = { types: "./dist/react-support.d.ts", import: "./dist/react-support.js", default: "./dist/react-support.js" };

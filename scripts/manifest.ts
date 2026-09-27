@@ -1,3 +1,4 @@
+import { collectComponents } from "./entries";
 import { readCorePackage } from "./core-package";
 import fs from "node:fs";
 import path from "node:path";
@@ -324,6 +325,8 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
       skipLibCheck: true,
     },
   );
+  const components = collectComponents(root);
+  const registrations = new Map(components.filter((component) => !component.internal).map((component) => [key(component.file, component.className), component]));
   const facts = sourceFacts(program, files, root);
   profile("source facts");
   const issues: Issue[] = [];
@@ -339,6 +342,10 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
       const fact = facts.get(key(moduleDoc.path, node.name.text));
       if (!declaration || !fact) {
         return;
+      }
+      const registration = registrations.get(key(moduleDoc.path, node.name.text));
+      if (registration) {
+        Object.assign(declaration, { tagName: registration.tag, customElement: true });
       }
       if (fact.nativeRoot) {
         (declaration as ClassDeclaration & { "x-acme-native-root"?: string })["x-acme-native-root"] = fact.nativeRoot;
@@ -402,7 +409,8 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
   profile("parsed modules");
   const byFile = new Map(modules.map((module) => [module.fileName, module]));
   const icons = modules.filter((module) => module.fileName.startsWith("src/generated/icons/classes/"));
-  const iconPaths = new Set(icons.flatMap((module) => [module.fileName, "src/define/" + path.basename(module.fileName)]));
+  const iconFiles = (file: string) => [file, "src/define/" + path.basename(file), "src/register/" + path.basename(file)].filter((name) => byFile.has(name));
+  const iconPaths = new Set(icons.flatMap((module) => iconFiles(module.fileName)));
   const checker = program.getTypeChecker();
   const ancestry = (input: Iterable<string>): Set<string> => {
     const result = new Set(input);
@@ -445,13 +453,15 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
   const corePaths = ancestry(modules.filter((module) => !iconPaths.has(module.fileName)).map((module) => module.fileName));
   for (const file of [...corePaths]) {
     if (file.startsWith("src/generated/icons/classes/")) {
-      corePaths.add("src/define/" + path.basename(file));
+      for (const name of iconFiles(file)) {
+        corePaths.add(name);
+      }
     }
   }
   const analyzed = analyze(corePaths);
   const output = new Map(analyzed.modules.map((module) => [module.path, module]));
   for (let offset = 0; offset < icons.length; offset += 128) {
-    const paths = icons.slice(offset, offset + 128).flatMap((module) => [module.fileName, "src/define/" + path.basename(module.fileName)]);
+    const paths = icons.slice(offset, offset + 128).flatMap((module) => iconFiles(module.fileName));
     const part = analyze(ancestry(paths));
     for (const module of part.modules) {
       if (!paths.includes(module.path)) {
@@ -465,6 +475,15 @@ export async function analyzeManifest(root = ROOT): Promise<{ manifest: Package;
     }
   }
   analyzed.modules = [...output.values()].filter((module) => !module.path.startsWith("src/internal/")).sort((a, b) => a.path.localeCompare(b.path, "en"));
+  for (const component of registrations.values()) {
+    const definition = analyzed.modules.find((module) => module.path === "src/define/" + component.name + ".ts");
+    if (definition) {
+      definition.exports = [
+        ...(definition.exports ?? []).filter((entry) => entry.kind !== "custom-element-definition" || entry.name !== component.tag),
+        { kind: "custom-element-definition", name: component.tag, declaration: { name: component.className, module: component.file } },
+      ];
+    }
+  }
   profile("analyzed modules");
   for (const module of analyzed.modules) {
     for (const declaration of module.declarations ?? []) {

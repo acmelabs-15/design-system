@@ -76,6 +76,11 @@
       "default": "./dist/react-support.js"
     },
     "./skills/*": "./skills/*",
+    "./register/*": {
+      "types": "./dist/register/*.d.ts",
+      "import": "./dist/register/*.js",
+      "default": "./dist/register/*.js"
+    },
     "./components/10k-icon": {
       "types": "./dist/generated/icons/classes/10k-icon.d.ts",
       "import": "./dist/generated/icons/classes/10k-icon.js",

@@ -1,5 +1,5 @@
 import { ensureCorePackageLinks } from "./core-package";
-import { writeBrowserIconModules } from "./browser-icon-modules";
+import { browserModuleFiles, writeBrowserModules } from "./browser-modules";
 import { writeFlowAssets, browserAssetPlugin } from "./browser-assets";
 /// <reference types="bun" />
 // Builds dist/ two ways, following lit.dev/docs/tools/publishing:
@@ -22,6 +22,7 @@ import { verifyBytePrefixes } from "./byte-prefixes";
 import { writeIconEntries } from "./icon-entries";
 
 const ROOT = path.resolve(import.meta.dir, "..");
+console.log(`build runtime: Bun ${Bun.version}`);
 const DIST = path.join(ROOT, "dist");
 ensureCorePackageLinks(ROOT);
 await writeIconEntries(ROOT);
@@ -88,9 +89,10 @@ fs.writeFileSync(
     entrypoints: [
       path.join(DIST, "all.js"),
       path.join(DIST, "configure.js"),
+      path.join(DIST, "shared/registration.js"),
       standaloneEntry,
       ...components.filter((component) => !component.internal).map((component) => path.join(DIST, "define", component.name + ".js")),
-      ...components.filter((component) => !component.internal).map((component) => path.join(ROOT, component.file.replace(/^src\//, "dist/").replace(/\.ts$/, ".js"))),
+      ...components.map((component) => path.join(ROOT, component.file.replace(/^src\//, "dist/").replace(/\.ts$/, ".js"))),
       ...[...new Bun.Glob("generated/icons/records/*.js").scanSync({ cwd: DIST })].map((file) => path.join(DIST, file)),
       path.join(DIST, "generated/icons/all.js"),
     ],
@@ -112,7 +114,7 @@ fs.writeFileSync(
   fs.writeFileSync(path.join(ROOT, ".artifacts/cdn-metafile.json"), JSON.stringify(result.metafile, null, 2) + "\n");
 }
 
-console.log("browser icon modules:", writeBrowserIconModules(DIST));
+console.log("browser generated modules:", writeBrowserModules(DIST, browserModuleFiles(DIST)));
 
 // 3. The self-contained browser bundle.
 for (const [name, minify] of [

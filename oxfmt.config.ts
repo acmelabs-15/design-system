@@ -24,6 +24,8 @@ export default defineConfig({
     ".artifacts/**",
     "src/define/**",
     "src/internal/define/**",
+    "src/register/**",
+    "src/internal/register/**",
     "src/all.ts",
     "packages/*/.build-src/**",
     "tools/geist/corpus/**",

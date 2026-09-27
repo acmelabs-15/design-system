@@ -4,7 +4,7 @@
 import { Router } from "@lit-labs/router";
 import { html, LitElement, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { setAssetsBase, registerTheme, createToastStore } from "../../dist/index";
+import { registerTheme, createToastStore } from "../../dist/index";
 import { atomState } from "../../dist/shared/atom-state";
 import { StoreSelector } from "../../dist/shared/store-connection";
 import { ThemeContextController } from "../../dist/shared/theme-context";
@@ -22,8 +22,6 @@ declare global {
 
 /** GitHub Pages serves a project site under /<repo>/; locally the site is at the root. */
 export const prefix = location.hostname.endsWith("github.io") ? `/${location.pathname.split("/")[1]}` : "";
-// The docs serve the package's asset files themselves (the build copies `assets/` next to the pages).
-setAssetsBase(`${prefix}/assets/`);
 const ICON_CHART = html`<acme-bar-chart-icon class="ic" size="16px"></acme-bar-chart-icon>`;
 const cache = new Map<string, string>();
 

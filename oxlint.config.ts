@@ -10,9 +10,16 @@ export default defineConfig({
     ".artifacts/**",
     "src/define/**",
     "src/internal/define/**",
+    "src/register/**",
+    "src/internal/register/**",
     "src/all.ts",
     "packages/*/.build-src/**",
     "tools/geist/corpus/**",
+  ],
+  overrides: [
+    ...(core.overrides ?? []),
+    // Constructor identity and prototype ancestry are the behavior under test.
+    { files: ["src/shared/__tests__/registration.test.ts"], rules: { "typescript/no-extraneous-class": "off" } },
   ],
   rules: {
     ...core.rules,

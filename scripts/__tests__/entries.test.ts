@@ -97,9 +97,13 @@ test("writes deterministic definitions, preserves authored files and removes onl
   const owner = path.join(root, "src/define/owner.ts");
   const first = fs.readFileSync(owner, "utf8");
   const modified = fs.statSync(owner).mtimeMs;
-  expect(first).toContain('import "./child";');
-  expect(first).toContain('import { Owner } from "../components/owner/owner";');
-  expect(first).toContain('customElements.define("acme-owner", Owner);');
+  expect(first).toContain('import { register } from "../register/owner";');
+  expect(first).toContain("register(customElements);");
+  const registration = fs.readFileSync(path.join(root, "src/register/owner.ts"), "utf8");
+  expect(registration).toContain('import { register as register0 } from "./child";');
+  expect(registration).toContain('import { Owner } from "../components/owner/owner";');
+  expect(registration).toContain('registerElement(registry, "acme-owner", Owner);');
+  expect(registration).not.toContain("customElements");
   expect(first).not.toContain("customElements.get");
   fs.writeFileSync(path.join(root, "src/define/stale.ts"), first);
   fs.writeFileSync(path.join(root, "src/define/authored.ts"), "// authored\n");
@@ -118,6 +122,8 @@ test("package exports track the source records and retain unrelated authored exp
   writePackageExports(collectComponents(root), root);
   const first = fs.readFileSync(file, "utf8"),
     pkg = JSON.parse(first);
+  expect(pkg.exports["./register/*"]).toEqual({ types: "./dist/register/*.d.ts", import: "./dist/register/*.js", default: "./dist/register/*.js" });
+  expect(pkg.sideEffects).not.toContain("./dist/register/*.js");
   expect(pkg.exports["./components/one"]).toEqual({ types: "./dist/one.d.ts", import: "./dist/one.js", default: "./dist/one.js" });
   expect(pkg.exports["./components/stale"]).toBeUndefined();
   expect(pkg.exports["./dist/*"]).toBeUndefined();
@@ -197,9 +203,9 @@ test("optional icon definitions stay selective while owned icon dependencies loa
   writeEntries(root);
   expect(fs.readFileSync(path.join(root, "src/all.ts"), "utf8")).toContain('import "./define/owner";');
   expect(fs.readFileSync(path.join(root, "src/all.ts"), "utf8")).not.toContain('import "./define/sample-icon";');
-  expect(fs.readFileSync(path.join(root, "src/define/owner.ts"), "utf8")).toContain('import "./sample-icon";');
-  expect(fs.readFileSync(path.join(root, "src/define/sample-icon.ts"), "utf8")).toContain('customElements.define("acme-sample-icon", SampleIcon);');
-  expect(fs.readFileSync(path.join(root, "src/define/sample-icon.ts"), "utf8")).toContain('import "../generated/icons/classes/sample-icon";');
+  expect(fs.readFileSync(path.join(root, "src/register/owner.ts"), "utf8")).toContain('from "./sample-icon";');
+  expect(fs.readFileSync(path.join(root, "src/register/sample-icon.ts"), "utf8")).toContain('registerElement(registry, "acme-sample-icon", SampleIcon);');
+  expect(fs.readFileSync(path.join(root, "src/register/sample-icon.ts"), "utf8")).toContain('from "../generated/icons/classes/sample-icon";');
 });
 
 test("internal components register through their owner without public entries or exports", () => {
@@ -213,7 +219,9 @@ test("internal components register through their owner without public entries or
   expect(entries.find((entry) => entry.name === "inner")?.internal).toBe(true);
   expect(fs.existsSync(path.join(root, "src/internal/define/inner.ts"))).toBe(true);
   expect(fs.existsSync(path.join(root, "src/define/inner.ts"))).toBe(false);
-  expect(fs.readFileSync(path.join(root, "src/define/owner.ts"), "utf8")).toContain('import "../internal/define/inner"');
+  expect(fs.existsSync(path.join(root, "src/internal/register/inner.ts"))).toBe(true);
+  expect(fs.existsSync(path.join(root, "src/register/inner.ts"))).toBe(false);
+  expect(fs.readFileSync(path.join(root, "src/register/owner.ts"), "utf8")).toContain('from "../internal/register/inner"');
   expect(fs.readFileSync(path.join(root, "src/all.ts"), "utf8")).not.toContain("inner");
   const pkg = JSON.parse(fs.readFileSync(path.join(root, "packages/core/package.json"), "utf8"));
   expect(pkg.exports["./components/inner"]).toBeUndefined();
@@ -223,4 +231,21 @@ test("internal components register through their owner without public entries or
 test("private delivery requires both an internal location and annotation", () => {
   expect(() => collectComponents(fixture({ "internal/inner.ts": component("Inner") }))).toThrow("must agree");
   expect(() => collectComponents(fixture({ "inner.ts": "/** @internal */\n" + component("Inner") }))).toThrow("must agree");
+});
+
+test("scoped factory aliases retain exact owned dependencies", () => {
+  const root = fixture({
+    "shared/scoped-render-root.ts": "export function createScopedElement(host: HTMLElement, name: string): HTMLElement { return host.ownerDocument.createElement(name); }",
+    "child.ts": component("Child"),
+    "owner.ts": component("Owner", 'create(){return make(this,"acme-child");}', 'import {createScopedElement as make} from "./shared/scoped-render-root";'),
+  });
+  expect(collectComponents(root).find((entry) => entry.name === "owner")?.dependencies).toEqual(["child"]);
+});
+
+test("unbounded scoped factory names fail dependency discovery", () => {
+  const root = fixture({
+    "shared/scoped-render-root.ts": "export function createScopedElement(host: HTMLElement, name: string): HTMLElement { return host.ownerDocument.createElement(name); }",
+    "owner.ts": component("Owner", "create(name:string){return make(this,name);}", 'import {createScopedElement as make} from "./shared/scoped-render-root";'),
+  });
+  expect(() => collectComponents(root)).toThrow(/Unresolved dynamic tag/);
 });

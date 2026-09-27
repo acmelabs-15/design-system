@@ -3,6 +3,7 @@
 import { type CSSResultGroup, type CSSResultOrNative, LitElement } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { baseCss } from "./generated/shared/base.styles";
+import { scopedRenderRoot } from "./shared/scoped-render-root";
 import { applyStaticStyles } from "./shared/static-styles";
 import { registerStyleProperties } from "./shared/style-properties";
 import { ThemeContextController } from "./shared/theme-context";
@@ -10,16 +11,6 @@ import { StoreEffect } from "./shared/state";
 
 /** Rules every shadow root needs: the reset the global sheet gives the page, plus .ic and .sr. The host takes the reset too: an element of ours slotted into another (a grid cell) then reads as a reset page element. */
 export const sharedCss = baseCss;
-
-/**
- * Where the package's asset files (logos, textures) load from. The default is the published
- * package on the CDN; a page that serves the `assets/` directory itself sets its own base before
- * the elements render.
- */
-export let assetsBase = "https://cdn.jsdelivr.net/npm/@acmelabs/design-system/assets/";
-export const setAssetsBase = (url: string) => {
-  assetsBase = url.endsWith("/") ? url : `${url}/`;
-};
 
 /** Converter for a boolean that defaults to true: `loop="false"` turns it off (the React convention `loop={false}`); a bare or any other attribute value keeps it on. */
 export const boolish = {
@@ -45,7 +36,8 @@ export class AcmeElement extends LitElement {
   }
   protected createRenderRoot(): HTMLElement | DocumentFragment {
     const componentClass = this.constructor as typeof AcmeElement;
-    const root = this.shadowRoot ?? this.attachShadow(componentClass.shadowRootOptions);
+    const { root, creationScope } = scopedRenderRoot(this, componentClass.shadowRootOptions);
+    this.renderOptions.creationScope = creationScope;
     const boundary = applyStaticStyles(root, this.scopedStyles);
     this.renderOptions.renderBefore ??= boundary;
     return root;

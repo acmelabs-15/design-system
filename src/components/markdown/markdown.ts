@@ -1,3 +1,4 @@
+import { createScopedElement } from "../../shared/scoped-render-root";
 import type { AcmeScrollArea } from "../scroll-area/scroll-area";
 import { createAtom } from "@tanstack/lit-store";
 import { createTanStackMarkdownHighlighter } from "@tanstack/highlight/markdown";
@@ -115,7 +116,9 @@ export class AcmeMarkdown extends AcmeElement {
           let id = href.slice(1);
           try {
             id = decodeURIComponent(id);
-          } catch {}
+          } catch {
+            /* Keep the original fragment if its escape sequence is malformed. */
+          }
           const mapped = names.get(id);
           if (mapped) {
             element.setAttribute("href", "#" + encodeURIComponent(mapped));
@@ -137,7 +140,6 @@ export class AcmeMarkdown extends AcmeElement {
     }
   }
   private prepareNativeContent() {
-    const document = this.ownerDocument;
     const locale = this.themeContext.scope.effective.get().locale;
     const codeLabel = message(locale, "markdown.code", "Code source");
     for (const heading of this.prose.querySelectorAll("section[data-footnotes] h2")) {
@@ -170,8 +172,8 @@ export class AcmeMarkdown extends AcmeElement {
         }
         continue;
       }
-      const area: AcmeScrollArea = document.createElement("acme-scroll-area"),
-        viewport = document.createElement("acme-scroll-viewport");
+      const area: AcmeScrollArea = createScopedElement(this, "acme-scroll-area"),
+        viewport = createScopedElement(this, "acme-scroll-viewport");
       area.orientation = "horizontal";
       viewport.setAttribute("aria-label", codeLabel);
       pre.replaceWith(area);
