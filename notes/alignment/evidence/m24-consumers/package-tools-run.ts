@@ -32,13 +32,16 @@ try {
   for (const skill of list.skills) {
     const loaded = JSON.parse(await run(["load", skill.use, "--json"]));
     assert.equal(loaded.version, version);
-    assert.equal(
-      loaded.content,
-      (await Bun.file(path.join(core, "skills", loaded.skill, "SKILL.md")).text()).replace(
-        "../references/release.json",
-        "node_modules/@acmelabs/design-system/skills/references/release.json",
-      ),
-    );
+    const source = await Bun.file(path.join(core, "skills", loaded.skill, "SKILL.md")).text();
+    const references = new Map<string, string>();
+    for (const [, reference] of source.matchAll(/\]\((\.\.?\/[^)]+)\)/g)) {
+      const [file, fragment] = reference.split("#", 2);
+      const target = path.resolve(core, "skills", loaded.skill, file);
+      assert(target.startsWith(core + path.sep), "A skill reference stays inside its installed package");
+      assert(await Bun.file(target).exists(), "Missing installed skill reference: " + reference);
+      references.set(reference, path.relative(consumer, target).split(path.sep).join("/") + (fragment ? "#" + fragment : ""));
+    }
+    assert.equal(loaded.content, source.replace(/\]\((\.\.?\/[^)]+)\)/g, (_, reference) => "](" + references.get(reference) + ")"));
     assert(await Bun.file(path.resolve(consumer, loaded.path)).exists());
     if (loaded.skill === "html-artifacts") assert(loaded.content.includes("## HTML false values"));
   }
