@@ -4,7 +4,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 ## Where we are
 
-**Execution:** Peter requested release0.3.0 on2026-09-27. Release work is active: Linux verification, repository integration, package publication and documentation deployment. [Release status and sequence](release-0.3.0.md). Local implementation/acceptance remains complete; manual platform limits remain documented.
+**Execution:** release0.3.0 is in progress, not published. PR#1 is open; Linux run36315751267 is checking the latest corrections. npm requires user-controlled password confirmation and first-publication setup for the three new companion names. [Exact release handoff](release-0.3.0.md). Local implementation/acceptance remains complete; manual platform limits remain documented.
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 

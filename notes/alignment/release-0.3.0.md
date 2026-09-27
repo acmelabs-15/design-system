@@ -37,3 +37,13 @@ Run36312017815 passed22 of23 browser invocations and1445 of1446 family results. 
 ## Third Linux run
 
 Run36313857937 confirms the paired native date check in all engines: Chromium/Firefox retain three editor stops, while LinuxWebKit moves directly to the next control. The only remaining failure was Firefox worker cleanup measured after a fixed30ms delay. The test now waits for actual worker close events and retains its zero-worker check. All13 local Flow cases pass per engine; no runtime component changed. The next Linux rerun must complete before release. npm password confirmation remains pending, and no tag, package publication or Pages change has occurred.
+
+## Handoff awaiting npm authentication
+
+Latest pushed release head: ee0b4ca25968e225af36ae5d196ff07632e31907. Latest Linux run: https://github.com/acmelabs-15/design-system/actions/runs/36315751267 (in progress when recorded). The worker-close correction passes all13 Flow cases in each local engine. The transcript-only follow-up superseded run36315713786; it was cancelled by normal workflow concurrency, not a test failure.
+
+PR #1 remains open and unmerged. No v0.3.0 release tag or package publication was performed. A fresh registry read returns404 for version0.3.0 of all four packages. Publishing and Pages variables/settings have not been enabled or changed. The npm browser tab remains at password confirmation, with the password field observed empty; the user must complete that authentication directly.
+
+On resumption: inspect the latest Linux result and diagnose any remaining failure without weakening gates. Complete npm authentication and the three companion packages' first-publication prerequisites. Verify package-specific trusted publishing before enabling the coordinated publishing workflow. Then merge through the normal verified flow, tag/release the verified commit and deploy/check Pages. Preserve the manual-platform limitations. Do not use the previously exposed npm credential, print credentials, or publish only a subset while claiming the coordinated release is complete.
+
+This status-only note is committed locally after the pushed head; it is intentionally not pushed during the active CI run to avoid cancelling verification again.
