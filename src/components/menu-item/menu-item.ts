@@ -21,15 +21,15 @@ let sequence = 0;
  */
 export class AcmeMenuItem extends AcmeSemanticElement {
   static styles = [sharedCss, menuItemStructureCss];
-  @atomState() @property({ noAccessor: true }) value = "";
-  @atomState() @property({ noAccessor: true }) type: "action" | "checkbox" | "radio" = "action";
+  @atomState() @property({ useDefault: true, noAccessor: true }) value = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) type: "action" | "checkbox" | "radio" = "action";
   @atomState() @property({ noAccessor: true, type: Boolean, reflect: true }) disabled = false;
   @atomState() @property({ noAccessor: true, type: Boolean, reflect: true }) checked = false;
-  @atomState() @property({ noAccessor: true }) name = "";
-  @atomState() @property({ noAccessor: true }) href = "";
-  @atomState() @property({ noAccessor: true }) target = "";
-  @atomState() @property({ noAccessor: true }) rel = "";
-  @atomState() @property({ noAccessor: true, attribute: "text-value" }) textValue = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) name = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) href = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) target = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) rel = "";
+  @atomState() @property({ useDefault: true, noAccessor: true, attribute: "text-value" }) textValue = "";
   @atomState() private highlighted = false;
   private readonly menu = new MenuConnection(this, "item");
   private readonly places = new Places(this, { places: ["start", "end", "description", "submenu"] });

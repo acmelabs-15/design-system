@@ -12,6 +12,16 @@ import { TargetDescription } from "./target-description";
 /** Shared hover/focus preview policy; application controls stay in the trigger. */
 export abstract class AcmeHoverHelp extends AcmeElement {
   static styles = [sharedCss, helpSurfaceCss];
+  protected get initialValues(): Readonly<{ side: HelpSide; align: HelpAlign; openDelay: number; closeDelay: number }> {
+    return { side: "top", align: "center", openDelay: 0, closeDelay: 100 };
+  }
+  constructor() {
+    super();
+    // Record public defaults before attributes can override the atom-backed accessors.
+    for (const name of ["side", "align", "sideOffset", "openDelay", "closeDelay"]) {
+      this.requestUpdate(name, undefined);
+    }
+  }
   protected abstract get kind(): "tooltip" | "hover-card";
   protected abstract previewText(): string;
   @atomState() private opened = false;
@@ -38,7 +48,7 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     }
     this.requestUpdate("disabled", previous);
   }
-  @atomState() private edge: HelpSide = "top";
+  @atomState() private edge: HelpSide = this.initialValues.side;
   /** @default "top" */
   @property({ noAccessor: true, useDefault: true }) get side(): HelpSide {
     return this.edge;
@@ -51,7 +61,7 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     this.edge = value;
     this.requestUpdate("side", previous);
   }
-  @atomState() private alignment: HelpAlign = "center";
+  @atomState() private alignment: HelpAlign = this.initialValues.align;
   /** @default "center" */
   @property({ noAccessor: true, useDefault: true }) get align(): HelpAlign {
     return this.alignment;
@@ -75,7 +85,7 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     this.gap = value;
     this.requestUpdate("sideOffset", previous);
   }
-  @atomState() private waitOpen = 0;
+  @atomState() private waitOpen = this.initialValues.openDelay;
   /** @default 0 */
   @property({ noAccessor: true, type: Number, useDefault: true, attribute: "open-delay" }) get openDelay() {
     return this.waitOpen;
@@ -86,7 +96,7 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     this.waitOpen = value;
     this.requestUpdate("openDelay", previous);
   }
-  @atomState() private waitClose = 100;
+  @atomState() private waitClose = this.initialValues.closeDelay;
   /** @default 100 */
   @property({ noAccessor: true, type: Number, useDefault: true, attribute: "close-delay" }) get closeDelay() {
     return this.waitClose;
@@ -120,7 +130,9 @@ export abstract class AcmeHoverHelp extends AcmeElement {
     closed: () => {
       this.open = false;
     },
-    opened: () => {},
+    opened: () => {
+      /* Opening a preview does not move focus or start another action. */
+    },
     restoreFocus: () => false,
   });
   private readonly updates = new StoreSelector(this, () => this.lifetime.theme ?? this.themeContext.scope.effective);

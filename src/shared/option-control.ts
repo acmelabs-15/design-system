@@ -50,12 +50,12 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
   }
   @atomState() private visibility = false;
   @atomState() private reason = "programmatic";
-  @atomState() @property({ noAccessor: true }) placeholder = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) placeholder = "";
   @atomState() @property({ noAccessor: true, type: Boolean }) clearable = false;
   @atomState() @property({ noAccessor: true, type: Boolean }) invalid = false;
-  @atomState() @property({ noAccessor: true }) side: "top" | "bottom" | "left" | "right" = "bottom";
-  @atomState() @property({ noAccessor: true }) align: "start" | "center" | "end" = "start";
-  @atomState() @property({ noAccessor: true, type: Number, attribute: "side-offset" }) sideOffset = 4;
+  @atomState() @property({ useDefault: true, noAccessor: true }) side: "top" | "bottom" | "left" | "right" = "bottom";
+  @atomState() @property({ useDefault: true, noAccessor: true }) align: "start" | "center" | "end" = "start";
+  @atomState() @property({ useDefault: true, noAccessor: true, type: Number, attribute: "side-offset" }) sideOffset = 4;
   @atomState() @property({ noAccessor: true, attribute: "avoid-collisions", converter: boolish }) avoidCollisions = true;
   /** @default false */
   @property({ noAccessor: true, type: Boolean, reflect: true }) get open(): boolean {
@@ -103,7 +103,7 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
   private list?: HTMLElement;
   @atomState() private structureVersion = 0;
   private readonly ordered = createAtom(() => {
-    this.structureVersion;
+    void this.structureVersion;
     return Object.freeze(
       [...this.members].sort((a, b) =>
         this.editable ? (a.host === b.host ? 0 : a.host.compareDocumentPosition(b.host) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1) : selectionOrder({ host: a.host }, { host: b.host }),
@@ -136,7 +136,9 @@ export abstract class AcmeOptionControl extends AcmeFormElement<readonly string[
     register: (part) => {
       if (this.editable && part.host.parentNode !== this) {
         console.error("ComboBox options must be direct children. Use the section property for labelled groups.");
-        return () => {};
+        return () => {
+          /* A rejected option has no registration to release. */
+        };
       }
       if (!this.members.includes(part)) {
         this.members = Object.freeze([...this.members, part]);

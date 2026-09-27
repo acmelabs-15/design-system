@@ -10,12 +10,8 @@ import { AcmeHoverHelp } from "../../shared/hover-help";
  * @fires {CustomEvent<{open:boolean,reason:string}>} acme-open-change - User visibility changes.
  */
 export class AcmeHoverCard extends AcmeHoverHelp {
-  constructor() {
-    super();
-    this.side = "bottom";
-    this.align = "start";
-    this.openDelay = 600;
-    this.closeDelay = 300;
+  protected override get initialValues() {
+    return { side: "bottom", align: "start", openDelay: 600, closeDelay: 300 } as const;
   }
   /** @default "bottom" */
   @property({ noAccessor: true, useDefault: true }) get side(): HelpSide {

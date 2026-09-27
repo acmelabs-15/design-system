@@ -18,7 +18,7 @@ import { TreeBinding } from "../../shared/tree-context";
  */
 export class AcmeTreeItem extends AcmeElement {
   static styles = [sharedCss, treeItemCss];
-  @atomState() @property({ noAccessor: true }) value = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) value = "";
   @atomState() @property({ noAccessor: true, type: Boolean }) disabled = false;
   private readonly places = new Places(this, { places: ["start", "end", "description"] });
   private readonly binding = new TreeBinding(this, { value: () => this.value, disabled: () => this.disabled });

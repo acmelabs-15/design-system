@@ -12,7 +12,7 @@ let sequence = 0;
  */
 export class AcmeMenuSection extends AcmeElement {
   static styles = [sharedCss, menuSectionStructureCss];
-  @atomState() @property({ noAccessor: true }) heading = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) heading = "";
   private readonly uid = `acme-menu-section-${++sequence}`;
   render() {
     return html`<div role="group" part="root" aria-labelledby=${this.uid}><div class="heading" part="heading" id=${this.uid}>${this.heading}</div><slot></slot></div>`;

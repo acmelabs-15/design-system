@@ -43,8 +43,8 @@ export class AcmeMenu extends AcmeElement {
   }
   @atomState() @property({ noAccessor: true, attribute: "close-on-select", converter: boolish }) closeOnSelect = true;
   @atomState() @property({ noAccessor: true, converter: boolish }) loop = true;
-  @atomState() @property({ noAccessor: true }) placement: Placement = "bottom-start";
-  @atomState() @property({ noAccessor: true, type: Number, attribute: "side-offset" }) sideOffset = 4;
+  @atomState() @property({ useDefault: true, noAccessor: true }) placement: Placement = "bottom-start";
+  @atomState() @property({ useDefault: true, noAccessor: true, type: Number, attribute: "side-offset" }) sideOffset = 4;
   private readonly state = createAtom(() => ({ open: this.open }));
   private readonly owner = this.createOwner();
   private readonly provider = new ContextProvider(this, { context: menuContext, initialValue: this.owner });

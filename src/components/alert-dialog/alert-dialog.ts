@@ -1,5 +1,5 @@
 import { property } from "lit/decorators.js";
-import { boolish } from "../../base";
+import { optionalBoolean } from "../../shared/attributes";
 import { AcmeDialog } from "../dialog/dialog";
 /** A modal prompt with explicit description and least-destructive initial focus. */
 export class AcmeAlertDialog extends AcmeDialog {
@@ -7,7 +7,7 @@ export class AcmeAlertDialog extends AcmeDialog {
     return true;
   }
   /** @default false */
-  @property({ noAccessor: true, converter: boolish, useDefault: true, attribute: "close-on-outside" }) get closeOnOutside(): boolean {
+  @property({ noAccessor: true, converter: optionalBoolean, useDefault: true, attribute: "close-on-outside" }) get closeOnOutside(): boolean {
     return super.closeOnOutside;
   }
   set closeOnOutside(value: boolean) {

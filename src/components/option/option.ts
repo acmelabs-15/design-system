@@ -45,7 +45,7 @@ export class AcmeOption extends AcmeElement {
   }
   @atomState() @property({ noAccessor: true, type: Boolean, reflect: true }) disabled = false;
   /** Plain-text section label used by ranked ComboBox results. */
-  @atomState() @property({ noAccessor: true }) section = "";
+  @atomState() @property({ useDefault: true, noAccessor: true }) section = "";
   @atomState() private text = "";
   @atomState() private description = "";
   private readonly internals = this.attachInternals();

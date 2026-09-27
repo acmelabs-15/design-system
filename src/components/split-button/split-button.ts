@@ -18,12 +18,12 @@ import { splitButtonStructureCss } from "../../generated/components/split-button
  */
 export class AcmeSplitButton extends AcmeElement {
   static styles = [sharedCss, splitButtonStructureCss];
-  @atomState() @property({ noAccessor: true }) size: ButtonSize = "medium";
-  @atomState() @property({ noAccessor: true }) variant: ButtonVariant = "default";
+  @atomState() @property({ useDefault: true, noAccessor: true }) size: ButtonSize = "medium";
+  @atomState() @property({ useDefault: true, noAccessor: true }) variant: ButtonVariant = "default";
   @atomState() @property({ noAccessor: true, type: Boolean, reflect: true }) disabled = false;
   @atomState() @property({ noAccessor: true, type: Boolean, reflect: true }) loading = false;
   @atomState() @property({ noAccessor: true, type: Boolean, reflect: true }) open = false;
-  @atomState() @property({ noAccessor: true, attribute: "menu-label" }) menuLabel = "";
+  @atomState() @property({ useDefault: true, noAccessor: true, attribute: "menu-label" }) menuLabel = "";
   protected willUpdate() {
     if ((this.disabled || this.loading) && this.open) {
       this.open = false;
