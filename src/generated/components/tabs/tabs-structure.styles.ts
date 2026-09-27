@@ -36,7 +36,7 @@ acme-group {
 acme-selection-indicator {
   --acme-indicator-color: var(--ds-blue-700);
   --acme-indicator-radius: 3px 3px 0 0;
-  z-index: 0;
+  z-index: 2;
 }
 
 .tabs[data-variant="inset"] .list {

@@ -3,7 +3,8 @@
 .viewport{max-inline-size:100%;overflow:auto;outline:none;scrollbar-width:thin;}
 .list{position:relative;isolation:isolate;display:inline-block;inline-size:max-content;min-inline-size:100%;border-block-end:1px solid var(--ds-gray-300);}
 acme-group{vertical-align:bottom;align-items:stretch;}
-acme-selection-indicator{--acme-indicator-color:var(--ds-blue-700);--acme-indicator-radius:3px 3px 0 0;z-index:0;}
+/* Keep the primary indicator above member hover and focus surfaces. */
+acme-selection-indicator{--acme-indicator-color:var(--ds-blue-700);--acme-indicator-radius:3px 3px 0 0;z-index:2;}
 .tabs[data-variant=inset] .list{min-inline-size:0;border:0;}
 .tabs[data-variant=inset] acme-group{--acme-group-outline-padding:4px;--acme-group-outline-radius:8px;--acme-group-outline-color:var(--ds-gray-300);}
 .tabs[data-variant=inset] acme-selection-indicator{--acme-indicator-color:var(--ds-gray-200);--acme-indicator-radius:6px;--acme-indicator-shadow:inset 0 0 0 1px var(--ds-gray-800);z-index:-1;}
