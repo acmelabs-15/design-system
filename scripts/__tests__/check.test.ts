@@ -118,6 +118,9 @@ test("browser gates consume the reviewed package set and both scoped delivery pa
     expect(check.environment.ACME_BROWSER_RUNTIME).toBe(runtime);
     expect(check.environment.ACME_AUDIT_SOURCE).toBe("0");
     expect(check.environment.ACME_SCOPED_SOURCE).toBe("0");
+    const inherited = checkEnvironment({ ACME_COMPONENT_SUITES: "dialog", ACME_COMPONENT_ENGINES: "webkit", ...check.environment });
+    expect(inherited.ACME_COMPONENT_SUITES).toBeUndefined();
+    expect(inherited.ACME_COMPONENT_ENGINES).toBeUndefined();
   }
   expect(() => browserCheckPlan({ ...release, packages: [] }, consumer, runtime, root)).toThrow("Missing reviewed archive");
 });

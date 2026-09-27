@@ -18,3 +18,5 @@ Harness corrections:
 The older Playwright-patched Firefox155 worker crash remains explicit. Flow case coverage uses the already-verified independent-browser case mode. This does not claim that browser's repeated navigation works. The separate official Firefox156.0.1 gate retains the sequential full-site and twenty-cycle Flow navigation tests.
 
 This suite supplements earlier foundation, icon, framework and native-content evidence. It does not claim actual OS IME/dictation/autofill, actual Safari or assistive-technology certification.
+
+Release Linux follow-up: the native date case formerly assumed at least two internal Tab stops. The case now measures every Tab stop in a plain native dialog on the same browser, then requires the component to match that complete sequence and reach its next control. Local Chromium/Firefox use three internal stops and macOS WebKit uses two; all27 dialog cases pass per engine. Linux confirmation is pending. The shared release driver also clears diagnostic suite/engine filters so inherited environment values cannot narrow certification. See [release finding](../../release-0.3.0/linux-browser-finding.json).

@@ -19,3 +19,17 @@ Push the reviewed branch and open a release PR. Run the complete Linux gate befo
 ## First Linux run
 
 PR #1 is open and attached to the task. Run36311630026 passed install/lint and core/docs compilation, then found a case-sensitive license-path defect in optional tooling: clsx ships lowercase license. The collector now discovers the exact root license filename, rejects absent/ambiguous notices and records that filename in provenance. Two focused tests pass; the actual optional bundle rebuild passes. The new Git history scan has no secret-pattern matches.
+
+## Publication prerequisites verified from npm documentation
+
+The three companion names return404 from the public registry. npm's trusted-publisher CLI requires an existing package, and staged publishing also explicitly excludes brand-new packages. Therefore these names need an authenticated first publication before their normal OIDC relationship can be configured. No placeholder versions, long-lived repository tokens or reuse of the previously exposed credential are approved by this investigation.
+
+The signed-in npm browser has moved to password confirmation and remains under user control. The release cannot complete until that authentication and the legitimate first-publication path are resolved. Core's existing OIDC setup also needs verification before publication is enabled.
+
+Sources: [trusted publisher prerequisites](https://docs.npmjs.com/cli/v12/commands/npm-trust/#prerequisites), [staged publishing prerequisites](https://docs.npmjs.com/staged-publishing/#prerequisites). npm supports attaching a pre-generated provenance bundle through provenance-file; the pinned CLI source verifies its subject/digest. That is a researched capability, not an implemented or authorized alternate publication path.
+
+Linux run36312017815 includes the license fix and has passed install, lint, build, strict types, unit tests, dependency audit, archive validation and browser installation. Browser/consumer acceptance is currently running. PR: https://github.com/acmelabs-15/design-system/pull/1.
+
+## Second Linux run
+
+Run36312017815 passed22 of23 browser invocations and1445 of1446 family results. The only failure was a hardcoded native date-editor Tab expectation in WebKit. The case now uses a paired native dialog as its exact per-browser oracle; all27 local dialog cases pass in each engine. The shared full-release driver now clears diagnostic filters, with a failing baseline and passing regression. No runtime component was changed for this finding. The next Linux run must pass before integration/publication.

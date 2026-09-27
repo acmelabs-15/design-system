@@ -83,6 +83,8 @@ export function browserCheckPlan(release: ReleaseRecord, consumer: string, runti
     ACME_BROWSER_RUNTIME: runtime,
     ACME_RELEASE_CONSUMER: consumer,
     ACME_REACT_CONSUMER: consumer,
+    ACME_COMPONENT_SUITES: undefined,
+    ACME_COMPONENT_ENGINES: undefined,
     ACME_AUDIT_SOURCE: "0",
     ACME_SCOPED_SOURCE: "0",
     ACME_SCOPED_RED_IMPERATIVE: "0",
