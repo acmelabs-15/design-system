@@ -1,6 +1,6 @@
 # Remaining work and component review queue
 
-The [central handoff](README.md#where-we-are) owns current status. The [inventory index](inventory.md#complete-proposal-set) and linked family files own detailed contracts. The [coverage map](proposal-coverage.md) accounts for all 150 current source tags and the selected additions.
+The [central handoff](README.md#where-we-are) owns current status. The [inventory index](inventory.md#complete-proposal-set) and linked family files own detailed contracts. The [coverage map](proposal-coverage.md) accounts for all 150 original source tags and the selected additions.
 
 ## Where completion stands
 
@@ -13,9 +13,9 @@ The [central handoff](README.md#where-we-are) owns current status. The [inventor
 | User-owned decision queue | Original five recommendations approved in [the register](proposal-questions.md); [explicit helper clearing](../decisions/layout-spacing-properties.md#explicit-clearing-for-the-style-helper) selected 2026-09-21; @lit/context selected under [delegated execution](../decisions/execution-delegation.md); remaining choices are agent-owned |
 | Engineering gates | Six representative M00 technical areas verified; final implementation acceptance stays assigned |
 | Phase 5 | [Migration plan approved](../decisions/migration-approval.md); M00 closed after compiler selection |
-| Phase 6 | M01–M19 complete at assigned boundaries. M20–M26 and the named cross-batch acceptance gates remain. |
+| Phase 6 | M01–M25 are implemented. M26 local automated acceptance is complete. Actual-platform and external release gates remain unperformed; see the final acceptance record. |
 
-These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The design contracts are approved; they are not implemented or verified components. Technical gates remain distinct from the recorded design review.
+These are review groups, not thirteen questions, equal-sized tasks or duration estimates. The groups describe the approved design decomposition. The current implementation status is above; technical acceptance remains distinct from design approval.
 
 ## Phase 4 proposal groups
 
@@ -39,7 +39,7 @@ R02 also uses the six existing [core layout entries](inventory.md#core-layout-pr
 
 ## Current review sequence
 
-Peter requested the whole proposal set before further questions. That assembly is now complete across all groups. Apply [definitive reference behavior](../decisions/reference-systems.md#follow-the-established-reference-without-another-preference-question) without another preference vote. Preserve approved house deviations and resolve ordinary engineering choices in the proposal.
+Peter requested the whole proposal set before further questions. That assembly is now complete across all groups. Apply [definitive reference behavior](../decisions/reference-systems.md#follow-the-established-reference-without-another-preference-question) without another preference vote. Preserve approved deviations and resolve ordinary engineering choices in the proposal.
 
 Peter approved all five recommendations with the complete set: role-specific density, read-only inspector, authored TOC IDs, core Tree scope and coordinated Pagination parts. The [decision register](proposal-questions.md) is closed. Peter subsequently selected Lightning CSS 1.33.0 as the build-only compiler, closing M00.
 
@@ -67,8 +67,9 @@ Each investigation has an interface/gate it can invalidate and a completion cond
 - [x] Obtain migration approval through Peter's “approved”.
 - [x] Verify useful CSS map delivery, complete existing CSS syntax coverage with the demonstrated generator correction, packaged consumers and the local Bun publication mechanism.
 - [x] Select Lightning CSS 1.33.0 and close M00. Final real CI/account/publication acceptance stays in M25.
-- [ ] Implement approved batches with matching docs/tooling and no compatibility aliases.
-- [ ] Complete three-engine, accessibility, visual, behavior and packaged-consumer acceptance.
+- [x] Implement approved batches with matching docs/tooling and no compatibility aliases.
+- [x] Finish local archive acceptance: all23 required browser invocations are accepted, with the corrected Intent oracle rerun explicitly recorded. [Final evidence](evidence/m26-final/README.md).
+- [ ] Complete actual-platform and separately authorized external release acceptance. These are not established by automated engine checks.
 
 Source changes now proceed under the approved migration; the old protected-file hashes describe the completed pre-implementation baseline. The migration is approved; technical prerequisites govern dependent source edits. Publishing requires its separate authorization. Existing research snapshots are historical evidence, not current runtime results.
 
@@ -78,21 +79,21 @@ Report proposal coverage, actual approvals, the bounded question register and en
 
 ## Added verification return points — 2026-09-23
 
-- M25/E03: extend mapped-style fingerprints to transitive local imports. tools/geist/maps/command-menu-input.ts imports CLOSED from command-menu.ts, but writeStyles currently records only its explicit map/extends inputs. Add a regression that changes an imported helper and requires stale-output detection. M26 release acceptance must verify closure. Current mapped outputs were fully regenerated; no current visual mismatch is claimed.
+- Closed M25/E03: mapped-style fingerprints include transitive local runtime imports, with a stale-helper regression. Current outputs retain the same CSS. The historical Command Menu Input map was removed. [Evidence](evidence/m26-audit/README.md).
 - M22/M26: verify the native date/time Tab boundary and modal focus with actual Safari and assistive technology. Paired native controls plus source/compiled Chromium/Firefox/WebKit cases pass; these are not actual-platform certification.
 
 ### M26 public attribute default audit — 2026-09-23
 
-A failing M18 reproduction found that removing a nonnullable string attribute produced null instead of its documented default. Status value, Tooltip content and Alert/Banner heading now use Lit's useDefault and pass explicit removal tests. M26 must audit the remaining public defaulted inputs against their documented types/defaults, including shared bases. Preserve intentionally optional undefined and native ARIA null inputs; do not blanket-convert them. Evidence: the colocated status/tooltip/alert tests and /tmp/acme-m18-passive/defaults-red.log and defaults-green.log.
+A failing M18 reproduction found that removing a nonnullable string attribute produced null instead of its documented default. Status value, Tooltip content and Alert/Banner heading now use Lit's useDefault and pass explicit removal tests. The complete rebuilt audit now passes 704 scalar default resets and 736 native ARIA resets in each engine. The 41 baseline failures are corrected, including inherited and subclass defaults. Intentionally optional undefined values remain distinct. [Evidence](evidence/m26-audit/README.md). Evidence: the colocated status/tooltip/alert tests and /tmp/acme-m18-passive/defaults-red.log and defaults-green.log.
 
 ### M25 documentation coverage gate — 2026-09-23
 
-Replacing the Empty State page temporarily removed Icon Tile's only documentation tag. The site build warned but still exited successfully. Icon Tile now has its own page and coverage is back to zero missing entries. M25 must make missing public documentation a failing release/CI check, while preserving any deliberate preview workflow. Use the existing manifest and page/catalog tag coverage, not a second manually maintained list.
+Replacing the Empty State page temporarily removed Icon Tile's only documentation tag. The site build warned but still exited successfully. Icon Tile now has its own page and coverage is back to zero missing entries. The release projection now rejects a public element without guidance and supplies the shared CI gate. It uses the manifest and page/catalog tags. The final site has 125 pages, 4,319 elements and no undocumented entries.
 
 ### M22/M25/M26 durable browser and platform acceptance — 2026-09-23
 
-M25 must consolidate the saved browser acceptance cases and colocated fixtures into the durable CI harness, rather than depending on temporary runner paths. M18 evidence embeds Toast and Feedback case bodies; earlier evidence retains named scripts and fixture files. M22/M26 must verify actual OS background-window pause/resume for Toast: headless-tab switching did not reproduce the required document visibility/focus state. Injected visibility-event integration and independent timer tests pass.
+The durable component runner preserves all 31 colocated fixtures and their accepted drivers; 482 result rows pass per engine across the recorded complete matrix and focused follow-ups. The shared final archive gate runs this suite. Real Input history/back restoration also passes in fresh documents in all three engines. Actual OS background-window pause/resume for Toast remains unverified: injected visibility/timer checks establish their narrower paths only. [Family evidence](evidence/m26-audit/component-browser/README.md), [history evidence](evidence/m26-native-forms/README.md).
 
 ### M25 dependency and consumer gates — 2026-09-23
 
-Retain the combined custom-feature/experimental-worker type regression when changing Table dependencies. The dev-only 9.2.4 declaration patch is verified in a fresh packed consumer; runtime JavaScript is unchanged. The design-system package has no Table engine dependency. Audit the now-unused library runtime @tanstack/lit-virtual dependency during the planned dependency cleanup; virtualization lives in explicit consumer examples.
+Retain the combined custom-feature/experimental-worker type regression when changing Table dependencies. The worker recipe supplies the exact guarded 9.2.4 declaration correction and verifies it in a fresh application; runtime JavaScript is unchanged. Core has no Table engine or lit-virtual dependency. The inspector runtime dependencies remain outside production core. [Worker delivery](evidence/m26-audit/README.md#worker-example-delivery-closure).

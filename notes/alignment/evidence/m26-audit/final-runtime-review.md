@@ -44,7 +44,9 @@ Read the full 555-line inventory, all thirteen family files, the full 412-line m
 
 All 150 original tag mappings and thirty extensions retain an implementation, recipe or explicit exclusion owner. The removal scan found 79 removed/renamed tags, no surviving retired component registration/export and no retired consumer markup. SSR, live AI control, a Table engine inside the component, advanced Tree editing/virtualization, Flow editing/execution and compatibility aliases stay excluded; their absence is not unfinished scope.
 
-### Additional locally executable requirements
+### Local follow-ups identified during audit — now closed
+
+The numbered items below preserve the findings at audit time. All of their local implementation and verification work is now closed by [final acceptance](../m26-final/README.md), including the full archive matrix, actual history restoration and restored preview. External/manual gates remain separate.
 
 1. **Durable family browser coverage.** The prior CI list ran wrapper/docs/tooling/Tabs gates but omitted the other colocated family fixtures. The new `scripts/component-browser-checks.ts` indexes all 31 fixture files: 26 preserved driver suites contain 357 named cases, four additional fixture protocols cover ComboBox/Number Input/Pin Input/Slider, and Tabs retains its dedicated gate. Case bodies and setup are committed in `component-browser/cases.json`; runtime execution uses no historical temporary paths. Protocol tests pass; complete execution and any failures still need closure.
 2. **Official Firefox navigation.** Playwright 1.63.0's patched Firefox155 still crashes after Flow worker teardown/navigation. The first failed full-site run is evidence, not a pass. The new official Firefox156.0.1 gate must run the same sequential page assertions and the preserved twenty Flow cancellation/navigation cycles. Old patched-runtime render checks must be identified as isolated rendering coverage, never presented as a passing navigation regression.
@@ -68,8 +70,10 @@ Closure language must separate completed implementation/local verification from 
 
 ### Audit follow-up closure
 
-The identified family-runner gap now has a permanent command and preserved test records. [Component-browser evidence](component-browser/README.md) records 482 passing result rows per engine across the complete matrix and its focused follow-ups, including the original Number/Pin/Slider driver assertions. A final single-shot archive run remains in the shared CI orchestration.
+The identified family-runner gap now has a permanent command and preserved test records. [Component-browser evidence](component-browser/README.md) records 482 passing result rows per engine across the complete matrix and its focused follow-ups, including the original Number/Pin/Slider driver assertions. The final archive run now passes all1446 component result rows; see [the final matrix](../m26-final/components.json).
 
 [Official Firefox evidence](official-firefox/README.md) records all 125 current documentation pages, including managed forms, followed by the original twenty Flow navigation cycles. The current official browser passes; the old patched155 crash remains a labelled automation-runtime constraint.
 
 Root reports the F10 delivery correction complete with fresh Lit/React managed-form checks, including the field-path lifetime correction. Its owning evidence and final archive gate remain in the root integration record. These follow-ups resolve the concrete implementation gaps found by this audit without claiming the external/manual checks passed.
+
+Final closure: all125 documentation pages and20Flow cycles pass in official Firefox, all48 managed-form checks pass, real Input history/back restoration passes in all3engines, and the watched preview is restored. The original combined-run Intent-oracle failure and its complete successful rerun are preserved separately in the final record. No external/manual gate is inferred from these results.

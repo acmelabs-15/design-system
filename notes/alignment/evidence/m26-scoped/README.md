@@ -53,7 +53,7 @@ Add `ACME_SCOPED_CDN=1` to run the same fixture against the copied browser regis
 
 The package directory must be a stable built install whose dependencies resolve. `results.json` holds the final-package output. Do not run while the referenced dist tree is being rebuilt. The runner uses the existing Playwright cache or ACME_BROWSER_RUNTIME. Source probes use TypeScript's legacy decorator transform; an initial Bun-decorator harness attempt failed before component execution and is not component evidence.
 
-The local0.3.0 build passes all17 outcomes in each engine in both delivery modes: bundled compiled class/registration entries (`build-results.json`) and direct CDN modules (`build-cdn-results.json`). CDN imports include public/private dependencies and use the same class constructors as the browser class entries. These are build checks, not fresh archive checks. Final packed-package verification is pending. Same-origin active-document checks do not certify inert documents, cross-origin frames or every component's lifecycle.
+The local0.3.0 build passes all17 outcomes in each engine in both delivery modes: bundled compiled class/registration entries (`build-results.json`) and direct CDN modules (`build-cdn-results.json`). CDN imports include public/private dependencies and use the same class constructors as the browser class entries. These are build checks, not fresh archive checks. The final clean0.3 archive passes the same17 outcomes per engine in both module and CDN modes: [module](../m26-final/scoped-module.json), [CDN](../m26-final/scoped-cdn.json). Same-origin active-document checks do not certify inert documents, cross-origin frames or every component's lifecycle.
 
 ## Sources read
 

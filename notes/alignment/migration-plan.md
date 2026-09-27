@@ -410,3 +410,27 @@ Bring O01/O02/O03 (Dialog, Alert Dialog and Drawer) forward together before fini
 ## M23 documentation complete — 2026-09-26
 
 [Acceptance](evidence/m23-documentation-2026-09-26.json) closes the seven documentation units, complete API/Markdown projection, explicit source/lifecycle/reset/error handling, fifteen recipe families and persistent/mobile navigation. The full build, strict root types and all 906 tests pass. Thirteen recipe outcomes pass in each engine; source-copy and native accessibility regressions are retained. Continue M24 consumer tools and M25 toolchain/package integration. The Bun incremental-install root-package defect and final actual-platform checks retain their later owners; no publication or push occurred.
+
+## M24 consumer tooling implemented — 2026-09-26
+
+The coordinated 0.3.0 packages contain seven versioned consumer skills, seventeen recipe families, a local documentation MCP and an optional read-only inspector. The website, Markdown, skills and MCP derive their contracts and source examples from the same manifest and authored records. The full TanStack Devtools application shell stays out of production core; the optional inspector has a separate verified bundle. Six independent skill artifacts retain their original grades and explicit supplemental checks. No statistical superiority is inferred from that small sample. [Consumer evidence](evidence/m24-consumers/acceptance-2026-09-26.json), [skill evaluation](evidence/m24-skills/iteration-1/README.md), [managed forms](evidence/m26-managed-forms/README.md). The final combined archive run is M26's remaining integration gate.
+
+## M25 local toolchain and release gates implemented — 2026-09-26
+
+Oxlint/Oxfmt/Ultracite and Stylelint replace Biome. The complete source check passes, with scoped policy regressions and a separate verified mechanical formatting commit. Bun 1.4.2 is pinned and preserved in child commands. The coordinated archive record distinguishes clean committed source from a dirty local candidate; dirty candidates cannot publish. The release route passes local cryptographic checks and real read-only verification of existing public provenance. [Tooling](evidence/m25-tooling/README.md), [release evidence and limits](evidence/m25-release/README.md).
+
+The quality workflow includes durable component fixtures, generated React and package consumers, documentation, managed forms, actual Input history restoration and the official Firefox navigation regression. The old patched Firefox 155 failure remains recorded; its isolated page-render checks do not replace the mandatory official 156 sequential and Flow checks. Publication and Pages remain disabled. Linux execution, new trusted-publisher configuration, live OIDC/new signing and deployment are not established by local verification.
+
+## M26 final combined acceptance in progress — 2026-09-26
+
+The final inventory audit accounts for all 91 approved entries, seven documentation units, 150 original tags and thirty extensions. Runtime corrections cover scalar default removal, scoped dependency registration and document adoption, native imperative creation, Tabs indicator paint and single-bundle initialization. Consumer corrections complete worker declaration setup and both nested/array managed-form examples. Documentation now covers all 4,319 elements across 125 pages. Real font and phone layout checks are recorded separately from fallback-font page checks.
+
+All 960 unit tests, strict types, lint/format/style checks and the 640-package vulnerability audit pass. The shared committed rebuild reproduces generated files without drift. Four clean-source 0.3.0 archives are prepared from c9eabeece. The shared browser run executes all 23 invocations before aggregating failures; its final result remains pending. [Full audit and platform limits](evidence/m26-audit/final-runtime-review.md), [scoped creation](evidence/m26-scoped/README.md), [bundles](evidence/m26-bundle/README.md), [history](evidence/m26-native-forms/README.md), [appearance](evidence/m26-appearance/README.md).
+
+Actual OS input/autofill, Safari/assistive technology and OS background-window behavior remain explicit unperformed checks. External publication, Pages migration and removal of the frozen published snapshot require their separate authorized release boundary. These limits are not waived by automated passes.
+
+### M26 local acceptance complete — 2026-09-26
+
+[Final acceptance](evidence/m26-final/README.md) closes the implementation and local automated boundary. The final unit suite passes 963 tests. The clean committed rebuild has no generated drift. All required browser invocations are accepted: the initial sequence passed 22 of 23, and the one corrected Intent-reference oracle passed its complete targeted rerun against the identical archives. All 1,446 component results, managed forms, history, scoped/package delivery, official Firefox and consumer-tool records pass. The recorded rerun is explicit; the initial command's failure is preserved.
+
+The developer preview now watches examples and rejects encoded traversal. Actual-platform and external release gates above remain unperformed. They are not implementation tasks silently deferred from this pass and are not waived. No push, publication or deployment occurred.

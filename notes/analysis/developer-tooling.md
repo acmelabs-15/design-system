@@ -272,15 +272,11 @@ Bun's high-severity audit reports three advisories against the direct happy-dom1
 
 ### Final local tooling gates
 
-The [final Bun 1.4.2 run](../alignment/evidence/m25-tooling/2026-09-26.json)
-passes Oxlint with **zero diagnostics across 811 authored JS/TS files and 342
-active native rules**, Oxfmt, Stylelint and the strict root TypeScript check.
-Stylelint covers 147 authored CSS files, 167 canonical compiled CSS outputs and
-the five actual Lit-template test files. The combined toolchain/release/version
-fixture run passes 26 tests with 151 assertions. The saved focused groups overlap
-and are not presented as one summed suite count. This closes the local toolchain
-implementation; final build/package acceptance and command/editor/CI integration
-remain the root task's responsibility.
+The [final integrated acceptance](../alignment/evidence/m26-final/README.md) runs under Bun1.4.2 and passes963 unit tests, strict types, Oxlint with zero diagnostics across832 authored JS/TS files, Oxfmt and Stylelint. Stylelint covers147 authored CSS files,167 canonical compiled outputs and five Lit-template test files. The final dependency audit reports no vulnerabilities across640 packages.
+
+The committed build reproduces generated output without drift. Four coordinated0.3.0 archives pass local acceptance. All23 required browser invocations are accepted: the initial run passes22, and the corrected strict Intent-link oracle passes its full targeted rerun against the identical archives. Original results and the rerun remain separate. Source publication records distinguish clean/dirty trees, and dirty records cannot publish.
+
+The dev server watches authored examples, keeps the parent Bun runtime for child builds, binds to loopback and rejects encoded traversal before file access. Six actual server regressions pass; the traversal test uses a harmless temporary sentinel. Actual-platform and external Linux/OIDC/publication/Pages checks remain unperformed, with publishing disabled.
 
 ### Credential-handling incident
 

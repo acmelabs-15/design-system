@@ -1,0 +1,95 @@
+{
+  "date": "2026-09-27T05:53:51.718Z",
+  "version": "0.3.0",
+  "status": "implementation and local automated acceptance complete; manual platform and external release gates unperformed",
+  "artifactCommit": "c9eabeecef29ae7f493b8ac9171989b5a8b62e63",
+  "sourceTreeAtPackaging": "clean",
+  "runtime": "1.4.2",
+  "checks": {
+    "unit": {
+      "passed": 963,
+      "failed": 0,
+      "assertions": 190339,
+      "files": 209
+    },
+    "static": {
+      "oxlintFiles": 832,
+      "oxlintDiagnostics": 0,
+      "stylelintDiagnostics": 0,
+      "format": true
+    },
+    "types": true,
+    "dependencyAudit": {
+      "packages": 640,
+      "vulnerabilities": 0
+    },
+    "committedBuild": {
+      "generatedDrift": false,
+      "modules": 42235,
+      "elements": 4319,
+      "pages": 125,
+      "recipes": 17
+    },
+    "browser": {
+      "requiredInvocations": 23,
+      "initialPassed": 22,
+      "initialFailed": 1,
+      "correctedRerunPassed": 1,
+      "acceptedInvocations": 23,
+      "correction": "The Intent oracle now resolves every relative Markdown target inside the installed package and retains exact content comparison. Same archive record and bytes; original failure remains saved.",
+      "componentResults": 1446,
+      "officialFirefoxPages": 125,
+      "officialFirefoxFlowCycles": 20,
+      "managedFormChecks": 48,
+      "scopedChecksPerEngineAndDelivery": 17,
+      "defaultResetsPerEngine": 704,
+      "ariaResetsPerEngine": 736,
+      "reactElementsPerEngine": 4319,
+      "reactDefaultsPerEngine": 743
+    },
+    "consumerTools": {
+      "skills": 7,
+      "releaseRecords": 4343,
+      "componentContracts": 4319,
+      "recipes": 17,
+      "recipeVariants": 20,
+      "mcpChecks": 9
+    }
+  },
+  "limitations": [
+    "Actual OS IME/dictation and browser autofill are not certified.",
+    "Actual Safari, assistive technology and OS background-window behavior are not certified.",
+    "Linux GitHub Actions, future OIDC/new signing, registry publisher configuration and publication/deployment have not run.",
+    "Firefox155 isolated rendering does not certify the retained old-runtime Flow navigation defect; officialFirefox156 covers the sequential and20-cycle regression.",
+    "No push, publication, Pages source change or deletion of the frozen published snapshot occurred."
+  ],
+  "securityFollowUp": "An npm credential was printed in prior tool output. No credential is included here; owner-controlled revocation/replacement remains necessary.",
+  "files": [
+    "release.json",
+    "browser-initial.json",
+    "components.json",
+    "official-firefox.json",
+    "managed-forms.json",
+    "history.json",
+    "default-restoration.json",
+    "removals.json",
+    "table-declarations.json",
+    "worker.json",
+    "scoped-module.json",
+    "scoped-cdn.json",
+    "bundle.json",
+    "inspector.json",
+    "production-exclusion.json",
+    "intent.json",
+    "mcp.json",
+    "tooling-recheck.json",
+    "crypto-smoke.json",
+    "published-trust.json",
+    "unit.log",
+    "static.log",
+    "audit.log",
+    "build.log",
+    "browser-initial.log",
+    "tooling-recheck.log"
+  ]
+}

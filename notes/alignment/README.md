@@ -4,21 +4,21 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 ## Where we are
 
-**Execution:** Phase 6 is active. Peter delegates the remaining choices and requests completion without more questions. Use supported recommendations and preserve the quality bar. [Execution delegation](../decisions/execution-delegation.md).
+**Execution:** the approved implementation and local automated verification are complete. Peter delegated the remaining choices; no further implementation question or approval loop remains. Actual-platform and external release gates remain unperformed. [Execution authority](../decisions/execution-delegation.md), [final acceptance](evidence/m26-final/README.md).
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
-**Completed:** M01–M23 are complete at their assigned boundaries. [React acceptance](evidence/m22-react-2026-09-23.json) covers all 4,319 wrappers, fresh packages, all declared defaults, native content and complete Table/Virtual/Worker examples. Final actual-platform and whole-library gates remain M26.
+**Completed:** M01–M25 are implemented. M26 local automated acceptance is complete, including final React, scoped-registry, worker, removal, visual and consumer-tool checks. The named actual-platform and external release limits remain unperformed; they are not reported as passed.
 
-**Current work:** M26 final acceptance of coordinated 0.3.0 under Bun 1.4.2. All 960 unit tests, strict types, lint/format/style checks and the 640-package vulnerability audit pass. Core, React, optional tools and the 125-page site build successfully. A clean committed rebuild is running before fresh archive acceptance. No push, publication or deployment.
+**Current result:** all 963 unit tests, strict types, lint/format/style checks and the 640-package vulnerability audit pass. The committed build reproduces generated files without drift. Four clean-source 0.3.0 archives pass local acceptance, including 1,446 component-browser results, 125 docs pages and all consumer-tool records. The initial browser run had one outdated Intent test expectation; its full corrected rerun passes on the same archives. [Exact scope and preserved results](evidence/m26-final/README.md).
 
-**Final integration evidence:** [scoped registration](evidence/m26-scoped/README.md), [bundle identity](evidence/m26-bundle/README.md), [complete family audit](evidence/m26-audit/final-runtime-review.md), [managed forms](evidence/m26-managed-forms/README.md), [real history restoration](evidence/m26-native-forms/README.md), [fonts and narrow layouts](evidence/m26-appearance/README.md), [release gates](evidence/m25-release/README.md).
+**Final integration evidence:** [complete local acceptance](evidence/m26-final/README.md), [scoped registration](evidence/m26-scoped/README.md), [bundle identity](evidence/m26-bundle/README.md), [complete family audit](evidence/m26-audit/final-runtime-review.md), [managed forms](evidence/m26-managed-forms/README.md), [real history restoration](evidence/m26-native-forms/README.md), [fonts and narrow layouts](evidence/m26-appearance/README.md), [release gates](evidence/m25-release/README.md).
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
-**Next batches:** continue M24–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
+**Next boundary:** actual-platform validation and separately authorized release setup/publication. There is no remaining autonomous implementation batch. Publishing and Pages remain disabled; the frozen published docs remain until that release boundary.
 
-**Working copies and workers:** implementation is saved in d9b2f100f (scoped/bundled delivery), 8114e3ae0 (default restoration), d200bf646 (Tabs paint) and 51564fda2 (consumer and verification toolchain). Earlier Slider/Calendar worktrees are historical. All delegated implementation and review work is complete. Keep heavy build/test jobs sequential; parallel compiler jobs caused memory pressure and test timeouts.
+**Working copies and workers:** implementation is saved in d9b2f100f (scoped/bundled delivery), 8114e3ae0 (default restoration), d200bf646 (Tabs paint) and 51564fda2 (consumer and verification toolchain). Earlier Slider/Calendar worktrees are historical. The final dev-server and Intent-oracle corrections are saved in 0dd8c96e1 and 1ccfd4400. All delegated implementation and review work is complete. Keep heavy build/test jobs sequential; parallel compiler jobs caused memory pressure and test timeouts.
 
 **Tool runtime:** use /tmp/acme-bun-1.4.2/bun-darwin-aarch64/bun for final checks. The global Bun remains1.4.0. The shared check command preserves its pinned executable for child package scripts.
 
@@ -26,11 +26,11 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Security follow-up:** a delegated check printed an npm token into tool output. Peter has been informed; token rotation remains owner-controlled. No secret was committed. See the incident entry in [developer tooling](../analysis/developer-tooling.md#credential-handling-incident).
 
-**Local preview:** the pinned Bun runs the preview on port 4180 with --no-build --no-watch. Check the owning process before starting another server. Stop this preview while the shared browser gate owns 4180; restore normal watch mode after completion.
+**Local preview:** restored at http://127.0.0.1:4180/ under pinned Bun 1.4.2 with normal watching of styles/, src/, site/ and examples/. The process uses --no-build because the accepted site is already built. The form deep link returns 200 with no-store caching. Stop this owned preview before a future shared browser run needs 4180.
 
 **Local commits:** 2ec047be1 (Calendar/M13), 6e431cf16 (native lists/Disabled Wall), c84f73cee (Card/Inset/Item), 39bdc98c0 (Scroll Area), 335546ad0 (style whitespace). fbed13a4f closes Resizable/M14; ef0f83c08 closes disclosure; 125097fef/0a54e3b80 close Steps/Timeline and its corrected documentation evidence. e9d9b6b4d closes navigation. M16 closes in 26f026f8c, 273480e81, a6d2a445b and 14e5083f9. No push, publication or Pages change occurred.
 
-**Remaining checks:** run the final shared browser and release-trust gates against the newly prepared archives, then save the combined acceptance record. Actual OS IME/dictation/autofill, Safari and assistive technology, real background-tab behavior and external Linux/OIDC/Pages acceptance remain explicitly unverified. Real Input history/back restoration is now verified in fresh documents in all three engines.
+**Unperformed gates:** genuine OS IME/dictation/autofill; actual Safari and assistive technology; real background-window behavior; Linux CI and future OIDC/signing/publisher/Pages acceptance. Automated engine checks do not establish these. Input history/back restoration is verified in fresh documents in all three engines.
 
 The dated checkpoints below retain their recorded results. The current execution block above owns the resumption point.
 

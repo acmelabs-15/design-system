@@ -30,7 +30,7 @@ A separate runtime probe checks every archived value export against its original
 
 The source-level TypeScript comparison preserves all remaining 251 exports: 199 values and 52 type-only symbols, with identical resolved declaration origins and symbol flags. The two separately approved obsolete base helpers, `assetsBase` and `setAssetsBase`, are excluded from this comparison. They explain the archived/current value-count difference. [Symbol comparison](symbol-preservation.json).
 
-The integrated final archive still needs the root's normal rebuild and consumer gates; these results isolate the barrel change from the other pending changes.
+The integrated clean0.3 archive now passes the original consumer in single and split modes across all three engines. [Final archive result](../m26-final/bundle.json). The earlier results above isolate the barrel change.
 
 ## Replay
 
