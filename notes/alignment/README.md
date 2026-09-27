@@ -10,13 +10,15 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Completed:** M01–M23 are complete at their assigned boundaries. [React acceptance](evidence/m22-react-2026-09-23.json) covers all 4,319 wrappers, fresh packages, all declared defaults, native content and complete Table/Virtual/Worker examples. Final actual-platform and whole-library gates remain M26.
 
-**Current work:** M26 final integrated verification of coordinated0.3.0 under pinnedBun1.4.2. M23 docs and M24 local tooling/consumer checks pass; six independent skill artifacts and their original grades are saved. [Skills](evidence/m24-skills/iteration-1/README.md), [packed tools](evidence/m24-consumers/acceptance-2026-09-26.json), [M25 lint](evidence/m25-tooling/README.md), [release checks](evidence/m25-release/README.md). Final audit fixes cover default removal, Tabs paint, explicit root exports and worker setup. Core/React,125-page documentation and optional-tool builds pass. The rebuilt distribution passes704 defaults,736 ARIA resets and17 scoped cases per engine. The full family census now has482 passing results per engine across retained runs. Official Firefox passes125 pages plus20Flow lifecycle cycles; actual Input history/back restoration passes all3engines. Managed Lit/React forms now have a shared recipe and fresh-consumer proof; a320px action-label correction is in final verification. Fresh coordinated packages, the final combined suite and local commits remain. No push, publication or deployment.
+**Current work:** M26 final acceptance of coordinated 0.3.0 under Bun 1.4.2. All 960 unit tests, strict types, lint/format/style checks and the 640-package vulnerability audit pass. Core, React, optional tools and the 125-page site build successfully. A clean committed rebuild is running before fresh archive acceptance. No push, publication or deployment.
+
+**Final integration evidence:** [scoped registration](evidence/m26-scoped/README.md), [bundle identity](evidence/m26-bundle/README.md), [complete family audit](evidence/m26-audit/final-runtime-review.md), [managed forms](evidence/m26-managed-forms/README.md), [real history restoration](evidence/m26-native-forms/README.md), [fonts and narrow layouts](evidence/m26-appearance/README.md), [release gates](evidence/m25-release/README.md).
 
 **Overlay density:** [Verified correction](evidence/overlay-density-2026-09-23.json) preserves normal density inside Dialog, Drawer, Menu and Toggle Tip while retaining explicit theme and child overrides. Toast acceptance is linked above.
 
 **Next batches:** continue M24–M26 under execution delegation. No more phase-choice questions or Plan toggles. M22/M26 retain actual platform, generated React and final release gates.
 
-**Working copies and workers:** current parallel work covers package topology, optional consumer tooling and lint migration. Earlier Slider/Calendar worktrees remain historical and must not overwrite the later integrated code. Commits8c8e780d3,916fc4c97 and2985ede8b save the documentation/tooling boundary, verified mechanical pass and comparison-rule correction. Later release/audit fixes remain in the working tree for final verification and commit.
+**Working copies and workers:** implementation is saved in d9b2f100f (scoped/bundled delivery), 8114e3ae0 (default restoration), d200bf646 (Tabs paint) and 51564fda2 (consumer and verification toolchain). Earlier Slider/Calendar worktrees are historical. All delegated implementation and review work is complete. Keep heavy build/test jobs sequential; parallel compiler jobs caused memory pressure and test timeouts.
 
 **Tool runtime:** use /tmp/acme-bun-1.4.2/bun-darwin-aarch64/bun for final checks. The global Bun remains1.4.0. The shared check command preserves its pinned executable for child package scripts.
 
@@ -24,11 +26,11 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 **Security follow-up:** a delegated check printed an npm token into tool output. Peter has been informed; token rotation remains owner-controlled. No secret was committed. See the incident entry in [developer tooling](../analysis/developer-tooling.md#credential-handling-incident).
 
-**Local preview:** port 4180 now runs bun scripts/dev.ts --no-build --no-watch (exec session 53597). A second watch process was found and stopped after it triggered concurrent builds. Use explicit generation/builds; restore normal watch mode after migration completion. Keep heavy package builds sequential.
+**Local preview:** the pinned Bun runs the preview on port 4180 with --no-build --no-watch. Check the owning process before starting another server. Stop this preview while the shared browser gate owns 4180; restore normal watch mode after completion.
 
 **Local commits:** 2ec047be1 (Calendar/M13), 6e431cf16 (native lists/Disabled Wall), c84f73cee (Card/Inset/Item), 39bdc98c0 (Scroll Area), 335546ad0 (style whitespace). fbed13a4f closes Resizable/M14; ef0f83c08 closes disclosure; 125097fef/0a54e3b80 close Steps/Timeline and its corrected documentation evidence. e9d9b6b4d closes navigation. M16 closes in 26f026f8c, 273480e81, a6d2a445b and 14e5083f9. No push, publication or Pages change occurred.
 
-**Remaining cross-batch checks:** actual OS IME/voice/autofill/history/Safari and assistive-technology interaction; generated React wrappers; scoped-registry/adoption and native-content cases; the specific saved single-bundle import-initialization reproduction; complete appearance/removal/package acceptance. Preserve their existing M22/M26 owners and source-linked limits.
+**Remaining checks:** run the final shared browser and release-trust gates against the newly prepared archives, then save the combined acceptance record. Actual OS IME/dictation/autofill, Safari and assistive technology, real background-tab behavior and external Linux/OIDC/Pages acceptance remain explicitly unverified. Real Input history/back restoration is now verified in fresh documents in all three engines.
 
 The dated checkpoints below retain their recorded results. The current execution block above owns the resumption point.
 
