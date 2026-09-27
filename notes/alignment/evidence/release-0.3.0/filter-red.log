@@ -1,0 +1,22 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/.release-check-before-filter.test.ts:
+117 |   for (const check of plan) {
+118 |     expect(check.environment.ACME_BROWSER_RUNTIME).toBe(runtime);
+119 |     expect(check.environment.ACME_AUDIT_SOURCE).toBe("0");
+120 |     expect(check.environment.ACME_SCOPED_SOURCE).toBe("0");
+121 |     const inherited = checkEnvironment({ ACME_COMPONENT_SUITES: "dialog", ACME_COMPONENT_ENGINES: "webkit", ...check.environment });
+122 |     expect(inherited.ACME_COMPONENT_SUITES).toBeUndefined();
+                                                  ^
+error: expect(received).toBeUndefined()
+
+Received: "dialog"
+
+      at <anonymous> (/Users/peterkloss/Dev/ACMElabs/design-system/scripts/__tests__/.release-check-before-filter.test.ts:122:45)
+(fail) browser gates consume the reviewed package set and both scoped delivery paths [1.21ms]
+
+ 0 pass
+ 4 filtered out
+ 1 fail
+ 11 expect() calls
+Ran 1 test across 1 file. [1180.00ms]

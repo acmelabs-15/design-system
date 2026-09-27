@@ -1,0 +1,17 @@
+bun test v1.4.2 (744846f84)
+
+scripts/__tests__/check.test.ts:
+(pass) every browser gate runs and records failure before the aggregate verdict [0.49ms]
+(pass) package scripts use the verified parent Bun executable [26.43ms]
+(pass) generated verification rejects tracked, staged and untracked output changes [271.70ms]
+(pass) browser gates consume the reviewed package set and both scoped delivery paths [0.87ms]
+(pass) browser overrides cannot replace the pinned Bun executable search path [8.23ms]
+
+scripts/__tests__/component-browser-checks.test.ts:
+(pass) component browser fixture imports use one compiled runtime and repeatable definitions [0.16ms]
+(pass) every colocated browser fixture has one registered suite or the dedicated Tabs gate [10.33ms]
+
+ 7 pass
+ 0 fail
+ 152 expect() calls
+Ran 7 tests across 2 files. [742.00ms]
