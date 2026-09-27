@@ -7,6 +7,15 @@ const treeHash = "a7a7a305ff7256bc71e423fc6cefdf14726bc1d57dc19e1ab0ea0a49beaa06
 const original = 'props.keyName && typeof props.value !== "object"';
 const corrected = 'props.keyName && (props.value === null || typeof props.value !== "object")';
 
+export async function packageLicense(directory: string): Promise<{ file: string; text: string }> {
+  const files = (await readdir(directory, { withFileTypes: true })).filter((entry) => entry.isFile() && /^licen[cs]e(?:\.(?:txt|md))?$/i.test(entry.name));
+  if (files.length !== 1) {
+    throw new Error("Expected one package license file in " + directory);
+  }
+  const file = files[0].name;
+  return { file, text: await readFile(path.join(directory, file), "utf8") };
+}
+
 /** Correct the null primitive's missing key in the pinned upstream renderer. */
 export function correctDevtoolsTree(source: string, version: string): string {
   if (version !== uiVersion || new Bun.CryptoHasher("sha256").update(source).digest("hex") !== treeHash) {
@@ -75,9 +84,9 @@ export async function buildDevtoolsRuntime(root = path.resolve(import.meta.dir, 
   for (const name of names) {
     const directory = path.join(root, "node_modules", name),
       pkg = await Bun.file(path.join(directory, "package.json")).json();
-    const license = await readFile(path.join(directory, "LICENSE"), "utf8");
-    await writeFile(path.join(outdir, "licenses", name.replaceAll("/", "-").replace("@", "") + ".txt"), license);
-    packages.push({ name, version: pkg.version, license: pkg.license });
+    const license = await packageLicense(directory);
+    await writeFile(path.join(outdir, "licenses", name.replaceAll("/", "-").replace("@", "") + ".txt"), license.text);
+    packages.push({ name, version: pkg.version, license: pkg.license, licenseFile: license.file });
   }
   const fontDirectory = path.join(root, "node_modules/@tanstack/devtools-ui/dist/assets");
   const fonts = [];
