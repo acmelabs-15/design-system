@@ -4,7 +4,7 @@ Entry point for the current work. AGENTS.md says how to work in this repo; this 
 
 ## Where we are
 
-**Execution:** the approved implementation and local automated verification are complete. Peter delegated the remaining choices; no further implementation question or approval loop remains. Actual-platform and external release gates remain unperformed. [Execution authority](../decisions/execution-delegation.md), [final acceptance](evidence/m26-final/README.md).
+**Execution:** Peter requested release0.3.0 on2026-09-27. Release work is active: Linux verification, repository integration, package publication and documentation deployment. [Release status and sequence](release-0.3.0.md). Local implementation/acceptance remains complete; manual platform limits remain documented.
 
 **Language:** use component names directly. Every component belongs to this design system; there is no separate category or version. [Decision](../decisions/component-language.md).
 
